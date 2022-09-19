@@ -90,8 +90,8 @@ img {
 }
 code {
 	padding: 2px 5px;
-	background-color: #1F1F1F;
-	color: #FFAB70;
+	background-color: #08083a;
+	color: hsl(300, 96%, 80%);
 }
 pre {
 	padding: 1rem;
