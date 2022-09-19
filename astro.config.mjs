@@ -6,6 +6,13 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://arieldiaz.codes',
-	integrations: [mdx(), sitemap()]
-  }
-);
+	integrations: [mdx(), sitemap()],
+	markdown: {
+		syntaxHighlight: 'shiki',
+    shikiConfig: {
+      theme: 'min-dark',
+      langs: [],
+      wrap: true,
+    },
+  },
+});
