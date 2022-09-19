@@ -8,7 +8,8 @@ export default defineConfig({
 	site: 'https://arieldiaz.codes',
 	integrations: [mdx(), sitemap()],
 	markdown: {
-		syntaxHighlight: 'prism',
+		syntaxHighlight: 'shiki',
+		theme: 'min-dark',
     wrap: true,
   },
 });
