@@ -1,0 +1,146 @@
+/*
+ * Vaporwave Theme by Ariel Diaz [https://arieldiaz.codes]
+ *
+ * Inspired by and based on Synthwave '84 Theme for PrismJS by Marc Backes [@themarcba]
+ *
+ * Synthwave '84 Theme originally by Robb Owen [@Robb0wen] for Visual Studio Code
+ */
+
+code[class*='language-'],
+pre[class*='language-'] {
+  color: var(--heading);
+  background: none;
+  border-radius: 1rem;
+  font-family: 'JetBrains Mono', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono',
+    monospace;
+  font-size: 1.125rem;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.25;
+
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*='language-'] {
+  padding: 2.25em 1em;
+  margin: 0.5em 0;
+  overflow: auto;
+}
+
+:not(pre) > code[class*='language-'],
+pre[class*='language-'] {
+  background-color: #08083a !important;
+}
+
+/* Inline code */
+:not(pre) > code[class*='language-'] {
+  padding: 0.1em;
+  border-radius: 0.3em;
+  white-space: normal;
+}
+
+.token.comment,
+.token.block-comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #8e8e8e;
+}
+
+.token.punctuation {
+  color: #ccc;
+}
+
+.token.tag,
+.token.attr-name,
+.token.namespace,
+.token.number,
+.token.unit,
+.token.hexcode,
+.token.deleted {
+  color: var(--heading);
+}
+
+.token.property,
+.token.selector {
+  color: #f986de;
+}
+
+.token.function-name {
+  color: #6196cc;
+}
+
+.token.boolean,
+.token.selector .token.id,
+.token.function {
+  color: #ff8f1f;
+}
+
+.token.class-name {
+  color: #b3e4ff;
+}
+
+.token.constant,
+.token.symbol {
+  color: var(--yellow);
+}
+
+.token.important,
+.token.atrule,
+.token.keyword,
+.token.selector .token.class,
+.token.builtin {
+  color: #f4eee4;
+}
+
+.token.string,
+.token.char,
+.token.attr-value,
+.token.regex,
+.token.variable {
+  color: #fcf645;
+}
+
+.token.operator,
+.token.entity,
+.token.url {
+  color: #66d9ef;
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.inserted {
+  color: green;
+}
+
+/* Other custom styling */
+.toolbar-item {
+  margin-right: 10px;
+  color: var(--heading);
+}
+
+.copy-to-clipboard-button:hover {
+  cursor: pointer;
+}
