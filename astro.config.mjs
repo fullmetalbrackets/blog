@@ -9,7 +9,9 @@ export default defineConfig({
 	integrations: [mdx(), sitemap()],
 	markdown: {
 		syntaxHighlight: 'shiki',
-		theme: 'min-dark',
-    wrap: true,
-  },
-});
+    shikiConfig: {
+      theme: 'min-dark',
+      langs: [],
+      wrap: true,
+    },
+}});
