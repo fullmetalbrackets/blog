@@ -1,12 +1,14 @@
 ---
 layout: "../../layouts/BlogPost.astro"
 title: "Markdown hacks"
-description: "Markdown can render A LOT of characters and symbols using specific 'entities', so I made myself a list of common or handy to have ones."
+description: "Markdown can render A LOT of characters and symbols using specific 'entities', and can do other things like render tables and, so I made myself a list of common or handy, but easy-to-forget markdown hacks based off the official Markdown Guide."
 pubDate: "September 20, 2022"
 tags:
   - web
   - markdown
 ---
+
+## Characters & Symbols
 
 - `&copy;` - Copyright (_©_)
 - `&trade;` - Trademark (_™_)
@@ -59,3 +61,107 @@ tags:
 - `&beta;` - Beta small letter (_β_)
 - `&epsi;` - Epsilon small letter (_ε_)
 - `&lambda;` - Lambda small letter (_λ_)
+
+## Creating Tables in Markdown
+
+```md
+| Title  | Description         |
+| ------ | ------------------- |
+| Stuff  | Something something |
+| Things | More somethings     |
+```
+
+#### A table is rendered:
+
+| Title     | Description                  |
+| --------- | ---------------------------- |
+| Star Wars | In a galaxy far, far away... |
+| Star Trek | Beam me up, Scotty!          |
+
+<br><br>
+
+It's also possible to use line breaks inside a markdown table with HTML.
+
+```md
+| Genre  | Examples               |
+| ------ | ---------------------- |
+| Sci-Fi | Star Wars<br>Star Trek |
+```
+
+#### Table with line breaks is rendered:
+
+| Genre  | Examples               |
+| ------ | ---------------------- |
+| Sci-Fi | Star Wars<br>Star Trek |
+
+<br><br>
+
+You can also make lists inside a markdown table with HTML.
+
+```md
+| Genre  | Examples                                              |
+| ------ | ----------------------------------------------------- |
+| Sci-Fi | Titles: <ul><li>Star Wars</li><li>Star Trek</li></ul> |
+```
+
+#### Table with unordered list is rendered:
+
+| Genre  | Examples                                              |
+| ------ | ----------------------------------------------------- |
+| Sci-Fi | Titles: <ul><li>Star Wars</li><li>Star Trek</li></ul> |
+
+<br><br>
+
+And a numbered/ordered list in markdown.
+
+```md
+| Genre  | Examples                                              |
+| ------ | ----------------------------------------------------- |
+| Sci-Fi | Titles: <ul><li>Star Wars</li><li>Star Trek</li></ul> |
+```
+
+#### Table with numbered/ordered list is rendered:
+
+| Genre  | Examples                                              |
+| ------ | ----------------------------------------------------- |
+| Sci-Fi | Titles: <ol><li>Star Wars</li><li>Star Trek</li></ol> |
+
+## Making a Table of Contents in Markdown
+
+This is handy for blogs! A lot of the best markdown applications can automatically generate a table of contents. Frameworks like Nuxt (with the Content module) and Astro, among others, can make use of this.
+<br><br>
+
+```md
+#### Chapter Listing
+
+- [Chapter 1](#ch1)
+- [Chapter 2](#ch2)
+- [Chapter 3](#ch3)
+- [Chapter 4](#ch4)
+```
+
+#### Chapter Listing
+
+- [Chapter 1](#ch1)
+- [Chapter 2](#ch2)
+- [Chapter 3](#ch3)
+- [Chapter 4](#ch4)
+
+<br><br>
+Then you just have to link these to a heading ID. Here it is using markdown.
+
+```md
+[Chapter 1](#ch1)
+```
+
+<br><br>
+And in HTML.
+
+```html
+<a href="#ch1">Chapter 1</a>
+```
+
+## References
+
+- <a href="https://www.markdownguide.org/hacks" target="_blank">Markdown Guide</a>
+- <a href="https://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references#List_of_character_entity_references_in_HTML" target="_blank">Wikipedia page with full list of entities</a>
