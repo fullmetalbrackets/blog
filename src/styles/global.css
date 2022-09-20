@@ -94,8 +94,9 @@ img {
 }
 code {
 	padding: 2px 5px;
-	background-color: #1F1F1F;
-	color: #B392F0;
+	background-color: #08083A;
+	color: #F986DE;
+	border-radius: 0.25em;
 }
 pre {
 	padding: 1rem;
