@@ -79,5 +79,23 @@ for = "/*"
     X-XSS-Protection = "1; mode=block"
     Permissions-Policy = "autoplay=(), camera=(), geolocation=(), microphone=()"
 
+[[redirects]]
+  from = "https://arieldiaz.netlify.com/*"
+  to = "https://arieldiaz.codes/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://arieldiaz.netlify.app/*"
+  to = "https://arieldiaz.codes/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://arieldiaz.codes/blog"
+  to = "https://arieldiaz.codes/"
+  status = 301
+  force = true
+
 [context.deploy-preview]
   ignore = "git log -1 --pretty=%B | grep dependabot"
