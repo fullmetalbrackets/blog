@@ -21,4 +21,9 @@ const isActive = href === Astro.url.pathname.replace(/\/$/, '');
 		font-weight: bolder;
 		text-decoration: none;
 	}
+	@media screen and (min-width: 200px) and (max-width: 767px) {
+		a {
+			font-size: 1em;
+		}
+	}
 </style>
