@@ -1,0 +1,83 @@
+[[plugins]]
+package = "netlify-plugin-csp-generator"
+
+  [plugins.inputs]
+  buildDir = "dist"
+
+  [plugins.inputs.policies]
+    defaultSrc = "'none'"
+    scriptSrc = "'self' 'unsafe-inline' *.cloudfront.net *.netlify.com *.netlify.app"
+    styleSrc = "'self' 'unsafe-inline' *.cloudfront.net *.netlify.com *.netlify.app"
+    fontSrc = "'self' 'unsafe-inline' *.cloudfront.net *.netlify.com *.netlify.app"
+    frameSrc = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
+    imgSrc = "'self' data: blob: *.cloudfront.net *.netlify.com *.netlify.app *.shields.io"
+    manifestSrc = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
+    mediaSrc = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
+    objectSrc = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
+    prefetchSrc = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
+    scriptSrcElem = "'self' 'unsafe-inline' *.cloudfront.net *.netlify.com *.netlify.app *.netlify.com"
+    scriptSrcAttr = "'self' 'unsafe-inline' *.cloudfront.net *.netlify.com *.netlify.app"
+    styleSrcElem = "'self' 'unsafe-inline' *.cloudfront.net *.netlify.com *.netlify.app https://fonts.cdnfonts.com"
+    styleSrcAttr = "'self' 'unsafe-inline' *.cloudfront.net *.netlify.com *.netlify.app"
+    workerSrc = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
+    baseUri = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
+    formAction = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
+    frameAncestors = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
+    connectSrc = "'self'"
+
+[[headers]]
+  for = "/img/*.png"
+
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+    Content-Type = "image/png"
+
+[[headers]]
+  for = "/img/*.jpg"
+
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+    Content-Type = "image/jpeg"
+
+[[headers]]
+  for = "/fonts/*.ttf"
+
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+    Content-Type = "application/font-ttf"
+
+[[headers]]
+  for = "/fonts/*.woff"
+
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+    Content-Type = "application/font-woff"
+
+[[headers]]
+  for = "/fonts/*.woff2"
+
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+    Content-Type = "application/font-woff2"
+
+[[headers]]
+  for = "/favicon.ico"
+
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+    Content-Type = "application/x-icon"
+
+[[headers]]
+for = "/*"
+
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Strict-Transport-Security = "max-age=31536000"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    Permissions-Policy = "autoplay=(), camera=(), geolocation=(), microphone=()"
+
+[context.deploy-preview]
+  ignore = "git log -1 --pretty=%B | grep dependabot"
