@@ -27,7 +27,7 @@ body {
 	text-align: left;
 	word-wrap: break-word;
 	overflow-wrap: break-word;
-	line-height: 1.5;
+	line-height: 1.4;
 	color: rgb(198, 208, 235);
 	background: rgb(0, 1, 46);
 }
@@ -43,10 +43,6 @@ body {
   border-radius: 0;
   background: hsl(316, 99%, 50%);
 }
-hr {
-	background-color: hsl(234, 85%, 25%);
-	margin-bottom: 4em;
-}
 h1,
 h2,
 h3,
@@ -54,6 +50,11 @@ h4,
 h5,
 h6 {
 	color: hsl(316, 99%, 50%);
+}
+hr {
+	border-top: 0.25px solid rgb(10, 20, 118);
+	opacity: 0.5;
+	margin: 1em 0 4em 0;
 }
 strong,
 em,
@@ -82,7 +83,7 @@ table {
 	width: 100%;
 }
 time {
-	color: rgba(108, 227, 212, 0.6);
+	color: hsl(191, 100%, 69%);
 }
 img {
 	max-width: 100%;
