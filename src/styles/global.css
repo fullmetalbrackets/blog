@@ -96,6 +96,7 @@ img {
 }
 code {
 	padding: 2px 5px;
+	font-family: 'JetBrains Mono', Consolas, monospace;
 	background-color: #08083A;
 	color: #F986DE;
 	border-radius: 0.25em;
@@ -104,7 +105,6 @@ pre {
 	padding: 1rem;
 }
 pre > code {
-	font-family: 'JetBrains Mono';
 	all: unset;
 }
 blockquote {
