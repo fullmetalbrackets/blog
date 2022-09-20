@@ -8,6 +8,8 @@ tags:
   - vim
 ---
 
+In my search for a tutorial or guide to help me understand how Vim works, I came upon <a href="https://stackoverflow.com/questions/11828270/how-do-i-exit-vim" target="blank">this Stack Overflow thread</a> with excellent answers. My favorite of these are below, but feel free to dive deep at the original link.
+
 ## Vim Commands
 
 - `:q` to quit (short for :quit)
