@@ -29,7 +29,7 @@ body {
 	overflow-wrap: break-word;
 	line-height: 1.4;
 	color: rgb(198, 208, 235);
-	background: rgb(0, 1, 46);
+	background: rgb(0, 1, 32);
 }
 ::-webkit-scrollbar {
   height: 8px;
@@ -57,7 +57,7 @@ h6 {
 	color: #F986DE;
 }
 hr {
-	border-top: 0.25px solid hsl(316, 99%, 50%);
+	border: 0.25px solid hsl(316, 99%, 50%);
 	opacity: 0.5;
 }
 strong,
@@ -69,7 +69,7 @@ u {
 }
 kbd {
   background-color: #777;
-  color: black;
+  color: #000;
   border-radius: 0.25rem;
   border: 1px solid #333;
   box-shadow: 0 2px 0 1px #333;
