@@ -105,6 +105,6 @@ You should now have the shared folder open in your Windows PC! For permanence, p
 
 However, there MAY be an additional issue, as Windows 10 Home (but not Professional) apparently does not have the Local Security Policy settings (secpol.msc) that is required to interface with Samba. I can't confirm this myself since I use Windows 10 Professional, but if you have issues and Windows complains about secpol.msc, [go here for detailed instructions](https://www.majorgeeks.com/content/page/how_to_enable_local_security_policy_in_windows_10_home.html) on how to fix this issue.
 
-<h2>References</h2>
+## References
 
 - <a href="https://www.samba.org/samba/docs" target="_blank" rel="noopener">Samba Documentation</a>

@@ -10,7 +10,7 @@ tags:
 
 I've been getting more and more comfortable working on the command line in Linux, and looked into ways to pretty it up and make it more user friendly. Enter Zsh, an alternative to Bash shell, and the Oh My Zsh "framework" used to customize the terminal experience to your heart's content. Here's a guide to getting it set up quick and easy.
 
-### Install the Zsh shell
+## Install the Zsh shell
 
 First, a caveat; this guide is for Linux only, since that's the only place I've used Zsh & Oh My Zsh. It's also usable on Mac (via [iTerm2](https://iterm2.com/), among other options) but I will only be covering Linux here. Easiest way to do install Zsh is just use your distribution's package manager.
 
@@ -32,7 +32,7 @@ On Fedora/Red Hat:
 sudo dnf install zsh
 ```
 
-### Download and install Oh My Zsh
+## Download and install Oh My Zsh
 
 Easiest (and recommended) way is to use the following command to install via a script:
 
@@ -42,7 +42,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 
 After it's done downloading, use the command `zsh` to configure it.
 
-### Using some essential plugins
+## Using some essential plugins
 
 In my humble opinion, there's two must-have plugins when using Oh My Zsh; **zsh-autosuggestions** (for handy auto-completion of commands) and **zsh-syntax-highlighting** (detects and color codes different syntax on the command line and in the text editor). Let's download those:
 
@@ -59,7 +59,7 @@ plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
 Save the file, exit the editor, and restart the shell for the changes to take effect. Note: I also suggest adding _aliases_ as a plugin and adding aliases of your most used commands to your `.zshrc` file, or create a separate file just for aliases.
 
-### Using a theme
+## Using a theme
 
 Specifically, we're going to be using the great _Powerlevel10k_ theme. It's as simple as typing two commands:
 
@@ -83,7 +83,7 @@ If the command isn't recognized, restart the shell first. Follow the prompts to 
 
 But wait, there's more! To make your terminal even prettier through the magic of glyphs, let's go a little deeper.
 
-### Prettify powerlevel10k with glpyhs
+## Prettify powerlevel10k with glpyhs
 
 By using powerlevel10k's [recommended fonts](https://github.com/romkatv/powerlevel10k#fonts) the theme's configuration script will have more options to make the command line prompt look even better, including icons! For some reason these fonts aren't included with powerlevel10k's install instructions or script, so you have to do it manually. We'll use `wget` to download the fonts individually directly into the fonts directory.
 
@@ -104,7 +104,7 @@ sh -c "$(curl -fsSL https://gist.githubusercontent.com/fullmetalbrackets/5a094e7
 
 Now when you use `p10k configure` you'll get additional options, since you'll be able to display the glyph correctly. (If using a desktop environment, make sure to go into Terminal preferences and change the font to "Meslo LGS.")
 
-### References
+## References
 
 - [Zsh shell website](https://www.zsh.org/)
 - [Oh My Zsh website](https://ohmyz.sh/)

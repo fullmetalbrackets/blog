@@ -67,7 +67,7 @@ git branch -M main
 
 And we're done! Git will automatically keep track of any modified files in the project directory, as well as changes in the remote repository, and you can easily push changes to GitHub or pull from it if you (or a friend?) make changes there. You can use Git and GitHub for all sorts of stuff, not just your coding project. I use it for this website to quickly deploy to Netlify, and also to backup certain configuration files from Windows and Linux. (In private repos, of course.) The best way to learn anything is by using it, so feel free to use Git for as many things as possible, GitHub barely has limits for free users and you can always delete any trash repos you no longer care about.
 
-### References
+## References
 
 - [GitHub blog post about deprecating password auth](https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/)
 - [GitHub documentation](https://docs.github.com/en)

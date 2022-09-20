@@ -38,7 +38,7 @@ First, let's say your form is in your site's `contact.vue` page and it looks som
 
 That's it, you need nothing else besides that. Even if you navigate to this page on your site (you should just [redirect away from it](https://docs.netlify.com/routing/redirects/) though) it will be blank, since we're including the `hidden` attribute in the form element. Because the code is identical Netlify Forms will handle the data from your actual contact page, after it crawled this fake form page. I have found literally no other way for Netlify Forms to work with a Nuxt site except by doing this. Hope it helps someone like it helped me!
 
-### References
+## References
 
 - [Medium article that taught me this trick](https://medium.com/@kimbjrkman/adding-netlify-forms-on-your-nuxt-website-20ffba3e5ba8)
 - [Netlify Forms documentation](https://docs.netlify.com/forms/setup/)

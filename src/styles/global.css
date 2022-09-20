@@ -51,6 +51,9 @@ h5,
 h6 {
 	color: hsl(316, 99%, 50%);
 }
+h2 {
+	margin-top: 2.5em;
+}
 hr {
 	border-top: 0.25px solid rgb(10, 20, 118);
 	opacity: 0.5;

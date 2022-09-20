@@ -28,7 +28,7 @@ Let's break it down:
 
 This is just a small sample of the options available, but this set of options is a good base to start using Rsync. A lot of people use Rsync as an automatic backup solution by using a cronjob to schedule transfers and using specific options only transfer certain files.
 
-### Using RSync with Cron
+## Using RSync with Cron
 
 Let's have Monica do that now with the following command:
 
@@ -46,7 +46,7 @@ What's all that junk before the rsync command? You schedule cron jobs by express
 
 Finally, for a list of ALL the rsync options with short descriptions of what they do, check out the [Rsync man page](https://download.samba.org/pub/rsync/rsync.1), a truly exhaustive manual for understanding all the granular details of Rsync.
 
-### References
+## References
 
 - [Rsyncinator](https://www.rsyncinator.app/web)
 - [Cronmaker](https://cronmaker.com)

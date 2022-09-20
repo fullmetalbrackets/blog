@@ -60,7 +60,7 @@ Note: The number at the end of each line, under pass, is important; this is esse
 
 Save and close the fstab file. Now when you reboot, the second hard drive should always auto-mount to `/mnt/DATA`. This guide was for an internal hard drive specifically, but as I said before, everything is identical for external USB drives; they show up as **sdb**, **sdc**, and so on. The HDDs inside the external drives are SCSI, and so are USB sticks. Mount all the things!
 
-### References
+## References
 
 - [Linux man page for MOUNT](https://linux.die.net/man/8/mount)
 - [Linux man page for FSTAB](https://man7.org/linux/man-pages/man5/fstab.5.html)

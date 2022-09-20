@@ -24,6 +24,6 @@ I've written before about <a href="https://arieldiaz.codes/blog/5-ways-to-easily
 
 That's it! AWS Amplify uses continuous deployment from git, meaning any push to your remote repo on GitHub, Bitbucket, or what have you will automatically trigger a rebuild and redeploy, similar to other hosting services like Netlify and Vercel. To use your own domain, click on _Domain management_ in the AWS Amplify console. Make sure to add custom headers and any necessary redirects through the console as well.
 
-### References
+## References
 
 - [AWS Amplify Documentation](https://docs.aws.amazon.com/amplify/?id=docs_gateway)

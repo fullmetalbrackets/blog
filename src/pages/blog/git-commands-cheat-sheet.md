@@ -10,7 +10,7 @@ tags:
 
 When I was learning Git, in order to avoid giant articles and get right to the commands I needed reminding of, I made myself a cheat sheet that plainly and succinctly explained each Git command. Here is that quick and dirty guide of Git commands that you will likely use often as a web developer.
 
-### Setting up git locally
+## Setting up git locally
 
 Clone an existing remote repo to work on locally.
 
@@ -43,7 +43,7 @@ Set a remote repository (e.g. on Github, Bitbucket, etc.) as the **_origin_**, b
 git remote add origin https://github.com/username/repo.git
 ```
 
-### Staging and committing files
+## Staging and committing files
 
 Stage files modified since the last commit.
 
@@ -100,7 +100,7 @@ Check what stage of the git workflow all tracked (modified) files are in.
 git status
 ```
 
-### Pushing to and pulling from remote repos
+## Pushing to and pulling from remote repos
 
 Push to main branch on your default remote.
 
@@ -121,7 +121,7 @@ git pull // This will pull from origin's main branch if it is set as upstream, l
 git pull bitbucket-repo // If you added more remote repos, this pulls the specified remote instead of origin
 ```
 
-### Dealing with branches
+## Dealing with branches
 
 Switch to a branch, use **_-c_** to create if it doesn't already exist.
 
@@ -174,7 +174,7 @@ Delete a REMOTE branch. Here we don't use **_git branch_** but instead **_git pu
 git push origin --delete branch-name
 ```
 
-### Multiple remote repos
+## Multiple remote repos
 
 Above I explained how to add a remote repo as **_origin_**, making it the default. But what if you want to push your project to multiple remotes, even on different git hosts? For example, say your origin is on Github, but you also want copies of your project on Bitbucket and Gitlab. (Let's assume you name these **_bitbucket-repo_** & **_gitlab-repo_** locally.)
 
@@ -202,7 +202,7 @@ By tracking the main branch on the remote "gitlab-repo" and can do the following
 git push gitlab-repo // No need to specify main branch once tracked
 ```
 
-### Dealing with forks
+## Dealing with forks
 
 Let's say you've forked an existing repo on Github, your version of that repo under your account is **_origin_**. The pre-existing repo you forked is **_upstream_**. If you wanted to pull updates from the upstream repo, you do the following.
 
@@ -213,7 +213,7 @@ git fetch upstream // This fetches metadata of the changes between the upstream 
 git merge origin/upstream // Merge fetched changes from the upstream into your local repo
 ```
 
-### Advanced use cases
+## Advanced use cases
 
 There's way too many advanced commands, and options for these commands, that I haven't even learned yet! So here's a few additional random commands I've picked up along the way, though this is in no way a complete list.
 
@@ -243,7 +243,7 @@ git revert 6e751bc32
 
 There's more advanced commands I'm not going to talk about until I use them myself -- things like `git rebase`, and I'm also not showing all the different ways to use `git checkout` because I don't know even half of them. I'll make a future blog post as I learn more of these.
 
-### References
+## References
 
 - [Git Documentation](https://git-scm.com/docs/git)
 - [GitHub Cheat Sheet](https://training.github.com/downloads/github-git-cheat-sheet)
