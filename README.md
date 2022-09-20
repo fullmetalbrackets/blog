@@ -17,7 +17,7 @@ $ yarn dev
 
 MIT License
 
-Copyright (c) 2021 Ariel Diaz
+Copyright (c) 2022 Ariel Diaz
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
