@@ -2,15 +2,15 @@
 layout: "../layouts/BlogPost.astro"
 title: "Markdown Style Guide"
 description: "Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro."
-pubDate: "Jul 01 2022"
-heroImage: "/placeholder-hero.jpg"
+pubDate: "July 01, 2022"
+heroImage: "/img/placeholder-hero.jpg"
 ---
 
 Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.
 
 ## Headings
 
-The following HTML `<h1>`—`<h6>` elements represent six levels of section headings. `<h1>` is the highest section level while `<h6>` is the lowest.
+The following HTML `<h1>`—`<h6>` elements represent six levels of section headings. `<h1>` is the highest section level while `<h6>` is the lowest. (**Note:** The `<h2>` element has extra spacing at the top margin for design reasons.)
 
 # H1
 
@@ -32,7 +32,7 @@ Itatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne sap
 
 ## Images
 
-![This is a placeholder image description](/placeholder-social.jpg)
+![This is a placeholder image description](/img/placeholder-social.jpg)
 
 ## Blockquotes
 
