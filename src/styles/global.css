@@ -61,11 +61,14 @@ hr {
 	opacity: 0.5;
 }
 strong,
-em,
 b,
 i,
 u {
 	color: hsl(58, 97%, 63%);
+}
+em {
+	color: hsl(58, 97%, 63%);
+	font-style: normal;
 }
 kbd {
   background-color: #777;
