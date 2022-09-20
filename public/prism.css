@@ -6,7 +6,7 @@
 
 code[class*="language-"],
 pre[class*="language-"] {
-  color: #fe10bf;
+  color: #FF39A8;
   background: none;
   border-radius: 0.5em;
   font-family: 'JetBrains Mono', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
@@ -90,7 +90,7 @@ pre[class*="language-"] {
 
 .token.constant,
 .token.symbol {
-  color: #fe10bf;
+  color: #C653FF;
 }
 
 .token.important,

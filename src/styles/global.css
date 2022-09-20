@@ -41,13 +41,13 @@ body {
 }
 ::-webkit-scrollbar-thumb {
   border-radius: 0;
-  background: hsl(316, 99%, 50%);
+  background: #FF39A8;
 }
 h1 {
-	color: hsl(316, 99%, 50%);
+	color: #FF39A8;
 }
 h2 {
-	color: hsl(316, 99%, 50%);
+	color: #FF39A8;
 	margin-top: 2.5em;
 }
 h3,
@@ -57,17 +57,17 @@ h6 {
 	color: #F986DE;
 }
 hr {
-	border: 0.25px solid hsl(316, 99%, 50%);
+	border: 0.25px solid #FF39A8;
 	opacity: 0.5;
 }
 strong,
 b,
 i,
 u {
-	color: hsl(58, 97%, 63%);
+	color: #ffd700;
 }
 em {
-	color: hsl(58, 97%, 63%);
+	color: #ffd700;
 	font-style: normal;
 }
 kbd {
@@ -142,4 +142,7 @@ blockquote {
 	color: #aaa;
 	padding: 2px 0px 2px 20px;
 	margin: 0px;
+}
+li::marker {
+	color: #FF39A8;
 }
