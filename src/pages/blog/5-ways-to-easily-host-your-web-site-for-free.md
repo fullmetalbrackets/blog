@@ -19,6 +19,7 @@ If you'd like to quickly jump to a specific host instead of reading about all of
 3. [GitHub Pages](#github)
 4. [Cloudflare Pages](#cloudflare)
 5. [Surge.sh](#surge)
+6. [References](#ref)
 
 <div id='netlify'/>
 
@@ -96,6 +97,8 @@ Possibly the simplest hosting solution to ever exist. Literally one command in t
 ## Other options
 
 There's many free web hosts I haven't listed here, mostly because I haven't used them. One I intend to test out very soon is [Heroku](https://heroku.com), I'll eventually write a blog post about it. Also, it is possible to host almost anything from simple sites, to complex apps and APIs on the [Amazon Web Services](https://aws.amazon.com), [Google Cloud](https://cloud.google.com) and [Azure](https://azure.microsoft.com), but they are more complicated to set up than the options listed here. I will write a separate blog post about those in the future as well. Thanks for reading.
+
+<div id='ref'/>
 
 ## References
 

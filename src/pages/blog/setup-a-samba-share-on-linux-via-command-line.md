@@ -1,14 +1,25 @@
 ---
 layout: "../../layouts/BlogPost.astro"
 title: "Setup a Samba share on Linux via command line"
-description: "Rather than mess with a dedicated NAS operating system like OpenMediaVault or TrueNAS, I prefer the simplicity creating Samba shares on Linux to use as network storage accessible from Windows PCs on my home network. Here is the minimal Samba config to do that."
+description: "A quick and dirty guide on how to easily set up a Samba share on Linux that can be accessed from Windows PCs on the same network."
 pubDate: "September 1, 2021"
+updatedDate: "September 20, 2022"
 tags:
   - linux
-  - terminal
+  - samba
 ---
 
-Rather than mess with a dedicated NAS operating system like OpenMediaVault or TrueNAS, I prefer the simplicity creating Samba shares on Linux to use as network storage accessible from Windows PCs on my home network. Here is the minimal Samba config to do that.
+## Table of Contents
+
+1. [Installing Samba](#install)
+2. [Configuring Samba](#config)
+3. [Accessing the Samba share from Windows](#access)
+4. [Improve transfer speeds for Samba](#speed)
+5. [References](#ref)
+
+<div id='install'/>
+
+## Installing Samba
 
 Samba usually comes installed with most Linux distributions. If you do need to install it, use the following commands (which will also auto-install dependencies). On Ubuntu and other Debian-based distributions:
 
@@ -21,6 +32,10 @@ On Arch Linux and Manjaro distributions, you need to use the following command i
 ```bash
 yes | sudo pacman -S samba
 ```
+
+<div id='config'/>
+
+## Configuring Samba
 
 After installation, you should have a default Samba configuration file in `/etc/samba/` directory called **smb.conf**. First, make a backup copy of `smb.conf` (just in case), then open it in a text editor:
 
@@ -43,11 +58,10 @@ There's a whole lot of text in here and it may be intimidating to first time use
   browsable = yes
   writable = yes
   read only = no
-  guest ok = yes
-  create mask = 0777
-  directory mask = 0777
-  force user = nobody
-  force group = nogroup
+  valid user = USER
+  force user = USER
+  create mask = 0775
+  directory mask = 0775
 ```
 
 Let's explain these parameters briefly:
@@ -55,14 +69,32 @@ Let's explain these parameters briefly:
 - Under `[global]`, the `workgroup =` parameter is important; you'll need to specify a Workgroup to access the share from Windows. The default is most likely **WORKGROUP** unless you changed it on your Windows PC. Just make sure it's the same for all the machines you want accessing the share.
 - `netbios name =` is important, you want this to match your server's **hostname**.
 - `security = user` is the default security mode for Samba and the one most compatible with Windows. You don't really have to specify this since it's the default, but I like to anyway.
-- `[public]` within brackets sets the share's name to "**public**."
 - `path =` will contain the direct path to the directory you want to share.
-- `browsable = yes` allows the share to be accessible from Windows PCs.
-- `writable = yes` and `read only = no` allows the directories and files in the share to be created, modified, or deleted from other computers that access it.
-- `create mask = 0777` and `directory mask = 0777` gives the share and all it's directories/sub-directories full read/write/execute permissions.
-- `force user = nobody` and `force group = nogroup` ensures any Windows PC accessing the share can do so with without having to login or enter a password.
+- `browsable = yes` allows the share to be seen in the list of available network locations from Windows, you can set this to no if you prefer.
+- `writable = yes` and `read only = no` allows the directories and files in the share to be created, modified, or deleted from the Windows PC.
+- `valid user =` and `force user =` should both be set to a specific user that has been added to Samba and given a password. (More on that below.)
+- `create mask = 0775` and `directory mask = 0775` will give the user full read and write permissions on the share and all sub-directories. You may have issues creating, deleting and editing files on Linux share from a Windows PC without these.
 
-Please note that the above is a minimal and **very unsecure** config that should only be used if the Linux machine doing the sharing is secure behind a firewall and only accessible within your network. **Do not use these settings for a publicly-accessible Samba share!**
+Please note that the above is a very minimal config that should only be used if the Linux machine doing the sharing is secure behind a firewall and only accessible within your network. **Do not use these settings for a publicly-accessible Samba share!** In fact, don't ever make a Samba share accessible from the internet, it's a very bad idea!
+
+If instead of sharing a specific directory, you want to simply share a user's Home directory and everything in it, use this configuration instead.
+
+```yaml
+[global]
+  workgroup = WORKGROUP
+  server string = Samba Server %v
+  netbios name = HOSTNAME
+  security = user
+
+[homes]
+  comment = Home Directories
+  browsable = yes
+  writable = yes
+  read only = no
+  valid user = USER
+  create mode = 0775
+  directory mask = 0775
+```
 
 When you are done with the `smb.conf` file, save it and quit the editor. Now let's check that the configuration is valid with the following command:
 
@@ -70,30 +102,44 @@ When you are done with the `smb.conf` file, save it and quit the editor. Now let
 testparm
 ```
 
-You'll get some output here that's self-explanatory, one of the lines should say "Loaded services file is OK" meaning your config is good. Next we need to create the share, give it the right owner and group, the correct permissions, and do so recursively (so it also affects sub-directories). Assuming we're doing it within the present working directory:
+You'll get some output here that's self-explanatory, one of the lines should say "Loaded services file is OK" meaning your config is good. Next we'll need to add a user to Samba, as you'll need to login from Windows with a username and password. Let's assume we're adding the user <em>bob</em> to Samba so his login is required to access the share from a Windows PC. Use the following command (as root or a superuser) to add the user to Samba, and when prompted choose a password.
 
 ```bash
-mkdir share
-sudo chown -R nobody share
-sudo chgrp -R nogroup share
-sudo chmod -R 0777 share
+smbpasswd bob
+New SMB password:
+Retype new SMB password:
 ```
 
-Now to start up the services needed and enable them to auto-run at boot -- `smbd` (the Samba daemon) and `nmbd` (NetBIOs daemon, it should have been installed along with Samba). The commands for Ubuntu/Debian are:
+Next we need to ensure correct ownership and permissions for the directory that is to be shared.
+
+```bash
+sudo chown -R user /path/to/share
+sudo chmod -R 0777 /path/to/share
+```
+
+Finally, start the services needed and enable them to auto-run at boot -- `smbd` (the Samba daemon) and `nmbd` (NetBIOs daemon, it should have been installed along with Samba).
+
+On Ubuntu/Debian, use these commands:
 
 ```bash
 sudo systemctl start smbd nmbd
 sudo systemctl enable smbd nmbd
 ```
 
-For Arch/Manjaro, use these commands instead (notice that neither service has the trailing **d**):
+On Arch/Manjaro, use these commands instead (notice that neither service has the trailing **d**):
 
 ```bash
 sudo systemctl start smb nmb
 sudo systemctl enable smb nmb
 ```
 
-Now you should be able to connect to the shared directory from other computers on your network! On Windows, go to Start Menu > Run and type the following (replacing with your Linux machine's actual IP) and hit Enter:
+Now you should be able to connect to the shared directory from other computers on your network!
+
+<div id='access'/>
+
+## Accessing the Samba share from Windows
+
+On Windows, go to Start Menu > Run and type the following (replacing with your Linux machine's actual IP) and hit Enter:
 
 [![Screenshot of Windows Run](/img/samba1.png)](https://arieldiaz.codes/img/samba1.png)
 
@@ -101,10 +147,38 @@ Or you can connect by hostname rather than IP.
 
 [![Screenshot of Windows Run](/img/samba1.png)](https://arieldiaz.codes/img/samba2.png)
 
-You should now have the shared folder open in your Windows PC! For permanence, pin it to Quick Access or map it as a Network Drive.
+You should now have the shared folder open in your Windows PC! For ease of access, pin it to Quick Access or map it as a Network Drive.
 
 However, there MAY be an additional issue, as Windows 10 Home (but not Professional) apparently does not have the Local Security Policy settings (secpol.msc) that is required to interface with Samba. I can't confirm this myself since I use Windows 10 Professional, but if you have issues and Windows complains about secpol.msc, [go here for detailed instructions](https://www.majorgeeks.com/content/page/how_to_enable_local_security_policy_in_windows_10_home.html) on how to fix this issue.
+
+<div id='speed'/>
+
+## Improve transfer speeds for Samba
+
+After transferring files back and forth between Windows and Linux via the Samba share, you may notice it's extremely slow! After some googling I found some additional configuration options <a href="https://eggplant.pro/blog/faster-samba-smb-cifs-share-performance" target="_blank" rel="noopener">on someone's blog</a> that claimed to improve network performance, and in my experience it works.
+
+Add the following code (feel free to remove all the comments) to your <em>smb.conf</em> file under `[global]`.
+
+```bash
+[global]
+   strict allocate = Yes
+   allocation roundup size = 4096
+   read raw = Yes
+   server signing = No
+   write raw = Yes
+   strict locking = No
+   socket options = TCP_NODELAY IPTOS_LOWDELAY SO_RCVBUF=131072 SO_SNDBUF=131072
+   min receivefile size = 16384
+   use sendfile = Yes
+   aio read size = 16384
+   aio write size = 16384
+```
+
+For an explanation of what these options do, check the original blog post linked above, the original code includes detailed comments for each option.
+
+<div id='ref'/>
 
 ## References
 
 - <a href="https://www.samba.org/samba/docs" target="_blank" rel="noopener">Samba Documentation</a>
+- <a href="https://eggplant.pro/blog/faster-samba-smb-cifs-share-performance" target="_blank" rel="noopener">Eggplant Systems & Design blog post about improving Samba share performance</a>
