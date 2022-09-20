@@ -22,15 +22,14 @@ const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
 			}
 			ul li {
 				margin-bottom: 2em;
-				background-color: rgb(10, 20, 118);
 				padding: 1em;
-				border-radius: 0.5em;
 			}
 			ul li time {
 				flex: 0 0 130px;
 			}
 			ul li:hover {
-				background-color: hsl(236, 80%, 35%);
+				background-color: #08083A;
+				border-radius: 0.5em;
 			}
 			ul li a .title {
 				color: hsl(316, 99%, 50%);
@@ -57,6 +56,7 @@ const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
 							</time>
 							<h1>{post.frontmatter.title}</h1>
 							<p class="desc">{post.frontmatter.description}</p>
+							<hr>
 						</li>
 					</a>
 					))}
