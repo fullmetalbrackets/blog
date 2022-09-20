@@ -1,25 +1,24 @@
 /*
- * Vaporwave Theme by Ariel Diaz [https://arieldiaz.codes]
- *
- * Inspired by and based on Synthwave '84 Theme for PrismJS by Marc Backes [@themarcba]
- *
- * Synthwave '84 Theme originally by Robb Owen [@Robb0wen] for Visual Studio Code
- */
+   Vaporwave Theme by Ariel Diaz [https://arieldiaz.codes]
+   Inspired by and based on Synthwave '84 Theme for PrismJS by Marc Backes [@themarcba]
+   Synthwave '84 Theme originally by Robb Owen [@Robb0wen] for Visual Studio Code
+*/
 
-code[class*='language-'],
-pre[class*='language-'] {
-  color: var(--heading);
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #fe10bf;
   background: none;
-  border-radius: 1rem;
-  font-family: 'JetBrains Mono', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono',
-    monospace;
-  font-size: 1.125rem;
+  border-radius: 0.5em;
+  font-family: 'JetBrainsMono NF', 'JetBrainsMono Nerd Font',
+   'JetBrainsMono Nerd Font Mono', Consolas, Monaco, 'Andale Mono',
+   'Ubuntu Mono', monospace;
+  font-size: 0.9em;
   text-align: left;
   white-space: pre;
   word-spacing: normal;
   word-break: normal;
   word-wrap: normal;
-  line-height: 1.25;
+  line-height: 1.5;
 
   -moz-tab-size: 4;
   -o-tab-size: 4;
@@ -32,21 +31,21 @@ pre[class*='language-'] {
 }
 
 /* Code blocks */
-pre[class*='language-'] {
-  padding: 2.25em 1em;
-  margin: 0.5em 0;
+pre[class*="language-"] {
+  padding: 1em;
+  margin: .5em 0;
   overflow: auto;
 }
 
-:not(pre) > code[class*='language-'],
-pre[class*='language-'] {
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
   background-color: #08083a !important;
 }
 
 /* Inline code */
-:not(pre) > code[class*='language-'] {
-  padding: 0.1em;
-  border-radius: 0.3em;
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
   white-space: normal;
 }
 
@@ -69,12 +68,12 @@ pre[class*='language-'] {
 .token.unit,
 .token.hexcode,
 .token.deleted {
-  color: var(--heading);
+  color: #f986de;
 }
 
 .token.property,
 .token.selector {
-  color: #f986de;
+  color: #fe10bf;
 }
 
 .token.function-name {
@@ -93,7 +92,7 @@ pre[class*='language-'] {
 
 .token.constant,
 .token.symbol {
-  color: var(--yellow);
+  color: #fe10bf;
 }
 
 .token.important,
@@ -132,15 +131,5 @@ pre[class*='language-'] {
 }
 
 .token.inserted {
-  color: green;
-}
-
-/* Other custom styling */
-.toolbar-item {
-  margin-right: 10px;
-  color: var(--heading);
-}
-
-.copy-to-clipboard-button:hover {
-  cursor: pointer;
+  color: #f986de;
 }
