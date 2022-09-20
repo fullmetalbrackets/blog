@@ -1,14 +1,14 @@
 ---
-import HeaderLink from './HeaderLink.astro';
+import NavLink from './NavLink.astro';
 const today = new Date();
 ---
 
 <footer>
 	<p>&copy; 2020 - {today.getFullYear()} Ariel Diaz. All rights reserved.</p>
 	<nav>
-		<HeaderLink href="/rss.xml">RSS</HeaderLink>
-		<HeaderLink href="/markdown-style-guide">Style</HeaderLink>
-		<HeaderLink href="mailto:contact@fullmetalbrackets.com" target="_blank">Contact</HeaderLink>
+		<NavLink href="/rss.xml">RSS</NavLink>
+		<NavLink href="/markdown-style-guide">Style</NavLink>
+		<NavLink href="mailto:contact@fullmetalbrackets.com" target="_blank">Contact</NavLink>
 	</nav>
 </footer>
 <style>

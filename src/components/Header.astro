@@ -1,5 +1,5 @@
 ---
-import HeaderLink from './HeaderLink.astro';
+import NavLink from './NavLink.astro';
 import { SITE_TITLE } from '../config';
 ---
 
@@ -8,9 +8,9 @@ import { SITE_TITLE } from '../config';
 		{SITE_TITLE}
 	</h1>
 	<nav>
-		<HeaderLink href="/">Blog</HeaderLink>
-		<HeaderLink href="/about">About</HeaderLink>
-		<HeaderLink href="https://github.com/fullmetalbrackets" target="_blank">GitHub</HeaderLink>
+		<NavLink href="/">Blog</NavLink>
+		<NavLink href="/about">About</NavLink>
+		<NavLink href="https://github.com/fullmetalbrackets" target="_blank">GitHub</NavLink>
 	</nav>
 </header>
 <style>
