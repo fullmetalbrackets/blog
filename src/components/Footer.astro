@@ -4,7 +4,10 @@ const today = new Date();
 ---
 
 <footer>
-	<p>&copy; 2020 - {today.getFullYear()} Ariel Diaz. All rights reserved.</p>
+	<p>
+		&copy; 2020 - {today.getFullYear()} Ariel Diaz. 
+		All rights reserved.
+	</p>
 	<nav>
 		<NavLink href="/rss.xml">RSS</NavLink>
 		<NavLink href="/markdown-style-guide">Style</NavLink>
@@ -26,6 +29,9 @@ const today = new Date();
 	@media screen and (min-width: 200px) and (max-width: 767px) {
 		nav {
 			display: grid;
+		}
+		p {
+			width: 100px;
 		}
 	}
 </style>
