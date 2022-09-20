@@ -2,7 +2,7 @@
 layout: "../../layouts/BlogPost.astro"
 title: "Turn a static website into a progressive web app"
 description: "Frameworks and libraries are great and all, but sometimes you just want to make a simple website with only HTML, CSS and JavaScript — maybe without the latter even. When making a PWA, it’s common to use a framework like Vue or a library like Workbox, which requires a bundler like Webpack. In truth, that’s completely unnecessary!"
-pubDate: "Jan 7 2022"
+pubDate: "January 7, 2022"
 tags:
   - pwa
   - web

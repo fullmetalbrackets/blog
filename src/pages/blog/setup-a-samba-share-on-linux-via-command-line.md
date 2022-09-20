@@ -2,7 +2,7 @@
 layout: "../../layouts/BlogPost.astro"
 title: "Setup a Samba share on Linux via command line"
 description: "Rather than mess with a dedicated NAS operating system like OpenMediaVault or TrueNAS, I prefer the simplicity creating Samba shares on Linux to use as network storage accessible from Windows PCs on my home network. Here is the minimal Samba config to do that."
-pubDate: "Sep 1 2021"
+pubDate: "September 1, 2021"
 tags:
   - linux
   - terminal

@@ -2,7 +2,7 @@
 layout: "../../layouts/BlogPost.astro"
 title: "Git commands cheat sheet"
 description: "When I was learning Git, in order to avoid giant articles and get right to the commands I needed reminding of, I made myself a cheat sheet that plainly and succinctly explained each Git command. Here is that quick and dirty guide of Git commands that you will likely use often as a web developer."
-pubDate: "Sep 08 2021"
+pubDate: "September 08, 2021"
 tags:
   - git
   - terminal
