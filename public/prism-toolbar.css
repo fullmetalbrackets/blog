@@ -43,7 +43,7 @@ div.code-toolbar > .toolbar > .toolbar-item > span {
   color: #bbb;
   font-size: 0.8em;
   padding: 0 0.5em;
-  background: var(--accent);
+  background: hsl(236, 80%, 35%);
   border-radius: 0.5em;
 }
 
