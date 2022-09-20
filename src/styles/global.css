@@ -44,15 +44,17 @@ body {
   background: hsl(316, 99%, 50%);
 }
 h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h5 {
 	color: hsl(316, 99%, 50%);
 }
 h2 {
+	color: hsl(316, 99%, 50%);
 	margin-top: 2.5em;
+}
+h3,
+h4,
+h6 {
+	color: #F986DE;
 }
 hr {
 	border-top: 0.25px solid hsl(316, 99%, 50%);
@@ -61,7 +63,8 @@ hr {
 strong,
 em,
 b,
-i {
+i,
+u {
 	color: hsl(58, 97%, 63%);
 }
 a {
