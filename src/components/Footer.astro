@@ -1,10 +1,15 @@
 ---
+import HeaderLink from './HeaderLink.astro';
 const today = new Date();
 ---
 
 <footer>
-	<p>&copy; 2020 - {today.getFullYear()} Ariel Diaz</p>
-	<p>All rights reserved</p>
+	<p>&copy; 2020 - {today.getFullYear()} Ariel Diaz. All rights reserved.</p>
+	<nav>
+		<HeaderLink href="/rss.xml">RSS</HeaderLink>
+		<HeaderLink href="/markdown-style-guide">Style</HeaderLink>
+		<HeaderLink href="mailto:contact@fullmetalbrackets.com" target="_blank">Contact</HeaderLink>
+	</nav>
 </footer>
 <style>
 	footer {
@@ -12,6 +17,8 @@ const today = new Date();
 		margin: 0;
 		padding: 25px;
 		text-align: center;
+		display: flex;
+		justify-content: space-between;
 	}
 	p {
 		margin: 0;
