@@ -38,16 +38,17 @@
     vscode-languageserver-types "^3.17.1"
     vscode-uri "^3.0.3"
 
-"@astrojs/markdown-remark@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@astrojs/markdown-remark/-/markdown-remark-1.1.1.tgz#8d07db28ab15a17f54fd2e260052216731932683"
-  integrity sha512-eOvrqejecgeRLUXOdBfb0VoMppe7J80TlazaDnu4tVDdTG4nyuspO0CTPr9nzt6rbW5iLIh4KEUUuOk+z8n8uQ==
+"@astrojs/markdown-remark@^1.1.1", "@astrojs/markdown-remark@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@astrojs/markdown-remark/-/markdown-remark-1.1.2.tgz#9d6801ce395ab340fb42d07de100a65ce21ab03d"
+  integrity sha512-afZWKRX7HFq1DdXq1jsUiqYee67Ln0Qan0yNgjNP2Nht0dxYD6JAK40+uiptKiRmP73cQjAVLGh54sgrruBDwA==
   dependencies:
     "@astrojs/micromark-extension-mdx-jsx" "^1.0.3"
     "@astrojs/prism" "^1.0.0"
     acorn "^8.7.1"
     acorn-jsx "^5.3.2"
     github-slugger "^1.4.0"
+    hast-util-to-html "^8.0.3"
     mdast-util-mdx-expression "^1.2.1"
     mdast-util-mdx-jsx "^1.2.0"
     micromark-extension-mdx-expression "^1.0.3"
@@ -1879,7 +1880,7 @@ hast-util-to-estree@^2.0.0:
     unist-util-position "^4.0.0"
     zwitch "^2.0.0"
 
-hast-util-to-html@^8.0.0:
+hast-util-to-html@^8.0.0, hast-util-to-html@^8.0.3:
   version "8.0.3"
   resolved "https://registry.yarnpkg.com/hast-util-to-html/-/hast-util-to-html-8.0.3.tgz#4e37580872e143ea9ce0dba87918b19e4ea997e3"
   integrity sha512-/D/E5ymdPYhHpPkuTHOUkSatxr4w1ZKrZsG0Zv/3C2SRVT0JFJG53VS45AMrBtYk0wp5A7ksEhiC8QaOZM95+A==
