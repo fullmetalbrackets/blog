@@ -44,7 +44,7 @@ sudo cp /etc/samba/smb.conf /etc/samba/smd.conf.backup
 sudo nano /etc/samba/smb.conf
 ```
 
-There's a whole lot of text in here and it may be intimidating to first time users. Feel free to delete everything (it's mostly informative/explanatory comments that you should read, but probably won't) and only keep the below, which is all you really need in `smb.conf` to make it work:
+There's a whole lot of text in here, but it's mostly informative/explanatory comments (that you should read). Feel free to delete all the comments and only keep the configuration options. Use the below global and share options:
 
 ```yaml
 [global]
@@ -55,46 +55,29 @@ There's a whole lot of text in here and it may be intimidating to first time use
 
 [public]
   path = /path/to/directory
+  force user = user
   browsable = yes
   writable = yes
   read only = no
-  valid user = USER
-  force user = USER
-  create mask = 0775
-  directory mask = 0775
+  create mask = 0777
+  force create mode = 0777
+  directory mask = 0777
+  force directory mode = 0777
 ```
 
-Let's explain these parameters briefly:
+Please note that <em>these options are not secure</em>, but since this is only accessible by me (and once in a while my wife) I'm not worried about it. **Do not use these settings for a publicly-accessible Samba share!** In fact, don't ever make a Samba share accessible from the internet at all, it's a very bad idea!
 
-- Under `[global]`, the `workgroup =` parameter is important; you'll need to specify a Workgroup to access the share from Windows. The default is most likely **WORKGROUP** unless you changed it on your Windows PC. Just make sure it's the same for all the machines you want accessing the share.
-- `netbios name =` is important, you want this to match your server's **hostname**.
+Let's explain these options briefly:
+
+- Under `[global]`, the `workgroup =` parameter is important; you'll need to specify a Workgroup to access the share from Windows. The default is most likely <em>WORKGROUP</em> unless you changed it on your Windows PC. Just make sure it's the same for all the machines you want accessing the share.
+- `netbios name =` is important, you want this to match your server's <em>hostname</em>.
 - `security = user` is the default security mode for Samba and the one most compatible with Windows. You don't really have to specify this since it's the default, but I like to anyway.
+- `[public]` will be the name of the share, obviously use whatever name you'd like.
 - `path =` will contain the direct path to the directory you want to share.
 - `browsable = yes` allows the share to be seen in the list of available network locations from Windows, you can set this to no if you prefer.
 - `writable = yes` and `read only = no` allows the directories and files in the share to be created, modified, or deleted from the Windows PC.
-- `valid user =` and `force user =` should both be set to a specific user that has been added to Samba and given a password. (More on that below.)
-- `create mask = 0775` and `directory mask = 0775` will give the user full read and write permissions on the share and all sub-directories. You may have issues creating, deleting and editing files on Linux share from a Windows PC without these.
-
-Please note that the above is a very minimal config that should only be used if the Linux machine doing the sharing is secure behind a firewall and only accessible within your network. **Do not use these settings for a publicly-accessible Samba share!** In fact, don't ever make a Samba share accessible from the internet, it's a very bad idea!
-
-If instead of sharing a specific directory, you want to simply share a user's Home directory and everything in it, use this configuration instead.
-
-```yaml
-[global]
-  workgroup = WORKGROUP
-  server string = Samba Server %v
-  netbios name = HOSTNAME
-  security = user
-
-[homes]
-  comment = Home Directories
-  browsable = yes
-  writable = yes
-  read only = no
-  valid user = USER
-  create mode = 0775
-  directory mask = 0775
-```
+- `force user =` should both be set to a specific user that has been added to Samba and given a password. (More on that below.)
+- `force create mode = 0777` and `force directory mode = 0777` will give full read/write permissions in the share and all sub-directories. You may have issues creating, deleting and editing files on Linux share from a Windows PC without these. I'm not sure if `create mask = 0777` and `directory mask = 0777` are necessary, but I use them just in case.
 
 When you are done with the `smb.conf` file, save it and quit the editor. Now let's check that the configuration is valid with the following command:
 
@@ -110,10 +93,11 @@ New SMB password:
 Retype new SMB password:
 ```
 
-Next we need to ensure correct ownership and permissions for the directory that is to be shared.
+Next we need to set the ownership and permissions for the directory that is to be shared. Personally, again keeping in mind security isn't at the top of my mind here, I just set the user to <em>nobody</em> and group to <em>nogroup</em>, you can also set them to the same user and group that you're logging in as, but sometimes Windows gives me issues with that. So I just go with simplicity.
 
 ```bash
-sudo chown -R user /path/to/share
+sudo chown -R nobody /path/to/share
+sudo chgrp -R nogroup /path/to/share
 sudo chmod -R 0777 /path/to/share
 ```
 
