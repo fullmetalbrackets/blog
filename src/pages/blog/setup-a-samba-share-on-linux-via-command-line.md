@@ -110,7 +110,7 @@ sudo systemctl start smbd nmbd
 sudo systemctl enable smbd nmbd
 ```
 
-On Arch/Manjaro, use these commands instead (notice that neither service has the trailing **d**):
+On Arch/Manjaro, use these commands instead (notice neither service has the trailing <em>d</em>):
 
 ```bash
 sudo systemctl start smb nmb
