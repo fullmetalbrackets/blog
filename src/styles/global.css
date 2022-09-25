@@ -146,3 +146,9 @@ blockquote {
 li::marker {
 	color: #FF39A8;
 }
+@media screen and (min-width: 200px) and (max-width: 767px) {
+	::-webkit-scrollbar {
+		height: 0px;
+		width: 0px;
+	}
+}
