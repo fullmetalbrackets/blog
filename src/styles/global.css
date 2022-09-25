@@ -33,11 +33,11 @@ body {
 }
 ::-webkit-scrollbar {
   height: 8px;
-  width: 0px;
+  width: 4px;
 }
 ::-webkit-scrollbar-track {
   border-radius: 0;
-  background: hsl(239, 100%, 9%);
+  background: #08083A;
 }
 ::-webkit-scrollbar-thumb {
   border-radius: 0;
