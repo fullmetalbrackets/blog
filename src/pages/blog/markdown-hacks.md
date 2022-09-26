@@ -1,7 +1,7 @@
 ---
 layout: "../../layouts/BlogPost.astro"
 title: "Markdown hacks"
-description: "Markdown can render A LOT of characters and symbols using specific 'entities', and can do other things like render tables and, so I made myself a list of common or handy, but easy-to-forget markdown hacks based off the official Markdown Guide."
+description: "Markdown can render A LOT of characters and symbols using specific 'entities', and can do other things like render tables, so I made myself a list of common or handy, but easy-to-forget markdown hacks based off the official Markdown Guide."
 pubDate: "September 20, 2022"
 tags:
   - web
@@ -65,10 +65,10 @@ tags:
 ## Creating Tables in Markdown
 
 ```md
-| Title  | Description         |
-| ------ | ------------------- |
-| Stuff  | Something something |
-| Things | More somethings     |
+| Title     | Description                  |
+| --------- | ---------------------------- |
+| Star Wars | In a galaxy far, far away... |
+| Star Trek | Beam me up, Scotty!          |
 ```
 
 #### A table is rendered:
