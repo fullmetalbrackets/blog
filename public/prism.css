@@ -4,7 +4,7 @@
 
 code[class*="language-"],
 pre[class*="language-"] {
-  color: #d4cdde;
+  color: #FF39A8;
   font-family: 'JetBrains Mono', Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
   border-radius: 0.5em;
   text-align: left;
@@ -73,27 +73,27 @@ pre[class*="language-"] {
 }
 
 .token.punctuation {
-  color: #B141F1;
+  color: #58C7E0;
   
 }
 
 .token.keyword {
-  color: #F92AAD;
+  color: #E0B401;
   
 }
 
 .token.attr-name {
-  color: #F92AAD;
+  color: #FF39A8;
   
 }
 
 .token.selector {
-  color: #F92AAD;
+  color: #F986DE;
   
 }
 
 .token.variable {
-  color: #F92AAD;
+  color: #58C7E0;
   
 }
 
@@ -128,12 +128,12 @@ pre[class*="language-"] {
 }
 
 .token.symbol {
-  color: #58C7E0;
+  color: #F92AAD;
   
 }
 
 .token.changed {
-  color: #58C7E0;
+  color: #ff8000;
   
 }
 
@@ -143,7 +143,7 @@ pre[class*="language-"] {
 }
 
 .token.function {
-  color: #B141F1;
+  color: #F986DE;
   
 }
 
@@ -158,7 +158,7 @@ pre[class*="language-"] {
 }
 
 .token.number {
-  color: #B141F1;
+  color: #ff8000;
   
 }
 
