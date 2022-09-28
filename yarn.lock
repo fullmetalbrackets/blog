@@ -66,16 +66,17 @@
     unist-util-visit "^4.1.0"
     vfile "^5.3.2"
 
-"@astrojs/mdx@^0.11.1":
-  version "0.11.1"
-  resolved "https://registry.yarnpkg.com/@astrojs/mdx/-/mdx-0.11.1.tgz#17ddb5320f6d034160756d3f0bae22599d1aad3a"
-  integrity sha512-L0uUBRlfRZvXhS5rc/VIrQlHldgj7cwrSb81K3cAB2LrzqZ3QgU+GRx/mdMN95Brqkv+8x77cNmsbAwXxijeNA==
+"@astrojs/mdx@^0.11.2":
+  version "0.11.2"
+  resolved "https://registry.yarnpkg.com/@astrojs/mdx/-/mdx-0.11.2.tgz#cf09c0fb109022bbd9e73b6fcdf70242445c1ec5"
+  integrity sha512-mD5K1BkHz8QqiYKlUQ0l3jkvnMv+PS3cRiNMcqq/pN3znhFV+C3DIzipbkbp1+dr4U6SNpbuL+OS/6f6Wr9Tcw==
   dependencies:
     "@astrojs/prism" "^1.0.1"
     "@mdx-js/mdx" "^2.1.2"
     "@mdx-js/rollup" "^2.1.1"
     acorn "^8.8.0"
     es-module-lexer "^0.10.5"
+    estree-util-visit "^1.2.0"
     github-slugger "^1.4.0"
     gray-matter "^4.0.3"
     kleur "^4.1.4"
@@ -1555,7 +1556,7 @@ estree-util-to-js@^1.1.0:
     astring "^1.8.0"
     source-map "^0.7.0"
 
-estree-util-visit@^1.0.0:
+estree-util-visit@^1.0.0, estree-util-visit@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/estree-util-visit/-/estree-util-visit-1.2.0.tgz#aa0311a9c2f2aa56e9ae5e8b9d87eac14e4ec8f8"
   integrity sha512-wdsoqhWueuJKsh5hqLw3j8lwFqNStm92VcwtAOAny8g/KS/l5Y8RISjR4k5W6skCj3Nirag/WUCMS0Nfy3sgsg==
