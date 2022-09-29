@@ -36,6 +36,23 @@ const {
 				font-size: 2em;
 				margin: 0.25em 0 0.25em;
 			}
+			aside {
+				display: flex;
+				justify-content: right;
+				border-style: dotted;
+				font-size: 2rem;
+				font-family: 'Streamster';
+				font-weight: 700;
+				border-style: none;
+				cursor: pointer;
+				margin: 0 auto;
+			}
+			aside > a, a:active, a:visited {
+				color: #FF39A8;
+			}
+			aside > a:hover {
+				color: #F986DE;
+			}
 		</style>
 	</head>
 
@@ -49,6 +66,9 @@ const {
 				<hr/>
 				<slot />
 			</article>
+			<aside>
+				<a href="#top">Back to Top</a>
+			</aside>
 		</main>
 		<Footer />
 	</body>
