@@ -121,3 +121,7 @@ Generate a basic SSH key pair:
 ```bash
 ssh-keygen
 ```
+
+## References
+
+- <a href="https://ss64.com/bash" target="_blank">An A-Z Index of the Linux command line</a>
