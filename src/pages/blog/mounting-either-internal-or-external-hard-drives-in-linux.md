@@ -18,10 +18,18 @@ First, let's list out our hard drives on the terminal. There are several ways to
 
 [![Screenshot of lsblk output](/img/mount1.png)](https://arieldiaz.codes/img/mount1.png)
 
-The output shows this computer has a primary hard drive, **/sda**, with two partitions. **/sdb** is an additional 1TB hard drive installed. In my case this drive was previously partitioned, has data on it, but the data is inaccessible because it is not mounted. If you need to partition the hard drive, use the following command and follow the prompts to create a primary partition:
+The output shows this computer has a primary hard drive, **/sda**, with two partitions. **/sdb** is an additional 1TB hard drive installed. In my case this drive was previously partitioned, has data on it, but the data is inaccessible because it is not mounted. If you need to partition the hard drive, use the following command:
 
 ```bash
-fdisk /dev/sdb
+sudo fdisk /dev/sdb
+```
+
+This will change the terminal to a prompt, press `m` to bring up a list of commands. You'll see that you use `d` to delete partitions and `n` to create new ones. We'll create a new one here and give it the default number of `1`, then use `w` to save and quit. Now when you use the `lsblk` command you'll see the **_sdb1_** partition listed.
+
+To access and interact with files, the partition needs a file system. Since this is on Linux, we'll just use <em>ext4</em>. Use the following command:
+
+```bash
+sudo mkfs -t ext4 /dev/sdb1
 ```
 
 Now you mount that partition onto a specific directory. Common practice is to mount internal hard drives that will stay at work long-term to `/mnt` in the root directory. Or at least I heard that somewhere and adopted it as a common practice for myself. I'll create a sub-directory within like this: `mkdir /mnt/DATA`
