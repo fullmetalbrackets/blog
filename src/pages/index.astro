@@ -46,7 +46,7 @@ const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
 			<section>
 				<ul>
 					{posts.map((post) => (
-					<a href={post.url}>
+					<a href={post.url} rel="prefetch">
 						<li>
 							<time datetime={post.frontmatter.pubDate}>
 								{new Date(post.frontmatter.pubDate).toLocaleDateString('en-us', {
