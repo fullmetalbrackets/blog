@@ -8,7 +8,7 @@ export async function getStaticPaths() {
   const allPosts = await Astro.glob('../*.md');
   const sortedPosts = allPosts.sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf());
   const allTagsUnique = new Set();
-  sortedPosts.forEach(post => {
+  sortedPosts.map(post => {
     post.frontmatter.tags && post.frontmatter.tags.map(tag => {
       allTagsUnique.add(tag);
     })
