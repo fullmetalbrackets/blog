@@ -77,7 +77,6 @@ const posts = (await Astro.glob('../../blog/*.{md,mdx}')).sort(
 		<main>
 			<section>
 				<h1>{title}</h1>
-				<p class="return"><a onclick="history.back()">Return to prior page</a></p>
 				<ul>
 					
 					{posts.map((post) => (
