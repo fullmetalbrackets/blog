@@ -66,10 +66,10 @@
     unist-util-visit "^4.1.0"
     vfile "^5.3.2"
 
-"@astrojs/mdx@^0.11.2":
-  version "0.11.2"
-  resolved "https://registry.yarnpkg.com/@astrojs/mdx/-/mdx-0.11.2.tgz#cf09c0fb109022bbd9e73b6fcdf70242445c1ec5"
-  integrity sha512-mD5K1BkHz8QqiYKlUQ0l3jkvnMv+PS3cRiNMcqq/pN3znhFV+C3DIzipbkbp1+dr4U6SNpbuL+OS/6f6Wr9Tcw==
+"@astrojs/mdx@^0.11.3":
+  version "0.11.3"
+  resolved "https://registry.yarnpkg.com/@astrojs/mdx/-/mdx-0.11.3.tgz#a7d4b7c19cccfb1026921ac13219d3eb1003301e"
+  integrity sha512-fK6pgDJGslJYi5PdmCssQzl1corKlKqiBKuGnCR9onisvaRYr+O9NRiGbdY7hIfGAPS1peW0Sbeqz7so1ZfJ7g==
   dependencies:
     "@astrojs/prism" "^1.0.1"
     "@mdx-js/mdx" "^2.1.2"
