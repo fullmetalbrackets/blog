@@ -2,6 +2,7 @@
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import { generateTagsData } from "../utils/tags";
 
 export interface Props {
 	content: {
@@ -9,13 +10,14 @@ export interface Props {
 		description: string;
 		pubDate?: string;
 		updatedDate?: string;
-		heroImage?: string;
+		tags?: string;
 	};
 }
 
 const {
-	content: { title, description, pubDate, updatedDate },
+	content: { title, description, pubDate, updatedDate, tags },
 } = Astro.props;
+const allTagsData = generateTagsData(tags);
 ---
 
 <html lang="en">
@@ -35,6 +37,25 @@ const {
 			.title {
 				font-size: 2em;
 				margin: 0.25em 0 0.25em;
+			}
+			ul {
+				display: flex;
+				list-style-type: none;
+				margin: 0 auto;
+				margin-top: 10px;
+				padding: 0;
+			}
+			li {
+				padding: 2px 4px;
+				margin: 10px 5px;
+				background: #FF39A8;
+				color: #000;
+				font-weight: bold;
+				border-radius: 0.25em;
+				list-style-type: none;
+			}
+			li:hover {
+				background: #F986DE;
 			}
 			aside {
 				display: flex;
@@ -62,7 +83,12 @@ const {
 			<article>
 				<h1 class="title">{title}</h1>
 				{pubDate && <time>{pubDate}</time>}
-				{updatedDate && <div>Last updated on <time>{updatedDate}</time></div>}
+				{updatedDate && <div>Updated on <time>{updatedDate}</time></div>}
+				<ul>
+					{allTagsData.map(tags => (
+						<a href={`/blog/tags/${tags.slug}`}><li>{tags.name}</li></a>
+					))}
+				</ul>
 				<hr/>
 				<slot />
 			</article>
