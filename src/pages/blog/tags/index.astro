@@ -1,8 +1,8 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import { generateTagData } from "../utils/tags";
+import BaseHead from "../../../components/BaseHead.astro";
+import Header from "../../../components/Header.astro";
+import Footer from "../../../components/Footer.astro";
+import { generateTagData } from "../../../utils/tags";
 
 export interface Props {
 	content: {
@@ -25,7 +25,7 @@ const allTagsData = generateTagData(tags);
 		<BaseHead title={title} description={description} />
 		<link rel="stylesheet" href="../../prism.css">
 		<style>
-			article {
+			section {
 				padding-top: 1em;
 			}
 			hr {
@@ -42,8 +42,8 @@ const allTagsData = generateTagData(tags);
 				display: flex;
 				list-style-type: none;
 				margin: 0 auto;
-				margin-top: 10px;
 				padding: 0;
+				min-width: 50px;
 			}
 			li {
 				padding: 2px 4px;
@@ -80,7 +80,7 @@ const allTagsData = generateTagData(tags);
 	<body>
 		<Header />
 		<main>
-			<article>
+			<section>
 				<h1 class="title">{title}</h1>
 				{pubDate && <time>{pubDate}</time>}
 				{updatedDate && <div>Updated on <time>{updatedDate}</time></div>}
@@ -91,7 +91,7 @@ const allTagsData = generateTagData(tags);
 				</ul>
 				<hr/>
 				<slot />
-			</article>
+			</section>
 			<aside>
 				<a href="#top">Back to Top</a>
 			</aside>

@@ -1,0 +1,109 @@
+---
+import BaseHead from "../../../components/BaseHead.astro";
+import Header from "../../../components/Header.astro";
+import Footer from "../../../components/Footer.astro";
+import BlogPost from "../../../layouts/BlogPost.astro";
+import { generateTagData } from "../../../utils/tags";
+
+export async function getStaticPaths() {
+  const allPosts = await Astro.glob('../*.md');
+  const sortedPosts = allPosts.sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf());
+  const allTagsUnique = new Set();
+  sortedPosts.forEach(post => {
+    post.frontmatter.tags && post.frontmatter.tags.map(tag => {
+      allTagsUnique.add(tag);
+    })
+  })
+  const allTagsData = generateTagData(allTagsUnique);
+   // map through the tags array
+  return allTagsData.map((tag) => {
+    // filter the posts that match the given tag
+    const posts = sortedPosts.filter((post) => post.frontmatter.tags.includes(tag.name))
+      return {
+      params: {slug: tag.slug}, 
+      props: {
+        tag: tag.name, 
+        posts: posts
+      }
+    };
+  });
+}
+const posts = (await Astro.glob('../../blog/*.{md,mdx}')).sort(
+	(a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
+);
+const {tags} = Astro.props;
+const title = `Blog posts tagged with ${tags}`
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={} />
+    <title>{title}</title>
+		<style>
+			ul {
+				list-style-type: none;
+				padding: 0;
+				margin: 0;
+				line-height: 1.2;
+			}
+			ul li {
+				margin-bottom: 2em;
+				padding: 1em;
+			}
+			ul li:hover {
+				background-color: #08083A;
+				border-radius: 0.5em;
+			}
+			ul li a .title {
+				color: #FF39A8;
+			}
+			.desc {
+				color: rgb(198, 208, 235);
+			}
+			hr {
+				margin-top: 1.5em;
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<section>
+        <h1>{title}</h1>
+				<ul>
+					{posts.map((post) => (
+					<a href={post.url} rel="prefetch">
+						<li>
+							<time datetime={post.frontmatter.pubDate}>
+								{new Date(post.frontmatter.pubDate).toLocaleDateString('en-us', {
+									year: 'numeric',
+									month: 'long',
+									day: 'numeric',
+								})}
+							</time>
+							<h1>{post.frontmatter.title}</h1>
+              <p class="desc">{post.frontmatter.description}</p>
+							<hr>
+						</li>
+					</a>
+					))}
+				</ul>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<BlogPost content={}>
+  <h1>{title}</h1>
+  <ul>
+    {posts.map(post => (
+      <li><a href={post.frontmatter.url}>
+        <p>{post.frontmatter.title}</p>
+        <p>{post.frontmatter.pubDate}</p>
+        <p>{post.frontmatter.description}</p>
+      </a></li>
+    ))}
+  </ul>
+</BlogPost>
