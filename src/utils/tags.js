@@ -1,3 +1,5 @@
+// Credit to https://github.com/littlesticks/astro-101 
+
 export function generateSlug(string) {
   return string
     .toString()
