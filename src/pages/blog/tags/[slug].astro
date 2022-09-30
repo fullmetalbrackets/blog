@@ -2,7 +2,6 @@
 import BaseHead from "../../../components/BaseHead.astro";
 import Header from "../../../components/Header.astro";
 import Footer from "../../../components/Footer.astro";
-import BlogPost from "../../../layouts/BlogPost.astro";
 import { generateTagData } from "../../../utils/tags";
 
 export async function getStaticPaths() {
@@ -15,9 +14,7 @@ export async function getStaticPaths() {
     })
   })
   const allTagsData = generateTagData(allTagsUnique);
-   // map through the tags array
   return allTagsData.map((tag) => {
-    // filter the posts that match the given tag
     const posts = sortedPosts.filter((post) => post.frontmatter.tags.includes(tag.name))
       return {
       params: {slug: tag.slug}, 
@@ -28,19 +25,27 @@ export async function getStaticPaths() {
     };
   });
 }
+const {tag} = Astro.props;
+const title = `Blog posts tagged ${tag}`
 const posts = (await Astro.glob('../../blog/*.{md,mdx}')).sort(
-	(a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
-);
-const {tags} = Astro.props;
-const title = `Blog posts tagged with ${tags}`
+	(a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf())
+	.filter(post => tag && post.frontmatter.tags?.includes(tag));
 ---
 
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<BaseHead title={title} description={} />
-    <title>{title}</title>
 		<style>
+			.return {
+				margin-top: -20px;
+				margin-left: 8px;
+				margin-bottom: 50px;
+				cursor: pointer;
+			}
+			.return a:hover {
+				color: #ffd700;
+			}
 			ul {
 				list-style-type: none;
 				padding: 0;
@@ -66,12 +71,15 @@ const title = `Blog posts tagged with ${tags}`
 			}
 		</style>
 	</head>
+
 	<body>
 		<Header />
 		<main>
 			<section>
-        <h1>{title}</h1>
+				<h1>{title}</h1>
+				<p class="return"><a onclick="history.back()">Return to prior page</a></p>
 				<ul>
+					
 					{posts.map((post) => (
 					<a href={post.url} rel="prefetch">
 						<li>
@@ -83,7 +91,7 @@ const title = `Blog posts tagged with ${tags}`
 								})}
 							</time>
 							<h1>{post.frontmatter.title}</h1>
-              <p class="desc">{post.frontmatter.description}</p>
+							<p class="desc">{post.frontmatter.description}</p>
 							<hr>
 						</li>
 					</a>
@@ -93,17 +101,4 @@ const title = `Blog posts tagged with ${tags}`
 		</main>
 		<Footer />
 	</body>
-</html>
-
-<BlogPost content={}>
-  <h1>{title}</h1>
-  <ul>
-    {posts.map(post => (
-      <li><a href={post.frontmatter.url}>
-        <p>{post.frontmatter.title}</p>
-        <p>{post.frontmatter.pubDate}</p>
-        <p>{post.frontmatter.description}</p>
-      </a></li>
-    ))}
-  </ul>
-</BlogPost>
+	</html>
