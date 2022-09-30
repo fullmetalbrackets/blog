@@ -4,7 +4,7 @@ title: "Styling the kbd element"
 description: "The kbd element less commonly used HTML5, but I wanted to style it to look like a key on a keyboard, like how Stack Overflow does it. A google search took me to someone else's blog post that had a nice bit of code and invited others to steal it. So I did."
 pubDate: "September 19, 2022"
 tags:
-  - web
+  - Web Development
   - CSS
 ---
 

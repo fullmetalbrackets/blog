@@ -4,8 +4,8 @@ title: "How to autologin Ubuntu on reboot and go straight to terminal"
 description: "Ever wanted to have a script automatically run when you reboot an Ubuntu server, but couldn't because the system prompts for a user login, and you're not sure how to skip that? Or maybe you just don't want to login each time you start up your workstation. Here's a quick and dirty guide on doing exactly this, so that on reboot your Ubuntu machine will just skip the prompt, go straight to terminal, and execute any scripts you have set up."
 pubDate: "September 14,2021"
 tags:
-  - linux
-  - terminal
+  - Linux
+  - Command Line
 ---
 
 Ever wanted to have a script automatically run when you reboot an Ubuntu server, but couldn't because the system prompts for a user login, and you're not sure how to skip that? Or maybe you just don't want to login each time you start up your workstation. Here's a quick and dirty guide on doing exactly this, so that on reboot your Ubuntu machine will just skip the prompt, go straight to terminal, and execute any scripts you have set up.

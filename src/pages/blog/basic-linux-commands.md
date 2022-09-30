@@ -4,7 +4,8 @@ title: "Linux Commands Cheat Sheet"
 description: "Just a quick cheat sheet of basic and slghtly less basic Linux commands that I used when I was totally new to Linux, and have updated recently for my wife to use while she learns."
 pubDate: "September 18, 2022"
 tags:
-  - linux
+  - Linux
+  - Command Line
 ---
 
 ## Commands
