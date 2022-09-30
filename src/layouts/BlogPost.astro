@@ -2,7 +2,7 @@
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import { generateTagData } from "../utils/tags";
+import { generateTagsData } from "../utils/tags";
 
 export interface Props {
 	content: {
@@ -17,7 +17,7 @@ export interface Props {
 const {
 	content: { title, description, pubDate, updatedDate, tags },
 } = Astro.props;
-const allTagsData = generateTagData(tags);
+const allTagsData = generateTagsData(tags);
 ---
 
 <html lang="en">

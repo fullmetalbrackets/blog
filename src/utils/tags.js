@@ -12,13 +12,25 @@ export function generateSlug(string) {
     .replace(/-+$/, '')
 }
 
-export function generateTagData(tags) {
-  let tagData = [];
-  tags.forEach((tag) => {
-    tagData.push ({
-      name: tag,
-      slug: `${generateSlug(tag)}`
+export function generateTagsData(tags) {
+  let tagsData = [];
+  tags?.forEach((tags) => {
+    tagsData.push({
+      name: tags,
+      slug: `${generateSlug(tags)}`,
     });
   });
-  return tagData;
+  return tagsData;
 }
+
+// export function generateTagData(tags) {
+//   let tagData = [];
+//   let tags = Array.from(new Set(posts.flatMap(post => post.frontmatter.tags)))
+//   tags.map((tag) => {
+//     tagData.push ({
+//       name: tag,
+//       slug: `${generateSlug(tag)}`
+//     });
+//   });
+//   return tagData;
+// }

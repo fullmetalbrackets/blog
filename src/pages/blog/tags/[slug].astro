@@ -2,10 +2,10 @@
 import BaseHead from "../../../components/BaseHead.astro";
 import Header from "../../../components/Header.astro";
 import Footer from "../../../components/Footer.astro";
-import { generateTagData } from "../../../utils/tags";
+import { generateTagsData } from "../../../utils/tags";
 
 export async function getStaticPaths() {
-  const allPosts = await Astro.glob('../*.md');
+  const allPosts = await Astro.glob('../*.{md,mdx}');
   const sortedPosts = allPosts.sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf());
   const allTagsUnique = new Set();
   sortedPosts.map(post => {
@@ -13,7 +13,7 @@ export async function getStaticPaths() {
       allTagsUnique.add(tag);
     })
   })
-  const allTagsData = generateTagData(allTagsUnique);
+  const allTagsData = generateTagsData(allTagsUnique);
   return allTagsData.map((tag) => {
     const posts = sortedPosts.filter((post) => post.frontmatter.tags.includes(tag.name))
       return {
