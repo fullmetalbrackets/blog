@@ -5,6 +5,7 @@ description: "Secure Shell is a protocol for securely connecting from one comput
 pubDate: "September 12, 2021"
 tags:
   - SSH
+  - Linux
   - Command Line
 ---
 

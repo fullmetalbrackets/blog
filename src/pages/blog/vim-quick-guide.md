@@ -4,8 +4,9 @@ title: "VIM Quick Guide"
 description: "Whenever I use Vim to edit files on Linux, I need to relearn how to use it. Years ago I found a thread on Stack Overflow with two simple and extremely useful answers that helped me make sense of Vim. So here it is."
 pubDate: "September 17, 2022"
 tags:
-  - Linux
   - Vim
+  - Linux
+  - Command Line
 ---
 
 In my search for a tutorial or guide to help me understand how Vim works, I came upon <a href="https://stackoverflow.com/questions/11828270/how-do-i-exit-vim" target="blank">this Stack Overflow thread</a> with excellent answers. My favorite of these are below, but feel free to dive deep at the original link.
