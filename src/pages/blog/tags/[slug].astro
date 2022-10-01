@@ -1,0 +1,103 @@
+---
+import BaseHead from "../../../components/BaseHead.astro";
+import Header from "../../../components/Header.astro";
+import Footer from "../../../components/Footer.astro";
+import { generateTagsData } from "../../../utils/tags";
+
+export async function getStaticPaths() {
+  const allPosts = await Astro.glob('../*.{md,mdx}');
+  const sortedPosts = allPosts.sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf());
+  const allTagsUnique = new Set();
+  sortedPosts.map(post => {
+    post.frontmatter.tags && post.frontmatter.tags.map(tag => {
+      allTagsUnique.add(tag);
+    })
+  })
+  const allTagsData = generateTagsData(allTagsUnique);
+  return allTagsData.map((tag) => {
+    const posts = sortedPosts.filter((post) => post.frontmatter.tags.includes(tag.name))
+      return {
+      params: {slug: tag.slug}, 
+      props: {
+        tag: tag.name, 
+        posts: posts
+      }
+    };
+  });
+}
+const {tag} = Astro.props;
+const title = `Blog posts tagged ${tag}`
+const posts = (await Astro.glob('../../blog/*.{md,mdx}')).sort(
+	(a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf())
+	.filter(post => tag && post.frontmatter.tags?.includes(tag));
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={} />
+		<style>
+			.return {
+				margin-top: -20px;
+				margin-left: 8px;
+				margin-bottom: 50px;
+				cursor: pointer;
+			}
+			.return a:hover {
+				color: #ffd700;
+			}
+			ul {
+				list-style-type: none;
+				padding: 0;
+				margin: 0;
+				line-height: 1.2;
+			}
+			ul li {
+				margin-bottom: 2em;
+				padding: 1em;
+			}
+			ul li:hover {
+				background-color: #08083A;
+				border-radius: 0.5em;
+			}
+			ul li a .title {
+				color: #FF39A8;
+			}
+			.desc {
+				color: rgb(198, 208, 235);
+			}
+			hr {
+				margin-top: 1.5em;
+			}
+		</style>
+	</head>
+
+	<body>
+		<Header />
+		<main>
+			<section>
+				<h1>{title}</h1>
+				<ul>
+					
+					{posts.map((post) => (
+					<a href={post.url} rel="prefetch">
+						<li>
+							<time datetime={post.frontmatter.pubDate}>
+								{new Date(post.frontmatter.pubDate).toLocaleDateString('en-us', {
+									year: 'numeric',
+									month: 'long',
+									day: 'numeric',
+								})}
+							</time>
+							<h1>{post.frontmatter.title}</h1>
+							<p class="desc">{post.frontmatter.description}</p>
+							<hr>
+						</li>
+					</a>
+					))}
+				</ul>
+			</section>
+		</main>
+		<Footer />
+	</body>
+	</html>

@@ -4,8 +4,8 @@ title: "Setup SSH authentication to push to Github"
 description: "Setting up SSH keys and pushing to GitHub without needing to enter a username and password has always been a good practice, but now that GitHub is deprecating basic username and password authentication, it's past time to get this set up if you haven't already. It's pretty simple and only takes a few minutes, here's the quick and dirty instructions."
 pubDate: "September 9, 2021"
 tags:
-  - ssh
-  - github
+  - SSH
+  - GitHub
 ---
 
 Setting up SSH keys and pushing to GitHub without needing to enter a username and password has always been a good practice, but now that GitHub is deprecating basic username and password authentication, it's past time to get this set up if you haven't already. It's pretty simple and only takes a few minutes, here's the quick and dirty instructions.

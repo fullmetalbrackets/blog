@@ -5,8 +5,9 @@ description: "A quick and dirty guide on how to easily set up a Samba share on L
 pubDate: "September 1, 2021"
 updatedDate: "September 20, 2022"
 tags:
-  - linux
-  - samba
+  - Samba
+  - Linux
+  - Command Line
 ---
 
 ## Table of Contents

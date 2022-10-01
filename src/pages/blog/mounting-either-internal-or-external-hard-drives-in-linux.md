@@ -3,9 +3,10 @@ layout: "../../layouts/BlogPost.astro"
 title: "Mounting (either internal or external) hard drives in Linux"
 description: "When using Linux headless, such as via SSH or with no desktop environment, accessing a newly installed hard drive (not just external USB drives, but additional internal HDDs too) is not obvious, and most people end up having to Google it. I know I did. So let's have a quick and dirty guide on how."
 pubDate: "September 13, 2021"
+updatedDate: "September 26, 2022"
 tags:
-  - linux
-  - terminal
+  - Linux
+  - Command Line
 ---
 
 When using Linux headless, such as via SSH or with no desktop environment, accessing a newly installed hard drive (not just external USB drives, but additional internal HDDs too) is not obvious, and most people end up having to Google it. I know I did. So let's have a quick and dirty guide on how.

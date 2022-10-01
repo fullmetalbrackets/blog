@@ -5,7 +5,8 @@ description: "I have a Sony Bravia 4K TV and it is awesome. It has built-in Andr
 pubDate: "August 31, 2021"
 updatedDate: "September 18, 2022"
 tags:
-  - misc
+  - Android TV
+  - Misc
 ---
 
 > **Note:** As of September 2022, I no longer have AT&T as a provider, so I cannot personally confirm that these instructions will still work. However, a cursory skim of the forum thread on XDA Developers shows active discussion and recent updates of the APK, so I have no reason to believe these instructions are outdated. Feel free to let me know if you try them and they do not work.

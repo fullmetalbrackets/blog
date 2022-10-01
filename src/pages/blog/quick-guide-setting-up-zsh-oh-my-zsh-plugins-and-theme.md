@@ -4,8 +4,8 @@ title: "Quick guide to set up Zsh and Oh My Zsh with essential plugins and a the
 description: "I've been getting more and more comfortable working on the command line in Linux, and looked into ways to pretty it up and make it more user friendly. Enter Zsh, an alternative to Bash shell, and the Oh My Zsh framework used to customize the terminal experience to your heart's content. Here's my basic set up."
 pubDate: "December 04, 2021"
 tags:
-  - linux
-  - terminal
+  - Zsh
+  - Command Line
 ---
 
 I've been getting more and more comfortable working on the command line in Linux, and looked into ways to pretty it up and make it more user friendly. Enter Zsh, an alternative to Bash shell, and the Oh My Zsh "framework" used to customize the terminal experience to your heart's content. Here's a guide to getting it set up quick and easy.
