@@ -1,7 +1,7 @@
 ![Netlify](https://img.shields.io/netlify/4598f4f1-67bb-4ca2-bc47-d6819bf126f1) ![Website](https://img.shields.io/website?style=flat&url=https%3A%2F%2Farieldiaz.codes%2F) ![GitHub last commit](https://img.shields.io/github/last-commit/fullmetalbrackets/blog) ![Security Headers](https://img.shields.io/security-headers?url=https%3A%2F%2Farieldiaz.codes) ![Mozilla HTTP Observatory Grade](https://img.shields.io/mozilla-observatory/grade-score/arieldiaz.codes?publish)
 ![GitHub repo size](https://img.shields.io/github/repo-size/fullmetalbrackets/blog) ![Lines of code](https://img.shields.io/tokei/lines/github/fullmetalbrackets/blog)
 
-## Install locally and run in development:
+## Install locally and run in development
 ```bash
 $ git clone https://github.com/fullmetalbrackets/blog.git
 $ cd blog
@@ -9,7 +9,16 @@ $ yarn install
 $ yarn dev
 ```
 
-## Or deploy to Netlify with one click:
+## Deploy to Surge.sh
+```bash
+$ git clone https://github.com/fullmetalbrackets/blog.git
+$ cd blog
+$ yarn install
+$ yarn build
+$ surge dist
+```
+
+## Deploy to Netlify
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/fullmetalbrackets/blog)
 
