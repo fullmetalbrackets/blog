@@ -3,6 +3,7 @@ layout: "../../layouts/BlogPost.astro"
 title: "Generating an SSH key pair"
 description: "Secure Shell is a protocol for securely connecting from one computer to another. As a web developer, you will probably end up using SSH a lot, and even if you don't it's a handy skill to have. Here's a quick guide on how to generate SSH keys and copy them to other machines."
 pubDate: "September 12, 2021"
+updatedDate: "September 30, 2022"
 tags:
   - SSH
   - Linux
@@ -26,6 +27,15 @@ Generating SSH keys is fast and simple on Windows, Linux and Mac, just use the c
 
 It should go without saying, the private key should NEVER be given out to anyone, for any reason. In fact, there is no reason to do so. The public key is the one to give to servers and services, like GitHub or AWS, in order to connect to them. So let's give it to them.
 
+## Important ssh-keygen command options
+
+- `-b`: Specifies the number of bits in the created key. For RSA and DSA, the default is <em>3072</em>. EDCSA keys have either <em>256</em>, <em>384</em> or <em>521</em> bits only. Ed25519 has a preset number of bits and the option is ignored.
+- `-t`: Specifies the type (e.g. <em>rsa</em>, <em>dsa</em>, <em>edsca</em>, etc.) and can also specify the signature (e.g. <em>ssh-rsa</em>, <em>rsa-sha2-256</em>, <em>rsa-sha2-512</em>) of the key.
+- `-f`: Specifies a filename for the generated key, and you can also specify a location to store the key once created, instead of the default location `~/.ssh`.
+- `-A`: For each of the key types (<em>rsa</em>, <em>dsa</em>, <em>edsca</em> and <em>ed25519</em>) for which host keys do not exist, generate the host keys with the default key file path, an empty passphrase, and default bits for the key type.
+- `-a`: Specifies the number of KDF (key derivation function) rounds used. Higher numbers result in slower passphrase verification and increased resistance to brute-force password cracking (should the keys be stolen). The default is 16 rounds.
+- `-Z`: Specifies the cipher to use to encrypt the created key. List available ciphers using `ssh -Q cipher`. The default is <em>aes256-ctr</em>.
+
 ## Generate a more secure SSH key
 
 The above instructions show how to generate a very basic SSH key using RSA encryption, but if you want to be using the new hotness in cryptography, then you should instead generate a key with ed25519 encryption. You can do so like this:
@@ -34,9 +44,13 @@ The above instructions show how to generate a very basic SSH key using RSA encry
 ssh-keygen -t ed25519
 ```
 
-Now follow the prompts same as normal. If you are encrypting your key with a password, it's common practice to also add the flag `-a 100` which puts the key through 100 rounds of derivation function -- [apparently this means it is more secure](https://www.reddit.com/r/linuxquestions/comments/axu8te/how_many_a_repetitions_in_ed25519_are_insecure/ehwl3dz/), so might as well do it.
+Now follow the prompts same as normal. If you are encrypting your key with a password, it's good practice to also add the flag `-a 100` which puts the key through 100 rounds of derivation function -- <a href="https://www.reddit.com/r/linuxquestions/comments/axu8te/how_many_a_repetitions_in_ed25519_are_insecure/ehwl3dz/)" target="_blank">apparently this means it is more secure</a>, so might as well do it.
 
-If you'd like to know more this, here's a great Medium article [comparing the different SSH encryption algorithms](https://nbeguier.medium.com/a-real-world-comparison-of-the-ssh-key-algorithms-b26b0b31bfd9) by [Nicolas Béguier](https://beguier.eu/nicolas/) that is worth a read.
+```bash
+ssh-keygen -a 100 -t ed25519
+```
+
+If you'd like to know more this, here's a great Medium article <a href="https://nbeguier.medium.com/a-real-world-comparison-of-the-ssh-key-algorithms-b26b0b31bfd9" target="_blank">comparing the different SSH encryption algorithms</a> by <a href="https://beguier.eu/nicolas" target="_blank">Nicolas Béguier</a> that is worth a read.
 
 ## Copying SSH public key from Linux to a remote server
 
