@@ -5,6 +5,7 @@ description: "I've been getting more and more comfortable working on the command
 pubDate: "December 04, 2021"
 tags:
   - Zsh
+  - Linux
   - Command Line
 ---
 
