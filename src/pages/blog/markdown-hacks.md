@@ -71,14 +71,12 @@ tags:
 | Star Trek | Beam me up, Scotty!          |
 ```
 
-#### A table is rendered:
+A table is rendered:
 
 | Title     | Description                  |
 | --------- | ---------------------------- |
 | Star Wars | In a galaxy far, far away... |
 | Star Trek | Beam me up, Scotty!          |
-
-<br><br>
 
 It's also possible to use line breaks inside a markdown table with HTML.
 
@@ -88,13 +86,11 @@ It's also possible to use line breaks inside a markdown table with HTML.
 | Sci-Fi | Star Wars<br>Star Trek |
 ```
 
-#### Table with line breaks is rendered:
+Table with line breaks is rendered:
 
 | Genre  | Examples               |
 | ------ | ---------------------- |
 | Sci-Fi | Star Wars<br>Star Trek |
-
-<br><br>
 
 You can also make lists inside a markdown table with HTML.
 
@@ -104,13 +100,11 @@ You can also make lists inside a markdown table with HTML.
 | Sci-Fi | Titles: <ul><li>Star Wars</li><li>Star Trek</li></ul> |
 ```
 
-#### Table with unordered list is rendered:
+Table with unordered list is rendered:
 
 | Genre  | Examples                                              |
 | ------ | ----------------------------------------------------- |
 | Sci-Fi | Titles: <ul><li>Star Wars</li><li>Star Trek</li></ul> |
-
-<br><br>
 
 And a numbered/ordered list in markdown.
 
@@ -120,7 +114,7 @@ And a numbered/ordered list in markdown.
 | Sci-Fi | Titles: <ul><li>Star Wars</li><li>Star Trek</li></ul> |
 ```
 
-#### Table with numbered/ordered list is rendered:
+Table with numbered/ordered list is rendered:
 
 | Genre  | Examples                                              |
 | ------ | ----------------------------------------------------- |
@@ -129,10 +123,9 @@ And a numbered/ordered list in markdown.
 ## Making a Table of Contents in Markdown
 
 This is handy for blogs! A lot of the best markdown applications can automatically generate a table of contents. Frameworks like Nuxt (with the Content module) and Astro, among others, can make use of this.
-<br><br>
 
 ```md
-#### Chapter Listing
+##### Chapter Listing
 
 - [Chapter 1](#ch1)
 - [Chapter 2](#ch2)
@@ -140,21 +133,19 @@ This is handy for blogs! A lot of the best markdown applications can automatical
 - [Chapter 4](#ch4)
 ```
 
-#### Chapter Listing
+##### Chapter Listing
 
 - [Chapter 1](#ch1)
 - [Chapter 2](#ch2)
 - [Chapter 3](#ch3)
 - [Chapter 4](#ch4)
 
-<br><br>
 Then you just have to link these to a heading ID. Here it is using markdown.
 
 ```md
 [Chapter 1](#ch1)
 ```
 
-<br><br>
 And in HTML.
 
 ```html
