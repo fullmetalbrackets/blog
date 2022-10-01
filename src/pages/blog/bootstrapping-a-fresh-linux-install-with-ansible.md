@@ -9,19 +9,13 @@ tags:
   - Command Line
 ---
 
-## Setting up Ansible
+## Install Ansible
 
 First install <em>Ansible</em>, which requires adding the repository to download the package via APT.
 
 ```bash
 sudo apt-add-repository ppa:ansible/ansible
 sudo apt install ansible -y
-```
-
-Next we'll install the `community.general` collection from <em>Ansible Galaxy</em> since the bootstrap playbook requires it.
-
-```bash
-ansible-galaxy collection install community.general
 ```
 
 ## The playbook, config and inventory
