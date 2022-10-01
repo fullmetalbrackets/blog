@@ -51,9 +51,16 @@ h2 {
 	margin-top: 2.5em;
 }
 h3,
-h4,
-h5,
 h6 {
+	color: #F986DE;
+}
+h4 {
+	margin: 2.5em 0 -1.5em 0;
+	color: rgb(198, 208, 235);
+	font-weight: 500;
+}
+h5 {
+	font-size: 18px;
 	color: #F986DE;
 }
 hr {
