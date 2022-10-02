@@ -23,11 +23,11 @@
 }
 html {
   --cyan: #42c3de;
-  --blue: #08083A;
-  --black: #000120;
   --pink: #fa28ad;
   --lightpink: #F986DE;
   --yellow: #ffd700;
+  --main: #000120;
+  --accent: #08083A;
   --text: #aeb5cd;
   --link: #ff8000;
   --hover: #ffb366;
@@ -47,7 +47,7 @@ body {
 	overflow-wrap: break-word;
 	line-height: 1.4;
 	color: var(--text);
-	background: var(--black);
+	background: var(--main);
 	height: 100%;
   -webkit-font-smoothing: antialiased;
 	overflow-y: scroll;
@@ -58,7 +58,7 @@ body {
 }
 ::-webkit-scrollbar-track {
   border-radius: 0.25em;
-  background: var(--blue);
+  background: var(--accent);
 }
 ::-webkit-scrollbar-thumb {
   border-radius: 0.25em;
@@ -144,7 +144,7 @@ table {
 	width: 100%;
 }
 tbody, td, th {
-	border: 1px solid var(--blue);
+	border: 1px solid var(--accent);
 	padding: 5px;
 	vertical-align: top;
 }
@@ -158,7 +158,7 @@ img {
 code {
 	padding: 2px 5px;
 	font-family: 'JetBrains Mono', Consolas, monospace;
-	background-color: var(--blue);
+	background-color: var(--accent);
 	color: #FF39A8;
 	border-radius: 0.25em;
 }
@@ -169,7 +169,7 @@ pre > code {
 	all: unset;
 }
 blockquote {
-	border: 1px solid var(--blue);
+	border: 1px solid var(--accent);
 	color: #aaa;
 	padding: 2px 0px 2px 20px;
 	margin: 0px;
