@@ -50,7 +50,7 @@ code[class*="language-"] ::selection {
 /* Code blocks */
 pre[class*="language-"] {
   padding: 1em;
-  margin: 2em 0;
+  margin-bottom: 2.5em;
   overflow: auto;
 }
 
