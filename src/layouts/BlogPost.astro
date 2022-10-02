@@ -25,6 +25,10 @@ const allTagsData = generateTagsData(tags);
 		<BaseHead title={title} description={description} />
 		<link rel="stylesheet" href="../../prism.css">
 		<style>
+			html {
+				--pink: #fa28ad;
+				--lightpink: #F986DE;
+			}
 			article {
 				padding-top: 1em;
 			}
@@ -40,22 +44,23 @@ const allTagsData = generateTagsData(tags);
 			}
 			ul {
 				display: flex;
+				flex-wrap: wrap;
 				list-style-type: none;
 				margin: 0 auto;
 				margin-top: 10px;
 				padding: 0;
 			}
 			li {
+				margin: 4px;
 				padding: 2px 4px;
-				margin: 10px 5px;
-				background: #FF39A8;
+				background: var(--pink);
 				color: #000;
 				font-weight: bold;
 				border-radius: 0.25em;
 				list-style-type: none;
 			}
 			li:hover {
-				background: #F986DE;
+				background: var(--lightpink);
 			}
 			aside {
 				display: flex;
@@ -69,10 +74,18 @@ const allTagsData = generateTagsData(tags);
 				margin: 0 auto;
 			}
 			aside > a, a:active, a:visited {
-				color: #FF39A8;
+				color: var(--pink);
 			}
 			aside > a:hover {
-				color: #F986DE;
+				color: var(--lightpink);
+			}
+			@media screen and (min-width: 200px) and (max-width: 767px) {
+				* {
+					font-size: 16px;
+				}
+				a, a:active, a:visited, a:hover {
+					font-size: 1em;
+				}
 			}
 		</style>
 	</head>
