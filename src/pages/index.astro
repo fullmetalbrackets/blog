@@ -26,14 +26,14 @@ const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
 				padding: 1em;
 			}
 			ul li:hover {
-				background-color: #08083A;
+				background-color: var(--accent);
 				border-radius: 0.5em;
 			}
 			ul li a .title {
-				color: #FF39A8;
+				color: var(--pink);
 			}
 			.desc {
-				color: rgb(198, 208, 235);
+				color: var(--text);
 			}
 			hr {
 				margin-top: 1.5em;
