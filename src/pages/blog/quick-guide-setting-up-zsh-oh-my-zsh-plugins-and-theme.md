@@ -13,7 +13,7 @@ I've been getting more and more comfortable working on the command line in Linux
 
 ## Install the Zsh shell
 
-First, a caveat; this guide is for Linux only, since that's the only place I've used Zsh & Oh My Zsh. It's also usable on Mac (via [iTerm2](https://iterm2.com/), among other options) but I will only be covering Linux here. Easiest way to do install Zsh is just use your distribution's package manager.
+First, a caveat; this guide is for Linux only, since that's the only place I've used Zsh & Oh My Zsh. It's also usable on Mac (via <a href="https://iterm2.com" target="_blank">iTerm2</a>, among other options) but I will only be covering Linux here. Easiest way to do install Zsh is just use your distribution's package manager.
 
 On Ubuntu/Debian:
 
@@ -62,7 +62,7 @@ Save the file, exit the editor, and restart the shell for the changes to take ef
 
 ## Using a theme
 
-Specifically, we're going to be using the great _Powerlevel10k_ theme. It's as simple as typing two commands:
+Specifically, we're going to be using the great <a href="https://github.com/romkatv/powerlevel10k" target="_blank">Powerlevel10k theme</a>. It's as simple as typing two commands:
 
 ```bash
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
