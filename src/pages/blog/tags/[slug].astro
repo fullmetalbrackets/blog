@@ -26,7 +26,7 @@ export async function getStaticPaths() {
   });
 }
 const {tag} = Astro.props;
-const title = `Blog posts tagged ${tag}`
+const title = `${tag}`
 const posts = (await Astro.glob('../../blog/*.{md,mdx}')).sort(
 	(a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf())
 	.filter(post => tag && post.frontmatter.tags?.includes(tag));
@@ -37,15 +37,6 @@ const posts = (await Astro.glob('../../blog/*.{md,mdx}')).sort(
 	<head>
 		<BaseHead title={title} description={} />
 		<style>
-			.return {
-				margin-top: -20px;
-				margin-left: 8px;
-				margin-bottom: 50px;
-				cursor: pointer;
-			}
-			.return a:hover {
-				color: #ffd700;
-			}
 			ul {
 				list-style-type: none;
 				padding: 0;
@@ -69,6 +60,12 @@ const posts = (await Astro.glob('../../blog/*.{md,mdx}')).sort(
 			hr {
 				margin-top: 1.5em;
 			}
+			.tag-line {
+				margin: 0.5em 0 1em 0;
+			}
+			h1 {
+				margin-bottom: 0;
+			}
 		</style>
 	</head>
 
@@ -77,6 +74,7 @@ const posts = (await Astro.glob('../../blog/*.{md,mdx}')).sort(
 		<main>
 			<section>
 				<h1>{title}</h1>
+				<hr class="tag-line">
 				<ul>
 					
 					{posts.map((post) => (
