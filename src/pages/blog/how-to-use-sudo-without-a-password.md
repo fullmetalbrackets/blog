@@ -10,7 +10,7 @@ tags:
 
 Removing the sudo password prompt is done by editing the `/etc/sudoers` file, however you should never edit this file directly, but instead use `sudo visudo` to do so.
 
-#### The file will look something like this:
+The file will look something like this:
 
 ```bash
 # User privilege specification
@@ -30,7 +30,7 @@ There's two ways to disable the password prompt.
 
 ## Disable password prompt for a specific user
 
-#### Add the following line to `/etc/sudoers` file:
+Add the following line to `/etc/sudoers` file:
 
 ```bash
 user    ALL=(ALL) NOPASSWD: ALL
@@ -38,7 +38,7 @@ user    ALL=(ALL) NOPASSWD: ALL
 
 ## Disable password prompt for all sudoers
 
-#### Edit the `%sudo` line in `/etc/sudoers` file:
+Edit the `%sudo` line in `/etc/sudoers` file:
 
 ```bash
 %sudo   ALL=(ALL:ALL) NOPASSWD: ALL
@@ -46,13 +46,13 @@ user    ALL=(ALL) NOPASSWD: ALL
 
 ## Check syntax of /etc/sudoers
 
-#### It's best to check and make sure you're not breaking anything. Use the following command:
+It's best to check and make sure you're not breaking anything. Use the following command:
 
 ```bash
 visudo -c
 ```
 
-#### You'll get output letting you know whether or not the file syntax is correct.
+You'll get output letting you know whether or not the file syntax is correct.
 
 ```bash
 ❯ sudo visudo -c

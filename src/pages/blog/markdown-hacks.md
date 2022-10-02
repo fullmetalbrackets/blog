@@ -125,7 +125,7 @@ Table with numbered/ordered list is rendered:
 This is handy for blogs! A lot of the best markdown applications can automatically generate a table of contents. Frameworks like Nuxt (with the Content module) and Astro, among others, can make use of this.
 
 ```md
-##### Chapter Listing
+### Chapter Listing
 
 - [Chapter 1](#ch1)
 - [Chapter 2](#ch2)
@@ -133,7 +133,7 @@ This is handy for blogs! A lot of the best markdown applications can automatical
 - [Chapter 4](#ch4)
 ```
 
-##### Chapter Listing
+### Chapter Listing
 
 - [Chapter 1](#ch1)
 - [Chapter 2](#ch2)

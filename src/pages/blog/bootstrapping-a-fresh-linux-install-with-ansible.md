@@ -20,7 +20,7 @@ sudo apt install ansible -y
 
 ## The playbook, config and inventory
 
-#### Contents of the playbook `bootstrap.yml` follows:
+Contents of the playbook `bootstrap.yml` follows:
 
 ```yaml
 - name: Bootstrap Linux Server
@@ -149,7 +149,7 @@ sudo apt install ansible -y
 
 This playbook will enable passwordless sudo for a specified user, installs a selection of packages I commonly use, changes the default shell, and copies over dotfiles and other configs.
 
-#### Next is the configuration file, `ansible.cfg`:
+Next is the configuration file, `ansible.cfg`:
 
 ```yaml
 [defaults]
@@ -165,7 +165,7 @@ pipelining = true
 
 This tells Ansible the name of the inventory file (`hosts`), the location of the SSH private key to use, and `pipelining = true` vastly improves the speed at which Ansible executes tasks.
 
-#### Finally we need the inventory file, `hosts`:
+Finally we need the inventory file, `hosts`:
 
 ```ini
 [hosts]
@@ -186,7 +186,7 @@ All that's left now is to run the playbook and bootstrap the server, but first i
 ansible-playbook bootstrap.yml --check
 ```
 
-#### You'll see some output as the playbook carries out its tasks. Below as an example:
+You'll see some output as the playbook carries out its tasks. Below as an example:
 
 ```bash
 PLAY [Bootstrap home server] *********************************************************************
@@ -242,7 +242,7 @@ PLAY RECAP *********************************************************************
 apollo     : ok=15   changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
 ```
 
-#### If all looks good and there's no errors, you can run the playbook for real:
+If all looks good and there's no errors, you can run the playbook for real:
 
 ```bash
 ansible-playbook bootstrap.yml
