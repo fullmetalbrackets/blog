@@ -2,7 +2,7 @@
 layout: "../../layouts/BlogPost.astro"
 title: "Setting up a container stack with Docker-Compose"
 description: "I've been running a bunch of services on my home server in docker containers for a few years now. It's quick and easy to set up once you get used to it. Here's a quick and dirty guide to installing Docker and Docker-Compose, and getting several containers up and running."
-pubDate: "September 30, 2022"
+pubDate: "September 29, 2022"
 tags:
   - Docker
   - Linux
