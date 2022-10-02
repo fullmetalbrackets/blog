@@ -9,10 +9,6 @@ const isActive = href === Astro.url.pathname.replace(/\/$/, '');
 	<slot />
 </a>
 <style>
-	html {
-		--link: #ff8000;
-		--hover: #ffb366;
-	}
 	a, a:active, a:visited {
 		color: var(--link);
 		display: inline-block;
