@@ -79,21 +79,11 @@ p, h1, h2, h3, h4, h5, h6 {
 h1 {
 	color: var(--pink);
 }
-h2 {
+h2, h3 {
 	color: var(--pink);
 	margin-top: 2.5em;
 }
-h3,
-h6 {
-	color: var(--lightpink);
-}
-h4 {
-	margin: 2.5em 0 -1.5em 0;
-	color: var(--text);
-	font-weight: 500;
-}
-h5 {
-	font-size: 18px;
+h4, h5, h6 {
 	color: var(--lightpink);
 }
 hr {
@@ -169,7 +159,7 @@ code {
 	padding: 2px 5px;
 	font-family: 'JetBrains Mono', Consolas, monospace;
 	background-color: var(--blue);
-	color: var(--lightpink);
+	color: #FF39A8;
 	border-radius: 0.25em;
 }
 pre {
