@@ -18,6 +18,19 @@
   font-style: normal;
   font-display: swap;
 }
+html {
+  --cyan: #42c3de;
+  --blue: #08083A;
+  --black: #000120;
+  --pink: #fa28ad;
+  --lightpink: #F986DE;
+  --yellow: #ffd700;
+  --text: #aeb5cd;
+  --link: #ff8000;
+  --hover: #ffb366;
+  --table: #0a1476;
+  --shadow: #000;
+}
 body {
 	font-family: Verdana, sans-serif;
 	font-size: 18px;
@@ -28,8 +41,8 @@ body {
 	word-wrap: break-word;
 	overflow-wrap: break-word;
 	line-height: 1.4;
-	color: rgb(198, 208, 235);
-	background: rgb(0, 1, 32);
+	color: var(--text);
+	background: var(--black);
 }
 ::-webkit-scrollbar {
   height: 8px;
@@ -37,44 +50,44 @@ body {
 }
 ::-webkit-scrollbar-track {
   border-radius: 0;
-  background: #08083A;
+  background: var(--blue);
 }
 ::-webkit-scrollbar-thumb {
   border-radius: 0;
-  background: #FF39A8;
+  background: var(--pink);
 }
 h1 {
-	color: #FF39A8;
+	color: var(--pink);
 }
 h2 {
-	color: #FF39A8;
+	color: var(--pink);
 	margin-top: 2.5em;
 }
 h3,
 h6 {
-	color: #F986DE;
+	color: var(--lightpink);
 }
 h4 {
 	margin: 2.5em 0 -1.5em 0;
-	color: rgb(198, 208, 235);
+	color: var(--text);
 	font-weight: 500;
 }
 h5 {
 	font-size: 18px;
-	color: #F986DE;
+	color: var(--lightpink);
 }
 hr {
-	border: 0.25px solid #FF39A8;
+	border: 0.25px solid var(--pink);
 	opacity: 0.5;
 }
 strong,
 b,
 i,
 u {
-	color: #ffd700;
+	color: var(--yellow);
 }
 em {
-	color: #ffd700;
+	color: var(--yellow);
 	font-style: normal;
 }
 kbd {
@@ -99,12 +112,13 @@ kbd:hover {
     box-shadow: 0 1px 0 0.5px #777;
     top: 1px;
   }
-a {
-	color: hsl(30, 100%, 50%);
+a, a:active, a:visited {
+	color: var(--link);
 	text-decoration: none;
 }
-nav a {
-	margin-right: 2em;
+a:hover {
+	color: var(--hover);
+	text-decoration: none;
 }
 textarea {
 	width: 100%;
@@ -120,7 +134,7 @@ table {
 	width: 100%;
 }
 tbody, td, th {
-	border: 1px solid rgb(10, 20, 118);
+	border: 1px solid var(--blue);
 	padding: 5px;
 	vertical-align: top;
 }
@@ -134,8 +148,8 @@ img {
 code {
 	padding: 2px 5px;
 	font-family: 'JetBrains Mono', Consolas, monospace;
-	background-color: #08083A;
-	color: #F986DE;
+	background-color: var(--blue);
+	color: var(--lightpink);
 	border-radius: 0.25em;
 }
 pre {
@@ -145,13 +159,13 @@ pre > code {
 	all: unset;
 }
 blockquote {
-	border: 1px solid rgb(10, 20, 118);
+	border: 1px solid var(--blue);
 	color: #aaa;
 	padding: 2px 0px 2px 20px;
 	margin: 0px;
 }
 li::marker {
-	color: #FF39A8;
+	color: var(--pink);
 }
 @media screen and (min-width: 200px) and (max-width: 767px) {
 	::-webkit-scrollbar {
