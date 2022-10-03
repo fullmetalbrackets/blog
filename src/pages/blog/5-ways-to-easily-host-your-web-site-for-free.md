@@ -4,10 +4,10 @@ title: "5 ways to easily host your web site for free"
 description: "So you're learning web development, building things locally and only ever seeing your site or app when you run it on your computer. But how do you get this thing online so you can make sure it works on the interwebs? How do you learn headers, content-security-policy and CORS without having a site hosted online to work with? And how to do it FOR FREE?"
 pubDate: "September 06, 2021"
 tags:
-  - Web Development
+  - Web Hosting
   - Cloudflare
   - Netlify
-  - AWS
+  - Vercel
 ---
 
 So you're learning web development, building things locally and only ever seeing your site or app when you use "npm run dev" (or "yarn dev") on your computer. But how do you get this thing online so you can make sure it works on the interwebs? How do you learn headers, content-security-policy and CORS without having a site hosted online to work with? And how to do it FOR FREE?
