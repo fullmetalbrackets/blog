@@ -2,6 +2,7 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/fullmetalbrackets/blog) ![Lines of code](https://img.shields.io/tokei/lines/github/fullmetalbrackets/blog)
 
 ## Install locally and run in development
+
 ```bash
 $ git clone https://github.com/fullmetalbrackets/blog.git
 $ cd blog
@@ -10,12 +11,13 @@ $ yarn dev
 ```
 
 ## Deploy to Surge.sh
+
 ```bash
 $ git clone https://github.com/fullmetalbrackets/blog.git
 $ cd blog
 $ yarn install
 $ yarn build
-$ surge dist
+$ npx surge dist
 ```
 
 ## Deploy to Netlify
