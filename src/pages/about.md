@@ -2,7 +2,7 @@
 layout: "../layouts/Base.astro"
 title: "About the site"
 description: "An explanation of WTF this site is for."
-updatedDate: "September 20, 2022"
+pubDate: "September 20, 2022"
 ---
 
 This is my personal blog consisting mostly of instructions, quick guides and other documentation I've written up for myself. The site is made with <a href="https://astro.build" target="_blank">Astro 1.0</a> as a way to learn the framework, and frankly so far it was super easy to make and is super easy to maintain.
