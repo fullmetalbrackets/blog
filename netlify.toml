@@ -98,19 +98,7 @@ for = "/*"
   force = true
 
 [[redirects]]
-  from = "https://arieldiaz.codes/blog/tags"
-  to = "https://arieldiaz.codes/"
-  status = 301
-  force = true
-
-[[redirects]]
   from = "https://fullmetalbrackets.com/blog"
-  to = "https://fullmetalbrackets.com/"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "https://fullmetalbrackets.com/blog/tags"
   to = "https://fullmetalbrackets.com/"
   status = 301
   force = true
