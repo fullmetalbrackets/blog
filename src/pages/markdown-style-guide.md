@@ -3,9 +3,50 @@ layout: "../layouts/BlogPost.astro"
 title: "Markdown Style Guide"
 description: "Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro."
 pubDate: "July 01, 2022"
-heroImage: "/img/placeholder-hero.jpg"
 ---
 
+## Site Colors
+
+<style>
+#cyan { color: #000; background-color: #42c3de; font-weight: 900; }
+#pink { color: #000; background-color:#fa28ad; font-weight: 900; }
+#lightpink { color: #000; background-color:#F986DE; font-weight: 900; }
+#yellow { color: #000; background-color:#ffd700; font-weight: 900; }
+#accent { color: #fff; background-color:#08083A; font-weight: 900; }
+#text { color: #000; background-color:#aeb5cd; font-weight: 900; }
+#link { color: #000; background-color:#ff8000; font-weight: 900; }
+#hover { color: #000; background-color:#ffb366; font-weight: 900; }			
+
+.site-colors{
+unicode-bidi: bidi-override;
+direction: rtl;
+text-align: center;
+}
+.site-colors > span {
+display: inline-block;
+position: relative;
+border-radius: 0.25em;
+width: 10rem;
+height: 10rem;
+margin: 1rem;
+padding-top: 2.5rem;
+}
+.site-colors > span:hover{
+cursor:pointer;
+}
+</style>
+<div class="site-colors">
+  <span id="cyan">Dates<br><br> 42C3DE #</span>
+  <span id="text">Text<br><br> AEB5DC #</span>
+  <span id="lightpink">H4 - H6<br><br> F986DE #</span>
+  <span id="pink">H1 - H3<br><br> FA28AD #</span>
+  <span id="accent">Accent<br><br> 08083A #</span>
+  <span id="yellow">Emphasis<br><br> FFD700 #</span>
+  <span id="hover">Link Hover<br><br> FFB366 #</span>
+  <span id="link">Link<br><br> FF8000 #</span>
+</div>
+
+<br><br>
 Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.
 
 ## Headings
