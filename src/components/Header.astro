@@ -45,5 +45,14 @@ import { SITE_TITLE } from '../config';
 		font-family: 'Streamster';
 		font-size: 4em;
 		margin: 0;
-}
+	}
+	@media screen and (min-width: 200px) and (max-width: 767px) {
+		nav {
+			display: inline-flex;
+		}
+		a, a:active, a:visited, a:hover {
+			font-size: 1em;
+			margin-right: 1em;
+		}
+	}
 </style>
