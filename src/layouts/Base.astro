@@ -1,0 +1,81 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+const { frontmatter } = Astro.props;
+---
+<html lang="en">
+	<head>
+		<BaseHead title={frontmatter.title} description={frontmatter.description} />
+		<style>
+			article {
+				padding-top: 1em;
+			}
+			hr {
+				margin-bottom: 3em;
+			}
+			.title {
+				font-size: 2em;
+				margin: 0.25em 0 0.25em;
+			}
+			ol, ul {
+				display: flex;
+				flex-wrap: wrap;
+				list-style-type: none;
+				margin: 0 auto;
+				margin-top: 10px;
+				padding: 0;
+			}
+			li {
+				margin: 4px;
+				padding: 2px 4px;
+				background: var(--pink);
+				color: #000;
+				font-weight: bold;
+				border-radius: 0.25em;
+				list-style-type: none;
+			}
+			li:hover {
+				background: var(--lightpink);
+			}
+			aside {
+				display: flex;
+				justify-content: right;
+				border-style: dotted;
+				font-size: 2rem;
+				font-family: 'Streamster';
+				font-weight: 700;
+				border-style: none;
+				cursor: pointer;
+				margin: 0 auto;
+			}
+			aside > a, a:active, a:visited {
+				color: var(--pink);
+			}
+			aside > a:hover {
+				color: var(--lightpink);
+			}
+			@media screen and (min-width: 200px) and (max-width: 767px) {
+				* {
+					font-size: 16px;
+				}
+				a, a:active, a:visited, a:hover {
+					font-size: 1em;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<Header />
+		<main>
+			<article>
+        <h1 class="title">About the site</h1>
+        <hr>
+				<slot />
+      </article>
+		</main>
+		<Footer />
+	</body>
+</html>
