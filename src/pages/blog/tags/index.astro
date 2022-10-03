@@ -1,0 +1,66 @@
+---
+import BaseHead from "../../../components/BaseHead.astro";
+import Header from "../../../components/Header.astro";
+import Footer from "../../../components/Footer.astro";
+
+import {generateTagsData} from '../../../utils/tags.js'
+const allPosts = await Astro.glob('../../blog/*.md');
+const allTagsUnique = new Set();
+allPosts.forEach(post => {
+  post.frontmatter.tags && post.frontmatter.tags.map(tag => {
+    allTagsUnique.add(tag);
+  })
+})
+
+const allTagsData = generateTagsData(allTagsUnique);
+const title = 'Categories'
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={} />
+		<style>
+			ol, ul {
+				display: flex;
+				flex-wrap: wrap;
+				list-style-type: none;
+				margin: 0 auto;
+				margin-top: 10px;
+				padding: 0;
+			}
+			li {
+				margin: 20px 10px;
+				padding: 6px 12px;
+				background: var(--pink);
+				color: #000;
+        font-size: 1.25em;
+				font-weight: bold;
+				border-radius: 0.25em;
+				list-style-type: none;
+			}
+			li:hover {
+				background: var(--lightpink);
+			}
+      a, a:active, a:visited, a:hover {
+				color: #000;
+      }
+		</style>
+	</head>
+
+	<body>
+		<Header />
+		<main>
+			<section>
+				<h1>{title}</h1>
+				<hr>
+				<ul>
+					{allTagsData.map(tag => (
+						<li><a href={`/blog/tags/${tag.slug}`}>{tag.name}</a></li>
+					))}
+				</ul>
+			</section>
+		</main>
+		<Footer />
+	</body>
+	</html>
