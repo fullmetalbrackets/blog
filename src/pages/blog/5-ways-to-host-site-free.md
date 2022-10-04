@@ -1,13 +1,15 @@
----
+a---
 layout: "../../layouts/BlogPost.astro"
 title: "5 ways to easily host your web site for free"
 description: "So you're learning web development, building things locally and only ever seeing your site or app when you run it on your computer. But how do you get this thing online so you can make sure it works on the interwebs? How do you learn headers, content-security-policy and CORS without having a site hosted online to work with? And how to do it FOR FREE?"
 pubDate: "September 06, 2021"
 tags:
-  - Web Hosting
-  - Cloudflare
-  - Netlify
-  - Vercel
+
+- Web Hosting
+- Cloudflare
+- Netlify
+- Vercel
+
 ---
 
 So you're learning web development, building things locally and only ever seeing your site or app when you use "npm run dev" (or "yarn dev") on your computer. But how do you get this thing online so you can make sure it works on the interwebs? How do you learn headers, content-security-policy and CORS without having a site hosted online to work with? And how to do it FOR FREE?
@@ -31,7 +33,7 @@ A super simple and user-friendly host that automagically builds and deploys your
 
 How to deploy to Netlify:
 
-1. Create an account or login at [Netlify](netlify.com).
+1. Create an account or login at <a href="https://netlify.com" target="_blank">Netlify</a>.
 2. In the team overview, click on "**New site from git**"
 3. Under "**continuous deployment**", choose a Git provider.
 4. You'll be prompted to login to your Git provider to authorize Netlify. Do so.
@@ -48,7 +50,7 @@ Very similar to Netlify, but it has a major feature that Netlify does not -- ser
 
 How to deploy to Vercel:
 
-1. Create an account or login at [Vercel](https://vercel.com).
+1. Create an account or login at <a href="https://vercel.com" target="_blank">Vercel</a>.
 2. On your dashboard, click "**New Project**"
 3. Under "**import from git repository**" choose a Git provider.
 4. You'll be prompted to login to your Git provider and authorize Vercel. Do so, and click "**Import**" on the repository of your project.
@@ -64,7 +66,7 @@ You can skip the third-party providers and host your site right on GitHub, thoug
 
 How to deploy to GitHub Pages:
 
-1. Create a [GitHub](https://github.com) account or login, and create a new repository.
+1. Create a <a href="https://github.com" target="_blank">GitHub</a> account or login, and create a new repository.
 2. Name the new repository **username.github.io** where "**username**" is your GitHub username, and click "**Create Repository**."
 3. You'll have an empty repo now, but GitHub Pages is already set up for it automatically.
 4. Now either import another repository or push a commit from a local repo.
@@ -78,7 +80,7 @@ This is the free hosting option I've used the least, but in my tests it seems li
 
 How to deploy to Cloudflare Pages:
 
-1. Create an account at [Cloudflare](https://pages.cloudflare.com).
+1. Create an account at <a href="https://page.cloudflare.com" target="_blank">Cloudflare</a>.
 2. Click on the button that says "**Create a project**".
 3. Cloudflare will request you to login to your GitHub account, do so.
 4. Choose a repository to associate with your Page, then click "**Begin Setup**".
@@ -98,14 +100,14 @@ Possibly the simplest hosting solution to ever exist. Literally one command in t
 
 ## Other options
 
-There's many free web hosts I haven't listed here, mostly because I haven't used them. One I intend to test out very soon is [Heroku](https://heroku.com), I'll eventually write a blog post about it. Also, it is possible to host almost anything from simple sites, to complex apps and APIs on the [Amazon Web Services](https://aws.amazon.com), [Google Cloud](https://cloud.google.com) and [Azure](https://azure.microsoft.com), but they are more complicated to set up than the options listed here. I will write a separate blog post about those in the future as well. Thanks for reading.
+There's many free web hosts I haven't listed here, mostly because I haven't used them. One I intend to test out very soon is <a href="https://heroku.com" target="_blank">Heroku</a>, I'll eventually write a blog post about it, but as of 2022 it no longer has a free tier. Also, it is possible to host almost anything from simple sites, to complex apps and APIs on the <a href="https://aws.amazon.com" target="_blank">Amazon Web Services</a>, <a href="https://cloud.google.com" target="_blank">Google Cloud</a> and <a href="https://azure.microsoft.com" target="_blank">Microsoft Azure</a>, but they are more complicated to set up than the options listed here. I will write a separate blog post about those in the future as well. Thanks for reading.
 
 <div id='ref'/>
 
 ## References
 
-- [Netlify](https://netlify.com) / [documentation](https://docs.netlify.com)
-- [Vercel](https://vercel.com) / [documentation](https://vercel.com/docs)
-- [GitHub Pages](https://pages.github.com) / [documentation](https://docs.github.com/en/pages)
-- [Cloudflare Pages](https://pages.cloudflare.com) / [documentation](https://developers.cloudflare.com/pages)
-- [Surge.sh](https://surge.sh) / [documentation](https://surge.sh/help)
+- <a href="https://netlify.com" target="_blank">Netlify</a> / <a href="https://docs.netlify.com" target="_blank">Documentation</a>
+- <a href="https://vercel.com" target="_blank">Vercel</a> / <a href="https://vercel.com/docs" target="_blank">Documentation</a>
+- <a href="https://pages.github.com" target="_blank">GitHub Pages</a> / <a href="https://docs.github.com/en/pages" target="_blank">Documentation</a>
+- <a href="https://pages.cloudflare.com" target="_blank">Cloudflare Pages / <a href="https://developers.cloudflare.com/pages" target="_blank">Documentation</a>
+- <a href="https://surge.sh" target="_blank">Surge.sh</a> / <a href="https://surge.sh/help" target="_blank">Documentation</a>

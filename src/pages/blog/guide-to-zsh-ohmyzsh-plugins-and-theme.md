@@ -107,7 +107,7 @@ Now when you use `p10k configure` you'll get additional options, since you'll be
 
 ## References
 
-- [Zsh shell website](https://www.zsh.org/)
-- [Oh My Zsh website](https://ohmyz.sh/)
-- [Section on Plugins in the Docs](https://github.com/ohmyzsh/ohmyzsh#using-oh-my-zsh)
-- [Powerlevel10k Theme](https://github.com/romkatv/powerlevel10k)
+- <a href="https://zsh.org" target="_blank">Zsh shell website</a>
+- <a href="https://ohmyz.sh" target="_blank">Oh My Zsh website</a>
+- <a href="https://github.com/ohmyzsh/ohmyzsh#using-oh-my-zsh" target="_blank">Section on Plugins in the Docs</a>
+- <a href="https://github.com/romkatv/powerlevel10k" target="_blank">Powerlevel10k Theme</a>

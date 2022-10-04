@@ -22,7 +22,7 @@ Now click the green **New SSH key** button near the top-right side of the scre
 
 [![Screenshot showing the button to click on GitHub](/img/gh3.png)](https://arieldiaz.codes/img/gh3.png)
 
-Now use your favorite text editor to open your computer's SSH public key, located in your `~/.ssh` directory ([read this](/blog/generating-an-ssh-key-pair/) if you have no idea what I'm talking about) and most likely named `id_rsa.pub`, if you used the default options when you generated the key. In the key file you'll see a jumble of text that looks something like this:
+Now use your favorite text editor to open your computer's SSH public key, located in your `~/.ssh` directory (<a href="https://arieldiaz.codes/blog/generating-an-ssh-key-pair/" target="_blank">read this</a>) if you have no idea what I'm talking about) and most likely named `id_rsa.pub`, if you used the default options when you generated the key. In the key file you'll see a jumble of text that looks something like this:
 
 ```bash
 ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAklOUpkDHrfHY17SbrmTIpNLTGK9Tjom/BWDSU
@@ -37,7 +37,7 @@ Copy all this text to clipboard. Now go back to GitHub, paste the SSH key text i
 
 [![Screenshot of GitHub screen to add new SSH key](/img/gh4.png)](https://arieldiaz.codes/img/gh4.png)
 
-That's it! You should now be able to push to GitHub via SSH and without password prompt. Now, go into the directory of the project you want to push to GitHub. On Windows, we can go into the project folder then right-click > Open Powerbash. Note that if you don't have Powerbash in your right-click menu, [you'll have to add it](https://www.howtogeek.com/165268/how-to-add-open-powerbash-here-to-the-context-menu-in-windows/). (Alternately, you can [install Windows Terminal and add that to the right-click menu](https://www.tenforums.com/tutorials/179549-add-open-windows-terminal-expandable-context-menu-windows-10-a.html), which is my personal preference for doing anything on the command line in Windows.)
+That's it! You should now be able to push to GitHub via SSH and without password prompt. Now, go into the directory of the project you want to push to GitHub. On Windows, we can go into the project folder then right-click > Open Powerbash. Note that if you don't have Powerbash in your right-click menu, <a href="https://www.howtogeek.com/165268/how-to-add-open-powerbash-here-to-the-context-menu-in-windows/" target="_blank">you'll have to add it</a>. (Alternately, you can <a href="https://www.tenforums.com/tutorials/179549-add-open-windows-terminal-expandable-context-menu-windows-10-a.html" target="_blank">install Windows Terminal and add that to the right-click menu</a>, which is my personal preference for doing anything on the command line in Windows.)
 
 From inside the project directory, you can initialize the git repo with `git init` command. This creates the **.git** hidden directory that contains stuff you'll never really need to look at. Pretend this directory does not exist, but take note that if you ever need to re-initialize the repo in a directory for any reason, the quickest way is to simply delete the .git directory. Now we'll use a series of commands to prepare our project files to be pushed to GitHub.
 
@@ -69,5 +69,5 @@ And we're done! Git will automatically keep track of any modified files in the p
 
 ## References
 
-- [GitHub blog post about deprecating password auth](https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/)
-- [GitHub documentation](https://docs.github.com/en)
+<a href="https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/" target="_blank">GitHub blog post about deprecating password auth</a>
+<a href="https://docs.github.com/en" target="_blank">GitHub documentation</a>

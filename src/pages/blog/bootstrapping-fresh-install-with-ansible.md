@@ -128,14 +128,6 @@ Contents of the playbook `bootstrap.yml` follows:
         name: "user"
         shell: "zsh"
 
-    - name: Suppress login messages
-      file:
-        name: /home/user/.hushlogin
-        state: touch
-        mode: 0664
-        modification_time: preserve
-        access_time: preserve
-
     - name: Check if reboot is required
       stat:
         path: /var/run/reboot-required
@@ -228,9 +220,6 @@ ok: [apollo]
 
 TASK [Set the default shell] *********************************************************************
 changed: [apollo]
-
-TASK [Suppress login messages] *******************************************************************
-ok: [apollo]
 
 TASK [Check if reboot is required] ***************************************************************
 ok: [apollo]

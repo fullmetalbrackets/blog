@@ -178,6 +178,6 @@ There's more advanced commands I'm not going to talk about until I use them myse
 
 ## References
 
-- [Git Documentation](https://git-scm.com/docs/git)
-- [GitHub Cheat Sheet](https://training.github.com/downloads/github-git-cheat-sheet)
-- Many questions and answers on [Stack Overflow](https://stackoverflow.com)...
+- <a href="https://git-scm.com/docs/git" target="_blank">Git Documentation</a>
+- <a href="https://training.github.com/downloads/github-git-cheat-sheet" target="_blank">GitHub Cheat Sheet</a>
+- Many questions and answers on <a href="https://stackoverflow.com" target="_blank">StackOverflow</a>

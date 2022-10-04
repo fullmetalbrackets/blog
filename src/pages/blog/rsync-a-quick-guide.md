@@ -43,14 +43,14 @@ This will open the Cron file in your default text editor. Monica wants to run th
 0 3 * * SAT rsync -rvuz --progress --max-size=100M /home/Monica/photos/*.jpg Chandler@192.168.1.100:/mnt/storage/photos/
 ```
 
-What's all that junk before the rsync command? You schedule cron jobs by expressing the timing in five fields: minutes, hours, day of the month, month, and day of the week. If this makes no sense, just know that I am right there with you, which is why I use a handy tool called [CronMaker](https://cronmaker.com) to make sense of it. Also, although it kind of defeats the purpose of this post, there is a handy tool with a slick GUI that lets you create your Rsync command with checkboxes and fields specifying what they do, go check out [Rsyncinator](https://www.rsyncinator.app/web).
+What's all that junk before the rsync command? You schedule cron jobs by expressing the timing in five fields: minutes, hours, day of the month, month, and day of the week. If this makes no sense, just know that I am right there with you, which is why I use a handy tool called <a href="https://cronmaker.com" target="_blank">Cronmaker</a> to make sense of it. Also, although it kind of defeats the purpose of this post, there is a handy tool with a slick GUI that lets you create your Rsync command with checkboxes and fields specifying what they do, go check out <a href="https://www.rsyncinator.app/web" target="_blank">Rsyncinator</a>.
 
-Finally, for a list of ALL the rsync options with short descriptions of what they do, check out the [Rsync man page](https://download.samba.org/pub/rsync/rsync.1), a truly exhaustive manual for understanding all the granular details of Rsync.
+Finally, for a list of ALL the rsync options with short descriptions of what they do, check out the <a href="https://download.samba.org/pub/rsync/rsync.1" target="_blank">Rsync man page</a>, a truly exhaustive manual for understanding all the granular details of Rsync.
 
 ## References
 
-- [Rsyncinator](https://www.rsyncinator.app/web)
-- [Cronmaker](https://cronmaker.com)
-- [Rsync Man Page](https://download.samba.org/pub/rsync/rsync.1)
-- [Cron Man Page](https://man7.org/linux/man-pages/man8/cron.8.html)
-- [Crontab Man Page](https://man7.org/linux/man-pages/man5/crontab.5.html)
+- <a href="https://www.rsyncinator.app/web" target="_blank">Rsyncinator</a>
+- <a href="https://cronmaker.com" target="_blank">Cronmaker</a>
+- <a href="https://download.samba.org/pub/rsync/rsync.1" target="_blank">Rsync Man Page</a>
+- <a href="https://man7.org/linux/man-pages/man8/cron.8.html" target="_blank">Cron Man Page</a>
+- <a href="https://man7.org/linux/man-pages/man5/crontab.5.html" target="_blank">Crontab Man Page</a>
