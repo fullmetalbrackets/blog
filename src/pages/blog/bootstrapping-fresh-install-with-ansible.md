@@ -9,6 +9,15 @@ tags:
   - Command Line
 ---
 
+## Sections
+
+1. [Install Ansible](#install)
+2. [The playbook, config and inventory](#config)
+3. [Running the playbook](#run)
+4. [References](#ref)
+
+<div id='install'/>
+
 ## Install Ansible
 
 First install <em>Ansible</em>, which requires adding the repository to download the package via APT.
@@ -17,6 +26,8 @@ First install <em>Ansible</em>, which requires adding the repository to download
 sudo apt-add-repository ppa:ansible/ansible
 sudo apt install ansible -y
 ```
+
+<div id='config'/>
 
 ## The playbook, config and inventory
 
@@ -170,6 +181,8 @@ ansible_sudo_pass=password
 
 This tells Ansible the target hosts (in this case just my server, **apollo**), and provides the server's username and password as variables.
 
+<div id='run'/>
+
 ## Running the playbook
 
 All that's left now is to run the playbook and bootstrap the server, but first it's highly recommended to do a <em>dry-run</em> that runs the playbook in check mode, to verify it works without making any changes. Make sure you're in the same directory as `bootstrap.yml` (the playbook), `ansible.cfg` (the config) and `hosts` (inventory file). Then, use the following command:
@@ -237,6 +250,8 @@ If all looks good and there's no errors, you can run the playbook for real:
 ```bash
 ansible-playbook bootstrap.yml
 ```
+
+<div id='ref'/>
 
 ## References
 

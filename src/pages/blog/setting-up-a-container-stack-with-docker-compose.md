@@ -9,7 +9,16 @@ tags:
   - Command Line
 ---
 
-This will not be an exhaustive Docker tutorial, for that I always suggest <a href="https://docs.docker.com" target="_blank">the official Docker documentation</a>. The purpose of this guide is limited to explaining how to install Docker and set up various Docker containers quickly and easily via Docker-Compose.
+> _Note:_ This will not be an exhaustive Docker tutorial, for that I always suggest <a href="https://docs.docker.com" target="_blank">the official Docker documentation</a>. The purpose of this guide is limited to explaining how to install Docker and set up various Docker containers quickly and easily via Docker-Compose.
+
+## Sections
+
+1. [Installing Docker and Docker-Compose](#install)
+2. [Setting up a Docker-Compose file](#compose)
+3. [Starting up the containers](#start)
+4. [References](#ref)
+
+<div id='install'/>
 
 ## Installing Docker and Docker-Compose
 
@@ -20,6 +29,8 @@ sudo apt install docker.io docker-compose -y
 sudo systemctl start docker
 sudo systemctl enable docker
 ```
+
+<div id='compose'/>
 
 ## Setting up a Docker-Compose file
 
@@ -127,6 +138,8 @@ This will create and run the following containers:
 - <em>qFlood</em>: qBittorrent and Flood UI
 - <em>Watchtower</em>: Automatically updates containers
 
+<div id='start'/>
+
 ## Starting up the containers
 
 Once the `docker-compose.yml` is ready, use the following command in the same directory where the file is located:
@@ -136,6 +149,8 @@ docker-compose up -d
 ```
 
 Using the `-d` flag will "detach" the process so it's in the background. You will see all the required container images be downloaded and the directories you specified in the compose file will also be set up. Once finished, use `docker ps` to list running containers and confirm your new services are up and running.
+
+<div id='ref'/>
 
 ## References
 

@@ -11,11 +11,24 @@ tags:
 
 Secure Copy is a command line utility that transfers files between the local host and a remote host via the SSH protocol. You will be prompted for the remote user's password, or you can use an <a href="https://arieldiaz.codes/blog/generating-an-ssh-key-pair" target="_blank">authorized SSH key</a>.
 
+## Sections
+
+1. [SCP Command Syntax](#syntax)
+2. [SCP Options](#options)
+3. [Copying files and directories to a remote host](#remote)
+4. [Copying from a remote host to a local machine](#local)
+5. [Transferring files between two remote hosts](#transfer)
+6. [References](#ref)
+
+<div id='syntax'/>
+
 ## SCP Command Syntax
 
 ```bash
 scp -OPTION user@Source:file1 user@Destination:file2
 ```
+
+<div id='options'/>
 
 ## SCP Options
 
@@ -24,6 +37,8 @@ scp -OPTION user@Source:file1 user@Destination:file2
 - `-p`: Copied files keep modification and access times
 - `-q`: Quiets the progress bar and other messages
 - `-c`: Compresses sent data for faster transfer speeds
+
+<div id='remote'/>
 
 ## Copying files and directories to a remote host
 
@@ -61,6 +76,8 @@ To copy a directory, you'll need to do so recursively with the <em>-r</em> optio
 scp -r /directory remote-user@192.168.1.10:/directory
 ```
 
+<div id='local'/>
+
 ## Copying from a remote host to the local machine
 
 To copy from the local host rather than to it, put the remote host's info first and the local host info after:
@@ -69,6 +86,8 @@ To copy from the local host rather than to it, put the remote host's info first 
 scp remote-user@192.168.1.10:/directory/file.txt /local-directory
 ```
 
+<div id='transfer'/>
+
 ## Transfer files between two remote hosts
 
 With **SCP** its even possible to transfer between two other systems, as long as your local machine has access to both via SSH or password.
@@ -76,6 +95,8 @@ With **SCP** its even possible to transfer between two other systems, as long as
 ```bash
 scp user@192.168.0.10:/directory/file.txt user@192.168.0.12:/directory/file.txt
 ```
+
+<div id='ref'/>
 
 ## References
 

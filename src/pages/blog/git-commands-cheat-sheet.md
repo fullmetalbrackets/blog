@@ -8,9 +8,20 @@ tags:
   - Command Line
 ---
 
-When I was learning Git, in order to avoid giant articles and get right to the commands I needed reminding of, I made myself a cheat sheet that plainly and succinctly explained each Git command. Here is that quick and dirty guide of Git commands that you will likely use often as a web developer.
+## Sections
 
-## Setting up git locally
+1. [Setting up git](#setup)
+2. [Staging and committing files](#stage-commit)
+3. [Pushing to and pulling from remote repos](#push-pull)
+4. [Dealing with branches](#branches)
+5. [Multiple remote repos](#multi)
+6. [Dealing with forks](#forks)
+7. [Advanced use cases](#advanced)
+8. [References](#ref)
+
+<div id='setup'/>
+
+## Setting up git
 
 Clone an existing remote repo to work on locally.
 
@@ -32,6 +43,8 @@ Change master branch to main. (From here on out this guide will presume you use 
 Set a remote repository (e.g. on Github, Bitbucket, etc.) as the **_origin_**, basically you are telling git that this remote repo is the default you will be pushing to and pulling from.
 
 - `git remote add origin https://github.com/username/repo.git`
+
+<div id='stage-commit'/>
 
 ## Staging and committing files
 
@@ -73,6 +86,8 @@ Check what stage of the git workflow all tracked (modified) files are in.
 
 - `git status`
 
+<div id='push-pull'/>
+
 ## Pushing to and pulling from remote repos
 
 Push to main branch on your default remote.
@@ -87,6 +102,8 @@ To pull and apply changes from remote repos.
 
 - `git pull`: This will pull from origin's main branch if it is set as upstream, like above
 - `git pull bitbucket-repo`: If you added more remote repos, this pulls the specified remote instead of origin
+
+<div id='branches'/>
 
 ## Dealing with branches
 
@@ -125,6 +142,8 @@ Delete a REMOTE branch. Here we don't use **_git branch_** but instead **_git pu
 
 - `git push origin --delete branch-name`
 
+<div id='multi'/>
+
 ## Multiple remote repos
 
 Above I explained how to add a remote repo as **_origin_**, making it the default. But what if you want to push your project to multiple remotes, even on different git hosts? For example, say your origin is on Github, but you also want copies of your project on Bitbucket and Gitlab. (Let's assume you name these **_bitbucket-repo_** & **_gitlab-repo_** locally.)
@@ -145,6 +164,8 @@ By tracking the main branch on the remote "gitlab-repo" and can do the following
 
 - `git push gitlab-repo` (No need to specify main branch once tracked)
 
+<div id='forks'/>
+
 ## Dealing with forks
 
 Let's say you've forked an existing repo on Github, your version of that repo under your account is **_origin_**. The pre-existing repo you forked is **_upstream_**. If you wanted to pull updates from the upstream repo, you do the following.
@@ -153,6 +174,8 @@ Let's say you've forked an existing repo on Github, your version of that repo un
 - `git remote add -t main upstream https://github.com/username/repo.git`: Add a remote as upstream and track the main branch
 - `git fetch upstream`: This fetches metadata of the changes between the upstream and your local repo, but nothing changes locally yet
 - `git merge origin/upstream`: Merge fetched changes from the upstream into your local repo
+
+<div id='advanced'/>
 
 ## Advanced use cases
 
@@ -175,6 +198,8 @@ Revert the remote ORIGIN to this old commit. (Be careful doing this!)
 - `git revert 6e751bc32`
 
 There's more advanced commands I'm not going to talk about until I use them myself -- things like `git rebase`, and I'm also not showing all the different ways to use `git checkout` because I don't know even half of them. I'll make a future blog post as I learn more of these.
+
+<div id='ref'/>
 
 ## References
 

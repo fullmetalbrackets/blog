@@ -10,7 +10,7 @@ tags:
   - Command Line
 ---
 
-## Table of Contents
+## Sections
 
 1. [Installing Samba](#install)
 2. [Configuring Samba](#config)

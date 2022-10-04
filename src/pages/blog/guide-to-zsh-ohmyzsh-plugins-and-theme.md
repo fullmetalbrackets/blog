@@ -1,7 +1,7 @@
 ---
 layout: "../../layouts/BlogPost.astro"
-title: "Quick guide to set up Zsh and Oh My Zsh with essential plugins and a theme"
-description: "I've been getting more and more comfortable working on the command line in Linux, and looked into ways to pretty it up and make it more user friendly. Enter Zsh, an alternative to Bash shell, and the Oh My Zsh framework used to customize the terminal experience to your heart's content. Here's my basic set up."
+title: "Quick guide to set up Zsh and Oh-My-Zsh with essential plugins and a theme"
+description: "I've been getting more and more comfortable working on the command line in Linux, and looked into ways to pretty it up and make it more user friendly. Enter Zsh, an alternative to Bash shell, and the Oh-My-Zsh framework used to customize the terminal experience to your heart's content. Here's my basic set up."
 pubDate: "December 04, 2021"
 tags:
   - Zsh
@@ -9,11 +9,20 @@ tags:
   - Command Line
 ---
 
-I've been getting more and more comfortable working on the command line in Linux, and looked into ways to pretty it up and make it more user friendly. Enter Zsh, an alternative to Bash shell, and the Oh My Zsh "framework" used to customize the terminal experience to your heart's content. Here's a guide to getting it set up quick and easy.
+## Sections
+
+1. [Install the Zsh shell](#zsh)
+2. [Download and install Oh-My-Zsh](#ohmyzsh)
+3. [Using some essential plugins](#plugins)
+4. [Using a theme](#theme)
+5. [Prettify powerlevel10k with glpyhs](#pretty)
+6. [References](#ref)
+
+<div id='zsh'/>
 
 ## Install the Zsh shell
 
-First, a caveat; this guide is for Linux only, since that's the only place I've used Zsh & Oh My Zsh. It's also usable on Mac (via <a href="https://iterm2.com" target="_blank">iTerm2</a>, among other options) but I will only be covering Linux here. Easiest way to do install Zsh is just use your distribution's package manager.
+First, a caveat; this guide is for Linux only, since that's the only place I've used Zsh & Oh-My-Zsh. It's also usable on Mac (via <a href="https://iterm2.com" target="_blank">iTerm2</a>, among other options) but I will only be covering Linux here. Easiest way to do install Zsh is just use your distribution's package manager.
 
 On Ubuntu/Debian:
 
@@ -33,7 +42,9 @@ On Fedora/Red Hat:
 sudo dnf install zsh
 ```
 
-## Download and install Oh My Zsh
+<div id='ohmyzsh'/>
+
+## Download and install Oh-My-Zsh
 
 Easiest (and recommended) way is to use the following command to install via a script:
 
@@ -43,9 +54,11 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 
 After it's done downloading, use the command `zsh` to configure it.
 
+<div id='plugins'/>
+
 ## Using some essential plugins
 
-In my humble opinion, there's two must-have plugins when using Oh My Zsh; **zsh-autosuggestions** (for handy auto-completion of commands) and **zsh-syntax-highlighting** (detects and color codes different syntax on the command line and in the text editor). Let's download those:
+In my humble opinion, there's two must-have plugins when using Oh-My-Zsh; **zsh-autosuggestions** (for handy auto-completion of commands) and **zsh-syntax-highlighting** (detects and color codes different syntax on the command line and in the text editor). Let's download those:
 
 ```bash
 git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
@@ -59,6 +72,8 @@ plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 ```
 
 Save the file, exit the editor, and restart the shell for the changes to take effect. Note: I also suggest adding _aliases_ as a plugin and adding aliases of your most used commands to your `.zshrc` file, or create a separate file just for aliases.
+
+<div id='theme'/>
 
 ## Using a theme
 
@@ -84,6 +99,8 @@ If the command isn't recognized, restart the shell first. Follow the prompts to 
 
 But wait, there's more! To make your terminal even prettier through the magic of glyphs, let's go a little deeper.
 
+<div id='pretty'/>
+
 ## Prettify powerlevel10k with glpyhs
 
 By using powerlevel10k's [recommended fonts](https://github.com/romkatv/powerlevel10k#fonts) the theme's configuration script will have more options to make the command line prompt look even better, including icons! For some reason these fonts aren't included with powerlevel10k's install instructions or script, so you have to do it manually. We'll use `wget` to download the fonts individually directly into the fonts directory.
@@ -105,9 +122,11 @@ sh -c "$(curl -fsSL https://gist.githubusercontent.com/fullmetalbrackets/5a094e7
 
 Now when you use `p10k configure` you'll get additional options, since you'll be able to display the glyph correctly. (If using a desktop environment, make sure to go into Terminal preferences and change the font to "Meslo LGS.")
 
+<div id='ref'/>
+
 ## References
 
 - <a href="https://zsh.org" target="_blank">Zsh shell website</a>
-- <a href="https://ohmyz.sh" target="_blank">Oh My Zsh website</a>
+- <a href="https://ohmyz.sh" target="_blank">Oh-My-Zsh website</a>
 - <a href="https://github.com/ohmyzsh/ohmyzsh#using-oh-my-zsh" target="_blank">Section on Plugins in the Docs</a>
 - <a href="https://github.com/romkatv/powerlevel10k" target="_blank">Powerlevel10k Theme</a>
