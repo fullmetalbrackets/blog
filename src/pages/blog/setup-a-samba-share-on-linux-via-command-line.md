@@ -140,7 +140,7 @@ However, there MAY be an additional issue, as Windows 10 Home (but not Professio
 
 ## Improve transfer speeds for Samba
 
-After transferring files back and forth between Windows and Linux via the Samba share, you may notice it's extremely slow! After some googling I found some additional configuration options <a href="https://eggplant.pro/blog/faster-samba-smb-cifs-share-performance" target="_blank" rel="noopener">on someone's blog</a> that claimed to improve network performance, and in my experience it works.
+After transferring files back and forth between Windows and Linux via the Samba share, you may notice it's extremely slow! After some googling I found some additional configuration options <a href="https://eggplant.pro/blog/faster-samba-smb-cifs-share-performance" target="_blank" rel="noopener noreferrer">on someone's blog</a> that claimed to improve network performance, and in my experience it works.
 
 Add the following code (feel free to remove all the comments) to your <em>smb.conf</em> file under `[global]`.
 
@@ -165,5 +165,5 @@ For an explanation of what these options do, check the original blog post linked
 
 ## References
 
-- <a href="https://www.samba.org/samba/docs" target="_blank" rel="noopener">Samba Documentation</a>
-- <a href="https://eggplant.pro/blog/faster-samba-smb-cifs-share-performance" target="_blank" rel="noopener">Eggplant Systems & Design blog post about improving Samba share performance</a>
+- <a href="https://www.samba.org/samba/docs" target="_blank" rel="noopener noreferrer">Samba Documentation</a>
+- <a href="https://eggplant.pro/blog/faster-samba-smb-cifs-share-performance" target="_blank" rel="noopener noreferrer">Eggplant Systems & Design blog post about improving Samba share performance</a>

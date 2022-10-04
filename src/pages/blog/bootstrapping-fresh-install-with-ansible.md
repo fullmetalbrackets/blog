@@ -221,6 +221,7 @@ ok: [apollo]
 TASK [Set the default shell] *********************************************************************
 changed: [apollo]
 
+
 TASK [Check if reboot is required] ***************************************************************
 ok: [apollo]
 
@@ -240,3 +241,4 @@ ansible-playbook bootstrap.yml
 ## References
 
 - <a href="https://docs.ansible.com" target="_blank">Ansible Documentation</a>
+- <a href="https://www.learnlinux.tv/getting-started-with-ansible/" target="_blank" rel="noopener noreferrer">Learn Linux TV series of Ansible tutorials</a>

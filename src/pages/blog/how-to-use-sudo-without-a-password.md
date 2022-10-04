@@ -59,3 +59,7 @@ You'll get output letting you know whether or not the file syntax is correct.
 /etc/sudoers: parsed OK
 /etc/sudoers.d/README: parsed OK
 ```
+
+## References
+
+- <a href="https://man7.org/linux/man-pages/man5/sudoers.5.html" target="_blank">Man page for logind.conf</a>

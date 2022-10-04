@@ -40,5 +40,5 @@ That's it, you need nothing else besides that. Even if you navigate to this page
 
 ## References
 
-- <a href="https://medium.com/@kimbjrkman/adding-netlify-forms-on-your-nuxt-website-20ffba3e5ba8" target="_blank">Medium article that taught me this trick</a>
+- <a href="https://medium.com/@kimbjrkman/adding-netlify-forms-on-your-nuxt-website-20ffba3e5ba8" target="_blank" rel="noopener noreferrer">Medium article that taught me this trick</a>
 - <a href="https://docs.netlify.com/forms/setup/" target="_blank">Netlify Forms documentation</a>

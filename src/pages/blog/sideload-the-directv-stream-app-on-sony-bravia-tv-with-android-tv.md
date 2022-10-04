@@ -27,14 +27,14 @@ First, you'll need file manager app on your Sony Bravia TV to browse files. I su
 
 Next, you need an app to be able to transfer files to the TV. The easiest way I've found to do this is with the Send Files to TV app from the Play Store. There are other options, but this one is so quick and easy (plus free) that I've never bothered with another app. Install the Send Files to TV app (or your chosen alternative) on *BOTH* the Sony Bravia TV and the phone/tablet.
 
-Download: <a href="https://play.google.com/store/apps/details?id=com.mobisystems.fileman" target="_blank">File Commander</a>\
-Download: <a href="https://play.google.com/store/apps/details?id=com.yablio.sendfilestotv" target="_blank">Send Files to TV</a>
+Download: <a href="https://play.google.com/store/apps/details?id=com.mobisystems.fileman" target="_blank" rel="noopener noreferrer">File Commander</a>\
+Download: <a href="https://play.google.com/store/apps/details?id=com.yablio.sendfilestotv" target="_blank" rel="noopener noreferrer">Send Files to TV</a>
 
 ## Download the AT&T TV APK
 
 Picking up the slack from AT&T's neglect of their customers with a top-of-the-line Sony 4KTV, a kind soul uploads multiple variants of the APK (Android application package) that will work on Sony Bravia TVs, amongst other device options.
 
-From your phone, <a href="https://www.mediafire.com/folder/ezc6ki36dp34f/Apps#jahuvrlwbro78" target="_blank">download the APK here</a>. (This specific one will work on Sony Bravia TVs.)
+From your phone, <a href="https://www.mediafire.com/folder/ezc6ki36dp34f/Apps#jahuvrlwbro78" target="_blank" rel="noopener noreferrer">download the APK here</a>. (This specific one will work on Sony Bravia TVs.)
 
 Make sure you download the most recent version, it should be the only file in the directory, with older versions behind a separate folder, but double-check the date to make sure it's the most recent version of the APK. Sooner or later, you'll go to use the DirecTV Stream app and it'll bug you for an update -- you'll need to come back to this file share to get the newest version, since you won't be able to update the app via the Play Store like you normally would with other apps.
 
@@ -60,7 +60,7 @@ You should be all done! The app should appear on your Sony Bravia TV's app list 
 
 ## References
 
-<a href="https://www.mediafire.com/folder/ezc6ki36dp34f/Apps#jahuvrlwbro78" target="_blank">DirecTV Stream APK</a>
-<a href="https://play.google.com/store/apps/details?id=com.yablio.sendfilestotv" target="_blank">Send Files to TV app for Android</a>
-<a href="https://play.google.com/store/apps/details?id=com.mobisystems.fileman" target="_blank">File Commander app for Android</a>
-<a href="https://forum.xda-developers.com/t/the-ultimate-at-t-tv-and-fire-tv-apk-repository.3854154/" target="_blank">XDA Developers thread</a>
+- <a href="https://www.mediafire.com/folder/ezc6ki36dp34f/Apps#jahuvrlwbro78" target="_blank" rel="noopener noreferrer">DirecTV Stream APK</a>
+- <a href="https://play.google.com/store/apps/details?id=com.yablio.sendfilestotv" target="_blank" rel="noopener noreferrer">Send Files to TV app for Android</a>
+- <a href="https://play.google.com/store/apps/details?id=com.mobisystems.fileman" target="_blank" rel="noopener noreferrer">File Commander app for Android</a>
+- <a href="https://forum.xda-developers.com/t/the-ultimate-at-t-tv-and-fire-tv-apk-repository.3854154/" target="_blank" rel="noopener noreferrer">XDA Developers thread</a>

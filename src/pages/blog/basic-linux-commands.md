@@ -114,4 +114,4 @@ ssh-keygen
 
 ## References
 
-- <a href="https://ss64.com/bash" target="_blank">An A-Z Index of the Linux command line</a>
+- <a href="https://ss64.com/bash" target="_blank" rel="noopener noreferrer">An A-Z Index of the Linux command line</a>

@@ -37,7 +37,7 @@ Copy all this text to clipboard. Now go back to GitHub, paste the SSH key text i
 
 [![Screenshot of GitHub screen to add new SSH key](/img/gh4.png)](https://arieldiaz.codes/img/gh4.png)
 
-That's it! You should now be able to push to GitHub via SSH and without password prompt. Now, go into the directory of the project you want to push to GitHub. On Windows, we can go into the project folder then right-click > Open Powerbash. Note that if you don't have Powerbash in your right-click menu, <a href="https://www.howtogeek.com/165268/how-to-add-open-powerbash-here-to-the-context-menu-in-windows/" target="_blank">you'll have to add it</a>. (Alternately, you can <a href="https://www.tenforums.com/tutorials/179549-add-open-windows-terminal-expandable-context-menu-windows-10-a.html" target="_blank">install Windows Terminal and add that to the right-click menu</a>, which is my personal preference for doing anything on the command line in Windows.)
+That's it! You should now be able to push to GitHub via SSH and without password prompt. Now, go into the directory of the project you want to push to GitHub. On Windows, we can go into the project folder then right-click > Open Powerbash. Note that if you don't have Powerbash in your right-click menu, <a href="https://www.howtogeek.com/165268/how-to-add-open-powerbash-here-to-the-context-menu-in-windows/" target="_blank" rel="noopener noreferrer">you'll have to add it</a>. (Alternately, you can <a href="https://www.tenforums.com/tutorials/179549-add-open-windows-terminal-expandable-context-menu-windows-10-a.html" target="_blank" rel="noopener noreferrer">install Windows Terminal and add that to the right-click menu</a>, which is my personal preference for doing anything on the command line in Windows.)
 
 From inside the project directory, you can initialize the git repo with `git init` command. This creates the **.git** hidden directory that contains stuff you'll never really need to look at. Pretend this directory does not exist, but take note that if you ever need to re-initialize the repo in a directory for any reason, the quickest way is to simply delete the .git directory. Now we'll use a series of commands to prepare our project files to be pushed to GitHub.
 
@@ -69,5 +69,5 @@ And we're done! Git will automatically keep track of any modified files in the p
 
 ## References
 
-<a href="https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/" target="_blank">GitHub blog post about deprecating password auth</a>
-<a href="https://docs.github.com/en" target="_blank">GitHub documentation</a>
+- <a href="https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/" target="_blank">GitHub blog post about deprecating password auth</a>
+- <a href="https://docs.github.com/en" target="_blank">GitHub documentation</a>

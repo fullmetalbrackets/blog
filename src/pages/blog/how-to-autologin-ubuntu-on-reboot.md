@@ -34,4 +34,4 @@ My reason for wanting to do this was to have my <a href="https://pi-hole.net" ta
 
 ## References
 
-- I found this simple change buried in <a href="https://askubuntu.com/a/659268" target="_blank">this exhaustive post on AskUbuntu</a>.
+- I found this simple change buried in <a href="https://askubuntu.com/a/659268" target="_blank" rel="noopener noreferrer">this exhaustive post on AskUbuntu</a>.

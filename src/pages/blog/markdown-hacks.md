@@ -154,5 +154,5 @@ And in HTML.
 
 ## References
 
-- <a href="https://www.markdownguide.org/hacks" target="_blank">Markdown Guide</a>
-- <a href="https://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references#List_of_character_entity_references_in_HTML" target="_blank">Wikipedia page with full list of entities</a>
+- <a href="https://www.markdownguide.org/hacks" target="_blank" rel="noopener noreferrer">Markdown Guide</a>
+- <a href="https://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references#List_of_character_entity_references_in_HTML" target="_blank" rel="noopener noreferrer">Wikipedia page with full list of entities</a>

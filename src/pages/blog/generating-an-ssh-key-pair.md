@@ -86,4 +86,4 @@ cat ~/.ssh/id_rsa.pub | ssh bob@hostname 'cat >> .ssh/authorized_keys && echo "K
 
 - <a href="https://linux.die.net/man/1/ssh" target="_blank">SSH Man Page</a>
 - <a href="https://linux.die.net/man/1/ssh-copy-id" target="_blank">SSH-Copy-ID Man Page</a>
-- <a href="https://nbeguier.medium.com/a-real-world-comparison-of-the-ssh-key-algorithms-b26b0b31bfd9" target="_blank">Medium article comparing the different SSH encryption algorithms</a>
+- <a href="https://nbeguier.medium.com/a-real-world-comparison-of-the-ssh-key-algorithms-b26b0b31bfd9" target="_blank" rel="noopener noreferrer">Medium article comparing the different SSH encryption algorithms</a>

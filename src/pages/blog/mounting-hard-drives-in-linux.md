@@ -71,5 +71,5 @@ Save and close the fstab file. Now when you reboot, the second hard drive should
 
 ## References
 
-<a href="https://linux.die.net/man/8/mount" target="_blank">Linux man page for MOUNT</a>
+<a href="https://man7.org/linux/man-pages/man2/mount.2.html" target="_blank">Linux man page for MOUNT</a>
 <a href="https://man7.org/linux/man-pages/man5/fstab.5.html" target="_blank">Linux man page for FSTAB</a>
