@@ -35,6 +35,9 @@ const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
 			.desc {
 				color: var(--text);
 			}
+			ul li h1 {
+				line-height: 32px;
+			}
 			hr {
 				margin-top: 1.5em;
 			}

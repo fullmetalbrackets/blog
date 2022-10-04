@@ -169,10 +169,12 @@ pre > code {
 	all: unset;
 }
 blockquote {
-	border: 1px solid var(--accent);
-	color: #aaa;
+	border: 1px solid var(--pink);
 	padding: 2px 0px 2px 20px;
-	margin: 0px;
+	margin: 2em 0;
+}
+blockquote li {
+	margin-left: -1em;
 }
 li::marker {
 	color: var(--pink);

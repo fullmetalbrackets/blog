@@ -22,6 +22,7 @@ pre[class*="language-"] {
   -moz-hyphens: none;
   -ms-hyphens: none;
   hyphens: none;
+  margin-top: 2.5em;
 }
 
 @media print {

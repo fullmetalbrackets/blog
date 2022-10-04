@@ -28,6 +28,9 @@ const allTagsData = generateTagsData(tags);
 			article {
 				padding-top: 1em;
 			}
+			h1 {
+				line-height: 40px;
+			}
 			hr {
 				margin-bottom: 3em;
 			}
@@ -87,9 +90,9 @@ const allTagsData = generateTagsData(tags);
 		<Header />
 		<main>
 			<article>
-				<h1 class="title">{title}</h1>
 				{pubDate && <time>{pubDate}</time>}
 				{updatedDate && <div>Updated on <time>{updatedDate}</time></div>}
+				<h1 class="title">{title}</h1>
 				<ul>
 					{allTagsData.map(tags => (
 						<a href={`/blog/tags/${tags.slug}`}><li>{tags.name}</li></a>
