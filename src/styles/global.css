@@ -76,6 +76,10 @@ p, h1, h2, h3, h4, h5, h6 {
   overflow-wrap: break-word;
   hyphens: auto;
 }
+article p {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
 h1 {
 	color: var(--pink);
 }
