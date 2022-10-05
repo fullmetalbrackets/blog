@@ -79,13 +79,18 @@ p, h1, h2, h3, h4, h5, h6 {
 h1 {
 	color: var(--pink);
 }
-h2, h3 {
+h2 {
 	color: var(--pink);
 	margin-top: 2.5em;
 }
-h4, h5, h6 {
+h3, h5 {
 	color: var(--lightpink);
 }
+
+h4, h6 {
+  color: var(--pink);
+}
+
 hr {
 	border: 0.25px solid var(--pink);
 	opacity: 0.5;
@@ -169,9 +174,10 @@ pre > code {
 	all: unset;
 }
 blockquote {
-	border: 1px solid var(--pink);
-	padding: 2px 0px 2px 20px;
+	border: 1px solid var(--lightpink);
+	padding: 2px 20px 2px 20px;
 	margin: 2em 0;
+  border-radius: 0.5em;
 }
 blockquote li {
 	margin-left: -1em;
