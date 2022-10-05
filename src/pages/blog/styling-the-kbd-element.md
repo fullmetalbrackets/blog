@@ -8,7 +8,15 @@ tags:
   - Web Dev
 ---
 
+## Sections
+
+1. [How the kbd element looks on this site](#kbd)
+2. [The code!](#code)
+3. [Reference](#ref)
+
 > **Attribution:** I want to start this off by saying _this is not my code_, but was taken from <a href="http://dylanatsmith.com/wrote/styling-the-kbd-element" target="_blank">Dylan Smith</a> from his own blog post on the subject, and I simply made a few modifications for my site. I encourage you to go read his post since mine is terse for my own purposes.
+
+<div id='kbd'/>
 
 ## How the `kbd` element looks on this site
 
@@ -23,6 +31,8 @@ Hover the cursor over each for a neat "pushed" effect.
 - <kbd>A</kbd><br><br>
 - <kbd>1</kbd><br><br>
 - <kbd>.</kbd>
+
+<div id='code'/>
 
 ## The code!
 
@@ -55,6 +65,8 @@ Note that this will cause "pushed" effect when hovering over a "key" with your c
 
 Once again, thanks to <a href="http://dylanatsmith.com" target="_blank">Dylan Smith</a> for this!
 
-## References
+<div id='ref'/>
+
+## Reference
 
 - <a href="http://dylanatsmith.com/wrote/styling-the-kbd-element" target="_blank">Writing by Dylan Smith</a>

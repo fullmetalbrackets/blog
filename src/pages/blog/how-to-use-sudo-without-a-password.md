@@ -8,6 +8,18 @@ tags:
   - Command Line
 ---
 
+## Sections
+
+1. [The sudoers file](#sudoers)
+2. [Disable password prompt for a specific user](#user)
+3. [Disable password prompt for all sudoers](#all)
+4. [Check the syntax of the sudoers file](#syntax)
+5. [Reference](#ref)
+
+<div id='sudoers'/>
+
+## The sudoers file
+
 Removing the sudo password prompt is done by editing the `/etc/sudoers` file, however you should never edit this file directly, but instead use `sudo visudo` to do so.
 
 The file will look something like this:
@@ -28,6 +40,8 @@ There's two ways to disable the password prompt.
 1. Disable it only for a specific user
 2. Disable it for all users in the sudo group
 
+<div id='user'/>
+
 ## Disable password prompt for a specific user
 
 Add the following line to `/etc/sudoers` file:
@@ -36,6 +50,8 @@ Add the following line to `/etc/sudoers` file:
 user    ALL=(ALL) NOPASSWD: ALL
 ```
 
+<div id='all'/>
+
 ## Disable password prompt for all sudoers
 
 Edit the `%sudo` line in `/etc/sudoers` file:
@@ -43,6 +59,8 @@ Edit the `%sudo` line in `/etc/sudoers` file:
 ```bash
 %sudo   ALL=(ALL:ALL) NOPASSWD: ALL
 ```
+
+<div id='syntax'/>
 
 ## Check syntax of /etc/sudoers
 
@@ -60,6 +78,8 @@ You'll get output letting you know whether or not the file syntax is correct.
 /etc/sudoers.d/README: parsed OK
 ```
 
-## References
+<div id='ref'/>
+
+## Reference
 
 - <a href="https://man7.org/linux/man-pages/man5/sudoers.5.html" target="_blank">Man page for logind.conf</a>

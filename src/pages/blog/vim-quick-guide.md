@@ -9,6 +9,14 @@ tags:
   - Command Line
 ---
 
+## Sections
+
+1. [Vim Commands](#cmd)
+2. [Making sense of Vi (and Vim)](#vi)
+3. [Reference](#ref)
+
+<div id='cmd'/>
+
 In my search for a tutorial or guide to help me understand how Vim works, I came upon <a href="https://stackoverflow.com/questions/11828270/how-do-i-exit-vim" target="blank">this Stack Overflow thread</a> with excellent answers. My favorite of these are below, but feel free to dive deep at the original link.
 
 ## Vim Commands
@@ -20,6 +28,8 @@ In my search for a tutorial or guide to help me understand how Vim works, I came
 - `:x` to write and quit (similar to :wq, but only write if there are changes)
 - `:qa` to quit all (short for :quitall)
 - `:cq` to quit without saving and make Vim return non-zero error (i.e. - exit with error)
+
+<div id='vi'/>
 
 ## Making sense of Vi (and Vim)
 
@@ -58,6 +68,8 @@ If you are unsure, push <kbd>ESC</kbd> and that will bring you to command mode.
 
 So, the robust method, which saves your file and quits, is to hit <kbd>ESC</kbd>, type `:x`, then hit <kbd>ENTER</kbd>.
 
-## References
+<div id='ref'/>
+
+## Reference
 
 - <a href="https://stackoverflow.com/questions/11828270/how-do-i-exit-vim" target="blank">The top two answers of this Stack Overflow thread.</a>

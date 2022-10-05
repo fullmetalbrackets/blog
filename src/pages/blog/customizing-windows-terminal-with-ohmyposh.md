@@ -10,9 +10,22 @@ tags:
   - Command Line
 ---
 
-Getting set up on _Oh-My-Posh_ is super easy. First, we need to have _Powershell_ installed on Windows, and ideally you'll want to use _Windows Terminal_ as well. Follow the <a href="https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.2#msi" target="_blank">official Microsoft instructions to install Powershell</a>. For Windows Terminal, you'll have to <a href="https://aka.ms/terminal" target="_blank">install it from the Windows Store</a>.
+## Sections
 
-The rest of this guide will assume you are using <em>Windows Terminal</em>.
+1. [Pre-Requisites](#pre)
+2. [Installing WinGet and using it to install Oh-My-Posh](#install)
+3. [Change theme](#theme)
+4. [References](#ref)
+
+<div id='pre'/>
+
+> ### Pre-Requisites
+>
+> You need to have _Powershell_ installed on Windows, and ideally you'll want to use _Windows Terminal_ as well. Follow the <a href="https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.2#msi" target="_blank">official Microsoft instructions to install Powershell</a>. For Windows Terminal, you'll have to <a href="https://aka.ms/terminal" target="_blank">install it from the Windows Store</a>.
+> <br><br>
+> The rest of this guide will assume you are using <em>Windows Terminal</em>.
+
+<div id='install'/>
 
 ## Installing WinGet and using it to install Oh-My-Posh
 
@@ -36,6 +49,8 @@ Finally, reload the profile for changes to take effect:
 . $PROFILE
 ```
 
+<div id='theme'/>
+
 ## Change themes
 
 Once you have installed Oh-My-Posh, the <a href="https://github.com/JanDeDobbeleer/oh-my-posh/blob/main/themes/default.omp.json" target="_blank">default theme</a> will be used.
@@ -53,6 +68,8 @@ Remember to reload the profile for the changes to take effect:
 ```shell
 . $PROFILE
 ```
+
+<div id='ref'/>
 
 ## References
 

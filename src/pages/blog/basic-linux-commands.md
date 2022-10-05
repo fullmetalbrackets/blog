@@ -8,6 +8,15 @@ tags:
   - Command Line
 ---
 
+## Sections
+
+1. [Commands](#cmd)
+2. [Basic Usage](#basic)
+3. [Advanced Commands & Usage](#adv)
+4. [Reference](#ref)
+
+<div id='cmd'/>
+
 ## Commands
 
 - `ls`: list contents of directory
@@ -23,6 +32,8 @@ tags:
 - `reboot`: reboots the machine
 - `shutdown`: shuts down the machine
 - `sudo`: superuser/admin command to include before other commands that require administrator privileges
+
+<div id='basic'/>
 
 ## Basic Usage
 
@@ -71,6 +82,8 @@ Delete a directory and it's contents:
 rm -rf ~/home/bob/directory
 ```
 
+<div id='adv'/>
+
 ## Advanced Commands & Usage
 
 Using sudo:
@@ -112,6 +125,8 @@ Generate a basic SSH key pair:
 ssh-keygen
 ```
 
-## References
+<div id='ref'/>
+
+## Reference
 
 - <a href="https://ss64.com/bash" target="_blank" rel="noopener noreferrer">An A-Z Index of the Linux command line</a>

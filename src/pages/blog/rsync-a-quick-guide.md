@@ -9,6 +9,16 @@ tags:
   - Command Line
 ---
 
+## Sections
+
+1. [How to use Rsync](#intro)
+2. [Using Rsync with Cron](#cron)
+3. [References](#ref)
+
+<div id='intro'/>
+
+## How to use Rsync
+
 To explain Rsync, let's pretend we want to transfer a directory of photos between two Linux hosts. The hostname of the computer with the photos is called **Workstation**, and the main user is **Monica**. The hostname of the receiving computer is unknown, but it's IP address is **192.168.1.100** and it's user is **Chandler**. Monica only wants photos in .jpg format to be transferred, wants to skip transferring any photos that already exist at the destination unless she has a newer version of it, and wants to NOT transfer files over 100MB in size. She will use the below command and options:
 
 ```bash
@@ -27,6 +37,8 @@ Let's break it down:
 
 This is just a small sample of the options available, but this set of options is a good base to start using Rsync. A lot of people use Rsync as an automatic backup solution by using a cronjob to schedule transfers and using specific options only transfer certain files.
 
+<div id='cron'/>
+
 ## Using RSync with Cron
 
 Let's have Monica do that now with the following command:
@@ -44,6 +56,8 @@ This will open the Cron file in your default text editor. Monica wants to run th
 What's all that junk before the rsync command? You schedule cron jobs by expressing the timing in five fields: minutes, hours, day of the month, month, and day of the week. If this makes no sense, just know that I am right there with you, which is why I use a handy tool called <a href="https://cronmaker.com" target="_blank" rel="noopener noreferrer">Cronmaker</a> to make sense of it. Also, although it kind of defeats the purpose of this post, there is a handy tool with a slick GUI that lets you create your Rsync command with checkboxes and fields specifying what they do, go check out <a href="https://www.rsyncinator.app/web" target="_blank" rel="noopener noreferrer">Rsyncinator</a>.
 
 Finally, for a list of ALL the rsync options with short descriptions of what they do, check out the <a href="https://download.samba.org/pub/rsync/rsync.1" target="_blank">Rsync man page</a>, a truly exhaustive manual for understanding all the granular details of Rsync.
+
+<div id='ref'/>
 
 ## References
 

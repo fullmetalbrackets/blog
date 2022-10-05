@@ -9,8 +9,6 @@ tags:
   - Command Line
 ---
 
-Secure Copy is a command line utility that transfers files between the local host and a remote host via the SSH protocol. You will be prompted for the remote user's password, or you can use an <a href="https://arieldiaz.codes/blog/generating-an-ssh-key-pair" target="_blank">authorized SSH key</a>.
-
 ## Sections
 
 1. [SCP Command Syntax](#syntax)
@@ -21,6 +19,8 @@ Secure Copy is a command line utility that transfers files between the local hos
 6. [References](#ref)
 
 <div id='syntax'/>
+
+Secure Copy is a command line utility that transfers files between the local host and a remote host via the SSH protocol. You will be prompted for the remote user's password, or you can use an <a href="https://arieldiaz.codes/blog/generating-an-ssh-key-pair" target="_blank">authorized SSH key</a>.
 
 ## SCP Command Syntax
 
