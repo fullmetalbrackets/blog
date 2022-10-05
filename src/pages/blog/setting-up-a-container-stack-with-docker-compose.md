@@ -107,8 +107,8 @@ services:
     container_name: qflood
     image: cr.hotio.dev/hotio/qflood
     ports:
-      - "8800:8080"
-      - "3300:3000"
+      - 8800:8080
+      - 3300:3000
     environment:
       - PUID=1000
       - PGID=1000

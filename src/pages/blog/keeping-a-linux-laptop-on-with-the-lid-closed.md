@@ -22,7 +22,7 @@ Look for the following commented lines in the file:
 #HandleLidSwitchDocked=ignore
 ```
 
-> #### What they do:
+> ### What they do:
 >
 > - `HandleLidSwitch`: Lid close behavior _while not plugged in_.
 > - `HandleLidSwitchExternalPower`: Lid close behavior _while plugged in_.

@@ -9,6 +9,8 @@ tags:
   - Command Line
 ---
 
+> _Note:_ This is not a comprehensive tutorial for Ansible, but simple a terse quick guide of my personal use case for Ansible in my home lab. For a deeper dive, I strongly suggest <a href="https://www.learnlinux.tv/getting-started-with-ansible/" target="_blank" rel="noopener noreferrer">Learn Linux TV series of Ansible tutorials</a> which is how I first learned to use it myself.
+
 ## Sections
 
 1. [Install Ansible](#install)

@@ -25,24 +25,34 @@ tags:
 
 Clone an existing remote repo to work on locally.
 
-- `git clone https://github.com/username/repo.git`
+```bash
+git clone https://github.com/username/repo.git
+```
 
 If not cloning and starting from scratch, initialize git within the current working directory.
 
-- `git init`
+```bash
+git init
+```
 
 Configure your username & email in git. (Only need to do once per machine.)
 
-- `git config --global user.name "username"`
-- `git config --global user.email "email@example.com"`
+```bash
+git config --global user.name "username"
+git config --global user.email "email@example.com"
+```
 
 Change master branch to main. (From here on out this guide will presume you use **_main_**.)
 
-- `git branch -M main`
+```bash
+git branch -M main
+```
 
 Set a remote repository (e.g. on Github, Bitbucket, etc.) as the **_origin_**, basically you are telling git that this remote repo is the default you will be pushing to and pulling from.
 
-- `git remote add origin https://github.com/username/repo.git`
+```bash
+git remote add origin https://github.com/username/repo.git
+```
 
 <div id='stage-commit'/>
 
@@ -50,41 +60,57 @@ Set a remote repository (e.g. on Github, Bitbucket, etc.) as the **_origin_**, b
 
 Stage files modified since the last commit.
 
-- `git add .`: Stage all modified files
-- `git add --all`: Same as the above
-- `git add file1.html file2.html file3.js`: Stage a file, separate multiple files by a space
-- `git add folder/*`: Stage all files in a specific directory
-- `git add *.html`: Stage only specific types of files
+```bash
+git add . # Stage all modified files
+git add --all # Same as the above
+git add file1.html file2.html file3.js # Stage files
+git add folder/* # Stage all files in a specific directory
+git add *.html # Stage only specific types of files
+```
 
 Editing staged files.
 
-- `git reset`: Unstage ALL staged files. Changes to the file will be saved
-- `git restore --staged file1.html js/file2.js`: Unstage specific files, changes are kept
+```bash
+git reset # Unstage ALL staged files, keep changes to the file
+git restore --staged path/file1.html # Unstage specific files, keep changes
+```
 
 Commit staged files, using the -m flag to add a message without quotation marks.
 
-- `git commit -m "changed colors, added fireworks"`
+```bash
+git commit -m "changed colors, added fireworks"
+```
 
 Edit the message of last commit.
 
-- `git commit --amend`
-- `git commit -a` (short-hand for the above)
+```bash
+git commit --amend
+git commit -a # short-hand for the above
+```
 
 Undo the last commit, BEFORE pushing to remote. Changes to files and directories will be kept.
 
-- `git reset HEAD`
+```bash
+git reset HEAD
+```
 
 Totally undo all changes since the last commit, and restore deleted files. Be careful using this!
 
-- `git reset HEAD --hard`
+```bash
+git reset HEAD --hard
+```
 
 Using above command does not remove any newly created files since last commit. AFTER using it to undo changes and restore deleted files, delete NEW files and directories like this. (`-f` specifies files, `-d` specifies directories)
 
-- `git clean -fd`
+```bash
+git clean -fd
+```
 
 Check what stage of the git workflow all tracked (modified) files are in.
 
-- `git status`
+```bash
+git status
+```
 
 <div id='push-pull'/>
 
@@ -92,16 +118,25 @@ Check what stage of the git workflow all tracked (modified) files are in.
 
 Push to main branch on your default remote.
 
-- `git push`
+```bash
+git push
+```
 
 The first time you push a commit, you will need to designate an upstream branch (the branch of the remote repo that you will track) or git will bother you about it. If this is your own project, your upstream will probably be the production branch -- i.e. main or master.
 
-- `git push --set-upstream origin main`
+```bash
+git push --set-upstream origin main
+```
 
 To pull and apply changes from remote repos.
 
-- `git pull`: This will pull from origin's main branch if it is set as upstream, like above
-- `git pull bitbucket-repo`: If you added more remote repos, this pulls the specified remote instead of origin
+```bash
+git pull # This will pull from origin's main branch if it is set as upstream, like abov
+```
+
+```bash
+git pull bitbucket-repo # Pull from specific remote repo
+```
 
 <div id='branches'/>
 
@@ -109,38 +144,63 @@ To pull and apply changes from remote repos.
 
 Switch to a branch, use **_-c_** to create if it doesn't already exist.
 
-- `git switch -c new-branch`
+```bash
+git switch -c new-branch
+```
 
 Push a branch to remote repo.
 
-- `git push origin new-branch`: Push branch to origin
-- `git push new-branch`: Or if origin is set you can omit it
-- `git push other-repo new-branch`: Push to another remote that you already set up
+```bash
+git push origin new-branch # Push branch to original
+```
+
+```bash
+git push new-branch # Or if origin is set you can omit it
+```
+
+```bash
+git push other-repo new-branch # Push to another remote that you already set up
+```
 
 Merge committed changes in a branch (let's say it's called **_new-feature_**) with the main branch.
 
-- `git switch main`: Make sure to switch from the other branch to main first
-- `git merge feature-branch`: This applies the actual merge locally
+```bash
+git switch main # Make sure to switch from the other branch to main first
+```
+
+```bash
+git merge feature-branch # This applies the actual merge locally
+```
 
 If the merge has conflicts, you can undo it.
 
-- `git merge --abort`
+```bash
+git merge --abort
+```
 
 Sometimes git will not undo a merge with **_--abort_**, usually because there were changes made after the merge. To force undoing the merge at this point use the **_--continue_** flag.
 
-- `git merge --continue`
+```bash
+git merge --continue
+```
 
 Delete a LOCAL branch. This does NOT affect remote branches!
 
-- `git branch -d branch-name`
+```bash
+git branch -d branch-name
+```
 
 Sometimes git will refuse to delete a branch, like if it has commits that the main branch does not. Force deletion with **_-D_**
 
-- `git branch -D branch-name` (capital D instead of lowercase d)
+```bash
+git branch -D branch-name # capital D instead of lowercase d
+```
 
 Delete a REMOTE branch. Here we don't use **_git branch_** but instead **_git push_** with added options.
 
-- `git push origin --delete branch-name`
+```bash
+git push origin --delete branch-name
+```
 
 <div id='multi'/>
 
@@ -148,21 +208,35 @@ Delete a REMOTE branch. Here we don't use **_git branch_** but instead **_git pu
 
 Above I explained how to add a remote repo as **_origin_**, making it the default. But what if you want to push your project to multiple remotes, even on different git hosts? For example, say your origin is on Github, but you also want copies of your project on Bitbucket and Gitlab. (Let's assume you name these **_bitbucket-repo_** & **_gitlab-repo_** locally.)
 
-- `git remote add gitlab-repo https://username@bitbucket.org/username/repo.git`
-- `git remote add bitbucket-repo https://username@bitbucket.org/username/repo.git`
+```bash
+git remote add gitlab-repo https://username@bitbucket.org/username/repo.git
+```
+
+```bash
+git remote add bitbucket-repo https://username@bitbucket.org/username/repo.git
+```
 
 Now you can push to those additional remotes by specifying the name and branch.
 
-- `git push bitbucket-repo main`
-- `git push gitlab-repo main`
+```bash
+git push bitbucket-repo main
+```
+
+```bash
+git push gitlab-repo main
+```
 
 To "track" a branch when adding a remote, making that branch the default for the remote.
 
-- `git remote add -t main gitlab-repo https://username@bitbucket.org/username/repo.git`
+```bash
+git remote add -t main gitlab-repo https://username@bitbucket.org/username/repo.git
+```
 
 By tracking the main branch on the remote "gitlab-repo" and can do the following.
 
-- `git push gitlab-repo` (No need to specify main branch once tracked)
+```bash
+git push gitlab-repo # No need to specify main branch once tracked
+```
 
 <div id='forks'/>
 
@@ -170,10 +244,15 @@ By tracking the main branch on the remote "gitlab-repo" and can do the following
 
 Let's say you've forked an existing repo on Github, your version of that repo under your account is **_origin_**. The pre-existing repo you forked is **_upstream_**. If you wanted to pull updates from the upstream repo, you do the following.
 
-- `git switch main`: Make sure you are on the main local branch
-- `git remote add -t main upstream https://github.com/username/repo.git`: Add a remote as upstream and track the main branch
-- `git fetch upstream`: This fetches metadata of the changes between the upstream and your local repo, but nothing changes locally yet
-- `git merge origin/upstream`: Merge fetched changes from the upstream into your local repo
+```bash
+git switch main # Make sure you are on the main local branch
+```
+
+```bash
+git remote add -t main upstream https://github.com/username/repo.git # Add a remote as upstream and track the main branch
+git fetch upstream # This fetches metadata of the changes between the upstream and your local repo, but nothing changes locally yet
+git merge origin/upstream # Merge fetched changes from the upstream into your local rep
+```
 
 <div id='advanced'/>
 
@@ -183,19 +262,27 @@ There's way too many advanced commands, and options for these commands, that I h
 
 To "detach HEAD" and explore a prior commit, you'll need the commit's hash ID from Github.
 
-- `git checkout 6e751bc32`
+```bash
+git checkout 6e751bc32
+```
 
 If you want to create a new branch from this old commit, and switch to it.
 
-- `git switch -c new-branch`
+```bash
+git switch -c new-branch
+```
 
 Or if you want to go back. (Reattach HEAD to most recent commit.)
 
-- `git switch -`
+```bash
+git switch -
+```
 
 Revert the remote ORIGIN to this old commit. (Be careful doing this!)
 
-- `git revert 6e751bc32`
+```bash
+git revert 6e751bc32
+```
 
 There's more advanced commands I'm not going to talk about until I use them myself -- things like `git rebase`, and I'm also not showing all the different ways to use `git checkout` because I don't know even half of them. I'll make a future blog post as I learn more of these.
 
@@ -206,3 +293,7 @@ There's more advanced commands I'm not going to talk about until I use them myse
 - <a href="https://git-scm.com/docs/git" target="_blank">Git Documentation</a>
 - <a href="https://training.github.com/downloads/github-git-cheat-sheet" target="_blank">GitHub Cheat Sheet</a>
 - Many questions and answers on <a href="https://stackoverflow.com" target="_blank" rel="noopener noreferrer">StackOverflow</a>
+
+```
+
+```

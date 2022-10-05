@@ -10,7 +10,7 @@ tags:
   - Command Line
 ---
 
-Getting set up on Oh-My-Posh is super easy. First, we need to have Powershell installed on Windows, and ideally you'll want to use Windows Terminal as well. Follow the <a href="https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.2#msi" target="_blank">official Microsoft instructions to install Powershell</a>. For Windows Terminal, you'll have to <a href="https://aka.ms/terminal" target="_blank">install it from the Windows Store</a>.
+Getting set up on _Oh-My-Posh_ is super easy. First, we need to have _Powershell_ installed on Windows, and ideally you'll want to use _Windows Terminal_ as well. Follow the <a href="https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.2#msi" target="_blank">official Microsoft instructions to install Powershell</a>. For Windows Terminal, you'll have to <a href="https://aka.ms/terminal" target="_blank">install it from the Windows Store</a>.
 
 The rest of this guide will assume you are using <em>Windows Terminal</em>.
 
