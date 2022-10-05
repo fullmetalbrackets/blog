@@ -5,7 +5,7 @@ description: "The kbd element less commonly used HTML5, but I wanted to style it
 pubDate: "September 19, 2022"
 tags:
   - CSS
-  - Web Development
+  - Web Dev
 ---
 
 > **Attribution:** I want to start this off by saying _this is not my code_, but was taken from <a href="http://dylanatsmith.com/wrote/styling-the-kbd-element" target="_blank">Dylan Smith</a> from his own blog post on the subject, and I simply made a few modifications for my site. I encourage you to go read his post since mine is terse for my own purposes.

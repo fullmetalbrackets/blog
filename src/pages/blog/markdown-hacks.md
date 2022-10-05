@@ -5,7 +5,7 @@ description: "Markdown can render A LOT of characters and symbols using specific
 pubDate: "September 20, 2022"
 tags:
   - Markdown
-  - Web Development
+  - Web Dev
 ---
 
 ## Characters & Symbols

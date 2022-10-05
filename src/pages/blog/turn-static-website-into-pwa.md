@@ -5,7 +5,7 @@ description: "Frameworks and libraries are great and all, but sometimes you just
 pubDate: "January 7, 2022"
 tags:
   - PWA
-  - Web Development
+  - Web Dev
 ---
 
 ## Sections
