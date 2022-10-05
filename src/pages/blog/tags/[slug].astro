@@ -40,16 +40,11 @@ const posts = (await Astro.glob('../../blog/*.{md,mdx}')).sort(
 			ul {
 				list-style-type: none;
 				padding: 0;
-				margin: 0;
+				margin: 2em 0 0 0;
 				line-height: 1.2;
 			}
 			ul li {
-				margin-bottom: 2em;
-				padding: 1em;
-			}
-			ul li:hover {
-				background-color: #08083A;
-				border-radius: 0.5em;
+				margin-bottom: 4em;
 			}
 			ul li a .title {
 				color: #FF39A8;
@@ -65,6 +60,15 @@ const posts = (await Astro.glob('../../blog/*.{md,mdx}')).sort(
 			}
 			h1 {
 				margin-bottom: 0;
+				line-height: 40px;
+				font-size: 36px;
+			}
+			.title {
+				margin: 1.85em 0 0.5em 0;
+				color: var(--lightpink);
+			}
+			.title span {
+				color: var(--pink);
 			}
 		</style>
 	</head>
@@ -73,7 +77,7 @@ const posts = (await Astro.glob('../../blog/*.{md,mdx}')).sort(
 		<Header />
 		<main>
 			<section>
-				<h1>{title}</h1>
+				<h1 class="title">Posts tagged <span>{title}</span></h1>
 				<hr class="tag-line">
 				<ul>
 					
