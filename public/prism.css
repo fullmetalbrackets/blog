@@ -4,7 +4,7 @@
 
 code[class*="language-"],
 pre[class*="language-"] {
-  color: var(--pink);
+  color: var(--lightpink);
   font-family: 'JetBrains Mono', Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
   border-radius: 0.5em;
   text-align: left;
@@ -73,7 +73,7 @@ pre[class*="language-"] {
 }
 
 .token.selector {
-  color: var(--lightpink);
+  color: var(--pink);
   
 }
 
@@ -128,7 +128,7 @@ pre[class*="language-"] {
 }
 
 .token.function {
-  color: var(--lightpink);
+  color: var(--pink);
   
 }
 
