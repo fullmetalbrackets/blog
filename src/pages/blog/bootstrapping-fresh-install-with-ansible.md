@@ -178,7 +178,7 @@ This inventory is very simple, it gives Ansible two groups of hosts as targets `
 
 ```ini
 [targets]
-192.168.1.200   ansible_user=user1   ansible_passrd=password2
+192.168.1.200   ansible_user=user1   ansible_password=password2
 192.168.1.210   ansible_user=user2   ansible_password=password1
 192.168.1.220   ansible_user=user3   ansible_password=password3
 ```
