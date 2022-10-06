@@ -1,6 +1,6 @@
 ---
 layout: "../../layouts/BlogPost.astro"
-title: "Initial setup for debian fresh installs"
+title: "Initial setup for Debian fresh installs"
 description: "Most of my experience with Linux is via the Ubuntu distribution, which includes many defaults that make it very user friendly and easier to use than other distros. Debian is pretty minimal, however, so I need a reminder of those extra steps that are necessary on a fresh install of Debian."
 pubDate: "October 6, 2022"
 tags:
