@@ -12,9 +12,10 @@ tags:
 ## Sections
 
 1. [Install Ansible](#install)
-2. [The playbook, config and inventory](#config)
-3. [Running the playbook](#run)
-4. [References](#ref)
+2. [The playbook](#playbook)
+3. [The inventory and config files](#config)
+4. [Running the playbook](#run)
+5. [References](#ref)
 
 > _Note:_ This is not a comprehensive tutorial for Ansible, but simple a terse quick guide of my personal use case for Ansible in my home lab. For a deeper dive, I strongly suggest <a href="https://www.learnlinux.tv/getting-started-with-ansible/" target="_blank" rel="noopener noreferrer">Learn Linux TV series of Ansible tutorials</a> which is how I first learned to use it myself.
 
@@ -29,11 +30,11 @@ sudo apt-add-repository ppa:ansible/ansible
 sudo apt install ansible -y
 ```
 
-<div id='config'/>
+<div id='playbook'/>
 
-## The playbook, config and inventory
+## The playbook
 
-Contents of the playbook `bootstrap.yml` follows:
+Contents of the playbook, which I named `bootstrap.yml`:
 
 ```yaml
 - name: Bootstrap Linux Server
@@ -152,7 +153,35 @@ Contents of the playbook `bootstrap.yml` follows:
       when: reboot_required_file.stat.exists
 ```
 
-This playbook will enable passwordless sudo for a specified user, installs a selection of packages I commonly use, changes the default shell, and copies over dotfiles and other configs.
+This playbook will installs a selection of packages I commonly use, changes the default shell, and copies over dotfiles and other configs.
+
+<div id='config'/>
+
+## The inventory and config files
+
+Next we need the inventory file, which I named `hosts` (no file extension) and I'm using the INI file format (you can also use YAML if you prefer):
+
+```ini
+[server]
+192.168.1.200
+192.168.1.210
+
+[test]
+192.168.1.220
+
+[all:vars]
+ansible_user=username
+ansible_sudo_pass=password
+```
+
+This inventory is very simple, it gives Ansible two groups of hosts as targets `[server]` and `[test]`, and provides a superuser and their sudo password as variables for all targets. This works for me because I use the same username and password for all the linux machines on my network, but you can make different sets of variables, for example:
+
+```ini
+[targets]
+192.168.1.200   ansible_user=user1   ansible_passrd=password2
+192.168.1.210   ansible_user=user2   ansible_password=password1
+192.168.1.220   ansible_user=user3   ansible_password=password3
+```
 
 Next is the configuration file, `ansible.cfg`:
 
@@ -169,19 +198,6 @@ pipelining = true
 ```
 
 This tells Ansible the name of the inventory file (`hosts`), the location of the SSH private key to use, and `pipelining = true` vastly improves the speed at which Ansible executes tasks.
-
-Finally we need the inventory file, `hosts`:
-
-```ini
-[hosts]
-apollo
-
-[hosts:vars]
-ansible_user=username
-ansible_sudo_pass=password
-```
-
-This tells Ansible the target hosts (in this case just my server, **apollo**), and provides the server's username and password as variables.
 
 <div id='run'/>
 
