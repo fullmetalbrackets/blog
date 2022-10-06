@@ -57,7 +57,7 @@ nano /etc/network/interfaces
 
 Look for these lines towards the end of the file:
 
-```conf
+```ini
 # The primary network interface
 allow-hotplug enp0s25
 iface enp0s25 inet dhcp
@@ -65,7 +65,7 @@ iface enp0s25 inet dhcp
 
 Edit to the following:
 
-```conf
+```ini
 # The primary network interface
 auto enp0s25
 iface enp0s25 inet static
