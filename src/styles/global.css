@@ -181,7 +181,7 @@ pre > code {
 	all: unset;
 }
 blockquote {
-	border: 1px solid var(--lightpink);
+	border: 1px solid var(--yellow);
 	padding: 2px 20px 2px 20px;
 	margin: 2em 0;
   border-radius: 0.5em;
