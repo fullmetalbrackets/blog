@@ -4,34 +4,48 @@ const today = new Date();
 ---
 
 <footer>
-	<p>
-		&copy; 2020 - {today.getFullYear()} Ariel Diaz. 
+	<span>
+		&copy; 2020 - {today.getFullYear()} Ariel Diaz.<br> 
 		All rights reserved.
-	</p>
-	<nav>
+	</span>
+	<div class="nav">
 		<NavLink href="/rss.xml">RSS</NavLink>
 		<NavLink href="/markdown-style-guide">Style</NavLink>
 		<NavLink href="mailto:contact@fullmetalbrackets.com" target="_blank">Contact</NavLink>
-	</nav>
+	</div>
 </footer>
 <style>
 	footer {
 		font-size: 12px;
-		margin: 0;
-		padding: 25px;
+		margin: 2em 0;
 		text-align: center;
 		display: flex;
 		justify-content: space-between;
 	}
-	p {
-		margin: 0;
+	.nav {
+		margin: 0 0 2em 0;
 	}
+	span {
+		display: flex;
+		justify-content: left;
+		margin: 0;
+		padding: 0;
+	}
+	a:hover {
+			color: var(--hover);
+		}
 	@media screen and (min-width: 200px) and (max-width: 767px) {
-		nav {
-			display: grid;
+		.nav {
+			display: flex;
+			justify-content: space-between;
+			padding: 0;
 		}
-		p {
+		.nav a, a:active, a:visited, a:hover {
+			margin: 0;
+			padding: 0 10px;
+		}
+		/* p {
 			width: 100px;
-		}
+		} */
 	}
 </style>

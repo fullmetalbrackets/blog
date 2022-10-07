@@ -5,7 +5,8 @@
 code[class*="language-"],
 pre[class*="language-"] {
   color: var(--lightpink);
-  font-family: 'JetBrains Mono', Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  font-family: 'LeagueMono-VF', 'JetBrains Mono', 'Ubuntu Mono', Consolas, Monaco, monospace;
+  font-size: 18px;
   border-radius: 0.5em;
   text-align: left;
   white-space: pre;

@@ -98,11 +98,22 @@ for = "/*"
   force = true
 
 [[redirects]]
+  from = "https://arieldiaz.codes/contact"
+  to = "https://arieldiaz.codes/about"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "https://fullmetalbrackets.com/blog"
   to = "https://fullmetalbrackets.com/"
   status = 301
   force = true
 
+[[redirects]]
+  from = "https://fullmetalbrackets.com/contact"
+  to = "https://fullmetalbrackets.com/about"
+  status = 301
+  force = true
 
 [context.deploy-preview]
   ignore = "git log -1 --pretty=%B | grep dependabot"
