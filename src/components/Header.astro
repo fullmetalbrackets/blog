@@ -39,16 +39,24 @@ import { SITE_TITLE } from '../config';
 		font-size: 4em;
 		margin: 0;
 	}
+	a, a:active, a:visited {
+		padding: 4px 8px;
+	}
+	a:hover {
+		padding: 4px 8px;
+		border-radius: 0.25em;
+		background: var(--accent);
+	}
 	@media screen and (min-width: 200px) and (max-width: 767px) {
 		nav {
 			display: inline-flex;
 		}
-		/* nav {
-			display: grid;
-			grid-template-columns: 2;
-			grid-template-rows: 2;
-			grid-template-columns: 150px 150px;
-			grid-row: auto auto;
-		} */
+		a, a:active, a:visited {
+		padding: 0;
+		}
+		a:hover {
+			padding: 0;
+			background: var(--main);
+		}
 	}
 </style>
