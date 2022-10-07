@@ -115,5 +115,41 @@ for = "/*"
   status = 301
   force = true
 
+[[redirects]]
+  from = "https://arieldiaz.codes/blog/5-ways-to-easily-host-your-web-site-for-free"
+  to = "https://arieldiaz.codes/blog/5-ways-to-host-site-free"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://arieldiaz.codes/blog/turn-a-static-website-into-a-progressive-web-app"
+  to = "https://arieldiaz.codes/blog/turn-static-website-into-pwa"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://arieldiaz.codes/blog/"
+  to = "https://arieldiaz.codes/blog/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://arieldiaz.codes/blog/quick-guide-setting-up-zsh-oh-my-zsh-plugins-and-theme"
+  to = "https://arieldiaz.codes/blog/guide-to-zsh-ohmyzsh-plugins-and-theme"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://arieldiaz.codes/blog/mounting-either-internal-or-external-hard-drives-in-linux"
+  to = "https://arieldiaz.codes/blog/mounting-hard-drives-in-linux"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://arieldiaz.codes/blog/how-to-autologin-ubuntu-on-reboot-and-go-straight-to-terminal"
+  to = "https://arieldiaz.codes/blog/how-to-autologin-ubuntu-on-reboot"
+  status = 301
+  force = true
+
 [context.deploy-preview]
   ignore = "git log -1 --pretty=%B | grep dependabot"
