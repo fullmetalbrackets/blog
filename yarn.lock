@@ -15,10 +15,10 @@
   resolved "https://registry.yarnpkg.com/@astrojs/compiler/-/compiler-0.23.5.tgz#ea57a2b994b2930e3b3d2d524f10866698fef4f1"
   integrity sha512-vBMPy9ok4iLapSyCCT1qsZ9dK7LkVFl9mObtLEmWiec9myGHS9h2kQY2xzPeFNJiWXUf9O6tSyQpQTy5As/p3g==
 
-"@astrojs/compiler@^0.25.0":
-  version "0.25.1"
-  resolved "https://registry.yarnpkg.com/@astrojs/compiler/-/compiler-0.25.1.tgz#0b55aa29fea5673deb5d47899ad86e2dbcb4cb79"
-  integrity sha512-rDuTM9p8HVeHB0/qUiBHgEHRBf/3otcP+wLs3kRXk/quJs0vpCruq42vGsmE1ZFuBi8Ie5mz8fWGm7F6nHhXaQ==
+"@astrojs/compiler@^0.26.0":
+  version "0.26.1"
+  resolved "https://registry.yarnpkg.com/@astrojs/compiler/-/compiler-0.26.1.tgz#b57f51c9b099b5fbab4db0bcd51189a16a568ec7"
+  integrity sha512-GoRi4qB05u+bVcSlR9nu9HJfSUGFBcoUUb+WFimKSm9e/KPTy0STOMb/Q0mLIcloavF4KvEqAnd9ukX62ewoaA==
 
 "@astrojs/language-server@^0.26.2":
   version "0.26.2"
@@ -816,12 +816,12 @@ astring@^1.8.0:
   resolved "https://registry.yarnpkg.com/astring/-/astring-1.8.3.tgz#1a0ae738c7cc558f8e5ddc8e3120636f5cebcb85"
   integrity sha512-sRpyiNrx2dEYIMmUXprS8nlpRg2Drs8m9ElX9vVEXaCB4XEAJhKfs7IcX0IwShjuOAjLR6wzIrgoptz1n19i1A==
 
-astro@^1.4.4:
-  version "1.4.4"
-  resolved "https://registry.yarnpkg.com/astro/-/astro-1.4.4.tgz#c64ee6087c0ebf27c24c38a57d2f4f43fd1263f5"
-  integrity sha512-vxuHJ8C/3/NDau6EDUvi83JFDBK5Ylmo6VGAsUkdnutpGw77I4NoapoN56ANmU54ucYiu+x0apEPQvesY6GZiQ==
+astro@^1.4.5:
+  version "1.4.5"
+  resolved "https://registry.yarnpkg.com/astro/-/astro-1.4.5.tgz#6515d8d6edd0d73be80707408c345dfe8c8c7b9a"
+  integrity sha512-7uflNdFMsAONkEdtNRqP1XgtgdUhiiFfYd3DjtaoaskYhcnfKKYy8Lht0stIQaMtAqITIy0LLTDvDM/j8SfuUw==
   dependencies:
-    "@astrojs/compiler" "^0.25.0"
+    "@astrojs/compiler" "^0.26.0"
     "@astrojs/language-server" "^0.26.2"
     "@astrojs/markdown-remark" "^1.1.3"
     "@astrojs/telemetry" "^1.0.1"
