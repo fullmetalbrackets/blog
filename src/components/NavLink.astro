@@ -15,24 +15,20 @@ const isActive = href === Astro.url.pathname.replace(/\/$/, '');
 		font-weight: 900;
 		font-size: 1.25em;
 		text-decoration: none;
-		padding: 5px 10px;
-		margin-left: 0;
+		padding: 10px 0;
 		margin-right: 2em;
 	}
 	a:hover {
 		color: var(--yellow);
-		background: var(--accent);
-		border-radius: 0.25em;
+		border-radius: 0;
 		font-weight: 900;
 		text-decoration: none;
-		margin-left: 0;
 		margin-right: 2em;
+		padding: 10px 0;
 	}
 	@media screen and (min-width: 200px) and (max-width: 767px) {
 		a, a:active, a:visited, a:hover {
 			font-size: 1em;
-			padding: 4px 8px 4px 0;
-			background: var(--main);
 		}
 	}
 </style>
