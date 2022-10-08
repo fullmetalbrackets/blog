@@ -1,49 +1,15 @@
 ---
 layout: "../../layouts/BlogPost.astro"
-title: "Initial setup for Debian fresh installs"
-description: "Most of my experience with Linux is via the Ubuntu distribution, which includes many defaults that make it very user friendly and easier to use than other distros. Debian is pretty minimal, however, so I need a reminder of those extra steps that are necessary on a fresh install of Debian."
-pubDate: "October 6, 2022"
+title: "Set a static IP in Debian"
+description: "Debian's non-graphical install does not give you the option to set a static IP, here's a quick guide to doing it manually on the command line."
+pubDate: "October 7, 2022"
 tags:
   - Debian
   - Networking
   - Command Line
 ---
 
-## Sections
-
-1. [Installing and configuring sudo](#sudo)
-2. [Setting a static IP address](#ip)
-3. [Reference](#ref)
-
-<div id='sudo'>
-
-## Installing and configuring sudo
-
-The almighty `sudo` command is not even available in Debian by default -- instead you have to switch to the root user to do things that require administrative privileges. So first thing I always do is get it installed.
-
-```bash
-apt install sudo -y
-```
-
-Once installed, add a user to the sudo group:
-
-```bash
-adduser user sudo
-```
-
-Now switch to the user that was just added to the sudo group, and verify the user is authorized:
-
-```bash
-sudo -v
-```
-
-> _Note:_ The rest of this guide will assume you are still the `root` user when performing the following actions, if you are instead using your new superuser, you will need to append `sudo` for some commands.
-
-<div id='ip'>
-
-## Set a static IP address
-
-Debian's non-graphical install does not give you the option to set a static IP, so let's do it manually. First, save a copy of the default network config as a back up.
+First, save a copy of the default network config as a back up:
 
 ```bash
 cp /etc/network/interfaces /backups/
@@ -115,9 +81,6 @@ Output should look similar to this:
        valid_lft forever preferred_lft forever
 ```
 
-<div id='ref'/>
-
 ## References
 
-- <a href="https://wiki.debian.org/sudo" target="_blank">Debian wiki, sudo page</a>
 - <a href="https://www.debian.org/doc/manuals/debian-reference/ch05.en.html" target="_blank">Debian manual, network setup chapter</a>
