@@ -15,7 +15,8 @@ tags:
 2. [Configuring DNS](#dns)
 3. [Using adlists to block domains](#adlist)
 4. [Advanced DNS settings](#advanced)
-5. [Reference](#ref)
+5. [Further steps](#further)
+6. [Reference](#ref)
 
 <br>
 <div id='install' />
@@ -34,9 +35,9 @@ curl -sSL https://install.pi-hole.net | bash
 
 Executing the script will prompt a number of dialogs, pay attention and make sure you input all the correct information.
 
-> **Important!** Make sure to take note of the Web UI password provided at the end of the install process, you'll need it to login to the UI.
+> **Important!** Make sure to take note of the admin password provided at the end of the install process, you'll need it to login to the Web UI. Ideally you should change the admin password with `pihole -a -p newpassword`.
 
-Now you should be able to access the Pi-Hole Web UI at either `http://pi.hole/admin`, or use the IP address or hostname, e.g. `http://hostname/admin`.
+Now you should be able to access the Pi-Hole Web UI at either `http://pi.hole/admin`, or use the IP address or hostname, e.g. `http://192.168.1.250/admin` or `http://hostname/admin`.
 
 <div id='dns' />
 
@@ -105,6 +106,12 @@ Alternately, you can manually edit the `/etc/hosts` file on the server running P
 ```
 
 After saving your changes to the file, use `pihole restartdns` for them to take effect.
+
+## Further steps
+
+If you've been following the instructions, you're all set to block ads. Pi-Hole will act as a middleman between you and your chosen DNS (1.1.1.1 for example), blocking ads, tracking and telemetry.
+
+If you want your setup to be more private, consider <a href="https://docs.pi-hole.net/guides/dns/unbound/#setting-up-pi-hole-as-a-recursive-dns-server-solution" target="_blank">setting up a recursive DNS with unbound</a>, that way you bypass public DNS servers like Cloudflare and Google entirely.
 
 <div id='ref' />
 
