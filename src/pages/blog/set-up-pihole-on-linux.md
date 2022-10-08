@@ -114,6 +114,12 @@ If you've been following the instructions, you're all set to block ads. Pi-Hole 
 
 If you want your setup to be more private, consider <a href="https://docs.pi-hole.net/guides/dns/unbound/#setting-up-pi-hole-as-a-recursive-dns-server-solution" target="_blank">setting up a recursive DNS with unbound</a>, that way you bypass public DNS servers like Cloudflare and Google entirely.
 
+If you're using regularly updated adlists, you should consider using a cronjob to update the gravity every day or two. Use `cronjob -e` and place in the below to (for example) update gravity everyday at 5:00AM.
+
+```bash
+0 5 * * * pihole -g
+```
+
 <div id='ref' />
 
 ## Reference
