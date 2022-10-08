@@ -57,7 +57,7 @@ body {
 }
 ::-webkit-scrollbar {
   height: 8px;
-  width: 4px;
+  width: 10px;
 }
 ::-webkit-scrollbar-track {
   border-radius: 0.25em;
@@ -168,7 +168,7 @@ img {
   margin-bottom: 0;
 }
 code {
-	padding: 2px 5px;
+	padding: 3.5px 5px;
 	font-family: 'LeagueMono-VF', monospace;
 	background-color: var(--accent);
 	color: var(--lightpink);
