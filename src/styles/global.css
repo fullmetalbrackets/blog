@@ -169,6 +169,7 @@ time {
 img {
 	max-width: 100%;
 	height: auto;
+  margin-bottom: 0;
 }
 code {
 	padding: 2px 5px;
@@ -182,6 +183,11 @@ pre {
 }
 pre > code {
 	all: unset;
+}
+figcaption {
+  font-size: 0.75em;
+  color:var(--cyan);
+  padding-left: 5px;
 }
 blockquote {
 	border: 1px solid var(--yellow);

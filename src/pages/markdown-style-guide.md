@@ -74,7 +74,31 @@ Itatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne sap
 
 ## Images
 
+Here is a simple image using Markdown:
+
 ![This is a placeholder image description](/img/placeholder-social.jpg)
+
+```md
+![This is a placeholder image description](/img/placeholder-social.jpg)
+```
+
+<br><br>
+
+And here is an image in a `figure` element with a `figcaption`.
+
+<figure>
+<img src="/img/placeholder-social.jpg" alt="This is a placeholder image description" />
+<figcaption>This is a caption, quick blurb about the above image.</figcaption>
+
+```html
+<figure>
+  <img
+    src="/img/placeholder-social.jpg"
+    alt="This is a placeholder image description"
+  />
+  <figcaption>This is a caption, quick blurb about the above image.</figcaption>
+</figure>
+```
 
 ## Blockquotes
 
