@@ -93,14 +93,10 @@ h2 {
 article h2:first-child {
   margin-top: 3.5em;
 }
-h3, h5 {
+h3, h4, h5, h6 {
 	color: var(--lightpink);
+  margin-top: 3em;
 }
-
-h4, h6 {
-  color: var(--pink);
-}
-
 hr {
 	border: 0.25px solid var(--pink);
 	opacity: 0.5;

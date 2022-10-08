@@ -82,8 +82,6 @@ Here is a simple image using Markdown:
 ![This is a placeholder image description](/img/placeholder-social.jpg)
 ```
 
-<br><br>
-
 And here is an image in a `figure` element with a `figcaption`.
 
 <figure>
