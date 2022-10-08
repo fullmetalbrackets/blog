@@ -108,11 +108,11 @@ Alternately, you can manually edit the `/etc/hosts` file on the server running P
 
 After saving your changes to the file, use `pihole restartdns` for them to take effect.
 
+<div id='further' />
+
 ## Further steps
 
-If you've been following the instructions, you're all set to block ads. Pi-Hole will act as a middleman between you and your chosen DNS (1.1.1.1 for example), blocking ads, tracking and telemetry.
-
-If you want your setup to be more private, consider <a href="https://docs.pi-hole.net/guides/dns/unbound/#setting-up-pi-hole-as-a-recursive-dns-server-solution" target="_blank">setting up a recursive DNS with unbound</a>, that way you bypass public DNS servers like Cloudflare and Google entirely.
+If you've been following the instructions, you're all set to block ads. Pi-Hole will act as a middleman between you and your chosen DNS (1.1.1.1 for example), blocking ads, tracking and telemetry. If you want your setup to be more private, consider <a href="https://docs.pi-hole.net/guides/dns/unbound/#setting-up-pi-hole-as-a-recursive-dns-server-solution" target="_blank">setting up a recursive DNS with unbound</a>, that way you bypass public DNS servers like Cloudflare and Google entirely.
 
 If you're using regularly updated adlists, you should consider using a cronjob to update the gravity every day or two. Use `cronjob -e` and place in the below to (for example) update gravity everyday at 5:00AM.
 
