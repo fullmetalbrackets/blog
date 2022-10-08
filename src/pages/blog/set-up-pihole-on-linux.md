@@ -36,7 +36,7 @@ Executing the script will prompt a number of dialogs, pay attention and make sur
 
 > **Important!** Make sure to take note of the Web UI password provided at the end of the install process, you'll need it to login to the UI.
 
-Now you should be able to access the Pi-Hole Web UI at either `http://pi.hole/admin`, or use the IP address or hostname, e.g. `hostname/admin`.
+Now you should be able to access the Pi-Hole Web UI at either `http://pi.hole/admin`, or use the IP address or hostname, e.g. `http://hostname/admin`.
 
 <div id='dns' />
 
@@ -65,9 +65,9 @@ The most efficient way to block URLs in Pi-Hole is to use an adlist, which is a 
 - <a href="https://www.github.developerdan.com/hosts" target="_blank">Developer Dan's Adlists</a>
 - <a href="https://github.com/mmotti/pihole-regex/blob/master/regex.list" target="_blank">This gist of Regex Expressions</a>
 
-Once you've added all the adlists (any time you add additional ones), make sure to "update gravity" for the changes to take effect. Go to _Tools_ on the navigation bar, click on _Update Gravity_, and click the big _Update_ button. Do not leave the page until the process is done!
+Once you've added all the adlists (and any time you add additional ones), make sure to "update gravity" for the changes to take effect. Go to _Tools_ on the navigation bar, click on _Update Gravity_, and click the big _Update_ button. Do not leave the page until the process is done!
 
-You may end up with several "domains on adlists" as shown in the dashboard. Don't panic. You'll see your dashboard stats explode with blocked requests, especially from mobile devices. Pay attention to any issues you have visiting websites and using online apps/services that you commonly do, and whitelist domains as needed. (You can also use a <a href="https://github.com/anudeepND/whitelist" target="_blank">curated whitelist</a>.)
+You may end up with several million "domains on adlists" as shown in the dashboard. Don't panic. You'll see your dashboard stats explode with blocked requests, especially from mobile devices. Pay attention to any issues you have visiting websites and using online apps/services that you commonly do, and whitelist domains as needed. (You can also use a <a href="https://github.com/anudeepND/whitelist" target="_blank">curated whitelist</a>.)
 
 <a href="/img/adlist.png" target="_blank"><img src="/img/blocked.png" alt="Screenshot of over 3 million domains blocked on Pi-Hole dashboard." /></a>
 
