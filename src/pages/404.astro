@@ -1,0 +1,46 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Base from '../layouts/Base.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../config';
+
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+			main {
+				margin: auto;
+				padding: auto;
+        text-align: center;
+			}
+      h1 {
+        font-size: 10em;
+        font-family: 'Streamster', 'Wotfard', 'Fira Sans', Verdana, sans-serif;
+        margin: 0.5em 0 0 0;
+      }
+      p {
+        font-size: 3em;
+        text-align: center;
+        color: var(--cyan);
+        margin: 0 0 2.5em 0;
+      }
+			@media screen and (min-width: 200px) and (max-width: 767px) {
+
+      }
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+      <h1>404</h1>
+      <p>
+        Page not found
+      </p>
+    </main>
+		<Footer />
+	</body>
+</html>
