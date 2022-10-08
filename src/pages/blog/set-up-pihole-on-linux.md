@@ -48,7 +48,7 @@ In order for Pi-Hole to work network-wide for all devices (including phones and 
 
 <a href="/img/dns1.png" target="_blank"><img src="/img/dns1.png" alt="Screenshot of DNS settings." /></a>
 
-These are my personal settings, I use Cloudflare's 1.1.1.1 as the upstream DNS, but use which ever you prefer. Under _interface settings_ the recommended setting of "Allow only local requests" should be all you need to and is the most secure option.
+These are my personal settings, I use Cloudflare's 1.1.1.1 as the upstream DNS, but use which ever you prefer. Under _interface settings_ the recommended setting of "Allow only local requests" is the most secure option and Pi-Hole should work as intended with it checked.
 
 <div id='adlist' />
 
