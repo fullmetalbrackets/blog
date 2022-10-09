@@ -71,9 +71,12 @@ const posts = (await Astro.glob('../../blog/*.{md,mdx}')).sort(
 				color: var(--pink);
 			}
 			@media screen and (min-width: 200px) and (max-width: 767px) {
+				.title {
+					margin-top: 1.575em;;
+				}
 				.title span::before {
-				content: "\A";
-				white-space: pre;
+					content: "\A";
+					white-space: pre;
 				}
 			}
 		</style>
