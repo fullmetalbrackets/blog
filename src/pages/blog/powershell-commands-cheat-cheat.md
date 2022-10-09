@@ -1,16 +1,16 @@
 ---
 layout: "../../layouts/BlogPost.astro"
-title: "Powershell commands cheat sheet"
+title: "PowerShell commands cheat sheet"
 description: "I'm much more comfortable using Bash over PowerShell, but there are definitely times that you need to use command line on Windows. So I keep a small, but growing list of my most commonly used cmdlets, their Linux-like aliases, and other must-know commands."
 pubDate: "October 9, 2022"
 tags:
-  - Powershell
+  - PowerShell
   - Command Line
 ---
 
 ## Cmdlets & Linux Equivalents
 
-Powershell cmdlets have aliases identical to their equivalent Linux commands, here's the most common:
+PowerShell cmdlets have aliases identical to their equivalent Linux commands, here's the most common:
 
 | Command                        | Alias   | Effect                              |
 | ------------------------------ | ------- | ----------------------------------- |
