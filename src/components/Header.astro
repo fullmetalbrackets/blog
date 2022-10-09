@@ -34,6 +34,9 @@ import { SITE_TITLE } from '../config';
 	header {
 		margin: 0em 0 2em;
 	}
+	nav {
+		margin-left: -10px;
+	}
 	h1 {
 		font-family: 'Streamster';
 		font-size: 4em;
@@ -50,7 +53,7 @@ import { SITE_TITLE } from '../config';
 	@media screen and (min-width: 200px) and (max-width: 767px) {
 		nav {
 			display: inline-flex;
-			margin-left: 5px;
+			margin-left: 0;
 		}
 		a, a:active, a:visited {
 		padding: 0;
@@ -60,6 +63,7 @@ import { SITE_TITLE } from '../config';
 			background: var(--main);
 		}
 		h1 {
+			font-size: 3em;
 			margin-left: 20px;
 		}
 	}
