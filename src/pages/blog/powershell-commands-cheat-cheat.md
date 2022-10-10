@@ -26,15 +26,17 @@ PowerShell cmdlets have aliases identical to their equivalent Linux commands, he
 
 ## Advanced Commands
 
-- `shutdown /r /fw /f /t 0`: Reboot into BIOS immediately
-- `ipconfig /flushdns`: Flush DNS resolver cache (do this when having DNS issues)
-- `ipconfig`: Display TCP/IP basic information (append `/all` for full info)
-- `getmac /v`: List MAC addresses of all network adapters
-- `powercfg /energy`: Power efficiency diagnostics report
-- `powercfg /batteryreport`: Battery life diagnostics report
-- `sfc /scannow`: Scan system and repair any integrity violations
-- `tasklist`: List all running processes and their process IDs
-- `taskkill /f /pid 12345`: Kill a running task via (specify process ID)
+| Command                   | Effect                                                         |
+| ------------------------- | -------------------------------------------------------------- |
+| `shutdown /r /fw /f /t 0` | Reboot into BIOS immediately                                   |
+| `ipconfig /flushdns`      | Flush DNS resolver cache (do this when having DNS issues)      |
+| `ipconfig`                | Display TCP/IP basic information (append `/all` for full info) |
+| `getmac /v`               | List MAC addresses of all network adapters                     |
+| `powercfg /energy`        | Power efficiency diagnostics report                            |
+| `powercfg /batteryreport` | Battery life diagnostics report                                |
+| `sfc /scannow`            | Scan system and repair any integrity violations                |
+| `tasklist`                | List all running processes and their process IDs               |
+| `taskkill /f /pid 12345`  | Kill a running task via (specify process ID)                   |
 
 ## References
 

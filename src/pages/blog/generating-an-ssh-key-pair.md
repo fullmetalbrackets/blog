@@ -43,12 +43,14 @@ It should go without saying, the private key should NEVER be given out to anyone
 
 ## Important ssh-keygen command options
 
-- `-b`: Specifies the number of bits in the created key. For RSA and DSA, the default is <em>3072</em>. EDCSA keys have either <em>256</em>, <em>384</em> or <em>521</em> bits only. Ed25519 has a preset number of bits and the option is ignored.
-- `-t`: Specifies the type (e.g. <em>rsa</em>, <em>dsa</em>, <em>edsca</em>, etc.) and can also specify the signature (e.g. <em>ssh-rsa</em>, <em>rsa-sha2-256</em>, <em>rsa-sha2-512</em>) of the key.
-- `-f`: Specifies a filename for the generated key, and you can also specify a location to store the key once created, instead of the default location `~/.ssh`.
-- `-A`: For each of the key types (<em>rsa</em>, <em>dsa</em>, <em>edsca</em> and <em>ed25519</em>) for which host keys do not exist, generate the host keys with the default key file path, an empty passphrase, and default bits for the key type.
-- `-a`: Specifies the number of KDF (key derivation function) rounds used. Higher numbers result in slower passphrase verification and increased resistance to brute-force password cracking (should the keys be stolen). The default is 16 rounds.
-- `-Z`: Specifies the cipher to use to encrypt the created key. List available ciphers using `ssh -Q cipher`. The default is <em>aes256-ctr</em>.
+| Options | Effect                                                                                                                                                                                                                                       |
+| ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `-b`    | Specifies the number of bits in the created key. For RSA and DSA, the default is <em>3072</em>. EDCSA keys have either <em>256</em>, <em>384</em> or <em>521</em> bits only. Ed25519 has a preset number of bits and the option is ignored.  |
+| `-t`    | Specifies the type (e.g. <em>rsa</em>, <em>dsa</em>, <em>edsca</em>, etc.) and can also specify the signature (e.g. <em>ssh-rsa</em>, <em>rsa-sha2-256</em>, <em>rsa-sha2-512</em>) of the key.                                              |
+| `-f`    | Specifies a filename for the generated key, and you can also specify a location to store the key once created, instead of the default location `~/.ssh`.                                                                                     |
+| `-A`    | For each of the key types (<em>rsa</em>, <em>dsa</em>, <em>edsca</em> and <em>ed25519</em>) for which host keys do not exist, generate the host keys with the default key file path, an empty passphrase, and default bits for the key type. |
+| `-a`    | Specifies the number of KDF (key derivation function) rounds used. Higher numbers result in slower passphrase verification and increased resistance to brute-force password cracking (should the keys be stolen). The default is 16 rounds.  |
+| `-Z`    | Specifies the cipher to use to encrypt the created key. List available ciphers using `ssh -Q cipher`. The default is <em>aes256-ctr</em>.                                                                                                    |
 
 <div id='secure'/>
 

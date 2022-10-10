@@ -19,111 +19,48 @@ tags:
 
 ## Commands
 
-- `ls`: list contents of directory
-- `cat`: print contents of file onto terminal
-- `cd`: change present working directory
-- `mkdir`: create new directory, multiple directories separated by spaces
-- `touch`: create new file(s)
-- `cp`: copy a file
-- `mv`: move a file, also the way to rename files
-- `rm`: delete files(s)
-- `rm -rf`: delete recursively, necessary for deleting directories and all contents in them
-- `whoami`: show current user
-- `reboot`: reboots the machine
-- `shutdown`: shuts down the machine
-- `sudo`: superuser/admin command to include before other commands that require administrator privileges
+| Command    | Effect                                                                                         |
+| ---------- | ---------------------------------------------------------------------------------------------- |
+| `ls`       | list contents of directory                                                                     |
+| `cat`      | print contents of file onto terminal                                                           |
+| `cd`       | change present working directory                                                               |
+| `mkdir`    | create new directory, multiple directories separated by spaces                                 |
+| `touch`    | create new file(s)                                                                             |
+| `cp`       | copy a file                                                                                    |
+| `mv`       | move a file, also the way to rename files                                                      |
+| `rm`       | delete files(s)                                                                                |
+| `rm -rf`   | delete recursively, necessary for deleting directories and all contents in them                |
+| `whoami`   | show current user                                                                              |
+| `reboot`   | reboots the machine                                                                            |
+| `shutdown` | shuts down the machine                                                                         |
+| `sudo`     | superuser/admin command to include before other commands that require administrator privileges |
 
 <div id='basic'/>
 
 ## Basic Usage
 
-List files in a directory:
-
-```bash
-ls ~/home/bob/directory
-```
-
-Change present working directory:
-
-```bash
-cd ~/home/bob/other-directory
-```
-
-Create a new directory:
-
-```bash
-mkdir ~/home/bob/new-directory
-mkdir new-directory
-```
-
-Create new (empty) files:
-
-```bash
-touch index.html about.html folder/file.html
-```
-
-Copy a file to different directory:
-
-```bash
-cp file.html ~/home/bob/directory/file.html
-```
-
-Move (or rename) a file:
-
-```bash
-mv file.html new-file-name.html
-mv file.html ~/home/bob/directory/file.html
-mv file.html ~/home/bob/directory/new-file-name.html
-```
-
-Delete a directory and it's contents:
-
-```bash
-rm -rf ~/home/bob/directory
-```
+| Command                           | Effect                                       |
+| --------------------------------- | -------------------------------------------- |
+| `ls /path/to/directory`           | list files in a directory                    |
+| `cd /path/to/other-directory`     | change present working directory             |
+| `mkdir new-directory`             | create a new directory                       |
+| `touch filename`                  | create new files, can specify file extension |
+| `cp file /path/to/directory/file` | copy a file to different directory           |
+| `mv file /path/to/new-filename`   | move (or rename) a file                      |
+| `rm -rf /path/to/directory`       | delete a directory and it's contents         |
 
 <div id='adv'/>
 
 ## Advanced Commands & Usage
 
-Using sudo:
-
-```bash
-sudo reboot
-sudo shutdown
-sudo adduser mary
-```
-
-Add new user (must be done by root or existing sudo user):
-
-```bash
-sudo adduser mary
-```
-
-Give a user sudo powers (must be done by root or existing sudo user):
-
-```bash
-usermod -aG sudo mary
-```
-
-Change users:
-
-```bash
-su - mary
-su - bob
-```
-
-Change to root user:
-
-```bash
-su -i
-```
-
-Generate a basic SSH key pair:
-
-```bash
-ssh-keygen
-```
+| Command                 | Effect                                                      |
+| ----------------------- | ----------------------------------------------------------- |
+| `sudo adduser mary`     | add new user (must be done by root or superuser)            |
+| `usermod -aG sudo mary` | give a user sudo powers (must be done by root or superuser) |
+| `su mary`               | switch to user (keep current environment variables)         |
+| `su - mary`             | switch to user (new environment when using `-`)             |
+| `sudo su mary passwd`   | change user password (must use with `sudo`)                 |
+| `ssh-keygen`            | generate a basic SSH key pair                               |
 
 <div id='ref'/>
 

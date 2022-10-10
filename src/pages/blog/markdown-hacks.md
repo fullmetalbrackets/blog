@@ -19,57 +19,59 @@ tags:
 
 ## Characters & Symbols
 
-- `&copy;` - Copyright (_©_)
-- `&trade;` - Trademark (_™_)
-- `&reg;` - Registered trademark (_®_)
-- `&uarr;` - Up arrow (_↑_)
-- `&darr;` - Down arrow (_↓_)
-- `&larr;` - Left arrow (_←_)
-- `&rarr;` - Right arrow (_→_)
-- `&lsh;` - Up left shift arrow (_↰_)
-- `&rsh;` - Up right shift arrow (_↱_)
-- `&ldsh;` - Down left shift arrow (_↲_)
-- `&rrsh;` - Down right shift arrow (_↳_)
-- `&larrhk;` - Left hook arrow (_↩_)
-- `&rarrhk;` - Right hook arrow (_↪_)
-- `&olarr;` - Counterclockwise circle arrow (_↺_)
-- `&orarr;` - Clockwise circle arrow (_↻_)
-- `&crarr;` - Carriage return arrow (_↵_)
-- `&racuo;` - Right pointing guillemet (_»_)
-- `&sect;` - Section (_§_)
-- `&para;` - Paragraph (_¶_)
-- `&#960;` - Pi (_π_)
-- `&#176;` - Degree (_°_)
-- `&euro;` - Euro (_€_)
-- `&pound;` - Pound (_£_)
-- `&yen;` - Yen (_¥_)
-- `&sup1;` - Superscript One (_¹_)
-- `&sup2;` - Superscript Two (_²_)
-- `&sup3;` - Superscript Three (_³_)
-- `&numero;` - Numero sign (_№_)
-- `&frac14;` - Fraction one-quarter (_¼_)
-- `&half;` - Fraction one-half (_½_)
-- `&frac34;` - Fraction three-quarters (_¾_)
-- `&female;` - Female symbol (_♀_)
-- `&male;` - Male symbol (_♂_)
-- `&starf;` - Filled star (_★_)
-- `&star;` - Unfilled star (_☆_)
-- `&hearts;` - Hearts (_♥_)
-- `&spades;` - Spades (_♠_)
-- `&clubs;` - Clubs (_♣_)
-- `&diams;` - Diamonds (_♦_)
-- `&check;` - Checkmark (_✓_)
-- `&cross;` - Ballot X or Cross (_✗_)
-- `&Delta;` - Delta capital letter (_Δ_)
-- `&Lambda;` - Lambda capital letter (_Λ_)
-- `&Sigma;` - Sigma capital letter (_Σ_)
-- `&Phi;` - Phi capital letter (_Φ_)
-- `&Psi;` - Psi capital letter (_Ψ_)
-- `&Omega;` - Omega capital letter (_Ω_)
-- `&alpha;` - Alpha small letter (_α_)
-- `&beta;` - Beta small letter (_β_)
-- `&epsi;` - Epsilon small letter (_ε_)
-- `&lambda;` - Lambda small letter (_λ_)
+| Entity     | Symbol                              |
+| ---------- | ----------------------------------- |
+| `&copy;`   | Copyright (_©_)                     |
+| `&trade;`  | Trademark (_™_)                     |
+| `&reg;`    | Registered trademark (_®_)          |
+| `&uarr;`   | Up arrow (_↑_)                      |
+| `&darr;`   | Down arrow (_↓_)                    |
+| `&larr;`   | Left arrow (_←_)                    |
+| `&rarr;`   | Right arrow (_→_)                   |
+| `&lsh;`    | Up left shift arrow (_↰_)           |
+| `&rsh;`    | Up right shift arrow (_↱_)          |
+| `&ldsh;`   | Down left shift arrow (_↲_)         |
+| `&rrsh;`   | Down right shift arrow (_↳_)        |
+| `&larrhk;` | Left hook arrow (_↩_)               |
+| `&rarrhk;` | Right hook arrow (_↪_)              |
+| `&olarr;`  | Counterclockwise circle arrow (_↺_) |
+| `&orarr;`  | Clockwise circle arrow (_↻_)        |
+| `&crarr;`  | Carriage return arrow (_↵_)         |
+| `&racuo;`  | Right pointing guillemet (_»_)      |
+| `&sect;`   | Section (_§_)                       |
+| `&para;`   | Paragraph (_¶_)                     |
+| `&#960;`   | Pi (_π_)                            |
+| `&#176;`   | Degree (_°_)                        |
+| `&euro;`   | Euro (_€_)                          |
+| `&pound;`  | Pound (_£_)                         |
+| `&yen;`    | Yen (_¥_)                           |
+| `&sup1;`   | Superscript One (_¹_)               |
+| `&sup2;`   | Superscript Two (_²_)               |
+| `&sup3;`   | Superscript Three (_³_)             |
+| `&numero;` | Numero sign (_№_)                   |
+| `&frac14;` | Fraction one-quarter (_¼_)          |
+| `&half;`   | Fraction one-half (_½_)             |
+| `&frac34;` | Fraction three-quarters (_¾_)       |
+| `&female;` | Female symbol (_♀_)                 |
+| `&male;`   | Male symbol (_♂_)                   |
+| `&starf;`  | Filled star (_★_)                   |
+| `&star;`   | Unfilled star (_☆_)                 |
+| `&hearts;` | Hearts (_♥_)                        |
+| `&spades;` | Spades (_♠_)                        |
+| `&clubs;`  | Clubs (_♣_)                         |
+| `&diams;`  | Diamonds (_♦_)                      |
+| `&check;`  | Checkmark (_✓_)                     |
+| `&cross;`  | Ballot X or Cross (_✗_)             |
+| `&Delta;`  | Delta capital letter (_Δ_)          |
+| `&Lambda;` | Lambda capital letter (_Λ_)         |
+| `&Sigma;`  | Sigma capital letter (_Σ_)          |
+| `&Phi;`    | Phi capital letter (_Φ_)            |
+| `&Psi;`    | Psi capital letter (_Ψ_)            |
+| `&Omega;`  | Omega capital letter (_Ω_)          |
+| `&alpha;`  | Alpha small letter (_α_)            |
+| `&beta;`   | Beta small letter (_β_)             |
+| `&epsi;`   | Epsilon small letter (_ε_)          |
+| `&lambda;` | Lambda small letter (_λ_)           |
 
 <div id='tables'/>
 
@@ -135,7 +137,7 @@ Table with numbered/ordered list is rendered:
 
 ## Making a Table of Contents in Markdown
 
-This is handy for blogs! A lot of the best markdown applications can automatically generate a table of contents. Frameworks like Nuxt (with the Content module) and Astro, among others, can make use of this.
+This is handy for blogs! A lot of the best markdown applications can automatically generate a table of contents. Frameworks like Nuxt (with the Content module) | and Astro, among others, can make use of this.
 
 ```md
 ### Table of Contents
@@ -156,7 +158,7 @@ This is handy for blogs! A lot of the best markdown applications can automatical
 Then you just have to link these to a heading ID. Here it is using markdown.
 
 ```md
-[Chapter 1](#ch1)
+[Chapter 1](#ch1) |
 ```
 
 And in HTML.
