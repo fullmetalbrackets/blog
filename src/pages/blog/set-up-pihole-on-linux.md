@@ -20,9 +20,10 @@ tags:
 6. [Reference](#ref)
 
 <br>
-<div id='install' />
 
 > **ⓘ &nbsp;Note**<br><br> This guide is to install Pi-Hole bare-metal, if you prefer to install as a Docker container, read <a href="https://github.com/pi-hole/docker-pi-hole/#running-pi-hole-docker" target="_blank">the official Pi-Hole instructions for Docker</a>.
+
+<div id='install' />
 
 ## Installing Pi-Hole
 

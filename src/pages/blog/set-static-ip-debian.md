@@ -50,6 +50,7 @@ systemctl status networking.service
 
 > **ⓘ &nbsp;Note**<br><br> If you get an error, you probably have to run `systemctl restart NetworkManager.service` or `systemctl restart network-manager` instead.
 
+<br>
 If there's no errors, the output should look something like this:
 
 ```bash
