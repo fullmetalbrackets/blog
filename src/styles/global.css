@@ -187,12 +187,16 @@ figcaption {
 }
 blockquote {
 	border: 1px solid var(--yellow);
-	padding: 2px 20px 2px 20px;
+	padding: 0 20px;
 	margin: 2em 0;
   border-radius: 0.5em;
 }
 blockquote li {
 	margin-left: -1em;
+}
+blockquote p {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 li::marker {
 	color: var(--pink);

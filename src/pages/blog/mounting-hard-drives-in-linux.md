@@ -63,7 +63,7 @@ Since the drive is mounted, it's helpfully labeled, so you can figure out which 
 
 Simple. We're using **ext4** as the file system, which is how I partitioned it, but if it the file system is different use the correct one -- e.g **ntfs**, **zfs**, etc. We are using the same options as the swap partition for this hard drive, let's call these basic options.
 
-Note: The number at the end of each line, under pass, is important; this is essentially the order in which partitions will become accessible to the OS. Make sure your main partition, mounted on the root directory, is always set to **1** in fstab. All additional hard drives and partitions must be set to 2. (Or higher, but that's unnecessary.) Linux may misbehave if you set another drive to 1, it's best to ignore ANY lines that were in fstab before the first time you opened it -- only ADD new ones!
+> &#x26a0;&#xfe0f; &nbsp;**Important!**<br><br> The number at the end of each line, under pass, is important; this is essentially the order in which partitions will become accessible to the OS. Make sure your main partition, mounted on the root directory, is always set to **1** in fstab. All additional hard drives and partitions should be set to 2. Linux may misbehave if you set another drive to 1, it's best to ignore ANY lines that were in fstab before the first time you opened it -- only add new ones!
 
 Save and close the fstab file. Now when you reboot, the second hard drive should always auto-mount to `/mnt/DATA`. This guide was for an internal hard drive specifically, but as I said before, everything is identical for external USB drives; they show up as **sdb**, **sdc**, and so on. The HDDs inside the external drives are SCSI, and so are USB sticks. Mount all the things!
 

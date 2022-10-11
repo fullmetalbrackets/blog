@@ -19,7 +19,7 @@ tags:
 
 Ever wanted to have a script automatically run when you reboot an Ubuntu server, but couldn't because the system prompts for a user login, and you're not sure how to skip that? Or maybe you just don't want to login each time you start up your workstation. Here's a quick and dirty guide on doing exactly this, so that on reboot your Ubuntu machine will just skip the prompt, go straight to terminal, and execute any scripts you have set up.
 
-Note: I've only personally done this on Ubuntu, but it should work for most Linux distros, and almost certainly will also work for Debian-based distros at the very least.
+> **ⓘ &nbsp;Note**<br><br> I've only personally done this on Ubuntu, but it should work for most Linux distros, and almost certainly will also work for Debian-based distros at the very least.
 
 <div id='commands'/>
 

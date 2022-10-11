@@ -72,7 +72,7 @@ This will automatically place both plugins in their correct sub-directories, but
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 ```
 
-Save the file, exit the editor, and restart the shell for the changes to take effect. Note: I also suggest adding _aliases_ as a plugin and adding aliases of your most used commands to your `.zshrc` file, or create a separate file just for aliases.
+Save the file, exit the editor, and restart the shell for the changes to take effect. I also suggest adding _aliases_ as a plugin and adding aliases of your most used commands to your `.zshrc` file, or create a separate file just for aliases.
 
 <div id='theme'/>
 

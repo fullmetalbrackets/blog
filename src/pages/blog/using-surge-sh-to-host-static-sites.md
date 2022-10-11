@@ -76,7 +76,7 @@ Surge lets you use your own domain instead of a surge.sh subdomain. First, you'l
 
 Alternately you can instead add an _A record_ set to IP address `45.55.110.124`
 
-> **Note:** For detailed instructions on changing your owned domain's records, see <a href="https://surge.sh/help/adding-a-custom-domain" target="_blank">Surge's documentation</a>.
+> **ⓘ &nbsp;Note**<br><br> For detailed instructions on changing your owned domain's records, see <a href="https://surge.sh/help/adding-a-custom-domain" target="_blank">Surge's documentation</a>.
 
 If your records are set up properly, you can deploy to your custom domain like so:
 
@@ -106,7 +106,7 @@ node_modules
 bower_components
 ```
 
-> _Note:_ If using a static site generator, place the `.surgeignore` file in the directory you are publishing, e.g. `/dist`
+> **ⓘ &nbsp;Note**<br><br> If using a static site generator, place the `.surgeignore` file in the directory you are publishing, e.g. `/dist`
 
 <div id='redirects'/>
 

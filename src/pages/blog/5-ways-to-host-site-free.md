@@ -100,7 +100,7 @@ Possibly the simplest hosting solution to ever exist. Literally one command in t
 1. `npm install -g surge` - This will install surge.sh globally so you can use it from any directory without first installing/adding it locally.
 2. `npx surge` - If using Surge.sh for the first time (or from a new machine), it will prompt you for an email and password right in the command line, and log you in or create a new account if one does not exist matching the email address you entered. When logged in you'll be prompted to specify the full path to the directory to upload (it usually defaults to your present working directory), then a provides a randomly generated sub-domain of your choice (though you can specify your own sub-domain), then hit <kbd>⏎Enter</kbd> and your project gets uploaded.
 
-> _Important:_ If your site is made with a static site generator like Astro or Nuxt, make sure to use `npm build` or `yarn build` first to build the static assets, then use `npx surge dist` to serve the static site.
+> &#x26a0;&#xfe0f; &nbsp;**Important!**<br><br> If your site is made with a static site generator like Astro or Nuxt, make sure to use `npm build` or `yarn build` first to build the static assets, then use `npx surge dist` to serve the static site.
 
 That's it! Surge.sh has a crazy fast build time and instant availability on their CDN. If you go to the URL you should see your site, it will literally take only seconds to be online.
 
