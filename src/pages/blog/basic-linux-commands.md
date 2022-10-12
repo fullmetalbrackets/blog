@@ -1,7 +1,7 @@
 ---
 layout: "../../layouts/BlogPost.astro"
-title: "Linux Commands Cheat Sheet"
-description: "Just a quick cheat sheet of basic and slightly less basic Linux commands that I used when I was totally new to Linux, and have updated recently for my wife to use while she learns."
+title: "Linux Commands & Keyboard Shortcuts Cheat Sheet"
+description: "Just a quick cheat sheet of basic and slightly less basic Linux commands, as well as handy keyboard shortcuts, that I maintain for myself since I can't always remember them all."
 pubDate: "September 18, 2022"
 updatedDate: "October 12, 2022"
 tags:
@@ -23,8 +23,8 @@ tags:
 
 | Command    | Effect                                                                                       |
 | ---------- | -------------------------------------------------------------------------------------------- |
+| `man`      | open "manual page" for specified command/utility (e.g. `man ls` opens ls command's man page) |
 | `ls`       | list contents of directory (use `-a` to show hidden files, `-l` to show in long list format) |
-| `cat`      | print contents of file onto terminal                                                         |
 | `cd`       | change present working directory                                                             |
 | `cd ..`    | move back one directory (e.g. from `/var/lib/docker` to `/var/lib`)                          |
 | `cd ~`     | go to user directory (`/home/user`)                                                          |
@@ -34,11 +34,16 @@ tags:
 | `mv`       | move a file, also the way to rename files                                                    |
 | `rm`       | delete files(s)                                                                              |
 | `rm -rf`   | delete recursively, necessary for deleting directories and all contents in them              |
+| `cat`      | output all lines of a file onto terminal                                                     |
+| `head`     | outputs first 10 lines of a file (use `-n` followed by a number to display different amount) |
+| `tail`     | outputs last 10 lines of a file (use `-n` followed by a number to display different amount)  |
+| `less`     | opens file in its own "page" similar to `man`, rather than outputting to terminal like `cat` |
 | `!!`       | repeat last command                                                                          |
 | `date`     | shows system date                                                                            |
 | `uptime`   | show system uptime                                                                           |
 | `whoami`   | show current user                                                                            |
 | `which`    | shows path of a command, if present (ex. `which nano` shows path of `nano`                   |
+| `find`     | search for files/directories matching a particular pattern (see usage examples below)        |
 | `history`  | shows history of commands used, numbered in order                                            |
 | `&&`       | append between commands to run them in order (e.g. `apt update && apt upgrade`)              |
 | `reboot`   | reboots the machine (may require `sudo`)                                                     |
@@ -49,15 +54,17 @@ tags:
 
 ## Basic Usage Examples
 
-| Command                           | Effect                                         |
-| --------------------------------- | ---------------------------------------------- |
-| `ls /path/to/directory`           | list files in a directory                      |
-| `cd /path/to/other-directory`     | change present working directory               |
-| `mkdir new-directory`             | create a new directory                         |
-| `touch filename`                  | create new files, can specify file extension   |
-| `cp file /path/to/directory/file` | copy a file to another directory               |
-| `mv file /path/to/new-filename`   | move (or rename) a file, leaves no copy behind |
-| `rm -rf /path/to/directory`       | delete a directory and it's contents           |
+| Command                           | Effect                                                         |
+| --------------------------------- | -------------------------------------------------------------- |
+| `ls /path/to/directory`           | list files in a specific directory                             |
+| `cd /path/to/other-directory`     | change from current working directory to another               |
+| `mkdir new-directory-name`        | create a new directory within current working directory        |
+| `touch filename`                  | create new files, can specify file extension                   |
+| `cp file /path/to/directory/file` | copy a file to another directory                               |
+| `mv file /path/to/new-filename`   | move (or rename) a file, leaves no copy behind                 |
+| `rm -rf /path/to/directory`       | delete a directory and it's contents                           |
+| `find /etc -name hosts`           | shows any files in `/etc` with `hosts` in filename             |
+| `find /etc -type d -name '*.conf` | shows any directories (`d`) in `/etc` with `.conf` in filename |
 
 <div id='adv'/>
 
