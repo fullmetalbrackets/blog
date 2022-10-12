@@ -14,8 +14,8 @@ PowerShell cmdlets have aliases identical to their equivalent Linux commands, he
 
 | Command                        | Alias   | Effect                              |
 | ------------------------------ | ------- | ----------------------------------- |
-| `Get-Location`                 | `pwd`   | Get current directory               |
-| `Set-Location`                 | `cd`    | Change current working directory    |
+| `Get-Location`                 | `pwd`   | Show current directory              |
+| `Set-Location`                 | `cd`    | Change to another directory         |
 | `Get-Content`                  | `cat`   | Output contents of a file           |
 | `New-item`                     | `touch` | Create a new file                   |
 | `Copy-Item`                    | `cp`    | Copy a file                         |
@@ -36,7 +36,7 @@ PowerShell cmdlets have aliases identical to their equivalent Linux commands, he
 | `powercfg /batteryreport` | Battery life diagnostics report                                |
 | `sfc /scannow`            | Scan system and repair any integrity violations                |
 | `tasklist`                | List all running processes and their process IDs               |
-| `taskkill /f /pid 12345`  | Kill a running task via (specify process ID)                   |
+| `taskkill /f /pid 12345`  | Kill a running task (specify process ID)                       |
 
 ## References
 
