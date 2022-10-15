@@ -1,7 +1,7 @@
 ---
 layout: "../../layouts/BlogPost.astro"
 title: "VIM Quick Guide"
-dEscription: "Whenever I use Vim to edit files on Linux, I need to relearn how to use it. Years ago I found a thread on Stack Overflow with two simple and extremely useful answers that helped me make sense of Vim. So here it is."
+description: "Whenever I use Vim to edit files on Linux, I need to relearn how to use it. Years ago I found a thread on Stack Overflow with two simple and extremely useful answers that helped me make sense of Vim. So here it is."
 pubDate: "September 17, 2022"
 tags:
   - Vim
