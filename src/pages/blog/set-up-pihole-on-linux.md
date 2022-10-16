@@ -3,6 +3,7 @@ layout: "../../layouts/BlogPost.astro"
 title: "Set up and configure Pi-Hole for network-wide ad blocking"
 description: "I've been using Pi-Hole for a few years, and I just recently set it up again on a new machine with a new router. It's stupid easy and super effective, here's how."
 pubDate: "October 8, 2022"
+updatedDate: "October 16, 2022"
 tags:
   - Self-Hosting
   - Pi-Hole
@@ -119,14 +120,26 @@ pihole restartdns
 
 If you've been following the instructions, you're all set to block ads. Pi-Hole will act as a middleman between you and your chosen DNS (1.1.1.1 for example), blocking ads, tracking and telemetry. If you want your setup to be more private, consider <a href="https://docs.pi-hole.net/guides/dns/unbound/#setting-up-pi-hole-as-a-recursive-dns-server-solution" target="_blank">setting up a recursive DNS with unbound</a>, that way you bypass public DNS servers like Cloudflare and Google entirely.
 
-If you're using regularly updated adlists, you should consider using a cronjob to update the gravity every day or two. Use `cronjob -e` and place in the below to (for example) update gravity everyday at 5:00AM.
+Pi-Hole will automatically update the gravity database every Sunday between 3:00 AM and 5:00 AM, but if you're using regularly updated community-maintained adlists, you should consider using `cron` to automate updating the gravity every day or two. Use `cronjob -e` and place in the below to (for example) update gravity everyday at 5:00AM.
 
 ```bash
 0 5 * * * pihole -g
 ```
+
+When an update to Pi-Hole, FTL or the Web Interface is available (usually the Pi-Hole team will update all three at the time same), you can easily update your Pi-Hole instance in the terminal by using the command `pihole -up`. Pi-Hole will not update on it's own, so you have to do it manually. (If running Pi-Hole in a docker container, you'll have to restart the container to make it download the newest image, rather than using `pihole -up`.)
+
+If you'd rather update Pi-Hole during off-hours, like in the middle of the night, I suggest using `at` -- it lets you use schedule a one-time task for a later time, similar to `cron` but non-recurring. (The syntax for `at` is also more human-readable than `cron`.) For example, the below command will schedule `pihole -up` to be executed at 5:00 AM:
+
+```bash
+pihole -up | at 5AM
+```
+
+Finally, you should regularly create a backup of your Pi-Hole configuration. Doing so is simple, just to go the web UI, click on _Settings_, then go to the _Teleporter_ tab and click the _Backup_ button. This will download a `tar.gz` file to the computer you're accessing the web UI from, and within this same screen you can restore from a backup file if necessary. You might consider committing your backups to a private GitHub repo too.
 
 <div id='ref' />
 
 ## Reference
 
 - <a href="https://docs.pi-hole.net" target="_blank">Pi-Hole documentation</a>
+- <a href="https://man7.org/linux/man-pages/man8/cron.8.html" target="_blank">Cron man page</a> / <a href="https://man7.org/linux/man-pages/man5/crontab.5.html" target="_blank">Crontab man page</a>
+- <a href="https://man7.org/linux/man-pages/man1/at.1p.html" target="_blank">At man page</a>
