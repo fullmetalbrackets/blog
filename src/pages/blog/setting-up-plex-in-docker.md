@@ -13,7 +13,7 @@ tags:
 
 1. [Installing Docker and Docker-Compose](#install)
 2. [Preparing and the Docker-Compose file](#compose)
-3. [Starting the container and configuring Plex])(#config)
+3. [Starting the container and configuring Plex](#config)
 4. [References](#ref)
 
 <div id='install'/>
