@@ -176,7 +176,7 @@ ansible_sudo_pass=password
 
 This inventory is very simple, it gives Ansible two groups of hosts as targets `[server]` and `[test]`, and provides a superuser and their sudo password as variables for all targets. This works for me because I use the same username and password for all the linux machines on my network, but you can make different sets of variables, for example:
 
-```ini
+```clike
 [targets]
 192.168.1.200   ansible_user=user1   ansible_password=password2
 192.168.1.210   ansible_user=user2   ansible_password=password1
@@ -185,7 +185,7 @@ This inventory is very simple, it gives Ansible two groups of hosts as targets `
 
 Next is the configuration file, `ansible.cfg`:
 
-```yaml
+```ini
 [defaults]
 inventory = hosts
 private_key_file = ~/.ssh/id_ed25519
