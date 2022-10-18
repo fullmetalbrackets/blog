@@ -41,7 +41,7 @@ sudo systemctl enable docker
 
 Though Plex has an <a href="https://hub.docker.com/r/plexinc/pms-docker" target="_blank">official Docker image</a>, I highly suggest you instead use the <a href="https://hub.docker.com/r/linuxserver/plex" target="_blank">Linuxserver image</a>, which is built and maintained by the <a href="https://www.linuxserver.io" target="_blank">Linuxserver community</a>. I run the Linuxserver image of Plex without issue, and it seems that is also the case with most self-hosters.
 
-Here is an example Docker-Compose file to setup Plex:
+Here is an example `docker-compose.yml` file to setup Plex:
 
 ```yaml
 ---
@@ -80,7 +80,7 @@ Let's break down what each of these parameters do:
 
 ## Starting the container and configuring Plex
 
-Once your Docker-Compose file is ready, use the command `docker-compose up -d` from within the same directory as the `docker-compose.yaml` to run it. After completion, use the command `docker ps` to verify the container is up and running. You should see output similar to the below:
+Once your `docker-compose.yml` is ready, use the command `docker-compose up -d` from within the same directory as the `docker-compose.yml` to run it. After completion, use the command `docker ps` to verify the container is up and running. You should see output similar to the below:
 
 ```bash
 CONTAINER ID   IMAGE                             COMMAND   CREATED          STATUS          PORTS                                                                                      NAMES
