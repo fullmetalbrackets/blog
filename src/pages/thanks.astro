@@ -1,0 +1,68 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const title = 'Message Submitted'
+const desc = 'Contact form success confirmation.'
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    <meta http-equiv="refresh" content="5;url=/" />
+		<BaseHead title={title} description={desc} />
+		<style>
+			main {
+				margin: 0;
+				padding: 0;
+			}
+			section {
+				margin: 0;
+				padding: 0;
+			}
+      hr {
+				margin-bottom: 2.5em;
+			}
+			h1 {
+				font-size: 36px;
+				margin-top: 1.9em;
+				margin-bottom: 0;
+			}
+      p {
+        margin: 2em auto;
+      }
+      p + p {
+        margin-bottom: 5em;
+      }
+			@media screen and (min-width: 200px) and (max-width: 767px) {
+        h1 {
+          font-size: 36px;
+          margin-top: 1.575em;
+        }
+        hr {
+          margin-bottom: 1.75em;
+        }
+        form {
+          margin: 1em;
+        }
+      }
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+      <section>
+				<h1>{title}</h1>
+				<hr>
+        <p>
+          Your submission has been received, thank you! 
+        </p>
+        <p>
+          You'll now be redirected back to the Home page in 5 seconds, or you can <a href="/">click here</a> to go back.
+        </p>
+      </section>
+		</main>
+		<Footer />
+	</body>
+</html>

@@ -30,11 +30,10 @@ html {
   --yellow: #ffd700;
   --main: #000120;
   --accent: #08083A;
-  --text: #aeb5cd;
+  --text: #cbd4f1;
   --link: #ff8000;
   --hover: #ffb366;
   --table: #0a1476;
-  --shadow: #000;
 	box-sizing: border-box;
   height: 100%;
 }
