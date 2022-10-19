@@ -124,7 +124,7 @@ const desc = 'About me and this site'
         </p>
       </section>
       <section>
-        <form name="contact" action="/thanks" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <form name="contact" method="POST" action="/thanks" data-netlify="true" netlify-honeypot="bot-field">
           <input value="contact" name="form-name" type="hidden" />
           <label for="name">Name:</label>
           <br>
@@ -140,6 +140,13 @@ const desc = 'About me and this site'
         </form>
       </section>
 		</main>
+    <script type="text/javascript">
+      var url = window.location.href;
+      var msg = document.getElementById('success');
+      if( url.search( 'success' ) > 0 ) {
+        msg.style.display = "block";
+      }
+      </script>
 		<Footer />
 	</body>
 </html>
