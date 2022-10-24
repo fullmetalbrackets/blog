@@ -65,9 +65,11 @@ On the Pi-Hole web UI, click on _Adlists_ on the navigation bar:
 The most efficient way to block URLs in Pi-Hole is to use an adlist, which is a list of URLs to block en masse. (You can also blacklist individual URLs from the _Domains_ section of the UI.) Pi-Hole comes with a default adlist that blocks around 300k URLs, but there's many more adlists curated by the community. Here are the ones I use:
 
 - <a href="https://firebog.net" target="_blank">The Firebog</a>
-- <a href="https://github.com/blocklistproject/Lists" target="_blank">The Block List Project</a>
-- <a href="https://www.github.developerdan.com/hosts" target="_blank">Developer Dan's Adlists</a>
-- <a href="https://github.com/mmotti/pihole-regex/blob/master/regex.list" target="_blank">This gist of Regex Expressions</a>
+- <a href="https://github.com/blocklistproject/Lists" target="_blank" rel="noreferrer noopener">The Block List Project</a>
+- <a href="https://www.github.developerdan.com/hosts" target="_blank" rel="noreferrer noopener">Developer Dan's Adlists</a>
+- <a href="https://github.com/badmojr/1Hosts" target="_blank" rel="noreferrer noopener">1Hosts</a> (I suggest Lite or Pro)
+- <a href="https://oisd.nl" target="_blank" rel="noreferrer noopener">OISD</a>
+- <a href="https://github.com/mmotti/pihole-regex/blob/master/regex.list" target="_blank" rel="noreferrer noopener">This gist of Regex Expressions</a>
 
 Once you've added all the adlists (and any time you add additional ones), make sure to "update gravity" for the changes to take effect. Go to _Tools_ on the navigation bar, click on _Update Gravity_, and click the big _Update_ button. Do not leave the page until the process is done!
 
