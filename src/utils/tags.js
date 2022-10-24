@@ -22,15 +22,3 @@ export function generateTagsData(tags) {
   });
   return tagsData;
 }
-
-// export function generateTagData(tags) {
-//   let tagData = [];
-//   let tags = Array.from(new Set(posts.flatMap(post => post.frontmatter.tags)))
-//   tags.map((tag) => {
-//     tagData.push ({
-//       name: tag,
-//       slug: `${generateSlug(tag)}`
-//     });
-//   });
-//   return tagData;
-// }
