@@ -67,7 +67,7 @@ The most efficient way to block URLs in Pi-Hole is to use an adlist, which is a 
 - <a href="https://firebog.net" target="_blank">The Firebog</a>
 - <a href="https://github.com/blocklistproject/Lists" target="_blank" rel="noreferrer noopener">The Block List Project</a>
 - <a href="https://www.github.developerdan.com/hosts" target="_blank" rel="noreferrer noopener">Developer Dan's Adlists</a>
-- <a href="https://github.com/badmojr/1Hosts" target="_blank" rel="noreferrer noopener">1Hosts (I suggest Lite or Pro)</a>
+- <a href="https://github.com/badmojr/1Hosts" target="_blank" rel="noreferrer noopener">1Hosts</a> (I suggest Lite or Pro)
 - <a href="https://oisd.nl" target="_blank" rel="noreferrer noopener">OISD</a>
 - <a href="https://github.com/mmotti/pihole-regex/blob/master/regex.list" target="_blank" rel="noreferrer noopener">This gist of Regex Expressions</a>
 
