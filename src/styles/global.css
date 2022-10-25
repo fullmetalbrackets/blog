@@ -206,3 +206,10 @@ li::marker {
 		width: 0px;
 	}
 }
+@media (prefers-color-scheme: light) {
+  html {
+		--main: #a6ffef;
+		--text: #050e0d;
+    --yellow: #ffbb00;
+  }
+}
