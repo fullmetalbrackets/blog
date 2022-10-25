@@ -27,6 +27,7 @@ export async function getStaticPaths() {
 }
 const {tag} = Astro.props;
 const title = `${tag}`
+const desc = 'Posts tagged ${tag}'
 const posts = (await Astro.glob('../../blog/*.{md,mdx}')).sort(
 	(a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf())
 	.filter(post => tag && post.frontmatter.tags?.includes(tag));
@@ -35,7 +36,7 @@ const posts = (await Astro.glob('../../blog/*.{md,mdx}')).sort(
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<BaseHead title={title} description={} />
+		<BaseHead title={title} description={desc} />
 		<style>
 			ul {
 				list-style-type: none;
