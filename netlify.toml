@@ -175,5 +175,149 @@ for = "/*"
   status = 301
   force = true
 
+[[redirects]]
+  from = "https://arieldiaz.codes/blog/samba"
+  to = "https://arieldiaz.codes/blog/setup-a-samba-share-on-linux-via-command-line"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://arieldiaz.codes/blog/customizing-the-windows-terminal-prompt-with-starship"
+  to = "https://arieldiaz.codes/blog/customizing-windows-terminal-with-ohmyposh"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://arieldiaz.codes/tags/ssh"
+  to = "https://arieldiaz.codes/blog/tags/ssh"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://arieldiaz.codes/blog/how-to-use-netlify-forms-in-a-nuxt-site-and-make-sure-it-gets-detected"
+  to = "https://arieldiaz.codes/blog/how-to-use-netlify-forms-in-a-nuxt-site"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://arieldiaz.codes/blog/initial-setup-for-debian-fresh-installs"
+  to = "https://arieldiaz.codes/blog/install-and-use-sudo-debian"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://arieldiaz.codes/blog/bootstrapping-a-fresh-linux-install-with-ansible"
+  to = "https://arieldiaz.codes/blog/bootstrapping-fresh-install-with-ansible"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://arieldiaz.codes/_nuxt/"
+  to = "https://arieldiaz.codes"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://arieldiaz.codes/blog/attbravia"
+  to = "https://arieldiaz.codes/blog/sideload-the-directv-stream-app-on-sony-bravia-tv-with-android-tv"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://arieldiaz.codes/projects.html"
+  to = "https://arieldiaz.codes/about"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://arieldiaz.codes/contact"
+  to = "https://arieldiaz.codes/about"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://arieldiaz.codes/undefined"
+  to = "https://arieldiaz.codes"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://arieldiaz.codes/tags/development"
+  to = "https://arieldiaz.codes/blog/tags/web-development"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://arieldiaz.codes/tags/nuxt"
+  to = "https://arieldiaz.codes/blog/tags/nuxt"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://arieldiaz.codes/tags/terminal"
+  to = "https://arieldiaz.codes/blog/tags/command-line"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://arieldiaz.codes/tags/github"
+  to = "https://arieldiaz.codes/blog/tags/github"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://arieldiaz.codes/tags/linux"
+  to = "https://arieldiaz.codes/blog/tags/linux"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://arieldiaz.codes/tags/web"
+  to = "https://arieldiaz.codes/blog/tags/web-development"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://arieldiaz.codes/tags/prismjs"
+  to = "https://arieldiaz.codes/blog/tags/prismjs"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://arieldiaz.codes/tags/netlify"
+  to = "https://arieldiaz.codes/blog/tags/netlify"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://arieldiaz.codes/tags/git"
+  to = "https://arieldiaz.codes/blog/tags/git"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://arieldiaz.codes/tags/pwa"
+  to = "https://arieldiaz.codes/blog/tags/pwa"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://arieldiaz.codes/tags/hosting"
+  to = "https://arieldiaz.codes/blog/tags/web-hosting"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://arieldiaz.codes/tags/web development"
+  to = "https://arieldiaz.codes/blog/tags/web-development"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://arieldiaz.codes/tags/webdev"
+  to = "https://arieldiaz.codes/blog/tags/web-development"
+  status = 301
+  force = true
+
 [context.deploy-preview]
   ignore = "git log -1 --pretty=%B | grep dependabot"
