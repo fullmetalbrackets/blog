@@ -208,7 +208,7 @@ li::marker {
 }
 @media (prefers-color-scheme: light) {
   html {
-		--main: #a6ffef;
+		--main: #dcfaf5;
 		--text: #050e0d;
     --yellow: #ffbb00;
   }
