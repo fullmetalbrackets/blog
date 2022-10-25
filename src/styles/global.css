@@ -159,7 +159,7 @@ tbody, td, th {
 	vertical-align: top;
 }
 time {
-	color: hsl(191, 100%, 69%);
+	color: var(--cyan);
 }
 img {
 	max-width: 100%;
@@ -205,4 +205,11 @@ li::marker {
 		height: 0px;
 		width: 0px;
 	}
+}
+@media (prefers-color-scheme: light) {
+  html {
+		--main: #dcfaf5;
+		--text: #050e0d;
+    --yellow: #ffbb00;
+  }
 }
