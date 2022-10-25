@@ -50,7 +50,7 @@ const posts = (await Astro.glob('../../blog/*.{md,mdx}')).sort(
 				color: #FF39A8;
 			}
 			.desc {
-				color: rgb(198, 208, 235);
+				color: var(--text);
 			}
 			hr {
 				margin-top: 1.5em;
