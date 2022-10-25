@@ -159,7 +159,7 @@ tbody, td, th {
 	vertical-align: top;
 }
 time {
-	color: hsl(191, 100%, 69%);
+	color: var(--cyan);
 }
 img {
 	max-width: 100%;
