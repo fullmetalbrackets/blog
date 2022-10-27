@@ -78,12 +78,17 @@ p, h1, h2, h3, h4, h5, h6 {
   overflow-wrap: break-word;
   hyphens: auto;
 }
+main {
+  margin-left: 10px;
+  margin-right: 10px;
+}
 article p {
   margin-top: 2em;
   margin-bottom: 2em;
 }
 h1 {
 	color: var(--pink);
+	font-size: 32px;
 }
 h2 {
 	color: var(--pink);
@@ -204,6 +209,9 @@ li::marker {
 	::-webkit-scrollbar {
 		height: 0px;
 		width: 0px;
+	}
+	main {
+		margin: 0 10px;
 	}
 }
 @media (prefers-color-scheme: light) {

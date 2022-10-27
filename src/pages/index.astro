@@ -48,8 +48,14 @@ const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
 				margin-top: 1.5em;
 			}
 			@media screen and (min-width: 200px) and (max-width: 767px) {
+				main {
+					margin: 0 10px;
+				}
 				ul {
 					margin-top: 3em;
+				}
+				li h1 {
+					font-size: 32px;
 				}
 			}
 		</style>
