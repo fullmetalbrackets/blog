@@ -45,40 +45,38 @@ sudo cp /etc/samba/smb.conf /etc/samba/smd.conf.backup
 sudo nano /etc/samba/smb.conf
 ```
 
-There's a whole lot of text in here, but it's mostly informative/explanatory comments (that you should read). Feel free to delete all the comments and only keep the configuration options. Use the below global and share options:
+There's a whole lot of text in here, but it's mostly informative/explanatory comments (that you should read). Feel free to delete all the comments and only keep the configuration options, I usually do. Here's my configuration:
 
 ```yaml
 [global]
   workgroup = WORKGROUP
-  server string = Samba Server %v
-  netbios name = HOSTNAME
+  server string = Samba %v
   security = user
+  guest ok = yes
+  map to guest = Bad Password
 
-[public]
-  path = /path/to/directory
-  force user = user
-  browsable = yes
-  writable = yes
+[shared]
+  comment = Samba Share
+  path = /path/to/share
+  browseable = yes
   read only = no
-  create mask = 0777
-  force create mode = 0777
-  directory mask = 0777
-  force directory mode = 0777
+  guest ok = yes
 ```
 
-Please note that <em>these options are not secure</em>, but since this is only accessible by me (and once in a while my wife) I'm not worried about it. **Do not use these settings for a publicly-accessible Samba share!** In fact, don't ever make a Samba share accessible from the internet at all, it's a very bad idea!
+Please note that _these options are not secure_, but since this is only accessible by me (and once in a while my wife) I'm not worried about it. **Do not use these settings for a Samba share if you want to restrict it to only certain users, anyone on the network will be able to access it!**
 
 Let's explain these options briefly:
 
-- Under `[global]`, the `workgroup =` parameter is important; you'll need to specify a Workgroup to access the share from Windows. The default is most likely <em>WORKGROUP</em> unless you changed it on your Windows PC. Just make sure it's the same for all the machines you want accessing the share.
-- `netbios name =` is important, you want this to match your server's <em>hostname</em>.
+- Any settings under `[global]` apply to all shares, unless you set it differently under the share settings.
+- `workgroup =` is important, you'll need to specify a Workgroup to access the share from Windows. The default is most likely <em>WORKGROUP</em> unless you changed it on your Windows PC. Just make sure it's the same for all the machines you want accessing the share.
 - `security = user` is the default security mode for Samba and the one most compatible with Windows. You don't really have to specify this since it's the default, but I like to anyway.
-- `[public]` will be the name of the share, obviously use whatever name you'd like.
+- `guest ok = yes` will default all shares to be accessible without need for logging in with a username and password, insecure but most convenient
+- `map to guest = Bad Password` forces users who mistype their passwords will be logged in to the guest account instead, shouldn't matter here, but just added convenience.
+- `[shared]` will be the name of the share, obviously use whatever name you'd like.
 - `path =` will contain the direct path to the directory you want to share.
-- `browsable = yes` allows the share to be seen in the list of available network locations from Windows, you can set this to no if you prefer.
-- `writable = yes` and `read only = no` allows the directories and files in the share to be created, modified, or deleted from the Windows PC.
-- `force user =` should both be set to a specific user that has been added to Samba and given a password. (More on that below.)
-- `force create mode = 0777` and `force directory mode = 0777` will give full read/write permissions in the share and all sub-directories. You may have issues creating, deleting and editing files on Linux share from a Windows PC without these. I'm not sure if `create mask = 0777` and `directory mask = 0777` are necessary, but I use them just in case.
+- `browseable = yes` allows unrestricted browsing all directories and files within the share.
+- `read only = no` allows the directories and files in the share to be created, modified, or deleted.
+- `guest ok = yes` make sure to set this under each share if you don't have it set under `[global]`. (In my case it's not really necessary, but I do it anyway.)
 
 When you are done with the `smb.conf` file, save it and quit the editor. Now let's check that the configuration is valid with the following command:
 
