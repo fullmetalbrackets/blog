@@ -201,7 +201,7 @@ blockquote p {
 li::marker {
 	color: var(--pink);
 }
-@media screen and (min-width: 200px) and (max-width: 767px) {
+@media screen and (min-width: 200px) and (max-width: 1024px) {
 	::-webkit-scrollbar {
 		height: 0px;
 		width: 0px;
