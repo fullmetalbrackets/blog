@@ -308,12 +308,6 @@ for = "/*"
   force = true
 
 [[redirects]]
-  from = "https://arieldiaz.codes/tags/web development"
-  to = "https://arieldiaz.codes/blog/tags/web-development"
-  status = 301
-  force = true
-
-[[redirects]]
   from = "https://arieldiaz.codes/tags/webdev"
   to = "https://arieldiaz.codes/blog/tags/web-development"
   status = 301
