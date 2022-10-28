@@ -15,10 +15,10 @@
   resolved "https://registry.yarnpkg.com/@astrojs/compiler/-/compiler-0.23.5.tgz#ea57a2b994b2930e3b3d2d524f10866698fef4f1"
   integrity sha512-vBMPy9ok4iLapSyCCT1qsZ9dK7LkVFl9mObtLEmWiec9myGHS9h2kQY2xzPeFNJiWXUf9O6tSyQpQTy5As/p3g==
 
-"@astrojs/compiler@^0.27.1":
-  version "0.27.1"
-  resolved "https://registry.yarnpkg.com/@astrojs/compiler/-/compiler-0.27.1.tgz#3c21d8affafc31048d8a6a4d8dc27057d047d5e4"
-  integrity sha512-jdbnULQkafKuSBa9yL7amQ5Ee7WIiQSAkCCGSgWhpt7t1HvtlbviNYuNIw5ob9Ax+rA08jNQ896rHqaPB31XjA==
+"@astrojs/compiler@^0.28.0":
+  version "0.28.1"
+  resolved "https://registry.yarnpkg.com/@astrojs/compiler/-/compiler-0.28.1.tgz#06a547d32d675d0be5a54bf45912ab38fd1ea548"
+  integrity sha512-rcuQs5kcT6OshfJxXkZ2Tn61V4/5UAmvZKma/qmNhpAdBkGk6J/1gJ/Gxa2sAS6WNUjUyVo5BRrdsNGW36qkoQ==
 
 "@astrojs/language-server@^0.26.2":
   version "0.26.2"
@@ -816,12 +816,12 @@ astring@^1.8.0:
   resolved "https://registry.yarnpkg.com/astring/-/astring-1.8.3.tgz#1a0ae738c7cc558f8e5ddc8e3120636f5cebcb85"
   integrity sha512-sRpyiNrx2dEYIMmUXprS8nlpRg2Drs8m9ElX9vVEXaCB4XEAJhKfs7IcX0IwShjuOAjLR6wzIrgoptz1n19i1A==
 
-astro@^1.5.2:
-  version "1.5.2"
-  resolved "https://registry.yarnpkg.com/astro/-/astro-1.5.2.tgz#c4c66855b184e4b5191f988eb67dd2dffb3ac6ad"
-  integrity sha512-ZzPwZYo4GgwNBiOA7xumpkbKNVT/k/ZEvEkAL2lj3NAZHnU801wk9qLlugu8ECoLT4k1j9B/SSmhLr+AhLTazw==
+astro@^1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/astro/-/astro-1.6.0.tgz#e095e01df93d278da831c0f12e9f369ef7c49877"
+  integrity sha512-e3UVJkhMiCQPd16w9aCxfMVEj/vs07qcLOWgWsA27BepiiYHvYebn+mfnJc8C7WeZyuTm9IcmwBtsZPoIJyFLA==
   dependencies:
-    "@astrojs/compiler" "^0.27.1"
+    "@astrojs/compiler" "^0.28.0"
     "@astrojs/language-server" "^0.26.2"
     "@astrojs/markdown-remark" "^1.1.3"
     "@astrojs/telemetry" "^1.0.1"
@@ -880,6 +880,7 @@ astro@^1.5.2:
     unist-util-visit "^4.1.0"
     vfile "^5.3.2"
     vite "~3.1.3"
+    vitefu "^0.1.0"
     yargs-parser "^21.0.1"
     zod "^3.17.3"
 
@@ -4129,6 +4130,13 @@ vite@~3.1.3:
     rollup "~2.78.0"
   optionalDependencies:
     fsevents "~2.3.2"
+
+vitefu@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/vitefu/-/vitefu-0.1.0.tgz#999558f400567d92cdcf70afc5e1833f9f1b9386"
+  integrity sha512-5MQSHP9yr0HIve8q4XNb7QXfO1P4tzZDZP99qH0FM5ClcwYddeGXRDQ4TQYRUeXLjZ+vLecirHtGNpwFFUF7sw==
+  dependencies:
+    import-meta-resolve "^2.1.0"
 
 vscode-css-languageservice@^6.0.1:
   version "6.1.1"
