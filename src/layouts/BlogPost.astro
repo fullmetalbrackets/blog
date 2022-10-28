@@ -109,6 +109,16 @@ const posts = await Astro.glob('../pages/blog/*.{md,mdx}');
 				aside {
 					font-size: 1rem;
 				}
+				aside input {
+					margin-left: 25px;
+				}
+				aside .labels::after {
+					content: "\A";
+					white-space: pre;
+				}
+				button {
+					margin-left: 50px;
+				}
 			}
 		</style>
 	</head>
@@ -135,7 +145,7 @@ const posts = await Astro.glob('../pages/blog/*.{md,mdx}');
 					<input type="radio" id="helpful" name="feedback" value="Helpful" required>
 					<label for="feedback">Yes</label>
 					<input type="radio" id="not-helpful" name="feedback" value="Not Helpful">
-					<label for="feedback">No</label>
+					<label for="feedback" class="labels">No</label>
 					<button class="button" type="submit" value="Submit">Submit</button>
 					<input type="hidden" id="postId" name="postId" value={title} />
 					</form>
