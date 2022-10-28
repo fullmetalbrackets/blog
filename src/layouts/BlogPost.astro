@@ -131,7 +131,7 @@ const posts = await Astro.glob('../pages/blog/*.{md,mdx}');
 					<input type="radio" id="not-helpful" name="feedback" value="Not Helpful">
 					<label for="feedback">No</label>
 					<button class="button" type="submit" value="Submit">Submit</button>
-					{posts.map((post) => (<input type="hidden" id="postId" name="postId" value={post.frontmatter.title} />
+					{posts.map((post) => (<input type="hidden" id="postId" name="postId" value={post.url} />
 					))}
 					</form>
 				</span>
