@@ -124,10 +124,10 @@ const allTagsData = generateTagsData(tags);
 				<span>Was this article helpful?
 				<form name="feedback" method="POST" action="/feedback" data-netlify="true" netlify-honeypot="bot-field">
           <input value="feedback" name="form-name" type="hidden" />
-					<input type="radio" id="yes" name="feedback" value="Helpful">
-					<label for="yes">Yes</label>
-					<input type="radio" id="no" name="feedback" value="Not Helpful">
-					<label for="no">No</label>
+					<input type="radio" id="helpful" name="feedback" value="Helpful">
+					<label for="helpful">Yes</label>
+					<input type="radio" id="not-helpful" name="feedback" value="Not Helpful">
+					<label for="not-helpful">No</label>
           <button class="button" type="submit" value="Submit">Submit</button>
         </form>
 				</span>
