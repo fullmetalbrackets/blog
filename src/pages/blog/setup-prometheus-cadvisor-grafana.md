@@ -156,3 +156,5 @@ Now you're ready to create your dream Grafana dashboard! Creating the actual das
 - <a href="https://prometheus.io/" target="_blank">Prometheus</a>
 - <a href="https://github.com/google/cadvisor" target="_blank">cAdvisor</a>
 - <a href="https://grafana.com" target="_blank">Grafana</a>
+
+<input type="hidden" id="postId" name="postId" value="setup-prometheus-cadvisor-grafana" />

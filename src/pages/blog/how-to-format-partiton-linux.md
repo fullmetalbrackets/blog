@@ -57,3 +57,5 @@ You’d then use `mkfs` as above to format the partition with a filesystem, if o
 
 - [fdisk manpage](https://man7.org/linux/man-pages/man8/fdisk.8.html)
 - [mkfs manpage](https://man7.org/linux/man-pages/man8/mkfs.8.html)
+
+<input type="hidden" id="postId" name="postId" value="how-to-format-partition-linux" />
