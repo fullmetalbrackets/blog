@@ -122,13 +122,14 @@ const allTagsData = generateTagsData(tags);
 			</article>
 			<aside>
 				<span>Was this article helpful?
-				<form name="{post.url}" method="POST" action="/feedback" data-netlify="true" netlify-honeypot="bot-field">
-          <input value="{post.url}" name="form-name" type="hidden" />
+				<form name="feedback" method="POST" action="/feedback" data-netlify="true" netlify-honeypot="bot-field">
+          <input value="feedback" name="form-name" type="hidden" />
 					<input type="radio" id="yes" name="feedback" value="Helpful">
 					<label for="yes">Yes</label>
 					<input type="radio" id="no" name="feedback" value="Not Helpful">
 					<label for="no">No</label>
           <button class="button" type="submit" value="Submit">Submit</button>
+					<input type="hidden" id="postId" name="postId" value="`{post.url}`" />
         </form>
 				</span>
 				<a href="#top" class="top">Back to Top</a>
