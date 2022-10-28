@@ -4,7 +4,7 @@ import Header from "../../../components/Header.astro";
 import Footer from "../../../components/Footer.astro";
 
 import {generateTagsData} from '../../../utils/tags.js'
-const allPosts = await Astro.glob('../../blog/*.md');
+const allPosts = await Astro.glob('../../blog/*.{md,mdx}');
 const allTagsUnique = new Set();
 allPosts.forEach(post => {
   post.frontmatter.tags && post.frontmatter.tags.map(tag => {
