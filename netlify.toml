@@ -23,7 +23,7 @@ package = "netlify-plugin-csp-generator"
     baseUri = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
     formAction = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
     frameAncestors = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
-    connectSrc = "'self'"
+    connectSrc = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
 
 [[headers]]
   for = "/img/*.png"
