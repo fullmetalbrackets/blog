@@ -18,6 +18,7 @@ const {
 	content: { title, description, pubDate, updatedDate, tags },
 } = Astro.props;
 const allTagsData = generateTagsData(tags);
+const posts = await Astro.glob('../pages/blog/*.{md,mdx}');
 ---
 
 <html lang="en">
@@ -58,20 +59,39 @@ const allTagsData = generateTagsData(tags);
 			}
 			aside {
 				display: flex;
-				justify-content: right;
-				border-style: dotted;
-				font-size: 2rem;
-				font-family: 'Streamster';
-				font-weight: 700;
-				border-style: none;
+				justify-content: space-between;
 				cursor: pointer;
-				margin: 0 auto;
+				border-style: none;
+				margin: 2em auto 0 auto;
 			}
 			aside > a, a:active, a:visited {
 				color: var(--pink);
 			}
 			aside > a:hover {
 				color: var(--lightpink);
+			}
+			span {
+				color: var(--lightpink);
+			}
+			label {
+				color: var(--text);
+			}
+			button {
+				margin-left: 5px;
+				background: var(--pink);
+				color: #000;
+				font-weight: 900;
+				border-radius: 0.25em;
+			}
+			button:hover {
+				background: var(--lightpink);
+				cursor: pointer;
+			}
+			.top {
+				font-size: 2rem;
+				font-family: 'Streamster';
+				font-weight: 700;
+				margin-top: 8px;
 			}
 			@media screen and (min-width: 200px) and (max-width: 767px) {
 				article {
@@ -82,6 +102,26 @@ const allTagsData = generateTagsData(tags);
 				}
 				.title {
 					font-size: 32px;
+				}
+				.top {
+					margin-top: 1em;
+					font-size: 1.5rem;
+				}
+				.top:hover, . {
+					font-size: 1.5rem;
+				}
+				aside {
+					font-size: 1rem;
+				}
+				aside input {
+					margin-left: 25px;
+				}
+				aside .labels::after {
+					content: "\A";
+					white-space: pre;
+				}
+				button {
+					margin-left: 50px;
 				}
 			}
 		</style>
@@ -99,12 +139,24 @@ const allTagsData = generateTagsData(tags);
 						<a href={`/blog/tags/${tags.slug}`}><li>{tags.name}</li></a>
 					))}
 				</ul>
-				<hr/>
+				<hr>
 				<slot />
 			</article>
 			<aside>
-				<a href="#top">Back to Top</a>
+				<span>Was this article helpful? 
+					<form name="feedback" method="POST" action="/feedback" data-netlify="true" netlify-honeypot="bot-field">
+					<input value="feedback" name="form-name" type="hidden" />
+					<input type="radio" id="helpful" name="feedback" value="Helpful" required>
+					<label for="feedback">Yes</label>
+					<input type="radio" id="not-helpful" name="feedback" value="Not Helpful">
+					<label for="feedback" class="labels">No</label>
+					<button class="button" type="submit" value="Submit">Submit</button>
+					<input type="hidden" id="postId" name="postId" value={title} />
+					</form>
+				</span>
+				<a href="#top" class="top">Back to Top</a>
 			</aside>
+			<hr>
 		</main>
 		<Footer />
 	</body>
