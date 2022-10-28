@@ -18,6 +18,7 @@ const {
 	content: { title, description, pubDate, updatedDate, tags },
 } = Astro.props;
 const allTagsData = generateTagsData(tags);
+const posts = await Astro.glob('../pages/blog/*.{md,mdx}');
 ---
 
 <html lang="en">
@@ -120,20 +121,22 @@ const allTagsData = generateTagsData(tags);
 				<hr>
 				<slot />
 			</article>
+			<hr>
 			<aside>
-				<span>Was this article helpful?
-				<form name="feedback" method="POST" action="/feedback" data-netlify="true" netlify-honeypot="bot-field">
-          <input value="feedback" name="form-name" type="hidden" />
+				<span>Was this article helpful? 
+					<form name="feedback" method="POST" action="/feedback" data-netlify="true" netlify-honeypot="bot-field">
+					<input value="feedback" name="form-name" type="hidden" />
 					<input type="radio" id="helpful" name="feedback" value="Helpful">
-					<label for="helpful">Yes</label>
+					<label for="feedback">Yes</label>
 					<input type="radio" id="not-helpful" name="feedback" value="Not Helpful">
-					<label for="not-helpful">No</label>
-          <button class="button" type="submit" value="Submit">Submit</button>
-        </form>
+					<label for="feedback">No</label>
+					<button class="button" type="submit" value="Submit">Submit</button>
+					{posts.map((post) => (<input type="hidden" id="postId" name="postId" value={post.frontmatter.title} />
+					))}
+					</form>
 				</span>
 				<a href="#top" class="top">Back to Top</a>
 			</aside>
-			<hr>
 		</main>
 		<Footer />
 	</body>
