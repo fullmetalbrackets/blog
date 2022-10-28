@@ -22,28 +22,25 @@ const title = 'Categories'
 		<BaseHead title={title} description={title} />
 		<style>
 			ol, ul {
-				display: flex;
-				flex-wrap: wrap;
-				justify-content: space-between;
 				list-style-type: none;
-				margin: 10px 0 25px 0;
+				display: grid;
+				grid-template-columns: 1fr 1fr 1fr;
+				grid-template-rows: auto;
+				justify-content: space-around;
+				margin: 0 auto;
 				padding: 0;
 			}
 			li {
-				margin: 20px 10px;
-				padding: 6px 12px;
-				background: var(--lightpink);
-				color: #000;
+				margin: 0 auto 1em 1em;
+				padding: 0;
         font-size: 1.25em;
-				font-weight: bold;
 				border-radius: 0.25em;
-				list-style-type: none;
 			}
-			li:hover {
-				background: var(--pink);
-			}
-      li a,  li a:active, li a:visited, li a:hover {
-				color: #000;
+      li a,  li a:active, li a:visited {
+				color: var(--yellow);
+      }
+			li a:hover, a:focus {
+				color: var(--link);
       }
 			hr {
 				margin-bottom: 2em;
@@ -53,14 +50,16 @@ const title = 'Categories'
 				margin-top: 1.9em;
 				margin-bottom: 0;
 			}
-			@media screen and (min-width: 200px) and (max-width: 767px) {
+			@media screen and (min-width: 200px) and (max-width: 1024px) {
 				h1 {
-				font-size: 36px;
-				margin-top: 1.575em;
+					font-size: 36px;
+					margin-top: 1.575em;
+				}
 			}
-				li {
-					margin: 5px 2.5px;
-					padding: 4px 8px;
+			@media screen and (max-width: 768px) {
+				ol, ul {
+					display: grid;
+					grid-template-columns: 1fr 1fr;
 				}
 			}
 		</style>
