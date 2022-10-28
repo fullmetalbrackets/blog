@@ -126,12 +126,13 @@ const posts = await Astro.glob('../pages/blog/*.{md,mdx}');
 				<span>Was this article helpful? 
 					<form name="feedback" method="POST" action="/feedback" data-netlify="true" netlify-honeypot="bot-field">
 					<input value="feedback" name="form-name" type="hidden" />
-					<input type="radio" id="helpful" name="feedback" value="Helpful">
+					<input type="radio" id="helpful" name="feedback" value="Helpful" required>
 					<label for="feedback">Yes</label>
 					<input type="radio" id="not-helpful" name="feedback" value="Not Helpful">
 					<label for="feedback">No</label>
 					<button class="button" type="submit" value="Submit">Submit</button>
-					<input type="hidden" id="postId" name="postId" value={title} />
+					{posts.map(() => (<input type="hidden" id="postId" name="postId" value={title} />
+					))}
 					</form>
 				</span>
 				<a href="#top" class="top">Back to Top</a>
