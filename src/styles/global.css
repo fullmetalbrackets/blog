@@ -212,7 +212,7 @@ li::marker {
 }
 @media (prefers-color-scheme: light) {
   html {
-    --other: #ffd700;
+    --other: #008080;
     --primary: #16a6c2;
     --secondary: #84ddef;
     --emphasis: #ff7575;
