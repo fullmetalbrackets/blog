@@ -24,10 +24,10 @@
   box-sizing: inherit;
 }
 html {
-  --cyan: #42c3de;
-  --pink: #fa28ad;
-  --lightpink: #F986DE;
-  --yellow: #ffd700;
+  --other: #42c3de;
+  --primary: #fa28ad;
+  --secondary: #F986DE;
+  --emphasis: #ffd700;
   --main: #000120;
   --accent: #08083A;
   --text: #cbd4f1;
@@ -64,7 +64,7 @@ body {
 }
 ::-webkit-scrollbar-thumb {
   border-radius: 0.25em;
-  background: var(--pink);
+  background: var(--primary);
 }
 img, picture, video, canvas, svg {
   display: block;
@@ -83,32 +83,32 @@ article p {
   margin-bottom: 2em;
 }
 h1 {
-	color: var(--pink);
+	color: var(--primary);
 	font-size: 32px;
 }
 h2 {
-	color: var(--pink);
+	color: var(--primary);
 	margin-top: 2em;
 }
 article h2:first-child {
   margin-top: 3.5em;
 }
 h3, h4, h5, h6 {
-	color: var(--lightpink);
+	color: var(--secondary);
   margin-top: 3em;
 }
 hr {
-	border: 0.25px solid var(--pink);
+	border: 0.25px solid var(--primary);
 	opacity: 0.5;
 }
 strong,
 b,
 i,
 u {
-	color: var(--yellow);
+	color: var(--emphasis);
 }
 em {
-	color: var(--yellow);
+	color: var(--emphasis);
 	font-style: normal;
 }
 kbd {
@@ -160,7 +160,7 @@ tbody, td, th {
 	vertical-align: top;
 }
 time {
-	color: var(--cyan);
+	color: var(--other);
 }
 img {
 	max-width: 100%;
@@ -171,7 +171,7 @@ code {
 	padding: 3.5px 5px;
 	font-family: 'LeagueMono-VF', monospace;
 	background-color: var(--accent);
-	color: var(--lightpink);
+	color: var(--secondary);
 	border-radius: 0.25em;
 }
 pre {
@@ -182,11 +182,11 @@ pre > code {
 }
 figcaption {
   font-size: 0.75em;
-  color:var(--cyan);
+  color:var(--other);
   padding-left: 5px;
 }
 blockquote {
-	border: 1px solid var(--yellow);
+	border: 1px solid var(--emphasis);
 	padding: 0 20px;
 	margin: 2em 0;
   border-radius: 0.5em;
@@ -199,7 +199,7 @@ blockquote p {
   margin-bottom: 20px;
 }
 li::marker {
-	color: var(--pink);
+	color: var(--primary);
 }
 @media screen and (min-width: 200px) and (max-width: 1024px) {
 	::-webkit-scrollbar {
@@ -212,8 +212,15 @@ li::marker {
 }
 @media (prefers-color-scheme: light) {
   html {
-		--main: #dcfaf5;
-		--text: #050e0d;
-    --yellow: #ffbb00;
+    --other: #ffd700;
+    --primary: #16a6c2;
+    --secondary: #84ddef;
+    --emphasis: #ff7575;
+    --main: rgb(250, 250, 250);
+    --accent: #3d3d5e;
+    --text: #000120;
+    --link: #ff8000;
+    --hover: #ffb366;
+    --table: #0a1476;
   }
 }

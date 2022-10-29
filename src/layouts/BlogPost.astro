@@ -48,14 +48,14 @@ const posts = await Astro.glob('../pages/blog/*.{md,mdx}');
 			li {
 				margin: 4px;
 				padding: 2px 4px;
-				background: var(--lightpink);
+				background: var(--primary);
 				color: #000;
 				font-weight: bold;
 				border-radius: 0.25em;
 				list-style-type: none;
 			}
 			li:hover {
-				background: var(--pink);
+				background: var(--secondary);
 			}
 			aside {
 				display: flex;
@@ -65,26 +65,26 @@ const posts = await Astro.glob('../pages/blog/*.{md,mdx}');
 				margin: 2em auto 0 auto;
 			}
 			aside > a, a:active, a:visited {
-				color: var(--pink);
+				color: var(--primary);
 			}
 			aside > a:hover {
-				color: var(--lightpink);
+				color: var(--secondary);
 			}
 			span {
-				color: var(--lightpink);
+				color: var(--secondary);
 			}
 			label {
 				color: var(--text);
 			}
 			button {
 				margin-left: 5px;
-				background: var(--pink);
+				background: var(--primary);
 				color: #000;
 				font-weight: 900;
 				border-radius: 0.25em;
 			}
 			button:hover {
-				background: var(--lightpink);
+				background: var(--secondary);
 				cursor: pointer;
 			}
 			.top {
