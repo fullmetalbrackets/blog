@@ -9,22 +9,34 @@ const isActive = href === Astro.url.pathname.replace(/\/$/, '');
 	<slot />
 </a>
 <style>
-	a, a:active, a:visited {
-		color: var(--yellow);
+	a, a:active, a:visited, a:hover {
+		color: var(--emphasis);
 		display: inline-block;
 		font-weight: 900;
 		font-size: 1.25em;
 		text-decoration: none;
-		padding: 10px 0;
+		padding: 4px 8px;
 		margin-right: 2em;
 	}
-	a:hover {
-		color: var(--yellow);
+	a:hover, a:focus {
+		color: var(--emphasis);
 		border-radius: 0;
 		font-weight: 900;
 		text-decoration: none;
 		margin-right: 2em;
-		padding: 10px 0;
+		padding: 4px 8px;
+		border-radius: 0.25em;
+		background: var(--accent);
+	}
+	a.active {
+		color: var(--emphasis);
+		border-radius: 0;
+		font-weight: 900;
+		text-decoration: none;
+		margin-right: 2em;
+		padding: 4px 8px;
+		border-radius: 0.25em;
+		background: var(--accent);
 	}
 	@media screen and (min-width: 200px) and (max-width: 767px) {
 		a, a:active, a:visited, a:hover {
