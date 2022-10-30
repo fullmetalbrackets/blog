@@ -1,48 +1,48 @@
 ---
 import NavLink from './NavLink.astro';
+import Theme from './Theme.astro';
 import { SITE_TITLE } from '../config';
 ---
 
 <head>
-	<link
-		rel="preload"
-		href="/fonts/Streamster.woff"
-		as="font"
-		type="font/woff"
-		crossorigin="anonymous"
-	/>
-	<link
-		rel="preload"
-		href="/fonts/Streamster.woff2"
-		as="font"
-		type="font/woff2"
-		crossorigin="anonymous"
-	/>
 </head>
 <header>
-	<h1>
+	<div>
+		<h1>
 		{SITE_TITLE}
-	</h1>
-	<nav>
+		</h1>
+		<Theme />
+	</div>
+		<nav>
 		<NavLink href="/">Blog</NavLink>
 		<NavLink href="/blog/tags" rel="prefetch">Categories</NavLink>
 		<NavLink href="/about">About</NavLink>
-		<NavLink href="https://github.com/fullmetalbrackets" target="_blank">GitHub</NavLink>
 	</nav>
 </header>
 <style>
 	header {
 		margin: 0em 0 2em;
 	}
+	header div {
+		display: grid;
+		margin: 0;
+		padding: 0;
+	}
 	nav {
-		margin-left: -8px;
+		display: inline-block;
+		margin: 0 0 0 -8px;
+	}
+	.theme {
+		margin: 0;
+		padding: 0;
 	}
 	h1 {
+		display: inline-flex;
 		font-family: 'Streamster';
 		font-size: 4em;
 		margin: 0 0 0 20px;
 	}
-	@media screen and (min-width: 200px) and (max-width: 767px) {
+	@media screen and (min-width: 200px) and (max-width: 1024px) {
 		nav {
 			display: inline-flex;
 			margin-left: 0;
