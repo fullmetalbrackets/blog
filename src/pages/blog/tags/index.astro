@@ -1,7 +1,5 @@
 ---
-import BaseHead from "../../../components/BaseHead.astro";
-import Header from "../../../components/Header.astro";
-import Footer from "../../../components/Footer.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
 
 import {generateTagsData} from '../../../utils/tags.js'
 const allPosts = await Astro.glob('../../blog/*.{md,mdx}');
@@ -14,70 +12,64 @@ allPosts.forEach(post => {
 
 const allTagsData = generateTagsData(allTagsUnique);
 const title = 'Categories'
+const desc = 'Blog posts by category tag.'
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<BaseHead title={title} description={title} />
-		<style>
-			ol, ul {
-				list-style-type: none;
-				display: grid;
-				grid-template-columns: 1fr 1fr 1fr;
-				grid-template-rows: auto;
-				justify-content: space-around;
-				margin: 0 auto;
-				padding: 0;
-			}
-			li {
-				margin: 0 auto 1em 1em;
-				padding: 0;
-        font-size: 1.25em;
-				border-radius: 0.25em;
-			}
-      li a,  li a:active, li a:visited {
-				color: var(--text);
-      }
-			li a:hover, a:focus {
-				color: var(--secondary);
-      }
-			hr {
-				margin-bottom: 2em;
-			}
+<BaseLayout title={title} description={desc}>
+	<style>
+		ol, ul {
+			list-style-type: none;
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr;
+			grid-template-rows: auto;
+			justify-content: space-around;
+			margin: 2.5em auto 0 auto;
+			padding: 0;
+		}
+		li {
+			margin: 0 auto 1em 0;
+			padding: 0;
+			font-size: 1.25em;
+			border-radius: 0.25em;
+		}
+		li a,  li a:active, li a:visited {
+			color: var(--text);
+		}
+		li a:hover, a:focus {
+			color: var(--secondary);
+		}
+		hr {
+			margin-bottom: 2em;
+		}
+		.bottom-line {
+			margin-top: 4em;
+		}
+		h1 {
+			font-size: 36px;
+			margin-top: 1.9em;
+			margin-bottom: 0;
+		}
+		@media screen and (min-width: 200px) and (max-width: 1024px) {
 			h1 {
 				font-size: 36px;
-				margin-top: 1.9em;
-				margin-bottom: 0;
+				margin-top: 1.575em;
 			}
-			@media screen and (min-width: 200px) and (max-width: 1024px) {
-				h1 {
-					font-size: 36px;
-					margin-top: 1.575em;
-				}
+		}
+		@media screen and (max-width: 768px) {
+			ol, ul {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
 			}
-			@media screen and (max-width: 768px) {
-				ol, ul {
-					display: grid;
-					grid-template-columns: 1fr 1fr;
-				}
-			}
-		</style>
-	</head>
-
-	<body>
-		<Header />
-		<main>
-			<section>
-				<h1>{title}</h1>
-				<hr>
-				<ul>
-					{allTagsData.map(tag => (
-						<li><a href={`/blog/tags/${tag.slug}`}>{tag.name}</a></li>
-					))}
-				</ul>
-			</section>
-		</main>
-		<Footer />
-	</body>
-	</html>
+		}
+	</style>
+	<section>
+		<h1>{title}</h1>
+		<hr>
+		<ul>
+			{allTagsData.map(tag => (
+				<li><a href={`/blog/tags/${tag.slug}`}>{tag.name}</a></li>
+			))}
+		</ul>
+	</section>
+	<hr class="bottom-line">
+</BaseLayout>
