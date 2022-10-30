@@ -1,148 +1,126 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
 
 const title = 'About'
 const desc = 'About me and this site'
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<BaseHead title={title} description={desc} />
-		<style>
-			main {
-				margin: 0;
-				padding: 0;
-			}
-			section {
-				margin: 0;
-				padding: 0;
-			}
-      hr {
-				margin-bottom: 2.5em;
-			}
-			h1 {
-				font-size: 36px;
-				margin-top: 1.9em;
-				margin-bottom: 0;
-			}
-      p {
-        margin: 2em auto;
+<BaseLayout title={title} description={desc}>
+  <style>
+    hr {
+      margin-bottom: 2.5em;
+    }
+    h1 {
+      font-size: 36px;
+      margin-top: 1.9em;
+      margin-bottom: 0;
+    }
+    p {
+      margin: 2em auto;
+    }
+    label {
+      text-align: left;
+      color: var(--primary);
+    }
+    form {
+      margin: 0 2em;
+    }
+    input {
+      line-height: 1;
+      border-style: none;
+      margin: 0.25em auto 1em auto;
+      padding: 0 auto;
+      line-height: 1;
+      border-radius: 0.25em;
+      background: var(--accent);
+      color: var(--other);
+      height: auto;
+      width: 100%;
+      box-sizing: border-box;
+      outline: none;
+    }
+    textarea {
+      line-height: 1;
+      border-style: none;
+      margin: 0.25em auto 1em auto;
+      padding: 0 auto;
+      line-height: 1;
+      border-radius: 0.25em;
+      background: var(--accent);
+      color: var(--other);
+      height: auto;
+      width: 100%;
+      box-sizing: border-box;
+      resize: vertical;
+      min-height: 8vh;
+      outline: none;
+    }
+    button {
+      font-weight: 700;
+      background: var(--primary);
+      border-style: none;
+      border-radius: 0.25em;
+      cursor: pointer;
+      margin: 0 auto 4em auto;
+      padding: 5px 15px 3px 15px;
+    }
+    button:hover {
+      background: var(--secondary);
+      transition-duration: 0.25s;
+      transition-property: color, fill, stroke;
+      transition-timing-function: linear;
+    }
+    /* Change autocomplete styles in WebKit */
+    :-webkit-autofill,
+    :-webkit-autofill:hover,
+    :-webkit-autofill:focus {
+      transition: background-color 5000s ease-in-out 0s;
+      -webkit-text-fill-color: var(--text);
+    }
+    @media screen and (min-width: 200px) and (max-width: 1024px) {
+      main {
+        margin: 0 10px;
       }
-      label {
-        text-align: left;
-        color: var(--pink);
+      h1 {
+        font-size: 36px;
+        margin-top: 1.575em;
+      }
+      hr {
+        margin-bottom: 1.75em;
       }
       form {
-        margin-top: 2em;
-        margin-left: calc(4em + 2vw);
-        margin-right: calc(4em + 2vw);
-        margin-bottom: 2em;
+        margin: 1em;
       }
-      input {
-        line-height: 1;
-        border-style: none;
-        margin: 0.25em auto 1em auto;
-        padding: 0 auto;
-        line-height: 1;
-        border-radius: 0.25em;
-        background: var(--accent);
-        color: var(--text);
-        height: auto;
-        width: 100%;
-        box-sizing: border-box;
-        outline: none;
-      }
-      textarea {
-        line-height: 1;
-        border-style: none;
-        margin: 0.25em auto 1em auto;
-        padding: 0 auto;
-        line-height: 1;
-        border-radius: 0.25em;
-        background: var(--accent);
-        color: var(--text);
-        height: auto;
-        width: 100%;
-        box-sizing: border-box;
-        resize: vertical;
-        min-height: 8vh;
-        outline: none;
-      }
-      button {
-        font-weight: 700;
-        background: var(--primary);
-        border-style: none;
-        border-radius: 0.25em;
-        cursor: pointer;
-        margin: 0 auto 4em auto;
-        padding: 5px 15px 3px 15px;
-      }
-      button:hover {
-        background: var(--secondary);
-        transition-duration: 0.25s;
-        transition-property: color, fill, stroke;
-        transition-timing-function: linear;
-      }
-      /* Change autocomplete styles in WebKit */
-      :-webkit-autofill,
-      :-webkit-autofill:hover,
-      :-webkit-autofill:focus {
-        transition: background-color 5000s ease-in-out 0s;
-        -webkit-text-fill-color: var(--text);
-      }
-			@media screen and (min-width: 200px) and (max-width: 1024px) {
-        main {
-          margin: 0 10px;
-        }
-        h1 {
-          font-size: 36px;
-          margin-top: 1.575em;
-        }
-        hr {
-          margin-bottom: 1.75em;
-        }
-        form {
-          margin: 1em;
-        }
-      }
-		</style>
-	</head>
-	<body>
-		<Header />
-		<main>
-      <section>
-				<h1>{title}</h1>
-				<hr>
-        <p>
-          My name is <em>Ariel Diaz</em>, I'm an aspiring web developer living in Florida. This is my personal blog consisting mostly of instructions, quick guides and other documentation I've written up for myself covering various tech topics including web development and IT.
-        </p>
-        <p>
-          The site is made with <a href="https://astro.build" target="_blank">Astro</a> and its' design and code is open source, so feel free to <a href="https://github.com/fullmetalbrackets/blog" target="_blank">check it out</a>. Eventually this site will have a portfolio of projects I've worked on, but for now feel free to read my blog -- really just a dump of documentation I've made for myself as I've learned web development, Linux, the command line, etc.
-        </p>
-        <p>
-          If you'd like to get in contact with me, feel free to <a href="mailto:contact@fullmetalbrackets.com" target="_blank">e-mail me</a> or use the below form. Thanks for visiting!
-        </p>
-      </section>
-      <section>
-        <form name="contact" method="POST" action="/thanks" data-netlify="true" netlify-honeypot="bot-field">
-          <input value="contact" name="form-name" type="hidden" />
-          <label for="name">Name:</label>
-          <br>
-          <input id="text" type="text" name="name" required/>
-          <br><br>
-          <label for="email">Email:</label>
-          <br>
-          <input id="email" type="email" name="email" required/>
-          <br><br>
-          <label for="message">Message:</label>
-          <textarea id="message" name="message" required></textarea>
-          <button class="button" type="submit" value="Submit">Submit</button>
-        </form>
-      </section>
-		</main>
-		<Footer />
-	</body>
-</html>
+    }
+  </style>
+  <section>
+    <h1>{title}</h1>
+    <hr>
+    <p>
+      My name is <em>Ariel Diaz</em>, I'm an aspiring web developer living in Florida. This is my personal blog consisting mostly of instructions, quick guides and other documentation I've written up for myself covering various tech topics including web development and IT.
+    </p>
+    <p>
+      The site is made with <a href="https://astro.build" target="_blank">Astro</a> and its' design and code is open source, so feel free to <a href="https://github.com/fullmetalbrackets/blog" target="_blank">check it out</a>. Eventually this site will have a portfolio of projects I've worked on, but for now feel free to read my blog -- really just a dump of documentation I've made for myself as I've learned web development, Linux, the command line, etc.
+    </p>
+    <p>
+      If you'd like to get in contact with me, feel free to <a href="mailto:contact@fullmetalbrackets.com" target="_blank">e-mail me</a> or use the below form. Thanks for visiting!
+    </p>
+  </section>
+  <section>
+    <form name="contact" method="POST" action="/thanks" data-netlify="true" netlify-honeypot="bot-field">
+      <input value="contact" name="form-name" type="hidden" />
+      <label for="name">Name:</label>
+      <br>
+      <input id="text" type="text" name="name" required/>
+      <br><br>
+      <label for="email">Email:</label>
+      <br>
+      <input id="email" type="email" name="email" required/>
+      <br><br>
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" required></textarea>
+      <button class="button" type="submit" value="Submit">Submit</button>
+    </form>
+  </section>
+  <hr>
+</BaseLayout>

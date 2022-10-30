@@ -1,89 +1,71 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../config';
+import BaseLayout from "../layouts/BaseLayout.astro";
 
-// Use Astro.glob() to fetch all posts, and then sort them by date.
 const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
 	(a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
 );
+
+const title = 'Ariel Diaz'
+const desc = 'Tech articles, quick guides, and other resources.'
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<style>
-			main {
-				margin: 0;
-				padding: 0;
-			}
-			section {
-				margin: 0;
-				padding: 0;
-			}
-			ul {
-				list-style-type: none;
-				padding: 0;
-				margin-top: 4em;
-				line-height: 1.2;
-			}
-			ul li {
-				margin-bottom: 4em;
-			}
-			ul li a .title {
-				color: var(--pink);
-				margin: 0.5em 0;
-				line-height: 40px;
-			}
-			.desc {
-				color: var(--text);
-			}
-			ul li h1 {
-				line-height: 40px;
-				font-size: 36px;
-			}
-			hr {
-				margin-top: 1.5em;
-			}
-			@media screen and (min-width: 200px) and (max-width: 1024px) {
-				main {
-					margin: 0 10px;
-				}
-				ul {
-					margin-top: 3em;
-				}
-				li h1 {
-					font-size: 32px;
-				}
-			}
-		</style>
-	</head>
-	<body>
-		<Header />
-		<main>
-			<section>
-				<ul>
-					{posts.map((post) => (
-					<a href={post.url} rel="prefetch">
-						<li>
-							<time datetime={post.frontmatter.pubDate}>
-								{new Date(post.frontmatter.pubDate).toLocaleDateString('en-us', {
-									year: 'numeric',
-									month: 'long',
-									day: 'numeric',
-								})}
-							</time>
-							<h1>{post.frontmatter.title}</h1>
-							<p class="desc">{post.frontmatter.description}</p>
-							<hr>
-						</li>
-					</a>
-					))}
-				</ul>
-			</section>
-		</main>
-		<Footer />
-	</body>
-</html>
+<style>
+	ul {
+		list-style-type: none;
+		padding: 0;
+		margin-top: 4em;
+		line-height: 1.2;
+	}
+	ul li {
+		margin-bottom: 4em;
+	}
+	.title {
+		color: var(--pink);
+		margin: 0.5em 0;
+		line-height: 40px;
+	}
+	.desc {
+		color: var(--text);
+	}
+	ul li h1 {
+		line-height: 40px;
+		font-size: 36px;
+	}
+	hr {
+		margin-top: 1.5em;
+	}
+	@media screen and (min-width: 200px) and (max-width: 1024px) {
+		main {
+			margin: 0 10px;
+		}
+		ul {
+			margin-top: 3em;
+		}
+		li h1 {
+			font-size: 32px;
+		}
+	}
+</style>
+
+<BaseLayout title={title} description={desc}>
+	<section>
+		<ul>
+			{posts.map((post) => (
+			<a href={post.url} rel="prefetch">
+				<li>
+					<time datetime={post.frontmatter.pubDate}>
+						{new Date(post.frontmatter.pubDate).toLocaleDateString('en-us', {
+							year: 'numeric',
+							month: 'long',
+							day: 'numeric',
+						})}
+					</time>
+					<h1>{post.frontmatter.title}</h1>
+					<p class="desc">{post.frontmatter.description}</p>
+					<hr>
+				</li>
+			</a>
+			))}
+		</ul>
+	</section>
+</BaseLayout>

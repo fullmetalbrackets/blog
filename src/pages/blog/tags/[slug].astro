@@ -1,7 +1,5 @@
 ---
-import BaseHead from "../../../components/BaseHead.astro";
-import Header from "../../../components/Header.astro";
-import Footer from "../../../components/Footer.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
 import { generateTagsData } from "../../../utils/tags";
 
 export async function getStaticPaths() {
@@ -27,89 +25,77 @@ export async function getStaticPaths() {
 }
 const {tag} = Astro.props;
 const title = `${tag}`
-const desc = 'Posts tagged ${tag}'
+const desc = 'Posts tagged ${tag}.'
 const posts = (await Astro.glob('../../blog/*.{md,mdx}')).sort(
 	(a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf())
 	.filter(post => tag && post.frontmatter.tags?.includes(tag));
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<BaseHead title={title} description={desc} />
-		<style>
-			ul {
-				list-style-type: none;
-				padding: 0;
-				margin: 3em 0 0 0;
-				line-height: 1.2;
-			}
-			ul li {
-				margin-bottom: 4em;
-			}
-			ul li a .title {
-				color: #FF39A8;
-			}
-			.desc {
-				color: var(--text);
-			}
-			hr {
-				margin-top: 1.5em;
-			}
-			.tag-line {
-				margin: 0.5em 0 1em 0;
-			}
-			h1 {
-				margin-bottom: 0;
-				line-height: 40px;
-				font-size: 36px;
-			}
+<BaseLayout title={title} description={desc}>
+	<style>
+		ul {
+			list-style-type: none;
+			padding: 0;
+			margin: 3em 0 0 0;
+			line-height: 1.2;
+		}
+		ul li {
+			margin-bottom: 4em;
+		}
+		ul li a .title {
+			color: #FF39A8;
+		}
+		.desc {
+			color: var(--text);
+		}
+		hr {
+			margin-top: 1.5em;
+		}
+		.tag-line {
+			margin: 0.5em 0 1em 0;
+		}
+		h1 {
+			margin-bottom: 0;
+			line-height: 40px;
+			font-size: 36px;
+		}
+		.title {
+			margin: 2em 0 0.5em 0;
+			color: var(--secondary);
+		}
+		.title span {
+			color: var(--primary);
+		}
+		@media screen and (min-width: 200px) and (max-width: 767px) {
 			.title {
-				margin: 2em 0 0.5em 0;
-				color: var(--secondary);
+				margin-top: 1.575em;;
 			}
-			.title span {
-				color: var(--primary);
+			.title span::before {
+				content: "\A";
+				white-space: pre;
 			}
-			@media screen and (min-width: 200px) and (max-width: 767px) {
-				.title {
-					margin-top: 1.575em;;
-				}
-				.title span::before {
-					content: "\A";
-					white-space: pre;
-				}
-			}
-		</style>
-	</head>
-
-	<body>
-		<Header />
-		<main>
-			<section>
-				<h1 class="title">Posts tagged <span>{title}</span></h1>
-				<hr class="tag-line">
-				<ul>
-					
-					{posts.map((post) => (
-					<a href={post.url} rel="prefetch">
-						<li>
-							<time datetime={post.frontmatter.pubDate}>
-								{new Date(post.frontmatter.pubDate).toLocaleDateString('en-us', {
-									year: 'numeric',
-									month: 'long',
-									day: 'numeric',
-								})}
-							</time>
-							<h1>{post.frontmatter.title}</h1>
-							<p class="desc">{post.frontmatter.description}</p>
-							<hr>
-						</li>
-					</a>
-					))}
-				</ul>
-			</section>
-		</main>
-		<Footer />
-	</body>
-	</html>
+		}
+	</style>
+	<section>
+		<h1 class="title">Posts tagged <span>{title}</span></h1>
+		<hr class="tag-line">
+		<ul>
+			{posts.map((post) => (
+			<a href={post.url} rel="prefetch">
+				<li>
+					<time datetime={post.frontmatter.pubDate}>
+						{new Date(post.frontmatter.pubDate).toLocaleDateString('en-us', {
+							year: 'numeric',
+							month: 'long',
+							day: 'numeric',
+						})}
+					</time>
+					<h1>{post.frontmatter.title}</h1>
+					<p class="desc">{post.frontmatter.description}</p>
+					<hr>
+				</li>
+			</a>
+			))}
+		</ul>
+	</section>
+</BaseLayout>
