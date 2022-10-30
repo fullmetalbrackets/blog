@@ -5,17 +5,17 @@ description: "Here is a sample of some basic Markdown syntax that can be used wh
 pubDate: "July 01, 2022"
 ---
 
-## Site Colors
+## Light Theme Site Colors
 
 <style>
-#cyan { color: #000; background-color: #42c3de; font-weight: 900; }
-#pink { color: #000; background-color:#fa28ad; font-weight: 900; }
-#lightpink { color: #000; background-color:#F986DE; font-weight: 900; }
-#yellow { color: #000; background-color:#ffd700; font-weight: 900; }
-#accent { color: #fff; background-color:#08083A; font-weight: 900; }
-#text { color: #000; background-color:#aeb5cd; font-weight: 900; }
+#other-light { color: #000; background-color: #16a6c2; font-weight: 900; }
+#primary-light { color: #000; background-color:#00acac; font-weight: 900; }
+#secondary-light { color: #000; background-color:#54c3bc; font-weight: 900; }
+#emphasis-light { color: #000; background-color:#ff7575; font-weight: 900; }
+#accent-light { color: #fff; background-color:#3d3d5e; font-weight: 900; }
+#text-light { color: #fff; background-color:#000120; font-weight: 900; border: 1px solid #fff; }
 #link { color: #000; background-color:#ff8000; font-weight: 900; }
-#hover { color: #000; background-color:#ffb366; font-weight: 900; }			
+#table { color: #fff; background-color:#0a1476; font-weight: 900; }			
 
 .site-colors{
 unicode-bidi: bidi-override;
@@ -36,13 +36,52 @@ cursor:pointer;
 }
 </style>
 <div class="site-colors">
-  <span id="cyan">Dates<br><br> 42C3DE #</span>
+  <span id="other-light">Dates<br><br> 16A6C2 #</span>
+  <span id="text-light">Text<br><br> 000120 #</span>
+  <span id="secondary-light">H4 - H6<br><br> 54C3BC #</span>
+  <span id="primary-light">H1 - H3<br><br> 00ACAC #</span>
+  <span id="accent-light">Accent<br><br> 3D3D5E #</span>
+  <span id="emphasis-light">Emphasis<br><br> FF7575 #</span>
+  <span id="table">Table<br><br> 0A1476 #</span>
+  <span id="link">Link<br><br> FF8000 #</span>
+</div>
+
+## Dark Theme Site Colors
+
+<style>
+#other { color: #000; background-color: #42c3de; font-weight: 900; }
+#primary { color: #000; background-color:#fa28ad; font-weight: 900; }
+#secondary { color: #000; background-color:#F986DE; font-weight: 900; }
+#emphasis { color: #000; background-color:#ffd700; font-weight: 900; }
+#accent { color: #fff; background-color:#08083A; font-weight: 900; }
+#text { color: #000; background-color:#aeb5cd; font-weight: 900; }
+
+.site-colors{
+unicode-bidi: bidi-override;
+direction: rtl;
+text-align: center;
+}
+.site-colors > span {
+display: inline-block;
+position: relative;
+border-radius: 0.25em;
+width: 10rem;
+height: 10rem;
+margin: 1rem;
+padding-top: 2.5rem;
+}
+.site-colors > span:hover{
+cursor:pointer;
+}
+</style>
+<div class="site-colors">
+  <span id="other">Dates<br><br> 42C3DE #</span>
   <span id="text">Text<br><br> AEB5DC #</span>
-  <span id="lightpink">H4 - H6<br><br> F986DE #</span>
-  <span id="pink">H1 - H3<br><br> FA28AD #</span>
+  <span id="secondary">H4 - H6<br><br> F986DE #</span>
+  <span id="primary">H1 - H3<br><br> FA28AD #</span>
   <span id="accent">Accent<br><br> 08083A #</span>
-  <span id="yellow">Emphasis<br><br> FFD700 #</span>
-  <span id="hover">Link Hover<br><br> FFB366 #</span>
+  <span id="emphasis">Emphasis<br><br> FFD700 #</span>
+  <span id="table">Table<br><br> 0A1476 #</span>
   <span id="link">Link<br><br> FF8000 #</span>
 </div>
 
