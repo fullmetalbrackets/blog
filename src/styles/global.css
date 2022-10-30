@@ -35,6 +35,7 @@
   --hover: #ffb366;
   --table: #0a1476;
   --blockquote: #eff;
+  --svg: invert(66%) sepia(69%) saturate(288%) hue-rotate(127deg) brightness(90%) contrast(95%);
 }
 
 [data-theme="light"] {
@@ -49,6 +50,7 @@
   --hover: #ffb366;
   --table: #0a1476;
   --blockquote: #eff;
+  --svg: invert(66%) sepia(69%) saturate(288%) hue-rotate(127deg) brightness(90%) contrast(95%);
 }
 
 [data-theme="dark"] {
@@ -63,6 +65,7 @@
   --hover: #ffb366;
   --table: #0a1476;
   --blockquote: #09092F;
+  --svg: invert(36%) sepia(79%) saturate(4889%) hue-rotate(303deg) brightness(97%) contrast(101%);
 }
 
 :root, html {
