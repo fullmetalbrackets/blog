@@ -4,7 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
 const title = 'Page not found'
-const desc = '404 - Page not found'
+const desc = 'This page does not seem to exist.'
 ---
 
 <!DOCTYPE html>
@@ -13,34 +13,57 @@ const desc = '404 - Page not found'
 		<BaseHead title={title} description={desc} />
 		<style>
 			main {
-				margin: auto;
-				padding: auto;
-        text-align: center;
+				margin: 0;
+				padding: 0;
 			}
-      h1 {
-        font-size: 10em;
-        font-family: 'Streamster', 'Wotfard', 'Fira Sans', Verdana, sans-serif;
-        margin: 0.5em 0 0 0;
-      }
+			section {
+				margin: 0;
+				padding: 0;
+			}
+      hr {
+				margin-bottom: 2.5em;
+			}
+			h1 {
+				font-size: 36px;
+				margin-top: 1.9em;
+				margin-bottom: 0;
+			}
       p {
-        font-size: 3em;
-        text-align: center;
-        color: var(--other);
-        margin: 0 0 2.5em 0;
+        margin: 2em auto 10em auto;
+      }
+      #go-back {
+        cursor: pointer;
       }
 			@media screen and (min-width: 200px) and (max-width: 767px) {
-
+        h1 {
+          font-size: 36px;
+          margin-top: 1.575em;
+        }
+        hr {
+          margin-bottom: 1.75em;
+        }
+        form {
+          margin: 1em;
+        }
       }
 		</style>
 	</head>
 	<body>
 		<Header />
 		<main>
-      <h1>404</h1>
-      <p>
-        Page not found
-      </p>
-    </main>
+      <section>
+				<h1>{title}</h1>
+				<hr>
+        <p>
+          {desc} <a id="go-back">Go back</a> or <a href="/">return to the Home page</a>.
+        </p>
+      </section>
+		</main>
 		<Footer />
+    <script>
+      document.getElementById('go-back').addEventListener('click', () => {
+        history.back();
+      });
+    </script>
 	</body>
 </html>
