@@ -1,7 +1,10 @@
 {
-  "name": "@example/blog",
-  "type": "module",
-  "version": "0.0.1",
+  "name": "arieldiazcodes",
+  "version": "0.1.0",
+  "homepage": "https://arieldiaz.codes",
+  "description": "Tech articles, quick guides, and other resources.",
+  "author": "Ariel Diaz",
+  "license": "MIT",
   "private": true,
   "scripts": {
     "dev": "astro dev",
