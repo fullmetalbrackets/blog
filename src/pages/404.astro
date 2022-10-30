@@ -1,69 +1,45 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 
 const title = 'Page not found'
 const desc = 'This page does not seem to exist.'
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<BaseHead title={title} description={desc} />
-		<style>
-			main {
-				margin: 0;
-				padding: 0;
-			}
-			section {
-				margin: 0;
-				padding: 0;
-			}
-      hr {
-				margin-bottom: 2.5em;
-			}
+	<BaseLayout title={title} description={desc}>
+	<style>
+		hr {
+			margin-bottom: 2.5em;
+		}
+		h1 {
+			font-size: 36px;
+			margin-top: 1.9em;
+			margin-bottom: 0;
+		}
+		p {
+			margin: 2em auto 10em auto;
+		}
+		#go-back {
+			cursor: pointer;
+		}
+		@media screen and (min-width: 200px) and (max-width: 767px) {
 			h1 {
 				font-size: 36px;
-				margin-top: 1.9em;
-				margin-bottom: 0;
+				margin-top: 1.575em;
 			}
-      p {
-        margin: 2em auto 10em auto;
-      }
-      #go-back {
-        cursor: pointer;
-      }
-			@media screen and (min-width: 200px) and (max-width: 767px) {
-        h1 {
-          font-size: 36px;
-          margin-top: 1.575em;
-        }
-        hr {
-          margin-bottom: 1.75em;
-        }
-        form {
-          margin: 1em;
-        }
-      }
-		</style>
-	</head>
-	<body>
-		<Header />
-		<main>
-      <section>
-				<h1>{title}</h1>
-				<hr>
-        <p>
-          {desc} <a id="go-back">Go back</a> or <a href="/">return to the Home page</a>.
-        </p>
-      </section>
-		</main>
-		<Footer />
-    <script>
-      document.getElementById('go-back').addEventListener('click', () => {
-        history.back();
-      });
-    </script>
-	</body>
-</html>
+			hr {
+				margin-bottom: 1.75em;
+			}
+			form {
+				margin: 1em;
+			}
+		}
+	</style>
+	<section>
+		<h1>{title}</h1>
+		<hr>
+		<p>
+			{desc} <a id="go-back">Go back</a> or <a href="/">return to the Home page</a>.
+		</p>
+	</section>
+	<hr class="bottom-line">
+</BaseLayout>
