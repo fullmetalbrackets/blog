@@ -62,11 +62,11 @@ Now that we downloaded the APK to our phone or tablet, we have to transfer the f
 
 Open the Send Files to TV app on BOTH the TV and phone. You should see the below screen.
 
-[![Screenshot of Send Files to TV app on mobile](/img/attbravia1.jpg)](https://arieldiaz.codes/img/attbravia1.jpg)
+[![Screenshot of Send Files to TV app on mobile](/img/blog/attbravia1.jpg)](https://arieldiaz.codes/img/blog/attbravia1.jpg)
 
 Choose receive on the TV, and send on the phone. On the phone, navigate to the Downloads folder and search for the APK, then click on it. You should see the TV on the list, like below. (Ignore the file name in my screenshot, it's of the old AT&T TV app, but this method works the same with DirecTV Stream.)
 
-[![Screenshots of UI in Send Files to TV app](/img/attbravia2.jpg)](https://arieldiaz.codes/img/attbravia2.jpg)
+[![Screenshots of UI in Send Files to TV app](/img/blog/attbravia2.jpg)](https://arieldiaz.codes/img/blog/attbravia2.jpg)
 
 <div id='tv'/>
 
@@ -74,7 +74,7 @@ Choose receive on the TV, and send on the phone. On the phone, navigate to the D
 
 Final step! Open the file manager app on the TV, go to the Download folder and the APK should be there. Unfortunately I don't have att-imgs from the TV, but it should be self-explanatory. If using TV File Commander, move your cursor to the three dots next to the file, click on it and then click on Install. You'll see a file transfer dialog on both the phone and the TV.
 
-[![Screenshots showing file transferring from mobile to TV in Send Files to TV app](/img/attbravia3.jpg)](https://arieldiaz.codes/img/attbravia3.jpg)
+[![Screenshots showing file transferring from mobile to TV in Send Files to TV app](/img/blog/attbravia3.jpg)](https://arieldiaz.codes/img/blog/attbravia3.jpg)
 
 You should be all done! The app should appear on your Sony Bravia TV's app list and home, you'll just need to login with your AT&T account credentials. Enjoy beautiful 4K streaming of live cable channels!
 
