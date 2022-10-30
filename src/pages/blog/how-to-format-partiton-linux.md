@@ -34,7 +34,7 @@ sudo mkfs.vfat /dev/sdb # vfat filesystem
 
 ## Managing partitions
 
-To manage partitions on a disk, I like to use `fdisk` since it’s dialog-based and easy to use. Let’s assume `/dev/sdb` has two partitions, but you want to delete one. Use this command to enter the `fdisk` dialog:
+To manage partitions on a disk, I like to use `fdisk` since it’s dialog-based and easy to use. Let’s assume `/dev/sdb` has two partitions -- `sdb1` and `sdb2` -- but you want to delete one. Use this command to enter the `fdisk` dialog:
 
 ```bash
 sudo fdisk /dev/sdb
