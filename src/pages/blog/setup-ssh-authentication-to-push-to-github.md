@@ -12,15 +12,15 @@ Setting up SSH keys and pushing to GitHub without needing to enter a username an
 
 First we need to add our computer's SSH public key to GitHub. Login to your GitHub account, click on your profile icon in the top-right corner, then click on **Settings**.
 
-[![Screenshot of GitHub with Settings selected from dropdown menu](/img/gh1.png)](https://arieldiaz.codes/img/gh1.png)
+[![Screenshot of GitHub with Settings selected from dropdown menu](/img/blog/gh1.png)](https://arieldiaz.codes/img/blog/gh1.png)
 
 Next click on **SSH and GPG keys** in the menu on the left:
 
-[![Screenshot of GitHub settings with SSH and GPG keys selected](/img/gh2.png)](https://arieldiaz.codes/img/gh2.png)
+[![Screenshot of GitHub settings with SSH and GPG keys selected](/img/blog/gh2.png)](https://arieldiaz.codes/img/blog/gh2.png)
 
 Now click the green **New SSH key** button near the top-right side of the screen:
 
-[![Screenshot showing the button to click on GitHub](/img/gh3.png)](https://arieldiaz.codes/img/gh3.png)
+[![Screenshot showing the button to click on GitHub](/img/blog/gh3.png)](https://arieldiaz.codes/img/blog/gh3.png)
 
 Now use your favorite text editor to open your computer's SSH public key, located in your `~/.ssh` directory (<a href="https://arieldiaz.codes/blog/generating-an-ssh-key-pair/" target="_blank">read this</a>) if you have no idea what I'm talking about) and most likely named `id_rsa.pub`, if you used the default options when you generated the key. In the key file you'll see a jumble of text that looks something like this:
 
@@ -35,7 +35,7 @@ NrRFi9wrf+M7Q== bob@hostname
 
 Copy all this text to clipboard. Now go back to GitHub, paste the SSH key text in, add a title (I usually put the hostname of the computer this key belongs to) and finally click **Add SSH key**.
 
-[![Screenshot of GitHub screen to add new SSH key](/img/gh4.png)](https://arieldiaz.codes/img/gh4.png)
+[![Screenshot of GitHub screen to add new SSH key](/img/blog/gh4.png)](https://arieldiaz.codes/img/blog/gh4.png)
 
 That's it! You should now be able to push to GitHub via SSH and without password prompt. Now, go into the directory of the project you want to push to GitHub. On Windows, we can go into the project folder then right-click > Open Powerbash. Note that if you don't have Powerbash in your right-click menu, <a href="https://www.howtogeek.com/165268/how-to-add-open-powerbash-here-to-the-context-menu-in-windows/" target="_blank" rel="noopener noreferrer">you'll have to add it</a>. (Alternately, you can <a href="https://www.tenforums.com/tutorials/179549-add-open-windows-terminal-expandable-context-menu-windows-10-a.html" target="_blank" rel="noopener noreferrer">install Windows Terminal and add that to the right-click menu</a>, which is my personal preference for doing anything on the command line in Windows.)
 
