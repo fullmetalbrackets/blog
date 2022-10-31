@@ -41,19 +41,23 @@ Check out <a href="https://uses.tech" target="_blank">Uses.Tech</a> for other <e
 
 - ### Desk
 
+  - <a href="https://www.amazon.com/gp/product/B08Q89X9R2" target="_blank">Bestier L Shaped Desk, Rustic Brown</a>
+
 - ### Chair
+
+  - <a href="https://www.amazon.com/gp/product/B09YV46WG7" target="_blank">COLAMY 2199 Office Chair, Classic Brown</a>
 
 - ### Monitors
 
   - Dell 27" 1080P HD Monitor (old faithful)
-  - [Samsung UR59-series 32" 4K UHD Curved Monitor](https://www.amazon.com/gp/product/B07L9G1BFX/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1) (it's overkill and that's fine)
+  - <a href="https://www.amazon.com/gp/product/B07L9G1BFX" target="_blank">Samsung UR59-series 32" 4K UHD Curved Monitor</a> (it's overkill and that's fine)
 
 - ### Speakers
 
-  [Logitech Z200 Multimedia Stereo Speakers](https://www.amazon.com/gp/product/B00EZ9XKCM/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1)
+  - <a href="https://www.amazon.com/gp/product/B00EZ9XKCM" target="_blank">Logitech Z200 Multimedia Stereo Speakers</a>
 
 - ### Keyboard and Mouse
-  [Logitech MK270 Wireless Keyboard & Mouse Combo](https://www.amazon.com/gp/product/B00BP5KOPA/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1)
+  - <a href="https://www.amazon.com/gp/product/B00BP5KOPA" target="_blank">Logitech MK270 Wireless Keyboard & Mouse Combo</a>
 
 <br>
 
@@ -117,7 +121,7 @@ Check out <a href="https://uses.tech" target="_blank">Uses.Tech</a> for other <e
   - 1 x 250 GB M.2 NVMe
   - 1 x 2 TB HDD
   - 2 x 1 TB HDD
-  - 1 x 500 GB HDD
+  - 1 x 750 GB HDD
 
 - ### Docker Containers
 
@@ -136,7 +140,7 @@ Check out <a href="https://uses.tech" target="_blank">Uses.Tech</a> for other <e
   - Grafana
 
 - ### Comment
-  Bought used on eBay for around $60. I added hard drives and doubled the RAM, and it's been running my entire stack of self-hosted services going on two years without so much as a hiccup.
+  Bought used on eBay for around $60. I added hard drives and doubled the RAM, and it's been running my entire stack of self-hosted services going on two years without so much as a hiccup. Also acts as my NAS and network share via Samba and NFS. My media library (except movies, which is a small collection that don't mind losing), configs and other important files are backed up every 72 hours to the 750 GB HDD. I have yet to find a need for any additional backup solutions.
 
 <div id='pihole' />
 
@@ -163,7 +167,7 @@ Check out <a href="https://uses.tech" target="_blank">Uses.Tech</a> for other <e
   500 GB HDD
 
 - ### Comment
-  A recent purchase, $45 used on eBay and hasn't been expanded at all from how I got it. I only bought this to run Pi-Hole as a replace to an old, noisy laptop I've been running Pi-Hole off of for years. It also doubles as a dev server.
+  A recent purchase, $45 used on eBay and hasn't been expanded at all from how I got it. I only bought this to run Pi-Hole as a replace to an old, noisy laptop I've been running Pi-Hole off of for years. It also doubles as a dev server. I may slap on an external HDD and use it as a backup server too.
 
 <div id='tools' />
 
@@ -191,6 +195,8 @@ Check out <a href="https://uses.tech" target="_blank">Uses.Tech</a> for other <e
 - ### Coffee
 
   Starbucks Sumatra Dark Roast (I need this to live)
+
+#### More to come...
 
 <br><br>
 
