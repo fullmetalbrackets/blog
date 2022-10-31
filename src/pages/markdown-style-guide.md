@@ -25,12 +25,14 @@ p { margin: 0; }
 #link { color: #000; background-color:#ff8000; font-weight: 900; }
 #table { color: #fff; background-color:#0a1476; font-weight: 900; }			
 
-.site-colors{
+.light-colors{
 unicode-bidi: bidi-override;
 direction: rtl;
 text-align: center;
+background: #fff;
+border-radius: 0.5em;
 }
-.site-colors > span {
+.light-colors > span {
 display: inline-block;
 position: relative;
 border-radius: 0.25em;
@@ -39,11 +41,11 @@ height: 10rem;
 margin: 1rem;
 padding-top: 2.5rem;
 }
-.site-colors > span:hover{
+.light-colors > span:hover{
 cursor:pointer;
 }
 </style>
-<div class="site-colors">
+<div class="light-colors">
   <span id="other-light">Dates/Other<br><br> 16A6C2 #</span>
   <span id="text-light">Text<br><br> 000120 #</span>
   <span id="secondary-light">H4 - H6<br><br> 54C3BC #</span>
@@ -64,12 +66,14 @@ cursor:pointer;
 #accent { color: #fff; background-color:#08083A; font-weight: 900; }
 #text { color: #000; background-color:#aeb5cd; font-weight: 900; }
 
-.site-colors{
+.dark-colors{
 unicode-bidi: bidi-override;
 direction: rtl;
 text-align: center;
+background: #000120;
+border-radius: 0.5em;
 }
-.site-colors > span {
+.dark-colors > span {
 display: inline-block;
 position: relative;
 border-radius: 0.25em;
@@ -78,11 +82,11 @@ height: 10rem;
 margin: 1rem;
 padding-top: 2.5rem;
 }
-.site-colors > span:hover{
+.dark-colors > span:hover{
 cursor:pointer;
 }
 </style>
-<div class="site-colors">
+<div class="dark-colors">
   <span id="other">Dates/Other<br><br> 42C3DE #</span>
   <span id="text">Text<br><br> AEB5DC #</span>
   <span id="secondary">H4 - H6<br><br> F986DE #</span>
@@ -97,23 +101,50 @@ cursor:pointer;
 
 The following HTML `<h1>`—`<h6>` elements represent six levels of section headings. `<h1>` is the highest section level while `<h6>` is the lowest. (**Note:** The `<h2>` element has extra spacing at the top margin for design reasons.)
 
-# H1
+# H1 - Page Title
 
-## H2
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum exercitationem consequuntur quia placeat illum ex enim rerum quis aliquam. Accusamus.
 
-### H3
+## H2 - Primary Heading
 
-#### H4
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum exercitationem consequuntur quia placeat illum ex enim rerum quis aliquam. Accusamus.
 
-##### H5
+### H3 - Secondary Heading
 
-###### H6
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum exercitationem consequuntur quia placeat illum ex enim rerum quis aliquam. Accusamus.
+
+#### H4 - Small Heading
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum exercitationem consequuntur quia placeat illum ex enim rerum quis aliquam. Accusamus.
+
+##### H5 - Smaller Heading
+
+###### H6 - Smallest Heading
 
 ## Paragraph
 
 Xerum, quo qui aut unt expliquam qui dolut labo. Aque venitatiusda cum, voluptionse latur sitiae dolessi aut parist aut dollo enim qui voluptate ma dolestendit peritin re plis aut quas inctum laceat est volestemque commosa as cus endigna tectur, offic to cor sequas etum rerum idem sintibus eiur? Quianimin porecus evelectur, cum que nis nust voloribus ratem aut omnimi, sitatur? Quiatem. Nam, omnis sum am facea corem alique molestrunt et eos evelece arcillit ut aut eos eos nus, sin conecerem erum fuga. Ri oditatquam, ad quibus unda veliamenimin cusam et facea ipsamus es exerum sitate dolores editium rerore eost, temped molorro ratiae volorro te reribus dolorer sperchicium faceata tiustia prat.
 
 Itatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne sapicia is sinveli squiatum, core et que aut hariosam ex eat.
+
+## Code Blocks
+
+Inline code (single backticks) `look like this`.
+
+Code blocks (three backticks) look like this:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Example HTML5 Document</title>
+  </head>
+  <body>
+    <p>Test</p>
+  </body>
+</html>
+```
 
 ## Images
 
@@ -152,31 +183,17 @@ The blockquote element represents content that is quoted from another source, op
 
 #### Blockquote with attribution
 
-> Don't communicate by sharing memory, share memory by communicating.<br>
+> "Don't communicate by sharing memory, share memory by communicating."<br>
 > — <cite>Rob Pike[^1]</cite>
 
 [^1]: The above quote is excerpted from Rob Pike's [talk](https://www.youtube.com/watch?v=PAAkCSZUG1c) during Gopherfest, November 18, 2015.
 
 ## Tables
 
-| Italics   | Bold     | Code   |
-| --------- | -------- | ------ |
-| _italics_ | **bold** | `code` |
-
-## Code Blocks
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Example HTML5 Document</title>
-  </head>
-  <body>
-    <p>Test</p>
-  </body>
-</html>
-```
+| Emphasis     | Strong     | Strikethrough       |
+| ------------ | ---------- | ------------------- |
+| `_emphasis_` | `*strong*` | `~~strikethrough~~` |
+| _emphasis_   | **strong** | ~~strikethrough~~   |
 
 ## List Types
 
@@ -195,12 +212,15 @@ The blockquote element represents content that is quoted from another source, op
 #### Nested list
 
 - Fruit
+
   - Apple
   - Orange
   - Banana
-- Dairy
-  - Milk
-  - Cheese
+
+- Gear
+  1. Laptop
+  2. Camera
+  3. Lens
 
 ## Other Elements — abbr, sub, sup, kbd, mark
 
