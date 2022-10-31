@@ -76,5 +76,6 @@ Remember to reload the profile for the changes to take effect:
 - <a href="https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powerShell-7.2#msi" target="_blank">Install PowerShell</a>
 - <a href="https://aka.ms/terminal" target="_blank">Install Windows Terminal</a>
 - <a href="https://learn.microsoft.com/en-us/windows/package-manager/winget" target="_blank">Install WinGet Package Manager</a>
+- <a href="https://ohmyposh.dev" target="_blank">Oh-My-Posh</a>
 - <a href="https://github.com/Kudostoy0u/pwsh10k" target="_blank">Pwsh10k Theme for Oh-My-Posh</a>
 - <a href="https://github.com/romkatv/powerlevel10k#manual-font-installation" target="_blank">Meslo Nerd Font for Powerlevel10k</a>
