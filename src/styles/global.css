@@ -64,7 +64,7 @@
   --link: #ff8000;
   --hover: #ffb366;
   --table: #0a1476;
-  --blockquote: #09092F;
+  --blockquote: #151540;
   --svg: invert(36%) sepia(79%) saturate(4889%) hue-rotate(303deg) brightness(97%) contrast(101%);
 }
 
@@ -123,12 +123,11 @@ section {
   min-height: 35vh;
 }
 article p {
-  margin-top: 2em;
-  margin-bottom: 2em;
+  margin: 2em auto 0 auto;
 }
 h1 {
 	color: var(--primary);
-	font-size: 32px;
+	font-size: 36px;
 }
 h2 {
 	color: var(--primary);
