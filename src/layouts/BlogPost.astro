@@ -144,7 +144,11 @@ const allTagsData = generateTagsData(tags);
 					))}
 				</ul>
 				<hr>
-				<slot />
+				<slot>
+					<p>
+						If you're seeing this, something went wrong! Please try <em>reloading the page</em>.
+					</p>
+				</slot>
 			</article>
 			<aside>
 				<span>Was this article helpful? 
