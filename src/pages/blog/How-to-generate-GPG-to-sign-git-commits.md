@@ -114,7 +114,7 @@ $ gpg --armor --export BC0E17D7B9C98BCF
 
 You'll get a wall of text as output, copy and paste from `-----BEGIN PGP PUBLIC KEY BLOCK-----` to `-----END PGP PUBLIC KEY BLOCK-----` and all the text in-between. _Make sure to include those opening and ending comment lines!!_ You'll then need to confirm the new key by providing your GitHub password.
 
-Now to test it out, push out any commit to a GitHub repo. You should be prompted for the GPG password when using `git push` and providing it will sign the commit. Now your commits should have the verified badge in GitHub.
+Now to test it out, push out any commit to a GitHub repo. You should be prompted for the GPG password when using `git commit` and providing it will sign the commit. Now your commits should have the verified badge in GitHub.
 
 <a href="/img/blog/gh-gpg2.png" target="_blank"><img src="/img/blog/gh-gpg2.png" alt="Screenshot of GitHub verified badge on a signed commit."></a>
 
