@@ -14,8 +14,8 @@
   font-display: swap;
 }
 @font-face {
-  font-family: 'LeagueMono-VF';
-  src: url('/fonts/LeagueMono-VF.woff2') format('woff2');
+  font-family: 'JetBrainsMono';
+  src: url('/fonts/JetBrainsMono.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -212,7 +212,7 @@ img {
 }
 code {
 	padding: 3.5px 5px;
-	font-family: 'LeagueMono-VF', monospace;
+	font-family: 'JetBrainsMono', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
 	background-color: var(--accent);
 	color: var(--secondary);
 	border-radius: 0.25em;
