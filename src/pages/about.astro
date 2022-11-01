@@ -54,6 +54,18 @@ const desc = 'About me and this site'
       resize: vertical;
       min-height: 8vh;
       outline: none;
+      resize: none;
+    }
+    .reply, .reply-radio {
+      margin: 1em 0 0 0;
+      padding: 0;
+    }
+    .reply-radio {
+      margin: -10px 2px 0 0;
+      width: 20px;
+    }
+    span {
+      margin-right: 20px;
     }
     button {
       font-weight: 700;
@@ -61,7 +73,7 @@ const desc = 'About me and this site'
       border-style: none;
       border-radius: 0.25em;
       cursor: pointer;
-      margin: 0 auto 4em auto;
+      margin: 2em auto 4em auto;
       padding: 5px 15px 3px 15px;
     }
     button:hover {
@@ -77,7 +89,7 @@ const desc = 'About me and this site'
       transition: background-color 5000s ease-in-out 0s;
       -webkit-text-fill-color: var(--text);
     }
-    @media screen and (min-width: 200px) and (max-width: 1024px) {
+    @media screen and (min-width: 200px) and (max-width: 600px) {
       main {
         margin: 0 10px;
       }
@@ -111,7 +123,7 @@ const desc = 'About me and this site'
     <h1>Contact</h1>
     <hr>
     <p>
-      If you'd like to get in contact with me, feel free to <a href="mailto:contact@fullmetalbrackets.com" target="_blank">e-mail me</a> or use the below form. Thanks for visiting!
+      If you'd like to get in contact with me, please use the below form. Thanks for visiting!
     </p>
   </section>
   <section>
@@ -119,14 +131,19 @@ const desc = 'About me and this site'
       <input value="contact" name="form-name" type="hidden" />
       <label for="name">Name:</label>
       <br>
-      <input id="text" type="text" name="name" required/>
+      <input id="text" type="text" name="name" required />
       <br><br>
       <label for="email">Email:</label>
       <br>
-      <input id="email" type="email" name="email" required/>
+      <input id="email" type="email" name="email" required />
       <br><br>
       <label for="message">Message:</label>
-      <textarea id="message" name="message" required></textarea>
+      <textarea id="message" name="message" required />
+      <p class="reply">
+      <label for="radio">Request a response to your message?</label><br>
+        <input type="radio" id="reply" name="radio" value="No reply" class="reply-radio" /><span>Yes</span>
+        <input type="radio" id="no-reply" name="radio" value="No reply" class="reply-radio" required />No
+      </p>
       <button class="button" type="submit" value="Submit">Submit</button>
     </form>
   </section>
