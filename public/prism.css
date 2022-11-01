@@ -5,7 +5,7 @@
 code[class*="language-"],
 pre[class*="language-"] {
   color: var(--secondary);
-  font-family: 'LeagueMono-VF', 'JetBrains Mono', 'Ubuntu Mono', Consolas, Monaco, monospace;
+  font-family: 'JetBrainsMono', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
   font-size: 18px;
   border-radius: 0.5em;
   text-align: left;
