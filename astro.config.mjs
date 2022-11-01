@@ -9,7 +9,7 @@ export default defineConfig({
   site: 'https://arieldiaz.codes',
   integrations: [mdx(), sitemap(), prefetch(
     {
-      throttle: 3
+      throttle: 7
     }
   )],
   markdown: {
