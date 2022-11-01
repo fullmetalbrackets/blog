@@ -11,12 +11,12 @@ import { SITE_TITLE } from '../config';
 		<h1>
 		{SITE_TITLE}
 		</h1>
-		<Theme />
 	</div>
 		<nav>
 		<NavLink href="/">Blog</NavLink>
 		<NavLink href="/blog/tags" rel="prefetch">Categories</NavLink>
 		<NavLink href="/about">About</NavLink>
+		<Theme />
 	</nav>
 </header>
 <style>
@@ -30,23 +30,18 @@ import { SITE_TITLE } from '../config';
 	}
 	nav {
 		display: inline-block;
-		margin: 0 0 0 -10px;
+		margin: 0;
 	}
 	.theme {
 		margin: 0;
 		padding: 0;
 	}
 	h1 {
-		display: inline-flex;
 		font-family: 'Streamster';
 		font-size: 4em;
 		margin: 0 0 0 20px;
 	}
-	@media screen and (min-width: 200px) and (max-width: 1024px) {
-		nav {
-			display: inline-flex;
-			margin-left: 0;
-		}
+	@media screen and (min-width: 200px) and (max-width: 600px) {
 		h1 {
 			font-size: 3em;
 		}

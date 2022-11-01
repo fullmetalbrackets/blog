@@ -4,7 +4,6 @@
 .theme-switch-wrapper {
   display: inline-block;
   text-align: right;
-  margin: -115px 0 0 0;
   padding: 0;
 }
 
@@ -44,7 +43,7 @@
 }
 
 input:checked + .slider {
-  background-color: var(--primary);
+  background-color: var(--table);
 }
 
 input:checked + .slider:before {
@@ -81,11 +80,11 @@ input:checked + .slider .feather-sun {
   opacity: 0;
   transform: translateX(-4px);
 }
-@media screen and (min-width: 200px) and (max-width: 1024px) {
+/* @media screen and (min-width: 200px) and (max-width: 600px) {
     .theme-switch-wrapper {
       margin: -90px 0 0 0;
     }
-	}
+	} */
 </style>
 <div class="theme-switch-wrapper">
   <label class="theme-switch" for="checkbox">
