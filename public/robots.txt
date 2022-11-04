@@ -1,7 +1,3 @@
-# *
 User-agent: *
 Disallow: /404
-
-Host: https://arieldiaz.codes
-
 Sitemap: https://arieldiaz.codes/sitemap-0.xml
