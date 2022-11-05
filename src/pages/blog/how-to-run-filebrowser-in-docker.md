@@ -1,11 +1,11 @@
 ---
 layout: "../../layouts/BlogPost.astro"
-title: "How to run self-hosted File Browser in Docker"
-description: "File Browser is a self-hosted file manager for a specified directory in a Linux machine that lets you upload, download, move, copy, create, delete, rename, and edit your files in a nice web interface through your browser. Here's a quick guide to setting it up in Docker."
+title: "How to run self-hosted FileBrowser in Docker"
+description: "FileBrowser is a self-hosted file manager for a specified directory in a Linux machine that lets you upload, download, move, copy, create, delete, rename, and edit your files in a nice web interface through your browser. Here's a quick guide to setting it up in Docker."
 pubDate: "November 4, 2022"
 tags:
   - Self-Hosting
-  - File Browser
+  - FileBrowser
   - Docker
   - Linux
 ---
@@ -14,7 +14,7 @@ tags:
 
 1. [Pre-Requisites](#prereq)
 2. [Preparing the configuration file](#config)
-3. [Start the File Browser container](#run)
+3. [Start the FileBrowser container](#run)
 4. [References](#ref)
 
 <div id='prereq'/>
@@ -41,7 +41,7 @@ sudo apt install docker-compose -y
 
 > &#x26a0;&#xfe0f; &nbsp;**Important!**<br><br> Make sure to do the below steps _prior_ to starting the container or else it won't work!
 
-Before starting the container, you need to create the File Browser directory, and within it a config file and database file. I'll be using File Browser's own suggested configuration with defaults.
+Before starting the container, you need to create the FileBrowser directory, and within it a config file and database file. I'll be using FileBrowser's own suggested configuration with defaults.
 
 ```bash
 mkdir filebrowser filebrowser/database
@@ -61,13 +61,13 @@ Now edit the `settings.json` file and copy/paste the below:
 }
 ```
 
-Leave `filebrowser.db` empty, it just needs to exist for File Browser to work properly.
+Leave `filebrowser.db` empty, it just needs to exist for FileBrowser to work properly.
 
 <div id='run'/>
 
-## Start the File Browser container
+## Start the FileBrowser container
 
-We will assume you want to use File Browser to manage your home directory `~/` (that's how I use it), and that the directories/files we created above are also in the home directory. Also, we're mapping the container's internal port 80 to the Linux machine's port 8080. Make sure to change the ports and directory paths to whatever you want to use.
+We will assume you want to use FileBrowser to manage your home directory `~/` (that's how I use it), and that the directories/files we created above are also in the home directory. Also, we're mapping the container's internal port 80 to the Linux machine's port 8080. Make sure to change the ports and directory paths to whatever you want to use.
 
 ### Using docker run:
 
@@ -120,6 +120,6 @@ Once the container is up and running, go to `http://ip-address:8080` in your web
 
 ## References
 
-- <a href="https://filebrowser.org" target="_blank">File Browser documentation</a>
+- <a href="https://filebrowser.org" target="_blank">FileBrowser documentation</a>
 - <a href="https://docs.docker.com" target="_blank">Docker documentation</a>
 - <a href="https://docs.docker.com/compose/" target="_blank">Docker-Compose documentation</a>
