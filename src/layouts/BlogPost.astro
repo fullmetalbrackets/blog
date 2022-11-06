@@ -130,7 +130,7 @@ const allTagsData = generateTagsData(tags);
 				<h1 class="title">{title}</h1>
 				<ul class="tags">
 					{allTagsData.map(tags => (
-						<a href={`/blog/tags/${tags.slug}`}><li>{tags.name}</li></a>
+						<a href={`/tags/${tags.slug}`}><li>{tags.name}</li></a>
 					))}
 				</ul>
 				<hr>
