@@ -91,8 +91,21 @@ for = "/*"
   force = true
 
 [[redirects]]
+  from = "https://arieldiaz.codes/blog/tags"
+  to = "https://arieldiaz.codes/tags"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://arieldiaz.codes/tags/*"
+  to = "https://arieldiaz.codes/tags/:splat"
+  status = 301
+  force = true
+
+
+[[redirects]]
   from = "https://arieldiaz.codes/blog"
-  to = "https://arieldiaz.codes/"
+  to = "https://arieldiaz.codes"
   status = 301
   force = true
 
@@ -104,7 +117,7 @@ for = "/*"
 
 [[redirects]]
   from = "https://fullmetalbrackets.com/blog"
-  to = "https://fullmetalbrackets.com/"
+  to = "https://fullmetalbrackets.com"
   status = 301
   force = true
 
@@ -127,12 +140,6 @@ for = "/*"
   force = true
 
 [[redirects]]
-  from = "https://arieldiaz.codes/blog/"
-  to = "https://arieldiaz.codes/blog/"
-  status = 301
-  force = true
-
-[[redirects]]
   from = "https://arieldiaz.codes/blog/quick-guide-setting-up-zsh-oh-my-zsh-plugins-and-theme"
   to = "https://arieldiaz.codes/blog/guide-to-zsh-ohmyzsh-plugins-and-theme"
   status = 301
@@ -147,18 +154,6 @@ for = "/*"
 [[redirects]]
   from = "https://arieldiaz.codes/blog/how-to-autologin-ubuntu-on-reboot-and-go-straight-to-terminal"
   to = "https://arieldiaz.codes/blog/how-to-autologin-ubuntu-on-reboot"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "https://arieldiaz.codes/tags"
-  to = "https://arieldiaz.codes/blog/tags"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "https://arieldiaz.codes/tags/misc"
-  to = "https://arieldiaz.codes/blog/tags/misc"
   status = 301
   force = true
 
@@ -183,12 +178,6 @@ for = "/*"
 [[redirects]]
   from = "https://arieldiaz.codes/blog/customizing-the-windows-terminal-prompt-with-starship"
   to = "https://arieldiaz.codes/blog/customizing-windows-terminal-with-ohmyposh"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "https://arieldiaz.codes/tags/ssh"
-  to = "https://arieldiaz.codes/blog/tags/ssh"
   status = 301
   force = true
 
@@ -242,73 +231,31 @@ for = "/*"
 
 [[redirects]]
   from = "https://arieldiaz.codes/tags/development"
-  to = "https://arieldiaz.codes/blog/tags/web-development"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "https://arieldiaz.codes/tags/nuxt"
-  to = "https://arieldiaz.codes/blog/tags/nuxt"
+  to = "https://arieldiaz.codes/tags/web-development"
   status = 301
   force = true
 
 [[redirects]]
   from = "https://arieldiaz.codes/tags/terminal"
-  to = "https://arieldiaz.codes/blog/tags/command-line"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "https://arieldiaz.codes/tags/github"
-  to = "https://arieldiaz.codes/blog/tags/github"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "https://arieldiaz.codes/tags/linux"
-  to = "https://arieldiaz.codes/blog/tags/linux"
+  to = "https://arieldiaz.codes/tags/command-line"
   status = 301
   force = true
 
 [[redirects]]
   from = "https://arieldiaz.codes/tags/web"
-  to = "https://arieldiaz.codes/blog/tags/web-development"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "https://arieldiaz.codes/tags/prismjs"
-  to = "https://arieldiaz.codes/blog/tags/prismjs"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "https://arieldiaz.codes/tags/netlify"
-  to = "https://arieldiaz.codes/blog/tags/netlify"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "https://arieldiaz.codes/tags/git"
-  to = "https://arieldiaz.codes/blog/tags/git"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "https://arieldiaz.codes/tags/pwa"
-  to = "https://arieldiaz.codes/blog/tags/pwa"
+  to = "https://arieldiaz.codes/tags/web-development"
   status = 301
   force = true
 
 [[redirects]]
   from = "https://arieldiaz.codes/tags/hosting"
-  to = "https://arieldiaz.codes/blog/tags/web-hosting"
+  to = "https://arieldiaz.codes/tags/web-hosting"
   status = 301
   force = true
 
 [[redirects]]
   from = "https://arieldiaz.codes/tags/webdev"
-  to = "https://arieldiaz.codes/blog/tags/web-development"
+  to = "https://arieldiaz.codes/tags/web-development"
   status = 301
   force = true
 
