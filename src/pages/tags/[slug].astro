@@ -1,9 +1,9 @@
 ---
-import BaseLayout from "../../../layouts/BaseLayout.astro";
-import { generateTagsData } from "../../../utils/tags";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { generateTagsData } from "../../utils/tags";
 
 export async function getStaticPaths() {
-  const allPosts = await Astro.glob('../*.{md,mdx}');
+  const allPosts = await Astro.glob('../blog/*.{md,mdx}');
   const sortedPosts = allPosts.sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf());
   const allTagsUnique = new Set();
   sortedPosts.map(post => {
@@ -26,7 +26,7 @@ export async function getStaticPaths() {
 const {tag} = Astro.props;
 const title = `${tag}`
 const desc = 'Posts tagged ${tag}.'
-const posts = (await Astro.glob('../../blog/*.{md,mdx}')).sort(
+const posts = (await Astro.glob('../blog/*.{md,mdx}')).sort(
 	(a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf())
 	.filter(post => tag && post.frontmatter.tags?.includes(tag));
 ---
