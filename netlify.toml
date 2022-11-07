@@ -92,16 +92,9 @@ for = "/*"
 
 [[redirects]]
   from = "https://arieldiaz.codes/blog/tags"
-  to = "https://arieldiaz.codes/tags"
+  to = "https://arieldiaz.codes/tags:splat"
   status = 301
   force = true
-
-[[redirects]]
-  from = "https://arieldiaz.codes/tags/*"
-  to = "https://arieldiaz.codes/tags/:splat"
-  status = 301
-  force = true
-
 
 [[redirects]]
   from = "https://arieldiaz.codes/blog"
