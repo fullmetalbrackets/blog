@@ -38,6 +38,26 @@ const desc = 'Blog posts by category tag.'
 		li a:hover, a:focus {
 			color: var(--secondary);
 		}
+		li a {
+  		position: relative;
+		}
+		li a::before {
+			content: '';
+			position: absolute;
+			width: 100%;
+			height: 1px;
+			border-radius: 4px;
+			background-color: var(--secondary);
+			bottom: 0;
+			left: 0;
+			transform-origin: right;
+			transform: scaleX(0);
+			transition: transform .3s ease-in-out;
+		}
+		li a:hover::before {
+			transform-origin: left;
+			transform: scaleX(1);
+		}
 		hr {
 			margin-bottom: 2em;
 		}

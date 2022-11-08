@@ -29,6 +29,9 @@ const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
 		line-height: 40px;
 		font-size: 36px;
 	}
+	ul li:hover > h1 {
+		color: var(--secondary);
+	}
 	hr {
 		margin-top: 1.5em;
 	}

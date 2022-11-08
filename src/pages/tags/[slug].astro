@@ -66,6 +66,9 @@ const posts = (await Astro.glob('../blog/*.{md,mdx}')).sort(
 		.title span {
 			color: var(--primary);
 		}
+		ul li:hover > h1 {
+			color: var(--secondary);
+		}
 		@media screen and (min-width: 200px) and (max-width: 600px) {
 			.title {
 				margin-top: 1.575em;;
