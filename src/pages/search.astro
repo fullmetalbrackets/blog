@@ -28,11 +28,11 @@ const title = 'Search'
     Use the search field below to search for blog posts.
   </p>
   <link href="/_pagefind/pagefind-ui.css" rel="stylesheet" />
-  <script src="/_pagefind/pagefind-ui.js" type="text/javascript" crossorigin="use-credentials" is:inline>
+  <script src="/_pagefind/pagefind-ui.js" type="text/javascript" crossorigin="anonymous" is:inline>
   
   </script>
   <div id="search" class="search-results"></div>
-  <script crossorigin="use-credentials" is:inline>
+  <script crossorigin="anonymous" is:inline>
     window.addEventListener('DOMContentLoaded', (event) => {
       new PagefindUI({ element: '#search' });
     });
