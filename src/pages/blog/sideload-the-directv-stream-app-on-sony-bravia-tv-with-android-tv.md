@@ -5,8 +5,8 @@ description: "I have a Sony Bravia 4K TV and it is awesome. It has built-in Andr
 pubDate: "August 31, 2021"
 updatedDate: "September 18, 2022"
 tags:
-  - Android TV
-  - Misc
+  - Android
+  - Miscellaneous
 ---
 
 ## Sections
