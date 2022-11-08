@@ -1,12 +1,10 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
 
 const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
 	(a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
 );
-
-const title = 'Ariel Diaz'
-const desc = 'Tech articles, quick guides, and other resources.'
 ---
 
 <style>
@@ -47,7 +45,7 @@ const desc = 'Tech articles, quick guides, and other resources.'
 	}
 </style>
 
-<BaseLayout title={title} description={desc}>
+<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
 	<section>
 		<ul>
 			{posts.map((post) => (
