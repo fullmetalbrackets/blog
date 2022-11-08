@@ -9,10 +9,10 @@ const today = new Date();
 		All rights reserved.
 	</span>
 	<div class="nav">
-		<NavLink href="/rss.xml"><img height="auto" width="15px" class="rss" src="/img/assets/rss.svg" alt="RSS Feed" title="RSS Feed"></NavLink>
-		<NavLink href="mailto:contact@fullmetalbrackets.com" target="_blank"><img height="auto" width="20px" class="email" src="/img/assets/email.svg" alt="Email" title="Email"></NavLink>
-		<NavLink href="https://github.com/fullmetalbrackets" target="_blank"><img height="auto" width="20px" class="github" src="/img/assets/gh.svg" alt="GitHub" title="GitHub"></NavLink>
-		<NavLink href="https://buymeacoffee.com/arieldiaz" target="_blank"><img height="auto" width="15px" class="buymeacoffee" src="/img/assets/bmc-logo.svg" alt="Buy Me A Coffee" title="Buy Me A Coffee"></NavLink>
+		<NavLink href="/rss.xml"><img height="15px" width="15px" class="rss" src="/img/assets/rss.svg" alt="RSS Feed" title="RSS Feed"></NavLink>
+		<NavLink href="mailto:contact@fullmetalbrackets.com" target="_blank"><img height="20px" width="20px" class="email" src="/img/assets/email.svg" alt="Email" title="Email"></NavLink>
+		<NavLink href="https://github.com/fullmetalbrackets" target="_blank"><img height="20px" width="20px" class="github" src="/img/assets/gh.svg" alt="GitHub" title="GitHub"></NavLink>
+		<NavLink href="https://buymeacoffee.com/arieldiaz" target="_blank"><img height="21px" width="15px" class="buymeacoffee" src="/img/assets/bmc-logo.svg" alt="Buy Me A Coffee" title="Buy Me A Coffee"></NavLink>
 	</div>
 </footer>
 <style>
@@ -44,12 +44,19 @@ const today = new Date();
 	}
 	.rss {
 		width: 15px;
+		height: 15px;
+	}
+	.mail {
+		width: 20px;
+		height: 20px;
+	}
+	.gh {
+		width: 20px;
+		height: 20px;
 	}
 	.buymeacoffee {
 		width: 15px;
-	}
-	a:hover::after {
-		transform: scale(0);
+		height: 22px;
 	}
 	@media screen and (min-width: 200px) and (max-width: 600px) {
 		.nav {
