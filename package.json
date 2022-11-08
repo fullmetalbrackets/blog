@@ -17,12 +17,13 @@
   "dependencies": {
     "@astrojs/markdown-remark": "^1.1.2",
     "@astrojs/mdx": "^0.11.5",
+    "@astrojs/preact": "^1.2.0",
     "@astrojs/prefetch": "^0.1.0",
     "@astrojs/rss": "^1.0.3",
     "@astrojs/sitemap": "^1.0.0",
     "astro": "^1.6.2",
     "pagefind": "^0.9.1",
-    "preact": "^10.11.2"
+    "preact": "^10.6.5"
   },
   "devDependencies": {
     "@astrojs/prism": "^1.0.1",

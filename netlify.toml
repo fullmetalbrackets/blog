@@ -87,7 +87,7 @@ for = "/*"
 
   [headers.values]
     Access-Control-Allow-Origin = "*.cloudfront.net"
-    Access-Control-Allow-Credentials = true
+    Access-Control-Allow-Credentials = "true"
     Access-Control-Allow-Methods = "GET, POST"
     Access-Control-Allow-Headers = "Content-Type"
     Content-Type = "text/html"
