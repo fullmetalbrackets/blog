@@ -86,11 +86,11 @@ package = "netlify-plugin-csp-generator"
 for = "/*"
 
   [headers.values]
-  Access-Control-Allow-Origin = "*.cloudfront.net"
-  Access-Control-Allow-Headers = "Access-Control-Allow-Origin"
-  Access-Control-Allow-Methods = "GET, HEAD, POST"
-  Access-Control-Max-Age = "8640"
-  Content-Type = "text/html"
+    Access-Control-Allow-Origin = "*.cloudfront.net"
+    Access-Control-Allow-Credentials = true
+    Access-Control-Allow-Methods = "GET, POST"
+    Access-Control-Allow-Headers = "Content-Type"
+    Content-Type = "text/html"
 
 [[redirects]]
   from = "https://arieldiaz.netlify.com/*"
