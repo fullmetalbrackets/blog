@@ -8,7 +8,6 @@ tags:
   - Self-Hosting
   - Pi-Hole
   - Linux
-  - Command Line
 ---
 
 ## Sections
