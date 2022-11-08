@@ -21,7 +21,8 @@
     "@astrojs/rss": "^1.0.3",
     "@astrojs/sitemap": "^1.0.0",
     "astro": "^1.6.2",
-    "pagefind": "^0.9.1"
+    "pagefind": "^0.9.1",
+    "preact": "^10.11.2"
   },
   "devDependencies": {
     "@astrojs/prism": "^1.0.1",
