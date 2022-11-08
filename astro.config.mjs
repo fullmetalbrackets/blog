@@ -7,7 +7,7 @@ import prefetch from "@astrojs/prefetch";
 // https://astro.build/config
 export default defineConfig({
   site: 'https://arieldiaz.codes',
-  integrations: [mdx(), sitemap(), prefetch(
+  integrations: [preact(), mdx(), sitemap(), prefetch(
     {
       throttle: 6
     }
