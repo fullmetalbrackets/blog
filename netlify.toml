@@ -67,17 +67,26 @@ package = "netlify-plugin-csp-generator"
     Cache-Control = "public, max-age=86400"
     Content-Type = "application/x-icon"
 
-# [[headers]]
-# for = "/*"
+[[headers]]
+  for = "/*"
 
-#   [headers.values]
-#     Access-Control-Allow-Origin = "*"
-#     Referrer-Policy = "strict-origin-when-cross-origin"
-#     Strict-Transport-Security = "max-age=31536000"
-#     X-Content-Type-Options = "nosniff"
-#     X-Frame-Options = "DENY"
-#     X-XSS-Protection = "1; mode=block"
-#     Permissions-Policy = "autoplay=(), camera=(), geolocation=(), microphone=()"
+  [headers.values]
+    Access-Control-llow-OrigiAn = "*"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Strict-Transport-Security = "max-age=31536000"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    Permissions-Policy = "autoplay=(), camera=(), geolocation=(), microphone=()"
+
+[[headers]]
+for = "/*"
+
+  [headers.values]
+  Access-Control-Allow-Headers = "Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Origin"
+  Content-Type = "application/json"
+  Access-Control-Allow-Methods = "POST, OPTIONS"
+  Access-Control-Max-Age = "8640"
 
 [[redirects]]
   from = "https://arieldiaz.netlify.com/*"
