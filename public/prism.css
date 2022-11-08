@@ -59,12 +59,12 @@ pre[class*="language-"] {
 }
 
 .token.punctuation {
-  color: var(--other);
+  color: var(--orange);
   
 }
 
 .token.keyword {
-  color: var(--emphasis);
+  color: #fff;
   
 }
 
@@ -79,7 +79,7 @@ pre[class*="language-"] {
 }
 
 .token.variable {
-  color: var(--other);
+  color: var(--yellow);
   
 }
 
@@ -99,17 +99,17 @@ pre[class*="language-"] {
 }
 
 .token.operator {
-  color: var(--other);
+  color: var(--main);
   
 }
 
 .token.builtin {
-  color: var(--other);
+  color: var(--yellow);
   
 }
 
 .token.string {
-  color: var(--other);
+  color: var(--yellow);
   
 }
 
@@ -149,7 +149,7 @@ pre[class*="language-"] {
 }
 
 .token.tag {
-  color: var(--link);
+  color: var(--yellow);
   
 }
 
@@ -159,7 +159,7 @@ pre[class*="language-"] {
 }
 
 .token.property {
-  color: var(--emphasis);
+  color: var(--yellow);
   
 }
 

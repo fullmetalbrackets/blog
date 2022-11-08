@@ -16,11 +16,11 @@ p { margin: 0; }
 ## Light Theme Site Colors
 
 <style>
-#other-light { color: #000; background-color: #ff5e00; font-weight: 900; }
+#other-light { color: #000; background-color: #cc0000; font-weight: 900; }
 #primary-light { color: #000; background-color:#2596be; font-weight: 900; }
 #secondary-light { color: #000; background-color:#64d2b8; font-weight: 900; }
-#emphasis-light { color: #000; background-color:#d71e1e; font-weight: 900; }
-#accent-light { color: #fff; background-color:#08084a; font-weight: 900; }
+#emphasis-light { color: #000; background-color:#cc0000; font-weight: 900; }
+#accent-light { color: #fff; background-color:#113530; font-weight: 900; }
 #text-light { color: #fff; background-color:#092622; font-weight: 900; border: 1px solid #fff; }
 #link-light { color: #000; background-color:#d3158d; font-weight: 900; }
 #table { color: #fff; background-color:#0a1476; font-weight: 900; }			
@@ -46,12 +46,12 @@ cursor:pointer;
 }
 </style>
 <div class="light-colors">
-  <span id="other-light">Dates/Other<br><br> FF5E00 #</span>
+  <span id="other-light">Dates/Other<br><br> CC0000 #</span>
   <span id="text-light">Text<br><br> 092622 #</span>
   <span id="secondary-light">H3 - H6<br><br> 64D2B8 #</span>
   <span id="primary-light">H1 & H2<br><br> 2596BE #</span>
-  <span id="accent-light">Accent<br><br> 08084A #</span>
-  <span id="emphasis-light">Emphasis<br><br> D75D00 #</span>
+  <span id="accent-light">Accent<br><br> 113530 #</span>
+  <span id="emphasis-light">Emphasis<br><br> CC0000 #</span>
   <span id="table">Table<br><br> 0A1476 #</span>
   <span id="link-light">Link<br><br> D3158D #</span>
 </div>
@@ -59,8 +59,8 @@ cursor:pointer;
 ## Dark Theme Site Colors
 
 <style>
-#other { color: #000; background-color: #42c3de; font-weight: 900; }
-#primary { color: #000; background-color:#fa28ad; font-weight: 900; }
+#other { color: #000; background-color: #00ffc3; font-weight: 900; }
+#primary { color: #000; background-color:#e32da0; font-weight: 900; }
 #secondary { color: #000; background-color:#F986DE; font-weight: 900; }
 #emphasis { color: #000; background-color:#ffd700; font-weight: 900; }
 #accent { color: #fff; background-color:#08083A; font-weight: 900; }
@@ -88,10 +88,10 @@ cursor:pointer;
 }
 </style>
 <div class="dark-colors">
-  <span id="other">Dates/Other<br><br> 42C3DE #</span>
+  <span id="other">Dates/Other<br><br> 00FFC3 #</span>
   <span id="text">Text<br><br> AEB5DC #</span>
   <span id="secondary">H4 - H6<br><br> F986DE #</span>
-  <span id="primary">H1 - H3<br><br> FA28AD #</span>
+  <span id="primary">H1 - H3<br><br> E32DA0 #</span>
   <span id="accent">Accent<br><br> 08083A #</span>
   <span id="emphasis">Emphasis<br><br> FFD700 #</span>
   <span id="table">Table<br><br> 0A1476 #</span>

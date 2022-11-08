@@ -73,7 +73,7 @@ const allTagsData = generateTagsData(tags);
 				color: var(--secondary);
 			}
 			span {
-				color: var(--secondary);
+				color: var(--other);
 			}
 			label {
 				color: var(--text);
@@ -143,11 +143,11 @@ const allTagsData = generateTagsData(tags);
 			<aside>
 				<span>Was this article helpful? 
 					<form name="feedback" method="POST" action="/feedback" data-netlify="true" netlify-honeypot="bot-field">
-					<input value="feedback" name="form-name" type="hidden" />
+					<input value="feedback" name="feedback" type="hidden" />
 					<input type="radio" id="helpful" name="feedback" value="Helpful" required>
-					<label for="feedback">Yes</label>
+					<label for="helpful">Yes</label>
 					<input type="radio" id="not-helpful" name="feedback" value="Not Helpful">
-					<label for="feedback" class="labels">No</label>
+					<label for="not-helpful" class="labels">No</label>
 					<button class="button" type="submit" value="Submit">Submit</button>
 					<input type="hidden" id="postId" name="postId" value={title} />
 					</form>
