@@ -90,6 +90,7 @@ for = "/*"
   Access-Control-Allow-Headers = "Access-Control-Allow-Origin"
   Access-Control-Allow-Methods = "GET, HEAD, POST"
   Access-Control-Max-Age = "8640"
+  Content-Type = "text/html"
 
 [[redirects]]
   from = "https://arieldiaz.netlify.com/*"
