@@ -16,20 +16,20 @@ p { margin: 0; }
 ## Light Theme Site Colors
 
 <style>
-#other-light { color: #000; background-color: #16a6c2; font-weight: 900; }
-#primary-light { color: #000; background-color:#00acac; font-weight: 900; }
-#secondary-light { color: #000; background-color:#54c3bc; font-weight: 900; }
-#emphasis-light { color: #000; background-color:#ff7575; font-weight: 900; }
-#accent-light { color: #fff; background-color:#3d3d5e; font-weight: 900; }
-#text-light { color: #fff; background-color:#000120; font-weight: 900; border: 1px solid #fff; }
-#link { color: #000; background-color:#ff8000; font-weight: 900; }
+#other-light { color: #000; background-color: #ff7575; font-weight: 900; }
+#primary-light { color: #000; background-color:#2596be; font-weight: 900; }
+#secondary-light { color: #000; background-color:#64d2b8; font-weight: 900; }
+#emphasis-light { color: #000; background-color:#d75d00; font-weight: 900; }
+#accent-light { color: #fff; background-color:#263e52; font-weight: 900; }
+#text-light { color: #fff; background-color:#092622; font-weight: 900; border: 1px solid #fff; }
+#link { color: #000; background-color:#ff7575; font-weight: 900; }
 #table { color: #fff; background-color:#0a1476; font-weight: 900; }			
 
 .light-colors{
 unicode-bidi: bidi-override;
 direction: rtl;
 text-align: center;
-background: #fff;
+background: #fafafa;
 border-radius: 0.5em;
 }
 .light-colors > span {
@@ -46,14 +46,14 @@ cursor:pointer;
 }
 </style>
 <div class="light-colors">
-  <span id="other-light">Dates/Other<br><br> 16A6C2 #</span>
-  <span id="text-light">Text<br><br> 000120 #</span>
-  <span id="secondary-light">H4 - H6<br><br> 54C3BC #</span>
-  <span id="primary-light">H1 - H3<br><br> 00ACAC #</span>
-  <span id="accent-light">Accent<br><br> 3D3D5E #</span>
-  <span id="emphasis-light">Emphasis<br><br> FF7575 #</span>
+  <span id="other-light">Dates/Other<br><br> #FF7575 #</span>
+  <span id="text-light">Text<br><br> 092622 #</span>
+  <span id="secondary-light">H3 - H6<br><br> 64D2B8 #</span>
+  <span id="primary-light">H1 & H2<br><br> 2596BE #</span>
+  <span id="accent-light">Accent<br><br> 263E52 #</span>
+  <span id="emphasis-light">Emphasis<br><br> D75D00 #</span>
   <span id="table">Table<br><br> 0A1476 #</span>
-  <span id="link">Link<br><br> FF8000 #</span>
+  <span id="link">Link<br><br> FF7575 #</span>
 </div>
 
 ## Dark Theme Site Colors
