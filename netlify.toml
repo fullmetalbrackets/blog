@@ -68,10 +68,13 @@ package = "netlify-plugin-csp-generator"
     Content-Type = "application/x-icon"
 
 [[headers]]
+  for = ""
+
+[[headers]]
   for = "/*"
 
   [headers.values]
-    Access-Control-llow-OrigiAn = "*"
+    Access-Control-Allow-Origin = "*"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Strict-Transport-Security = "max-age=31536000"
     X-Content-Type-Options = "nosniff"
@@ -83,8 +86,9 @@ package = "netlify-plugin-csp-generator"
 for = "/*"
 
   [headers.values]
-  Access-Control-Allow-Headers = "Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Origin"
-  Access-Control-Allow-Methods = "POST, OPTIONS"
+  Access-Control-Allow-Origin = "*.cloudfront.net"
+  Access-Control-Allow-Headers = "Access-Control-Allow-Origin"
+  Access-Control-Allow-Methods = "GET, HEAD, POST"
   Access-Control-Max-Age = "8640"
 
 [[redirects]]
