@@ -16,13 +16,13 @@ p { margin: 0; }
 ## Light Theme Site Colors
 
 <style>
-#other-light { color: #000; background-color: #ff7575; font-weight: 900; }
+#other-light { color: #000; background-color: #ff5e00; font-weight: 900; }
 #primary-light { color: #000; background-color:#2596be; font-weight: 900; }
 #secondary-light { color: #000; background-color:#64d2b8; font-weight: 900; }
-#emphasis-light { color: #000; background-color:#d75d00; font-weight: 900; }
-#accent-light { color: #fff; background-color:#263e52; font-weight: 900; }
+#emphasis-light { color: #000; background-color:#d71e1e; font-weight: 900; }
+#accent-light { color: #fff; background-color:#08084a; font-weight: 900; }
 #text-light { color: #fff; background-color:#092622; font-weight: 900; border: 1px solid #fff; }
-#link { color: #000; background-color:#ff7575; font-weight: 900; }
+#link-light { color: #000; background-color:#d3158d; font-weight: 900; }
 #table { color: #fff; background-color:#0a1476; font-weight: 900; }			
 
 .light-colors{
@@ -46,14 +46,14 @@ cursor:pointer;
 }
 </style>
 <div class="light-colors">
-  <span id="other-light">Dates/Other<br><br> #FF7575 #</span>
+  <span id="other-light">Dates/Other<br><br> FF5E00 #</span>
   <span id="text-light">Text<br><br> 092622 #</span>
   <span id="secondary-light">H3 - H6<br><br> 64D2B8 #</span>
   <span id="primary-light">H1 & H2<br><br> 2596BE #</span>
-  <span id="accent-light">Accent<br><br> 263E52 #</span>
+  <span id="accent-light">Accent<br><br> 08084A #</span>
   <span id="emphasis-light">Emphasis<br><br> D75D00 #</span>
   <span id="table">Table<br><br> 0A1476 #</span>
-  <span id="link">Link<br><br> FF7575 #</span>
+  <span id="link-light">Link<br><br> D3158D #</span>
 </div>
 
 ## Dark Theme Site Colors
@@ -65,6 +65,7 @@ cursor:pointer;
 #emphasis { color: #000; background-color:#ffd700; font-weight: 900; }
 #accent { color: #fff; background-color:#08083A; font-weight: 900; }
 #text { color: #000; background-color:#aeb5cd; font-weight: 900; }
+#link { color: #000; background-color:#ff5e00; font-weight: 900; }
 
 .dark-colors{
 unicode-bidi: bidi-override;
@@ -94,7 +95,7 @@ cursor:pointer;
   <span id="accent">Accent<br><br> 08083A #</span>
   <span id="emphasis">Emphasis<br><br> FFD700 #</span>
   <span id="table">Table<br><br> 0A1476 #</span>
-  <span id="link">Link<br><br> FF8000 #</span>
+  <span id="link">Link<br><br> FF5E00 #</span>
 </div>
 
 ## Headings
