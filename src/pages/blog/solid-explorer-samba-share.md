@@ -11,7 +11,7 @@ tags:
 
 > **ⓘ &nbsp;Note**<br><br> I used Android 12 when making the guide, the steps to make this work may be different if you're using an older or newer version of Android. (But most likely will be the same or similar.)
 
-This guide assumes you already have an existing SMB share accessible in your home network. If you're not sure how to set that up, <a href="/setup-a-samba-share-on-linux-via-command-line" target="_blank">see this blog post for instructions</a>.
+This guide assumes you already have an existing SMB share accessible in your home network. If you're not sure how to set that up, <a href="/blog/setup-a-samba-share-on-linux-via-command-line" target="_blank">see this blog post for instructions</a>.
 <br><br>
 
 <style>
