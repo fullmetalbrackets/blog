@@ -2,7 +2,7 @@
 import NavLink from './NavLink.astro';
 const today = new Date();
 ---
-
+<hr>
 <footer>
 	<span>
 		&copy; 2020 - {today.getFullYear()} Ariel Diaz.<br> 
@@ -35,6 +35,9 @@ const today = new Date();
 	.nav a {
 		margin: 0 5px;
 		padding: 5px;
+	}
+	hr {
+		margin: 1em 0.5em;
 	}
 	span {
 		display: flex;
