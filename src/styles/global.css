@@ -154,22 +154,32 @@ p, h1, h2, h3, h4, h5, h6 {
   overflow-wrap: break-word;
   hyphens: auto;
 }
-h1 {
+h1, h2, h3, h4, h5, h6 {
 	color: var(--primary);
+}
+h1 {
 	font-size: 36px;
 }
 h2 {
-  color: var(--primary);
   font-size: 32px;
+}
+h3 {
+  font-size: 30px;  
+}
+h4 {
+  font-size: 28px;
+}
+h5 {
+  font-size: 26px;
+}
+h6 {
+  font-size: 24px;
 }
 article h2 {
   margin-top: 2em;
 }
 article h3 {
   margin-top: 3em;
-}
-h3, h4, h5, h6 {
-	color: var(--primary);
 }
 hr {
 	border: 0.25px solid var(--primary);
