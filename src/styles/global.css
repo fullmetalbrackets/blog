@@ -116,7 +116,7 @@ h6 {
   font-size: 22px;
 }
 main h3, main h4, main h5, main h6 {
-  margin: 1em 0 0 0;
+  margin: 2em 0 1em 0;
   padding: 0;
 }
 p {
