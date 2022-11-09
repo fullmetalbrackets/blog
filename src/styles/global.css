@@ -102,6 +102,10 @@ body {
   border-radius: 0.25em;
   background: var(--primary);
 }
+main {
+  margin-right: 10px;
+  margin-left: 10px;
+}
 img, picture, video, canvas, svg {
   display: block;
   max-width: 100%;
@@ -305,12 +309,6 @@ blockquote p {
 }
 li::marker {
 	color: var(--primary);
-}
-@media screen and (max-width: 1150px) {
-  main {
-    margin-right: 10px;
-    margin-left: 10px;
-  }
 }
 @media screen and (min-width: 200px) and (max-width: 600px) {
   *, *:before, *:after {
