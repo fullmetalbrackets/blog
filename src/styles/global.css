@@ -146,11 +146,10 @@ hr {
 }
 strong,
 b,
-i,
 u {
 	color: var(--emphasis);
 }
-em {
+em, i {
 	color: var(--emphasis);
 	font-style: normal;
   font-weight: 500;
