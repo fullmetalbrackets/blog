@@ -171,3 +171,9 @@ pre[class*="language-"] {
 .token.italic {
   font-style: italic;
 }
+
+@media screen and (min-width: 200px) and (max-width: 600px) {
+  pre[class*="language-"] {
+    padding: 10px;
+  }
+}
