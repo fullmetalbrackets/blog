@@ -25,53 +25,36 @@
   font-size: 20px;
 }
 :root, html {
-  --other: #970000;
-  --primary: #2596be;
-  --secondary: #64d2b8;
-  --emphasis: #970000;
-  --main: #fafafa;
-	--accent: #08084a;
-	--text: #092622;
-	--link: #d3158d;
-	--hover: #f986de;
-  --table: #0a1476;
-  --blockquote: #eff;
-  --yellow: #ffd700;
-  --orange: #ff5e00;
-  --svg: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%) contrast(98%);
-  --ext: invert(19%) sepia(66%) saturate(6853%) hue-rotate(311deg) brightness(88%) contrast(92%);
   box-sizing: border-box;
   height: 100%;
 }
 
 [data-theme="light"] {
-  --other: #cc0000;
+  --main: rgb(250, 250, 250);
+  --text: rgb(51, 65, 85);
   --primary: #2596be;
-  --secondary: #64d2b8;
-  --emphasis: #cc0000;
-  --main: #fafafa;
-  --accent: #113530;
-	--text: #092622;
-	--link: #00844f;
-	--hover: #64d2b8;
-  --blockquote: #eff;
+  --secondary: rgb(95, 193, 232);
+  --accent: rgb(148, 163, 184);
+  --link: teal;
+  --hover: yellowgreen;
+  --emphasis: rgb(220, 40, 0);
+  --name: teal;
   --svg: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%) contrast(98%);
-  --ext: invert(19%) sepia(66%) saturate(6853%) hue-rotate(311deg) brightness(88%) contrast(92%);
+  --ext: invert(88%) sepia(69%) saturate(7500%) hue-rotate(1deg) brightness(104%) contrast(104%);
 }
 
 [data-theme="dark"] {
-  --other: #00ffc3;
-  --primary: #e32da0;
-  --secondary: #f986de;
-  --emphasis: #ffd700;
-  --main: #000120;
-	--accent: #08084a;
-  --text: #cbd4f1;
-  --link: #ff5e00;
-  --hover: #ffb366;
-  --blockquote: #081220;
-  --svg: invert(36%) sepia(79%) saturate(4889%) hue-rotate(303deg) brightness(97%) contrast(101%);
-  --ext: invert(49%) sepia(89%) saturate(3919%) hue-rotate(0deg) brightness(102%) contrast(106%);
+  --main: rgb(15, 23, 42);
+  --text: rgb(148, 163, 184);
+  --primary: rgb(250, 250, 250);
+  --secondary: rgb(148, 163, 184);
+  --accent: rgb(51, 65, 85);
+  --link: yellow;
+  --hover: orange;
+  --emphasis: orangered;
+  --name: rgb(255, 0, 179);
+  --svg: invert(93%) sepia(78%) saturate(2834%) hue-rotate(213deg) brightness(148%) contrast(96%);
+  --ext: invert(88%) sepia(69%) saturate(7500%) hue-rotate(1deg) brightness(104%) contrast(104%);
 }
 body {
 	font-family: 'Wotfard', 'Fira Sans', Verdana, sans-serif;
@@ -106,40 +89,12 @@ main {
   margin-right: 10px;
   margin-left: 10px;
 }
-main .title {
-  font-size: 36px;
+main h1 {
+  font-size: 32px;
   margin-bottom: 0.25em;
 }
 main hr {
   margin-bottom: 2em;
-}
-main h2 {
-  margin-top: 2em;
-}
-main h3, main h4, main h5, main h6 {
-  margin: 20px 0 0 0;
-  padding: 0;
-}
-main p {
-  margin: 0;
-}
-section {
-  margin: 0;
-  padding: 0;
-  min-height: 35vh;
-}
-article p {
-  margin: 2em 0;
-}
-article ul, ol, table {
-  margin-bottom: 2em;
-}
-p, h1, h2, h3, h4, h5, h6 {
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-h1, h2, h3, h4, h5, h6 {
-	color: var(--primary);
 }
 h1 {
 	font-size: 36px;
@@ -160,8 +115,22 @@ h5 {
 h6 {
   font-size: 22px;
 }
-article h2, article h3 {
-  margin-top: 2em;
+main h3, main h4, main h5, main h6 {
+  margin: 1em 0 0 0;
+  padding: 0;
+}
+p {
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+h1, h2, h3, h4, h5, h6 {
+	color: var(--primary);
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+main .title {
+  font-size: 36px;
+  margin-top: 0.75em;
 }
 img, picture, video, canvas, svg {
   display: block;
@@ -169,7 +138,6 @@ img, picture, video, canvas, svg {
 }
 input, button, textarea, select {
   font: inherit;
-  font-size: 1rem;
 }
 hr {
 	border: 0.25px solid var(--primary);
@@ -294,7 +262,7 @@ tbody, td, th {
 	vertical-align: top;
 }
 time {
-	color: var(--other);
+	color: var(--name);
 }
 img {
 	max-width: 100%;
@@ -302,11 +270,12 @@ img {
   margin: 0 auto;
 }
 code {
-	padding: 3.5px 5px;
+	padding: 2px 4px;
 	font-family: 'JetBrainsMono', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
-	background-color: var(--accent);
-	color: var(--secondary);
+	background-color: #282c34;
+	color: #d19866;
 	border-radius: 0.25em;
+  font-size: 18px;
 }
 pre {
 	padding: 1rem;
@@ -314,11 +283,11 @@ pre {
 pre > code {
 	all: unset;
 }
-figcaption {
+/* figcaption {
   font-size: 0.75em;
   color:var(--other);
   padding-left: 5px;
-}
+} */
 blockquote {
 	border: 1px solid var(--emphasis);
   background-color: var(--blockquote);
@@ -352,9 +321,9 @@ li::marker {
 		height: 0px;
 		width: 0px;
 	}
-  article .title {
+  /* article .title {
     font-size: 32px;
-  }
+  } */
   code {
     padding: 0.5px 2px;
   }
