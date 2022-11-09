@@ -120,7 +120,11 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum exercitationem con
 
 ##### H5 - Smaller Heading
 
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum exercitationem consequuntur quia placeat illum ex enim rerum quis aliquam. Accusamus.
+
 ###### H6 - Smallest Heading
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum exercitationem consequuntur quia placeat illum ex enim rerum quis aliquam. Accusamus.
 
 ## Paragraph
 
