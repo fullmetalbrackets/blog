@@ -137,7 +137,7 @@ article h2:first-child {
   margin-top: 3.5em;
 }
 h3, h4, h5, h6 {
-	color: var(--secondary);
+	color: var(--primary);
   margin-top: 3em;
 }
 hr {
