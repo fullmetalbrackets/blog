@@ -335,7 +335,7 @@ blockquote p {
 li::marker {
 	color: var(--primary);
 }
-@media screen and (min-width: 200px) and (max-width: 600px) {
+@media screen and (min-width: 200px) and (max-width: 650px) {
   *, *:before, *:after {
     font-size: 18px;
   }
