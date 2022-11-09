@@ -139,36 +139,37 @@ input, button, textarea, select {
   font: inherit;
   font-size: 1rem;
 }
-p, h1, h2, h3, h4, h5, h6 {
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-h2 + {
-  margin: 0;
-  padding: 0;
-}
 section {
   margin: 0;
   padding: 0;
   min-height: 35vh;
 }
 article p {
-  margin: 2em auto 0 auto;
+  margin: 2em 0;
+}
+article ul, ol, table {
+  margin-bottom: 2em;
+}
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 h1 {
 	color: var(--primary);
 	font-size: 36px;
 }
 h2 {
-	color: var(--primary);
-	margin-top: 2em;
+  color: var(--primary);
+  font-size: 32px;
 }
-article h2:first-child {
-  margin-top: 3.5em;
+article h2 {
+  margin-top: 2em;
+}
+article h3 {
+  margin-top: 3em;
 }
 h3, h4, h5, h6 {
 	color: var(--primary);
-  margin-top: 3em;
 }
 hr {
 	border: 0.25px solid var(--primary);
