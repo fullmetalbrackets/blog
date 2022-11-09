@@ -37,7 +37,7 @@
   --blockquote: #eff;
   --yellow: #ffd700;
   --orange: #ff5e00;
-  --svg: invert(66%) sepia(69%) saturate(288%) hue-rotate(127deg) brightness(90%) contrast(95%);
+  --svg: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%) contrast(98%);
   --ext: invert(19%) sepia(66%) saturate(6853%) hue-rotate(311deg) brightness(88%) contrast(92%);
   box-sizing: border-box;
   height: 100%;
@@ -52,7 +52,7 @@
 	--link: #d3158d;
 	--hover: #ff5e00;
   --blockquote: #eff;
-  --svg: invert(66%) sepia(69%) saturate(288%) hue-rotate(127deg) brightness(90%) contrast(95%);
+  --svg: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%) contrast(98%);
   --ext: invert(19%) sepia(66%) saturate(6853%) hue-rotate(311deg) brightness(88%) contrast(92%);
 }
 
@@ -304,7 +304,7 @@ blockquote p {
 li::marker {
 	color: var(--primary);
 }
-@media screen and (min-width: 200px) and (max-width: 1024px) {
+@media screen and (min-width: 200px) and (max-width: 600px) {
 	::-webkit-scrollbar {
 		height: 0px;
 		width: 0px;
@@ -312,4 +312,7 @@ li::marker {
 	h2 + {
 		margin: 0 10px;
 	}
+  code {
+    padding: 1px 2.5px;
+  }
 }
