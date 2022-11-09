@@ -114,30 +114,14 @@ main hr {
   margin-bottom: 2em;
 }
 main h2 {
-  margin-top: 4em;
+  margin-top: 2em;
 }
-main h3 {
+main h3, main h4, main h5, main h6 {
   margin: 20px 0 0 0;
   padding: 0;
 }
 main p {
   margin: 0;
-}
-.ext {
-  display: inline-block;
-  margin: 0;
-  padding: 0;
-  height: 15px;
-  width: 15px;
-  filter: var(--ext);
-}
-img, picture, video, canvas, svg {
-  display: block;
-  max-width: 100%;
-}
-input, button, textarea, select {
-  font: inherit;
-  font-size: 1rem;
 }
 section {
   margin: 0;
@@ -178,6 +162,14 @@ h6 {
 }
 article h2, article h3 {
   margin-top: 2em;
+}
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+input, button, textarea, select {
+  font: inherit;
+  font-size: 1rem;
 }
 hr {
 	border: 0.25px solid var(--primary);
@@ -279,7 +271,7 @@ h2 + ul a::before {
   transform: scaleX(0);
   transition: transform .3s ease-in-out;
 }
-  h2 + ul a:hover::before {
+h2 + ul a:hover::before {
   transform-origin: left;
   transform: scaleX(1);
 }
@@ -343,6 +335,14 @@ blockquote p {
 }
 li::marker {
 	color: var(--primary);
+}
+.ext {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  height: 15px;
+  width: 15px;
+  filter: var(--ext);
 }
 @media screen and (min-width: 200px) and (max-width: 650px) {
   *, *:before, *:after {
