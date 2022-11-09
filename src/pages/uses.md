@@ -186,8 +186,6 @@ Check out <a href="https://uses.tech" target="_blank">Uses.Tech</a> <img class="
 
   Starbucks Sumatra Dark Roast (I need this to live)
 
-##### More to come...
+## More to come...
 
 <br><br>
-
-<hr>

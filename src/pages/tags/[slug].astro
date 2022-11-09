@@ -42,9 +42,6 @@ const posts = (await Astro.glob('../blog/*.{md,mdx}')).sort(
 		ul li {
 			margin-bottom: 4em;
 		}
-		ul li a .title {
-			color: #FF39A8;
-		}
 		.desc {
 			color: var(--text);
 			padding-bottom: 1em;
@@ -73,7 +70,6 @@ const posts = (await Astro.glob('../blog/*.{md,mdx}')).sort(
 			margin-bottom: 0.75em;
 		}
 		ul li:hover > h1 {
-			color: var(--secondary);
 		}
 		ul li > .bottom-line {
 			opacity: 0;
