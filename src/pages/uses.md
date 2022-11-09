@@ -11,6 +11,7 @@ hr { margin-bottom: 1em; }
 h3 { margin: 20px 0 0 0; padding: 0;}
 p { margin: 0; }
 @media screen and (min-width: 200px) and (max-width: 1024px) { header { margin-bottom: 3.2em; } }
+img { display: inline-block; margin: 0; padding: 0; height: 15px; width: 15px; filter: var(--ext); }
 </style>
 
 <h1 class="title">Uses</h1>
@@ -22,9 +23,9 @@ The things I own and stuff I use to make this website and write a bunch of junk.
 
 ## What is a Uses page?
 
-It's a neat concept by <a href="https://wesbos.com" target="_blank">Wes Bos</a> to have a page on your personal site "detailing developer setups, gear, software and configs." So that's what this is. The things I own and stuff I use to make this website and write a bunch of junk.
+It's a neat concept by <a href="https://wesbos.com" target="_blank">Wes Bos</a> <img src="/img/assets/external.svg" alt="External Link" height="15px" width="15px"> to have a page on your personal site "detailing developer setups, gear, software and configs." So that's what this is. The things I own and stuff I use to make this website and write a bunch of junk.
 <br><br>
-Check out <a href="https://uses.tech" target="_blank">Uses.Tech</a> for other <em>Uses pages</em>.
+Check out <a href="https://uses.tech" target="_blank">Uses.Tech</a> <img src="/img/assets/external.svg" alt="External Link" height="15px" width="15px"> for other <em>Uses pages</em>.
 
 ## Sections
 
@@ -41,23 +42,23 @@ Check out <a href="https://uses.tech" target="_blank">Uses.Tech</a> for other <e
 
 - ### Desk
 
-  - <a href="https://www.amazon.com/gp/product/B08Q89X9R2" target="_blank">Bestier L Shaped Desk, Rustic Brown</a>
+  - <a href="https://www.amazon.com/gp/product/B08Q89X9R2" target="_blank">Bestier L Shaped Desk, Rustic Brown</a> <img src="/img/assets/external.svg" alt="External Link" height="15px" width="15px">
 
 - ### Chair
 
-  - <a href="https://www.amazon.com/gp/product/B09YV46WG7" target="_blank">COLAMY 2199 Office Chair, Classic Brown</a>
+  - <a href="https://www.amazon.com/gp/product/B09YV46WG7" target="_blank">COLAMY 2199 Office Chair, Classic Brown</a> <img src="/img/assets/external.svg" alt="External Link" height="15px" width="15px">
 
 - ### Monitors
 
   - Dell 27" 1080P HD Monitor (old faithful)
-  - <a href="https://www.amazon.com/gp/product/B07L9G1BFX" target="_blank">Samsung UR59-series 32" 4K UHD Curved Monitor</a> (it's overkill and that's fine)
+  - <a href="https://www.amazon.com/gp/product/B07L9G1BFX" target="_blank">Samsung UR59-series 32" 4K UHD Curved Monitor</a> <img src="/img/assets/external.svg" alt="External Link" height="15px" width="15px"> (it's overkill and that's fine)
 
 - ### Speakers
 
-  - <a href="https://www.amazon.com/gp/product/B00EZ9XKCM" target="_blank">Logitech Z200 Multimedia Stereo Speakers</a>
+  - <a href="https://www.amazon.com/gp/product/B00EZ9XKCM" target="_blank">Logitech Z200 Multimedia Stereo Speakers</a> <img src="/img/assets/external.svg" alt="External Link" height="15px" width="15px">
 
 - ### Keyboard and Mouse
-  - <a href="https://www.amazon.com/gp/product/B00BP5KOPA" target="_blank">Logitech MK270 Wireless Keyboard & Mouse Combo</a>
+  - <a href="https://www.amazon.com/gp/product/B00BP5KOPA" target="_blank">Logitech MK270 Wireless Keyboard & Mouse Combo</a> <img src="/img/assets/external.svg" alt="External Link" height="15px" width="15px">
 
 <br>
 
@@ -180,13 +181,13 @@ Check out <a href="https://uses.tech" target="_blank">Uses.Tech</a> for other <e
 
 - ### Terminal
 
-  - Windows Terminal with <a href="https://ohmyposh.dev" target="_blank">Oh-My-Posh</a> using <a href="https://github.com/Kudostoy0u/pwsh10k" target="_blank">pwsh10k theme</a>
-  - On Linux, zsh shell with <a href="https://github.com/ohmyzsh/ohmyzsh" target="_blank">Oh-My-Zsh</a> using <a href="https://github.com/romkatv/powerlevel10k" target="_blank">powershell10k theme</a>
+  - Windows Terminal with <a href="https://ohmyposh.dev" target="_blank">Oh-My-Posh</a> <img src="/img/assets/external.svg" alt="External Link" height="15px" width="15px"> using <a href="https://github.com/Kudostoy0u/pwsh10k" target="_blank">pwsh10k theme</a> <img src="/img/assets/external.svg" alt="External Link" height="15px" width="15px">
+  - On Linux, zsh shell with <a href="https://github.com/ohmyzsh/ohmyzsh" target="_blank">Oh-My-Zsh</a> <img src="/img/assets/external.svg" alt="External Link" height="15px" width="15px"> using <a href="https://github.com/romkatv/powerlevel10k" target="_blank">powershell10k theme</a> <img src="/img/assets/external.svg" alt="External Link" height="15px" width="15px">
 
 - ### Frameworks
-  - <a href="https://astro.build" target="_blank">Astro</a>, which I used to redesign my site to what you see now
-  - <a href="https://nuxtjs.org" target="_blank">Nuxt</a>, I previously used it with the Nuxt Content module for the first version of this site
-  - <a href="https://reactjs.org" target="_blank">React</a>, which I'm learning slooooowly
+  - <a href="https://astro.build" target="_blank">Astro</a> <img src="/img/assets/external.svg" alt="External Link" height="15px" width="15px">, which I used to redesign my site to what you see now
+  - <a href="https://nuxtjs.org" target="_blank">Nuxt</a> <img src="/img/assets/external.svg" alt="External Link" height="15px" width="15px">, I previously used it with the Nuxt Content module for the first version of this site
+  - <a href="https://reactjs.org" target="_blank">React</a> <img src="/img/assets/external.svg" alt="External Link" height="15px" width="15px">, which I'm learning slooooowly
 
 <div id='fuel' />
 
