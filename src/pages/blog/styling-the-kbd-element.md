@@ -20,8 +20,6 @@ tags:
 
 ## How the `kbd` element looks on this site
 
-Hover the cursor over each for a neat "pushed" effect.
-
 - <kbd>ESC</kbd><br><br>
 - <kbd>ENTER</kbd><br><br>
 - <kbd>SHIFT</kbd><br><br>
@@ -34,15 +32,15 @@ Hover the cursor over each for a neat "pushed" effect.
 
 <div id='code'/>
 
-## The code!
+## The code
 
 ```css
 kbd {
-  background-color: #777;
-  color: #000;
+  background-color: #ccc;
+  color: #222;
   border-radius: 0.25rem;
-  border: 1px solid #333;
-  box-shadow: 0 2px 0 1px #333;
+  border: 1px solid #000;
+  box-shadow: 0 2px 0 1px #aaa;
   cursor: default;
   font-family: sans-serif;
   font-size: 0.75em;
@@ -55,13 +53,16 @@ kbd {
   position: relative;
   top: -1px;
 }
+```
+
+Optionally, you can add a "pushed" effect on hover with the below code. (I don't use it for this site.)
+
+```css
 kbd:hover {
-  box-shadow: 0 1px 0 0.5px #777;
+  box-shadow: 0 1px 0 0.5px #ccc;
   top: 1px;
 }
 ```
-
-Note that this will cause "pushed" effect when hovering over a "key" with your cursor. If you'd rather not have this effect, simply remove the `kbd:hover` portion of the CSS.
 
 Once again, thanks to <a href="http://dylanatsmith.com" target="_blank">Dylan Smith</a> for this!
 
