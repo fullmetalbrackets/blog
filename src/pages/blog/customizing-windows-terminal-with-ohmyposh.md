@@ -19,11 +19,11 @@ tags:
 
 <div id='pre'/>
 
-> ### Pre-Requisites
->
-> You need to have _PowerShell_ installed on Windows, and ideally you'll want to use _Windows Terminal_ as well. Follow the <a href="https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powerShell-7.2#msi" target="_blank">official Microsoft instructions to install PowerShell</a>. For Windows Terminal, you'll have to <a href="https://aka.ms/terminal" target="_blank">install it from the Windows Store</a>.
-> <br><br>
-> The rest of this guide will assume you are using <em>Windows Terminal</em>.
+### Pre-Requisites
+
+You need to have _PowerShell_ installed on Windows, and ideally you'll want to use _Windows Terminal_ as well. Follow the <a href="https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powerShell-7.2#msi" target="_blank">official Microsoft instructions to install PowerShell</a>. For Windows Terminal, you'll have to <a href="https://aka.ms/terminal" target="_blank">install it from the Windows Store</a>.
+
+The rest of this guide will assume you are using <em>Windows Terminal</em>.
 
 <div id='install'/>
 
