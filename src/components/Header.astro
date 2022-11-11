@@ -8,9 +8,9 @@ import { SITE_TITLE } from '../config';
 </head>
 <header>
 	<div>
-		<h1>
+		<span class="logo">
 		{SITE_TITLE}
-		</h1>
+		</span>
 	</div>
 		<nav>
 		<NavLink href="/">Blog</NavLink>
@@ -37,14 +37,15 @@ import { SITE_TITLE } from '../config';
 		margin: 0;
 		padding: 0;
 	}
-	h1 {
+	.logo {
 		font-family: 'Streamster';
 		font-size: 4em;
+		font-weight: 700;
 		margin: 0 0 0 20px;
 		color: var(--name);
 	}
 	@media screen and (min-width: 200px) and (max-width: 650px) {
-		h1 {
+		.logo {
 			font-size: 3.5em;
 		}
 	}
