@@ -275,7 +275,8 @@ time {
 img {
 	max-width: 100%;
 	height: auto;
-  margin: 0 auto;
+  padding-bottom: 5px;
+  margin: 2em auto 4em auto;
 }
 code {
 	padding: 2px 4px;
