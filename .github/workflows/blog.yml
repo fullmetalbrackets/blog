@@ -1,0 +1,20 @@
+name: Latest blog post
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - src/pages/blog/**
+
+jobs:
+  update-readme-with-blog:
+    name: Update GitHub profile README with latest blog posts
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Pull in blog posts
+        uses: gautamkrishnar/blog-post-workflow@master
+        with:
+          feed_list: "https://arieldiaz.codes/rss.xml"
