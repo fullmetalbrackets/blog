@@ -2,12 +2,18 @@
 
 ![Netlify](https://img.shields.io/netlify/4598f4f1-67bb-4ca2-bc47-d6819bf126f1) ![Website](https://img.shields.io/website?style=flat&url=https%3A%2F%2Farieldiaz.codes%2F) ![GitHub last commit](https://img.shields.io/github/last-commit/fullmetalbrackets/blog) ![Security Headers](https://img.shields.io/security-headers?url=https%3A%2F%2Farieldiaz.codes) ![Mozilla HTTP Observatory Grade](https://img.shields.io/mozilla-observatory/grade-score/arieldiaz.codes?publish)
 ![GitHub repo size](https://img.shields.io/github/repo-size/fullmetalbrackets/blog)
-
+<br><br><br>
 ## ⌨️ Latest blog posts
 
 <!-- BLOG-POST-LIST:START -->
+- [How to use Solid Explorer app to access SMB network shares from an Android device](https://arieldiaz.codes/blog/solid-explorer-samba-share/)
+- [How to run self-hosted FileBrowser in Docker](https://arieldiaz.codes/blog/how-to-run-filebrowser-in-docker/)
+- [How to generate a GPG key and use it to sign git commits](https://arieldiaz.codes/blog/How-to-generate-GPG-to-sign-git-commits/)
+- [Set up NFS Shares between Linux hosts](https://arieldiaz.codes/blog/setup-nfs-shares-linux/)
+- [How to format and/or partition disks in Linux](https://arieldiaz.codes/blog/how-to-format-partiton-linux/)
 <!-- BLOG-POST-LIST:END -->
 
+<br><br>
 ## 🗎 License
 
 MIT License
