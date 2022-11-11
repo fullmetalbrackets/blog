@@ -146,6 +146,7 @@ main .title {
 img, picture, video, canvas, svg {
   display: block;
   max-width: 100%;
+  border-radius: 0.5em;
 }
 input, button, textarea, select {
   font: inherit;
