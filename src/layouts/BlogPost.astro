@@ -1,7 +1,5 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
+import BaseLayout from "./BaseLayout.astro";
 import { generateTagsData } from "../utils/tags";
 
 export interface Props {
@@ -19,139 +17,127 @@ const {
 } = Astro.props;
 const allTagsData = generateTagsData(tags);
 ---
-
-<html lang="en">
+<BaseLayout title={title} description={description}>
 	<head>
-		<BaseHead title={title} description={description} />
-		<link rel="stylesheet" href="../../prism.css">
-		<style>
+		<link rel="stylesheet" href="/prism.css">
+	</head>
+	<style>
+		article {
+			margin-top: 3.9em;
+		}
+		hr {
+			margin: 1em 0 3em 0;
+		}
+		.title {
+			margin: 0.8em 0;
+			line-height: 40px;
+		}
+		.tags {
+			display: flex;
+			flex-wrap: wrap;
+			list-style-type: none;
+			margin: 0 auto;
+			margin-top: 10px;
+			padding: 0;
+		}
+		.tags li {
+			margin: 4px;
+			padding: 2px 4px;
+			background: var(--primary);
+			color: #000;
+			font-weight: bold;
+			border-radius: 0.25em;
+			list-style-type: none;
+		}
+		.tags li:hover {
+			background: var(--secondary);
+		}
+		aside {
+			display: flex;
+			justify-content: space-between;
+			cursor: pointer;
+			margin: 2em auto 0 auto;
+		}
+		aside > a, a:active, a:visited {
+			color: var(--primary);
+		}
+		aside > a:hover {
+			color: var(--secondary);
+		}
+		span {
+			color: var(--other);
+		}
+		label {
+			color: var(--text);
+		}
+		button {
+			margin-left: 5px;
+			background: var(--primary);
+			color: #000;
+			font-weight: 900;
+			border-radius: 0.25em;
+			border: 1px solid #000;
+		}
+		button:hover {
+			background: var(--secondary);
+			cursor: pointer;
+		}
+		.top {
+			font-size: 1.75rem;
+			font-family: 'Streamster';
+			font-weight: 700;
+			margin-top: 8px;
+			margin-right: 10px;
+		}
+		@media screen and (min-width: 200px) and (max-width: 650px) {
 			article {
-				margin-top: 3.9em;
+				padding-top: 0;
+				margin-top: 3.75em;
 			}
-			hr {
-				margin: 1em 0 3em 0;
-			}
-			.title {
-				font-size: 2em;
-				margin: 0.8em 0;
-				line-height: 40px;
-			}
-			.tags {
-				display: flex;
-				flex-wrap: wrap;
-				list-style-type: none;
-				margin: 0 auto;
-				margin-top: 10px;
-				padding: 0;
-			}
-			.tags li {
-				margin: 4px;
-				padding: 2px 4px;
-				background: var(--primary);
-				color: #000;
-				font-weight: bold;
-				border-radius: 0.25em;
-				list-style-type: none;
-			}
-			.tags li:hover {
-				background: var(--secondary);
-			}
-			aside {
-				display: flex;
-				justify-content: space-between;
-				cursor: pointer;
-				margin: 2em auto 0 auto;
-			}
-			aside > a, a:active, a:visited {
-				color: var(--primary);
-			}
-			aside > a:hover {
-				color: var(--secondary);
-			}
-			span {
-				color: var(--other);
-			}
-			label {
-				color: var(--text);
-			}
-			button {
-				margin-left: 5px;
-				background: var(--primary);
-				color: #000;
-				font-weight: 900;
-				border-radius: 0.25em;
-				border: 1px solid #000;
-			}
-			button:hover {
-				background: var(--secondary);
-				cursor: pointer;
+			a, a:active, a:visited, a:hover {
+				font-size: 1em;
 			}
 			.top {
-				font-size: 1.75rem;
-				font-family: 'Streamster';
-				font-weight: 700;
-				margin-top: 8px;
-				margin-right: 10px;
+				margin-top: 1em;
+				font-size: 1.5rem;
 			}
-			@media screen and (min-width: 200px) and (max-width: 650px) {
-				article {
-					padding-top: 0;
-					margin-top: 3.75em;
-				}
-				a, a:active, a:visited, a:hover {
-					font-size: 1em;
-				}
-				.title {
-					font-size: 32px;
-				}
-				.top {
-					margin-top: 1em;
-					font-size: 1.5rem;
-				}
-				.top:hover, . {
-					font-size: 1.5rem;
-				}
-				aside {
-					font-size: 1rem;
-				}
+			.top:hover, . {
+				font-size: 1.5rem;
 			}
-		</style>
-	</head>
+			aside {
+				font-size: 1rem;
+			}
+		}
+	</style>
 
-	<body>
-		<Header />
-		<main>
-			<article>
-				{pubDate && <time>{pubDate}</time>}
-				{updatedDate && <div>Updated on <time>{updatedDate}</time></div>}
-				<h1 class="title">{title}</h1>
-				<ul class="tags">
-					{allTagsData.map(tags => (
-						<a href={`/tags/${tags.slug}`}><li>{tags.name}</li></a>
-					))}
-				</ul>
-				<hr>
-				<slot>
-					<p>
-						If you're seeing this, something went wrong! Please try <em>reloading the page</em>.
-					</p>
-				</slot>
-			</article>
-			<aside>
-				<span>Was this article helpful? 
-					<form name="feedback" method="POST" action="/feedback" data-netlify="true" netlify-honeypot="bot-field">
-					<input value="feedback" name="feedback" type="hidden" />
-					<input type="radio" id="helpful" name="feedback" value="Helpful" required>
-					<label for="helpful">Yes</label>
-					<input type="radio" id="not-helpful" name="feedback" value="Not Helpful">
-					<label for="not-helpful" class="labels">No</label>
-					<button class="button" type="submit" value="Submit">Submit</button>
-					<input type="hidden" id="postId" name="postId" value={title} />
-					</form>
-				</span>
-				<a href="#top" class="top">Back to Top</a>
-			</aside>
-		</main>
-		<Footer />
-	</body>
-</html>
+	<article>
+		{pubDate && <time>{pubDate}</time>}
+		{updatedDate && <div>Updated on <time>{updatedDate}</time></div>}
+		<h1 class="title">{title}</h1>
+		<ul class="tags">
+			{allTagsData.map(tags => (
+				<a href={`/tags/${tags.slug}`}><li>{tags.name}</li></a>
+			))}
+		</ul>
+		<hr>
+		<slot>
+			<p>
+				If you're seeing this, something went wrong! Please try <em>reloading the page</em>.
+			</p>
+		</slot>
+	</article>
+	<aside>
+		<span>Was this article helpful? 
+			<form name="feedback" method="POST" action="/feedback" data-netlify="true" netlify-honeypot="bot-field">
+			<input value="feedback" name="feedback" type="hidden" />
+			<input type="radio" id="helpful" name="feedback" value="Helpful" required>
+			<label for="helpful">Yes</label>
+			<input type="radio" id="not-helpful" name="feedback" value="Not Helpful">
+			<label for="not-helpful" class="labels">No</label>
+			<button class="button" type="submit" value="Submit">Submit</button>
+			<input type="hidden" id="postId" name="postId" value={title} />
+			</form>
+		</span>
+		<a href="#top" class="top">Back to Top</a>
+	</aside>
+</BaseLayout>

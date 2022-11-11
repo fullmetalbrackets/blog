@@ -22,7 +22,6 @@
 }
 *, *:before, *:after {
   box-sizing: inherit;
-  font-size: 20px;
 }
 :root, html {
   --main: rgb(250, 250, 250);
@@ -100,33 +99,16 @@ main {
   margin-right: 10px;
   margin-left: 10px;
 }
-main h1 {
-  font-size: 32px;
-  margin-bottom: 0.25em;
-}
-main hr {
+hr {
   margin-bottom: 2em;
 }
 h1 {
-	font-size: 36px;
+  margin-bottom: 0.25em;
 }
 h2 {
-  font-size: 32px;
   margin-top: 2em;
 }
-h3 {
-  font-size: 28px;
-}
-h4 {
-  font-size: 26px;
-}
-h5 {
-  font-size: 24px;
-}
-h6 {
-  font-size: 22px;
-}
-main h3, main h4, main h5, main h6 {
+h3, h4, h5, h6 {
   margin: 2em 0 1em 0;
   padding: 0;
 }
@@ -292,11 +274,13 @@ pre {
 pre > code {
 	all: unset;
 }
-/* figcaption {
-  font-size: 0.75em;
+figcaption {
+  font-size: 0.65em;
   color:var(--other);
   padding-left: 5px;
-} */
+  margin: -6.25em 0 6em 0;
+
+}
 blockquote {
 	border: 1px solid var(--emphasis);
   background-color: var(--blockquote);
@@ -314,6 +298,14 @@ blockquote p {
 li::marker {
 	color: var(--primary);
 }
+.two-img {
+  display: inline-flex;
+  flex-direction: row;
+}
+.two-img img {
+  width: 75%;
+  height: auto;
+}
 .ext {
   display: inline-block;
   margin: 0;
@@ -323,17 +315,19 @@ li::marker {
   filter: var(--ext);
 }
 @media screen and (min-width: 200px) and (max-width: 650px) {
-  *, *:before, *:after {
-    font-size: 18px;
-  }
 	::-webkit-scrollbar {
 		height: 0px;
 		width: 0px;
 	}
-  /* article .title {
-    font-size: 32px;
-  } */
   code {
     padding: 0.5px 2px;
+  }
+  .two-img {
+    display: inline-flex;
+    flex-direction: column;
+  }
+  .two-img img {
+    width: 85%;
+    height: auto;
   }
 }

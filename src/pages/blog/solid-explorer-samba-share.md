@@ -11,29 +11,6 @@ tags:
 
 > **ⓘ &nbsp;Note**<br><br> I used Android 12 when making the guide, the steps to make this work may be different if you're using an older or newer version of Android. (But most likely will be the same or similar.)<br><br>Also, this guide assumes you already have an existing SMB share accessible in your home network. If you're not sure how to set that up, <a href="/blog/setup-a-samba-share-on-linux-via-command-line" target="_blank">see this blog post for instructions</a>.
 
-<style>
-  .two-img {
-    display: inline-flex;
-    flex-direction: row;
-    margin: 2em 0 4em 0;
-  }
-  .two-img img {
-    width: 75%;
-    height: auto;
-  }
-  @media screen and (min-width: 200px) and (max-width: 1024px) {
-    .two-img {
-      display: inline-flex;
-      flex-direction: column;
-    }
-    .two-img img {
-      width: 85%;
-      height: auto;
-      margin-top: 1em;
-    }
-  }
-</style>
-
 ## Connect Solid Explorer to SMB share
 
 Make sure your Android Device is connected to the same network as the machine with the SMB share. Open the Solid Explorer app and

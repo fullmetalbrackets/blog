@@ -22,8 +22,8 @@ const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
 		padding-bottom: 1em;
 	}
 	ul li h1 {
-		line-height: 40px;
 		font-size: 36px;
+		line-height: 40px;
 		color: var(--primary);
 	}
 	a {
@@ -53,9 +53,6 @@ const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
 		ul {
 			margin-top: 3em;
 		}
-		ul li h1 {
-		font-size: 32px;
-	}
 	}
 </style>
 
