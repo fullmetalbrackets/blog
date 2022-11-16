@@ -240,5 +240,23 @@ for = "/*"
   status = 301
   force = true
 
+[[redirects]]
+  from = "https://arieldiaz.codes/tags/web%20development"
+  to = "https://arieldiaz.codes/tags/web-development"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://arieldiaz.codes/tags/prismjs"
+  to = "https://arieldiaz.codes/tags/prism-js"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://arieldiaz.codes/tags/misc"
+  to = "https://arieldiaz.codes/tags"
+  status = 301
+  force = true
+
 [context.deploy-preview]
   ignore = "git log -1 --pretty=%B | grep dependabot"
