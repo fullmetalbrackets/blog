@@ -14,7 +14,7 @@
 <!-- BLOG-POST-LIST:END -->
 
 <br><br>
-## 🗎 License
+## 📄 License
 
 MIT License
 
