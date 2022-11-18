@@ -29,10 +29,11 @@
   --primary: #2596be;
   --secondary: rgb(95, 193, 232);
   --accent: rgb(148, 163, 184);
-  --link: teal;
-  --hover: yellowgreen;
+  --link: green;
+  --hover: rgb(0, 175, 175);
   --emphasis: rgb(220, 40, 0);
-  --name: teal;
+  --name: rgb(0, 175, 175);
+  --date: teal;
   --svg: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%) contrast(98%);
   --ext: invert(88%) sepia(69%) saturate(7500%) hue-rotate(1deg) brightness(104%) contrast(104%);
   box-sizing: border-box;
@@ -45,10 +46,11 @@
   --primary: #2596be;
   --secondary: rgb(95, 193, 232);
   --accent: rgb(148, 163, 184);
-  --link: teal;
-  --hover: yellowgreen;
+  --link: green;
+  --hover: rgb(0, 175, 175);
   --emphasis: rgb(220, 40, 0);
-  --name: teal;
+  --name: rgb(0, 175, 175);
+  --date: teal;
   --svg: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%) contrast(98%);
   --ext: invert(88%) sepia(69%) saturate(7500%) hue-rotate(1deg) brightness(104%) contrast(104%);
 }
@@ -63,6 +65,7 @@
   --hover: orange;
   --emphasis: orangered;
   --name: rgb(255, 0, 179);
+  --date: rgb(255, 0, 179);
   --svg: invert(93%) sepia(78%) saturate(2834%) hue-rotate(213deg) brightness(148%) contrast(96%);
   --ext: invert(88%) sepia(69%) saturate(7500%) hue-rotate(1deg) brightness(104%) contrast(104%);
 }
@@ -252,7 +255,7 @@ tbody, td, th {
 	vertical-align: top;
 }
 time {
-	color: var(--name);
+	color: var(--date);
 }
 img {
 	max-width: 100%;
