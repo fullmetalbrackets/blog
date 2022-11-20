@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Contact from "../components/Contact.astro";
 
 const title = 'About me'
 const desc = 'About me and this site'
@@ -17,77 +18,6 @@ const desc = 'About me and this site'
     }
     p {
       margin: 2em auto;
-    }
-    label {
-      text-align: left;
-      color: var(--primary);
-    }
-    form {
-      margin: 2em;
-    }
-    input {
-      line-height: 1;
-      border-style: none;
-      margin: 0.25em auto 1em auto;
-      padding: 0 auto;
-      line-height: 1;
-      border-radius: 0.25em;
-      background: var(--accent);
-      color: var(--other);
-      height: auto;
-      width: 100%;
-      box-sizing: border-box;
-      outline: none;
-    }
-    textarea {
-      line-height: 1;
-      border-style: none;
-      margin: 0.25em auto 1em auto;
-      padding: 0 auto;
-      line-height: 1;
-      border-radius: 0.25em;
-      background: var(--accent);
-      color: var(--other);
-      height: auto;
-      width: 100%;
-      box-sizing: border-box;
-      resize: vertical;
-      min-height: 8vh;
-      outline: none;
-      resize: none;
-    }
-    .reply, .reply-radio {
-      margin: 1em 0 0 0;
-      padding: 0;
-    }
-    .reply-radio {
-      margin: -10px 2px 0 0;
-      width: 20px;
-    }
-    span {
-      margin-right: 20px;
-    }
-    button {
-      font-weight: 700;
-      background: var(--primary);
-      border-style: none;
-      border-radius: 0.25em;
-      cursor: pointer;
-      margin: 2em auto;
-      padding: 5px 15px 3px 15px;
-    }
-    button:hover {
-      background: var(--secondary);
-      transition-duration: 0.25s;
-      transition-property: color, fill, stroke;
-      transition-timing-function: linear;
-    }
-    /* Change autocomplete styles in WebKit */
-    :-webkit-autofill,
-    :-webkit-autofill:hover,
-    :-webkit-autofill:focus {
-      transition: background-color 5000s ease-in-out 0s;
-      -webkit-text-fill-color: var(--text);
     }
     @media screen and (min-width: 200px) and (max-width: 650px) {
       main {
@@ -124,25 +54,5 @@ const desc = 'About me and this site'
       If you'd like to get in contact with me, please use the below form. Thanks for visiting!
     </p>
   </section>
-  <section>
-    <form name="contact" method="POST" action="/thanks" data-netlify="true" netlify-honeypot="bot-field">
-      <input value="contact" name="form-name" type="hidden" />
-      <label for="name">Name:</label>
-      <br>
-      <input id="text" type="text" name="name" required />
-      <br><br>
-      <label for="email">Email:</label>
-      <br>
-      <input id="email" type="email" name="email" required />
-      <br><br>
-      <label for="message">Message:</label>
-      <textarea id="message" name="message" required />
-      <p class="reply">
-      <label for="radio">Request a response to your message?</label><br>
-        <input type="radio" id="reply" name="radio" value="No reply" class="reply-radio" /><span>Yes</span>
-        <input type="radio" id="no-reply" name="radio" value="No reply" class="reply-radio" required />No
-      </p>
-      <button class="button" type="submit" value="Submit">Submit</button>
-    </form>
-  </section>
+  <Contact />
 </BaseLayout>

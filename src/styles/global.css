@@ -34,6 +34,7 @@
   --emphasis: rgb(220, 40, 0);
   --name: rgb(0, 175, 175);
   --date: rgb(0, 128, 128);
+  --form: black;
   --svg: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%) contrast(98%);
   --ext: invert(88%) sepia(69%) saturate(7500%) hue-rotate(1deg) brightness(104%) contrast(104%);
   box-sizing: border-box;
@@ -51,6 +52,7 @@
   --emphasis: rgb(220, 40, 0);
   --name: rgb(0, 175, 175);
   --date: rgb(0, 128, 128);
+  --form: black;
   --svg: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%) contrast(98%);
   --ext: invert(88%) sepia(69%) saturate(7500%) hue-rotate(1deg) brightness(104%) contrast(104%);
 }
@@ -66,6 +68,7 @@
   --emphasis: rgb(255, 69, 0);
   --name: rgb(255, 0, 179);
   --date: rgb(255, 0, 179);
+  --form: cyan;
   --svg: invert(93%) sepia(78%) saturate(2834%) hue-rotate(213deg) brightness(148%) contrast(96%);
   --ext: invert(88%) sepia(69%) saturate(7500%) hue-rotate(1deg) brightness(104%) contrast(104%);
 }
@@ -175,66 +178,6 @@ a, a:active, a:visited {
 a:hover {
 	color: var(--hover);
 	text-decoration: none;
-}
-p a {
-  position: relative;
-}
-p a::before {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 1px;
-  border-radius: 4px;
-  background-color: var(--hover);
-  bottom: 0;
-  left: 0;
-  transform-origin: right;
-  transform: scaleX(0);
-  transition: transform .3s ease-in-out;
-}
-p a:hover::before {
-  transform-origin: left;
-  transform: scaleX(1);
-}
-h2 + ol a {
-  position: relative;
-}
-h2 + ol a::before {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 1px;
-  border-radius: 4px;
-  background-color: var(--hover);
-  bottom: 0;
-  left: 0;
-  transform-origin: right;
-  transform: scaleX(0);
-  transition: transform .3s ease-in-out;
-}
-h2 + ol a:hover::before {
-  transform-origin: left;
-  transform: scaleX(1);
-}
-h2 + ul a {
-  position: relative;
-}
-h2 + ul a::before {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 1px;
-  border-radius: 4px;
-  background-color: var(--hover);
-  bottom: 0;
-  left: 0;
-  transform-origin: right;
-  transform: scaleX(0);
-  transition: transform .3s ease-in-out;
-}
-h2 + ul a:hover::before {
-  transform-origin: left;
-  transform: scaleX(1);
 }
 textarea {
 	width: 100%;
