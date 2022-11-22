@@ -283,9 +283,9 @@ li::marker {
   padding: 4px 8px;
   text-decoration: none;
   text-overflow: ellipsis;
-  transition: all .14s ease-out;
+  transition: all .10s ease-out;
   white-space: nowrap;
-  margin: 0 8px 4px 0;
+  margin: 0 8px 8px 0;
 }
 .tag:hover {
     box-shadow: 4px 4px 0 #000;
@@ -309,9 +309,5 @@ li::marker {
   .two-img img {
     width: 85%;
     height: auto;
-  }
-  .tag {
-    font-size: 16px;
-    margin-right: 4px;
   }
 }
