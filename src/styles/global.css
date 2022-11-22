@@ -279,14 +279,14 @@ li::marker {
   color: #000;
   border-radius: 0.25em;
   cursor: pointer;
-  font-size: 16px;
   font-weight: 600;
   padding: 4px 8px;
   text-decoration: none;
   text-overflow: ellipsis;
   transition: all .14s ease-out;
   white-space: nowrap;
-  margin-top: 4px;
+  margin-right: 8px;
+  margin-left: 2px;
 }
 .tag:hover {
     box-shadow: 4px 4px 0 #000;
