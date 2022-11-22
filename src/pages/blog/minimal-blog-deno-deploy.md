@@ -42,15 +42,7 @@ On Linux, after Deno is installed, add the `deno` command path to the end of you
 export PATH="/home/username/.deno/bin:$PATH"
 ```
 
-Verify successful installation with the command `deno --version` and you should get output similar to the below:
-
-```bash
-deno 1.28.1 (release, x86_64-unknown-linux-gnu)
-v8 10.9.194.1
-typescript 4.8.3
-```
-
-In the future when you want to update Deno to the latest release, you can do so with the following command:
+Verify successful installation with the command `deno --version`. In the future when you want to update Deno to the latest release, you can do so with the following command:
 
 ```bash
 deno upgrade
