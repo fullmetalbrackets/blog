@@ -40,17 +40,8 @@ const allTagsData = generateTagsData(tags);
 			margin-top: 10px;
 			padding: 0;
 		}
-		.tags li {
-			margin: 4px;
-			padding: 2px 4px;
-			background: var(--primary);
-			color: #000;
-			font-weight: bold;
-			border-radius: 0.25em;
-			list-style-type: none;
-		}
-		.tags li:hover {
-			background: var(--secondary);
+		.tag {
+			margin-right: 8px;
 		}
 		aside {
 			display: flex;
@@ -58,29 +49,20 @@ const allTagsData = generateTagsData(tags);
 			cursor: pointer;
 			margin: 2em auto 0 auto;
 		}
-		aside > a, a:active, a:visited {
-			color: var(--primary);
+		aside > a, a:active, a:visited, a:hover, a:focus {
+			color: var(--name);
 		}
-		aside > a:hover {
-			color: var(--secondary);
+		aside > a:hover, aside > a:focus {
+			color: var(--name-hover);
 		}
-		span {
-			color: var(--other);
+		form {
+			margin-top: 4px;
 		}
 		label {
 			color: var(--text);
 		}
 		button {
-			margin-left: 5px;
-			background: var(--primary);
-			color: #000;
-			font-weight: 900;
-			border-radius: 0.25em;
-			border: 1px solid #000;
-		}
-		button:hover {
-			background: var(--secondary);
-			cursor: pointer;
+			margin-left: 8px;
 		}
 		.top {
 			font-size: 1.75rem;
@@ -101,9 +83,6 @@ const allTagsData = generateTagsData(tags);
 				margin-top: 1em;
 				font-size: 1.5rem;
 			}
-			.top:hover, . {
-				font-size: 1.5rem;
-			}
 			aside {
 				font-size: 1rem;
 			}
@@ -116,7 +95,7 @@ const allTagsData = generateTagsData(tags);
 		<h1 class="title">{title}</h1>
 		<ul class="tags">
 			{allTagsData.map(tags => (
-				<a href={`/tags/${tags.slug}`}><li>{tags.name}</li></a>
+				<a href={`/tags/${tags.slug}`}><li class="button tag">{tags.name}</li></a>
 			))}
 		</ul>
 		<hr>

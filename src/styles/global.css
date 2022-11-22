@@ -33,6 +33,7 @@
   --hover: rgb(0, 175, 175);
   --emphasis: rgb(220, 40, 0);
   --name: rgb(0, 175, 175);
+  --name-hover: rgb(0, 128, 128);
   --date: rgb(0, 128, 128);
   --form: black;
   --svg: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%) contrast(98%);
@@ -51,6 +52,7 @@
   --hover: rgb(0, 175, 175);
   --emphasis: rgb(220, 40, 0);
   --name: rgb(0, 175, 175);
+  --name-hover: rgb(0, 128, 128);
   --date: rgb(0, 128, 128);
   --form: black;
   --svg: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%) contrast(98%);
@@ -67,6 +69,7 @@
   --hover: rgb(255, 165, 0);
   --emphasis: rgb(255, 69, 0);
   --name: rgb(255, 0, 179);
+  --name-hover: rgb(255, 95, 205);
   --date: rgb(255, 0, 179);
   --form: cyan;
   --svg: invert(93%) sepia(78%) saturate(2834%) hue-rotate(213deg) brightness(148%) contrast(96%);
@@ -138,6 +141,17 @@ img, picture, video, canvas, svg {
 }
 input, button, textarea, select {
   font: inherit;
+}
+button {
+  background: var(--primary);
+  border: 0;
+  border-radius: 0.25em;
+  padding: 4px 8px;
+  font-weight: 600;
+}
+button:hover {
+  background: var(--secondary);
+  cursor: pointer;
 }
 hr {
 	border: 0.25px solid var(--primary);
@@ -259,6 +273,27 @@ li::marker {
   height: 15px;
   width: 15px;
   filter: var(--ext);
+}
+.tag {
+  background-color: var(--name);
+  color: #000;
+  border-radius: 0.25em;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 4px 8px;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  transition: all .14s ease-out;
+  white-space: nowrap;
+  margin-top: 4px;
+}
+.tag:hover {
+    box-shadow: 4px 4px 0 #000;
+    transform: translate(-4px,-4px);
+}
+.tag:focus-visible{
+    outline-offset: 1px;
 }
 @media screen and (min-width: 200px) and (max-width: 650px) {
 	::-webkit-scrollbar {
