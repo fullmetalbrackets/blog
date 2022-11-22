@@ -285,7 +285,7 @@ li::marker {
   text-overflow: ellipsis;
   transition: all .14s ease-out;
   white-space: nowrap;
-  margin: 0 4px 2px 0;
+  margin: 0 4px 4px 0;
 }
 .tag:hover {
     box-shadow: 4px 4px 0 #000;
