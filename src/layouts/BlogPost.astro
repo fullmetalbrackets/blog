@@ -57,9 +57,7 @@ const allTagsData = generateTagsData(tags);
 		}
 		label {
 			color: var(--text);
-		}
-		button {
-			margin-left: 8px;
+			margin-right: 1em;
 		}
 		.top {
 			font-size: 1.75rem;
@@ -67,6 +65,25 @@ const allTagsData = generateTagsData(tags);
 			font-weight: 700;
 			margin-top: 8px;
 			margin-right: 10px;
+		}
+		.radio {
+			margin: 0.5em 0.5em 0 0.25em;
+			width: 1em;
+			height: 1em;
+			appearance: none;
+			-webkit-appearance: none;
+			border: 1px solid var(--accent);
+			background-color: var(--accent);
+			border-radius: 50%;
+		}
+		.radio:focus, .radio:focus-visible {
+			box-shadow: none;
+			outline-offset: 0;
+		}
+		.radio:checked {
+			box-shadow: 0 0 0 1px var(--primary);
+			background-color: var(--primary);
+			border-width: 0.1em;
 		}
 		@media screen and (min-width: 200px) and (max-width: 650px) {
 			article {
@@ -106,9 +123,9 @@ const allTagsData = generateTagsData(tags);
 		<span>Was this article helpful? 
 			<form name="feedback" method="POST" action="/feedback" data-netlify="true" netlify-honeypot="bot-field">
 			<input value="feedback" name="feedback" type="hidden" />
-			<input type="radio" id="helpful" name="feedback" value="Helpful" required>
+			<input class="radio" type="radio" id="helpful" name="feedback" value="Helpful" required>
 			<label for="helpful">Yes</label>
-			<input type="radio" id="not-helpful" name="feedback" value="Not Helpful">
+			<input class="radio" type="radio" id="not-helpful" name="feedback" value="Not Helpful">
 			<label for="not-helpful" class="labels">No</label>
 			<button class="button" type="submit" value="Submit">Submit</button>
 			<input type="hidden" id="postId" name="postId" value={title} />

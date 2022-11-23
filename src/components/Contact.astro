@@ -13,7 +13,7 @@
     line-height: 1;
     border-style: none;
     margin: 0.25em auto 1em auto;
-    padding: 0 auto;
+    padding: 4px 6px;
     line-height: 1;
     border-radius: 0.25em;
     background: var(--accent);
@@ -27,7 +27,7 @@
     line-height: 1;
     border-style: none;
     margin: 0.25em auto 1em auto;
-    padding: 0 auto;
+    padding: 4px 6px;
     line-height: 1;
     border-radius: 0.25em;
     background: var(--accent);
@@ -40,16 +40,39 @@
     outline: none;
     resize: none;
   }
-  .reply, .reply-radio {
+  input:focus, textarea:focus {
+    color: var(--form);
+    background: var(--accent);
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem var(--name);
+  }
+  .reply {
     margin: 1em 0 0 0;
     padding: 0;
   }
   .reply-radio {
-    margin: -10px 2px 0 0;
-    width: 20px;
+    margin: 0.5em 0.5em 0 0;
+    width: auto;
+    height: 0.9em;
+    /* hiding browser el */
+    appearance: none;
+    /* Safari support */
+    -webkit-appearance: none;
+    border: 1.5px solid var(--accent);
+    background-color: var(--accent);
+    border-radius: 50%;
+  }
+  .reply-radio:focus, .radio-reply:focus-visible {
+    box-shadow: none;
+    outline-offset: 0;
+  }
+  .reply-radio:checked {
+    box-shadow: 0 0 0 1px var(--primary);
+    background-color: var(--primary);
+    border-width: 0.1em;
   }
   span {
-    margin-right: 20px;
+    margin-right: 1em;
   }
   button {
     margin: 2em auto;
