@@ -3,9 +3,11 @@ layout: "../../layouts/BlogPost.astro"
 title: "How to autologin Ubuntu on reboot and go straight to terminal"
 description: "Ever wanted to have a script automatically run when you reboot an Ubuntu server, but couldn't because the system prompts for a user login, and you're not sure how to skip that? Or maybe you just don't want to login each time you start up your workstation. Here's a quick and dirty guide on doing exactly this, so that on reboot your Ubuntu machine will just skip the prompt, go straight to terminal, and execute any scripts you have set up."
 pubDate: "September 14, 2021"
+updatedDate: "November 25, 2022"
 tags:
-  - Linux
+  - Autologin
   - Command Line
+  - Linux
 ---
 
 ## Sections
@@ -31,13 +33,13 @@ In your server, use the following command:
 sudo systemctl edit getty@.service
 ```
 
-This should open the **override.conf** file in your default text editor, creating one if it does not already exist. Most likely it will not exist so the file will be newly created and empty, copy and paste this string of text into it (where `{{USER}}` is an existing user **with sudo privileges**):
+This should open the `override.conf` file in your default text editor, creating one if it does not already exist. (If the above does not work, try `sudo systemctl edit getty@tty1` instead.) Most likely the file will not exist so it will be newly created and empty, copy and paste this string of text into it (where `[user]` is an existing user **with sudo privileges**):
 
 ```bash
-ExecStart=-/sbin/agetty -a {{USER}} --noclear %I $TERM
+ExecStart=-/sbin/agetty --autologin [user] --noclear %I $TERM
 ```
 
-If the file is already pre-populated with stuff, just look for the line `ExecStart=` and replace whatever is in there with the options above. Save and exit the editor. Next time you reboot, it should skip the login and go straight to the terminal.
+If the file is already pre-populated with stuff, just look for the line `ExecStart=` and replace whatever is in there with the above. Save and exit the editor. Next time you reboot, it should skip the login and go straight to the terminal.
 
 <div id='case'/>
 
