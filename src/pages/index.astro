@@ -47,6 +47,11 @@ const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
 		transform-origin: left;
 		transform: scaleX(1);
 	}
+	@-moz-document url-prefix() {
+		a:hover h1 {
+			color: var(--emphasis);
+		}
+	}
 	@media screen and (min-width: 200px) and (max-width: 650px) {
 		main {
 			margin: 0 10px;
