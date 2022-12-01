@@ -205,11 +205,15 @@ content {
 }
 table {
 	width: 100%;
+  border-spacing: 0;
 }
 tbody, td, th {
 	border: 1px solid var(--accent);
 	padding: 5px;
 	vertical-align: top;
+}
+th {
+  background: var(--accent);
 }
 time {
 	color: var(--date);
