@@ -278,7 +278,7 @@ li::marker {
   width: 15px;
   filter: var(--ext);
 }
-.tag {
+.blog-tag {
   background-color: var(--name);
   color: #000;
   border-radius: 0.25em;
@@ -291,11 +291,11 @@ li::marker {
   white-space: nowrap;
   margin: 0 8px 8px 0;
 }
-.tag:hover {
+.blog-tag:hover {
     box-shadow: 4px 4px 0 #000;
     transform: translate(-4px,-4px);
 }
-.tag:focus-visible{
+.blog-tag:focus-visible{
     outline-offset: 1px;
 }
 @media screen and (min-width: 200px) and (max-width: 650px) {
