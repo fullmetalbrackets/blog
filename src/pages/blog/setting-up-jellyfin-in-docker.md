@@ -3,6 +3,7 @@ layout: "../../layouts/BlogPost.astro"
 title: "Setup self-hosted Jellyfin Media Server in Docker"
 description: "Though Plex is a very popular media server for self-hosting, some open source enthusiasts prefer to use an alternative since Plex Media Server is not open source. A nice, simpler and admittedly less pretty alternative is Jellyfin. This guide will show you how to run it in Docker container."
 pubDate: "October 18, 2022"
+updatedDate: "November 30, 2022"
 tags:
   - Self-Hosting
   - Jellyfin
@@ -68,14 +69,23 @@ services:
 
 Let's break down what each of these parameters do:
 
-| Paramter                   | Function                                                                                                                                                                                                                                                                                             |
-| -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `image`                    | Here we're using the latest version of the Linuxserver-maintained image                                                                                                                                                                                                                              |
-| `container_name`           | Optional, but you should give your containers a name for clarity                                                                                                                                                                                                                                     |
-| `PUID=1000`<br>`PGID=1000` | These env variable sets a UID and GID for Jellyfin and should match the owner of the volumes you are adding; check your UID and GID with the command `id`                                                                                                                                            |
-| `ports`                    | This will map ports on your machine (left of the colon) to ports inside the container (right of colon) -- optional in Linux but required in Windows and WSL<br>Port `8096` is for HTTP access, `8920` for HTTPS (optional) and `7359:7359/udp` lets the server be discoverable on your local network |
-| `volumes`                  | Here we're mapping local directories (left of the colon) to directories inside the container (right of the colon)                                                                                                                                                                                    |
-| `restart`                  | This tells Docker under what circumstances to restart the container when it is stopped -- the options are `no`, `always`, `on-failure` and `unless-stopped`                                                                                                                                          |
+| Parameter                      | Function                                                                                                                                                                                                                                                                                                                                                                           |
+| ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `image`                        | Here we're using the latest version of the Linuxserver-maintained image.                                                                                                                                                                                                                                                                                                           |
+| `container_name`               | Optional, but you should give your containers a name for clarity.                                                                                                                                                                                                                                                                                                                  |
+| `PUID=1000`<br>`PGID=1000`     | These env variable sets a UID and GID for Jellyfin and should match the owner of the volumes you are adding; check your UID and GID with the command `id`.                                                                                                                                                                                                                         |
+| `JELLYFIN_PublishedServerUrl=` | This will allow the server to be discoverable on your home network. Add this with your server's IP to easily connect your devices to Jellyfin. Make sure to map UDP port `7359` for this to work. (See below.)                                                                                                                                                                     |
+| `ports`                        | This will map ports on your machine (left of the colon) to ports inside the container (right of the colon) -- optional in Linux but required in Windows and WSL.<br><br>Port `8096` is for HTTP access, `8920` for HTTPS (optional) and `7359:7359/udp` lets the server be discoverable on your local network when using the `JELLYFIN_PublishedServerUrl` parameter. (See above.) |
+| `volumes`                      | Here we're mapping local directories (left of the colon) to directories inside the container (right of the colon).                                                                                                                                                                                                                                                                 |
+| `restart`                      | This tells Docker under what circumstances to restart the container when it is stopped -- the options are `no`, `always`, `on-failure` and `unless-stopped`.                                                                                                                                                                                                                       |
+
+If you'd like to use hardware acceleration, <a href="https://jellyfin.org/docs/general/administration/hardware-acceleration" target="_blank" rel="noreferrer noopener">see this part of the Jellyfin documentation</a>. If the machine you're hosting Jellyfin on has an Intel CPU, there's a good chance is supports Quick Sync and you should let Jellyfin use it. To do so, add the following option to your docker compose:
+
+```yaml
+devices:
+  - /dev/dri/renderD128:/dev/dri/renderD128
+  - /dev/dri/card0:/dev/dri/card0
+```
 
 <div id='config'/>
 
@@ -88,7 +98,7 @@ CONTAINER ID   IMAGE                                 COMMAND   CREATED         S
 7383028393f4   lscr.io/linuxserver/jellyfin:latest   "/init"   9 seconds ago   Up 7 seconds   0.0.0.0:8096->8096/tcp, 0.0.0.0:8920->8920/tcp, 0.0.0.0:359->7359/udp   jellyfin
 ```
 
-Good to go. Now to configure Jellyfin you'll need to access it's web UI, which by default is at (for example) `http://192.168.1.100:8096`. On the first page you'll be asked to choose a language and can also use the Quick Start if desired, for purposes of this guide we'll choose _English_ and click _Next_. On the following page you can create a user and password (or you can use no password if preferred), create your login and click _Next_.
+Good to go. Now to configure Jellyfin you'll need to access it's web UI, which by default is at (for example) `http://192.168.0.100:8096`. On the first page you'll be asked to choose a language and can also use the Quick Start if desired, for purposes of this guide we'll choose _English_ and click _Next_. On the following page you can create a user and password (or you can use no password if preferred), create your login and click _Next_.
 
 <a href="/img/blog/jellyfin1.png" target="_blank"><img src="/img/blog/jellyfin1.png" alt="Screenshot of jellyfin user creation." /></a>
 
@@ -104,7 +114,7 @@ A series of options will appear, read through them and make your choices, or jus
 
 <a href="/img/blog/jellyfin4.png" target="_blank"><img src="/img/blog/jellyfin4.png" alt="Screenshot of adding a folder to the Jellyfin movie library." /></a>
 
-On the following page you can set up remote access to Jellyfin, meaning whether other devices will be able to access Jellyfin. You'll need the line `JELLYFIN_PublishedServerUrl=192.168.0.100` (replacing with your own IP) under `env` in your `docker-compose.yml` file for it to work. If you have that, then check the box _Allow remote connections to this server_, but leave unchecked _Enable automatic port mapping_ unless you want to access Jellyfin from outside your network. (You'll additionally need to open port 8096 on your router for that.) Then click _Next_.
+On the following page you can set up remote access to Jellyfin, meaning whether other devices will be able to access Jellyfin. Check the box _Allow remote connections to this server_, but leave unchecked _Enable automatic port mapping_ unless you want to access Jellyfin from outside your network. (You'll additionally need to open port 8096 on your router for that. I don't suggest it.) Then click _Next_.
 
 <a href="/img/blog/jellyfin5.png" target="_blank"><img src="/img/blog/jellyfin5.png" alt="Screenshot of set up remote access in Jellyfin." /></a>
 
