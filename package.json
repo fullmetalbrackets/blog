@@ -1,8 +1,8 @@
 {
   "name": "arieldiazcodes",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://arieldiaz.codes",
-  "description": "Tech articles, quick guides, and other resources.",
+  "description": "Tech articles, quick guides, and stuff.",
   "author": "Ariel Diaz",
   "license": "MIT",
   "private": true,
@@ -10,6 +10,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
+    "postbuild": "pagefind --source dist",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -19,7 +20,8 @@
     "@astrojs/prefetch": "^0.1.1",
     "@astrojs/rss": "^1.0.3",
     "@astrojs/sitemap": "^1.0.0",
-    "astro": "^1.6.12"
+    "astro": "^1.6.12",
+    "pagefind": "^0.10.3"
   },
   "devDependencies": {
     "@astrojs/prism": "^1.0.2",
