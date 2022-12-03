@@ -114,7 +114,7 @@ Check out <a href="https://uses.tech" target="_blank">Uses.Tech</a> <img class="
 
 - #### Docker Containers
 
-  - Portainer - GUI to manage docker containers
+  - <a href="https://hub.docker.com/r/portainer/portainer-ce" target="_blank" rel="noreferrer noopener">Portainer</a> - GUI to manage docker containers
   - <a href="https://hub.docker.com/r/linuxserver/plex" target="_blank" rel="noreferrer noopener">Plex</a> - Movie and TV show streaming server
   - <a href="https://hub.docker.com/r/linuxserver/tautulli" target="_blank" rel="noreferrer noopener">Tautulli</a> - Plex statistics and activity monitoring
   - <a href="https://hub.docker.com/r/deluan/navidrome" target="_blank" rel="noreferrer noopener">Navidrome</a> - Music streaming server
@@ -123,7 +123,7 @@ Check out <a href="https://uses.tech" target="_blank">Uses.Tech</a> <img class="
   - <a href="https://hub.docker.com/r/linuxserver/qbittorrent" target="_blank" rel="noreferrer noopener">qBittorrent</a> - Torrent downloader/manager
 
 - #### Comment
-  Bought refurbished on eBay for around $60. I added hard drives and doubled the RAM, and it's been running my entire stack of self-hosted services going on two years without so much as a hiccup. I ran it on Ubuntu Server LTS for most of that time, but recently switched over to OpenMediaVault and I'm loving it. This machine acts as my main media server (streaming movies & TV shows via Plex, music via Navidrome) and NAS, which is shared out to my and my wife's PC via Samba.
+  Bought refurbished on eBay for around $60. I added hard drives and doubled the RAM, and it's been running my entire stack of self-hosted services going on two years without so much as a hiccup. I ran it on Ubuntu Server LTS for most of that time, but recently switched over to OpenMediaVault and I'm loving the ease of doing everything though it's GUI. This machine acts as my main media server (streaming movies & TV shows via Plex, music via Navidrome, etc.) and NAS, which is shared out to my and my wife's Windows PCs and laptops via SMB. On my Android phone and tablets, I use the Solid Explorer app to access the SMB shares. (<a href="/blog/solid-explorer-samba-share">My blog post about this.</a>)
 
 <div id='pihole' />
 
@@ -147,11 +147,11 @@ Check out <a href="https://uses.tech" target="_blank">Uses.Tech</a> <img class="
 
 - #### Storage
 
-  1x 500 GB HDD
-  1x 750 GB HDD
+  - 1x 500 GB HDD
+  - 1x 750 GB HDD
 
 - #### Comment
-  A recent purchase, $45 refurbished on eBay and hasn't been expanded at all from how I got it, except for adding an external HDD. I mainly bought this to run Pi-Hole as a replacement to an old, noisy laptop I've been running Pi-Hole off of for years. It also doubles as a dev server and backup server, I use rsync to periodically backup my photos and other important stuff from my NAS.
+  A recent purchase, $45 refurbished on eBay and hasn't been expanded at all from how I got it, except for adding an external HDD. I mainly bought this to run Pi-Hole as a replacement to an old, noisy laptop I had been running Pi-Hole off of for years. It also doubles as a dev server and backup server, I use rsync to periodically backup my photos and other important stuff from my NAS to the external drive.
 
 <div id='tools' />
 
