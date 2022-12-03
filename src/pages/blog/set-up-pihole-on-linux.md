@@ -3,7 +3,7 @@ layout: "../../layouts/BlogPost.astro"
 title: "Set up and configure Pi-Hole for network-wide ad blocking"
 description: "I've been using Pi-Hole for a few years, and I just recently set it up again on a new machine with a new router. It's stupid easy and super effective, here's how."
 pubDate: "October 8, 2022"
-updatedDate: "October 16, 2022"
+updatedDate: "December 2, 2022"
 tags:
   - Self-Hosting
   - Pi-Hole
@@ -135,7 +135,9 @@ If you'd rather update Pi-Hole during off-hours, like in the middle of the night
 pihole -up | at 5AM
 ```
 
-Finally, you should regularly create a backup of your Pi-Hole configuration. Doing so is simple, just to go the web UI, click on _Settings_, then go to the _Teleporter_ tab and click the _Backup_ button. This will download a `tar.gz` file to the computer you're accessing the web UI from, and within this same screen you can restore from a backup file if necessary. You might consider committing your backups to a private GitHub repo too.
+Additionally, you should regularly create a backup of your Pi-Hole configuration. You can't automate it, but that's ok because it's very simple -- just to go the web UI, click on _Settings_, then go to the _Teleporter_ tab and click the _Backup_ button. This will download a `tar.gz` file to the computer you're accessing the web UI from, and within this same screen you can restore from a backup file if necessary. You might consider committing your backups to a private GitHub repo too.
+
+Finally, if you make Pi-Hole an important part of your network, using it as your primary DNS and especially if you're using it as the DHCP server, you may want to run a second Pi-Hole as a fallback in case your main Pi-Hole machine crashes. (These things happen.) If your entire network will go down from an issue with Pi-Hole, running a second instance of it makes a lot of sense. If you go this route, I strongly suggest using <a href="https://github.com/vmstan/gravity-sync" target="_blank" rel="noreferrer noopener">Gravity Sync</a> to keep the adlists and other settings identical between the two.
 
 <div id='ref' />
 
