@@ -53,7 +53,7 @@ for = "/*"
   [headers.values]
     Content-Security-Policy = "default-src https: 'unsafe-inline'"
     Access-Control-Allow-Origin = "*"
-    Referrer-Policy = "same-origin"
+    Referrer-Policy = "strict-origin-when-cross-origin"
     Strict-Transport-Security = "max-age=31536000"
     X-Content-Type-Options = "nosniff"
     X-Frame-Options = "DENY"
