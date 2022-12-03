@@ -19,11 +19,11 @@
     "@astrojs/prefetch": "^0.1.1",
     "@astrojs/rss": "^1.0.3",
     "@astrojs/sitemap": "^1.0.0",
-    "astro": "^1.6.12",
-    "pagefind": "^0.10.3"
+    "astro": "^1.6.12"
   },
   "devDependencies": {
     "@astrojs/prism": "^1.0.2",
-    "netlify-plugin-csp-generator": "^1.5.0"
+    "netlify-plugin-csp-generator": "^1.5.0",
+    "pagefind": "^0.10.3"
   }
 }
