@@ -51,7 +51,7 @@
 for = "/*"
 
 [headers.values]
-  Content-Security-Policy = "default-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; img-src 'self'; media-src 'self'; object-src 'none'; script-src 'self'; style-src 'self'"
+  Content-Security-Policy = "default-src 'none'; base-uri 'none'; form-action 'self *.cloudfront.net'; frame-ancestors 'none'; img-src 'self *.cloudfront.net'; media-src 'self *.cloudfront.net'; object-src 'self *.cloudfront.net'; script-src 'self *.cloudfront.net'; style-src 'self *.cloudfront.net'"
           Referrer-Policy = "same-origin"
 Strict-Transport-Security = "max-age=15768000"
    X-Content-Type-Options = "nosniff"
