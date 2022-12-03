@@ -1,29 +1,3 @@
-[[plugins]]
-package = "netlify-plugin-csp-generator"
-
-  [plugins.inputs]
-  buildDir = "dist"
-
-  [plugins.inputs.policies]
-    defaultSrc = "'none'"
-    scriptSrc = "'self' *.cloudfront.net *.netlify.com *.netlify.app gc.zgo.at *.goatcounter.com"
-    styleSrc = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
-    fontSrc = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
-    frameSrc = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
-    imgSrc = "'self' data: blob: *.cloudfront.net *.netlify.com *.netlify.app *.shields.io"
-    manifestSrc = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
-    mediaSrc = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
-    objectSrc = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
-    prefetchSrc = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
-    scriptSrcAttr = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
-    styleSrcElem = "'self' 'unsafe-inline' *.cloudfront.net *.netlify.com *.netlify.app https://fonts.cdnfonts.com"
-    styleSrcAttr = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
-    workerSrc = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
-    baseUri = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
-    formAction = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
-    frameAncestors = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
-    connectSrc = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
-
 [[headers]]
   for = "/img/*.png"
 
@@ -78,7 +52,7 @@ for = "/*"
 
   [headers.values]
     Access-Control-Allow-Origin = "*"
-    Referrer-Policy = "strict-origin-when-cross-origin"
+    Referrer-Policy = "same-origin"
     Strict-Transport-Security = "max-age=31536000"
     X-Content-Type-Options = "nosniff"
     X-Frame-Options = "DENY"
