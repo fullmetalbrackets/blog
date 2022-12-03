@@ -38,16 +38,6 @@
   --form: black;
   --svg: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%) contrast(98%);
   --ext: invert(88%) sepia(69%) saturate(7500%) hue-rotate(1deg) brightness(104%) contrast(104%);
-  /* pagefind custom properties */
-  --pagefind-ui-scale: 1;
-  --pagefind-ui-primary: var(--primary);
-  --pagefind-ui-text: var(--form);
-  --pagefind-ui-background: var(--accent);
-  --pagefind-ui-border: var(--accent);
-  --pagefind-ui-tag: var(--emphasis);
-  --pagefind-ui-border-width: 2px;
-  --pagefind-ui-border-radius: 8px;
-  --pagefind-ui-font: 'Wotfard', 'Fira Sans', Verdana, sans-serif;
   box-sizing: border-box;
   height: 100%;
 }
