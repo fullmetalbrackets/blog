@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Search'
+---
+
+<style>
+  .search-results {
+    padding: 0 12px;
+  }
+  input {
+      line-height: 1;
+      border-style: none;
+      margin: 0 auto;
+      padding: 0 auto;
+      line-height: 1;
+      border-radius: 0.25em;
+      background: var(--accent);
+      color: var(--other);
+      box-sizing: border-box;
+      outline: none;
+    }
+</style>
+
+<BaseLayout title={title} description="Search for blog posts.">
+  <h1>{title}</h1>
+  <p>
+    Use the search field below to search for blog posts.
+  </p>
+  <link href="/_pagefind/pagefind-ui.css" rel="stylesheet" />
+  <script src="/_pagefind/pagefind-ui.js" type="text/javascript">
+  
+  </script>
+  <div id="search" class="search-results"></div>
+  <script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+      new PagefindUI({ element: '#search' });
+    });
+  </script>
+</BaseLayout>
