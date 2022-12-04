@@ -6,11 +6,11 @@ package = "netlify-plugin-csp-generator"
 
   [plugins.inputs.policies]
     defaultSrc = "https:"
-    scriptSrc = "'self' *.cloudfront.net gc.zgo.at *.goatcounter.com"
+    scriptSrc = "'self' *.cloudfront.net https://gc.zgo.at"
     styleSrc = "'self' *.cloudfront.net"
     fontSrc = "'self' *.cloudfront.net"
     frameSrc = "'self' *.cloudfront.net"
-    imgSrc = "'self' data: blob: *.cloudfront.net *.shields.io"
+    imgSrc = "'self' data: blob: *.cloudfront.net *.shields.io https://ariel.goatcounter.com/count"
     manifestSrc = "'self' *.cloudfront.net"
     mediaSrc = "'self' *.cloudfront.net"
     objectSrc = "'self' *.cloudfront.net"
