@@ -10,7 +10,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
-    "postbuild": "pagefind --source dist --verbose",
+    "postbuild": "npx -y pagefind --source dist",
     "preview": "astro preview",
     "astro": "astro"
   },
