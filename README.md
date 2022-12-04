@@ -2,7 +2,7 @@
 
 ![img](/public/social.png)
 
-![Netlify](https://img.shields.io/netlify/4598f4f1-67bb-4ca2-bc47-d6819bf126f1) ![Website](https://img.shields.io/website?style=flat&url=https%3A%2F%2Farieldiaz.codes%2F) ![GitHub last commit](https://img.shields.io/github/last-commit/fullmetalbrackets/blog) ![GitHub repo size](https://img.shields.io/github/repo-size/fullmetalbrackets/blog)
+![Netlify](https://img.shields.io/netlify/4598f4f1-67bb-4ca2-bc47-d6819bf126f1) ![Website](https://img.shields.io/website?style=flat&url=https%3A%2F%2Farieldiaz.codes%2F) ![GitHub repo size](https://img.shields.io/github/repo-size/fullmetalbrackets/blog)
 
 <br>
 
