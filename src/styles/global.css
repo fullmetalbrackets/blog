@@ -38,6 +38,7 @@
   --form: black;
   --svg: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%) contrast(98%);
   --ext: invert(88%) sepia(69%) saturate(7500%) hue-rotate(1deg) brightness(104%) contrast(104%);
+  --search: invert(21%) sepia(37%) saturate(6635%) hue-rotate(4deg) brightness(97%) contrast(103%);
   box-sizing: border-box;
   height: 100%;
 }
@@ -57,6 +58,7 @@
   --form: black;
   --svg: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%) contrast(98%);
   --ext: invert(88%) sepia(69%) saturate(7500%) hue-rotate(1deg) brightness(104%) contrast(104%);
+  --search: invert(21%) sepia(37%) saturate(6635%) hue-rotate(4deg) brightness(97%) contrast(103%);
 }
 
 [data-theme="dark"] {
@@ -74,6 +76,7 @@
   --form: cyan;
   --svg: invert(93%) sepia(78%) saturate(2834%) hue-rotate(213deg) brightness(148%) contrast(96%);
   --ext: invert(88%) sepia(69%) saturate(7500%) hue-rotate(1deg) brightness(104%) contrast(104%);
+  --search: invert(38%) sepia(96%) saturate(4353%) hue-rotate(2deg) brightness(102%) contrast(101%);
 }
 body {
 	font-family: 'Wotfard', 'Fira Sans', Verdana, sans-serif;
@@ -198,7 +201,26 @@ textarea {
 	font-size: 16px;
 }
 input {
-	font-size: 16px;
+  font-size: 20px;
+  line-height: 1.4;
+  border-style: none;
+  margin: 0 auto;
+  padding: 4px 8px;
+  border-radius: 0.25em;
+  background: var(--accent);
+  color: var(--form);
+  box-sizing: border-box;
+  outline: none;
+  width: 50%;
+}
+input:focus, textarea:focus {
+color: var(--form);
+background: var(--accent);
+outline: 0;
+box-shadow: 0 0 0 0.25rem var(--name);
+}
+.search-results {
+  padding: 0 auto;
 }
 content {
 	line-height: 1.6;
@@ -214,6 +236,9 @@ tbody, td, th {
 }
 th {
   background: var(--accent);
+}
+mark {
+  background: #aaa;
 }
 time {
 	color: var(--date);
