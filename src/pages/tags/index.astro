@@ -17,6 +17,9 @@ const desc = 'Blog posts tag index.'
 
 <BaseLayout title={title} description={desc}>
 	<style>
+		.title {
+			font-size: 36px;
+		}
 		ol, ul {
 			list-style-type: none;
 			display: grid;
@@ -73,7 +76,7 @@ const desc = 'Blog posts tag index.'
 		}
 	</style>
 	<section>
-		<h1>{title}</h1>
+		<h1 class="title">{title}</h1>
 		<hr>
 		<ul>
 			{allTagsData.map(tag => (
