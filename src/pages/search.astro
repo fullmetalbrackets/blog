@@ -19,10 +19,9 @@ const title = 'Search'
     Use the search field below to search for blog posts.
   </p>
   <script src="/_pagefind/pagefind-ui.js" type="text/javascript" crossorigin="anonymous">
-  
   </script>
   <div id="search" class="search-results"></div>
-  <script is:inline>
+  <script integrity="sha384-VYyPo/n2BlIZUlXm+Z9+dkt2lbh9dkyg3PKNBY7953xBMoq4PWs5+fwrWU5L24Fj" crossorigin="anonymous" is:inline>
     window.addEventListener('DOMContentLoaded', (event) => {
       new PagefindUI({ element: '#search', showImages: false });
     });
