@@ -16,6 +16,7 @@ import { SITE_TITLE } from '../config';
 		<NavLink href="/">Posts</NavLink>
 		<NavLink href="/tags">Tags</NavLink>
 		<NavLink href="/about">About</NavLink>
+		<NavLink href="/search"><img src="/img/assets/search.svg" class="search" alt="Search"></NavLink>
 		<Theme />
 	</nav>
 </header>
@@ -32,6 +33,11 @@ import { SITE_TITLE } from '../config';
 		display: inline-flex;
 		margin: 0;
 		align-items: center;
+	}
+	.search {
+		margin: 0;
+		padding: 0;
+		filter: var(--search);
 	}
 	.theme {
 		margin: 0;
