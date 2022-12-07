@@ -3,9 +3,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 const title = 'Search'
 ---
+<style>
+  .title {
+    font-size: 36px;
+  }
+  hr {
+    margin-bottom: 2.5em;
+  }
+  .search-results {
+    margin-top: 2em;
+  }
+</style>
 
 <BaseLayout title={title} description="Search for blog posts.">
-  <h1>{title}</h1>
+  <h1 class="title">{title}</h1>
+  <hr>
   <p>
     Use the search field below to search for blog posts.
   </p>
@@ -13,6 +25,7 @@ const title = 'Search'
   
   </script>
   <div id="search" class="search-results"></div>
+  search results here
   <script is:inline>
     window.addEventListener('DOMContentLoaded', (event) => {
       new PagefindUI({ element: '#search', showImages: false });
