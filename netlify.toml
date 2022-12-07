@@ -5,24 +5,31 @@ package = "netlify-plugin-csp-generator"
   buildDir = "dist"
 
   [plugins.inputs.policies]
-    defaultSrc = "https:"
-    scriptSrc = "'self' *.cloudfront.net https://gc.zgo.at"
-    styleSrc = "'self' *.cloudfront.net"
-    fontSrc = "'self' *.cloudfront.net"
-    frameSrc = "'self' *.cloudfront.net"
-    imgSrc = "'self' data: blob: *.cloudfront.net *.shields.io https://ariel.goatcounter.com/count"
-    manifestSrc = "'self' *.cloudfront.net"
-    mediaSrc = "'self' *.cloudfront.net"
-    objectSrc = "'self' *.cloudfront.net"
-    prefetchSrc = "'self' *.cloudfront.net"
-    scriptSrcAttr = "'self' *.cloudfront.net"
-    styleSrcElem = "'self' 'unsafe-inline' *.cloudfront.net https://fonts.cdnfonts.com"
-    styleSrcAttr = "'self' *.cloudfront.net"
-    workerSrc = "'self' *.cloudfront.net"
-    baseUri = "'self' *.cloudfront.net"
-    formAction = "'self' *.cloudfront.net"
-    frameAncestors = "'self' *.cloudfront.net"
-    connectSrc = "'self' *.cloudfront.net"
+    defaultSrc = "'none'"
+    scriptSrc = "'self' 'unsafe-eval' *.cloudfront.net *.netlify.com *.netlify.app gc.zgo.at *.goatcounter.com"
+    styleSrc = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
+    fontSrc = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
+    frameSrc = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
+    imgSrc = "'self' data: blob: *.cloudfront.net *.netlify.com *.netlify.app *.shields.io"
+    manifestSrc = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
+    mediaSrc = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
+    objectSrc = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
+    prefetchSrc = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
+    scriptSrcAttr = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
+    styleSrcElem = "'self' 'unsafe-inline' *.cloudfront.net *.netlify.com *.netlify.app https://fonts.cdnfonts.com"
+    styleSrcAttr = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
+    workerSrc = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
+    baseUri = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
+    formAction = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
+    frameAncestors = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
+    connectSrc = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
+
+[[headers]]
+  for = "/*.js"
+
+  [headers.values]
+    Cache-Control = "public, max-age=604800, stale-while-revalidate=86400"
+    Content-Type = "application/javascript"
 
 [[headers]]
   for = "/img/*.png"
@@ -56,21 +63,21 @@ package = "netlify-plugin-csp-generator"
   for = "/fonts/*.woff2"
 
   [headers.values]
-    Cache-Control = "public, max-age=604800"
+    Cache-Control = "public, max-age=31536000, immutable"
     Content-Type = "application/font-woff2"
 
 [[headers]]
   for = "/favicon.ico"
 
   [headers.values]
-    Cache-Control = "public, max-age=86400"
+    Cache-Control = "public, max-age=31536000, immutable"
     Content-Type = "application/x-icon"
 
 [[headers]]
   for = "/favicon.svg"
 
   [headers.values]
-    Cache-Control = "public, max-age=86400"
+    Cache-Control = "public, max-age=31536000, immutable"
     Content-Type = "image/svg+xml"
 
 [[headers]]
