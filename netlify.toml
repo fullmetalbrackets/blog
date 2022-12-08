@@ -6,7 +6,7 @@ package = "netlify-plugin-csp-generator"
 
   [plugins.inputs.policies]
     defaultSrc = "'none'"
-    scriptSrc = "'self' 'wasm-unsafe-eval' *.cloudfront.net *.netlify.com *.netlify.app gc.zgo.at *.goatcounter.com"
+    scriptSrc = "'self' 'wasm-unsafe-eval' *.cloudfront.net *.netlify.com *.netlify.app utteranc.es"
     styleSrc = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
     fontSrc = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
     frameSrc = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
