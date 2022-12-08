@@ -1,96 +1,96 @@
-# [[plugins]]
-# package = "netlify-plugin-csp-generator"
+[[plugins]]
+package = "netlify-plugin-csp-generator"
 
-#   [plugins.inputs]
-#   buildDir = "dist"
+  [plugins.inputs]
+  buildDir = "dist"
 
-#   [plugins.inputs.policies]
-#     defaultSrc = "'none'"
-#     scriptSrc = "'self' 'wasm-unsafe-eval' *.cloudfront.net *.netlify.com *.netlify.app utteranc.es"
-#     styleSrc = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
-#     fontSrc = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
-#     frameSrc = "'self' *.cloudfront.net *.netlify.com *.netlify.app utteranc.es"
-#     imgSrc = "'self' data: blob: *.cloudfront.net *.netlify.com *.netlify.app *.shields.io"
-#     manifestSrc = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
-#     mediaSrc = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
-#     objectSrc = "'none'"
-#     prefetchSrc = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
-#     scriptSrcAttr = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
-#     styleSrcElem = "'self' 'unsafe-inline' *.cloudfront.net *.netlify.com *.netlify.app https://fonts.cdnfonts.com"
-#     styleSrcAttr = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
-#     workerSrc = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
-#     baseUri = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
-#     formAction = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
-#     frameAncestors = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
-#     connectSrc = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
+  [plugins.inputs.policies]
+    defaultSrc = "'none'"
+    scriptSrc = "'self' 'wasm-unsafe-eval' *.cloudfront.net *.netlify.com *.netlify.app utteranc.es"
+    styleSrc = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
+    fontSrc = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
+    frameSrc = "'self' *.cloudfront.net *.netlify.com *.netlify.app utteranc.es"
+    imgSrc = "'self' data: blob: *.cloudfront.net *.netlify.com *.netlify.app *.shields.io"
+    manifestSrc = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
+    mediaSrc = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
+    objectSrc = "'none'"
+    prefetchSrc = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
+    scriptSrcAttr = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
+    styleSrcElem = "'self' 'unsafe-inline' *.cloudfront.net *.netlify.com *.netlify.app https://fonts.cdnfonts.com"
+    styleSrcAttr = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
+    workerSrc = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
+    baseUri = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
+    formAction = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
+    frameAncestors = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
+    connectSrc = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
 
-# [[headers]]
-#   for = "/*.js"
+[[headers]]
+  for = "/*.js"
 
-#   [headers.values]
-#     Cache-Control = "public, max-age=604800, stale-while-revalidate=86400"
-#     Content-Type = "application/javascript"
+  [headers.values]
+    Cache-Control = "public, max-age=604800, stale-while-revalidate=86400"
+    Content-Type = "application/javascript"
 
-# [[headers]]
-#   for = "/img/*.png"
+[[headers]]
+  for = "/img/*.png"
 
-#   [headers.values]
-#     Cache-Control = "public, max-age=604800"
-#     Content-Type = "image/png"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+    Content-Type = "image/png"
 
-# [[headers]]
-#   for = "/img/*.jpg"
+[[headers]]
+  for = "/img/*.jpg"
 
-#   [headers.values]
-#     Cache-Control = "public, max-age=604800"
-#     Content-Type = "image/jpeg"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+    Content-Type = "image/jpeg"
 
-# [[headers]]
-#   for = "/fonts/*.ttf"
+[[headers]]
+  for = "/fonts/*.ttf"
 
-#   [headers.values]
-#     Cache-Control = "public, max-age=604800"
-#     Content-Type = "application/font-ttf"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+    Content-Type = "application/font-ttf"
 
-# [[headers]]
-#   for = "/fonts/*.woff"
+[[headers]]
+  for = "/fonts/*.woff"
 
-#   [headers.values]
-#     Cache-Control = "public, max-age=604800"
-#     Content-Type = "application/font-woff"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+    Content-Type = "application/font-woff"
 
-# [[headers]]
-#   for = "/fonts/*.woff2"
+[[headers]]
+  for = "/fonts/*.woff2"
 
-#   [headers.values]
-#     Cache-Control = "public, max-age=31536000, immutable"
-#     Content-Type = "application/font-woff2"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "application/font-woff2"
 
-# [[headers]]
-#   for = "/favicon.ico"
+[[headers]]
+  for = "/favicon.ico"
 
-#   [headers.values]
-#     Cache-Control = "public, max-age=31536000, immutable"
-#     Content-Type = "application/x-icon"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "application/x-icon"
 
-# [[headers]]
-#   for = "/favicon.svg"
+[[headers]]
+  for = "/favicon.svg"
 
-#   [headers.values]
-#     Cache-Control = "public, max-age=31536000, immutable"
-#     Content-Type = "image/svg+xml"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "image/svg+xml"
 
-# [[headers]]
-# for = "/*"
+[[headers]]
+for = "/*"
 
-#   [headers.values]
-#     Access-Control-Allow-Origin = "*"
-#     Referrer-Policy = "strict-origin-when-cross-origin"
-#     Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
-#     X-Content-Type-Options = "nosniff"
-#     X-Frame-Options = "DENY"
-#     X-XSS-Protection = "1; mode=block"
-#     Permissions-Policy = "autoplay=(), camera=(), geolocation=(), microphone=()"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    Permissions-Policy = "autoplay=(), camera=(), geolocation=(), microphone=()"
 
 [[redirects]]
   from = "https://arieldiaz.netlify.com/*"
