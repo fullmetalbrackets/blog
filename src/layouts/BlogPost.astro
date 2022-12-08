@@ -85,6 +85,9 @@ const allTagsData = generateTagsData(tags);
 			background-color: var(--primary);
 			border-width: 0.1em;
 		}
+		.utterances {
+			margin-top: 2em;
+		}
 		@media screen and (min-width: 200px) and (max-width: 650px) {
 			article {
 				padding-top: 0;
@@ -133,4 +136,14 @@ const allTagsData = generateTagsData(tags);
 		</span>
 		<a href="#top" class="top">Back to Top</a>
 	</aside>
+	<div class="utterances">
+		<script src="https://utteranc.es/client.js"
+			repo="fullmetalbrackets/blog"
+			issue-term="title"
+			label="comment"
+			theme="preferred-color-scheme"
+			crossorigin="anonymous"
+			async>
+		</script>
+	</div>
 </BaseLayout>
