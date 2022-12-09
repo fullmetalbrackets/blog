@@ -60,11 +60,12 @@ const allTagsData = generateTagsData(tags);
 			margin-right: 1em;
 		}
 		.top {
-			font-size: 1.75rem;
+			display: flex;
+			align-items: center;
+			font-size: 1.75em;
 			font-family: 'Streamster';
-			font-weight: 700;
-			margin-top: 8px;
-			margin-right: 10px;
+			font-weight: 900;
+			margin-right: 0.5em;
 		}
 		.radio {
 			margin: 0.5em 0.5em 0 0.25em;
@@ -86,7 +87,7 @@ const allTagsData = generateTagsData(tags);
 			border-width: 0.1em;
 		}
 		.utterances {
-			margin-top: 2em;
+			margin-top: 1.25em;
 		}
 		@media screen and (min-width: 200px) and (max-width: 650px) {
 			article {
@@ -95,10 +96,6 @@ const allTagsData = generateTagsData(tags);
 			}
 			a, a:active, a:visited, a:hover {
 				font-size: 1em;
-			}
-			.top {
-				margin-top: 1em;
-				font-size: 1.5rem;
 			}
 			aside {
 				font-size: 1rem;
