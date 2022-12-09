@@ -9,7 +9,6 @@
 ## ⌨️ Latest blog posts
 
 <!-- BLOG-POST-LIST:START -->
-
 - [Build a minimal blog with Deno and host it on Deno Deploy](https://arieldiaz.codes/blog/minimal-blog-deno-deploy/)
 - [How to use Solid Explorer app to access SMB network shares from an Android device](https://arieldiaz.codes/blog/solid-explorer-samba-share/)
 - [How to run self-hosted FileBrowser in Docker](https://arieldiaz.codes/blog/how-to-run-filebrowser-in-docker/)
