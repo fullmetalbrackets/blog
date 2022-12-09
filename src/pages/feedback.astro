@@ -1,5 +1,5 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
 
 const title = 'Feedback Received'
 const desc = 'Blog post feedback form success confirmation.'
@@ -44,7 +44,7 @@ const desc = 'Blog post feedback form success confirmation.'
 			Thank you for your honest feedback, I like to know whether or not my articles are helpful! 
 		</p>
 		<p>
-			You'll now be redirected back to the Home page in 5 seconds, or you can <a href="/">click here</a> to go back.
+			You'll now be redirected back to the Home page in 5 seconds, or you can <a href="/" rel="prefetch">click here</a> to go back.
 		</p>
 	</section>
 </BaseLayout>

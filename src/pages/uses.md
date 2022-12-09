@@ -1,5 +1,5 @@
 ---
-layout: "../layouts/BaseLayout.astro"
+layout: "@layouts/BaseLayout.astro"
 title: "Uses"
 description: "The things I own and stuff I use to make this website and write a bunch of junk."
 ---

@@ -1,5 +1,5 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
 
 const title = 'Message Submitted'
 const desc = 'Contact form success confirmation.'
@@ -43,7 +43,7 @@ const desc = 'Contact form success confirmation.'
 			Your submission has been received, thank you! 
 		</p>
 		<p>
-			You'll now be redirected back to the Home page in 5 seconds, or you can <a href="/">click here</a> to go back.
+			You'll now be redirected back to the Home page in 5 seconds, or you can <a href="/" rel="prefetch">click here</a> to go back.
 		</p>
 	</section>
 </BaseLayout>

@@ -1,6 +1,6 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import { generateTagsData } from "../../utils/tags";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { generateTagsData } from "@utils/tags";
 
 export async function getStaticPaths() {
   const allPosts = await Astro.glob('../blog/*.{md,mdx}');
@@ -33,13 +33,11 @@ const posts = (await Astro.glob('../blog/*.{md,mdx}')).sort(
 
 <BaseLayout title={title} description={desc}>
 	<style>
-		ul {
+		article {
 			list-style-type: none;
 			padding: 0;
 			margin: 3em 0 0 0;
 			line-height: 1.2;
-		}
-		ul li {
 			margin-bottom: 4em;
 		}
 		.desc {
@@ -66,15 +64,15 @@ const posts = (await Astro.glob('../blog/*.{md,mdx}')).sort(
 			font-size: 36px;
 			color: var(--primary);
 		}
-		ul li > h1 {
+		article > h1 {
 			margin-bottom: 0.75em;
 		}
-		ul li:hover > h1 {
+		article:hover > h1 {
 		}
-		ul li > .bottom-line {
+		article > .bottom-line {
 			opacity: 0;
 		}
-		ul li:hover > .bottom-line {
+		article:hover > .bottom-line {
 			opacity: 0.5;
 			border: 0.25px solid var(--secondary);
 		}
@@ -116,22 +114,20 @@ const posts = (await Astro.glob('../blog/*.{md,mdx}')).sort(
 	<section>
 		<h1 class="title">Posts tagged <span>{title}</span></h1>
 		<hr class="tag-line">
-		<ul>
-			{posts.map((post) => (
-			<a href={post.url} rel="prefetch">
-				<li>
-					<time datetime={post.frontmatter.pubDate}>
-						{new Date(post.frontmatter.pubDate).toLocaleDateString('en-us', {
-							year: 'numeric',
-							month: 'long',
-							day: 'numeric',
-						})}
-					</time>
-					<h1>{post.frontmatter.title}</h1>
-					<p class="desc">{post.frontmatter.description}</p>
-				</li>
-			</a>
-			))}
-		</ul>
+		{posts.map((post) => (
+		<a href={post.url} rel="prefetch">
+			<article>
+				<time datetime={post.frontmatter.pubDate}>
+					{new Date(post.frontmatter.pubDate).toLocaleDateString('en-us', {
+						year: 'numeric',
+						month: 'long',
+						day: 'numeric',
+					})}
+				</time>
+				<h1>{post.frontmatter.title}</h1>
+				<p class="desc">{post.frontmatter.description}</p>
+			</article>
+		</a>
+		))}
 	</section>
 </BaseLayout>
