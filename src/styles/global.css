@@ -308,7 +308,6 @@ li::marker {
   text-decoration: none;
   text-overflow: ellipsis;
   transition: all .10s ease-out;
-  white-space: nowrap;
   margin: 0 8px 8px 0;
 }
 .blog-tag:hover {
