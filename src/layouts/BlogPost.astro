@@ -47,12 +47,6 @@ const allTagsData = generateTagsData(tags);
 			cursor: pointer;
 			margin: 2em auto 0 auto;
 		}
-		aside > a, a:active, a:visited, a:hover, a:focus {
-			color: var(--name);
-		}
-		aside > a:hover, aside > a:focus {
-			color: var(--name-hover);
-		}
 		form {
 			display: flex;
 			align-items: center;
@@ -61,13 +55,8 @@ const allTagsData = generateTagsData(tags);
 			color: var(--text);
 			margin-right: 1em;
 		}
-		.top {
-			display: flex;
-			align-items: center;
-			font-size: 1.75em;
-			font-family: 'Streamster';
-			font-weight: 900;
-			margin-right: 0.5em;
+		aside > a, a:active, a:visited, a:hover, a:focus {
+			color: #000;
 		}
 		.radio {
 			margin: 0.5em 0.5em 0.5em 0.25em;
@@ -88,6 +77,9 @@ const allTagsData = generateTagsData(tags);
 			background-color: var(--primary);
 			border-width: 0.1em;
 		}
+		.top {
+			margin-top: 1em;
+		}
 		.utterances {
 			margin-top: 1.25em;
 		}
@@ -98,10 +90,16 @@ const allTagsData = generateTagsData(tags);
 			}
 			aside {
 				font-size: 1rem;
-				border-style: dashed;
+			}
+			label {
+				margin-right: 0.25em;
+			}
+			button {
+				margin-left: 0.25em;
 			}
 			.top {
-				font-size: 1.5em;
+				width: 5em;
+				text-align: center;
 			}
 		}
 	</style>
@@ -134,7 +132,7 @@ const allTagsData = generateTagsData(tags);
 			<input type="hidden" id="postId" name="postId" value={title} />
 			</form>
 		</span>
-		<a href="#top" class="top">Back to Top</a>
+		<a href="#top" class="top button blog-tag">Back to Top &uarr;</a>
 	</aside>
 	<div class="utterances">
 		<script src="https://utteranc.es/client.js"
