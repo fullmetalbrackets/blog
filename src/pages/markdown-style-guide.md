@@ -194,6 +194,20 @@ The blockquote element represents content that is quoted from another source, op
 
 [^1]: The above quote is excerpted from Rob Pike's [talk](https://www.youtube.com/watch?v=PAAkCSZUG1c) during Gopherfest, November 18, 2015.
 
+#### "Alert/Important" Blockquotes
+
+<div class="alert">
+  <b>&#x26a0;&#xfe0f; &nbsp;Important!</b>
+  This is an important thing!
+</div>
+
+#### "Note" Blockquotes
+
+<div class="note">
+  <b>ⓘ &nbsp;Note</b>
+  This is a note.
+</div>
+
 ## Tables
 
 | Emphasis     | Strong     | Strikethrough       |
