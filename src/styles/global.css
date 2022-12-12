@@ -271,7 +271,7 @@ blockquote {
 	border: 1px solid var(--text);
   background-color: var(--blockquote);
 	padding: 0 20px;
-	margin: 2em auto;
+	margin: 2em auto 4em auto;
   border-radius: 0.5em;
   width: 95%;
 }
@@ -288,7 +288,7 @@ blockquote ul {
 .alert, .note {
   background-color: var(--blockquote);
 	padding: 1em;
-	margin: 4em auto;
+	margin: 2em auto 4em auto;
   border-radius: 0.5em;
   width: 95%;
 }
