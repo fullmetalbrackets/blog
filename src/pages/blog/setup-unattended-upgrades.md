@@ -15,7 +15,10 @@ tags:
 2. [Install and configure Needrestart](#needrestart)
 3. [References](#ref)
 
-> **ⓘ &nbsp;Note**<br><br> This guide is specifically for Debian and Ubuntu. Sorry, but these are my main distros, and I have not yet used others enough to advise on how it would work there.
+<div class="note">
+  <b>ⓘ &nbsp;Note</b>
+  This guide is specifically for Debian and Ubuntu. Sorry, but these are my main distros, and I have not yet used others enough to advise on how it would work there.
+</div>
 
 <div id='unattended'/>
 

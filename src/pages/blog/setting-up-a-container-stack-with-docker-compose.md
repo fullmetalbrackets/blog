@@ -17,7 +17,10 @@ tags:
 3. [Starting up the containers](#start)
 4. [References](#ref)
 
-> **ⓘ &nbsp;Note**<br><br> This will not be an exhaustive Docker tutorial, for that I always suggest <a href="https://docs.docker.com" target="_blank">the official Docker documentation</a>. The purpose of this guide is limited to explaining how to install Docker and set up various Docker containers quickly and easily via Docker-Compose.
+<div class="note">
+  <b>ⓘ &nbsp;Note</b>
+  This will not be an exhaustive Docker tutorial, for that I always suggest <a href="https://docs.docker.com" target="_blank">the official Docker documentation</a>. The purpose of this guide is limited to explaining how to install Docker and set up various Docker containers quickly and easily via Docker-Compose.
+</div>
 
 <div id='install'/>
 

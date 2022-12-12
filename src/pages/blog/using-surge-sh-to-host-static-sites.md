@@ -36,7 +36,10 @@ npx surge
 
 The first time you do this command, you'll be prompted to create an account, just enter an email and password. Every time thereafter, `npx surge` will immediately publish the present working directory to the web, to a randomly-generated subdomain of Surge.sh, e.g. `wandering-unicorn.surge.sh`
 
-> _Tip:_ If using a static site generator like Astro or Eleventy, you'll first need use `npm build` (or equivalent) to first build the static assets, then specify the directory to publish, e.g. `npx surge dist`
+<div class="note">
+  <b>ⓘ &nbsp;Note</b>
+  If using a static site generator like <i>Astro</i> or <i>Eleventy</i>, you'll first need use <code>npm build</code> (or equivalent) to build the static assets, then specify the directory to publish, e.g. <code>npx surge dist</code>.
+</div>
 
 If you want to remove a Surge site you published, it's just another simple command:
 
@@ -76,7 +79,10 @@ Surge lets you use your own domain instead of a surge.sh subdomain. First, you'l
 
 Alternately you can instead add an _A record_ set to IP address `45.55.110.124`
 
-> **ⓘ &nbsp;Note**<br><br> For detailed instructions on changing your owned domain's records, see <a href="https://surge.sh/help/adding-a-custom-domain" target="_blank">Surge's documentation</a>.
+<div class="note">
+  <b>ⓘ &nbsp;Note</b>
+  For detailed instructions on changing your owned domain's records, see <a href="https://surge.sh/help/adding-a-custom-domain" target="_blank">Surge's documentation</a>.
+</div>
 
 If your records are set up properly, you can deploy to your custom domain like so:
 
@@ -90,7 +96,10 @@ You can also save your custom domain to a _CNAME file_ (no file extension) in yo
 echo custom-domain.com > CNAME
 ```
 
-> **Important:** Though all projects published to surge.sh sub-domains include free SSL, this is not the case with custom domains! To use SSL with your own domain, you'll need the paid <a href="https://surge.sh/plus" target="_blank">Surge Plus</a> plan, which costs $30/month. For more details, see <a href="https://surge.sh/help/securing-your-custom-domain-with-ssl" target="_blank">this section of the Surge documentation</a>.
+<div class="alert">
+  <b>&#x26a0;&#xfe0f; &nbsp;Important!</b>
+  Though all projects published to surge.sh sub-domains include free SSL, this is not the case with custom domains! To use SSL with your own domain, you'll need the paid <a href="https://surge.sh/plus" target="_blank">Surge Plus</a> plan, which costs $30/month. For more details, see <a href="https://surge.sh/help/securing-your-custom-domain-with-ssl" target="_blank">this section of the Surge documentation</a>.
+</div>
 
 <div id='ignore'/>
 
@@ -106,7 +115,10 @@ node_modules
 bower_components
 ```
 
-> **ⓘ &nbsp;Note**<br><br> If using a static site generator, place the `.surgeignore` file in the directory you are publishing, e.g. `/dist`
+<div class="note">
+  <b>ⓘ &nbsp;Note</b>
+  If using a static site generator, place the <code>.surgeignore</code> file in the directory you are publishing, e.g. <code>/dist</code>
+</div>
 
 <div id='redirects'/>
 

@@ -21,7 +21,10 @@ tags:
 
 <br>
 
-> **ⓘ &nbsp;Note**<br><br> This guide is to install Pi-Hole bare-metal, if you prefer to install as a Docker container, read <a href="https://github.com/pi-hole/docker-pi-hole/#running-pi-hole-docker" target="_blank">the official Pi-Hole instructions for Docker</a>.
+<div class="note">
+  <b>ⓘ &nbsp;Note</b>
+  This guide is to install Pi-Hole bare-metal, if you prefer to install as a Docker container, read <a href="https://github.com/pi-hole/docker-pi-hole/#running-pi-hole-docker" target="_blank">the official Pi-Hole instructions for Docker</a>.
+</div>
 
 <div id='install' />
 
@@ -37,7 +40,10 @@ curl -sSL https://install.pi-hole.net | bash
 
 Executing the script will prompt a number of dialogs, pay attention and make sure you input all the correct information.
 
-> &#x26a0;&#xfe0f; &nbsp;**Important!**<br><br> Make sure to take note of the admin password provided at the end of the install process, you'll need it to login to the Web UI. Ideally you should change the admin password with `pihole -a -p newpassword`.
+<div class="alert">
+  <b>&#x26a0;&#xfe0f; &nbsp;Important!</b>
+  Make sure to take note of the admin password provided at the end of the install process, you'll need it to login to the Web UI. Ideally you should change the admin password with `pihole -a -p newpassword`.
+</div>
 
 Now you should be able to access the Pi-Hole Web UI at either `http://pi.hole/admin`, or use the IP address or hostname, e.g. `http://192.168.1.250/admin` or `http://hostname/admin`.
 
@@ -47,7 +53,9 @@ Now you should be able to access the Pi-Hole Web UI at either `http://pi.hole/ad
 
 In order for Pi-Hole to work network-wide for all devices (including phones and tablets on Wi-Fi), you'll need to configure your router to use the Pi-Hole server as DNS. The method differs for every router, and some do not have the option at all. (AT&T's Arris BGW210-700 for example.) Google is your friend here.
 
-> **ⓘ &nbsp;Note**<br><br>If your router does not have the option of setting a DNS server, you won't be able to block ads for all devices on your network automatically. Instead you'll have to <a href="https://discourse.pi-hole.net/t/how-do-i-configure-my-devices-to-use-pi-hole-as-their-dns-server/245#3-manually-configure-each-device-9" target="_blank">configure each device's DNS</a>.
+<div class="note">
+  <b>ⓘ &nbsp;Note</b>If your router does not have the option of setting a DNS server, you won't be able to block ads for all devices on your network automatically. Instead you'll have to <a href="https://discourse.pi-hole.net/t/how-do-i-configure-my-devices-to-use-pi-hole-as-their-dns-server/245#3-manually-configure-each-device-9" target="_blank">configure each device's DNS</a>.
+</div>
 
 <a href="/img/blog/dns1.png" target="_blank"><img src="/img/blog/dns1.png" alt="Screenshot of DNS settings." /></a>
 

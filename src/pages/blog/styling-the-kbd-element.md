@@ -14,7 +14,10 @@ tags:
 2. [The code!](#code)
 3. [Reference](#ref)
 
-> **Attribution:** I want to start this off by saying _this is not my code_, but was taken from <a href="http://dylanatsmith.com/wrote/styling-the-kbd-element" target="_blank">Dylan Smith</a> from his own blog post on the subject, and I simply made a few modifications for my site. I encourage you to go read his post since mine is terse for my own purposes.
+<div class="note">
+  <b>Attribution:</b>
+  I want to start this off by saying <i>this is not my code</i>, but was taken from <a href="http://dylanatsmith.com/wrote/styling-the-kbd-element" target="_blank">Dylan Smith</a> from his own blog post on the subject, and I simply made a few modifications for my site. I encourage you to go read his post since mine is terse for my own purposes.
+</div>
 
 <div id='kbd'/>
 

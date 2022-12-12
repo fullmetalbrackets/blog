@@ -19,7 +19,10 @@ tags:
 6. [Install the AT&T TV app on Sony Bravia TV](#tv)
 7. [References](#ref)
 
-> **ⓘ &nbsp;Note**<br><br> As of September 2022, I no longer have AT&T as a provider, so I cannot personally confirm that these instructions will still work. However, a cursory skim of the forum thread on XDA Developers shows active discussion and recent updates of the APK, so I have no reason to believe these instructions are outdated. Feel free to let me know if you try them and they do not work.
+<div class="note">
+  <b>ⓘ &nbsp;Note</b>
+  As of September 2022, I no longer have AT&T as a provider, so I cannot personally confirm that these instructions will still work. However, a cursory skim of the forum thread on XDA Developers shows active discussion and recent updates of the APK, so I have no reason to believe these instructions are outdated. Feel free to let me know if you try them and they do not work.
+</div>
 
 <div id='intro'/>
 

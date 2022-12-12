@@ -36,6 +36,7 @@
   --name-hover: rgb(0, 128, 128);
   --date: rgb(0, 128, 128);
   --form: black;
+  --blockquote: rgb(240, 240, 240);
   --svg: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%) contrast(98%);
   --ext: invert(88%) sepia(69%) saturate(7500%) hue-rotate(1deg) brightness(104%) contrast(104%);
   --search: invert(21%) sepia(37%) saturate(6635%) hue-rotate(4deg) brightness(97%) contrast(103%);
@@ -56,6 +57,7 @@
   --name-hover: rgb(0, 128, 128);
   --date: rgb(0, 128, 128);
   --form: black;
+  --blockquote: rgb(240, 240, 240);
   --svg: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%) contrast(98%);
   --ext: invert(88%) sepia(69%) saturate(7500%) hue-rotate(1deg) brightness(104%) contrast(104%);
 }
@@ -69,10 +71,11 @@
   --link: rgb(255, 255, 0);
   --hover: rgb(255, 165, 0);
   --emphasis: rgb(255, 69, 0);
-  --name: rgb(255, 0, 179);
+  --name: rgb(250, 50, 195);
   --name-hover: rgb(255, 95, 205);
-  --date: rgb(255, 0, 179);
+  --date: rgb(250, 50, 195);
   --form: cyan;
+  --blockquote: rgb(25, 30, 50);
   --svg: invert(93%) sepia(78%) saturate(2834%) hue-rotate(213deg) brightness(148%) contrast(96%);
   --ext: invert(88%) sepia(69%) saturate(7500%) hue-rotate(1deg) brightness(104%) contrast(104%);
 }
@@ -245,7 +248,7 @@ img {
   margin: 2em auto 4em auto;
 }
 code {
-	padding: 2px 4px;
+	padding: 1.5px 4px;
 	font-family: 'JetBrainsMono', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
 	background-color: #282c34;
 	color: #d19866;
@@ -263,14 +266,14 @@ figcaption {
   color:var(--other);
   padding-left: 5px;
   margin: -6.25em 0 6em 0;
-
 }
 blockquote {
-	border: 1px solid var(--emphasis);
+	border: 1px solid var(--text);
   background-color: var(--blockquote);
 	padding: 0 20px;
-	margin: 2em 0;
+	margin: 2em auto;
   border-radius: 0.5em;
+  width: 95%;
 }
 blockquote li {
 	margin-left: -1em;
@@ -279,8 +282,34 @@ blockquote p {
   margin-top: 20px;
   margin-bottom: 20px;
 }
+blockquote ul {
+  margin-bottom: 0;
+}
+.alert, .note {
+  background-color: var(--blockquote);
+	padding: 1em;
+	margin: 4em auto;
+  border-radius: 0.5em;
+  width: 95%;
+}
+.alert {
+  border: 1px solid red;
+}
+.alert b:first-of-type  {
+  display: block;
+  color: red;
+  margin-bottom: 1em;
+}
+.note {
+  border: 1px solid var(--hover);
+}
+.note b:first-of-type {
+  display: block;
+  color: var(--hover);
+  margin-bottom: 1em;
+}
 li::marker {
-	color: var(--primary);
+	color: var(--name);
 }
 .two-img {
   display: inline-flex;
@@ -311,11 +340,14 @@ li::marker {
   margin: 0 8px 8px 0;
 }
 .blog-tag:hover {
-    box-shadow: 4px 4px 0 #000;
-    transform: translate(-4px,-4px);
+  box-shadow: 4px 4px 0 #000;
+  transform: translate(-4px,-4px);
 }
 .blog-tag:focus-visible{
-    outline-offset: 1px;
+  outline-offset: 1px;
+}
+article ul {
+  margin-bottom: 3.5em;
 }
 @media screen and (min-width: 200px) and (max-width: 650px) {
 	::-webkit-scrollbar {

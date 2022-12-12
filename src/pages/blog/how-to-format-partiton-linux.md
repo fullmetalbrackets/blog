@@ -8,7 +8,10 @@ tags:
   - Command Line
 ---
 
-> &#x26a0;&#xfe0f; &nbsp;**Important!**<br><br> Be aware that using these instructions to format a disk or delete partitions will lead to the loss of any data contained therein.
+<div class="important">
+  <b>&#x26a0;&#xfe0f; &nbsp;Important!</b>
+  Be aware that using these instructions to format a disk or delete partitions will lead to the loss of any data contained therein.
+</div>
 
 ## Formatting a disk
 

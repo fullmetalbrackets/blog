@@ -42,7 +42,10 @@ Also, Netlify has some really cool features that solve problems for you, such as
 6. On the next page, you'll configure the branch to deploy and the build settings, so for example if your project uses yarn instead of npm, change the build command to `yarn build`. Once you're done click **Deploy site.**
 7. Netlify will begin the process of building your site, if there's no issues with the build then your site will deploy in a minute or two.
 
-> _Be aware_: By default ANY push to the Git repo will force a build & deploy of the site on Netlify, which can quickly rack up build minutes. If you prefer to deploy manually, be sure to off auto-deploys in the **Site Settings** on the Netlify dashboard.
+<div class="note">
+  <b>ⓘ &nbsp;Note</b>
+  Be aware that by default ANY push to the Git repo will force a build & deploy of the site on Netlify, which can quickly rack up build minutes. If you prefer to deploy manually, be sure to off auto-deploys in the <i>Site Settings</i> on the Netlify dashboard.
+</div>
 
 <div id='vercel'/>
 
@@ -100,7 +103,10 @@ Possibly the simplest hosting solution to ever exist. Literally one command in t
 1. `npm install -g surge` - This will install surge.sh globally so you can use it from any directory without first installing/adding it locally.
 2. `npx surge` - If using Surge.sh for the first time (or from a new machine), it will prompt you for an email and password right in the command line, and log you in or create a new account if one does not exist matching the email address you entered. When logged in you'll be prompted to specify the full path to the directory to upload (it usually defaults to your present working directory), then a provides a randomly generated sub-domain of your choice (though you can specify your own sub-domain), then hit <kbd>⏎Enter</kbd> and your project gets uploaded.
 
-> &#x26a0;&#xfe0f; &nbsp;**Important!**<br><br> If your site is made with a static site generator like Astro or Nuxt, make sure to use `npm build` or `yarn build` first to build the static assets, then use `npx surge dist` to serve the static site.
+<div class="alert">
+  <b>&#x26a0;&#xfe0f; &nbsp;Important!</b>
+  If your site is made with a static site generator like Astro or Nuxt, make sure to use `npm build` or `yarn build` first to build the static assets, then use `npx surge dist` to serve the static site.
+</div>
 
 That's it! Surge.sh has a crazy fast build time and instant availability on their CDN. If you go to the URL you should see your site, it will literally take only seconds to be online.
 

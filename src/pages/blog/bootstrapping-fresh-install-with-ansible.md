@@ -17,7 +17,10 @@ tags:
 4. [Running the playbook](#run)
 5. [References](#ref)
 
-> **ⓘ &nbsp;Note**<br><br> This is not a comprehensive tutorial for Ansible, but simple a terse quick guide of my personal use case for Ansible in my home lab. For a deeper dive, I strongly suggest <a href="https://www.learnlinux.tv/getting-started-with-ansible/" target="_blank" rel="noopener noreferrer">Learn Linux TV series of Ansible tutorials</a> which is how I first learned to use it myself.
+<div class="note">
+  <b>ⓘ &nbsp;Note</b>
+  This is not a comprehensive tutorial for Ansible, but simple a terse quick guide of my personal use case for Ansible in my home lab. For a deeper dive, I strongly suggest <a href="https://www.learnlinux.tv/getting-started-with-ansible/" target="_blank" rel="noopener noreferrer">Learn Linux TV series of Ansible tutorials</a> which is how I first learned to use it myself.
+</div>
 
 <div id='install'/>
 
