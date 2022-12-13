@@ -231,11 +231,19 @@ The blockquote element represents content that is quoted from another source, op
 
 #### Nested list
 
-- Fruit
+- Genres
 
-  - Apple
-  - Orange
-  - Banana
+  - Science Fiction
+    - The Reality Dysfunction
+    - Starship Troopers
+    - Ender's Game
+  - Fantasy
+    - Lord of the Rings
+    - Stormlight Archive
+    - Broken Earth
+  - Non-Fiction
+    - Zen and the Art of Motorcycle Maintenance
+    - Astrophysics for People in a Hurry
 
 - Gear
   1. Laptop
