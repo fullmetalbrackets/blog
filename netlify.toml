@@ -268,7 +268,7 @@ for = "/*"
 
 [[redirects]]
   from = "https://arieldiaz.codes/tags/misc"
-  to = "https://arieldiaz.codes/tags"
+  to = "https://arieldiaz.codes/tags/miscellaneous"
   status = 301
   force = true
 
