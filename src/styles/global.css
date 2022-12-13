@@ -346,8 +346,11 @@ li::marker {
 .blog-tag:focus-visible{
   outline-offset: 1px;
 }
-article ul {
+article ul, article ol {
   margin-bottom: 3.5em;
+}
+article ul ul {
+  margin: 0;
 }
 @media screen and (min-width: 200px) and (max-width: 650px) {
 	::-webkit-scrollbar {
