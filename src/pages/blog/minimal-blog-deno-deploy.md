@@ -22,15 +22,14 @@ tags:
 ## Install Deno
 
 Installing Deno is quick and easy via automated script. You can alternately use various package managers <a href="https://deno.land/manual@v1.28.1/getting_started/installation" target="_blank" rel="noopener">as per the Deno documentation</a>. For this guide I will use the script to install with one command:
-<br><br><br>
 
-For Windows PowerShell:
+### For Windows PowerShell:
 
 ```powershell
 irm https://deno.land/install.ps1 | iex
 ```
 
-For Linux and Mac terminal:
+### For Linux and Mac terminal:
 
 ```bash
 curl -fsSL https://deno.land/x/install/install.sh | sh

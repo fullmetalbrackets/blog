@@ -8,7 +8,7 @@ tags:
   - Command Line
 ---
 
-<div class="important">
+<div class="alert">
   <b>&#x26a0;&#xfe0f; &nbsp;Important!</b>
   Be aware that using these instructions to format a disk or delete partitions will lead to the loss of any data contained therein.
 </div>

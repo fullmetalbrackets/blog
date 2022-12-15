@@ -11,32 +11,38 @@ tags:
 
 ## Sections
 
-1. [SCP Command Syntax](#syntax)
-2. [SCP Options](#options)
-3. [Copying files and directories to a remote host](#remote)
-4. [Copying from a remote host to a local machine](#local)
-5. [Transferring files between two remote hosts](#transfer)
-6. [References](#ref)
+1. [Introduction](#intro)
+2. [SCP Command Syntax](#syntax)
+3. [SCP Options](#options)
+4. [Copying files and directories to a remote host](#remote)
+5. [Copying from a remote host to a local machine](#local)
+6. [Transferring files between two remote hosts](#transfer)
+7. [References](#ref)
 
-<div id='syntax'/>
+<div id='intro'/>
+
+## Introduction
 
 Secure Copy is a command line utility that transfers files between the local host and a remote host via the SSH protocol. You will be prompted for the remote user's password, or you can use an <a href="https://arieldiaz.codes/blog/generating-an-ssh-key-pair" target="_blank">authorized SSH key</a>.
+
+<div id='syntax'/>
 
 ## SCP Command Syntax
 
 ```bash
-scp -OPTION user@Source:file1 user@Destination:file2
+scp -OPTION user@SourceIP:file.txt user@DestinationIP:file.txt
 ```
 
 <div id='options'/>
 
 ## SCP Options
 
-- `-r`: Recursively copy directories (copy directory contents and sub-directories and their content)
+- `-r`: Recursively copy entire directories, also follows symbolic links
 - `-P`: Specifies an SSH port on destination host, use if destination uses SSH port other than 22
-- `-p`: Copied files keep modification and access times
-- `-q`: Quiets the progress bar and other messages
-- `-c`: Compresses sent data for faster transfer speeds
+- `-p`: Copied files keep modification times, access times, permissions and modes
+- `-v`: Verbose mode; prints additional debugging messages about transfer progress
+- `-q`: Quiet mode; disables the progress bar and warning/diagnostic messages
+- `-C`: Compresses sent data for faster transfer speeds
 
 <div id='remote'/>
 
@@ -48,21 +54,18 @@ Copy a file from local host to a remote host:
 scp file.txt remote-user@192.168.1.10:/directory
 ```
 
-<br>
 If preferred, use hostnames instead of IP addresses:
 
 ```bash
 scp file.txt remote-user@hostname:/directory
 ```
 
-<br>
 You can also copy a file with a different name at the destination:
 
 ```bash
 scp file.txt remote-user@192.168.1.10:/directory/newfilename.txt
 ```
 
-<br>
 If the remote host uses a port besides the default 22 for SSH, specify it with the <em>-P</em> option:
 
 ```bash
