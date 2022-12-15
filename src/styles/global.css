@@ -24,19 +24,18 @@
   box-sizing: inherit;
 }
 :root, html {
-  --main: rgb(250, 250, 250);
+  --main: aliceblue;
   --text: rgb(51, 65, 85);
   --primary: rgb(37, 150, 190);
   --secondary: rgb(95, 193, 232);
   --accent: rgb(148, 163, 184);
-  --link: rgb(0, 128, 0);
+  --link: rgb(0, 138, 0);
   --hover: rgb(0, 175, 175);
   --emphasis: rgb(220, 40, 0);
   --name: rgb(0, 175, 175);
-  --name-hover: rgb(0, 128, 128);
-  --date: rgb(0, 128, 128);
+  --date: rgb(0, 127, 128);
   --form: black;
-  --blockquote: rgb(240, 240, 240);
+  --blockquote: rgb(250, 250, 250);
   --svg: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%) contrast(98%);
   --ext: invert(88%) sepia(69%) saturate(7500%) hue-rotate(1deg) brightness(104%) contrast(104%);
   --search: invert(21%) sepia(37%) saturate(6635%) hue-rotate(4deg) brightness(97%) contrast(103%);
@@ -47,19 +46,18 @@
 }
 
 [data-theme="light"] {
-  --main: rgb(250, 250, 250);
+  --main: aliceblue;
   --text: rgb(51, 65, 85);
   --primary: rgb(37, 150, 190);
   --secondary: rgb(95, 193, 232);
   --accent: rgb(148, 163, 184);
-  --link: rgb(0, 128, 0);
+  --link: rgb(0, 138, 0);
   --hover: rgb(0, 175, 175);
   --emphasis: rgb(220, 40, 0);
-  --name: rgb(0, 175, 175);
-  --name-hover: rgb(0, 128, 128);
-  --date: rgb(0, 128, 128);
+  --name: rgb(0, 158, 170);
+  --date: rgb(0, 127, 128);
   --form: black;
-  --blockquote: rgb(240, 240, 240);
+  --blockquote: rgb(250, 250, 250);
   --svg: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%) contrast(98%);
   --ext: invert(88%) sepia(69%) saturate(7500%) hue-rotate(1deg) brightness(104%) contrast(104%);
 }
@@ -126,10 +124,13 @@ h1 {
   hyphens: auto;
 }
 h2 {
-  margin-top: 2em;
+  margin-top: 3em;
 	color: var(--primary);
   overflow-wrap: break-word;
   hyphens: auto;
+}
+#sections, #table-of-contents {
+  margin-top: 0;
 }
 h3, h4, h5, h6 {
   margin: 2em 0 1em 0;
@@ -248,8 +249,7 @@ time {
 img {
 	max-width: 100%;
 	height: auto;
-  padding-bottom: 5px;
-  margin: 2em auto 4em auto;
+  margin: 3em auto;
 }
 code {
 	padding: 1.5px 4px;
@@ -292,7 +292,7 @@ blockquote ul {
 .alert, .note {
   background-color: var(--blockquote);
 	padding: 1em;
-	margin: 2em auto 4em auto;
+	margin: 3em auto;
   border-radius: 0.5em;
   width: 95%;
 }
@@ -351,10 +351,13 @@ li::marker {
   outline-offset: 1px;
 }
 article ul, article ol {
-  margin-bottom: 3.5em;
+  margin-bottom: 2em;
 }
 article ul ul {
   margin: 0;
+}
+article ol:first-of-type {
+  margin-bottom: 0;
 }
 @media screen and (min-width: 200px) and (max-width: 650px) {
 	::-webkit-scrollbar {
