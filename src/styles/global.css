@@ -42,6 +42,8 @@
   --search: invert(21%) sepia(37%) saturate(6635%) hue-rotate(4deg) brightness(97%) contrast(103%);
   box-sizing: border-box;
   height: 100%;
+  scrollbar-color: var(--name) var(--accent);
+  scrollbar-width: auto;
 }
 
 [data-theme="light"] {
@@ -114,23 +116,29 @@ main {
 }
 hr {
   margin-bottom: 2em;
+  border: 0.25px solid var(--primary);
+	opacity: 0.5;
 }
 h1 {
   margin-bottom: 0.25em;
+	color: var(--primary);
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 h2 {
   margin-top: 2em;
+	color: var(--primary);
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 h3, h4, h5, h6 {
   margin: 2em 0 1em 0;
   padding: 0;
-}
-p {
+	color: var(--primary);
   overflow-wrap: break-word;
   hyphens: auto;
 }
-h1, h2, h3, h4, h5, h6 {
-	color: var(--primary);
+p {
   overflow-wrap: break-word;
   hyphens: auto;
 }
@@ -156,10 +164,6 @@ button {
 button:hover {
   background: var(--secondary);
   cursor: pointer;
-}
-hr {
-	border: 0.25px solid var(--primary);
-	opacity: 0.5;
 }
 strong,
 b,
