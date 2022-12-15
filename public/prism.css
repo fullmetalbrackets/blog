@@ -39,7 +39,7 @@
  /* Code blocks */
  pre[class*="language-"] {
    padding: 1em;
-   margin: 2em auto 4em auto;
+   margin: 3em auto;
    overflow: auto;
    border-radius: 0.25em;
    width: 95%;
