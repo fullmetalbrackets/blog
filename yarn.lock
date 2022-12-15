@@ -119,10 +119,10 @@
   dependencies:
     prismjs "^1.28.0"
 
-"@astrojs/rss@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@astrojs/rss/-/rss-1.1.0.tgz#1eb0c13ec35873b78879ad232e4d241b3983185c"
-  integrity sha512-kSOIwn7S94icOL4YBaRQ+BmeXkWufJCDEmnUdRzGtRCCBF0HHEQt5xOGkxj3LAF+7PPOJiIi7DZ/LE9sR9cfuQ==
+"@astrojs/rss@^1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@astrojs/rss/-/rss-1.2.1.tgz#e53b7b5e9403c6e026f607e4c4b5f14baf5d645a"
+  integrity sha512-ZgCunS6ECuPpxBznBYE+ONf23rcp+OWZ5IyDKFAcVZCWEq8Bh0rVYa9p8u6cU9WOTK56JRQTuwcVZYndmExNtw==
   dependencies:
     fast-xml-parser "^4.0.8"
 
@@ -3157,10 +3157,10 @@ p-try@^2.0.0:
   resolved "https://registry.yarnpkg.com/p-try/-/p-try-2.2.0.tgz#cb2868540e313d61de58fafbe35ce9004d5540e6"
   integrity sha512-R4nPAVTAU0B9D35/Gk3uJf/7XYbQcyohSKdvAxIRSNghFl4e71hVoGnBNQz9cWaXxO2I10KTC+3jMdvvoKw6dQ==
 
-pagefind@^0.10.4:
-  version "0.10.4"
-  resolved "https://registry.yarnpkg.com/pagefind/-/pagefind-0.10.4.tgz#903182ed3b5534a78ea0c2e14e12e2377cc4f5eb"
-  integrity sha512-JNaP0blX3mUDkJEUyPDXXbS2TWHZAJRu898tEg4jnbwENiar7h6jc1Mu3iRENaGFiULiwi8asJtifGFKXAObAw==
+pagefind@^0.10.5:
+  version "0.10.5"
+  resolved "https://registry.yarnpkg.com/pagefind/-/pagefind-0.10.5.tgz#c1c1c9d13082083bb77cf3ca30176ceacf957a72"
+  integrity sha512-5c57c1wJYYuJt/thzupMySf4Gzt6QTPx5JoTqk3LL4VDzV/2AGWMA9rmnA5mNvtI9aZzHVbv3zNWV3l44VjsSQ==
   dependencies:
     https-proxy-agent "^5.0.0"
     proxy-from-env "^1.1.0"
