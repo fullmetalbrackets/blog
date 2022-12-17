@@ -4,9 +4,10 @@ title: "Install the latest version of NodeJS in Debian and Ubuntu"
 description: "By default, the APT package manager used in Debian and Ubuntu distros will install older versions of NodeJS. To install newer versions of NodeJS requires adding a specific repository first, here's a quick guide on how to do that."
 pubDate: "December 16, 2022"
 tags:
+  - Web Development
+  - NodeJS
   - Debian
   - Ubuntu
-  - NodeJS
 ---
 
 # Adding the NodeSource repo
@@ -39,4 +40,4 @@ v8.19.2
 
 # Reference
 
-- <a href="https://github.com/nodesource/distributions/blob/master/README.md#debinstall" target="_blank">NodeSource Binary GitHub</a>
+- <a href="https://github.com/nodesource/distributions/blob/master/README.md#debinstall" target="_blank" rel="noopener">NodeSource Binary GitHub</a>
