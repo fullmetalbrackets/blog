@@ -36,6 +36,8 @@
   --date: rgb(0, 127, 128);
   --form: black;
   --blockquote: rgb(250, 250, 250);
+  --code: #d19866;
+  --code-bg: #282c34;
   --svg: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%) contrast(98%);
   --ext: invert(88%) sepia(69%) saturate(7500%) hue-rotate(1deg) brightness(104%) contrast(104%);
   --search: invert(21%) sepia(37%) saturate(6635%) hue-rotate(4deg) brightness(97%) contrast(103%);
@@ -254,8 +256,8 @@ img {
 code {
 	padding: 1.5px 4px;
 	font-family: 'JetBrainsMono', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
-	background-color: #282c34;
-	color: #d19866;
+	background-color: var(--code-bg);
+	color: var(--code);
 	border-radius: 0.25em;
   font-size: 18px;
 }
