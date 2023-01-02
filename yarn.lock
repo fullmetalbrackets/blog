@@ -68,11 +68,12 @@
     unist-util-visit "^4.1.0"
     vfile "^5.3.2"
 
-"@astrojs/mdx@^0.13.0":
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/@astrojs/mdx/-/mdx-0.13.0.tgz#41267b26ac5b000b09d94c1ab269124e54ff08d1"
-  integrity sha512-2D/O5AjCBQQ/PLx3P/WysACdFxz97iQPu55hy9pc+u04a+fMFuVdKm9ftWXpsNHL2SXbKb7uRpcuFw93FnRNDw==
+"@astrojs/mdx@^0.14.0":
+  version "0.14.0"
+  resolved "https://registry.yarnpkg.com/@astrojs/mdx/-/mdx-0.14.0.tgz#ad8b662ed6a486bf7df0618ff138bcfaa3e4719b"
+  integrity sha512-lmNh/7CeQmdZ0OCbnDnoDxQTKWleFdlT5YkjsutGIOhabY0xgCcWwb1Rbs/9m4vvTdCkp9zsZdRzUKEPFPbcsA==
   dependencies:
+    "@astrojs/markdown-remark" "^1.2.0"
     "@astrojs/prism" "^1.0.2"
     "@mdx-js/mdx" "^2.1.2"
     "@mdx-js/rollup" "^2.1.1"
