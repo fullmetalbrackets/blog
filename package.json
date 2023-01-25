@@ -18,7 +18,7 @@
     "@astrojs/markdown-remark": "^1.1.2",
     "@astrojs/mdx": "^0.14.0",
     "@astrojs/prefetch": "^0.1.1",
-    "@astrojs/rss": "^2.0.0",
+    "@astrojs/rss": "^2.1.0",
     "@astrojs/sitemap": "^1.0.0",
     "astro": "^1.9.2"
   },
