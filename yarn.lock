@@ -127,10 +127,10 @@
   dependencies:
     fast-xml-parser "^4.0.8"
 
-"@astrojs/sitemap@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@astrojs/sitemap/-/sitemap-1.0.0.tgz#d5e7360e08f8f3b17bb1b8faa4c882aa39d18c25"
-  integrity sha512-42GxuF5FP7RaKXZrwGLBLOX3hPv+Wl7ExJC43O0J5e34ojJkLeKf7QfwN1UwrJlqH0Ywi0Fm4/xGe482G09+wg==
+"@astrojs/sitemap@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@astrojs/sitemap/-/sitemap-1.1.0.tgz#fc4df42879f20642a5b758a94ad7610050b3e11a"
+  integrity sha512-JnKZcbD0WdFxw2VAj3qXb0cYKuvk6nwBYPfUy+plSa9TC9hikQrDFpd7yapOPTRf3AdmUittzFckoTw/nUilCw==
   dependencies:
     sitemap "^7.1.1"
     zod "^3.17.3"
