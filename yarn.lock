@@ -3176,10 +3176,10 @@ p-try@^2.0.0:
   resolved "https://registry.yarnpkg.com/p-try/-/p-try-2.2.0.tgz#cb2868540e313d61de58fafbe35ce9004d5540e6"
   integrity sha512-R4nPAVTAU0B9D35/Gk3uJf/7XYbQcyohSKdvAxIRSNghFl4e71hVoGnBNQz9cWaXxO2I10KTC+3jMdvvoKw6dQ==
 
-pagefind@^0.10.6:
-  version "0.10.6"
-  resolved "https://registry.yarnpkg.com/pagefind/-/pagefind-0.10.6.tgz#eeac06a35a8fe6f7398d51beebc4afe0732ccead"
-  integrity sha512-ciuy3/0t+HIBEykcNzUhYZ/pQt/iThCVeRBZJscpWJzzn6bAf0Eo0TREQbwMjnJ0wRxCrhmVOMY7w1bb+ERGiQ==
+pagefind@^0.12.0:
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/pagefind/-/pagefind-0.12.0.tgz#ee73a4fd2d3b4d7b88f7188181143447f7e48352"
+  integrity sha512-LHUmlYYweBM6/rK1G+7z2q2WjYeycrB7g5Kuw0w6yMkYztzsEdO2Qj2pJ3z8gsWV8eJsYQyAGOAdqE3SZWlCqA==
   dependencies:
     https-proxy-agent "^5.0.0"
     proxy-from-env "^1.1.0"
