@@ -106,10 +106,10 @@
     uvu "^0.5.0"
     vfile-message "^3.0.0"
 
-"@astrojs/prefetch@^0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@astrojs/prefetch/-/prefetch-0.1.1.tgz#3e61a8d1cd918744e6adbff648c00c4b9631a23a"
-  integrity sha512-+XZcjivPHTo9thQshDWKnnORHJ1dE6odIzhmKHac2ptwla092eohkiJw7Y31+PYmuJkc3Jp+3AawuCvfqCnQ2Q==
+"@astrojs/prefetch@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@astrojs/prefetch/-/prefetch-0.2.0.tgz#d9750301a20d8429d7b4752cf50b859eca4e5523"
+  integrity sha512-q68916tIId0tnRFphNL2OcORgoATnfVItaQAugz7wfIq4ghivNISG1scN86uAyF/md1N1YcKu6XPukT5f2lShQ==
   dependencies:
     throttles "^1.0.1"
 
