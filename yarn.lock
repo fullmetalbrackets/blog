@@ -120,12 +120,13 @@
   dependencies:
     prismjs "^1.28.0"
 
-"@astrojs/rss@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@astrojs/rss/-/rss-2.0.0.tgz#11434f304a77eef012742f6a9be12264cdb53651"
-  integrity sha512-qXsmyq2HhnKRA85US6GLelT47VLhdtS0bNq88umqfB2uneB9vWHSLnOJjhN9rv0mUSQjsFYytF4IEznfmNnpkQ==
+"@astrojs/rss@^2.3.1":
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/@astrojs/rss/-/rss-2.3.1.tgz#6562f47214b0fd8e635f703141fd4afc3fed7302"
+  integrity sha512-s9yHKfWDUQvhm5GGfbeb1fEzVL19yVv3uz6TF7nT/4/uW2w4jWgGtqQMkzeEhckvwRVT3xavHP8b+S9TKHMgAg==
   dependencies:
     fast-xml-parser "^4.0.8"
+    kleur "^4.1.5"
 
 "@astrojs/sitemap@^1.0.0":
   version "1.0.0"
@@ -2304,7 +2305,7 @@ kleur@^3.0.3:
   resolved "https://registry.yarnpkg.com/kleur/-/kleur-3.0.3.tgz#a79c9ecc86ee1ce3fa6206d1216c501f147fc07e"
   integrity sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==
 
-kleur@^4.0.3, kleur@^4.1.4:
+kleur@^4.0.3, kleur@^4.1.4, kleur@^4.1.5:
   version "4.1.5"
   resolved "https://registry.yarnpkg.com/kleur/-/kleur-4.1.5.tgz#95106101795f7050c6c650f350c683febddb1780"
   integrity sha512-o+NO+8WrRiQEE4/7nwRJhN1HWpVmJm511pBHUxPLtp0BUISzlBplORYSmTclCnJvQq2tKu/sgl3xVpkc7ZWuQQ==
