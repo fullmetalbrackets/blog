@@ -115,10 +115,10 @@ wget -O /usr/share/fonts/MesloLGS%20NF%20Bold%20Italic.ttf https://github.com/ro
 
 Alternately you can just use a simple script I made for myself to automate this, because why not just automate it?? (Seriously, why isn't this just included in powerlevel10k's own great install script?)
 
-Just use curl like so:
+Just use curl like so: (You will need to use `sudo` since the script will be copying files into the `/usr` directory.)
 
 ```bash
-sh -c "$(curl -fsSL https://gist.githubusercontent.com/fullmetalbrackets/5a094e7daef47dd63074259143466442/raw/86f1cb332dda8976fddd371d3cf2530e48e031c9/meslo-fonts.sh)"
+sudo sh -c "$(curl -fsSL https://gist.githubusercontent.com/fullmetalbrackets/5a094e7daef47dd63074259143466442/raw/86f1cb332dda8976fddd371d3cf2530e48e031c9/meslo-fonts.sh)"
 ```
 
 Now when you use `p10k configure` you'll get additional options, since you'll be able to display the glyph correctly. (If using a desktop environment, make sure to go into Terminal preferences and change the font to "Meslo LGS.")
