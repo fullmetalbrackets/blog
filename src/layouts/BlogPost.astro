@@ -26,7 +26,7 @@ const allTagsData = generateTagsData(tags);
 			margin-top: 3.9em;
 		}
 		hr {
-			margin: 1em 0 3em 0;
+			margin: 1.5em auto;
 		}
 		.title {
 			margin: 1em 0;
@@ -45,7 +45,7 @@ const allTagsData = generateTagsData(tags);
 			align-items: center;
 			justify-content: space-between;
 			cursor: pointer;
-			margin: 3em auto 0 auto;
+			margin: 2em auto 0 auto;
 		}
 		form {
 			display: flex;
@@ -81,7 +81,7 @@ const allTagsData = generateTagsData(tags);
 			margin-top: 1em;
 		}
 		.utterances {
-			margin: 2.5em auto;
+			margin: 2.5em auto 1em auto;
 		}
 		@media screen and (min-width: 200px) and (max-width: 650px) {
 			article {
@@ -120,6 +120,7 @@ const allTagsData = generateTagsData(tags);
 			</p>
 		</slot>
 	</article>
+	<hr>
 	<aside>
 		<span>Was this article helpful? 
 			<form name="feedback" method="POST" action="/feedback" data-netlify="true" netlify-honeypot="bot-field">
