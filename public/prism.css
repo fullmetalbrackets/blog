@@ -410,3 +410,10 @@
  .prism-previewer-easing.prism-previewer-easing circle {
    fill: transparent;
  }
+
+ @media screen and (min-width: 200px) and (max-width: 650px) {
+    code[class*="language-"],
+    pre[class*="language-"] {
+      font-size: 1rem;
+    }
+  }
