@@ -44,6 +44,9 @@ const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
 		color: var(--text);
 		padding-bottom: 1em;
 	}
+	hr {
+		margin-bottom: 1em;
+	}
 	@-moz-document url-prefix() {
 		a:hover h1 {
 			color: var(--emphasis);
@@ -77,4 +80,5 @@ const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
 		</a>
 		))}
 	</section>
+	<hr>
 </BaseLayout>
