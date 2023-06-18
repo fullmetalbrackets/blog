@@ -73,8 +73,8 @@ const allTagsData = generateTagsData(tags);
 			outline-offset: 0;
 		}
 		.radio:checked {
-			box-shadow: 0 0 0 1px var(--primary);
-			background-color: var(--primary);
+			box-shadow: 0 0 0 1px var(--name);
+			background-color: var(--name);
 			border-width: 0.1em;
 		}
 		.top {
@@ -82,6 +82,9 @@ const allTagsData = generateTagsData(tags);
 		}
 		.utterances {
 			margin: 2.5em auto;
+		}
+		.submit {
+			margin-top: 0.25em;
 		}
 		@media screen and (min-width: 200px) and (max-width: 650px) {
 			article {
@@ -129,7 +132,7 @@ const allTagsData = generateTagsData(tags);
 			<label for="helpful">Yes</label>
 			<input class="radio" type="radio" id="not-helpful" name="feedback" value="Not Helpful">
 			<label for="not-helpful" class="labels">No</label>
-			<button class="button" type="submit" value="Submit">Submit</button>
+			<button class="button blog-tag submit" type="submit" value="Submit">Submit</button>
 			<input type="hidden" id="postId" name="postId" value={title} />
 			</form>
 		</span>

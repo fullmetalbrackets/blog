@@ -34,13 +34,14 @@
   --emphasis: rgb(220, 40, 0);
   --name: rgb(0, 175, 175);
   --date: rgb(0, 127, 128);
+  --menu: rgb(222, 122, 0);
   --form: black;
   --blockquote: rgb(250, 250, 250);
   --code: #d19866;
   --code-bg: #282c34;
   --svg: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%) contrast(98%);
   --ext: invert(88%) sepia(69%) saturate(7500%) hue-rotate(1deg) brightness(104%) contrast(104%);
-  --search: invert(21%) sepia(37%) saturate(6635%) hue-rotate(4deg) brightness(97%) contrast(103%);
+  --search: invert(57%) sepia(86%) saturate(3921%) hue-rotate(13deg) brightness(99%) contrast(100%);
   box-sizing: border-box;
   height: 100%;
   scrollbar-color: var(--name) var(--accent);
@@ -48,16 +49,17 @@
 }
 
 [data-theme="light"] {
-  --main: #fefeff;
+  --main: rgb(254, 254, 255);
   --text: rgb(51, 65, 85);
-  --primary: rgb(37, 150, 190);
+  --primary: rgb(0, 158, 170);
   --secondary: rgb(95, 193, 232);
   --accent: rgb(148, 163, 184);
   --link: rgb(255, 165, 0);
   --hover: rgb(242, 207, 43);
   --emphasis: rgb(220, 40, 0);
   --name: rgb(0, 158, 170);
-  --date: rgb(0, 127, 128);
+  --date: rgb(32, 33, 36);
+  --menu: rgb(222, 122, 0);
   --form: black;
   --blockquote: rgb(250, 250, 250);
   --svg: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%) contrast(98%);
@@ -75,10 +77,11 @@
   --emphasis: rgb(255, 69, 0);
   --name: rgb(0, 158, 170);
   --date: rgb(0, 158, 170);
+  --menu: rgb(222, 122, 0);
   --form: cyan;
   --blockquote: rgb(25, 30, 50);
   --svg: invert(93%) sepia(78%) saturate(2834%) hue-rotate(213deg) brightness(148%) contrast(96%);
-  --ext: invert(88%) sepia(69%) saturate(7500%) hue-rotate(1deg) brightness(104%) contrast(104%);
+  --ext: invert(50%) sepia(21%) saturate(5438%) hue-rotate(150deg) brightness(87%) contrast(101%);
 }
 body {
 	font-family: 'Wotfard', 'Fira Sans', Verdana, sans-serif;
@@ -157,14 +160,13 @@ input, button, textarea, select {
   font: inherit;
 }
 button {
-  background: var(--primary);
+  background: var(--name);
   border: 0;
   border-radius: 0.25em;
   padding: 4px 8px;
   font-weight: 600;
 }
 button:hover {
-  background: var(--secondary);
   cursor: pointer;
 }
 strong,
