@@ -169,7 +169,7 @@ git switch main # Make sure to switch from the other branch to main first
 ```
 
 ```bash
-git merge feature-branch # This applies the actual merge locally
+git merge new-feature # This applies the actual merge locally
 ```
 
 If the merge has conflicts, you can undo it.
