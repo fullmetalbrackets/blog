@@ -29,8 +29,8 @@
   --primary: rgb(37, 150, 190);
   --secondary: rgb(95, 193, 232);
   --accent: rgb(148, 163, 184);
-  --link: rgb(0, 138, 0);
-  --hover: rgb(209, 152, 102);
+  --link: rgb(255, 165, 0);
+  --hover: rgb(242, 207, 43);
   --emphasis: rgb(220, 40, 0);
   --name: rgb(0, 175, 175);
   --date: rgb(0, 127, 128);
@@ -48,13 +48,13 @@
 }
 
 [data-theme="light"] {
-  --main: aliceblue;
+  --main: #fefeff;
   --text: rgb(51, 65, 85);
   --primary: rgb(37, 150, 190);
   --secondary: rgb(95, 193, 232);
   --accent: rgb(148, 163, 184);
-  --link: rgb(0, 138, 0);
-  --hover: rgb(209, 152, 102);
+  --link: rgb(255, 165, 0);
+  --hover: rgb(242, 207, 43);
   --emphasis: rgb(220, 40, 0);
   --name: rgb(0, 158, 170);
   --date: rgb(0, 127, 128);
@@ -65,17 +65,16 @@
 }
 
 [data-theme="dark"] {
-  --main: rgb(15, 23, 42);
+  --main: rgb(32, 33, 36);
   --text: rgb(148, 163, 184);
   --primary: rgb(250, 250, 250);
   --secondary: rgb(148, 163, 184);
   --accent: rgb(51, 65, 85);
-  --link: rgb(255, 255, 0);
+  --link: rgb(242, 207, 43);
   --hover: rgb(255, 165, 0);
   --emphasis: rgb(255, 69, 0);
-  --name: rgb(250, 50, 195);
-  --name-hover: rgb(255, 95, 205);
-  --date: rgb(250, 50, 195);
+  --name: rgb(0, 158, 170);
+  --date: rgb(0, 158, 170);
   --form: cyan;
   --blockquote: rgb(25, 30, 50);
   --svg: invert(93%) sepia(78%) saturate(2834%) hue-rotate(213deg) brightness(148%) contrast(96%);
