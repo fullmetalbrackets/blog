@@ -36,9 +36,8 @@
   --date: rgb(0, 127, 128);
   --menu: rgb(222, 122, 0);
   --form: black;
-  --blockquote: rgb(250, 250, 250);
-  --code: #d19866;
-  --code-bg: #282c34;
+  --blockquote: rgb(255, 255, 255);
+  --code: hsl(180, 1%, 30%);
   --svg: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%) contrast(98%);
   --ext: invert(88%) sepia(69%) saturate(7500%) hue-rotate(1deg) brightness(104%) contrast(104%);
   --search: invert(57%) sepia(86%) saturate(3921%) hue-rotate(13deg) brightness(99%) contrast(100%);
@@ -49,7 +48,7 @@
 }
 
 [data-theme="light"] {
-  --main: rgb(254, 254, 255);
+  --main: rgb(236, 255, 251);
   --text: rgb(32, 33, 36);
   --primary: rgb(0, 158, 170);
   --secondary: rgb(95, 193, 232);
@@ -58,10 +57,11 @@
   --hover: rgb(242, 207, 43);
   --emphasis: rgb(220, 40, 0);
   --name: rgb(0, 158, 170);
-  --date: rgb(32, 33, 36);
+  --date: rgb(122, 122, 122);
   --menu: rgb(222, 122, 0);
-  --form: black;
-  --blockquote: rgb(250, 250, 250);
+  --form: rgb(0, 0, 0);
+  --blockquote: rgb(255, 255, 255);
+  --code: hsl(180, 1%, 30%);
   --svg: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%) contrast(98%);
   --ext: invert(40%) sepia(85%) saturate(1448%) hue-rotate(15deg) brightness(102%) contrast(101%);
 }
@@ -73,13 +73,14 @@
   --secondary: rgb(148, 163, 184);
   --accent: rgb(51, 65, 85);
   --link: rgb(242, 207, 43);
-  --hover: rgb(255, 165, 0);
+  --hover: rgb(222, 122, 0);
   --emphasis: rgb(255, 69, 0);
   --name: rgb(0, 158, 170);
   --date: rgb(250, 250, 250);
   --menu: rgb(222, 122, 0);
   --form: cyan;
-  --blockquote: rgb(25, 30, 50);
+  --blockquote: rgb(25, 22, 22);
+  --code: hsl(220, 13%, 18%);
   --svg: invert(93%) sepia(78%) saturate(2834%) hue-rotate(213deg) brightness(148%) contrast(96%);
   --ext: invert(50%) sepia(21%) saturate(5438%) hue-rotate(150deg) brightness(87%) contrast(101%);
 }
@@ -160,7 +161,6 @@ input, button, textarea, select {
   font: inherit;
 }
 button {
-  background: var(--name);
   border: 0;
   border-radius: 0.25em;
   padding: 4px 8px;
@@ -257,8 +257,8 @@ img {
 code {
 	padding: 1.5px 4px;
 	font-family: 'JetBrainsMono', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
-	background-color: var(--code-bg);
-	color: var(--code);
+	background-color: var(--code);
+	color: #61AFEF;
 	border-radius: 0.25em;
   font-size: 18px;
 }
@@ -270,7 +270,7 @@ pre > code {
 }
 figcaption {
   font-size: 0.65em;
-  color:var(--other);
+  color:var(--blockquote);
   padding-left: 5px;
   margin: -6.25em 0 6em 0;
 }
@@ -308,11 +308,11 @@ blockquote ul {
   margin-bottom: 1em;
 }
 .note {
-  border: 1px solid var(--hover);
+  border: 1px solid #ffc701;
 }
 .note b:first-of-type {
   display: block;
-  color: var(--hover);
+  color: #ffc701;
   margin-bottom: 1em;
 }
 li::marker {
@@ -335,7 +335,7 @@ li::marker {
   filter: var(--ext);
 }
 .blog-tag {
-  background-color: var(--name);
+  background-color: var(--link);
   color: #000;
   border-radius: 0.25em;
   cursor: pointer;
