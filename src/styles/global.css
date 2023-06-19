@@ -50,7 +50,7 @@
 
 [data-theme="light"] {
   --main: rgb(254, 254, 255);
-  --text: rgb(51, 65, 85);
+  --text: rgb(32, 33, 36);
   --primary: rgb(0, 158, 170);
   --secondary: rgb(95, 193, 232);
   --accent: rgb(148, 163, 184);
@@ -63,20 +63,20 @@
   --form: black;
   --blockquote: rgb(250, 250, 250);
   --svg: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%) contrast(98%);
-  --ext: invert(88%) sepia(69%) saturate(7500%) hue-rotate(1deg) brightness(104%) contrast(104%);
+  --ext: invert(40%) sepia(85%) saturate(1448%) hue-rotate(15deg) brightness(102%) contrast(101%);
 }
 
 [data-theme="dark"] {
   --main: rgb(32, 33, 36);
   --text: rgb(148, 163, 184);
-  --primary: rgb(250, 250, 250);
+  --primary: rgb(0, 158, 170);
   --secondary: rgb(148, 163, 184);
   --accent: rgb(51, 65, 85);
   --link: rgb(242, 207, 43);
   --hover: rgb(255, 165, 0);
   --emphasis: rgb(255, 69, 0);
   --name: rgb(0, 158, 170);
-  --date: rgb(0, 158, 170);
+  --date: rgb(250, 250, 250);
   --menu: rgb(222, 122, 0);
   --form: cyan;
   --blockquote: rgb(25, 30, 50);
