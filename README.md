@@ -9,6 +9,7 @@
 ## ⌨️ Latest blog posts
 
 <!-- BLOG-POST-LIST:START -->
+
 - [Install Yarn in Debian and Ubuntu](https://arieldiaz.codes/blog/install-yarn-ubuntu-debian/)
 - [Install the latest version of NodeJS in Debian and Ubuntu](https://arieldiaz.codes/blog/install-nodejs-ubuntu-debian/)
 - [Build a minimal blog with Deno and host it on Deno Deploy](https://arieldiaz.codes/blog/minimal-blog-deno-deploy/)
@@ -22,7 +23,7 @@
 
 MIT License
 
-Copyright (c) 2022 Ariel Diaz
+Copyright (c) 2023 Ariel Diaz
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
