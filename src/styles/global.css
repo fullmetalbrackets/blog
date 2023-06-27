@@ -162,6 +162,20 @@ img, picture, video, canvas, svg {
 input, button, textarea, select {
   font: inherit;
 }
+input {
+  border-style: none;
+  border-radius: 0.25em;
+  background: var(--accent);
+  color: var(--form);
+  box-sizing: border-box;
+  outline: none;
+}
+input:focus, textarea:focus {
+  color: var(--form);
+  background: var(--accent);
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem var(--name);
+}
 button {
   border: 0;
   border-radius: 0.25em;
