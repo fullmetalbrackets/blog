@@ -272,5 +272,5 @@ for = "/*"
   status = 301
   force = true
 
-[context.deploy-preview]
-  ignore = "git log -1 --pretty=%B | grep dependabot"
+# [context.deploy-preview]
+#   ignore = "git log -1 --pretty=%B | grep dependabot"
