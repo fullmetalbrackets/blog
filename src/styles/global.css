@@ -64,6 +64,8 @@
   --code: hsl(180, 1%, 30%);
   --svg: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%) contrast(98%);
   --ext: invert(40%) sepia(85%) saturate(1448%) hue-rotate(15deg) brightness(102%) contrast(101%);
+  --pagefind-ui-primary: rgb(0, 158, 170);
+  --pagefind-ui-background: rgb(51, 65, 85);
   --pagefind-ui-text: rgb(32, 33, 36);
 }
 
@@ -79,13 +81,14 @@
   --name: rgb(0, 158, 170);
   --date: rgb(250, 250, 250);
   --menu: rgb(222, 122, 0);
-  --form: cyan;
+  --form: rgb(0, 158, 170)
   --blockquote: rgb(25, 22, 22);
   --code: hsl(220, 13%, 18%);
   --svg: invert(93%) sepia(78%) saturate(2834%) hue-rotate(213deg) brightness(148%) contrast(96%);
   --ext: invert(50%) sepia(21%) saturate(5438%) hue-rotate(150deg) brightness(87%) contrast(101%);
-  --pagefind-ui-background: rgb(51, 65, 85);
-  --pagefind-ui-text: cyan;
+  --pagefind-ui-primary: rgb(0, 158, 170);
+  --pagefind-ui-background: rgb(255, 255, 255);
+  --pagefind-ui-text: rgb(148, 163, 184);
 }
 body {
 	font-family: 'Wotfard', 'Fira Sans', Verdana, sans-serif;
