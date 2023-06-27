@@ -366,7 +366,14 @@ article ul ul {
 article ol:first-of-type {
   margin-bottom: 0;
 }
-@media screen and (min-width: 200px) and (max-width:650px) {
+
+@media only screen and (min-width: 200px) and (max-width: 500px) {
+    input {
+      width: 75%;
+    }
+}
+
+@media screen and (min-width: 500px) and (max-width:650px) {
 	::-webkit-scrollbar {
 		height: 0px;
 		width: 0px;
@@ -382,10 +389,4 @@ article ol:first-of-type {
     width: 85%;
     height: auto;
   }
-}
-
-@media screen and (width: 500px) {
-    input {
-      width: 75%;
-    }
 }
