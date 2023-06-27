@@ -163,15 +163,18 @@ input, button, textarea, select {
   font: inherit;
 }
 input {
+  font-size: 20px;
+  line-height: 1.4;
   border-style: none;
+  margin: 0 auto;
+  margin-right: 0.25em;
+  padding: 4px 8px;
   border-radius: 0.25em;
   background: var(--accent);
   color: var(--form);
   box-sizing: border-box;
   outline: none;
-  padding: 4px 8px;
-  margin-right: 0.5em;
-  width: 80%;
+  width: 50%;
 }
 input:focus, textarea:focus {
   color: var(--form);
