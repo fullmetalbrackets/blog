@@ -170,7 +170,8 @@ input {
   box-sizing: border-box;
   outline: none;
   padding: 4px 8px;
-  margin-right: 1em;
+  margin-right: 0.5em;
+  width: 80%;
 }
 input:focus, textarea:focus {
   color: var(--form);
