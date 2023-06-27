@@ -64,9 +64,6 @@
   --code: hsl(180, 1%, 30%);
   --svg: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%) contrast(98%);
   --ext: invert(40%) sepia(85%) saturate(1448%) hue-rotate(15deg) brightness(102%) contrast(101%);
-  --pagefind-ui-primary: rgb(0, 158, 170);
-  --pagefind-ui-background: rgb(51, 65, 85);
-  --pagefind-ui-text: rgb(32, 33, 36);
 }
 
 [data-theme="dark"] {
@@ -86,10 +83,8 @@
   --code: hsl(220, 13%, 18%);
   --svg: invert(93%) sepia(78%) saturate(2834%) hue-rotate(213deg) brightness(148%) contrast(96%);
   --ext: invert(50%) sepia(21%) saturate(5438%) hue-rotate(150deg) brightness(87%) contrast(101%);
-  --pagefind-ui-primary: rgb(0, 158, 170);
-  --pagefind-ui-background: rgb(255, 255, 255);
-  --pagefind-ui-text: rgb(148, 163, 184);
 }
+
 body {
 	font-family: 'Wotfard', 'Fira Sans', Verdana, sans-serif;
 	font-size: 20px;
@@ -107,6 +102,7 @@ body {
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 	overflow-y: scroll;
 }
+
 ::-webkit-scrollbar {
   height: 8px;
   width: 10px;
@@ -214,25 +210,6 @@ a:hover {
 textarea {
 	width: 100%;
 	font-size: 16px;
-}
-input {
-  font-size: 20px;
-  line-height: 1.4;
-  border-style: none;
-  margin: 0 auto;
-  padding: 4px 8px;
-  border-radius: 0.25em;
-  background: var(--accent);
-  color: var(--form);
-  box-sizing: border-box;
-  outline: none;
-  width: 50%;
-}
-input:focus, textarea:focus {
-color: var(--form);
-background: var(--accent);
-outline: 0;
-box-shadow: 0 0 0 0.25rem var(--name);
 }
 content {
 	line-height: 1.6;
