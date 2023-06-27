@@ -174,7 +174,7 @@ input {
   color: var(--form);
   box-sizing: border-box;
   outline: none;
-  width: 50%;
+  width: 80%;
 }
 input:focus, textarea:focus {
   color: var(--form);
