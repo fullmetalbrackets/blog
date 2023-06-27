@@ -382,4 +382,7 @@ article ol:first-of-type {
     width: 85%;
     height: auto;
   }
+  input {
+    width: 75%;
+  }
 }
