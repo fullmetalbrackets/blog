@@ -10,6 +10,20 @@ const title = 'Search'
   hr {
     margin-bottom: 2.5em;
   }
+  input {
+    border-style: none;
+    border-radius: 0.25em;
+    background: var(--accent);
+    color: var(--form);
+    box-sizing: border-box;
+    outline: none;
+  }
+  input:focus, textarea:focus {
+    color: var(--form);
+    background: var(--accent);
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem var(--name);
+  }
 </style>
 
 <BaseLayout title={title} description="Search for blog posts.">
@@ -18,7 +32,6 @@ const title = 'Search'
   <p>
     Use the search field below to search for blog posts.
   </p>
-  <link href="/_pagefind/pagefind-ui.css" rel="stylesheet">
   <script src="/_pagefind/pagefind-ui.js" type="text/javascript" crossorigin="anonymous">
   </script>
   <div id="search" class="search-results"></div>
