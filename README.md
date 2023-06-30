@@ -9,7 +9,6 @@
 ## ⌨️ Latest blog posts
 
 <!-- BLOG-POST-LIST:START -->
-
 - [Install Yarn in Debian and Ubuntu](https://arieldiaz.codes/blog/install-yarn-ubuntu-debian/)
 - [Install the latest version of NodeJS in Debian and Ubuntu](https://arieldiaz.codes/blog/install-nodejs-ubuntu-debian/)
 - [Build a minimal blog with Deno and host it on Deno Deploy](https://arieldiaz.codes/blog/minimal-blog-deno-deploy/)
