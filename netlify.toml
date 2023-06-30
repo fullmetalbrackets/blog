@@ -195,6 +195,12 @@ for = "/*"
   force = true
 
 [[redirects]]
+  from = "https://arieldiaz.codes/blog/how-to-use-a-custom-prismjs-theme-with-nuxt-content.md/"
+  to = "https://arieldiaz.codes/blog/how-to-use-a-custom-prismjs-theme-with-nuxt-content"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "https://arieldiaz.codes/_nuxt/"
   to = "https://arieldiaz.codes"
   status = 301
