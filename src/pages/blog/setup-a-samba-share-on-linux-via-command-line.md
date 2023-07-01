@@ -3,7 +3,7 @@ layout: "../../layouts/BlogPost.astro"
 title: "Setup a Samba share on Linux via command line"
 description: "A quick and dirty guide on how to easily set up a Samba share on Linux that can be accessed from Windows PCs on the same network."
 pubDate: "September 1, 2021"
-updatedDate: "September 20, 2022"
+updatedDate: "June 30, 2023"
 tags:
   - Samba
   - Linux
@@ -52,31 +52,26 @@ There's a whole lot of text in here, but it's mostly informative/explanatory com
   workgroup = WORKGROUP
   server string = Samba %v
   security = user
-  guest ok = yes
-  map to guest = Bad Password
 
-[shared]
+[public]
   comment = Samba Share
   path = /path/to/share
   browseable = yes
+  writeable = yes
   read only = no
-  guest ok = yes
+  force user = ariel
 ```
 
-Please note that _these options are not secure_, but since this is only accessible by me (and once in a while my wife) I'm not worried about it. **Do not use these settings for a Samba share if you want to restrict it to only certain users, anyone on the network will be able to access it!**
+The above config will allow a specific user (in this case `ariel`, which we'll setup shortly) to access the share after a login prompt. First, let's explain the options in the `smb.conf` file briefly:
 
-Let's explain these options briefly:
-
-- Any settings under `[global]` apply to all shares, unless you set it differently under the share settings.
+- Any settings under `[global]` apply to all shares, unless you set it differently under the specific share's settings.
 - `workgroup =` is important, you'll need to specify a Workgroup to access the share from Windows. The default is most likely <em>WORKGROUP</em> unless you changed it on your Windows PC. Just make sure it's the same for all the machines you want accessing the share.
 - `security = user` is the default security mode for Samba and the one most compatible with Windows. You don't really have to specify this since it's the default, but I like to anyway.
-- `guest ok = yes` will default all shares to be accessible without need for logging in with a username and password, insecure but most convenient
-- `map to guest = Bad Password` forces users who mistype their passwords will be logged in to the guest account instead, shouldn't matter here, but just added convenience.
-- `[shared]` will be the name of the share, obviously use whatever name you'd like.
+- `[public]` will be the name of the share, obviously use whatever name you'd like.
 - `path =` will contain the direct path to the directory you want to share.
 - `browseable = yes` allows unrestricted browsing all directories and files within the share.
-- `read only = no` allows the directories and files in the share to be created, modified, or deleted.
-- `guest ok = yes` make sure to set this under each share if you don't have it set under `[global]`. (In my case it's not really necessary, but I do it anyway.)
+- `writeable = yes` allows write access (create/delete files) within the share.
+- `read only = no` is supposedly the same as `writeable = yes` but I use it anyway for good measure.
 
 When you are done with the `smb.conf` file, save it and quit the editor. Now let's check that the configuration is valid with the following command:
 
@@ -84,25 +79,24 @@ When you are done with the `smb.conf` file, save it and quit the editor. Now let
 testparm
 ```
 
-You'll get some output here that's self-explanatory, one of the lines should say "Loaded services file is OK" meaning your config is good. Next we'll need to add a user to Samba, as you'll need to login from Windows with a username and password. Let's assume we're adding the user <em>bob</em> to Samba so his login is required to access the share from a Windows PC. Use the following command (as root or a superuser) to add the user to Samba, and when prompted choose a password.
+You'll get some output here that's self-explanatory, one of the lines should say "Loaded services file is OK" meaning your config is good.
+
+Next we'll need to add a user to Samba, as you'll need to login from Windows with a username and password. Let's assume we're adding the user `ariel` to Samba so his login is required to access the share from a Windows PC.
+
+Use the following command to add the user to Samba, and when prompted choose a password.
 
 ```bash
-smbpasswd bob
-New SMB password:
-Retype new SMB password:
+sudo smbpasswd -a ariel
 ```
 
-Next we need to set the ownership and permissions for the directory that is to be shared. Personally, again keeping in mind security isn't at the top of my mind here, I just set the user to <em>nobody</em> and group to <em>nogroup</em>, you can also set them to the same user and group that you're logging in as, but sometimes Windows gives me issues with that. So I just go with simplicity.
+Next we need to set the owner and group to the Samba user (if it's not already) to ensure there's no issues accessing it.
 
 ```bash
-sudo chown -R nobody /path/to/share
-sudo chgrp -R nogroup /path/to/share
-sudo chmod -R 0777 /path/to/share
+sudo chown -R ariel /path/to/share
+sudo chgrp -R ariel /path/to/share
 ```
 
-Finally, start the services needed and enable them to auto-run at boot -- `smbd` (the Samba daemon) and `nmbd` (NetBIOs daemon, it should have been installed along with Samba).
-
-On Ubuntu/Debian, use these commands:
+Finally, start the services needed and enable them to auto-run at boot. On Ubuntu/Debian, use these commands:
 
 ```bash
 sudo systemctl start smbd nmbd
@@ -138,7 +132,7 @@ However, there MAY be an additional issue, as Windows 10 Home (but not Professio
 
 ## Improve transfer speeds for Samba
 
-After transferring files back and forth between Windows and Linux via the Samba share, you may notice it's extremely slow! After some googling I found some additional configuration options <a href="https://eggplant.pro/blog/faster-samba-smb-cifs-share-performance" target="_blank" rel="noopener noreferrer">on someone's blog</a> that claimed to improve network performance, and in my experience it works.
+After transferring files back and forth between Windows and Linux via the Samba share, you may notice it's extremely slow! After some googling I found some additional configuration options <a href="https://eggplant.pro/blog/faster-samba-smb-cifs-share-performance" target="_blank" rel="noopener noreferrer">a company blog</a> that claimed to improve network performance, and in my experience it works.
 
 Add the following code (feel free to remove all the comments) to your <em>smb.conf</em> file under `[global]`.
 
@@ -165,3 +159,4 @@ For an explanation of what these options do, check the original blog post linked
 
 - <a href="https://www.samba.org/samba/docs" target="_blank" rel="noopener noreferrer">Samba Documentation</a>
 - <a href="https://eggplant.pro/blog/faster-samba-smb-cifs-share-performance" target="_blank" rel="noopener noreferrer">Eggplant Systems & Design blog post about improving Samba share performance</a>
+- <a href="https://www.majorgeeks.com/content/page/how_to_enable_local_security_policy_in_windows_10_home.html" target="_blank">Instructions to fix Local Security Policy issue</a>
