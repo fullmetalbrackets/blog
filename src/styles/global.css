@@ -146,6 +146,7 @@ h1 {
   hyphens: auto;
 }
 h2 {
+  font-family: 'M PLUS Rounded 1c Med', 'Wotfard', sans-serif;
   margin-top: 3em;
 	color: var(--primary);
   overflow-wrap: break-word;
@@ -155,6 +156,7 @@ h2 {
   margin-top: 0;
 }
 h3, h4, h5, h6 {
+  font-family: 'M PLUS Rounded 1c Med', 'Wotfard', sans-serif;
   margin: 2em 0 1em 0;
   padding: 0;
 	color: var(--primary);
