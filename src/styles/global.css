@@ -279,7 +279,7 @@ code {
 	padding: 1.5px 4px;
 	font-family: 'JetBrainsMono', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
 	background-color: var(--code);
-	color: #61AFEF;
+	color: rgb(222, 122, 0);
 	border-radius: 0.25em;
   font-size: 18px;
 }
