@@ -81,9 +81,9 @@ testparm
 
 You'll get some output here that's self-explanatory, one of the lines should say "Loaded services file is OK" meaning your config is good.
 
-Next we'll need to add a user to Samba, as you'll need to login from Windows with a username and password. Let's assume we're adding the user `ariel` to Samba so his login is required to access the share from a Windows PC.
+Next we'll need to add a user to Samba, as you'll need to login from Windows with a username and password. Let's assume we're adding the user `ariel` to Samba so their login is required to access the share from a Windows PC. (If you want to create a new user account on Linux first, use `sudo adduser` followed by the username you want to create.)
 
-Use the following command to add the user to Samba, and when prompted choose a password.
+Use the following command to add the user to Samba, and when prompted create a password, this will be used for login.
 
 ```bash
 sudo smbpasswd -a ariel
@@ -158,5 +158,6 @@ For an explanation of what these options do, check the original blog post linked
 ## References
 
 - <a href="https://www.samba.org/samba/docs" target="_blank" rel="noopener noreferrer">Samba Documentation</a>
+- <a href="https://www.samba.org/samba/docs/current/man-html/smbpasswd.8.html" target="_blank" rel="noopener noreferrer">smbpasswd Manpage</a>
 - <a href="https://eggplant.pro/blog/faster-samba-smb-cifs-share-performance" target="_blank" rel="noopener noreferrer">Eggplant Systems & Design blog post about improving Samba share performance</a>
 - <a href="https://www.majorgeeks.com/content/page/how_to_enable_local_security_policy_in_windows_10_home.html" target="_blank">Instructions to fix Local Security Policy issue</a>
