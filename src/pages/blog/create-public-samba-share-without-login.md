@@ -25,7 +25,7 @@ Create a new user for the share, and give it whatever password you want when pro
 sudo adduser public
 ```
 
-The folder `/home/public` will automatically created, we'll be using that as the public share. Let's set the permissions:
+The folder `/home/public` will be automatically created, we'll be using that as the public share. Let's give everyone full read/write permissions:
 
 ```bash
 sudo chmod -R ugo+rw /home/public
