@@ -23,7 +23,7 @@
     "astro": "^2.7.3"
   },
   "devDependencies": {
-    "@astrojs/prism": "^1.0.2",
+    "@astrojs/prism": "^2.1.2",
     "netlify-plugin-csp-generator": "^1.5.0",
     "pagefind": "^0.12.0"
   }
