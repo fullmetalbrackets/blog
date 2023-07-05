@@ -82,19 +82,12 @@
     unist-util-visit "^4.1.0"
     vfile "^5.3.2"
 
-"@astrojs/prefetch@^0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@astrojs/prefetch/-/prefetch-0.1.1.tgz#3e61a8d1cd918744e6adbff648c00c4b9631a23a"
-  integrity sha512-+XZcjivPHTo9thQshDWKnnORHJ1dE6odIzhmKHac2ptwla092eohkiJw7Y31+PYmuJkc3Jp+3AawuCvfqCnQ2Q==
+"@astrojs/prefetch@^0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@astrojs/prefetch/-/prefetch-0.2.3.tgz#00fa61dbbdcd71101948e25634ef911f65a791dc"
+  integrity sha512-r51t4fkGcePA6FHFVDD5vC/whhoKWFSaKNug/4Z2FSKZZga9yjb2qDcrul7u32nVDN+30ywZ/RQAmBMrHOmLiw==
   dependencies:
     throttles "^1.0.1"
-
-"@astrojs/prism@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@astrojs/prism/-/prism-1.0.2.tgz#f01cad9007a46dc006d129d99653bd1652657ecf"
-  integrity sha512-o3cUVoAuALDqdN5puNlsN2eO4Yi1kDh68YO8V7o6U4Ts+J/mMayzlJ7JsgYAmob0xrf/XnADVgu8khfMv/w3uA==
-  dependencies:
-    prismjs "^1.28.0"
 
 "@astrojs/prism@^2.1.2":
   version "2.1.2"
