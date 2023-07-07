@@ -33,23 +33,33 @@ The method I describe below requires that your phone with the PhotoSync app be c
 
 In the Photosync app, tap the _gear icon_ at the bottom-right corner to enter the Settings.
 
-[![Screenshot of Photosync](/img/blog/photosync1.jpg)](https://arieldiaz.codes/img/blog/photosync1.jpg)
-
-[![Screenshot of Photosync](/img/blog/photosync2.jpg)](https://arieldiaz.codes/img/blog/photosync2.jpg)
+<div class="two-img">
+  <div>
+    <a href="/img/blog/photosync1.jpg" target="_blank"><img src="/img/blog/photosync1.jpg" alt="Screenshot of Photosync settings"></a>
+  </div>
+  <div>
+    <a href="/img/blog/photosync2.jpg" target="_blank"><img src="/img/blog/photosync2.jpg" alt="Screenshot of Photosync settings"></a>
+  </div>
+</div>
 
 Under _Transfer Targets_ tap on _Configure_. On the following page choose _SMB_ from the list, then tap _Add New Configuration_.
 
-[![Screenshot of Photosync](/img/blog/photosync3.jpg)](https://arieldiaz.codes/img/blog/photosync3.jpg)
-
-[![Screenshot of Photosync](/img/blog/photosync4.jpg)](https://arieldiaz.codes/img/blog/photosync4.jpg)
+<div class="two-img">
+  <div>
+    <a href="/img/blog/photosync3.jpg" target="_blank"><img src="/img/blog/photosync3.jpg" alt="Screenshot of Photosync SMB configuration"></a>
+  </div>
+  <div>
+    <a href="/img/blog/photosync4.jpg" target="_blank"><img src="/img/blog/photosync4.jpg" alt="Screenshot of Photosync SMB configuration"></a>
+  </div>
+</div>
 
 Enter the IP address of the server where the Samba share is, enter the login and password (assuming you have it set up that way), then tap the _magnifying glass button next to Directory_. The app should automatically show any Samba shares already set up on the server, tap on the one you want to use.
 
-[![Screenshot of Photosync](/img/blog/photosync5.jpg)](https://arieldiaz.codes/img/blog/photosync5.jpg)
+<a href="/img/blog/photosync5.jpg" target="_blank"><img src="/img/blog/photosync5.jpg" alt="Screenshot of Photosync SMB account settings"></a>
 
 Next tap on _Connect_ at the top-right corner and if everything works correctly, you should be sent to the SMB target page. Next under _Folder Settings_ tap on _Destination Folder_ and pick a directory in the share, if you'd like, or just use the Share's root directory if you prefer, then tap _Select_ on the top-right.
 
-[![Screenshot of Photosync](/img/blog/photosync6.jpg)](https://arieldiaz.codes/img/blog/photosync6.jpg)
+<a href="/img/blog/photosync6.jpg" target="_blank"><img src="/img/blog/photosync6.jpg" alt="Screenshot of Photosync SMB configuration"></a>
 
 The rest of the settings you can set to your liking. If you haven't gotten any errors, everything should be working as intended. Tap on _Done_ to return to the app's main page.
 
@@ -59,13 +69,18 @@ The rest of the settings you can set to your liking. If you haven't gotten any e
 
 Back on the main page, tap the _red transfer icon at the top_, tap _All_ (or you can tap individual photos and choose _Selected_), then tap _SMB_.
 
-[![Screenshot of Photosync](/img/blog/photosync7.jpg)](https://arieldiaz.codes/img/blog/photosync7.jpg)
-
-[![Screenshot of Photosync](/img/blog/photosync8.jpg)](https://arieldiaz.codes/img/blog/photosync8.jpg)
+<div class="two-img">
+  <div>
+    <a href="/img/blog/photosync7.jpg" target="_blank"><img src="/img/blog/photosync7.jpg" alt="Screenshot of Photosync photo transfer interface"></a>
+  </div>
+  <div>
+    <a href="/img/blog/photosync8.jpg" target="_blank"><img src="/img/blog/photosync8.jpg" alt="Screenshot of Photosync photo transfer interface"></a>
+  </div>
+</div>
 
 Tap on the directory to transfer your photos into (keep in mind _Destination Folder_ and _Create Sub-Directories_ in the SMB Account setting from earlier) and tap Select, the photo transfer should begin.
 
-[![Screenshot of Photosync](/img/blog/photosync9.jpg)](https://arieldiaz.codes/img/blog/photosync9.jpg)
+<a href="/img/blog/photosync9.jpg" target="_blank"><img src="/img/blog/photosync9.jpg" alt="Screenshot of Photosync transfering photos"></a>
 
 All done!
 
