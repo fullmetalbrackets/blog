@@ -342,10 +342,9 @@ li::marker {
 .two-img {
   display: inline-flex;
   flex-direction: row;
-}
-.two-img img {
-  width: 75%;
-  height: auto;
+  width: 100%;
+  justify-content: center;
+  gap: 1em;
 }
 .ext {
   display: inline-block;
@@ -395,10 +394,7 @@ article ol:first-of-type {
   .two-img {
     display: inline-flex;
     flex-direction: column;
-  }
-  .two-img img {
-    width: 85%;
-    height: auto;
+    gap: 0;
   }
 }
 
