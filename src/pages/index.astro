@@ -29,7 +29,7 @@ const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
 		width: 100%;
 		height: 1px;
 		border-radius: 4px;
-		background-color: var(--primary);
+		background-color: var(--menu);
 		bottom: 0;
 		left: 0;
 		transform-origin: right;
@@ -49,7 +49,7 @@ const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
 	}
 	@-moz-document url-prefix() {
 		a:hover h1 {
-			color: var(--emphasis);
+			color: var(--menu);
 		}
 	}
 	@media screen and (min-width: 200px) and (max-width: 650px) {
