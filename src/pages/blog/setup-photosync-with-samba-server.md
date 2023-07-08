@@ -25,7 +25,9 @@ tags:
 
 ## Caveats and Pre-Requisites
 
-The method I describe below requires that your phone with the PhotoSync app be connected to the same network as the server that you will be transferring your photos to, or have access to the server via a VPN or other similar solution. Also, the server must already be configured with a Samba share. (<a href="/blog/setup-a-samba-share-on-linux-via-command-line" target="_blank">See here on how to set up a Samba share on Linux.</a>) Finally, using the SMB option to transfer photos requires the NAS Add-On for Photosync, which costs $2.49 by itself. (You also have the option of spending a bit more on the Bundle Add-On, which comes with the NAS Add-On as well as the Auto-Transfer and Cloud Add-Ons, but those are not necessary for this.)
+The method I describe below requires that your phone with the PhotoSync app be connected to the same network as the server that you will be transferring your photos to, or have access to the server via a VPN or other similar solution. Also, the server must already be configured with a Samba share. (<a href="/blog/setup-a-samba-share-on-linux-via-command-line" target="_blank">See here on how to set up a Samba share on Linux.</a>)
+
+Finally, using the SMB option to transfer photos requires the NAS Add-On for Photosync, which costs $2.49 by itself. (You also have the option of spending a bit more on the Bundle Add-On, which comes with the NAS Add-On as well as the Auto-Transfer and Cloud Add-Ons, but those are not necessary for this.)
 
 <div id='config'/>
 
@@ -53,13 +55,18 @@ Under _Transfer Targets_ tap on _Configure_. On the following page choose _SMB_ 
   </div>
 </div>
 
-Enter the IP address of the server where the Samba share is, enter the login and password (assuming you have it set up that way), then tap the _magnifying glass button next to Directory_. The app should automatically show any Samba shares already set up on the server, tap on the one you want to use.
+Enter the IP address of the server where the Samba share is, enter the login and password (assuming you have it set up that way), then tap the _magnifying glass button next to Directory_. The app should automatically show any Samba shares already set up on the server, tap on the one you want to use. Next tap on _Connect_ at the top-right corner and if everything works correctly, you should be sent to the SMB target page.
 
-<a href="/img/blog/photosync5.jpg" target="_blank"><img src="/img/blog/photosync5.jpg" alt="Screenshot of Photosync SMB account settings"></a>
+Now under _FOLDER SETTINGS_ tap on _Destination Folder_ and pick a directory in the share, if you'd like, or just use the Share's root directory if you prefer, then tap _Select_ on the top-right.
 
-Next tap on _Connect_ at the top-right corner and if everything works correctly, you should be sent to the SMB target page. Next under _Folder Settings_ tap on _Destination Folder_ and pick a directory in the share, if you'd like, or just use the Share's root directory if you prefer, then tap _Select_ on the top-right.
-
-<a href="/img/blog/photosync6.jpg" target="_blank"><img src="/img/blog/photosync6.jpg" alt="Screenshot of Photosync SMB configuration"></a>
+<div class="two-img">
+  <div>
+    <a href="/img/blog/photosync5.jpg" target="_blank"><img src="/img/blog/photosync5.jpg" alt="Screenshot of Photosync SMB account settings"></a>
+  </div>
+  <div>
+    <a href="/img/blog/photosync6.jpg" target="_blank"><img src="/img/blog/photosync6.jpg" alt="Screenshot of Photosync SMB configuration"></a>
+  </div>
+</div>
 
 The rest of the settings you can set to your liking. If you haven't gotten any errors, everything should be working as intended. Tap on _Done_ to return to the app's main page.
 
