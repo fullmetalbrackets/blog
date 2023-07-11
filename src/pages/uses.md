@@ -10,20 +10,25 @@ description: "The things I own and stuff I use to make this website and write a 
 
 The things I own and stuff I use to make this website and write a bunch of junk.
 
+<br><br>
+
+## Sections
+
+1. [What is a Uses page?](#what)
+2. [Desk Setup](#desk)
+3. [Computer](#pc)
+4. [Home Server](#server)
+5. [Pi-Hole Server](#pihole)
+6. [Developer Tools](#tools)
+7. [Fuel (food & snacks)](#fuel)
+
+<div id='what' />
+
 ## What is a Uses page?
 
 It's a neat concept by <a href="https://wesbos.com" target="_blank">Wes Bos</a> <img class="ext" src="/img/assets/external.svg" alt="External Link" height="18px" width="20px"> to have a page on your personal site "detailing developer setups, gear, software and configs." So that's what this is. The things I own and stuff I use to make this website and write a bunch of junk.
 <br><br>
 Check out <a href="https://uses.tech" target="_blank">Uses.Tech</a> <img class="ext" src="/img/assets/external.svg" alt="External Link" height="18px" width="20px"> for other <em>Uses pages</em>.
-
-## Sections
-
-1. [Desk Setup](#desk)
-2. [Computer](#pc)
-3. [Home Server](#server)
-4. [Pi-Hole Server](#pihole)
-5. [Developer Tools](#tools)
-6. [Fuel (food & snacks)](#fuel)
 
 <div id='desk' />
 
@@ -48,8 +53,6 @@ Check out <a href="https://uses.tech" target="_blank">Uses.Tech</a> <img class="
 
 - #### Keyboard and Mouse
   - <a href="https://www.amazon.com/gp/product/B00BP5KOPA" target="_blank">Logitech MK270 Wireless Keyboard & Mouse Combo</a> <img class="ext" src="/img/assets/external.svg" alt="External Link" height="18px" width="20px">
-
-<br>
 
 <div id='pc' />
 
