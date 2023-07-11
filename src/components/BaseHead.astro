@@ -1,7 +1,7 @@
 ---
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
-import '@styles/global.css';
+import "@styles/global.css";
 
 export interface Props {
 	title: string;
@@ -15,9 +15,6 @@ const { title, description } = Astro.props;
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<link rel="preload" href="/fonts/Streamster.woff2" as="font" crossorigin/>
-<link rel="preload" href="/fonts/MPLUSRounded1c-Medium.ttf" as="font" crossorigin/>
-<link rel="preload" href="/fonts/Wotfard.woff2" as="font" crossorigin/>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="canonical" href={canonicalURL} />
 <meta name="generator" content={Astro.generator} />

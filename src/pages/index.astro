@@ -63,6 +63,9 @@ const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
 </style>
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+	<link rel="preload" href="/fonts/Streamster.woff2" as="font" crossorigin/>
+	<link rel="preload" href="/fonts/MPLUSRounded1c-Medium.ttf" as="font" crossorigin/>
+	<link rel="preload" href="/fonts/Wotfard.woff2" as="font" crossorigin/>
 	<section>
 		{posts.map((post) => (
 		<a href={post.url}>
