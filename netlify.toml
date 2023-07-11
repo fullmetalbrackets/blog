@@ -49,14 +49,14 @@ package = "netlify-plugin-csp-generator"
   for = "/fonts/*.ttf"
 
   [headers.values]
-    Cache-Control = "public, max-age=604800"
+    Cache-Control = "public, max-age=31536000, immutable"
     Content-Type = "application/font-ttf"
 
 [[headers]]
   for = "/fonts/*.woff"
 
   [headers.values]
-    Cache-Control = "public, max-age=604800"
+    Cache-Control = "public, max-age=31536000, immutable"
     Content-Type = "application/font-woff"
 
 [[headers]]
