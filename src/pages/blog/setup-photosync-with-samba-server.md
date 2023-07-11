@@ -5,7 +5,7 @@ description: "Google Photos began limiting free storage back in 2021, limiting y
 pubDate: "July 7, 2023"
 tags:
   - Self-Hosting
-  - Photo Sync
+  - PhotoSync
   - Android
   - Samba
 ---
@@ -27,13 +27,13 @@ tags:
 
 The method I describe below requires that your phone with the PhotoSync app be connected to the same network as the server that you will be transferring your photos to, or have access to the server via a VPN or other similar solution. Also, the server must already be configured with a Samba share. (<a href="/blog/setup-a-samba-share-on-linux-via-command-line" target="_blank">See here on how to set up a Samba share on Linux.</a>)
 
-Finally, using the SMB option to transfer photos requires the NAS Add-On for Photosync, which costs $2.49 by itself. (You also have the option of spending a bit more on the Bundle Add-On, which comes with the NAS Add-On as well as the Auto-Transfer and Cloud Add-Ons, but those are not necessary for this.)
+Finally, using the SMB option to transfer photos requires the NAS Add-On for PhotoSync, which costs $2.49 by itself. (You also have the option of spending a bit more on the Bundle Add-On, which comes with the NAS Add-On as well as the Auto-Transfer and Cloud Add-Ons, but those are not necessary for this.)
 
 <div id='config'/>
 
 ## Configure PhotoSync
 
-In the Photosync app, tap the _gear icon_ at the bottom-right corner to enter the Settings.
+In the PhotoSync app, tap the _gear icon_ at the bottom-right corner to enter the Settings.
 
 <div class="two-img">
   <div>
