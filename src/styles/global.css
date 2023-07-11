@@ -4,35 +4,35 @@
 	url('/fonts/Streamster.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 @font-face {
   font-family: 'Wotfard';
   src: url('/fonts/Wotfard.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 @font-face {
   font-family: 'M Plus Rounded 1c Reg';
   src: url('/fonts/MPlusRounded1c-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 @font-face {
   font-family: 'M Plus Rounded 1c Med';
   src: url('/fonts/MPlusRounded1c-Medium.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 @font-face {
   font-family: 'JetBrainsMono';
   src: url('/fonts/JetBrainsMono.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 *, *:before, *:after {
   box-sizing: inherit;
