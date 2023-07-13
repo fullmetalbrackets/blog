@@ -397,3 +397,9 @@ article ol:first-of-type {
     width: 75%;
   }
 }
+
+@media screen and (min-width: 200px) and (max-width: 935px) {
+  code {
+    white-space: pre-wrap;
+  }
+}
