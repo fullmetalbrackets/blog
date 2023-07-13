@@ -4,6 +4,7 @@ title: "Using DNS over HTTPS with Pi-Hole"
 description: "When using Pi-Hole as a network-wide ad blocker, your DNS requests still go out as plain text and can technically be seen by your ISP. By using DNS over HTTPS you can encrypt these DNS requests between your Pi-Hole and the upstream DNS provider. Here is a quick guide on how to set that up with Cloudflared daemon."
 pubDate: "July 13, 2023"
 tags:
+  - Self-Hosting
   - Cloudflare
   - Pi-Hole
   - DNS
