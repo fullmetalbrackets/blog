@@ -16,8 +16,9 @@ tags:
 1. [Pre-Requisites](#pre)
 2. [Installing WinGet and using it to install Oh-My-Posh](#install)
 3. [Changing the theme](#theme)
-4. [Nerd fonts for themes that require them](#font)
-5. [References](#ref)
+4. [Install a Nerd Font for themes that require it](#font)
+5. [Additional non-bundled custom themes](#custom)
+6. [References](#ref)
 
 <div id='pre'/>
 
@@ -39,7 +40,7 @@ We'll be using WinGet in Windows Terminal to install Oh-My-Posh, as this is the 
 winget install JanDeDobbeleer.OhMyPosh -s winget
 ```
 
-Next we'll make Oh-My-Posh the default shell, which requires editing your PowerShell profile. This should be located in `C:\Users\<YourUser>\Documents\WindowsPowerShell`, look for `Microsoft.PowerShell_profile.ps1` and open it with the text editor of your choice. (You'll need to do it as Administrator.) Add the following to the top:
+Next we'll make Oh-My-Posh the default shell, which requires editing your PowerShell profile, located in `C:\Users\<your-username>\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1`. Open it _as an Administrator_ with the text editor of your choice. Add the following to the top:
 
 ```shell
 oh-my-posh init pwsh | Invoke-Expression
@@ -51,39 +52,52 @@ Restart your terminal or reload the profile with the command `. $PROFILE` for ch
 
 ## Changing the theme
 
-Once you have installed Oh-My-Posh, the <a href="https://github.com/JanDeDobbeleer/oh-my-posh/blob/main/themes/default.omp.json" target="_blank">default theme</a> will be used. Check all the official themes <a href="https://ohmyposh.dev/docs/themes" target="_blank">here</a>.
-
-To load a theme, it's easiest to use a remote config file. Personally, I use the <a href="https://ohmyposh.dev/docs/themes#cert" target="_blank">Cert</a> theme.
-
-Click the link of the theme you want to use, you'll be taken to it on Oh-My-Posh's GitHub page. At the top-right corner of the code block, right-click _Raw_ and copy the link, we'll need it to use the theme.
-
-You'll need to edit your PowerShell profile again. Open it in a text editor and change the line we added above, `oh-my-posh init pwsh | Invoke-Expression`, to the below instead. (Alternate the URL with whichever theme you prefer.)
+Once you have installed Oh-My-Posh, the <a href="https://github.com/JanDeDobbeleer/oh-my-posh/blob/main/themes/default.omp.json" target="_blank">default theme</a> will be used. Use the following command to list all the themes and get a preview of how they'll look in the terminal. (Give it a minute, there's a lot of them.)
 
 ```shell
-oh-my-posh init pwsh --config 'https://github.com/JanDeDobbeleer/oh-my-posh/raw/main/themes/cert.omp.json' | Invoke-Expression
+Get Posh-Themes
 ```
 
-Remember to restart the terminal or reload the profile with `. $PROFILE` for the changes to take effect:
-
-Alternatively, if you'd rather not use a URL, you can download the Raw file from the GitHub page, save it locally, and reference it in the PowerShell profile. For example, save it your user directory at `C:\Users\<YourUser>\` and add this to your PowerShell profile:
+The themes are all located in `C:\Users\<your-username>\AppData\Local\Programs\oh-my-posh\themes\`. Let's assume you decided to use the `unicorn` theme (one of my favorites), you'll have to edit your `Microsoft.PowerShell_profile.ps1` and replace the init script with this:
 
 ```shell
-oh-my-posh init pwsh --config 'C:\Users\<YourUser>\cert.omp.json' | Invoke-Expression
+oh-my-posh init pwsh --config 'C:\Users\<your-username>\AppData\Local\Programs\oh-my-posh\themes\unicorn.omp.json' | Invoke-Expression
 ```
 
-You can also reference it with `~\Oh-My-Posh\cert.omp.json` if you prefer, I just like using the full path. Now the theme should automatically load every time you open PowerShell or Windows Terminal. Please note the load time of your terminal prompt with Oh-My-Posh and a theme may be well over 1000ms, but this seems unavoidable if you want to make your terminal pretty.
+Reload the terminal again with `. $PROFILE` for the change to take effect.
 
 <div id='fonts'/>
 
-## Nerd Fonts for themes that require them
+## Install a Nerd Font for themes that require it
 
-You may notice that some themes cause weird missing icons in your prompt. This is because many of them require <a href="https://nerdfonts.com" target="_blank">Nerd Fonts</a>. See the <a href="https://ohmyposh.dev/docs/installation/fonts" target="_blank">Fonts page in the Oh-My-Posh docs</a> for more details. Any of the Nerd Fonts will work, but the official recommended font to use is <a href="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/Meslo.zip" target="_blank">Meslo LGM NF</a>.
+You may notice that some themes cause weird missing icons in your prompt. This is because many of them require <a href="https://nerdfonts.com" target="_blank">Nerd Fonts</a>. Oh-My-Posh has a built-in CLI and pick out and install a Nerd Font. Any of them will work, but the official recommended font to use is <a href="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/Meslo.zip" target="_blank">MesloLGM</a>.
 
-Download the font of your choice and place it in your `C:\Windows\Fonts` directory, then in Windows Terminal go to _Settings_, and under Profiles click on _Windows PowerShell_, scroll down to _Additional Settings_ and open _Appearance_, then change _Font face_ to the Nerd Font you're using. Make sure to _Save_ your changes.
+Use the following command and pick out a font of your choice:
 
-Alternately, Oh-My-Posh has a built-in CLI to select and install a Nerd Font. Open Windows Terminal as _Administrator_, and use the command `oh-my-posh font install`, and choose your font.
+```shell
+oh-my-posh font install
+```
 
-To ensure the glyphs are correctly rendered, you'll also want to go into Windows Terminal _Settings_, click on _Rendering_ and switch on \*Use the new text renderer ("AtlasEngine"). If you're noticing the symbols in some themes are not spaced properly and are right on top of text, be sure you do this step.
+Next you'll need to open Windows Terminal, go to _Settings_, and under Profiles click on _Windows PowerShell_, scroll down to _Additional Settings_ and click _Appearance_, then change _Font face_ to the Nerd Font you downloaded. Make sure to _Save_ your changes.
+
+To ensure the glyphs are correctly rendered, you'll also want to go into Windows Terminal _Settings_, click on _Rendering_ and switch on _Use the new text renderer ("AtlasEngine")_. If you're noticing the symbols in some themes are not spaced properly and are right on top of text, be sure you do this step.
+
+## Custom themes not bundled with Oh-My-Posh
+
+Oh-My-Posh comes with many themes that are regularly maintained, but [anyone can create a custom theme](https://ohmyposh.dev/docs/configuration/overview). Here's a few I've found on GitHub that I like.
+
+- [whoisryosuke's custom theme](https://gist.github.com/whoisryosuke/3b34892672a2a28e14f54dda80348b86) (Requires `JetBrainsMono` Nerd Font)
+- [Kudostoy0u's pwsh10k theme](https://github.com/Kudostoy0u/pwsh10k) (Requires `MesloLGS` Nerd Font)
+- [adynetro's custom theme](https://github.com/adynetro/posh) (Requires `MesloLGM` Nerd Font)
+- [Dofoerix's custom themes](https://github.com/Dofoerix/Dfrx-Prompt-Theme) (In several different colors and designs!)
+- [rainbowflesh's cyborgone theme](https://github.com/rainbowflesh/cyberposh-theme)
+- [delacerate's custom theme](https://github.com/delacerate/theme-prompt/blob/main/delacerate.omp.json)
+- [ryanewtaylor's pride theme](https://github.com/ryanewtaylor/oh-my-posh-themes)
+- [Darkensses's cybershell theme](https://github.com/Darkensses/cybershell)
+- [drewyh999's custom theme](https://github.com/drewyh999/oh-my-drewyh999)
+- [sclerp's orangine theme](https://github.com/seclerp/orangine-theme)
+- [SubsTheTechnomancer's not-zork theme](https://github.com/SubsTheTechnomancer/Omp-themes) (I had to laugh at this one)
+- [leopoldo109's custom theme](https://github.com/leopoldo109/leopoldo-powershell)
 
 <div id='ref'/>
 
