@@ -37,12 +37,12 @@
   box-sizing: inherit;
 }
 :root, html {
-  --main: aliceblue;
+  --main: rgb(255, 255, 255);
   --text: rgb(32, 33, 36);
   --primary: rgb(37, 150, 190);
   --secondary: rgb(95, 193, 232);
   --accent: rgb(182, 193, 210);
-  --link: rgb(255, 165, 0);
+  --link: rgb(255, 153, 0);
   --hover: rgb(242, 207, 43);
   --emphasis: rgb(220, 40, 0);
   --name: rgb(0, 175, 175);
@@ -50,7 +50,7 @@
   --menu: rgb(222, 122, 0);
   --form: black;
   --blockquote: rgb(255, 255, 255);
-  --code: hsl(180, 1%, 30%);
+  --code: hsl(220, 13%, 18%);
   --svg: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%) contrast(98%);
   --ext: invert(88%) sepia(69%) saturate(7500%) hue-rotate(1deg) brightness(104%) contrast(104%);
   --search: invert(57%) sepia(86%) saturate(3921%) hue-rotate(13deg) brightness(99%) contrast(100%);
@@ -61,12 +61,12 @@
 }
 
 [data-theme="light"] {
-  --main: rgb(236, 255, 251);
+  --main: rgb(255, 255, 255);
   --text: rgb(32, 33, 36);
   --primary: rgb(0, 158, 170);
   --secondary: rgb(95, 193, 232);
   --accent: rgb(182, 193, 210);
-  --link: rgb(255, 165, 0);
+  --link: rgb(255, 153, 0);
   --hover: rgb(242, 207, 43);
   --emphasis: rgb(220, 40, 0);
   --name: rgb(0, 158, 170);
@@ -74,26 +74,24 @@
   --menu: rgb(222, 122, 0);
   --form: rgb(0, 0, 0);
   --blockquote: rgb(255, 255, 255);
-  --code: hsl(180, 1%, 30%);
   --svg: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%) contrast(98%);
   --ext: invert(40%) sepia(85%) saturate(1448%) hue-rotate(15deg) brightness(102%) contrast(101%);
 }
 
 [data-theme="dark"] {
   --main: rgb(32, 33, 36);
-  --text: rgb(148, 163, 184);
+  --text: rgb(164, 174, 188);
   --primary: rgb(0, 158, 170);
   --secondary: rgb(148, 163, 184);
   --accent: rgb(51, 65, 85);
   --link: rgb(242, 207, 43);
   --hover: rgb(222, 122, 0);
-  --emphasis: rgb(255, 69, 0);
+  --emphasis: rgb(220, 59, 0);
   --name: rgb(0, 158, 170);
   --date: rgb(250, 250, 250);
   --menu: rgb(222, 122, 0);
   --form: rgb(250, 250, 250);
   --blockquote: rgb(25, 22, 22);
-  --code: hsl(220, 13%, 18%);
   --svg: invert(93%) sepia(78%) saturate(2834%) hue-rotate(213deg) brightness(148%) contrast(96%);
   --ext: invert(50%) sepia(21%) saturate(5438%) hue-rotate(150deg) brightness(87%) contrast(101%);
 }
@@ -101,13 +99,13 @@
 body {
 	font-family: 'Wotfard';
 	font-size: 20px;
+  line-height: 1.4;
 	margin: auto;
 	padding: 5px;
 	max-width: 75ch;
 	text-align: left;
 	word-wrap: break-word;
 	overflow-wrap: break-word;
-	line-height: 1.4;
 	color: var(--text);
 	background: var(--main);
 	height: 100%;
@@ -129,8 +127,7 @@ body {
   background: var(--primary);
 }
 main {
-  margin-right: 10px;
-  margin-left: 10px;
+  margin: 0 auto;
 }
 hr {
   margin-bottom: 2em;
@@ -170,6 +167,9 @@ main .title {
   font-size: 36px;
   margin-top: 0.75em;
 }
+article p, article ol, article p li, #ref {
+  line-height: 1.6;
+}
 img, picture, video, canvas, svg {
   display: block;
   max-width: 100%;
@@ -180,7 +180,6 @@ input, button, textarea, select {
 }
 input {
   font-size: 20px;
-  line-height: 1.4;
   border-style: none;
   margin: 0 auto;
   margin-right: 0.25em;
@@ -208,15 +207,9 @@ button {
 button:hover {
   cursor: pointer;
 }
-strong,
-b,
-u {
-	color: var(--emphasis);
-}
-em, i {
+strong, b, u,  em, i {
 	color: var(--emphasis);
 	font-style: normal;
-  font-weight: 500;
 }
 kbd {
   background-color: #ccc;
@@ -248,9 +241,6 @@ textarea {
 	width: 100%;
 	font-size: 16px;
 }
-content {
-	line-height: 1.6;
-}
 table {
 	width: 100%;
   border-spacing: 0;
@@ -278,9 +268,10 @@ code {
 	padding: 1.5px 4px;
 	font-family: 'JetBrainsMono', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
 	background-color: var(--code);
-	color: rgb(222, 122, 0);
+	color: hsl(33, 100%, 44%);
 	border-radius: 0.25em;
   font-size: 18px;
+  white-space: pre;
 }
 pre {
 	padding: 1rem;
@@ -387,6 +378,10 @@ article ol:first-of-type {
 		height: 0px;
 		width: 0px;
 	}
+  main {
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+  }
   code {
     padding: 0.5px 2px;
   }
