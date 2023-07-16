@@ -74,6 +74,8 @@
   --menu: rgb(222, 122, 0);
   --form: rgb(0, 0, 0);
   --blockquote: rgb(255, 255, 255);
+  --pagefind-ui-text: rgb(32, 33, 36);
+  --pagefind-ui-background: rgb(182, 193, 210);
   --svg: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%) contrast(98%);
   --ext: invert(40%) sepia(85%) saturate(1448%) hue-rotate(15deg) brightness(102%) contrast(101%);
 }
@@ -92,12 +94,14 @@
   --menu: rgb(222, 122, 0);
   --form: rgb(250, 250, 250);
   --blockquote: rgb(25, 22, 22);
+  --pagefind-ui-text: rgb(164, 174, 188);
+  --pagefind-ui-background: rgb(51, 65, 85);
   --svg: invert(93%) sepia(78%) saturate(2834%) hue-rotate(213deg) brightness(148%) contrast(96%);
   --ext: invert(50%) sepia(21%) saturate(5438%) hue-rotate(150deg) brightness(87%) contrast(101%);
 }
 
 body {
-	font-family: 'Wotfard';
+	font-family: 'Wotfard', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
 	font-size: 20px;
   line-height: 1.4;
 	margin: auto;
@@ -135,14 +139,14 @@ hr {
 	opacity: 0.5;
 }
 h1 {
-  font-family: 'M PLUS Rounded 1c Med', 'Wotfard', sans-serif;
+  font-family: 'M PLUS Rounded 1c Med', 'Wotfard', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
   margin-bottom: 0.25em;
 	color: var(--primary);
   overflow-wrap: break-word;
   hyphens: auto;
 }
 h2 {
-  font-family: 'M PLUS Rounded 1c Med', 'Wotfard', sans-serif;
+  font-family: 'M PLUS Rounded 1c Med', 'Wotfard', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
   margin-top: 3em;
 	color: var(--primary);
   overflow-wrap: break-word;
@@ -152,7 +156,7 @@ h2 {
   margin-top: 0;
 }
 h3, h4, h5, h6 {
-  font-family: 'Wotfard', sans-serif;
+  font-family: 'Wotfard', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
   margin: 2em 0 1em 0;
   padding: 0;
 	color: var(--primary);
