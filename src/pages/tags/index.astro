@@ -17,9 +17,6 @@ const desc = 'Blog posts tag index.'
 
 <BaseLayout title={title} description={desc}>
 	<style>
-		.title {
-			font-size: 36px;
-		}
 		ol, ul {
 			list-style-type: none;
 			display: grid;
@@ -42,26 +39,6 @@ const desc = 'Blog posts tag index.'
 		li a:hover, a:focus {
 			color: var(--hover);
 		}
-		li a {
-  		position: relative;
-		}
-		li a::before {
-			content: '';
-			position: absolute;
-			width: 100%;
-			height: 1px;
-			border-radius: 4px;
-			background-color: var(--hover);
-			bottom: 0;
-			left: 0;
-			transform-origin: right;
-			transform: scaleX(0);
-			transition: transform .3s ease-in-out;
-		}
-		li a:hover::before {
-			transform-origin: left;
-			transform: scaleX(1);
-		}
 		hr {
 			margin-bottom: 2em;
 		}
@@ -70,9 +47,12 @@ const desc = 'Blog posts tag index.'
 		}
 		@media screen and (min-width: 200px) and (max-width: 650px) {
 			ol, ul {
-				margin: auto 1em;
+				margin: auto;
 				display: grid;
 				grid-template-columns: 1fr 1fr;
+			}
+			li {
+				font-size: 1em;
 			}
 		}
 	</style>
@@ -84,5 +64,9 @@ const desc = 'Blog posts tag index.'
 				<li><a href={`/tags/${tag.slug}`}>{tag.name}</a></li>
 			))}
 		</ul>
+		<hr>
+		<aside>
+      <a href="#top" class="top button blog-tag">Back to Top &uarr;</a>
+    </aside>
 	</section>
 </BaseLayout>

@@ -36,7 +36,7 @@ const posts = (await Astro.glob('../blog/*.{md,mdx}')).sort(
 		article {
 			list-style-type: none;
 			padding: 0;
-			margin: 3em 0 6em 0;
+			margin: 4em auto 2em auto;
 			line-height: 1.2;
 		}
 		.desc {
@@ -60,7 +60,6 @@ const posts = (await Astro.glob('../blog/*.{md,mdx}')).sort(
 			color: var(--date);
 		}
 		.title span {
-			font-size: 36px;
 			color: var(--primary);
 		}
 		article > h1 {
@@ -68,26 +67,6 @@ const posts = (await Astro.glob('../blog/*.{md,mdx}')).sort(
 		}
 		article > .bottom-line {
 			opacity: 0;
-		}
-		a {
-			position: relative;
-		}
-		a::before {
-			content: '';
-			position: absolute;
-			width: 100%;
-			height: 1px;
-			border-radius: 4px;
-			background-color: var(--menu);
-			bottom: 0;
-			left: 0;
-			transform-origin: right;
-			transform: scaleX(0);
-			transition: transform .3s ease-in-out;
-		}
-		a:hover::before {
-			transform-origin: left;
-			transform: scaleX(1);
 		}
 		@-moz-document url-prefix() {
 			a:hover h1 {
@@ -122,5 +101,9 @@ const posts = (await Astro.glob('../blog/*.{md,mdx}')).sort(
 			</article>
 		</a>
 		))}
+		<hr>
+		<aside>
+			<a href="#top" class="top button blog-tag">Back to Top &uarr;</a>
+		</aside>
 	</section>
 </BaseLayout>

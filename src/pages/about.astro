@@ -8,15 +8,16 @@ const desc = 'About me and this site'
 
 <BaseLayout title={title} description={desc}>
   <style>
-    hr {
-      margin-bottom: 2.5em;
-    }
+    section {
+      line-height: 1.4;
+		}
     h1 {
       font-size: 36px;
-      margin-top: 1.9em;
-      margin-bottom: 0;
     }
     p {
+      margin: 2em auto;
+    }
+    .foot-line {
       margin: 2em auto;
     }
     @media screen and (min-width: 200px) and (max-width: 650px) {
@@ -72,4 +73,8 @@ const desc = 'About me and this site'
     </p>
   </section>
   <Contact />
+  <hr class="foot-line">
+  <aside>
+    <a href="#top" class="top button blog-tag">Back to Top &uarr;</a>
+  </aside>
 </BaseLayout>

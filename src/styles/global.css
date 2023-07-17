@@ -126,6 +126,9 @@ body {
 main {
   margin: 0 auto;
 }
+section {
+  margin-top: 4em;
+}
 hr {
   margin-bottom: 2em;
   border: 0.25px solid var(--primary);
@@ -133,10 +136,11 @@ hr {
 }
 h1 {
   font-family: 'M PLUS Rounded 1c Med', 'Wotfard', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
-  margin-bottom: 0.25em;
 	color: var(--primary);
   overflow-wrap: break-word;
   hyphens: auto;
+  font-size: 36px;
+  line-height: 1.3;
 }
 h2 {
   font-family: 'M PLUS Rounded 1c Med', 'Wotfard', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
@@ -161,7 +165,6 @@ p {
   hyphens: auto;
 }
 main .title {
-  font-size: 36px;
   margin-top: 0.75em;
 }
 article p, article ol, article p li, #ref {
@@ -196,13 +199,11 @@ input:focus, textarea:focus {
 }
 button {
   background: var(--primary);
+  color: #000;
   border: 0;
   border-radius: 0.25em;
   padding: 4px 8px;
   font-weight: 600;
-}
-button:hover {
-  cursor: pointer;
 }
 strong, b, u,  em, i {
 	color: var(--emphasis);
@@ -309,6 +310,7 @@ blockquote ul {
 }
 .alert {
   border: 1px solid red;
+  line-height: 1.4;
 }
 .alert b:first-of-type  {
   display: block;
@@ -317,6 +319,7 @@ blockquote ul {
 }
 .note {
   border: 1px solid #ffc701;
+  line-height: 1.4;
 }
 .note b:first-of-type {
   display: block;
@@ -353,12 +356,32 @@ li::marker {
   transition: all .10s ease-out;
   margin: 0 8px 8px 0;
 }
-.blog-tag:hover {
-  box-shadow: 4px 4px 0 #000;
-  transform: translate(-4px,-4px);
+@media (hover: hover) {
+  .blog-tag:hover {
+    box-shadow: 4px 4px 0 #000;
+    transform: translate(-4px,-4px);
+  }
+  .blog-tag:focus-visible{
+    outline-offset: 1px;
+  }
 }
-.blog-tag:focus-visible{
-  outline-offset: 1px;
+@media (hover: none) {
+  .blog-tag:hover {
+    background-color: var(--hover);
+  }
+}
+aside {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  cursor: pointer;
+  margin: 2em auto 4em auto;
+}
+aside > a, aside > a:active, aside > a:visited, aside > a:hover, aside > a:focus {
+  color: #000;
+}
+.top:hover {
+  color: #000;
 }
 article ul, article ol {
   margin-bottom: 2em;
@@ -369,18 +392,29 @@ article ul ul {
 article ol:first-of-type {
   margin-bottom: 0;
 }
-
 @media screen and (min-width: 200px) and (max-width:650px) {
 	::-webkit-scrollbar {
 		height: 0px;
 		width: 0px;
 	}
+  body {
+    line-height: 1;
+  }
   main {
     margin-left: 0.5em;
     margin-right: 0.5em;
   }
+  h1, main .title {
+    font-size: 26px;
+  }
+  h2 {
+    font-size: 24px;
+  }
   code {
     padding: 0.5px 2px;
+  }
+  button, .blog-tag {
+    line-height: 1.3;
   }
   .two-img {
     display: inline-flex;

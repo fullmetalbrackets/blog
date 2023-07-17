@@ -8,7 +8,7 @@
     color: var(--primary);
   }
   form {
-    margin: 2em auto 4em auto;
+    margin: 2em auto;
   }
   input {
     line-height: 1;
@@ -88,7 +88,7 @@
   }
   @media screen and (min-width: 200px) and (max-width: 650px) {
       form {
-        margin: 1em 1em 2em 1em;
+        margin: auto 0.5em;
       }
     }
 </style>
@@ -106,7 +106,7 @@
     <label for="message">Message:</label>
     <textarea id="message" name="message" required />
     <p class="reply">
-    <label for="radio">Request a response to your message?</label><br>
+    <label for="radio">Request a response?</label><br>
       <input type="radio" id="reply" name="radio" value="No reply" class="reply-radio" /><span>Yes</span>
       <input type="radio" id="no-reply" name="radio" value="No reply" class="reply-radio" required />No
     </p>
