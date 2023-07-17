@@ -21,9 +21,6 @@ const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
 		color: var(--text);
 		padding-bottom: 1em;
 	}
-	hr {
-		margin-bottom: 1em;
-	}
 	a button {
 		background-color: var(--link);
 		color: #000;
@@ -87,9 +84,13 @@ const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
 				</time>
 				<h1>{post.frontmatter.title}</h1>
 				<p class="desc">{post.frontmatter.description}</p>
-				<button class="more">Read More</button>
+				<button>Read More</button>
 			</article>
 		</a>
 		))}
-	</section>
+		<hr>
+		<aside>
+			<a href="#top" class="top button blog-tag">Back to Top &uarr;</a>
+		</aside>
+		</section>
 </BaseLayout>
