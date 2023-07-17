@@ -25,6 +25,8 @@ This guide will assume you already have Pi-Hole up and running. If you have not 
 
 Also, please note that although using DNS over HTTPS prevents your ISP or anyone else from snooping on your DNS requests, since they will be encrypted, whichever upstream DNS provider you use can technically see it. Obviously a measure of a trust is required in this case, but that would be the case with any upstream DNS, and only avoidable if you want to self-host your own DNS resolver. (Certainly possible, but beyond the scope of this guide.)
 
+<div id='install' />
+
 ## Install and setup the Cloudflared daemon
 
 <a href="https://github.com/cloudflare/cloudflared" target="_blank">Cloudflared</a> is normally used for Cloudflare Tunnels, but that's optional and we won't be using it in this setup, instead we'll be using Cloudflared strictly as a DNS-Over-HTTPS proxy. This can be done either as a daemon in Linux or via a docker container.
@@ -164,6 +166,8 @@ cloudflared status:
 active
 enabled
 ```
+
+<div id='config' />
 
 ## Configure Pi-Hole
 
