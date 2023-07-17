@@ -1,0 +1,245 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+
+const title = 'Uses'
+const desc = 'The stuff I use.'
+---
+
+<BaseLayout title={title} description={desc}>
+  <style>
+    section {
+      line-height: 1.4;
+      margin-bottom: 4em;
+		}
+    h1 {
+      font-size: 36px;
+    }
+    p {
+      margin: 2em auto;
+    }
+    hr {
+      margin: 2em 0;
+    }
+    @media screen and (min-width: 200px) and (max-width: 650px) {
+      main {
+        margin: 0 10px;
+      }
+      h1 {
+        font-size: 36px;
+        margin-top: 1.575em;
+      }
+      hr {
+        margin-bottom: 1.75em;
+      }
+      form {
+        margin: 1em;
+      }
+    }
+  </style>
+  <section>
+    <h1>{title}</h1>
+    <hr>
+    <p>
+      A <em>Uses page</em> is a neat concept by <a href="https://wesbos.com" target="_blank">Wes Bos</a> to have a page on your personal site "detailing developer setups, gear, software and configs." So that's what this is. The things I own and stuff I use to make this website and write a bunch of junk.
+    </p>
+    <p>
+      Check out <a href="https://uses.tech" target="_blank">Uses.Tech</a> for other Uses pages.
+    </p>
+    <h2 id="desk-setup">Desk Setup</h2>
+    <ul>
+      <li>
+        <h4>Desk</h4>
+        <ul>
+          <li>
+            <a href="https://www.amazon.com/gp/product/B08Q89X9R2" target="_blank">Bestier L Shaped Desk, Rustic Brown</a> <img class="ext" src="/img/assets/external.svg" alt="External Link" height="18px" width="20px">
+          </li>
+        </ul>
+      </li>
+      <li>
+        <h4>Chair</h4>
+        <ul>
+          <li>
+            <a href="https://www.amazon.com/gp/product/B09YV46WG7" target="_blank">COLAMY 2199 Office Chair, Classic Brown</a> <img class="ext" src="/img/assets/external.svg" alt="External Link" height="18px" width="20px">
+          </li>
+        </ul>
+      </li>
+      <li>
+        <h4>Monitors</h4>
+        <ul>
+          <li>
+            <a href="https://www.amazon.com/gp/product/B08DQWG3JG">Dell S2721QS 4K UHD Monitor</a> <img class="ext" src="/img/assets/external.svg" alt="External Link" height="18px" width="20px">
+          </li>
+          <li>
+            <a href="https://www.amazon.com/gp/product/B07L9G1BFX" target="_blank">Samsung UR59-series 32&quot; 4K UHD Curved Monitor</a> <img class="ext" src="/img/assets/external.svg" alt="External Link" height="18px" width="20px">
+          </li>
+        </ul>
+    </li>
+    <li>
+      <h4>Speakers</h4>
+      <ul>
+        <li>
+          <a href="https://www.amazon.com/gp/product/B00EZ9XKCM" target="_blank">Logitech Z200 Multimedia Stereo Speakers</a> <img class="ext" src="/img/assets/external.svg" alt="External Link" height="18px" width="20px">
+        </li>
+      </ul>
+    </li>
+    <li>
+      <h4>Keyboard and Mouse</h4>
+      <ul>
+        <li><a href="https://www.amazon.com/gp/product/B00BP5KOPA" target="_blank">Logitech MK270 Wireless Keyboard &amp; Mouse Combo</a> <img class="ext" src="/img/assets/external.svg" alt="External Link" height="18px" width="20px"></li>
+      </ul>
+    </li>
+  </ul>
+    
+    <h2>Computer</h2>
+    <ul>
+      <li>
+        <h4 id="model">Model</h4>
+        <p>Dell XPS 8920</p>
+      </li>
+      <li>
+        <h4 id="cpu">CPU</h4>
+        <p>Intel Core i7-7700 @ 3.6GHz</p>
+      </li>
+      <li>
+        <h4 id="ram">RAM</h4>
+        <p>24 GB</p>
+      </li>
+      <li>
+        <h4 id="os">OS</h4>
+        <p>Windows 10 Pro</p>
+      </li>
+      <li>
+        <h4 id="gpu">GPU</h4>
+        <p>AMD Radeon RX480</p>
+      </li>
+      <li>
+      <h4 id="storage">Storage</h4>
+      </li>
+        <ul>
+          <li>1 x 250 GB M.2 NVMe</li>
+          <li>1 x 500 GB HDD</li>
+          <li>2 x 1 TB HDD</li>
+          <li>1 x 1 TB SSD</li>
+        </ul>
+      </li>
+      <li>
+        <h4 id="comment">Comment</h4>
+        <p>This thing is from 2015, but it's still trucking and is more than enough for my needs. It even plays most of the games I care to play on PC without issue!</p>
+      </li>
+    </ul>
+    
+    <h2>Media Server</h2>
+    <ul>
+      <li>
+        <h4 id="model">Model</h4>
+        <p>Dell Optiplex 3050 SFF</p>
+      </li>
+      <li>
+        <h4 id="cpu">CPU</h4>
+        <p>Intel i5-6500 (4) @ 3.6GHz</p>
+      </li>
+      <li>
+        <h4 id="ram">RAM</h4>
+        <p>16 GB</p>
+      </li>
+      <li>
+        <h4 id="os">OS</h4>
+        <p>OpenMediaVault 6</p>
+      </li>
+      <li>
+        <h4 id="storage">Storage</h4>
+          <ul>
+            <li>1 x 250 GB M.2 NVMe</li>
+            <li>1 x 2 TB HDD</li>
+            <li>3 x 1 TB HDD</li>
+          </ul>
+      </li>
+      <li>
+        <h4 id="docker-containers">Docker Containers</h4>
+        <ul>
+          <li>
+            <a href="https://hub.docker.com/r/portainer/portainer-ce" target="_blank" rel="noreferrer noopener">Portainer</a> <img class="ext" src="/img/assets/external.svg" alt="External Link" height="18px" width="20px"> - GUI to manage docker containers
+          </li>
+          <li>
+            <a href="https://hub.docker.com/r/linuxserver/plex" target="_blank" rel="noreferrer noopener">Plex</a> <img class="ext" src="/img/assets/external.svg" alt="External Link" height="18px" width="20px"> - Movie and TV show streaming server
+          </li>
+          <li>
+            <a href="https://hub.docker.com/r/linuxserver/tautulli" target="_blank" rel="noreferrer noopener">Tautulli</a> <img class="ext" src="/img/assets/external.svg" alt="External Link" height="18px" width="20px"> - Plex statistics and activity monitoring
+          </li>
+          <li>
+            <a href="https://hub.docker.com/r/deluan/navidrome" target="_blank" rel="noreferrer noopener">Navidrome</a> <img class="ext" src="/img/assets/external.svg" alt="External Link" height="18px" width="20px"> - Music streaming server
+          </li>
+          <li>
+            <a href="https://hub.docker.com/r/linuxserver/ubooquity" target="_blank" rel="noreferrer noopener">Ubooquity</a> <img class="ext" src="/img/assets/external.svg" alt="External Link" height="18px" width="20px"> - Ebook and comic server/viewer
+          </li>
+          <li>
+            <a href="https://hub.docker.com/r/filebrowser/filebrowser" target="_blank" rel="noreferrer noopener">File Browser</a> <img class="ext" src="/img/assets/external.svg" alt="External Link" height="18px" width="20px"> - GUI for browsing files
+          </li>
+          <li>
+            <a href="https://hub.docker.com/r/linuxserver/qbittorrent" target="_blank" rel="noreferrer noopener">qBittorrent</a> <img class="ext" src="/img/assets/external.svg" alt="External Link" height="18px" width="20px"> - Torrent downloader/manager
+          </li>
+        </ul>
+      </li>
+      <li>
+        <h4>Comment</h4>
+        <p>Bought refurbished on eBay for around $60. I added hard drives and doubled the RAM, and it&#39;s been running my entire stack of self-hosted services going on two years without so much as a hiccup. I ran it on Ubuntu Server LTS for most of that time, but recently switched over to OpenMediaVault and I&#39;m loving the ease of doing everything through it&#39;s GUI. This machine acts as my main media server (streaming movies &amp; TV shows via Plex, music via Navidrome, etc.) and NAS, which is shared out to my and my wife&#39;s Windows PCs and laptops via SMB. On my Android phone and tablets, I use the Solid Explorer app to access the SMB shares. (<a href="/blog/solid-explorer-samba-share">My blog post about this.</a>)</p>
+      </li>
+    </ul>
+    
+    <h2>Pi-Hole Server</h2>
+    <ul>
+      <li>
+        <h4 id="model">Model</h4>
+        <p>Dell Optiplex 3020 Micro</p>
+      </li>
+      <li>
+        <h4 id="cpu">CPU</h4>
+        <p>Intel Pentium G3250T (2) @ 2.8GHz</p>
+      </li>
+      <li>
+        <h4 id="ram">RAM</h4>
+        <p>4 GB</p>
+      </li>
+      <li>
+        <h4 id="os">OS</h4>
+        <p>Debian 12 Bookworm</p>
+      </li>
+      <li>
+        <h4 id="storage">Storage</h4>
+        <p>500 GB HDD</p>
+      </li>
+      <li>
+        <h4>Comment</h4>
+        <p>
+          Bought refurbished on eBay for $45 and hasn't been expanded at all from how I got it, since I haven't needed to. I mainly bought this to run Pi-Hole as a replacement to an old, noisy laptop I had been running Pi-Hole off of for years. It also doubles as a dev server and backup server, I use rsync to periodically backup my photos and other important stuff from my NAS to the external drive.
+        </p>
+      </li>
+    </ul>
+    
+    <h2>Developer Tools</h2>
+    <ul>
+      <li>
+        <h4 id="code-editor">Code Editor</h4>
+          <ul>
+            <li>VS Code</li>
+            <li>Nano (as needed on Linux)</li>
+          </ul>
+      </li>
+      <li>
+        <h4 id="terminal">Terminal</h4>
+          <ul>
+            <li>
+              Windows Terminal with <a href="https://ohmyposh.dev" target="_blank">Oh-My-Posh</a> <img class="ext" src="/img/assets/external.svg" alt="External Link" height="18px" width="20px"> using <a href="https://github.com/Kudostoy0u/pwsh10k" target="_blank">pwsh10k theme</a> <img class="ext" src="/img/assets/external.svg" alt="External Link" height="18px" width="20px">
+            </li>
+            <li>
+              On Linux, zsh shell with <a href="https://github.com/ohmyzsh/ohmyzsh" target="_blank">Oh-My-Zsh</a> <img class="ext" src="/img/assets/external.svg" alt="External Link" height="18px" width="20px"> using <a href="https://github.com/romkatv/powerlevel10k" target="_blank">powerlevel10k theme</a> <img class="ext" src="/img/assets/external.svg" alt="External Link" height="18px" width="20px">
+            </li>
+          </ul>
+        </li>
+      </ul>
+    <hr>
+    <aside>
+      <a href="#top" class="top button blog-tag">Back to Top &uarr;</a>
+    </aside>
+  </section>
+</BaseLayout>
