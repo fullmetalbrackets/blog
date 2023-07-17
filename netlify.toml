@@ -91,6 +91,13 @@ for = "/*"
     X-XSS-Protection = "1; mode=block"
     Permissions-Policy = "autoplay=(), camera=(), geolocation=(), microphone=()"
 
+
+[[redirects]]
+  from = "https://arieldiaz.netlify.app"
+  to = "https://arieldiaz.codes"
+  status = 301
+  force = true
+
 [[redirects]]
   from = "https://arieldiaz.netlify.com/*"
   to = "https://arieldiaz.codes/:splat"
@@ -98,14 +105,14 @@ for = "/*"
   force = true
 
 [[redirects]]
-  from = "https://arieldiaz.netlify.app/*"
-  to = "https://arieldiaz.codes/:splat"
+  from = "https://arieldiaz.codes/blog/tags"
+  to = "https://arieldiaz.codes/tags"
   status = 301
   force = true
 
 [[redirects]]
-  from = "https://arieldiaz.codes/blog/tags"
-  to = "https://arieldiaz.codes/tags:splat"
+  from = "https://arieldiaz.codes/blog/tags/*"
+  to = "https://arieldiaz.codes/tags/:splat"
   status = 301
   force = true
 
@@ -194,7 +201,7 @@ for = "/*"
   force = true
 
 [[redirects]]
-  from = "https://arieldiaz.codes/blog/how-to-use-a-custom-prismjs-theme-with-nuxt-content.md/"
+  from = "https://arieldiaz.codes/blog/how-to-use-a-custom-prismjs-theme-with-nuxt-content.md"
   to = "https://arieldiaz.codes/blog/how-to-use-a-custom-prismjs-theme-with-nuxt-content"
   status = 301
   force = true
