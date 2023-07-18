@@ -3,13 +3,14 @@ layout: "../../layouts/BlogPost.astro"
 title: "Set a static IP in Debian"
 description: "Debian's non-graphical install does not give you the option to set a static IP, here's a quick guide to doing it manually on the command line."
 pubDate: "October 7, 2022"
+updatedDate: "July 18, 2023"
 tags:
   - Debian
   - Networking
   - Command Line
 ---
 
-First, save a copy of the default network config as a back up:
+Login to Debian as `root` or as a user with sudo privileges (be sure to append `sudo` before every command). First, save a copy of the default network config as a back up:
 
 ```bash
 cp /etc/network/interfaces /backups/
@@ -41,19 +42,19 @@ iface enp0s25 inet static
  dns-nameservers 1.1.1.1 8.8.8.8
 ```
 
-Save and close the file, then restart the networking service and check it's status:
+Save and close the file, then restart the network interface:
+
+```bash
+systemctl restart ifup@enp0s25
+```
+
+Then restart the networking service and check it's status:
 
 ```bash
 systemctl restart networking.service
 systemctl status networking.service
 ```
 
-<div class="note">
-  <b>ⓘ &nbsp;Note</b>
-  If you get an error, you probably have to run `systemctl restart NetworkManager.service` or `systemctl restart network-manager` instead.
-</div>
-
-<br>
 If there's no errors, the output should look something like this:
 
 ```bash
@@ -68,7 +69,16 @@ If there's no errors, the output should look something like this:
      CGroup: /system.slice/networking.service
 ```
 
-Also check your IP address:
+If you get an error, try running `systemctl restart NetworkManager.service` or `systemctl restart network-manager` instead. If you still get an error, you may need to edit (or if it doesn't exist, create) the file at `/etc/resolv.conf`. Add your DNS resolvers like this:
+
+```conf
+nameserver 1.1.1.1
+nameserver 1.0.0.1
+```
+
+Save and close the file, then try checking restarting and checking the status again. You may need to reboot for the changes to take effect.
+
+Once the `networking.service` is up and running, also check your IP address with the following command:
 
 ```bash
 ip -c addr show enp0s25
@@ -85,6 +95,9 @@ Output should look similar to this:
        valid_lft forever preferred_lft forever
 ```
 
+If the static IP Address you configured appears in the output, you're done!
+
 ## References
 
 - <a href="https://www.debian.org/doc/manuals/debian-reference/ch05.en.html" target="_blank">Debian manual, network setup chapter</a>
+- <a href="https://www.server-world.info/en/note?os=Debian_12&p=initial_conf&f=3">ServerWorld instructions</a>
