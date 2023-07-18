@@ -73,10 +73,10 @@ sudo useradd -s /usr/sbin/nologin -r -M cloudflared
 Now let's create the config file with `sudo nano /etc/default/cloudflared`, paste the below into it:
 
 ```bash
-CLOUDFLARED_OPTS=--port 5053 --upstream https://1.1.1.1/dns-query --upstream https://1.0.0.1/dns-query
+CLOUDFLARED_OPTS=--port 5053 --upstream https://dns.quad9.net/dns-query
 ```
 
-This will use both of Cloudflare's DNS server, `1.1.1.1` and `1.0.0.1`. Note that you can use other upstream DNS providers, either instead of or in addition to Cloudflare's. For example Quad9 would be `--upstream https://9.9.9.9/dns-query`, Google would be `--upstream https://8.8.8.8/dns-query`, etc.
+The above will use <a href="https://quad9.net" target="_blank">Quad9</a> for DNS over HTTPS, but you can choose other ones if you prefer. Each public DNS resolver has a different backend for DNS over HTTPS, so look it up if you want to use them.Cloudflare's is `--upstream https://cloudflare-dns.com/dns-query`, while Google's is `--upstream https://dns.google/dns-query`.
 
 Next we need to update the permissions for the config file and the Cloudflared binary to allow access to the `cloudflared` user we created above:
 
@@ -144,7 +144,7 @@ sudo chown root:root /etc/cron.weekly/cloudflared-updater
 
 A little extra and totally optional thing. I semi-regularly SSH into the machine running Pi-Hole and Cloudflared, and made myself a simple MOTD script to show me that Cloudflared is up and running every time I log in.
 
-Create the script with the command `sudo nano /etc/updated-motd.d/55-cloudflared` (be sure another script isn't named `55-something` and change the number if necessary) and paste the below:
+Create the script with the command `sudo nano /etc/update-motd.d/55-cloudflared` (be sure another script isn't named `55-something` and change the number if necessary) and paste the below:
 
 ```bash
 #!/bin/bash
