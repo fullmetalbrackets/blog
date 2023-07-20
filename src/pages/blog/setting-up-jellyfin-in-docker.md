@@ -3,7 +3,7 @@ layout: "../../layouts/BlogPost.astro"
 title: "Setup self-hosted Jellyfin Media Server in Docker"
 description: "Though Plex is a very popular media server for self-hosting, some open source enthusiasts prefer to use an alternative since Plex Media Server is not open source. A nice, simpler and admittedly less pretty alternative is Jellyfin. This guide will show you how to run it in Docker container."
 pubDate: "October 18, 2022"
-updatedDate: "November 30, 2022"
+updatedDate: "July 19, 2023"
 tags:
   - Self-Hosting
   - Jellyfin
@@ -15,7 +15,8 @@ tags:
 1. [Installing Docker and Docker-Compose](#install)
 2. [Preparing and the Docker-Compose file](#compose)
 3. [Starting the container and configuring Jellyfin](#config)
-4. [References](#ref)
+4. [Theming the web UI with custom CSS](#custom)
+5. [References](#ref)
 
 <div id='install'/>
 
@@ -119,6 +120,19 @@ On the following page you can set up remote access to Jellyfin, meaning whether 
 <a href="/img/blog/jellyfin5.png" target="_blank"><img src="/img/blog/jellyfin5.png" alt="Screenshot of set up remote access in Jellyfin." /></a>
 
 Your movies should now appear within the _Movies_ section of the Jellyfin UI. Repeat the process to add other directories for your _TV_, _Music_, _Books_, _Photos_ and other libraries if desired. And you're done! You can now watch jellyfin right in the web UI.
+
+<div id='custom'/>
+
+## Theming the web UI with custom CSS
+
+If you'd like to change the web GUI's colors and vibe, you'll need the <a href="https://github.com/danieladov/jellyfin-plugin-skin-manager" target="_blank">Skin Manager</a> community plugin. (These affect the web UI accessed via the browser only.) As per the directions on their GitHub:
+
+1. In jellyfin, go to _Dashboard_ -> _Plugins_ -> _Repositories_ -> add and paste this link `https://raw.githubusercontent.com/danieladov/JellyfinPluginManifest/master/manifest.json`
+2. Go to Catalog and search for Skin Manager
+3. Click on it and install
+4. Restart Jellyfin
+
+Use `docker restart jellyfin` and once the Jellyfin container has restarted, go back into the GUI, go to _Dashboard_ -> _Plugins_ and click on _Skin Manager_. Use the dropdown menu to pick a skin (my favorite is <a href="https://github.com/prayag17/JellySkin" target="_blank">JellySkin</a>), tweak any options if it has them, and click _Set Skin_. If it doesn't switch to the new time right away, try a hard refresh with <kbd>Ctrl</kbd> + <kbd>F5</kbd>. Also, sometimes <a href="https://github.com/danieladov/jellyfin-plugin-skin-manager#using-with-reverse-proxy" target="_blank">Nginx Proxy Manager</a> the skins won't work due to CSP issues. (I haven't encountered this problem, but [I have my reverse proxy set up without HTTPS](reverse-proxy-nginx-pihole.md) and that may be why.)
 
 <div id='ref'/>
 
