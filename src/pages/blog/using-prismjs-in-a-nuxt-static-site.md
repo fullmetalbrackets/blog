@@ -1,5 +1,5 @@
 ---
-layout: "../../layouts/BlogPost.astro"
+layout: "@layouts/BlogPost.astro"
 title: Using Prism.js in a Nuxt static site
 description: I was having some issue getting this to work on a static (not SSR) site made with Nuxt, and although I read through a bunch of blog articles, most of them seemed to be missing some piece of information or other that made it not work for me. After mixing and matching some of the instructions, and combining the useful info with the official Nuxt documentation, I finally did all the necessary steps and got it to work. So here's a clear, succinct guide to using Prism.js in a Nuxt static site.
 pubDate: "September 17, 2021"
@@ -9,9 +9,16 @@ tags:
   - Prism JS
 ---
 
-<div class="note">
-  <b>ⓘ &nbsp;Note</b>
-  The information in this blog post may be outdated, since it was regarding Nuxt 2 and Content v1, which have now been replaced with Nuxt 3 and Content v2 respectively. Please keep in mind that the problem this blog post solves may not be present in Nuxt 3/Content v2, or may not work even if the problem is present!
+<div>
+  <div class="note">
+    <span>
+      <img src="/img/assets/note.svg" class="note-icon">
+      <b>Note</b>
+    </span>
+    <p>
+      The information in this blog post may be outdated, since it was regarding <em>Nuxt 2</em> and <em>Content v1</em>, which have now been <em>replaced with Nuxt 3 and Content v2</em> respectively. Please keep in mind that the problem this blog post solves may not be present in Nuxt 3/Content v2, or may not work even if the problem is present!
+    </p>
+  </div>
 </div>
 
 I was having some issue getting this to work on a static (not SSR) site made with Nuxt, and although I read through a bunch of blog articles, most of them seemed to be missing some piece of information or other that made it not work for me. After mixing and matching some of the instructions, and combining the useful info with the official Nuxt documentation, I finally did all the necessary steps and got it to work. So here's a clear, succinct guide to using Prism.js in a Nuxt static site.

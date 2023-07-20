@@ -9,9 +9,19 @@ tags:
   - Solid Explorer
 ---
 
-<div class="note">
-  <b>ⓘ &nbsp;Note</b>
-  I used Android 12 when making the guide, the steps to make this work may be different if you're using an older or newer version of Android. (But most likely will be the same or similar.)<br><br>Also, this guide assumes you already have an existing SMB share accessible in your home network. If you're not sure how to set that up, <a href="/blog/setup-a-samba-share-on-linux-via-command-line" target="_blank">see this blog post for instructions</a>.
+<div>
+  <div class="note">
+    <span>
+      <img src="/img/assets/note.svg" class="note-icon">
+      <b>Note</b>
+    </span>
+    <p>
+      I used <em>Android 12 Snow Cone</em> when making the guide, the steps to make this work may be different if you're using an older or newer version of Android. (But most likely will be the same or similar.)
+    </p>
+    <p>
+      Also, this guide assumes you already have an existing SMB share accessible in your home network. If you're not sure how to set that up, <a href="/blog/setup-a-samba-share-on-linux-via-command-line" target="_blank">see this blog post for instructions</a>.
+    </p>
+  </div>
 </div>
 
 ## Connect Solid Explorer to SMB share

@@ -1,5 +1,5 @@
 ---
-layout: "../../layouts/BlogPost.astro"
+layout: "@layouts/BlogPost.astro"
 title: Setting up and configuring Nuxt/Sitemap module in a Nuxt/Content blog
 description: The excellent Nuxt/Sitemap module can automatically generate a new sitemap.xml at each build, and you can set either static and/or dynamic routes in it's config. It can also auto-generate routes to your blog posts (or whatever other content) fetched and displayed in a slug file, so a new post shows up with the correct route in the sitemap when created. Here's a quick and simple guide for Nuxt/Sitemap to generate routes to your Nuxt/Content blog posts, whether static or SSR.
 pubDate: "October 8, 2021"
@@ -9,9 +9,16 @@ tags:
   - Web Development
 ---
 
-<div class="note">
-  <b>ⓘ &nbsp;Note</b>
-  The information in this blog post may be outdated, since it was regarding Nuxt 2, which has now been replaced with Nuxt 3. Please keep in mind that the problem this blog post solves may not be present in Nuxt 3, or may not work even if the problem is present!
+<div>
+  <div class="note">
+    <span>
+      <img src="/img/assets/note.svg" class="note-icon"> 
+      <b>Note</b>
+    </span>
+    <p>
+      The information in this blog post may be outdated, since it was regarding <em>Nuxt 2</em>, which has now been <em>replaced with Nuxt 3</em>. Please keep in mind that the problem this blog post solves may not be present in Nuxt 3, or may not work even if the problem is present!
+    </p>
+  </div>
 </div>
 
 The excellent Nuxt/Sitemap module can automatically generate a new sitemap.xml at each build, and you can set either static and/or dynamic routes in it's config. It can also auto-generate routes to your blog posts (or whatever other content) fetched and displayed in a slug file, so a new post shows up with the correct route in the sitemap when created. Here's a quick and simple guide for Nuxt/Sitemap to generate routes to your Nuxt/Content blog posts, whether static or SSR.

@@ -103,10 +103,16 @@ For the _Navidrome_ proxy host, use the following entries:
 Go to the URLs, don't use any ports (like `:32400`) or directories (like `/web`), and it should work as intended. If you have any issues, check the Nginx Proxy Manager container logs. You can do so from the OVM workbench by going to _Services_ in the sidebar, click _Compose_, then from the dropdown menu click _Containers_, then select the Nginx Proxy Manager container and click the _Logs_ button at the top. Alternately you can just SSH into OMV and use the command `docker logs nginx-proxy-manager`. (Or whatever `container_name` you used for it when creating the container.)
 
 <div class="note">
-  <b>ⓘ &nbsp;Note</b>
-  If you ever try to use a proxied URL and it doesn't work, give it a minute or two and try again. Nginx Proxy Manager runs a cronjob every hour on the hour where it renews SSL certificates and then reloads Nginx -- even if there's no SSL certificates installed or if any installed certificates are a long time away from expiring. If you check the container logs you'll see it.
-  
-  During this certificate renewal process your proxy hosts will not work until after Nginx reloads. Unfortunately there's no way to change this behavior.
+  <span>
+    <img src="/img/assets/note.svg" class="note-icon">
+    <b>Note</b>
+  </span>
+  <p>
+    If you ever try to use a proxied URL and it doesn't work, give it a minute or two and try again. Nginx Proxy Manager runs a cronjob every hour on the hour where it renews SSL certificates and then reloads Nginx -- even if there's no SSL certificates installed or if any installed certificates are a long time away from expiring. If you check the container logs you'll see it.
+  </p>
+  <p>
+    During this certificate renewal process your proxy hosts will not work until after Nginx reloads. Unfortunately there's no way to change this behavior.
+  </p>
 </div>
 
 <div id='ref' />

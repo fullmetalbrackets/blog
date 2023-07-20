@@ -9,9 +9,16 @@ tags:
   - Prism JS
 ---
 
-<div class="note">
-  <b>ⓘ &nbsp;Note</b>
-  The information in this blog post may be outdated, since it was regarding Nuxt 2 and Content v1, which have now been replaced with Nuxt 3 and Content v2 respectively. Please keep in mind that the problem this blog post solves may not be present in Nuxt 3/Content v2, or may not work even if the problem is present!
+<div>
+  <div class="note">
+    <span>
+      <img src="/img/assets/note.svg" class="note-icon">
+      <b>Note</b>
+    </span>
+    <p>
+      The information in this blog post may be outdated, since it was regarding <em>Nuxt 2</em> and <em>Content v1</em>, which have now been <em>replaced with Nuxt 3 and Content v2</em> respectively. Please keep in mind that the problem this blog post solves may not be present in Nuxt 3/Content v2, or may not work even if the problem is present!
+    </p>
+  </div>
 </div>
 
 PrismJS is great for making code blocks look pretty, it comes with a set of several themes out of the box, and there's also many more additional themes available as a separate package on NPM and Yarn. But what if none of those matches the color scheme of your website? With Nuxt you can easily use a custom CSS file to make your code blocks perfectly match the overall look of your site or blog. Here's how.

@@ -15,9 +15,19 @@ tags:
 2. [Install and configure Needrestart](#needrestart)
 3. [References](#ref)
 
-<div class="note">
-  <b>ⓘ &nbsp;Note</b>
-  This guide is specifically for Debian and Ubuntu. Sorry, but these are my main distros, and I have not yet used others enough to advise on how it would work there.
+<div>
+  <div class="note">
+    <span>
+      <img src="/img/assets/note.svg" class="note-icon">
+      <b>Note</b>
+    </span>
+    <p>
+      This guide is specifically for <em>Debian 11</em> and <em>Ubuntu 20.04</em>. They are the only two Linux distros I commonly use, so I am unaware of how to do this on, for example, Arch or Fedora.
+    </p>
+    <p>
+      Also, it is always possible (though unlikely) that newer versions of Debian and Ubuntu may change how unattended upgrades work in the future.
+    </p>
+  </div>
 </div>
 
 <div id='unattended'/>

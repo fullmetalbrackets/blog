@@ -43,8 +43,13 @@ Also, Netlify has some really cool features that solve problems for you, such as
 7. Netlify will begin the process of building your site, if there's no issues with the build then your site will deploy in a minute or two.
 
 <div class="note">
-  <b>ⓘ &nbsp;Note</b>
-  Be aware that by default ANY push to the Git repo will force a build & deploy of the site on Netlify, which can quickly rack up build minutes. If you prefer to deploy manually, be sure to off auto-deploys in the <i>Site Settings</i> on the Netlify dashboard.
+  <span>
+    <img src="/img/assets/note.svg" class="note-icon">
+    <b>Note</b>
+  </span>
+  <p>
+    Be aware that by default ANY push to the <code>main</code>/<code>master</code> branch of the Git repo will force a build & deploy of the site on Netlify, which can quickly rack up build minutes. If you prefer to deploy manually, be sure to off auto-deploys in the <em>Site Settings</em> on the Netlify dashboard.
+  </p>
 </div>
 
 <div id='vercel'/>
@@ -75,7 +80,7 @@ You can skip the third-party providers and host your site right on GitHub, thoug
 2. Name the new repository _username.github.io_ where **username** is your GitHub username, and click **Create Repository**.
 3. You'll have an empty repo now, but GitHub Pages is already set up for it automatically.
 4. Now either import another repository or push a commit from a local repo.
-5. If all goes well (and your site is compatible with GitHub Pages by default, no settings to configure/customize here, except the branch to deploy from) then your site will show up shortly at _https://username.github.io_
+5. If all goes well (and your site is compatible with GitHub Pages by default, no settings to configure/customize here, except the branch to deploy from) then your site will show up shortly at `https://username.github.io`
 
 <div id='cloudflare'/>
 
@@ -104,17 +109,35 @@ Possibly the simplest hosting solution to ever exist. Literally one command in t
 2. `npx surge` - If using Surge.sh for the first time (or from a new machine), it will prompt you for an email and password right in the command line, and log you in or create a new account if one does not exist matching the email address you entered. When logged in you'll be prompted to specify the full path to the directory to upload (it usually defaults to your present working directory), then a provides a randomly generated sub-domain of your choice (though you can specify your own sub-domain), then hit <kbd>⏎Enter</kbd> and your project gets uploaded.
 
 <div class="alert">
-  <b>&#x26a0;&#xfe0f; &nbsp;Important!</b>
-  If your site is made with a static site generator like Astro or Nuxt, make sure to use `npm build` or `yarn build` first to build the static assets, then use `npx surge dist` to serve the static site.
+  <span>
+    <img src="/img/assets/alert.svg" class="alert-icon"> <b>Important!</b>
+  </span>
+  <p>
+    If your site is made with a static site generator like <em>Astro</em> or <em>Nuxt</em>, make sure to use <code>npm build</code> or <code>yarn build</code> first to build the static assets, then use <code>npx surge dist</code> to serve the static site.
+  </p>
 </div>
 
 That's it! Surge.sh has a crazy fast build time and instant availability on their CDN. If you go to the URL you should see your site, it will literally take only seconds to be online.
 
-> _Tips:_
->
-> - Pass the `--domain` option prior to the URL to skip the sub-domain prompt, e.g. `npx surge --domain http://example.surge.sh`<br><br>
-> - If you specifically include _https://_ in your URL, Surge.sh will provision an SSL certificate for the site and auto-redirect HTTP traffic to HTTPS, so that going to `http://example.surge.sh` will instead take you to `https://example.surge.sh`<br><br>
-> - If you want to teardown your Surge.sh site, so it's no longer available at the URL, simply use the command `npx surge teardown example.surge.sh`
+<div class="success">
+  <span>
+    <img src="/img/assets/success.svg" class="success-icon">
+    <b>Surge.sh Tips</b>
+  </span>
+  <p>
+    <ul>
+      <li>
+        Pass the <code>--domain</code> option prior to the URL to skip the sub-domain prompt, e.g. <code>npx surge --domain http://example.surge.sh</code>
+      </li>
+      <li>
+        If you specifically include <code>https://</code> in your URL, Surge.sh will provision an SSL certificate for the site and auto-redirect HTTP traffic to HTTPS, so that going to <code>http://example.surge.sh</code> will instead take you to <code>https://example.surge.sh</code>
+      </li>
+      <li>
+        If you want to teardown your Surge.sh site, so it's no longer available at the URL, simply use the command <code>npx surge teardown example.surge.sh</code>
+      </li>
+    </ul>
+  </p>
+</div>
 
 <div id='ref'/>
 

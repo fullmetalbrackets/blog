@@ -71,7 +71,7 @@ If there's no errors, the output should look something like this:
 
 If you get an error, try running `systemctl restart NetworkManager.service` or `systemctl restart network-manager` instead. If you still get an error, you may need to edit (or if it doesn't exist, create) the file at `/etc/resolv.conf`. Add your DNS resolvers like this:
 
-```conf
+```bash
 nameserver 1.1.1.1
 nameserver 1.0.0.1
 ```

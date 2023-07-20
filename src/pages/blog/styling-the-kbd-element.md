@@ -14,9 +14,16 @@ tags:
 2. [The code!](#code)
 3. [Reference](#ref)
 
-<div class="note">
-  <b>Attribution:</b>
-  I want to start this off by saying <i>this is not my code</i>, but was taken from <a href="http://dylanatsmith.com/wrote/styling-the-kbd-element" target="_blank">Dylan Smith</a> from his own blog post on the subject, and I simply made a few modifications for my site. I encourage you to go read his post since mine is terse for my own purposes.
+<div>
+  <div class="success">
+    <span>
+      <img src="/img/assets/success.svg" class="success-icon">
+      <b>Attribution</b>
+    </span>
+    <p>
+      I want to start this off by saying <i>this is not my code</i>, but was taken from <a href="http://dylanatsmith.com/wrote/styling-the-kbd-element" target="_blank">Dylan Smith</a> from his own blog post on the subject, and I simply made a few modifications for my site. I encourage you to go read his post since mine is terse for my own purposes.
+    </p>
+  </div>
 </div>
 
 <div id='kbd'/>

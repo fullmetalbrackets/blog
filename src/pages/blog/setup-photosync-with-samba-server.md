@@ -17,8 +17,16 @@ tags:
 3. [Transferring photos to the Samba share](#transfer)
 4. [References](#ref)
 
-<div class="note">
-  <b>ⓘ &nbsp;Note</b>Though the PhotoSync app is available on iPhone as well as Android, I have an Android phone and so have only done this on Android. It's safe to assume configuring PhotoSync to connect to your NAS will be similar, if not exactly the same. Feel free to leave a comment below confirming whether or not it works on iPhone!
+<div>
+  <div class="note">
+    <span>
+      <img src="/img/assets/note.svg" class="note-icon">
+      <b>Note</b>
+    </span>
+    <p>
+      Though the <em>PhotoSync</em> app is available on iPhone as well as Android, I have an Android phone and so <em>I have only done this on Android</em>. It's safe to assume configuring PhotoSync on iPhone to connect to your NAS will be similar, if not exactly the same. Feel free to leave a comment below confirming whether or not it works on iPhone!
+    </p>
+  </div>
 </div>
 
 <div id='pre'/>
@@ -89,7 +97,15 @@ Tap on the directory to transfer your photos into (keep in mind _Destination Fol
 
 <a href="/img/blog/photosync9.jpg" target="_blank"><img src="/img/blog/photosync9.jpg" alt="Screenshot of Photosync transfering photos"></a>
 
-All done!
+<div class="success">
+  <span>
+    <img src="/img/assets/success.svg" class="success-icon">
+    <b>Success!</b>
+  </span>
+  <p>
+    <em>All done!</em> Now you can manually sync new photos from your phone to your NAS at any time by opening the app and repeating the last set of instructions above. <em>If you want background auto-transfers, you'll need the Auto-Transfer Add-On</em>. 
+  </p>
+</div>
 
 <div id='ref'/>
 
