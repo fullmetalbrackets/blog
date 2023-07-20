@@ -17,9 +17,16 @@ tags:
 4. [Running the playbook](#run)
 5. [References](#ref)
 
-<div class="note">
-  <b>ⓘ &nbsp;Note</b>
-  This is not a comprehensive tutorial for Ansible, but simple a terse quick guide of my personal use case for Ansible in my home lab. For a deeper dive, I strongly suggest <a href="https://www.learnlinux.tv/getting-started-with-ansible/" target="_blank" rel="noopener noreferrer">Learn Linux TV series of Ansible tutorials</a> which is how I first learned to use it myself.
+<div>
+  <div class="note">
+    <span>
+      <img src="/img/assets/note.svg" class="note-icon">
+      <b>Note</b>
+    </span>
+    <p>
+      This is not a comprehensive tutorial for Ansible, but simple a terse quick guide of my personal use case for Ansible in my home lab. For a deeper dive, I strongly suggest <a href="https://www.learnlinux.tv/getting-started-with-ansible/" target="_blank" rel="noopener noreferrer">Learn Linux TV series of Ansible tutorials</a> which is how I first learned to use it myself.
+    </p>
+  </div>
 </div>
 
 <div id='install'/>
