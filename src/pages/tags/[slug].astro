@@ -69,14 +69,17 @@ const posts = (await Astro.glob('../blog/*.{md,mdx}')).sort(
 			opacity: 0;
 		}
 		a button {
-			background-color: var(--link);
+			background-color: var(--tags);
 			color: #000;
 			border-radius: 0.25em;
 			cursor: pointer;
 			font-weight: 600;
-			padding: 4px 8px;
+			padding: 6px 10px;
 			text-decoration: none;
 			text-overflow: ellipsis;
+			-webkit-transition: all .10s ease-out;
+			-moz-transition: all .10s ease-out;
+			-o-transition: all .10s ease-out;
 			transition: all .10s ease-out;
 			margin: 0 8px 8px 0;
 		}
@@ -90,12 +93,8 @@ const posts = (await Astro.glob('../blog/*.{md,mdx}')).sort(
 			}
 		}
 		@media (hover: none) {
-		a:hover button {
-			background-color: var(--hover);
-		}
-		@-moz-document url-prefix() {
-			a:hover h1 {
-				color: var(--menu);
+			a:hover button {
+				background-color: var(--tags);
 			}
 		}
 		@media screen and (min-width: 200px) and (max-width: 650px) {

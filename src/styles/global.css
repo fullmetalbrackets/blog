@@ -32,18 +32,22 @@
 :root, html {
   --main: rgb(255, 255, 255);
   --text: rgb(32, 33, 36);
-  --primary: rgb(37, 150, 190);
+  --primary: rgb(0, 158, 170);
   --secondary: rgb(95, 193, 232);
   --accent: rgb(182, 193, 210);
   --link: rgb(255, 153, 0);
   --hover: rgb(242, 207, 43);
-  --emphasis: rgb(220, 40, 0);
+  --tags: rgb(242, 207, 43);
+  --emphasis: rgb(0, 85, 205);
   --name: rgb(0, 175, 175);
   --date: rgb(0, 127, 128);
   --menu: rgb(222, 122, 0);
   --form: black;
-  --blockquote: rgb(255, 255, 255);
-  --code: hsl(220, 13%, 18%);
+  --alert: rgb(220, 59, 0);
+  --note: rgb(242, 207, 43);
+  --success: rgb(0, 170, 0);
+  --code-bg: hsl(220, 13%, 18%);
+  --code-text: hsl(220, 14%, 71%);
   --svg: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%) contrast(98%);
   --ext: invert(88%) sepia(69%) saturate(7500%) hue-rotate(1deg) brightness(104%) contrast(104%);
   --search: invert(57%) sepia(86%) saturate(3921%) hue-rotate(13deg) brightness(99%) contrast(100%);
@@ -56,17 +60,17 @@
 [data-theme="light"] {
   --main: rgb(255, 255, 255);
   --text: rgb(32, 33, 36);
-  --primary: rgb(0, 158, 170);
-  --secondary: rgb(95, 193, 232);
   --accent: rgb(182, 193, 210);
   --link: rgb(255, 153, 0);
   --hover: rgb(242, 207, 43);
-  --emphasis: rgb(220, 40, 0);
+  --tags: rgb(242, 207, 43);
+  --emphasis: rgb(0, 85, 205);
   --name: rgb(0, 158, 170);
   --date: rgb(122, 122, 122);
   --menu: rgb(222, 122, 0);
   --form: rgb(0, 0, 0);
   --blockquote: rgb(255, 255, 255);
+  --code-text: hsl(220, 14%, 71%);
   --pagefind-ui-text: rgb(32, 33, 36);
   --pagefind-ui-background: rgb(182, 193, 210);
   --svg: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%) contrast(98%);
@@ -76,17 +80,17 @@
 [data-theme="dark"] {
   --main: rgb(32, 33, 36);
   --text: rgb(164, 174, 188);
-  --primary: rgb(0, 158, 170);
-  --secondary: rgb(148, 163, 184);
   --accent: rgb(51, 65, 85);
-  --link: rgb(242, 207, 43);
-  --hover: rgb(222, 122, 0);
-  --emphasis: rgb(220, 59, 0);
+  --link: rgb(222, 122, 0);
+  --hover: rgb(242, 207, 43);
+  --tags: rgb(242, 207, 43);
+  --emphasis: rgb(255, 255, 255);
   --name: rgb(0, 158, 170);
   --date: rgb(250, 250, 250);
   --menu: rgb(222, 122, 0);
   --form: rgb(250, 250, 250);
   --blockquote: rgb(25, 22, 22);
+  --code-text: hsl(0, 0%, 100%);
   --pagefind-ui-text: rgb(164, 174, 188);
   --pagefind-ui-background: rgb(51, 65, 85);
   --svg: invert(93%) sepia(78%) saturate(2834%) hue-rotate(213deg) brightness(148%) contrast(96%);
@@ -265,8 +269,8 @@ img {
 code {
 	padding: 1.5px 4px;
 	font-family: 'JetBrainsMono', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
-	background-color: var(--code);
-	color: hsl(33, 100%, 44%);
+	background-color: var(--code-bg);
+	color: var(--code-text);
 	border-radius: 0.25em;
   font-size: 18px;
   white-space: pre;
@@ -301,30 +305,74 @@ blockquote p {
 blockquote ul {
   margin-bottom: 0;
 }
-.alert, .note {
+div .alert {
   background-color: var(--blockquote);
+  border: 2px solid var(--alert);
+  line-height: 1.4;
 	padding: 1em;
 	margin: 3em auto;
   border-radius: 0.5em;
   width: 95%;
 }
-.alert {
-  border: 1px solid red;
+div .success {
+  background-color: var(--blockquote);
+  border: 2px solid var(--success);
   line-height: 1.4;
+	padding: 1em;
+	margin: 3em auto;
+  border-radius: 0.5em;
+  width: 95%;
+}
+div .note {
+  background-color: var(--blockquote);
+  border: 2px solid var(--note);
+  line-height: 1.4;
+	padding: 1em;
+	margin: 3em auto;
+  border-radius: 0.5em;
+  width: 95%;
+}
+div > .note > span {
+  display: inline-flex;
+  justify-content: left;
+}
+div > .alert > span {
+  display: inline-flex;
+  justify-content: left;
+}
+div > .success > span {
+  display: inline-flex;
+  justify-content: left;
 }
 .alert b:first-of-type  {
-  display: block;
-  color: red;
-  margin-bottom: 1em;
-}
-.note {
-  border: 1px solid #ffc701;
-  line-height: 1.4;
+  color: var(--alert);
 }
 .note b:first-of-type {
-  display: block;
-  color: #ffc701;
-  margin-bottom: 1em;
+  color: var(--note);
+}
+.success b:first-of-type {
+  color: var(--success);
+}
+.note-icon {
+  filter: brightness(0) saturate(100%) invert(80%) sepia(30%) saturate(1078%) hue-rotate(359deg) brightness(103%) contrast(90%);
+  width: 20px;
+  height: auto;
+  margin: 0 1rem 0 0;
+  padding: 0;
+}
+.alert-icon {
+  filter: brightness(0) saturate(100%) invert(18%) sepia(51%) saturate(7498%) hue-rotate(16deg) brightness(96%) contrast(101%);
+  width: 20px;
+  height: auto;
+  margin: 0 1rem 0 0;
+  padding: 0;
+}
+.success-icon {
+  filter: brightness(0) saturate(100%) invert(40%) sepia(94%) saturate(2895%) hue-rotate(96deg) brightness(99%) contrast(104%);
+  width: 20px;
+  height: auto;
+  margin: 0 1rem 0 0;
+  padding: 0;
 }
 li::marker {
 	color: var(--name);
@@ -345,7 +393,7 @@ li::marker {
   filter: var(--ext);
 }
 .blog-tag {
-  background-color: var(--link);
+  background-color: var(--tags);
   color: #000;
   border-radius: 0.25em;
   cursor: pointer;
@@ -353,13 +401,16 @@ li::marker {
   padding: 4px 8px;
   text-decoration: none;
   text-overflow: ellipsis;
+  -webkit-transition: all .10s ease-out;
+  -moz-transition: all .10s ease-out;
+  -o-transition: all .10s ease-out;
   transition: all .10s ease-out;
   margin: 0 8px 8px 0;
 }
 @media (hover: hover) {
   .blog-tag:hover {
-    box-shadow: 4px 4px 0 #000;
-    transform: translate(-4px,-4px);
+    box-shadow: -4px -4px 0 #000;
+    transform: translate(4px,4px);
   }
   .blog-tag:focus-visible{
     outline-offset: 1px;
