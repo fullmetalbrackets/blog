@@ -1,8 +1,8 @@
  code[class*="language-"],
  pre[class*="language-"] {
-   background: var(--code);
+   background: var(--code-bg);
    font-size: 20px;
-   color: hsl(220, 14%, 71%);
+   color: var(--code-text);
    text-shadow: 0 1px rgba(0, 0, 0, 0.3);
    font-family: 'JetBrainsMono', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
    direction: ltr;
@@ -80,11 +80,11 @@
  .token.constant,
  .token.number,
  .token.atrule {
-   color: rgb(222, 122, 0);
+   color: var(--menu);
  }
  
  .token.keyword {
-   color: rgb(255, 165, 0);
+   color: var(--hover);
  }
  
  .token.property,
@@ -92,7 +92,7 @@
  .token.symbol,
  .token.deleted,
  .token.important {
-   color: rgb(242, 207, 43);
+   color: var(--hover);
  }
  
  .token.selector,
@@ -103,17 +103,17 @@
  .token.regex,
  .token.attr-value,
  .token.attr-value > .token.punctuation {
-   color: rgb(37, 150, 190);
+   color: var(--name);
  }
  
  .token.variable,
  .token.operator,
  .token.function {
-   color: rgb(37, 150, 190);
+   color: var(--name);
  }
  
  .token.url {
-   color: rgb(0, 175, 175);
+   color: var(--success);
  }
  
  /* HTML overrides */
@@ -124,7 +124,7 @@
  
  /* CSS overrides */
  .language-css .token.selector {
-   color: rgb(242, 207, 43);
+   color: var(--hover);
  }
  
  .language-css .token.property {
@@ -133,25 +133,25 @@
  
  .language-css .token.function,
  .language-css .token.url > .token.function {
-   color: rgb(0, 175, 175);
+   color: var(--success);
  }
  
  .language-css .token.url > .token.string.url {
-   color: rgb(37, 150, 190);
+   color: var(--name);
  }
  
  .language-css .token.important,
  .language-css .token.atrule .token.rule {
-   color: rgb(255, 165, 0);
+   color: var(--hover);
  }
  
  /* JS overrides */
  .language-javascript .token.operator {
-   color: rgb(255, 165, 0);
+   color: var(--hover);
  }
  
  .language-javascript .token.template-string > .token.interpolation > .token.interpolation-punctuation.punctuation {
-   color: hsl(5, 48%, 51%);
+   color: var(--link);
  }
  
  /* JSON overrides */
@@ -160,7 +160,7 @@
  }
  
  .language-json .token.null.keyword {
-   color: rgb(222, 122, 0);
+   color: var(--menu);
  }
  
  /* MD overrides */
@@ -171,12 +171,12 @@
  }
  
  .language-markdown .token.url > .token.content {
-   color: rgb(37, 150, 190);
+   color: var(--name);
  }
  
  .language-markdown .token.url > .token.url,
  .language-markdown .token.url-reference.url {
-   color: rgb(0, 175, 175);
+   color: var(--success);
  }
  
  .language-markdown .token.blockquote.punctuation,
@@ -186,22 +186,22 @@
  }
  
  .language-markdown .token.code-snippet {
-   color: rgb(37, 150, 190);
+   color: var(--name);
  }
  
  .language-markdown .token.bold .token.content {
-   color: rgb(222, 122, 0);
+   color: var(--menu);
  }
  
  .language-markdown .token.italic .token.content {
-   color: rgb(255, 165, 0);
+   color: var(--hover);
  }
  
  .language-markdown .token.strike .token.content,
  .language-markdown .token.strike .token.punctuation,
  .language-markdown .token.list.punctuation,
  .language-markdown .token.title.important > .token.punctuation {
-   color: rgb(242, 207, 43);
+   color: var(--hover);
  }
  
  /* General */
@@ -300,25 +300,25 @@
  .rainbow-braces .token.token.punctuation.brace-level-1,
  .rainbow-braces .token.token.punctuation.brace-level-5,
  .rainbow-braces .token.token.punctuation.brace-level-9 {
-   color: rgb(242, 207, 43);
+   color: var(--hover);
  }
  
  .rainbow-braces .token.token.punctuation.brace-level-2,
  .rainbow-braces .token.token.punctuation.brace-level-6,
  .rainbow-braces .token.token.punctuation.brace-level-10 {
-   color: rgb(37, 150, 190);
+   color: var(--name);
  }
  
  .rainbow-braces .token.token.punctuation.brace-level-3,
  .rainbow-braces .token.token.punctuation.brace-level-7,
  .rainbow-braces .token.token.punctuation.brace-level-11 {
-   color: rgb(37, 150, 190);
+   color: var(--name);
  }
  
  .rainbow-braces .token.token.punctuation.brace-level-4,
  .rainbow-braces .token.token.punctuation.brace-level-8,
  .rainbow-braces .token.token.punctuation.brace-level-12 {
-   color: rgb(255, 165, 0);
+   color: var(--hover);
  }
  
  /* Diff Highlight plugin overrides */
