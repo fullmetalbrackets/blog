@@ -344,6 +344,19 @@ div > .success > span {
   display: inline-flex;
   justify-content: left;
 }
+div > .note > ul > li, div > .alert > ul > li, div > .success > ul > li {
+  line-height: 1.5;
+  margin-bottom: 1em;
+}
+div > .note > ul > li::marker {
+  color: var(--note);
+}
+div > .alert > ul > li::marker {
+  color: var(--alert);
+}
+div > .success > ul > li::marker {
+  color: var(--success);
+}
 .alert b:first-of-type  {
   color: var(--alert);
 }
