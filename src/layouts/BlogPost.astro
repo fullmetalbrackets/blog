@@ -54,9 +54,6 @@ const allTagsData = generateTagsData(tags);
 			color: var(--text);
 			margin-right: 1em;
 		}
-		aside > a, a:active, a:visited, a:hover, a:focus {
-			color: #000;
-		}
 		.radio {
 			margin: 0.5em 0.5em 0.5em 0.25em;
 			width: 1em;
@@ -76,16 +73,8 @@ const allTagsData = generateTagsData(tags);
 			background-color: var(--name);
 			border-width: 0.1em;
 		}
-		.top {
-			font-family: 'M PLUS Rounded 1c Med', 'Wotfard', sans-serif;
-			margin-top: 1em;
-		}
 		.utterances {
 			margin: 2.5em auto;
-		}
-		.submit {
-			margin-top: 0.25em;
-			background: var(--name);
 		}
 		@media screen and (min-width: 200px) and (max-width: 650px) {
 			article {
@@ -122,7 +111,7 @@ const allTagsData = generateTagsData(tags);
 		<h1 class="title">{title}</h1>
 		<ul class="tags">
 			{allTagsData.map(tags => (
-				<a href={`/tags/${tags.slug}`}><li class="button blog-tag">{tags.name}</li></a>
+				<a href={`/tags/${tags.slug}`}><li class="button">{tags.name}</li></a>
 			))}
 		</ul>
 		<hr>
@@ -141,11 +130,11 @@ const allTagsData = generateTagsData(tags);
 			<label for="helpful">Yes</label>
 			<input class="radio" type="radio" id="not-helpful" name="feedback" value="Not Helpful">
 			<label for="not-helpful" class="labels">No</label>
-			<button class="button blog-tag submit" type="submit" value="Submit">Submit</button>
+			<button class="button submit" type="submit" value="Submit">Submit</button>
 			<input type="hidden" id="postId" name="postId" value={title} />
 			</form>
 		</span>
-		<a href="#top" class="top button blog-tag">Back to Top &uarr;</a>
+		<a href="#top" class="top button">Back to Top &uarr;</a>
 	</aside>
 	<div class="utterances">
 		<script src="https://utteranc.es/client.js"
