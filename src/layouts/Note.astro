@@ -1,0 +1,145 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+
+export interface Props {
+	content: {
+		title: string;
+		description: string;
+		pubDate?: string;
+		updatedDate?: string;
+	};
+}
+
+const {
+	content: { title, description, pubDate, updatedDate },
+} = Astro.props;
+---
+<BaseLayout title={title} description={description}>
+	<head>
+		<link rel="stylesheet" href="/prism.css">
+	</head>
+	<style>
+		.back-to-notes {
+			justify-content: left;
+			margin: 4.15em auto 0 auto;
+		}
+		hr {
+			margin: 1.5em auto;
+		}
+		.title {
+			margin-bottom: 1em;
+		}
+		.tags {
+			display: flex;
+			flex-wrap: wrap;
+			list-style-type: none;
+			margin: 0 auto;
+			margin-top: 10px;
+			padding: 0;
+		}
+		.note-aside {
+			display: flex;
+			align-items: center;
+			justify-content: start;
+			cursor: pointer;
+			margin: 2em auto 0 auto;
+		}
+		form {
+			display: flex;
+			align-items: center;
+		}
+		label {
+			color: var(--text);
+			margin-right: 1em;
+		}
+		.radio {
+			margin: 0.5em 0.5em 0.5em 0.25em;
+			width: 1em;
+			height: 1em;
+			appearance: none;
+			-webkit-appearance: none;
+			border: 1px solid var(--accent);
+			background-color: var(--accent);
+			border-radius: 50%;
+		}
+		.radio:focus, .radio:focus-visible {
+			box-shadow: none;
+			outline-offset: 0;
+		}
+		.radio:checked {
+			box-shadow: 0 0 0 1px var(--name);
+			background-color: var(--name);
+			border-width: 0.1em;
+		}
+		.top {
+			font-family: 'M PLUS Rounded 1c Med', 'Wotfard', sans-serif;
+			margin-top: 1em;
+		}
+		.utterances {
+			margin: 2.5em auto;
+		}
+		@media screen and (min-width: 200px) and (max-width: 650px) {
+			.title {
+				padding-top: 0.15em;
+			}
+			aside {
+				font-size: 1rem;
+			}
+			label {
+				margin-right: 0.25em;
+			}
+			button {
+				margin-left: 0.25em;
+			}
+			.radio {
+				margin: 0 0.25em;
+			}
+			.submit {
+				margin-left: 0.5em;
+			}
+			.top {
+				width: 5em;
+				text-align: center;
+			}
+		}
+	</style>
+
+<aside class="back-to-notes">
+	<a href="/notes" class="button">&larr; Back to Notes</a>
+</aside>
+	<hr class="note-line">
+<article data-pagefind-body>
+		{pubDate && <time>{pubDate}</time>}
+		{updatedDate && <div>Updated on <time>{updatedDate}</time></div>}
+		<h1 class="title">{title}</h1>
+		<slot>
+			<p>
+				If you're seeing this, something went wrong! Please try <em>reloading the page</em>.
+			</p>
+		</slot>
+	</article>
+	<hr>
+	<aside class="note-aside">
+		<span>Was this note helpful? 
+			<form name="feedback" method="POST" action="/feedback" data-netlify="true" netlify-honeypot="bot-field">
+			<input value="feedback" name="feedback" type="hidden" />
+			<input class="radio" type="radio" id="helpful" name="feedback" value="Helpful" required>
+			<label for="helpful">Yes</label>
+			<input class="radio" type="radio" id="not-helpful" name="feedback" value="Not Helpful">
+			<label for="not-helpful" class="labels">No</label>
+			<button class="button note-button submit" type="submit" value="Submit">Submit</button>
+			<input type="hidden" id="postId" name="postId" value={title} />
+			</form>
+		</span>
+	</aside>
+	<div class="utterances">
+		<script src="https://utteranc.es/client.js"
+			repo="fullmetalbrackets/blog"
+			issue-term="title"
+			label="comment"
+			theme="preferred-color-scheme"
+			crossorigin="anonymous"
+			async>
+		</script>
+	</div>
+</BaseLayout>

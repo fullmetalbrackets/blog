@@ -1,0 +1,62 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+
+const notes = (await Astro.glob('./*.{md,mdx}')).sort(
+	(a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
+);
+
+const title = 'Notes'
+const desc = 'A list of short notes.'
+---
+
+<style scoped>
+.notes-li {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat();
+  margin: 0 auto;
+  padding: 0 auto;
+  text-indent: -1.5em;
+}
+.notes-dates {
+  width: 6em;
+}
+.notes-title {
+  text-align: left;
+  width: 40em;
+}
+.notes-bottom {
+  margin-top: clamp(4em, 20em, 24em);
+}
+</style>
+
+<BaseLayout title={title} description={desc}>
+	<section>
+		<h1>{title}</h1>
+		<hr>
+		{notes.map((note) => (
+        <ul>
+          <li class="notes-li">
+            <div class="notes-dates">
+              <time datetime={note.frontmatter.pubDate}>
+                {new Date(note.frontmatter.pubDate).toLocaleDateString('en-us', {
+                  year: 'numeric',
+                  month: 'numeric',
+                  day: 'numeric',
+                })}
+              </time>
+            </div>
+            <div class="notes-title">
+              <a href={note.url}>
+                <span>{note.frontmatter.title}</span>
+              </a>
+            </div>
+          </li>
+        </ul>
+		))}
+		<hr class="notes-bottom">
+		<aside>
+			<!-- <a href="#top" class="top button notes-tag">Back to Top &uarr;</a> -->
+		</aside>
+		</section>
+</BaseLayout>
