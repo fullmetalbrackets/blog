@@ -284,5 +284,23 @@ for = "/*"
   status = 301
   force = true
 
+[[redirects]]
+  from = "https://arieldiaz.codes/blog/how-to-autologin-ubuntu-on-reboot"
+  to = "https://arieldiaz.codes/notes/autologin-ubuntu-on-reboot"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://arieldiaz.codes/blog/how-to-use-sudo-without-a-password"
+  to = "https://arieldiaz.codes/notes/sudo-without-password"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://arieldiaz.codes/blog/styling-the-kbd-element"
+  to = "https://arieldiaz.codes/notes/styling-the-kbd-element"
+  status = 301
+  force = true
+
 # [context.deploy-preview]
 #   ignore = "git log -1 --pretty=%B | grep dependabot"
