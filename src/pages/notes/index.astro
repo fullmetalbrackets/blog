@@ -12,21 +12,31 @@ const desc = 'A list of short notes.'
 <style scoped>
 .notes-li {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 4fr;
   grid-template-rows: repeat();
-  margin: 0 auto;
+  gap: 10px;
+  margin: 0 auto 2em -2em;
   padding: 0 auto;
-  text-indent: -1.5em;
 }
-.notes-dates {
-  width: 6em;
+.notes-dates {  
+  margin: 0;
+  padding: 0;
+  width: 5.75em;
+  text-align: right;
 }
 .notes-title {
+  width: auto;
   text-align: left;
-  width: 40em;
 }
 .notes-bottom {
   margin-top: clamp(4em, 20em, 24em);
+}
+@media screen and (min-width: 200px) and (max-width: 667px) {
+  .notes-dates {
+    padding-top: 0.1em;
+    font-size: 0.75em;
+    width: 5.75em;
+  }
 }
 </style>
 
