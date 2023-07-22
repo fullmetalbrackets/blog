@@ -9,11 +9,11 @@
 ## ⌨️ Latest blog posts
 
 <!-- BLOG-POST-LIST:START -->
+- [Setup a Cloudflare Tunnel to securely access self-hosted apps with via domain from outside the home network](https://arieldiaz.codes/blog/setup-cloudflare-tunnel-to-access-self-hosted-apps/)
 - [Reverse proxy OpenMediaVault, Plex and Navidrome with Nginx Proxy Manager and Pi-Hole](https://arieldiaz.codes/blog/reverse-proxy-nginx-pihole/)
-- [Using DNS over HTTPS with Pi-Hole](https://arieldiaz.codes/blog/using-dns-over-https-with-pihole/)
+- [Using DNS over HTTPS with Pi-Hole and Cloudflared](https://arieldiaz.codes/blog/using-dns-over-https-with-pihole/)
 - [How to set up PhotoSync app to upload photos from your phone to your home server via Samba](https://arieldiaz.codes/blog/setup-photosync-with-samba-server/)
 - [Create a public Samba share accessible without a login](https://arieldiaz.codes/blog/create-public-samba-share-without-login/)
-- [Install the latest version of NodeJS in Debian and Ubuntu](https://arieldiaz.codes/blog/install-nodejs-ubuntu-debian/)
 <!-- BLOG-POST-LIST:END -->
 
 <br>
