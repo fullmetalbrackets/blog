@@ -69,7 +69,15 @@ Use this minimal `smb.conf`:
    force directory mode = 0777
 ```
 
-Please note, the junk before `[public]` is optional, I found <a href="https://eggplant.pro/blog/faster-samba-smb-cifs-share-performance" target="_blank" rel="noopener noreferrer">this blog post</a> about it and I have definitely noticed it makes transfer speeds a little faster.
+<div class="note">
+  <span>
+    <img src="/img/assets/note.svg" class="note-icon">
+    <b>Note</b>
+  </span>
+  <p>
+    The parameters before <code>[public]</code> is optional, I found <a href="https://eggplant.pro/blog/faster-samba-smb-cifs-share-performance" target="_blank" rel="noopener noreferrer">this blog post</a> about it and I have definitely noticed it makes transfer speeds a little faster.
+  </p>
+</div>
 
 Next check that the syntax of the config file is valid:
 

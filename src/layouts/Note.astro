@@ -1,6 +1,5 @@
 ---
-import BaseLayout from "./BaseLayout.astro";
-import { generateTagsData } from "@utils/tags";
+import BaseLayout from "@layouts/BaseLayout.astro";
 
 export interface Props {
 	content: {
@@ -8,22 +7,21 @@ export interface Props {
 		description: string;
 		pubDate?: string;
 		updatedDate?: string;
-		tags?: string;
 	};
 }
 
 const {
-	content: { title, description, pubDate, updatedDate, tags },
+	content: { title, description, pubDate, updatedDate },
 } = Astro.props;
-const allTagsData = generateTagsData(tags);
 ---
 <BaseLayout title={title} description={description}>
 	<head>
 		<link rel="stylesheet" href="/prism.css">
 	</head>
 	<style>
-		article {
-			margin-top: 4em;
+		.back-to-notes {
+			justify-content: left;
+			margin: 4.15em auto 0 auto;
 		}
 		hr {
 			margin: 1.5em auto;
@@ -39,10 +37,10 @@ const allTagsData = generateTagsData(tags);
 			margin-top: 10px;
 			padding: 0;
 		}
-		aside {
+		.note-aside {
 			display: flex;
 			align-items: center;
-			justify-content: space-between;
+			justify-content: start;
 			cursor: pointer;
 			margin: 2em auto 0 auto;
 		}
@@ -73,13 +71,14 @@ const allTagsData = generateTagsData(tags);
 			background-color: var(--name);
 			border-width: 0.1em;
 		}
+		.top {
+			font-family: 'M PLUS Rounded 1c Med', 'Wotfard', sans-serif;
+			margin-top: 1em;
+		}
 		.utterances {
 			margin: 2.5em auto;
 		}
 		@media screen and (min-width: 200px) and (max-width: 650px) {
-			article {
-				margin-top: 4em;
-			}
 			.title {
 				padding-top: 0.15em;
 			}
@@ -87,16 +86,13 @@ const allTagsData = generateTagsData(tags);
 				font-size: 1rem;
 			}
 			label {
-				margin-right: 0.25em;
+				margin-right: 0.75em;
 			}
 			button {
 				margin-left: 0.25em;
 			}
 			.radio {
-				margin: 0 0.25em;
-			}
-			.submit {
-				margin-left: 0.5em;
+				margin: 0 0.25em 0 0;
 			}
 			.top {
 				width: 5em;
@@ -105,16 +101,14 @@ const allTagsData = generateTagsData(tags);
 		}
 	</style>
 
-	<article data-pagefind-body>
+<aside class="back-to-notes">
+	<a href="/notes" class="button">&larr; Back to Notes</a>
+</aside>
+	<hr class="note-line">
+<article data-pagefind-body>
 		{pubDate && <time>{pubDate}</time>}
 		{updatedDate && <div>Updated on <time>{updatedDate}</time></div>}
 		<h1 class="title">{title}</h1>
-		<ul class="tags">
-			{allTagsData.map(tags => (
-				<a href={`/tags/${tags.slug}`}><li class="button">{tags.name}</li></a>
-			))}
-		</ul>
-		<hr>
 		<slot>
 			<p>
 				If you're seeing this, something went wrong! Please try <em>reloading the page</em>.
@@ -122,19 +116,18 @@ const allTagsData = generateTagsData(tags);
 		</slot>
 	</article>
 	<hr>
-	<aside>
-		<span>Was this article helpful? 
+	<aside class="note-aside">
+		<span>Was this note helpful? 
 			<form name="feedback" method="POST" action="/feedback" data-netlify="true" netlify-honeypot="bot-field">
 			<input value="feedback" name="feedback" type="hidden" />
 			<input class="radio" type="radio" id="helpful" name="feedback" value="Helpful" required>
 			<label for="helpful">Yes</label>
 			<input class="radio" type="radio" id="not-helpful" name="feedback" value="Not Helpful">
 			<label for="not-helpful" class="labels">No</label>
-			<button class="button submit" type="submit" value="Submit">Submit</button>
+			<button class="button note-button submit" type="submit" value="Submit">Submit</button>
 			<input type="hidden" id="postId" name="postId" value={title} />
 			</form>
 		</span>
-		<a href="#top" class="top button">Back to Top &uarr;</a>
 	</aside>
 	<div class="utterances">
 		<script src="https://utteranc.es/client.js"

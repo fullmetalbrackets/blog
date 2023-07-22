@@ -77,7 +77,15 @@ If you want to reboot the machine when it's required after an update un-comment 
 Unattended-Upgrade::Automatic-Reboot-Time "05:00";
 ```
 
-> **ⓘ &nbsp;Note**<br><br> Though you can configure Unattended-Upgrades to email you when it completes an automatic update or when it encounters an error. It requires installing and configuring other packages, which I will not get into here. I may update this in the future if I ever do set up email notification.
+<div class="note">
+  <span>
+    <img src="/img/assets/note.svg" class="note-icon">
+    <b>Note</b>
+  </span>
+  <p>
+    Though you can configure Unattended-Upgrades to email you when it completes an automatic update or when it encounters an error. It requires installing and configuring other packages, which I will not get into here. I may update this in the future if I ever do set up email notification.
+  </p>
+</div>
 
 Finally, you'll want to check the file at `/etc/apt/apt.conf.d/20auto-upgrades` and make sure it has the following lines ("1" enables, while "0" disables):
 
