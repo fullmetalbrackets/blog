@@ -60,6 +60,7 @@
   --alert: rgb(220, 59, 0);
   --note: rgb(242, 207, 43);
   --success: rgb(0, 170, 0);
+  --info: rgb(182, 193, 210);
   --code-bg: hsl(220, 13%, 18%);
   --code-text: hsl(220, 14%, 71%);
   --svg: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%) contrast(98%);
@@ -348,10 +349,17 @@ div .note {
   border-radius: 0.5em;
   width: 95%;
 }
-div > .note > span {
-  display: inline-flex;
-  justify-content: left;
-  font-family: 'M PLUS Rounded 1c Reg', 'Wotfard', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+div .info {
+  background-color: var(--blockquote);
+  border: 2px solid var(--info);
+  line-height: 1.4;
+	padding: 1em;
+	margin: 2em auto;
+  border-radius: 0.5em;
+  width: 95%;
+}
+div > .info {
+  margin: 4em auto;
 }
 div > .alert > span {
   display: inline-flex;
@@ -363,9 +371,18 @@ div > .success > span {
   justify-content: left;
   font-family: 'M PLUS Rounded 1c Reg', 'Wotfard', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
 }
-div > .note > ul > li, div > .alert > ul > li, div > .success > ul > li {
+div > .note > span {
+  display: inline-flex;
+  justify-content: left;
+  font-family: 'M PLUS Rounded 1c Reg', 'Wotfard', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+}
+div > .info > span {
+  display: inline-flex;
+  justify-content: left;
+  font-family: 'M PLUS Rounded 1c Reg', 'Wotfard', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+}
+div > .note > ul > li, div > .alert > ul > li, div > .success > ul > li, div > .info > ul > li {
   line-height: 1.5;
-  margin-bottom: 1em;
 }
 div > .note > ul > li::marker {
   color: var(--note);
@@ -376,6 +393,9 @@ div > .alert > ul > li::marker {
 div > .success > ul > li::marker {
   color: var(--success);
 }
+div > .info > ul > li::marker {
+  color: var(--info);
+}
 .alert b:first-of-type  {
   color: var(--alert);
 }
@@ -385,8 +405,11 @@ div > .success > ul > li::marker {
 .success b:first-of-type {
   color: var(--success);
 }
+.info b:first-of-type {
+  color: var(--info);
+}
 .note-icon {
-  filter: brightness(0) saturate(100%) invert(80%) sepia(30%) saturate(1078%) hue-rotate(359deg) brightness(103%) contrast(90%);
+  filter: brightness(0) saturate(100%) invert(80%) sepia(30%) saturate(1078%) hue-rotate(359deg) brightness(103%) contrast(90%);  
   width: 20px;
   height: auto;
   margin: 0 1rem 0 0;
@@ -401,6 +424,13 @@ div > .success > ul > li::marker {
 }
 .success-icon {
   filter: brightness(0) saturate(100%) invert(40%) sepia(94%) saturate(2895%) hue-rotate(96deg) brightness(99%) contrast(104%);
+  width: 20px;
+  height: auto;
+  margin: 0 1rem 0 0;
+  padding: 0;
+}
+.info-icon {
+  filter: brightness(0) saturate(100%) invert(82%) sepia(13%) saturate(290%) hue-rotate(177deg) brightness(92%) contrast(90%);
   width: 20px;
   height: auto;
   margin: 0 1rem 0 0;
