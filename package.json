@@ -20,7 +20,7 @@
     "@astrojs/prefetch": "^0.3.0",
     "@astrojs/rss": "^2.4.3",
     "@astrojs/sitemap": "^2.0.0",
-    "astro": "^2.8.5"
+    "astro": "^2.9.1"
   },
   "devDependencies": {
     "@astrojs/prism": "^2.1.2",
