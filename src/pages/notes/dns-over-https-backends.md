@@ -23,6 +23,3 @@ _Level3_ (I could not find a website for them) and <a href="comodo.come/secure-d
 ## Additional public DNS resolvers not in Pi-Hole UI
 
 - <a href="https://mullvad.net/en/help/dns-over-https-and-dns-over-tls/&cd=10&hl=en&ct=clnk&gl=us" target="_blank">Mullvad</a>: `https://adblock.doh.mullvad.net/dns-query` (with ad blocking) and `https://doh.mullvad.net/dns-query` (without ad blocking)
-- <a href="" target="_blank"></a>
-- <a href="" target="_blank"></a>
-- <a href="" target="_blank"></a>
