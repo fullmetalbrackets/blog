@@ -5,6 +5,18 @@ description: "Commands necessary to delete partitions, wipe a disk completely an
 pubDate: "July 7, 2023"
 ---
 
+<div>
+  <div class="info">
+    <span>
+      <img src="/img/assets/info.svg" class="info-icon">
+      <b>Information</b>
+    </span>
+    <p>
+      For more details see <a href="https://askubuntu.com/a/558412" target="_blank">this answer on AskUbuntu by Mateen Ulhaq</a>
+    </p>
+  </div>
+</div>
+
 List mounted disks
 
 ```bash
@@ -82,7 +94,3 @@ sudo mkfs -t vfat /dev/sdb1
    o   create a new empty MBR (DOS) partition table
    s   create a new empty Sun partition table
 ```
-
-## References
-
-- <a href="https://askubuntu.com/a/558412" target="_blank">Answer on AskUbuntu by Mateen Ulhaq</a>

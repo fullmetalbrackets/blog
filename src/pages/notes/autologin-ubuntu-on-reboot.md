@@ -5,7 +5,17 @@ description: "Configure an Ubuntu machine to autologin and go straight into the 
 pubDate: "November 25, 2022"
 ---
 
-> Works on Ubuntu 20.04, untested in 22.04 or other distros
+<div>
+  <div class="info">
+    <span>
+      <img src="/img/assets/info.svg" class="info-icon">
+      <b>Information</b>
+    </span>
+    <p>
+      Works on <em>Ubuntu 20.04</em> but untested in 22.04 or other distros.
+    </p>
+  </div>
+</div>
 
 ```bash
 sudo systemctl edit getty@.service
