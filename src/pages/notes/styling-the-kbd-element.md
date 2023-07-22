@@ -1,5 +1,5 @@
 ---
-layout: "@layouts/BlogPost.astro"
+layout: "@layouts/Note.astro"
 title: "Styling the kbd element"
 description: "I wanted to style my <kbd> element to look like a keyboard, and a google search took me to someone else's blog post that had a nice bit of code and invited others to steal it. So I did."
 pubDate: "September 19, 2022"
