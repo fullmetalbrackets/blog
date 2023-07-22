@@ -1,7 +1,7 @@
 ---
 layout: "@layouts/Note.astro"
-title: "Autologin Ubuntu on reboot and go straight to terminal"
-description: "Configure an Ubuntu machine to autologin and go straight into the terminal on reboot."
+title: "Autologin on Ubuntu and go straight to terminal"
+description: "Configure an Ubuntu machine to autologin and go straight into the terminal on boot."
 pubDate: "November 25, 2022"
 ---
 

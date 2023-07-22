@@ -1,6 +1,6 @@
 ---
 layout: "@layouts/Note.astro"
-title: "DNS over HTTPS backend URLs of public DNS resolvers"
+title: "URLs for DNS over HTTPS with public resolvers"
 description: "List of URLs for setting up DNS over HTTPS with the public DNS resolvers available in Pi-Hole."
 pubDate: "July 12, 2023"
 ---
