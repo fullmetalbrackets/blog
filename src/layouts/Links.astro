@@ -1,0 +1,94 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+
+export interface Props {
+	content: {
+		title: string;
+		description: string;
+	};
+}
+
+const {
+	content: { title, description },
+} = Astro.props;
+
+---
+<BaseLayout title={title} description={description}>
+	<head>
+		<link rel="stylesheet" href="/prism.css">
+	</head>
+	<style scoped>
+    article {
+      margin-top: 4em;
+    }
+		p {
+			margin-bottom: 2em;
+		}
+    .link-list {
+      display: inline-block;
+      margin: 0 auto 2em -2em;
+      padding: 0 auto;
+    }
+    .link-title {  
+			margin: 0;
+      padding: 0;
+      width: 16em;
+      text-align: left;
+    }
+    hr {
+      margin-top: 2em;
+    }
+		.top {
+			font-family: 'M PLUS Rounded 1c Med', 'Wotfard', sans-serif;
+			margin-top: 1em;
+		}
+		.utterances {
+			margin: 2.5em auto;
+		}
+		@media screen and (min-width: 200px) and (max-width: 650px) {
+			aside {
+				font-size: 1rem;
+			}
+			label {
+				margin-right: 0.75em;
+			}
+			button {
+				margin-left: 0.25em;
+			}
+			.radio {
+				margin: 0 0.25em 0 0;
+			}
+			.top {
+				width: 5em;
+				text-align: center;
+			}
+		}
+	</style>
+
+<article data-pagefind-body>
+  <h1 class="title">{title}</h1>
+  <hr>
+	<p>
+		Links to web sites, apps and other resources that I use, and want others to use, to make life easier.
+	</p>
+		<slot>
+			<p>
+				If you're seeing this, something went wrong! Please try <em>reloading the page</em>.
+			</p>
+		</slot>
+</article>
+<hr>
+<aside>
+	<a href="#top" class="top button notes-tag">Back to Top &uarr;</a>
+</aside>
+<div class="utterances">
+	<script src="https://utteranc.es/client.js"
+		repo="fullmetalbrackets/blog"
+		issue-term="title"
+		label="comment"
+		theme="preferred-color-scheme"
+		crossorigin="anonymous"
+		async>
+	</script>
+</div>
+</BaseLayout>
