@@ -43,73 +43,70 @@
 *, *:before, *:after {
   box-sizing: inherit;
 }
-:root, html {
-  --main: rgb(255, 255, 255);
-  --text: rgb(32, 33, 36);
-  --primary: rgb(0, 158, 170);
-  --secondary: rgb(95, 193, 232);
-  --accent: rgb(182, 193, 210);
-  --link: rgb(255, 153, 0);
-  --hover: rgb(242, 207, 43);
-  --tags: rgb(242, 207, 43);
-  --emphasis: rgb(0, 85, 205);
-  --name: rgb(0, 175, 175);
-  --date: rgb(0, 127, 128);
-  --menu: rgb(222, 122, 0);
-  --form: black;
-  --alert: rgb(220, 59, 0);
-  --note: rgb(242, 207, 43);
-  --success: rgb(0, 170, 0);
-  --info: rgb(182, 193, 210);
-  --code-bg: hsl(220, 13%, 18%);
-  --code-text: hsl(220, 14%, 71%);
-  --svg: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%) contrast(98%);
-  --ext: invert(88%) sepia(69%) saturate(7500%) hue-rotate(1deg) brightness(104%) contrast(104%);
-  --search: invert(57%) sepia(86%) saturate(3921%) hue-rotate(13deg) brightness(99%) contrast(100%);
-  box-sizing: border-box;
-  height: 100%;
-  scrollbar-color: var(--name) var(--accent);
-  scrollbar-width: auto;
+@media (prefers-color-scheme: light) {
+  :root, html {
+    --main: rgb(252, 248, 235);
+    --text: rgb(32, 33, 36);
+    --primary: rgb(0, 150, 150);
+    --secondary: rgb(95, 193, 232);
+    --accent: rgb(182, 193, 210);
+    --link: rgb(205, 110, 10);
+    --hover: rgb(242, 207, 43);
+    --tags: rgb(242, 207, 43);
+    --emphasis: rgb(0, 85, 205);
+    --name: rgb(0, 150, 150);
+    --date: rgb(72, 100, 100);
+    --menu: rgb(205, 110, 10);
+    --form: black;
+    --alert: rgb(220, 59, 0);
+    --note: rgb(242, 207, 43);
+    --success: rgb(0, 170, 0);
+    --info: rgb(182, 193, 210);
+    --blockquote: rgb(240, 236, 216);
+    --code-bg: hsl(220, 13%, 18%);
+    --code-text: hsl(220, 14%, 71%);
+    --svg: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%) contrast(98%);
+    --ext: invert(88%) sepia(69%) saturate(7500%) hue-rotate(1deg) brightness(104%) contrast(104%);
+    --search: invert(57%) sepia(86%) saturate(3921%) hue-rotate(13deg) brightness(99%) contrast(100%);
+    box-sizing: border-box;
+    height: 100%;
+    scrollbar-color: var(--name) var(--accent);
+    scrollbar-width: auto;
+  }
 }
 
-[data-theme="light"] {
-  --main: rgb(255, 255, 255);
-  --text: rgb(32, 33, 36);
-  --accent: rgb(182, 193, 210);
-  --link: rgb(255, 153, 0);
-  --hover: rgb(242, 207, 43);
-  --tags: rgb(242, 207, 43);
-  --emphasis: rgb(0, 85, 205);
-  --name: rgb(0, 158, 170);
-  --date: rgb(122, 122, 122);
-  --menu: rgb(222, 122, 0);
-  --form: rgb(0, 0, 0);
-  --blockquote: rgb(255, 255, 255);
-  --code-text: hsl(220, 14%, 71%);
-  --pagefind-ui-text: rgb(32, 33, 36);
-  --pagefind-ui-background: rgb(182, 193, 210);
-  --svg: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%) contrast(98%);
-  --ext: invert(40%) sepia(85%) saturate(1448%) hue-rotate(15deg) brightness(102%) contrast(101%);
-}
-
-[data-theme="dark"] {
-  --main: rgb(32, 33, 36);
-  --text: rgb(164, 174, 188);
-  --accent: rgb(51, 65, 85);
-  --link: rgb(222, 122, 0);
-  --hover: rgb(242, 207, 43);
-  --tags: rgb(242, 207, 43);
-  --emphasis: rgb(255, 255, 255);
-  --name: rgb(0, 158, 170);
-  --date: rgb(250, 250, 250);
-  --menu: rgb(222, 122, 0);
-  --form: rgb(250, 250, 250);
-  --blockquote: rgb(25, 22, 22);
-  --code-text: hsl(0, 0%, 100%);
-  --pagefind-ui-text: rgb(164, 174, 188);
-  --pagefind-ui-background: rgb(51, 65, 85);
-  --svg: invert(93%) sepia(78%) saturate(2834%) hue-rotate(213deg) brightness(148%) contrast(96%);
-  --ext: invert(50%) sepia(21%) saturate(5438%) hue-rotate(150deg) brightness(87%) contrast(101%);
+@media (prefers-color-scheme: dark) {
+  :root, html {
+    --main: rgb(32, 33, 36);
+    --text: rgb(164, 174, 188);
+    --primary: rgb(0, 158, 170);
+    --secondary: rgb(95, 193, 232);
+    --accent: rgb(51, 65, 85);
+    --link: rgb(222, 122, 0);
+    --hover: rgb(242, 207, 43);
+    --tags: rgb(242, 207, 43);
+    --emphasis: rgb(255, 255, 255);
+    --name: rgb(0, 158, 170);
+    --date: rgb(250, 250, 250);
+    --menu: rgb(222, 122, 0);
+    --form: rgb(250, 250, 250);
+    --alert: rgb(220, 59, 0);
+    --note: rgb(242, 207, 43);
+    --success: rgb(0, 170, 0);
+    --info: rgb(182, 193, 210);
+    --blockquote: rgb(25, 22, 22);
+    --code-bg: hsl(220, 13%, 18%);
+    --code-text: hsl(0, 0%, 100%);
+    --pagefind-ui-text: rgb(164, 174, 188);
+    --pagefind-ui-background: rgb(51, 65, 85);
+    --svg: invert(93%) sepia(78%) saturate(2834%) hue-rotate(213deg) brightness(148%) contrast(96%);
+    --ext: invert(50%) sepia(21%) saturate(5438%) hue-rotate(150deg) brightness(87%) contrast(101%);
+    --search: invert(57%) sepia(86%) saturate(3921%) hue-rotate(13deg) brightness(99%) contrast(100%);
+    box-sizing: border-box;
+    height: 100%;
+    scrollbar-color: var(--name) var(--accent);
+    scrollbar-width: auto;
+  }
 }
 
 body {
@@ -364,22 +361,26 @@ div > .info {
 div > .alert > span {
   display: inline-flex;
   justify-content: left;
-  font-family: 'M PLUS Rounded 1c Reg', 'Wotfard', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+  font-size: 120%;
+  font-family: 'M PLUS Rounded 1c Med', 'Wotfard', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
 }
 div > .success > span {
   display: inline-flex;
   justify-content: left;
-  font-family: 'M PLUS Rounded 1c Reg', 'Wotfard', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+  font-size: 120%;
+  font-family: 'M PLUS Rounded 1c Med', 'Wotfard', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
 }
 div > .note > span {
   display: inline-flex;
   justify-content: left;
-  font-family: 'M PLUS Rounded 1c Reg', 'Wotfard', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+  font-size: 120%;
+  font-family: 'M PLUS Rounded 1c Med', 'Wotfard', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
 }
 div > .info > span {
   display: inline-flex;
   justify-content: left;
-  font-family: 'M PLUS Rounded 1c Reg', 'Wotfard', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+  font-size: 120%;
+  font-family: 'M PLUS Rounded 1c Med', 'Wotfard', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
 }
 div > .note > ul > li, div > .alert > ul > li, div > .success > ul > li, div > .info > ul > li {
   line-height: 1.5;
@@ -410,28 +411,28 @@ div > .info > ul > li::marker {
 }
 .note-icon {
   filter: brightness(0) saturate(100%) invert(80%) sepia(30%) saturate(1078%) hue-rotate(359deg) brightness(103%) contrast(90%);  
-  width: 20px;
+  width: 24px;
   height: auto;
   margin: 0 1rem 0 0;
   padding: 0;
 }
 .alert-icon {
   filter: brightness(0) saturate(100%) invert(18%) sepia(51%) saturate(7498%) hue-rotate(16deg) brightness(96%) contrast(101%);
-  width: 20px;
+  width: 24px;
   height: auto;
   margin: 0 1rem 0 0;
   padding: 0;
 }
 .success-icon {
   filter: brightness(0) saturate(100%) invert(40%) sepia(94%) saturate(2895%) hue-rotate(96deg) brightness(99%) contrast(104%);
-  width: 20px;
+  width: 24px;
   height: auto;
   margin: 0 1rem 0 0;
   padding: 0;
 }
 .info-icon {
   filter: brightness(0) saturate(100%) invert(82%) sepia(13%) saturate(290%) hue-rotate(177deg) brightness(92%) contrast(90%);
-  width: 20px;
+  width: 24px;
   height: auto;
   margin: 0 1rem 0 0;
   padding: 0;
@@ -512,13 +513,16 @@ article ul ul {
 article ol:first-of-type {
   margin-bottom: 0;
 }
-@media screen and (min-width: 200px) and (max-width:650px) {
+article ol li, article ul li {
+  line-height: 1.5;
+}
+@media screen and (min-width: 200px) and (max-width:667px) {
 	::-webkit-scrollbar {
 		height: 0px;
 		width: 0px;
 	}
   body {
-    line-height: 1;
+    line-height: 1.2;
   }
   main {
     margin-left: 0.25em;
