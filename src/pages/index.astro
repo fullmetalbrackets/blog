@@ -35,7 +35,38 @@ const notes = (await Astro.glob('./notes/*.md')).sort(
 		flex-direction: row;
 		margin-top: 0.25em;
 	}
-
+	a button {
+		background-color: var(--tags);
+		color: #000;
+		border-radius: 0.25em;
+		cursor: pointer;
+		font-weight: 600;
+		padding: 4px 8px;
+		text-decoration: none;
+		text-overflow: ellipsis;
+		-webkit-transition: all .10s ease-out;
+		-moz-transition: all .10s ease-out;
+		-o-transition: all .10s ease-out;
+		transition: all .10s ease-out;
+		margin: 0 8px 8px 1em;
+	}
+	@media (hover: hover) {
+		a:hover button  {
+			box-shadow: -4px -4px 0 #000;
+			transform: translate(4px,4px);
+		}
+		a:hover button {
+			outline-offset: 1px;
+		}
+	}
+	@media (hover: none) {
+		a:hover button {
+			background-color: var(--tags);
+		}
+	}
+	.foot-line {
+		margin-top: 4em;
+	}
 	@media screen and (min-width: 200px) and (max-width: 650px) {
 		main {
 			margin: 0 10px;
@@ -86,9 +117,10 @@ const notes = (await Astro.glob('./notes/*.md')).sort(
 				</li>
 			</ul>
 		))}
+		<a href="/blog"><button>More Posts</button></a>
 		<h2>Recent Notes</h2>
 				{notes.slice(0, 5).map((note) => (
-					<ul>
+					<ul class="notes-ul">
 						<li class="notes-li">
 							<div class="notes-dates">
 								<time datetime={note.frontmatter.pubDate}>
@@ -107,7 +139,8 @@ const notes = (await Astro.glob('./notes/*.md')).sort(
 						</li>
 					</ul>
 			))}
-		<hr>
+		<a href="/notes"><button>More Notes</button></a>
+		<hr class="foot-line">
 		<aside>
 			<a href="#top" class="top button blog-tag">Back to Top &uarr;</a>
 		</aside>
