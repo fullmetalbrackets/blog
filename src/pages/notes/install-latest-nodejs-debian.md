@@ -3,6 +3,8 @@ layout: "@layouts/Note.astro"
 title: "Install latest version of NodeJS on Debian"
 description: "Quick primer on installing the latest version of NodeJS on Debian, plus updating NPM and installing Yarn."
 pubDate: "July 22, 2023"
+tags:
+  - Linux
 ---
 
 <div>

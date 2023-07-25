@@ -1,5 +1,5 @@
 ---
-layout: "../../layouts/BlogPost.astro"
+layout: "@layouts/BlogPost.astro"
 title: "Using Surge.sh to quickly and easily host static sites"
 description: "Although I love using Netlify to host my site, for testing out sites and simple apps I have fallen in love with Surge.sh, a ridiculously simple web hosting solution that works entirely from the command line."
 pubDate: "October 5, 2022"

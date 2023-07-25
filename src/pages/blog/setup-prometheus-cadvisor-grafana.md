@@ -1,5 +1,5 @@
 ---
-layout: "../../layouts/BlogPost.astro"
+layout: "@layouts/BlogPost.astro"
 title: "Setup Prometheus, Node Exporter, Cadvisor and Grafana in Docker"
 description: "When running a headless home server, you may want to set up a monitoring solution to keep track of your server's performance. Node Exporter will expose your server's metrics, cAdvisor will expose metrics for Docker containers, and Prometheus will scrape and collect those metrics, which is then used as a data source for Grafana dashboards. Here's how to get it all set up in Docker."
 pubDate: "October 20, 2022"

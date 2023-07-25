@@ -1,5 +1,5 @@
 ---
-layout: "../../layouts/BlogPost.astro"
+layout: "@layouts/BlogPost.astro"
 title: "Transferring files between hosts with SCP"
 description: "Using the Secure Copy (SCP) utility in Linux lets you securely copy files to and from remote hosts, and it's very easy to use."
 pubDate: "September 26, 2022"

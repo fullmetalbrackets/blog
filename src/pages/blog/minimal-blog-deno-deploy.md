@@ -1,5 +1,5 @@
 ---
-layout: "../../layouts/BlogPost.astro"
+layout: "@layouts/BlogPost.astro"
 title: "Build a minimal blog with Deno and host it on Deno Deploy"
 description: "I'd been meaning to play around with Deno and finally got around to doing it in the quickest, easiest (and laziest) way possible -- using a minimal blog template. I also took the opportunity to learn how Deno Deploy works. The whole thing is quick and painless, here's how to do it."
 pubDate: "November 19, 2022"

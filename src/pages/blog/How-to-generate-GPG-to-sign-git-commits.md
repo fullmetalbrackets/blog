@@ -1,5 +1,5 @@
 ---
-layout: "../../layouts/BlogPost.astro"
+layout: "@layouts/BlogPost.astro"
 title: "How to generate a GPG key and use it to sign git commits"
 description: "Generating and using a GPG key is not difficult, but every time I need to remember how to do it to sign my commits from a new machine, I need to go through several pages of explanation on GitHub. So I made myself a terse and concise one-page quick guide, here it is."
 pubDate: "October 31, 2022"

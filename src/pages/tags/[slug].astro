@@ -1,6 +1,6 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
-import { generateTagsData } from "@utils/tags";
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { generateTagsData } from '@utils/tags';
 
 export async function getStaticPaths() {
   const allPosts = await Astro.glob('../blog/*.{md,mdx}');
@@ -25,7 +25,7 @@ export async function getStaticPaths() {
 }
 const {tag} = Astro.props;
 const title = `${tag}`
-const desc = 'Posts tagged ${tag}.'
+const desc = 'Blog posts tagged ${tag}.'
 const posts = (await Astro.glob('../blog/*.{md,mdx}')).sort(
 	(a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf())
 	.filter(post => tag && post.frontmatter.tags?.includes(tag));
@@ -108,7 +108,7 @@ const posts = (await Astro.glob('../blog/*.{md,mdx}')).sort(
 		}
 	</style>
 	<section>
-		<h1 class="title">Posts tagged <span>{title}</span></h1>
+		<h1 class="title">Blog posts tagged <span>{title}</span></h1>
 		<hr class="tag-line">
 		{posts.map((post) => (
 		<a href={post.url} rel="prefetch">

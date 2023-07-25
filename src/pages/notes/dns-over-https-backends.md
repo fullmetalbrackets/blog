@@ -3,6 +3,8 @@ layout: "@layouts/Note.astro"
 title: "URLs for DNS over HTTPS with public resolvers"
 description: "List of URLs for setting up DNS over HTTPS with the public DNS resolvers available in Pi-Hole."
 pubDate: "July 12, 2023"
+tags:
+  - DNS over HTTPS
 ---
 
 When using `cloudflared` or another DNS over HTTPS client, you need hit the upstream's DoH backend for it to work. Below are the URLs to use for each of the public DNS resolvers available in the DNS settings of <a href="https://pi-hole.net" target="_blank">Pi-Hole</a>.

@@ -3,6 +3,8 @@ layout: "@layouts/Note.astro"
 title: "Formatting disks in Linux command line"
 description: "Commands necessary to delete partitions, wipe a disk completely and install a new filesystem."
 pubDate: "July 7, 2023"
+tags:
+  - Linux
 ---
 
 <div>
