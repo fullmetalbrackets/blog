@@ -1,6 +1,5 @@
 ---
 import NavLink from './NavLink.astro';
-import Theme from './Theme.astro';
 import { SITE_TITLE } from '../config';
 ---
 
@@ -16,9 +15,9 @@ import { SITE_TITLE } from '../config';
 		<NavLink href="/" rel="prefetch">Posts</NavLink>
 		<NavLink href="/tags">Tags</NavLink>
 		<NavLink href="/notes">Notes</NavLink>
+		<NavLink href="/links">Links</NavLink>
 		<NavLink href="/about">About</NavLink>
 		<NavLink href="/search"><img src="/img/assets/search.svg" height="24px" width="24px" class="search" alt="Search"></NavLink>
-		<Theme />
 	</nav>
 </header>
 <style>
@@ -55,7 +54,7 @@ import { SITE_TITLE } from '../config';
 		margin: 0 0 0 22px;
 		color: var(--name);
 	}
-	@media screen and (min-width: 200px) and (max-width: 650px) {
+	@media screen and (min-width: 200px) and (max-width: 667px) {
 		.logo {
 			display: flex;
 			font-size: 2.75em;
@@ -64,8 +63,7 @@ import { SITE_TITLE } from '../config';
 			
 		}
 		nav {
-			margin: 0;
-			justify-content: space-around;
+			margin: 0.25em auto 0 auto;
 			font-size: 18px;
 		}
 		.search {

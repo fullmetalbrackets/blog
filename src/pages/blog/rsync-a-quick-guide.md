@@ -3,7 +3,7 @@ layout: "../../layouts/BlogPost.astro"
 title: "Rsync - A Quick Guide"
 description: "Rsync is a very handy tool for doing high-speed file transfers between Linux hosts over a local network or remote hosts on the internet, such as EC2 instances on Amazon Web Services. You can pass options to Rsync to do things like recursive transfer (all files and sub-directories within the source directory are also transferred), ignore existing or newer files at the destination, and more."
 pubDate: "September 15, 2021"
-updatedDate: "October 20, 2022"
+updatedDate: "July 24, 2023"
 tags:
   - Rsync
   - Linux
@@ -12,18 +12,59 @@ tags:
 
 ## Sections
 
-1. [How to use Rsync](#intro)
-2. [Using Rsync with Cron](#cron)
-3. [References](#ref)
+1. [Rsync Basics](#basic)
+2. [Advanced Rsync-ing](#advanced)
+3. [Using Rsync with Cron](#cron)
+4. [References](#ref)
 
-<div id='intro'/>
+<div id='basic'/>
 
-## How to use Rsync
+# Rsync Basics
 
-To explain Rsync, let's pretend we want to transfer a directory of photos between two Linux hosts. The hostname of the computer with the photos is called **Workstation**, and the main user is **Monica**. The hostname of the receiving computer is unknown, but it's IP address is **192.168.1.100** and it's user is **Chandler**. Monica only wants photos in .jpg format to be transferred, wants to skip transferring any photos that already exist at the destination unless she has a newer version of it, and wants to NOT transfer files over 100MB in size. She will use the below command and options:
+Let's start with using `rsync` to copy a directory, and all it's contents, to another location.
 
 ```bash
-rsync -rvuogtz --progress --max-size=100M /home/Monica/photos/*.jpg Chandler@192.168.1.100:/mnt/storage/photos/
+rsync -r /home/Chandler/stuff /opt/stuff
+```
+
+This will copy `stuff`, and all contents including sub-folders because of the `-r` option, into `/opt/`, creating a new `stuff` directory in the process.
+
+If we wanted not to copy the `stuff` directory as a whole, but only the contents inside, to an existing directory, instead we'd use:
+
+```bash
+rsync -r /home/Chandler/stuff/* /opt/existing/
+```
+
+Here we're sending `stuff/*` the trailing slash and asterisk specifies only the contents, meaning at the destination we also add a trailing slash to `existing/` to specify the files being transferred go into that directory.
+
+Now we upgrade to sending stuff between different machines on a network. Let's start with transferring a single file:
+
+```bash
+rsync /home/Chandler/report.txt Monica@192.168.1.20:/home/Monica/junk/report.txt
+```
+
+The above sends `report.txt` to the user `Monica` on machine `192.168.1.20` (Monica's IP address), into Monica's directory at `/home/Monica/junk`.
+
+Likewise with a directory, it would be like this:
+
+```bash
+rsync /home/Chandler/stuff Monica@192.168.1.20:/home/Monica/stuff
+```
+
+Or only the contents of Chander's `/stuff` into Monica's `existing` directory:
+
+```bash
+rsync /home/Chandler/stuff/* Monica@192.168.1.20:/home/Monica/junk/
+```
+
+<div id='advanced'/>
+
+## Advanced Rsync-ing
+
+To explain Rsync, let's pretend we want to transfer a directory of photos between two Linux hosts. The hostname of the computer with the photos is called **Workstation**, and the main user is **Monica**. The hostname of the receiving computer is unknown, but it's IP address is **192.168.1.19** and it's user is **Chandler**. Monica only wants photos in .jpg format to be transferred, wants to skip transferring any photos that already exist at the destination unless she has a newer version of it, and wants to NOT transfer files over 100MB in size. She will use the below command and options:
+
+```bash
+rsync -rvuogtz --progress --max-size=100M /home/Monica/photos/*.jpg Chandler@192.168.1.19:/mnt/storage/photos/
 ```
 
 Let's break it down:
@@ -37,27 +78,60 @@ Let's break it down:
 - `--progress` will display the progress of files as they are transferred, giving you even more information as Rsync runs.
 - `--max-size=100M` prevents files at or over the specified file size (in this case 100MB) from being transferred.
 
-This is just a small sample of the options available, but this set of options is a good base to start using Rsync. A lot of people use Rsync as an automatic backup solution by using a cronjob to schedule transfers and using specific options only transfer certain files.
+This is just a small sample of the options available, but this set of options is a good base to start using Rsync. If copying important files, especially as backups, it's desirable to pass the flag `-a` for _archive mode_. According to the <a href="hhttps://download.samba.org/pub/rsync/rsync.1#opt--archive" target="_blank">Rsync man page</a>:
+
+```
+--archive, -a
+archive mode is -rlptgoD (no -A,-X,-U,-N,-H)
+```
+
+Therefore using `-a` will automatically include the following:
+
+- `-r`: recurse into directories
+- `-l`: copy symlinks
+- `-p`: preserve permissions
+- `-t`: preserve modification times
+- `-g`: preserve preserve group
+- `-o`: preserve owner
+- `-D`: preserve device files & special files
+
+As explained by the rsync man page, archive mode does not include other flags, these can be important and might want to consider using them (in addition to archive mode) when backing up important system files:
+
+- `-A`: preserve access control lists (ACLs)
+- `-X`: preserve extended attributes
+- `-U`: preserve access times
+- `-N`: preserve create times
+- `-H`: preserve hard links
+
+Therefore, to backup important files with Rsync, like for example a `/home` directory to another machine, we should use this:
+
+```bash
+rsync -azAXUNH --progress /home/Monica Chandler@192.168.1.19:/mnt/storage/backups
+```
 
 <div id='cron'/>
 
 ## Using RSync with Cron
 
-Let's have Monica do that now with the following command:
+Rsync makes a decent automatic backup solution by using a cronjob and passing Rysnc the `--daemon` flag to schedule recurring background transfers during off-hours.
+
+First use the following command:
 
 ```bash
 crontab -e
 ```
 
-This will open the Cron file in your default text editor. For this example, Monica wants to use Rsync to back up the contents her home directory (`/home/Monica`) which includes her entire media library to another directory located at `/mnt/backup`, and she wants this to happen automatically every Saturday at 3:00AM, so the transfer happens when no one is using the Workstation. She'll have to put this into the crontab just below the commented text:
+This will open the `crontab` file in your default text editor. For this example, Monica wants to use Rsync to back up the contents her home directory (`/home/Monica`) which includes her entire media library to another directory located at `/mnt/backup`, and she wants this to happen automatically every Saturday at 3:00AM, so the transfer happens when no one is using the Workstation. She'll have to put this into the crontab just below the commented text:
 
 ```bash
-0 3 * * SAT sudo rsync -rquogtz --daemon /home/Monica /mnt/backup/*
+0 3 * * SAT rsync -aq --daemon /home/Monica /mnt/backup/*
 ```
 
-We're using two different options here: `--daemon` will run Rsync as a background process, and using `-q` suppresses most information during transfer (the opposite of `-v`).
+The Rsync stuff first. Besides using `--daemon` to run Rsync as a background process, we're using `-a` for archive mode and `-q` to suppress most information during transfer (the opposite of `-v`).
 
-What's all that junk before the rsync command? You schedule cron jobs by expressing the timing in five fields: minutes, hours, day of the month, month, and day of the week. If this makes no sense, just know that I am right there with you, which is why I use a handy tool called <a href="https://crontab.guru" target="_blank" rel="noopener noreferrer">Crontab Guru</a> to make sense of it. Also, although it kind of defeats the purpose of this post, there is a handy tool with a slick GUI that lets you create your Rsync command with checkboxes and fields specifying what they do, go check out <a href="https://www.rsyncinator.app/web" target="_blank" rel="noopener noreferrer">Rsyncinator</a>.
+Now for the Cron stuff, the `0 3 * * SAT` before rsync is a schedule expression. You schedule cron jobs by expressing the timing in five fields, from left to right they are: _minute_ (0 - 60), _hour_ (0 - 23), _day of the month_ (1 - 31), _month_ (1 - 12), and _day of the week_. In my example above, `0 3 * * SAT` means it will run _every Saturday at 3:00 AM_.
+
+If you think you'll have a hard time remembering the scheduling expressions, just know that I am right there with you, which is why I use a handy tool called <ato href="https://crontab.guru" target="_blank" rel="noopener noreferrer">Crontab Guru</ato schedule cron. To make Rsync a little less daunting to use, check out <a href="https://www.rsyncinator.app/web" target="_blank" rel="noopener noreferrer">Rsyncinator</a>, which has a slick GUI that lets you create your Rsync command with checkboxes and fields specifying what they do.
 
 Finally, for a list of ALL the rsync options with short descriptions of what they do, check out the <a href="https://download.samba.org/pub/rsync/rsync.1" target="_blank">Rsync man page</a>, a truly exhaustive manual for understanding all the granular details of Rsync.
 
