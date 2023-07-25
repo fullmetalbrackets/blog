@@ -295,8 +295,6 @@ pre > code {
 }
 figcaption {
   font-size: 0.65em;
-  color:var(--blockquote);
-  padding-left: 5px;
   margin: -6.25em 0 6em 0;
 }
 blockquote {
@@ -497,6 +495,9 @@ aside {
   justify-content: end;
   cursor: pointer;
   margin: 2em auto 4em auto;
+}
+.blog-aside {
+  justify-content: space-between;
 }
 aside > a, aside > a:active, aside > a:visited, aside > a:hover, aside > a:focus {
   color: #000;
