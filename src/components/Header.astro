@@ -1,6 +1,6 @@
 ---
-import NavLink from './NavLink.astro';
-import { SITE_TITLE } from '../config';
+import NavLink from '@components/NavLink.astro';
+import { SITE_TITLE } from '@config';
 ---
 
 <head>
@@ -12,11 +12,11 @@ import { SITE_TITLE } from '../config';
 		</span>
 	</div>
 	<nav>
-		<NavLink href="/" rel="prefetch">Posts</NavLink>
-		<NavLink href="/tags">Tags</NavLink>
+		<NavLink href="/">Home</NavLink>
+		<NavLink href="/blog">Blog</NavLink>
 		<NavLink href="/notes">Notes</NavLink>
+		<NavLink href="/tags">Tags</NavLink>
 		<NavLink href="/links">Links</NavLink>
-		<NavLink href="/about">About</NavLink>
 		<NavLink href="/search"><img src="/img/assets/search.svg" height="24px" width="24px" class="search" alt="Search"></NavLink>
 	</nav>
 </header>
