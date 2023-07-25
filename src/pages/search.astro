@@ -3,7 +3,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 
 const title = 'Search'
 ---
-<style>
+<style scoped>
   .title {
     font-size: 36px;
   }
@@ -12,6 +12,9 @@ const title = 'Search'
   }
   .foot-line {
     margin-top: 4em;
+  }
+  .back-to-top {
+    margin-bottom: 20em;
   }
 </style>
 
@@ -34,7 +37,7 @@ const title = 'Search'
   </script>
   <br><br>
   <hr class="foot-line">
-  <aside>
+  <aside class="back-to-top">
     <a href="#top" class="top button blog-tag">Back to Top &uarr;</a>
   </aside>
 </BaseLayout>
