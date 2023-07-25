@@ -1,5 +1,5 @@
 ---
-layout: "../../layouts/BlogPost.astro"
+layout: "@layouts/BlogPost.astro"
 title: "Set up NFS Shares between Linux hosts"
 description: "Network File Share or NFS allows sharing directories between Linux hosts on the same network, similar to Samba though it has better performance with small and medium-sized files comparatively. Here's a quick guide on setting up an NFS share between Linux hosts."
 pubDate: "October 29, 2022"

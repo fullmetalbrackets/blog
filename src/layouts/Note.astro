@@ -1,5 +1,6 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { generateTagsData } from '@utils/tags';
 
 export interface Props {
 	content: {
@@ -7,18 +8,20 @@ export interface Props {
 		description: string;
 		pubDate?: string;
 		updatedDate?: string;
+		tags?: string;
 	};
 }
 
 const {
-	content: { title, description, pubDate, updatedDate },
+	content: { title, description, pubDate, updatedDate, tags },
 } = Astro.props;
+const allTagsData = generateTagsData(tags);
 ---
 <BaseLayout title={title} description={description}>
 	<head>
 		<link rel="stylesheet" href="/prism.css">
 	</head>
-	<style>
+	<style scoped>
 		.back-to-notes {
 			justify-content: left;
 			margin: 4.15em auto 0 auto;
@@ -28,6 +31,14 @@ const {
 		}
 		.title {
 			margin-bottom: 1em;
+		}
+		.note-tags {
+			display: flex;
+			align-items: center;
+			font-size: 120%;
+			color: var(--date);
+			margin-right: 0.5em;
+			margin-bottom: 0.25em;
 		}
 		.tags {
 			display: flex;
@@ -109,6 +120,12 @@ const {
 		{pubDate && <time>{pubDate}</time>}
 		{updatedDate && <div>Updated on <time>{updatedDate}</time></div>}
 		<h1 class="title">{title}</h1>
+		<ul class="tags">
+			<span class="note-tags">Tags:</span>
+			{allTagsData.map(tags => (
+				<a href={`/tags/${tags.slug}`}><li class="button">{tags.name}</li></a>
+			))}
+		</ul>
 		<slot>
 			<p>
 				If you're seeing this, something went wrong! Please try <em>reloading the page</em>.

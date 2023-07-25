@@ -1,5 +1,5 @@
 ---
-layout: "../../layouts/BlogPost.astro"
+layout: "@layouts/BlogPost.astro"
 title: "Set up and configure Pi-Hole for network-wide ad blocking"
 description: "I've been using Pi-Hole for a few years, and I just recently set it up again on a new machine with a new router. It's stupid easy and super effective, here's how."
 pubDate: "October 8, 2022"

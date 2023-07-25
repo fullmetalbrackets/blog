@@ -7,7 +7,7 @@ tags:
   - Self-Hosting
   - Cloudflare
   - Pi-Hole
-  - DNS
+  - DNS over HTTPS
 ---
 
 ## Sections

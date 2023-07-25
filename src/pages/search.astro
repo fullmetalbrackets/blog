@@ -3,23 +3,26 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 
 const title = 'Search'
 ---
-<style>
+<style scoped>
   .title {
     font-size: 36px;
   }
-  hr {
+  .top-line {
     margin-bottom: 2.5em;
+  }
+  .foot-line {
+    margin-top: 4em;
   }
 </style>
 
-<BaseLayout title={title} description="Search for blog posts.">
+<BaseLayout title={title} description="Search for blog posts and notes.">
   <head>
     <link rel="stylesheet" href="/pagefind-ui.css">
   </head>
   <h1 class="title">{title}</h1>
-  <hr>
+  <hr class="top-line">
   <p>
-    Use the search field below to search for blog posts.
+    Use the search field below to search for blog posts and notes.
   </p>
   <script src="/_pagefind/pagefind-ui.js" type="text/javascript" crossorigin="anonymous">
   </script>
@@ -30,4 +33,8 @@ const title = 'Search'
     });
   </script>
   <br><br>
+  <hr class="foot-line">
+  <aside>
+    <a href="#top" class="top button blog-tag">Back to Top &uarr;</a>
+  </aside>
 </BaseLayout>

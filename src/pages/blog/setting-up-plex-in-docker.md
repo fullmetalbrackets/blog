@@ -1,5 +1,5 @@
 ---
-layout: "../../layouts/BlogPost.astro"
+layout: "@layouts/BlogPost.astro"
 title: "Setup self-hosted Plex Media Server in Docker"
 description: "One of the most popular services to self-host in Plex Media Server, which serves your personal media library with a nice Netflix-like UI. Though you can install and run it bare-metal, the most common and easiest way is in a Docker container. Here's how."
 pubDate: "October 17, 2022"

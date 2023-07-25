@@ -3,6 +3,8 @@ layout: "@layouts/Note.astro"
 title: "Sudo without password"
 description: "How to use sudo command in Linux without the password prompt, by adding a line to the sudoers file."
 pubDate: "April 20, 2022"
+tags:
+  - Linux
 ---
 
 <div>

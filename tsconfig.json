@@ -7,6 +7,10 @@
       "@layouts/*": ["src/layouts/*"],
       "@styles/*": ["src/styles/*"],
       "@utils/*": ["src/utils/*"],
+      "@pages/*": ["src/pages/*"],
+      "@blog/*": ["src/blog/*"],
+      "@notes/*": ["src/notes/*"],
+      "@config": ["src/config"]
     }
   }
 }

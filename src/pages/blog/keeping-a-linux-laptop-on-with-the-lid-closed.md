@@ -1,5 +1,5 @@
 ---
-layout: "../../layouts/BlogPost.astro"
+layout: "@layouts/BlogPost.astro"
 title: "Keeping a Linux laptop on when the lid is closed"
 description: "I tend to use old laptops as my home lab when I want to test anything on Linux, and for the longest time my home server was an old gaming laptop with a broken screen. Laptops barely take up space with the lid closed, and it only takes few quick commands to keep laptops on with the lid closed."
 pubDate: "October 4, 2022"

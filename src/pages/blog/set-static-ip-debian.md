@@ -1,5 +1,5 @@
 ---
-layout: "../../layouts/BlogPost.astro"
+layout: "@layouts/BlogPost.astro"
 title: "Set a static IP in Debian"
 description: "Debian's non-graphical install does not give you the option to set a static IP, here's a quick guide to doing it manually on the command line."
 pubDate: "October 7, 2022"

@@ -1,5 +1,5 @@
 ---
-layout: "../../layouts/BlogPost.astro"
+layout: "@layouts/BlogPost.astro"
 title: "Setup auto-updates in Debian and Ubuntu with Unattended-Upgrades and NeedRestart"
 description: "If you want your Linux machine to stay up-to-date on important security updates, but you don't want to SSH into it all the time to run updates and would rather set it and forget it, this is the way."
 pubDate: "October 14, 2022"

@@ -1,5 +1,5 @@
 ---
-layout: "../../layouts/BlogPost.astro"
+layout: "@layouts/BlogPost.astro"
 title: "Linux Commands & Keyboard Shortcuts Cheat Sheet"
 description: "Just a quick cheat sheet of basic and slightly less basic Linux commands, as well as handy keyboard shortcuts, that I maintain for myself since I can't always remember them all."
 pubDate: "September 18, 2022"
