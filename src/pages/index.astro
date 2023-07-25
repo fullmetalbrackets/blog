@@ -1,67 +1,44 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '@config';
 
 const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
 	(a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
 );
+const notes = (await Astro.glob('./notes/*.md')).sort(
+	(a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
+);
 ---
 
-<style>
-	article {
-		list-style-type: none;
-		padding: 0;
-		margin: 4em 0 2em 0;
+<style scoped>
+	p {
+		word-spacing: 1px;
 	}
-	article h1 {
-		margin-top: 0.75em;
-		color: var(--primary);
+	ul {
+		width: 100%
 	}
-	.desc {
-		color: var(--text);
-		padding-bottom: 1em;
+	li {
+		display: inline-flex;
+		flex-direction: column;
+		margin: 0 1em 2em -1em;
+		line-height: 1.2;
 	}
-	a button {
-		background-color: var(--tags);
-		color: #000;
-		border-radius: 0.25em;
-		cursor: pointer;
-		font-weight: 600;
-		padding: 4px 8px;
-		text-decoration: none;
-		text-overflow: ellipsis;
-		-webkit-transition: all .10s ease-out;
-		-moz-transition: all .10s ease-out;
-		-o-transition: all .10s ease-out;
-		transition: all .10s ease-out;
-		margin: 0 8px 8px 0;
+	.more {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		line-height: 1.5;
+		margin-bottom: 0;
 	}
-	@media (hover: hover) {
-		a:hover button  {
-			box-shadow: -4px -4px 0 #000;
-			transform: translate(4px,4px);
-		}
-		a:hover button {
-			outline-offset: 1px;
-		}
+	.posts-title, .notes-title {
+		display: inline-flex;
+		flex-direction: row;
+		margin-top: 0.25em;
 	}
-	@media (hover: none) {
-  a:hover button {
-    background-color: var(--tags);
-  }
-}
+
 	@media screen and (min-width: 200px) and (max-width: 650px) {
 		main {
 			margin: 0 10px;
 		}
-		ul {
-			margin-top: 3em;
-		}
-		article h1 {
-			margin-top: 0.9em;
-			font-size: 1.3em;
-		}
-	}
 </style>
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
@@ -69,22 +46,60 @@ const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
 	<link rel="preload" href="/fonts/MPLUSRounded1c-Medium.ttf" as="font" crossorigin/>
 	<link rel="preload" href="/fonts/Wotfard.woff2" as="font" crossorigin/>
 	<section>
-		{posts.map((post) => (
-		<a href={post.url}>
-			<article>
-				<time datetime={post.frontmatter.pubDate}>
-					{new Date(post.frontmatter.pubDate).toLocaleDateString('en-us', {
-						year: 'numeric',
-						month: 'long',
-						day: 'numeric',
-					})}
-				</time>
-				<h1>{post.frontmatter.title}</h1>
-				<p class="desc">{post.frontmatter.description}</p>
-				<button>Read More</button>
-			</article>
-		</a>
+		<h1>Hello, World!</h1>
+    <hr>
+		<p>A website to collect mostly tech-related documentation written by me, <em>Ariel Diaz</em>. Most things I've learned and put to use get written down step-by-step for future reference. Maybe some of it will be helpful to you. If not, that's ok, it's still helpful for me. Either way, thanks for visiting!</p>
+		<h4>See more</h4>
+		<ul class="more">
+			<li class="more">
+				<a href="/about">About</a>
+				<a href="/uses">Uses</a>
+				<a href="/links">Links</a>
+				<a href="/about#contact">Contact</a>
+			</li>
+		</ul>
+		<h2>Recent Posts</h2>
+		{posts.slice(0, 5).map((post) => (
+			<ul>
+				<li class="posts-li">
+					<div class="posts-dates">
+						<time datetime={post.frontmatter.pubDate}>
+							{new Date(post.frontmatter.pubDate).toLocaleDateString('en-us', {
+								year: 'numeric',
+								month: 'numeric',
+								day: 'numeric',
+							})}
+						</time>
+					</div>
+					<div class="posts-title">
+						<a href={post.url} rel="prefetch">
+							<span>{post.frontmatter.title}</span>
+						</a>
+					</div>
+				</li>
+			</ul>
 		))}
+		<h2>Recent Notes</h2>
+				{notes.slice(0, 5).map((note) => (
+					<ul>
+						<li class="notes-li">
+							<div class="notes-dates">
+								<time datetime={note.frontmatter.pubDate}>
+									{new Date(note.frontmatter.pubDate).toLocaleDateString('en-us', {
+										year: 'numeric',
+										month: 'numeric',
+										day: 'numeric',
+									})}
+								</time>
+							</div>
+							<div class="notes-title">
+								<a href={note.url} rel="prefetch">
+									<span>{note.frontmatter.title}</span>
+								</a>
+							</div>
+						</li>
+					</ul>
+			))}
 		<hr>
 		<aside>
 			<a href="#top" class="top button blog-tag">Back to Top &uarr;</a>
