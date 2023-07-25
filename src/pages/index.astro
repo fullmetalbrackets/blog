@@ -15,17 +15,18 @@ const notes = (await Astro.glob('./notes/*.md')).sort(
 		word-spacing: 1px;
 	}
 	ul {
-		width: 100%
+		width: 85%;
 	}
 	li {
 		display: inline-flex;
 		flex-direction: column;
-		margin: 0 1em 2em -1em;
+		margin: 0 2em 2em -1em;
 		line-height: 1.2;
 	}
 	.more {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
+		gap: 0 20px;
 		line-height: 1.5;
 		margin-bottom: 0;
 	}
@@ -38,6 +39,12 @@ const notes = (await Astro.glob('./notes/*.md')).sort(
 	@media screen and (min-width: 200px) and (max-width: 650px) {
 		main {
 			margin: 0 10px;
+		}
+		ul {
+			width: 100%;
+		}
+		li {
+			margin: 0 1em 2em -1em;
 		}
 </style>
 
@@ -53,8 +60,8 @@ const notes = (await Astro.glob('./notes/*.md')).sort(
 		<ul class="more">
 			<li class="more">
 				<a href="/about">About</a>
-				<a href="/uses">Uses</a>
 				<a href="/links">Links</a>
+				<a href="/uses">Uses</a>
 				<a href="/about#contact">Contact</a>
 			</li>
 		</ul>
