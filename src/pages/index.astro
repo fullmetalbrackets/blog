@@ -117,7 +117,7 @@ const notes = (await Astro.glob('./notes/*.md')).sort(
 				</li>
 			</ul>
 		))}
-		<a href="/blog"><button>More Posts</button></a>
+		<a href="/posts"><button>More Posts</button></a>
 		<h2>Recent Notes</h2>
 				{notes.slice(0, 5).map((note) => (
 					<ul class="notes-ul">
