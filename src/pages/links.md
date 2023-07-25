@@ -28,4 +28,4 @@ description: "Links to web sites, apps and other resources that I use, and want 
   <br><br>
 - [UI Goodies](https://uigoodies.com) -- A site that brings together the best web design resources in one place.
 
-If you'd like to share similar tools you find to be very useful for system administrators or web developers, comment below and I'll gladly add them, or open a [edit this page on GitHub](https://github.com/fullmetalbrackets/edit/main/src/pages/links.md) and pull request with new links added!
+If you'd like to share similar tools you find to be very useful for system administrators or web developers, comment below and I'll gladly add them, or open a [edit this page on GitHub](https://github.com/fullmetalbrackets/blog/edit/main/src/pages/links.md) and pull request with new links added!
