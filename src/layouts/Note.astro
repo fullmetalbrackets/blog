@@ -51,7 +51,7 @@ const allTagsData = generateTagsData(tags);
 		.note-aside {
 			display: flex;
 			align-items: center;
-			justify-content: start;
+			justify-content: space-between;
 			cursor: pointer;
 			margin: 2em auto 0 auto;
 		}
@@ -145,6 +145,7 @@ const allTagsData = generateTagsData(tags);
 			<input type="hidden" id="postId" name="postId" value={title} />
 			</form>
 		</span>
+		<a href="#top" class="top button">Back to Top &uarr;</a>
 	</aside>
 	<div class="utterances">
 		<script src="https://utteranc.es/client.js"
