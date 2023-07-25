@@ -106,8 +106,8 @@ force = true
 
 [[redirects]]
 from = "https://arieldiaz.codes/blog"
-to = "https://arieldiaz.codes/blog"
-status = 301
+to = "https://arieldiaz.codes/posts"
+status = 302
 force = true
 
 
