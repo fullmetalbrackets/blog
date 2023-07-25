@@ -39,13 +39,6 @@ const allTagsData = generateTagsData(tags);
 			margin-top: 10px;
 			padding: 0;
 		}
-		aside {
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
-			cursor: pointer;
-			margin: 2em auto 0 auto;
-		}
 		form {
 			display: flex;
 			align-items: center;
@@ -122,7 +115,7 @@ const allTagsData = generateTagsData(tags);
 		</slot>
 	</article>
 	<hr>
-	<aside>
+	<aside class="blog-aside">
 		<span>Was this article helpful? 
 			<form name="feedback" method="POST" action="/feedback" data-netlify="true" netlify-honeypot="bot-field">
 			<input value="feedback" name="feedback" type="hidden" />
