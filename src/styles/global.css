@@ -486,7 +486,7 @@ aside > a, aside > a:active, aside > a:visited, aside > a:hover, aside > a:focus
 }
 @media (hover: none) {
   .button:hover {
-    background-color: var(--hover);
+    background-color: var(--menu);
   }
 }
 aside {
