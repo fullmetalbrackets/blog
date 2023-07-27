@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
 
-const posts = (await Astro.glob('../pages/blog/*.{md,mdx}')).sort(
+const posts = (await Astro.glob('../pages/blog/*.md')).sort(
 	(a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
 );
 

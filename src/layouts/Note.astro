@@ -29,6 +29,9 @@ const allTagsData = generateTagsData(tags);
 		hr {
 			margin: 1.5em auto;
 		}
+		.notes-bottom {
+		  margin: 4em auto 0 auto;
+		}
 		.title {
 			margin-bottom: 1em;
 		}
@@ -132,7 +135,7 @@ const allTagsData = generateTagsData(tags);
 			</p>
 		</slot>
 	</article>
-	<hr>
+	<hr class="notes-bottom">
 	<aside class="note-aside">
 		<span>Was this note helpful? 
 			<form name="feedback" method="POST" action="/feedback" data-netlify="true" netlify-honeypot="bot-field">
