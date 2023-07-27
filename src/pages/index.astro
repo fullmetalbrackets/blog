@@ -2,7 +2,7 @@
 import BaseLayout from '@layouts/BaseLayout.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '@config';
 
-const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
+const posts = (await Astro.glob('./blog/*.md')).sort(
 	(a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
 );
 const notes = (await Astro.glob('./notes/*.md')).sort(

@@ -321,7 +321,7 @@ div .alert {
   background-color: var(--blockquote);
   border: 2px solid var(--alert);
   line-height: 1.4;
-	padding: 1em;
+	padding: 1em 1em 0 1em;
 	margin: 2em auto;
   border-radius: 0.5em;
   width: 95%;
@@ -330,7 +330,7 @@ div .success {
   background-color: var(--blockquote);
   border: 2px solid var(--success);
   line-height: 1.4;
-	padding: 1em;
+	padding: 1em 1em 0 1em;
 	margin: 2em auto;
   border-radius: 0.5em;
   width: 95%;
@@ -339,7 +339,7 @@ div .note {
   background-color: var(--blockquote);
   border: 2px solid var(--note);
   line-height: 1.4;
-	padding: 1em;
+	padding: 1em 1em 0 1em;
 	margin: 2em auto;
   border-radius: 0.5em;
   width: 95%;
@@ -348,13 +348,13 @@ div .info {
   background-color: var(--blockquote);
   border: 2px solid var(--info);
   line-height: 1.4;
-	padding: 1em;
+	padding: 1em 1em 0 1em;
 	margin: 2em auto;
   border-radius: 0.5em;
   width: 95%;
 }
 div > .info {
-  margin: 4em auto;
+  margin: 2.5em auto 0 auto;
 }
 div > .alert > span {
   display: inline-flex;
