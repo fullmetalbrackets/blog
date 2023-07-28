@@ -36,10 +36,24 @@ const notes = (await Astro.glob('./notes/*.md')).sort(
 		line-height: 1.5;
 		margin-bottom: 0;
 	}
+	.recent-posts-line {
+		width: 185px;
+		margin: 1em 0 2em 0;
+	}
+	.recent-notes-line {
+		width: 188px;
+		margin: 1em 0 2em 0;
+	}
 	.posts-title, .notes-title {
 		display: inline-flex;
 		flex-direction: row;
 		margin-top: 0.25em;
+	}
+	.posts-title a, .posts-title a:active, .posts-title a:visited, .notes-title a, .notes-title a:active, .notes-title a:visited {
+		color: var(--primary);
+	}
+	.posts-title a:hover, .notes-title a:hover {
+		color: var(--menu);
 	}
 	a button {
 		background-color: var(--tags);
@@ -106,6 +120,7 @@ const notes = (await Astro.glob('./notes/*.md')).sort(
 			</li>
 		</ul>
 		<h2>Recent Posts</h2>
+		<hr class="recent-posts-line">
 		{posts.slice(0, 5).map((post) => (
 			<ul>
 				<li class="posts-li">
@@ -129,26 +144,27 @@ const notes = (await Astro.glob('./notes/*.md')).sort(
 		))}
 		<a href="/posts"><button>More Posts</button></a>
 		<h2>Recent Notes</h2>
-				{notes.slice(0, 5).map((note) => (
-					<ul class="notes-ul">
-						<li class="notes-li">
-							<div class="notes-dates">
-								<time datetime={note.frontmatter.pubDate}>
-									{new Date(note.frontmatter.pubDate).toLocaleDateString('en-us', {
-										year: 'numeric',
-										month: 'numeric',
-										day: 'numeric',
-									})}
-								</time>
-							</div>
-							<div class="notes-title">
-								<a href={note.url} rel="prefetch">
-									<span>{note.frontmatter.title}</span>
-									<p class="desc">{note.frontmatter.description}</p>
-								</a>
-							</div>
-						</li>
-					</ul>
+		<hr class="recent-notes-line">
+			{notes.slice(0, 5).map((note) => (
+				<ul class="notes-ul">
+					<li class="notes-li">
+						<div class="notes-dates">
+							<time datetime={note.frontmatter.pubDate}>
+								{new Date(note.frontmatter.pubDate).toLocaleDateString('en-us', {
+									year: 'numeric',
+									month: 'numeric',
+									day: 'numeric',
+								})}
+							</time>
+						</div>
+						<div class="notes-title">
+							<a href={note.url} rel="prefetch">
+								<span>{note.frontmatter.title}</span>
+								<p class="desc">{note.frontmatter.description}</p>
+							</a>
+						</div>
+					</li>
+				</ul>
 			))}
 		<a href="/notes"><button>More Notes</button></a>
 		<hr class="foot-line">
