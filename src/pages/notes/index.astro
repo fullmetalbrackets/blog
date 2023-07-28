@@ -10,6 +10,9 @@ const desc = 'Quick notes, instructions and copies of my GitHub gists.'
 ---
 
 <style scoped>
+span {
+  font-size: 110%;
+}
 p {
   margin-bottom: 4em;
 }
@@ -34,6 +37,12 @@ p {
   width: auto;
   text-align: left;
 }
+.notes-title a, .notes-title a:active, .notes-title a:visited {
+  color: var(--primary);
+} 
+.notes-title a:hover {
+  color: var(--menu);
+} 
 .notes-bottom {
   margin: 4em auto 0 auto;
 }
