@@ -297,6 +297,11 @@ figcaption {
   font-size: 0.65em;
   margin: -6.25em 0 6em 0;
 }
+.desc {
+  font-size: 90%;
+  color: var(--text);
+  margin: 0;
+}
 blockquote {
   font-family: 'M PLUS Rounded 1c Reg', 'Wotfard', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
 	border: 1px solid var(--text);

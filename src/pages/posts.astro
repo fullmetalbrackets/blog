@@ -19,7 +19,7 @@ const desc = 'List of all blog posts'
 		margin-top: 0.75em;
 		color: var(--primary);
 	}
-	.desc {
+	.blog-desc {
 		color: var(--text);
 		padding-bottom: 1em;
 	}
@@ -84,7 +84,7 @@ const desc = 'List of all blog posts'
 					})}
 				</time>
 				<h1>{post.frontmatter.title}</h1>
-				<p class="desc">{post.frontmatter.description}</p>
+				<p class="blog-desc">{post.frontmatter.description}</p>
 				<button>Read More</button>
 			</article>
 		</a>
