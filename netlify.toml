@@ -303,5 +303,12 @@ to = "https://arieldiaz.codes/notes/styling-the-kbd-element"
 status = 301
 force = true
 
+[[redirects]]
+from = "https://arieldiaz.codes/blog/setup-photosync-with-samba-server"
+to = "https://arieldiaz.codes/blog/setup-photosync-with-smb-server"
+status = 301
+force = true
+
+
 # [context.deploy-preview]
 #   ignore = "git log -1 --pretty=%B | grep dependabot"
