@@ -14,7 +14,9 @@ description: "Links to web sites, apps and other resources that I use, and want 
   <br><br>
 - [CSS Filter Generator](https://angel-rs.github.io/css-color-filter-generator) -- Convert hex colors into CSS filter properties, handy for _applying colors to SVGs_. Alternately check out [this codepen](https://codepen.io/sosuke/pen/Pjoqqp) it may have been derived from, it works the same.
   <br><br>
-- [Font Awesome](https://fontawesome.com) -- Icon library and toolkit, used by millions of designers, developers, and content creators. Almost any icon you need for a website, app or similar project can be found here for free.
+- [Iconify](https://icon-sets.iconify.design) -- Hosts many different open-source icon sets available for your websites, apps or similar products.
+  <br><br>
+- [Font Awesome](https://fontawesome.com) -- Another good icon library, plenty of good free icons, but certain styles are locked behind a paywall.
   <br><br>
 - [What Is My Viewport?](https://whatismyviewport.com) -- Shows the viewport of the browser window, updates as you resize the window. Super helpful for figuring out CSS breakpoints in responsive designs.
   <br><br>
