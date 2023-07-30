@@ -40,8 +40,12 @@ sudo apt install docker-compose -y
 ## Preparing the configuration file
 
 <div class="alert">
-  <b>&#x26a0;&#xfe0f; &nbsp;Important!</b>
-  Make sure to do the below steps <em>prior</em> to starting the container or else it won't work!
+  <span>
+    <img src="/img/assets/alert.svg" class="alert-icon"> <b>Important!</b>
+  </span>
+  <p>
+    Make sure to do the below steps <em>prior</em> to starting the container or else it won't work!
+  </p>
 </div>
 
 Before starting the container, you need to create the FileBrowser directory, and within it a config file and database file. I'll be using FileBrowser's own suggested configuration with defaults.
