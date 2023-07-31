@@ -1,6 +1,6 @@
 ---
 layout: "@layouts/BlogPost.astro"
-title: "How to set up PhotoSync app to upload photos from your phone to your home server via Samba"
+title: "Set up PhotoSync app to backup photos from your phone to an SMB share on your home server"
 description: "Google Photos began limiting free storage back in 2021, limiting you to 15 GB of storage when uploading photos in their original size uncompressed. Rather than wait and see if I hit the cap, I decided to try replacing Google Photos with a self-hosted solution. Here's how I did it."
 pubDate: "July 7, 2023"
 tags:
