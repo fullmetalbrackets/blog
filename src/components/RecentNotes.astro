@@ -9,7 +9,7 @@ const notes = (await Astro.glob('../pages/notes/*.md')).sort(
 		margin-top: 0;
 	}
   section {
-    margin-bottom: 2em;
+    margin-bottom: 5em;
   }
   span {
 		font-size: 110%;
@@ -74,9 +74,6 @@ const notes = (await Astro.glob('../pages/notes/*.md')).sort(
 		a:hover button {
 			background-color: var(--menu);
 		}
-	}
-	.foot-line {
-		margin-top: 4em;
 	}
   @media screen and (min-width: 200px) and (max-width: 667px) {
 		main {
