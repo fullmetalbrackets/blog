@@ -34,7 +34,7 @@ forward-zone:
  forward-addr: 149.112.112.11@853#dns11.quad9.net
 ```
 
-### Unbound as forwarding resolver
+### Cloudflared as forwarding resolver
 
 Copy & paste the below into a `docker-compose.yaml` then use `docker-compose up -d` to create a fully-configured _cloudflared_ container.
 
