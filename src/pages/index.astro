@@ -10,8 +10,20 @@ import RecentNotes from '@components/RecentNotes.astro';
 		word-spacing: 1px;
 	}
 	.more {
-		margin-bottom: 0;
+		margin: 0;
+		padding: 0;
+		/* max-width: 300px; */
 	}
+	.more-list {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		gap: 0;
+		margin: 0;
+	}
+	.more-list:first-of-type {
+		margin-left: 1.5em;
+	}
+
 	ul {
 		width: 85%;
 	}
@@ -27,6 +39,9 @@ import RecentNotes from '@components/RecentNotes.astro';
 		}
 		span {
 			font-size: 100%;
+		}
+		.more {
+			gap: 1em;
 		}
 		ul {
 			width: 100%;
@@ -48,9 +63,9 @@ import RecentNotes from '@components/RecentNotes.astro';
 		<h1>Hello, World!</h1>
     <hr>
 		<p>A website to collect mostly tech-related documentation written by me, <em>Ariel Diaz</em>. Most things I've learned and put to use get written down step-by-step for future reference. Maybe some of it will be helpful to you. If not, that's ok, it's still helpful for me. Either way, thanks for visiting!</p>
-		<h4>See more</h4>
+		<h2>See more</h2>
 		<ul class="more">
-			<li class="more">
+			<li class="more-list">
 				<a href="/about">About</a>
 				<a href="/uses">Uses</a>
 				<a href="/about#contact">Contact</a>
