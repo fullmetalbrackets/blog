@@ -105,13 +105,6 @@ status = 301
 force = true
 
 [[redirects]]
-from = "https://arieldiaz.codes/blog"
-to = "https://arieldiaz.codes/posts"
-status = 302
-force = true
-
-
-[[redirects]]
 from = "https://arieldiaz.codes/blog/tags"
 to = "https://arieldiaz.codes/tags"
 status = 301
