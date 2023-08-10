@@ -14,7 +14,7 @@ const isActive = href === Astro.url.pathname.replace(/\/$/, '');
 		display: inline-block;
 		line-height: 1.2;
 		font-size: 1.25em;
-		padding: 0.25rem;
+		padding: 4px 8px 1px 8px;
 		text-decoration: none;
 	}
 	a:hover, a:focus {
@@ -22,7 +22,7 @@ const isActive = href === Astro.url.pathname.replace(/\/$/, '');
 		line-height: 1.2;
 		text-decoration: none;
 		border-radius: 0.25em;
-		padding: 0.25rem;
+		padding: 4px 8px 1px 8px;
 		background: var(--accent);
 	}
 	a.active {
@@ -32,6 +32,9 @@ const isActive = href === Astro.url.pathname.replace(/\/$/, '');
 		border-radius: 0.25em;
 		padding: 0.25rem;
 		background: var(--accent);
+	}
+	.search-link, .search-link:hover {
+		padding: 4px 5px 3px 6px;
 	}
 	@media screen and (min-width: 200px) and (max-width: 667px) {
 		a, a:active, a:visited, a:hover, a:focus	 {
