@@ -9,9 +9,9 @@
 ## ⌨️ Latest blog posts
 
 <!-- BLOG-POST-LIST:START -->
+- [OpenMediaVault Quick Reference](https://arieldiaz.codes/blog/openmediavault-quick-reference/)
 - [Setup a Cloudflare Tunnel to securely access self-hosted apps with a domain from outside the home network](https://arieldiaz.codes/blog/setup-cloudflare-tunnel-to-access-self-hosted-apps/)
 - [Reverse proxy OpenMediaVault, Plex and Navidrome with Nginx Proxy Manager and Pi-Hole](https://arieldiaz.codes/blog/reverse-proxy-nginx-pihole/)
 - [Using DNS over HTTPS with Pi-Hole and Cloudflared](https://arieldiaz.codes/blog/using-dns-over-https-with-pihole/)
-- [How to set up PhotoSync app to upload photos from your phone to your home server via Samba](https://arieldiaz.codes/blog/setup-photosync-with-samba-server/)
-- [Create a public Samba share accessible without a login](https://arieldiaz.codes/blog/create-public-samba-share-without-login/)
+- [Set up PhotoSync app to backup photos from your phone to an SMB share on your home server](https://arieldiaz.codes/blog/setup-photosync-with-smb-server/)
 <!-- BLOG-POST-LIST:END -->
