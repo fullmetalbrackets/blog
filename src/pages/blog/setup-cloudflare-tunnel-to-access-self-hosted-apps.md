@@ -154,7 +154,7 @@ Now we will set up Cloudflare DNS to proxy `music.your-domain.com` to Navidrome 
   </span>
   <p>
     You'll need a Google account to set this up, which you already do with
-    Gmail. You'll be using that email to do some stuff on{" "}
+    Gmail. You'll be using that email to do some stuff on
     <em>Google Cloud Platform</em>. It's totally free for what we're doing.
   </p>
 </div>
