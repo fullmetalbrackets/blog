@@ -73,8 +73,7 @@ const posts = (await Astro.glob('../blog/*.{md,mdx}')).sort(
 			color: #000;
 			border-radius: 0.25em;
 			cursor: pointer;
-			font-weight: 600;
-			padding: 6px 8px;
+			padding: 5px 8px;
 			text-decoration: none;
 			text-overflow: ellipsis;
 			-webkit-transition: all .10s ease-out;
@@ -82,6 +81,7 @@ const posts = (await Astro.glob('../blog/*.{md,mdx}')).sort(
 			-o-transition: all .10s ease-out;
 			transition: all .10s ease-out;
 			margin: 0.75em 8px 8px 0;
+			font-family: 'M Plus Rounded 1c Med', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
 		}
 		@media (hover: hover) {
 			a:hover button  {
@@ -97,13 +97,19 @@ const posts = (await Astro.glob('../blog/*.{md,mdx}')).sort(
 				background-color: var(--menu);
 			}
 		}
-		@media screen and (min-width: 200px) and (max-width: 650px) {
+		@media screen and (min-width: 200px) and (max-width: 667px) {
 			.title {
 				margin-top: 1.575em;;
 			}
 			.title span::before {
 				content: "\A";
 				white-space: pre;
+			}
+			a button, aside a {
+				font-size: 0.85em;
+			}
+			a button {
+				padding: 4px 8px;
 			}
 		}
 	</style>

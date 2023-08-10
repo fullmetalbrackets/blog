@@ -3,7 +3,7 @@
 ---
 <style>
   label {
-    font-family: 'M PLUS Rounded 1c Med', 'Wotfard', sans-serif;
+    font-family: 'Atkinson', 'Wotfard', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
     text-align: left;
     color: var(--primary);
   }
@@ -23,6 +23,8 @@
     width: 100%;
     box-sizing: border-box;
     outline: none;
+    font-size: 16px;
+    font-family: 'M Plus Rounded 1c Med', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
   }
   textarea {
     font-size: 20px;
@@ -41,6 +43,8 @@
     min-height: 8vh;
     outline: none;
     resize: none;
+    font-size: 16px;
+    font-family: 'M Plus Rounded 1c Med', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
   }
   input:focus, textarea:focus {
     color: var(--form);
@@ -86,11 +90,14 @@
     transition: background-color 5000s ease-in-out 0s;
     -webkit-text-fill-color: var(--form);
   }
-  @media screen and (min-width: 200px) and (max-width: 650px) {
-      form {
-        margin: auto 0.5em;
-      }
+  @media screen and (min-width: 200px) and (max-width: 667px) {
+    form {
+      margin: auto 0.5em;
     }
+    button {
+      font-size: 0.85em;
+    }
+  }
 </style>
 <section>
   <form name="contact" method="POST" action="/thanks" data-netlify="true" netlify-honeypot="bot-field">

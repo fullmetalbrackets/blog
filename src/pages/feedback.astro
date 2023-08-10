@@ -10,8 +10,11 @@ const desc = 'Blog post feedback form success confirmation.'
 		<meta http-equiv="refresh" content="5;url=/" />
 	</head>
 	<style>
+		section {
+			padding-bottom: 5em;
+		}
 		hr {
-			margin-bottom: 2.5em;
+			margin: 1.5em 0 2.5em 0;
 		}
 		h1 {
 			font-size: 36px;
@@ -21,15 +24,16 @@ const desc = 'Blog post feedback form success confirmation.'
 		p {
 			margin: 2em auto;
 		}
-		p + p {
-			margin-bottom: 5em;
-		}
-		@media screen and (min-width: 200px) and (max-width: 650px) {
+		@media screen and (min-width: 200px) and (max-width: 667px) {
+			section {
+				padding-bottom: 2em;
+			}
 			h1 {
 				font-size: 36px;
 				margin-top: 1.575em;
 			}
 			hr {
+				margin-top: 21.5px;
 				margin-bottom: 1.75em;
 			}
 			form {

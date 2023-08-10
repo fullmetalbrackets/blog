@@ -14,7 +14,7 @@ span {
   font-size: 110%;
 }
 p {
-  margin-bottom: 4em;
+  margin-bottom: 3em;
 }
 .desc {
   font-size: 90%;
@@ -47,10 +47,17 @@ p {
   margin: 4em auto 0 auto;
 }
 @media screen and (min-width: 200px) and (max-width: 667px) {
+  .notes-li {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto 2em -2em;
+    padding: 0 auto;
+  }
   .notes-dates {
     padding-top: 0.1em;
     font-size: 0.75em;
-    width: 5.75em;
+    width: 6.5em;
+    text-align: left;
   }
 }
 </style>

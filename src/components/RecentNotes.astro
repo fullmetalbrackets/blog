@@ -5,8 +5,11 @@ const notes = (await Astro.glob('../pages/notes/*.md')).sort(
 ---
 
 <style scoped>
+	h2 {
+		margin-top: 0;
+	}
   section {
-    margin-bottom: 4em;
+    margin-bottom: 2em;
   }
   span {
 		font-size: 110%;
@@ -25,7 +28,7 @@ const notes = (await Astro.glob('../pages/notes/*.md')).sort(
 	li {
 		display: inline-flex;
 		flex-direction: column;
-		margin: 0 2em 2em -1em;
+		margin: 0 2em 1em -1em;
 		line-height: 1.2;
 	}
 	.recent-notes-line {
@@ -55,7 +58,8 @@ const notes = (await Astro.glob('../pages/notes/*.md')).sort(
 		-moz-transition: all .10s ease-out;
 		-o-transition: all .10s ease-out;
 		transition: all .10s ease-out;
-		margin: 0 8px 8px 1em;
+		margin: 0 0 0 1em;
+		font-family: 'M Plus Rounded 1c Med';
 	}
 	@media (hover: hover) {
 		a:hover button  {
@@ -86,6 +90,10 @@ const notes = (await Astro.glob('../pages/notes/*.md')).sort(
 		}
 		li {
 			margin: 0 1em 2em -1em;
+		}
+		a button {
+			font-size: 0.85em;
+			margin: 0 0 0 1.2em;
 		}
   }
 </style>

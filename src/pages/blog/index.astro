@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
 
-const posts = (await Astro.glob('../pages/blog/*.md')).sort(
+const posts = (await Astro.glob('./*.md')).sort(
 	(a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
 );
 
@@ -37,6 +37,7 @@ const desc = 'List of all blog posts'
 		-o-transition: all .10s ease-out;
 		transition: all .10s ease-out;
 		margin: 0 8px 8px 0;
+		font-family: 'M Plus Rounded 1c Med', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
 	}
 	@media (hover: hover) {
 		a:hover button  {
@@ -52,7 +53,7 @@ const desc = 'List of all blog posts'
 			background-color: var(--menu);
 		}
 	}
-	@media screen and (min-width: 200px) and (max-width: 650px) {
+	@media screen and (min-width: 200px) and (max-width: 667px) {
 		main {
 			margin: 0 10px;
 		}
@@ -63,13 +64,13 @@ const desc = 'List of all blog posts'
 			margin-top: 0.9em;
 			font-size: 1.3em;
 		}
+		a button, aside a {
+			font-size: 0.85em;
+		}
 	}
 </style>
 
 <BaseLayout title={title} description={desc}>
-	<link rel="preload" href="/fonts/Streamster.woff2" as="font" crossorigin/>
-	<link rel="preload" href="/fonts/MPLUSRounded1c-Medium.ttf" as="font" crossorigin/>
-	<link rel="preload" href="/fonts/Wotfard.woff2" as="font" crossorigin/>
 	<section>
 		<h1>{title}</h1>
     <hr>
