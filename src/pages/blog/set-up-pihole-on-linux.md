@@ -259,15 +259,19 @@ If you'd rather update Pi-Hole during off-hours, like in the middle of the night
 pihole -up | at 5AM
 ```
 
-If running Pi-Hole in a docker container, you don't need to use `pihole -up`, instead do the following:
+If running Pi-Hole in a docker container, you don't need to use `pihole -up`, instead do the following to update the container with the latest image:
 
 - `docker pull pihole/pihole` to pull the latest image
 - `docker-compose down` in the same directory as your compose file, to stop container
 - `docker-compose up -d` to recreate the container with the new image
 
+If you used `docker run` to setup Pi-Hole, pull the image and use `docker restart pihole`. (If you did not name the container, use `docker ps` to list all containers and use the `CONTAINER ID` or whatever random name it received.)
+
 Additionally, you should regularly create a backup of your Pi-Hole configuration. You can't automate it, but that's ok because it's very simple -- just to go the web UI, click on _Settings_, then go to the _Teleporter_ tab and click the _Backup_ button. This will download a `tar.gz` file to the computer you're accessing the web UI from, and within this same screen you can restore from a backup file if necessary. You might consider committing your backup to a private GitHub repo too.
 
-Finally, if you make Pi-Hole an important part of your network, using it as your primary DNS and especially if you're using it as the DHCP server, you may want to run a second Pi-Hole as a fallback in case the machine running Pi-Hole crashes. (These things happen.) If your entire network will go down from an issue with Pi-Hole, running a second instance of it makes a lot of sense. If you go this route, I strongly suggest using <a href="https://github.com/vmstan/gravity-sync" target="_blank" rel="noreferrer noopener">Gravity Sync</a> to keep the adlists and other settings identical between the two.
+Also, if you make Pi-Hole your primary DNS it becomes a critical part of your network -- if it goes down, devices on your network won't be able to resolve any domains. For this reason, you may want to run another Pi-Hole as a secondary DNS in case the host running your main instance of Pi-Hole crashes. (These things happen.) If your entire network will go down from an issue with Pi-Hole, running a second instance of it makes a lot of sense. If you go this route, I strongly suggest using <a href="https://github.com/vmstan/gravity-sync" target="_blank" rel="noreferrer noopener">Gravity Sync</a> to keep the adlists and other settings identical between the two.
+
+And last, but not least, you may want to consider connecting the Pi-Hole(s) to an _Uninterruptable Power Supply_. I have my router and both Pi-Hole hosts on a UPS, and more than once it's let me cruise through brief power outages. (I live in Florida where any random summer storm can cause the power to blink or get knocked out temporarily.)
 
 <div class="info">
   <span>
