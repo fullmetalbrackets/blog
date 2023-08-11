@@ -183,8 +183,14 @@ status = 301
 force = true
 
 [[redirects]]
+from = "https://arieldiaz.codes/blog/install-and-use-sudo-debian"
+to = "https://arieldiaz.codes/notes/install-and-use-sudo-debian"
+status = 301
+force = true
+
+[[redirects]]
 from = "https://arieldiaz.codes/blog/initial-setup-for-debian-fresh-installs"
-to = "https://arieldiaz.codes/blog/install-and-use-sudo-debian"
+to = "https://arieldiaz.codes/notes/install-and-use-sudo-debian"
 status = 301
 force = true
 
