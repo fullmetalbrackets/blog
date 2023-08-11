@@ -3,7 +3,7 @@ layout: "@layouts/BlogPost.astro"
 title: "Setup self-hosted Jellyfin Media Server in Docker"
 description: "Though Plex is a very popular media server for self-hosting, some open source enthusiasts prefer to use an alternative since Plex Media Server is not open source. A nice, simpler and admittedly less pretty alternative is Jellyfin. This guide will show you how to run it in Docker container."
 pubDate: "October 18, 2022"
-updatedDate: "July 19, 2023"
+updatedDate: "August 11, 2023"
 tags:
   - Self-Hosting
   - Jellyfin
@@ -12,7 +12,7 @@ tags:
 
 ## Table of Contents
 
-1. [Installing Docker and Docker-Compose](#install)
+1. [Installing Docker and Docker Compose](#install)
 2. [Preparing and the Docker-Compose file](#compose)
 3. [Starting the container and configuring Jellyfin](#config)
 4. [Theming the web UI with custom CSS](#custom)
@@ -22,19 +22,45 @@ tags:
 
 ## Installing Docker and Docker-Compose
 
-If you don't have Docker installed, your first order of business is to do so. For this guide I'll also be using Docker-Compose, since it makes creating Docker containers even easier and more user-friendly just using the standard `docker` command.
+I'll be quoting from the <a href="https://docs.docker.com/engine/install" target="_blank">Docker docs</a>, which as of mid-2023 recommend uninstalling older packages like the separate <code>docker-compose</code> in favor of the new <code>docker-compose-plugin</code>, among other things.
 
-Use the below command to install both Docker and Docker-Compose, and their dependencies:
+This post assumes you are installing on _Debian_ or _Ubuntu_, check the Docker docs for installation instructions on CentOS and it's offshoots, Fedora, RHEL, or Raspbian.
+
+First, uninstall all conflicting packages:
 
 ```bash
-sudo apt install docker docker-compose -y
+for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt remove $pkg; done
 ```
 
-Now start the Docker daemon and enable it to start at boot:
+Install necessary packages to allow `apt` to use a repository over HTTPS:
 
 ```bash
-sudo systemctl start docker
-sudo systemctl enable docker
+sudo apt update
+sudo apt install ca-certificates curl gnupg
+```
+
+Add Docker's official GPG key:
+
+```bash
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+```
+
+Set up the repository:
+
+```bash
+echo \
+  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
+  "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+```
+
+Now install Docker:
+
+```bash
+sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo service docker start && sudo service docker enable
 ```
 
 <div id='compose'/>
@@ -92,7 +118,7 @@ devices:
 
 ## Starting the container and configuring Jellyfin
 
-Once your `docker-compose.yml` is ready, use the command `docker-compose up -d` from within the same directory as the `docker-compose.yaml` to run it. After completion, use the command `docker ps` to verify the container is up and running. You should see output similar to the below:
+Once your `docker-compose.yml` is ready, use the command `docker compose up -d` from within the same directory as the `docker-compose.yml` to run it. After completion, use the command `docker ps` to verify the container is up and running. You should see output similar to the below:
 
 ```bash
 CONTAINER ID   IMAGE                                 COMMAND   CREATED         STATUS         PORTS                                                                   NAMES

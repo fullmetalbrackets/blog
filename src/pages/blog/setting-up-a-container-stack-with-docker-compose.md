@@ -1,13 +1,13 @@
 ---
 layout: "@layouts/BlogPost.astro"
-title: "Setting up a Docker container stack with Docker-Compose"
-description: "I've been running a bunch of services on my home server in docker containers for a few years now. It's quick and easy to set up once you get used to it. Here's a quick and dirty guide to installing Docker and Docker-Compose, and getting several containers up and running."
+title: "Setting up a Docker container stack with Docker Compose"
+description: "I've been running a bunch of services on my home server in docker containers for a few years now. It's quick and easy to set up once you get used to it. Here's a quick and dirty guide to installing Docker and Docker Compose, and getting several containers up and running."
 pubDate: "September 29, 2022"
+updatedDate: "August 11, 2023"
 tags:
   - Self-Hosting
   - Docker
   - Linux
-  - Command Line
 ---
 
 ## Sections
@@ -31,21 +31,54 @@ tags:
 
 <div id='install'/>
 
-## Installing Docker and Docker-Compose
+## Installing Docker and Docker Compose
 
-First, install Docker and Docker-Compose, and start/enable the Docker service:
+I'll be quoting from the <a href="https://docs.docker.com/engine/install" target="_blank">Docker docs</a>, which as of mid-2023 recommend uninstalling older packages like the separate <code>docker-compose</code> in favor of the new <code>docker-compose-plugin</code>, among other things.
+
+This post assumes you are installing on _Debian_ or _Ubuntu_, check the Docker docs for installation instructions on CentOS and it's offshoots, Fedora, RHEL, or Raspbian.
+
+First, uninstall all conflicting packages:
 
 ```bash
-sudo apt install docker.io docker-compose -y
-sudo systemctl start docker
-sudo systemctl enable docker
+for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt remove $pkg; done
+```
+
+Install necessary packages to allow `apt` to use a repository over HTTPS:
+
+```bash
+sudo apt update
+sudo apt install ca-certificates curl gnupg
+```
+
+Add Docker's official GPG key:
+
+```bash
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+```
+
+Set up the repository:
+
+```bash
+echo \
+  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
+  "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+```
+
+Now install Docker:
+
+```bash
+sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo service docker start && sudo service docker enable
 ```
 
 <div id='compose'/>
 
-## Setting up a Docker-Compose file
+## Setting up a Docker Compose file
 
-For setting up multiple containers via CLI we'll be using <a href="https://docs.docker.com/compose/" target="_blank">Docker-Compose</a>, which uses YAML files for configuration. Below is a `docker-compose.yml` based on own:
+For setting up multiple containers via CLI we'll be using <a href="https://docs.docker.com/compose/" target="_blank">Docker Compose</a>, which uses YAML files for configuration. Below is a `docker-compose.yml` based on own:
 
 ```yaml
 version: "3"
@@ -156,7 +189,7 @@ This will create and run the following containers:
 Once the `docker-compose.yml` is ready, use the following command in the same directory where the file is located:
 
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
 Using the `-d` flag will "detach" the process so it's in the background. You will see all the required container images be downloaded and the directories you specified in the compose file will also be set up. Once finished, use `docker ps` to list running containers and confirm your new services are up and running.
@@ -166,4 +199,4 @@ Using the `-d` flag will "detach" the process so it's in the background. You wil
 ## References
 
 - <a href="https://docs.docker.com" target="_blank">Docker documentation</a>
-- <a href="https://docs.docker.com/compose/" target="_blank">Docker-Compose documentation</a>
+- <a href="https://docs.docker.com/compose/" target="_blank">Docker Compose documentation</a>
