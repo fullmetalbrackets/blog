@@ -2,7 +2,7 @@
 layout: "@layouts/Note.astro"
 title: "Sync a bare metal Pi-Hole instance with a Pi-Hole docker container on another host"
 description: "I've run Pi-Hole bare metal for years and recently decided to run a secondary instance of Pi-Hole on another machine as a Docker container. Gravity Sync keeps them updated with all the same DNS records, block lists, etc. Here's how I set it up."
-pubDate: "August 11, 2023"
+pubDate: "August 10, 2023"
 tags:
   - Pi-Hole
 ---
@@ -29,7 +29,7 @@ tags:
     </p>
   </div>
 <div>
-
+<br>
 SSH into the host where you have the Pi-Hole container running, and use the following command to execute the Gravity Sync install script:
 
 ```

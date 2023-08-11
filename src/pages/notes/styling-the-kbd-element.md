@@ -33,8 +33,6 @@ tags:
 - <kbd>1</kbd><br><br>
 - <kbd>.</kbd>
 
-<div id='code'/>
-
 ## The code
 
 ```css
@@ -68,9 +66,3 @@ kbd:hover {
 ```
 
 Once again, thanks to <a href="http://dylanatsmith.com" target="_blank">Dylan Smith</a> for this!
-
-<div id='ref'/>
-
-## Reference
-
-- <a href="http://dylanatsmith.com/wrote/styling-the-kbd-element" target="_blank">Writing by Dylan Smith</a>

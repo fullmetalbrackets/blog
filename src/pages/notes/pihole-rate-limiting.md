@@ -25,6 +25,7 @@ tags:
     </p>
   </div>
 </div>
+<br>
 
 Edit the FTL config file:
 

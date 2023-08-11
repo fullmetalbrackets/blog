@@ -18,6 +18,7 @@ tags:
     </p>
   </div>
 </div>
+<br>
 
 ```bash
 sudo systemctl edit getty@.service

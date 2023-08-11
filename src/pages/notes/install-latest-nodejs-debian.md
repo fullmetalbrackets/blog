@@ -18,6 +18,7 @@ tags:
     </p>
   </div>
 </div>
+<br>
 
 Go to the above link to copy & paste the terminal commands for the latest version of NodeJS.
 

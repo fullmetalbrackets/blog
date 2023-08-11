@@ -17,6 +17,7 @@ tags:
     </p>
   </div>
 </div>
+<br>
 
 Install sudo:
 

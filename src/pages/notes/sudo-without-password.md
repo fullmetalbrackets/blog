@@ -18,6 +18,7 @@ tags:
     </p>
   </div>
 </div>
+<br>
 
 Removing the sudo password prompt is done by editing the `/etc/sudoers` file, however you should never edit this file directly, but instead use `sudo visudo` to do so.
 
