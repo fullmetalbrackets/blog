@@ -54,3 +54,19 @@ Now install Docker:
 sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 sudo service docker start && sudo service docker enable
 ```
+
+Configure docker to start on boot:
+
+```bash
+sudo systemctl enable docker.service && sudo systemctl enable containerd.service
+```
+
+(Optional) Configure docker to use it without sudo:
+
+```bash
+sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker
+```
+
+Confirm by using `docker ps`, if you get no error message, you're done.
