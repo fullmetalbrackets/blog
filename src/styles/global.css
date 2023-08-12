@@ -303,7 +303,7 @@ blockquote {
   background-color: var(--blockquote);
   border-color: var(--primary);
   padding: 0 20px;
-	margin: 2em auto;
+	margin: 2.5em auto 2em auto;
   border-radius: 0.5em;
   width: 95%;
 }
@@ -313,9 +313,6 @@ blockquote li {
 blockquote p {
   margin-top: 20px;
   margin-bottom: 20px;
-}
-blockquote ul {
-  margin-bottom: 0;
 }
 div .alert {
   background-color: var(--blockquote);
