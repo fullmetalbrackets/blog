@@ -259,13 +259,18 @@ If you'd rather update Pi-Hole during off-hours, like in the middle of the night
 pihole -up | at 5AM
 ```
 
-If running Pi-Hole in a docker container, you don't need to use `pihole -up`, instead do the following to update the container with the latest image:
+If running Pi-Hole in a docker container, you don't need to use `pihole -up`. Instead, do this to update Pi-Hole if you set it up with **Docker Compose** (and also **cloudflared** if in the same stack as Pi-Hole):
+
+- `docker-compose pull` to pull the latest images
+- `docker-compose up -d --no-deps` to restart containers with newer images
+- `docker system prune --all` to delete older unused images
+
+If you used `docker run` to setup Pi-Hole:
 
 - `docker pull pihole/pihole` to pull the latest image
-- `docker-compose down` in the same directory as your compose file, to stop container
-- `docker-compose up -d` to recreate the container with the new image
+- `docker restart pihole` to restart the container with newer image
 
-If you used `docker run` to setup Pi-Hole, pull the image and use `docker restart pihole`. (If you did not name the container, use `docker ps` to list all containers and use the `CONTAINER ID` or whatever random name it received.)
+If you did not name the container, use `docker ps` to list all containers and use the `CONTAINER ID` to restart the container, e.g. `docker restart 0ef99ce930bd`.
 
 Additionally, you should regularly create a backup of your Pi-Hole configuration. You can't automate it, but that's ok because it's very simple -- just to go the web UI, click on _Settings_, then go to the _Teleporter_ tab and click the _Backup_ button. This will download a `tar.gz` file to the computer you're accessing the web UI from, and within this same screen you can restore from a backup file if necessary. You might consider committing your backup to a private GitHub repo too.
 
