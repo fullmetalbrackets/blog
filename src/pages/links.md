@@ -31,5 +31,6 @@ description: "Links to web sites, apps and other resources that I use, and want 
 - [Real Favicon Generator](https://realfavicongenerator.net/) -- A tool that generates favicons from a JPEG, PNG or SVG image you upload. They also have a [SVG favicon generator](https://realfavicongenerator.net/svg-favicon) that accepts only SVG, but generates both light and dark theme favicon SVGs!
   <br><br>
 - [UI Goodies](https://uigoodies.com) -- A site that brings together the best web design resources in one place.
+- [JSON to YAML](https://www.json2yaml.com) -- A tool that lets you write either JSON or YAML and auto-convert it to the other format.
 
 If you'd like to share similar tools you find to be very useful for system administrators or web developers, comment below and I'll gladly add them, or open a [edit this page on GitHub](https://github.com/fullmetalbrackets/blog/edit/main/src/pages/links.md) and pull request with new links added!
