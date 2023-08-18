@@ -132,6 +132,14 @@ body {
   border-radius: 0.25em;
   background: var(--primary);
 }
+::selection {
+  color: #000;
+  background: var(--note); /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  color: #000;
+  background: var(--note); /* Gecko Browsers */
+}
 main {
   margin: 0 auto;
 }
