@@ -4,7 +4,8 @@ title: "Install Docker in Debian or Ubuntu"
 description: "The docker install instructions are different in 2023 than in previous years, so I wrote up a quick step-by-step guide straight from the offcial docs."
 pubDate: "August 23, 2023"
 tags:
-  - Debian
+  - Docker
+  - Linux
 ---
 
 <div>

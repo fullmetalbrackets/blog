@@ -5,6 +5,7 @@ description: "Sometimes I use laptops in the home lab, and to save myself on a f
 pubDate: "December 3, 2022"
 tags:
   - Command Line
+  - Linux
 ---
 
 <div>

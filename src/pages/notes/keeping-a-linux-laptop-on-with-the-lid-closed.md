@@ -5,6 +5,7 @@ description: "I sometimes use old laptops in my home lab when I want to test any
 pubDate: "October 4, 2022"
 tags:
   - Command Line
+  - Linux
 ---
 
 <div>
