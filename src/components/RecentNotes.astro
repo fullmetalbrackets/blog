@@ -8,9 +8,6 @@ const notes = (await Astro.glob('../pages/notes/*.md')).sort(
 	h2 {
 		margin-top: 0;
 	}
-  section {
-    margin-bottom: 5em;
-  }
   span {
 		font-size: 110%;
     line-height: 1.4;
@@ -30,9 +27,6 @@ const notes = (await Astro.glob('../pages/notes/*.md')).sort(
 		flex-direction: column;
 		margin: 0 2em 1em -1em;
 		line-height: 1.2;
-	}
-	.recent-notes-line {
-		margin: 1em 0 2em 0;
 	}
 	.notes-title {
 		display: inline-flex;
@@ -84,6 +78,7 @@ const notes = (await Astro.glob('../pages/notes/*.md')).sort(
 		}
 		ul {
 			width: 100%;
+			margin: 0;
 		}
 		li {
 			margin: 0 1em 2em -1em;
@@ -98,7 +93,7 @@ const notes = (await Astro.glob('../pages/notes/*.md')).sort(
 <section>
   <h2>Recent Notes</h2>
   <hr class="recent-notes-line">
-    {notes.slice(0, 5).map((note) => (
+    {notes.slice(0, 3).map((note) => (
       <ul class="notes-ul">
         <li class="notes-li">
           <div class="notes-dates">
