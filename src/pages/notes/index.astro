@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 
-const notes = (await Astro.glob('./*.{md,mdx}')).sort(
+const notes = (await Astro.glob('./*.md')).sort(
 	(a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
 );
 
@@ -66,9 +66,6 @@ p {
 	<section>
 		<h1>{title}</h1>
 		<hr>
-    <p>
-      Quick notes, instructions and copies of my GitHub gists. Most are short and terse compared to a blog post.
-    </p>
 		{notes.map((note) => (
         <ul>
           <li class="notes-li">

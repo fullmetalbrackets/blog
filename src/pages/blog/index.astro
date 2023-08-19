@@ -9,8 +9,8 @@ const title = 'Blog'
 const desc = 'List of all blog posts'
 ---
 
-<style>
-	article {
+<style scoped>
+	/* article {
 		list-style-type: none;
 		padding: 0;
 		margin: 2em 0 4em 0;
@@ -67,12 +67,62 @@ const desc = 'List of all blog posts'
 		a button, aside a {
 			font-size: 0.85em;
 		}
-	}
+	} */
+span {
+  font-size: 110%;
+}
+p {
+  margin-bottom: 3em;
+}
+.desc {
+  font-size: 90%;
+}
+.posts-li {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: repeat();
+  gap: 10px;
+  margin: 0 auto 2em -2em;
+  padding: 0 auto;
+}
+.posts-dates {  
+  margin: 0;
+  padding: 0;
+  width: 5.75em;
+  text-align: right;
+}
+.posts-title {
+  width: auto;
+  text-align: left;
+}
+.posts-title a, .posts-title a:active, .posts-title a:visited {
+  color: var(--primary);
+} 
+.posts-title a:hover {
+  color: var(--menu);
+} 
+.posts-bottom {
+  margin: 4em auto 0 auto;
+}
+@media screen and (min-width: 200px) and (max-width: 667px) {
+  .posts-li {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto 2em -2em;
+    padding: 0 auto;
+  }
+  .posts-dates {
+    padding-top: 0.1em;
+    font-size: 0.75em;
+    width: 6.5em;
+    text-align: left;
+  }
+}
 </style>
 
 <BaseLayout title={title} description={desc}>
 	<section>
-		<h1>{title}</h1>
+		<!-- <h1>{title}</h1>
     <hr>
 		{posts.map((post) => (
 		<a href={post.url}>
@@ -89,6 +139,29 @@ const desc = 'List of all blog posts'
 				<button>Read More</button>
 			</article>
 		</a>
+		))} -->
+		<h1>{title}</h1>
+		<hr>
+		{posts.map((post) => (
+        <ul>
+          <li class="posts-li">
+            <div class="posts-dates">
+              <time datetime={post.frontmatter.pubDate}>
+                {new Date(post.frontmatter.pubDate).toLocaleDateString('en-us', {
+                  year: 'numeric',
+                  month: 'numeric',
+                  day: 'numeric',
+                })}
+              </time>
+            </div>
+            <div class="posts-title">
+              <a href={post.url}>
+                <span>{post.frontmatter.title}</span>
+                <p class="desc">{post.frontmatter.description}</p>
+              </a>
+            </div>
+          </li>
+        </ul>
 		))}
 		<hr>
 		<aside>
