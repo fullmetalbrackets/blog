@@ -33,155 +33,60 @@ const posts = (await Astro.glob('../*/*.{md,mdx}')).sort(
 
 <BaseLayout title={title} description={desc}>
 	<style>
-		/* article {
-			list-style-type: none;
+		span {
+			font-size: 110%;
+		}
+		p {
+			margin-bottom: 3em;
+		}
+		.desc {
+			font-size: 90%;
+		}
+		.posts-li {
+			display: grid;
+			grid-template-columns: 1fr 4fr;
+			grid-template-rows: repeat();
+			gap: 10px;
+			margin: 0 auto 2em -2em;
+			padding: 0 auto;
+		}
+		.posts-dates {  
+			margin: 0;
 			padding: 0;
-			margin: 2.1em auto 4em auto;
-			line-height: 1.2;
+			width: 5.75em;
+			text-align: right;
 		}
-		article > .desc {
-			font-size: 20px;
-			padding-bottom: 1.25em;
+		.posts-title {
+			width: auto;
+			text-align: left;
 		}
-		hr {
-			margin-top: 4em;
-		}
-		.tag-line {
-			margin: 1.5em 0;
-			opacity: 0.5;
-		}
-		h1 {
-			margin: 0.8em auto 0 auto;
-			line-height: 40px;
-			font-size: 36px;
-		}
-		.title {
-			margin: 2.25em 0 0.5em 0;
-			color: var(--date);
-		}
-		.title span {
+		.posts-title a, .posts-title a:active, .posts-title a:visited {
 			color: var(--primary);
-		}
-		article > h1 {
-			margin-bottom: 1em;
-		}
-		article > .bottom-line {
-			opacity: 0;
-		}
-		a button {
-			background-color: var(--tags);
-			color: #000;
-			border-radius: 0.25em;
-			cursor: pointer;
-			padding: 5px 8px;
-			text-decoration: none;
-			text-overflow: ellipsis;
-			-webkit-transition: all .10s ease-out;
-			-moz-transition: all .10s ease-out;
-			-o-transition: all .10s ease-out;
-			transition: all .10s ease-out;
-			margin: 0.75em 8px 8px 0;
-			font-family: 'M Plus Rounded 1c Med', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
-		}
-		@media (hover: hover) {
-			a:hover button  {
-				box-shadow: -4px -4px 0 #000;
-				transform: translate(4px,4px);
-			}
-			a:hover button {
-				outline-offset: 1px;
-			}
-		}
-		@media (hover: none) {
-			a:hover button {
-				background-color: var(--menu);
-			}
+		} 
+		.posts-title a:hover {
+			color: var(--menu);
+		} 
+		.posts-bottom {
+			margin: 4em auto 0 auto;
 		}
 		@media screen and (min-width: 200px) and (max-width: 667px) {
-			.title {
-				margin-top: 1.575em;;
+			.posts-li {
+				display: flex;
+				flex-direction: column;
+				margin: 0 auto 2em -2em;
+				padding: 0 auto;
 			}
-			.title span::before {
-				content: "\A";
-				white-space: pre;
+			.posts-dates {
+				padding-top: 0.1em;
+				font-size: 0.75em;
+				width: 6.5em;
+				text-align: left;
 			}
-			a button, aside a {
-				font-size: 0.85em;
-			}
-			a button {
-				padding: 4px 8px;
-			}
-		} */
-span {
-  font-size: 110%;
-}
-p {
-  margin-bottom: 3em;
-}
-.desc {
-  font-size: 90%;
-}
-.posts-li {
-  display: grid;
-  grid-template-columns: 1fr 4fr;
-  grid-template-rows: repeat();
-  gap: 10px;
-  margin: 0 auto 2em -2em;
-  padding: 0 auto;
-}
-.posts-dates {  
-  margin: 0;
-  padding: 0;
-  width: 5.75em;
-  text-align: right;
-}
-.posts-title {
-  width: auto;
-  text-align: left;
-}
-.posts-title a, .posts-title a:active, .posts-title a:visited {
-  color: var(--primary);
-} 
-.posts-title a:hover {
-  color: var(--menu);
-} 
-.posts-bottom {
-  margin: 4em auto 0 auto;
-}
-@media screen and (min-width: 200px) and (max-width: 667px) {
-  .posts-li {
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto 2em -2em;
-    padding: 0 auto;
-  }
-  .posts-dates {
-    padding-top: 0.1em;
-    font-size: 0.75em;
-    width: 6.5em;
-    text-align: left;
-  }
-}
+		}
 	</style>
 	<section>
 		<h1 class="title">Posts & Notes about <span>{title}</span></h1>
 		<hr class="tag-line">
-		<!-- {posts.map((post) => (
-		<a href={post.url} rel="prefetch">
-			<article>
-				<time datetime={post.frontmatter.pubDate}>
-					{new Date(post.frontmatter.pubDate).toLocaleDateString('en-us', {
-						year: 'numeric',
-						month: 'long',
-						day: 'numeric',
-					})}
-				</time>
-				<h1>{post.frontmatter.title}</h1>
-				<p class="desc">{post.frontmatter.description}</p>
-				<button>Read More</button>
-			</article>
-		</a>
-		))} -->
 		{posts.map((post) => (
 			<ul>
 				<li class="posts-li">
