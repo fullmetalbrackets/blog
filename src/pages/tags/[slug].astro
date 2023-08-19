@@ -3,7 +3,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 import { generateTagsData } from '@utils/tags';
 
 export async function getStaticPaths() {
-  const allPosts = await Astro.glob('../blog/*.{md,mdx}');
+  const allPosts = await Astro.glob('../*/*.{md,mdx}');
   const sortedPosts = allPosts.sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf());
   const allTagsUnique = new Set();
   sortedPosts.map(post => {
@@ -25,15 +25,15 @@ export async function getStaticPaths() {
 }
 const {tag} = Astro.props;
 const title = `${tag}`
-const desc = 'Blog posts tagged ${tag}.'
-const posts = (await Astro.glob('../blog/*.{md,mdx}')).sort(
+const desc = 'Posts and Notes about ${tag}.'
+const posts = (await Astro.glob('../*/*.{md,mdx}')).sort(
 	(a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf())
 	.filter(post => tag && post.frontmatter.tags?.includes(tag));
 ---
 
 <BaseLayout title={title} description={desc}>
 	<style>
-		article {
+		/* article {
 			list-style-type: none;
 			padding: 0;
 			margin: 2.1em auto 4em auto;
@@ -111,12 +111,62 @@ const posts = (await Astro.glob('../blog/*.{md,mdx}')).sort(
 			a button {
 				padding: 4px 8px;
 			}
-		}
+		} */
+span {
+  font-size: 110%;
+}
+p {
+  margin-bottom: 3em;
+}
+.desc {
+  font-size: 90%;
+}
+.posts-li {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: repeat();
+  gap: 10px;
+  margin: 0 auto 2em -2em;
+  padding: 0 auto;
+}
+.posts-dates {  
+  margin: 0;
+  padding: 0;
+  width: 5.75em;
+  text-align: right;
+}
+.posts-title {
+  width: auto;
+  text-align: left;
+}
+.posts-title a, .posts-title a:active, .posts-title a:visited {
+  color: var(--primary);
+} 
+.posts-title a:hover {
+  color: var(--menu);
+} 
+.posts-bottom {
+  margin: 4em auto 0 auto;
+}
+@media screen and (min-width: 200px) and (max-width: 667px) {
+  .posts-li {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto 2em -2em;
+    padding: 0 auto;
+  }
+  .posts-dates {
+    padding-top: 0.1em;
+    font-size: 0.75em;
+    width: 6.5em;
+    text-align: left;
+  }
+}
 	</style>
 	<section>
-		<h1 class="title">Blog posts tagged <span>{title}</span></h1>
+		<h1 class="title">Posts & Notes about <span>{title}</span></h1>
 		<hr class="tag-line">
-		{posts.map((post) => (
+		<!-- {posts.map((post) => (
 		<a href={post.url} rel="prefetch">
 			<article>
 				<time datetime={post.frontmatter.pubDate}>
@@ -131,6 +181,27 @@ const posts = (await Astro.glob('../blog/*.{md,mdx}')).sort(
 				<button>Read More</button>
 			</article>
 		</a>
+		))} -->
+		{posts.map((post) => (
+			<ul>
+				<li class="posts-li">
+					<div class="posts-dates">
+						<time datetime={post.frontmatter.pubDate}>
+							{new Date(post.frontmatter.pubDate).toLocaleDateString('en-us', {
+								year: 'numeric',
+								month: 'numeric',
+								day: 'numeric',
+							})}
+						</time>
+					</div>
+					<div class="posts-title">
+						<a href={post.url}>
+							<span>{post.frontmatter.title}</span>
+							<p class="desc">{post.frontmatter.description}</p>
+						</a>
+					</div>
+				</li>
+			</ul>
 		))}
 		<hr>
 		<aside>
