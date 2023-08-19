@@ -5,6 +5,7 @@ description: "Quick primer on installing the latest version of NodeJS on Debian,
 pubDate: "July 22, 2023"
 tags:
   - Linux
+  - Web Development
 ---
 
 <div>

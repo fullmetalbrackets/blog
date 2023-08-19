@@ -78,6 +78,7 @@ const posts = (await Astro.glob('../pages/blog/*.md')).sort(
 		}
 		ul {
 			width: 100%;
+			margin: 0;
 		}
 		li {
 			margin: 0 1em 2em -1em;
@@ -92,7 +93,7 @@ const posts = (await Astro.glob('../pages/blog/*.md')).sort(
 <section>
 	<h2>Recent Posts</h2>
 	<hr class="recent-posts-line">
-	{posts.slice(0, 5).map((post) => (
+	{posts.slice(0, 3).map((post) => (
 		<ul>
 			<li class="posts-li">
 				<div class="posts-dates">
@@ -113,5 +114,5 @@ const posts = (await Astro.glob('../pages/blog/*.md')).sort(
 			</li>
 		</ul>
 	))}
-	<a href="/posts"><button>More Posts</button></a>
+	<a href="/blog"><button>More Posts</button></a>
 </section>
