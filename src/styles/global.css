@@ -125,7 +125,6 @@ body {
   width: 10px;
 }
 ::-webkit-scrollbar-track {
-  border-radius: 0.25em;
   background: var(--accent);
 }
 ::-webkit-scrollbar-thumb {
