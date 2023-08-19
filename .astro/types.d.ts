@@ -202,7 +202,9 @@ declare module 'astro:content' {
 	};
 
 	type DataEntryMap = {
-		"links": {
+		"blog": {
+};
+"links": {
 "chmod-calc": {
 	id: "chmod-calc";
   collection: "links";
