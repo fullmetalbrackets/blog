@@ -280,7 +280,8 @@ And last, but not least, you may want to consider connecting the Pi-Hole(s) to a
 
 <div class="info">
   <span>
-    <b>ⓘ Information</b>
+    <img src="/img/assets/info.svg" class="info-icon">
+    <b>Information</b>
   </span>
   <p>
     Even with all the steps above, your DNS traffic will still go out over plain text and can be seen by your ISP or anyone that happens to be snooping. As such, these may interest you:

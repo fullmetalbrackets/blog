@@ -11,7 +11,8 @@ tags:
 <div>
   <div class="info">
     <span>
-      <b>ⓘ Information</b>
+      <img src="/img/assets/info.svg" class="info-icon">
+      <b>Information</b>
     </span>
     <p>
       See the <a href="https://docs.docker.com/engine/install" target="_blank">Docker docs install overview</a> for installation instructions on other platforms.
