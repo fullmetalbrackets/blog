@@ -65,6 +65,7 @@
     height: 100%;
     scrollbar-color: var(--name) var(--accent);
     scrollbar-width: auto;
+    scroll-behavior: smooth;
   }
 }
 
@@ -99,6 +100,7 @@
     height: 100%;
     scrollbar-color: var(--name) var(--accent);
     scrollbar-width: auto;
+    scroll-behavior: smooth;
   }
 }
 
