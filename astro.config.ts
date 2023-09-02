@@ -12,6 +12,7 @@ export default defineConfig({
     }
   )],
   markdown: {
+    drafts: false,
     syntaxHighlight: 'prism'
   },
   compressHTML: true
