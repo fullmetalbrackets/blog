@@ -24,6 +24,6 @@
   "devDependencies": {
     "@astrojs/prism": "^2.1.2",
     "netlify-plugin-csp-generator": "^1.5.0",
-    "pagefind": "^0.12.0"
+    "pagefind": "^1.0.1"
   }
 }

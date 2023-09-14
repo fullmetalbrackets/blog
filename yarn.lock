@@ -681,6 +681,31 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
+"@pagefind/darwin-arm64@1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@pagefind/darwin-arm64/-/darwin-arm64-1.0.1.tgz#b0e93c6690c19cfafa11ec7d7d40d2b0c4e36e68"
+  integrity sha512-ueQK1OQkcvkz4KQSDDMCElMTFHRN/9AsA1Fo9ewL/I2jFjgqsGfEEr078loi2YrxYpjmhFcKxDxTHotjq8kIzA==
+
+"@pagefind/darwin-x64@1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@pagefind/darwin-x64/-/darwin-x64-1.0.1.tgz#56c291506ba842fe98ffc1b14b7cf5ea5a561dd1"
+  integrity sha512-6I3iRQ4K+RlX1YZ9JWgwLzknozrOBcC3GaQNBXggBXQEe46yIz88v+g/CWi4XjHkUzPiiLKvIiftT2jaFnl5DA==
+
+"@pagefind/linux-arm64@1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@pagefind/linux-arm64/-/linux-arm64-1.0.1.tgz#8768e2060e0917811adc1de7105fd77aeb97fc1d"
+  integrity sha512-lCElTpCEkqpIYfVqrO4IW8+meu/1aJQChaC8XvB8jqBjsmeqhrz1J09tTbuHSq5Eav4GjW016i+vmbB+KE+BaA==
+
+"@pagefind/linux-x64@1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@pagefind/linux-x64/-/linux-x64-1.0.1.tgz#f2dd0bee53f70983d5f7b306b9a9a348f7945b9b"
+  integrity sha512-3y95izKLTF1LcaOcO2i364qwzyJeIstFt97ouMn6O84eDxqTbzDVFKRSXN4tMAU9wv5ZA/uNuFUYxibiuZI82Q==
+
+"@pagefind/windows-x64@1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@pagefind/windows-x64/-/windows-x64-1.0.1.tgz#c6a5b6d0ac2badd3c7739cc6c075d8175707bb57"
+  integrity sha512-vep7Zb8zfQj2fprRjL6cLmruc+18zrYQ0tWmaUAN3gX7lbsQY0NDBe9p1yS32XsAHOhDtmXu1LNHz+fXCcjcRA==
+
 "@pkgr/utils@^2.3.1":
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/@pkgr/utils/-/utils-2.3.1.tgz#0a9b06ffddee364d6642b3cd562ca76f55b34a03"
@@ -3012,13 +3037,16 @@ p-try@^2.0.0:
   resolved "https://registry.yarnpkg.com/p-try/-/p-try-2.2.0.tgz#cb2868540e313d61de58fafbe35ce9004d5540e6"
   integrity sha512-R4nPAVTAU0B9D35/Gk3uJf/7XYbQcyohSKdvAxIRSNghFl4e71hVoGnBNQz9cWaXxO2I10KTC+3jMdvvoKw6dQ==
 
-pagefind@^0.12.0:
-  version "0.12.0"
-  resolved "https://registry.yarnpkg.com/pagefind/-/pagefind-0.12.0.tgz#ee73a4fd2d3b4d7b88f7188181143447f7e48352"
-  integrity sha512-LHUmlYYweBM6/rK1G+7z2q2WjYeycrB7g5Kuw0w6yMkYztzsEdO2Qj2pJ3z8gsWV8eJsYQyAGOAdqE3SZWlCqA==
-  dependencies:
-    https-proxy-agent "^5.0.0"
-    proxy-from-env "^1.1.0"
+pagefind@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/pagefind/-/pagefind-1.0.1.tgz#24293e4796ca6014aca2c1b5d1425a439e6e01a7"
+  integrity sha512-sGkBjKxz18hX7U1vKHphGqUlsqrCd9fKksuS9CAlO162TW8a4uUvHNJF+Dwnvjnvbi7J8KOSzuaCgwc+5wEOxQ==
+  optionalDependencies:
+    "@pagefind/darwin-arm64" "1.0.1"
+    "@pagefind/darwin-x64" "1.0.1"
+    "@pagefind/linux-arm64" "1.0.1"
+    "@pagefind/linux-x64" "1.0.1"
+    "@pagefind/windows-x64" "1.0.1"
 
 parse-entities@^4.0.0:
   version "4.0.0"
@@ -3164,11 +3192,6 @@ property-information@^6.0.0:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/property-information/-/property-information-6.2.0.tgz#b74f522c31c097b5149e3c3cb8d7f3defd986a1d"
   integrity sha512-kma4U7AFCTwpqq5twzC1YVIDXSqg6qQK6JN0smOw8fgRy1OkMi0CYSzFmsy6dnqSenamAtj0CyXMUJ1Mf6oROg==
-
-proxy-from-env@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/proxy-from-env/-/proxy-from-env-1.1.0.tgz#e102f16ca355424865755d2c9e8ea4f24d58c3e2"
-  integrity sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==
 
 psl@^1.1.33:
   version "1.9.0"
