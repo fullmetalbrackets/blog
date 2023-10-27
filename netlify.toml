@@ -1,0 +1,313 @@
+[[plugins]]
+package = "netlify-plugin-csp-generator"
+
+[plugins.inputs]
+buildDir = "dist"
+
+[plugins.inputs.policies]
+defaultSrc = "'none'"
+scriptSrc = "'self' 'wasm-unsafe-eval' *.cloudfront.net *.netlify.com *.netlify.app utteranc.es"
+styleSrc = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
+fontSrc = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
+frameSrc = "'self' *.cloudfront.net *.netlify.com *.netlify.app utteranc.es"
+imgSrc = "'self' data: blob: *.cloudfront.net *.netlify.com *.netlify.app *.shields.io"
+manifestSrc = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
+mediaSrc = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
+objectSrc = "'none'"
+scriptSrcAttr = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
+styleSrcElem = "'self' 'unsafe-inline' *.cloudfront.net *.netlify.com *.netlify.app https://fonts.cdnfonts.com"
+styleSrcAttr = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
+workerSrc = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
+baseUri = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
+formAction = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
+frameAncestors = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
+connectSrc = "'self' *.cloudfront.net *.netlify.com *.netlify.app"
+
+[[headers]]
+for = "/*.js"
+
+[headers.values]
+Cache-Control = "public, max-age=604800, stale-while-revalidate=86400"
+Content-Type = "application/javascript"
+
+[[headers]]
+for = "/img/*.png"
+
+[headers.values]
+Cache-Control = "public, max-age=604800"
+Content-Type = "image/png"
+
+[[headers]]
+for = "/img/*.jpg"
+
+[headers.values]
+Cache-Control = "public, max-age=604800"
+Content-Type = "image/jpeg"
+
+[[headers]]
+for = "/fonts/*.ttf"
+
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+Content-Type = "application/font-ttf"
+
+[[headers]]
+for = "/fonts/*.woff"
+
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+Content-Type = "application/font-woff"
+
+[[headers]]
+for = "/fonts/*.woff2"
+
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+Content-Type = "application/font-woff2"
+
+[[headers]]
+for = "/favicon.ico"
+
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+Content-Type = "application/x-icon"
+
+[[headers]]
+for = "/favicon.svg"
+
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+Content-Type = "image/svg+xml"
+
+[[headers]]
+for = "/*"
+
+[headers.values]
+Access-Control-Allow-Origin = "*"
+Referrer-Policy = "strict-origin-when-cross-origin"
+Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
+X-Content-Type-Options = "nosniff"
+X-Frame-Options = "DENY"
+X-XSS-Protection = "1; mode=block"
+Permissions-Policy = "autoplay=(), camera=(), geolocation=(), microphone=()"
+
+
+[[redirects]]
+from = "https://arieldiaz.netlify.app"
+to = "https://arieldiaz.codes"
+status = 301
+force = true
+
+[[redirects]]
+from = "https://arieldiaz.netlify.com/*"
+to = "https://arieldiaz.codes/:splat"
+status = 301
+force = true
+
+[[redirects]]
+from = "https://arieldiaz.codes/blog/tags"
+to = "https://arieldiaz.codes/tags"
+status = 301
+force = true
+
+[[redirects]]
+from = "https://arieldiaz.codes/blog/tags/*"
+to = "https://arieldiaz.codes/tags/:splat"
+status = 301
+force = true
+
+[[redirects]]
+from = "https://arieldiaz.codes/contact"
+to = "https://arieldiaz.codes/about#contacts"
+status = 301
+force = true
+
+[[redirects]]
+from = "https://arieldiaz.codes/blog/5-ways-to-easily-host-your-web-site-for-free"
+to = "https://arieldiaz.codes/blog/5-ways-to-host-site-free"
+status = 301
+force = true
+
+[[redirects]]
+from = "https://arieldiaz.codes/blog/turn-a-static-website-into-a-progressive-web-app"
+to = "https://arieldiaz.codes/blog/turn-static-website-into-pwa"
+status = 301
+force = true
+
+[[redirects]]
+from = "https://arieldiaz.codes/blog/quick-guide-setting-up-zsh-oh-my-zsh-plugins-and-theme"
+to = "https://arieldiaz.codes/blog/guide-to-zsh-ohmyzsh-plugins-and-theme"
+status = 301
+force = true
+
+[[redirects]]
+from = "https://arieldiaz.codes/blog/mounting-either-internal-or-external-hard-drives-in-linux"
+to = "https://arieldiaz.codes/blog/mounting-hard-drives-in-linux"
+status = 301
+force = true
+
+[[redirects]]
+from = "https://arieldiaz.codes/blog/how-to-autologin-ubuntu-on-reboot-and-go-straight-to-terminal"
+to = "https://arieldiaz.codes/blog/how-to-autologin-ubuntu-on-reboot"
+status = 301
+force = true
+
+[[redirects]]
+from = "https://arieldiaz.codes/projects"
+to = "https://arieldiaz.codes/about"
+status = 301
+force = true
+
+[[redirects]]
+from = "https://arieldiaz.codes/blog/samba"
+to = "https://arieldiaz.codes/blog/setup-a-samba-share-on-linux-via-command-line"
+status = 301
+force = true
+
+[[redirects]]
+from = "https://arieldiaz.codes/blog/samba"
+to = "https://arieldiaz.codes/blog/setup-a-samba-share-on-linux-via-command-line"
+status = 301
+force = true
+
+[[redirects]]
+from = "https://arieldiaz.codes/blog/customizing-the-windows-terminal-prompt-with-starship"
+to = "https://arieldiaz.codes/blog/customizing-windows-terminal-with-ohmyposh"
+status = 301
+force = true
+
+[[redirects]]
+from = "https://arieldiaz.codes/blog/how-to-use-netlify-forms-in-a-nuxt-site-and-make-sure-it-gets-detected"
+to = "https://arieldiaz.codes/blog/how-to-use-netlify-forms-in-a-nuxt-site"
+status = 301
+force = true
+
+[[redirects]]
+from = "https://arieldiaz.codes/blog/install-and-use-sudo-debian"
+to = "https://arieldiaz.codes/notes/install-and-use-sudo-debian"
+status = 301
+force = true
+
+[[redirects]]
+from = "https://arieldiaz.codes/blog/initial-setup-for-debian-fresh-installs"
+to = "https://arieldiaz.codes/notes/install-and-use-sudo-debian"
+status = 301
+force = true
+
+[[redirects]]
+from = "https://arieldiaz.codes/blog/bootstrapping-a-fresh-linux-install-with-ansible"
+to = "https://arieldiaz.codes/blog/bootstrapping-fresh-install-with-ansible"
+status = 301
+force = true
+
+[[redirects]]
+from = "https://arieldiaz.codes/blog/how-to-use-a-custom-prismjs-theme-with-nuxt-content.md"
+to = "https://arieldiaz.codes/blog/how-to-use-a-custom-prismjs-theme-with-nuxt-content"
+status = 301
+force = true
+
+[[redirects]]
+from = "https://arieldiaz.codes/_nuxt/"
+to = "https://arieldiaz.codes"
+status = 301
+force = true
+
+[[redirects]]
+from = "https://arieldiaz.codes/blog/attbravia"
+to = "https://arieldiaz.codes/blog/sideload-the-directv-stream-app-on-sony-bravia-tv-with-android-tv"
+status = 301
+force = true
+
+[[redirects]]
+from = "https://arieldiaz.codes/projects.html"
+to = "https://arieldiaz.codes/about"
+status = 301
+force = true
+
+[[redirects]]
+from = "https://arieldiaz.codes/contact"
+to = "https://arieldiaz.codes/about"
+status = 301
+force = true
+
+[[redirects]]
+from = "https://arieldiaz.codes/undefined"
+to = "https://arieldiaz.codes"
+status = 301
+force = true
+
+[[redirects]]
+from = "https://arieldiaz.codes/tags/development"
+to = "https://arieldiaz.codes/tags/web-development"
+status = 301
+force = true
+
+[[redirects]]
+from = "https://arieldiaz.codes/tags/terminal"
+to = "https://arieldiaz.codes/tags/command-line"
+status = 301
+force = true
+
+[[redirects]]
+from = "https://arieldiaz.codes/tags/web"
+to = "https://arieldiaz.codes/tags/web-development"
+status = 301
+force = true
+
+[[redirects]]
+from = "https://arieldiaz.codes/tags/hosting"
+to = "https://arieldiaz.codes/tags/web-hosting"
+status = 301
+force = true
+
+[[redirects]]
+from = "https://arieldiaz.codes/tags/webdev"
+to = "https://arieldiaz.codes/tags/web-development"
+status = 301
+force = true
+
+[[redirects]]
+from = "https://arieldiaz.codes/tags/web%20development"
+to = "https://arieldiaz.codes/tags/web-development"
+status = 301
+force = true
+
+[[redirects]]
+from = "https://arieldiaz.codes/tags/prismjs"
+to = "https://arieldiaz.codes/tags/prism-js"
+status = 301
+force = true
+
+[[redirects]]
+from = "https://arieldiaz.codes/tags/misc"
+to = "https://arieldiaz.codes/tags/miscellaneous"
+status = 301
+force = true
+
+[[redirects]]
+from = "https://arieldiaz.codes/blog/how-to-autologin-ubuntu-on-reboot"
+to = "https://arieldiaz.codes/notes/autologin-ubuntu-on-reboot"
+status = 301
+force = true
+
+[[redirects]]
+from = "https://arieldiaz.codes/blog/how-to-use-sudo-without-a-password"
+to = "https://arieldiaz.codes/notes/sudo-without-password"
+status = 301
+force = true
+
+[[redirects]]
+from = "https://arieldiaz.codes/blog/styling-the-kbd-element"
+to = "https://arieldiaz.codes/notes/styling-the-kbd-element"
+status = 301
+force = true
+
+[[redirects]]
+from = "https://arieldiaz.codes/blog/setup-photosync-with-samba-server"
+to = "https://arieldiaz.codes/blog/setup-photosync-with-smb-server"
+status = 301
+force = true
+
+
+# [context.deploy-preview]
+#   ignore = "git log -1 --pretty=%B | grep dependabot"

@@ -1,0 +1,89 @@
+---
+import { getCollection } from "astro:content";
+
+const links = (await getCollection("links")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<style scoped>
+  ul {
+    list-style-type: none;
+    padding: unset;
+    margin-bottom: 2em;
+  }
+  ul li {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1em;
+    margin-bottom: 1em;
+  }
+  a button {
+    background-color: var(--tags);
+    color: #000;
+    border-radius: 0.25em;
+    cursor: pointer;
+    font-weight: 600;
+    padding: 4px 8px;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    -webkit-transition: all 0.1s ease-out;
+    -moz-transition: all 0.1s ease-out;
+    -o-transition: all 0.1s ease-out;
+    transition: all 0.1s ease-out;
+    margin: 0 0 2em 1em;
+    font-family: "M Plus Rounded 1c Med";
+  }
+  @media (hover: hover) {
+    a:hover button {
+      box-shadow: -4px -4px 0 #000;
+      transform: translate(4px, 4px);
+    }
+    a:hover button {
+      outline-offset: 1px;
+    }
+  }
+  @media (hover: none) {
+    a:hover button {
+      background-color: var(--menu);
+    }
+  }
+  @media screen and (min-width: 200px) and (max-width: 667px) {
+    main {
+      margin: 0 10px;
+    }
+    span {
+      font-size: 100%;
+    }
+    ul {
+      width: 100%;
+    }
+    li {
+      margin: 0 1em 2em -1em;
+    }
+    a button {
+      font-size: 0.85em;
+      margin: 0 0 2em 1.2em;
+    }
+  }
+</style>
+
+<section>
+  <h2>Recent Links</h2>
+  <hr />
+  <ul>
+    {
+      links.slice(0, 3).map((link) => (
+        <li>
+          <span>
+            <a href={link.data.url} target="_blank">
+              {link.data.title}
+            </a>
+          </span>
+          <span>{link.data.description}</span>
+        </li>
+      ))
+    }
+  </ul>
+  <a href="/links"><button>More Links</button></a>
+</section>

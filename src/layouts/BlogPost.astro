@@ -1,85 +1,157 @@
 ---
-import type { CollectionEntry } from 'astro:content';
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import FormattedDate from '../components/FormattedDate.astro';
+import type { CollectionEntry } from "astro:content";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import FormattedDate from "@components/FormattedDate.astro";
 
-type Props = CollectionEntry<'blog'>['data'];
+type Props = CollectionEntry<"blog">["data"];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate } = Astro.props;
 ---
 
-<html lang="en">
-	<head>
-		<BaseHead title={title} description={description} />
-		<style>
-			main {
-				width: calc(100% - 2em);
-				max-width: 100%;
-				margin: 0;
-			}
-			.hero-image {
-				width: 100%;
-			}
-			.hero-image img {
-				display: block;
-				margin: 0 auto;
-				border-radius: 12px;
-				box-shadow: var(--box-shadow);
-			}
-			.prose {
-				width: 720px;
-				max-width: calc(100% - 2em);
-				margin: auto;
-				padding: 1em;
-				color: rgb(var(--gray-dark));
-			}
-			.title {
-				margin-bottom: 1em;
-				padding: 1em 0;
-				text-align: center;
-				line-height: 1;
-			}
-			.title h1 {
-				margin: 0 0 0.5em 0;
-			}
-			.date {
-				margin-bottom: 0.5em;
-				color: rgb(var(--gray));
-			}
-			.last-updated-on {
-				font-style: italic;
-			}
-		</style>
-	</head>
+<BaseLayout title={title} description={description}>
+  <head>
+    <link rel="stylesheet" href="/prism.css" />
+  </head>
+  <style>
+    article {
+      margin-top: 4em;
+    }
+    hr {
+      margin: 1.5em auto;
+    }
+    .title {
+      margin-bottom: 1em;
+    }
+    .description {
+      margin-bottom: 2em;
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      list-style-type: none;
+      margin: 0 auto;
+      margin-top: 10px;
+      padding: 0;
+    }
+    form {
+      display: flex;
+      align-items: center;
+    }
+    label {
+      color: var(--text);
+      margin-right: 1em;
+    }
+    .radio {
+      margin: 0.5em 0.5em 0.5em 0.25em;
+      width: 1em;
+      height: 1em;
+      appearance: none;
+      -webkit-appearance: none;
+      border: 1px solid var(--accent);
+      background-color: var(--accent);
+      border-radius: 50%;
+    }
+    .radio:focus,
+    .radio:focus-visible {
+      box-shadow: none;
+      outline-offset: 0;
+    }
+    .radio:checked {
+      box-shadow: 0 0 0 1px var(--name);
+      background-color: var(--name);
+      border-width: 0.1em;
+    }
+    .utterances {
+      margin: 2.5em auto;
+    }
+    @media screen and (min-width: 200px) and (max-width: 667px) {
+      article {
+        margin-top: 4em;
+      }
+      .title {
+        padding-top: 0.15em;
+      }
+      aside {
+        font-size: 1rem;
+      }
+      label {
+        margin-right: 0.25em;
+      }
+      button {
+        margin-left: 0.25em;
+      }
+      .radio {
+        margin: 0 0.25em;
+      }
+      .submit {
+        margin-left: 0.5em;
+      }
+      .top {
+        width: 5em;
+        text-align: center;
+      }
+    }
+  </style>
 
-	<body>
-		<Header />
-		<main>
-			<article>
-				<div class="hero-image">
-					{heroImage && <img width={1020} height={510} src={heroImage} alt="" />}
-				</div>
-				<div class="prose">
-					<div class="title">
-						<div class="date">
-							<FormattedDate date={pubDate} />
-							{
-								updatedDate && (
-									<div class="last-updated-on">
-										Last updated on <FormattedDate date={updatedDate} />
-									</div>
-								)
-							}
-						</div>
-						<h1>{title}</h1>
-						<hr />
-					</div>
-					<slot />
-				</div>
-			</article>
-		</main>
-		<Footer />
-	</body>
-</html>
+  <article data-pagefind-body>
+    <div class="date">
+      <FormattedDate date={pubDate} />
+      {
+        updatedDate && (
+          <div class="last-updated-on">
+            Last updated on <FormattedDate date={updatedDate} />
+          </div>
+        )
+      }
+    </div>
+    <h1 class="title">{title}</h1>
+    <hr />
+    <p class="description">
+      {description}
+    </p>
+    <slot>
+      <p>
+        If you're seeing this, something went wrong! Please try <em
+          >reloading the page</em
+        >.
+      </p>
+    </slot>
+  </article>
+  <hr />
+  <aside class="blog-aside">
+    <span
+      >Was this article helpful?
+      <form
+        name="feedback"
+        method="POST"
+        action="/feedback"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+      >
+        <input value="feedback" name="feedback" type="hidden" />
+        <input
+          class="radio"
+          type="radio"
+          id="helpful"
+          name="feedback"
+          value="Helpful"
+          required
+        />
+        <label for="helpful">Yes</label>
+        <input
+          class="radio"
+          type="radio"
+          id="not-helpful"
+          name="feedback"
+          value="Not Helpful"
+        />
+        <label for="not-helpful" class="labels">No</label>
+        <button class="button submit" type="submit" value="Submit"
+          >Submit</button
+        >
+        <input type="hidden" id="postId" name="postId" value={title} />
+      </form>
+    </span>
+    <a href="#top" class="top button">Back to Top &uarr;</a>
+  </aside>
+</BaseLayout>

@@ -1,0 +1,52 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+
+const title = "Search";
+---
+
+<style scoped>
+  .title {
+    font-size: 36px;
+  }
+  .top-line {
+    margin-bottom: 2.5em;
+  }
+  .foot-line {
+    margin-top: 4em;
+  }
+  @media screen and (min-width: 200px) and (max-width: 667px) {
+    a button,
+    aside a {
+      font-size: 0.85em;
+    }
+  }
+</style>
+
+<BaseLayout title={title} description="Search for blog posts and notes.">
+  <section>
+    <head>
+      <link rel="stylesheet" href="/pagefind-ui.css" />
+    </head>
+    <h1 class="title">{title}</h1>
+    <hr class="top-line" />
+    <p>Use the search field below to search for blog posts and notes.</p>
+
+    <link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
+    <script
+      src="/pagefind/pagefind-ui.js"
+      type="text/javascript"
+      crossorigin="anonymous"></script>
+    <div id="search" class="search-results"></div>
+    <script crossorigin="anonymous" is:inline>
+    window.addEventListener("DOMContentLoaded", (event) => {
+      new PagefindUI({ element: "#search", showSubResults: true });
+    });
+    </script>
+
+    <br /><br />
+    <hr class="foot-line" />
+    <aside>
+      <a href="#top" class="top button blog-tag">Back to Top &uarr;</a>
+    </aside>
+  </section>
+</BaseLayout>

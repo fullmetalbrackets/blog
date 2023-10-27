@@ -1,0 +1,54 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+
+const title = 'Feedback Received'
+const desc = 'Blog post feedback form success confirmation.'
+---
+
+<BaseLayout title={title} description={desc}>
+	<head>
+		<meta http-equiv="refresh" content="5;url=/" />
+	</head>
+	<style>
+		section {
+			padding-bottom: 5em;
+		}
+		hr {
+			margin: 1.5em 0 2.5em 0;
+		}
+		h1 {
+			font-size: 36px;
+			margin-top: 1.9em;
+			margin-bottom: 0;
+		}
+		p {
+			margin: 2em auto;
+		}
+		@media screen and (min-width: 200px) and (max-width: 667px) {
+			section {
+				padding-bottom: 2em;
+			}
+			h1 {
+				font-size: 36px;
+				margin-top: 1.575em;
+			}
+			hr {
+				margin-top: 21.5px;
+				margin-bottom: 1.75em;
+			}
+			form {
+				margin: 1em;
+			}
+		}
+	</style>
+	<section>
+		<h1>{title}</h1>
+		<hr>
+		<p>
+			Thank you for your honest feedback, I like to know whether or not my articles are helpful! 
+		</p>
+		<p>
+			You'll now be redirected back to the Home page in 5 seconds, or you can <a href="/" rel="prefetch">click here</a> to go back.
+		</p>
+	</section>
+</BaseLayout>

@@ -1,16 +1,22 @@
 {
-  "name": "blog",
+  "name": "arieldiazcodes",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.2.0",
+  "homepage": "https://arieldiaz.codes",
+  "description": "Tech articles, quick guides, and stuff.",
+  "author": "Ariel Diaz",
+  "license": "MIT",
+  "private": true,
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "astro build && npx -y pagefind --site dist",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
     "@astrojs/mdx": "^1.1.0",
+    "@astrojs/prefetch": "^0.4.0",
     "@astrojs/rss": "^3.0.0",
     "@astrojs/sitemap": "^3.0.0",
     "astro": "^3.1.0"

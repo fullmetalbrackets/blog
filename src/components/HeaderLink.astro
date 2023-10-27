@@ -1,24 +1,56 @@
 ---
-import type { HTMLAttributes } from 'astro/types';
+import type { HTMLAttributes } from "astro/types";
 
-type Props = HTMLAttributes<'a'>;
+type Props = HTMLAttributes<"a">;
 
 const { href, class: className, ...props } = Astro.props;
 
 const { pathname } = Astro.url;
-const isActive = href === pathname || href === pathname.replace(/\/$/, '');
+const isActive = href === pathname || href === pathname.replace(/\/$/, "");
 ---
 
 <a href={href} class:list={[className, { active: isActive }]} {...props}>
-	<slot />
+  <slot />
 </a>
 <style>
-	a {
-		display: inline-block;
-		text-decoration: none;
-	}
-	a.active {
-		font-weight: bolder;
-		text-decoration: underline;
-	}
+  a,
+  a:active,
+  a:visited {
+    color: var(--menu);
+    display: inline-block;
+    line-height: 1.2;
+    font-size: 1.25em;
+    padding: 4px 8px 1px 8px;
+    text-decoration: none;
+  }
+  a:hover,
+  a:focus {
+    color: var(--menu);
+    line-height: 1.2;
+    text-decoration: none;
+    border-radius: 0.25em;
+    padding: 4px 8px 1px 8px;
+    background: var(--accent);
+  }
+  a.active {
+    color: var(--menu);
+    line-height: 1.2;
+    text-decoration: none;
+    border-radius: 0.25em;
+    padding: 4px 8px 1px 8px;
+    background: var(--accent);
+  }
+  .search-link,
+  .search-link:hover {
+    padding: 4px 5px 3px 6px;
+  }
+  @media screen and (min-width: 200px) and (max-width: 667px) {
+    a,
+    a:active,
+    a:visited,
+    a:hover,
+    a:focus {
+      font-size: 1em;
+    }
+  }
 </style>

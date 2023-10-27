@@ -1,68 +1,17 @@
-# Astro Starter Kit: Blog
+# 💡 I learn stuff and write about it.
 
-```sh
-npm create astro@latest -- --template blog
-```
+![img](/public/social.png)
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/blog)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/blog)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/blog/devcontainer.json)
+![Netlify](https://img.shields.io/netlify/4598f4f1-67bb-4ca2-bc47-d6819bf126f1) ![Website](https://img.shields.io/website?style=flat&url=https%3A%2F%2Farieldiaz.codes%2F) ![Uptime Robot ratio (30 days)](https://img.shields.io/uptimerobot/ratio/m794444673-b9ba5448d1e9e5d4051975b7) ![Mozilla HTTP Observatory Grade](https://img.shields.io/mozilla-observatory/grade-score/arieldiaz.codes?publish) ![Chromium HSTS preload](https://img.shields.io/hsts/preload/arieldiaz.codes) ![GitHub last commit](https://img.shields.io/github/last-commit/fullmetalbrackets/blog)
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+![GitHub repo size](https://img.shields.io/github/repo-size/fullmetalbrackets/blog) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-blue.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
 
-![blog](https://github.com/withastro/astro/assets/2244813/ff10799f-a816-4703-b967-c78997e8323d)
+## ⌨️ Latest blog posts
 
-Features:
-
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and OpenGraph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-├── public/
-├── src/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   └── pages/
-├── astro.config.mjs
-├── README.md
-├── package.json
-└── tsconfig.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
-
-## Credit
-
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+<!-- BLOG-POST-LIST:START -->
+- [OpenMediaVault Quick Reference](https://arieldiaz.codes/blog/openmediavault-quick-reference/)
+- [Setup a Cloudflare Tunnel to securely access self-hosted apps with a domain from outside the home network](https://arieldiaz.codes/blog/setup-cloudflare-tunnel-to-access-self-hosted-apps/)
+- [Reverse proxy OpenMediaVault, Plex and Navidrome with Nginx Proxy Manager and Pi-Hole](https://arieldiaz.codes/blog/reverse-proxy-nginx-pihole/)
+- [Using DNS over HTTPS with Pi-Hole and Cloudflared](https://arieldiaz.codes/blog/using-dns-over-https-with-pihole/)
+- [Set up PhotoSync app to backup photos from your phone to an SMB share on your home server](https://arieldiaz.codes/blog/setup-photosync-with-smb-server/)
+<!-- BLOG-POST-LIST:END -->

@@ -1,0 +1,50 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+
+const title = 'Message Submitted'
+const desc = 'Contact form success confirmation.'
+---
+<BaseLayout title={title} description={desc}>
+	<head>
+		<meta http-equiv="refresh" content="5;url=/" />
+	</head>
+	<style>
+		hr {
+			margin: 1.5em 0 2.5em 0;
+		}
+		h1 {
+			font-size: 36px;
+			margin-top: 1.9em;
+			margin-bottom: 0;
+		}
+		p {
+			margin: 2em auto;
+		}
+		p + p {
+			margin-bottom: 5em;
+		}
+		@media screen and (min-width: 200px) and (max-width: 667px) {
+			h1 {
+				font-size: 36px;
+				margin-top: 1.575em;
+			}
+			hr {
+				margin-top: 21.5px;
+				margin-bottom: 1.75em;
+			}
+			form {
+				margin: 1em;
+			}
+		}
+	</style>
+	<section>
+		<h1>{title}</h1>
+		<hr>
+		<p>
+			Your submission has been received, thank you! 
+		</p>
+		<p>
+			You'll now be redirected back to the Home page in 5 seconds, or you can <a href="/" rel="prefetch">click here</a> to go back.
+		</p>
+	</section>
+</BaseLayout>
