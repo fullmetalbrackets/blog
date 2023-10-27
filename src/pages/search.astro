@@ -31,7 +31,6 @@ const title = "Search";
     <hr class="top-line" />
     <p>Use the search field below to search for blog posts and notes.</p>
 
-    <link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
     <script
       src="/pagefind/pagefind-ui.js"
       type="text/javascript"
@@ -39,7 +38,12 @@ const title = "Search";
     <div id="search" class="search-results"></div>
     <script crossorigin="anonymous" is:inline>
     window.addEventListener("DOMContentLoaded", (event) => {
-      new PagefindUI({ element: "#search", showSubResults: true });
+      new PagefindUI({
+        element: "#search",
+        showSubResults: true,
+        showImages: false,
+        resetStyles: false,
+      });
     });
     </script>
 

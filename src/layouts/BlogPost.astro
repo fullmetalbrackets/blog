@@ -94,7 +94,7 @@ const { title, description, pubDate, updatedDate } = Astro.props;
   </style>
 
   <article data-pagefind-body>
-    <div class="date">
+    <div class="date" data-pagefind-sort="date">
       <FormattedDate date={pubDate} />
       {
         updatedDate && (
