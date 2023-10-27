@@ -2,6 +2,7 @@
 title: "Setting up a Libre Computer Sweet Potato SBC"
 description: "I've been wanting to get a Raspberry Pi for ages, but they were out of stock for the longest time, and even now as they return to stock the prices are higher than they used to be. So I settled for a Pi-alternative from Libre Computer, and paid the $30 early access price for their new Sweet Potato SBC. Here's how I set it up."
 pubDate: 2023-09-16
+draft: true
 tags:
   - SBC
   - Linux

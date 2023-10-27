@@ -10,7 +10,7 @@ export default defineConfig({
     throttle: 6
   })],
   markdown: {
-    drafts: false,
+    drafts: true,
     syntaxHighlight: 'prism'
   },
   compressHTML: true
