@@ -93,7 +93,7 @@ const { title, description, pubDate, updatedDate } = Astro.props;
     }
   </style>
 
-  <article>
+  <article data-pagefind-body>
     <div class="date" data-pagefind-ignore>
       <FormattedDate date={pubDate} />
       {
@@ -104,9 +104,9 @@ const { title, description, pubDate, updatedDate } = Astro.props;
         )
       }
     </div>
-    <h1 class="title" data-pagefind-body>{title}</h1>
+    <h1 class="title">{title}</h1>
     <hr />
-    <p class="description" data-pagefind-ignore>
+    <p class="description">
       {description}
     </p>
     <slot>
