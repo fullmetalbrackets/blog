@@ -9,9 +9,9 @@
 ## ⌨️ Latest blog posts
 
 <!-- BLOG-POST-LIST:START -->
+- [Install Docker in Debian or Ubuntu](https://arieldiaz.codes/blog/install-docker-debian-ubuntu/)
+- [Sync a bare metal Pi-Hole instance with a Pi-Hole docker container on another host](https://arieldiaz.codes/blog/sync-bare-metal-pihole-with-container/)
 - [OpenMediaVault Quick Reference](https://arieldiaz.codes/blog/openmediavault-quick-reference/)
-- [Setup a Cloudflare Tunnel to securely access self-hosted apps with a domain from outside the home network](https://arieldiaz.codes/blog/setup-cloudflare-tunnel-to-access-self-hosted-apps/)
-- [Reverse proxy OpenMediaVault, Plex and Navidrome with Nginx Proxy Manager and Pi-Hole](https://arieldiaz.codes/blog/reverse-proxy-nginx-pihole/)
-- [Using DNS over HTTPS with Pi-Hole and Cloudflared](https://arieldiaz.codes/blog/using-dns-over-https-with-pihole/)
-- [Set up PhotoSync app to backup photos from your phone to an SMB share on your home server](https://arieldiaz.codes/blog/setup-photosync-with-smb-server/)
+- [Using a forwarding resolver in Pi-Hole for DNS over TLS](https://arieldiaz.codes/blog/pi-hole-quad9-dls-over-tls/)
+- [Install latest version of NodeJS on Debian](https://arieldiaz.codes/blog/install-latest-nodejs-debian/)
 <!-- BLOG-POST-LIST:END -->
