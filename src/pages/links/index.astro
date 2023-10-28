@@ -1,14 +1,15 @@
 ---
-import BaseLayout from '@layouts/BaseLayout.astro';
+import BaseLayout from "@layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 
 const links = (await getCollection("links")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 
-const title = 'Links'
-const desc = 'Links to helpful web development tools and sites.'
+const title = "Links";
+const desc = "Links to helpful web development tools and sites.";
 ---
+
 <style>
   p {
     margin-bottom: 2em;
@@ -23,21 +24,16 @@ const desc = 'Links to helpful web development tools and sites.'
     flex-direction: column;
     margin-bottom: 1em;
   }
-  span a, span a:active, span a:visited {
-    color: var(--primary);
-  }
-  span a:hover {
-    color: var(--link);
-  }
 </style>
 <BaseLayout title={title} description={desc}>
-	<section>
+  <section>
     <h1>Links</h1>
     <hr />
     <p>
       Helpful sites and tools that I use regularly. If you'd like to share
-      similar tools you find to be very useful for system administrators or
-      web developers, comment below and I'll gladly add them, or open a pull request on GitHub with new links added!
+      similar tools you find to be very useful for system administrators or web
+      developers, comment below and I'll gladly add them, or open a pull request
+      on GitHub with new links added!
     </p>
     <ul>
       {
@@ -53,9 +49,9 @@ const desc = 'Links to helpful web development tools and sites.'
         ))
       }
     </ul>
-    <hr>
-		<aside>
-			<a href="#top" class="top button blog-tag">Back to Top &uarr;</a>
-		</aside>
-		</section>
+    <hr />
+    <aside>
+      <a href="#top" class="top button blog-tag">Back to Top &uarr;</a>
+    </aside>
+  </section>
 </BaseLayout>

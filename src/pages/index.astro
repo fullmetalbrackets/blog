@@ -1,9 +1,8 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '@config';
 import RecentPosts from '@components/RecentPosts.astro';
-import RecentNotes from '@components/RecentNotes.astro';
 import RecentLinks from '@components/RecentLinks.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '@consts';
 ---
 
 <style scoped>
@@ -65,20 +64,11 @@ import RecentLinks from '@components/RecentLinks.astro';
 		<h1>Hello, World!</h1>
     <hr>
 		<p>A website to collect mostly tech-related documentation written by me, <em>Ariel Diaz</em>. Most things I've learned and put to use get written down step-by-step for future reference. Maybe some of it will be helpful to you. If not, that's ok, it's still helpful for me. Either way, thanks for visiting!</p>
-		<h2 class="more-title">See more</h2>
-		<ul class="more">
-			<li class="more-list">
-				<a href="/about">About</a>
-				<a href="/uses">Uses</a>
-				<a href="/about#contact">Contact</a>
-			</li>
-		</ul>
 		<RecentPosts />
-		<RecentNotes />
 		<RecentLinks />
 		<hr class="foot-line">
 		<aside>
 			<a href="#top" class="top button blog-tag">Back to Top &uarr;</a>
 		</aside>
-		</section>
+	</section>
 </BaseLayout>

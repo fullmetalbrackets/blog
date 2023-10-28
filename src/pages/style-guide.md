@@ -1,17 +1,12 @@
 ---
-layout: "@layouts/BlogPost.astro"
+layout: "@layouts/BaseLayout.astro"
 title: "Markdown Style Guide"
 description: "Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro."
 ---
 
-<style>
-header { margin-bottom: 0.65em; }
-.title { font-size: 36px; margin-bottom: -13px; }
-hr { margin-bottom: 1em; }
-h3 { margin: 20px 0 0 0; padding: 0;}
-p { margin: 0; }
-@media screen and (min-width: 200px) and (max-width: 1024px) { header { margin-bottom: 0.95em; } }
-</style>
+# Style Guide
+
+<hr>
 
 ## Headings
 

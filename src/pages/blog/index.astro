@@ -1,95 +1,70 @@
 ---
-import BaseLayout from '@layouts/BaseLayout.astro';
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import FormattedDate from "@components/FormattedDate.astro";
 
-const posts = (await Astro.glob('./*.md')).sort(
-	(a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
-
-const title = 'Blog'
-const desc = 'List of all blog posts'
+const title = "Blog";
+const desc = "List of all blog posts";
 ---
 
 <style scoped>
-span {
-  font-size: 110%;
-}
-p {
-  margin-bottom: 3em;
-}
-.desc {
-  font-size: 90%;
-}
-.posts-li {
-  display: grid;
-  grid-template-columns: 1fr 4fr;
-  grid-template-rows: repeat();
-  gap: 10px;
-  margin: 0 auto 2em -2em;
-  padding: 0 auto;
-}
-.posts-dates {  
-  margin: 0;
-  padding: 0;
-  width: 5.75em;
-  text-align: right;
-}
-.posts-title {
-  width: auto;
-  text-align: left;
-}
-.posts-title a, .posts-title a:active, .posts-title a:visited {
-  color: var(--primary);
-} 
-.posts-title a:hover {
-  color: var(--menu);
-} 
-.posts-bottom {
-  margin: 4em auto 0 auto;
-}
-@media screen and (min-width: 200px) and (max-width: 667px) {
-  .posts-li {
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto 2em -2em;
-    padding: 0 auto;
+  ul {
+    list-style-type: none;
+    margin: 0 auto 0 -1.5em;
   }
-  .posts-dates {
-    padding-top: 0.1em;
-    font-size: 0.75em;
-    width: 6.5em;
-    text-align: left;
+  li {
+    display: inline-block;
+    margin: 0 auto;
   }
-}
+  p {
+    margin: 0;
+  }
+  .desc {
+    margin-bottom: 2em;
+  }
+  .title {
+    margin: 0 auto;
+  }
+  .title a,
+  .title a:active,
+  .title a:visited {
+    color: var(--primary);
+  }
+  .title a:hover {
+    color: var(--menu);
+  }
+  @media screen and (min-width: 200px) and (max-width: 667px) {
+    .title {
+      font-size: 20px;
+    }
+  }
 </style>
 
 <BaseLayout title={title} description={desc}>
-	<section>
-		<h1>{title}</h1>
-		<hr>
-		{posts.map((post) => (
-        <ul>
-          <li class="posts-li">
-            <div class="posts-dates">
-              <time datetime={post.frontmatter.pubDate}>
-                {new Date(post.frontmatter.pubDate).toLocaleDateString('en-us', {
-                  year: 'numeric',
-                  month: 'numeric',
-                  day: 'numeric',
-                })}
-              </time>
-            </div>
-            <div class="posts-title">
-              <a href={post.url}>
-                <span>{post.frontmatter.title}</span>
-                <p class="desc">{post.frontmatter.description}</p>
-              </a>
-            </div>
+  <section>
+    <h1>{title}</h1>
+    <hr />
+    <ul>
+      {
+        posts.map((post) => (
+          <li>
+            <a href={`/blog/${post.slug}/`} rel="prefetch-intent">
+              <p>
+                <FormattedDate date={post.data.pubDate} />
+              </p>
+              <p class="title">{post.data.title}</p>
+              <p class="desc">{post.data.description}</p>
+            </a>
           </li>
-        </ul>
-		))}
-		<hr>
-		<aside>
-			<a href="#top" class="top button blog-tag">Back to Top &uarr;</a>
-		</aside>
-		</section>
+        ))
+      }
+    </ul>
+    <hr />
+    <aside>
+      <a href="#top" class="top button blog-tag">Back to Top &uarr;</a>
+    </aside>
+  </section>
 </BaseLayout>

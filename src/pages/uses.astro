@@ -1,8 +1,8 @@
 ---
-import BaseLayout from '@layouts/BaseLayout.astro';
+import BaseLayout from "@layouts/BaseLayout.astro";
 
-const title = 'Uses'
-const desc = 'The stuff I use.'
+const title = "Uses";
+const desc = "The stuff I use.";
 ---
 
 <BaseLayout title={title} description={desc}>
@@ -10,15 +10,21 @@ const desc = 'The stuff I use.'
     section {
       line-height: 1.4;
       margin-bottom: 4em;
-		}
+    }
     h1 {
       font-size: 36px;
     }
-    p {
-      margin: 2em auto 2em 2em;
+    h2 {
+      margin: 2em auto 0 auto;
+    }
+    p:first-of-type {
+      margin: 2em auto;
     }
     hr {
-      margin: 2em 0;
+      margin: 1em 0;
+    }
+    hr:last-of-type {
+      margin-top: 4em;
     }
     ul {
       list-style-type: none;
@@ -40,59 +46,120 @@ const desc = 'The stuff I use.'
       form {
         margin: 1em;
       }
-      a button, aside a {
-				font-size: 0.85em;
-			}
+      a button,
+      aside a {
+        font-size: 0.85em;
+      }
     }
   </style>
   <section>
     <h1>{title}</h1>
-    <hr>
+    <hr />
     <p>
-      A <em>Uses page</em> is a neat concept by <a href="https://wesbos.com" target="_blank">Wes Bos</a> to have a page on your personal site "detailing developer setups, gear, software and configs." So that's what this is. The things I own and stuff I use to make this website and write a bunch of junk.
-    </p>
-    <p>
-      Check out <a href="https://uses.tech" target="_blank">Uses.Tech</a> for other Uses pages.
+      A <em>Uses page</em> is a neat concept by <a
+        href="https://wesbos.com"
+        target="_blank">Wes Bos</a
+      > to have a page on your personal site "detailing developer setups, gear,
+      software and configs." So that's what this is. The things I own and stuff
+      I use to make this website and write a bunch of junk. Check out <a
+        href="https://uses.tech"
+        target="_blank">Uses.Tech</a
+      > for other Uses pages.
     </p>
     <h2 id="desk-setup">Desk Setup</h2>
 
     <ul>
       <li>
-        <em>Desk:</em> &nbsp;<a href="https://www.amazon.com/gp/product/B08Q89X9R2" target="_blank">Bestier L Shaped Desk, Rustic Brown</a> &nbsp;<img class="ext" src="/img/assets/external.svg" alt="External Link" height="18px" width="20px">
+        <em>Desk:</em> &nbsp;<a
+          href="https://www.amazon.com/gp/product/B08Q89X9R2"
+          target="_blank">Bestier L Shaped Desk, Rustic Brown</a
+        > &nbsp;<img
+          class="ext"
+          src="/img/assets/external.svg"
+          alt="External Link"
+          height="18px"
+          width="20px"
+        />
       </li>
     </ul>
 
     <ul>
       <li>
-        <em>Chair:</em> &nbsp;<a href="https://www.amazon.com/gp/product/B09YV46WG7" target="_blank">COLAMY 2199 Office Chair, Classic Brown</a> &nbsp;<img class="ext" src="/img/assets/external.svg" alt="External Link" height="18px" width="20px">
+        <em>Chair:</em> &nbsp;<a
+          href="https://www.amazon.com/gp/product/B09YV46WG7"
+          target="_blank">COLAMY 2199 Office Chair, Classic Brown</a
+        > &nbsp;<img
+          class="ext"
+          src="/img/assets/external.svg"
+          alt="External Link"
+          height="18px"
+          width="20px"
+        />
       </li>
     </ul>
 
-      <ul>
-        <li>
-          <em>Speakers:</em> &nbsp;<a href="https://www.amazon.com/gp/product/B00EZ9XKCM" target="_blank">Logitech Z200 Multimedia Stereo Speakers</a> &nbsp;<img class="ext" src="/img/assets/external.svg" alt="External Link" height="18px" width="20px">
-        </li>
-      </ul>
+    <ul>
+      <li>
+        <em>Speakers:</em> &nbsp;<a
+          href="https://www.amazon.com/gp/product/B00EZ9XKCM"
+          target="_blank">Logitech Z200 Multimedia Stereo Speakers</a
+        > &nbsp;<img
+          class="ext"
+          src="/img/assets/external.svg"
+          alt="External Link"
+          height="18px"
+          width="20px"
+        />
+      </li>
+    </ul>
 
-      <ul>
-        <li>
-          <em>Keyboard and Mouse:</em> &nbsp;<a href="https://www.amazon.com/gp/product/B00BP5KOPA" target="_blank">Logitech MK270 Wireless Keyboard &amp; Mouse Combo</a> &nbsp;<img class="ext" src="/img/assets/external.svg" alt="External Link" height="18px" width="20px"></li>
-        </li>
-      </ul>
-
-      <ul>
-        <li>
-          <em>Monitors:</em>
-            <ul>
-              <li>
-                <a href="https://www.amazon.com/gp/product/B08DQWG3JG">Dell S2721QS 4K UHD Monitor</a> <img class="ext" src="/img/assets/external.svg" alt="External Link" height="18px" width="20px">
-              </li>
-              <li>
-              <a href="https://www.amazon.com/gp/product/B07L9G1BFX" target="_blank">Samsung UR59-series 32&quot; 4K UHD Curved Monitor</a> <img class="ext" src="/img/assets/external.svg" alt="External Link" height="18px" width="20px">
-            </li>
-          </ul>
+    <ul>
+      <li>
+        <em>Keyboard and Mouse:</em> &nbsp;<a
+          href="https://www.amazon.com/gp/product/B00BP5KOPA"
+          target="_blank">Logitech MK270 Wireless Keyboard &amp; Mouse Combo</a
+        > &nbsp;<img
+          class="ext"
+          src="/img/assets/external.svg"
+          alt="External Link"
+          height="18px"
+          width="20px"
+        />
+      </li>
+    </ul>
+    <ul>
+      <li>
+        <em>Monitors:</em>
+        <ul>
+          <li>
+            <a href="https://www.amazon.com/gp/product/B08DQWG3JG"
+              >Dell S2721QS 4K UHD Monitor</a
+            >
+            <img
+              class="ext"
+              src="/img/assets/external.svg"
+              alt="External Link"
+              height="18px"
+              width="20px"
+            />
+          </li>
+          <li>
+            <a
+              href="https://www.amazon.com/gp/product/B07L9G1BFX"
+              target="_blank"
+              >Samsung UR59-series 32&quot; 4K UHD Curved Monitor</a
+            >
+            <img
+              class="ext"
+              src="/img/assets/external.svg"
+              alt="External Link"
+              height="18px"
+              width="20px"
+            />
           </li>
         </ul>
+      </li>
+    </ul>
 
     <h2>PC</h2>
     <ul>
@@ -113,19 +180,21 @@ const desc = 'The stuff I use.'
       </li>
       <li>
         <em>Storage:</em>
-          <ul>
-            <li>250 GB M.2 NVMe SSD</li>
-            <li>500 GB HDD</li>
-            <li>1 TB HDD</li>
-            <li>1 TB SSD</li>
-          </ul>
+        <ul>
+          <li>250 GB M.2 NVMe SSD</li>
+          <li>500 GB HDD</li>
+          <li>1 TB HDD</li>
+          <li>1 TB SSD</li>
+        </ul>
       </li>
     </ul>
     <p class="comment">
-      <em>Comment:</em><br>This thing is from 2015, but it's still trucking and is more than enough for my needs. It even plays most of the games I care to play on PC without issue!
+      <em>Comment:</em><br />This thing is from 2015, but it's still trucking
+      and is more than enough for my needs. It even plays most of the games I
+      care to play on PC without issue!
     </p>
-    
-    <h2>Apollo</h2>
+
+    <h2>Home Server</h2>
     <ul>
       <li>
         <em>Model:</em> Dell Optiplex 3050 SFF
@@ -141,110 +210,183 @@ const desc = 'The stuff I use.'
       </li>
       <li>
         <em>Storage:</em>
-          <ul>
-            <li>250 GB M.2 NVMe Internal SSD</li>
-            <li>2 TB Internal 3.5" HDD</li>
-            <li>1 TB Internal 2.5" HDD</li>
-            <li>1 TB External 2.5" HDD</li>
-          </ul>
+        <ul>
+          <li>250 GB M.2 NVMe Internal SSD</li>
+          <li>2 TB Internal 3.5" HDD</li>
+          <li>1 TB Internal 2.5" HDD</li>
+          <li>1 TB External 2.5" HDD</li>
+        </ul>
       </li>
       <li>
         <em id="docker-containers">Docker Containers</em>
         <ul>
           <li>
-            <a href="https://hub.docker.com/r/portainer/agent" target="_blank" rel="noreferrer noopener">Portainer Agent</a>&nbsp;<img class="ext" src="/img/assets/external.svg" alt="External Link" height="18px" width="20px"> - GUI to manage docker containers
+            <a
+              href="https://hub.docker.com/r/portainer/agent"
+              target="_blank"
+              rel="noreferrer noopener">Portainer</a
+            >&nbsp;<img
+              class="ext"
+              src="/img/assets/external.svg"
+              alt="External Link"
+              height="18px"
+              width="20px"
+            /> - GUI to manage docker containers
           </li>
           <li>
-            <a href="" target="https://hub.docker.com/r/pihole/pihole">Pi-Hole</a>&nbsp;<img class="ext" src="/img/assets/external.svg" alt="External Link" height="18px" width="20px"> - (secondary instance) Network-wide DNS and ad-blocker
+            <a href="" target="https://hub.docker.com/r/pihole/pihole"
+              >Pi-Hole</a
+            >&nbsp;<img
+              class="ext"
+              src="/img/assets/external.svg"
+              alt="External Link"
+              height="18px"
+              width="20px"
+            /> - Network-wide DNS and ad-blocker
           </li>
           <li>
-            <a href="" target="https://hub.docker.com/r/cloudflare/cloudflared">Cloudflared</a>&nbsp;<img class="ext" src="/img/assets/external.svg" alt="External Link" height="18px" width="20px"> - (secondary instance) Upstream DNS over HTTPS proxy
+            <a
+              href="https://hub.docker.com/r/linuxserver/plex"
+              target="_blank"
+              rel="noreferrer noopener">Plex</a
+            >&nbsp;<img
+              class="ext"
+              src="/img/assets/external.svg"
+              alt="External Link"
+              height="18px"
+              width="20px"
+            /> - Movie and TV show streaming server
           </li>
           <li>
-            <a href="https://hub.docker.com/r/linuxserver/plex" target="_blank" rel="noreferrer noopener">Plex</a>&nbsp;<img class="ext" src="/img/assets/external.svg" alt="External Link" height="18px" width="20px"> - Movie and TV show streaming server
+            <a
+              href="https://hub.docker.com/r/linuxserver/tautulli"
+              target="_blank"
+              rel="noreferrer noopener">Tautulli</a
+            >&nbsp;<img
+              class="ext"
+              src="/img/assets/external.svg"
+              alt="External Link"
+              height="18px"
+              width="20px"
+            /> - Plex statistics and activity monitoring
           </li>
           <li>
-            <a href="https://hub.docker.com/r/linuxserver/tautulli" target="_blank" rel="noreferrer noopener">Tautulli</a>&nbsp;<img class="ext" src="/img/assets/external.svg" alt="External Link" height="18px" width="20px"> - Plex statistics and activity monitoring
+            <a
+              href="https://hub.docker.com/r/deluan/navidrome"
+              target="_blank"
+              rel="noreferrer noopener">Navidrome</a
+            >&nbsp;<img
+              class="ext"
+              src="/img/assets/external.svg"
+              alt="External Link"
+              height="18px"
+              width="20px"
+            /> - Music streaming server
           </li>
           <li>
-            <a href="https://hub.docker.com/r/deluan/navidrome" target="_blank" rel="noreferrer noopener">Navidrome</a>&nbsp;<img class="ext" src="/img/assets/external.svg" alt="External Link" height="18px" width="20px"> - Music streaming server
+            <a
+              href="https://hub.docker.com/r/linuxserver/kavita"
+              target="_blank"
+              rel="noreferrer noopener">Kavita</a
+            >&nbsp;<img
+              class="ext"
+              src="/img/assets/external.svg"
+              alt="External Link"
+              height="18px"
+              width="20px"
+            /> - Ebook and comic server
           </li>
           <li>
-            <a href="https://hub.docker.com/r/linuxserver/kavita" target="_blank" rel="noreferrer noopener">Kavita</a>&nbsp;<img class="ext" src="/img/assets/external.svg" alt="External Link" height="18px" width="20px"> - Ebook and comic server
-          </li>
-          <li>
-            <a href="https://hub.docker.com/r/linuxserver/qbittorrent" target="_blank" rel="noreferrer noopener">qBittorrent</a>&nbsp;<img class="ext" src="/img/assets/external.svg" alt="External Link" height="18px" width="20px"> - Torrent downloader/manager
-          </li>
-          <li>
-            <a href="https://github.com/henrywhitaker3/Speedtest-Tracker" target="_blank" rel="noreferrer noopener">Speedtest Tracker</a>&nbsp;<img class="ext" src="/img/assets/external.svg" alt="External Link" height="18px" width="20px"> - Internet speed tracker
+            <a
+              href="https://hub.docker.com/r/linuxserver/qbittorrent"
+              target="_blank"
+              rel="noreferrer noopener">qBittorrent</a
+            >&nbsp;<img
+              class="ext"
+              src="/img/assets/external.svg"
+              alt="External Link"
+              height="18px"
+              width="20px"
+            /> - Torrent downloader/manager
           </li>
         </ul>
       </li>
     </ul>
     <p class="comment">
-      <em>Comment:</em><br>Bought refurbished on eBay for around $60. I added hard drives and doubled the RAM, and it&#39;s been running my entire stack of self-hosted services going on two years without so much as a hiccup. Currently running OpenMediaVault 6 and acts as my NAS and media server (streaming movies &amp; TV shows via Plex, music via Navidrome, etc.), which is shared out to my and my wife&#39;s Windows PCs and laptops via SMB. On my Android phone and tablets, I use the Solid Explorer app to access the SMB shares. (<a href="/blog/solid-explorer-samba-share">My blog post about this.</a>) Recently, I have also begun running a secondary instance of Pi-Hole as a Docker container on this server.</p>
-    
-    <h2>Korben</h2>
-    <ul>
-      <li>
-        <em>Model:</em> Dell Optiplex 3020 Micro
-      </li>
-      <li>
-        <em>OS:</em> Debian 12 Bookworm
-      </li>
-      <li>
-        <em>CPU:</em> Intel Pentium G3250T Dual Core @ 2.8 GHz
-      </li>
-      <li>
-        <em>Memory:</em> 4 GB (2 x 2 GB DDR4 RAM)
-      </li>
-      <li>
-        <em>Storage:</em> 120 GB Internal 2.5" HDD + 320 GB External 2.5" HDD
-      </li>
-      <li>
-        <em id="docker-containers">Docker Containers</em>
-        <ul>
-          <li>
-            <a href="https://hub.docker.com/r/portainer/agent" target="_blank" rel="noreferrer noopener">Portainer</a>&nbsp;<img class="ext" src="/img/assets/external.svg" alt="External Link" height="18px" width="20px"> - (main instance) GUI to manage docker containers
-          </li>
-          <li>
-            <a href="" target="https://hub.docker.com/r/pihole/pihole">Pi-Hole</a>&nbsp;<img class="ext" src="/img/assets/external.svg" alt="External Link" height="18px" width="20px"> - (primary instance) Network-wide DNS and ad-blocker
-          </li>
-          <li>
-            <a href="" target="https://hub.docker.com/r/cloudflare/cloudflared">Cloudflared</a>&nbsp;<img class="ext" src="/img/assets/external.svg" alt="External Link" height="18px" width="20px"> - (primary instance) Upstream DNS over HTTPS proxy
-          </li>
-          <li>
-            <a href="https://hub.docker.com/r/linuxserver/wikijs" target="_blank" rel="noreferrer noopener">WikiJS</a>&nbsp;<img class="ext" src="/img/assets/external.svg" alt="External Link" height="18px" width="20px"> - Self-hosted wiki site
-          </li>
-        </ul>
-      </li>
-    </ul>
-    <p>
-      <em>Comment:</em><br>Bought refurbished on eBay for $45 and hasn't been expanded at all from how I got it, since I haven't needed to. I mainly bought this to run Pi-Hole, and it was my one and only for over a year. (I decided to run a second instance of Pi-Hole on my main server above as a docker container.) It also doubles as a dev server and backup server, I use rsync to periodically backup my photos, documents and and other important files from my NAS to the external drive.
+      <em>Comment:</em><br />Bought off eBay for around $120 in like new
+      condition. I added hard drives and doubled the RAM, and it&#39;s been
+      running my entire stack of self-hosted services going on two years without
+      so much as a hiccup. The OS is OpenMediaVault 6, and the server acts as my
+      network DNS (through Pi-Hole), as my NAS (storing most of my important
+      data) and as a media server (streaming movies &amp; TV shows via Plex,
+      music via Navidrome, etc.). The data is shared out to my and my wife&#39;s
+      Windows PCs and laptops via SMB. On my Android phone and tablets, I use
+      the Solid Explorer app to access the SMB shares. (<a
+        href="/blog/solid-explorer-samba-share">My blog post about this.</a
+      >)
     </p>
-    
+
     <h2>Developer Tools</h2>
     <ul>
       <li>
         <em id="code-editor">Code Editor</em>
-          <ul>
-            <li>VS Code</li>
-            <li>Nano (as needed on Linux)</li>
-          </ul>
+        <ul>
+          <li>VS Code</li>
+          <li>Nano (as needed on Linux)</li>
+        </ul>
       </li>
       <li>
         <em id="terminal">Terminal</em>
-          <ul>
-            <li>
-              Windows Terminal with <a href="https://ohmyposh.dev" target="_blank">Oh-My-Posh</a> <img class="ext" src="/img/assets/external.svg" alt="External Link" height="18px" width="20px"> using <a href="https://github.com/Kudostoy0u/pwsh10k" target="_blank">pwsh10k theme</a> <img class="ext" src="/img/assets/external.svg" alt="External Link" height="18px" width="20px">
-            </li>
-            <li>
-              On Linux, zsh shell with <a href="https://github.com/ohmyzsh/ohmyzsh" target="_blank">Oh-My-Zsh</a> <img class="ext" src="/img/assets/external.svg" alt="External Link" height="18px" width="20px"> using <a href="https://github.com/romkatv/powerlevel10k" target="_blank">powerlevel10k theme</a> <img class="ext" src="/img/assets/external.svg" alt="External Link" height="18px" width="20px">
-            </li>
-          </ul>
-        </li>
-      </ul>
-    <hr>
+        <ul>
+          <li>
+            Windows Terminal with <a href="https://ohmyposh.dev" target="_blank"
+              >Oh-My-Posh</a
+            >
+            <img
+              class="ext"
+              src="/img/assets/external.svg"
+              alt="External Link"
+              height="18px"
+              width="20px"
+            /> using <a
+              href="https://github.com/Kudostoy0u/pwsh10k"
+              target="_blank">pwsh10k theme</a
+            >
+            <img
+              class="ext"
+              src="/img/assets/external.svg"
+              alt="External Link"
+              height="18px"
+              width="20px"
+            />
+          </li>
+          <li>
+            On Linux, zsh shell with <a
+              href="https://github.com/ohmyzsh/ohmyzsh"
+              target="_blank">Oh-My-Zsh</a
+            >
+            <img
+              class="ext"
+              src="/img/assets/external.svg"
+              alt="External Link"
+              height="18px"
+              width="20px"
+            /> using <a
+              href="https://github.com/romkatv/powerlevel10k"
+              target="_blank">powerlevel10k theme</a
+            >
+            <img
+              class="ext"
+              src="/img/assets/external.svg"
+              alt="External Link"
+              height="18px"
+              width="20px"
+            />
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <hr />
     <aside>
       <a href="#top" class="top button blog-tag">Back to Top &uarr;</a>
     </aside>

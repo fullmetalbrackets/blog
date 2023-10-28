@@ -1,6 +1,7 @@
 {
   "name": "arieldiazcodes",
-  "version": "0.1.1",
+  "type": "module",
+  "version": "0.2.0",
   "homepage": "https://arieldiaz.codes",
   "description": "Tech articles, quick guides, and stuff.",
   "author": "Ariel Diaz",
@@ -9,21 +10,18 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build && npx -y pagefind --source dist",
+    "build": "astro build && npx -y pagefind --site dist",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/markdown-remark": "^2.2.1",
-    "@astrojs/mdx": "^0.19.7",
+    "@astrojs/mdx": "^1.1.0",
     "@astrojs/prefetch": "^0.4.0",
     "@astrojs/rss": "^3.0.0",
     "@astrojs/sitemap": "^3.0.0",
-    "astro": "^2.10.12"
+    "astro": "^3.1.0"
   },
   "devDependencies": {
-    "@astrojs/prism": "^2.1.2",
-    "netlify-plugin-csp-generator": "^1.5.0",
-    "pagefind": "^0.12.0"
+    "netlify-plugin-csp-generator": "^1.5.0"
   }
 }

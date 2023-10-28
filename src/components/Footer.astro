@@ -1,79 +1,140 @@
 ---
 const today = new Date();
 ---
+
 <footer>
-	<div class="legal">
-		&copy; 2020 - {today.getFullYear()} Ariel Diaz.<br> 
-		Licensed <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a> & <a href="https://opensource.org/license/mit/" target="_blank">MIT</a>
-	</div>
-	<div class="nav">
-		<a href="/rss.xml"><img height="15px" width="15px" class="rss" src="/img/assets/rss.svg" alt="RSS Feed" title="RSS Feed"></a>
-		<a href="mailto:contact@fullmetalbrackets.com" target="_blank"><img height="20px" width="20px" class="email" src="/img/assets/email.svg" alt="Email" title="Email"></a>
-		<a href="https://threads.net/@fullmetal.brackets" target="_blank"><img height="20px" width="20px" class="threads" src="/img/assets/threads.svg" alt="GitHub" title="Threads"></a>
-		<a href="https://github.com/fullmetalbrackets" target="_blank"><img height="20px" width="20px" class="github" src="/img/assets/gh.svg" alt="GitHub" title="GitHub"></a>
-		<a href="https://buymeacoffee.com/arieldiaz" target="_blank"><img height="21px" width="15px" class="buymeacoffee" src="/img/assets/bmc-logo.svg" alt="Buy Me A Coffee" title="Buy Me A Coffee"></a>
-	</div>
+  <div class="legal">
+    &copy; 2020 - {today.getFullYear()} Ariel Diaz.<br />
+     Licensed <a
+      href="https://creativecommons.org/licenses/by-sa/4.0/"
+      target="_blank">CC BY-SA 4.0</a
+    > & <a href="https://opensource.org/license/mit/" target="_blank">MIT</a>
+  </div>
+  <div class="nav">
+    <a href="/rss.xml"
+      ><img
+        height="15px"
+        width="15px"
+        class="rss"
+        src="/img/assets/rss.svg"
+        alt="RSS Feed"
+        title="RSS Feed"
+      /></a
+    >
+    <a href="mailto:contact@fullmetalbrackets.com" target="_blank"
+      ><img
+        height="20px"
+        width="20px"
+        class="email"
+        src="/img/assets/email.svg"
+        alt="Email"
+        title="Email"
+      /></a
+    >
+    <a href="https://threads.net/@fullmetal.brackets" target="_blank"
+      ><img
+        height="20px"
+        width="20px"
+        class="threads"
+        src="/img/assets/threads.svg"
+        alt="GitHub"
+        title="Threads"
+      /></a
+    >
+    <a href="https://github.com/fullmetalbrackets" target="_blank"
+      ><img
+        height="20px"
+        width="20px"
+        class="github"
+        src="/img/assets/gh.svg"
+        alt="GitHub"
+        title="GitHub"
+      /></a
+    >
+    <a href="https://buymeacoffee.com/arieldiaz" target="_blank"
+      ><img
+        height="21px"
+        width="15px"
+        class="buymeacoffee"
+        src="/img/assets/bmc-logo.svg"
+        alt="Buy Me A Coffee"
+        title="Buy Me A Coffee"
+      /></a
+    >
+  </div>
 </footer>
 <style>
-	footer {
-		font-family: 'M Plus Rounded 1c Reg', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-		margin: 0;
-		padding: 0;
-		display: flex;
-		text-align: center;
-		align-items: center;
-		justify-content: space-between;
-		width: 100%;
-	}
-	.legal {
-		font-size: 10px;
-	}
-	.nav {
-		display: flex;
-		align-items: center;
-		justify-content: space-evenly;
-		margin: 0;
-		padding: 0;
-	}
-	.nav a {
-		margin: 0 5px;
-		padding: 5px;
-	}
-	.nav a:hover {
-		filter: var(--ext);
-	}
-	img {
-		filter: var(--svg);
-		height: 20px;
-		width: 20px;
-		margin: 1px 2px;
-		padding: 0;
-		border-radius: 0;
-	}
-	.rss {
-		width: 15px;
-		height: 15px;
-	}
-	.mail {
-		width: 20px;
-		height: 20px;
-	}
-	.threads {
-		width: 20px;
-		height: 20px;
-	}
-	.gh {
-		width: 20px;
-		height: 20px;
-	}
-	.buymeacoffee {
-		width: 15px;
-		height: 22px;
-	}
-	@media screen and (min-width: 200px) and (max-width: 667px) {
-		.nav a {
-			margin: 0 5px;
-			padding: 5px 2px;
-		}	
-	}
+  footer {
+    font-family:
+      "M Plus Rounded 1c Reg",
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      Oxygen,
+      Ubuntu,
+      Cantarell,
+      "Open Sans",
+      "Helvetica Neue",
+      sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .legal {
+    font-size: 10px;
+  }
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 0;
+    padding: 0;
+  }
+  .nav a {
+    margin: 0 5px;
+    padding: 5px;
+  }
+  .nav a:hover {
+    filter: var(--ext);
+  }
+  img {
+    filter: var(--svg);
+    height: 20px;
+    width: 20px;
+    margin: 1px 2px;
+    padding: 0;
+    border-radius: 0;
+  }
+  .rss {
+    width: 15px;
+    height: 15px;
+  }
+  .mail {
+    width: 20px;
+    height: 20px;
+  }
+  .threads {
+    width: 20px;
+    height: 20px;
+  }
+  .gh {
+    width: 20px;
+    height: 20px;
+  }
+  .buymeacoffee {
+    width: 15px;
+    height: 22px;
+  }
+  @media screen and (min-width: 200px) and (max-width: 667px) {
+    .nav a {
+      margin: 0 5px;
+      padding: 5px 2px;
+    }
+  }
 </style>

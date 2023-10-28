@@ -1,16 +1,15 @@
 ---
-import BaseLayout from '@layouts/BaseLayout.astro';
-import Contact from '@components/Contact.astro';
-
-const title = 'About me'
-const desc = 'About me and this site'
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Contact from "@components/Contact.astro";
+const title = "About me";
+const desc = "About me and this site";
 ---
 
 <BaseLayout title={title} description={desc}>
   <style>
     section {
       line-height: 1.4;
-		}
+    }
     h1 {
       font-size: 36px;
     }
@@ -41,44 +40,43 @@ const desc = 'About me and this site'
   </style>
   <section>
     <h1>{title}</h1>
-    <hr>
+    <hr />
     <p>
-      My name is <em>Ariel Diaz</em>, I'm a tech enthusiast and hobbyist web developer living in Florida. This is my personal tech blog consisting mostly of instructions, quick guides and other documentation I've written up for myself as I've learned about web development, self-hosting, and related topics like networking and the command line. I figured I may as well make these available for others to use if they need to.
+      My name is <em>Ariel Diaz</em>, I'm a tech enthusiast and hobbyist web
+      developer living in Florida. This is my personal tech blog consisting
+      mostly of instructions, quick guides and other documentation I've written
+      up for myself as I've learned about web development, using Linux,
+      self-hosting, networking, etc. I figured I may as well make these
+      available for others to use if they need to, in addition to just having
+      them online for my own access from anywhere.
     </p>
     <p>
-      If you are so inclined, you can see what gear I use and info on my home servers and self-hosted setup in the <a href="/uses" rel="prefetch">Uses page</a>. If you feel like supporting and encouraging me in my endevours, you can <a href="https://buymeacoffee.com/arieldiaz" target="_blank">buy me a coffee</a>.
+      If you are so inclined, you can see what gear I use and info on my home
+      servers and self-hosted setup in the <a href="/uses" rel="prefetch"
+        >Uses page</a
+      >. If you feel like supporting and encouraging me in my endevours, you can
+
+
+      <a href="https://buymeacoffee.com/arieldiaz" target="_blank"
+        >buy me a coffee</a
+      >. The site is made with <a href="https://astro.build" target="_blank"
+        >Astro</a
+      > and its' design and code is open source, so feel free to <a
+        href="https://github.com/fullmetalbrackets/blog"
+        target="_blank">check it out at GitHub</a
+      >.
+      <div id="contact"></div>
+      <h1>Contact</h1>
+      <hr />
+      <p>
+        If you'd like to get in contact with me, please use the form below.
+        Thanks for visiting!
+      </p>
     </p>
-    <h1>About the site</h1>
-    <hr>
-    <p>
-      The site is made with <a href="https://astro.build" target="_blank">Astro</a> and its' design and code is open source, so feel free to <a href="https://github.com/fullmetalbrackets/blog" target="_blank">check it out at GitHub</a>. If you are so inclined, you can view the <a href="/style-guide" target="_blank">style guide</a>.
-    <p>
-      <h3>Some features of the site:</h3>
-      <ul>
-        <li>
-          Fully static and zero JS (before added features below) via <a href="https://astro.build" target="_blank" rel="noopener">Astro</a>
-        </li>
-        <li>
-          Contact and blog post feedback forms via <a href="https://www.netlify.com/products/forms" target="_blank" rel="noopener">Netlify Forms</a>
-        </li>
-        <li>
-          Blog post comments via <a href="https://utteranc.es" target="_blank" rel="noopener">Utterances</a>
-        </li>
-        <li>
-          Fast static search via <a href="https://pagefind.app" target="_blank" rel="noopener">Pagefind</a>
-        </li>
-      </ul>
-    </p>
-    <div id='contact'/>
-    <h1>Contact</h1>
-    <hr>
-    <p>
-      If you'd like to get in contact with me, please use the form below. Thanks for visiting!
-    </p>
+    <Contact />
+    <hr class="foot-line" />
+    <aside>
+      <a href="#top" class="top button blog-tag">Back to Top &uarr;</a>
+    </aside>
   </section>
-  <Contact />
-  <hr class="foot-line">
-  <aside>
-    <a href="#top" class="top button blog-tag">Back to Top &uarr;</a>
-  </aside>
 </BaseLayout>

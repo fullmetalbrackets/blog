@@ -1,23 +1,43 @@
 ---
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
-import '@styles/global.css';
+import "@styles/global.css";
 
-export interface Props {
-	title: string;
-	description: string;
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const { title, description } = Astro.props;
+
+const { title, description, image = "/social.png" } = Astro.props;
 ---
 
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="canonical" href={canonicalURL} />
 <meta name="generator" content={Astro.generator} />
+
+<!-- Font preloads -->
+<link
+  rel="preload"
+  href="/fonts/Atkinson-Regular.woff"
+  as="font"
+  type="font/woff"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="/fonts/Atkinson-Bold.woff"
+  as="font"
+  type="font/woff"
+  crossorigin
+/>
+
+<!-- Canonical URL -->
+<link rel="canonical" href={canonicalURL} />
 
 <!-- Primary Meta Tags -->
 <title>{title}</title>
@@ -29,15 +49,11 @@ const { title, description } = Astro.props;
 <meta property="og:url" content={Astro.url} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content="https://arieldiaz.codes/social.png" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
+<meta property="og:image" content={new URL(image, Astro.url)} />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={Astro.url} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
-<meta property="twitter:image" content="https://arieldiaz.codes/twitter.png" />
-<meta property="twitter:image:width" content="800" />
-<meta property="twitter:image:height" content="418" />
+<meta property="twitter:image" content={new URL(image, Astro.url)} />
