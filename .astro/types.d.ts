@@ -409,6 +409,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"quick-guide-setting-up-smb.md": {
+	id: "quick-guide-setting-up-smb.md";
+  slug: "quick-guide-setting-up-smb";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "reverse-proxy-nginx-pihole.md": {
 	id: "reverse-proxy-nginx-pihole.md";
   slug: "reverse-proxy-nginx-pihole";
