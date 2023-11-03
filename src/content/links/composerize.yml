@@ -1,0 +1,4 @@
+title: "Composerize"
+description: "Tool that lets you paste in a docker run command and convert it into docker compose file syntax. You can do the reverse too with the decomposerize.com tool."
+pubDate: 2023-11-02
+url: "https://www.composerize.com"

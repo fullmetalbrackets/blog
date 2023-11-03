@@ -472,6 +472,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"setting-up-sweet-potato-debian-pihole.md": {
+	id: "setting-up-sweet-potato-debian-pihole.md";
+  slug: "setting-up-sweet-potato-debian-pihole";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "setup-a-samba-share-on-linux-via-command-line.md": {
 	id: "setup-a-samba-share-on-linux-via-command-line.md";
   slug: "setup-a-samba-share-on-linux-via-command-line";
@@ -618,6 +625,11 @@ declare module 'astro:content' {
 };
 "color-picker": {
 	id: "color-picker";
+  collection: "links";
+  data: InferEntrySchema<"links">
+};
+"composerize": {
+	id: "composerize";
   collection: "links";
   data: InferEntrySchema<"links">
 };
