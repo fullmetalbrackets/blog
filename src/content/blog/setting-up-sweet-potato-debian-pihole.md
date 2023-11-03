@@ -156,7 +156,7 @@ Finally, go on the Pi-Hole web admin UI go to _Settings_ -> _DNS_ and under _Ups
 
 The docs continue with instructions for disabling `resolvconf.conf` but I didn't find it necessary, the service was not present on this install of Debian 12 Bookwork on the Sweet Potato. After this Pi-Hole is good to go, so I added it as secondary DNS in my router's DHCP settings. It's been about a month and a half, and everything continues to work as intended, the Sweet Potato hasn't had a single hiccup that I have noticed.
 
-If you'd like a low wattage Raspberry Pi alternative, then in my opinion Libre's Sweet Potato SBC is a worthy choice for <a href="https://www.amazon.com/Libre-Computer-AML-S905X-CC-V2-Potato-Alternative/dp/B0CHHJX44N" target="\_blank" rel=”noopener noreferrer”>$30 on Amazon</a>.
+If you'd like a low wattage Raspberry Pi alternative, then in my opinion Libre's Sweet Potato SBC is a worthy choice for <a href="https://www.amazon.com/Libre-Computer-AML-S905X-CC-V2-Potato-Alternative/dp/B0CHHJX44N" target="_blank" rel=”noreferrer”>$30 on Amazon</a>.
 
 <div id='ref' />
 
