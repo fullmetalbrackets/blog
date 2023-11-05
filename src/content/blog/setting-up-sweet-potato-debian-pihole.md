@@ -9,6 +9,8 @@ tags:
   - Self-Hosting
 ---
 
+<img src="/img/blog/sweet-potato.jpg" alt="Picture of Libre Computer's Sweet Potato Single-Board Computer." />
+
 ## Sections
 
 1. [WTF is Libre Computer and Sweet Potato?](#what)
@@ -16,8 +18,6 @@ tags:
 3. [Updating, configuring, and installing packages](#config)
 4. [Installing and Configuring Pi-Hole](#pihole)
 5. [References](#ref)
-
-<a href="/img/blog/sweet-potato.jpg" target="_blank"><img src="/img/blog/sweet-potato.jpg" alt="Picture of Libre Computer's Sweet Potato Single-Board Computer." /></a>
 
 <div id='what' />
 
