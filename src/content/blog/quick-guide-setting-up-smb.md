@@ -70,7 +70,7 @@ Here is the file contents of my `smb.conf`:
    force directory mode = 0777
 ```
 
-Always double-check that your config file's syntax is correct with `testparm`. For any changes to the config file to take effect, restart Samba services with `sudo systemctl smbd nmbd`.
+Always double-check that your config file's syntax is correct with `testparm`. For any changes to the config file to take effect, restart Samba services with `sudo systemctl restart smbd nmbd`.
 
 From Windows, opening **Run** and going to `//hostname/public` (or via IP address if you prefer) should open the folder without prompting for a login. However, any machine on the network can access this share and read/write/delete without limitation.
 
@@ -87,10 +87,10 @@ chgrp -R ariel /home/ariel/share
 chmod -R 660 /home/ariel/share
 ```
 
-Then add the user to Samba:
+Then add the user to Samba (be sure to use `sudo` or do it as `root`):
 
 ```bash
-smbpasswd -a ariel
+sudo smbpasswd -a ariel
 ```
 
 Here is the file contents of my `smb.conf`:
