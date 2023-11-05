@@ -8,6 +8,8 @@ tags:
   - Linux
 ---
 
+<img src="/img/blog/omv-header.png" alt="OpenMediaVault Logo" class="sq-img" />
+
 ## Sections
 
 1. [Change the port for OMV workbench](#port)

@@ -8,6 +8,8 @@ tags:
   - Command Line
 ---
 
+<img src="/img/blog/oh-my-zsh.png" alt="Oh-My-Zsh Logo." />
+
 ## Sections
 
 1. [Install the Zsh shell](#zsh)
