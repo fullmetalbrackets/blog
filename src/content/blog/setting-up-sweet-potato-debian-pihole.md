@@ -57,9 +57,13 @@ Now that all my ad lists, DNS records and other settings are on the Sweet Potato
 
 I followed the <a href="" target="_blank">official Pi-Hole docs instructions for using Unbound as a recursive DNS server</a> to the letter, and had everything up and running within 5 minutes. In short:
 
-1. Install Unbound with `sudo apt install unbound -y`
-2. Download the latest root hints file with `wget https://www.internic.net/domain/named.root -qO- | sudo tee /var/lib/unbound/root.hints`
-3. Create a new file at `/etc/unbound/unbound.conf.d/pi-hole.conf` and copy/paste the below into it:
+1. Install Unbound via the Debian package manager:
+
+```bash
+sudo apt install unbound -y
+```
+
+2. Create a new file at `/etc/unbound/unbound.conf.d/pi-hole.conf` and copy/paste the below into it:
 
 ```bash
 server:
@@ -130,20 +134,20 @@ server:
     private-address: fe80::/10
 ```
 
-4. Create a config file at `/etc/dnsmasq.d/99-edns.conf` and copy/paste in the below:
+3. Create a config file at `/etc/dnsmasq.d/99-edns.conf` and copy/paste in the below:
 
 ```bash
 edns-packet-max=1232
 ```
 
-5. Start the recursive server and test it:
+4. Start the recursive server and test it:
 
 ```bash
 sudo service unbound restart
 dig pi-hole.net @127.0.0.1 -p 5335
 ```
 
-6. Optional: If using DNSSEC, test validation:
+5. Optional: If using DNSSEC, test validation:
 
 ```bash
 dig fail01.dnssec.works @127.0.0.1 -p 5335
