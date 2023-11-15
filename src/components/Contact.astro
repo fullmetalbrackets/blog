@@ -2,6 +2,9 @@
 
 ---
 <style>
+  section {
+    margin: 0;
+  }
   label {
     font-family: 'Atkinson', 'Wotfard', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
     text-align: left;
@@ -13,7 +16,7 @@
   input {
     line-height: 1;
     border-style: none;
-    margin: 0.25em auto 1em auto;
+    margin: 0.25em auto 3em auto;
     padding: 4px 6px;
     line-height: 1;
     border-radius: 0.25em;
@@ -105,18 +108,8 @@
     <label for="name">Name:</label>
     <br>
     <input id="text" type="text" name="name" required />
-    <br><br>
-    <label for="email">Email:</label>
-    <br>
-    <input id="email" type="email" name="email" required />
-    <br><br>
     <label for="message">Message:</label>
     <textarea id="message" name="message" required />
-    <p class="reply">
-    <label for="radio">Request a response?</label><br>
-      <input type="radio" id="reply" name="radio" value="No reply" class="reply-radio" /><span>Yes</span>
-      <input type="radio" id="no-reply" name="radio" value="No reply" class="reply-radio" required />No
-    </p>
     <br>
     <p><button class="blog-tag button submit" type="submit" value="Submit">Submit</button></p>
   </form>
