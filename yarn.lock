@@ -872,10 +872,10 @@ astring@^1.8.0:
   resolved "https://registry.yarnpkg.com/astring/-/astring-1.8.6.tgz#2c9c157cf1739d67561c56ba896e6948f6b93731"
   integrity sha512-ISvCdHdlTDlH5IpxQJIex7BWBywFWgjJSVdwst+/iQCoEYnyOaQ95+X1JGshuBjGp6nxKUy1jMgE3zPqN7fQdg==
 
-astro@^3.5.4:
-  version "3.5.4"
-  resolved "https://registry.yarnpkg.com/astro/-/astro-3.5.4.tgz#a0cbd3811963d30f522c5c00af42684a16139e55"
-  integrity sha512-tyOd2o9KDz9hDaHmYvnY7BbRxeQ1yDxoOW4AVlxAnmHOK6068k6Bivr/C4Wlc6ON40lZ/qIDG9gfNkiEhMEVow==
+astro@^3.5.5:
+  version "3.5.5"
+  resolved "https://registry.yarnpkg.com/astro/-/astro-3.5.5.tgz#7c1878cbe84da64014ce0aacc6a3fea5b239bf7f"
+  integrity sha512-zJDZhO8XheXzpqkZgBXlP8e3j8psf0A21fh5Bq4HNR6gOmgOnM62Pok3O2ClbGygabfl2Preeun0pBRFn5+y0A==
   dependencies:
     "@astrojs/compiler" "^2.3.0"
     "@astrojs/internal-helpers" "0.2.1"
