@@ -15,12 +15,12 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/markdown-remark": "^3.5.0",
-    "@astrojs/mdx": "^1.1.5",
+    "@astrojs/markdown-remark": "^4.0.0",
+    "@astrojs/mdx": "^2.0.0",
     "@astrojs/prefetch": "^0.4.1",
     "@astrojs/rss": "^3.0.0",
     "@astrojs/sitemap": "^3.0.3",
-    "astro": "^3.6.4"
+    "astro": "^4.0.1"
   },
   "devDependencies": {
     "netlify-plugin-csp-generator": "^1.5.0"
