@@ -32,6 +32,9 @@ const desc = "The stuff I use.";
     ul li > ul {
       list-style-type: circle;
     }
+    .comment {
+      text-indent: 2em;
+    }
     @media screen and (min-width: 200px) and (max-width: 667px) {
       main {
         margin: 0 10px;
@@ -134,8 +137,7 @@ const desc = "The stuff I use.";
           <li>
             <a href="https://www.amazon.com/gp/product/B08DQWG3JG"
               >Dell S2721QS 4K UHD Monitor</a
-            >
-            <img
+            >&nbsp;<img
               class="ext"
               src="/img/assets/external.svg"
               alt="External Link"
@@ -148,8 +150,7 @@ const desc = "The stuff I use.";
               href="https://www.amazon.com/gp/product/B07L9G1BFX"
               target="_blank"
               >Samsung UR59-series 32&quot; 4K UHD Curved Monitor</a
-            >
-            <img
+            >&nbsp;<img
               class="ext"
               src="/img/assets/external.svg"
               alt="External Link"
@@ -161,39 +162,55 @@ const desc = "The stuff I use.";
       </li>
     </ul>
 
-    <h2>PC</h2>
-    <ul>
-      <li>
-        <em>Model:</em> Dell XPS 8920
-      </li>
-      <li>
-        <em>OS:</em> Windows 10 Pro
-      </li>
-      <li>
-        <em>CPU:</em> Intel i7-7700 Quad Core @ 3.6GHz
-      </li>
-      <li>
-        <em>GPU:</em> AMD Radeon RX4800
-      </li>
-      <li>
-        <em>Memory:</em> 24 GB DDR4 RAM
-      </li>
-      <li>
-        <em>Storage:</em>
-        <ul>
-          <li>250 GB M.2 NVMe SSD</li>
-          <li>500 GB HDD</li>
-          <li>1 TB HDD</li>
-          <li>1 TB SSD</li>
-        </ul>
-      </li>
-    </ul>
-    <p class="comment">
-      <em>Comment:</em><br />This thing is from 2015, but it's still trucking
-      and is more than enough for my needs. It even plays most of the games I
-      care to play on PC without issue!
-    </p>
-
+    <h2>PCs</h2>
+      <p>
+        <em>Dell XPS 8920</em>
+      </p>
+      <ul>
+        <li>
+          <em>OS:</em> Windows 10 Pro
+        </li>
+        <li>
+          <em>CPU:</em> Intel i7-7700 Quad Core @ 3.6GHz
+        </li>
+        <li>
+          <em>GPU:</em> AMD Radeon RX4800
+        </li>
+        <li>
+          <em>Memory:</em> 24 GB DDR4 RAM
+        </li>
+        <li>
+          <em>Storage:</em>
+          <ul>
+            <li>250 GB M.2 NVMe SSD</li>
+            <li>2 TB HDD</li>
+            <li>1 TB HDD</li>
+            <li>1 TB SSD</li>
+          </ul>
+        </li>
+      </ul>
+      <p>
+        <em>Dell Optiplex 3050 SFF</em>
+      </p>
+      <ul>
+        <li>
+          <em>OS:</em> Debian 12
+        </li>
+        <li>
+          <em>CPU:</em> Intel Pentium G3250T @ 2.8GHz
+        </li>
+        <li>
+          <em>Memory:</em> 4 GB RAM
+        </li>
+        <li>
+          <em>Storage:</em>
+          <ul>
+            <li>120 GB Internal HDD (boot drive)</li>
+            <li>1 TB External HDD (extra storage)</li>
+          </ul>
+        </li>
+      </ul>
+      
     <h2>Home Server</h2>
     <ul>
       <li>
@@ -312,19 +329,6 @@ const desc = "The stuff I use.";
         </ul>
       </li>
     </ul>
-    <p class="comment">
-      <em>Comment:</em><br />Bought off eBay for around $120 in like new
-      condition. I added hard drives and doubled the RAM, and it&#39;s been
-      running my entire stack of self-hosted services going on two years without
-      so much as a hiccup. The OS is OpenMediaVault 6, and the server acts as my
-      network DNS (through Pi-Hole), as my NAS (storing most of my important
-      data) and as a media server (streaming movies &amp; TV shows via Plex,
-      music via Navidrome, etc.). The data is shared out to my and my wife&#39;s
-      Windows PCs and laptops via SMB. On my Android phone and tablets, I use
-      the Solid Explorer app to access the SMB shares. (<a
-        href="/blog/solid-explorer-samba-share">My blog post about this.</a
-      >)
-    </p>
 
     <h2>Developer Tools</h2>
     <ul>
@@ -341,8 +345,7 @@ const desc = "The stuff I use.";
           <li>
             Windows Terminal with <a href="https://ohmyposh.dev" target="_blank"
               >Oh-My-Posh</a
-            >
-            <img
+            >&nbsp;<img
               class="ext"
               src="/img/assets/external.svg"
               alt="External Link"
@@ -351,8 +354,7 @@ const desc = "The stuff I use.";
             /> using <a
               href="https://github.com/Kudostoy0u/pwsh10k"
               target="_blank">pwsh10k theme</a
-            >
-            <img
+            >&nbsp;<img
               class="ext"
               src="/img/assets/external.svg"
               alt="External Link"
@@ -364,8 +366,7 @@ const desc = "The stuff I use.";
             On Linux, zsh shell with <a
               href="https://github.com/ohmyzsh/ohmyzsh"
               target="_blank">Oh-My-Zsh</a
-            >
-            <img
+            >&nbsp;<img
               class="ext"
               src="/img/assets/external.svg"
               alt="External Link"
@@ -374,8 +375,7 @@ const desc = "The stuff I use.";
             /> using <a
               href="https://github.com/romkatv/powerlevel10k"
               target="_blank">powerlevel10k theme</a
-            >
-            <img
+            >&nbsp;<img
               class="ext"
               src="/img/assets/external.svg"
               alt="External Link"
