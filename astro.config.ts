@@ -15,5 +15,5 @@ export default defineConfig({
     drafts: false,
     syntaxHighlight: 'prism'
   },
-  compressHTML: true
+  compressHTML: true,
 });

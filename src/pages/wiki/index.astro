@@ -1,0 +1,70 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import FormattedDate from "@components/FormattedDate.astro";
+
+const posts = (await getCollection("wiki")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+const title = "Wiki";
+const desc = "List of all wiki articles";
+---
+
+<style scoped>
+  ul {
+    list-style-type: none;
+    margin: 0 auto 0 -1.5em;
+  }
+  li {
+    margin: 0 auto;
+  }
+  span, p {
+    margin: 0 auto;
+    padding: 0 auto;
+  }
+  .desc {
+    margin-bottom: 2em;
+  }
+  .title {
+    margin: 0 auto;
+  }
+  .title a,
+  .title a:active,
+  .title a:visited {
+    color: var(--primary);
+  }
+  .title a:hover {
+    color: var(--menu);
+  }
+  @media screen and (min-width: 200px) and (max-width: 667px) {
+    .title {
+      font-size: 20px;
+    }
+  }
+</style>
+
+<BaseLayout title={title} description={desc}>
+  <section>
+    <h1>{title}</h1>
+    <hr />
+    <ul>
+      {
+        posts.map((post) => (
+          <li>
+            <p>
+              <FormattedDate date={post.data.pubDate} />
+            </p>
+            <a href={`/wiki/${post.slug}/`} rel="prefetch-intent">
+              <span class="title">{post.data.title}</span>
+              <p class="desc">{post.data.description}</p>
+              </a>
+          </li>
+        ))
+      }
+    </ul>
+    <hr />
+    <aside>
+      <a href="#top" class="top button blog-tag">Back to Top &uarr;</a>
+    </aside>
+  </section>
+</BaseLayout>
