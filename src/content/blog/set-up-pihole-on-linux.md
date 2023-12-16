@@ -236,9 +236,54 @@ pihole restartdns
 
 ## Further steps
 
-If you want your setup to be more private, consider <a href="https://docs.pi-hole.net/guides/dns/unbound/#setting-up-pi-hole-as-a-recursive-dns-server-solution" target="_blank">setting up a recursive DNS with unbound</a>, that way you bypass public DNS servers like Cloudflare and Google entirely.
+### Updating Pi-Hole
 
-Pi-Hole will automatically update the gravity database every Sunday between 3:00 AM and 5:00 AM, but if you're using regularly updated community-maintained adlists, you may want to consider using `cron` to automate updating the gravity every day or two. This is entirely optional, but doesn't hurt. Use `cronjob -e` and place in the below to (for example) update gravity everyday at 5:00AM.
+When an update to Pi-Hole, FTL and/or the Web Interface is available, you can easily update your bare metal Pi-Hole in the terminal by using the command `pihole -up`. Pi-Hole will not update on it's own, so you have to do it manually, and the Pi-Hole team does not recommend automating it. (Though you can, if you so choose.)
+
+If you'd rather update Pi-Hole during off-hours, like in the middle of the night, I suggest using `at` -- it lets you use schedule a one-time task for a later time, similar to `cron` but non-recurring. (The syntax for `at` is also more human-readable than `cron`.) For example, the below command will schedule `pihole -up` to be executed at 5:00 AM:
+
+```bash
+pihole -up | at 5AM
+```
+
+If running Pi-Hole in a docker container, you don't need to use `pihole -up`. Instead, you just need to download a new image -- do this to update Pi-Hole if you set it up with **Docker Compose**:
+
+- `docker-compose pull` to pull the latest image
+- `docker-compose up -d --no-deps` to restart containers with newer image
+- `docker system prune --all` to delete older unused images (not just Pi-Hole!)
+
+Alternately, or if you used `docker run` instead of compose to setup Pi-Hole, use these commands:
+
+- `docker pull pihole/pihole` to pull the latest image
+- `docker restart pihole` to restart the container with newer image
+
+If you did not name the container, use `docker ps` to list all containers and use the `CONTAINER ID` to restart the container, e.g. `docker restart 0ef99ce930bd`.
+
+### Backup and/or restore Pi-Hole configuration
+
+You may want to regularly create a backup of your Pi-Hole configuration. You can't automate it, but that's ok because it's very simple -- just to go the web UI, click on _Settings_, then go to the _Teleporter_ tab and click the _Backup_ button. This will download a `tar.gz` file to the computer you're accessing the web UI from, and within this same screen you can restore from a backup file if necessary. You might consider committing your backup to a private GitHub repo too.
+
+### Use local time instead of UTC
+
+If you notice the query log displaying times as UTC instead of your local time zone, and you want the logs to use your time zone, use (for example if you want EST):
+
+```
+sudo timedatectl set-timezone America/New_York
+```
+
+If you want to find out your time zone in the tz database, <a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones" target="_blank">see here</a>.
+
+### Use DNS over HTTPS or DNS over TLS
+
+By default, Pi-Hole sends DNS requests in plain text, which can be seen by your ISP or anyone else snooping on your network traffic. DNS over HTTPS (DoH) and DNS over TLS (DoT) encrypts DNS requests between your Pi-Hole and the upstream DNS resolvers. See my quick guides for setting up <a href="using-dns-over-https-with-pihole" target="_blank">DoH (with cloudflared)</a> or <a href="pi-hole-quad9-dls-over-tls" target="_blank">DoT (with either cloudflared or unbound)</a> in Pi-Hole. Just make sure you're using an upstream DNS resolver that supports what you want to use; Cloudflare and Quad9, for example, support both DoH and DoT.
+
+### Use Pi-Hole as a recursive DNS
+
+If you want your setup to be more private, consider <a href="https://docs.pi-hole.net/guides/dns/unbound/#setting-up-pi-hole-as-a-recursive-dns-server-solution" target="_blank">setting up a recursive DNS with unbound</a>, that way Pi-Hole is forwarding your DNS requests to the authoritative servers, instead of forwarding to public DNS resolvers like Cloudflare and Google. (See the link for more details and official instructions on setting it up.)
+
+### Make Pi-Hole update gravity more often
+
+Pi-Hole will automatically update the gravity database every Sunday between 3:00 AM and 5:00 AM, but if you're using regularly updated community-maintained adlists, you may want to consider using `cron` to automate updating the gravity every day or two. This is entirely optional, and probably overkill, so don't feel like you have to do this. Use `cronjob -e` and copy & paste the below to (for example) update gravity everyday at 5:00AM. (If you don't know/remember how to create cron expressions off the top of your head, <a href="https://crontab.guru" target="_blank">use this handy tool</a>.)
 
 ```bash
 0 5 * * * pihole -g
@@ -250,32 +295,9 @@ If you're running Pi-Hole in a docker container, use this command instead:
 0 5 * * * docker exec <pihole_container_name> pihole -g
 ```
 
-When an update to Pi-Hole, FTL or the Web Interface is available (usually the Pi-Hole team will update all three at the time same), you can easily update your bare metal Pi-Hole in the terminal by using the command `pihole -up`. Pi-Hole will not update on it's own, so you have to do it manually.
-
-If you'd rather update Pi-Hole during off-hours, like in the middle of the night, I suggest using `at` -- it lets you use schedule a one-time task for a later time, similar to `cron` but non-recurring. (The syntax for `at` is also more human-readable than `cron`.) For example, the below command will schedule `pihole -up` to be executed at 5:00 AM:
-
-```bash
-pihole -up | at 5AM
-```
-
-If running Pi-Hole in a docker container, you don't need to use `pihole -up`. Instead, do this to update Pi-Hole if you set it up with **Docker Compose** (and also **cloudflared** if in the same stack as Pi-Hole):
-
-- `docker-compose pull` to pull the latest images
-- `docker-compose up -d --no-deps` to restart containers with newer images
-- `docker system prune --all` to delete older unused images
-
-If you used `docker run` to setup Pi-Hole:
-
-- `docker pull pihole/pihole` to pull the latest image
-- `docker restart pihole` to restart the container with newer image
-
-If you did not name the container, use `docker ps` to list all containers and use the `CONTAINER ID` to restart the container, e.g. `docker restart 0ef99ce930bd`.
-
-Additionally, you should regularly create a backup of your Pi-Hole configuration. You can't automate it, but that's ok because it's very simple -- just to go the web UI, click on _Settings_, then go to the _Teleporter_ tab and click the _Backup_ button. This will download a `tar.gz` file to the computer you're accessing the web UI from, and within this same screen you can restore from a backup file if necessary. You might consider committing your backup to a private GitHub repo too.
+### Run and sync two Pi-Holes
 
 Also, if you make Pi-Hole your primary DNS it becomes a critical part of your network -- if it goes down, devices on your network won't be able to resolve any domains. For this reason, you may want to run another Pi-Hole as a secondary DNS in case the host running your main instance of Pi-Hole crashes. (These things happen.) If your entire network will go down from an issue with Pi-Hole, running a second instance of it makes a lot of sense. If you go this route, I strongly suggest using <a href="https://github.com/vmstan/gravity-sync" target="_blank" rel="noreferrer noopener">Gravity Sync</a> to keep the adlists and other settings identical between the two.
-
-And last, but not least, you may want to consider connecting the Pi-Hole(s) to an _Uninterruptable Power Supply_. I have my router and both Pi-Hole hosts on a UPS, and more than once it's let me cruise through brief power outages. (I live in Florida where any random summer storm can cause the power to blink or get knocked out temporarily.)
 
 <div class="info">
   <span>
