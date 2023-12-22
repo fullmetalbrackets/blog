@@ -1,0 +1,121 @@
+---
+import type { CollectionEntry } from "astro:content";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import FormattedDate from "@components/FormattedDate.astro";
+
+type Props = CollectionEntry<"wiki">["data"];
+
+const { title, description, pubDate, updatedDate } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <style>
+    article {
+      margin-top: 4em;
+    }
+    hr {
+      margin: 1.5em auto;
+    }
+    .title {
+      margin-bottom: 1em;
+    }
+    .description {
+      margin-bottom: 2em;
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      list-style-type: none;
+      margin: 0 auto;
+      margin-top: 10px;
+      padding: 0;
+    }
+    form {
+      display: flex;
+      align-items: center;
+    }
+    label {
+      color: var(--text);
+      margin-right: 1em;
+    }
+    .radio {
+      margin: 0.5em 0.5em 0.5em 0.25em;
+      width: 1em;
+      height: 1em;
+      appearance: none;
+      -webkit-appearance: none;
+      border: 1px solid var(--accent);
+      background-color: var(--accent);
+      border-radius: 50%;
+    }
+    .radio:focus,
+    .radio:focus-visible {
+      box-shadow: none;
+      outline-offset: 0;
+    }
+    .radio:checked {
+      box-shadow: 0 0 0 1px var(--name);
+      background-color: var(--name);
+      border-width: 0.1em;
+    }
+    .utterances {
+      margin: 2.5em auto;
+    }
+    @media screen and (min-width: 200px) and (max-width: 667px) {
+      article {
+        margin-top: 4em;
+      }
+      .title {
+        padding-top: 0.15em;
+      }
+      aside {
+        font-size: 1rem;
+      }
+      label {
+        margin-right: 0.25em;
+      }
+      button {
+        margin-left: 0.25em;
+      }
+      .radio {
+        margin: 0 0.25em;
+      }
+      .submit {
+        margin-left: 0.5em;
+      }
+      .top {
+        width: 5em;
+        text-align: center;
+      }
+    }
+  </style>
+
+  <article>
+    <div class="date">
+      <FormattedDate date={pubDate} />
+      {
+        updatedDate && (
+          <div class="last-updated-on">
+            Last updated on <FormattedDate date={updatedDate} />
+          </div>
+        )
+      }
+    </div>
+    <h1 class="title">{title}</h1>
+    <hr />
+    <p class="description">
+      {description}
+    </p>
+    <slot>
+      <p>
+        If you're seeing this, something went wrong! Please try <em
+          >reloading the page</em
+        >.
+      </p>
+    </slot>
+  </article>
+  <hr />
+  <aside>
+    <a href="#top" class="top button blog-tag">Back to Top &uarr;</a>
+  </aside>
+</BaseLayout>
