@@ -1,7 +1,7 @@
 ---
 title: "Complete guide to self-hosting a website through Cloudflare Tunnel"
 description: "In this guide I demonstrate how to self-host a static web blog built with Astro and expose it to the internet via a Cloudflare tunnels."
-pubDate: 2023-12-28
+pubDate: 2023-12-29
 tags:
   - Self-Hosting
   - Cloudflare
@@ -162,9 +162,9 @@ Though optional, it's always good practice to set up your security headers on an
 
 1. Login to Cloudflare and on the sidebar go to **Rules** -> **Transform Rules**, choose the **Modify Response Header**, then click **Create Rule**.
 2. Name the rule (e.g. "Security Headers"), scroll down to **If...** and choose **All incoming requests**, scroll down to **Then...**.
-3. In the **Select item...** dropdown choose **Set static** -- click the **Set new header** button six times, and choose **Set static** for all of them. Cut and paste the **header names** and **values** below into each rule you create.
+3. In the **Select item...** dropdown choose **Set static** -- click the **Set new header** button six times, and choose **Set static** for all of them. Cut and paste the below **headers** and **values** into each rule you create.
 
-| header name                 | value                                                |
+| header                      | value                                                |
 | --------------------------- | ---------------------------------------------------- |
 | `x-content-type-options`    | `nosniff`                                            |
 | `x-frame-options`           | `SAMEORIGIN`                                         |
@@ -178,8 +178,6 @@ Though optional, it's always good practice to set up your security headers on an
 
 ## Reference
 
-- <a href="" target="_blank">REF LINK</a>
-- <a href="" target="_blank">REF LINK</a>
 - <a href="https://developers.cloudflare.com/fundamentals/get-started/setup/add-site/" target="_blank">Cloudflare Docs - Add a site</a>
 - <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/install-and-setup/tunnel-guide/remote/" target="_blank">Cloudflare Docs - Tunnels</a>
 - <a href="https://blog.cloudflare.com/transform-http-response-headers" target="_blank">Cloudflare Blog - Modifying HTTP response headers with Transform Rules</a>
