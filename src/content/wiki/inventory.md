@@ -8,10 +8,10 @@ tags:
 
 # Inventory
 
-1. [Apollo](#apollo)
+1. [Korben](#korben)
 2. [Potato](#potato)
 3. [Other](#other)
-4. [Korben](#korben)
+4. [Apollo](#apollo)
 5. [Headless](#headless)
 6. [Worf](#worf)
 7. [Weasley](#weasley)
