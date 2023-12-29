@@ -14,7 +14,7 @@ tags:
 3. [Setting up the Nginx container](#nginx)
 4. [Set up domain in Cloudflare](#domain)
 5. [Set up the Cloudflare tunnel](#tunnel)
-6. [Configure site headers on Cloudflare](#headers)
+6. [Configure HTTP response headers on Cloudflare](#headers)
 7. [References](#ref)
 
 <div id='what' />
@@ -156,15 +156,15 @@ Add the **Cloudflare tunnel token** to the `TUNNEL_TOKEN=` environmental variabl
 
 <div id='headers' />
 
-## Configure site headers on Cloudflare
+## Configure HTTP response headers on Cloudflare
 
-Though optional, it's always good practice to set up your security headers on any website you host. If you check your site on <a href="https://securityheaders.com/" target="_blank">securityheaders.com</a> you'll probably have an F grade. A lot of blogs don't bother with this, most that I have checked get a D+ at best, so don't think it's required by any stretch. However, if you feel like going that extra step, here is how:
+Though optional, it's always good practice to set up your HTTP response headers on any website you host. If you check your site on <a href="https://securityheaders.com/" target="_blank">securityheaders.com</a> you'll probably have an F grade. A lot of tech blogs don't bother with this, most that I have checked get a D+ at best, so don't think it's required by any stretch. However, if you feel like going that extra step, here is how:
 
 1. Login to Cloudflare and on the sidebar go to **Rules** -> **Transform Rules**, choose the **Modify Response Header**, then click **Create Rule**.
 2. Name the rule (e.g. "Security Headers"), scroll down to **If...** and choose **All incoming requests**, scroll down to **Then...**.
-3. In the **Select item...** dropdown choose **Set static** -- click the **Set new header** button six times, and choose **Set static** for all of them. Cut and paste the below **headers** and **values** into each rule you create.
+3. In the **Select item...** dropdown choose **Set static** -- click the **Set new header** button six times, and choose **Set static** for all of them. Cut and paste the below **header names** and **values** into each rule you create.
 
-| header                      | value                                                |
+| header name                 | value                                                |
 | --------------------------- | ---------------------------------------------------- |
 | `x-content-type-options`    | `nosniff`                                            |
 | `x-frame-options`           | `SAMEORIGIN`                                         |
@@ -173,6 +173,8 @@ Though optional, it's always good practice to set up your security headers on an
 | `referrer-policy`           | `no-referrer-when-downgrade`                         |
 | `content-security-policy`   | `upgrade-insecure-requests; block-all-mixed-content` |
 | `permissions-policy`        | `autoplay=(), geolocation=()`                        |
+
+Once that is done, click the **Deploy** button. Wait a few minutes, then check your security headers again, and now it should be a higher grade. To get A+ you'll need to add more detailed values for the `content-security-policy` headers (<a href="https://content-security-policy.com" target="_blank">see here</a>), but you can break Cloudflare Analytics and other features if you don't do it right, so I haven't bothered with it.
 
 <div id='ref' />
 
