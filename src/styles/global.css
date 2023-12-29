@@ -261,14 +261,19 @@ textarea {
 table {
 	width: 100%;
   border-spacing: 0;
+  margin: 1em auto;
 }
-tbody, td, th {
+tbody, td {
 	border: 1px solid var(--accent);
 	padding: 5px;
 	vertical-align: top;
 }
 th {
-  background: var(--accent);
+  background: var(--code-bg);
+	border: 1px solid var(--accent);
+  color: var(--emphasis);
+	padding: 5px;
+	vertical-align: top;
 }
 mark {
   background: #aaa;
