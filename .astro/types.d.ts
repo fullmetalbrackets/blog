@@ -430,6 +430,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"self-host-website-cloudflare-tunnel.md": {
+	id: "self-host-website-cloudflare-tunnel.md";
+  slug: "self-host-website-cloudflare-tunnel";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "set-static-ip-debian.md": {
 	id: "set-static-ip-debian.md";
   slug: "set-static-ip-debian";
