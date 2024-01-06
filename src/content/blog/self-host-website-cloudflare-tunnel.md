@@ -1,6 +1,6 @@
 ---
 title: "Complete guide to self-hosting a website through Cloudflare Tunnel"
-description: "In this guide I demonstrate how to self-host a static web blog built with Astro and expose it to the internet via a Cloudflare tunnels."
+description: "In this guide I demonstrate how to self-host a static web blog and expose it to the internet via a Cloudflare tunnel."
 pubDate: 2023-12-29
 tags:
   - Self-Hosting
@@ -14,8 +14,9 @@ tags:
 3. [Setting up the Nginx container](#nginx)
 4. [Set up domain in Cloudflare](#domain)
 5. [Set up the Cloudflare tunnel](#tunnel)
-6. [Configure HTTP response headers on Cloudflare](#headers)
-7. [References](#ref)
+6. [Set up a redirect](#redirect)
+7. [Configure HTTP response headers on Cloudflare](#headers)
+8. [References](#ref)
 
 <div id='what' />
 
@@ -27,7 +28,7 @@ First, requirements:
 
 1. You need to create a free Cloudflare account.
 2. You need to own a domain. Look on Namecheap and Porkbun (or any domain registrar you prefer) for cheap domains, like those ending with `.cc` or `.us` -- they can usually be bought for less then $10 and often for as low as $4 or $5. (This is the price for the first year, to hook you, but annual domain renewals can cost more after that first year, so do your research.) Alternately you could set up something like <a href="https://www.duckdns.org" target="_blank">DuckDNS</a> to avoid buying a domain, but you're on your own there -- domains are so cheap I've never bothered.
-3. You'll need a website. I won't be explaining how to build a website here, you can just code one from scratch with HTML and CSS if you know how, or you can use a static site builder like <a href="https://astro.build" target="_blank">Astro</a> or <a href="https://nuxt.com" target="_blank">Nuxt</a>. Feel free to<a href="https://github.com/fullmetalbrackets/" target="_blank">check out one of my sites on GitHub</a>, fork it, change it to your liking, and use that. They're open source for a reason.
+3. You'll need a website. I won't be explaining how to build a website here, you can just code one from scratch with HTML and CSS if you know how, or you can use a static site builder like <a href="https://astro.build" target="_blank">Astro</a> or <a href="https://nuxt.com" target="_blank">Nuxt</a>. Feel free to <a href="https://github.com/fullmetalbrackets/" target="_blank">check out one of my sites on GitHub</a>, fork it, change it to your liking, and use that. They're open source for a reason.
 4. You will need to install Docker and all it's dependencies, the Cloudflare tunnel runs as a Docker container and we'll also be using an Nginx container as the webserver. You can use Nginx "bare metal" if you prefer, but I won't explain how here.
 
 <div id='site' />
@@ -139,7 +140,7 @@ services:
     container_name: site
     image: nginx:1.23.3-alpine
     volumes:
-      - /dist/:/usr/share/nginx/html/
+      - /home/bob/sites/my-cool-blog/dist/:/usr/share/nginx/html/
     ports:
       - 8888:80
 
@@ -153,6 +154,34 @@ services:
 ```
 
 Add the **Cloudflare tunnel token** to the `TUNNEL_TOKEN=` environmental variable, the use `docker-compose up -d`. Once the container is up and running, check Cloudflare — reload the page if necessary or wait a few minutes, your tunnel will eventually show as **Healthy** status. Once it does, you should be able to visit `https://your-domain.com` to hit your website!
+
+<div id='redirect'>
+
+## Set up a redirect
+
+Right now, going to `your-domain.com` should work, but you may notice that going to `www.your-domain.com` does not. Normally you'd set up an A record in your webhost's DNS settings, but Cloudflare Tunnels work a little differently -- they don't use A records. Instead, we'll set up a CNAME for `www`, point it at the tunnel ID, and create a redirect rule.
+
+First, let's add the DNS record.
+
+1. On the Cloudflare dashboard, click on your domain, then on the sidebar open the **DNS** dropdown and click **Records**.
+2. On the next page, click the **Add record** button.
+3. Under **Type** choose _CNAME_.
+4. Under **Name** type in `www`.
+5. Under **IPv4 address** put in your tunnel ID. (If you need the ID, just copy and paste it from your primary CNAME record.)
+6. Click the **Save** button.
+
+Now for the redirect rule.
+
+1. On the Cloudflare dashboard, click on your domain, then on the sidebar open the **Rules** dropdown and click **Redirect Rules**.
+2. Click the **Add rule** button, and on the next page give your rule a name.
+3. In the **If...** section, under _When incoming requests match..._ click the radio button for **Custom filter expression**.
+4. Below _When incoming requests match..._, ignore the dropdowns and instead click on **Edit expression**.
+5. In the Expression Editor, type in `(http.request.full_uri contains "www.your-domain.com")`. (Obviously change it to your actual domain.)
+6. In the **Then...** section, for **Type** choose _Dynamic_ from the dropdown.
+7. Under **Expression** type in `concat("https://","your-domain.com",http.request.uri.path)`. (Again change to your actual domain.)
+8. Leave the **Status code** as 301 and click **Deploy**.
+
+Now when you go to `www.your-domain.com` it should redirect to `your-domain.com`.
 
 <div id='headers' />
 
