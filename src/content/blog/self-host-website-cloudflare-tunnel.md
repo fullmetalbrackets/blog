@@ -2,6 +2,7 @@
 title: "Complete guide to self-hosting a website through Cloudflare Tunnel"
 description: "In this guide I demonstrate how to self-host a static web blog and expose it to the internet via a Cloudflare tunnel."
 pubDate: 2023-12-29
+updatedDate: 2024-01-05
 tags:
   - Self-Hosting
   - Cloudflare
@@ -211,4 +212,5 @@ Once that is done, click the **Deploy** button. Wait a few minutes, then check y
 
 - <a href="https://developers.cloudflare.com/fundamentals/get-started/setup/add-site/" target="_blank">Cloudflare Docs - Add a site</a>
 - <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/install-and-setup/tunnel-guide/remote/" target="_blank">Cloudflare Docs - Tunnels</a>
+- <a href="https://developers.cloudflare.com/fundamentals/basic-tasks/manage-subdomains#set-up-redirects" target="_blank">Cloudflare Docs - Manage subdomains, Set up redirects</a>
 - <a href="https://blog.cloudflare.com/transform-http-response-headers" target="_blank">Cloudflare Blog - Modifying HTTP response headers with Transform Rules</a>
