@@ -36,7 +36,7 @@ First, requirements:
 
 ## The website
 
-Like I said, I'm not explaining how to build a website here. Assuming you used a static site builder like **Astro**, use the necessary commands to build the site for deployment -- most likely this will be `npx run build`, `yarn build`, or something along those lines. Most static site builders output to a `/dist` or `/public` folder, which is what will be exposed to the internet.
+Like I said, I'm not explaining how to build a website here. Assuming you used a static site generator like **Astro** (what I use for this site) or **Nuxt**, use the necessary commands to build the site for deployment -- most likely this will be `npx run build`, `yarn build`, or something along those lines. Most static site builders output to a `/dist` or `/public` folder, which is what will be exposed to the internet.
 
 Make a note of the full path to your website's output directory, so for example `/home/bob/sites/my-cool-blog/dist` or the like.
 
@@ -116,21 +116,23 @@ As I said, you'll need a Cloudflare account and a top-level domain that you own.
 
 8. Leave **Brotli** on. On the summary, click **Finished**.
 
-9. You’ll be back at your site’s **Overview page**. If you still see _Complete your nameserver setup_, you can try using the **Check nameservers button**. In my experience that makes the DNS changes occur within a few minutes if they haven't already.
+9. Next go to **SSL/TLS** -> **Overview** on the sidebar, and set the encryption mode to **Full (strict)**.
 
-Once your DNS changes have propagated, the **Overview page** will say: _“Great news! Cloudflare is now protecting your site!”_ That means you’re ready to set up the tunnel.
+10. Click on **Overview** on the sidebar to go back to the domain's main page. If you still see _Complete your nameserver setup_, you can try using the **Check nameservers button**. It can take a few hours, but in my experience it usually takes more like 20 minutes.
+
+11. Once your DNS changes have propagated, the **Overview** page will say: _“Great news! Cloudflare is now protecting your site!”_ Now go to **DNS** -> **Records** on the sidebar, and delete any `A` and `CNAME` records -- the tunnel will create the appropriate DNS records automatically, and we're finally ready to set it up.
 
 <div id='tunnel' />
 
 ## Create and configure the Cloudflare tunnel
 
-Go to the _Cloudflare Zero Trust dashboard_ by clicking **Access** on the sidebar, then click on **Launch Zero Trust** to open it in a new tab. Once at the dashboard, do the following:
+Go to the _Cloudflare Zero Trust dashboard_ by clicking **Access** on the sidebar, then click on **Launch Zero Trust** to open it in a new tab. Once at the Zero Trust dashboard, do the following:
 
 1. On the sidebar, go to **Access** -> **Tunnels**.
 
 2. Click the **Create a tunnel** button, give it a name, and click **Save tunnel**.
 
-3. The next page is self-explanatory, but rather than Copying and pasting the command provided, we'll again use **Docker Compose** to run `cloudflared`. Open the `docker-compose.yaml` file and add the following so it looks like the below:
+3. The next page will provide a docker command to run, but rather than copying and pasting the command as is, we'll again use **Docker Compose** to run `cloudflared`. All we will need is the token Open the `docker-compose.yaml` file and add the following so it looks like the below:
 
 ```yaml
 version: "3.8"
@@ -154,7 +156,17 @@ services:
       - TUNNEL_TOKEN=
 ```
 
-Add the **Cloudflare tunnel token** to the `TUNNEL_TOKEN=` environmental variable, the use `docker-compose up -d`. Once the container is up and running, check Cloudflare — reload the page if necessary or wait a few minutes, your tunnel will eventually show as **Healthy** status. Once it does, you should be able to visit `https://your-domain.com` to hit your website!
+Add the **Cloudflare tunnel token** to the `TUNNEL_TOKEN=` environmental variable, the use `docker-compose up -d`. Once the container is up and running, check Cloudflare — reload the page if necessary or wait a few minutes, your tunnel will eventually show as **Healthy** status. Once it does, click the **Next** button.
+
+Now you'll be in the _Route Traffic_ page, under the **Public Hostnames** tab do the following:
+
+1. Leave the **Subdomain** empty, it's unnecessary for our purposes here.
+2. For **Domain** type in your domain.
+3. Leave the **Path** empty as well.
+4. Under _Service_, for **Type** select **HTTP** (not HTTPS) from the dropdown menu.
+5. For **URL**, put the full LAN (internal) IP address of the machine that will host the site, and append the port you set for the docker container -- for example `192.168.1.100:8888`. (Using `localhost:8888` like the example says may work, but I always just use the full IP.)
+
+you should be able to visit `https://your-domain.com` to hit your website!
 
 <div id='redirect'>
 
@@ -213,4 +225,5 @@ Once that is done, click the **Deploy** button. Wait a few minutes, then check y
 - <a href="https://developers.cloudflare.com/fundamentals/get-started/setup/add-site/" target="_blank">Cloudflare Docs - Add a site</a>
 - <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/install-and-setup/tunnel-guide/remote/" target="_blank">Cloudflare Docs - Tunnels</a>
 - <a href="https://developers.cloudflare.com/fundamentals/basic-tasks/manage-subdomains#set-up-redirects" target="_blank">Cloudflare Docs - Manage subdomains, Set up redirects</a>
+- <a href="https://developers.cloudflare.com/rules/url-forwarding/single-redirects/create-dashboard" target="_blank">Cloudflare Docs - Create redirect rule</a>
 - <a href="https://blog.cloudflare.com/transform-http-response-headers" target="_blank">Cloudflare Blog - Modifying HTTP response headers with Transform Rules</a>
