@@ -20,7 +20,7 @@
     "@astrojs/prefetch": "^0.4.1",
     "@astrojs/rss": "^4.0.2",
     "@astrojs/sitemap": "^3.0.4",
-    "astro": "^4.1.3"
+    "astro": "^4.2.1"
   },
   "devDependencies": {
     "netlify-plugin-csp-generator": "^1.5.0"
