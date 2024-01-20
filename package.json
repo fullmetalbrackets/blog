@@ -19,7 +19,7 @@
     "@astrojs/mdx": "^2.0.4",
     "@astrojs/prefetch": "^0.4.1",
     "@astrojs/rss": "^4.0.2",
-    "@astrojs/sitemap": "^3.0.4",
+    "@astrojs/sitemap": "^3.0.5",
     "astro": "^4.2.1"
   },
   "devDependencies": {
