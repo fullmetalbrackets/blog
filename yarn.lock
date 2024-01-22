@@ -2878,10 +2878,10 @@ needle@^2.5.2:
     iconv-lite "^0.4.4"
     sax "^1.2.4"
 
-netlify-plugin-csp-generator@^1.5.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/netlify-plugin-csp-generator/-/netlify-plugin-csp-generator-1.5.0.tgz#127bfa7d88ebca198a10cc124f679801f5ba60a0"
-  integrity sha512-Uie39RqTkiR5fObeM8N9zvkqNeZga/Rv/E7/3JCRau3KcuXt8+2FnmxDW/0O5UnMCJ2YMk0GUji2rKW4KZ3tjA==
+netlify-plugin-csp-generator@^1.6.1:
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/netlify-plugin-csp-generator/-/netlify-plugin-csp-generator-1.6.1.tgz#952b7acd2498253891bdde424d84adea13d4e6fc"
+  integrity sha512-gxGdwerL1Ck9dMix4AkK97N9dHXcMpkhgT4my5E6yJokjyHbY39vrnZC8FmgJPOwLPf0SDZOhmn6Ga/xbr5RHg==
   dependencies:
     globby "^11.0.1"
     js-sha256 "^0.9.0"

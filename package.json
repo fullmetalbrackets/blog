@@ -23,6 +23,6 @@
     "astro": "^4.2.1"
   },
   "devDependencies": {
-    "netlify-plugin-csp-generator": "^1.5.0"
+    "netlify-plugin-csp-generator": "^1.6.1"
   }
 }
