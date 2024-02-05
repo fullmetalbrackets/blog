@@ -670,6 +670,13 @@ declare module 'astro:content' {
   collection: "wiki";
   data: any
 } & { render(): Render[".md"] };
+"zsh-config-files.md": {
+	id: "zsh-config-files.md";
+  slug: "zsh-config-files";
+  body: string;
+  collection: "wiki";
+  data: any
+} & { render(): Render[".md"] };
 };
 
 	};
