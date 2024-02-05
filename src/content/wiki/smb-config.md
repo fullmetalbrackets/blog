@@ -11,7 +11,7 @@ tags:
 
 This is the current working Samba configuration file for [Korben](./korben) with shares for each hard drive, except the boot drive. The file is located at: `/etc/samba/smb.conf`
 
-```yaml
+```bash
 [global]
    workgroup = WORKGROUP
    server string = Samba %v %h
@@ -37,34 +37,34 @@ This is the current working Samba configuration file for [Korben](./korben) with
 
 [media]
    comment = Media Share
-   path = /home/ariel/media
+   path = /home/ad/media
    browseable = yes
    writeable = yes
    read only = no
-   force user = ariel
-   force group = ariel
+   force user = ad
+   force group = ad
    force create mode = 0666
    force directory mode = 0777
 
 [other]
    comment = Other Share
-   path = /home/ariel/other
+   path = /home/ad/other
    browseable = yes
    writeable = yes
    read only = no
-   force user = ariel
-   force group = ariel
+   force user = ad
+   force group = ad
    force create mode = 0666
    force directory mode = 0777
 
 [extra]
    comment = Extra Share
-   path = /home/ariel/extra
+   path = /home/ad/extra
    browseable = yes
    writeable = yes
    read only = no
-   force user = ariel
-   force group = ariel
+   force user = ad
+   force group = ad
    force create mode = 0666
    force directory mode = 0777
 ```

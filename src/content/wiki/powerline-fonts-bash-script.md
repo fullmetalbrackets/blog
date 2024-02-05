@@ -4,7 +4,7 @@ description: "A simple bash script to download Powerlevel10k's recommended fonts
 pubDate: 2024-02-04
 tags:
   - Homelab
-  - SMB
+  - Zsh
 ---
 
 ```bash
