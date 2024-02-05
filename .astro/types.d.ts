@@ -649,9 +649,23 @@ declare module 'astro:content' {
   collection: "wiki";
   data: any
 } & { render(): Render[".md"] };
+"powerline-fonts-bash-script.md": {
+	id: "powerline-fonts-bash-script.md";
+  slug: "powerline-fonts-bash-script";
+  body: string;
+  collection: "wiki";
+  data: any
+} & { render(): Render[".md"] };
 "services.md": {
 	id: "services.md";
   slug: "services";
+  body: string;
+  collection: "wiki";
+  data: any
+} & { render(): Render[".md"] };
+"smb-config.md": {
+	id: "smb-config.md";
+  slug: "smb-config";
   body: string;
   collection: "wiki";
   data: any
