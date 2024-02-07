@@ -10,10 +10,10 @@
     "@jridgewell/gen-mapping" "^0.3.0"
     "@jridgewell/trace-mapping" "^0.3.9"
 
-"@astrojs/compiler@^2.5.0":
-  version "2.5.1"
-  resolved "https://registry.yarnpkg.com/@astrojs/compiler/-/compiler-2.5.1.tgz#21627dcea8f596e370ec4770b9d667aa31abb38f"
-  integrity sha512-o2hKiFJXZOm1Gov+RGXSWnKlnb/UF7KRTx/Y2uazYe3+MrLY+sqLN+yB4EH2bElc0l1K9cDb4mZSejuq563rGQ==
+"@astrojs/compiler@^2.5.3":
+  version "2.5.3"
+  resolved "https://registry.yarnpkg.com/@astrojs/compiler/-/compiler-2.5.3.tgz#eb34fa21cbd395f2b5493aa06d91dd9e9faf3bc2"
+  integrity sha512-jzj01BRv/fmo+9Mr2FhocywGzEYiyiP2GVHje1ziGNU6c97kwhYGsnvwMkHrncAy9T9Vi54cjaMK7UE4ClX4vA==
 
 "@astrojs/internal-helpers@0.2.1":
   version "0.2.1"
@@ -833,12 +833,12 @@ astring@^1.8.0:
   resolved "https://registry.yarnpkg.com/astring/-/astring-1.8.6.tgz#2c9c157cf1739d67561c56ba896e6948f6b93731"
   integrity sha512-ISvCdHdlTDlH5IpxQJIex7BWBywFWgjJSVdwst+/iQCoEYnyOaQ95+X1JGshuBjGp6nxKUy1jMgE3zPqN7fQdg==
 
-astro@^4.3.2:
-  version "4.3.2"
-  resolved "https://registry.yarnpkg.com/astro/-/astro-4.3.2.tgz#03a84aef2d3a76a1b7e0c2adee28781f89a9fbff"
-  integrity sha512-SJotHzKG/I32ruYWItMRJjtmNQh14mVS7kahu3XfYyxvo6nx08PGJBTSPbqPrW1sjeQPHwcpVDFx3yMMK2kaxQ==
+astro@^4.3.3:
+  version "4.3.3"
+  resolved "https://registry.yarnpkg.com/astro/-/astro-4.3.3.tgz#3ba9f6b3090f10d000696a81a095ceb1f78db9f8"
+  integrity sha512-8Vfcv8LuCfzkLj+NMk7i7pu5o0MPyDkYqUYWELSwKxWf85zJSNU4oLg4DlEZWbVpm5LeTfVrpSGrZGy5n4grBg==
   dependencies:
-    "@astrojs/compiler" "^2.5.0"
+    "@astrojs/compiler" "^2.5.3"
     "@astrojs/internal-helpers" "0.2.1"
     "@astrojs/markdown-remark" "4.2.1"
     "@astrojs/telemetry" "3.0.4"
