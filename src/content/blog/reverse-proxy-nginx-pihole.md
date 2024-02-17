@@ -2,6 +2,7 @@
 title: "Reverse proxy OpenMediaVault, Plex and Navidrome with Nginx Proxy Manager and Pi-Hole"
 description: "My scenario was simple: I wanted to access the web GUIs of OpenMediaVault, Plex and Navidrome via a URL like subdomain.example.tld without having to remember IPs and ports, inside my home network only and without the need for SSL/HTTPS. Nothing fancy, nothing accessible from outside my house. Here's how I did that with Nginx Proxy Manager as the reverse proxy and Pi-Hole as the DNS."
 pubDate: 2023-07-15
+updatedDate: 2024-02-16
 tags:
   - Self-Hosting
   - Reverse Proxy
@@ -13,9 +14,10 @@ tags:
 1. [Pre-Requisites and Caveats](#pre)
 2. [Change the port of OpenMediaVault's workbench GUI](#omv)
 3. [Add the DNS records in Pi-Hole](#pihole)
-4. [Install the Nginx Proxy Manager container](#npm)
-5. [Create the proxy hosts](#proxy)
-6. [References](#ref)
+4. [Change the port of Pi-Hole's web UI](#piweb)
+5. [Install the Nginx Proxy Manager container](#npm)
+6. [Create the proxy hosts](#proxy)
+7. [References](#ref)
 
 <div id='pre' />
 
@@ -44,6 +46,14 @@ As I explained above, I use Pi-Hole as a network-wide DNS resolver, and it's rea
 - `omv.home.arpa`
 - `plex.home.arpa`
 - `music.home.arpa`
+
+## Change the port of Pi-Hole's web UI
+
+If your Pi-Hole is on a separate host from where you will install Nginx Proxy Manager, skip this section. However if you want to run Nginx Proxy Manager on the same host running Pi-Hole, then you'll need to change the Pi-Hole's web UI port since it is also port 80 by default, which will conflict with Nginx Proxy Manager.
+
+If you run Pi-Hole in a docker container, simply change the container's port mapping and recreate the container. In the docker run command or compose file, change `80:80` (specifically the one left of the colon which is the host mapping) to something else, for example `8080:80`.
+
+In order to change the Pi-Hole's web UI port when running bare metal, you need to edit the Lighttpd configuration file at `/etc/lighttpd/lighttpd.conf` and change the line `server.port = 80` to another number.
 
 <div id='npm' />
 
