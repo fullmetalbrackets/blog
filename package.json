@@ -19,8 +19,8 @@
     "@astrojs/mdx": "^2.1.1",
     "@astrojs/prefetch": "^0.4.1",
     "@astrojs/rss": "^4.0.5",
-    "@astrojs/sitemap": "^3.0.5",
-    "astro": "^4.4.0"
+    "@astrojs/sitemap": "^3.1.1",
+    "astro": "^4.4.4"
   },
   "devDependencies": {
     "netlify-plugin-csp-generator": "^1.6.1"
