@@ -14,7 +14,7 @@ tags:
 ## Sections
 
 1. [WTF is Libre Computer and Sweet Potato?](#what)
-2. [Booting up Ubuntu off a USB stick](#boot)
+2. [Booting up Debian 12 Bookworm off a USB stick](#boot)
 3. [Updating, configuring, and installing packages](#config)
 4. [Installing and Configuring Pi-Hole](#pihole)
 5. [References](#ref)
@@ -167,6 +167,5 @@ If you'd like a low wattage Raspberry Pi alternative, then in my opinion Libre's
 ## Reference
 
 - <a href="https://libre.computer" target="_blank">Libre Computer</a>
-- <a href="https://hub.libre.computer/t/ubuntu-22-04-lts-server-release-notes/63" target="_blank">Release Notes for Ubuntu 22.04 LTS</a>
 - <a href="https://hub.libre.computer/t/booting-from-external-usb-device-or-bootrom-unsupported-device/51" target="_blank">Booting from External USB Device</a>
 - <a href="https://hub.libre.computer/t/libre-computer-aml-s905x-cc-emmc-flashing-steps-from-linux/33" target="_blank">Flashing Linux to eMMC (alternative to USB boot)</a>
