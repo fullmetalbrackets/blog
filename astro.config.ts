@@ -5,7 +5,7 @@ import prefetch from "@astrojs/prefetch";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://arieldiaz.codes',
+  site: 'https://fullmetalbrackets.com',
   integrations: [mdx(), sitemap(), prefetch(
     {
       throttle: 10

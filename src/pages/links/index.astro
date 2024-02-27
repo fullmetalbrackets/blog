@@ -22,7 +22,10 @@ const desc = "Links to helpful web development tools and sites.";
   ul li {
     display: flex;
     flex-direction: column;
-    margin-bottom: 1em;
+    margin: 0 auto 1em 0.5em;
+  }
+  .data {
+    font-size: 0.9em;
   }
 </style>
 <BaseLayout title={title} description={desc}>
@@ -44,7 +47,7 @@ const desc = "Links to helpful web development tools and sites.";
                 {link.data.title}
               </a>
             </span>
-            <span>{link.data.description}</span>
+            <span class="data">{link.data.description}</span>
           </li>
         ))
       }

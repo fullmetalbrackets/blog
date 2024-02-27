@@ -13,10 +13,11 @@ const desc = "List of all wiki articles";
 <style scoped>
   ul {
     list-style-type: none;
-    margin: 0 auto 0 -1.5em;
+    margin: 2em auto 0 -1.5em;
+    font-size: 1em;
   }
   li {
-    margin: 0 auto;
+    margin: 0 auto 1em auto;
   }
   span, p {
     margin: 0 auto;
@@ -47,6 +48,9 @@ const desc = "List of all wiki articles";
   <section>
     <h1>{title}</h1>
     <hr />
+    <p>
+      This is just a dump for my homelab documentation, how I set up various devices and services for self-hosting, etc. This is mostly for my own usage, but maybe it will help you set things up for yourself too.
+    </p>
     <ul>
       {
         posts.map((post) => (

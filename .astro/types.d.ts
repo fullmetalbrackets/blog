@@ -621,6 +621,13 @@ declare module 'astro:content' {
 } & { render(): Render[".md"] };
 };
 "wiki": {
+"ansible-files.md": {
+	id: "ansible-files.md";
+  slug: "ansible-files";
+  body: string;
+  collection: "wiki";
+  data: any
+} & { render(): Render[".md"] };
 "apollo.md": {
 	id: "apollo.md";
   slug: "apollo";

@@ -13,44 +13,13 @@ const isActive = href === pathname || href === pathname.replace(/\/$/, "");
   <slot />
 </a>
 <style>
-  a,
-  a:active,
-  a:visited {
-    color: var(--menu);
+  a {
     display: inline-block;
-    line-height: 1.2;
-    font-size: 1.25em;
-    padding: 4px 6px 2px 6px;
     text-decoration: none;
-  }
-  a:hover,
-  a:focus {
-    color: var(--menu);
-    line-height: 1.2;
-    text-decoration: none;
-    border-radius: 0.25em;
-    padding: 4px 6px 2px 6px;
-    background: var(--accent);
   }
   a.active {
-    color: var(--menu);
-    line-height: 1.2;
-    text-decoration: none;
-    border-radius: 0.25em;
-    padding: 4px 6px 2px 6px;
-    background: var(--accent);
-  }
-  .search-link,
-  .search-link:hover {
-    padding: 4px 6px 2px 6px;
-  }
-  @media screen and (min-width: 200px) and (max-width: 667px) {
-    a,
-    a:active,
-    a:visited,
-    a:hover,
-    a:focus {
-      font-size: 1em;
-    }
+    font-weight: bolder;
+    text-decoration: underline;
   }
 </style>
+

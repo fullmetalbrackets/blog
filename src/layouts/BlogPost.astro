@@ -118,40 +118,7 @@ const { title, description, pubDate, updatedDate } = Astro.props;
     </slot>
   </article>
   <hr />
-  <aside class="blog-aside">
-    <span
-      >Was this article helpful?
-      <form
-        name="feedback"
-        method="POST"
-        action="/feedback"
-        data-netlify="true"
-        netlify-honeypot="bot-field"
-      >
-        <input value="feedback" name="feedback" type="hidden" />
-        <input
-          class="radio"
-          type="radio"
-          id="helpful"
-          name="feedback"
-          value="Helpful"
-          required
-        />
-        <label for="helpful">Yes</label>
-        <input
-          class="radio"
-          type="radio"
-          id="not-helpful"
-          name="feedback"
-          value="Not Helpful"
-        />
-        <label for="not-helpful" class="labels">No</label>
-        <button class="button submit" type="submit" value="Submit"
-          >Submit</button
-        >
-        <input type="hidden" id="postId" name="postId" value={title} />
-      </form>
-    </span>
-    <a href="#top" class="top button">Back to Top &uarr;</a>
+  <aside>
+    <a href="#top" class="top button blog-tag">Back to Top &uarr;</a>
   </aside>
 </BaseLayout>
