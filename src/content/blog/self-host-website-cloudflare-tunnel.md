@@ -2,7 +2,7 @@
 title: "Complete guide to self-hosting a website through Cloudflare Tunnel"
 description: "In this guide I demonstrate how to self-host a static web blog and expose it to the internet via a Cloudflare tunnel."
 pubDate: 2023-12-29
-updatedDate: 2024-01-05
+updatedDate: 2024-02-29
 tags:
   - Self-Hosting
   - Cloudflare
