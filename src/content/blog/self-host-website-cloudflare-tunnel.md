@@ -200,23 +200,23 @@ Now when you go to `www.your-domain.com` it should redirect to `your-domain.com`
 
 ## Configure HTTP response headers on Cloudflare
 
-Though optional, it's always good practice to set up your HTTP response headers on any website you host. If you check your site on <a href="https://securityheaders.com/" target="_blank">securityheaders.com</a> you'll probably have an F grade. A lot of tech blogs don't bother with this, most that I have checked get a D+ at best, so don't think it's required by any stretch. However, if you feel like going that extra step, here is how:
+Though optional, it's always good practice to set up your HTTP response headers on any website you host. If you check your site on <a href="https://securityheaders.com/" target="_blank">securityheaders.com</a> you'll probably have an F grade. A lot of tech blogs don't bother with this, most that I have checked get a D+ at best, so don't think it's required by any stretch. However, if you feel like going that extra step to get an A+, here is how:
 
-1. Login to Cloudflare and on the sidebar go to **Rules** -> **Transform Rules**, choose the **Modify Response Header**, then click **Create Rule**.
-2. Name the rule (e.g. "Security Headers"), scroll down to **If...** and choose **All incoming requests**, scroll down to **Then...**.
-3. In the **Select item...** dropdown choose **Set static** -- click the **Set new header** button six times, and choose **Set static** for all of them. Cut and paste the below **header names** and **values** into each rule you create.
+1. Login to Cloudflare and on the sidebar go to **Rules** -> **Transform Rules**, choose the **Managed Transforms** tab.
+2. Under **HTTP response headers** click the switch for **Add security headers** to enable it.
+3. Next choose the **Modify Response Header** tab and click **Create Rule**.
+4. Name the rule (e.g. "CSP headers"), scroll down to **If...** and choose **All incoming requests**.
+5. Scroll down to **Then...** and in the **Select item...** dropdown choose **Set static** -- click the **Set new header** button again to add a second rule, and choose **Set static** for it as well.
+6. Now cut and paste the below **header names** and **values** into each rule you create.
 
-| header name                 | value                                                |
-| --------------------------- | ---------------------------------------------------- |
-| `x-content-type-options`    | `nosniff`                                            |
-| `x-frame-options`           | `SAMEORIGIN`                                         |
-| `x-xss-protection`          | `1; mode=block`                                      |
-| `strict-transport-security` | `max-age=31536000; includeSubDomains; preload`       |
-| `referrer-policy`           | `no-referrer-when-downgrade`                         |
-| `content-security-policy`   | `upgrade-insecure-requests; block-all-mixed-content` |
-| `permissions-policy`        | `autoplay=(), geolocation=()`                        |
+| header name               | value                                                                                                |
+| ------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `content-security-policy` | `upgrade-insecure-requests; block-all-mixed-content`                                                 |
+| `permissions-policy`      | `accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=()` |
 
-Once that is done, click the **Deploy** button. Wait a few minutes, then check your security headers again, and now it should be a higher grade. To get A+ you'll need to add more detailed values for the `content-security-policy` headers (<a href="https://content-security-policy.com" target="_blank">see here</a>), but you can break Cloudflare Analytics and other features if you don't do it right, so I haven't bothered with it.
+Note that for the `permissions-policy` I've chosen to disable everything since I don't use these features on my blog. If you plan to use something, for example geolocation, you'd have to instead use `geolocation=self`. (See more about <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Permissions_Policy" target="_blank">Permission Policy at MDN Docs</a>.)
+
+Once that is done, click the **Deploy** button. Wait a few minutes, then check your security headers again, and now it should be A+.
 
 <div id='ref' />
 
