@@ -1,6 +1,6 @@
 ---
 title: "Merging sites and changing hosts"
-description: "Something a little different. Not a guide, just thoughts and opinions about things -- including a recent controversy over Netlify."
+description: "Something a little different. Not a guide, just thoughts and opinions about a recent controversy over Netlify, and a decision about the site I made as a result."
 pubDate: 2024-02-28
 tags:
   - Misc
@@ -43,7 +43,7 @@ As a result of this situation, the CEO's response to it, and these old support a
 
 ## Moving to Cloudflare
 
-I decided to delete my sites from Netlify, merge them into one like I've been considering, and host it on Cloudflare Pages. I had already been experimenting with self-hosting a site and exposing it to the internet through a Cloudflare Tunnel, and I like it a lot. It only made sense to use their excellent Cloudflare Pages product (self-hosting was a fun experiment but I'd rather just let Cloudflare handle that), since it's free plan is very generous -- no bandwidth limits, many options to protect your app or site through their Web Application Firewall, built-in DDOS mitigation and web analytics (Netlify charges $9/month for analytics), and many more ways of configuring to your liking. Advanced features like Load Balancing and Argo Smart Routing can be added a la carte starting at $5/month, a very low price for such things. Compared to Netlify, using Cloudflare as a web host is a no-brainer, even more so after this debacle laid bare how useless Netlify is at protecting their users.
+I decided to delete my sites from Netlify, merge them into one like I've been considering, and host it on Cloudflare Pages. I had already been <a href="/blog/self-host-website-cloudflare-tunnel" target="_blank">experimenting with self-hosting a site and exposing it to the internet through a Cloudflare Tunnel</a>, and I like it a lot. It only made sense to use their excellent Cloudflare Pages product (self-hosting was a fun experiment but I'd rather just let Cloudflare handle that), since it's free plan is very generous -- no bandwidth limits, many options to protect your app or site through their Web Application Firewall, built-in DDOS mitigation and web analytics (Netlify charges $9/month for analytics), and many more ways of configuring to your liking. Advanced features like Load Balancing and Argo Smart Routing can be added a la carte starting at $5/month, a very low price for such things. Compared to Netlify, using Cloudflare as a web host is a no-brainer, even more so after this debacle laid bare how useless Netlify is at protecting their users.
 
 Right now some features from my old sites are missing, namely the contact form (which was mostly used for spam and so won't return) and the "was this helpful" feedback form at the bottom of blog posts, the latter of which I will eventually re-instate since I was getting some good feedback from it. If you actually sat here and read all of this, I hope that it was educational for you and that you will think twice about using Netlify in the future. I can say unequivocally that I will never use them again myself.
 
