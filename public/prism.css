@@ -103,7 +103,7 @@
  .token.regex,
  .token.attr-value,
  .token.attr-value > .token.punctuation {
-   color: var(--name);
+   color: var(--date);
  }
  
  .token.variable,
