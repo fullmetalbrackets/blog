@@ -17,4 +17,4 @@ jobs:
       - name: Pull in blog posts
         uses: gautamkrishnar/blog-post-workflow@master
         with:
-          feed_list: "https://arieldiaz.codes/rss.xml"
+          feed_list: "https://fullmetalbrackets.com/rss.xml"
