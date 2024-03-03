@@ -444,6 +444,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"setup-home-assistant-sweet-potato-debian.md": {
+	id: "setup-home-assistant-sweet-potato-debian.md";
+  slug: "setup-home-assistant-sweet-potato-debian";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "setup-nfs-shares-linux.md": {
 	id: "setup-nfs-shares-linux.md";
   slug: "setup-nfs-shares-linux";
