@@ -1,40 +1,40 @@
 ---
-import BaseLayout from '@layouts/BaseLayout.astro';
-import RecentPosts from '@components/RecentPosts.astro';
-import RecentLinks from '@components/RecentLinks.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '@consts';
+import BaseLayout from "@layouts/BaseLayout.astro";
+import RecentPosts from "@components/RecentPosts.astro";
+import RecentLinks from "@components/RecentLinks.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "@consts";
 ---
 
 <style scoped>
-	p {
-		word-spacing: 1px;
-	}
-	.more {
-		margin: 0;
-		padding: 0;
-	}
-	.more-title {
-		margin-top: 2em;
-	}
-	.more-list {
-		display: grid;
-		grid-template-columns: 1fr 1fr 1fr;
-		gap: 0;
-		margin: 0;
-	}
-	.more-list:first-of-type {
-		margin-left: 1.25em;
-	}
-	ul {
-		width: 85%;
-	}
-	li {
-		display: inline-flex;
-		flex-direction: column;
-		margin: 0 2em 2em -1em;
-		line-height: 1.2;
-	}
-	@media screen and (min-width: 200px) and (max-width: 667px) {
+  p {
+    word-spacing: 1px;
+  }
+  .more {
+    margin: 0;
+    padding: 0;
+  }
+  .more-title {
+    margin-top: 2em;
+  }
+  .more-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+    margin: 0;
+  }
+  .more-list:first-of-type {
+    margin-left: 1.25em;
+  }
+  ul {
+    width: 85%;
+  }
+  li {
+    display: inline-flex;
+    flex-direction: column;
+    margin: 0 2em 2em -1em;
+    line-height: 1.2;
+  }
+  /* @media screen and (min-width: 200px) and (max-width: 667px) {
 		main {
 			margin: 0 10px;
 		}
@@ -52,29 +52,45 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '@consts';
 		}
 		aside a {
 			font-size: 0.85em;
-		}
+		} */
 </style>
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-	<link rel="preload" href="/fonts/Atkinson-Regular.woff" as="font" crossorigin />
-	<link rel="preload" href="/fonts/Atkinson-Bold.woff" as="font" crossorigin />
-	<link rel="preload" href="/fonts/MPLUSRounded1c-Medium.ttf" as="font" crossorigin />
-	<section>
-		<h1>Hello, World!</h1>
-    <hr>
-		<p>Hi, I'm Ariel, a tech enthusiast and hobbyist web
-      developer living in Florida. Welcome to my personal blog, really just a document dump of things I've written for myself like step-by-step guides, various things I've learned about web development, using Linux, self-hosting, networking, etc.
-		</p>
-		<p>
-			Most of this I've written for myself, but I figured I may as well make these
-      available for others to use if they need to, in addition to just having
-      them online for my own access from anywhere. Maybe some of it will be helpful to you. If not, that's ok, it's still helpful for me. Either way, thanks for visiting!
-		</p>
-		<RecentPosts />
-		<RecentLinks />
-		<hr class="foot-line">
-		<aside>
-			<a href="#top" class="top button blog-tag">Back to Top &uarr;</a>
-		</aside>
-	</section>
+  <link
+    rel="preload"
+    href="/fonts/Atkinson-Regular.woff"
+    as="font"
+    crossorigin
+  />
+  <link rel="preload" href="/fonts/Atkinson-Bold.woff" as="font" crossorigin />
+  <link
+    rel="preload"
+    href="/fonts/MPLUSRounded1c-Medium.ttf"
+    as="font"
+    crossorigin
+  />
+  <section>
+    <h1>Hello, World!</h1>
+    <hr />
+    <p>
+      Hi, I'm Ariel, a tech enthusiast and hobbyist web developer living in
+      Florida. Welcome to my personal blog, really just a document dump of
+      things I've written for myself like step-by-step guides, various things
+      I've learned about web development, using Linux, self-hosting, networking,
+      etc.
+    </p>
+    <p>
+      Most of this I've written for myself, but I figured I may as well make
+      these available for others to use if they need to, in addition to just
+      having them online for my own access from anywhere. Maybe some of it will
+      be helpful to you. If not, that's ok, it's still helpful for me. Either
+      way, thanks for visiting!
+    </p>
+    <RecentPosts />
+    <RecentLinks />
+    <hr class="foot-line" />
+    <aside>
+      <a href="#top" class="top button blog-tag">Back to Top &uarr;</a>
+    </aside>
+  </section>
 </BaseLayout>

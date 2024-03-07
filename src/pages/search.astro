@@ -14,12 +14,12 @@ const title = "Search";
   .foot-line {
     margin-top: 4em;
   }
-  @media screen and (min-width: 200px) and (max-width: 667px) {
+  /* @media screen and (min-width: 200px) and (max-width: 667px) {
     a button,
     aside a {
       font-size: 0.85em;
     }
-  }
+  } */
 </style>
 
 <BaseLayout title={title} description="Search for blog posts and notes.">
@@ -37,13 +37,13 @@ const title = "Search";
       crossorigin="anonymous"></script>
     <div id="search" class="search-results"></div>
     <script crossorigin="anonymous" is:inline>
-    window.addEventListener("DOMContentLoaded", (event) => {
-      new PagefindUI({
-        element: "#search",
-        showSubResults: false,
-        showImages: false,
+      window.addEventListener("DOMContentLoaded", (event) => {
+        new PagefindUI({
+          element: "#search",
+          showSubResults: false,
+          showImages: false,
+        });
       });
-    });
     </script>
 
     <br /><br />
