@@ -177,21 +177,41 @@ Right now, going to `your-domain.com` should work, but you may notice that going
 First, let's add the DNS record.
 
 1. On the Cloudflare dashboard, click on your domain, then on the sidebar open the **DNS** dropdown and click **Records**.
+
 2. On the next page, click the **Add record** button.
+
 3. Under **Type** choose _CNAME_.
+
 4. Under **Name** type in `www`.
+
 5. Under **IPv4 address** put in your tunnel ID. (If you need the ID, just copy and paste it from your primary CNAME record.)
+
 6. Click the **Save** button.
 
 Now for the redirect rule.
 
 1. On the Cloudflare dashboard, click on your domain, then on the sidebar open the **Rules** dropdown and click **Redirect Rules**.
+
 2. Click the **Add rule** button, and on the next page give your rule a name.
+
 3. In the **If...** section, under _When incoming requests match..._ click the radio button for **Custom filter expression**.
+
 4. Below _When incoming requests match..._, ignore the dropdowns and instead click on **Edit expression**.
-5. In the Expression Editor, type in `(http.request.full_uri contains "www.your-domain.com")`. (Obviously change it to your actual domain.)
+
+5. In the Expression Editor, type in the following:
+
+```
+(http.request.full_uri contains "www.your-domain.com")
+```
+
 6. In the **Then...** section, for **Type** choose _Dynamic_ from the dropdown.
-7. Under **Expression** type in `concat("https://","your-domain.com",http.request.uri.path)`. (Again change to your actual domain.)
+
+7. Under **Expression** type in the following:
+
+```
+concat("https://","your-domain.com",http.request.uri.path)
+```
+
 8. Leave the **Status code** as 301 and click **Deploy**.
 
 Now when you go to `www.your-domain.com` it should redirect to `your-domain.com`.
@@ -207,12 +227,8 @@ Though optional, it's always good practice to set up your HTTP response headers 
 3. Next choose the **Modify Response Header** tab and click **Create Rule**.
 4. Name the rule (e.g. "CSP headers"), scroll down to **If...** and choose **All incoming requests**.
 5. Scroll down to **Then...** and in the **Select item...** dropdown choose **Set static** -- click the **Set new header** button again to add a second rule, and choose **Set static** for it as well.
-6. Now cut and paste the below **header names** and **values** into each rule you create.
-
-| header name               | value                                                                                                |
-| ------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `content-security-policy` | `upgrade-insecure-requests; block-all-mixed-content`                                                 |
-| `permissions-policy`      | `accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=()` |
+6. We're going to add two rules. In the first rule, for **header name** type in the `content-security-policy` and for **value** type in `upgrade-insecure-requests`.
+7. For the second rule, for **header name** type in `permissions-policy` and for **value** type in `geolocation=(self)`.
 
 Note that for the `permissions-policy` I've chosen to disable everything since I don't use these features on my blog. If you plan to use something, for example geolocation, you'd have to instead use `geolocation=self`. (See more about <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Permissions_Policy" target="_blank">Permission Policy at MDN Docs</a>.)
 
