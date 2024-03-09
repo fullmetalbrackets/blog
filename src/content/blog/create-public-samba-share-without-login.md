@@ -70,7 +70,7 @@ Use this minimal `smb.conf`:
 
 <div class="note">
   <span>
-    <img src="/assets/note.svg" class="note-icon" />
+    <img src="/assets/note.svg" class="note-icon" loading="lazy" decoding="async" alt="Note" />
     <b>Note</b>
   </span>
   <p>
