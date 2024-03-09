@@ -19,7 +19,7 @@ tags:
 <div>
   <div class="note">
     <span>
-      <img src="/img/assets/note.svg" class="note-icon">
+      <img src="/img/assets/note.svg" class="note-icon" loading="eager" decoding="async" alt="Note" />
       <b>Note</b>
     </span>
     <p>
@@ -44,10 +44,10 @@ In the PhotoSync app, tap the _gear icon_ at the bottom-right corner to enter th
 
 <div class="two-img">
   <div>
-    <a href="/img/blog/photosync1.jpg" target="_blank"><img src="/img/blog/photosync1.jpg" alt="Screenshot of Photosync settings"></a>
+    <a href="/img/blog/photosync1.jpg" target="_blank"><img src="/img/blog/photosync1.jpg" loading="lazy" decoding="async" alt="Screenshot of Photosync settings"></a>
   </div>
   <div>
-    <a href="/img/blog/photosync2.jpg" target="_blank"><img src="/img/blog/photosync2.jpg" alt="Screenshot of Photosync settings"></a>
+    <a href="/img/blog/photosync2.jpg" target="_blank"><img src="/img/blog/photosync2.jpg" loading="lazy" decoding="async" alt="Screenshot of Photosync settings"></a>
   </div>
 </div>
 
@@ -55,10 +55,10 @@ Under _Transfer Targets_ tap on _Configure_. On the following page choose _SMB_ 
 
 <div class="two-img">
   <div>
-    <a href="/img/blog/photosync3.jpg" target="_blank"><img src="/img/blog/photosync3.jpg" alt="Screenshot of Photosync SMB configuration"></a>
+    <a href="/img/blog/photosync3.jpg" target="_blank"><img src="/img/blog/photosync3.jpg" loading="lazy" decoding="async" alt="Screenshot of Photosync SMB configuration"></a>
   </div>
   <div>
-    <a href="/img/blog/photosync4.jpg" target="_blank"><img src="/img/blog/photosync4.jpg" alt="Screenshot of Photosync SMB configuration"></a>
+    <a href="/img/blog/photosync4.jpg" target="_blank"><img src="/img/blog/photosync4.jpg" loading="lazy" decoding="async" alt="Screenshot of Photosync SMB configuration"></a>
   </div>
 </div>
 
@@ -68,10 +68,10 @@ Now under _FOLDER SETTINGS_ tap on _Destination Folder_ and pick a directory in 
 
 <div class="two-img">
   <div>
-    <a href="/img/blog/photosync5.jpg" target="_blank"><img src="/img/blog/photosync5.jpg" alt="Screenshot of Photosync SMB account settings"></a>
+    <a href="/img/blog/photosync5.jpg" target="_blank"><img src="/img/blog/photosync5.jpg" loading="lazy" decoding="async" alt="Screenshot of Photosync SMB account settings"></a>
   </div>
   <div>
-    <a href="/img/blog/photosync6.jpg" target="_blank"><img src="/img/blog/photosync6.jpg" alt="Screenshot of Photosync SMB configuration"></a>
+    <a href="/img/blog/photosync6.jpg" target="_blank"><img src="/img/blog/photosync6.jpg" loading="lazy" decoding="async" alt="Screenshot of Photosync SMB configuration"></a>
   </div>
 </div>
 
@@ -85,20 +85,20 @@ Back on the main page, tap the _red transfer icon at the top_, tap _All_ (or you
 
 <div class="two-img">
   <div>
-    <a href="/img/blog/photosync7.jpg" target="_blank"><img src="/img/blog/photosync7.jpg" alt="Screenshot of Photosync photo transfer interface"></a>
+    <a href="/img/blog/photosync7.jpg" target="_blank"><img src="/img/blog/photosync7.jpg" loading="lazy" decoding="async" alt="Screenshot of Photosync photo transfer interface"></a>
   </div>
   <div>
-    <a href="/img/blog/photosync8.jpg" target="_blank"><img src="/img/blog/photosync8.jpg" alt="Screenshot of Photosync photo transfer interface"></a>
+    <a href="/img/blog/photosync8.jpg" target="_blank"><img src="/img/blog/photosync8.jpg" loading="lazy" decoding="async" alt="Screenshot of Photosync photo transfer interface"></a>
   </div>
 </div>
 
 Tap on the directory to transfer your photos into (keep in mind _Destination Folder_ and _Create Sub-Directories_ in the SMB Account setting from earlier) and tap Select, the photo transfer should begin.
 
-<a href="/img/blog/photosync9.jpg" target="_blank"><img src="/img/blog/photosync9.jpg" alt="Screenshot of Photosync transfering photos"></a>
+<a href="/img/blog/photosync9.jpg" target="_blank"><img src="/img/blog/photosync9.jpg" loading="lazy" decoding="async" alt="Screenshot of Photosync transfering photos"></a>
 
 <div class="success">
   <span>
-    <img src="/img/assets/success.svg" class="success-icon">
+    <img src="/img/assets/success.svg" class="success-icon" loading="lazy" decoding="async" alt="Success" />
     <b>Success!</b>
   </span>
   <p>

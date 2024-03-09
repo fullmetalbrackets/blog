@@ -8,7 +8,7 @@ tags:
   - Linux
 ---
 
-<img src="/img/blog/omv-header.png" alt="OpenMediaVault Logo" class="sq-img" />
+<img src="/img/blog/omv-header.png" loading="lazy" decoding="async" alt="OpenMediaVault Logo" class="sq-img" />
 
 ## Sections
 
@@ -85,7 +85,7 @@ Alternately, you can change the port in the _terminal_:
 
 <div class="info">
   <span>
-    <img src="/img/assets/info.svg" class="info-icon">
+    <img src="/img/assets/info.svg" class="info-icon" loading="lazy" decoding="async" alt="Information" />
     <b>Information</b>
   </span>
   <p>

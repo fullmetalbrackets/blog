@@ -47,7 +47,7 @@ I use Pi-Hole as a network-wide DNS resolver, and you can add DNS records to poi
 
 <div class="note">
   <span>
-    <img src="/img/assets/note.svg" class="note-icon" alt="Note" loading="lazy" />
+    <img src="/img/assets/note.svg" class="note-icon" loading="lazy" decoding="async" alt="Note" />
     <b>Note</b>
   </span>
   <p>
@@ -82,7 +82,7 @@ I'll be using _Docker Compose_ to install Nginx Proxy Manager, it's my preferred
 
 <div class="note">
   <span>
-    <img src="/img/assets/note.svg" class="note-icon" alt="Note" loading="lazy" />
+    <img src="/img/assets/note.svg" class="note-icon" loading="lazy" decoding="async" alt="Note" />
     <b>Note</b>
   </span>
   <p>
@@ -166,7 +166,7 @@ To check the logs in Portainer:
 
 <div class="success">
   <span>
-    <img src="/img/assets/success.svg" class="success-icon" alt="Success" loading="lazy" />
+    <img src="/img/assets/success.svg" class="success-icon" loading="lazy" decoding="async" alt="Success" />
     <b>Success!</b>
   </span>
   <p>

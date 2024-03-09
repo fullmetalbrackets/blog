@@ -65,7 +65,7 @@ Install the NFS client package and all dependencies on a Linux host you want to 
 
 <div class="note">
   <span>
-    <img src="/img/assets/note.svg" class="note-icon">
+    <img src="/img/assets/note.svg" class="note-icon" loading="lazy" decoding="async" alt="Note" />
     <b>Note</b>
   </span>
   <p>
@@ -107,6 +107,6 @@ To have Linux auto-mount the share at boot, edit the _fstab_ file with `sudo nan
 
 ## References
 
-- [Exports man page](https://man7.org/linux/man-pages/man5/exports.5.html)
-- [How to setup NFS server and client by Netapp Blog](https://cloud.netapp.com/blog/azure-anf-blg-linux-nfs-server-how-to-set-up-server-and-client)
-- [Practical NFS share examples by OnLinuxCloud](https://www.golinuxcloud.com/nfs-exports-options-examples)
+- <a href="https://man7.org/linux/man-pages/man5/exports.5.html" target="_blank">Exports man page</a>
+- <a href="https://cloud.netapp.com/blog/azure-anf-blg-linux-nfs-server-how-to-set-up-server-and-client" target="_blank">How to setup NFS server and client by Netapp Blog</a>
+- <a href="https://www.golinuxcloud.com/nfs-exports-options-examples" target="_blank">Practical NFS share examples by OnLinuxCloud</a>

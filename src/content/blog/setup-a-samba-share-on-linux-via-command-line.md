@@ -117,11 +117,11 @@ Now you should be able to connect to the shared directory from other computers o
 
 On Windows, go to Start Menu > Run and type the following (replacing with your Linux machine's actual IP) and hit Enter:
 
-[![Screenshot of Windows Run](/img/blog/samba1.png)](https://arieldiaz.codes/img/blog/samba1.png)
+<a href="/img/blog/samba1.png" target="_blank"><img src="/img/blog/samba1.png" loading="lazy" decoding="async" alt="Screenshot of Windows Run"></a>
 
 Or you can connect by hostname rather than IP.
 
-[![Screenshot of Windows Run](/img/blog/samba1.png)](https://arieldiaz.codes/img/blog/samba2.png)
+<a href="/img/blog/samba2.png" target="_blank"><img src="/img/blog/samba2.png" loading="lazy" decoding="async" alt="Screenshot of Windows Run"></a>
 
 You should now have the shared folder open in your Windows PC! For ease of access, pin it to Quick Access or map it as a Network Drive.
 

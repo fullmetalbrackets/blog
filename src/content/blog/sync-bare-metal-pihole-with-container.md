@@ -9,7 +9,7 @@ tags:
 <div>
   <div class="info">
     <span>
-      <img src="/img/assets/info.svg" class="info-icon">
+      <img src="/img/assets/info.svg" class="info-icon" loading="eager" decoding="async" alt="Information" />
       <b>Note</b>
     </span>
     <p>
@@ -20,7 +20,7 @@ tags:
 <div>
   <div class="alert">
     <span>
-      <img src="/img/assets/alert.svg" class="alert-icon">
+      <img src="/img/assets/alert.svg" class="alert-icon" loading="lazy" decoding="async" alt="Important" />
       <b>Important!</b>
     </span>
     <p>

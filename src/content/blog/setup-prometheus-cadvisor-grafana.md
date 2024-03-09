@@ -131,19 +131,19 @@ sudo chmod -R 777 /home/ariel/docker/prometheus
 
 Now it's time to create the stack and get our containers up and running. Use the command `docker-compose up -d` and for everything to be finished. To confirm everything is up and running, first go to the Prometheus web UI at `http://192.168.0.100:9090`.
 
-<a href="/img/blog/prometheus1.png" target="_blank"><img src="/img/blog/prometheus1.png" alt="Prometheus web UI main page" /></a>
+<a href="/img/blog/prometheus1.png" target="_blank"><img src="/img/blog/prometheus1.png" loading="lazy" decoding="async" alt="Prometheus web UI main page" /></a>
 
 On the navigation bar at the top, click on _Status_ then select _Targets_ from the dropdown. If all the other containers are up and running as intended, and your `prometheus.yml` is filled out correctly, it should look like this:
 
-<a href="/img/blog/prometheus2.png" target="_blank"><img src="/img/blog/prometheus2.png" alt="Targets in UP state within Prometheus web UI" /></a>
+<a href="/img/blog/prometheus2.png" target="_blank"><img src="/img/blog/prometheus2.png" loading="lazy" decoding="async" alt="Targets in UP state within Prometheus web UI" /></a>
 
 Good to go! Now go to the Grafana web UI at `http://192.168.0.100:3000`, click the _Arrow_ button on the left bar to expand the navigation menu, then click on _Configuration_ and select _Data Sources_ from the drop-down.
 
-<a href="/img/blog/grafana1.png" target="_blank"><img src="/img/blog/grafana1.png" alt="Navigation menu in Grafana" /></a>
+<a href="/img/blog/grafana1.png" target="_blank"><img src="/img/blog/grafana1.png" loading="lazy" decoding="async" alt="Navigation menu in Grafana" /></a>
 
 You should see _Prometheus_ with it's endpoint already set as a default Data Source.
 
-<a href="/img/blog/grafana2.png" target="_blank"><img src="/img/blog/grafana2.png" alt="Prometheus data source in Grafana" /></a>
+<a href="/img/blog/grafana2.png" target="_blank"><img src="/img/blog/grafana2.png" loading="lazy" decoding="async" alt="Prometheus data source in Grafana" /></a>
 
 Now you're ready to create your dream Grafana dashboard! Creating the actual dashboard is beyond the scope of this article, but I may write about it in the future. For now, you might want to use dashboards created by others to start visualizing some metrics and learning the ropes.
 

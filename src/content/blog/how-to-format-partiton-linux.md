@@ -10,7 +10,7 @@ tags:
 <div>
   <div class="alert">
     <span>
-      <img src="/img/assets/alert.svg" class="alert-icon"> <b>Important!</b>
+      <img src="/img/assets/alert.svg" class="alert-icon" loading="eager" decoding="async" alt="Important" /> <b>Important!</b>
     </span>
     <p>
       Be aware that using these instructions to format a disk or delete partitions will lead to the loss of any data contained therein.
@@ -63,5 +63,5 @@ You’d then use `mkfs` as above to format the partition with a filesystem, if o
 
 ## References
 
-- [fdisk man page](https://man7.org/linux/man-pages/man8/fdisk.8.html)
-- [mkfs man page](https://man7.org/linux/man-pages/man8/mkfs.8.html)
+- <a href="https://man7.org/linux/man-pages/man8/fdisk.8.html" target="_blank">FDisk man page</a>
+- <a href="https://man7.org/linux/man-pages/man8/mkfs.8.html" target="_blank">MKFS man page</a>

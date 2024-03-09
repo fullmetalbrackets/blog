@@ -9,6 +9,8 @@ tags:
   - PowerShell
 ---
 
+<img src="/img/blog/oh-my-posh.png" loading="eager" decoding="async" alt="Oh-My-Posh Logo" />
+
 ## Sections
 
 1. [Pre-Requisites](#pre)
@@ -38,7 +40,7 @@ We'll be using WinGet in Windows Terminal to install Oh-My-Posh, as this is the 
 winget install JanDeDobbeleer.OhMyPosh -s winget
 ```
 
-Next we'll make Oh-My-Posh the default shell, which requires editing your PowerShell profile, located in `C:\Users\<your-username>\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1`. Open it _as an Administrator_ with the text editor of your choice. Add the following to the top:
+Next we'll make Oh-My-Posh the default shell, which requires editing your PowerShell profile, located in `%userprofile%\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1`. Open it _as an Administrator_ with the text editor of your choice. Add the following to the top:
 
 ```shell
 oh-my-posh init pwsh | Invoke-Expression
@@ -56,10 +58,10 @@ Once you have installed Oh-My-Posh, the <a href="https://github.com/JanDeDobbele
 Get Posh-Themes
 ```
 
-The themes are all located in `C:\Users\<your-username>\AppData\Local\Programs\oh-my-posh\themes\`. Let's assume you decided to use the `unicorn` theme (one of my favorites), you'll have to edit your `Microsoft.PowerShell_profile.ps1` and replace the init script with this:
+The themes are all located in `%userprofile%\AppData\Local\Programs\oh-my-posh\themes\`. Let's assume you decided to use the `unicorn` theme (one of my favorites), you'll have to edit your `Microsoft.PowerShell_profile.ps1` and replace the init script with this:
 
 ```shell
-oh-my-posh init pwsh --config 'C:\Users\<your-username>\AppData\Local\Programs\oh-my-posh\themes\unicorn.omp.json' | Invoke-Expression
+oh-my-posh init pwsh --config '%userprofile%\AppData\Local\Programs\oh-my-posh\themes\unicorn.omp.json' | Invoke-Expression
 ```
 
 Reload the terminal again with `. $PROFILE` for the change to take effect.

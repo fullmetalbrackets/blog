@@ -9,7 +9,7 @@ tags:
   - Self-Hosting
 ---
 
-<img src="/img/blog/sweet-potato.jpg" alt="Picture of Libre Computer's Sweet Potato Single-Board Computer." />
+<img src="/img/blog/sweet-potato.jpg" loading="lazy" decoding="async" alt="Picture of Libre Computer's Sweet Potato Single-Board Computer." />
 
 ## Sections
 

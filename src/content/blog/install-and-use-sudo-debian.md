@@ -9,7 +9,8 @@ tags:
 <div>
   <div class="info">
     <span>
-      <b>ⓘ Information</b>
+      <img src="/img/assets/info.svg" class="info-icon" loading="eager" decoding="async" alt="Information" />
+      <b>Information</b>
     </span>
     <p>
       <a href="https://wiki.debian.org/sudo" target="_blank">Debian wiki, sudo page</a>

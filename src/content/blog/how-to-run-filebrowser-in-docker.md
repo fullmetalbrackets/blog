@@ -40,7 +40,7 @@ sudo apt install docker-compose -y
 
 <div class="alert">
   <span>
-    <img src="/img/assets/alert.svg" class="alert-icon"> <b>Important!</b>
+    <img src="/img/assets/alert.svg" class="alert-icon" loading="lazy" decoding="async" alt="Important" /> <b>Important!</b>
   </span>
   <p>
     Make sure to do the below steps <em>prior</em> to starting the container or else it won't work!

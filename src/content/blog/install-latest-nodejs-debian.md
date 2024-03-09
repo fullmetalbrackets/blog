@@ -10,7 +10,7 @@ tags:
 <div>
   <div class="info">
     <span>
-      <img src="/img/assets/info.svg" class="info-icon">
+      <img src="/img/assets/info.svg" class="info-icon" loading="eager" decoding="async" alt="Information" />
       <b>Information</b>
     </span>
     <p>
