@@ -2,7 +2,7 @@
 title: "Self-Hosted Services"
 description: "A list of self-hosted services in my homelab."
 pubDate: 2023-10-02
-updatedDate: 2023-11-02
+updatedDate: 2024-03-08
 tags:
   - Homelab
   - Self-Hosting
@@ -10,10 +10,12 @@ tags:
 
 # Korben
 
-- Dockge
+- Cockpit (bare metal)
+- Portainer
 - Plex
 - Tautulli
 - Kavita
+- Scrutiny
 - qBittorrent
 - Paperless-ngx
 - Speedtest Tracker
@@ -21,7 +23,11 @@ tags:
 
 # Potato
 
-- Pi-Hole
+- Cockpit (bare metal)
+- Pi-Hole (bare metal)
 - Uptime Kuma
 - Nginx + Cloudflare Tunnel
 - Nginx Proxy Manager
+- Home Assistant
+- Mosquitto
+- Opengist

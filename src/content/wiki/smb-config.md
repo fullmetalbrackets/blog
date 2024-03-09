@@ -9,7 +9,7 @@ tags:
 
 # SMB configuration file
 
-This is the current working Samba configuration file for [Korben](./korben) with shares for each hard drive, except the boot drive. The file is located at: `/etc/samba/smb.conf`
+This is the current working Samba configuration file for <a href="/wiki/korben" target="_blank">Korben</a> with shares for each hard drive, except the boot drive. The file is located at: `/etc/samba/smb.conf`
 
 ```bash
 [global]
