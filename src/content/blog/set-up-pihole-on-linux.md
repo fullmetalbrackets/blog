@@ -225,7 +225,8 @@ pihole restartdns
 
 <div class="success">
   <span>
-    <b>✔ Success!</b>
+    <img src="/img/assets/success.svg" class="success-icon" loading="lazy" decoding="async" alt="Success" />
+    <b>Success!</b>
   </span>
   <p>
     If you've been following the instructions, you're all set to block ads. Pi-Hole will act as a middleman between you and your chosen DNS (Cloudflare's <em>1.1.1.1</em> for example), blocking ads, tracking and telemetry. If you want to go a bit deeper and make Pi-Hole even better, read on below.
