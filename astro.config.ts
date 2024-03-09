@@ -6,6 +6,10 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://fullmetalbrackets.com',
   integrations: [mdx(), sitemap()],
+  adapter: cloudflare({
+    imageService: 'cloudflare'
+  }),
+  output: 'server',
   prefetch: true,
   markdown: {
     drafts: false,
