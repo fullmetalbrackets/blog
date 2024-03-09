@@ -9,7 +9,7 @@ export default defineConfig({
   integrations: [mdx(), sitemap()],
   adapter: cloudflare({ mode: "directory" },
   { imageService: 'passthrough' }),
-  output: 'server',
+  output: 'hybrid',
   prefetch: true,
   markdown: {
     drafts: false,
