@@ -7,8 +7,7 @@ import cloudflare from "@astrojs/cloudflare";
 export default defineConfig({
   site: 'https://fullmetalbrackets.com',
   integrations: [mdx(), sitemap()],
-  adapter: cloudflare({ mode: "directory" },
-  { imageService: 'passthrough' }),
+  adapter: cloudflare({ imageService: 'passthrough' }),
   output: 'hybrid',
   prefetch: true,
   markdown: {
