@@ -7,15 +7,16 @@ import cloudflare from "@astrojs/cloudflare";
 export default defineConfig({
   site: 'https://fullmetalbrackets.com',
   integrations: [mdx(), sitemap()],
-  adapter: cloudflare({ imageService: 'passthrough' }),
   output: 'hybrid',
+  adapter: cloudflare(),
+  image: {
+    service: {
+      entrypoint: "./src/services/passThroughImageService",
+    }},
   prefetch: true,
   markdown: {
     drafts: false,
     syntaxHighlight: 'prism'
   },
-  compressHTML: true,
-  image: {
-    service: passthroughImageService()
-  }
+  compressHTML: true
 });
