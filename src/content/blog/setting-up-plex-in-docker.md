@@ -115,23 +115,23 @@ CONTAINER ID   IMAGE                             COMMAND   CREATED          STAT
 
 Good to go. Now to configure Plex you'll need to access it's web UI, which by default is at (for example) `http://192.168.1.100:32400/web`. You'll be asked to login. (A <a href="https://www.plex.tv" target="_blank">Plex account</a> is required.)
 
-<a href="/img/blog/plex1.png" target="_blank"><img src="/img/blog/plex1.png" alt="Screenshot of Plex server login page." /></a>
+[![Screenshot of Plex server login page](../../img/plex1.png)](../../img/plex1.png)
 
 After signing in, after a few explanatory pages, you'll arrive at the Server Setup page. Name your server, uncheck the checkbox unless you'll be making Plex available from outside your network (not recommended and not covered in this guide), and click _Next_.
 
-<a href="/img/blog/plex2.png" target="_blank"><img src="/img/blog/plex2.png" alt="Screenshot of Plex server setup page, Name tab." /></a>
+[![Screenshot of Plex server setup page, Name tab](../../img/plex2.png)](../../img/plex2.png)
 
 You'll then be able to add folders with your media to the Plex library. Click the _Add Library_ button.
 
-<a href="/img/blog/plex3.png" target="_blank"><img src="/img/blog/plex3.png" alt="Screenshot of Plex server setup, Add Library tab." /></a>
+[![Screenshot of Plex server setup, Add Library tab](../../img/plex3.png)](../../img/plex3.png)
 
 On the following page, you'll be able to add media directories to each Library Type. We'll use _Movies_ as an example, select it then click the _Add_ button.
 
-<a href="/img/blog/plex4.png" target="_blank"><img src="/img/blog/plex4.png" alt="Screenshot of adding Movies directory to Plex library." /></a>
+[![Screenshot of adding Movies directory to Plex library](../../img/plex4.png)](../../img/plex4.png)
 
 Next choose the local directory from the list, in this case _movies_ (the Docker container's directory mapped to `~/media/movies`), and click \_Add.
 
-<a href="/img/blog/plex5.png" target="_blank"><img src="/img/blog/plex5.png" alt="Another screenshot of adding Movies directory to Plex library." /></a>
+[![Another screenshot of adding Movies directory to Plex library](../../img/plex5.png)](../../img/plex5.png)
 
 Your movies should now appear within the _Movies_ section of the Plex UI. Repeat the process to add other directories for your _TV_, _Music_ and _Photos_ libraries. And you're done! You can now watch Plex right in the web UI, or (ideally) by downloading and signing into the Plex app on devices in your network.
 

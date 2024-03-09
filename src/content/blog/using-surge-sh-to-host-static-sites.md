@@ -37,7 +37,7 @@ The first time you do this command, you'll be prompted to create an account, jus
 
 <div class="note">
   <span>
-    <img src="/img/assets/note.svg" class="note-icon">
+    <img src="/assets/note.svg" class="note-icon" alt="Note" loading="lazy" decoding="async" />
     <b>Note</b>
   </span>
   <p>
@@ -85,7 +85,7 @@ Alternately you can instead add an _A record_ set to IP address `45.55.110.124`
 
 <div class="note">
   <span>
-    <img src="/img/assets/note.svg" class="note-icon">
+    <img src="/assets/note.svg" class="note-icon" alt="Note" loading="lazy" decoding="async" />
     <b>Note</b>
   </span>
   <p>
@@ -107,7 +107,7 @@ echo custom-domain.com > CNAME
 
 <div class="alert">
   <span>
-    <img src="/img/assets/alert.svg" class="alert-icon"> <b>Important!</b>
+    <img src="/assets/alert.svg" class="alert-icon" alt="Important" loading="lazy" decoding="async" /> <b>Important!</b>
   </span>
   <p>
     Though all projects published to <code>surge.sh</code> sub-domains include free SSL, this is not the case with custom domains! To use SSL with your own domain, you'll need the paid <a href="https://surge.sh/plus" target="_blank">Surge Plus</a> plan, which costs $30/month. For more details, see <a href="https://surge.sh/help/securing-your-custom-domain-with-ssl" target="_blank">this section of the Surge documentation</a>.
@@ -130,7 +130,7 @@ bower_components
 
 <div class="note">
   <span>
-    <img src="/img/assets/note.svg" class="note-icon">
+    <img src="/assets/note.svg" class="note-icon" alt="Note" loading="lazy" decoding="async" />
     <b>Note</b>
   </span>
   <p>

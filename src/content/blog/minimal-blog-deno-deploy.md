@@ -60,7 +60,7 @@ $ deno run -r --allow-read --allow-write https://deno.land/x/blog/init.ts ./dire
 
 Once the blog is set up, go into the project directory and run the development server using the command `deno task dev` and go to the URL. Notice the default layout of everything.
 
-<a href="/img/blog/deno1.png" target="_blank"><img src="/img/blog/deno1.png" alt="Screenshot of Deno blog"></a>
+[![Screenshot of Deno blog](../../img/deno1.png)](../../img/deno1.png)
 
 To configure and customize the blog, edit the `main.tsx` file. It should look like the below:
 
@@ -121,7 +121,7 @@ We'll be hosting our blog on <a href="" target="_blank" rel="noopener">Deno Depl
 
 Once logged in to Deno Deploy, you'll be on the _Projects_ dashboard. Click the _+ New Project_ button:
 
-<a href="/img/blog/deno2.png" target="_blank"><img src="/img/blog/deno2.png" alt="Screenshot of Deno Deploy UI"></a>
+[![Screenshot of Deno Deploy UI](../../img/deno2.png)](../../img/deno2.png)
 
 Click on _Select GitHub repository_ and you'll be taken to GitHub to login and choose a repo to deploy from.
 
@@ -137,11 +137,11 @@ Deno Deploy lets you easily use a custom domain you own instead of `https://proj
 
 If it says "Validation has failed" just wait a little while longer then try again. Once validation is successful, you'll be able to provision an SSL certificate.
 
-<a href="/img/blog/deno4.png" target="_blank"><img src="/img/blog/deno4.png" alt="Screenshot of Deno Deploy project DNS"></a>
+[![Screenshot of Deno Deploy project DNS](../../img/deno4.png)](../../img/deno4.png)
 
 Click on _Get automatic certificates_ to finish. (Or upload your own certificate, if you prefer and know what you're doing.) After a few moments you should see your domain now has a green checkmark on it.
 
-<a href="/img/blog/deno5.png" target="_blank"><img src="/img/blog/deno5.png" alt="Screenshot of Deno Deploy project DNS"></a>
+[![Screenshot of Deno Deploy project DNS](../../img/deno5.png)](../../img/deno5.png)
 
 You should now be able to go to your custom domain to reach your blog. For whatever reason, in my experience it seems to load much faster on a custom top-level domain compared to Deno Deploy's `deno.dev` sub-domain. Enjoy!
 

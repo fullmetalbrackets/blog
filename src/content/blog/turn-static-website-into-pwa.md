@@ -17,13 +17,16 @@ tags:
 5. [Testing your PWA](#test)
 6. [References](#ref)
 
-<div class="note">
-  <span>
-    <b>&#x1F5CE; Note</b>
-  </span>
-  <p>
-    I created <a href="https://github.com/fullmetalbrackets/pwa-template" target="_blank">a simple template repo on GitHub </a> with just the files necessary to make your HTML site a PWA, as described below - it contains <code>app.js</code> and <code>sw.js</code> to use as is, and a sample <code>manifest.json</code> you need to edit with your project's details. (Replace the <code>index.html</code> and <code>main.css</code> with your own files.)
-  </p>
+<div>
+  <div class="info">
+    <span>
+      <img src="/assets/info.svg" class="info-icon" alt="TLDR" loading="lazy" decoding="async" />
+      <b>TL;DR</b>
+    </span>
+    <p>
+      I created <a href="https://github.com/fullmetalbrackets/pwa-template" target="_blank">a simple template repo on GitHub </a> with just the files necessary to make your HTML site a PWA, as described below - it contains <code>app.js</code> and <code>sw.js</code> to use as is, and a sample <code>manifest.json</code> you need to edit with your project's details. (Replace the <code>index.html</code> and <code>main.css</code> with your own files.)
+    </p>
+  </div>
 </div>
 
 <div id='what'/>

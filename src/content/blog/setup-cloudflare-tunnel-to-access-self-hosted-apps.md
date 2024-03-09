@@ -30,7 +30,7 @@ The process of setting up and securing a Cloudflare Tunnel is a lot of steps, so
 
 <div class="note">
   <span>
-    <img src="/img/assets/note.svg" class="note-icon" />
+    <img src="/assets/note.svg" class="note-icon" alt="Note" loading="lazy" decoding="async" />
     <b>Note</b>
   </span>
   <p>
@@ -85,7 +85,7 @@ Your tunnel should now be up and running, but won't connect to your self-hosted 
 
 <div class="note">
   <span>
-    <img src="/img/assets/note.svg" class="note-icon" />
+    <img src="/assets/note.svg" class="note-icon" />
     <b>Note</b>
   </span>
   <p>
@@ -127,7 +127,7 @@ Now we will set up Cloudflare DNS to proxy `music.your-domain.com` to Navidrome 
 
 <div class="success">
   <span>
-    <img src="/img/assets/success.svg" class="success-icon" />
+    <img src="/assets/success.svg" class="success-icon" alt="Success" loading="lazy" decoding="async" />
     <b>Success!</b>
   </span>
   <p>
@@ -148,7 +148,7 @@ Now we will set up Cloudflare DNS to proxy `music.your-domain.com` to Navidrome 
 
 <div class="note">
   <span>
-    <img src="/img/assets/note.svg" class="note-icon" />
+    <img src="/assets/note.svg" class="note-icon" alt="Note" loading="lazy" decoding="async" />
     <b>Note</b>
   </span>
   <p>
@@ -202,7 +202,7 @@ Now that the OAuth provider is set up, we need make use of it with <a href="http
 
 <div class="note">
   <span>
-    <img src="/img/assets/note.svg" class="note-icon" />
+    <img src="/assets/note.svg" class="note-icon" />
     <b>Note</b>
   </span>
   <p>
@@ -234,7 +234,7 @@ Now that the OAuth provider is set up, we need make use of it with <a href="http
 
 <div class="success">
   <span>
-    <img src="/img/assets/success.svg" class="success-icon" />
+    <img src="/assets/success.svg" class="success-icon" alt="Success" loading="lazy" decoding="async" />
     <b>Success!</b>
   </span>
   <p>

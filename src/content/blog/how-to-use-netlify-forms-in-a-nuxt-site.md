@@ -1,14 +1,25 @@
 ---
 title: "How to use Netlify Forms in a Nuxt site and make sure it gets detected"
-description: "Netlify has many awesome built-in features, and one of them is Netlify Forms, which essentially handles the back-end of your forms in most cases. But when hosting your Nuxt site on Netlify, it may not detect it even after you follow the instructions in their documentation, usually because there's one key trick missing that just makes it work. So let's discuss that trick and make sure Netlify Forms does what it's supposed to."
+description: "Netlify has several awesome built-in features, and one of them is Netlify Forms, which essentially handles the back-end of your forms in most cases. But when hosting your Nuxt site on Netlify, it may not detect it even after you follow the instructions in their documentation, usually because there's one key trick missing that just makes it work. So let's discuss that trick and make sure Netlify Forms does what it's supposed to."
 pubDate: 2021-10-11
+updatedDate: 2024-03-08
 tags:
   - Netlify
   - Nuxt
   - Web Dev
 ---
 
-Netlify has many awesome built-in features, and one of them is Netlify Forms, which essentially handles the "back-end" of your forms in most cases. But when hosting your Nuxt site on Netlify, it may not detect it even after you follow the instructions in their documentation, usually because there's one key "trick" missing that just makes it work. So let's discuss that trick and make sure Netlify Forms does what it's supposed to.
+<div>
+  <div class="note">
+    <span>
+      <img src="/assets/note.svg" class="note-icon" alt="Note" loading="lazy" decoding="async" />
+      <b>Note</b>
+    </span>
+    <p>
+      I have long since migrated from using <em>Nuxt</em> as my static site generator to using <em>Astro</em>, where this little hack is unnecessary, and it's entirely possible that the below is no longer even necessary in the latest version of Nuxt.
+    </p>
+  </div>
+</div>
 
 I was breaking my head against this one for a while until I found <a href="https://medium.com/@kimbjrkman/adding-netlify-forms-on-your-nuxt-website-20ffba3e5ba8" target="_blank">this post on Medium</a> that finally gave me the answer, although they are over-engineering a bit, in my opinion. The issue is that Netlify's crawler will only detect HTML forms, and even though you're using HTML to create the form Nuxt will spit it out as JavaScript after build time. Netlify won't detect it. But as that post explains, there is a way, you just have to "fool" Netlify's bots a little bit. Here is a quick guide on how.
 

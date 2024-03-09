@@ -36,7 +36,7 @@ In my search for a tutorial or guide to help me understand how Vim works, I came
 
 Pictures are worth a thousand Unix commands and options:
 
-[![Vi Diagram](/img/blog/vim.png)](https://arieldiaz.codes/img/blog/vim.png)
+[![Vi Diagram](../../img/vim.png)](../../img/vim.png)
 
 I draw this to my students each semester and they seem to grasp vi afterwards.
 

@@ -8,7 +8,7 @@ tags:
   - Command Line
 ---
 
-<img src="/img/blog/oh-my-zsh.png" alt="Oh-My-Zsh Logo." />
+![Oh-My-Zsh Logo.](../../img/oh-my-zsh.png)
 
 ## Sections
 
@@ -104,7 +104,7 @@ But wait, there's more! To make your terminal even prettier through the magic of
 
 ## Prettify powerlevel10k with glpyhs
 
-By using powerlevel10k's [recommended fonts](https://github.com/romkatv/powerlevel10k#fonts) the theme's configuration script will have more options to make the command line prompt look even better, including icons! For some reason these fonts aren't included with powerlevel10k's install instructions or script, so you have to do it manually. We'll use `wget` to download the fonts individually directly into the fonts directory.
+By using powerlevel10k's <a href="https://github.com/romkatv/powerlevel10k#fonts" target="_blank">recommended fonts</a> the theme's configuration script will have more options to make the command line prompt look even better, including icons! For some reason these fonts aren't included with powerlevel10k's install instructions or script, so you have to do it manually. We'll use `wget` to download the fonts individually directly into the fonts directory.
 
 ```bash
 wget -O /usr/share/fonts/MesloLGS%20NF%20Regular.ttf https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf

@@ -43,7 +43,7 @@ Also, Netlify has some really cool features that solve problems for you, such as
 
 <div class="note">
   <span>
-    <img src="/img/assets/note.svg" class="note-icon">
+    <img src="/assets/note.svg" class="note-icon" alt="Note" loading="lazy" decoding="async" />
     <b>Note</b>
   </span>
   <p>
@@ -109,7 +109,7 @@ Possibly the simplest hosting solution to ever exist. Literally one command in t
 
 <div class="alert">
   <span>
-    <img src="/img/assets/alert.svg" class="alert-icon"> <b>Important!</b>
+    <img src="/assets/alert.svg" class="alert-icon" alt="Important" loading="lazy" decoding="async" /> <b>Important!</b>
   </span>
   <p>
     If your site is made with a static site generator like <em>Astro</em> or <em>Nuxt</em>, make sure to use <code>npm build</code> or <code>yarn build</code> first to build the static assets, then use <code>npx surge dist</code> to serve the static site.
@@ -120,7 +120,7 @@ That's it! Surge.sh has a crazy fast build time and instant availability on thei
 
 <div class="success">
   <span>
-    <img src="/img/assets/success.svg" class="success-icon">
+    <img src="/assets/success.svg" class="success-icon" alt="Tips" loading="lazy" decoding="async" />
     <b>Surge.sh Tips</b>
   </span>
   <p>

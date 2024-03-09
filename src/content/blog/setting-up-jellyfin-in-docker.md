@@ -2,7 +2,7 @@
 title: "Setup self-hosted Jellyfin Media Server in Docker"
 description: "Though Plex is a very popular media server for self-hosting, some open source enthusiasts prefer to use an alternative since Plex Media Server is not open source. A nice, simpler and admittedly less pretty alternative is Jellyfin. This guide will show you how to run it in Docker container."
 pubDate: 2022-10-18
-updatedDate: 2023-08-11
+updatedDate: 2024-03-08
 tags:
   - Self-Hosting
   - Jellyfin
@@ -126,23 +126,23 @@ CONTAINER ID   IMAGE                                 COMMAND   CREATED         S
 
 Good to go. Now to configure Jellyfin you'll need to access it's web UI, which by default is at (for example) `http://192.168.0.100:8096`. On the first page you'll be asked to choose a language and can also use the Quick Start if desired, for purposes of this guide we'll choose _English_ and click _Next_. On the following page you can create a user and password (or you can use no password if preferred), create your login and click _Next_.
 
-<a href="/img/blog/jellyfin1.png" target="_blank"><img src="/img/blog/jellyfin1.png" alt="Screenshot of jellyfin user creation." /></a>
+[![Screenshot of Jellyfin user creation.](../../img/jellyfin1.png)](../../img/jellyfin1.png)
 
 You'll be taken to setup your media libraries, click on _Add Media Library_.
 
-<a href="/img/blog/jellyfin2.png" target="_blank"><img src="/img/blog/jellyfin2.png" alt="Screenshot of Jellyfin media library setup." /></a>
+[![Screenshot of Jellyfin media library setup.](../../img/jellyfin2.png)](../../img/jellyfin2.png)
 
 In the Content Type drop down menu, choose like kind of media you're adding. For this guide we'll choose _Movies_, then click _Ok_.
 
-<a href="/img/blog/jellyfin3.png" target="_blank"><img src="/img/blog/jellyfin3.png" alt="Screenshot of creating a movie library in Jellyfin." /></a>
+[![Screenshot of creating a movie library in Jellyfin.](../../img/jellyfin3.png)](../../img/jellyfin3.png)
 
 A series of options will appear, read through them and make your choices, or just leave the defaults if you don't want to change anything. To add a folder to the library, click the _Plus (+) button_ and you'll get a pop-up where you can choose a folder. Choose from the list, or type out the path, and click _Ok_ (You can also add a network share as the folder.)
 
-<a href="/img/blog/jellyfin4.png" target="_blank"><img src="/img/blog/jellyfin4.png" alt="Screenshot of adding a folder to the Jellyfin movie library." /></a>
+[![Screenshot of adding a folder to the Jellyfin movie library.](../../img/jellyfin4.png)](../../img/jellyfin4.png)
 
-On the following page you can set up remote access to Jellyfin, meaning whether other devices will be able to access Jellyfin. Check the box _Allow remote connections to this server_, but leave unchecked _Enable automatic port mapping_ unless you want to access Jellyfin from outside your network. (You'll additionally need to open port 8096 on your router for that. I don't suggest it.) Then click _Next_.
+On the following page you can set up remote access to Jellyfin, meaning whether other devices will be able to access Jellyfin. Check the box _Allow remote connections to this server_, but for now leave _Enable automatic port mapping_ unchecked. (We won't set that up in this guide.) Then click _Next_.
 
-<a href="/img/blog/jellyfin5.png" target="_blank"><img src="/img/blog/jellyfin5.png" alt="Screenshot of set up remote access in Jellyfin." /></a>
+[![Screenshot of setting up remote access in Jellyfin.](../../img/jellyfin5.png)](../../img/jellyfin5.png)
 
 Your movies should now appear within the _Movies_ section of the Jellyfin UI. Repeat the process to add other directories for your _TV_, _Music_, _Books_, _Photos_ and other libraries if desired. And you're done! You can now watch jellyfin right in the web UI.
 

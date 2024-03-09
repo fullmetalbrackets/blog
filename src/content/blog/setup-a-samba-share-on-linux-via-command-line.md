@@ -117,11 +117,11 @@ Now you should be able to connect to the shared directory from other computers o
 
 On Windows, go to Start Menu > Run and type the following (replacing with your Linux machine's actual IP) and hit Enter:
 
-[![Screenshot of Windows Run](/img/blog/samba1.png)](https://arieldiaz.codes/img/blog/samba1.png)
+[![Screenshot of Windows Run](../../img/samba1.png)](../../img/samba1.png)
 
 Or you can connect by hostname rather than IP.
 
-[![Screenshot of Windows Run](/img/blog/samba1.png)](https://arieldiaz.codes/img/blog/samba2.png)
+[![Screenshot of Windows Run](../../img/samba1.png)](../../img/samba2.png)
 
 You should now have the shared folder open in your Windows PC! For ease of access, pin it to Quick Access or map it as a Network Drive.
 
@@ -131,7 +131,7 @@ However, there MAY be an additional issue, as Windows 10 Home (but not Professio
 
 ## Improve transfer speeds for Samba
 
-After transferring files back and forth between Windows and Linux via the Samba share, you may notice it's extremely slow! After some googling I found some additional configuration options <a href="https://eggplant.pro/blog/faster-samba-smb-cifs-share-performance" target="_blank" rel="noopener noreferrer">a company blog</a> that claimed to improve network performance, and in my experience it works.
+After transferring files back and forth between Windows and Linux via the Samba share, you may notice it's extremely slow! After some googling I found some additional configuration options <a href="https://eggplant...pro/faster-samba-smb-cifs-share-performance" target="_blank" rel="noopener noreferrer">a company blog</a> that claimed to improve network performance, and in my experience it works.
 
 Add the following code (feel free to remove all the comments) to your <em>smb.conf</em> file under `[global]`.
 
@@ -158,5 +158,5 @@ For an explanation of what these options do, check the original blog post linked
 
 - <a href="https://www.samba.org/samba/docs" target="_blank" rel="noopener noreferrer">Samba Documentation</a>
 - <a href="https://www.samba.org/samba/docs/current/man-html/smbpasswd.8.html" target="_blank" rel="noopener noreferrer">smbpasswd Manpage</a>
-- <a href="https://eggplant.pro/blog/faster-samba-smb-cifs-share-performance" target="_blank" rel="noopener noreferrer">Eggplant Systems & Design blog post about improving Samba share performance</a>
+- <a href="https://eggplant...pro/faster-samba-smb-cifs-share-performance" target="_blank" rel="noopener noreferrer">Eggplant Systems & Design blog post about improving Samba share performance</a>
 - <a href="https://www.majorgeeks.com/content/page/how_to_enable_local_security_policy_in_windows_10_home.html" target="_blank">Instructions to fix Local Security Policy issue</a>

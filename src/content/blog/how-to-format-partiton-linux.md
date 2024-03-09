@@ -10,7 +10,7 @@ tags:
 <div>
   <div class="alert">
     <span>
-      <img src="/img/assets/alert.svg" class="alert-icon"> <b>Important!</b>
+      <img src="/assets/alert.svg" class="alert-icon" alt="Important" loading="lazy" decoding="async" /> <b>Important!</b>
     </span>
     <p>
       Be aware that using these instructions to format a disk or delete partitions will lead to the loss of any data contained therein.

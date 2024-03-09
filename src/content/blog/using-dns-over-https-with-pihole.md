@@ -172,11 +172,11 @@ enabled
 
 This is the last and easiest step. In the Pi-Hole web UI go to _Settings_ and click on the _DNS_ tab. Make sure to uncheck any public Upstream DNS Servers on the left, check _Custom 1 (IPv4)_ on the right and type in `127.0.0.1#5053`. (If you setup Cloudflared on another machine than the one running Pi-Hole, use that machine's IP address instead, but be sure to append `#5053`.)
 
-<a href="/img/blog/cloudflared1.png" target="_blank"><img src="/img/blog/cloudflared1.png" alt="Screenshot of Pi-Hole DNS settings." /></a>
+![Screenshot of Pi-Hole DNS settings.](../../img/cloudflared1.png)
 
 Scroll all the way down and hit _Save_. After a minute or two your DNS requests should all be going out encrypted in HTTPS. If using Cloudflare for DNS over HTTPS, you can verify it's working with their <a href="https://1.1.1.1/help" target="_blank">DNS checker</a> at `https://1.1.1.1/help`, under Debug Information you look at _Using DNS over HTTPS (DoH)_ and it should say _YES_ next to it. (Note, this site may not properly work if `DNSSEC` is enabled in Pi-Hole, and will not detect other DNS over HTTPS providers like Quad9 or Google, it ONLY detects Cloudflare.)
 
-<a href="/img/blog/cloudflared2.png" target="_blank"><img src="/img/blog/cloudflared2.png" alt="Screenshot of Cloudflare DNS checker at 1.1.1.1/help." /></a>
+![Screenshot of Cloudflare DNS checker at 1.1.1.1/help.](../../img/cloudflared2.png)
 
 <div id='ref' />
 

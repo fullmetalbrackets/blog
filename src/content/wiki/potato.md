@@ -14,4 +14,4 @@ tags:
 
 Bought for a measly $30. This thing only ever uses around 4 watts of power and runs 24/7 as the main instance of Pi-Hole on my home network, as well as acting as a reverse proxy. It also self-hosts yet another mirror of my blog (<a href="https://bleh.cc" target="_blank">bleh.cc</a>) that is exposed to the internet via a Cloudflare tunnel.
 
-![Libre Sweet Potato](/img/blog/sweet-potato.jpg)
+![Libre Sweet Potato](../img/sweet-potato.jpg)
