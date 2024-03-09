@@ -7,7 +7,7 @@ export default defineConfig({
   site: 'https://fullmetalbrackets.com',
   integrations: [mdx(), sitemap()],
   adapter: cloudflare({
-    imageService: 'cloudflare'
+    imageService: 'passthrough'
   }),
   output: 'server',
   prefetch: true,
