@@ -10,18 +10,27 @@ tags:
 
 # Korben
 
-- Dockge
 - Plex
 - Tautulli
 - Kavita
+- Scrutiny
 - qBittorrent
 - Paperless-ngx
 - Speedtest Tracker
 - Twingate Connector
+- Portainer
 
 # Potato
 
-- Pi-Hole
+- Pi-Hole (primary)
+- Home Assistant
+- OpenGist
 - Uptime Kuma
-- Nginx + Cloudflare Tunnel
 - Nginx Proxy Manager
+- Portainer Agent
+
+# Spud
+
+- Pi-Hole (backup)
+- Nginx + Cloudflare Tunnel
+- Portainer Agent

@@ -10,12 +10,13 @@ tags:
 
 1. [Korben](#korben)
 2. [Potato](#potato)
-3. [Other](#other)
-4. [Apollo](#apollo)
-5. [Headless](#headless)
-6. [Worf](#worf)
-7. [Weasley](#weasley)
-8. [Hightower](#hightower)
+3. [Spud](#spud)
+4. [Other](#other)
+5. [Apollo](#apollo)
+6. [Headless](#headless)
+7. [Worf](#worf)
+8. [Weasley](#weasley)
+9. [Hightower](#hightower)
 
 <br>
 
@@ -46,7 +47,23 @@ tags:
 
 - 2 GB RAM
 - 32 GB USB Drive (boot)
-- 128GB USB Drive (storage)
+- 100 Mbps Ethernet
+- 2W - 5W Power Consumption
+
+<br>
+
+<hr>
+
+<div id='spud'/>
+
+# Spud
+
+**Libre Sweet Potato SBC**
+
+**IP:** 192.168.0.205
+
+- 2 GB RAM
+- 64 GB USB Drive (boot)
 - 100 Mbps Ethernet
 - 2W - 5W Power Consumption
 
@@ -75,6 +92,12 @@ tags:
 **Shelly Plug US** (used by Korben)
 
 **IP:** 192.168.0.150
+
+<br>
+
+**Shelly Plug US** (used by Gaming PC)
+
+**IP:** 192.168.0.155
 
 <br>
 

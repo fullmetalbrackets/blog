@@ -56,15 +56,4 @@ This is the current working Samba configuration file for [Korben](./korben) with
    force group = ad
    force create mode = 0666
    force directory mode = 0777
-
-[extra]
-   comment = Extra Share
-   path = /home/ad/extra
-   browseable = yes
-   writeable = yes
-   read only = no
-   force user = ad
-   force group = ad
-   force create mode = 0666
-   force directory mode = 0777
 ```

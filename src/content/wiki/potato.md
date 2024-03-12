@@ -1,17 +1,19 @@
 ---
 title: "Potato"
-description: "Details on Potato, my Libre Sweet Potato SBC."
+description: "Details on Potato, my Libre Sweet Potato SBC running Pi-Hole and Home Assistant."
 pubDate: 2023-11-16
 tags:
   - Homelab
+  - Hardware
 ---
+
+![Libre Sweet Potato](/img/blog/sweet-potato.jpg)
 
 # Libre Sweet Potato
 
 - 32 GB USB Drive (boot drive)
-- 128 GB USB Drive (extra storage & network share)
 - 100 Mbps Ethernet
 
-Bought for a measly $30. This thing only ever uses around 4 watts of power and runs 24/7 as the main instance of Pi-Hole on my home network, as well as acting as a reverse proxy. It also self-hosts yet another mirror of my blog (<a href="https://bleh.cc" target="_blank">bleh.cc</a>) that is exposed to the internet via a Cloudflare tunnel.
+## Information
 
-![Libre Sweet Potato](/img/blog/sweet-potato.jpg)
+Bought for a measly $30, the early access price for the Sweet Potato. (Now costs $35.) This thing only barely uses any power and runs 24/7 as the main instance of Pi-Hole on my home network, and also runs Home Assistant and a reverse proxy.
