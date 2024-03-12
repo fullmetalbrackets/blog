@@ -542,6 +542,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"two-drives-mergerfs.md": {
+	id: "two-drives-mergerfs.md";
+  slug: "two-drives-mergerfs";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "using-dns-over-https-with-pihole.md": {
 	id: "using-dns-over-https-with-pihole.md";
   slug: "using-dns-over-https-with-pihole";
