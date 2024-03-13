@@ -7,9 +7,9 @@
 
 ## 💻 My latest blog posts
 <!-- BLOG-POST-LIST:START -->
+- [Using MergerFS to combine multiple hard drives into one unified media storage](https://fullmetalbrackets.com/blog/two-drives-mergerfs/)
+- [Set up Home Assistant Supervised on a Libre Computer Sweet Potato SBC](https://fullmetalbrackets.com/blog/setup-home-assistant-sweet-potato-debian/)
 - [Merging sites and changing hosts](https://fullmetalbrackets.com/blog/merging-sites-and-changing-hosts/)
 - [Complete guide to self-hosting a website through Cloudflare Tunnel](https://fullmetalbrackets.com/blog/self-host-website-cloudflare-tunnel/)
 - [Setting up a Libre Computer Sweet Potato SBC with Debian and Pi-Hole](https://fullmetalbrackets.com/blog/setting-up-sweet-potato-debian-pihole/)
-- [Quick guide to setting up SMB shares](https://fullmetalbrackets.com/blog/quick-guide-setting-up-smb/)
-- [Install Docker in Debian or Ubuntu](https://fullmetalbrackets.com/blog/install-docker-debian-ubuntu/)
 <!-- BLOG-POST-LIST:END -->
