@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - src/pages/blog/**
+      - src/content/blog/**
 
 jobs:
   update-readme-with-blog:
