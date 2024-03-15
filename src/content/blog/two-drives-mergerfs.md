@@ -1,6 +1,6 @@
 ---
 title: "Using MergerFS to combine multiple hard drives into one unified media storage"
-description: 'My situation was simple -- I have on my home server a 2 TB hard drive for media storage that was filling up, and I wanted to add a second drive, but not have to keep track of which drive specific files were in. Enter mergerfs, an open source "union filesystem" that lets you do exactly this right in the fstab config.'
+description: 'My situation was simple -- I have on my home server a 2 TB hard drive for media storage that was filling up, and I wanted to add a second drive, but not have to keep track of which drive specific files were in. Enter mergerfs, an open source "union filesystem" that lets you merge multiple storage drives into one mount point.'
 pubDate: 2024-03-11
 tags:
   - Linux
@@ -108,12 +108,13 @@ Once the changes were made in `/etc/fstab`, I unmounted all the drives from thei
 cd ~/
 sudo umount videos pics-music new-drive
 mkdir media
+sudo reboot
 ```
 
-Let's see if everything shows up where it's supposed to.
+Once the machine is back up and I'm reconnected via SSH, it's time to check if everything shows up where it's supposed to.
 
 ```bash
-ls ~/media
+ls /home/ad/media
 movies  music  photos  tvshows
 ```
 
@@ -136,9 +137,3 @@ movies  music  photos  tvshows
 
 - <a href="https://github.com/trapexit/mergerfs" target="_blank">MergerFS</a>
 - <a href="https://perfectmediaserver.com" target="_blank">Perfect Media Server</a>
-
-- <a href="https://libre.computer" target="_blank">Libre Computer</a>
-- <a href="https://hub.libre.computer/t/debian-11-bullseye-and-12-bookworm-for-libre-computer-boards/230" target="_blank">Libre's instructions for installing Debian</a>
-- <a href="https://hub.libre.computer/t/libre-computer-aml-s905x-cc-emmc-flashing-steps-from-linux/33" target="_blank">Flashing Linux to eMMC</a>
-- <a href="https://hub.libre.computer/t/booting-from-external-usb-device-or-bootrom-unsupported-device/51" target="_blank">Booting from External USB Device (alternative to eMMC boot)</a>
-- <a href="https://www.home-assistant.io/docs" target="_blank">Home Assistant Documentation</a>
