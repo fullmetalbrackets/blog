@@ -2,4 +2,8 @@ exclude_selectors:
   - "[class^='language']"
   - ".note"
   - ".alert"
+  - ".success"
+  - ".info"
+  - "pre"
+  - "code"
   - "blockquote"
