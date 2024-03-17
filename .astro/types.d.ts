@@ -635,6 +635,13 @@ declare module 'astro:content' {
   collection: "wiki";
   data: any
 } & { render(): Render[".md"] };
+"spud.md": {
+	id: "spud.md";
+  slug: "spud";
+  body: string;
+  collection: "wiki";
+  data: any
+} & { render(): Render[".md"] };
 "zsh-config-files.md": {
 	id: "zsh-config-files.md";
   slug: "zsh-config-files";
@@ -749,5 +756,5 @@ declare module 'astro:content' {
 
 	type AnyEntryMap = ContentEntryMap & DataEntryMap;
 
-	export type ContentConfig = typeof import("./../src/content/config.js");
+	export type ContentConfig = typeof import("../src/content/config.js");
 }
