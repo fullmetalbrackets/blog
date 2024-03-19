@@ -26,7 +26,7 @@ Note that SSH is disabled in Debian by default, so you'll have to plug in a moni
 
 <div class="note">
   <span>
-    <img src="/img/assets/note.svg" class="note-icon" loading="eager" decoding="async" alt="Note" />
+    <img src="/img/assets/note.svg" class="note-icon" loading="lazy" decoding="async" alt="Note" />
     <b>Note</b>
   </span>
   <p>
