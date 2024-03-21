@@ -2,6 +2,7 @@
 title: "Using MergerFS to combine multiple hard drives into one unified media storage"
 description: 'My situation was simple -- I have on my home server a 2 TB hard drive for media storage that was filling up, and I wanted to add a second drive, but not have to keep track of which drive specific files were in. Enter mergerfs, an open source "union filesystem" that lets you merge multiple storage drives into one mount point.'
 pubDate: 2024-03-11
+updatedDate: 2024-03-16
 tags:
   - Linux
   - Self-Hosting
@@ -17,39 +18,44 @@ tags:
 
 ## What and Why
 
-<a href="https://github.com/trapexit/mergerfs" target="_blank">MergerFS</a> is free and open source software described as a "featureful union filesystem." I discovered it (along with easy to understand set up instructions) via <a href="https://perfectmediaserver.com/02-tech-stack/mergerfs" target="_blank">Perfect Media Server</a>, itself a great resource for self-hosters. Essentially what MergerFS does is act as a proxy so that multiple hard drives can be accessed at one mount point. What does that mean? Well, lets go over my situation: I had a 2 TB hard drive where I kept only video files at `/dev/sdb`, and another 1 TB drive with my music and photos at `/dev/sdc`. I wanted to add a third drive with some other movies (with lots of free space compared to the others) at `/dev/sdd`, but I'd rather store all file types there, not just (for example) more movies. How to keep track of what's where? And now I'd be juggling three different mount points? MergerFS lets you avoid this, unifying all three drives into one mount point where you can access everything.
+<a href="https://github.com/trapexit/mergerfs" target="_blank">MergerFS</a> is free and open source software described as a "featureful union filesystem." I discovered it (along with easy to understand set up instructions) via <a href="https://perfectmediaserver.com/02-tech-stack/mergerfs" target="_blank">Perfect Media Server</a>, itself a great resource for self-hosters. Essentially what MergerFS does is act as a proxy so that multiple hard drives can be accessed at one mount point. What does that mean? Well, lets go over my situation.
 
-Let's visualize it:
+I had a 2 TB hard drive where I kept only video files at `/dev/sdb`, and another 1 TB drive with my music and photos at `/dev/sdc`. I wanted to add a third drive that already had some other movies and lots of free space at `/dev/sdd`. The folder structure looked like this:
 
 ```bash
-├── /dev/sdb # existing HDD mounted at ~/home/ad/videos
-│   ├── movies
-│   └── tvshows
-├── /dev/sdc # existing HDD mounted at ~/home/ad/pics-music
-│   ├── music
-│   └── photos
-├── /dev/sdd # newly added HDD mounted at /home/ad/new-drive
-│   └── movies
-└── /home/ad/media # unified mount point via mergerfs
-    ├── movies
-    ├── music
-    ├── photos
-    └── tvshows
+/dev/sdb
+  ├── movies
+  └── tvshows
+/dev/sdc
+  ├── music
+  └── photos
+/dev/sdd
+  └── movies
+```
+
+But how to keep track of what files are in which hard drive? How to just not worry about where they end up? MergerFS that's how. It will unify all three drives into one mount point where you can access everything. The file structure will be like this:
+
+```bash
+/media
+  ├── movies
+  ├── music
+  ├── photos
+  └── tvshows
 ```
 
 <div>
   <div class="note">
     <span>
-      <img src="/img/assets/note.svg" class="note-icon" loading="eager" decoding="async" alt="Note" />
+      <img src="/img/assets/note.svg" class="note-icon" loading="lazy" decoding="async" alt="Note" />
       <b>Note</b>
     </span>
     <p>
-      I like to put all my stuff in my home directory (<code>/home/ad/...</code>) so I had each drive mounted there and will still mount the new unified storage in there at <code>/home/ad/media</code>. You don't have to do this and it may not even be best practice, but I'm set in my ways and I'm the only one that accesses this server.
+      I like to put all my stuff in my home directory (<code>/home/ad/...</code>) so I had each drive mounted there and will still mount the new unified storage in there at <code>/home/ad/media</code>. You don't have to do this and it may not even be best practice, but I'm set in my ways and I'm the only one that accesses this server. Feel free to use a different unified mount point like <code>/opt/media</code> or <code>/srv/media</code>.
     </p>
   </div>
 </div>
 
-With their powers combined, I gain access any media across all three drives at my chosen single mount point at `/home/ad/media`, where it's all accessible by Plex and other services.
+With their powers combined, I gain access any media across all three drives at my chosen single mount point, which live in my home directory at `/home/ad/media`, where it's all accessible by Plex and other services.
 
 <div id='install' />
 
@@ -69,16 +75,16 @@ Then install it:
 dpkg -i mergerfs_2.40.2.debian-bookworm_amd64.deb
 ```
 
-Configuration is simple, done just by editing `/etc/fstab`. First, an example of how my fstab file looked before MergerFS, when I was mounting each HDD into it's own directory.
+Configuration is simple, done just by editing `/etc/fstab`. First, an example of how my fstab file looked before MergerFS, when I was mounting each HDD into a subdirectory within my home directory.
 
 ```bash
 ...
 UUID=218236ca-8e14-47ae-866a-a91e70c88a2a   /home/ad/videos       ext4    errors=remount-ro   0   0
-UUID=5e3d1d44-2979-488d-a21a-9fa06508c470   /home/ad/pics-music   ext4    errors=remount-ro   0   0
-UUID=cce7cdab-a2df-4d4f-aac3-98fab2afdbd5   /home/ad/new-drive    ext4    errors=remount-ro   0   0
+UUID=5e3d1d44-2979-488d-a21a-9fa06508c470   /home/ad/other   ext4    errors=remount-ro   0   0
+UUID=cce7cdab-a2df-4d4f-aac3-98fab2afdbd5   /home/ad/extra    ext4    errors=remount-ro   0   0
 ```
 
-As suggested by Perfect Media Server, I changed the mount points for each drive to be `/mnt/media1`, `/mnt/media2`, and `/mnt/media3`. This way by using `/mnt/media*` for the new mergerfs entry, it will pick up all the drives and any future ones I add. The new unified single mount point will be in `/home/ad/media`, still in my home directory like I had it before, but now everything in one spot instead of multiple directories.
+As suggested by Perfect Media Server, I changed the mount points for each drive to be `/mnt/media1`, `/mnt/media2`, and `/mnt/media3`. (Which is which does not really mattter anymore.) This way by using `/mnt/media*` for the new mergerfs entry in fstab, it will pick up all the drives and any future ones I add that uses the same scheme. The new unified single mount point will be in `/home/ad/media`, still in my home directory like I had it before, but now everything in one directory instead of multiple ones.
 
 Here's how my fstab file looks now.
 
@@ -93,7 +99,7 @@ UUID=cce7cdab-a2df-4d4f-aac3-98fab2afdbd5   /mnt/media3   ext4    errors=remount
 <div>
   <div class="note">
     <span>
-      <img src="/img/assets/note.svg" class="note-icon" loading="eager" decoding="async" alt="Note" />
+      <img src="/img/assets/note.svg" class="note-icon" loading="lazy" decoding="async" alt="Note" />
       <b>Note</b>
     </span>
     <p>
@@ -106,7 +112,7 @@ Once the changes were made in `/etc/fstab`, I unmounted all the drives from thei
 
 ```bash
 cd ~/
-sudo umount videos pics-music new-drive
+sudo umount videos other extra
 mkdir media
 sudo reboot
 ```
@@ -114,7 +120,7 @@ sudo reboot
 Once the machine is back up and I'm reconnected via SSH, it's time to check if everything shows up where it's supposed to.
 
 ```bash
-ls /home/ad/media
+ls ~/media
 movies  music  photos  tvshows
 ```
 
