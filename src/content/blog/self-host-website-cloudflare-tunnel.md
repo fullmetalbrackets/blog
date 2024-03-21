@@ -28,8 +28,11 @@ You can very easily set up and host a website via Netlify, Cloudflare Pages, or 
 First, requirements:
 
 1. You need to create a free Cloudflare account.
+
 2. You need to own a domain. Look on Namecheap and Porkbun (or any domain registrar you prefer) for cheap domains, like those ending with `.cc` or `.us` -- they can usually be bought for less then $10 and often for as low as $4 or $5. (This is the price for the first year, to hook you, but annual domain renewals can cost more after that first year, so do your research.) Alternately you could set up something like <a href="https://www.duckdns.org" target="_blank">DuckDNS</a> to avoid buying a domain, but you're on your own there -- domains are so cheap I've never bothered.
+
 3. You'll need a website. I won't be explaining how to build a website here, you can just code one from scratch with HTML and CSS if you know how, or you can use a static site builder like <a href="https://astro.build" target="_blank">Astro</a> or <a href="https://nuxt.com" target="_blank">Nuxt</a>. Feel free to <a href="https://github.com/fullmetalbrackets/" target="_blank">check out one of my sites on GitHub</a>, fork it, change it to your liking, and use that. They're open source for a reason.
+
 4. You will need to install Docker and all it's dependencies, the Cloudflare tunnel runs as a Docker container and we'll also be using an Nginx container as the webserver. You can use Nginx "bare metal" if you prefer, but I won't explain how here.
 
 <div id='site' />
@@ -130,11 +133,11 @@ As I said, you'll need a Cloudflare account and a top-level domain that you own.
 
 ## Create and configure the Cloudflare tunnel
 
-Go to the _Cloudflare Zero Trust dashboard_ by clicking **Access** on the sidebar, then click on **Launch Zero Trust** to open it in a new tab. Once at the Zero Trust dashboard, do the following:
+From the Cloudflare dashboard Home page, click on **Zero Trust** on the sidebar to go to the **Zero Trust dashboard**, then do the following:
 
 1. On the sidebar, go to **Network** -> **Tunnels** and click the **Create a tunnel** button.
 
-2. Choose **Cloudflared** as the connector and click **Next**, give it a name and, and click **Next** again.
+2. Choose **Cloudflared** as the connector and click **Next**, give it a name and, and click **Save tunnel**.
 
 <img src="/img/blog/cloudflare-tunnel1.png" loading="lazy" decoding="async" alt="Important" />
 
@@ -164,23 +167,29 @@ services:
       - TUNNEL_TOKEN=
 ```
 
-Add the **Cloudflare tunnel token** to the `TUNNEL_TOKEN=` environmental variable, the use `docker-compose up -d`. Once the container is up and running, check Cloudflare — reload the page if necessary or wait a few minutes, your tunnel will eventually show as **Healthy** status. Once it does, click the **Next** button.
+5. Add the **Cloudflare tunnel token** to the `TUNNEL_TOKEN=` environmental variable, save the file, and use the command `docker-compose up -d`. Once the container is up and running, check the Cloudflare configure tunnel page, your tunnel should show as **Healthy** status.
 
 <img src="/img/blog/cloudflare-tunnel3.png" loading="lazy" decoding="async" alt="Important" />
 
-Now you'll be in the _Route Traffic_ page, under the **Public Hostnames** tab do the following:
+6. Once the tunnel shows as Healthy, click the **Next** button. Now you'll be in the _Route tunnel_ page, under the **Public Hostnames** tab do the following:
 
-1. Leave the **Subdomain** empty, it's unnecessary for our purposes here.
+<img src="/img/blog/cloudflare-tunnel4.png" loading="lazy" decoding="async" alt="Important" />
 
-2. For **Domain** type in your domain.
+7. For our purposes (hosting a site at the root of `your-domain.com`) you should leave the **Subdomain** empty. If you prefer for your site to be accessible at, say, `blog.your-domain.com` then set that subdomain here.
 
-3. Leave the **Path** empty as well.
+8. For **Domain** type in your domain that was previously added to Cloudflare.
 
-4. Under _Service_, for **Type** select **HTTP** (not HTTPS) from the dropdown menu.
+9. Leave the **Path** empty, unless you want the URL to be, for example, `your-domain.com/blog`.
 
-5. For **URL**, put the full LAN (internal) IP address of the machine that will host the site, and append the port you set for the docker container -- for example `192.168.1.100:8888`. (I suggest not using `localhost:8888` despite what the example says.)
+10. Under _Service_, for **Type** select **HTTP** (not HTTPS) from the dropdown menu.
 
-6. ?
+11. For **URL**, put the full LAN (internal) IP address of the machine that will host the site, and append the port you set for the docker container -- for example `192.168.1.100:8888`. (Don't use `localhost:8888` despite what the example says.)
+
+12. When done filling everything in, click **Save**.
+
+Now you will be back at the **Tunnels** page. Under **Your tunnels**, the tunnel you just created should appear and still show **Healthy** status.
+
+<img src="/img/blog/cloudflare-tunnel5.png" loading="lazy" decoding="async" alt="Tunnel" />
 
 Now you should be able to visit `https://your-domain.com` to hit your website!
 
