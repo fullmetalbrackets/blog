@@ -167,7 +167,7 @@ services:
       - TUNNEL_TOKEN=
 ```
 
-5. Add the **Cloudflare tunnel token** to the `TUNNEL_TOKEN=` environmental variable, save the file, and use the command `docker-compose up -d`. Once the container is up and running, check the Cloudflare configure tunnel page, your tunnel should show as **Healthy** status.
+5. Add the **Cloudflare tunnel token** to the `TUNNEL_TOKEN=` environmental variable, save the file, and use the command `docker-compose up -d`. Once the container is up and running, check the Cloudflare configure tunnel page, your connector status be **Connected**.
 
 <img src="/img/blog/cloudflare-tunnel3.png" loading="lazy" decoding="async" alt="Important" />
 
