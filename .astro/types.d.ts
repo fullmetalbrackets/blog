@@ -220,6 +220,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"git-push-error-permissions.md": {
+	id: "git-push-error-permissions.md";
+  slug: "git-push-error-permissions";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "guide-to-zsh-ohmyzsh-plugins-and-theme.md": {
 	id: "guide-to-zsh-ohmyzsh-plugins-and-theme.md";
   slug: "guide-to-zsh-ohmyzsh-plugins-and-theme";
@@ -677,6 +684,11 @@ declare module 'astro:content' {
 };
 "css-filter": {
 	id: "css-filter";
+  collection: "links";
+  data: InferEntrySchema<"links">
+};
+"decomposerize": {
+	id: "decomposerize";
   collection: "links";
   data: InferEntrySchema<"links">
 };
