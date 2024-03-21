@@ -39,7 +39,7 @@ Explanation:
 
 - `/home/ross/media` is the directory to be shared by the NFS server. (Obviously, set this to whatever you want.)
 - `*` makes the share accessible by ALL clients on the network, you can also specify an IP address or multiple IPs separated by space after the parenthesis. (See below for example.)
-- `rw` enables clients to both read and write> Without this NFS defaults to read-only, so be sure to specify it.
+- `rw` enables clients to both read and write. Without this NFS defaults to read-only, so be sure to specify it.
 - `no_subtree_check` makes NFS not check if each subdirectory is accessible to the user which may slightly improve reliability, but slightly reduce security. <a href="https://linux.die.net/man/5/exports#no_subtree_check:~:text=no_subtree_check,change%20is%20pending." target="_blank">See here for details.</a>
 
 You can alternately make the share accessible only to one or a few specific IPs, and specify different rules for each, for example:
