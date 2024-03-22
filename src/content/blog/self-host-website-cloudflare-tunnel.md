@@ -2,7 +2,7 @@
 title: "Complete guide to self-hosting a website through Cloudflare Tunnel"
 description: "In this guide I demonstrate how to self-host a static web blog and expose it to the internet via a Cloudflare tunnel."
 pubDate: 2023-12-29
-updatedDate: 2024-02-29
+updatedDate: 2024-03-20
 tags:
   - Self-Hosting
   - Cloudflare
@@ -28,8 +28,11 @@ You can very easily set up and host a website via Netlify, Cloudflare Pages, or 
 First, requirements:
 
 1. You need to create a free Cloudflare account.
+
 2. You need to own a domain. Look on Namecheap and Porkbun (or any domain registrar you prefer) for cheap domains, like those ending with `.cc` or `.us` -- they can usually be bought for less then $10 and often for as low as $4 or $5. (This is the price for the first year, to hook you, but annual domain renewals can cost more after that first year, so do your research.) Alternately you could set up something like <a href="https://www.duckdns.org" target="_blank">DuckDNS</a> to avoid buying a domain, but you're on your own there -- domains are so cheap I've never bothered.
+
 3. You'll need a website. I won't be explaining how to build a website here, you can just code one from scratch with HTML and CSS if you know how, or you can use a static site builder like <a href="https://astro.build" target="_blank">Astro</a> or <a href="https://nuxt.com" target="_blank">Nuxt</a>. Feel free to <a href="https://github.com/fullmetalbrackets/" target="_blank">check out one of my sites on GitHub</a>, fork it, change it to your liking, and use that. They're open source for a reason.
+
 4. You will need to install Docker and all it's dependencies, the Cloudflare tunnel runs as a Docker container and we'll also be using an Nginx container as the webserver. You can use Nginx "bare metal" if you prefer, but I won't explain how here.
 
 <div id='site' />
@@ -53,7 +56,7 @@ services:
   site:
     restart: unless-stopped
     container_name: site
-    image: nginx:1.23.3-alpine
+    image: nginx:alpine
     volumes:
       - /home/bob/sites/my-cool-blog/dist/:/usr/share/nginx/html/
     ports:
@@ -100,9 +103,13 @@ Now use the command `docker compose up -d` to download the Nginx container image
 
 As I said, you'll need a Cloudflare account and a top-level domain that you own. Login to Cloudflare account and do the following:
 
-1. Go to **Websites** on the sidebar if you’re not already there, and click the **Add a site** button.
+1. Go to **Websites** on the sidebar and click the **Add a site** button.
+
+<img src="/img/blog/cloudflare-domain.png" loading="lazy" decoding="async" alt="Important" />
 
 2. Enter your domain and click **Add site**, then click on the **Free plan** at the bottom and click **Continue**.
+
+<img src="/img/blog/cloudflare-free.png" loading="lazy" decoding="async" alt="Important" />
 
 3. After waiting a few moments for the DNS quick scan, you should see your domain’s DNS records appear. Click on **Continue**.
 
@@ -126,22 +133,26 @@ As I said, you'll need a Cloudflare account and a top-level domain that you own.
 
 ## Create and configure the Cloudflare tunnel
 
-Go to the _Cloudflare Zero Trust dashboard_ by clicking **Access** on the sidebar, then click on **Launch Zero Trust** to open it in a new tab. Once at the Zero Trust dashboard, do the following:
+From the Cloudflare dashboard Home page, click on **Zero Trust** on the sidebar to go to the **Zero Trust dashboard**, then do the following:
 
-1. On the sidebar, go to **Access** -> **Tunnels**.
+1. On the sidebar, go to **Network** -> **Tunnels** and click the **Create a tunnel** button.
 
-2. Click the **Create a tunnel** button, give it a name, and click **Save tunnel**.
+2. Choose **Cloudflared** as the connector and click **Next**, give it a name and, and click **Save tunnel**.
 
-3. The next page will provide a docker command to run, but rather than copying and pasting the command as is, we'll again use **Docker Compose** to run `cloudflared`. All we will need is the token Open the `docker-compose.yaml` file and add the following so it looks like the below:
+<img src="/img/blog/cloudflare-tunnel1.png" loading="lazy" decoding="async" alt="Important" />
+
+3. The next page will provide a docker command to install and run the `cloudflared` container.
+
+<img src="/img/blog/cloudflare-tunnel2.png" loading="lazy" decoding="async" alt="Important" />
+
+4. Rather than copying and pasting the provided docker run command, we'll use **Docker Compose** to run `cloudflared`. All we will need is the Cloudflare tunnel token provided along with the docker run command. Open the `docker-compose.yaml` file and add the following so it looks like the below:
 
 ```yaml
-version: "3.8"
-
 services:
   site:
     restart: unless-stopped
     container_name: site
-    image: nginx:1.23.3-alpine
+    image: nginx:alpine
     volumes:
       - /home/bob/sites/my-cool-blog/dist/:/usr/share/nginx/html/
     ports:
@@ -156,17 +167,31 @@ services:
       - TUNNEL_TOKEN=
 ```
 
-Add the **Cloudflare tunnel token** to the `TUNNEL_TOKEN=` environmental variable, the use `docker-compose up -d`. Once the container is up and running, check Cloudflare — reload the page if necessary or wait a few minutes, your tunnel will eventually show as **Healthy** status. Once it does, click the **Next** button.
+5. Add the **Cloudflare tunnel token** to the `TUNNEL_TOKEN=` environmental variable, save the file, and use the command `docker-compose up -d`. Once the container is up and running, check the Cloudflare configure tunnel page, your connector status be **Connected**.
 
-Now you'll be in the _Route Traffic_ page, under the **Public Hostnames** tab do the following:
+<img src="/img/blog/cloudflare-tunnel3.png" loading="lazy" decoding="async" alt="Important" />
 
-1. Leave the **Subdomain** empty, it's unnecessary for our purposes here.
-2. For **Domain** type in your domain.
-3. Leave the **Path** empty as well.
-4. Under _Service_, for **Type** select **HTTP** (not HTTPS) from the dropdown menu.
-5. For **URL**, put the full LAN (internal) IP address of the machine that will host the site, and append the port you set for the docker container -- for example `192.168.1.100:8888`. (Using `localhost:8888` like the example says may work, but I always just use the full IP.)
+6. Once the tunnel shows as Healthy, click the **Next** button. Now you'll be in the _Route tunnel_ page, under the **Public Hostnames** tab do the following:
 
-you should be able to visit `https://your-domain.com` to hit your website!
+<img src="/img/blog/cloudflare-tunnel4.png" loading="lazy" decoding="async" alt="Important" />
+
+7. For our purposes (hosting a site at the root of `your-domain.com`) you should leave the **Subdomain** empty. If you prefer for your site to be accessible at, say, `blog.your-domain.com` then set that subdomain here.
+
+8. For **Domain** type in your domain that was previously added to Cloudflare.
+
+9. Leave the **Path** empty, unless you want the URL to be, for example, `your-domain.com/blog`.
+
+10. Under _Service_, for **Type** select **HTTP** (not HTTPS) from the dropdown menu.
+
+11. For **URL**, put the full LAN (internal) IP address of the machine that will host the site, and append the port you set for the docker container -- for example `192.168.1.100:8888`. (Don't use `localhost:8888` despite what the example says.)
+
+12. When done filling everything in, click **Save**.
+
+Now you will be back at the **Tunnels** page. Under **Your tunnels**, the tunnel you just created should appear and still show **Healthy** status.
+
+<img src="/img/blog/cloudflare-tunnel5.png" loading="lazy" decoding="async" alt="Tunnel" />
+
+Now you should be able to visit `https://your-domain.com` to hit your website!
 
 <div id='redirect'>
 
@@ -174,7 +199,7 @@ you should be able to visit `https://your-domain.com` to hit your website!
 
 Right now, going to `your-domain.com` should work, but you may notice that going to `www.your-domain.com` does not. Normally you'd set up an A record in your webhost's DNS settings, but Cloudflare Tunnels work a little differently -- they don't use A records. Instead, we'll set up a CNAME for `www`, point it at the tunnel ID, and create a redirect rule.
 
-First, let's add the DNS record.
+First, let's add the **DNS record**.
 
 1. On the Cloudflare dashboard, click on your domain, then on the sidebar open the **DNS** dropdown and click **Records**.
 
@@ -188,7 +213,7 @@ First, let's add the DNS record.
 
 6. Click the **Save** button.
 
-Now for the redirect rule.
+Now for the **redirect rule**.
 
 1. On the Cloudflare dashboard, click on your domain, then on the sidebar open the **Rules** dropdown and click **Redirect Rules**.
 
@@ -223,11 +248,17 @@ Now when you go to `www.your-domain.com` it should redirect to `your-domain.com`
 Though optional, it's always good practice to set up your HTTP response headers on any website you host. If you check your site on <a href="https://securityheaders.com/" target="_blank">securityheaders.com</a> you'll probably have an F grade. A lot of tech blogs don't bother with this, most that I have checked get a D+ at best, so don't think it's required by any stretch. However, if you feel like going that extra step to get an A+, here is how:
 
 1. Login to Cloudflare and on the sidebar go to **Rules** -> **Transform Rules**, choose the **Managed Transforms** tab.
+
 2. Under **HTTP response headers** click the switch for **Add security headers** to enable it.
+
 3. Next choose the **Modify Response Header** tab and click **Create Rule**.
+
 4. Name the rule (e.g. "CSP headers"), scroll down to **If...** and choose **All incoming requests**.
+
 5. Scroll down to **Then...** and in the **Select item...** dropdown choose **Set static** -- click the **Set new header** button again to add a second rule, and choose **Set static** for it as well.
+
 6. We're going to add two rules. In the first rule, for **header name** type in the `content-security-policy` and for **value** type in `upgrade-insecure-requests`.
+
 7. For the second rule, for **header name** type in `permissions-policy` and for **value** type in `geolocation=(self)`.
 
 Note that for the `permissions-policy` I've chosen to disable everything since I don't use these features on my blog. If you plan to use something, for example geolocation, you'd have to instead use `geolocation=self`. (See more about <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Permissions_Policy" target="_blank">Permission Policy at MDN Docs</a>.)

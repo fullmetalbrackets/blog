@@ -17,14 +17,17 @@ const desc = "List of all wiki articles";
     font-size: 1em;
   }
   li {
-    margin: 0 auto 1em auto;
+    margin: 0 auto;
+    padding-bottom: 0.25em;
+    margin-bottom: 2em;
+  }
+  div {
+    padding-bottom: 0.25em;
+    border-bottom: 2px solid transparent;
   }
   span, p {
     margin: 0 auto;
     padding: 0 auto;
-  }
-  .desc {
-    margin-bottom: 2em;
   }
   .title {
     margin: 0 auto;
@@ -34,8 +37,12 @@ const desc = "List of all wiki articles";
   .title a:visited {
     color: var(--primary);
   }
-  .title a:hover {
-    color: var(--menu);
+  li:hover div {
+    border-bottom: 2px solid var(--hover);
+    cursor: pointer;
+  }
+  li:hover .title {
+    color: var(--hover);
   }
   @media screen and (min-width: 200px) and (max-width: 667px) {
     .title {
@@ -58,10 +65,12 @@ const desc = "List of all wiki articles";
             <p>
               <FormattedDate date={post.data.pubDate} />
             </p>
-            <a href={`/wiki/${post.slug}/`} rel="prefetch-intent">
+            <div>
+              <a href={`/wiki/${post.slug}/`} rel="prefetch-intent">
               <span class="title">{post.data.title}</span>
               <p class="desc">{post.data.description}</p>
               </a>
+            </div>
           </li>
         ))
       }

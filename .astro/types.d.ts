@@ -220,6 +220,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"git-push-error-permissions.md": {
+	id: "git-push-error-permissions.md";
+  slug: "git-push-error-permissions";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "guide-to-zsh-ohmyzsh-plugins-and-theme.md": {
 	id: "guide-to-zsh-ohmyzsh-plugins-and-theme.md";
   slug: "guide-to-zsh-ohmyzsh-plugins-and-theme";
@@ -542,6 +549,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"two-drives-mergerfs.md": {
+	id: "two-drives-mergerfs.md";
+  slug: "two-drives-mergerfs";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "using-dns-over-https-with-pihole.md": {
 	id: "using-dns-over-https-with-pihole.md";
   slug: "using-dns-over-https-with-pihole";
@@ -628,6 +642,13 @@ declare module 'astro:content' {
   collection: "wiki";
   data: any
 } & { render(): Render[".md"] };
+"spud.md": {
+	id: "spud.md";
+  slug: "spud";
+  body: string;
+  collection: "wiki";
+  data: any
+} & { render(): Render[".md"] };
 "zsh-config-files.md": {
 	id: "zsh-config-files.md";
   slug: "zsh-config-files";
@@ -663,6 +684,11 @@ declare module 'astro:content' {
 };
 "css-filter": {
 	id: "css-filter";
+  collection: "links";
+  data: InferEntrySchema<"links">
+};
+"decomposerize": {
+	id: "decomposerize";
   collection: "links";
   data: InferEntrySchema<"links">
 };

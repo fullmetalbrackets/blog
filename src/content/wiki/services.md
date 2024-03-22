@@ -20,13 +20,13 @@ tags:
 - Paperless-ngx
 - Speedtest Tracker
 - Twingate Connector
+- Portainer
 
 # Potato
 
 - Cockpit (bare metal)
 - Pi-Hole (bare metal)
 - Uptime Kuma
-- Nginx + Cloudflare Tunnel
 - Nginx Proxy Manager
 - Home Assistant
 - Mosquitto

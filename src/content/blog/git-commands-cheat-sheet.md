@@ -292,7 +292,3 @@ There's more advanced commands I'm not going to talk about until I use them myse
 - <a href="https://git-scm.com/docs/git" target="_blank">Git Documentation</a>
 - <a href="https://training.github.com/downloads/github-git-cheat-sheet" target="_blank">GitHub Cheat Sheet</a>
 - Many questions and answers on <a href="https://stackoverflow.com" target="_blank" rel="noopener noreferrer">StackOverflow</a>
-
-```
-
-```

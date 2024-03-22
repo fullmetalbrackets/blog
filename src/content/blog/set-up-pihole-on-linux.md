@@ -24,7 +24,7 @@ tags:
 
 ## Pre-Requisites and Preparations
 
-Before anything, make sure the machine you're installing Pi-Hole on <a href="https://arieldiaz.codes/blog/set-static-ip-debian" target="_blank">has a static IP</a>, the installer will bug you about this too. Also, Pi-Hole will run a web server at ports 80 and 443, for serving the web UI page, so make sure no other web server like Apache or NGinx is running.
+Before anything, make sure the machine you're installing Pi-Hole on <a href="/blog/set-static-ip-debian" target="_blank">has a static IP</a>, the installer will bug you about this too. Also, Pi-Hole will run a web server at ports 80 and 443, for serving the web UI page, so make sure no other web server like Apache or NGinx is running.
 
 Also, when installing Pi-Hole on Ubuntu you may get an error message along the lines of this:
 

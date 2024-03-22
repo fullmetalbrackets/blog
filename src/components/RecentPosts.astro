@@ -23,14 +23,15 @@ const posts = (await getCollection("blog")).sort(
     font-size: 90%;
   }
   ul {
-    width: 85%;
     margin-bottom: 0;
   }
   li {
     display: inline-flex;
     flex-direction: column;
-    margin: 0 2em 2em -1em;
+    margin: 0 2em 2em -1.8em;
+    padding-bottom: 0.25em;
     line-height: 1.2;
+    border-bottom: 2px solid transparent;
   }
   .recent-posts-line {
     margin: 1em 0 2em 0;
@@ -61,8 +62,12 @@ const posts = (await getCollection("blog")).sort(
     -moz-transition: all 0.1s ease-out;
     -o-transition: all 0.1s ease-out;
     transition: all 0.1s ease-out;
-    margin: 0 0 0 1em;
+    margin-left: 0.25em;
     font-family: "M Plus Rounded 1c Med";
+  }
+  li:hover {
+    padding-bottom: 0.25em;
+    border-bottom: 2px solid var(--hover);
   }
   @media (hover: hover) {
     a:hover button {
@@ -90,7 +95,7 @@ const posts = (await getCollection("blog")).sort(
       margin: 0;
     }
     li {
-      margin: 0 1em 2em -1em;
+      margin: 0 1em 2em -1.8em;
     }
   }
 </style>

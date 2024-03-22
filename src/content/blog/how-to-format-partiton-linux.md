@@ -63,5 +63,5 @@ You’d then use `mkfs` as above to format the partition with a filesystem, if o
 
 ## References
 
-- [fdisk man page](https://man7.org/linux/man-pages/man8/fdisk.8.html)
-- [mkfs man page](https://man7.org/linux/man-pages/man8/mkfs.8.html)
+- <a href="https://man7.org/linux/man-pages/man8/fdisk.8.html" target="_blank">FDisk man page</a>
+- <a href="https://man7.org/linux/man-pages/man8/mkfs.8.html" target="_blank">MKFS man page</a>

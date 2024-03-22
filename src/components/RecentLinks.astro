@@ -15,7 +15,7 @@ const links = (await getCollection("links")).sort(
   ul li {
     display: flex;
     flex-direction: column;
-    margin-left: 1em;
+    margin-left: 0.25em;
     margin-bottom: 2em;
   }
   a button {
@@ -31,8 +31,12 @@ const links = (await getCollection("links")).sort(
     -moz-transition: all 0.1s ease-out;
     -o-transition: all 0.1s ease-out;
     transition: all 0.1s ease-out;
-    margin: 0 0 5em 1em;
+    margin: 0 0 5em 0.25em;
     font-family: "M Plus Rounded 1c Med";
+  }
+  section a:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--link);
   }
   @media (hover: hover) {
     a:hover button {

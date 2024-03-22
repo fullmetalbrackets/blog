@@ -2,6 +2,7 @@
 title: "How to run self-hosted FileBrowser in Docker"
 description: "FileBrowser is a self-hosted file manager for a specified directory in a Linux machine that lets you upload, download, move, copy, create, delete, rename, and edit your files in a nice web interface through your browser. Here's a quick guide to setting it up in Docker."
 pubDate: 2022-11-04
+updateDate: 2024-03-16
 tags:
   - Self-Hosting
   - FileBrowser
@@ -20,19 +21,13 @@ tags:
 
 ## Pre-Requisites
 
-It should go without saying, you need Docker installed to do this. Use the below commands if you don't have it installed yet:
+It should go without saying, you need Docker installed to do this. If you don't have it installed yet, the easiest way is to run Docker's installation script from the terminal.
 
 ```bash
-sudo apt install docker.io -y
-sudo systemctl start docker
-sudo systemctl enable docker
+curl -fsSL get.docker.com | sudo sh
 ```
 
-That's all you need, but I'm also going to explain how to install via docker-compose. So make sure that's installed too if you're going to go that route:
-
-```bash
-sudo apt install docker-compose -y
-```
+This script will install all Docker packages and the Docker Compose plugin, the latter of which we will use to install Filebrowser.
 
 <div id='config'/>
 
@@ -50,8 +45,8 @@ sudo apt install docker-compose -y
 Before starting the container, you need to create the FileBrowser directory, and within it a config file and database file. I'll be using FileBrowser's own suggested configuration with defaults.
 
 ```bash
-mkdir filebrowser filebrowser/database
-touch filebrowser/settings.json filebrowser/database/filebrowser.db
+mkdir filebrowser
+touch filebrowser/settings.json filebrowser/filebrowser.db
 ```
 
 Now edit the `settings.json` file and copy/paste the below:
@@ -77,7 +72,7 @@ We will assume you want to use FileBrowser to manage your home directory `~/` (t
 
 ### Using docker run:
 
-If you're just using Docker without Docker-Compose, use these commands:
+If you're just using Docker without Docker Compose, use these commands:
 
 ```bash
 docker run \
@@ -90,9 +85,9 @@ docker run \
     filebrowser/filebrowser:s6
 ```
 
-### Using docker-compose:
+### Using docker compose:
 
-If you want to use Docker-Compose, here's the contents of the `docker-compose.yaml`:
+If you want to use Docker Compose, here's the contents of the `docker-compose.yaml`:
 
 ```yaml
 version: "3"
@@ -117,7 +112,7 @@ services:
 Make sure to use your own timezone, PUID and PGID. Now go to the directory containing the `docker-compose.yaml` and run the below command:
 
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
 Once the container is up and running, go to `http://ip-address:8080` in your web browser. (Substitute your own IP address and configured port.) You should see a login page, the default username and password are both _admin_ -- you can change this in the Settings page of the web UI later. Once logged in you should see the contents of the directory you configured displayed.
@@ -128,4 +123,4 @@ Once the container is up and running, go to `http://ip-address:8080` in your web
 
 - <a href="https://filebrowser.org" target="_blank">FileBrowser documentation</a>
 - <a href="https://docs.docker.com" target="_blank">Docker documentation</a>
-- <a href="https://docs.docker.com/compose/" target="_blank">Docker-Compose documentation</a>
+- <a href="https://docs.docker.com/compose/" target="_blank">Docker Compose documentation</a>

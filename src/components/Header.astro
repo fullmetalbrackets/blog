@@ -18,9 +18,9 @@ import HeaderLink from "./HeaderLink.astro";
     </div>
     <div>
       <HeaderLink href="/">Home</HeaderLink>
-      <HeaderLink href="/blog">Blog</HeaderLink>
-      <HeaderLink href="/wiki">Wiki</HeaderLink>
-      <HeaderLink href="/links">Links</HeaderLink>
+      <HeaderLink href="/blog" rel="prefetch-intent" class="nav-link">Blog</HeaderLink>
+      <HeaderLink href="/wiki" rel="prefetch-intent" class="nav-link">Wiki</HeaderLink>
+      <HeaderLink href="/links" rel="prefetch-intent" class="nav-link">Links</HeaderLink>
       <HeaderLink href="/search" rel="prefetch-intent" class="search-link">
         <svg
           role="img"
@@ -50,7 +50,7 @@ import HeaderLink from "./HeaderLink.astro";
   }
   header div {
     display: flex;
-    justify-content: left;
+    justify-content: space-between;
     align-items: center;
   }
   nav {
@@ -60,22 +60,23 @@ import HeaderLink from "./HeaderLink.astro";
     justify-content: space-between;
   }
   nav a {
-    padding: 1em 0 1em 0.5em;
     color: var(--link);
-    border-bottom: 4px solid transparent;
     text-decoration: none;
+    margin: auto 0.25em;
+    border: 2px solid transparent;
   }
   nav a:hover {
     color: var(--hover);
+    border-bottom: 2px solid var(--menu);
   }
   nav a.active {
-    text-decoration: none;
+    color: var(--hover);
+    border-bottom: 2px solid var(--menu);
   }
   .search {
-    margin: 0;
-    padding: 0;
-    height: 24px;
-    width: 24px;
     filter: var(--search);
+  }
+  svg {
+    margin: 2.8px 0;
   }
 </style>
