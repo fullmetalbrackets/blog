@@ -70,7 +70,7 @@ Use this minimal `smb.conf`:
 
 <div class="note">
   <span>
-    <img src="/img/assets/note.svg" class="note-icon" loading="lazy" decoding="async" alt="Note" />
+    <img src="/assets/note.svg" class="note-icon" loading="lazy" decoding="async" alt="Note" />
     <b>Note</b>
   </span>
   <p>
@@ -92,7 +92,7 @@ sudo systemctl smbd nmbd
 
 Now you should be able to access the share from a Windows PC on the same network without being prompted for a login.
 
-<img src="/img/blog/public.png" loading="lazy" decoding="async" alt="Screenshot of Windows Run" />
+![Windows Run.](../../img/blog/public.png)
 
 <div id='ref' />
 

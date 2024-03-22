@@ -20,7 +20,7 @@ tags:
 <div>
   <div class="info">
     <span>
-      <img src="/img/assets/info.svg" class="info-icon" loading="eager" decoding="async" alt="TL;DR" />
+      <img src="/assets/info.svg" class="info-icon" loading="eager" decoding="async" alt="TL;DR" />
       <b>TL;DR</b>
     </span>
     <p>
@@ -122,42 +122,42 @@ The `manifest.json` file that tells the browser how the PWA should behave when i
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/img/icon-72x72.png",
+      "src": "/icon-72x72.png",
       "type": "image/png",
       "sizes": "72x72"
     },
     {
-      "src": "/img/icon-96x96.png",
+      "src": "/icon-96x96.png",
       "type": "image/png",
       "sizes": "96x96"
     },
     {
-      "src": "/img/icon-128x128.png",
+      "src": "/icon-128x128.png",
       "type": "image/png",
       "sizes": "128x128"
     },
     {
-      "src": "/img/icon-144x144.png",
+      "src": "/icon-144x144.png",
       "type": "image/png",
       "sizes": "144x144"
     },
     {
-      "src": "/img/icon-152x152.png",
+      "src": "/icon-152x152.png",
       "type": "image/png",
       "sizes": "152x152"
     },
     {
-      "src": "/img/icon-192x192.png",
+      "src": "/icon-192x192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "/img/icon-384x384.png",
+      "src": "/icon-384x384.png",
       "type": "image/png",
       "sizes": "384x384"
     },
     {
-      "src": "/img/icon-512x512.png",
+      "src": "/icon-512x512.png",
       "type": "image/png",
       "sizes": "512x512"
     }

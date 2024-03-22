@@ -65,7 +65,7 @@ Install the NFS client package and all dependencies on a Linux host you want to 
 
 <div class="note">
   <span>
-    <img src="/img/assets/note.svg" class="note-icon" loading="lazy" decoding="async" alt="Note" />
+    <img src="/assets/note.svg" class="note-icon" loading="lazy" decoding="async" alt="Note" />
     <b>Note</b>
   </span>
   <p>

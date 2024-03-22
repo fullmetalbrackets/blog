@@ -9,7 +9,7 @@ tags:
   - Self-Hosting
 ---
 
-<img src="/img/blog/sweet-potato.jpg" loading="lazy" decoding="async" alt="Picture of Libre Computer's Sweet Potato Single-Board Computer." />
+![Libre Computer Sweet Potato SBC.](../../img/blog/sweet-potato.jpg)
 
 ## Sections
 
@@ -55,7 +55,7 @@ Since I already had an instance of Pi-Hole running on another host, I used <a hr
 
 Now that all my ad lists, DNS records and other settings are on the Sweet Potato's Pi-Hole instance, I wanted to set up **DNS over TLS with Unbound**. My main instance of Pi-Hole uses `cloudflared` for **DNS over HTTPS**, so I figured why not change it up here. (Someday I may keep this as the only Pi-Hole and remove the container instance from my home server, since it doesn't really need to be on 24/7 otherwise.)
 
-I followed the <a href="" target="_blank">official Pi-Hole docs instructions for using Unbound as a recursive DNS server</a> to the letter, and had everything up and running within 5 minutes. In short:
+I followed the <a href="https://docs.pi-hole.net/guides/dns/unbound/" target="_blank">official Pi-Hole docs instructions for using Unbound as a recursive DNS server</a> to the letter, and had everything up and running within 5 minutes. In short:
 
 1. Install Unbound via the Debian package manager:
 

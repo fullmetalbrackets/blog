@@ -8,7 +8,7 @@ tags:
   - Command Line
 ---
 
-<img src="/img/blog/oh-my-zsh.png" loading="lazy" decoding="async" alt="Oh-My-Zsh Logo" />
+![Oh-My-Zsh](../../img/blog/oh-my-zsh.png)
 
 ## Sections
 

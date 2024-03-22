@@ -11,7 +11,7 @@ tags:
 <div>
   <div class="note">
     <span>
-      <img src="/img/assets/note.svg" class="note-icon" loading="eager" decoding="async" alt="Note" />
+      <img src="/assets/note.svg" class="note-icon" loading="eager" decoding="async" alt="Note" />
       <b>Note</b>
     </span>
     <p>
@@ -22,7 +22,7 @@ tags:
 
 I was having some issue getting this to work on a static (not SSR) site made with Nuxt, and although I read through a bunch of blog articles, most of them seemed to be missing some piece of information or other that made it not work for me. After mixing and matching some of the instructions, and combining the useful info with the official Nuxt documentation, I finally did all the necessary steps and got it to work. So here's a clear, succinct guide to using Prism.js in a Nuxt static site.
 
-These instructions assume you are using the [Nuxt/Content](https://github.com/nuxt/content) module. First things first, let's add Prism.js as a dependency.
+These instructions assume you are using the <a href="https://github.com/nuxt/content" target="_blank">Nuxt/Content</a> module. First things first, let's add Prism.js as a dependency.
 
 Install via Yarn:
 
@@ -56,7 +56,7 @@ I know setting `theme: false` seems counter-intuitive, but it's necessary for Pr
 
 ## Create plugin for Prism
 
-If it doesn't already exist, create a directory in your project root named **/plugins**, and within it create a file named **prism.js**. We want to import all the things we need in **/plugins/prism.js**:
+If it doesn't already exist, create a directory in your project root named `/plugins`, and within it create a file named `prism.js`. We want to import all the things we need in `/plugins/prism.js`:
 
 ```js
 import Prism from "prismjs";
@@ -87,7 +87,7 @@ This particular file will import Prism, import the Okaidia theme (which comes in
 
 ## Import Prism to \_slug.vue
 
-Now we need to edit the **\_slug.vue** file in the **/pages** directory that is used to generate your individual blog posts/articles/whatever. It may be located in another sub-directory like **/pages/blog/\_slug.vue**. Edit the file and add this to the script section:
+Now we need to edit the `slug.vue` file in the `/pages` directory that is used to generate your individual blog posts/articles/whatever. It may be located in another sub-directory like `/pages/blog/_slug.vue`. Edit the file and add this to the script section:
 
 ```js
 // _slug.vue
@@ -116,5 +116,5 @@ p code {
 
 ## References
 
-- [Relevant section in the Nuxt docs](https://content.nuxtjs.org/writing#codeblocks)
-- [Google search with articles & blog posts that got me part of the way](https://www.google.com/search?q=prism+js+static+mode&oq=prism+js+static+mode)
+- <a href="https://content.nuxtjs.org/writing#codeblocks" target="_blank">Relevant section in the Nuxt docs</a>
+- <a href="https://www.google.com/search?q=prism+js+static+mode&oq=prism+js+static+mode" target="_blank">Google search with articles & blog posts that got me part of the way</a>

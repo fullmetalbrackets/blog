@@ -19,7 +19,7 @@ tags:
 <div>
   <div class="note">
     <span>
-      <img src="/img/assets/note.svg" class="note-icon" loading="eager" decoding="async" alt="Note" />
+      <img src="/assets/note.svg" class="note-icon" loading="eager" decoding="async" alt="Note" />
       <b>Note</b>
     </span>
     <p>

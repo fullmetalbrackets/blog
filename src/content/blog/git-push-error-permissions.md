@@ -32,7 +32,7 @@ Coming from only working with Git and GitHub from Windows, I first encountered t
 <div>
   <div class="success">
     <span>
-      <img src="/img/assets/success.svg" class="success-icon" loading="eager" decoding="async" alt="Success" />
+      <img src="/assets/success.svg" class="success-icon" loading="lazy" decoding="async" alt="Success" />
       <b>Attribution</b>
     </span>
     <p>

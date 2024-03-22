@@ -46,7 +46,7 @@ But how to keep track of what files are in which hard drive? How to just not wor
 <div>
   <div class="note">
     <span>
-      <img src="/img/assets/note.svg" class="note-icon" loading="lazy" decoding="async" alt="Note" />
+      <img src="/assets/note.svg" class="note-icon" loading="lazy" decoding="async" alt="Note" />
       <b>Note</b>
     </span>
     <p>
@@ -99,7 +99,7 @@ UUID=cce7cdab-a2df-4d4f-aac3-98fab2afdbd5   /mnt/media3   ext4    errors=remount
 <div>
   <div class="note">
     <span>
-      <img src="/img/assets/note.svg" class="note-icon" loading="lazy" decoding="async" alt="Note" />
+      <img src="/assets/note.svg" class="note-icon" loading="lazy" decoding="async" alt="Note" />
       <b>Note</b>
     </span>
     <p>
@@ -126,7 +126,7 @@ movies  music  photos  tvshows
 
 <div class="success">
   <span>
-    <img src="/img/assets/success.svg" class="success-icon" loading="lazy" decoding="async" alt="Success" />
+    <img src="/assets/success.svg" class="success-icon" loading="lazy" decoding="async" alt="Success" />
     <b>Success!</b>
   </span>
   <p>

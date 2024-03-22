@@ -19,7 +19,7 @@ tags:
 <div>
   <div class="note">
     <span>
-      <img src="/img/assets/note.svg" class="note-icon" loading="eager" decoding="async" alt="Note" />
+      <img src="/assets/note.svg" class="note-icon" loading="eager" decoding="async" alt="Note" />
       <b>Note</b>
     </span>
     <p>
@@ -42,38 +42,20 @@ Finally, using the SMB option to transfer photos requires the NAS Add-On for Pho
 
 In the PhotoSync app, tap the _gear icon_ at the bottom-right corner to enter the Settings.
 
-<div class="two-img">
-  <div>
-    <a href="/img/blog/photosync1.jpg" target="_blank"><img src="/img/blog/photosync1.jpg" loading="lazy" decoding="async" alt="Screenshot of Photosync settings"></a>
-  </div>
-  <div>
-    <a href="/img/blog/photosync2.jpg" target="_blank"><img src="/img/blog/photosync2.jpg" loading="lazy" decoding="async" alt="Screenshot of Photosync settings"></a>
-  </div>
-</div>
+![PhotoSync settings.](../../img/blog/photosync1.jpg)
+![PhotoSync settings.](../../img/blog/photosync2.jpg)
 
 Under _Transfer Targets_ tap on _Configure_. On the following page choose _SMB_ from the list, then tap _Add New Configuration_.
 
-<div class="two-img">
-  <div>
-    <a href="/img/blog/photosync3.jpg" target="_blank"><img src="/img/blog/photosync3.jpg" loading="lazy" decoding="async" alt="Screenshot of Photosync SMB configuration"></a>
-  </div>
-  <div>
-    <a href="/img/blog/photosync4.jpg" target="_blank"><img src="/img/blog/photosync4.jpg" loading="lazy" decoding="async" alt="Screenshot of Photosync SMB configuration"></a>
-  </div>
-</div>
+![PhotoSync SMB configuration.](../../img/blog/photosync3.jpg)
+![PhotoSync SMB configuration.](../../img/blog/photosync4.jpg)
 
 Enter the IP address of the server where the Samba share is, enter the login and password (assuming you have it set up that way), then tap the _magnifying glass button next to Directory_. The app should automatically show any Samba shares already set up on the server, tap on the one you want to use. Next tap on _Connect_ at the top-right corner and if everything works correctly, you should be sent to the SMB target page.
 
 Now under _FOLDER SETTINGS_ tap on _Destination Folder_ and pick a directory in the share, if you'd like, or just use the Share's root directory if you prefer, then tap _Select_ on the top-right.
 
-<div class="two-img">
-  <div>
-    <a href="/img/blog/photosync5.jpg" target="_blank"><img src="/img/blog/photosync5.jpg" loading="lazy" decoding="async" alt="Screenshot of Photosync SMB account settings"></a>
-  </div>
-  <div>
-    <a href="/img/blog/photosync6.jpg" target="_blank"><img src="/img/blog/photosync6.jpg" loading="lazy" decoding="async" alt="Screenshot of Photosync SMB configuration"></a>
-  </div>
-</div>
+![PhotoSync SMB account settings.](../../img/blog/photosync5.jpg)
+![PhotoSync SMB configuration.](../../img/blog/photosync6.jpg)
 
 The rest of the settings you can set to your liking. If you haven't gotten any errors, everything should be working as intended. Tap on _Done_ to return to the app's main page.
 
@@ -83,22 +65,16 @@ The rest of the settings you can set to your liking. If you haven't gotten any e
 
 Back on the main page, tap the _red transfer icon at the top_, tap _All_ (or you can tap individual photos and choose _Selected_), then tap _SMB_.
 
-<div class="two-img">
-  <div>
-    <a href="/img/blog/photosync7.jpg" target="_blank"><img src="/img/blog/photosync7.jpg" loading="lazy" decoding="async" alt="Screenshot of Photosync photo transfer interface"></a>
-  </div>
-  <div>
-    <a href="/img/blog/photosync8.jpg" target="_blank"><img src="/img/blog/photosync8.jpg" loading="lazy" decoding="async" alt="Screenshot of Photosync photo transfer interface"></a>
-  </div>
-</div>
+![Transfering photos in PhotoSync.](../../img/blog/photosync7.jpg)
+![Transfering photos in PhotoSync.](../../img/blog/photosync8.jpg)
 
 Tap on the directory to transfer your photos into (keep in mind _Destination Folder_ and _Create Sub-Directories_ in the SMB Account setting from earlier) and tap Select, the photo transfer should begin.
 
-<a href="/img/blog/photosync9.jpg" target="_blank"><img src="/img/blog/photosync9.jpg" loading="lazy" decoding="async" alt="Screenshot of Photosync transfering photos"></a>
+![Transfering photos in PhotoSync.](../../img/blog/photosync9.jpg)
 
 <div class="success">
   <span>
-    <img src="/img/assets/success.svg" class="success-icon" loading="lazy" decoding="async" alt="Success" />
+    <img src="/assets/success.svg" class="success-icon" loading="lazy" decoding="async" alt="Success" />
     <b>Success!</b>
   </span>
   <p>
@@ -111,4 +87,4 @@ Tap on the directory to transfer your photos into (keep in mind _Destination Fol
 ## References
 
 - <a href="https://www.photosync-app.com/home" target="_blank">PhotoSync Website</a>
-- <a href="/blog/setup-a-samba-share-on-linux-via-command-line">My blog post on how to set up a Samba Share
+- <a href="/blog/setup-a-samba-share-on-linux-via-command-line">My blog post on how to set up a Samba Share</a>

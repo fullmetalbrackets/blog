@@ -11,7 +11,7 @@ tags:
 <div>
   <div class="note">
     <span>
-      <img src="/img/assets/note.svg" class="note-icon" loading="eager" decoding="async" alt="Note" /> 
+      <img src="/assets/note.svg" class="note-icon" loading="eager" decoding="async" alt="Note" /> 
       <b>Note</b>
     </span>
     <p>
@@ -64,7 +64,7 @@ export default {
 };
 ```
 
-If however you use another folder structure on your site, like in my case even though the raw markdown files are stored in `./content/articles` they are served via `./blog/name-of-post` because I wanted a dedicated page at [https://arieldiaz.codes/blog](https://arieldiaz.codes/blog) to list all my posts by date and have a search function. The above code won't work and when I went in search of a solution that would let me point the dynamic route at a specified directory, I couldn't really find a succinct way to do it. Finally I happened upon this Stack Overflow question that made me understand how to make it happen -- though in this case they are using axios, and I'm using Nuxt/Content's MongoDB-like query builder API, I just needed to use a mapping. So to make the sitemap module route correctly in this case, instead of the above, use this code in the `nuxt.config.js` file:
+If however you use another folder structure on your site, like in my case even though the raw markdown files are stored in `./content/articles` they are served via `./blog/name-of-post` because I wanted a dedicated page at [https://fullmetalbrackets.com/blog](https://fullmetalbrackets.com/blog) to list all my posts by date and have a search function. The above code won't work and when I went in search of a solution that would let me point the dynamic route at a specified directory, I couldn't really find a succinct way to do it. Finally I happened upon this Stack Overflow question that made me understand how to make it happen -- though in this case they are using axios, and I'm using Nuxt/Content's MongoDB-like query builder API, I just needed to use a mapping. So to make the sitemap module route correctly in this case, instead of the above, use this code in the `nuxt.config.js` file:
 
 ```js
 // nuxt.config.js
@@ -84,6 +84,6 @@ Voila! Now the sitemap module will generate the dynamic routes correctly with on
 
 ## References
 
-- [Nuxt/Sitemap Documentation, which didn't really help me to be honest](https://content.nuxtjs.org/integrations/#nuxtjssitemap)
-- [The google search results that got me part of the way](https://www.google.com/search?q=nuxt+sitemap+nuxt+content&oq=nuxt+sitemap+nuxt+content)
-- [The question on Stack Overflow that finally made it click for me](https://stackoverflow.com/questions/68114979/dynamically-generate-sitemap-using-nuxtjs-sitemap)
+- <a href="https://content.nuxtjs.org/integrations/#nuxtjssitemap" target="_blank">Nuxt/Sitemap Documentation, which didn't really help me to be honest</a>
+- <a href="https://www.google.com/search?q=nuxt+sitemap+nuxt+content&oq=nuxt+sitemap+nuxt+content" target="_blank">The google search results that got me part of the way</a>
+- <a href="https://stackoverflow.com/questions/68114979/dynamically-generate-sitemap-using-nuxtjs-sitemap" target="_blank">The question on Stack Overflow that finally made it click for me</a>

@@ -23,7 +23,7 @@ My personal use case is that my main home server, which doubles as a NAS, is a L
 
 <div class="info">
   <span>
-    <img src="/img/assets/info.svg" class="info-icon" loading="eager" decoding="async" alt="Information" />
+    <img src="/assets/info.svg" class="info-icon" loading="eager" decoding="async" alt="Information" />
     <b>Information</b>
   </span>
   <p>

@@ -6,7 +6,9 @@ tags:
   - Homelab
 ---
 
-# Dell Optiplex 3050 SFF\*
+![Dell Optiplex 3050 SFF](../../img/wiki/optiplex3050sff.jpg)
+
+# Dell Optiplex 3050 SFF
 
 - 256 GB NVMe SSD (Boot drive)
 - 1 TB 3.5" Internal HDD

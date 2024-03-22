@@ -7,7 +7,7 @@ tags:
   - Hardware
 ---
 
-![Dell Optiplex 3020 Micro](/img/wiki/optiplex3020micro.jpg)
+![Dell Optiplex 3020 Micro](../../img/wiki/optiplex3020micro.jpg)
 
 # Dell Optiplex 3020 Micro
 

@@ -11,7 +11,7 @@ tags:
 <div>
   <div class="note">
     <span>
-      <img src="/img/assets/note.svg" class="note-icon" loading="eager" decoding="async" alt="Note" />
+      <img src="/assets/note.svg" class="note-icon" loading="eager" decoding="async" alt="Note" />
       <b>Note</b>
     </span>
     <p>
@@ -28,47 +28,41 @@ tags:
 Make sure your Android Device is connected to the same network as the machine with the SMB share. Open the Solid Explorer app and
 tap the _hamburger menu_ at the top-left to bring up the menu, then tap the _3-dots_ and choose _Storage manager_.
 
-<div class="two-img">
-<a href="/img/blog/solidexplorer1.jpg" target="_blank"><img src="/img/blog/solidexplorer1.jpg" loading="lazy" decoding="async" alt="Screenshot of Solid Explorer menu." /></a> <a href="/img/blog/solidexplorer2.jpg" target="_blank"><img src="/img/blog/solidexplorer2.jpg" loading="lazy" decoding="async" alt="Screenshot of Solid Explorer, Storage manager sub-menu." /></a>
-</div>
+![Solid Explorer.](../../img/blog/solidexplorer1.jpg)
+![Storage manager in Solid Explorer.](../../img/blog/solidexplorer2.jpg)
+
 
 In Storage manager, tap the _Plus (+) button_ to add a new connection. In the _Network Connection Wizard_, choose _LAN / SMB_ and tap _Next_.
 
-<div class="two-img">
-<a href="/img/blog/solidexplorer3.jpg" target="_blank"><img src="/img/blog/solidexplorer3.jpg" loading="lazy" decoding="async" alt="Screenshot of Solid Explorer's Storage manager." /></a> <a href="/img/blog/solidexplorer4.jpg" target="_blank"><img src="/img/blog/solidexplorer4.jpg" loading="lazy" decoding="async" alt="Screenshot of Network Connection Wizard, Connection type menu." /></a>
-</div>
+![Storage manager in Solid Explorer.](../../img/blog/solidexplorer3.jpg)
+![Network Connection Wizard in Solid Explorer.](../../img/blog/solidexplorer4.jpg)
 
 You should see any SMB shares in your network under _server details_, choose one and tap _Next_. Choose your _authentication_ method and tap _Next_. (I suggest using _Username and password_ unless you have properly configured the SMB share for guest access, otherwise you may experience permissions issues.)
 
-<div class="two-img">
-<a href="/img/blog/solidexplorer5.jpg" target="_blank"><img src="/img/blog/solidexplorer5.jpg" loading="lazy" decoding="async" alt="Screenshot of Network Connection Wizard, server details." /></a> <a href="/img/blog/solidexplorer6.jpg" target="_blank"><img src="/img/blog/solidexplorer6.jpg" loading="lazy" decoding="async" alt="Screenshot of Network Connection Wizard, Authentication menu." /></a>
-</div>
+![Details in Network Connection Wizard.](../../img/blog/solidexplorer5.jpg)
+![Authentication in Network Connection Wizard.](../../img/blog/solidexplorer6.jpg)
 
 If you chose _Username and password_ authentication, you'll be prompted for the login info. Enter it and tap _Next_. On the next screen, I always choose _Yes_ to proceed to _Advanced Settings_. Tap _Next_.
 
-<div class="two-img">
-<a href="/img/blog/solidexplorer7.jpg" target="_blank"><img src="/img/blog/solidexplorer7.jpg" loading="lazy" decoding="async" alt="Screenshot of Network Connection Wizard, login page." /></a><a href="/img/blog/solidexplorer8.jpg" target="_blank"><img src="/img/blog/solidexplorer8.jpg" loading="lazy" decoding="async" alt="Screenshot of Network Connection Wizard, advanced settings." /></a>
-</div>
+![Login details in Network Connection Wizard.](../../img/blog/solidexplorer7.jpg)
+![Advanced settings in Network Connection Wizard.](../../img/blog/solidexplorer8.jpg)
 
 For _Protocol version_ choose the recommended _SMB 2_, then tap _Next_. You'll get to review your settings, if everything is correct tap _Next_.
 
-<div class="two-img">
-<a href="/img/blog/solidexplorer9.jpg" target="_blank"><img src="/img/blog/solidexplorer9.jpg" loading="lazy" decoding="async" alt="Screenshot of Network Connection Wizard, SMB Protocol version." /></a><a href="/img/blog/solidexplorer10.jpg" target="_blank"><img src="/img/blog/solidexplorer10.jpg" loading="lazy" decoding="async" alt="Screenshot of Network Connection Wizard, review page." /></a>
-</div>
+![SMB Protocol version in Network Connection Wizard.](../../img/blog/solidexplorer9.jpg)
+![Review in Network Connection Wizard.](../../img/blog/solidexplorer10.jpg)
 
 On the following screen, tap the big _Connect_ button. If everything is properly configured, the button will _turn green with a checkmark_. Tap _Finish_.
 
-<div class="two-img">
-<a href="/img/blog/solidexplorer11.jpg" target="_blank"><img src="/img/blog/solidexplorer11.jpg" loading="lazy" decoding="async" alt="Screenshot of Network Connection Wizard, Connect button." /></a><a href="/img/blog/solidexplorer12.jpg" target="_blank"><img src="/img/blog/solidexplorer12.jpg" loading="lazy" decoding="async" alt="Screenshot of Network Connection Wizard, connection successful." /></a>
-</div>
+![Connect button.](../../img/blog/solidexplorer11.jpg)
+![Connection successful.](../../img/blog/solidexplorer12.jpg)
 
 You'll see your server under _Storage manager_. Tap the _back arrow (<-)_ to go back to the menu. You should see the SMB share among the options under _Storages_.
 
-<div class="two-img">
-<a href="/img/blog/solidexplorer13.jpg" target="_blank"><img src="/img/blog/solidexplorer13.jpg" loading="lazy" decoding="async" alt="Screenshot of Storage manager showing the SMB share." /></a><a href="/img/blog/solidexplorer14.jpg" target="_blank"><img src="/img/blog/solidexplorer14.jpg" loading="lazy" decoding="async" alt="Screenshot of Solid Explorer menu, showing the SMB share under Storages." /></a>
-</div>
+![Storage manager showing SMB.](../../img/blog/solidexplorer13.jpg)
+![SMB share available in Storages.](../../img/blog/solidexplorer14.jpg)
 
 ## References
 
 - <a href="/setup-a-samba-share-on-linux-via-command-line" target="_blank">Blog post about setting up Samba share on Linux</a>
-- <a href="" target="_blank">Solid Explorer on the Google Play Store</a>
+- <a href="https://play.google.com/store/apps/details?id=pl.solidexplorer2&hl=en_US&gl=US&pli=1" target="_blank">Solid Explorer on the Google Play Store</a>

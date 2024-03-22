@@ -37,7 +37,7 @@ The first time you do this command, you'll be prompted to create an account, jus
 
 <div class="note">
   <span>
-    <img src="/img/assets/note.svg" class="note-icon" loading="lazy" decoding="async" alt="Note" />
+    <img src="/assets/note.svg" class="note-icon" loading="lazy" decoding="async" alt="Note" />
     <b>Note</b>
   </span>
   <p>
@@ -85,7 +85,7 @@ Alternately you can instead add an _A record_ set to IP address `45.55.110.124`
 
 <div class="note">
   <span>
-    <img src="/img/assets/note.svg" class="note-icon" loading="lazy" decoding="async" alt="Note" />
+    <img src="/assets/note.svg" class="note-icon" loading="lazy" decoding="async" alt="Note" />
     <b>Note</b>
   </span>
   <p>
@@ -107,7 +107,7 @@ echo custom-domain.com > CNAME
 
 <div class="alert">
   <span>
-    <img src="/img/assets/alert.svg" class="alert-icon" loading="lazy" decoding="async" alt="Important" />
+    <img src="/assets/alert.svg" class="alert-icon" loading="lazy" decoding="async" alt="Important" />
     <b>Important!</b>
   </span>
   <p>
@@ -131,7 +131,7 @@ bower_components
 
 <div class="note">
   <span>
-    <img src="/img/assets/note.svg" class="note-icon" loading="lazy" decoding="async" alt="Note" />
+    <img src="/assets/note.svg" class="note-icon" loading="lazy" decoding="async" alt="Note" />
     <b>Note</b>
   </span>
   <p>

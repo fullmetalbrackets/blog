@@ -7,6 +7,8 @@ tags:
   - Ansible
 ---
 
+<img src="/ansible.svg" alt="Ansible" loading="eager" encoding="async" />
+
 # Ansible files
 
 ```bash

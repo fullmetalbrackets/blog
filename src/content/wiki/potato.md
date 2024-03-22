@@ -7,7 +7,7 @@ tags:
   - Hardware
 ---
 
-![Libre Sweet Potato](/img/blog/sweet-potato.jpg)
+![Libre Sweet Potato](../../img/blog/sweet-potato.jpg)
 
 # Libre Sweet Potato
 

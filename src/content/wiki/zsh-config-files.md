@@ -7,6 +7,8 @@ tags:
   - Zsh
 ---
 
+![Oh My Zsh](../../img/blog/oh-my-zsh.png)
+
 # Zsh configuration file
 
 ```bash

@@ -19,7 +19,7 @@ tags:
 <div>
   <div class="note">
     <span>
-      <img src="/img/assets/note.svg" class="note-icon" loading="eager" decoding="async" alt="Note" />
+      <img src="/assets/note.svg" class="note-icon" loading="eager" decoding="async" alt="Note" />
       <b>Note</b>
     </span>
     <p>
@@ -55,7 +55,7 @@ sec   rsa4096/3AA5C34371567BD2
 
 <div class="alert">
   <span>
-    <img src="/img/assets/alert.svg" class="alert-icon"> <b>Important!</b>
+    <img src="/assets/alert.svg" class="alert-icon" loading="lazy" decoding="async" alt="Important"> <b>Important!</b>
   </span>
   <p>
     To get the verified badge next to your commits on GitHub, you need a verified email address before adding a GPG key. <a href="https://docs.github.com/en/get-started/signing-up-for-github/verifying-your-email-address" target="_blank">See these instructions.</a> Afterwards be sure to tell Git your email address with <code>git config --global user.email "YOUR_EMAIL"</code>.
@@ -115,15 +115,15 @@ git config --global commit.gpgsign true
 
 To get the verified badge on commits, we need to add the GPG key on GitHub. Click on your _Profile_ picture and then choose _Settings_ from the dropdown.
 
-<a href="/img/blog/gh1.png" target="_blank"><img src="/img/blog/gh1.png" alt="Screenshot of GitHub with Settings selected from dropdown menu."></a>
+![Settings in GitHub menu.](../../img/blog/gh1.png)
 
 Next click on **SSH and GPG keys** in the menu on the left:
 
-<a href="/img/blog/gh2.png" target="_blank"><img src="/img/blog/gh2.png" alt="Screenshot of GitHub settings with SSH and GPG keys selected."></a>
+![SSH and GPG keys settings in GitHub menu.](../../img/blog/gh2.png)
 
 Scroll down to where it says _GPG keys_ and click on the **New GPG key** button.
 
-<a href="/img/blog/gh-gpg1png" target="_blank"><img src="/img/blog/gh-gpg1.png" alt="Screenshot of GitHub settings where you add a GPG key."></a>
+![Adding GPG key in GitHub.](../../img/blog/gh-gpg1.png)
 
 To see the portion of the GPG key you need to add in GitHub, use this command:
 
@@ -135,7 +135,7 @@ You'll get a wall of text as output, copy and paste from `-----BEGIN PGP PUBLIC 
 
 Now to test it out, push out any commit to a GitHub repo. You should be prompted for the GPG password when using `git commit` and providing it will sign the commit. Now your commits should have the verified badge in GitHub.
 
-<a href="/img/blog/gh-gpg2.png" target="_blank"><img src="/img/blog/gh-gpg2.png" alt="Screenshot of GitHub verified badge on a signed commit."></a>
+![Commit with verified badge in GitHub.](../../img/blog/gh-gpg2.png)
 
 <div id='ref' />
 

@@ -6,7 +6,7 @@ tags:
   - Homelab
 ---
 
-![Libre Sweet Potato](/img/blog/sweet-potato.jpg)
+![Libre Sweet Potato](../../img/blog/sweet-potato.jpg)
 
 # Libre Sweet Potato
 

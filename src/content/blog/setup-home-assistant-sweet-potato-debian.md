@@ -26,7 +26,7 @@ Note that SSH is disabled in Debian by default, so you'll have to plug in a moni
 
 <div class="note">
   <span>
-    <img src="/img/assets/note.svg" class="note-icon" loading="lazy" decoding="async" alt="Note" />
+    <img src="/assets/note.svg" class="note-icon" loading="lazy" decoding="async" alt="Note" />
     <b>Note</b>
   </span>
   <p>
@@ -112,7 +112,7 @@ You should arrive at the Home Assistant UI's welcome page, where you can follow 
 
 <div class="note">
   <span>
-    <img src="/img/assets/note.svg" class="note-icon" loading="lazy" decoding="async" alt="Note" />
+    <img src="/assets/note.svg" class="note-icon" loading="lazy" decoding="async" alt="Note" />
     <b>Note</b>
   </span>
   <p>
