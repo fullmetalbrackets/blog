@@ -198,6 +198,10 @@ img, picture, video, canvas, svg {
 .sq-img {
   border-radius: 0;
 }
+.posh-img {
+  max-width: 50%;
+  max-height: 50%;
+}
 input, button, textarea, select {
   font: inherit;
 }
@@ -477,13 +481,6 @@ div > .info > ul > li::marker {
 li::marker {
 	color: var(--name);
 }
-.two-img {
-  display: inline-flex;
-  flex-direction: row;
-  width: 100%;
-  justify-content: center;
-  gap: 1em;
-}
 .ext {
   display: inline-block;
   margin: 0;
@@ -562,26 +559,11 @@ article ol li, article ul li {
 		height: 0px;
 		width: 0px;
 	}
-  /* body {
-    line-height: 1.2;
-  } */
-  /* main {
-    margin-left: 0.25em;
-    margin-right: 0.25em;
-  } */
   h1, main .title {
     font-size: 26px;
   }
   h2 {
     font-size: 24px;
-  }
-  /* button, .button {
-    line-height: 1.3;
-  } */
-  .two-img {
-    display: inline-flex;
-    flex-direction: column;
-    gap: 0;
   }
   aside {
     margin: 2em auto 0 auto;
