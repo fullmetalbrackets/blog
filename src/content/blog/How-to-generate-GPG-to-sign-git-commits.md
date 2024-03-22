@@ -19,7 +19,7 @@ tags:
 <div>
   <div class="note">
     <span>
-      <img src="/assets/note.svg" class="note-icon" alt="Note" loading="lazy" decoding="async" />
+      <img src="/assets/note.svg" class="note-icon" alt="Note" loading="eager" decoding="async" />
       <b>Note</b>
     </span>
     <p>
@@ -55,7 +55,7 @@ sec   rsa4096/3AA5C34371567BD2
 
 <div class="alert">
   <span>
-    <img src="/img/assets/alert.svg" class="alert-icon" loading="lazy" decoding="async"> <b>Important!</b>
+    <img src="/assets/alert.svg" class="alert-icon" alt="Important" loading="lazy" decoding="async"> <b>Important!</b>
   </span>
   <p>
     To get the verified badge next to your commits on GitHub, you need a verified email address before adding a GPG key. <a href="https://docs.github.com/en/get-started/signing-up-for-github/verifying-your-email-address" target="_blank">See these instructions.</a> Afterwards be sure to tell Git your email address with <code>git config --global user.email "YOUR_EMAIL"</code>.

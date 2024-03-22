@@ -85,7 +85,7 @@ Your tunnel should now be up and running, but won't connect to your self-hosted 
 
 <div class="note">
   <span>
-    <img src="/assets/note.svg" class="note-icon" />
+    <img src="/assets/note.svg" class="note-icon" alt="Note" loading="lazy" decoding="async" />
     <b>Note</b>
   </span>
   <p>
@@ -202,7 +202,7 @@ Now that the OAuth provider is set up, we need make use of it with <a href="http
 
 <div class="note">
   <span>
-    <img src="/assets/note.svg" class="note-icon" />
+    <img src="/assets/note.svg" class="note-icon" alt="Note" loading="lazy" decoding="async" />
     <b>Note</b>
   </span>
   <p>

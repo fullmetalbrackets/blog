@@ -9,7 +9,7 @@ tags:
 <div>
   <div class="success">
     <span>
-      <img src="/assets/success.svg" class="success-icon" alt="Attribution" loading="lazy" decoding="async" />
+      <img src="/assets/success.svg" class="success-icon" alt="Attribution" loading="eager" decoding="async" />
       <b>Attribution</b>
     </span>
     <p>

@@ -20,7 +20,7 @@ tags:
 <div>
   <div class="info">
     <span>
-      <img src="/assets/info.svg" class="info-icon" alt="TLDR" loading="lazy" decoding="async" />
+      <img src="/assets/info.svg" class="info-icon" alt="TLDR" loading="eager" decoding="async" />
       <b>TL;DR</b>
     </span>
     <p>
