@@ -24,7 +24,13 @@ const desc = "Links to helpful web development tools and sites.";
     flex-direction: column;
     margin: 0 auto 1em 0.5em;
   }
-  .data {
+  .tag {
+    color: var(--date);
+  }
+  .tag span {
+    color: var(--primary);
+  }
+  .tag, .data {
     font-size: 0.9em;
   }
   span a:hover {
@@ -38,7 +44,7 @@ const desc = "Links to helpful web development tools and sites.";
     <h1>Links</h1>
     <hr />
     <p>
-      Helpful sites and tools that I use regularly. If you'd like to share
+      Links to self-hosted apps, helpful sites and other tools that I use regularly. If you'd like to share
       similar tools you find to be very useful for system administrators or web
       developers, comment below and I'll gladly add them, or open a pull request
       on GitHub with new links added!
@@ -52,6 +58,7 @@ const desc = "Links to helpful web development tools and sites.";
                 {link.data.title}
               </a>
             </span>
+            <span class="tag">Type: <span>{link.data.tags}</span></span>
             <span class="data">{link.data.description}</span>
           </li>
         ))

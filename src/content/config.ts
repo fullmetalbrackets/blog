@@ -20,6 +20,7 @@ const links = defineCollection({
 		title: z.string(),
 		description: z.string(),
 		url: z.string(),
+		tags: z.array(z.string()),
 		// Transform string to Date object
 		pubDate: z
 			.string()

@@ -38,6 +38,12 @@ const links = (await getCollection("links")).sort(
     text-decoration: underline;
     text-decoration-color: var(--link);
   }
+  .tag {
+    color: var(--date);
+  }
+  .tag span {
+    color: var(--primary);
+  }
   @media (hover: hover) {
     a:hover button {
       box-shadow: -4px -4px 0 #000;
@@ -80,6 +86,7 @@ const links = (await getCollection("links")).sort(
               {link.data.title}
             </a>
           </span>
+          <span class="tag">Type: <span>{link.data.tags}</span></span>
           <span>{link.data.description}</span>
         </li>
       ))

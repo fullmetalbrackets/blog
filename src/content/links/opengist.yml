@@ -1,0 +1,6 @@
+title: "OpenGist"
+description: "A self-hosted pastebin powered by Git, open-source alternative to Github Gist."
+tags:
+- self-hosted
+pubDate: 2024-03-20
+url: "https://github.com/thomiceli/opengist"

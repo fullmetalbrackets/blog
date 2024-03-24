@@ -1,0 +1,6 @@
+title: "Dockge"
+description: "GUI to manage container stacks via Docker Compose, created by the person who made Uptime-Kuma."
+tags:
+- self-hosted
+pubDate: 2024-03-24
+url: "https://dockge.kuma.pet"
