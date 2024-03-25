@@ -3,8 +3,7 @@ title: "Potato"
 description: "Details on Potato, my Libre Sweet Potato SBC running Pi-Hole and Home Assistant."
 pubDate: 2023-11-16
 tags:
-  - Homelab
-  - Hardware
+  - hosts
 ---
 
 ![Libre Sweet Potato](../../img/blog/sweet-potato.jpg)

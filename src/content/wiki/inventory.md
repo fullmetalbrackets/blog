@@ -3,7 +3,7 @@ title: "Homelab Inventory"
 description: "A list of computers, laptops, and other devices in my homelab."
 pubDate: 2023-10-01
 tags:
-  - Homelab
+  - docs
 ---
 
 # Inventory

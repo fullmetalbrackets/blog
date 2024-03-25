@@ -5,7 +5,7 @@ import FormattedDate from "@components/FormattedDate.astro";
 
 type Props = CollectionEntry<"wiki">["data"];
 
-const { title, description, pubDate, updatedDate } = Astro.props;
+const { title, description, pubDate, updatedDate, tags } = Astro.props;
 ---
 
 <BaseLayout title={title} description={description}>
@@ -25,13 +25,16 @@ const { title, description, pubDate, updatedDate } = Astro.props;
     .description {
       margin-bottom: 2em;
     }
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      list-style-type: none;
-      margin: 0 auto;
-      margin-top: 10px;
-      padding: 0;
+    .category {
+      color: var(--date);
+    }
+    .tag {
+      background: var(--primary);
+      color: #000;
+      border: 0;
+      border-radius: 0.25em;
+      padding: 4px 6px 3px 6px;
+      font-weight: 600;
     }
     form {
       display: flex;
@@ -103,6 +106,7 @@ const { title, description, pubDate, updatedDate } = Astro.props;
     </div>
     <h1 class="title">{title}</h1>
     <hr />
+    <span class="category">Category: <span class="tag">{tags}</span></span>
     <p class="description">
       {description}
     </p>

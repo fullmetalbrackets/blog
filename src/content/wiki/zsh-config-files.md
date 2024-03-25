@@ -3,8 +3,7 @@ title: "Zsh and Oh-My-Zsh configuration files"
 description: "Working copies of Zsh config files for use in all my Linux servers."
 pubDate: 2024-02-04
 tags:
-  - Homelab
-  - Zsh
+  - config
 ---
 
 ![Oh My Zsh](../../img/blog/oh-my-zsh.png)

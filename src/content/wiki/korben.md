@@ -3,8 +3,7 @@ title: "Korben"
 description: "Details on my home server, a Dell Optiplex 3020 Micro PC."
 pubDate: 2023-12-16
 tags:
-  - Homelab
-  - Hardware
+  - hosts
 ---
 
 ![Dell Optiplex 3020 Micro](../../img/wiki/optiplex3020micro.jpg)

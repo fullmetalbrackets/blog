@@ -3,7 +3,7 @@ title: "Spud"
 description: "Details on Spud, my Libre Sweet Potato SBC running my back-up Pi-Hole and other services."
 pubDate: 2023-11-16
 tags:
-  - Homelab
+  - hosts
 ---
 
 ![Libre Sweet Potato](../../img/blog/sweet-potato.jpg)
