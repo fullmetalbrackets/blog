@@ -7,18 +7,9 @@ tags:
   - Web Development
 ---
 
-<div>
-  <div class="info">
-    <span>
-      <img src="/assets/info.svg" class="info-icon" loading="eager" decoding="async" alt="Information" />
-      <b>Information</b>
-    </span>
-    <p>
-      <a href="https://github.com/nodesource/distributions#debinstall" target="_blank">Official instructions here</a>
-    </p>
-  </div>
-</div>
-<br>
+> &#128712;
+>
+> <a href="https://github.com/nodesource/distributions#debinstall" target="_blank">Official instructions here</a>
 
 Go to the above link to copy & paste the terminal commands for the latest version of NodeJS.
 

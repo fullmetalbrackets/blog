@@ -6,18 +6,9 @@ tags:
   - Debian
 ---
 
-<div>
-  <div class="info">
-    <span>
-      <img src="/assets/info.svg" class="info-icon" loading="eager" decoding="async" alt="Information" />
-      <b>Information</b>
-    </span>
-    <p>
-      <a href="https://wiki.debian.org/sudo" target="_blank">Debian wiki, sudo page</a>
-    </p>
-  </div>
-</div>
-<br>
+> &#128712;
+>
+> <a href="https://wiki.debian.org/sudo" target="_blank">Debian wiki, sudo page</a>
 
 Install sudo:
 

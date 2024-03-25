@@ -7,18 +7,10 @@ tags:
   - Linux
 ---
 
-<div>
-  <div class="info">
-    <span>
-      <img src="/assets/info.svg" class="info-icon" loading="eager" decoding="async" alt="Information" />
-      <b>Information</b>
-    </span>
-    <p>
-      See the <a href="https://docs.docker.com/engine/install" target="_blank">Docker docs install overview</a> for installation instructions on other platforms.
-    </p>
-  </div>
-</div>
-<br><br>
+> &#128712;
+>
+> See the <a href="https://docs.docker.com/engine/install" target="_blank">Docker docs install overview</a> for installation instructions on other platforms.
+
 First, uninstall all conflicting packages:
 
 ```bash

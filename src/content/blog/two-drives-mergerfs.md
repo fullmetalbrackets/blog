@@ -43,17 +43,9 @@ But how to keep track of what files are in which hard drive? How to just not wor
   └── tvshows
 ```
 
-<div>
-  <div class="note">
-    <span>
-      <img src="/assets/note.svg" class="note-icon" loading="lazy" decoding="async" alt="Note" />
-      <b>Note</b>
-    </span>
-    <p>
-      I like to put all my stuff in my home directory (<code>/home/ad/...</code>) so I had each drive mounted there and will still mount the new unified storage in there at <code>/home/ad/media</code>. You don't have to do this and it may not even be best practice, but I'm set in my ways and I'm the only one that accesses this server. Feel free to use a different unified mount point like <code>/opt/media</code> or <code>/srv/media</code>.
-    </p>
-  </div>
-</div>
+> &#128712;
+>
+> I like to put all my stuff in my home directory (`/home/ad/...`) so I had each drive mounted there and will still mount the new unified storage in there at `/home/ad/media`. You don't have to do this and it may not even be best practice, but I'm set in my ways and I'm the only one that accesses this server. Feel free to use a different unified mount point like `/opt/media` or `/srv/media`.
 
 With their powers combined, I gain access any media across all three drives at my chosen single mount point, which live in my home directory at `/home/ad/media`, where it's all accessible by Plex and other services.
 
@@ -96,17 +88,9 @@ UUID=cce7cdab-a2df-4d4f-aac3-98fab2afdbd5   /mnt/media3   ext4    errors=remount
 /mnt/media*   /home/ad/media    fuse.mergerfs   defaults,allow_other,use_ino,cache.files=off,moveonenospc=true,dropcacheonclose=true,category.create=mfs,fsname=mergerfs    0   0
 ```
 
-<div>
-  <div class="note">
-    <span>
-      <img src="/assets/note.svg" class="note-icon" loading="lazy" decoding="async" alt="Note" />
-      <b>Note</b>
-    </span>
-    <p>
-      I used the options suggested at Perfect Media Server and have had no issues, but feel free to <a href="https://github.com/trapexit/mergerfs?tab=readme-ov-file#options" target="_blank">read up on all the available options</a> use different ones.
-    </p>
-  </div>
-</div>
+> &#128712;
+>
+> I used the options suggested at Perfect Media Server and have had no issues, but feel free to <a href="https://github.com/trapexit/mergerfs?tab=readme-ov-file#options" target="_blank">read up on all the available options</a> use different ones.
 
 Once the changes were made in `/etc/fstab`, I unmounted all the drives from their old mount points, created the new mount point, and rebooted so the new fstab config would take effect.
 
@@ -124,18 +108,11 @@ ls ~/media
 movies  music  photos  tvshows
 ```
 
-<div class="success">
-  <span>
-    <img src="/assets/success.svg" class="success-icon" loading="lazy" decoding="async" alt="Success" />
-    <b>Success!</b>
-  </span>
-  <p>
-    Exploring your new unified mount point should show all your data! At that point you can delete the old mounts points if you haven't already and point your services at the new unified mount point.
-  </p>
-  <p>
-    If you encounter a problem after reboot, you probably messed something up in the fstab file, the syntax can be tricky. Edit it to fix any issues and reboot again. If you want to be safe, try commenting out rather than editing any existing fstab entries until you know everything is working properly.
-  </p>
-</div>
+> &#128712;
+>
+> Exploring your new unified mount point should show all your data! At that point you can delete the old mounts points if you haven't already and point your services at the new unified mount point.
+> 
+> If you encounter a problem after reboot, you probably messed something up in the fstab file, the syntax can be tricky. Edit it to fix any issues and reboot again. If you want to be safe, try commenting out rather than editing any existing fstab entries until you know everything is working properly.
 
 <div id='ref' />
 

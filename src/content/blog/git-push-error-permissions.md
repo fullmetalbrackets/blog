@@ -29,17 +29,9 @@ Coming from only working with Git and GitHub from Windows, I first encountered t
 
 ## The fix
 
-<div>
-  <div class="success">
-    <span>
-      <img src="/assets/success.svg" class="success-icon" loading="lazy" decoding="async" alt="Success" />
-      <b>Attribution</b>
-    </span>
-    <p>
-      <a href="https://stackoverflow.com/a/26137707" target="_blank">This solution</a> is credited to user <a href="https://stackoverflow.com/users/445131/eric-leschinski" target="_blank">Eric Leschinski</a> in StackOverflow.
-    </p>
-  </div>
-</div>
+> &#128712;
+>
+> <a href="https://stackoverflow.com/a/26137707" target="_blank">This solution</a> is credited to user <a href="https://stackoverflow.com/users/445131/eric-leschinski" target="_blank">Eric Leschinski</a> in StackOverflow.
 
 This error occurs because you accidentally committed a file or folder to git using elevated permissions and now git can't modify those objects. It is safe to recursively force ownership of all files under `.git/objects/` to your current user to clear the problem.
 

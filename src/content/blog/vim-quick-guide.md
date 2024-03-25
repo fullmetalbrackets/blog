@@ -67,7 +67,7 @@ Now, exiting. You can exit vi from _EX_ mode:
 
 `w` and `x` accept a file name parameter. If you started vi with a filename, you need not give it here again. At last, the most important: how can you reach EX mode?
 
-_EX_ mode is for long commands that you can see typing at the bottom line of the screen. From _COMMAND_ mode, you push colon, <code>:</code>, and a colon will appear at the bottom line, where you can type the above commands.
+_EX_ mode is for long commands that you can see typing at the bottom line of the screen. From _COMMAND_ mode, you push colon, `:`, and a colon will appear at the bottom line, where you can type the above commands.
 
 From _INSERT_ mode, you need to push <kbd>Esc</kbd>, going to _COMMAND_ mode, and then colon (`:`) to go to _EX_ mode.
 If you are unsure, push <kbd>Esc</kbd> and that will bring you to command mode.

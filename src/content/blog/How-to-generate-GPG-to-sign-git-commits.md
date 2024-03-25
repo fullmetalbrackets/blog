@@ -16,20 +16,11 @@ tags:
 4. [Add the GPG key to GitHub to get verified](#add)
 5. [References](#ref)
 
-<div>
-  <div class="note">
-    <span>
-      <img src="/assets/note.svg" class="note-icon" loading="eager" decoding="async" alt="Note" />
-      <b>Note</b>
-    </span>
-    <p>
-      <em>GnuPG</em> is not available on Windows by default, so if necessary, <a href="https://www.gnupg.org/download" target="_blank">download it here</a> and install it first. It should go without saying you'll need <a href="https://git-scm.com/downloads" target="_blank">Git</a> installed, since you will have to use <em>Git Bash</em>.
-    </p>
-    <p>
-      On Linux, you will simply be using the Terminal and GnuPG should already be installed, if not use the command <code>sudo apt install gnupg2 -y</code> to do so.
-    </p>
-  </div>
-</div>
+> &#128712;
+>
+> **GnuPG** is not available on Windows by default, so if necessary, <a href="https://www.gnupg.org/download" target="_blank">download it here</a> and install it first. It should go without saying you'll need <a href="https://git-scm.com/downloads" target="_blank">Git</a> installed, since you will have to use **Git Bash**.
+> 
+> On Linux, you will simply be using the Terminal and GnuPG should already be installed, if not use the command `sudo apt install gnupg2 -y` to do so.
 
 <div id='check' />
 
@@ -53,14 +44,9 @@ sec   rsa4096/3AA5C34371567BD2
 
 ## Generating a new GPG key
 
-<div class="alert">
-  <span>
-    <img src="/assets/alert.svg" class="alert-icon" loading="lazy" decoding="async" alt="Important"> <b>Important!</b>
-  </span>
-  <p>
-    To get the verified badge next to your commits on GitHub, you need a verified email address before adding a GPG key. <a href="https://docs.github.com/en/get-started/signing-up-for-github/verifying-your-email-address" target="_blank">See these instructions.</a> Afterwards be sure to tell Git your email address with <code>git config --global user.email "YOUR_EMAIL"</code>.
-  </p>
-</div>
+> &#128712;
+>
+> To get the verified badge next to your commits on GitHub, you need a verified email address before adding a GPG key. <a href="https://docs.github.com/en/get-started/signing-up-for-github/verifying-your-email-address" target="_blank">See these instructions.</a> Afterwards be sure to tell Git your email address with `git config --global user.email "YOUR_EMAIL"`.
 
 To generate a GPG key (either because you have none or want a new one) use the following command in Terminal for Linux, or Git Bash for Windows:
 

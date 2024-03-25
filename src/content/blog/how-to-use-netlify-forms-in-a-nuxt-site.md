@@ -8,18 +8,9 @@ tags:
   - Web Dev
 ---
 
-<div>
-  <div class="info">
-    <span>
-      <img src="/assets/info.svg" class="info-icon" loading="eager" decoding="async" alt="Information" />
-      <b>Information</b>
-    </span>
-    <p>
-      I have long since migrated away from <em>Nuxt</em> to <em>Astro</em> as my static site generator, which does not have this issue, and it's likely the newest version of Nuxt fixes this.
-    </p>
-  </div>
-</div>
-<br>
+> &#128712;
+>
+> I have long since migrated away from **Nuxt** to **Astro** as my static site generator, which does not have this issue, and it's likely the newest version of Nuxt fixes this.
 
 I was breaking my head against this one for a while until I found <a href="https://medium.com/@kimbjrkman/adding-netlify-forms-on-your-nuxt-website-20ffba3e5ba8" target="_blank">this post on Medium</a> that finally gave me the answer, although they are over-engineering a bit, in my opinion. The issue is that Netlify's crawler will only detect HTML forms, and even though you're using HTML to create the form Nuxt will spit it out as JavaScript after build time. Netlify won't detect it. But as that post explains, there is a way, you just have to "fool" Netlify's bots a little bit. Here is a quick guide on how.
 

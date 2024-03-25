@@ -28,18 +28,9 @@ Apps that have to be accessed through a specific path (like `/admin` or `/web`) 
 
 The process of setting up and securing a Cloudflare Tunnel is a lot of steps, so I'm basically paraphrasing the <a href="https://developers.cloudflare.com/cloudflare-one" target="_blank">Cloudflare Zero Trust Docs</a>. When in doubt, refer back to them.
 
-<div class="note">
-  <span>
-    <img src="/assets/note.svg" class="note-icon" loading="lazy" decoding="async" alt="Note" />
-    <b>Note</b>
-  </span>
-  <p>
-    I usually try to include images when making guides, but this is already
-    going to be huge and I try to be as terse as possible. As a result there's
-    no pretty pictures in this post, just a lot of reading step-by-step
-    instructions on configuring various settings.
-  </p>
-</div>
+> &#128712;
+>
+> I usually try to include images when making guides, but this is already going to be huge and I try to be as terse as possible. As a result there's no pretty pictures in this post, just a lot of reading step-by-step instructions on configuring various settings.
 
 <div id="domain" />
 
@@ -83,23 +74,9 @@ Go to the Cloudflare Zero Trust dashboard by clicking _Access_ on the sidebar, t
 
 Your tunnel should now be up and running, but won't connect to your self-hosted app yet. We'll the setup the DNS for that in the next section.
 
-<div class="note">
-  <span>
-    <img src="/assets/note.svg" class="note-icon" loading="lazy" decoding="async" alt="Note" />
-    <b>Note</b>
-  </span>
-  <p>
-    If want to install <code>cloudflared</code> with
-    <em>Docker Compose</em>, copy and paste the command into
-    <a href="https://www.composerize.com" target="_blank">
-      Composerize</a>. Or you can just <a
-      href="https://gist.github.com/fullmetalbrackets/1b762a2688b81ce6b6f36fd174b335a1"
-      target="_blank"
-    >
-      check out this gist I made
-    </a> to run Navidrome and Cloudflared together as a stack, which is how I have it set up. (That way I can start up and take down the stack as needed with one click through the <em>Portainer</em> UI.)
-  </p>
-</div>
+> &#128712;
+>
+> If want to install `cloudflared` with **Docker Compose**, copy and paste the command into <a href="https://www.composerize.com" target="_blank">Composerize</a>. Or you can just <a href="https://gist.github.com/fullmetalbrackets/1b762a2688b81ce6b6f36fd174b335a1" target="_blank">check out this gist I made</a> to run Navidrome and Cloudflared together as a stack, which is how I have it set up. (That way I can start up and take down the stack as needed with one click through the <em>Portainer</em> UI.)
 
 <div id="dns" />
 
@@ -125,38 +102,17 @@ Now we will set up Cloudflare DNS to proxy `music.your-domain.com` to Navidrome 
 
 9. Click the _Save tunnel_ button.
 
-<div class="success">
-  <span>
-    <img src="/assets/success.svg" class="success-icon" loading="lazy" decoding="async" alt="Success" />
-    <b>Success!</b>
-  </span>
-  <p>
-    Go to <code>https://music.your-domain.com</code> and you should reach the
-    Navidrome UI! However, you're not the only one with access, technically
-    anyone with the URL can reach it unabated.
-  </p>
-  <p>
-    There's much more to do if you want to add some security and prevent just
-    anyone from hitting your URL and discovering it's running a self-hosted app.
-    Read on...
-  </p>
-</div>
+You should be done! Go to `https://music.your-domain.com` and you should reach the Navidrome UI! However, you're not the only one with access, technically anyone with the URL can reach it unabated.
+
+Although Navidrome, like many self-hosted services, has username and passwords for login, you can also put authentication services in front of the tunnel to stop unauthorized visitors from even reaching your app. Read on...
 
 <div id="oauth" />
 
 ## Configure OAuth with Google
 
-<div class="note">
-  <span>
-    <img src="/assets/note.svg" class="note-icon" loading="lazy" decoding="async" alt="Note" />
-    <b>Note</b>
-  </span>
-  <p>
-    You'll need a Google account to set this up, which you already do with
-    Gmail. You'll be using that email to do some stuff on
-    <em>Google Cloud Platform</em>. It's totally free for what we're doing.
-  </p>
-</div>
+> &#128712;
+>
+> You'll need a Google account to set this up, which you already do with Gmail. You'll be using that email to do some stuff on **Google Cloud Platform**. It's totally free for what we're doing.
 
 1. Go to <a href="https://cloud.google.com" target="_blank">Google Cloud Platform</a> and go to _Console_ at the top-right. On the next page click the _dropdown menu_ at the top-left and go to _New Project_. Name the project and click _Create_.
 
@@ -200,17 +156,9 @@ Now that the OAuth provider is set up, we need make use of it with <a href="http
 
 2. Select _Self-Hosted_. Under _Application Configuration_, name the application `Navidrome` and choose session duration. Add the sub-domain you want to use (e.g. `music`) and the domain you transferred to Cloudflare earlier.
 
-<div class="note">
-  <span>
-    <img src="/assets/note.svg" class="note-icon" loading="lazy" decoding="async" alt="Note" />
-    <b>Note</b>
-  </span>
-  <p>
-    Ignore the warning about no DNS record found for this domain. Cloudflare is
-    complaining about no A/AAAA records, but we don't need them for access via
-    Tunnel.
-  </p>
-</div>
+> &#128712;
+>
+> Ignore the warning about no DNS record found for this domain. Cloudflare is complaining about no A/AAAA records, but we don't need them for access via Tunnel.
 
 3. (Optional) Leave the _Application Appearance_ the same, and if you'd like select _Custom Logo_ and paste in the Navidrome logo URL: `https://raw.githubusercontent.com/navidrome/navidrome/master/resources/logo-192x192.png`
 
@@ -232,26 +180,14 @@ Now that the OAuth provider is set up, we need make use of it with <a href="http
 
 12. Unless you know what you're doing, leave the all the additional settings alone. Just scroll to the bottom and click the _Add application_ button to finish.
 
-<div class="success">
-  <span>
-    <img src="/assets/success.svg" class="success-icon" loading="lazy" decoding="async" alt="Success" />
-    <b>Success!</b>
-  </span>
-  <p>
-    Now when you go to <code>https://music.your-domain.com</code> you should be
-    met with a Google account login page. Login with the email you added and you
-    should hit the Navidrome UI.
-  </p>
-  <p>
-    If you get any DNS errors when trying to access your domain after adding
-    OAuth with the above steps, but didn't have any issues before that, you may
-    be hitting your ad blocker. I didn't have issues with Pi-Hole, but
-    when testing behind NextDNS I did get <code>NXDOMAIN</code> errors.
-  </p>
-  <p>
-    <a href="https://help.nextdns.io/t/p8h5c71/keep-getting-nxdomain-for-well-known-sites" target="_blank">See this post</a> on NextDNS Help Center. <em>TLDR:</em> Try disabling DNSSEC for your domain on the Cloudflare dashboard and see if that resolves the issue. (I have not tested it.)
-  </p>
-</div>
+### Success!
+
+Now when you go to `https://music.your-domain.com` you should be met with a Google account login page. Login with the email you added and you should hit the Navidrome UI.
+
+> &#128712;
+>
+> If you get any DNS errors when trying to access your domain after adding OAuth with the above steps, but didn't have any issues before that, you may be hitting your ad blocker. I didn't have issues with Pi-Hole, but when testing behind NextDNS I did get `NXDOMAIN` errors.<br><br>
+> <a href="https://help.nextdns.io/t/p8h5c71/keep-getting-nxdomain-for-well-known-sites" target="_blank">See this post</a> on NextDNS Help Center. <em>TLDR:</em> Try disabling DNSSEC for your domain on the Cloudflare dashboard and see if that resolves the issue. (I have not tested it.)
 
 <div id="ref" />
 

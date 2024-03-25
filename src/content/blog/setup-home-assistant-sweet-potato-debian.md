@@ -24,18 +24,11 @@ This guide assumes you already have either a Le Potato or a Sweet Potato (the in
 
 Note that SSH is disabled in Debian by default, so you'll have to plug in a monitor at least initially until that's installed. The default username and password are `root`, though you are prompted to change the root password immediately the first time you login, and you can go ahead and create a new user account after that.
 
-<div class="note">
-  <span>
-    <img src="/assets/note.svg" class="note-icon" loading="lazy" decoding="async" alt="Note" />
-    <b>Note</b>
-  </span>
-  <p>
-    I'll be following Libre's official instructions for installing Home Assistant Supervised, however it seems the guide was made with Docker version 24.0.7, but the current version of 25.0.x has a bug that causes the setup to fail at the last step, when you first go into the Home Assistant UI.
-  </p>
-  <p>
-    Some googling led me to the only solution that worked, which was downgrading to Docker version 24.0.7 -- with a fresh install, you'll have to make sure you install that specific version of Docker to avoid the issue altogether, which is part of my instructions below.
-  </p>
-</div>
+> &#128712;
+>
+> I'll be following Libre's official instructions for installing Home Assistant Supervised, however it seems the guide was made with Docker version 24.0.7, but the current version of 25.0.x has a bug that causes the setup to fail at the last step, when you first go into the Home Assistant UI.
+> 
+> Some googling led me to the only solution that worked, which was downgrading to Docker version 24.0.7 -- with a fresh install, you'll have to make sure you install that specific version of Docker to avoid the issue altogether, which is part of my instructions below.
 
 <div id='packages' />
 
@@ -110,15 +103,9 @@ Pay attention during the install process, you'll be prompted to _Select machine 
 
 You should arrive at the Home Assistant UI's welcome page, where you can follow the on-screen instructions to complete the setup.
 
-<div class="note">
-  <span>
-    <img src="/assets/note.svg" class="note-icon" loading="lazy" decoding="async" alt="Note" />
-    <b>Note</b>
-  </span>
-  <p>
-    If you happen to be migrating from Home Assistant Core to Supervised, you can create a backup in Core and restore it here in Supervised to bring over most of your configuration and settings. (You may have to update some configs and re-authorize some integrations in Supervised to get them to work again, but at least you won't have to start from scratch.)
-  </p>
-</div>
+> &#128712;
+>
+> If you happen to be migrating from Home Assistant Core to Supervised, you can create a backup in Core and restore it here in Supervised to bring over most of your configuration and settings. (You may have to update some configs and re-authorize some integrations in Supervised to get them to work again, but at least you won't have to start from scratch.)
 
 Once the setup finishes, which it should without issue if you installed Docker version 24.0.7 as stated above, you'll be ready to go! (If you migrated from Core to Supervised via backup, be sure to login with the same username and password that you used in Core!)
 

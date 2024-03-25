@@ -21,15 +21,9 @@ tags:
 
 My personal use case is that my main home server, which doubles as a NAS, is a Linux machine and holds copies of most of my important data -- but I access them from my PC and laptop, both of which use Windows 10. After several years of using SMB at home (and I need to stress this is for home use only and probably completely insecure and/or inadequate for enterprise networks) I have settled on two templates for `smb.conf`, the Samba configuration file. Below are the files.
 
-<div class="info">
-  <span>
-    <img src="/assets/info.svg" class="info-icon" loading="eager" decoding="async" alt="Information" />
-    <b>Information</b>
-  </span>
-  <p>
-    This guide assumes Samba is installed and ready to go. If necessary, see <a href="setup-a-samba-share-on-linux-via-command-line" target="_blank">this post about setting up Samba</a>.
-  </p>
-</div>
+> &#128712;
+>
+> This guide assumes Samba is installed and ready to go. If necessary, see <a href="setup-a-samba-share-on-linux-via-command-line" target="_blank">this post about setting up Samba</a>.
 
 <div id='public' />
 
