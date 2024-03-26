@@ -7,7 +7,7 @@ tags:
   - Command Line
 ---
 
-> &#128712;
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
 > Works on <em>Ubuntu 20.04</em> but untested in 22.04 or other distros.
 

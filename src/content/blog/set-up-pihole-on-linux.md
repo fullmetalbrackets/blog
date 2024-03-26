@@ -53,7 +53,7 @@ curl -sSL https://install.pi-hole.net | bash
 
 Executing the script will prompt a number of dialogs, pay attention and make sure you input all the correct information.
 
-> &#128712;
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
 > Make sure to take note of the admin password provided at the end of the install process, you'll need it to login to the Web UI. Ideally you should change the admin password with `pihole -a -p newpassword`.
 
@@ -142,7 +142,7 @@ CONTAINER ID   IMAGE           COMMAND      CREATED          STATUS             
 
 In order for Pi-Hole to work network-wide for all devices (including phones and tablets on Wi-Fi), you'll need to configure your router to use the Pi-Hole server as DNS. The method differs for every router, and some do not have the option at all. (AT&T's Arris BGW210-700 for example does not let you set your own DNS provider.) If the option is available, it's usually under _DHCP Settings_. Google is your friend here for instructions on your own hardware.
 
-> &#128712;
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
 > If your router does not have the option of setting a DNS server, you won't be able to block ads for all devices on your network automatically. Instead you'll have to <a href="https://discourse.pi-hole.net/t/how-do-i-configure-my-devices-to-use-pi-hole-as-their-dns-server/245#3-manually-configure-each-device-9" target="_blank">configure each device's DNS</a>.
 
@@ -281,7 +281,7 @@ If you're running Pi-Hole in a docker container, use this command instead:
 
 Also, if you make Pi-Hole your primary DNS it becomes a critical part of your network -- if it goes down, devices on your network won't be able to resolve any domains. For this reason, you may want to run another Pi-Hole as a secondary DNS in case the host running your main instance of Pi-Hole crashes. (These things happen.) If your entire network will go down from an issue with Pi-Hole, running a second instance of it makes a lot of sense. If you go this route, I strongly suggest using <a href="https://github.com/vmstan/gravity-sync" target="_blank" rel="noreferrer noopener">Gravity Sync</a> to keep the adlists and other settings identical between the two.
 
-> &#128712;
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
 > Even with all the steps above, your DNS traffic will still go out over plain text and can be seen by your ISP or anyone that happens to be snooping. As such, these may interest you:
 > - <a href="using-dns-over-https-with-pihole">Using DNS over HTTPS with Pi-hole and Cloudflared</a>

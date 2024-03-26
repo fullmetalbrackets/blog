@@ -16,7 +16,7 @@ tags:
 4. [Running the playbook](#run)
 5. [References](#ref)
 
-> &#128712;
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
 > This is not a comprehensive tutorial for Ansible, but simple a terse quick guide of my personal use case for Ansible in my home lab. For a deeper dive, I strongly suggest <a href="https://www.learnlinux.tv/getting-started-with-ansible/" target="_blank">Learn Linux TV series of Ansible tutorials</a> which is how I first learned to use it myself.
 

@@ -62,7 +62,7 @@ Since the drive is mounted, it's helpfully labeled, so you can figure out which 
 
 Simple. We're using `ext4` as the file system, which is how I partitioned it, but if it the file system is different use the correct one -- e.g `ntfs`, `zfs`, etc. We are using the same options as the swap partition for this hard drive, let's call these basic options.
 
-> &#128712;
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
 > The number at the end of each line is important, its the order filesystems are checked at boot time. Make sure your root drive is always set to `1`, non-root mount points should be set to `2`.
 

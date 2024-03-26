@@ -8,7 +8,7 @@ tags:
   - Solid Explorer
 ---
 
-> &#128712;
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
 > I used **Android 12 Snow Cone** when making the guide, the steps to make this work may be different if you're using an older or newer version of Android. (But most likely will be the same or similar.)
 > 

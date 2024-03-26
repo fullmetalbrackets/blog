@@ -43,7 +43,7 @@ But how to keep track of what files are in which hard drive? How to just not wor
   └── tvshows
 ```
 
-> &#128712;
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
 > I like to put all my stuff in my home directory (`/home/ad/...`) so I had each drive mounted there and will still mount the new unified storage in there at `/home/ad/media`. You don't have to do this and it may not even be best practice, but I'm set in my ways and I'm the only one that accesses this server. Feel free to use a different unified mount point like `/opt/media` or `/srv/media`.
 
@@ -88,7 +88,7 @@ UUID=cce7cdab-a2df-4d4f-aac3-98fab2afdbd5   /mnt/media3   ext4    errors=remount
 /mnt/media*   /home/ad/media    fuse.mergerfs   defaults,allow_other,use_ino,cache.files=off,moveonenospc=true,dropcacheonclose=true,category.create=mfs,fsname=mergerfs    0   0
 ```
 
-> &#128712;
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
 > I used the options suggested at Perfect Media Server and have had no issues, but feel free to <a href="https://github.com/trapexit/mergerfs?tab=readme-ov-file#options" target="_blank">read up on all the available options</a> use different ones.
 
@@ -108,7 +108,7 @@ ls ~/media
 movies  music  photos  tvshows
 ```
 
-> &#128712;
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
 > Exploring your new unified mount point should show all your data! At that point you can delete the old mounts points if you haven't already and point your services at the new unified mount point.
 > 

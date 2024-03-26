@@ -7,7 +7,7 @@ tags:
   - Linux
 ---
 
-> &#128712;
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
 > See the <a href="https://docs.docker.com/engine/install" target="_blank">Docker docs install overview</a> for installation instructions on other platforms.
 

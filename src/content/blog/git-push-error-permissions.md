@@ -29,7 +29,7 @@ Coming from only working with Git and GitHub from Windows, I first encountered t
 
 ## The fix
 
-> &#128712;
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
 > <a href="https://stackoverflow.com/a/26137707" target="_blank">This solution</a> is credited to user <a href="https://stackoverflow.com/users/445131/eric-leschinski" target="_blank">Eric Leschinski</a> in StackOverflow.
 

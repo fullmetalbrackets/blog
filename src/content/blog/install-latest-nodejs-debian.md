@@ -7,7 +7,7 @@ tags:
   - Web Development
 ---
 
-> &#128712;
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
 > <a href="https://github.com/nodesource/distributions#debinstall" target="_blank">Official instructions here</a>
 

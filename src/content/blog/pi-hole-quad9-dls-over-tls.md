@@ -6,7 +6,7 @@ tags:
   - Pi-Hole
 ---
 
-> &#128712;
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
 > The below forwarding addresses for <em>Quad9</em> are the ones I use in my setup, which provides malware blocking, DNSSEC, and is ECS-enabled. Check out <a href="https://www.quad9.net/service/service-addresses-and-features" target="_blank">all of Quad9's options</a>.
 

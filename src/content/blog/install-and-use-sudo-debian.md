@@ -6,7 +6,7 @@ tags:
   - Debian
 ---
 
-> &#128712;
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
 > <a href="https://wiki.debian.org/sudo" target="_blank">Debian wiki, sudo page</a>
 

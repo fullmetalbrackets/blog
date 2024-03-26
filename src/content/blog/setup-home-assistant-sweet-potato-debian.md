@@ -24,7 +24,7 @@ This guide assumes you already have either a Le Potato or a Sweet Potato (the in
 
 Note that SSH is disabled in Debian by default, so you'll have to plug in a monitor at least initially until that's installed. The default username and password are `root`, though you are prompted to change the root password immediately the first time you login, and you can go ahead and create a new user account after that.
 
-> &#128712;
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
 > I'll be following Libre's official instructions for installing Home Assistant Supervised, however it seems the guide was made with Docker version 24.0.7, but the current version of 25.0.x has a bug that causes the setup to fail at the last step, when you first go into the Home Assistant UI.
 > 
@@ -103,7 +103,7 @@ Pay attention during the install process, you'll be prompted to _Select machine 
 
 You should arrive at the Home Assistant UI's welcome page, where you can follow the on-screen instructions to complete the setup.
 
-> &#128712;
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
 > If you happen to be migrating from Home Assistant Core to Supervised, you can create a backup in Core and restore it here in Supervised to bring over most of your configuration and settings. (You may have to update some configs and re-authorize some integrations in Supervised to get them to work again, but at least you won't have to start from scratch.)
 

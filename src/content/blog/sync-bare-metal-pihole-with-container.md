@@ -6,7 +6,7 @@ tags:
   - Pi-Hole
 ---
 
-> &#128712;
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
 > I have a post explaining <a href="set-up-pihole-on-linux" target="_blank">how to install and configure Pi-Hole</a>. Here I will only be focusing on setting up <a href="https://github.com/vmstan/gravity-sync" target="_blank">Gravity Sync</a> with the assumption that both instances of Pi-Hole are already up and running on their hosts.
 >

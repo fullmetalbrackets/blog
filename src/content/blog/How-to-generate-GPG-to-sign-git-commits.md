@@ -16,7 +16,7 @@ tags:
 4. [Add the GPG key to GitHub to get verified](#add)
 5. [References](#ref)
 
-> &#128712;
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
 > **GnuPG** is not available on Windows by default, so if necessary, <a href="https://www.gnupg.org/download" target="_blank">download it here</a> and install it first. It should go without saying you'll need <a href="https://git-scm.com/downloads" target="_blank">Git</a> installed, since you will have to use **Git Bash**.
 > 
@@ -44,7 +44,7 @@ sec   rsa4096/3AA5C34371567BD2
 
 ## Generating a new GPG key
 
-> &#128712;
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
 > To get the verified badge next to your commits on GitHub, you need a verified email address before adding a GPG key. <a href="https://docs.github.com/en/get-started/signing-up-for-github/verifying-your-email-address" target="_blank">See these instructions.</a> Afterwards be sure to tell Git your email address with `git config --global user.email "YOUR_EMAIL"`.
 

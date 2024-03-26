@@ -14,7 +14,7 @@ tags:
 2. [Install and configure Needrestart](#needrestart)
 3. [References](#ref)
 
-> &#128712;
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
 > This guide is specifically for **Debian 11** and **Ubuntu 20.04**. They are the only two Linux distros I commonly use, so I am unaware of how to do this on, for example, Arch or Fedora.
 > 
@@ -67,7 +67,7 @@ If you want to reboot the machine when it's required after an update un-comment 
 Unattended-Upgrade::Automatic-Reboot-Time "05:00";
 ```
 
-> &#128712;
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
 > Though you can configure Unattended-Upgrades to email you when it completes an automatic update or when it encounters an error. It requires installing and configuring other packages, which I will not get into here. I may update this in the future if I ever do set up email notification.
 

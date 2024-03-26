@@ -63,7 +63,7 @@ sudo systemctl restart nfs-server
 
 Install the NFS client package and all dependencies on a Linux host you want to allow to access the NFS server share:
 
-> &#128712;
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
 > If you're using **Fedora** or **CentOS**, you don't need to install a separate package, since both server and client packages are combined within `nfs-utils`.
 

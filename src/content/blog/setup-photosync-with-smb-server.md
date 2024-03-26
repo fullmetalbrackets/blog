@@ -16,7 +16,7 @@ tags:
 3. [Transferring photos to the Samba share](#transfer)
 4. [References](#ref)
 
-> &#128712;
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
 > Though the **PhotoSync** app is available on iPhone as well as Android, I have an Android phone and so **I have only done this on Android**. It's safe to assume configuring PhotoSync on iPhone to connect to your NAS will be similar, if not exactly the same. Feel free to leave a comment below confirming whether or not it works on iPhone!
 

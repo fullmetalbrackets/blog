@@ -8,7 +8,7 @@ tags:
   - Web Dev
 ---
 
-> &#128712;
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
 > I have long since migrated away from **Nuxt** to **Astro** as my static site generator, which does not have this issue, and it's likely the newest version of Nuxt fixes this.
 

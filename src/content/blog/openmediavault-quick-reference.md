@@ -8,7 +8,7 @@ tags:
   - Linux
 ---
 
-<img src="/omv-header.png" alt="OpenMediaVault=" loading="eager" encoding="async" class="sq-img" />
+<img src="/omv-header.png" alt="OpenMediaVault=" loading="eager" decoding="async" class="sq-img" />
 
 ## Sections
 

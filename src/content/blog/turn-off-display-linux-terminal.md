@@ -7,7 +7,7 @@ tags:
   - Linux
 ---
 
-> &#128712;
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
 > Reference: <a href="https://askubuntu.com/questions/62858/turn-off-monitor-using-command-line" target="_blank">Several answers to this post on AskUbuntu</a>
 

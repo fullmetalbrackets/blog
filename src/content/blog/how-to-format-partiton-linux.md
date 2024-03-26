@@ -7,7 +7,7 @@ tags:
   - Command Line
 ---
 
-> &#128712;
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
 > Be aware that using these instructions to format a disk or delete partitions will lead to the loss of any data contained therein.
 
