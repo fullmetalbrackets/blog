@@ -584,6 +584,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"xplore-android-smb-share.md": {
+	id: "xplore-android-smb-share.md";
+  slug: "xplore-android-smb-share";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 };
 "wiki": {
 "ansible-files.md": {
