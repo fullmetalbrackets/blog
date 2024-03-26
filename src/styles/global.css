@@ -101,12 +101,9 @@
     --info-icon: brightness(0) saturate(100%) invert(82%) sepia(13%) saturate(290%) hue-rotate(177deg) brightness(92%) contrast(90%);
     box-sizing: border-box;
     height: 100%;
-    scrollbar-color: var(--name) var(--accent);
-    scrollbar-width: auto;
     scroll-behavior: smooth;
   }
 }
-
 body {
 	font-family: 'Atkinson', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
 	font-size: 20px;
@@ -131,15 +128,14 @@ body {
   background-color: var(--primary);
   border: 4px solid transparent;
   background-clip: content-box;
-  border-radius: 10px;
 }
 ::selection {
   color: #000;
-  background: var(--note); /* WebKit/Blink Browsers */
+  background: var(--primary); /* WebKit/Blink Browsers */
 }
 ::-moz-selection {
   color: #000;
-  background: var(--note); /* Gecko Browsers */
+  background: var(--primary); /* Gecko Browsers */
 }
 main {
   margin: 0 auto;
@@ -323,163 +319,43 @@ figcaption {
 }
 blockquote {
   font-family: 'M PLUS Rounded 1c Reg', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
-	border: 1px solid var(--text);
+  font-size: 0.85em;
+	border: 2px solid var(--note);
   background-color: var(--blockquote);
-  border-color: var(--primary);
-  padding: 0 20px;
+  border-color: var(--note);
+  color: var(--note);
+  padding: 0;
 	margin: 2.5em auto 2em auto;
   border-radius: 0.5em;
   width: 95%;
 }
-blockquote li {
-	margin-left: -1em;
+blockquote p:nth-of-type(1) {
+  padding: 0.35em 0 0.25em 0.25em;
+  margin: 0 0 0 0.25em;
+  color: var(--note);
+  font-size: 1.25em;
 }
 blockquote p {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin: 0;
+  padding: 0 0.75em 1em 1.125em;
+}
+blockquote ul {
+  margin: 0;
+  padding-left: 2.5em;
+}
+blockquote li {
+  margin: 0;
+  padding: 0;
+}
+blockquote li::marker {
+  color: var(--note);
 }
 article a:hover {
   text-decoration: underline;
   text-decoration-color: var(--link);
 }
-div .alert {
-  background-color: var(--blockquote);
-  border: 2px solid var(--alert);
-  line-height: 1.4;
-	padding: 1em 1em 0 1em;
-	margin: 2em auto;
-  border-radius: 0.5em;
-  width: 95%;
-  font-size: 0.85em;
-  font-family: 'M PLUS Rounded 1c Reg', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
-  color: var(--alert);
-}
-div .success {
-  background-color: var(--blockquote);
-  border: 2px solid var(--success);
-  line-height: 1.4;
-	padding: 1em 1em 0 1em;
-	margin: 2em auto;
-  border-radius: 0.5em;
-  width: 95%;
-  font-size: 0.85em;
-  font-family: 'M PLUS Rounded 1c Reg', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
-  color: var(--success);
-}
-div .note {
-  background-color: var(--blockquote);
-  border: 2px solid var(--note);
-  line-height: 1.4;
-	padding: 1em 1em 0 1em;
-	margin: 2em auto;
-  border-radius: 0.5em;
-  width: 95%;
-  font-size: 0.85em;
-  font-family: 'M PLUS Rounded 1c Reg', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
-  color: var(--note);
-}
-div .info {
-  background-color: var(--blockquote);
-  border: 2px solid var(--info);
-  line-height: 1.4;
-	padding: 1em 1em 0 1em;
-	margin: 2em auto;
-  border-radius: 0.5em;
-  width: 95%;
-  font-size: 0.85em;
-  font-family: 'M PLUS Rounded 1c Reg', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
-  color: var(--info);
-}
-/* div .alert a, div .success a, div .note a, div .info a {
-  color: var(--emphasis);
-} */
-div .alert a:hover, div .success a:hover, div .note a:hover, div .info a:hover {
-  color: var(--primary);
-}
-div > .info {
-  margin: 2.5em auto 0 auto;
-}
-div > .alert > span {
-  display: inline-flex;
-  justify-content: left;
-  font-size: 120%;
-  font-family: 'M PLUS Rounded 1c Med', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
-}
-div > .success > span {
-  display: inline-flex;
-  justify-content: left;
-  font-size: 120%;
-  font-family: 'M PLUS Rounded 1c Med', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
-}
-div > .note > span {
-  display: inline-flex;
-  justify-content: left;
-  font-size: 120%;
-  font-family: 'M PLUS Rounded 1c Med', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
-}
-div > .info > span {
-  display: inline-flex;
-  justify-content: left;
-  font-size: 120%;
-  font-family: 'M PLUS Rounded 1c Med', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
-}
-div > .note > ul > li, div > .alert > ul > li, div > .success > ul > li, div > .info > ul > li {
-  line-height: 1.5;
-}
-div > .note > ul > li::marker {
-  color: var(--note);
-}
-div > .alert > ul > li::marker {
-  color: var(--alert);
-}
-div > .success > ul > li::marker {
-  color: var(--success);
-}
-div > .info > ul > li::marker {
-  color: var(--info);
-}
-.alert b:first-of-type  {
-  color: var(--alert);
-}
-.note b:first-of-type {
-  color: var(--note);
-}
-.success b:first-of-type {
-  color: var(--success);
-}
-.info b:first-of-type {
-  color: var(--info);
-}
-.note-icon {
-  filter: brightness(0) saturate(100%) invert(80%) sepia(30%) saturate(1078%) hue-rotate(359deg) brightness(103%) contrast(90%);  
-  width: 24px;
-  height: auto;
-  margin: 0 1rem 0 0;
-  padding: 0;
-}
-.alert-icon {
-  filter: brightness(0) saturate(100%) invert(18%) sepia(51%) saturate(7498%) hue-rotate(16deg) brightness(96%) contrast(101%);
-  width: 24px;
-  height: auto;
-  margin: 0 1rem 0 0;
-  padding: 0;
-}
-.success-icon {
-  filter: brightness(0) saturate(100%) invert(40%) sepia(94%) saturate(2895%) hue-rotate(96deg) brightness(99%) contrast(104%);
-  width: 24px;
-  height: auto;
-  margin: 0 1rem 0 0;
-  padding: 0;
-}
-.info-icon {
-  filter: var(--info-icon);
-  width: 24px;
-  height: auto;
-  margin: 0 1rem 0 0;
-  padding: 0;
-}
 li::marker {
-	color: var(--name);
+	color: var(--primary);
 }
 .ext {
   display: inline-block;
