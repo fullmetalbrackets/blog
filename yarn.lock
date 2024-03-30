@@ -44,7 +44,7 @@
     unist-util-visit-parents "^6.0.0"
     vfile "^6.0.1"
 
-"@astrojs/markdown-remark@^4.3.2":
+"@astrojs/markdown-remark@4.3.2", "@astrojs/markdown-remark@^4.3.2":
   version "4.3.2"
   resolved "https://registry.yarnpkg.com/@astrojs/markdown-remark/-/markdown-remark-4.3.2.tgz#0d5cb79c57ae8546ac355076c54275bade2588c5"
   integrity sha512-4Oa4VaYiBd0MatB+rWIU/0A8pZH/sK3c2QkRYb+OO2lPl+qzevJtWaZY8hAQc4qurIOlRdn6B6ofDAGhWw+DSg==
@@ -68,12 +68,12 @@
     unist-util-visit-parents "^6.0.0"
     vfile "^6.0.1"
 
-"@astrojs/mdx@^2.2.1":
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/@astrojs/mdx/-/mdx-2.2.1.tgz#0d8395f447bb7ae2a95c99ce06b08e94d784ae77"
-  integrity sha512-bSr/AkvGieD9Pc5ZzMnAk7IHnw0vyt/aOujuYUmYT+NHiWahAUy/+ywNNMhTMmea0irdMYnBVC1AEKMQ/oXxow==
+"@astrojs/mdx@^2.2.2":
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/@astrojs/mdx/-/mdx-2.2.2.tgz#bf0ecd912bd41af372fccf8a76fbaae852ca2e31"
+  integrity sha512-5SIFtOctC813HFyqJwBf5TBvlT9sbiOOv+bdvzAoiBSab95dC7PZhss22EvUEx+897c81YoIZ4F9fg4ZkxBFIw==
   dependencies:
-    "@astrojs/markdown-remark" "4.3.1"
+    "@astrojs/markdown-remark" "4.3.2"
     "@mdx-js/mdx" "^3.0.0"
     acorn "^8.11.2"
     es-module-lexer "^1.4.1"
