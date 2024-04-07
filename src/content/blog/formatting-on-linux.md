@@ -6,18 +6,9 @@ tags:
   - linux
 ---
 
-<div>
-  <div class="info">
-    <span>
-      <img src="/assets/info.svg" class="info-icon" loading="eager" decoding="async" alt="Information" />
-      <b>Information</b>
-    </span>
-    <p>
-      For more details see <a href="https://askubuntu.com/a/558412" target="_blank">this answer on AskUbuntu by Mateen Ulhaq</a>
-    </p>
-  </div>
-</div>
-<br>
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
+>
+> For more details see <a href="https://askubuntu.com/a/558412" target="_blank">this answer on AskUbuntu by Mateen Ulhaq</a>
 
 List mounted disks
 

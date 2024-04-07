@@ -6,25 +6,9 @@ tags:
   - pi-hole
 ---
 
-<div>
-  <div class="info">
-    <span>
-      <img src="/assets/info.svg" class="info-icon" loading="eager" decoding="async" alt="Information" />
-      <b>Information</b>
-    </span>
-    <p>
-      <ul>
-        <li>
-          <a href="https://pi-hole.net/blog/2021/02/16/pi-hole-ftl-v5-7-and-web-v5-4-released/#page-content:~:text=Rate%2Dlimiting%20can%20easily%20be%20disabled" target="_blank">Post on official Pi-Hole blog</a>
-        </li>
-        <li>
-          <a href="https://www.reddit.com/r/pihole/comments/osm2fn/psa_if_you_are_having_random_dns_resolution" target="_blank">Post by u/Thom\_\_Cat in r/pihole Subreddit</a>
-        </li>
-      </ul>
-    </p>
-  </div>
-</div>
-<br>
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
+>
+> Credits to <a href="https://pi-hole.net/blog/2021/02/16/pi-hole-ftl-v5-7-and-web-v5-4-released/#page-content:~:text=Rate%2Dlimiting%20can%20easily%20be%20disabled" target="_blank">this post on the official Pi-Hole blog</a> and <a href="https://www.reddit.com/r/pihole/comments/osm2fn/psa_if_you_are_having_random_dns_resolution" target="_blank">this post by u/Thom\_\_Cat in r/pihole Subreddit</a>
 
 Edit the FTL config file:
 

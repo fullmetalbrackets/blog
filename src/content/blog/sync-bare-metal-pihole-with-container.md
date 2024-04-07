@@ -6,29 +6,12 @@ tags:
   - pi-hole
 ---
 
-<div>
-  <div class="info">
-    <span>
-      <img src="/assets/info.svg" class="info-icon" loading="eager" decoding="async" alt="Information" />
-      <b>Information</b>
-    </span>
-    <p>
-      I have a post explaining <a href="set-up-pihole-on-linux" target="_blank">how to install and configure Pi-Hole</a>. Here I will only be focusing on setting up <a href="https://github.com/vmstan/gravity-sync" target="_blank">Gravity Sync</a> with the assumption that both instances of Pi-Hole are already up and running on their hosts.
-    </p>
-  </div>
-</div>
-<div>
-  <div class="alert">
-    <span>
-      <img src="/assets/alert.svg" class="alert-icon" loading="eager" decoding="async" alt="Important" />
-      <b>Important!</b>
-    </span>
-    <p>
-      In order for Gravity Sync to work with a Pi-Hole container, you need to use <em>bind mounts</em> to map the <code>/etc/pihole</code> and <code>/etc/dnsmasq.d</code> directories inside the container to local directories on your host, so that Gravity Sync can access and interact with the config files. This is demonstrated in my post linked above.
-    </p>
-  </div>
-<div>
-<br>
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
+>
+> I have a post explaining <a href="set-up-pihole-on-linux" target="_blank">how to install and configure Pi-Hole</a>. Here I will only be focusing on setting up <a href="https://github.com/vmstan/gravity-sync" target="_blank">Gravity Sync</a> with the assumption that both instances of Pi-Hole are already up and running on their hosts.
+>
+> In order for Gravity Sync to work with a Pi-Hole container, you need to use **volumes** to map the `/etc/pihole` and `/etc/dnsmasq.d` directories inside the container to local directories on your host, so that Gravity Sync can access and interact with the config files. This is demonstrated in my post linked above.
+
 SSH into the host where you have the Pi-Hole container running, and use the following command to execute the Gravity Sync install script:
 
 ```

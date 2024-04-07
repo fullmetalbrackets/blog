@@ -3,8 +3,7 @@ title: "Samba configuration"
 description: "Working copy of the current smb.conf file being used on home server."
 pubDate: 2024-02-04
 tags:
-  - Homelab
-  - SMB
+  - config
 ---
 
 # SMB configuration file

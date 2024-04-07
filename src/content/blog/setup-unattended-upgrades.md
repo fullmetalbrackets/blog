@@ -12,20 +12,11 @@ tags:
 2. [Install and configure Needrestart](#needrestart)
 3. [References](#ref)
 
-<div>
-  <div class="note">
-    <span>
-      <img src="/assets/note.svg" class="note-icon" loading="eager" decoding="async" alt="Note" />
-      <b>Note</b>
-    </span>
-    <p>
-      This guide is specifically for <em>Debian 11</em> and <em>Ubuntu 20.04</em>. They are the only two Linux distros I commonly use, so I am unaware of how to do this on, for example, Arch or Fedora.
-    </p>
-    <p>
-      Also, it is always possible (though unlikely) that newer versions of Debian and Ubuntu may change how unattended upgrades work in the future.
-    </p>
-  </div>
-</div>
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
+>
+> This guide is specifically for **Debian 11** and **Ubuntu 20.04**. They are the only two Linux distros I commonly use, so I am unaware of how to do this on, for example, Arch or Fedora.
+> 
+> Also, it is always possible (though unlikely) that newer versions of Debian and Ubuntu may change how unattended upgrades work in the future.
 
 <div id='unattended'/>
 
@@ -74,15 +65,9 @@ If you want to reboot the machine when it's required after an update un-comment 
 Unattended-Upgrade::Automatic-Reboot-Time "05:00";
 ```
 
-<div class="note">
-  <span>
-    <img src="/assets/note.svg" class="note-icon" loading="lazy" decoding="async" alt="Note" />
-    <b>Note</b>
-  </span>
-  <p>
-    Though you can configure Unattended-Upgrades to email you when it completes an automatic update or when it encounters an error. It requires installing and configuring other packages, which I will not get into here. I may update this in the future if I ever do set up email notification.
-  </p>
-</div>
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
+>
+> Though you can configure Unattended-Upgrades to email you when it completes an automatic update or when it encounters an error. It requires installing and configuring other packages, which I will not get into here. I may update this in the future if I ever do set up email notification.
 
 Finally, you'll want to check the file at `/etc/apt/apt.conf.d/20auto-upgrades` and make sure it has the following lines ("1" enables, while "0" disables):
 

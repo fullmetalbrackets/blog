@@ -30,14 +30,9 @@ This script will install all Docker packages and the Docker Compose plugin, the 
 
 ## Preparing the configuration file
 
-<div class="alert">
-  <span>
-    <img src="/assets/alert.svg" class="alert-icon" loading="lazy" decoding="async" alt="Important" /> <b>Important!</b>
-  </span>
-  <p>
-    Make sure to do the below steps <em>prior</em> to starting the container or else it won't work!
-  </p>
-</div>
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
+>
+> Make sure to do the below steps **prior** to starting the container or else it won't work!
 
 Before starting the container, you need to create the FileBrowser directory, and within it a config file and database file. I'll be using FileBrowser's own suggested configuration with defaults.
 

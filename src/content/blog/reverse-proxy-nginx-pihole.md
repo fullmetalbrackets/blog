@@ -43,15 +43,9 @@ You'll get a menu pop-up, choose `3   Configure workbench` and hit <kbd>Enter</k
 
 I use Pi-Hole as a network-wide DNS resolver, and you can add DNS records to point a domain at an IP address through their web UI. It's very simple.
 
-<div class="note">
-  <span>
-    <img src="/assets/note.svg" class="note-icon" loading="lazy" decoding="async" alt="Note" />
-    <b>Note</b>
-  </span>
-  <p>
-    I will be using <code>*.home.arpa</code> (per the <a href="https://www.rfc-editor.org/rfc/rfc8375.html" target="**target">RFC recommendation</a> for home networks) and not worrying about HTTPS at this time, but this portion of the instructions are identical even if using your own domain with HTTPS.
-  </p>
-</div>
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
+>
+> I will be using <code>*.home.arpa</code> (per the <a href="https://www.rfc-editor.org/rfc/rfc8375.html" target="_target">RFC recommendation</a> for home networks) and not worrying about HTTPS at this time, but this portion of the instructions are identical even if using your own domain with HTTPS.
 
 1. Click on **Local DNS** on the sidebar, then click on **DNS Records**.
 2. On the **Domain:** form, type in the URL you want to use, e.g. `subdomain.home.arpa`.
@@ -78,15 +72,9 @@ If you are running Pi-Hole bare metal instead of in Docker, you need to edit the
 
 I'll be using _Docker Compose_ to install Nginx Proxy Manager, it's my preferred way of running Docker containers. Most likely the Compose plugin was installed already when you installed Docker, but if you not use `sudo apt install docker-compose-plugin` to install it.
 
-<div class="note">
-  <span>
-    <img src="/assets/note.svg" class="note-icon" loading="lazy" decoding="async" alt="Note" />
-    <b>Note</b>
-  </span>
-  <p>
-    If you don't have Docker installed already and need to do from scratch, I suggest using Docker's own bash script to do so by running the command <code>curl -fsSL get.docker.com | sudo sh</code>.
-  </p>
-</div>
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
+>
+> If you don't have Docker installed already and need to do from scratch, I suggest using Docker's own bash script to do so by running the command `curl -fsSL get.docker.com | sudo sh`.
 
 Create a `docker-compose.yml` file and insert the following:
 
@@ -162,15 +150,9 @@ To check the logs in Portainer:
 2. Click on **Containers** in the sidebar.
 3. Look for the Nginx Proxy Manager container in the list, and under **Quick Actions** click on the &#xf15c; icon to see the logs.
 
-<div class="success">
-  <span>
-    <img src="/assets/success.svg" class="success-icon" loading="lazy" decoding="async" alt="Success" />
-    <b>Success!</b>
-  </span>
-  <p>
-    You should now be all set up and able to reach your proxied services via <code>http://subdomain.home.arpa</code> on the browser, no more IPs and ports!
-  </p>
-</div>
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
+>
+> You should now be all set up and able to reach your proxied services via `http://subdomain.home.arpa` on the browser, no more IPs and ports!
 
 <div id='ref' />
 

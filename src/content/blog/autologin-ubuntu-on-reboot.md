@@ -6,18 +6,9 @@ tags:
   - command line
 ---
 
-<div>
-  <div class="info">
-    <span>
-      <img src="/assets/info.svg" class="info-icon" loading="eager" decoding="async" alt="Information" />
-      <b>Information</b>
-    </span>
-    <p>
-      Works on <em>Ubuntu 20.04</em> but untested in 22.04 or other distros.
-    </p>
-  </div>
-</div>
-<br>
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
+>
+> Works on <em>Ubuntu 20.04</em> but untested in 22.04 or other distros.
 
 ```bash
 sudo systemctl edit getty@.service

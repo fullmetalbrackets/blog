@@ -6,18 +6,9 @@ tags:
   - linux
 ---
 
-<div>
-  <div class="info">
-    <span>
-      <img src="/assets/info.svg" class="info-icon" loading="eager" decoding="async" alt="Information" />
-      <b>Information</b>
-    </span>
-    <p>
-      Referenced from <a href="https://man7.org/linux/man-pages/man5/logind.conf.5.html" target="_blank">Man page for logind.conf</a>
-    </p>
-  </div>
-</div>
-<br>
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
+>
+> Referenced from <a href="https://man7.org/linux/man-pages/man5/logind.conf.5.html" target="_blank">Man page for logind.conf</a>
 
 Run the following command to edit the _login configuration file_:
 

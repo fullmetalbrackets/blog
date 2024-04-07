@@ -16,17 +16,9 @@ tags:
 5. [Testing your PWA](#test)
 6. [References](#ref)
 
-<div>
-  <div class="info">
-    <span>
-      <img src="/assets/info.svg" class="info-icon" loading="eager" decoding="async" alt="TL;DR" />
-      <b>TL;DR</b>
-    </span>
-    <p>
-      I created <a href="https://github.com/fullmetalbrackets/pwa-template" target="_blank">a simple template repo on GitHub </a> with just the files necessary to make your HTML site a PWA, as described below - it contains <code>app.js</code> and <code>sw.js</code> to use as is, and a sample <code>manifest.json</code> you need to edit with your project's details. (Replace the <code>index.html</code> and <code>main.css</code> with your own files.)
-    </p>
-  </div>
-</div>
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
+>
+> **TL;DR** I created <a href="https://github.com/fullmetalbrackets/pwa-template" target="_blank">a simple template repo on GitHub </a> with just the files necessary to make your HTML site a PWA, as described below - it contains `app.js` and `sw.js` to use as is, and a sample `manifest.json` you need to edit with your project's details. (Replace the `index.html` and `main.css` with your own files.)
 
 <div id='what'/>
 

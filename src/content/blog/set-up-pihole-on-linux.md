@@ -51,14 +51,9 @@ curl -sSL https://install.pi-hole.net | bash
 
 Executing the script will prompt a number of dialogs, pay attention and make sure you input all the correct information.
 
-<div class="alert">
-  <span>
-    <img src="/assets/alert.svg" class="alert-icon" loading="lazy" decoding="async" alt="Important" /> <b>Important!</b>
-  </span>
-  <p>
-    Make sure to take note of the admin password provided at the end of the install process, you'll need it to login to the Web UI. Ideally you should change the admin password with <code>pihole -a -p newpassword</code>.
-  </p>
-</div>
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
+>
+> Make sure to take note of the admin password provided at the end of the install process, you'll need it to login to the Web UI. Ideally you should change the admin password with `pihole -a -p newpassword`.
 
 Now you should be able to access the Pi-Hole Web UI at either `http://pi.hole/admin`, or use the IP address or hostname, e.g. `http://192.168.1.250/admin` or `http://hostname/admin`.
 
@@ -145,15 +140,9 @@ CONTAINER ID   IMAGE           COMMAND      CREATED          STATUS             
 
 In order for Pi-Hole to work network-wide for all devices (including phones and tablets on Wi-Fi), you'll need to configure your router to use the Pi-Hole server as DNS. The method differs for every router, and some do not have the option at all. (AT&T's Arris BGW210-700 for example does not let you set your own DNS provider.) If the option is available, it's usually under _DHCP Settings_. Google is your friend here for instructions on your own hardware.
 
-<div class="note">
-  <span>
-    <img src="/assets/note.svg" class="note-icon" loading="lazy" decoding="async" alt="Note" />
-    <b>Note</b>
-  </span>
-  <p>
-    If your router does not have the option of setting a DNS server, you won't be able to block ads for all devices on your network automatically. Instead you'll have to <a href="https://discourse.pi-hole.net/t/how-do-i-configure-my-devices-to-use-pi-hole-as-their-dns-server/245#3-manually-configure-each-device-9" target="_blank">configure each device's DNS</a>.
-  </p>
-</div>
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
+>
+> If your router does not have the option of setting a DNS server, you won't be able to block ads for all devices on your network automatically. Instead you'll have to <a href="https://discourse.pi-hole.net/t/how-do-i-configure-my-devices-to-use-pi-hole-as-their-dns-server/245#3-manually-configure-each-device-9" target="_blank">configure each device's DNS</a>.
 
 ![DNS settings.](../../img/blog/dns1.png)
 
@@ -190,7 +179,6 @@ By default the dashboard will show all clients as IP addresses, but there's a fe
 
 Go to _Settings_ on the navigation bar, click on the _DNS_ tab, and scroll down to _Advanced DNS settings_.
 
-<a href="/blog/dns2.png" target="_blank"><img src="/blog/dns2.png" loading="lazy" decoding="async" alt="Screenshot of Conditional Forwarding setting." /></a>
 ![Conditional Forwarding settings.](../../img/blog/dns2.png)
 
 Check the box to _Use Conditional Forwarding_, enter your network information, and hit Save. Check the dashboard and see if that's enough to display hostnames instead of IP addresses.
@@ -222,15 +210,7 @@ After saving your changes to the file, use the following command for them to tak
 pihole restartdns
 ```
 
-<div class="success">
-  <span>
-    <img src="/assets/success.svg" class="success-icon" loading="lazy" decoding="async" alt="Success" />
-    <b>Success!</b>
-  </span>
-  <p>
-    If you've been following the instructions, you're all set to block ads. Pi-Hole will act as a middleman between you and your chosen DNS (Cloudflare's <em>1.1.1.1</em> for example), blocking ads, tracking and telemetry. If you want to go a bit deeper and make Pi-Hole even better, read on below.
-  </p>
-</div>
+If you've been following the instructions, you're all set to block ads. Pi-Hole will act as a middleman between you and your chosen DNS (Cloudflare's `1.1.1.1` for example), blocking ads, tracking and telemetry. If you want to go a bit deeper and make Pi-Hole even better, read on below.
 
 <div id='further' />
 
@@ -299,23 +279,11 @@ If you're running Pi-Hole in a docker container, use this command instead:
 
 Also, if you make Pi-Hole your primary DNS it becomes a critical part of your network -- if it goes down, devices on your network won't be able to resolve any domains. For this reason, you may want to run another Pi-Hole as a secondary DNS in case the host running your main instance of Pi-Hole crashes. (These things happen.) If your entire network will go down from an issue with Pi-Hole, running a second instance of it makes a lot of sense. If you go this route, I strongly suggest using <a href="https://github.com/vmstan/gravity-sync" target="_blank" rel="noreferrer noopener">Gravity Sync</a> to keep the adlists and other settings identical between the two.
 
-<div class="info">
-  <span>
-    <img src="/assets/info.svg" class="info-icon" loading="lazy" decoding="async" alt="Information" />
-    <b>Information</b>
-  </span>
-  <p>
-    Even with all the steps above, your DNS traffic will still go out over plain text and can be seen by your ISP or anyone that happens to be snooping. As such, these may interest you:
-    <ul>
-      <li>
-        <a href="using-dns-over-https-with-pihole">Using DNS over HTTPS with Pi-hole and Cloudflared</a>
-      </li>
-      <li>
-        <a href="pi-hole-quad9-dls-over-tls">Using a forwarding resolver in Pi-Hole for DNS over TLS</a>
-      </li>
-    </ul>
-  </p>
-</div>
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
+>
+> Even with all the steps above, your DNS traffic will still go out over plain text and can be seen by your ISP or anyone that happens to be snooping. As such, these may interest you:
+> - <a href="using-dns-over-https-with-pihole">Using DNS over HTTPS with Pi-hole and Cloudflared</a>
+> - <a href="pi-hole-quad9-dls-over-tls">Using a forwarding resolver in Pi-Hole for DNS over TLS</a>
 
 <div id='ref' />
 

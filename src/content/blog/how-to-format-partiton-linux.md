@@ -6,16 +6,9 @@ tags:
   - linux
 ---
 
-<div>
-  <div class="alert">
-    <span>
-      <img src="/assets/alert.svg" class="alert-icon" loading="eager" decoding="async" alt="Important" /> <b>Important!</b>
-    </span>
-    <p>
-      Be aware that using these instructions to format a disk or delete partitions will lead to the loss of any data contained therein.
-    </p>
-  </div>
-</div>
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
+>
+> Be aware that using these instructions to format a disk or delete partitions will lead to the loss of any data contained therein.
 
 ## Formatting a disk
 

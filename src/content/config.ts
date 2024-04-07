@@ -9,7 +9,7 @@ const blog = defineCollection({
 		// Transform string to Date object
 		pubDate: z.coerce.date(),
 		updatedDate: z.coerce.date().optional(),
-		heroImage: z.string().optional(),
+		tags: z.array(z.string()),
 	}),
 });
 
@@ -17,7 +17,6 @@ const links = defineCollection({
 	// Type-check frontmatter using a schema
 	type: 'data',
 	schema: z.object({
-
 		title: z.string(),
 		description: z.string(),
 		url: z.string(),
@@ -30,4 +29,16 @@ const links = defineCollection({
 	}),
 });
 
-export const collections = { blog, links };
+const wiki = defineCollection({
+	// Type-check frontmatter using a schema
+	schema: z.object({
+		title: z.string(),
+		description: z.string(),
+		// Transform string to Date object
+		pubDate: z.coerce.date(),
+		updatedDate: z.coerce.date().optional(),
+		tags: z.array(z.string()),
+	}),
+});
+
+export const collections = { blog, links, wiki };

@@ -6,17 +6,9 @@ tags:
   - pi-hole
 ---
 
-<div>
-  <div class="info">
-    <span>
-      <img src="/assets/info.svg" class="info-icon" loading="eager" decoding="async" alt="Information" />
-      <b>Information</b>
-    </span>
-    <p>
-      The below forwarding addresses for <em>Quad9</em> are the ones I use in my setup, which provides malware blocking, DNSSEC, and is ECS-enabled. Check out <a href="https://www.quad9.net/service/service-addresses-and-features" target="_blank">all of Quad9's options</a>.
-    </p>
-  </div>
-</div>
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
+>
+> The below forwarding addresses for <em>Quad9</em> are the ones I use in my setup, which provides malware blocking, DNSSEC, and is ECS-enabled. Check out <a href="https://www.quad9.net/service/service-addresses-and-features" target="_blank">all of Quad9's options</a>.
 
 ### Unbound as forwarding resolver
 

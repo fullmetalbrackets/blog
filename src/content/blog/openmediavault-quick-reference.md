@@ -6,7 +6,7 @@ tags:
   - Self-Hosting
 ---
 
-<img src="/omv-header.png" alt="OpenMediaVault=" loading="eager" encoding="async" class="sq-img" />
+<img src="/omv-header.png" alt="OpenMediaVault=" loading="eager" decoding="async" class="sq-img" />
 
 ## Sections
 
@@ -81,15 +81,9 @@ Alternately, you can change the port in the _terminal_:
 3. Scroll down to _Advanced settings_ and check the box for _Wake-on-Lan_
 4. Click the _Save button_ and confirm the _pending configuration changes_ by clicking the _checkmark_.
 
-<div class="info">
-  <span>
-    <img src="/assets/info.svg" class="info-icon" loading="lazy" decoding="async" alt="Information" />
-    <b>Information</b>
-  </span>
-  <p>
-    Make sure to enable <em>Wake-on-Lan</em> within the BIOS too!
-  </p>
-</div>
+> &#128712;
+>
+> Make sure to enable **Wake-on-Lan** within the BIOS too!
 
 <div id='static' />
 
