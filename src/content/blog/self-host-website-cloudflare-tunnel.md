@@ -1,11 +1,12 @@
 ---
 title: "Complete guide to self-hosting a website through Cloudflare Tunnel"
-description: "In this guide I demonstrate how to self-host a static web blog and expose it to the internet via a Cloudflare tunnel."
+description: "In this guide I explain how to self-host a static web blog using Nginx as webserver and expose it to the internet via a Cloudflare tunnel."
 pubDate: 2023-12-29
-updatedDate: 2024-03-20
+updatedDate: 2024-04-07
 tags:
   - Self-Hosting
   - Cloudflare
+  - Nginx
 ---
 
 ## Sections
@@ -41,13 +42,13 @@ First, requirements:
 
 Like I said, I'm not explaining how to build a website here. Assuming you used a static site generator like **Astro** (what I use for this site) or **Nuxt**, use the necessary commands to build the site for deployment -- most likely this will be `npx run build`, `yarn build`, or something along those lines. Most static site builders output to a `/dist` or `/public` folder, which is what will be exposed to the internet.
 
-Make a note of the full path to your website's output directory, so for example `/home/bob/sites/my-cool-blog/dist` or the like.
+Make a note of the full path to your website's output directory, so for example `/home/bob/sites/my-cool-blog/dist` or `../public`, depending on your static site generator.
 
 <div id='nginx' />
 
 ## Setting up the Nginx container
 
-Websites need a **webserver** to serve their pages to be viewed on a browser. I use an Nginx docker container since it just makes everything easier and, importantly, repeatable. (Ideally I can just move the website files and configuration to any other device and easily recreate it.) I'll be using **Docker Compose** for this, again to make things easier and repeatable. Within the root directory of your site, create the file `docker-compose.yaml` and add the below to it:
+Websites need a **webserver** to serve their pages to be viewed on a browser. I use an Nginx docker container since it just makes everything easier and, importantly, repeatable. (The stack is portable and can be recreated on another Docker host.) I'll be using **Docker Compose** for this, again to make things easier and repeatable. Within the root directory of your site, create the file `docker-compose.yaml` and add the below to it:
 
 ```yaml
 version: "3.8"
@@ -56,7 +57,7 @@ services:
   site:
     restart: unless-stopped
     container_name: site
-    image: nginx:alpine
+    image: nginx:alpine-slim-stable
     volumes:
       - /home/bob/sites/my-cool-blog/dist/:/usr/share/nginx/html/
     ports:
