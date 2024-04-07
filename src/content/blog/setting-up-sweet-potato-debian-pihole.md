@@ -2,11 +2,8 @@
 title: "Setting up a Libre Computer Sweet Potato SBC with Debian and Pi-Hole"
 description: "I've been wanting to get a Raspberry Pi for ages, but they were out of stock for the longest time, so I never ended up with one. Recently I learned about the Le Potato from Libre Computer as a Pi-alternative, and after some research paid the $30 early access price for their new Sweet Potato SBC. Here's how I set it up."
 pubDate: 2023-11-02
-draft: true
 tags:
-  - SBC
-  - Linux
-  - Self-Hosting
+  - self-hosting
 ---
 
 ![Libre Computer Sweet Potato SBC.](../../img/blog/sweet-potato.jpg)

@@ -4,8 +4,7 @@ description: The excellent Nuxt/Sitemap module can automatically generate a new 
 pubDate: 2021-10-08
 updatedDate: 2022-10-17
 tags:
-  - Nuxt
-  - Web Development
+  - nuxt
 ---
 
 <div>

@@ -1,0 +1,84 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+import FormattedDate from "@components/FormattedDate.astro";
+
+export async function getStaticPaths() {
+	const allPosts = await getCollection("blog").then((collection) => {
+		return collection.sort(
+			(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+		);
+	});
+
+	const tags: string[] = [];
+
+	allPosts.forEach((post) => {
+		post.data.tags.forEach((tag) => {
+			tags.push(tag.toLowerCase());
+		});
+	});
+
+	return Array.from(new Set(tags)).map((tag) => {
+		return {
+			params: { tag },
+			props: {
+				tag,
+				posts: allPosts.filter((post) =>
+					post.data.tags.map((tag) => tag.toLowerCase()).includes(tag),
+				),
+			},
+		};
+	});
+}
+
+export interface Props {
+	tag: string;
+	posts: CollectionEntry<"blog">[];
+}
+
+const { tag, posts } = Astro.props;
+---
+
+<style scoped>
+  .back {
+    justify-content: left;
+  }
+  ul {
+    list-style-type: none;
+  }
+  .desc {
+    margin-bottom: 2em;
+  }
+</style>
+
+<BaseLayout title={`${tag}`}>
+  <section>
+    <h1>Posts about <em>{`${tag}`}</em></h1>
+    <hr />
+    <aside class="back">
+      <a href="/categories" class="button blog-tag">Back to Categories &larr;</a>
+    </aside>
+    <ul>
+      {
+        posts.map((post) => (
+          <li>
+            <div>
+              <span>
+                <FormattedDate date={post.data.pubDate} />
+              </span><br>
+              <a href={`/blog/${post.slug}/`} rel="prefetch-intent">
+                <span class="title">{post.data.title}</span>
+                <p class="desc">{post.data.description}</p>
+              </a>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+    <hr />
+    <aside>
+      <a href="#top" class="top button blog-tag">Back to Top &uarr;</a>
+    </aside>
+  </section>
+</BaseLayout>

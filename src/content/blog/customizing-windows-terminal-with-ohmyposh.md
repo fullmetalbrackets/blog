@@ -4,9 +4,7 @@ description: "While I use Zsh with Oh-My-Zsh for making my Linux terminal pretty
 pubDate: 2022-10-01
 updatedDate: 2023-07-11
 tags:
-  - Oh-My-Posh
-  - Windows
-  - PowerShell
+  - powershell
 ---
 
 <img src="/oh-my-posh.png" class="posh-img" loading="eager" decoding="async" alt="Oh My Posh" />

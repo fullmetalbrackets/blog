@@ -4,9 +4,7 @@ description: "Debian's non-graphical install does not give you the option to set
 pubDate: 2022-10-07
 updatedDate: 2023-07-18
 tags:
-  - Debian
-  - Networking
-  - Command Line
+  - networking
 ---
 
 Login to Debian as `root` or as a user with sudo privileges (be sure to append `sudo` before every command). First, save a copy of the default network config as a back up:

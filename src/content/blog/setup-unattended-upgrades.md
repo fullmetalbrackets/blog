@@ -3,9 +3,7 @@ title: "Setup auto-updates in Debian and Ubuntu with Unattended-Upgrades and Nee
 description: "If you want your Linux machine to stay up-to-date on important security updates, but you don't want to SSH into it all the time to run updates and would rather set it and forget it, this is the way."
 pubDate: 2022-10-14
 tags:
-  - Linux
-  - Debian
-  - Command Line
+  - command line
 ---
 
 ## Table of Contents

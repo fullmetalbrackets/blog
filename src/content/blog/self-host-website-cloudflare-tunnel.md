@@ -4,8 +4,7 @@ description: "In this guide I demonstrate how to self-host a static web blog and
 pubDate: 2023-12-29
 updatedDate: 2024-03-20
 tags:
-  - Self-Hosting
-  - Cloudflare
+  - self-hosting
 ---
 
 ## Sections

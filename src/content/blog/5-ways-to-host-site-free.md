@@ -4,12 +4,7 @@ description: "So you're learning web development, building things locally and on
 pubDate: 2021-09-06
 updatedDate: 2022-10-05
 tags:
-  - Web Hosting
-  - Cloudflare
-  - Netlify
-  - Vercel
-  - GitHub
-  - Surge
+  - web hosting
 ---
 
 ## Table of Contents

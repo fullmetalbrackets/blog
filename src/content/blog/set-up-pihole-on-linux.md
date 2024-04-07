@@ -4,9 +4,7 @@ description: "I've been using Pi-Hole for a few years, and I just recently set i
 pubDate: 2022-10-08
 updatedDate: 2023-08-09
 tags:
-  - Self-Hosting
-  - Pi-Hole
-  - Linux
+  - pi-hole
 ---
 
 ## Sections

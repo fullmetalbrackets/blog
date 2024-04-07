@@ -3,9 +3,7 @@ title: "Bootstrapping a fresh Linux install with Ansible"
 description: "Ansible is an IT tool that enables Infrastructure as Code, letting you automate provisioning, configuration, management and deployment of services and applications. I like using it at a fraction of it's full power to bootstrap fresh installs of Linux for my homelab."
 pubDate: 2022-09-03
 tags:
-  - Ansible
-  - Linux
-  - Command Line
+  - command line
 ---
 
 ## Sections

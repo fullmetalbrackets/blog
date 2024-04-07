@@ -4,8 +4,7 @@ description: "Just a quick cheat sheet of basic and slightly less basic Linux co
 pubDate: 2022-09-18
 updatedDate: 2022-10-22
 tags:
-  - Linux
-  - Command Line
+  - command line
 ---
 
 ## Sections

@@ -4,10 +4,7 @@ description: "FileBrowser is a self-hosted file manager for a specified director
 pubDate: 2022-11-04
 updateDate: 2024-03-16
 tags:
-  - Self-Hosting
-  - FileBrowser
-  - Docker
-  - Linux
+  - self-hosting
 ---
 
 ## Sections

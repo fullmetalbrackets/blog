@@ -3,8 +3,7 @@ title: "How to format and/or partition disks in Linux"
 description: "Just a quick guide to format and partition hard drives in Linux command line that I wrote for myself a long time ago, and recently had to reference again."
 pubDate: 2022-10-08
 tags:
-  - Linux
-  - Command Line
+  - linux
 ---
 
 <div>

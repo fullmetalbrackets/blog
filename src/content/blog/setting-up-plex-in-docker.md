@@ -4,9 +4,7 @@ description: "One of the most popular services to self-host in Plex Media Server
 pubDate: 2022-10-17
 updatedDate: 2023-08-11
 tags:
-  - Self-Hosting
-  - Plex
-  - Docker
+  - self-hosting
 ---
 
 ## Table of Contents
