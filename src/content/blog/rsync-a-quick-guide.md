@@ -4,9 +4,7 @@ description: "Rsync is a very handy tool for doing high-speed file transfers bet
 pubDate: 2021-09-15
 updatedDate: 2023-07-24
 tags:
-  - Rsync
-  - Linux
-  - Command Line
+  - command line
 ---
 
 ## Sections

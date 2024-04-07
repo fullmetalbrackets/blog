@@ -3,7 +3,7 @@ title: "Using a forwarding resolver in Pi-Hole for DNS over TLS"
 description: "Configs necessary for Pi-Hole to use either Cloudflared or Unbound as forwarding resolver to Quad9 using DNS over TLS."
 pubDate: 2023-07-27
 tags:
-  - Pi-Hole
+  - pi-hole
 ---
 
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">

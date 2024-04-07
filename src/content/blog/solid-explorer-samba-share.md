@@ -4,9 +4,7 @@ description: "There are many File Managers/File Explorers on the Google Play Sto
 pubDate: 2022-11-07
 updatedDate: 2023-03-26
 tags:
-  - Android
-  - SMB
-  - Solid Explorer
+  - android
 ---
 
 > <img src="/assets/info.svg" class="info" loading="eager" decoding="async" alt="Information">

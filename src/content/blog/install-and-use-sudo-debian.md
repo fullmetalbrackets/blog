@@ -3,7 +3,7 @@ title: "Install and use Sudo in Debian"
 description: "Most of my experience with Linux is via the Ubuntu distribution, which includes sudo as a default. Debian does not have sudo or superuser accounts, here's how to add it and set it up."
 pubDate: 2022-10-06
 tags:
-  - Debian
+  - debian
 ---
 
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">

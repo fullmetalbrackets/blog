@@ -3,9 +3,7 @@ title: "Quick guide to setting up SMB shares"
 description: "Setting up SMB shares is fairly easy, but I do it so infrequently I often forget the steps and need to look them up anyway. So I made myself two sets of smb config files for quickly setting up shares, either public or with a login required."
 pubDate: 2023-11-01
 tags:
-  - Command Line
-  - Networking
-  - SMB
+  - smb
 ---
 
 ## Sections

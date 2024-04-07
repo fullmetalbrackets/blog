@@ -4,9 +4,7 @@ description: "My scenario was simple: I wanted to access the web GUIs of OpenMed
 pubDate: 2023-07-15
 updatedDate: 2024-03-06
 tags:
-  - Self-Hosting
-  - Reverse Proxy
-  - Nginx
+  - self-hosting
 ---
 
 ## Sections

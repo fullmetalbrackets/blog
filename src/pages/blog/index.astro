@@ -11,6 +11,9 @@ const desc = "List of all blog posts";
 ---
 
 <style scoped>
+  .blurb {
+    margin-bottom: 2em;
+  }
   ul {
     list-style-type: none;
     margin: 0 auto 0 -1.5em;
@@ -59,6 +62,9 @@ const desc = "List of all blog posts";
   <section>
     <h1>{title}</h1>
     <hr />
+    <p class="blurb">
+      List of all blog posts. Alternatively, see <a href="/categories">see posts by category</a> or <a href="/search">search for specific posts</a>.
+    </p>
     <ul>
       {
         posts.map((post) => (

@@ -3,8 +3,7 @@ title: "Host a static website with AWS Amplify"
 description: "Getting started learning Amazon Web Services can be a bit intimidating. Once you've created your free account there's so many services on the AWS console that it can be overwhelming and confusing to figure out where to get started. So let's ease our way and start by just hosting a simple static website with AWS Amplify, it only takes a few minutes!"
 pubDate: 2021-09-09
 tags:
-  - Web Hosting
-  - AWS
+  - web hosting
 ---
 
 Getting started learning Amazon Web Services can be a bit intimidating. Once you've created your free account there's so many services on the AWS console that it can be overwhelming and confusing to figure out where to get started. So let's ease our way and start by just hosting a simple static website with AWS Amplify, it only takes a few minutes!

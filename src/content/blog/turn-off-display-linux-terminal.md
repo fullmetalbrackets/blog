@@ -3,8 +3,7 @@ title: "Commands to turn off display in the Linux terminal"
 description: "Sometimes I use laptops in the home lab, and to save myself on a few watts of power usage I use these terminal commands to turn off the display, then just SSH into it from my PC."
 pubDate: 2022-12-03
 tags:
-  - Command Line
-  - Linux
+  - command line
 ---
 
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">

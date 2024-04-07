@@ -1,0 +1,180 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import FormattedDate from "@components/FormattedDate.astro";
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("blog"));
+
+const title = "Categories";
+const desc = "Blog posts by category";
+---
+
+<style scoped>
+  ul {
+    list-style-type: none;
+    margin: 0 auto 0 -1.5em;
+  }
+  li {
+    display: inline-block;
+    margin: 0 auto;
+    margin: 0 1.5em 2em 0;
+  }
+  li a {
+    background-color: var(--primary);
+    padding: 4px 6px;
+    border-radius: 0.25em;
+    color: #000;
+    font-family: 'M Plus Rounded 1c Med';
+  }
+  li a:hover {
+    background-color: var(--hover);
+  }
+  div {
+    padding-bottom: 0.25em;
+    border-bottom: 2px solid transparent;
+  }
+  span{
+    margin: 0 auto;
+    padding: 0 auto;
+  }
+  p {
+    margin-bottom: 2em;
+  }
+  .desc {
+  }
+  .title {
+    margin: 0 auto;
+  }
+  .title a,
+  .title a:active,
+  .title a:visited {
+    color: var(--primary);
+  }
+  .title a:hover {
+    color: var(--hover);
+  }
+  li:hover div {
+    border-bottom: 2px solid var(--hover);
+    cursor: pointer;
+  }
+  li:hover .title {
+    color: var(--hover);
+  }
+  @media screen and (min-width: 200px) and (max-width: 667px) {
+    .title {
+      font-size: 20px;
+    }
+    li {
+      margin: 0 1em 2em 0;
+    }
+    li a {
+      font-size: 1.5em;
+    }
+  }
+</style>
+
+<BaseLayout title={title} description={desc}>
+  <section>
+    <h1>{title}</h1>
+    <hr />
+    <p>
+      Click on categories below to see blog posts about that subject.
+    </p>
+    <ul>
+      <li>
+        <a href="/categories/android" rel="prefetch-intent">
+          android
+        </a>
+      </li>
+      <li>
+        <a href="/categories/command line" rel="prefetch-intent">
+          command line
+        </a>
+      </li>
+      <li>
+        <a href="/categories/debian" rel="prefetch-intent">
+          debian
+        </a>
+      </li>
+      <li>
+        <a href="/categories/docker" rel="prefetch-intent">
+          docker
+        </a>
+      </li>
+      <li>
+        <a href="/categories/git" rel="prefetch-intent">
+          git
+        </a>
+      </li>
+      <li>
+        <a href="/categories/linux" rel="prefetch-intent">
+          linux
+        </a>
+      </li>
+      <li>
+        <a href="/categories/netlify" rel="prefetch-intent">
+          netlify
+        </a>
+      </li>
+      <li>
+        <a href="/categories/markdown" rel="prefetch-intent">
+          markdown
+        </a>
+      </li>
+      <li>
+        <a href="/categories/miscellaneous" rel="prefetch-intent">
+          miscellaneous
+        </a>
+      </li>
+      <li>
+        <a href="/categories/networking" rel="prefetch-intent">
+          networking
+        </a>
+      </li>
+      <li>
+        <a href="/categories/nuxt" rel="prefetch-intent">
+          nuxt
+        </a>
+      </li>
+      <li>
+        <a href="/categories/pi-hole" rel="prefetch-intent">
+          pi-hole
+        </a>
+      </li>
+      <li>
+        <a href="/categories/powershell" rel="prefetch-intent">
+          powershell
+        </a>
+      </li>
+      <li>
+        <a href="/categories/self-hosting" rel="prefetch-intent">
+          self-hosting
+        </a>
+      </li>
+      <li>
+        <a href="/categories/smb" rel="prefetch-intent">
+          smb
+        </a>
+      </li>
+      <li>
+        <a href="/categories/git" rel="prefetch-intent">
+          ssh
+        </a>
+      </li>
+      <li>
+        <a href="/categories/web development" rel="prefetch-intent">
+          web development
+        </a>
+      </li>
+      <li>
+        <a href="/categories/web hosting" rel="prefetch-intent">
+          web hosting
+        </a>
+      </li>
+    </ul>
+    <hr />
+    <aside>
+      <a href="#top" class="top button blog-tag">Back to Top &uarr;</a>
+    </aside>
+  </section>
+</BaseLayout>

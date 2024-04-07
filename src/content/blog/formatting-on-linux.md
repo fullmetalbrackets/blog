@@ -3,7 +3,7 @@ title: "Formatting disks in Linux command line"
 description: "Commands necessary to delete partitions, wipe a disk completely and install a new filesystem."
 pubDate: 2023-07-03
 tags:
-  - Linux
+  - linux
 ---
 
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
