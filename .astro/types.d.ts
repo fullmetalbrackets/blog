@@ -142,14 +142,12 @@ declare module 'astro:content' {
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "How-to-generate-GPG-to-sign-git-commits.md": {
 	id: "How-to-generate-GPG-to-sign-git-commits.md";
   slug: "how-to-generate-gpg-to-sign-git-commits";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "autologin-ubuntu-on-reboot.md": {
@@ -158,14 +156,12 @@ declare module 'astro:content' {
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "basic-linux-commands.md": {
 	id: "basic-linux-commands.md";
   slug: "basic-linux-commands";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "bootstrapping-fresh-install-with-ansible.md": {
@@ -174,7 +170,6 @@ declare module 'astro:content' {
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "copy-ssh-keys-between-hosts.md": {
 	id: "copy-ssh-keys-between-hosts.md";
@@ -182,14 +177,12 @@ declare module 'astro:content' {
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "create-public-samba-share-without-login.md": {
 	id: "create-public-samba-share-without-login.md";
   slug: "create-public-samba-share-without-login";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "customizing-windows-terminal-with-ohmyposh.md": {
@@ -205,14 +198,12 @@ declare module 'astro:content' {
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "generating-an-ssh-key-pair.md": {
 	id: "generating-an-ssh-key-pair.md";
   slug: "generating-an-ssh-key-pair";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "git-commands-cheat-sheet.md": {
@@ -221,14 +212,12 @@ declare module 'astro:content' {
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "git-push-error-permissions.md": {
 	id: "git-push-error-permissions.md";
   slug: "git-push-error-permissions";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "guide-to-zsh-ohmyzsh-plugins-and-theme.md": {
@@ -237,14 +226,12 @@ declare module 'astro:content' {
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "host-a-static-website-with-aws-amplify.md": {
 	id: "host-a-static-website-with-aws-amplify.md";
   slug: "host-a-static-website-with-aws-amplify";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "how-to-format-partiton-linux.md": {
@@ -253,14 +240,12 @@ declare module 'astro:content' {
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "how-to-run-filebrowser-in-docker.md": {
 	id: "how-to-run-filebrowser-in-docker.md";
   slug: "how-to-run-filebrowser-in-docker";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "how-to-use-a-custom-prismjs-theme-with-nuxt-content.md": {
@@ -269,7 +254,6 @@ declare module 'astro:content' {
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "how-to-use-netlify-forms-in-a-nuxt-site.md": {
 	id: "how-to-use-netlify-forms-in-a-nuxt-site.md";
@@ -277,14 +261,12 @@ declare module 'astro:content' {
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "install-and-use-sudo-debian.md": {
 	id: "install-and-use-sudo-debian.md";
   slug: "install-and-use-sudo-debian";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "install-docker-debian-ubuntu.md": {
@@ -300,14 +282,12 @@ declare module 'astro:content' {
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "markdown-hacks.md": {
 	id: "markdown-hacks.md";
   slug: "markdown-hacks";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "merging-sites-and-changing-hosts.md": {
@@ -316,14 +296,12 @@ declare module 'astro:content' {
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "minimal-blog-deno-deploy.md": {
 	id: "minimal-blog-deno-deploy.md";
   slug: "minimal-blog-deno-deploy";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "mounting-hard-drives-in-linux.md": {
@@ -332,14 +310,12 @@ declare module 'astro:content' {
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "openmediavault-quick-reference.md": {
 	id: "openmediavault-quick-reference.md";
   slug: "openmediavault-quick-reference";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "pi-hole-quad9-dls-over-tls.md": {
@@ -348,14 +324,12 @@ declare module 'astro:content' {
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "pihole-rate-limiting.md": {
 	id: "pihole-rate-limiting.md";
   slug: "pihole-rate-limiting";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "powershell-commands-cheat-cheat.md": {
@@ -364,14 +338,12 @@ declare module 'astro:content' {
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "quick-guide-setting-up-smb.md": {
 	id: "quick-guide-setting-up-smb.md";
   slug: "quick-guide-setting-up-smb";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "reverse-proxy-nginx-pihole.md": {
@@ -380,14 +352,12 @@ declare module 'astro:content' {
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "rsync-a-quick-guide.md": {
 	id: "rsync-a-quick-guide.md";
   slug: "rsync-a-quick-guide";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "self-host-website-cloudflare-tunnel.md": {
@@ -396,14 +366,12 @@ declare module 'astro:content' {
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "set-static-ip-debian.md": {
 	id: "set-static-ip-debian.md";
   slug: "set-static-ip-debian";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "set-up-pihole-on-linux.md": {
@@ -412,14 +380,12 @@ declare module 'astro:content' {
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "setting-up-a-container-stack-with-docker-compose.md": {
 	id: "setting-up-a-container-stack-with-docker-compose.md";
   slug: "setting-up-a-container-stack-with-docker-compose";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "setting-up-and-configuring-nuxt-sitemap-module-in-a-nuxt-content-blog.md": {
@@ -428,14 +394,12 @@ declare module 'astro:content' {
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "setting-up-jellyfin-in-docker.md": {
 	id: "setting-up-jellyfin-in-docker.md";
   slug: "setting-up-jellyfin-in-docker";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "setting-up-plex-in-docker.md": {
@@ -444,14 +408,12 @@ declare module 'astro:content' {
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "setting-up-sweet-potato-debian-pihole.md": {
 	id: "setting-up-sweet-potato-debian-pihole.md";
   slug: "setting-up-sweet-potato-debian-pihole";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "setup-a-samba-share-on-linux-via-command-line.md": {
@@ -460,14 +422,12 @@ declare module 'astro:content' {
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "setup-cloudflare-tunnel-to-access-self-hosted-apps.md": {
 	id: "setup-cloudflare-tunnel-to-access-self-hosted-apps.md";
   slug: "setup-cloudflare-tunnel-to-access-self-hosted-apps";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "setup-home-assistant-sweet-potato-debian.md": {
@@ -476,14 +436,12 @@ declare module 'astro:content' {
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "setup-nfs-shares-linux.md": {
 	id: "setup-nfs-shares-linux.md";
   slug: "setup-nfs-shares-linux";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "setup-photosync-with-smb-server.md": {
@@ -492,14 +450,12 @@ declare module 'astro:content' {
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "setup-prometheus-cadvisor-grafana.md": {
 	id: "setup-prometheus-cadvisor-grafana.md";
   slug: "setup-prometheus-cadvisor-grafana";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "setup-ssh-authentication-to-push-to-github.md": {
@@ -508,14 +464,12 @@ declare module 'astro:content' {
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "setup-unattended-upgrades.md": {
 	id: "setup-unattended-upgrades.md";
   slug: "setup-unattended-upgrades";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "sideload-the-directv-stream-app-on-sony-bravia-tv-with-android-tv.md": {
@@ -524,14 +478,12 @@ declare module 'astro:content' {
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "solid-explorer-samba-share.md": {
 	id: "solid-explorer-samba-share.md";
   slug: "solid-explorer-samba-share";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "styling-the-kbd-element.md": {
@@ -540,14 +492,12 @@ declare module 'astro:content' {
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "sudo-without-password.md": {
 	id: "sudo-without-password.md";
   slug: "sudo-without-password";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "sync-bare-metal-pihole-with-container.md": {
@@ -556,14 +506,12 @@ declare module 'astro:content' {
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "transferring-files-between-hosts-with-scp.md": {
 	id: "transferring-files-between-hosts-with-scp.md";
   slug: "transferring-files-between-hosts-with-scp";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "turn-off-display-linux-terminal.md": {
@@ -572,14 +520,12 @@ declare module 'astro:content' {
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "turn-static-website-into-pwa.md": {
 	id: "turn-static-website-into-pwa.md";
   slug: "turn-static-website-into-pwa";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "two-drives-mergerfs.md": {
@@ -588,14 +534,12 @@ declare module 'astro:content' {
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "using-dns-over-https-with-pihole.md": {
 	id: "using-dns-over-https-with-pihole.md";
   slug: "using-dns-over-https-with-pihole";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "using-prismjs-in-a-nuxt-static-site.md": {
@@ -604,7 +548,6 @@ declare module 'astro:content' {
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "using-surge-sh-to-host-static-sites.md": {
 	id: "using-surge-sh-to-host-static-sites.md";
@@ -612,11 +555,17 @@ declare module 'astro:content' {
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "vim-quick-guide.md": {
 	id: "vim-quick-guide.md";
   slug: "vim-quick-guide";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"xplore-android-smb-share.md": {
+	id: "xplore-android-smb-share.md";
+  slug: "xplore-android-smb-share";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
@@ -703,114 +652,95 @@ declare module 'astro:content' {
 	id: "chmod-calc";
   collection: "links";
   data: InferEntrySchema<"links">
-  data: InferEntrySchema<"links">
 };
 "cockpit": {
 	id: "cockpit";
   collection: "links";
-  data: InferEntrySchema<"links">
   data: InferEntrySchema<"links">
 };
 "color-picker": {
 	id: "color-picker";
   collection: "links";
   data: InferEntrySchema<"links">
-  data: InferEntrySchema<"links">
 };
 "composerize": {
 	id: "composerize";
   collection: "links";
-  data: InferEntrySchema<"links">
   data: InferEntrySchema<"links">
 };
 "crontab-guru": {
 	id: "crontab-guru";
   collection: "links";
   data: InferEntrySchema<"links">
-  data: InferEntrySchema<"links">
 };
 "css-filter": {
 	id: "css-filter";
   collection: "links";
-  data: InferEntrySchema<"links">
   data: InferEntrySchema<"links">
 };
 "decomposerize": {
 	id: "decomposerize";
   collection: "links";
   data: InferEntrySchema<"links">
-  data: InferEntrySchema<"links">
 };
 "dockge": {
 	id: "dockge";
   collection: "links";
-  data: InferEntrySchema<"links">
   data: InferEntrySchema<"links">
 };
 "font-awesome": {
 	id: "font-awesome";
   collection: "links";
   data: InferEntrySchema<"links">
-  data: InferEntrySchema<"links">
 };
 "forgejo": {
 	id: "forgejo";
   collection: "links";
-  data: InferEntrySchema<"links">
   data: InferEntrySchema<"links">
 };
 "home-assistant": {
 	id: "home-assistant";
   collection: "links";
   data: InferEntrySchema<"links">
-  data: InferEntrySchema<"links">
 };
 "iconify": {
 	id: "iconify";
   collection: "links";
-  data: InferEntrySchema<"links">
   data: InferEntrySchema<"links">
 };
 "json2yaml": {
 	id: "json2yaml";
   collection: "links";
   data: InferEntrySchema<"links">
-  data: InferEntrySchema<"links">
 };
 "kavita": {
 	id: "kavita";
   collection: "links";
-  data: InferEntrySchema<"links">
   data: InferEntrySchema<"links">
 };
 "layout-it": {
 	id: "layout-it";
   collection: "links";
   data: InferEntrySchema<"links">
-  data: InferEntrySchema<"links">
 };
 "meta-tags": {
 	id: "meta-tags";
   collection: "links";
-  data: InferEntrySchema<"links">
   data: InferEntrySchema<"links">
 };
 "neko-calc": {
 	id: "neko-calc";
   collection: "links";
   data: InferEntrySchema<"links">
-  data: InferEntrySchema<"links">
 };
 "nginx-proxy-manager": {
 	id: "nginx-proxy-manager";
   collection: "links";
   data: InferEntrySchema<"links">
-  data: InferEntrySchema<"links">
 };
 "opengist": {
 	id: "opengist";
   collection: "links";
-  data: InferEntrySchema<"links">
   data: InferEntrySchema<"links">
 };
 "pi-hole": {
@@ -821,7 +751,6 @@ declare module 'astro:content' {
 "pwa-builder": {
 	id: "pwa-builder";
   collection: "links";
-  data: InferEntrySchema<"links">
   data: InferEntrySchema<"links">
 };
 "pwa-image": {
@@ -863,18 +792,15 @@ declare module 'astro:content' {
 	id: "ui-goodies";
   collection: "links";
   data: InferEntrySchema<"links">
-  data: InferEntrySchema<"links">
 };
 "uptime-kuma": {
 	id: "uptime-kuma";
   collection: "links";
   data: InferEntrySchema<"links">
-  data: InferEntrySchema<"links">
 };
 "what-is-viewport": {
 	id: "what-is-viewport";
   collection: "links";
-  data: InferEntrySchema<"links">
   data: InferEntrySchema<"links">
 };
 };
@@ -883,6 +809,5 @@ declare module 'astro:content' {
 
 	type AnyEntryMap = ContentEntryMap & DataEntryMap;
 
-	export type ContentConfig = typeof import("../src/content/config.js");
 	export type ContentConfig = typeof import("../src/content/config.js");
 }
