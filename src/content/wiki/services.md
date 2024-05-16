@@ -2,34 +2,40 @@
 title: "Self-Hosted Services"
 description: "A list of self-hosted services in my homelab."
 pubDate: 2023-10-02
-updatedDate: 2023-11-02
+updatedDate: 2024-05-16
 tags:
   - services
 ---
 
 # Korben
 
-- Plex
-- Tautulli
+- Flame
+- Forgejo
+- Gluetun
+- Home Assistant
 - Kavita
-- Scrutiny
-- qBittorrent
+- Mosquitto
+- OpenGist
 - Paperless-ngx
-- Speedtest Tracker
-- Twingate Connector
+- Plex
 - Portainer
+- qBittorrent
+- Scrutiny
+- Speedtest Tracker
+- Syncthing
+- Tautulli
+- Twingate Connector
+- Uptime Kuma
+- Watchtower
 
 # Potato
 
-- Pi-Hole (primary)
-- Home Assistant
-- OpenGist
-- Uptime Kuma
+- Pi-Hole
 - Nginx Proxy Manager
 - Portainer Agent
 
 # Spud
 
-- Pi-Hole (backup)
+- Pi-Hole
 - Nginx + Cloudflare Tunnel
 - Portainer Agent

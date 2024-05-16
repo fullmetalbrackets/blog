@@ -14,6 +14,7 @@ tags:
 - 2 TB 3.5" External HDD (large media storage)
 - 1 TB 2.5" External HDD (documents, photos, etc.)
 - 1 Gbps Ethernet
+- 8 GB RAM
 
 ## Information
 

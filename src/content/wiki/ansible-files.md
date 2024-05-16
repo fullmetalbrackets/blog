@@ -24,6 +24,7 @@ ansible_python_interpreter="/usr/bin/python3"
 [server]
 apollo ansible_host=192.168.0.100
 potato ansible_host=192.168.0.200
+spud   ansible_host=192.168.0.205
 korben ansible_host=192.168.0.225
 
 [all:vars]
@@ -80,6 +81,10 @@ pipelining = true
           - neofetch
           - samba
           - cifs-utils
+          - cockpit
+          - cockpit-storaged
+          - cockpit-networkmanager
+          - cockpit-packagekit
         state: present
         install_recommends: yes
 
@@ -89,38 +94,6 @@ pipelining = true
       apt:
         autoclean: yes
         autoremove: yes
-
-    - name: Start the Samba daemon
-      tags:
-        - server
-        - samba
-      service:
-        name: smbd
-        state: started
-
-    - name: Start the NetBIOs daemon
-      tags:
-        - server
-        - samba
-      service:
-        name: nmbd
-        state: started
-
-    - name: Enable the Samba daemon
-      tags:
-        - server
-        - samba
-      systemd:
-        name: smbd
-        enabled: yes
-
-    - name: Enable the NetBIOS daemon
-      tags:
-        - server
-        - samba
-      systemd:
-        name: nmbd
-        enabled: yes
 
     - name: Check if reboot is required
       tags: always
@@ -138,5 +111,4 @@ pipelining = true
 # Instructions
 
 1. Install Ansible with `sudo apt-add-repository ppa:ansible/ansible && sudo apt install ansible -y`
-2. Install Community Collection with `ansible-galaxy collection install community.general`
-3. Run the playbook on all hosts `ansible-playbook run.yml` or targeted at a specific host - `ansible-playbook run.yml -l <host>`
+2. Run the playbook on all hosts `ansible-playbook run.yml` or targeted at a specific host - `ansible-playbook run.yml -l <host>`

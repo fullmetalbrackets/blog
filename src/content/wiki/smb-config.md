@@ -56,3 +56,17 @@ This is the current working Samba configuration file for [Korben](./korben) with
    force create mode = 0666
    force directory mode = 0777
 ```
+
+Below is for sharing home directory on other machines.
+
+```bash
+[home]
+   comment = Home Directory
+   path = /home/ad
+   read only = no
+   writeable = yes
+   browseable = yes
+   force user = ad
+   force create mode = 666
+   force directory mode = 755
+```

@@ -28,7 +28,7 @@ tags:
 
 **IP:** 192.168.0.225
 
-- 4 GB RAM
+- 8 GB RAM (2 x 4 GB DDR3)
 - Internal 320 GB 2.5" HDD (boot)
 - External 2 TB 3.5" HDD (media storage)
 - External 1 TB 2.5" HDD (documents, container files, etc.)
@@ -46,7 +46,8 @@ tags:
 **IP:** 192.168.0.200
 
 - 2 GB RAM
-- 32 GB USB Drive (boot)
+- 32 GB USB 3.0 Drive (boot)
+- 64 GB USB 2.0 Drive (storage)
 - 100 Mbps Ethernet
 - 2W - 5W Power Consumption
 
@@ -63,7 +64,7 @@ tags:
 **IP:** 192.168.0.205
 
 - 2 GB RAM
-- 64 GB USB Drive (boot)
+- 32 GB USB 3.0 Drive (boot)
 - 100 Mbps Ethernet
 - 2W - 5W Power Consumption
 
@@ -115,7 +116,7 @@ The below machines are not currently in use.
 
 **IP:** 192.168.0.100
 
-- 16 GB RAM
+- 16 GB RAM (2 x 8GB DDR4)
 - 250 GB NVMe SSD (boot)
 - 1 TB 3.5" HDD (storage)
 - 1 Gbps Ethernet
