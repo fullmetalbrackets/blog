@@ -4,7 +4,7 @@ description: "I've been running a bunch of services on my home server in docker 
 pubDate: 2022-09-29
 updatedDate: 2023-08-11
 tags:
-  - self-hosting
+  - docker
 ---
 
 ## Sections
