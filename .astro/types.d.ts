@@ -563,6 +563,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"watchtower-notifications.md": {
+	id: "watchtower-notifications.md";
+  slug: "watchtower-notifications";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "xplore-android-smb-share.md": {
 	id: "xplore-android-smb-share.md";
   slug: "xplore-android-smb-share";
