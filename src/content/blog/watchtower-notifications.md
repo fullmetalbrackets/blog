@@ -19,7 +19,7 @@ tags:
 
 ## About Watchtower
 
-Per their own website, Watchtower is a container-based solution for automating Docker container base image updates. It runs with no config, where it will automatically update any containers with a new image available, although you can configure it with all sorts of options. I strongly suggest reading the documentation to see all the available options, I will be using very specific options (which I use myself) that I will explain their use, but that won't even scratch the surface of what's capable with Watchtower.
+<a href="https://containrrr.dev/watchtower" target="_blank">Per their own website</a>, Watchtower is a container-based solution for automating Docker container base image updates. It runs with no config, where it will automatically update any containers with a new image available, although you can configure it with all sorts of options. I strongly suggest reading the documentation to see all the available options, I will be using very specific options (which I use myself) that I will explain their use, but that won't even scratch the surface of what's capable with Watchtower.
 
 ## Setting up Watchtower through Docker Compose
 
