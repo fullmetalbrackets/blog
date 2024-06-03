@@ -4,7 +4,7 @@ description: "Though Plex is a very popular media server for self-hosting, some 
 pubDate: 2022-10-18
 updatedDate: 2023-08-11
 tags:
-  - self-hosting
+  - docker
 ---
 
 ## Table of Contents
