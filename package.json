@@ -19,7 +19,7 @@
     "@astrojs/mdx": "^3.0.1",
     "@astrojs/rss": "^4.0.6",
     "@astrojs/sitemap": "^3.1.5",
-    "astro": "^4.9.2"
+    "astro": "^4.10.1"
   },
   "devDependencies": {
     "netlify-plugin-csp-generator": "^1.6.1"
