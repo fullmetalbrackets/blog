@@ -2,6 +2,7 @@
 title: "Spud"
 description: "Details on Spud, my Libre Sweet Potato SBC running my back-up Pi-Hole and other services."
 pubDate: 2023-11-16
+updatedDate: 2024-06-15
 tags:
   - hosts
 ---
@@ -10,8 +11,15 @@ tags:
 
 # Libre Sweet Potato
 
-- 64 GB USB Drive (boot drive)
+- 32 GB USB Drive (boot drive)
+- 64 GB USB Drive (extra storage)
 - 100 Mbps Ethernet
+
+## Services
+
+- Pi-Hole (bare metal)
+- Nginx Web Server (Docker container)
+- Cloudflare Tunnel (Docker container)
 
 ## Information
 
