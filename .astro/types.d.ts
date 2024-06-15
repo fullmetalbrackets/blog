@@ -593,6 +593,13 @@ declare module 'astro:content' {
   collection: "wiki";
   data: InferEntrySchema<"wiki">
 } & { render(): Render[".md"] };
+"athena.md": {
+	id: "athena.md";
+  slug: "athena";
+  body: string;
+  collection: "wiki";
+  data: InferEntrySchema<"wiki">
+} & { render(): Render[".md"] };
 "inventory.md": {
 	id: "inventory.md";
   slug: "inventory";
