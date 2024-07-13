@@ -2,6 +2,7 @@
 title: "Setup a Cloudflare Tunnel to securely access self-hosted apps with a domain from outside the home network"
 description: "Cloudflare Tunnels have been around for a few years and are well regarded alternatives for VPNs or port-forwarding on a router. They are often used to expose access to self-hosted apps from outside the local network with minimal config or hassle. Here's how it's done."
 pubDate: 2023-07-20
+updatedDate: 2024-07-12
 tags:
   - self-hosting
 ---
@@ -11,10 +12,9 @@ tags:
 1. [Pre-Requisites](#pre)
 2. [Add a domain to Cloudflare](#domain)
 3. [Create the Cloudflare Tunnel](#tunnel)
-4. [Configure domain DNS settings](#dns)
-5. [Configure OAuth with Google](#oauth)
-6. [Create an access policy](#policy)
-7. [References](#ref)
+4. [Configure OAuth with Google](#oauth)
+5. [Create an access policy](#policy)
+6. [References](#ref)
 
 <div id="account" />
 
@@ -64,41 +64,19 @@ Once your DNS changes have propagated, the Overview page will say: _"Great news!
 
 Go to the Cloudflare Zero Trust dashboard by clicking _Access_ on the sidebar, then click on _Launch Zero Trust_ to open it in a new tab. Once at the dashboard, do the following:
 
-1. On the sidebar, go to _Access_ -> _Tunnels_.
+1. On the sidebar, go to _Network_ -> _Tunnels_.
 
 2. Click the _Create a tunnel_ button, give it a name, and click _Save tunnel_.
 
-3. The next page is self-explanatory. Copy and paste the command provided into your server's terminal to create and run the <cod>cloudflared</co> container. Give it a minute or two, then check Cloudflare -- reload the page if necessary or wait a few minutes, your tunnel will eventually show as <em>Healthy status</em>. Once it does, move on to the next step.
-
-Your tunnel should now be up and running, but won't connect to your self-hosted app yet. We'll the setup the DNS for that in the next section.
+3. The next page gives you instructions on how to run the connector. It varies based on how you want to do it, but is self-explanatory. Copy and paste the command provided into your server's terminal to run `cloudflared`. Give it a minute or two, then check Cloudflare -- reload the page if necessary or wait a few minutes, your tunnel will eventually show as <em>Healthy status</em>. Once it does, move on to the next step.
 
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
-> If want to install `cloudflared` with **Docker Compose**, copy and paste the command into <a href="https://www.composerize.com" target="_blank">Composerize</a>. Or you can just <a href="https://gist.github.com/fullmetalbrackets/1b762a2688b81ce6b6f36fd174b335a1" target="_blank">check out this gist I made</a> to run Navidrome and Cloudflared together as a stack, which is how I have it set up. (That way I can start up and take down the stack as needed with one click through the <em>Portainer</em> UI.)
+> If want to run `cloudflared` as a container with **Docker Compose** (rather than the `docker run` command), copy and paste the command into <a href="https://www.composerize.com" target="_blank">Composerize</a>. Or you can just <a href="https://gist.github.com/fullmetalbrackets/1b762a2688b81ce6b6f36fd174b335a1" target="_blank">check out this gist I made</a> to run Navidrome and Cloudflared together as a stack, which is how I have it set up. (That way I can start up and take down the stack as needed with `docker compose up` and `docker compose down`, or with one click through <em>Portainer</em>.)
 
-<div id="dns" />
+4. Next you'll be on the _Route traffic_ page. Under _Public hostnames_ type in your sub-domain (i.e. `music`) and then your domain. Below that under _Services_, for _Type_ choose _HTTP_ (*not HTTPS*), and for _URL_ enter your local IP address and port of the service you''re exposing, e.g. `192.168.0.200:4533`. To finish, click the _Save tunnel_ button.
 
-## Configure domain DNS settings
-
-Now we will set up Cloudflare DNS to proxy `music.your-domain.com` to Navidrome on your server through the tunnel we created.
-
-1. Go to _Access_ -> _Tunnels_ and copy your `Tunnel ID`.
-
-2. Click the left arrow beside your account email on the sidebar to go back to the main Cloudflare dashboard.
-
-3. Click the recently added `your-domain.com` (it should say _Active_ by now, if not wait till it does). Now on the sidebar go to _DNS_ to get the _Records_ page. Click the _Add record_ button.
-
-4. Under _Type_ choose `CNAME`.
-
-5. Under _Name_ put the sub-domain `music`.
-
-6. Under _IPv4 address_, we'll use the `Tunnel ID` from above to create the URL `<tunnel-id>.cfargotunnel.com`. Use this URL as the IP address. (<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/routing-to-tunnel/dns/" target="_blank">See why here.</a>) Click _Next_.
-
-7. Under _Subdomain_ put `music`, under _Domain_ put`your-domain.com`, for _Type_ select `HTTP` and for _URL_ use the IP Address and Port on your server, e.g. `192.168.0.200:4533`.
-
-8. Still on the same page, go to _Private Networks_, and for _CIDR_ enter your network subnet and prefix -- using the example IP above, your CIDR would be `192.168.0.0/24`. (To confirm, use the command `ip a` and in the output look for `inet 192.168.0.200/24`)
-
-9. Click the _Save tunnel_ button.
+5. Now, to verify everything is working as intended, go to _DNS_ -> _Records_ on the sidebar. You should see a `CNAME` record pointing the `music` sub-domain to a URL like `5e126941-1234-8e13-4d80-02fe21084a62.cfargotunnel.com`. (The alpha-numeric string is your tunnel ID.)
 
 You should be done! Go to `https://music.your-domain.com` and you should reach the Navidrome UI! However, you're not the only one with access, technically anyone with the URL can reach it unabated.
 
@@ -172,7 +150,7 @@ Now that the OAuth provider is set up, we need make use of it with <a href="http
 
 9. (Optional) If you like even more security, click _+ Add require_ and choose _Country_ as selector and your home country as the _Value_.
 
-10. (Optional) You can activate _Purpose justification_ which apparently emails an approval email. I don't bother with this, so I don't really know.
+10. (Optional) You can activate _Purpose justification_ which apparently emails an approval email each time there is a login, like a 2 factor auth. I don't bother with this, so I don't really know.
 
 11. Click the _Next_ button.
 
