@@ -211,11 +211,15 @@ button {
   padding: 4px 8px;
   font-weight: 600;
 }
-strong, b, u,  em, i {
+ u, em, i {
 	color: var(--emphasis);
-	font-style: normal;
+}
+
+strong, b {
+	color: var(--emphasis);
   font-weight: 700;
 }
+
 kbd {
   background-color: #ccc;
   color: #222;
