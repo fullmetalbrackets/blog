@@ -7,9 +7,9 @@
 
 ## 💻 My latest blog posts
 <!-- BLOG-POST-LIST:START -->
+- [How I securely expose Plex from behind CGNAT with Cloudflare Tunnel](https://fullmetalbrackets.com/blog/expose-plex-with-cloudflare/)
+- [Set up Tailscale as a subnet router on a Linux server](https://fullmetalbrackets.com/blog/tailscale/)
 - [Setup Watchtower to auto-update Docker containers with notifications](https://fullmetalbrackets.com/blog/watchtower-notifications/)
 - [Setup X-plore File Manager on Android to transfer files to an SMB share](https://fullmetalbrackets.com/blog/xplore-android-smb-share/)
 - [How to resolve Git error insufficient permission for adding an object to repository database](https://fullmetalbrackets.com/blog/git-push-error-permissions/)
-- [Using MergerFS to combine multiple hard drives into one unified media storage](https://fullmetalbrackets.com/blog/two-drives-mergerfs/)
-- [Set up Home Assistant Supervised on a Libre Computer Sweet Potato SBC](https://fullmetalbrackets.com/blog/setup-home-assistant-sweet-potato-debian/)
 <!-- BLOG-POST-LIST:END -->
