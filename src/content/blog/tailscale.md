@@ -70,9 +70,9 @@ Technically, you can just install Tailscale on every device on your network and 
 If your machine has an `/etc/sysctl.d` directory (which most likely it does) then use these commands:
 
 ```bash
-echo 'net.ipv4.ip_forward = 1' | sudo tee -a /etc/sysctl.conf
-echo 'net.ipv6.conf.all.forwarding = 1' | sudo tee -a /etc/sysctl.conf
-sudo sysctl -p /etc/sysctl.conf
+echo 'net.ipv4.ip_forward = 1' | sudo tee -a /etc/sysctl.d/99-tailscale.conf
+echo 'net.ipv6.conf.all.forwarding = 1' | sudo tee -a /etc/sysctl.d/99-tailscale.conf
+sudo sysctl -p /etc/sysctl.d/99-tailscale.conf
 ```
 
 If your machine does NOT have the directory (`cd /etc/sysctl.d` returns `No such file or directory`) then instead use these commands:
@@ -147,7 +147,7 @@ Restart Samba for the config change to take effect:
 sudo systemctl restart smbd.service
 ```
 
-Finally, use the following command to allow the SMB port to be routed through Tailscale:
+Finally, we'll use <a href="https://tailscale.com/kb/1312/serve" target="_blank">Tailscale Serve</a> to allow the SMB traffic to be routed through Tailscale, using this command:
 
 ```bash
 tailscale serve --bg --tcp 445 tcp://localhost:445
@@ -241,8 +241,8 @@ I've only scratched the surface on what Tailscale can do in this post, because a
 
 - <a href="https://tailscale.com/kb/1271/invite-any-user" target="_blank">Invite other users to your tailnet</a>
 - <a href="https://tailscale.com/kb/1018/acls" target="_blank">Manage permissions using ACLs</a>
-- <a href="https://tailscale.com/kb/1312/serve" target="_blank">Share a file server or static site on your tailnet</a>
-- <a href="https://tailscale.com/kb/1223/funnel" target="_blank">Route traffic to the internet with Funnel</a> (I'm going to play with this soon and will update the post.)
+- <a href="https://tailscale.com/kb/1312/serve" target="_blank">Serve static pages on your tailnet with Tailscale Serve</a>
+- <a href="https://tailscale.com/kb/1223/funnel" target="_blank">Route traffic to the internet with Tailscale Funnel</a> (I'm going to play with this soon and will update the post.)
 
 <div id='ref'/>
 
