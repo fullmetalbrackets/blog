@@ -1,5 +1,5 @@
 ---
-title: "How I securely expose Plex from behind CGNAT with Cloudflare Tunnel"
+title: "How to securely expose Plex from behind CGNAT with Cloudflare Tunnel"
 description: "Exposing Plex normally involves port forwarding from the router, which is very insecure and not recommended. If your home network is behind CGNAT - very common with most ISPs nowadays -- you can't even port forward if you wanted to. Here's how I did it in a fairly secure way that limits access by using Cloudflare."
 pubDate: 2024-07-15
 tags:
@@ -126,7 +126,7 @@ On the Cloudflare dashboard, click on _Access_ on the sidebar, then click on _La
 
 Now you should be able to go to `https://plex.your-domain.com` and you should reach the Plex UI and be prompted to login! However, right now Plex is fully exposed to the entire internet. We need to use Cloudflare's WAF to restrict access to only who we want!
 
-<div id="plex" />
+<div id="cloudflare" />
 
 ## Configure Cloudflare
 
