@@ -11,9 +11,8 @@ tags:
 # Dell XPS 8920 
 
 - 250 GB PCIe M.2 NVMe SSD (boot drive)
-- 2 x 2 TB 3.5" HDD (large media storage)
+- 3 x 2 TB 3.5" HDD (large media storage)
 - 1 TB 2.5" HDD (documents, photos, etc.)
-- 500 GB 3.5" HDD (backup drive)
 - 3 x 1 Gbps Ethernet Ports
 - 24 GB RAM
 
