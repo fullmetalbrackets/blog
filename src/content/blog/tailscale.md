@@ -11,7 +11,7 @@ tags:
 1. [About Tailscale](#about)
 2. [Setting up Tailscale](#setup)
 3. [Configuring tailnet name, DNS and HTTPS](#tailnet)
-4. [Additional config for SMB shares](#smb)
+4. [Additional config for SMB and NFS](#smb)
 5. [Setting up a subnet router](#subnet)
 6. [Setting up an exit node](#exit)
 7. [Using a Pi-Hole as Tailnet DNS](#pihole)
@@ -81,9 +81,9 @@ tailscale cert server.cyber-sloth.ts.net
 
 <div id='smb'/>
 
-## Additional config for SMB shares
+## Additional config for SMB and NFS
 
-This is entirely optional, but I like to have access to my SMB shares on my laptop and even on my phone through Solid Explorer or X-plorer. Rarely used, but still handy. Per <a href="https://github.com/tailscale/tailscale/issues/6856#issuecomment-1485385748" target="_blank">this issue on GitHub</a> we need to do a little extra config for SMB to work through Tailscale.
+This is entirely optional, but I like to have access to my SMB shares on my laptop and even on my phone through Solid Explorer or X-plorer. Rarely used, but still handy. Per <a href="https://github.com/tailscale/tailscale/issues/6856#issuecomment-1485385748" target="_blank">this issue on GitHub</a> we need to do a little extra config for SMB to work through Tailscale. ([See below for additional NFS config.](#nfs))
 
 First, find out your server's main interface device name with the `ip a` command and pay attention to the output: 
 
@@ -117,13 +117,23 @@ Finally, we'll use <a href="https://tailscale.com/kb/1312/serve" target="_blank"
 tailscale serve --bg --tcp 445 tcp://localhost:445
 ```
 
+<div id='nfs'/>
+
+To access NFS shares through Tailscale, we need to add the Tailscale IP of the NFS client (the machine that will be accessing the shares) to `/etc/exports`, for example:
+
+```bash
+/path/to/share 100.143.11.92(rw,sync,no_subtree_check)
+```
+
 <div id='subnet'/>
 
 ## Setting up a subnet router
 
 Technically, you can just install Tailscale on every device on your network and add them to your Tailnet, but that's not necessary. You can instead only install it on one machine and use that as a "subnet router" to access other network resources. This is especially handy for accessing devices that you can't run Tailscale on.
 
-First, on the machine we want to use as subnet router, we need to enable IP forwarding. (This is straight from the <a href="https://tailscale.com/kb/1019/subnets" target="_blank">Tailscale docs</a>.)
+First, on the machine you want to use as subnet router, you need to enable IP forwarding. (This is straight from the <a href="https://tailscale.com/kb/1019/subnets" target="_blank">Tailscale docs</a>.)
+
+<div id='ip-forwarding'/>
 
 If your machine has an `/etc/sysctl.d` directory (which most likely it does) then use these commands:
 
@@ -133,7 +143,7 @@ echo 'net.ipv6.conf.all.forwarding = 1' | sudo tee -a /etc/sysctl.d/99-tailscale
 sudo sysctl -p /etc/sysctl.d/99-tailscale.conf
 ```
 
-If your machine does NOT have the directory (`cd /etc/sysctl.d` returns `No such file or directory`) then instead use these commands:
+If your machine does NOT have the directory (`ls /etc/sysctl.d` returns `No such file or directory`) then instead use these commands:
 
 ```bash
 echo 'net.ipv4.ip_forward = 1' | sudo tee -a /etc/sysctl.conf
@@ -147,35 +157,45 @@ Also, if you are running `firewalld` on your server, you should allow masqueradi
 sudo firewall-cmd --permanent --add-masquerade
 ```
 
-Now advertise the subnet routes with this command:
+Now advertise the subnet routes with this command: (This assumes your local IP addresses are `192.168.0.x`)
 
 ```bash
 tailscale up --advertise-routes=192.168.0.0/24
 ```
 
-Next go to the Tailscale admin console and the **Machines** tab, to the right of the server click the **three dots** and choose **Edit route settings...** from the dropdown menu. Click the checkbox under **Subnet routes** and then click the **Save** button.
+Now go to the admin console, on the **Machines** tab, and do the following:
+
+1. Click the three dots to the right of the machine want you want to use as subnet router. (Notice the `subnets` tag.)
+
+2. Choose **Edit route settings...** from the dropdown menu.
+
+3. Click the checkbox for **Subnet routes** and click the **Save** button to finish.
+
+One last thing, if you are running Tailscale on multiple machines in your home network, you should use the command `tailscale up --accept-routes=false` on those other machines, that way they will keep using local routes (e.g. `192.168.0.x`) instead of going through the tailnet -- you don't want to access your local network resources through Tailscale when you're home!
 
 <div id='exit'/>
 
 ## Setting up an exit node
 
-This is an entirely optional step, but a very cool feature. You can set a machine running Tailscale to function as an _exit node_, so that rather than only letting you access resources on another network, forwards ALL traffic through the machine running as exit node -- not only will you have access to your home network, all internet traffic will be routed through your home internet as if you were home, so you also get the advantage of any hardware firewalls and network-wide DNS sinkholes on the network, for example.
+This is an entirely optional step, but a very cool feature. You can set a machine running Tailscale to function as an _exit node_, so all traffic is forwarded through the machine running as exit node.
 
-First, if you haven't set up IP forwarding, so do with the below commands. (If you setup a subnet router, you already did this and can skip it.)
+This way you can, for example, not only access your home network, but all internet traffic will be routed through your home internet as if you were home, so you also get the advantage of any hardware firewalls and network-wide DNS sinkholes on the network. Another use case could be installing Tailscale on a VPS and using it as an exit node to mask your IP, like a more traditional VPN.
 
-```bash
-echo 'net.ipv4.ip_forward = 1' | sudo tee -a /etc/sysctl.conf
-echo 'net.ipv6.conf.all.forwarding = 1' | sudo tee -a /etc/sysctl.conf
-sudo sysctl -p /etc/sysctl.conf
-```
+First, if you haven't set up IP forwarding, [as explained above](#ip-forwarding) in the subnet router section. (If you setup a subnet router on the same machine you will use as exit node, then you already did this and can skip it.)
 
-Now, use the following command to advertise the machine as an exit node.
+Once that's done, use the following command to advertise the machine as an exit node:
 
 ```bash
 tailscale up --advertise-exit-node
 ```
 
-Go to the admin console, on the **Machines** tab click the three dots (_***_) to the right of the machine want to use an an exit node (notice the little `exit node` tag in the entry) and choose **Edit route settings...** from the dropdown menu, then click the checkbox for **Use as exit node** and click the **Save** button.
+Now go to the admin console, on the **Machines** tab, and do the following:
+
+1. Click the three dots to the right of the machine want you want to use as exit node. (Notice the `exit node` tag.)
+
+2. Choose **Edit route settings...** from the dropdown menu.
+
+3. Click the checkbox for **Use as exit node** and click the **Save** button to finish.
 
 Finally, to use the exit node on your phone/tablet open the Tailscale app, tap the **Exit Node** button at the top and the server you set as an exit node should appear as an option -- choose it to turn it on.
 
@@ -185,21 +205,43 @@ To use an exit node from a Linux machine, use the following command: (Use the ta
 tailscale up --exit-node=<ip or name>
 ```
 
-I have personally not used Tailscale on Windows, so I don't know how to use an exit node, but I imagine the client lets you easily enable an exit node in similar way to the mobile apps.
+On Windows, click on the Tailscale icon in the system tray, hover over **Exit nodes** and choose your node from the menu.
 
 <div id='pihole'/>
 
 ## Setting a Pi-Hole as Tailnet DNS
 
-By default, Tailscale does not manage your DNS, and each machine on the Tailnet will use it's own configured DNS settings. Tailscale lets you set a global DNS to be used by all machines when connected to the tailnet, and you can use the public DNS resolvers like Cloudflare or Google. However, you can also use a custom DNS server, including one self-hosted on a server in your network. In this way, we can <a href="https://tailscale.com/kb/1114/pi-hole" target="_blank">use Pi-Hole from anywhere through Tailscale</a>.
+By default, Tailscale does not manage your DNS, and each machine on the Tailnet will use it's own configured DNS settings. Tailscale lets you set a global DNS to be used by all machines when connected to the tailnet, and you can use the public DNS resolvers like Cloudflare or Google.
 
-First, on the machine running Pi-Hole install Tailscale, login to add it to the tailnet and when prompted to use `tailscale up`, pass the `--accept-dns=false` flag. Pi-Hole uses DNS servers configured within Linux as its upstream servers, where it will send DNS queries that it cannot answer on its own. Since you're going to make the Pi-Hole be your DNS server, you don't want Pi-Hole trying to use itself as its own upstream.
+More importantly, you can also use a custom DNS server, including one self-hosted on a server in your network. In this way, we can <a href="https://tailscale.com/kb/1114/pi-hole" target="_blank">use Pi-Hole from anywhere through Tailscale</a>.
 
-You should also use `tailscale up --accept-dns=false` on other machines in your home network running Tailscale, so they don't go through Tailscale for DNS queries -- ideally you only want **external** machines (in my case, my phone and tablet) to use Pi-Hole as DNS when connected to the tailnet.
+First, on the machine running Pi-Hole install Tailscale, login to add it to the tailnet and when prompted to `tailscale up` pass this flag:
 
-To set the Pi-Hole as global DNS, go to the Tailscale admin console, make note of the machine's tailnet IP, then go to the **DNS** tab and scroll down to **Nameservers**. Under **Global nameserver** click **Add nameserver** and choose **Custom DNS** from the dropdown menu. Enter the Pi-Hole's tailnet IP and click **Save**. Finally, enable the **Override local DNS** toggle.
+```bash
+tailscale up --accept-dns=false
+```
 
-Finally, go into the Pi-Hole UI settings, **DNS** tab. Under _ 
+Pi-Hole uses DNS servers configured within Linux as its upstream servers, where it will send DNS queries that it cannot answer on its own. Since you're going to make the Pi-Hole be your DNS server, you don't want Pi-Hole trying to use itself as its own upstream.
+
+You should also use `tailscale up --accept-dns=false` on other machines in your home network running Tailscale, so they don't go through Tailscale for DNS queries -- you want local DNS queries to stay on your local network, NOT go through Tailscale.
+
+To set the Pi-Hole as global DNS for the tailnet, go to the admin console and make note of the Pi-Hole's tailnet IP address. Then do the following:
+
+1. Go to the **DNS** tab and scroll down to _Nameservers_.
+
+2. Under _Global nameserver_ click **Add nameserver** and choose **Custom DNS** from the dropdown menu.
+
+3. Enter the Pi-Hole's tailnet IP and click **Save**.
+
+4. Enable the **Override local DNS** toggle.
+
+5. Login to your Pi-Hole's UI and go to _Settings_ -> _DNS_.
+
+6. Under _Interface settings_, choose the option **Permit all origins**.
+
+7. Scroll down and click **Save**.
+
+Now to test it out, connect to Tailscale on your phone/tablet and visit some websites. You should not be seeing ads and should start seeing the device's Tailscale IP in Pi-Hole's logs.
 
 <div id='taildrop'/>
 
