@@ -61,9 +61,9 @@ To get a fun tailnet name, go to the Tailscale admin dashboard and click the **D
 
 You may want to use HTTPS when accessing services and applications through Tailscale, especially when using. It's not super important, but it doesn't hurt. 
 
-Click the **Enable HTTPS** button. (Magic DNS should be enabled by default, but if it's not for some reason, enable it too.) HTTPS certificates are issued on a per-machine basis, so you have to add a certificate on each machine you where you have services you want to access via HTTPS. (And to be clear, this is only for traffic through the tailnet, e.g. between a phone/tablet using Tailscale as VPN accessing a server running Tailscale.)
+Click the **Enable HTTPS** button. (Magic DNS should be enabled by default, but if it's not for some reason, enable it too.) HTTPS certificates are issued on a per-machine basis, so you have to add a certificate on each machine where you want it. This will let you access your the web UIs of your self-hosted services using HTTPS, but only through Tailscale. By no means is this necessary, but it's a nice to have.
 
-Use this command to generate the certificate: (In this example the Linux server's tailnet name is `server` and the tailnet fun name is `cyber-sloth.ts.net`.)
+Use this command to generate the certificate: (In this example the Linux server's tailnet name is `server` and the tailnet "fun" name is `cyber-sloth.ts.net`.)
 
 ```bash
 tailscale cert server.cyber-sloth.ts.net
@@ -73,9 +73,15 @@ tailscale cert server.cyber-sloth.ts.net
 >
 > **Important note for Plex users!**
 > 
-> Although you should be able to reach your Plex media server's web UI via browser on your phone or tablet when connecting through Tailscale, the Plex and Plexamp apps will not work until you do the following:
+> Although you should be able to reach your Plex media server's web UI via browser on your phone or tablet when connecting through Tailscale, the Plex and Plexamp apps will not work until you change some settings in Plex.
 >
-> On the Plex web UI go to **Settings** then **Network** and scroll down to **Custom server access URLs**. Add the server's tailnet URL along with the Plex port, e.g. `https://server.cyber-sloth.ts.net:32400`, then scroll down and click **Save changes**.
+> On the Plex web UI go to _Settings_ -> _Network_ and do the following:
+> 
+> - Set _Secure connections_ to **Preferred**
+> - Set _Preferred network interface_ to **Any**
+> - Make sure _Enable Relays_ is **unchecked**
+> - Go to _Custom server access URLs_ and type in the server's tailnet URL with the Plex port, e.g. `https://server.cyber-sloth.ts.net:32400`
+> - Click on **Save changes**
 
 <div id='smb'/>
 
