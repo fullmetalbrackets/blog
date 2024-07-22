@@ -1,5 +1,5 @@
 ---
-title: "Set up Tailscale as a subnet router on a Linux server"
+title: "Set up Tailscale to securely access a server from outside the home"
 description: "Accessing self-hosted services from outside the home is a challenge for many, and can be complex to manage, but Tailscale makes it easy to set up a VPN between your phone (or laptop, or any other device outside your network) and your homelab, securely and without opening ports on your router."
 pubDate: 2024-06-25
 tags:
@@ -10,9 +10,9 @@ tags:
 
 1. [About Tailscale](#about)
 2. [Setting up Tailscale](#setup)
-4. [Configuring server as subnet router](#subnet)
-5. [Configuring tailnet name, DNS and HTTPS](#config)
-6. [Additional config for SMB shares](#smb)
+3. [Configuring tailnet name, DNS and HTTPS](#tailnet)
+4. [Additional config for SMB shares](#smb)
+5. [Setting up a subnet router](#subnet)
 6. [Setting up an exit node](#exit)
 7. [Using a Pi-Hole as Tailnet DNS](#pihole)
 8. [Transfer files with Taildrop](#taildrop)
@@ -49,59 +49,15 @@ By default all machines added to your tailnet need to re-authenticate every few 
 
 To do so, on the admin console go to the **Machines** tab, click on the three dots (**...**) to the right of the machine's entry, then from the dropdown menu choose **Disable key expiry**. You'll need to do this for each new machine you add if you don't want to have to re-authenticate later.
 
-Next we'll set up Tailscale on the phone/tablet, which is as easy as going to the app store, downloading the Tailscale app and opening it, then logging in to your Tailscale account and tapping the **Connect** button. You're basically done now, you can access your server from the phone or tablet, but if you want to access other servers on the home network we'll need to perform some extra steps.
+Next we'll set up Tailscale on the phone/tablet, which is as easy as going to the app store, downloading the Tailscale app and opening it, then logging in to your Tailscale account and tapping the **Connect** button. You're basically done now, you can access your server from the phone or tablet, but there's some additional configuration we should do.
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
-> **Important note for Plex users!**
-> 
-> Although you should be able to reach your Plex media server's web UI on your phone's browser when connecting through Tailscale, the Plex and Plexamp apps will not work until you do the following:
->
-> On the Plex web UI go to **Settings** then **Network** and scroll down to **Custom server access URLs**. Add the server's tailnet URL along with the Plex port, e.g. `https://server.tailfe8c.ts.net:32400`, then scroll down and click **Save changes**.
->
-> If you don't have **Magic DNS** and **HTTPS** enabled on your tailnet (though in my opinion you should), use the tailnet IP and `http` instead, e.g. `http://100.72.28.101:32400`.
-
-<div id='config'/>
-
-## Configuring server as subnet router
-
-Technically, you can just install Tailscale on every device on your network and add them to your Tailnet, but that's not necessary. You can instead only install it on one machine and use that as a "subnet router" to access other network resources. First we need to enable IP forwarding. (This is straight from the <a href="https://tailscale.com/kb/1019/subnets" target="_blank">Tailscale docs</a>.)
-
-If your machine has an `/etc/sysctl.d` directory (which most likely it does) then use these commands:
-
-```bash
-echo 'net.ipv4.ip_forward = 1' | sudo tee -a /etc/sysctl.d/99-tailscale.conf
-echo 'net.ipv6.conf.all.forwarding = 1' | sudo tee -a /etc/sysctl.d/99-tailscale.conf
-sudo sysctl -p /etc/sysctl.d/99-tailscale.conf
-```
-
-If your machine does NOT have the directory (`cd /etc/sysctl.d` returns `No such file or directory`) then instead use these commands:
-
-```bash
-echo 'net.ipv4.ip_forward = 1' | sudo tee -a /etc/sysctl.conf
-echo 'net.ipv6.conf.all.forwarding = 1' | sudo tee -a /etc/sysctl.conf
-sudo sysctl -p /etc/sysctl.conf
-```
-
-Also, if you are running `firewalld` on your server, you should allow masquerading with the following command:
-
-```bash
-sudo firewall-cmd --permanent --add-masquerade
-```
-
-Now advertise the subnet routes with this command:
-
-```bash
-tailscale up --advertise-routes=192.168.0.0/24
-```
-
-Next go to the Tailscale admin console and the **Machines** tab, to the right of the server click the three dots (_***_) and choose **Edit route settings...** from the dropdown menu. Click the checkbox under **Subnet routes** and then click the **Save** button.
+if you want to access other servers on the home network we'll need to perform some extra steps.
 
 <div id='tailnet'/>
 
 ## Configuring tailnet name, Magic DNS and HTTPS
 
-By default your **tailnet name** is something like auto-generated `tailfe8c.ts.net`. If you prefer, you can use a "fun name" that is more human-readable. You can't just type one in, unfortunately, rather you choose from ones generated by Tailscale.
+By default your **tailnet name** is something like auto-generated `tailfe8c.ts.net`. Instead you should generate a "fun name" that is more human-readable. You can't just type one in, unfortunately, rather you choose from ones generated by Tailscale.
 
 To get a fun tailnet name, go to the Tailscale admin dashboard and click the **DNS** tab. Click the **Rename tailnet...** button and follow the prompts. You can keep reloading until you find a name you like. For future examples, we'll assume your tailnet name is `cyber-sloth.ts.net`.
 
@@ -114,6 +70,14 @@ Use this command to generate the certificate: (In this example the Linux server'
 ```bash
 tailscale cert server.cyber-sloth.ts.net
 ```
+
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
+>
+> **Important note for Plex users!**
+> 
+> Although you should be able to reach your Plex media server's web UI via browser on your phone or tablet when connecting through Tailscale, the Plex and Plexamp apps will not work until you do the following:
+>
+> On the Plex web UI go to **Settings** then **Network** and scroll down to **Custom server access URLs**. Add the server's tailnet URL along with the Plex port, e.g. `https://server.cyber-sloth.ts.net:32400`, then scroll down and click **Save changes**.
 
 <div id='smb'/>
 
@@ -153,6 +117,44 @@ Finally, we'll use <a href="https://tailscale.com/kb/1312/serve" target="_blank"
 tailscale serve --bg --tcp 445 tcp://localhost:445
 ```
 
+<div id='subnet'/>
+
+## Setting up a subnet router
+
+Technically, you can just install Tailscale on every device on your network and add them to your Tailnet, but that's not necessary. You can instead only install it on one machine and use that as a "subnet router" to access other network resources. This is especially handy for accessing devices that you can't run Tailscale on.
+
+First, on the machine we want to use as subnet router, we need to enable IP forwarding. (This is straight from the <a href="https://tailscale.com/kb/1019/subnets" target="_blank">Tailscale docs</a>.)
+
+If your machine has an `/etc/sysctl.d` directory (which most likely it does) then use these commands:
+
+```bash
+echo 'net.ipv4.ip_forward = 1' | sudo tee -a /etc/sysctl.d/99-tailscale.conf
+echo 'net.ipv6.conf.all.forwarding = 1' | sudo tee -a /etc/sysctl.d/99-tailscale.conf
+sudo sysctl -p /etc/sysctl.d/99-tailscale.conf
+```
+
+If your machine does NOT have the directory (`cd /etc/sysctl.d` returns `No such file or directory`) then instead use these commands:
+
+```bash
+echo 'net.ipv4.ip_forward = 1' | sudo tee -a /etc/sysctl.conf
+echo 'net.ipv6.conf.all.forwarding = 1' | sudo tee -a /etc/sysctl.conf
+sudo sysctl -p /etc/sysctl.conf
+```
+
+Also, if you are running `firewalld` on your server, you should allow masquerading with the following command:
+
+```bash
+sudo firewall-cmd --permanent --add-masquerade
+```
+
+Now advertise the subnet routes with this command:
+
+```bash
+tailscale up --advertise-routes=192.168.0.0/24
+```
+
+Next go to the Tailscale admin console and the **Machines** tab, to the right of the server click the **three dots** and choose **Edit route settings...** from the dropdown menu. Click the checkbox under **Subnet routes** and then click the **Save** button.
+
 <div id='exit'/>
 
 ## Setting up an exit node
@@ -173,12 +175,6 @@ Now, use the following command to advertise the machine as an exit node.
 tailscale up --advertise-exit-node
 ```
 
-If you're running an exit node on the same machine that acts as subnet router, you'll need to use both flags, for example:
-
-```bash
-tailscale up --advertise-routes=192.168.0.0/24 --advertise-exit-node
-```
-
 Go to the admin console, on the **Machines** tab click the three dots (_***_) to the right of the machine want to use an an exit node (notice the little `exit node` tag in the entry) and choose **Edit route settings...** from the dropdown menu, then click the checkbox for **Use as exit node** and click the **Save** button.
 
 Finally, to use the exit node on your phone/tablet open the Tailscale app, tap the **Exit Node** button at the top and the server you set as an exit node should appear as an option -- choose it to turn it on.
@@ -195,13 +191,15 @@ I have personally not used Tailscale on Windows, so I don't know how to use an e
 
 ## Setting a Pi-Hole as Tailnet DNS
 
-By default, Tailscale does not manage your DNS, and each machine on the Tailnet will use it's own configured DNS settings. Tailscale lets you set a public DNS like Cloudflare or Google, but you can also use a custom DNS server, including one self-hosted on a server in your network. In this way, we can <a href="https://tailscale.com/kb/1114/pi-hole" target="_blank">use Pi-Hole from anywhere through Tailscale</a>.
+By default, Tailscale does not manage your DNS, and each machine on the Tailnet will use it's own configured DNS settings. Tailscale lets you set a global DNS to be used by all machines when connected to the tailnet, and you can use the public DNS resolvers like Cloudflare or Google. However, you can also use a custom DNS server, including one self-hosted on a server in your network. In this way, we can <a href="https://tailscale.com/kb/1114/pi-hole" target="_blank">use Pi-Hole from anywhere through Tailscale</a>.
 
-First, on the machine running Pi-Hole install Tailscale, login to add it to the tailnet and when prompted use `tailscale up`, but pass the `--accept-dns=false` flag. Pi-Hole uses DNS servers configured within Linux as its upstream servers, where it will send DNS queries that it cannot answer on its own. Since you're going to make the Pi-Hole be our DNS server, you don't want Pi-Hole trying to use itself as its own upstream.
+First, on the machine running Pi-Hole install Tailscale, login to add it to the tailnet and when prompted to use `tailscale up`, pass the `--accept-dns=false` flag. Pi-Hole uses DNS servers configured within Linux as its upstream servers, where it will send DNS queries that it cannot answer on its own. Since you're going to make the Pi-Hole be your DNS server, you don't want Pi-Hole trying to use itself as its own upstream.
 
 You should also use `tailscale up --accept-dns=false` on other machines in your home network running Tailscale, so they don't go through Tailscale for DNS queries -- ideally you only want **external** machines (in my case, my phone and tablet) to use Pi-Hole as DNS when connected to the tailnet.
 
 To set the Pi-Hole as global DNS, go to the Tailscale admin console, make note of the machine's tailnet IP, then go to the **DNS** tab and scroll down to **Nameservers**. Under **Global nameserver** click **Add nameserver** and choose **Custom DNS** from the dropdown menu. Enter the Pi-Hole's tailnet IP and click **Save**. Finally, enable the **Override local DNS** toggle.
+
+Finally, go into the Pi-Hole UI settings, **DNS** tab. Under _ 
 
 <div id='taildrop'/>
 
