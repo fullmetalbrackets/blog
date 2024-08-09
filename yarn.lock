@@ -10,10 +10,10 @@
     "@jridgewell/gen-mapping" "^0.3.0"
     "@jridgewell/trace-mapping" "^0.3.9"
 
-"@astrojs/compiler@^2.10.0":
-  version "2.10.1"
-  resolved "https://registry.yarnpkg.com/@astrojs/compiler/-/compiler-2.10.1.tgz#36eb9dcf55f0ddc774e245eadc8c1132caac58fd"
-  integrity sha512-XmM4j6BjvOVMag2xELq0JuG2yKOW8wgIu6dvb9BsjbGYmnvoStJn/pqEzVqc1EBszf2xYT7onIkftIOUz9AwrQ==
+"@astrojs/compiler@^2.10.1":
+  version "2.10.2"
+  resolved "https://registry.yarnpkg.com/@astrojs/compiler/-/compiler-2.10.2.tgz#74d06c4316cb9fe16364b23a8fc90cb456018091"
+  integrity sha512-bvH+v8AirwpRWCkYJEyWYdc5Cs/BjG2ZTxIJzttHilXgfKJAdW2496KsUQKzf5j2tOHtaHXKKn9hb9WZiBGpEg==
 
 "@astrojs/internal-helpers@0.4.1":
   version "0.4.1"
@@ -967,12 +967,12 @@ astring@^1.8.0:
   resolved "https://registry.yarnpkg.com/astring/-/astring-1.8.6.tgz#2c9c157cf1739d67561c56ba896e6948f6b93731"
   integrity sha512-ISvCdHdlTDlH5IpxQJIex7BWBywFWgjJSVdwst+/iQCoEYnyOaQ95+X1JGshuBjGp6nxKUy1jMgE3zPqN7fQdg==
 
-astro@^4.13.1:
-  version "4.13.1"
-  resolved "https://registry.yarnpkg.com/astro/-/astro-4.13.1.tgz#cb8f5e7763284f9d6829b8414c00bbdc6d8ca9c8"
-  integrity sha512-VnMjAc+ykFsIVjgbu9Mt/EA1fMIcPMXbU89h3ATwGOzSIKDsQH72bDgfJkWiwk6u0OE90GeP5EPhAT28Twf9oA==
+astro@^4.13.2:
+  version "4.13.2"
+  resolved "https://registry.yarnpkg.com/astro/-/astro-4.13.2.tgz#1a211c0da58781c387df2dc1c194ee2c6b8262b5"
+  integrity sha512-bdfUV6zfOWOV/IbROqVx+1cuAFXY0PZpVxr4JO9YxCKa5AfQRR8RKXJ2k8QUjalA6dmxQ9FgAQw3FRrzHVOGEQ==
   dependencies:
-    "@astrojs/compiler" "^2.10.0"
+    "@astrojs/compiler" "^2.10.1"
     "@astrojs/internal-helpers" "0.4.1"
     "@astrojs/markdown-remark" "5.2.0"
     "@astrojs/telemetry" "3.1.0"
@@ -1021,7 +1021,7 @@ astro@^4.13.1:
     prompts "^2.4.2"
     rehype "^13.0.1"
     semver "^7.6.3"
-    shiki "^1.12.0"
+    shiki "^1.12.1"
     string-width "^7.2.0"
     strip-ansi "^7.1.0"
     tsconfck "^3.1.1"
@@ -3318,7 +3318,7 @@ shebang-regex@^3.0.0:
   resolved "https://registry.yarnpkg.com/shebang-regex/-/shebang-regex-3.0.0.tgz#ae16f1644d873ecad843b0307b143362d4c42172"
   integrity sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==
 
-shiki@^1.10.3, shiki@^1.12.0:
+shiki@^1.10.3, shiki@^1.12.1:
   version "1.12.1"
   resolved "https://registry.yarnpkg.com/shiki/-/shiki-1.12.1.tgz#72d9d230a8d68ddaf8cf7c94a1dc6a5f2625324e"
   integrity sha512-nwmjbHKnOYYAe1aaQyEBHvQymJgfm86ZSS7fT8OaPRr4sbAcBNz7PbfAikMEFSDQ6se2j2zobkXvVKcBOm0ysg==
