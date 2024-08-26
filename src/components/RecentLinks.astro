@@ -7,16 +7,22 @@ const links = (await getCollection("links")).sort(
 ---
 
 <style scoped>
+  h2 {
+    margin-top: 1.5em;
+  }
   ul {
     list-style-type: none;
     padding: unset;
-    margin-bottom: 2em;
+    margin-bottom: 1.35em;
   }
   ul li {
     display: flex;
     flex-direction: column;
     margin-left: 0.25em;
-    margin-bottom: 2em;
+    margin-bottom: 1em;
+  }
+  .recent-posts-line {
+    margin: 0.5em 0 1.5em 0;
   }
   a button {
     background-color: var(--tags);
@@ -31,7 +37,7 @@ const links = (await getCollection("links")).sort(
     -moz-transition: all 0.1s ease-out;
     -o-transition: all 0.1s ease-out;
     transition: all 0.1s ease-out;
-    margin: 0 0 5em 0.25em;
+    margin: 0 0 2.5em 0.25em;
     font-family: "M Plus Rounded 1c Med";
   }
   section a:hover {
@@ -40,6 +46,7 @@ const links = (await getCollection("links")).sort(
   }
   .tag {
     color: var(--date);
+    margin-bottom: 0.25em;
   }
   .tag span {
     color: var(--primary);
@@ -76,7 +83,7 @@ const links = (await getCollection("links")).sort(
 
 <section>
   <h2>Recent Links</h2>
-  <hr />
+  <hr class="recent-posts-line" />
   <ul>
     {
       links.slice(0, 3).map((link) => (

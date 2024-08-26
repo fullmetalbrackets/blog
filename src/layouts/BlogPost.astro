@@ -13,17 +13,17 @@ const { title, description, pubDate, updatedDate, tags } = Astro.props;
     <link rel="stylesheet" href="/prism.css" />
   </head>
   <style scoped>
-    article {
-      margin-top: 4em;
+    h1 {
+      margin-bottom: 0.5em;
     }
     hr {
-      margin: 1.5em auto;
+      margin-top: 1em;
     }
-    .title {
-      margin-bottom: 1em;
+    article {
+      margin-top: 2em;
     }
     .description {
-      margin-bottom: 2em;
+      margin: 1.5em auto;
     }
     .category {
       color: var(--date);
@@ -35,7 +35,7 @@ const { title, description, pubDate, updatedDate, tags } = Astro.props;
       cursor: pointer;
       font-weight: 600;
       padding: 4px 6px;
-      margin: 0 0 0 0.25em;
+      margin: 0;
       text-decoration: none;
       text-overflow: ellipsis;
       -webkit-transition: all .10s ease-out;
@@ -60,60 +60,16 @@ const { title, description, pubDate, updatedDate, tags } = Astro.props;
       color: var(--text);
       margin-right: 1em;
     }
-    .radio {
-      margin: 0.5em 0.5em 0.5em 0.25em;
-      width: 1em;
-      height: 1em;
-      appearance: none;
-      -webkit-appearance: none;
-      border: 1px solid var(--accent);
-      background-color: var(--accent);
-      border-radius: 50%;
+    @media screen and (max-width: 667px) {
+      h1 {
+        font-size: 1.25em;
+      }
     }
-    .radio:focus,
-    .radio:focus-visible {
-      box-shadow: none;
-      outline-offset: 0;
-    }
-    .radio:checked {
-      box-shadow: 0 0 0 1px var(--name);
-      background-color: var(--name);
-      border-width: 0.1em;
-    }
-    /* .utterances {
-      margin: 2.5em auto;
-    }
-    @media screen and (min-width: 200px) and (max-width: 667px) {
-      article {
-        margin-top: 4em;
-      }
-      .title {
-        padding-top: 0.15em;
-      }
-      aside {
-        font-size: 1rem;
-      }
-      label {
-        margin-right: 0.25em;
-      }
-      button {
-        margin-left: 0.25em;
-      }
-      .radio {
-        margin: 0 0.25em;
-      }
-      .submit {
-        margin-left: 0.5em;
-      }
-      .top {
-        width: 5em;
-        text-align: center;
-      }
-    } */
   </style>
 
   <article data-pagefind-body>
-    <div class="date" data-pagefind-ignore>
+    <h1 class="title">{title}</h1>
+    <div data-pagefind-ignore>
       <FormattedDate date={pubDate} />
       {
         updatedDate && (
@@ -123,11 +79,8 @@ const { title, description, pubDate, updatedDate, tags } = Astro.props;
         )
       }
     </div>
-    <h1 class="title">{title}</h1>
     <hr />
-    <p class="category">Category:
-      <span class="tag"><a href={`/categories/${tags}`}>{tags}</a></span>
-    </p>
+    <span class="tag"><a href={`/categories/${tags}`}>{tags}</a></span>
     <p class="description">
       {description}
     </p>

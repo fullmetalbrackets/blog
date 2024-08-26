@@ -123,41 +123,23 @@ body {
 main {
   margin: 0 auto;
   max-width: 75ch;
-
 }
 section {
-  margin-top: 4em;
+  margin-top: 2em;
 }
 hr {
   margin-bottom: 2em;
   border: 0.25px solid var(--primary);
 	opacity: 0.5;
 }
-h1 {
+h1, h2, h3, h4, h5, h6 {
   font-family: 'Atkinson', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
 	color: var(--primary);
-  overflow-wrap: break-word;
-  hyphens: auto;
-  font-size: 36px;
-  line-height: 1.3;
-}
-h2 {
-  font-family: 'Atkinson', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
-  margin-top: 3em;
-	color: var(--primary);
-  overflow-wrap: break-word;
-  hyphens: auto;
+  margin: 0;
+  padding: 0;
 }
 #sections, #table-of-contents {
   margin-top: 0;
-}
-h3, h4, h5, h6 {
-  font-family: 'Atkinson', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
-  margin: 2em 0 1em 0;
-  padding: 0;
-	color: var(--primary);
-  overflow-wrap: break-word;
-  hyphens: auto;
 }
 p {
   overflow-wrap: break-word;
@@ -348,6 +330,9 @@ article a:hover {
   text-decoration: underline;
   text-decoration-color: var(--link);
 }
+article h2 {
+  margin-top: 1em;
+}
 li::marker {
 	color: var(--primary);
 }
@@ -424,38 +409,6 @@ article ol:first-of-type {
 article ol li, article ul li {
   line-height: 1.5;
 }
-@media screen and (min-width: 200px) and (max-width:667px) {
-	::-webkit-scrollbar {
-		height: 0px;
-		width: 0px;
-	}
-  h1, main .title {
-    font-size: 26px;
-  }
-  h2 {
-    font-size: 24px;
-  }
-  aside {
-    margin: 2em auto 0 auto;
-  }
-  button, .button {
-    font-size: 0.85em;
-    margin: 0 0 2em 1.2em;
-  }
-}
-
-/* @media screen and (min-width: 200px) and (max-width: 790px) {
-  input {
-    width: 75%;
-  }
-}
-
-@media screen and (min-width: 200px) and (max-width: 935px) {
-  code {
-    white-space: pre-wrap;
-  }
-} */
-
 .sr-only {
 	border: 0;
 	padding: 0;
