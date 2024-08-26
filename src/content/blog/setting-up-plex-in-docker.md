@@ -2,7 +2,7 @@
 title: "Setup self-hosted Plex Media Server in Docker"
 description: "One of the most popular services to self-host in Plex Media Server, which serves your personal media library with a nice Netflix-like UI. Though you can install and run it bare-metal, the most common and easiest way is in a Docker container. Here's how."
 pubDate: 2022-10-17
-updatedDate: 2023-08-11
+updatedDate: 2024-08-13
 tags:
   - docker
 ---
@@ -18,46 +18,13 @@ tags:
 
 ## Installing Docker and Docker Compose
 
-I'll be quoting from the <a href="https://docs.docker.com/engine/install" target="_blank">Docker docs</a>, which as of mid-2023 recommend uninstalling older packages like the separate <code>docker-compose</code> in favor of the new <code>docker-compose-plugin</code>, among other things.
-
-This post assumes you are installing on _Debian_ or _Ubuntu_, check the Docker docs for installation instructions on CentOS and it's offshoots, Fedora, RHEL, or Raspbian.
-
-First, uninstall all conflicting packages:
+In 2024, the recommended (and easiest) way to install Docker is to just run their official install script from the command line:
 
 ```bash
-for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt remove $pkg; done
+curl -fsSL https://get.docker.com | sh
 ```
 
-Install necessary packages to allow `apt` to use a repository over HTTPS:
-
-```bash
-sudo apt update
-sudo apt install ca-certificates curl gnupg
-```
-
-Add Docker's official GPG key:
-
-```bash
-sudo install -m 0755 -d /etc/apt/keyrings
-curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-sudo chmod a+r /etc/apt/keyrings/docker.gpg
-```
-
-Set up the repository:
-
-```bash
-echo \
-  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
-  "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
-  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-```
-
-Now install Docker:
-
-```bash
-sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-sudo service docker start && sudo service docker enable
-```
+This automatically installs Docker and the Compose plugin with all dependencies.
 
 <div id='compose'/>
 
@@ -65,11 +32,9 @@ sudo service docker start && sudo service docker enable
 
 Though Plex has an <a href="https://hub.docker.com/r/plexinc/pms-docker" target="_blank">official Docker image</a>, I highly suggest you instead use the <a href="https://hub.docker.com/r/linuxserver/plex" target="_blank">Linuxserver image</a>, which is built and maintained by the <a href="https://www.linuxserver.io" target="_blank">Linuxserver community</a>. I run the Linuxserver image of Plex without issue, and it seems that is also the case with most self-hosters.
 
-Here is an example `docker-compose.yml` file to setup Plex:
+Here is an example `compose.yml` file to setup Plex:
 
 ```yaml
----
-version: "3"
 services:
   plex:
     image: lscr.io/linuxserver/plex:latest
@@ -104,7 +69,7 @@ Let's break down what each of these parameters do:
 
 ## Starting the container and configuring Plex
 
-Once your `docker-compose.yml` is ready, use the command `docker-compose up -d` from within the same directory as the `docker-compose.yml` to run it. After completion, use the command `docker ps` to verify the container is up and running. You should see output similar to the below:
+Once your compose file is ready, use the command `docker compose up -d` from within the same directory as the `compose.yml` to run it. After completion, use the command `sudo docker ps` to verify the container is up and running. You should see output similar to the below:
 
 ```bash
 CONTAINER ID   IMAGE                             COMMAND   CREATED          STATUS          PORTS                                                                                      NAMES
