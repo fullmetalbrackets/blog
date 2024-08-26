@@ -44,6 +44,11 @@ const { tag, posts } = Astro.props;
   .back {
     justify-content: left;
   }
+  .tag {
+    content:"\a";
+    white-space: pre;
+    color: var(--emphasis);
+  }
   ul {
     list-style-type: none;
   }
@@ -54,7 +59,7 @@ const { tag, posts } = Astro.props;
 
 <BaseLayout title={`${tag}`}>
   <section>
-    <h1>Posts about <em>{`${tag}`}</em></h1>
+    <h1>Posts about <span class="tag">{`${tag}`}</span></h1>
     <hr />
     <aside class="back">
       <a href="/categories" class="button blog-tag">Back to Categories &larr;</a>

@@ -2,6 +2,46 @@
 import HeaderLink from "./HeaderLink.astro";
 ---
 
+<style scoped>
+  header div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  nav {
+    font-family: "M Plus Rounded 1c Med";
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 78ch;
+    margin: 0 auto;
+    padding: 0 auto;
+  }
+  nav a {
+    color: var(--link);
+    text-decoration: none;
+    margin: auto 0.25em;
+    border: 2px solid transparent;
+  }
+  nav a:hover {
+    color: var(--hover);
+    border-bottom: 2px solid var(--menu);
+  }
+  nav a.active {
+    color: var(--hover);
+    border-bottom: 2px solid var(--menu);
+  }
+  nav .logo a:hover {
+    border: 2px solid transparent;
+  }
+  .search {
+    filter: var(--search);
+  }
+  svg {
+    margin: 2.8px 0;
+  }
+</style>
+
 <header>
   <nav>
     <div class="logo">
@@ -44,42 +84,3 @@ import HeaderLink from "./HeaderLink.astro";
     </div>
   </nav>
 </header>
-<style scoped>
-  header div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  nav {
-    font-family: "M Plus Rounded 1c Med";
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 78ch;
-    margin: 0 auto;
-    padding: 0 auto;
-  }
-  nav a {
-    color: var(--link);
-    text-decoration: none;
-    margin: auto 0.25em;
-    border: 2px solid transparent;
-  }
-  nav a:hover {
-    color: var(--hover);
-    border-bottom: 2px solid var(--menu);
-  }
-  nav a.active {
-    color: var(--hover);
-    border-bottom: 2px solid var(--menu);
-  }
-  nav .logo a:hover {
-    border: 2px solid transparent;
-  }
-  .search {
-    filter: var(--search);
-  }
-  svg {
-    margin: 2.8px 0;
-  }
-</style>

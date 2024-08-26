@@ -13,11 +13,14 @@ const { title, description, pubDate, updatedDate, tags } = Astro.props;
     <link rel="stylesheet" href="/prism.css" />
   </head>
   <style scoped>
+    h1 {
+      margin-bottom: 0.5em;
+    }
     article {
       margin-top: 2em;
     }
     .description {
-      margin: 2.25em auto 2em auto;
+      margin: 1.5em auto;
     }
     .category {
       color: var(--date);
@@ -29,7 +32,7 @@ const { title, description, pubDate, updatedDate, tags } = Astro.props;
       cursor: pointer;
       font-weight: 600;
       padding: 4px 6px;
-      margin: 0 1rem 0 0;
+      margin: 0;
       text-decoration: none;
       text-overflow: ellipsis;
       -webkit-transition: all .10s ease-out;
@@ -63,9 +66,7 @@ const { title, description, pubDate, updatedDate, tags } = Astro.props;
 
   <article data-pagefind-body>
     <h1 class="title">{title}</h1>
-    <hr />
     <div data-pagefind-ignore>
-      <span class="tag"><a href={`/categories/${tags}`}>{tags}</a></span>
       <FormattedDate date={pubDate} />
       {
         updatedDate && (
@@ -75,6 +76,8 @@ const { title, description, pubDate, updatedDate, tags } = Astro.props;
         )
       }
     </div>
+    <hr />
+    <span class="tag"><a href={`/categories/${tags}`}>{tags}</a></span>
     <p class="description">
       {description}
     </p>
