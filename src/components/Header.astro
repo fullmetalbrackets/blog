@@ -19,7 +19,6 @@ import HeaderLink from "./HeaderLink.astro";
       </a>
     </div>
     <div>
-      <HeaderLink href="/">Home</HeaderLink>
       <HeaderLink href="/blog" rel="prefetch-intent" class="nav-link">Blog</HeaderLink>
       <HeaderLink href="/wiki" rel="prefetch-intent" class="nav-link">Wiki</HeaderLink>
       <HeaderLink href="/links" rel="prefetch-intent" class="nav-link">Links</HeaderLink>
@@ -46,10 +45,6 @@ import HeaderLink from "./HeaderLink.astro";
   </nav>
 </header>
 <style scoped>
-  header {
-    margin: 0;
-    padding: 0;
-  }
   header div {
     display: flex;
     justify-content: space-between;
@@ -60,6 +55,9 @@ import HeaderLink from "./HeaderLink.astro";
     display: flex;
     align-items: center;
     justify-content: space-between;
+    max-width: 78ch;
+    margin: 0 auto;
+    padding: 0 auto;
   }
   nav a {
     color: var(--link);
