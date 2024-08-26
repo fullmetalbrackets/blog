@@ -412,7 +412,7 @@
    fill: transparent;
  }
 
- @media screen and (min-width: 200px) and (max-width: 650px) {
+ @media screen and (min-width: 200px) and (max-width: 667px) {
     code[class*="language-"],
     pre[class*="language-"] {
       font-size: 1rem;
