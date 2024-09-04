@@ -192,6 +192,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"expose-plex-tailscale-vps.md": {
+	id: "expose-plex-tailscale-vps.md";
+  slug: "expose-plex-tailscale-vps";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "expose-plex-with-cloudflare.md": {
 	id: "expose-plex-with-cloudflare.md";
   slug: "expose-plex-with-cloudflare";
