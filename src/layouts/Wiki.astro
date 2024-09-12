@@ -13,28 +13,17 @@ const { title, description, pubDate, updatedDate, tags } = Astro.props;
     <link rel="stylesheet" href="/prism.css" />
   </head>
   <style>
-    article {
-      margin-top: 4em;
+    h1 {
+      margin-bottom: 0.5em;
     }
     hr {
-      margin: 1.5em auto;
+      margin-top: 1em;
     }
-    .title {
-      margin-bottom: 1em;
+    article {
+      margin-top: 2em;
     }
     .description {
-      margin-bottom: 2em;
-    }
-    .category {
-      color: var(--date);
-    }
-    .tag {
-      background: var(--primary);
-      color: #000;
-      border: 0;
-      border-radius: 0.25em;
-      padding: 4px 6px 3px 6px;
-      font-weight: 600;
+      margin-bottom: 1.5em auto;
     }
     form {
       display: flex;
@@ -44,25 +33,8 @@ const { title, description, pubDate, updatedDate, tags } = Astro.props;
       color: var(--text);
       margin-right: 1em;
     }
-    .radio {
-      margin: 0.5em 0.5em 0.5em 0.25em;
-      width: 1em;
-      height: 1em;
-      appearance: none;
-      -webkit-appearance: none;
-      border: 1px solid var(--accent);
-      background-color: var(--accent);
-      border-radius: 50%;
-    }
-    .radio:focus,
-    .radio:focus-visible {
-      box-shadow: none;
-      outline-offset: 0;
-    }
-    .radio:checked {
-      box-shadow: 0 0 0 1px var(--name);
-      background-color: var(--name);
-      border-width: 0.1em;
+    .bottom-line {
+      margin-top: 2em;
     }
     /* @media screen and (min-width: 200px) and (max-width: 667px) {
       article {
@@ -94,6 +66,7 @@ const { title, description, pubDate, updatedDate, tags } = Astro.props;
   </style>
 
   <article>
+    <h1 class="title">{title}</h1>
     <div class="date">
       <FormattedDate date={pubDate} />
       {
@@ -104,9 +77,7 @@ const { title, description, pubDate, updatedDate, tags } = Astro.props;
         )
       }
     </div>
-    <h1 class="title">{title}</h1>
     <hr />
-    <span class="category">Category: <span class="tag">{tags}</span></span>
     <p class="description">
       {description}
     </p>
@@ -118,7 +89,7 @@ const { title, description, pubDate, updatedDate, tags } = Astro.props;
       </p>
     </slot>
   </article>
-  <hr />
+  <hr class="bottom-line" />
   <aside>
     <a href="#top" class="top button blog-tag">Back to Top &uarr;</a>
   </aside>
