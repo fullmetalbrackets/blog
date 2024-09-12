@@ -205,6 +205,8 @@ With the domain set up in Cloudflare, we just need to add a DNS record:
 
 6. Under _Proxy status_ toggle it off to **DNS only**.
 
+![Cloudflare proxy status set to DNS only.](../../img/blog/expose-plex-tailscale-vps1.png)
+
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
 > Make sure **NOT** to leave it proxied. If you do, all traffic will go though Cloudflare's CDN which we do not want. We're only using Cloudflare for DNS, nothing else!
