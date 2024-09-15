@@ -78,6 +78,8 @@ Click the **Create instance** button and do the following:
 
 5. Under _Shape series_, choose **Specialty and previous generation** which falls under the always-free tier.
 
+![Choosing an Image and Shape while creating a compute instance in OCI.](../../img/blog/oci0.png)
+
 6. Under _Shape name_, check the box for (the only option) **VM.Standard.E2.1.Micro**. (Notice the "always-free eligible** tag.) Click the **Select shape** button at the bottom.
 
 7. The default image is Oracle Linux 8, but you can click **Change image** and choose one of the other always-free eligible images -- **Ubuntu** (my suggestion) or **CentOS**.
@@ -85,6 +87,8 @@ Click the **Create instance** button and do the following:
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
 > The rest of this guide assumes you chose **Canonical Ubuntu 22.04 Minimal** as your image.
+
+![SSH key settings when creating a compute instance in OCI.](../../img/blog/oci-ssh.png)
 
 8. Scroll down to _Add SSH keys_. You can upload your own public key, or you can let it generate a key pair for you. If you choose the latter, **make sure you save the private and private key** so you can SSH into the VM!
 
@@ -209,7 +213,7 @@ With the domain set up in Cloudflare, we just need to add a DNS record:
 
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
-> Make sure **NOT** to leave it proxied. If you do, all traffic will go though Cloudflare's CDN which we do not want. We're only using Cloudflare for DNS, nothing else!
+> Make sure **NOT** to leave it proxied. If you do, all traffic will go through Cloudflare's CDN which we do not want. We're only using Cloudflare to resolve our domain to the IP of the Oracle instance, nothing more!
 
 7. Leave _TTL_ at Auto and click **Save**.
 
@@ -268,9 +272,17 @@ Once it's up and running, we need to access the Nginx Proxy Manager GUI. _I stro
 
 Instead, it's safer to install Tailscale on your PC or tablet, connect to the Tailnet, then on a browser go to `https://oracle.cyber-sloth.ts.net:81`. When you're done just disconnect the Tailscale client, and only connect when you need to access the GUI. (You may want to disable the Tailscale client from starting up at boot.)
 
+![Nginx proxy manager login page.](../../img/blog/nginxproxy1.png)
+
 Once in the Nginx Proxy Manager GUI, login with the default `admin@example.com` and `changeme` as the password. You'll want to change that before anything else.
 
+![Nginx proxy manager navigation bar.](../../img/blog/nginxproxy2.png)
+
 Click on **Users** on the top nav bar, then to the right of the Administrator entry click the **three dots**. Choose **Edit Details** to change the email and **Change password** to change password. Log out and back in with the new credentials.
+
+Now to add the configuration for our custom domain:
+
+![Adding a proxy host in Nginx proxy manager.](../../img/blog/nginxproxy3.png)
 
 1. On the Dashboard, click **Proxy hosts** and then **Add proxy host**.
 
@@ -283,6 +295,8 @@ Click on **Users** on the top nav bar, then to the right of the Administrator en
 5. Type in `80` under **Forward Port**.
 
 6. Toggle on **Websockets Support**, but leave the other two off.
+
+![Configuring SSL in Nginx proxy manager.](../../img/blog/nginxproxy4.png)
 
 7. Go to **SSL** tab and choose **Request a new SSL Certificate** from the dropdown menu.
 
@@ -306,9 +320,15 @@ Now to actually allow internet connections to the Oracle instance, we need to ad
 
 - Allow access only from specific IPs, including yours, and block everyone else. (If they go to your domain they will get a 403 error.) **I strongly suggest this.**
 
-Under _Instances_, click on your instance, and under _Instance details_ click on the link for Virtual Cloud Network, it should be something like `vcn-20777213-2003`.
+![Instance details in OCI.](../../img/blog/oci1.png)
 
-In _Subnets_ click on the only choice, something like `subnet-20777213-2003`. Finally, click on the **Default Security List**.
+Under _Instances_, click on your instance, and under _Instance details_ click on the link for Virtual Cloud Network, it should be something like `vcn-20221216-2035`.
+
+![Default Security List in OCI.](../../img/blog/oci2.png)
+
+In _Subnets_ click on the only choice, something like `subnet-20221216-2035`. Finally, click on the **Default Security List**.
+
+![Adding an Ingress Rule to an OCI instance.](../../img/blog/oci3.png)
 
 1. Click **Add Ingress Rules**
 
@@ -338,9 +358,13 @@ One last thing! Although the allowed IPs can now reach Plex and stream your libr
 
 2. On the sidebar, scroll down to **Settings** and click **Network**.
 
+![Secure connections setting in Plex.](../../img/blog/expose-plex1.png)
+
 3. Next to _Secure connections_, choose **Preferred** from the downdown menu.
 
 4. (Optional) Scroll down and **enable** the checkbox for _Treat WAN IP as LAN Bandwitdh_.
+
+![Relay and Custom access URL settings in Plex.](../../img/blog/expose-plex2.png)
 
 5. Make sure to **leave disabled** the checkbox for _Enable Relay_.
 
