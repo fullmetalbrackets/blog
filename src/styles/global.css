@@ -38,8 +38,8 @@
     --accent: rgb(182, 193, 210);
     --link: rgb(200, 0, 0);
     --hover: rgb(223, 115, 0);
-    --tags: rgb(200, 0, 0);
-    --emphasis: rgb(0, 100, 0);
+    --tags: rgb(0, 182, 182);
+    --emphasis: rgb(0, 150, 0);
     --name: rgb(0, 150, 150);
     --date: rgb(72, 100, 100);
     --menu: rgb(205, 110, 10);
@@ -58,7 +58,6 @@
     scroll-behavior: smooth;
   }
 }
-
 @media (prefers-color-scheme: dark) {
   :root, html {
     --main: rgb(32, 33, 36);
