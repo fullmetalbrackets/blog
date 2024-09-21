@@ -49,8 +49,6 @@ Make a note of the full path to your website's output directory, so for example 
 Websites need a **webserver** to serve their pages to be viewed on a browser. I use an Nginx docker container since it just makes everything easier and, importantly, repeatable. (The stack is portable and can be recreated on another Docker host.) I'll be using **Docker Compose** for this, again to make things easier and repeatable. Within the root directory of your site, create the file `docker-compose.yaml` and add the below to it:
 
 ```yaml
-version: "3.8"
-
 services:
   site:
     restart: unless-stopped
@@ -64,7 +62,7 @@ services:
 
 Make sure the local port, `8888` above, does not conflict with any other self-hosted services you may have. Feel free to change it to anything else.
 
-Next we need to create a `nginx.conf` file and add the below to it:
+Next we need to create a `nginx.conf` file and add the below to it for a basic configuration:
 
 ```bash
 worker_processes  1;
@@ -151,7 +149,7 @@ services:
   site:
     restart: unless-stopped
     container_name: site
-    image: nginx:alpine
+    image: nginx:alpine-slim-stable
     volumes:
       - /home/bob/sites/my-cool-blog/dist/:/usr/share/nginx/html/
     ports:
