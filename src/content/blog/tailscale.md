@@ -1,5 +1,5 @@
 ---
-title: "Set up Tailscale to securely access a server from outside the home"
+title: "How to remotely access your home server from anywhere using Tailscale"
 description: "Accessing self-hosted services from outside the home is a challenge for many, and can be complex to manage, but Tailscale makes it easy to set up a VPN between your phone (or laptop, or any other device outside your network) and your homelab, securely and without opening ports on your router."
 pubDate: 2024-06-25
 tags:
