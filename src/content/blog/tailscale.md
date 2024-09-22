@@ -14,7 +14,7 @@ tags:
 4. [Additional config for SMB and NFS](#smb)
 5. [Setting up a subnet router](#subnet)
 6. [Setting up an exit node](#exit)
-7. [Using a Pi-Hole as Tailnet DNS](#pihole)
+7. [Setting a Pi-Hole as Tailnet DNS](#pihole)
 8. [Transfer files with Taildrop](#taildrop)
 9. [Further reading](#more)
 10. [References](#ref)
@@ -27,7 +27,7 @@ Tailscale lets you set up a mesh virtual private network (VPN) for secure access
 
 The personal plan is free, allows three users and up to 100 devices. I use it mainly to access Plex on my home server (though I can access all my self-hosted apps) and use my Pi-Hole as DNS through my phone, tablet and laptop when I'm not home, and that is what this guide will help you do. For details, <a href="https://tailscale.com/blog/how-tailscale-works" target="_blank">see this blog post about how Tailscale works</a>.
 
-<div id='server'/>
+<div id='setup'/>
 
 ## Setting up Tailscale
 
