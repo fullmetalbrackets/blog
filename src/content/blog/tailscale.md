@@ -225,15 +225,19 @@ First, on the machine running Pi-Hole install Tailscale, login to add it to the 
 tailscale up --accept-dns=false
 ```
 
-Pi-Hole uses DNS servers configured within Linux as its upstream servers, where it will send DNS queries that it cannot answer on its own. Since you're going to make the Pi-Hole be your DNS server, you don't want Pi-Hole trying to use itself as its own upstream.
+Pi-Hole uses DNS servers configured within Linux as its upstream servers, where it will send DNS queries that it cannot answer on its own. Since you're going to make the Pi-Hole be your DNS server, you don't want Pi-Hole trying to use itself as its own upstream, and the `--accept-dns=false` flag achieves that.
 
-You should also use `tailscale up --accept-dns=false` on other machines in your home network running Tailscale, so they don't go through Tailscale for DNS queries -- you want local DNS queries to stay on your local network, NOT go through Tailscale.
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
+>
+> You should also use `tailscale up --accept-dns=false` on other machines in your home network running Tailscale, so they don't go through Tailscale for DNS queries.
+>
+> You want local DNS queries to stay on your local network, NOT go through Tailscale, or they'll show up with Tailscale IPs (e.g. `100.90.80.70`) instead of your local network IPs (e.g. `192.168.0.100`). Unfortunately this cannot be avoided with phones or tablets, but we should minimize it.
 
 To set the Pi-Hole as global DNS for the tailnet, go to the admin console and make note of the Pi-Hole's tailnet IP address. Then do the following:
 
 1. Go to the **DNS** tab and scroll down to _Nameservers_.
 
-2. Under _Global nameserver_ click **Add nameserver** and choose **Custom DNS** from the dropdown menu.
+2. Under _Global nameserver_ click **Add nameserver** and choose **Custom...** from the dropdown menu.
 
 3. Enter the Pi-Hole's tailnet IP and click **Save**.
 
