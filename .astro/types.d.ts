@@ -339,6 +339,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"pihole-anywhere-tailscale.md": {
+	id: "pihole-anywhere-tailscale.md";
+  slug: "pihole-anywhere-tailscale";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "pihole-rate-limiting.md": {
 	id: "pihole-rate-limiting.md";
   slug: "pihole-rate-limiting";
