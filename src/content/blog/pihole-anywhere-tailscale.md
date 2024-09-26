@@ -82,7 +82,7 @@ Installing Pi-hole bare metal is done in one command that executes an install sc
 curl -sSL https://install.pi-hole.net | bash
 ```
 
-Follow the prompts during install, set Pi-hole to listen on the interface `tailscale0`, but don't worry about it too much, you can change everything afterwards in the web UI. Note, you can (and should) change your Pi-hole web UI password from the terminal with the command `pihole -a -p`. You can even leave it blank and skip login.
+Follow the prompts during install, but don't worry about it too much, you can change everything afterwards in the web UI. Note, you can (and should) change your Pi-hole web UI password from the terminal with the command `pihole -a -p`. You can even leave it blank and skip login.
 
 If you prefer to run Pi-hole as a Docker container, use the following `compose.yml` (make sure to change password, timezone, volumes, etc.):
 
@@ -120,7 +120,7 @@ Make sure your upstream DNS server is set (I recommend <a href="https://quad9.ne
 >
 > If using Docker's default `bridge` network setting, _permit all origins_ is required for Pi-hole to work properly. This can also be achieved with the environment variable `DNSMASQ_LISTENING: all` on the compose file.
 
-![Setting Pi-hole to listen on tailscale0 interface.](../../img/blog/pihole-tailscale-interface.png)
+![Setting Pi-hole to permit all origins.](../../img/blog/pihole-tailscale-interface.png)
 
 <div id='dns'/>
 
