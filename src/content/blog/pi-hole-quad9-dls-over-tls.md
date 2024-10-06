@@ -8,9 +8,9 @@ tags:
 
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
-> The below forwarding addresses for <em>Quad9</em> are the ones I use in my setup, which provides malware blocking, DNSSEC, and is ECS-enabled. Check out <a href="https://www.quad9.net/service/service-addresses-and-features" target="_blank">all of Quad9's options</a>.
+> The below forwarding addresses for <em>Quad9</em> provide malware blocking, DNSSEC, and are ECS-enabled. Check out <a href="https://www.quad9.net/service/service-addresses-and-features" target="_blank">all of Quad9's options</a>. Alternately you may consider using Cloudflare's `1.1.1.2` / `security.cloudflare-dns.com` which also supports DNSSEC and blocks malware.
 
-### Unbound as forwarding resolver
+## Unbound as forwarding resolver
 
 Create file, copy & paste the below into it: `sudo nano /etc/unbound/unbound.conf.d/pi-hole.conf`
 
@@ -25,9 +25,9 @@ forward-zone:
  forward-addr: 149.112.112.11@853#dns11.quad9.net
 ```
 
-### Cloudflared as forwarding resolver
+## Cloudflared as forwarding resolver
 
-Copy & paste the below into a `docker-compose.yaml` then use `docker-compose up -d` to create a fully-configured _cloudflared_ container.
+Copy & paste the below into a `compose.yaml` then use `docker compose up -d` to create a fully-configured _cloudflared_ container.
 
 ```yaml
 version: "3.6"
