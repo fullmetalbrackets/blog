@@ -7,35 +7,36 @@ tags:
   - services
 ---
 
-# Korben
+# Athena
 
-- Flame
-- Forgejo
+- Filebrowser
 - Gluetun
 - Home Assistant
+- IT Tools
 - Kavita
+- LibrePhotos
 - Mosquitto
-- OpenGist
-- Paperless-ngx
+- Nginx Proxy Manager
+- Opengist
+- Paperless
 - Plex
 - Portainer
 - qBittorrent
 - Scrutiny
 - Speedtest Tracker
+- Stirling PDF
 - Syncthing
 - Tautulli
-- Twingate Connector
 - Uptime Kuma
 - Watchtower
 
 # Potato
 
 - Pi-Hole
+- Unbound
+
+# Outpost
+
 - Nginx Proxy Manager
-- Portainer Agent
-
-# Spud
-
-- Pi-Hole
-- Nginx + Cloudflare Tunnel
+- Speedtest Tracker
 - Portainer Agent

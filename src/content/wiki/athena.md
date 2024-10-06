@@ -11,11 +11,13 @@ tags:
 
 # Dell XPS 8920 
 
+- **IP**: 192.168.0.125
+- Intel i7-7700K CPU @ 4.20 GHz
+- 24 GB RAM (4 x 6 GB DDR4)
 - 250 GB PCIe M.2 NVMe SSD (boot drive)
 - 4 x 2 TB 3.5" HDD (large media storage)
-- 1 TB 2.5" HDD (documents, photos, etc.)
+- 1 TB 2.5" HDD (documents, ebooks, photos, etc.)
 - 3 x 1 Gbps Ethernet Ports
-- 24 GB RAM
 
 ## Information
 
