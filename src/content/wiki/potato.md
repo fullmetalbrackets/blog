@@ -2,7 +2,7 @@
 title: "Potato"
 description: "Details on Potato, my Libre Sweet Potato SBC running Pi-Hole and Home Assistant."
 updatedDate: 2024-06-15
-pubDate: 2023-11-16
+pubDate: 2024-10-04
 tags:
   - hosts
 ---
@@ -21,4 +21,4 @@ tags:
 
 ## Information
 
-Bought for a measly $30, the early access price for the Sweet Potato. (Now costs $35.) This thing only barely uses any power and runs 24/7 as the main instance of Pi-Hole on my home network, and also runs my reverse proxy.
+Bought for a measly $30, the early access price for the Sweet Potato. (Now costs $35.) This thing only barely uses any power and runs 24/7 as the main instance of Pi-Hole on my home network.
