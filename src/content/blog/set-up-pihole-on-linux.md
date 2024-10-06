@@ -1,5 +1,5 @@
 ---
-title: "Set up Pi-Hole with Unbound for network-wide ad and telemetry blocking"
+title: "Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS"
 description: "Besides just using a browser extension for ad blocking, I've been using Pi-Hole for years to prevent all devices on my network from getting ads, and stopping smart home devices from phoning home for telemetry and tracking. Pi-Hole will run on almost anything that can run Linux, is very easy to set up, and super effective with the right ad lists."
 pubDate: 2022-10-08
 updatedDate: 2024-10-05
