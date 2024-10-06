@@ -60,7 +60,7 @@ services:
       - 8888:80
 ```
 
-Make sure the local port, `8888` above, does not conflict with any other self-hosted services you may have. Feel free to change it to anything else.
+I like to use the `mainline-alpine-slim` tag for the Nginx image because it's the smallest and most up to date, but there are <a href="https://hub.docker.com/_/nginx/tags" target="_blank">many other tags</a> if you prefer. Make sure the local port, `8888` above, does not conflict with any other self-hosted services you may have. Feel free to change it to anything else.
 
 Next we need to create a `nginx.conf` file and add the below to it for a basic configuration:
 
@@ -92,7 +92,7 @@ http {
 }
 ```
 
-Now use the command `docker compose up -d` to download the Nginx container image and run it using the parameters from the compose file and configuration file. Based on the settings above, Nginx will serve the static files from **/dist** directory on the machine's **network port 8888**. You should be able to access it by going to it's IP address and adding the port, for example `http://192.168.1.100:8888`. If you only want to self-host a site that you can access from within your home network, and you don't want to expose it to the internet, then you're done! Otherwise, read on to expose it to the internet with a Cloudflare Tunnel, without need to open ports on your router.
+If you changed the local port in the compose file, make sure you change it in the Nginx config too. Now use the command `docker compose up -d` to download the Nginx container image and run the webserver using the parameters from the compose file and configuration file. Based on the settings above, Nginx will serve the static files from **/dist** directory on the machine's **network port 8888**. You should be able to access it by going to it's IP address and adding the port, for example `http://192.168.1.100:8888`. If you only want to self-host a site that you can access from within your home network, and you don't want to expose it to the internet, then you're done! Otherwise, read on to expose it to the internet with a Cloudflare Tunnel, without need to open ports on your router.
 
 <div id='domain' />
 
