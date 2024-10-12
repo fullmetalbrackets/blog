@@ -14,9 +14,9 @@ tags:
 - **IP**: 192.168.0.125
 - Intel i7-7700K CPU @ 4.20 GHz
 - 24 GB RAM (4 x 6 GB DDR4)
-- 250 GB PCIe M.2 NVMe SSD (boot drive)
+- 256 GB PCIe M.2 NVMe SSD (boot drive)
 - 4 x 2 TB 3.5" HDD (large media storage)
-- 1 TB 2.5" HDD (documents, ebooks, photos, etc.)
+- 2 x 1 TB 2.5" HDD (documents, ebooks, photos, etc.)
 - 3 x 1 Gbps Ethernet Ports
 
 ## Information
@@ -27,7 +27,7 @@ I removed the GPU since Plex cannot use AMD cards for transcoding (at least not 
 
 ## Details
 
-The operating system is Debian 12 with no desktop environment. Cockpit is installed for managing the server through a GUI. Tailscale is installed bare metal for connecting with phone and tablet from outside my home network, and with a free Oracle compute instance. (<a href="/blog/expose-plex-tailscale-vps" target="_blank">See here</a>.) Most self-hosted apps and services are run via Docker containers.
+The operating system is Debian 12 with no desktop environment. Cockpit is installed for managing the server through a GUI. Tailscale is installed bare metal for connecting with phone and tablet from outside my home network, and with a remote <a href="https://www.oracle.com/cloud/free" target="_blank">Oracle Cloud Free Tier</a> compute instance. (<a href="/blog/expose-plex-tailscale-vps" target="_blank">See here</a> for details.) Most self-hosted apps and services are run on this server via Docker containers. Four HDDs of 2 TB capacity each function as large media storage, mounted at `/mnt/media1`, `/mnt/media2`, etc. MergerFS provides a unified mount point at `/home/$USER/media` which is what Plex accesses to populate the media library. A laptop drive of 1 TB capacity holds all documents, photos and music and is backed up to another, external 1 TB laptop drive connected via USB 3.0. 
 
 ## Containers
 

@@ -13,7 +13,7 @@ tags:
 
 - **IP**: 192.168.0.100
 - Intel Core i5-6500 @ 3.60 GHz
-- 256 GB NVMe SSD (Boot drive)
+- 256 GB PCIe M.2 NVMe SSD (Boot drive)
 - 1 TB 3.5" Internal HDD
 - 1 TB 2.5" Internal HDD
 - 1 Gbps Ethernet
