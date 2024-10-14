@@ -36,23 +36,23 @@
     --primary: rgb(44 156 195);
     --secondary: rgb(0, 150, 150);
     --accent: rgb(182, 193, 210);
-    --link: rgb(200, 0, 0);
-    --hover: rgb(223, 115, 0);
-    --tags: rgb(0, 182, 182);
-    --emphasis: rgb(0, 150, 0);
-    --name: rgb(0, 150, 150);
+    --link: rgb(140, 0, 0);
+    --hover: rgb(200, 0, 0);
+    --tags: rgb(44 156 195);
+    --emphasis: rgb(40, 108, 96);
+    --name: rgb(44 156 195);
     --date: rgb(72, 100, 100);
     --menu: rgb(205, 110, 10);
     --form: rgb(32, 33, 36);
-    --info: rgb(140, 0, 0);
-    --info-bg: rgb(255, 220, 220);
-    --blockquote: rgb(238, 238, 255);
-    --code-bg: hsl(220, 13%, 18%);
-    --code-text: hsl(220, 14%, 71%);
+    --info: rgb(205, 110, 10);
+    --info-bg: rgb(239, 201, 15);
+    --blockquote: rgb(255, 245, 235);
+    --code-bg: hsl(0, 0%, 90%);
+    --code-text: hsl(220, 13%, 18%);
     --svg: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%) contrast(98%);
     --ext: invert(88%) sepia(69%) saturate(7500%) hue-rotate(1deg) brightness(104%) contrast(104%);
     --search: invert(57%) sepia(86%) saturate(3921%) hue-rotate(13deg) brightness(99%) contrast(100%);
-    --info-svg: brightness(0) saturate(100%) invert(8%) sepia(97%) saturate(7267%) hue-rotate(21deg) brightness(73%) contrast(116%);
+    --info-svg: brightness(0) saturate(100%) invert(77%) sepia(98%) saturate(1742%) hue-rotate(350deg) brightness(96%) contrast(95%);
     box-sizing: border-box;
     height: 100%;
     scroll-behavior: smooth;
@@ -65,8 +65,8 @@
     --primary: rgb(90, 194, 175);
     --secondary: rgb(95, 193, 232);
     --accent: rgb(51, 65, 85);
-    --link: rgb(222, 122, 0);
-    --hover: rgb(242, 207, 43);
+    --link: rgb(242, 207, 43);
+    --hover: rgb(222, 122, 0);
     --tags: rgb(242, 207, 43);
     --emphasis: rgb(255, 255, 255);
     --name: rgb(0, 158, 170);
@@ -290,7 +290,7 @@ blockquote {
   font-size: 0.85em;
 	border: 2px solid var(--info);
   background-color: var(--blockquote);
-  border-color: var(--info);
+  border-color: var(--info-bg);
   color: var(--info);
   padding: 0;
 	margin: 2.5em auto 2em auto;
@@ -326,7 +326,6 @@ blockquote li::marker {
   filter: var(--info-svg);
 }
 article a:hover {
-  text-decoration: underline;
   text-decoration-color: var(--link);
 }
 article h2 {
