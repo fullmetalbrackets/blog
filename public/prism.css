@@ -3,7 +3,6 @@
    background: var(--code-bg);
    font-size: 18px;
    color: var(--code-text);
-   text-shadow: 0 1px rgba(0, 0, 0, 0.3);
    font-family: 'M Plus Rounded 1c Med', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
    direction: ltr;
    text-align: left;
