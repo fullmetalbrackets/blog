@@ -318,6 +318,15 @@ blockquote li {
 blockquote li::marker {
   color: var(--info);
 }
+blockquote a, a:active, a:visited {
+  color: var(--hover);
+  text-decoration: underline;
+}
+blockquote a:hover, a:focus {
+  color: var(--emphasis);
+  text-decoration: underline;
+}
+
 .info {
   width: 32px;
   height: 32px;
