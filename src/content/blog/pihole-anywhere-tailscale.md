@@ -3,7 +3,7 @@ title: "How to use Pi-hole from anywhere with Tailscale"
 description: "Tailscale is my new homelab toy. I've been using it to access my media on the go, to connect to a VPS for sharing my Plex library with family, and now with on-the-go adblocking on my phone, tablet and laptop. Here's how. "
 pubDate: 2024-09-25
 tags:
-  - pi-hole
+  - tailscale
 ---
 
 ## Table of Contents

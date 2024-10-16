@@ -3,7 +3,7 @@ title: "How to securely expose Plex from behind CGNAT using Tailscale and a free
 description: "I wrote before about securely exposing Plex for external access, but my previous solution relied on Cloudflare Tunnel and it was technically against their TOS. So I switched to using a Oracle VM on their free-tier, connecting it to my home network with Tailscale, and exposing Plex via reverse proxy. It works like a charm!"
 pubDate: 2024-09-03
 tags:
-  - self-hosting
+  - tailscale
 ---
 
 ## Sections

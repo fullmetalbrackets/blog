@@ -4,7 +4,7 @@ description: "A quick and dirty guide on how to easily set up a Samba share on L
 pubDate: 2021-09-01
 updatedDate: 2023-06-30
 tags:
-  - smb
+  - networking
 ---
 
 ## Sections

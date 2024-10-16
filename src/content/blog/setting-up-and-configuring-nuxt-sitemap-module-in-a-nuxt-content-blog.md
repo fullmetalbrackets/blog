@@ -4,7 +4,7 @@ description: The excellent Nuxt/Sitemap module can automatically generate a new 
 pubDate: 2021-10-08
 updatedDate: 2022-10-17
 tags:
-  - nuxt
+  - web development
 ---
 
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">

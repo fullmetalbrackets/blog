@@ -1,6 +1,6 @@
 ---
 title: "Complete guide to self-hosting a website through Cloudflare Tunnel"
-description: "In this guide I explain how to self-host a static web blog using Nginx as webserver and expose it to the internet via a Cloudflare tunnel."
+description: "Self-hosting a static web blog has never been easier thanks to Cloudflare Tunnel. In this guide I explain how to expose a static website hosted on machine inside my network to the internet using Nginx as webserver and securing it with various free Cloudflare services."
 pubDate: 2023-12-29
 updatedDate: 2024-04-07
 tags:

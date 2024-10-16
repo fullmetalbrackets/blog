@@ -4,7 +4,7 @@ description: I was having some issue getting this to work on a static (not SSR) 
 pubDate: 2021-09-17
 updatedDate: 2022-10-17
 tags:
-  - nuxt
+  - web development
 ---
 
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">

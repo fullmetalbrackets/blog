@@ -4,7 +4,7 @@ description: PrismJS is great for making code blocks look pretty, it comes with 
 pubDate: 2021-10-18
 updatedDate: 2022-10-17
 tags:
-  - nuxt
+  - web development
 ---
 
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">

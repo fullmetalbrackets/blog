@@ -3,7 +3,7 @@ title: "Create a public Samba share accessible without a login"
 description: "Normally a Samba share will require login with a username and password, but sometimes you just want anyone on the network to access a specific share without needing to worry about that. Here's a quick and easy way of making a (fairly insecure) Samba share available to anyone on your local network."
 pubDate: 2023-07-04
 tags:
-  - smb
+  - networking
 ---
 
 ## Sections

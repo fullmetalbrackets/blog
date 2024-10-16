@@ -4,7 +4,7 @@ description: "So you're learning web development, building things locally and on
 pubDate: 2021-09-06
 updatedDate: 2022-10-05
 tags:
-  - web hosting
+  - web development
 ---
 
 ## Table of Contents
