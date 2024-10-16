@@ -1,0 +1,6 @@
+title: "Jellystats"
+description: "A monitoring and statistics app like Tautulli, but for Jellyfin."
+tags:
+- self-hosted
+pubDate: 2024-10-15
+url: "https://github.com/CyferShepard/Jellystat"

@@ -1,0 +1,6 @@
+title: "Plex"
+description: "A personal media server that provides a slick Netflix-like frontend for all your videos, automatically grabbing metadata, generating posters, etc. However, Plex is closed-source and they some lock features behind Plex Pass."
+tags:
+- self-hosted
+pubDate: 2024-10-16
+url: "https://plex.tv"
