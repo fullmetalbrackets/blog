@@ -1,6 +1,8 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
+import Categories from "@components/Categories.astro";
 import RecentPosts from "@components/RecentPosts.astro";
+import PopularPosts from "@components/PopularPosts.astro";
 import RecentLinks from "@components/RecentLinks.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "@consts";
 ---
@@ -73,18 +75,18 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "@consts";
     <h1>Hello, World!</h1>
     <hr />
     <p>
-      Hi, I'm Ariel, a tech enthusiast and hobbyist web developer living in Florida. Welcome to my personal blog, really just collected guides and other documentation I've written for myself about various things I've learned in web development, using Linux, self-hosting, networking, etc.
+      Hi, I'm Ariel, a tech enthusiast living in Florida. Welcome to my blog, where I write about self-hosting, Linux, web development, and any other tech things I'm interested in.
     </p>
     <p>
-      Though I mostly write for myself, I figured I may as well make
-      my writings available for others who may also need help with some of this stuff. In addition to
+      I mostly write for myself, each time I figure out how to install or run a new thing, I write down how I did it for future reference. I figured I may as well make
+      these writings available for others who may also need help with self-hosting and Linux in general. In addition to
       having them online for my own access from anywhere, I hope some of it will
-      be helpful to someone out there. If not, that's ok, it's still helpful for me to come back and reference. Either
-      way, thanks for visiting!
+      be helpful to someone out there.
     </p>
+    <Categories />
     <RecentPosts />
+    <PopularPosts />
     <RecentLinks />
-    <hr class="foot-line" />
     <aside>
       <a href="#top" class="top button blog-tag">Back to Top &uarr;</a>
     </aside>
