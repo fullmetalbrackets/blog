@@ -2,21 +2,21 @@
 title: "Setup self-hosted Plex Media Server in Docker"
 description: "One of the most popular services to self-host in Plex Media Server, which serves your personal media library with a nice Netflix-like UI. Though you can install and run it bare-metal, the most common and easiest way is in a Docker container. Here's how."
 pubDate: 2022-10-17
-updatedDate: 2024-08-13
+updatedDate: 2024-10-15
 tags:
   - docker
 ---
 
 ## Table of Contents
 
-1. [Installing Docker and Docker-Compose](#install)
-2. [Preparing and the Docker-Compose file](#compose)
+1. [Installing Docker](#install)
+2. [Preparing and the Docker Compose file](#compose)
 3. [Starting the container and configuring Plex](#config)
 4. [References](#ref)
 
 <div id='install'/>
 
-## Installing Docker and Docker Compose
+## Installing Docker
 
 In 2024, the recommended (and easiest) way to install Docker is to just run their official install script from the command line:
 

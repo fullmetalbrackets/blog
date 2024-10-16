@@ -61,7 +61,13 @@ Tap on the directory to transfer your photos into (keep in mind _Destination Fol
 
 ![Transfering photos in PhotoSync.](../../img/blog/photosync9.jpg)
 
-**All done!** Now you can manually sync new photos from your phone to your NAS at any time by opening the app and repeating the last set of instructions above. **If you want background auto-transfers, you'll need the Auto-Transfer Add-On**. 
+**All done!** Now you can manually sync new photos from your phone to your NAS at any time by opening the app and repeating the last set of instructions above. 
+
+Next, we'll set up background auto-transfers, but you'll need the **Auto-Transfer Add-On**.
+
+In the PhotoSync app, tap the _gear icon_ at the bottom-right corner to enter the Settings, and click on **Autotransfer**. Click on _Target_ and choose **SMB**. (No further configuration should be required if you had already set up SMB.) Next click on _Connection_ and choose **Wi-Fi**, and for _Autotransfer from_ choose **All** or your preferred albums.
+
+Finally, under _Autotransfer Trigger_ click on the **Change Trigger** button, and pick your desired trigger -- I like the to do it when I put my phone to charge.
 
 <div id='ref'/>
 

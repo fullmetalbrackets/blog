@@ -2,15 +2,15 @@
 title: "Setup self-hosted Jellyfin Media Server in Docker"
 description: "Though Plex is a very popular media server for self-hosting, some open source enthusiasts prefer to use an alternative since Plex Media Server is not open source. A nice, simpler and admittedly less pretty alternative is Jellyfin. This guide will show you how to run it in Docker container."
 pubDate: 2022-10-18
-updatedDate: 2023-08-11
+updatedDate: 2024-10-15
 tags:
   - docker
 ---
 
 ## Table of Contents
 
-1. [Installing Docker and Docker Compose](#install)
-2. [Preparing and the Docker-Compose file](#compose)
+1. [Installing Docker](#install)
+2. [Preparing and the Docker Compose file](#compose)
 3. [Starting the container and configuring Jellyfin](#config)
 4. [Theming the web UI with custom CSS](#custom)
 5. [References](#ref)
@@ -19,54 +19,21 @@ tags:
 
 ## Installing Docker and Docker-Compose
 
-I'll be quoting from the <a href="https://docs.docker.com/engine/install" target="_blank">Docker docs</a>, which as of mid-2023 recommend uninstalling older packages like the separate <code>docker-compose</code> in favor of the new <code>docker-compose-plugin</code>, among other things.
-
-This post assumes you are installing on _Debian_ or _Ubuntu_, check the Docker docs for installation instructions on CentOS and it's offshoots, Fedora, RHEL, or Raspbian.
-
-First, uninstall all conflicting packages:
+In 2024, the recommended (and easiest) way to install Docker is to just run their official install script from the command line:
 
 ```bash
-for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt remove $pkg; done
+curl -fsSL https://get.docker.com | sh
 ```
 
-Install necessary packages to allow `apt` to use a repository over HTTPS:
-
-```bash
-sudo apt update
-sudo apt install ca-certificates curl gnupg
-```
-
-Add Docker's official GPG key:
-
-```bash
-sudo install -m 0755 -d /etc/apt/keyrings
-curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-sudo chmod a+r /etc/apt/keyrings/docker.gpg
-```
-
-Set up the repository:
-
-```bash
-echo \
-  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
-  "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
-  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-```
-
-Now install Docker:
-
-```bash
-sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-sudo service docker start && sudo service docker enable
-```
+This automatically installs Docker and the Compose plugin with all dependencies.
 
 <div id='compose'/>
 
-## Preparing the Docker-Compose file
+## Preparing the Docker Compose file
 
 Though Jellyfin has an <a href="https://hub.docker.com/r/jellyfin/jellyfin" target="_blank">official Docker image</a>, I highly suggest you instead use the <a href="https://hub.docker.com/r/linuxserver/jellyfin" target="_blank">Linuxserver image</a>, which is built and maintained by the <a href="https://www.linuxserver.io" target="_blank">Linuxserver community</a>. I've run the Linuxserver image of Jellyfin without issue, and it seems that to be the most common way to run Jellyfin.
 
-Here is an example `docker-compose.yml` file to setup jellyfin:
+Here is an example `compose.yml` file to setup jellyfin:
 
 ```yaml
 ---
