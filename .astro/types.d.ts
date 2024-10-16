@@ -269,13 +269,6 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
-"how-to-use-netlify-forms-in-a-nuxt-site.md": {
-	id: "how-to-use-netlify-forms-in-a-nuxt-site.md";
-  slug: "how-to-use-netlify-forms-in-a-nuxt-site";
-  body: string;
-  collection: "blog";
-  data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
 "install-and-use-sudo-debian.md": {
 	id: "install-and-use-sudo-debian.md";
   slug: "install-and-use-sudo-debian";
@@ -342,13 +335,6 @@ declare module 'astro:content' {
 "pihole-anywhere-tailscale.md": {
 	id: "pihole-anywhere-tailscale.md";
   slug: "pihole-anywhere-tailscale";
-  body: string;
-  collection: "blog";
-  data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"pihole-rate-limiting.md": {
-	id: "pihole-rate-limiting.md";
-  slug: "pihole-rate-limiting";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
@@ -750,6 +736,16 @@ declare module 'astro:content' {
   collection: "links";
   data: InferEntrySchema<"links">
 };
+"it-tools": {
+	id: "it-tools";
+  collection: "links";
+  data: InferEntrySchema<"links">
+};
+"jellyfin": {
+	id: "jellyfin";
+  collection: "links";
+  data: InferEntrySchema<"links">
+};
 "json2yaml": {
 	id: "json2yaml";
   collection: "links";
@@ -785,8 +781,18 @@ declare module 'astro:content' {
   collection: "links";
   data: InferEntrySchema<"links">
 };
+"paperless": {
+	id: "paperless";
+  collection: "links";
+  data: InferEntrySchema<"links">
+};
 "pi-hole": {
 	id: "pi-hole";
+  collection: "links";
+  data: InferEntrySchema<"links">
+};
+"plex": {
+	id: "plex";
   collection: "links";
   data: InferEntrySchema<"links">
 };
@@ -825,8 +831,23 @@ declare module 'astro:content' {
   collection: "links";
   data: InferEntrySchema<"links">
 };
+"stirling-pdf": {
+	id: "stirling-pdf";
+  collection: "links";
+  data: InferEntrySchema<"links">
+};
 "svg-favicon": {
 	id: "svg-favicon";
+  collection: "links";
+  data: InferEntrySchema<"links">
+};
+"syncthing": {
+	id: "syncthing";
+  collection: "links";
+  data: InferEntrySchema<"links">
+};
+"tautulli": {
+	id: "tautulli";
   collection: "links";
   data: InferEntrySchema<"links">
 };
