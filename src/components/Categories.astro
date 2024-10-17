@@ -7,20 +7,24 @@ const posts = (await getCollection("blog"));
 <style scoped>
   h2 {
     color: var(--emphasis);
-    margin-bottom: 0.5em;
+    margin-bottom: 0.35em;
   }
   ul {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    border: 1px solid var(--emphasis);
+    gap: auto;
     list-style-type: none;
-    margin: 0;
-    padding: 1em;
+    margin: 0 auto 2em auto;
+    padding: 1em 1em 1em 3.5em;
+    border: 1px solid var(--emphasis);
   }
-  li {
-    margin: 0 auto 1px auto;
+  li a {
+    margin: 2px auto;
+    padding: 0 auto;
   }
   li a:hover {
+    margin: 2px auto;
+    padding: 0 auto;
     border-bottom: 2px solid var(--hover);
   }
   p {
@@ -39,6 +43,7 @@ const posts = (await getCollection("blog"));
   @media screen and (min-width: 200px) and (max-width: 720px) {
     ul {
       grid-template-columns: repeat(2, 1fr);
+      padding: 1em 1em 1em 2.5em;
     }
   }
 </style>
