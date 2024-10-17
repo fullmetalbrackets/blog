@@ -21,6 +21,13 @@ const links = (await getCollection("links")).sort(
     margin-left: 0.25em;
     margin-bottom: 1em;
   }
+  span a {
+    border-bottom: 2px transparent;
+  }
+  span a:hover {
+    color: var(--hover);
+    border-bottom: 2px solid var(--hover);
+  }
   a button {
     background-color: var(--tags);
     color: #000;
@@ -42,7 +49,7 @@ const links = (await getCollection("links")).sort(
   }
   .tag {
     color: var(--date);
-    margin-bottom: 0.25em;
+    margin-top: 4px;
   }
   .tag span {
     color: var(--primary);

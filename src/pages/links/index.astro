@@ -25,6 +25,7 @@ const desc = "Links to helpful web development tools and sites.";
     margin: 0 auto 1em 0.5em;
   }
   .tag {
+    margin-top: 4px;
     color: var(--date);
   }
   .tag span {
@@ -33,10 +34,12 @@ const desc = "Links to helpful web development tools and sites.";
   .tag, .data {
     font-size: 0.9em;
   }
+  span a {
+    border-bottom: 2px transparent;
+  }
   span a:hover {
     color: var(--hover);
-    text-decoration: underline;
-    text-decoration-color: var(--link);
+    border-bottom: 2px solid var(--hover);
   }
 </style>
 <BaseLayout title={title} description={desc}>
