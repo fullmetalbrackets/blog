@@ -8,9 +8,6 @@ import HeaderLink from "./HeaderLink.astro";
     justify-content: space-between;
     align-items: center;
   }
-  img {
-    border: 0;
-  }
   nav {
     font-family: "M Plus Rounded 1c Med";
     display: flex;
@@ -34,7 +31,7 @@ import HeaderLink from "./HeaderLink.astro";
     color: var(--hover);
     border-bottom: 2px solid var(--menu);
   }
-  nav .logo a:hover {
+  nav .logo a, nav .logo a:active, nav .logo a:visited, nav .logo a:hover, nav .logo a:focus {
     border: 2px solid transparent;
   }
   .search {
