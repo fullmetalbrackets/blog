@@ -59,6 +59,10 @@ const { tag, posts } = Astro.props;
     border-bottom: 2px solid var(--hover);
     cursor: pointer;
   }
+  .date {
+    margin: 0;
+    padding: 0;
+  }
   .desc {
     padding-bottom: 0.25em;
     margin-bottom: 2em;
@@ -77,11 +81,9 @@ const { tag, posts } = Astro.props;
         posts.map((post) => (
           <li>
             <div>
-              <span>
-                <FormattedDate date={post.data.pubDate} />
-              </span><br>
               <a href={`/blog/${post.slug}/`} rel="prefetch-intent">
                 <span class="title">{post.data.title}</span>
+                <p class="date"><FormattedDate date={post.data.pubDate} /></p>
                 <p class="desc">{post.data.description}</p>
               </a>
             </div>

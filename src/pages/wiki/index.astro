@@ -29,9 +29,6 @@ const desc = "List of all wiki articles";
     margin: 0 auto;
     padding: 0 auto;
   }
-  .title {
-    margin: 0 auto;
-  }
   .title a,
   .title a:active,
   .title a:visited {
@@ -62,12 +59,12 @@ const desc = "List of all wiki articles";
       {
         posts.map((post) => (
           <li>
-            <p>
-              <FormattedDate date={post.data.pubDate} />
-            </p>
             <div>
               <a href={`/wiki/${post.slug}/`} rel="prefetch-intent">
               <span class="title">{post.data.title}</span>
+              <p class="date">
+                <FormattedDate date={post.data.pubDate} />
+              </p>
               <p class="desc">{post.data.description}</p>
               </a>
             </div>

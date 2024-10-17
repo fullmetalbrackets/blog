@@ -31,7 +31,9 @@ const desc = "List of all blog posts";
     margin: 0 auto;
     padding: 0 auto;
   }
-  .desc {
+  .date {
+    margin: 0;
+    padding: 0;
   }
   .title {
     margin: 0 auto;
@@ -70,11 +72,9 @@ const desc = "List of all blog posts";
         posts.map((post) => (
           <li>
             <div>
-              <p>
-                <FormattedDate date={post.data.pubDate} />
-              </p>
               <a href={`/blog/${post.slug}/`} rel="prefetch-intent">
                 <span class="title">{post.data.title}</span>
+                <p><FormattedDate date={post.data.pubDate} /></p>
                 <p class="desc">{post.data.description}</p>
               </a>
             </div>
