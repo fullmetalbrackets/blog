@@ -52,7 +52,15 @@ const { tag, posts } = Astro.props;
   ul {
     list-style-type: none;
   }
+  li .desc {
+    border-bottom: 2px solid transparent;
+  }
+  li:hover .desc {
+    border-bottom: 2px solid var(--hover);
+    cursor: pointer;
+  }
   .desc {
+    padding-bottom: 0.25em;
     margin-bottom: 2em;
   }
 </style>
