@@ -2,7 +2,7 @@
 title: "Reverse proxy OpenMediaVault, Plex and Navidrome with Nginx Proxy Manager and Pi-Hole"
 description: "My scenario was simple: I wanted to access the web GUIs of OpenMediaVault, Plex and Navidrome via a URL like plex.home.arpa without having to remember IPs and ports, inside my home network only and without the need for SSL/HTTPS. Nothing fancy, nothing accessible from outside my house. Here's how I did that with Nginx Proxy Manager as the reverse proxy and Pi-Hole as the DNS."
 pubDate: 2023-07-15
-updatedDate: 2024-03-06
+updatedDate: 2024-10-17
 tags:
   - self-hosting
 ---
@@ -111,7 +111,9 @@ Whichever method you use, wait a few moments while the image is downloaded and t
 
 ## Create the proxy hosts
 
-Go into the Nginx Proxy Manager web UI at `http://<your-ip-address>:81` and create the Administrator user as prompted. To add proxy hosts click on **Hosts** on the navigation bar at the top, then click the **Add Proxy Host** button. We'll proxy OpenMediaVault first. You'll begin in the **Details** tab, which is all you'll need to use for OMV, Plex and Navidrome.
+Go into the Nginx Proxy Manager web UI at `http://<your-ip-address>:81`, login with the default email `admin@example.com` and password `changeme`, and change (ideally) both the email and password of the administrator account.
+
+To add proxy hosts click on **Hosts** on the navigation bar at the top, then click the **Add Proxy Host** button. We'll proxy OpenMediaVault first. You'll begin in the **Details** tab, which is all you'll need to use for OMV, Plex and Navidrome.
 
 We'll begin with OMV, add the following:
 
