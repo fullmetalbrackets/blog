@@ -28,30 +28,40 @@ const { title, description, pubDate, updatedDate, tags } = Astro.props;
     .category {
       color: var(--date);
     }
-    .tag {
-      background-color: var(--primary);
-      color: #000;
-      border-radius: 0.25em;
-      cursor: pointer;
-      font-weight: 600;
-      padding: 4px 6px;
-      margin: 0;
-      text-decoration: none;
-      text-overflow: ellipsis;
-      -webkit-transition: all .10s ease-out;
-      -moz-transition: all .10s ease-out;
-      -o-transition: all .10s ease-out;
-      transition: all .10s ease-out;
-      font-family: 'M Plus Rounded 1c Med';
-      list-style-type: none;
+    a button {
+    background-color: var(--tags);
+    color: #000;
+    border-radius: 0.25em;
+    cursor: pointer;
+    font-weight: 600;
+    padding: 4px 8px;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    -webkit-transition: all 0.1s ease-out;
+    -moz-transition: all 0.1s ease-out;
+    -o-transition: all 0.1s ease-out;
+    transition: all 0.1s ease-out;
+    margin: 0 0 0.5em 0;
+    font-family: "M Plus Rounded 1c Med";
+  }
+  li:hover {
+    padding-bottom: 0.25em;
+    border-bottom: 2px solid var(--hover);
+  }
+  @media (hover: hover) {
+    a:hover button {
+      box-shadow: -4px -4px 0 #000;
+      transform: translate(4px, 4px);
     }
-    .tag a {
-      color: #000;
-      text-decoration: none;
+    a:hover button {
+      outline-offset: 1px;
     }
-    .tag:hover {
-      background-color: var(--tags);
+  }
+  @media (hover: none) {
+    a:hover button {
+      background-color: var(--menu);
     }
+  }
     form {
       display: flex;
       align-items: center;
@@ -60,11 +70,11 @@ const { title, description, pubDate, updatedDate, tags } = Astro.props;
       color: var(--text);
       margin-right: 1em;
     }
-    @media screen and (max-width: 667px) {
-      h1 {
-        font-size: 1.25em;
-      }
+  @media screen and (max-width: 667px) {
+    h1 {
+      font-size: 1.25em;
     }
+  }
   </style>
 
   <article data-pagefind-body>
@@ -80,7 +90,7 @@ const { title, description, pubDate, updatedDate, tags } = Astro.props;
       }
     </div>
     <hr />
-    <span class="tag"><a href={`/categories/${tags}`}>{tags}</a></span>
+    <span class="tag"><a href={`/categories/${tags}`}><button>{tags}</button></a></span>
     <p class="description">
       {description}
     </p>
