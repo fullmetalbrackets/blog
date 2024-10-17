@@ -297,12 +297,6 @@ blockquote {
   border-radius: 0.5em;
   width: 95%;
 }
-/* blockquote p:nth-of-type(1) {
-  padding: 0.35em 0 0.25em 0.25em;
-  margin: 0 0 0 0.25em;
-  color: var(--info);
-  font-size: 1.25em;
-} */
 blockquote p {
   margin: 0;
   padding: 0.5em 1em 0.9em 1.25em;
@@ -326,7 +320,6 @@ blockquote a:hover, blockquote a:focus {
   color: var(--hover);
   text-decoration: underline;
 }
-
 .info {
   width: 32px;
   height: 32px;
@@ -432,4 +425,9 @@ article ol li, article ul li {
 	clip-path: inset(50%);
 	/* added line to stop words getting smushed together (as they go onto seperate lines and some screen readers do not understand line feeds as a space */
 	white-space: nowrap;
+}
+@media screen and (min-width: 200px) and (max-width: 667px) {
+  input {
+    width: 75%;
+  }
 }
