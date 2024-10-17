@@ -57,25 +57,25 @@ const { title, description, pubDate, updatedDate, tags } = Astro.props;
     -o-transition: all 0.1s ease-out;
     transition: all 0.1s ease-out;
     font-family: "M Plus Rounded 1c Med";
-  }
-  li:hover {
-    padding-bottom: 0.25em;
-    border-bottom: 2px solid var(--hover);
-  }
-  @media (hover: hover) {
-    a:hover button {
-      box-shadow: -4px -4px 0 #000;
-      transform: translate(4px, 4px);
     }
-    a:hover button {
-      outline-offset: 1px;
+    li:hover {
+      padding-bottom: 0.25em;
+      border-bottom: 2px solid var(--hover);
     }
-  }
-  @media (hover: none) {
-    a:hover button {
-      background-color: var(--menu);
+    @media (hover: hover) {
+      a:hover button {
+        box-shadow: -4px -4px 0 #000;
+        transform: translate(4px, 4px);
+      }
+      a:hover button {
+        outline-offset: 1px;
+      }
     }
-  }
+    @media (hover: none) {
+      a:hover button {
+        background-color: var(--menu);
+      }
+    }
     form {
       display: flex;
       align-items: center;
@@ -84,26 +84,26 @@ const { title, description, pubDate, updatedDate, tags } = Astro.props;
       color: var(--text);
       margin-right: 1em;
     }
-  @media screen and (max-width: 667px) {
-    h1 {
-      font-size: 1.25em;
+    @media screen and (max-width: 667px) {
+      h1 {
+        font-size: 1.25em;
+      }
+      div {
+        display: grid;
+        gap: 1em;
+        grid-template-columns: auto auto;
+        place-content: start;
+        place-items: start;
+        margin: 0 auto;
+        padding: 0 auto;
+      }
+      .last-updated-on {
+        margin: 0;
+      }
+      .updated {
+        margin: 0;
+      }
     }
-    div {
-      display: grid;
-      gap: 1em;
-      grid-template-columns: auto auto;
-      place-content: start;
-      place-items: start;
-      margin: 0 auto;
-      padding: 0 auto;
-    }
-    .last-updated-on {
-      margin: 0;
-    }
-    .updated {
-      margin: 0;
-    }
-  }
   </style>
 
   <article data-pagefind-body>
