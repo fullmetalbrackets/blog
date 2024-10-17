@@ -262,7 +262,7 @@ img {
   margin: 3em auto;
 }
 code {
-	padding: 1.5px 4px;
+	padding: 1px 4.5px;
   font-family: 'M Plus Rounded 1c Med', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
 	background-color: var(--code-bg);
 	color: var(--code-text);
@@ -299,11 +299,10 @@ blockquote {
 }
 blockquote p {
   margin: 0;
-  padding: 0.5em 1em 0.9em 1.25em;
+  padding: 0.5em 1em 1em 1.25em;
 }
-blockquote ul {
-  margin: 0;
-  padding-left: 2.5em;
+blockquote ol, blockquote ul {
+  padding-bottom: 1em;
 }
 blockquote li {
   margin: 0;
@@ -398,7 +397,7 @@ aside > a, aside > a:active, aside > a:visited, aside > a:hover, aside > a:focus
   color: #000;
 }
 article ul, article ol {
-  margin-bottom: 2em;
+  margin: 1.25em auto 1.5em auto;
 }
 article ul ul {
   margin: 0;
