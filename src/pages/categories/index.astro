@@ -11,62 +11,33 @@ const desc = "Blog posts by category";
 
 <style scoped>
   ul {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: auto;
     list-style-type: none;
-    margin: 0 auto 0 -1.5em;
-  }
-  li {
-    display: inline-block;
-    margin: 0 auto;
-    margin: 0 1.5em 2em 0;
+    margin: 0 auto 2em auto;
+    padding: 0 auto;
   }
   li a {
-    background-color: var(--primary);
-    padding: 4px 6px;
-    border-radius: 0.25em;
-    color: #000;
-    font-family: 'M Plus Rounded 1c Med';
-    font-weight: 700;
+    margin: 2px auto;
+    padding: 0 auto;
   }
   li a:hover {
-    background-color: var(--hover);
-  }
-  div {
-    padding-bottom: 0.25em;
-    border-bottom: 2px solid transparent;
-  }
-  span{
-    margin: 0 auto;
+    margin: 2px auto;
     padding: 0 auto;
+    border-bottom: 2px solid var(--hover);
   }
   p {
     margin-bottom: 2em;
   }
-  .desc {
+  @media screen and (min-width: 721px) and (max-width: 900px) {
+    ul {
+        grid-template-columns: repeat(3, 1fr);
+      }
   }
-  .title {
-    margin: 0 auto;
-  }
-  .title a,
-  .title a:active,
-  .title a:visited {
-    color: var(--primary);
-  }
-  .title a:hover {
-    color: var(--hover);
-  }
-  li:hover div {
-    border-bottom: 2px solid var(--hover);
-    cursor: pointer;
-  }
-  li:hover .title {
-    color: var(--hover);
-  }
-  @media screen and (min-width: 200px) and (max-width: 667px) {
-    .title {
-      font-size: 20px;
-    }
-    li {
-      margin: 0 1em 2em 0;
+  @media screen and (min-width: 200px) and (max-width: 720px) {
+    ul {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 </style>
@@ -81,57 +52,62 @@ const desc = "Blog posts by category";
     <ul>
       <li>
         <a href="/categories/android" rel="prefetch-intent">
-          android
+          Android
         </a>
       </li>
       <li>
         <a href="/categories/command line" rel="prefetch-intent">
-          command line
+          Command Line
         </a>
       </li>
       <li>
         <a href="/categories/docker" rel="prefetch-intent">
-          docker
+          Docker
         </a>
       </li>
       <li>
         <a href="/categories/git" rel="prefetch-intent">
-          git
+          Git
         </a>
       </li>
       <li>
         <a href="/categories/linux" rel="prefetch-intent">
-          linux
+          Linux
         </a>
       </li>
       <li>
         <a href="/categories/miscellaneous" rel="prefetch-intent">
-          miscellaneous
+          Miscellaneous
+        </a>
+      </li>
+      <li>
+        <a href="/categories/networking" rel="prefetch-intent">
+          Networking
         </a>
       </li>
       <li>
         <a href="/categories/pi-hole" rel="prefetch-intent">
-          pi-hole
+          Pi-Hole
         </a>
       </li>
       <li>
         <a href="/categories/powershell" rel="prefetch-intent">
-          powershell
+          Powershell
         </a>
       </li>
       <li>
         <a href="/categories/self-hosting" rel="prefetch-intent">
-          self-hosting
+          Self-Hosting
         </a>
       </li>
       <li>
         <a href="/categories/git" rel="prefetch-intent">
-          ssh
+          SSH
         </a>
       </li>
       <li>
         <a href="/categories/web development" rel="prefetch-intent">
-          web development
+          Web Development
         </a>
       </li>
     </ul>
