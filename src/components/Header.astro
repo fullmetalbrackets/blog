@@ -8,9 +8,6 @@ import HeaderLink from "./HeaderLink.astro";
     justify-content: space-between;
     align-items: center;
   }
-  .logo a, .logo a:active, .logo a:visited, .logo a:focus, .logo a:hover {
-    text-decoration: none;
-  }
   nav {
     font-family: "M Plus Rounded 1c Med";
     display: flex;
@@ -28,14 +25,10 @@ import HeaderLink from "./HeaderLink.astro";
   }
   nav a:hover {
     color: var(--hover);
-    border-bottom: 2px solid var(--menu);
   }
   nav a.active {
     color: var(--hover);
     border-bottom: 2px solid var(--menu);
-  }
-  nav .logo a, nav .logo a:active, nav .logo a:visited, nav .logo a:hover, nav .logo a:focus {
-    border: 2px solid var(--main);
   }
   .search {
     filter: var(--search);
