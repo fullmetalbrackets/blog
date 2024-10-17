@@ -4,7 +4,7 @@ description: "Self-hosting a static web blog has never been easier thanks to Clo
 pubDate: 2023-12-29
 updatedDate: 2024-04-07
 tags:
-  - self-hosting
+  - cloudflare
 ---
 
 ## Sections

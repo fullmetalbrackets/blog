@@ -3,7 +3,7 @@ title: "How to securely expose Plex from behind CGNAT with Cloudflare Tunnel"
 description: "Exposing Plex normally involves port forwarding from the router, which is very insecure and not recommended. If your home network is behind CGNAT - very common with most ISPs nowadays -- you can't even port forward if you wanted to. Here's how I did it in a fairly secure way that limits access by using Cloudflare."
 pubDate: 2024-07-15
 tags:
-  - self-hosting
+  - cloudflare
 ---
 
 ## Sections

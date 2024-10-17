@@ -4,7 +4,7 @@ description: 'My situation was simple -- I have on my home server a 2 TB hard dr
 pubDate: 2024-03-11
 updatedDate: 2024-03-16
 tags:
-  - self-hosting
+  - command line
 ---
 
 ## Sections

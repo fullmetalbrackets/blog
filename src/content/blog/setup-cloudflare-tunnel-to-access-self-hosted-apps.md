@@ -4,7 +4,7 @@ description: "Cloudflare Tunnels have been around for a few years and are well r
 pubDate: 2023-07-20
 updatedDate: 2024-07-12
 tags:
-  - self-hosting
+  - cloudflare
 ---
 
 ## Sections
