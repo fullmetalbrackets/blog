@@ -20,8 +20,9 @@ const posts = (await getCollection("blog")).sort(
     font-size: 90%;
   }
   ul {
+    background-color: var(--blockquote);
+    border-radius: 0.5em;
     margin: 0.5em auto 0 auto;
-    border: 1px solid var(--primary);
     padding: 1em;
   }
   li {

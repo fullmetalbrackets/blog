@@ -6,17 +6,17 @@ const posts = (await getCollection("blog"));
 
 <style scoped>
   h2 {
-    color: var(--emphasis);
     margin-bottom: 0.35em;
   }
   ul {
+    background-color: var(--blockquote);
+    border-radius: 0.5em;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 4px;
     list-style-type: none;
     margin: 0 auto 2em auto;
     padding: 1em 1em 1em 3.5em;
-    border: 1px solid var(--emphasis);
   }
   li a {
     margin: 2px auto;
