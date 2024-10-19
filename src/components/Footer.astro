@@ -17,7 +17,7 @@ const today = new Date();
       "Open Sans",
       "Helvetica Neue",
       sans-serif;
-    margin: 2em auto 0 auto;
+    margin: 0 auto;
     padding: 0;
     display: flex;
     text-align: center;
@@ -25,14 +25,52 @@ const today = new Date();
     justify-content: space-between;
     max-width: 78ch;
   }
-  .legal, .privacy {
+  .legal {
     font-size: 14px;
+    font-weight: 700;
+    margin-left: 1em;
+  }
+  .privacy {
+    font-size: 14px;
+    font-weight: 700;
+  }
+  @media (prefers-color-scheme: light) {
+    .legal, .privacy {
+     color: var(--primary);
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    .legal, .privacy {
+     color: var(--emphasis);
+    }
+  }
+  a, a:active, a:visited {
+    color: var(--date);
+  }
+  a:hover, a:focus {
+    color: var(--primary);
+  }
+  @media (prefers-color-scheme: light) {
+    a, a:active, a:visited {
+      color: var(--primary);
+    }
+    a:hover, a:focus {
+      color: var(--hover);
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    a, a:active, a:visited {
+      color: var(--date);
+    }
+    a:hover, a:focus {
+      color: var(--primary);
+    }
   }
   .nav {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    margin: 0;
+    margin: 0 0 0.25em 0;
     padding: 0;
   }
   .nav a {
@@ -86,6 +124,9 @@ const today = new Date();
 <footer>
   <div class="legal">
      &copy; 2021 - {today.getFullYear()} Ariel Diaz. All rights reserved.
+  </div>
+  <div class="legal">
+    <a href="/privacy">Privacy Policy</a>
   </div>
   </div>
   <div class="nav">
