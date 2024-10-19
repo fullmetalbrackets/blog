@@ -1,13 +1,52 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
+import Featured from "@components/Featured.astro";
 import Categories from "@components/Categories.astro";
 import RecentPosts from "@components/RecentPosts.astro";
-import PopularPosts from "@components/PopularPosts.astro";
 import RecentLinks from "@components/RecentLinks.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "@consts";
 ---
 
 <style scoped>
+  div {
+    padding-top: 0.5em;
+  }
+  .about {
+    display: block;
+    font-size: 3.5em;
+    font-weight: 900;
+    text-align: center;
+    letter-spacing: -1px;
+    word-spacing: -6px;
+    line-height: 1;
+    -webkit-appearance: none;
+  }
+  
+  @media (prefers-color-scheme: light) {
+    .about {
+      color: var(--primary);
+      text-shadow: 2px 3px 2px #ddd;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    .about {
+      color: var(--emphasis);
+      text-shadow: 2px 3px 2px var(--accent);
+    }
+  }
+  @media screen and (min-width: 668px) and (max-width: 900px) {
+    .about {
+      font-size: 2.75em;
+    }
+  }
+  @media screen and (min-width: 200px) and (max-width: 667px) {
+    .about {
+      font-size: 2em;
+    }
+  }
+  .blurb {
+    margin-top: 1.5em;
+  }
   p {
     word-spacing: 1px;
   }
@@ -36,25 +75,6 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "@consts";
     margin: 0 2em 2em -1em;
     line-height: 1.2;
   }
-  /* @media screen and (min-width: 200px) and (max-width: 667px) {
-		main {
-			margin: 0 10px;
-		}
-		span {
-			font-size: 100%;
-		}
-		.more {
-			gap: 1em;
-		}
-		ul {
-			width: 100%;
-		}
-		li {
-			margin: 0 1em 2em -1em;
-		}
-		aside a {
-			font-size: 0.85em;
-		} */
 </style>
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
@@ -72,23 +92,18 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "@consts";
     crossorigin
   />
   <section>
-    <h1>Hello, World!</h1>
-    <hr />
-    <p>
-      Hi, I'm Ariel, a tech enthusiast living in Florida. Welcome to my blog, where I write about self-hosting, Linux, web development, and any other tech things I'm interested in.
+    <div>
+      <span class="about">
+        A blog about self-hosting, web development, Linux, and more.
+      </span>
+    </div>
+    <p class="blurb">
+      I'm Ariel, known online as fullmetalbrackets, a tech enthusiast and hobbyist coder. Welcome to my blog. I mostly write for myself, each time I figure out how to install or run a new thing, I write down how I did it for future reference.
+      I hope my writings will be helpful to you. Thanks for visiting!
     </p>
-    <p>
-      I mostly write for myself, each time I figure out how to install or run a new thing, I write down how I did it for future reference. I figured I may as well make
-      these writings available for others who may also need help with self-hosting and Linux in general. In addition to
-      having them online for my own access from anywhere, I hope some of it will
-      be helpful to someone out there.
-    </p>
+    <Featured />
     <Categories />
     <RecentPosts />
     <RecentLinks />
-    <PopularPosts />
-    <aside>
-      <a href="#top" class="top button blog-tag">Back to Top &uarr;</a>
-    </aside>
   </section>
 </BaseLayout>
