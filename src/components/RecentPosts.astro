@@ -26,13 +26,13 @@ const posts = (await getCollection("blog")).sort(
     background-color: var(--blockquote);
     border-radius: 0.5em;
     margin: 0.5em auto 0 auto;
-    padding: 1em;
+    padding: 1.5em;
   }
   li {
     display: inline-flex;
     flex-direction: column;
-    margin: 0 2em 1em 0.25em;
-    padding-bottom: 0.25em;
+    margin: 0 auto 1em auto;
+    padding-bottom: 0.5em;
     line-height: 1.2;
     border-bottom: 2px solid transparent;
   }
@@ -70,7 +70,7 @@ const posts = (await getCollection("blog")).sort(
     font-family: "M Plus Rounded 1c Med";
   }
   li:hover {
-    padding-bottom: 0.25em;
+    padding-bottom: 0.5em;
     border-bottom: 2px solid var(--hover);
   }
   @media (hover: hover) {

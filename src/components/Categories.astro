@@ -13,18 +13,14 @@ const posts = (await getCollection("blog"));
     border-radius: 0.5em;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 4px;
     list-style-type: none;
-    margin: 0 auto 2em auto;
-    padding: 1em 1em 1em 3.5em;
+    margin: 0 auto;
+    padding: 1.5em 1.5em 0.5em 1.5em;
   }
-  li a {
-    margin: 2px auto;
-    padding: 0 auto;
+  li {
+    margin: 0 auto 1em auto;
   }
   li a:hover {
-    margin: 2px auto;
-    padding: 0 auto;
     border-bottom: 2px solid var(--hover);
   }
   p {
