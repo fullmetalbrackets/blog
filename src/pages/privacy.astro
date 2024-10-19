@@ -1,0 +1,88 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+
+const title = "Privacy Policy";
+---
+
+<style scoped>
+  section {
+    margin: 2em auto;
+  }
+  h2 {
+    margin-top: 1em
+  }
+  .date {
+    color: var(--date);
+  }
+  @media screen and (min-width: 200px) and (max-width: 667px) {
+    a button,
+    aside a {
+      font-size: 0.85em;
+    }
+  }
+</style>
+
+<BaseLayout title={title} description="Privacy Policy for fullmetalbrackets.com">
+  <section>
+    <h1 class="title">{title}</h1>
+    <hr class="top-line" />
+    <span>Last updated on</span>
+    <span class="date">
+      October 19, 2024
+    </span>
+    <p>
+      This privacy policy will advise of what information is collected when you use this website and for what purpose. The policy may change in the future, at which time this page will be updated. Check back from time to time and note that date the Privacy Policy was last updated.
+    </p>
+    <h2>
+      What is collected
+    </h2>
+    <p>
+      I will never sell, distribute or lease your personal information to anyone as no personal information is collected by this website. There is no ability to login, no newsletter to sign up for, or any other way for a user to submit information through the website. There are no tracking cookies on this website.
+    </p>
+    <p>
+      The only information collected is the following:
+    </p>
+    <ul>
+      <p>
+        <li>
+          <a href="https://search.google.com/search-console" target="_blank">Google Search Console</a> is used for monitoring and analyzing this website's presence in Google search results. This data is anonymized and cannot be used to identify you.
+        </li>
+      </p>
+      <p>
+        <li>
+          <a href="https://search.google.com/search-console" target="_blank">Bing Webmaster Tools</a> is used for monitoring and analyzing this website's presence in Bing search results. (And other search engines that partner with or use Bing, including DuckDuckGo, Yahoo!, et al.) This data is anonymized and cannot be used to identify you.
+        </li>
+      </p>
+      <p>
+        <li>
+          <a href="https://clarity.microsoft.com" target="_blank">Microsoft Clarity</a> is used to provide insights into how users interact with this website, including top pages, heatmaps and referrers, as well as user-specific information like browser, OS, and country of origin. This data is anonymized and cannot be used to identify you.
+        </li>
+      </p>
+      <p>
+        <li>
+          <a href="https://umami.is" target="_blank">Umami</a> is used to review traffic to this site, including details like page views, visit duration and referrers, as well as user-specific information like browser, OS, and country of origin. This data is anonymized and cannot be used to identify you.
+        </li>
+      </p>
+      <p>
+        <li>
+          <a href="https://www.cloudflare.com/web-analytics" target="_blank">Cloudflare Web Analytics</a> is used to review traffic to this site, including details like unique visits and country of origin. This data is anonymized and cannot be used to identify you.
+        </li>
+      </p>
+      <p>
+        <li>
+          <a href="https://www.cloudflare.com/application-services/products/waf" target="_blank">Cloudflare Web Application Firewall</a> is used to block certain bots, AI scrapers and crawlers, and other unwanted traffic. In the unlikely event that you are blocked by WAF, your IP address will be displayed.
+        </li>
+      </p>
+    </ul>
+    <h2>Links to external websites</h2>
+    <p>
+      This website contains links to other, external websites. I always try to link to reputable sources, but it is up to you to review those websites' own privacy statements. I cannot accept any responsibility for your privacy once you have left this website.
+    </p>
+    <h2>Questions and concerns</h2>
+    <p>
+      If you have any questions about this privacy policy, feel free to <a href="mailto:contact@fullmetalbrackets.com">contact me via email</a>.
+    </p>
+    <br /><br />
+    <hr class="foot-line" />
+  </section>
+</BaseLayout>
