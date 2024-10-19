@@ -18,33 +18,60 @@ const today = new Date();
       "Helvetica Neue",
       sans-serif;
     margin: 0 auto;
-    padding: 0;
-    display: flex;
+    padding: 0 auto;
+    /* display: flex;
     text-align: center;
     align-items: center;
+    justify-content: space-between; */
+    display: grid;
+    grid-template-columns: auto auto;
+    place-items: center;
     justify-content: space-between;
+    gap: 0;
     max-width: 78ch;
+  }
+  .top-row {
+    display: grid;
+    grid-template-columns: auto auto;
+    place-items: center;
+    justify-content: space-between;
+    gap: 0;
+    margin: 0 auto;
+    padding: 0 auto;
+  }
+  .bottom-row {
+    display: grid;
+    grid-template-columns: auto auto;
+    place-items: center;
+    justify-content: space-between;
+    gap: 0;
+    margin: -0.25em auto 1em auto;
+    padding: 0 auto;
   }
   .legal {
     font-size: 14px;
     font-weight: 700;
     margin-left: 1em;
   }
+  .license {
+    font-size: 14px;
+    font-weight: 700;
+  }
   .privacy {
     font-size: 14px;
     font-weight: 700;
   }
-  @media (prefers-color-scheme: light) {
-    .legal, .privacy {
+  /* @media (prefers-color-scheme: light) {
+    .legal, .license, .privacy {
      color: var(--primary);
     }
   }
   @media (prefers-color-scheme: dark) {
-    .legal, .privacy {
+    .legal, .license, .privacy {
      color: var(--emphasis);
     }
-  }
-  a, a:active, a:visited {
+  } */
+  /* a, a:active, a:visited {
     color: var(--date);
   }
   a:hover, a:focus {
@@ -65,7 +92,7 @@ const today = new Date();
     a:hover, a:focus {
       color: var(--primary);
     }
-  }
+  } */
   .nav {
     display: flex;
     align-items: center;
@@ -114,6 +141,15 @@ const today = new Date();
     height: 22px;
   }
   @media screen and (min-width: 200px) and (max-width: 667px) {
+    .legal, .license, .privacy {
+      font-size: 10px;
+    }
+    .right {
+      display: inline-block;
+    }
+    .bottom-row {
+      margin-top: -5px;
+    }
     .nav a {
       margin: 0 5px;
       padding: 5px 1px;
@@ -122,85 +158,92 @@ const today = new Date();
 </style>
 
 <footer>
-  <div class="legal">
-     &copy; 2021 - {today.getFullYear()} Ariel Diaz. All rights reserved.
+  <div class="top-row">
+    <div class="legal">
+      &copy; 2021 - {today.getFullYear()} Ariel Diaz. <span class="right">All rights reserved.</span>
+    </div>
+    </div>
+    <div class="nav">
+      <a href="/rss.xml"
+        ><img
+          height="15px"
+          width="15px"
+          class="rss"
+          src="/assets/rss.svg"
+          alt="RSS Feed"
+          title="RSS Feed"
+          loading="lazy"
+          decoding="async"
+        /></a
+      >
+      <a href="mailto:contact@fullmetalbrackets.com" target="_blank"
+        ><img
+          height="20px"
+          width="20px"
+          class="email"
+          src="/assets/email.svg"
+          alt="Email"
+          title="Email"
+          loading="lazy"
+          decoding="async"
+        /></a
+      >
+      <a href="https://threads.net/@fullmetal.brackets" target="_blank"
+        ><img
+          height="20px"
+          width="20px"
+          class="threads"
+          src="/assets/threads.svg"
+          alt="GitHub"
+          title="Threads"
+          loading="lazy"
+          decoding="async"
+        /></a
+      >
+      <a href="https://bsky.app/profile/fullmetalbrackets.bsky.social" target="_blank"
+        ><img
+          height="20px"
+          width="20px"
+          class="bsky"
+          src="/assets/bsky.svg"
+          alt="Bluesky"
+          title="Bluesky"
+          loading="lazy"
+          decoding="async"
+        /></a
+      >
+      <a href="https://github.com/fullmetalbrackets" target="_blank"
+        ><img
+          height="20px"
+          width="20px"
+          class="github"
+          src="/assets/gh.svg"
+          alt="GitHub"
+          title="GitHub"
+          loading="lazy"
+          decoding="async"
+        /></a
+      >
+      <a href="https://buymeacoffee.com/arieldiaz" target="_blank"
+        ><img
+          height="21px"
+          width="15px"
+          class="buymeacoffee"
+          src="/assets/bmc-logo.svg"
+          alt="Buy Me A Coffee"
+          title="Buy Me A Coffee"
+          loading="lazy"
+          decoding="async"
+        /></a
+      >
+    </div>
   </div>
-  <div class="legal">
-    <a href="/privacy">Privacy Policy</a>
-  </div>
-  </div>
-  <div class="nav">
-    <a href="/rss.xml"
-      ><img
-        height="15px"
-        width="15px"
-        class="rss"
-        src="/assets/rss.svg"
-        alt="RSS Feed"
-        title="RSS Feed"
-        loading="lazy"
-        decoding="async"
-      /></a
-    >
-    <a href="mailto:contact@fullmetalbrackets.com" target="_blank"
-      ><img
-        height="20px"
-        width="20px"
-        class="email"
-        src="/assets/email.svg"
-        alt="Email"
-        title="Email"
-        loading="lazy"
-        decoding="async"
-      /></a
-    >
-    <a href="https://threads.net/@fullmetal.brackets" target="_blank"
-      ><img
-        height="20px"
-        width="20px"
-        class="threads"
-        src="/assets/threads.svg"
-        alt="GitHub"
-        title="Threads"
-        loading="lazy"
-        decoding="async"
-      /></a
-    >
-    <a href="https://bsky.app/profile/fullmetalbrackets.bsky.social" target="_blank"
-      ><img
-        height="20px"
-        width="20px"
-        class="bsky"
-        src="/assets/bsky.svg"
-        alt="Bluesky"
-        title="Bluesky"
-        loading="lazy"
-        decoding="async"
-      /></a
-    >
-    <a href="https://github.com/fullmetalbrackets" target="_blank"
-      ><img
-        height="20px"
-        width="20px"
-        class="github"
-        src="/assets/gh.svg"
-        alt="GitHub"
-        title="GitHub"
-        loading="lazy"
-        decoding="async"
-      /></a
-    >
-    <a href="https://buymeacoffee.com/arieldiaz" target="_blank"
-      ><img
-        height="21px"
-        width="15px"
-        class="buymeacoffee"
-        src="/assets/bmc-logo.svg"
-        alt="Buy Me A Coffee"
-        title="Buy Me A Coffee"
-        loading="lazy"
-        decoding="async"
-      /></a
-    >
+  <div class="bottom-row">
+    <div class="license">
+      <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC BY-SA 4.0</a>
+    </div>
+    <div class="legal">
+      <a href="/privacy">Privacy Policy</a>
+    </div>
   </div>
 </footer>
