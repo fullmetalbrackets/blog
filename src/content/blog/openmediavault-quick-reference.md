@@ -2,11 +2,18 @@
 title: "OpenMediaVault Quick Reference"
 description: "I've been using OpenMediaVault 6 for over a year now, and it's user interface can be a bit obtuse, so I wrote myself a series of quick step-by-step guides for enabling certain features within the OMV workbench UI."
 pubDate: 2023-07-30
+updatedDate: 2024-10-18
 tags:
   - self-hosting
 ---
 
 <img src="/omv-header.png" alt="OpenMediaVault=" loading="eager" decoding="async" class="sq-img" />
+
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
+>
+> **Important!**
+> 
+> This article is specifically about version 6.0 of OpenMediaVault, which reached end of life in July 2024. OpenMediaVault 7 was released in March 2024. The below _may_ still apply, but don't be surprised if it does not. I have not used OMV in some time, so I may not be updating this anytime soon, sorry.
 
 ## Sections
 
@@ -76,14 +83,12 @@ Alternately, you can change the port in the _terminal_:
 
 ## Enable Wake-on-Lan
 
+Make sure to enable **Wake-on-Lan** within the BIOS of your server too! Otherwise it won't work.
+
 1. Go to _Network_ -> _Interfaces_.
 2. Click on your interface (e.g. `enp2s0`) to highlight it, then click on the _Pencil_ icon to _edit_ the interface
 3. Scroll down to _Advanced settings_ and check the box for _Wake-on-Lan_
 4. Click the _Save button_ and confirm the _pending configuration changes_ by clicking the _checkmark_.
-
-> &#128712;
->
-> Make sure to enable **Wake-on-Lan** within the BIOS too!
 
 <div id='static' />
 
