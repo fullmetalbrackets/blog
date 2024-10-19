@@ -25,13 +25,9 @@ import HeaderLink from "./HeaderLink.astro";
     color: var(--hover);
     border-bottom: 2px solid var(--menu);
   }
-  nav .logo, nav .logo a, nav .logo a:active, nav .logo a:visited, nav .logo a:hover, nav .logo a:focus {
-    border: 0;
-  }
   .logo {
     display: flex;
     align-items: center;
-    border: 0;
   }
   .name {
     margin-left: 0.25em;
@@ -40,6 +36,7 @@ import HeaderLink from "./HeaderLink.astro";
   }
   .logo:hover .name {
     color: var(--link);
+    border: 0;
   }
   .nav-links {
     display: flex;
