@@ -276,13 +276,6 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
-"install-docker-debian-ubuntu.md": {
-	id: "install-docker-debian-ubuntu.md";
-  slug: "install-docker-debian-ubuntu";
-  body: string;
-  collection: "blog";
-  data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
 "keeping-a-linux-laptop-on-with-the-lid-closed.md": {
 	id: "keeping-a-linux-laptop-on-with-the-lid-closed.md";
   slug: "keeping-a-linux-laptop-on-with-the-lid-closed";
