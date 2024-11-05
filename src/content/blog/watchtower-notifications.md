@@ -130,6 +130,12 @@ In the future, any updates will result in a notification specifying which contai
 
 All done! You should now get notifications through Pushover each time Watchtower updates any container images. If you want to use a different service for notifications, simply check <a href="https://containrrr.dev/shoutrrr/v0.8/services/overview" target="_blank">the Shoutrrr documentation for the syntax</a> and use that instead. You can even customize the 
 
+## Related Articles
+
+> [Setup self-hosted Plex Media Server in Docker](/blog/setting-up-plex-in-docker)
+
+> [How to run self-hosted FileBrowser in Docker](/blog/how-to-run-filebrowser-in-docker)
+
 <div id='ref'/>
 
 ## References

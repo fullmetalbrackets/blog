@@ -95,6 +95,12 @@ To have Linux auto-mount the share at boot, edit the _fstab_ file with `sudo nan
 192.168.1.100:/home/ross/media /mnt/share nfs defaults 0 0
 ```
 
+## Related Articles
+
+> [Mounting (either internal or external) hard drives in Linux](/blog/mounting-hard-drives-in-linux)
+
+> [Create a public Samba share accessible without a login](/blog/create-public-samba-share-without-login)
+
 <div id='ref'/>
 
 ## References

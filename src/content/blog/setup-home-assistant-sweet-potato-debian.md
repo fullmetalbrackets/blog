@@ -107,6 +107,12 @@ You should arrive at the Home Assistant UI's welcome page, where you can follow 
 
 Once the setup finishes, which it should without issue if you installed Docker version 24.0.7 as stated above, you'll be ready to go! (If you migrated from Core to Supervised via backup, be sure to login with the same username and password that you used in Core!)
 
+## Related Articles
+
+> [Setting up a Libre Computer Sweet Potato SBC with Debian and Pi-Hole](/blog/setting-up-sweet-potato-debian-pihole)
+
+> [Complete guide to self-hosting a website through Cloudflare Tunnel](/blog/self-host-website-cloudflare-tunnel)
+
 <div id='ref' />
 
 ## References

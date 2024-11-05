@@ -156,6 +156,13 @@ To check the logs in Portainer:
 >
 > You should now be all set up and able to reach your proxied services via `http://subdomain.home.arpa` on the browser, no more IPs and ports!
 
+
+## Related Articles
+
+> [Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS](/blog/set-up-pihole-on-linux)
+
+> [OpenMediaVault Quick Reference](/blog/openmediavault-quick-reference)
+
 <div id='ref' />
 
 ## Reference

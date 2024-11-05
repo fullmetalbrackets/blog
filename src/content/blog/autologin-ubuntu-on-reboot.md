@@ -28,6 +28,12 @@ Look for the line `ExecStart=` and replace whatever is in there with the above. 
 
 My reason for wanting to do this was to have my <a href="https://pi-hole.net" target="_blank">PiHole</a> device automatically execute the <a href="https://github.com/pi-hole/PADD" target="_blank">PADD</a> script automatically on reboot and display the stats. Using the above steps I was able to get the PiHole to boot up, skip login and automatically execute the script to display the stats.
 
+## Related Articles
+
+> [Formatting disks in Linux command line](/blog/formatting-on-linux)
+
+> [Mounting (either internal or external) hard drives in Linux](/blog/mounting-hard-drives-in-linux)
+
 ## Reference
 
 - I found this simple change buried in <a href="https://askubuntu.com/a/659268" target="_blank" rel="noopener noreferrer">this exhaustive post on AskUbuntu</a>.

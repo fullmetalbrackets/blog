@@ -113,6 +113,12 @@ movies  music  photos  tvshows
 > 
 > If you encounter a problem after reboot, you probably messed something up in the fstab file, the syntax can be tricky. Edit it to fix any issues and reboot again. If you want to be safe, try commenting out rather than editing any existing fstab entries until you know everything is working properly.
 
+## Related Articles
+
+> [Bootstrapping a fresh Linux install with Ansible](/blog/bootstrapping-fresh-linstall-with-ansible)
+
+> [Mounting (either internal or external) hard drives in Linux](/blog/mounting-hard-drives-in-linux)
+
 <div id='ref' />
 
 ## References

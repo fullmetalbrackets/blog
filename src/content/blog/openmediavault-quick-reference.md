@@ -117,6 +117,12 @@ By default only the `root` user is available, which is fine if you're mostly usi
 6. (Optional) Add an _SSH public key_ if desired
 7. Click the _Save button_, then confirm the _pending configuration changes_ by clicking the _checkmark_
 
+## Related Articles
+
+> [Reverse proxy OpenMediaVault, Plex and Navidrome with Nginx Proxy Manager and Pi-Hole](/blog/reverse-proxy-nginx-pihole)
+
+> [Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS](/blog/set-up-pihole-on-linux)
+
 <div id='ref' />
 
 ## Reference

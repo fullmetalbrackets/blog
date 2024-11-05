@@ -27,3 +27,9 @@ Now logout of root and login to the user that was just added to the sudo group, 
 ```bash
 sudo -v
 ```
+
+## Related Articles
+
+> [Linux Commands & Keyboard Shortcuts Cheat Sheet](/blog/basic-linux-commands)
+
+> [Keeping a Linux laptop on when the lid is closed](/blog/keeping-a-linux-laptop-on-with-the-lid-closed)

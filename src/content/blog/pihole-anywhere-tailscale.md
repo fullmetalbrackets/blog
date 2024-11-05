@@ -150,6 +150,12 @@ Do the following:
 
 Now to test it out, connect to Tailscale on your phone/tablet and visit some websites. You should not be seeing ads and should start seeing the device's Tailscale IP in Pi-Hole's logs. Any devices you add to Tailscale will use the Pi-hole we just set up as their DNS server, unless you use the `--accept-dns=false` flag where available.
 
+## Related Articles
+
+> [Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS](/blog/set-up-pihole-on-linux)
+
+> [How to remotely access your home server from anywhere using Tailscale](/blog/tailscale)
+
 <div id='ref'/>
 
 ## References

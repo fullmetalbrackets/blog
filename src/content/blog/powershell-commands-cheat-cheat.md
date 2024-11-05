@@ -36,6 +36,12 @@ PowerShell cmdlets have aliases identical to their equivalent Linux commands, he
 | `tasklist`                | List all running processes and their process IDs               |
 | `taskkill /f /pid 12345`  | Kill a running task (specify process ID)                       |
 
+## Related Articles
+
+> [Customizing the Windows Terminal command prompt with Oh-My-Posh](/blog/customizing-windows-terminal-with-ohmyposh)
+
+> [How to remotely access your home server from anywhere using Tailscale](/blog/tailscale)
+
 ## References
 
 - <a href="https://learn.microsoft.com/en-us/powershell/?view=powershell-7.2" target="_blank">PowerShell Documentation</a>

@@ -165,6 +165,12 @@ Now when you go to `https://music.your-domain.com` you should be met with a Goog
 > If you get any DNS errors when trying to access your domain after adding OAuth with the above steps, but didn't have any issues before that, you may be hitting your ad blocker. I didn't have issues with Pi-Hole, but when testing behind NextDNS I did get `NXDOMAIN` errors.<br><br>
 > <a href="https://help.nextdns.io/t/p8h5c71/keep-getting-nxdomain-for-well-known-sites" target="_blank">See this post</a> on NextDNS Help Center. <em>TLDR:</em> Try disabling DNSSEC for your domain on the Cloudflare dashboard and see if that resolves the issue. (I have not tested it.)
 
+## Related Articles
+
+> [Complete guide to self-hosting a website through Cloudflare Tunnel](/blog/self-host-website-cloudflare-tunnel)
+
+> [How to securely expose Plex from behind CGNAT with Cloudflare Tunnel](/blog/expose-plex-with-cloudflare)
+
 <div id="ref" />
 
 ## References

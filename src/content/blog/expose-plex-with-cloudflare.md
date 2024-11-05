@@ -266,6 +266,12 @@ There's always multiple ways to do things, and said I explained at the start, th
 
 - Some others I've heard of, but have not touched or read about include <a href="https://ngrok.com" target="_blank">Ngrok</a>, <a href="https://netmaker.io" target="_blank">Netmaker</a> and <a href="https://netbird.io" target="_blank">Netbird</a>.
 
+## Related Articles
+
+> [How to securely expose Plex from behind CGNAT using Tailscale and a free Oracle VM](/blog/expose-plex-tailscale-vps)
+
+> [Complete guide to self-hosting a website through Cloudflare Tunnel](/blog/self-host-website-cloudflare-tunnel)
+
 <div id="ref" />
 
 ## References

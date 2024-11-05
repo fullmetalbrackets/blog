@@ -101,6 +101,12 @@ Since Powershell does not recognize the `ssh-copy-id` command, we'll do the foll
 cat ~/.ssh/id_rsa.pub | ssh bob@hostname 'cat >> .ssh/authorized_keys && echo "Key copied"'
 ```
 
+## Related Articles
+
+> [Copying SSH Keys between different hosts](/blog/copy-ssh-keys-between-hosts)
+
+> [Setup SSH authentication to push to Github](/blog/setup-ssh-authentication-to-push-to-github)
+
 <div id='ref'/>
 
 ## References

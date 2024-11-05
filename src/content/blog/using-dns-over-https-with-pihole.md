@@ -175,6 +175,12 @@ Scroll all the way down and hit _Save_. After a minute or two your DNS requests 
 
 ![Cloudflare DNS checker.](../../img/blog/cloudflared2.png)
 
+## Related Articles
+
+> [Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS](/blog/set-up-pihole-on-linux)
+
+> [How to use Pi-hole from anywhere with Tailscale](/blog/pi-hole-quad9-dls-over-tls)
+
 <div id='ref' />
 
 ## Reference

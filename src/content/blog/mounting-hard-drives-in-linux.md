@@ -67,6 +67,13 @@ Simple. We're using `ext4` as the file system, which is how I partitioned it, bu
 
 Save and close the fstab file. Now when you reboot, the second hard drive should always auto-mount to `/mnt/DATA`. This guide was for an internal hard drive specifically, but as I said before, everything is identical for external USB drives; they show up as `sdb`, `sdc`, and so on. The HDDs inside the external drives are SCSI, and so are USB sticks. Mount all the things!
 
+## Related Articles
+
+> [Linux Commands & Keyboard Shortcuts Cheat Sheet](/blog/basic-linux-commands)
+
+> [Formatting disks in Linux command line](/blog/formatting-on-linux)
+
+
 ## References
 
 - <a href="https://man7.org/linux/man-pages/man2/mount.2.html" target="_blank">Linux man page for MOUNT</a>

@@ -284,6 +284,12 @@ git revert 6e751bc32
 
 There's more advanced commands I'm not going to talk about until I use them myself -- things like `git rebase`, and I'm also not showing all the different ways to use `git checkout` because I don't know even half of them. I'll make a future blog post as I learn more of these.
 
+## Related Articles
+
+> [How to generate a GPG key and use it to sign git commits](/blog/how-to-generate-gpg-to-sign-git-commits)
+
+> [How to resolve Git error insufficient permission for adding an object to repository database](/blog/git-push-error-permissions)
+
 <div id='ref'/>
 
 ## References

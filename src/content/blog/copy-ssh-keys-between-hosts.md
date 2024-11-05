@@ -28,3 +28,9 @@ cat ~/.ssh/id_rsa.pub | ssh <user>@<hostname> 'umask 0077; mkdir -p .ssh; cat >>
 ```
 
 Next: <a href="https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key" target="_blank" rel="noopener noreferrer">GitHub Docs instructions for adding a GPG keys.</a>
+
+## Related Articles
+
+> [Generating an SSH key pair](/blog/generating-an-ssh-key-pair)
+
+> [Setup SSH authentication to push to Github](/blog/setup-ssh-authentication-to-push-to-github)

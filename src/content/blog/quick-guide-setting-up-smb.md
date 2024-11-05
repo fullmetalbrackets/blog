@@ -123,6 +123,14 @@ As always check the file's syntax `testparm` and restart Samba services with `su
 
 From Windows, opening **Run** and going to `//hostname/public` (or via IP) should prompt for a login, with it only accepting the user `ariel` and SMB password you set, after which the folder opens. Only logging in under this user allows writing to the share.
 
+## Related Articles
+
+> [Formatting disks in Linux command line](/blog/formatting-on-linux)
+
+> [Mounting (either internal or external) hard drives in Linux](/blog/mounting-hard-drives-in-linux)
+
+<div id='ref' />
+
 ## Reference
 
 - <a href="https://www.samba.org/samba/docs" target="_blank" rel="noopener noreferrer">Samba Documentation</a>

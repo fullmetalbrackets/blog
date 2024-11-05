@@ -111,6 +111,12 @@ Oh-My-Posh comes with many themes that are regularly maintained, but [anyone can
 - [SubsTheTechnomancer's not-zork theme](https://github.com/SubsTheTechnomancer/Omp-themes) (I had to laugh at this one)
 - [leopoldo109's custom theme](https://github.com/leopoldo109/leopoldo-powershell)
 
+## Related Articles
+
+> [Quick guide to set up Zsh and Oh-My-Zsh with essential plugins and a theme](/blog/guide-to-zsh-ohmyzsh-plugins-and-theme)
+
+> [PowerShell commands cheat sheet](/blog/powershell-commands-cheat-cheat)
+
 <div id='ref'/>
 
 ## References

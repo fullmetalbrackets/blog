@@ -292,6 +292,12 @@ I've only scratched the surface on what Tailscale can do in this post, because a
 - <a href="https://tailscale.com/kb/1312/serve" target="_blank">Serve static pages on your tailnet with Tailscale Serve</a>
 - <a href="https://tailscale.com/kb/1223/funnel" target="_blank">Route traffic to the internet with Tailscale Funnel</a> (I'm going to play with this soon and will update the post.)
 
+## Related Articles
+
+> [How to securely expose Plex from behind CGNAT using Tailscale and a free Oracle VM](/blog/expose-plex-tailscale-vps)
+
+> [How to use Pi-hole from anywhere with Tailscale](/blog/pihole-anywhere-tailscale)
+
 <div id='ref'/>
 
 ## References

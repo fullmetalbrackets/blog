@@ -69,6 +69,12 @@ In the PhotoSync app, tap the _gear icon_ at the bottom-right corner to enter th
 
 Finally, under _Autotransfer Trigger_ click on the **Change Trigger** button, and pick your desired trigger -- I like the to do it when I put my phone to charge.
 
+## Related Articles
+
+> [Setup self-hosted Plex Media Server in Docker](/blog/setting-up-plex-in-docker)
+
+> [How to run self-hosted FileBrowser in Docker](/blog/how-to-run-filebrowser-in-docker)
+
 <div id='ref'/>
 
 ## References

@@ -87,3 +87,9 @@ sudo mkfs -t vfat /dev/sdb1
    o   create a new empty MBR (DOS) partition table
    s   create a new empty Sun partition table
 ```
+
+## Related Articles
+
+> [Linux Commands & Keyboard Shortcuts Cheat Sheet](/blog/basic-linux-commands)
+
+> [Mounting (either internal or external) hard drives in Linux](/blog/mounting-hard-drives-in-linux)

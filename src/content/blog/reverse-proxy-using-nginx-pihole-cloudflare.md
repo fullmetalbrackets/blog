@@ -234,6 +234,13 @@ Once you're done setting up the proxy host, you should be able to go to `https:/
 >
 > **Important Note** -- This works for the current v5 of Pi-Hole, but will probably change in v6 since it will use a new embedded webserver.
 
+
+## Related Articles
+
+> [Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS](/blog/set-up-pihole-on-linux)
+
+> [Complete guide to self-hosting a website through Cloudflare Tunnel](/blog/self-host-website-cloudflare-tunnel)
+
 <div id='ref' />
 
 ## Reference

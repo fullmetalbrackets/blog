@@ -374,13 +374,16 @@ One last thing! Although the allowed IPs can now reach Plex and stream your libr
 
 Now your external users can access your library through their Plex apps too.
 
+## Related Articles
+
+> [How to securely expose Plex from behind CGNAT using Tailscale and a free Oracle VM](/blog/expose-plex-tailscale-vps)
+
+> [How to remotely access your home server from anywhere using Tailscale](/blog/tailscale)
+
 <div id="ref" />
 
 ## References
 
-- <a href="https://www.cloudflare.com/service-specific-terms-overview/" target="_blank">Cloudflare Service-Specific Terms</a>
-- <a href="https://developers.cloudflare.com/fundamentals/get-started/setup/add-site/" target="_blank">Cloudflare Docs - Add a site</a>
-- <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/install-and-setup/tunnel-guide/remote/" target="_blank">Cloudflare Docs - Tunnels</a>
-- <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/routing-to-tunnel/dns/" target="_blank">Cloudflare Docs - Routing traffic to a tunnel</a>
-- <a href="https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/google/" target="_blank">Cloudflare Docs - Identity</a>
-- <a href="https://developers.cloudflare.com/cloudflare-one/policies/access/policy-management/" target="_blank">Cloudflare Docs - Policy Management</a>
+- <a href="https://tailscale.com/kb" target="_blank">Tailscale Docs</a>
+- <a href="https://developers.cloudflare.com/dns" target="_blank">Cloudflare Docs - DNS</a>
+- <a href="https://docs.oracle.com/en-us/iaas/Content/Compute/home.htm" target="_blank">OCI Docs - Compute</a>

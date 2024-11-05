@@ -94,6 +94,12 @@ Output should look similar to this:
 
 If the static IP Address you configured appears in the output, you're done!
 
+## Related Articles
+
+> [Linux Commands & Keyboard Shortcuts Cheat Sheet](/blog/basic-linux-commands)
+
+> [Rsync - A Quick Guide](/blog/rsync-a-quick-guide)
+
 ## References
 
 - <a href="https://www.debian.org/doc/manuals/debian-reference/ch05.en.html" target="_blank">Debian manual, network setup chapter</a>

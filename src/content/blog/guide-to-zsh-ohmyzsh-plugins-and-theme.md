@@ -121,6 +121,12 @@ sudo sh -c "$(curl -fsSL https://gist.githubusercontent.com/fullmetalbrackets/5a
 
 Now when you use `p10k configure` you'll get additional options, since you'll be able to display the glyph correctly. (If using a desktop environment, make sure to go into Terminal preferences and change the font to "Meslo LGS.")
 
+## Related Articles
+
+> [Linux Commands & Keyboard Shortcuts Cheat Sheet](/blog/basic-linux-commands)
+
+> [Customizing the Windows Terminal command prompt with Oh-My-Posh](/blog/customizing-windows-terminal-with-ohmyposh)
+
 <div id='ref'/>
 
 ## References

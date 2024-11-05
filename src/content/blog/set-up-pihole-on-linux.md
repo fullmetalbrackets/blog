@@ -287,6 +287,12 @@ When you make Pi-Hole your primary DNS it becomes a critical part of your networ
 >
 > This guide will be updated in the future once Pi-Hole v6 is generally available.
 
+## Related Articles
+
+> [How to use Pi-hole from anywhere with Tailscale](/blog/pihole-anywhere-tailscale)
+
+> [Setting up a reverse proxy for HTTPS with a custom domain using Nginx Proxy Manager, Pi-Hole and Cloudflare](/blog/reverse-proxy-using-nginx-pihole-cloudflare)
+
 <div id='ref' />
 
 ## Reference

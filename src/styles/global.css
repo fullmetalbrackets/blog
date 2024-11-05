@@ -387,6 +387,20 @@ aside {
   cursor: pointer;
   margin: 2em auto;
 }
+#related-articles + blockquote, #related-articles + blockquote + blockquote {
+  margin: 2em auto;
+  border-color: var(--primary);
+  padding: 0.5em 0 0 0;
+}
+#related-articles + blockquote a, #related-articles + blockquote + blockquote a {
+  font-size: 1.25em;
+  font-weight: 700;
+  color: var(--emphasis);
+}
+#related-articles + blockquote a:hover, #related-articles + blockquote + blockquote a:hover {
+  color: var(--hover);
+  text-decoration: none;
+}
 .blog-aside {
   justify-content: space-between;
 }
@@ -428,5 +442,8 @@ article ol li, article ul li {
 @media screen and (min-width: 200px) and (max-width: 667px) {
   input {
     width: 75%;
+  }
+  .related {
+    grid-template-columns: auto;
   }
 }

@@ -262,6 +262,12 @@ Note that for the `permissions-policy` I've chosen to disable everything since I
 
 Once that is done, click the **Deploy** button. Wait a few minutes, then check your security headers again, and now it should be A+.
 
+## Related Articles
+
+> [Setup a Cloudflare Tunnel to securely access self-hosted apps with a domain from outside the home network](/blog/setup-cloudflare-tunnel-to-access-self-hosted-apps)
+
+> [How to securely expose Plex from behind CGNAT with Cloudflare Tunnel](/blog/expose-plex-with-cloudflare)
+
 <div id='ref' />
 
 ## Reference

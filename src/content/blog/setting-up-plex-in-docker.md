@@ -98,6 +98,12 @@ Next choose the local directory from the list, in this case _movies_ (the Docker
 
 Your movies should now appear within the _Movies_ section of the Plex UI. Repeat the process to add other directories for your _TV_, _Music_ and _Photos_ libraries. And you're done! You can now watch Plex right in the web UI, or (ideally) by downloading and signing into the Plex app on devices in your network.
 
+## Related Articles
+
+> [Setup self-hosted Jellyfin Media Server in Docker](/blog/setting-up-jellyfin-in-docker)
+
+> [How to securely expose Plex from behind CGNAT using Tailscale and a free Oracle VM](/blog/expose-plex-tailscale-vps)
+
 <div id='ref'/>
 
 ## References

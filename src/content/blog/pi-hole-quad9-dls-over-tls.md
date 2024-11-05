@@ -43,3 +43,9 @@ services:
       - "TUNNEL_DNS_ADDRESS=0.0.0.0"
     restart: unless-stopped
 ```
+
+## Related Articles
+
+> [Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS](/blog/set-up-pihole-on-linux)
+
+> [Using DNS over HTTPS with Pi-Hole and Cloudflared](/blog/using-dns-over-https-with-pihole)

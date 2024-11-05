@@ -159,6 +159,12 @@ The docs continue with instructions for disabling `resolvconf.conf` but I didn't
 
 If you'd like a low wattage Raspberry Pi alternative, then in my opinion Libre's Sweet Potato SBC is a worthy choice for <a href="https://www.amazon.com/Libre-Computer-AML-S905X-CC-V2-Potato-Alternative/dp/B0CHHJX44N" target="_blank" rel=”noreferrer”>$30 on Amazon</a>.
 
+## Related Articles
+
+> [Set up Home Assistant Supervised on a Libre Computer Sweet Potato SBC](/blog/setup-home-assistant-sweet-potato-debian)
+
+> [Complete guide to self-hosting a website through Cloudflare Tunnel](/blog/self-host-website-cloudflare-tunnel)
+
 <div id='ref' />
 
 ## Reference

@@ -2,7 +2,7 @@
 title: "Setup self-hosted Jellyfin Media Server in Docker"
 description: "Though Plex is a very popular media server for self-hosting, some open source enthusiasts prefer to use an alternative since Plex Media Server is not open source. A nice, simpler and admittedly less pretty alternative is Jellyfin. This guide will show you how to run it in Docker container."
 pubDate: 2022-10-18
-updatedDate: 2024-10-15
+updatedDate: 2024-11-04
 tags:
   - docker
 ---
@@ -10,14 +10,14 @@ tags:
 ## Table of Contents
 
 1. [Installing Docker](#install)
-2. [Preparing and the Docker Compose file](#compose)
+2. [Preparing the Compose file](#compose)
 3. [Starting the container and configuring Jellyfin](#config)
 4. [Theming the web UI with custom CSS](#custom)
 5. [References](#ref)
 
 <div id='install'/>
 
-## Installing Docker and Docker-Compose
+## Installing Docker
 
 In 2024, the recommended (and easiest) way to install Docker is to just run their official install script from the command line:
 
@@ -29,7 +29,7 @@ This automatically installs Docker and the Compose plugin with all dependencies.
 
 <div id='compose'/>
 
-## Preparing the Docker Compose file
+## Preparing the Compose file
 
 Though Jellyfin has an <a href="https://hub.docker.com/r/jellyfin/jellyfin" target="_blank">official Docker image</a>, I highly suggest you instead use the <a href="https://hub.docker.com/r/linuxserver/jellyfin" target="_blank">Linuxserver image</a>, which is built and maintained by the <a href="https://www.linuxserver.io" target="_blank">Linuxserver community</a>. I've run the Linuxserver image of Jellyfin without issue, and it seems that to be the most common way to run Jellyfin.
 
@@ -123,6 +123,12 @@ If you'd like to change the web GUI's colors and vibe, you'll need the <a href="
 4. Restart Jellyfin
 
 Use `docker restart jellyfin` and once the Jellyfin container has restarted, go back into the GUI, go to _Dashboard_ -> _Plugins_ and click on _Skin Manager_. Use the dropdown menu to pick a skin (my favorite is <a href="https://github.com/prayag17/JellySkin" target="_blank">JellySkin</a>), tweak any options if it has them, and click _Set Skin_. If it doesn't switch to the new time right away, try a hard refresh with <kbd>Ctrl</kbd> + <kbd>F5</kbd>. Also, sometimes <a href="https://github.com/danieladov/jellyfin-plugin-skin-manager#using-with-reverse-proxy" target="_blank">Nginx Proxy Manager</a> the skins won't work due to CSP issues. (I haven't encountered this problem, but [I have my reverse proxy set up without HTTPS](reverse-proxy-nginx-pihole.md) and that may be why.)
+
+## Related Articles
+
+> [Setup self-hosted Plex Media Server in Docker](/blog/setting-up-plex-in-docker)
+
+> [How to run self-hosted FileBrowser in Docker](/blog/how-to-run-filebrowser-in-docker)
 
 <div id='ref'/>
 

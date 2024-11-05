@@ -150,6 +150,12 @@ Add the following code (feel free to remove all the comments) to your <em>smb.co
 
 For an explanation of what these options do, check the original blog post linked above, the original code includes detailed comments for each option.
 
+## Related Articles
+
+> [Create a public Samba share accessible without a login](/blog/create-public-samba-share-without-login)
+
+> [Set up NFS Shares between Linux hosts](/blog/setup-nfs-shares-linux)
+
 <div id='ref'/>
 
 ## References

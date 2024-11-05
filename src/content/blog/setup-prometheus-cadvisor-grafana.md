@@ -144,6 +144,12 @@ You should see _Prometheus_ with it's endpoint already set as a default Data Sou
 
 Now you're ready to create your dream Grafana dashboard! Creating the actual dashboard is beyond the scope of this article, but I may write about it in the future. For now, you might want to use dashboards created by others to start visualizing some metrics and learning the ropes.
 
+## Related Articles
+
+> [Setup self-hosted Plex Media Server in Docker](/blog/setting-up-plex-in-docker)
+
+> [How to run self-hosted FileBrowser in Docker](/blog/how-to-run-filebrowser-in-docker)
+
 <div id='ref'/>
 
 ## References
