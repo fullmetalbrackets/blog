@@ -131,11 +131,17 @@ hr {
   border: 0.25px solid var(--primary);
 	opacity: 0.5;
 }
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h4, h6 {
   font-family: 'Atkinson', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
 	color: var(--primary);
   margin: 0;
   padding: 0;
+}
+h3, h5 {
+  font-family: 'Atkinson', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+	color: var(--emphasis);
+  margin: 0;
+  padding: 0;  
 }
 #sections, #table-of-contents {
   margin-top: 0;
