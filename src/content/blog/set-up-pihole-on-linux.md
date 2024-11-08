@@ -2,7 +2,7 @@
 title: "Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS"
 description: "Besides just using a browser extension for ad blocking, I've been using Pi-Hole for years to prevent all devices on my network from getting ads, and stopping smart home devices from phoning home for telemetry and tracking. Pi-Hole will run on almost anything that can run Linux, is very easy to set up, and super effective with the right ad lists."
 pubDate: 2022-10-08
-updatedDate: 2024-10-05
+updatedDate: 2024-11-07
 tags:
   - pi-hole
 ---
@@ -10,23 +10,22 @@ tags:
 ## Sections
 
 1. [Pre-Requisites and Caveats](#pre)
-2. [Installing Pi-Hole bare metal](#baremetal)
-3. [Installing Pi-Hole in a docker container](#container)
-4. [Configuring DNS](#dns)
-5. [Using adlists to block domains](#adlist)
-6. [Advanced DNS settings](#advanced)
-7. [Further steps](#further)
-8. [Reference](#ref)
+2. [Installing Pi-Hole](#pihole)
+3. [Installing Unbound](#unbound)
+4. [Running Pi-Hole and Unbound together in Docker](#docker)
+5. [Configuring DNS](#dns)
+6. [Using adlists to block domains](#adlist)
+7. [Advanced DNS settings](#advanced)
+8. [Further steps](#further)
+9. [Reference](#ref)
 
 <div id='pre' />
 
 ## Pre-Requisites and Caveats
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
-> This guide is intended for a **bare metal** install of Pi-Hole and Unbound on a machine running Linux, whether a full server or single-board computer like Raspberry Pi, Le Potato, etc. Though <a href="https://hub.docker.com/r/pihole/pihole" target="_blank">Pi-Hole has an official Docker container</a> and it works same as a bare metal install, I've never needed or wanted to run it this way, and have no idea how to use it along with Unbound in another container. As a result, it won't be covered in this guide, but check out <a href="https://github.com/chriscrowe/docker-pihole-unbound" target="_blank">this project on GitHub</a> if that's what you're looking for.
+Before anything, make sure the machine you're installing Pi-Hole on <a href="/blog/set-static-ip-debian" target="_blank">has a static IP</a>, otherwise if your machine's IP changes it will break DNS resolution for the network.\
 
-Before anything, make sure the machine you're installing Pi-Hole on <a href="/blog/set-static-ip-debian" target="_blank">has a static IP</a>, the installer will bug you about this too. Also, Pi-Hole will run a web server at ports 80 and 443, for serving the web UI page, so make sure no other web server like Apache or NGinx is running.
+Also, Pi-Hole will run a web server at port 80, for serving the web UI page, so make sure no other web server like Apache or NGinx is running.
 
 When installing Pi-Hole on Ubuntu you may get an error message along the lines of this:
 
@@ -43,27 +42,39 @@ sudo systemctl disable systemd-resolved.service
 
 Then edit the file at `/etc/resolv.conf` and change `nameserver 127.0.0.53` to `nameserver 9.9.9.9` (or whatever public DNS you prefer) to not break DNS resolution. Afterwards use `dig google.com` or `ping google.com` to verify DNS is still working, then proceed with installing Pi-Hole.
 
-<div id='baremetal' />
+Alternately, you may already have another DNS server like **Unbound** running on port 53. If so, it needs to be disabled for now -- we will create a new configuration file for Unbound to run alongside Pi-Hole, and it will not use port 53.
+
+If you're running Unbound, disable it with the following command:
+
+```bash
+sudo systemctl stop unbound.service
+```
+
+<div id='pihole' />
 
 ## Installing Pi-Hole
 
-The quickest and easiest way to install Pi-Hole is via their provided shell script:
+This is for installing Pi-Hole bare metal, so if you want to run it in Docker, [skip to this section](#docker).
+
+The quickest and easiest way to get Pi-Hole up and running bare metal is via their official installer. We'll use the following command to execute it:
 
 ```bash
 curl -sSL https://install.pi-hole.net | bash
 ```
 
-Executing the script will prompt a number of dialogs, pay attention and make sure you input all the correct information.
+Installation will prompt a number of dialogs, pay attention and make sure you input all the correct information or to the best of your knowledge. (You can change it later.)
 
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
 > A random password will be generated during install for logging in to the Pi-Hole web UI. You should change the admin password with `pihole -a -p newpassword` or if you don't want to login at all, leave it blank with `pihole -a -p`.
 
-Now you should be able to access the Pi-Hole Web UI at either `http://pi.hole/admin`, or use the IP address or hostname, e.g. `http://192.168.1.250/admin` or `http://hostname/admin`.
+Now you should be able to access the Pi-Hole Web UI via either IP address, e.g. `http://192.168.1.250/admin` or using the machine hostname, `http://hostname/admin`. (Later, when Pi-Hole is set as the DNS server, you can access the web UI at `http://pi.hole/admin`)
 
 <div id='unbound' />
 
 ## Installing Unbound
+
+Again, this is for installing Unbound bare metal, so if you want to run it in Docker, [skip to this section](#docker).
 
 Unbound is available on most, if not all, Linux package managers and should be installed that way whenever possible. On Debian and Ubuntu, for example, you'd install with this command:
 
@@ -126,11 +137,108 @@ pi-hole.net.            300     IN      A       3.18.136.52
 
 If your output looks similar to the above, then everything is working as intended.
 
+<div id='docker' />
+
+## Running Pi-Hole and Unbound together on Docker
+
+I always run Pi-Hole bare metal as a personal preference, so I'll be giving instructions for something I haven't used myself. Maybe I'll spin up some containers and test it out, but for now... let me know how it goes.
+
+I'm going to suggest using <a href="https://github.com/chriscrowe/docker-pihole-unbound" target="_blank">Chris Crowe's project</a> for running both Pi-Hole and Unbound either in one or two containers.
+
+This `compose.yaml` should get you going as a starting point:
+
+```yaml
+volumes:
+  etc_pihole-unbound:
+  etc_pihole_dnsmasq-unbound:
+
+services:
+  pihole:
+    container_name: pihole
+    image: cbcrowe/pihole-unbound:latest
+    hostname: pihole
+    ports:
+      - 443:443/tcp
+      - 53:53/tcp
+      - 53:53/udp
+      - 8800:80/tcp
+      - 5335:5335/tcp
+      - 22/tcp
+    environment:
+      - FTLCONF_LOCAL_IPV4=192.168.0.100
+      - TZ=America/New_York
+      - WEBPASSWORD=changeme
+      - PIHOLE_DNS_=127.0.0.1#5335
+      - DNSSEC="true"
+      - DNSMASQ_LISTENING=all
+    volumes:
+      - etc_pihole-unbound:/etc/pihole:rw
+      - etc_pihole_dnsmasq-unbound:/etc/dnsmasq.d:rw
+    restart: unless-stopped
+```
+
+I've never really run Unbound in a container, even when using Pi-Hole in a container I just run Unbound bare metal. That said, you can try it out and let me know if these instructions work or not.
+
+Here is a `compose.yaml` to run Pi-Hole and Unbound containers together:
+
+```yaml
+networks:
+  dns_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.1.1.0/16
+
+services:
+  pihole:
+    container_name: pihole
+    hostname: pihole
+    image: pihole/pihole:latest
+    networks:
+      dns_net:
+        ipv4_address: 10.1.1.2
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "67:67/udp"
+      - "8000:80/tcp"
+      - "4430:443/tcp"
+    environment:
+      - 'TZ=America/New_York'
+      - 'WEBPASSWORD='
+      - 'DNS1=10.1.1.3#53'
+      - 'DNS2=no'
+    volumes:
+      - './etc-pihole/:/etc/pihole/'
+      - './etc-dnsmasq.d/:/etc/dnsmasq.d/'
+    cap_add:
+      - NET_ADMIN
+    restart: unless-stopped
+
+  unbound:
+    container_name: unbound
+    image: mvance/unbound:latest
+    networks:
+      dns_net:
+        ipv4_address: 10.1.1.3
+    volumes:
+      - '/opt/docker/unbound:/opt/unbound/etc/unbound'
+      - '/opt/docker/unbound/pihole.conf:/opt/unbound/etc/unbound/pihole.conf'
+    ports:
+      - "5053:53/tcp"
+      - "5053:53/udp"
+    healthcheck:
+      disable: true
+    restart: unless-stopped
+```
+
 <div id='dns' />
 
 ## Configuring DNS
 
-Now we need to make Unbound the upstream DNS resolver for Pi-Hole. In the Pi-Hole web UI, go to **Settings** on the sidebar, then click on the **DNS** tab.
+(Note: If running in Docker using the above instructions, this should already be setup, but you can double-check it.)
+
+If running bare metal, we need to make Unbound the upstream DNS resolver for Pi-Hole. In the Pi-Hole web UI, go to **Settings** on the sidebar, then click on the **DNS** tab.
 
 Uncheck any public DNS in the left column, and in the right column enable the checkmark under **Custom 1** and add `127.0.0.1#5335` as the server. Scroll down to the bottom and click the **Save**.
 
@@ -146,7 +254,7 @@ If the option is available, it's usually under _DNS Servers_ in **DHCP Settings*
 
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
-> If your router does not have the option of setting a DNS server, you won't be able to block ads for all devices on your network automatically. Instead you'll have to <a href="https://discourse.pi-hole.net/t/how-do-i-configure-my-devices-to-use-pi-hole-as-their-dns-server/245#3-manually-configure-each-device-9" target="_blank">configure each device's DNS</a> or turn of DHCP on your router (if possible) and use Pi-Hole as the DHCP server. 
+> If your router does not have the option of setting a DNS server, you won't be able to block ads for all devices on your network automatically. Instead you'll have to <a href="https://discourse.pi-hole.net/t/how-do-i-configure-my-devices-to-use-pi-hole-as-their-dns-server/245#3-manually-configure-each-device-9" target="_blank">configure each device's DNS</a> or turn off DHCP on your router (if possible) and use Pi-Hole as the DHCP server. 
 
 You should now be set up for Pi-Hole to be the DNS server for your whole network. If you added Pi-Hole's IP address as the DNS server in your router, devices will gradually begin querying Pi-Hole as they renew their DHCP leases and get the updated DNS server.
 
