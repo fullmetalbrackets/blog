@@ -959,10 +959,10 @@ astring@^1.8.0:
   resolved "https://registry.yarnpkg.com/astring/-/astring-1.9.0.tgz#cc73e6062a7eb03e7d19c22d8b0b3451fd9bfeef"
   integrity sha512-LElXdjswlqjWrPpJFg1Fx4wpkOCxj1TDHlSV4PlaRxHGWko024xICaa97ZkMfs6DRKlCguiAI+rbXv5GWwXIkg==
 
-astro@^4.16.13:
-  version "4.16.13"
-  resolved "https://registry.yarnpkg.com/astro/-/astro-4.16.13.tgz#2d723348651ed1cff5936cc3e077104846a7befc"
-  integrity sha512-Mtd76+BC0zLWqoXpf9xc731AhdH4MNh5JFHYdLRvSH0Nqn48hA64dPGh/cWsJvh/DZFmC0NTZusM1Qq2gyNaVg==
+astro@^4.16.15:
+  version "4.16.15"
+  resolved "https://registry.yarnpkg.com/astro/-/astro-4.16.15.tgz#e7cf2ffbf8ba41f7bb57796355944e9103dc8ecc"
+  integrity sha512-usybZ7nEUiwYKT7r47l4VbkqjKfaE+BgWV/ed4PT3mE3vFRTBWFsXLnkzrN7awfN6+/ekZTAcE+MAkdA551Umw==
   dependencies:
     "@astrojs/compiler" "^2.10.3"
     "@astrojs/internal-helpers" "0.4.1"
