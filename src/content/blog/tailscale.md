@@ -11,13 +11,14 @@ tags:
 1. [About Tailscale](#about)
 2. [Setting up Tailscale](#setup)
 3. [Configuring tailnet name, DNS and HTTPS](#tailnet)
-4. [Additional config for SMB and NFS](#smb)
-5. [Setting up a subnet router](#subnet)
-6. [Setting up an exit node](#exit)
-7. [Setting a Pi-Hole as Tailnet DNS](#pihole)
-8. [Transfer files with Taildrop](#taildrop)
-9. [Further reading](#more)
-10. [References](#ref)
+4. [Configuring Plex for Tailscale](#plex)
+5. [Configuring SMB and NFS for Tailscale](#smb)
+6. [Setting up a subnet router](#subnet)
+7. [Setting up an exit node](#exit)
+8. [Setting a Pi-Hole as Tailnet DNS](#pihole)
+9. [Transfer files with Taildrop](#taildrop)
+10. [Further reading](#more)
+11. [References](#ref)
 
 <div id='about'/>
 
@@ -65,27 +66,31 @@ To get a fun tailnet name, go to the Tailscale console and click the **DNS** tab
 
 You may want to use HTTPS when accessing services and applications through Tailscale. It's not super important, but it doesn't hurt. 
 
-Click the **Enable HTTPS** button. (Magic DNS should be enabled by default, but if it's not for some reason, enable it too.) HTTPS certificates are issued on a per-machine basis, so you have to add a certificate on each machine where you want it. This will let you access your the web UIs of your self-hosted services using HTTPS, but only through Tailscale. By no means is this necessary, but it's a nice to have.
+Click the **Enable HTTPS** button. (Magic DNS should be enabled by default, but if it's not for some reason, enable it too.) HTTPS certificates are issued on a per-machine basis, so you have to add a certificate on each machine where you want it. This will let you access the web UIs of your self-hosted services using HTTPS, but only through Tailscale. Again, by no means is this necessary, but it's a nice to have.
 
-Use this command to generate the certificate: (In this example the Linux server's tailnet name is `server` and the tailnet "fun" name is `cyber-sloth.ts.net`.)
+Use this command to generate the certificate: (In this example the Linux server's tailnet name is `server` and the tailnet fun name is `cyber-sloth.ts.net`.)
 
 ```bash
 tailscale cert server.cyber-sloth.ts.net
 ```
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
-> **Important note for Plex users!**
-> 
-> Although you should be able to reach your Plex media server's web UI via browser on your phone or tablet when connecting through Tailscale, the Plex and Plexamp apps will not work until you change some settings in Plex.
->
-> On the Plex web UI go to _Settings_ -> _Network_ and do the following:
-> 
-> - Set _Secure connections_ to **Preferred**
-> - Set _Preferred network interface_ to **Any**
-> - Make sure _Enable Relays_ is **unchecked**
-> - Go to _Custom server access URLs_ and type in the server's tailnet URL with the Plex port, e.g. `https://server.cyber-sloth.ts.net:32400`
-> - Click on **Save changes**
+<div id='plex'/>
+
+## Configuring Plex for Tailscale
+ 
+Although you should be able to reach your Plex media server's web UI via browser on your phone or tablet when connecting through Tailscale, the Plex and Plexamp apps will not work until you change some settings.
+
+On the Plex web UI go to **Settings** -> **Network** and do the following:
+
+1. Set _Secure connections_ to **Preferred**
+
+2. Set _Preferred network interface_ to **Any**
+
+3. Make sure _Enable Relays_ is **unchecked**
+
+4. Go to _Custom server access URLs_ and type in the server's tailnet URL with the Plex port, e.g. `https://server.cyber-sloth.ts.net:32400`
+
+5. Click on **Save changes**
 
 <div id='smb'/>
 
@@ -235,7 +240,7 @@ Pi-Hole uses DNS servers configured within Linux as its upstream servers, where 
 >
 > You should also use `tailscale up --accept-dns=false` on other machines in your home network running Tailscale, so they don't go through Tailscale for DNS queries.
 >
-> You want local DNS queries to stay on your local network, NOT go through Tailscale, or they'll show up with Tailscale IPs (e.g. `100.90.80.70`) instead of your local network IPs (e.g. `192.168.0.100`). Unfortunately this cannot be avoided with phones or tablets, but we should minimize it.
+> You want local DNS queries to stay on your local network, NOT go through Tailscale, or they'll show up with Tailscale IPs (e.g. `100.90.80.70`) instead of your local network IPs (e.g. `192.168.0.100`). This cannot be avoided with GUI clients on phones, tablets and desktops/laptops, when connected to Tailscale they will query Pi-Hole with Tailscale IPs.
 
 To set the Pi-Hole as global DNS for the tailnet, go to the admin console and make note of the Pi-Hole's tailnet IP address. Then do the following:
 
