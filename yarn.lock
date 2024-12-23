@@ -37,10 +37,10 @@
     unist-util-visit-parents "^6.0.1"
     vfile "^6.0.3"
 
-"@astrojs/mdx@^4.0.2":
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/@astrojs/mdx/-/mdx-4.0.2.tgz#db4d0fdff0d5a060789a0615d68338178b521b58"
-  integrity sha512-uBoXNSSAUqhf2dVtJWFbSapwNkcnCzbISW98EcybFXvNgYt9g8yPJ7+lYnf+sH5pv0c/JEW8HlBvPSi81AVRlw==
+"@astrojs/mdx@^4.0.3":
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/@astrojs/mdx/-/mdx-4.0.3.tgz#d7a9e39ce9d5cd962bd9be932da3f6c4000860c4"
+  integrity sha512-8HcuyNG/KgYUAQWVzKFkboXcTOBCW6aQ0WK0Er/iSmVSF0y3yimg4/3QSt+Twv9dogpwIHL+E8iBJKqieFv4+g==
   dependencies:
     "@astrojs/markdown-remark" "6.0.1"
     "@mdx-js/mdx" "^3.1.0"
