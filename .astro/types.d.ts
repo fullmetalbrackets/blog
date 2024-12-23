@@ -206,6 +206,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"factory-restore-zimaboard.md.md": {
+	id: "factory-restore-zimaboard.md.md";
+  slug: "factory-restore-zimaboardmd";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "formatting-on-linux.md": {
 	id: "formatting-on-linux.md";
   slug: "formatting-on-linux";
