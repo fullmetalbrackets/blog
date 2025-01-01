@@ -2,6 +2,7 @@
 title: "How to securely expose Plex from behind CGNAT using Tailscale and a free Oracle VM"
 description: "I wrote before about securely exposing Plex for external access, but my previous solution relied on Cloudflare Tunnel and it was technically against their TOS. So I switched to using a Oracle VM on their free-tier, connecting it to my home network with Tailscale, and exposing Plex via reverse proxy. It works like a charm!"
 pubDate: 2024-09-03
+updatedDate: 2025-01-01
 tags:
   - tailscale
 ---
@@ -32,13 +33,13 @@ What we'll be setting up is this:
 
 - We will install Tailscale on the same server as Plex or, alternately, on another machine in the home network that will act as subnet router. (See <a href="https://tailscale.com/kb/1019/subnets" target="_blank">this section Tailscale docs</a> -- for this guide, we'll install Tailscale on the same server running Plex, so subnet routing isn't necessary.)
 
-- We will create a free tier compute instance on Oracle Cloud Insfrastructure and install Tailscale on it, so it's on the same tailnet as the Plex server. We'll expose ports 80 and 443 to the internet on the VM, but only allowing access from specific IPs, and run a reverse proxy to forward web traffic to Plex.
+- We will create a free tier compute instance on Oracle Cloud Insfrastructure and install Tailscale on it, so it's on the same tailnet as the Plex server. We'll expose ports 80 and 443 to the internet on the VM, but only allowing access from specific IPs, and run a reverse proxy to route the traffic from allowed IPs to Plex.
 
 <div id="pre" />
 
 ## Pre-Requisites
 
-First of all, you should be comfortable using the terminal, because we'll be doing quite a bit through command line. (Ubuntu specifically, although you can use your preferred distribution.)
+First of all, you should be comfortable using the terminal, because we'll be doing quite a bit through command line. (Ubuntu specifically, since that's the distribution I used for OCI from the options available.)
 
 The method I explain here requires you to own a domain -- it may be possible to instead use something like DuckDNS or NoIP, but I have not tried it. I'll also be using Cloudflare for DNS, but that's just my personal preference -- feel free to use another DNS provider.
 
@@ -48,7 +49,7 @@ Finally, you'll need a Plex server already set up. (And I'll assume it's running
 
 ## Create OCI account
 
-We'll be using a free-tier VM from Oracle Cloud Infrastructure (OCI) -- specifically, an E2.1.Micro VM which runs on a single-core AMD OCPU, has 1 GB of memory and a 0.48 Gbps connection, more than enough for streaming even 4K content through Plex. You can run *TWO* of these free VMs **totally free**.
+We'll be using a free-tier VM from Oracle Cloud Infrastructure (OCI) -- specifically, an E2.1.Micro VM which runs on a single-core AMD OCPU, has 1 GB of memory and a 0.48 Gbps connection, more than enough for streaming even 4K content through Plex. You can run *TWO* of these VMs **totally free**.
 
 First, go to <a href="https://www.oracle.com/cloud/free/">Oracle Cloud's website</a> and click **Start for free** to create your account. You will need a credit card, but only for verification purposes! As long as you stick to *free tier* and don't upgrade, you won't be charged.
 
@@ -80,7 +81,7 @@ Click the **Create instance** button and do the following:
 
 ![Choosing an Image and Shape while creating a compute instance in OCI.](../../img/blog/oci0.png)
 
-6. Under _Shape name_, check the box for (the only option) **VM.Standard.E2.1.Micro**. (Notice the "always-free eligible** tag.) Click the **Select shape** button at the bottom.
+6. Under _Shape name_, check the box for (the only option) **VM.Standard.E2.1.Micro**. (Notice the _"always-free" eligible_ tag.) Click the **Select shape** button at the bottom.
 
 7. The default image is Oracle Linux 8, but you can click **Change image** and choose one of the other always-free eligible images -- **Ubuntu** (my suggestion) or **CentOS**.
 
@@ -358,17 +359,17 @@ One last thing! Although the allowed IPs can now reach Plex and stream your libr
 
 2. On the sidebar, scroll down to **Settings** and click **Network**.
 
-![Secure connections setting in Plex.](../../img/blog/expose-plex1.png)
-
 3. Next to _Secure connections_, choose **Preferred** from the downdown menu.
+
+![Secure connections setting in Plex.](../../img/blog/expose-plex1.png)
 
 4. (Optional) Scroll down and **enable** the checkbox for _Treat WAN IP as LAN Bandwitdh_.
 
-![Relay and Custom access URL settings in Plex.](../../img/blog/expose-plex2.png)
-
 5. Make sure to **leave disabled** the checkbox for _Enable Relay_.
 
-6. Under _Custom server access URLs_ type in `https://your-domain.com`. (Make sure to include the HTTPS!)
+![Relay and Custom access URL settings in Plex.](../../img/blog/expose-plex2.png)
+
+6. Under _Custom server access URLs_ type in `https://your-domain.com`. (Make sure to include the HTTPS!) As a backup, you may also want to add your Tailscale IP as `http://100.200.300.400:32400`. (I leave it as HTTP in case sometimes a secure HTTPS connection is not possible, since I trust the IPs and devices connecting.)
 
 7. At the bottom of the page, click the **Save changes** button.
 
