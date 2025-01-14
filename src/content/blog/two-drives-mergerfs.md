@@ -84,7 +84,7 @@ Here's how my fstab file looks now.
 UUID=218236ca-8e14-47ae-866a-a91e70c88a2a   /mnt/media1   ext4    errors=remount-ro   0   0
 UUID=5e3d1d44-2979-488d-a21a-9fa06508c470   /mnt/media2   ext4    errors=remount-ro   0   0
 UUID=cce7cdab-a2df-4d4f-aac3-98fab2afdbd5   /mnt/media3   ext4    errors=remount-ro   0   0
-/mnt/media*   /home/ad/media    fuse.mergerfs   defaults,allow_other,use_ino,cache.files=off,moveonenospc=true,dropcacheonclose=true,category.create=mfs,fsname=mergerfs    0   0
+/mnt/media*   /home/ad/media    fuse.mergerfs   defaults,allow_other,use_ino,moveonenospc=true,dropcacheonclose=true,category.create=mfs,fsname=mergerfs    0   0
 ```
 
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
