@@ -41,7 +41,6 @@ services:
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
     environment:
-      - WATCHTOWER_NOTIFICATION_URL=pushover://:ay9cv41bcpdjttmnyssy8f1v57auoo@uyks58yo5dykcnqmq52fnwv4xadf8w
       - WATCHTOWER_CLEANUP=true
       - WATCHTOWER_INCLUDE_STOPPED=true
       - WATCHTOWER_REVIVE_STOPPED=false
