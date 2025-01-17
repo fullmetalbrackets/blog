@@ -206,9 +206,9 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
-"factory-restore-zimaboard.md.md": {
-	id: "factory-restore-zimaboard.md.md";
-  slug: "factory-restore-zimaboardmd";
+"factory-restore-zimaboard.md": {
+	id: "factory-restore-zimaboard.md";
+  slug: "factory-restore-zimaboard";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
