@@ -2,7 +2,7 @@
 title: "How to securely expose Plex from behind CGNAT using Tailscale and a free Oracle VM"
 description: "I wrote before about securely exposing Plex for external access, but my previous solution relied on Cloudflare Tunnel and it was technically against their TOS. So I switched to using a Oracle VM on their free-tier, connecting it to my home network with Tailscale, and exposing Plex via reverse proxy. It works like a charm!"
 pubDate: 2024-09-03
-updatedDate: 2025-01-01
+updatedDate: 2025-01-22
 tags:
   - tailscale
 ---
@@ -337,11 +337,11 @@ In _Subnets_ click on the only choice, something like `subnet-20221216-2035`. Fi
 
 3. Under _Source CIDR_ type an IP you want to allow in this format `123.45.678.90/32`.
 
-4. Leave the IP Protocol as TCP.
+4. Leave the _IP Protocol_ as **TCP**.
 
-5. Leave the Source Port Range as Optional.
+5. Leave the _Source Port Range_ as **All**.
 
-6. Set the _Destination Port Range_ as `80`.
+6. Set the _Destination Port Range_ to `80`.
 
 7. Click on **+ Another Ingress Rule**, do the same but use `443` as _Destination Port Range_.
 
