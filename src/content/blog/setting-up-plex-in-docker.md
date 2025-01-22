@@ -2,7 +2,7 @@
 title: "Setup self-hosted Plex Media Server in Docker"
 description: "One of the most popular services to self-host in Plex Media Server, which serves your personal media library with a nice Netflix-like UI. Though you can install and run it bare-metal, the most common and easiest way is in a Docker container. Here's how."
 pubDate: 2022-10-17
-updatedDate: 2024-10-15
+updatedDate: 2025-01-22
 tags:
   - docker
 ---
@@ -80,7 +80,7 @@ Good to go. Now to configure Plex you'll need to access it's web UI, which by de
 
 ![Plex server login.](../../img/blog/plex1.png)
 
-After signing in, after a few explanatory pages, you'll arrive at the Server Setup page. Name your server, uncheck the checkbox unless you'll be making Plex available from outside your network (not recommended and not covered in this guide), and click _Next_.
+After signing in, after a few explanatory pages, you'll arrive at the Server Setup page. Name your server, uncheck the checkbox unless you'll be making Plex available from outside your network (not recommended unless you know what you're doing, see <a href="/blog/expose-plex-tailscale-vps)" target="_blank">this blog post for a better way</a>), and click _Next_.
 
 ![Making the Plex server.](../../img/blog/plex2.png)
 
@@ -92,7 +92,7 @@ On the following page, you'll be able to add media directories to each Library T
 
 ![Adding movie directory to Plex library.](../../img/blog/plex4.png)
 
-Next choose the local directory from the list, in this case _movies_ (the Docker container's directory mapped to `~/media/movies`), and click \_Add.
+Next choose the local directory from the list, in this case _movies_ (the Docker container's directory mapped to `~/media/movies`), and click _Add_.
 
 ![Adding movie directory to Plex library.](../../img/blog/plex5.png)
 
