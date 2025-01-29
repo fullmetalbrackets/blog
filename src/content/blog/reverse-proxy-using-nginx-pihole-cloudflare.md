@@ -2,6 +2,7 @@
 title: "Setting up a reverse proxy for HTTPS with a custom domain using Nginx Proxy Manager, Pi-Hole and Cloudflare"
 description: "I've used a reverse proxy to access my self-hosted apps and services for years, but I recently re-did everything from scratch and decided to write it down. When done, we'll be able to access our apps and services through a custom domain, with unique sub-domains for each app or service, with full HTTPS and accessible only locally."
 pubDate: 2024-10-17
+updatedDate: 2025-01-28
 tags:
   - self-hosting
 ---
@@ -19,11 +20,15 @@ tags:
 
 ## Pre-Requisites and Caveats
 
-First of all, this guide uses specific third-party services like Cloudflare and open-source apps like Pi-Hole and Nginx Proxy Manager to set up a secure local-only reverse proxy. The same is possible with other tools, apps and services including Adguard Home or Next DNS instead of Pi-Hole, Caddy or Traefik instead of Nginx, any other DNS provider instead of Cloudflare, etc. I'm only writing about my preferred tools that I've used multiple times to set everything up and keep it running for over a year.
+First of all, this guide uses specific third-party services, namely <a href="https://cloudflare.com" target="_blank">Cloudflare</a>, <a href="https://pi-hole.net" target="_blank">Pi-Hole</a> and <a href="https://nginxproxymanager.com" target="_blank">Nginx Proxy Manager</a> to set up a secure local-only reverse proxy. The same is possible with other tools, apps and services including <a href="https://adguard.com/en/adguard-home/overview.html" target="_blank">AdGuard Home</a> or <a href="https://nextdns.io" target="_blank">NextDNS</a> instead of *Pi-Hole*, <a href="https://caddyserver.com" target="_blank">Caddy</a> or <a href="https://traefik.io" target="_blank">Traefik</a> instead of *Nginx*, any other DNS provider instead of *Cloudflare*, etc. I'm only writing about my preferred tools that I've used multiple times to set everything up and keep it running for over a year.
 
-This guide will require a owned custom top-level domain (TLD), such as a `.com` or `.cc` or `.xyz`, etc. Certain TLDs can be bought for super cheap on Namecheap or Porkbun, but be aware in most cases after the first year or two, the price will see a steep jump. I again prefer Cloudflare for purchasing domains, since they always price domains at cost, so you won't see any surprise price bumps one year to the next. An alternative I won't be getting into is using dynamic DNS, as I've not had to use it, so I honestly wouldn't even know how to set that up.
+This guide will require a owned custom top-level domain (TLD), such as a `.com` or `.cc` or `.xyz`, etc. Certain TLDs can be bought for super cheap on <a href="https://namecheap.com" target="_blank">Namecheap</a> or <a href="https://porkbun.com" target="_blank">Porkbun</a>, but be aware in most cases after the first year or two, the price will see a steep jump. I again prefer Cloudflare for purchasing domains, since they always price domains at cost, so you won't see any surprise price hike one year to the next. An alternative I won't be getting into is using dynamic DNS, as I've not had to use it, so I honestly wouldn't even know how to set that up.
 
-I will be using Pi-Hole as the local DNS server, and I specifically run it bare metal on a <a href="/wiki/potato" target="_blank">Libre Sweet Potato</a>, separate from everything else. If you are running it on the same server as everything else, or in a Docker container, everything should work more or less the same with one caveat -- both Nginx Proxy Manager (and any reverse proxy) and Pi-Hole require port 80, but we need to give Nginx precedence here, so I suggest changing the port of Pi-Hole's web UI from 80 to something else. Really I suggest keeping Pi-Hole, and any dedicated DNS server more generally, separate from everything else since domain name resolution is more mission critical than, say, watching a movie.
+I will be using Pi-Hole as the local DNS server, and I specifically run it bare metal on a <a href="https://www.libre.computer/products/aml-s905x-cc-v2" target="_blank">Libre Sweet Potato</a>, separate from everything else. If you are running it on the same server as everything else, or in a Docker container, everything should work more or less the same with one caveat -- both Nginx Proxy Manager (and any reverse proxy) and Pi-Hole require port 80, but we need to give Nginx precedence here, so I suggest changing the port of Pi-Hole's web UI from 80 to something else. Really I suggest keeping Pi-Hole, and any dedicated DNS server more generally, separate from everything else since domain name resolution is more mission critical than, say, watching a movie.
+
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
+>
+> This guide is for using Pi-Hole specifically as the DNS server, where we will add the DNS records for our proxied services. <a href="/blog/reverse-proxy-using-nginx-adguardhome-cloudflare" target="_blank">See here if you want to use AdGuard Home instead.</a>
 
 <div id='pihole' />
 
@@ -75,11 +80,11 @@ I like to include some presets through environmental variables, but customize it
 
 To ensure all devices on your network use Pi-Hole as their DNS server, you need to configure it as such in your router. Each router is different, but generally you're looking for the *DNS server* settings usually located within a router's *DHCP* section. If your router lets you set a custom DNS server, enter your Pi-Hole's IP address here, e.g. `192.168.0.50`.
 
-However, not all routers have this option. Alternately you can use Pi-Hole as the DHCP (assuming your router let's you turn off its own DHCP server) or else manually setting Pi-Hole as the DNS on a per-device basis. I have no experience using Pi-Hole as the DHCP server, so I won't explain it further here.
+However, not all routers let you set a custom DNS server. If the router does let you turn off it's DHCP server (this is what hands out IP addresses to network devices) then you can opt to use Pi-Hole as the DHCP, or else manually setting Pi-Hole as the DNS on a per-device basis. I have no experience using Pi-Hole as the DHCP server, so I won't explain it further here.
 
-Once the Pi-Hole's IP is being broadcast as the network's DNS server by the router, your devices will gradually begin querying Pi-Hole as they renew their DHCP leases. You can usually force a renew by restarting a device.
+Once the Pi-Hole's IP is being broadcast as the network's DNS server by the router, your devices will gradually begin querying Pi-Hole as they renew their DHCP leases. You can usually force a renew by restarting a device, or just reboot the router and it should propagate the changes to all devices.
 
-As our last step on Pi-Hole, we'll go ahead and add the DNS records we need for Nginx Proxy Manager.
+Next, we'll go into the Pi-Hole web UI and add the DNS records we need for Nginx Proxy Manager. This should be accessible via your browser at `http://<ip-address>/admin`. (That's assuming you're using the default web UI port of 80, if you changed it to something like 8888, it would instead be `http://<ip-address>:8888/admin`.)
 
 1. In the Pi-Hole web UI, go to **Local DNS** on the sidebar, and choose **DNS Records**.
 
@@ -97,7 +102,7 @@ As our last step on Pi-Hole, we'll go ahead and add the DNS records we need for 
 
 ## Configuring the domain in Cloudflare
 
-To get the TLS certificates for our custom domain, we'll be using Cloudflare. Feel free to use another DNS provider, or create a free account on Cloudflare. You can add a domain bought from another registrar to Cloudflare by following the below instructions, or if you purchase a domain on Cloudflare it will automatically be configured.
+Next, we'll be using Cloudflare to get the TLS certificates for our custom domain. You'll need to create a free account on Cloudflare. (Feel free to use another DNS provider if you prefer.) You can add a domain bought from another registrar to Cloudflare by following the below instructions, or if you purchase a domain on Cloudflare it will automatically be configured.
 
 To add a domain to Cloudflare:
 
@@ -204,7 +209,7 @@ Always make sure the full URL you want to use (`subdomain.domain.com`) is added 
 
 If something does not work as intended (503 error or the like), fiddle with the proxy host options -- try both `http` and `https` scheme, try toggling _Force SSL_ on and off, double-check your API token is correct, etc. You can also check the Nginx Proxy Manager container logs with the terminal command `docker logs nginx-proxy-manager`. (Or whatever `container_name` you used in the compose file when creating the container.)
 
-Barring any errors, once you set up all your proxy hosts you should have full HTTPS when going to your services via `https://subdomain.domain.com`, with one exception -- Pi-Hole requires a little extra configuration, so let's do that.
+Barring any errors, once you set up all your proxy hosts in Nginx Proxy Manager you should have full HTTPS when going to your services via `https://subdomain.domain.com`, with one exception -- Pi-Hole requires a little extra configuration, so let's do that.
 
 <div id='https' />
 
