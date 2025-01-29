@@ -360,6 +360,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"reverse-proxy-using-nginx-adguardhome-cloudflare.md": {
+	id: "reverse-proxy-using-nginx-adguardhome-cloudflare.md";
+  slug: "reverse-proxy-using-nginx-adguardhome-cloudflare";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "reverse-proxy-using-nginx-pihole-cloudflare.md": {
 	id: "reverse-proxy-using-nginx-pihole-cloudflare.md";
   slug: "reverse-proxy-using-nginx-pihole-cloudflare";
