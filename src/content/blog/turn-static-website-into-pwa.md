@@ -2,7 +2,7 @@
 title: "Turn a static website into a progressive web app"
 description: "Frameworks and libraries are great and all, but sometimes you just want to make a simple website with only HTML, CSS and JavaScript — maybe without the latter even. When making a PWA, it’s common to use a framework like Vue or a library like Workbox, which requires a bundler like Webpack. In truth, that’s completely unnecessary!"
 pubDate: 2022-01-07
-updateDate: 2023-08-10
+updateDate: 2025-01-30
 tags:
   - web development
 ---
@@ -18,7 +18,11 @@ tags:
 
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
-> **TL;DR** I created <a href="https://github.com/fullmetalbrackets/pwa-template" target="_blank">a simple template repo on GitHub </a> with just the files necessary to make your HTML site a PWA, as described below - it contains `app.js` and `sw.js` to use as is, and a sample `manifest.json` you need to edit with your project's details. (Replace the `index.html` and `main.css` with your own files.)
+> **TL;DR**
+>
+> I created <a href="https://github.com/fullmetalbrackets/pwa-template" target="_blank">a simple template repo on GitHub</a> with just the files necessary to make your HTML site a PWA, as described below - it contains `app.js` and `sw.js` to use as is, and a sample `manifest.json` you need to edit with your project's details. (Replace the `index.html` and `main.css` with your own files.)
+>
+> See a demo of it in action <a href="https://pwa-template.surge.sh" arget="_blank">here</a>.
 
 <div id='what'/>
 
