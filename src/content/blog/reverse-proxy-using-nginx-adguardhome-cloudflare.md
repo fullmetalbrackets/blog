@@ -10,9 +10,10 @@ tags:
 
 1. [Pre-Requisites and Caveats](#pre)
 2. [Setting up AdGuard Home as network DNS server](#adguard)
-3. [Configuring the domain in Cloudflare](#domain)
-4. [Install and configure Nginx Proxy Manager](#nginx)
-5. [References](#ref)
+3. [Adding DNS rewrites in AdGuard Home](#dns)
+4. [Configuring the domain in Cloudflare](#domain)
+5. [Install and configure Nginx Proxy Manager](#nginx)
+6. [References](#ref)
 
 <div id='pre' />
 
@@ -22,13 +23,19 @@ I wrote previously about <a href="/blog/reverse-proxy-using-nginx-pihole-cloudfl
 
 This guide uses specific third-party services, namely <a href="https://cloudflare.com" target="_blank">Cloudflare</a>, <a href="https://adguard.com/en/adguard-home/overview.html" target="_blank">AdGuard Home</a> and <a href="https://nginxproxymanager.com" target="_blank">Nginx Proxy Manager</a> to set up a secure local-only reverse proxy. The same is possible with other tools, apps and services including <a href="https://pi-hole.net" target="_blank">Pi-Hole</a> (which as I mentioned, I previously used for many years) or <a href="https://nextdns.io" target="_blank">NextDNS</a> instead of *AdGuard Home*, <a href="https://caddyserver.com" target="_blank">Caddy</a> or <a href="https://traefik.io" target="_blank">Traefik</a> instead of *Nginx*, any other DNS provider instead of *Cloudflare*, etc. I'm only writing about my preferred tools that I've used multiple times to set everything up and keep it running for over a year.
 
-This guide will require a owned custom top-level domain (TLD), such as a `.com` or `.cc` or `.xyz`, etc. Certain TLDs can be bought for super cheap on <a href="https://namecheap.com" target="_blank">Namecheap</a> or <a href="https://porkbun.com" target="_blank">Porkbun</a>, but be aware in most cases after the first year or two, the price will see a steep jump. I again prefer Cloudflare for purchasing domains, since they always price domains at cost, so you won't see any surprise price hike one year to the next. An alternative I won't be getting into is using dynamic DNS, as I've not had to use it, so I honestly wouldn't even know how to set that up.
+This guide will require a owned custom top-level domain (TLD), such as a `.com` or `.cc` or `.xyz`, etc. Certain TLDs can be bought for super cheap on <a href="https://namecheap.com" target="_blank">Namecheap</a> or <a href="https://porkbun.com" target="_blank">Porkbun</a>, but be aware in most cases after the first year or two, the price will see a steep jump. I again prefer <a href="https://domains.cloudflare.com" target="_blank">Cloudflare</a> for purchasing domains, since they always price domains at cost, so you won't see any surprise price hike one year to the next. An alternative I won't be getting into is using dynamic DNS, as I've not had to use it myself, so I honestly wouldn't even know how to begin to set that up.
 
 <div id='adguard' />
 
 ## Setting up AdGuard Home as network DNS server
 
-In my case, AdGuard Home already comes installed and ready to use on the GL.iNet Flint 2 router, requiring only toggling it on from the router's web admin UI to activate. If you want to run it bare metal on a server, see the <a href="https://github.com/AdguardTeam/AdGuardHome#getting-started" target="_blank">their getting started guide</a>. If you want to run AdGuard Home in a Docker container, this `compose.yaml` should work for you as a base:
+In my case, AdGuard Home already comes installed and ready to use on the GL.iNet Flint 2 router, requiring only toggling it on from the router's web admin UI to activate. If you want to run it bare metal on a server, see <a href="https://github.com/AdguardTeam/AdGuardHome#getting-started" target="_blank">their getting started guide</a>. If you want to run AdGuard Home in a Docker container, this `compose.yaml` should work for you as a base.
+
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
+>
+> Please note, I have never run AdGuard Home in a Docker container myself, I'm just using common sense defaults to get up and running fast. Using `network_mode: host` allows all necessary network ports, including *3000* for the web UI, *53* for DNS queries, *853* for DNS over TLS, etc.
+>
+> Check out <a href="https://hub.docker.com/r/adguard/adguardhome" target="_blank">the Docker Hub page for AdGuard Home</a> if you want to expose specific ports, or want to make other changes not covered here.
 
 ```yaml
 services:
@@ -38,23 +45,23 @@ services:
     network_mode: host
     restart: unless-stopped
     volumes:
-      - /opt/docker/adguardhome/work:/opt/adguardhome/work
-      - /opt/docker/adguardhome/conf:/opt/adguardhome/conf
+      - /local/path/adguardhome/work:/opt/adguardhome/work
+      - /local/path/adguardhome/conf:/opt/adguardhome/conf
 ```
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
-> **Important Note** -- I have never run AdGuard Home in a Docker container myself, I'm just using common sense defaults to get up and running fast. Using `network_mode: host` allows all necessary network ports, including *3000* for the web UI, *53* for DNS queries, *853* for DNS over TLS, etc. Check out <a href="https://hub.docker.com/r/adguard/adguardhome" target="_blank">the Docker Hub page for AdGuard's image</a> if you want to expose specific ports, or want to make other changes not covered here.
+When ready, use command `docker compose up -d` to download and run the container as a daemon in the background. (If you're already running a stack of containers, you can add the above to your existing compose file.) Also note that
 
-When ready, use command `docker compose up -d` to download and run the container as a daemon in the background.
+In my case, the Flint 2 router automatically adds the necessary routing rules so that all devices on your network use AdGuard Home as their DNS server, but normally when running AdGuard Home you will need to configure it as the DNS server in your router. Each router is different, but generally you're looking for the *DNS server* settings usually located within a router's *DHCP* section. If your router lets you set a custom DNS server, enter the IP address of the machine running AdGuard Home here, e.g. `192.168.0.50`.
 
-In my case, the Flint 2 router automatically adds the necessary routing rules so that all devices on your network use AdGuard Home as their DNS server, but if running AdGuard Home as a Docker container you will need to configure it as the DNS server in your router. Each router is different, but generally you're looking for the *DNS server* settings usually located within a router's *DHCP* section. If your router lets you set a custom DNS server, enter the IP address of the machine running AdGuard Home here, e.g. `192.168.0.50`.
-
-However, not all routers let you set a custom DNS server (this is especially common in ISP-provided routers), in which case you are out of luck -- unfortunately AdGuard Home does not have the option to act DHCP (assuming your router let's you turn off its own DHCP server) or else manually setting the AdGuard Home IP address as the DNS server on a per-device basis. If this is undesirable or unfeasable, you might consider using *Pi-Hole* instead since it can act as the DHCP server.
+However, not all routers let you set a custom DNS server (this is especially common in ISP-provided routers), in which case you are out of luck -- you will have to manually set the AdGuard Home IP address as the DNS server on a per-device basis. If this is undesirable or unfeasable, and if your router lets you turn off it's DHCP server, you might consider using *Pi-Hole* instead since it can act as a DHCP server for your network.
 
 Once AdGuard Home is being broadcast as the network's DNS server by the router, your devices will gradually begin querying it as they renew their DHCP leases. You can usually force a renew by restarting a device, or just reboot the router and it should propagate the changes to all devices.
 
-Next, we'll go into the AdGuard Home web UI and add the DNS records we need for Nginx Proxy Manager. It should be accessible via your browser at `http://<ip-address>:3000`.
+<div id='dns' />
+
+## Add DNS rewrites in AdGuard Home
+
+Next, we'll go into the AdGuard Home web UI and add the DNS rewrites we need for Nginx Proxy Manager. The web UI should be accessible via your browser at `http://<ip-address>:3000`.
 
 1. In the AdGuard Home web UI, click on **Filters** on the navigation bar at the top, and choose **DNS Rewrites** from the dropdown menu.
 
@@ -65,14 +72,18 @@ Next, we'll go into the AdGuard Home web UI and add the DNS records we need for 
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
 > If you want to proxy services from more than one server, create specific entries for each one rather than using a wildcard -- for example, `service1.domain.com` would point to `192.168.0.50`, `service2.domain.com` would point to `192.168.0.100`, etc.
+>
+> This is also the case you want to proxy something straight to `domain.com` rather than a sub-domain, make sure to create a specific DNS rewrite for it, e.g. `domain.com` pointing to `192.168.0.200`.
+
+That's all you have to do with AdGuard Home. Next, we'll be using Cloudflare to get the TLS certificates for our custom domain.
 
 <div id='cloudflare' />
 
 ## Configuring the domain in Cloudflare
 
-Next, we'll be using Cloudflare to get the TLS certificates for our custom domain. You'll need to create a free account on Cloudflare. (Feel free to use another DNS provider if you prefer.) You can add a domain bought from another registrar to Cloudflare by following the below instructions, or if you purchase a domain on Cloudflare it will automatically be configured.
+You'll need to create a free account on Cloudflare. (Feel free to use another DNS provider if you prefer.) You can add a domain bought from another registrar to Cloudflare by following the below instructions, or if you purchase a domain on Cloudflare it will automatically be configured.
 
-To add a domain to Cloudflare:
+To add an existing domain to Cloudflare:
 
 1. Login to Cloudflare, go to _Websites_ on the sidebar if you're not already there, and click the **Add a site** button.
 

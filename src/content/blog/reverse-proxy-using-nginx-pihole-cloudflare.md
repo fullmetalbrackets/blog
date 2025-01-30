@@ -11,10 +11,11 @@ tags:
 
 1. [Pre-Requisites and Caveats](#pre)
 2. [Setting up Pi-Hole as network DNS server](#pihole)
-3. [Configuring the domain in Cloudflare](#domain)
-4. [Install and configure Nginx Proxy Manager](#nginx)
-5. [Accessing Pi-Hole web UI with HTTPS](#https)
-6. [References](#ref)
+3. [Add the DNS records in Pi-Hole](#dns)
+4. [Configuring the domain in Cloudflare](#domain)
+5. [Install and configure Nginx Proxy Manager](#nginx)
+6. [Accessing Pi-Hole web UI with HTTPS](#https)
+7. [References](#ref)
 
 <div id='pre' />
 
@@ -22,7 +23,7 @@ tags:
 
 First of all, this guide uses specific third-party services, namely <a href="https://cloudflare.com" target="_blank">Cloudflare</a>, <a href="https://pi-hole.net" target="_blank">Pi-Hole</a> and <a href="https://nginxproxymanager.com" target="_blank">Nginx Proxy Manager</a> to set up a secure local-only reverse proxy. The same is possible with other tools, apps and services including <a href="https://adguard.com/en/adguard-home/overview.html" target="_blank">AdGuard Home</a> or <a href="https://nextdns.io" target="_blank">NextDNS</a> instead of *Pi-Hole*, <a href="https://caddyserver.com" target="_blank">Caddy</a> or <a href="https://traefik.io" target="_blank">Traefik</a> instead of *Nginx*, any other DNS provider instead of *Cloudflare*, etc. I'm only writing about my preferred tools that I've used multiple times to set everything up and keep it running for over a year.
 
-This guide will require a owned custom top-level domain (TLD), such as a `.com` or `.cc` or `.xyz`, etc. Certain TLDs can be bought for super cheap on <a href="https://namecheap.com" target="_blank">Namecheap</a> or <a href="https://porkbun.com" target="_blank">Porkbun</a>, but be aware in most cases after the first year or two, the price will see a steep jump. I again prefer Cloudflare for purchasing domains, since they always price domains at cost, so you won't see any surprise price hike one year to the next. An alternative I won't be getting into is using dynamic DNS, as I've not had to use it, so I honestly wouldn't even know how to set that up.
+This guide will require a owned custom top-level domain (TLD), such as a `.com` or `.cc` or `.xyz`, etc. Certain TLDs can be bought for super cheap on <a href="https://namecheap.com" target="_blank">Namecheap</a> or <a href="https://porkbun.com" target="_blank">Porkbun</a>, but be aware in most cases after the first year or two, the price will see a steep jump. I again prefer <a href="https://domains.cloudflare.com" target="_blank">Cloudflare</a> for purchasing domains, since they always price domains at cost, so you won't see any surprise price hike one year to the next. An alternative I won't be getting into is using dynamic DNS, as I've not had to use it, so I honestly wouldn't even know how to set that up.
 
 I will be using Pi-Hole as the local DNS server, and I specifically run it bare metal on a <a href="https://www.libre.computer/products/aml-s905x-cc-v2" target="_blank">Libre Sweet Potato</a>, separate from everything else. If you are running it on the same server as everything else, or in a Docker container, everything should work more or less the same with one caveat -- both Nginx Proxy Manager (and any reverse proxy) and Pi-Hole require port 80, but we need to give Nginx precedence here, so I suggest changing the port of Pi-Hole's web UI from 80 to something else. Really I suggest keeping Pi-Hole, and any dedicated DNS server more generally, separate from everything else since domain name resolution is more mission critical than, say, watching a movie.
 
@@ -84,27 +85,35 @@ However, not all routers let you set a custom DNS server. If the router does let
 
 Once the Pi-Hole's IP is being broadcast as the network's DNS server by the router, your devices will gradually begin querying Pi-Hole as they renew their DHCP leases. You can usually force a renew by restarting a device, or just reboot the router and it should propagate the changes to all devices.
 
-Next, we'll go into the Pi-Hole web UI and add the DNS records we need for Nginx Proxy Manager. This should be accessible via your browser at `http://<ip-address>/admin`. (That's assuming you're using the default web UI port of 80, if you changed it to something like 8888, it would instead be `http://<ip-address>:8888/admin`.)
+Next, we'll add the DNS records in Pi-Hole that we need for Nginx Proxy Manager.
 
-1. In the Pi-Hole web UI, go to **Local DNS** on the sidebar, and choose **DNS Records**.
+<div id='dns' />
 
-2. On the **Domain:** form, type in the hostname of your server (or whatever name you want to use), e.g. `server`.
+## Adding the DNS records in Pi-Hole
 
-3. On the **IP address** form, type in the IP address of the server that will be running Nginx Proxy Manager and all your other containers.
+Go into the Pi-Hole web UI, it should be accessible via your browser at `http://<ip-address>/admin`. (That's assuming you're using the default web UI port of 80, if you changed it to something like 8888, it would instead be `http://<ip-address>:8888/admin`.)
+
+1. In the Pi-Hole web UI, go to **Local DNS** on the sidebar, and choose **DNS Records** from the dropdown.
+
+2. For the **Domain**, type in the hostname of your server (or whatever name you want to use), e.g. `server`.
+
+3. For the **IP address**, type in the IP address of the server that will be running Nginx Proxy Manager and all your other containers.
 
 4. Click the **Add** button and wait a moment until it shows up in the list of local domains below.
 
-5. Now to add the sub-domains, go to **Local DNS** again and this time choose **CNAME Records**.
+5. Now to add the sub-domains, go to **Local DNS** again and this time choose **CNAME Records** from the dropdown.
 
 6. Here we'll want to add something like `plex.domain.com` as the *Domain* and `server` as the *Target*. Your choice, obviously. Repeat for however many apps you want to access this way. You can always come back and add more later as needed.
+
+Once you're done adding your DNS records, it's time to setup Cloudflare to get the TLS certificates for our custom domain.
 
 <div id='cloudflare' />
 
 ## Configuring the domain in Cloudflare
 
-Next, we'll be using Cloudflare to get the TLS certificates for our custom domain. You'll need to create a free account on Cloudflare. (Feel free to use another DNS provider if you prefer.) You can add a domain bought from another registrar to Cloudflare by following the below instructions, or if you purchase a domain on Cloudflare it will automatically be configured.
+You'll need to create a free account on Cloudflare. (Feel free to use another DNS provider if you prefer.) You can add a domain bought from another registrar to Cloudflare by following the below instructions, or if you purchase a domain on Cloudflare it will automatically be configured.
 
-To add a domain to Cloudflare:
+To add an existing domain to Cloudflare:
 
 1. Login to Cloudflare, go to _Websites_ on the sidebar if you're not already there, and click the **Add a site** button.
 
