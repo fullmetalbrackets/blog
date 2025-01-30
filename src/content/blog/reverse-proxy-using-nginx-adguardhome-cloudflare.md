@@ -49,9 +49,9 @@ services:
       - /local/path/adguardhome/conf:/opt/adguardhome/conf
 ```
 
-When ready, use command `docker compose up -d` to download and run the container as a daemon in the background. (If you're already running a stack of containers, you can add the above to your existing compose file.) Also note that
+When ready, use command `docker compose up -d` to download and run the container as a daemon in the background. (If you're already running a stack of containers, you can add the above to your existing compose file.)
 
-In my case, the Flint 2 router automatically adds the necessary routing rules so that all devices on your network use AdGuard Home as their DNS server, but normally when running AdGuard Home you will need to configure it as the DNS server in your router. Each router is different, but generally you're looking for the *DNS server* settings usually located within a router's *DHCP* section. If your router lets you set a custom DNS server, enter the IP address of the machine running AdGuard Home here, e.g. `192.168.0.50`.
+Next you'll need to set the IP address of AdGuard Home as the DNS server in your router. (If you're setting this up on the Flint 2, skip this part because it's automatically configured.) Each router is different, but generally you're looking for the *DNS server* settings usually located within a router's *DHCP* section. If your router lets you set a custom DNS server, enter the IP address of the machine running AdGuard Home here, e.g. `192.168.0.50`.
 
 However, not all routers let you set a custom DNS server (this is especially common in ISP-provided routers), in which case you are out of luck -- you will have to manually set the AdGuard Home IP address as the DNS server on a per-device basis. If this is undesirable or unfeasable, and if your router lets you turn off it's DHCP server, you might consider using *Pi-Hole* instead since it can act as a DHCP server for your network.
 
