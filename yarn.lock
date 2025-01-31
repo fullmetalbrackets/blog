@@ -12,31 +12,6 @@
   resolved "https://registry.yarnpkg.com/@astrojs/internal-helpers/-/internal-helpers-0.5.0.tgz#220d2b7a323c644c62508e58a3028295bbe830dd"
   integrity sha512-CgB5ZaZO1PFG+rbjF3HnA7G6gIBjJ070xb7bUjeu5Gqqufma+t6fpuRWMXnK2iEO3zVyX7e/xplPlqtFKy/lvw==
 
-"@astrojs/markdown-remark@6.0.2":
-  version "6.0.2"
-  resolved "https://registry.yarnpkg.com/@astrojs/markdown-remark/-/markdown-remark-6.0.2.tgz#95f46734816852f51365c5ac213d55192e1f897a"
-  integrity sha512-aAoHGVRK3rebCYbaLjyyR+3VeAuTz4q49syUxJP29Oo5yZHdy4cCAXRqLBdr9mJVlxCUUjZiF0Dau6YBf65SGg==
-  dependencies:
-    "@astrojs/prism" "3.2.0"
-    github-slugger "^2.0.0"
-    hast-util-from-html "^2.0.3"
-    hast-util-to-text "^4.0.2"
-    import-meta-resolve "^4.1.0"
-    js-yaml "^4.1.0"
-    mdast-util-definitions "^6.0.0"
-    rehype-raw "^7.0.0"
-    rehype-stringify "^10.0.1"
-    remark-gfm "^4.0.0"
-    remark-parse "^11.0.0"
-    remark-rehype "^11.1.1"
-    remark-smartypants "^3.0.2"
-    shiki "^1.26.2"
-    unified "^11.0.5"
-    unist-util-remove-position "^5.0.0"
-    unist-util-visit "^5.0.0"
-    unist-util-visit-parents "^6.0.1"
-    vfile "^6.0.3"
-
 "@astrojs/markdown-remark@6.1.0", "@astrojs/markdown-remark@^6.0.1":
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/@astrojs/markdown-remark/-/markdown-remark-6.1.0.tgz#c451c4d802116d1b9aa1a22d71a672199318678d"
@@ -63,12 +38,12 @@
     unist-util-visit-parents "^6.0.1"
     vfile "^6.0.3"
 
-"@astrojs/mdx@^4.0.7":
-  version "4.0.7"
-  resolved "https://registry.yarnpkg.com/@astrojs/mdx/-/mdx-4.0.7.tgz#4c485e9b5e02a2fdf8b005120956f7577c866471"
-  integrity sha512-d3PopBTbbCoX3QOmSLYXW6YCZ0dkhNaeP9/Liz9BhEekflMc9IvBjbtNFf1WCEatsl4LLGftyDisfMM3F3LGMA==
+"@astrojs/mdx@^4.0.8":
+  version "4.0.8"
+  resolved "https://registry.yarnpkg.com/@astrojs/mdx/-/mdx-4.0.8.tgz#ed900af49773a1db9ecc41b94d4a3eb0972b87e2"
+  integrity sha512-/aiLr2yQ55W9AbpyOgfMtFXk7g2t7XoWdC2Avps/NqxAx4aYONDLneX43D79QwgqdjFhin7o3cIPp/vVppMbaA==
   dependencies:
-    "@astrojs/markdown-remark" "6.0.2"
+    "@astrojs/markdown-remark" "6.1.0"
     "@mdx-js/mdx" "^3.1.0"
     acorn "^8.14.0"
     es-module-lexer "^1.6.0"
@@ -3090,7 +3065,7 @@ sharp@^0.33.3:
     "@img/sharp-win32-ia32" "0.33.5"
     "@img/sharp-win32-x64" "0.33.5"
 
-shiki@^1.26.2, shiki@^1.29.1:
+shiki@^1.29.1:
   version "1.29.1"
   resolved "https://registry.yarnpkg.com/shiki/-/shiki-1.29.1.tgz#7900a5450e20b6a01c046c3d15da342bee3dceb8"
   integrity sha512-TghWKV9pJTd/N+IgAIVJtr0qZkB7FfFCUrrEJc0aRmZupo3D1OCVRknQWVRVA7AX/M0Ld7QfoAruPzr3CnUJuw==
