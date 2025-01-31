@@ -2,7 +2,7 @@
 title: "Complete guide to self-hosting a website through Cloudflare Tunnel"
 description: "Self-hosting a static web blog has never been easier thanks to Cloudflare Tunnel. In this guide I explain how to expose a static website hosted on machine inside my network to the internet using Nginx as webserver and securing it with various free Cloudflare services."
 pubDate: 2023-12-29
-updatedDate: 2024-04-07
+updatedDate: 2025-01-31
 tags:
   - cloudflare
 ---
@@ -11,8 +11,8 @@ tags:
 
 1. [What and How](#what)
 2. [The website](#site)
-3. [Setting up the Nginx container](#nginx)
-4. [Set up domain in Cloudflare](#domain)
+3. [Install Docker and set up the Nginx container](#nginx)
+4. [Add a domain in Cloudflare](#domain)
 5. [Set up the Cloudflare tunnel](#tunnel)
 6. [Set up a redirect](#redirect)
 7. [Configure HTTP response headers on Cloudflare](#headers)
@@ -26,27 +26,35 @@ You can very easily set up and host a website via Netlify, Cloudflare Pages, or 
 
 First, requirements:
 
-1. You need to create a free Cloudflare account.
+1. You'll need to create a free <a href="https://cloudflare.com" target="_blank">Cloudflare</a> account.
 
-2. You need to own a domain. Look on Namecheap and Porkbun (or any domain registrar you prefer) for cheap domains, like those ending with `.cc` or `.us` -- they can usually be bought for less then $10 and often for as low as $4 or $5. (This is the price for the first year, to hook you, but annual domain renewals can cost more after that first year, so do your research.) Alternately you could set up something like <a href="https://www.duckdns.org" target="_blank">DuckDNS</a> to avoid buying a domain, but you're on your own there -- domains are so cheap I've never bothered.
+2. You need to own a domain. I suggest <a href="https://" target="_blank">Cloudflare</a> itself, alternately <a href="https://porkbun.com" target="_blank">Porkbun</a> or <a href="https://namecheap" target="_blank">Namecheap</a>. (Or literally any domain registrar you prefer.) You can get cheap domains, like those ending with `.cc` or `.us`, often for less then $10 or even as low as $4 to $5. This is the price for the first year, to hook you, but annual domain renewals can cost more after that first year, so do your research. _Cloudflare_ sells their domains at cost, so the renewal is usually only a couple dollars more than the initial price, which is why I usually prefer them. Alternately you could set up something like <a href="https://www.duckdns.org" target="_blank">DuckDNS</a> or some other Dynamic DNS to avoid buying a domain, but you're on your own there -- domains are so cheap I've never bothered.
 
-3. You'll need a website. I won't be explaining how to build a website here, you can just code one from scratch with HTML and CSS if you know how, or you can use a static site builder like <a href="https://astro.build" target="_blank">Astro</a> or <a href="https://nuxt.com" target="_blank">Nuxt</a>. Feel free to <a href="https://github.com/fullmetalbrackets/" target="_blank">check out one of my sites on GitHub</a>, fork it, change it to your liking, and use that. They're open source for a reason.
+3. You'll need a website. I won't be explaining how to build a website here, you can just code one from scratch with HTML and CSS if you know how, or you can use a static site generator, of which there are many. If you want to get a quick website up and running I suggest <a href="https://astro.build" target="_blank">Astro</a> since it has a good blog template and is easy to learn. (It's what I used to build this blog!)
 
-4. You will need to install Docker and all it's dependencies, the Cloudflare tunnel runs as a Docker container and we'll also be using an Nginx container as the webserver. You can use Nginx "bare metal" if you prefer, but I won't explain how here.
+4. _A Linux server_. I specifically use _Debian 12_, but these instructions should work for any distro. This might be possible on Windows using WSL2 and Docker Desktop, but I wouldn't suggest it.
+
+5. Though they can be run bare metal, I like to run both _Cloudflare Tunnel_ and _Ngnix_ as Docker containers so that everything is portable and easily repeatable. So you' wi'll need to install Docker and all it's dependencies, which I'll explain below.
 
 <div id='site' />
 
 ## The website
 
-Like I said, I'm not explaining how to build a website here. Assuming you used a static site generator like **Astro** (what I use for this site) or **Nuxt**, use the necessary commands to build the site for deployment -- most likely this will be `npx run build`, `yarn build`, or something along those lines. Most static site builders output to a `/dist` or `/public` folder, which is what will be exposed to the internet.
+Like I said, I'm not explaining how to build a website here. Assuming you used **Astro** as I suggested, use the command `npx run build` or `yarn build` to build the site for deployment. It will output to a `/dist` directory, these static files are what we will serve to the internet.
 
-Make a note of the full path to your website's output directory, so for example `/home/bob/sites/my-cool-blog/dist` or `../public`, depending on your static site generator.
+Make a note of the full path to your website's output directory, for example `/home/bob/sites/my-cool-blog/dist`.
 
 <div id='nginx' />
 
-## Setting up the Nginx container
+## Install Docker and set up the Nginx container
 
-Websites need a **webserver** to serve their pages to be viewed on a browser. I use an Nginx docker container since it just makes everything easier and, importantly, repeatable. (The stack is portable and can be recreated on another Docker host.) I'll be using **Docker Compose** for this, again to make things easier and repeatable. Within the root directory of your site, create the file `docker-compose.yaml` and add the below to it:
+For the most hassle-free method of installing Docker, I suggest using their official install script with the following command:
+
+```bash
+curl -fsSL https://get.docker.com | sh
+```
+
+Next we'll setup _Nginx_ as our **webserver**, websites need a webserver to serve their pages to be viewed on a browser. I use the <a href="https://hub.docker.com/_/nginx" target="_blank">official Nginx docker container</a>, ol' reliable. I'll be using `docker compose` to set it up. Within the root directory of your site, create the file `compose.yaml` and add the below to it:
 
 ```yaml
 services:
@@ -62,9 +70,9 @@ services:
 
 I like to use the `mainline-alpine-slim` tag for the Nginx image because it's the smallest and most up to date, but there are <a href="https://hub.docker.com/_/nginx/tags" target="_blank">many other tags</a> if you prefer. Make sure the local port, `8888` above, does not conflict with any other self-hosted services you may have. Feel free to change it to anything else.
 
-Next we need to create a `nginx.conf` file and add the below to it for a basic configuration:
+Still in the site's root directory we want to create a `nginx.conf` file and add the below to it for a basic configuration:
 
-```bash
+```conf
 worker_processes  1;
 
 events {
@@ -92,39 +100,41 @@ http {
 }
 ```
 
-If you changed the local port in the compose file, make sure you change it in the Nginx config too. Now use the command `docker compose up -d` to download the Nginx container image and run the webserver using the parameters from the compose file and configuration file. Based on the settings above, Nginx will serve the static files from **/dist** directory on the machine's **network port 8888**. You should be able to access it by going to it's IP address and adding the port, for example `http://192.168.1.100:8888`. If you only want to self-host a site that you can access from within your home network, and you don't want to expose it to the internet, then you're done! Otherwise, read on to expose it to the internet with a Cloudflare Tunnel, without need to open ports on your router.
+If you changed the local port in the `compose.yaml` file, make sure you change it in the `nginx.conf` too.
+
+Finally, still in the site's root directory, yse the command `docker compose up -d` to download the Nginx container image and run the webserver using the parameters from the compose file and configuration file. Based on the settings above, _Nginx_ will serve the static files from **/dist** directory on the machine's **network port 8888**. You should be able to access it by going to it's IP address and adding the port, for example `http://192.168.1.100:8888`.
+
+If you only want to self-host a site that you can access from within your home network, and you don't want to expose it to the internet, then you're done! Otherwise, read on to expose it to the internet with a Cloudflare Tunnel, without need to open ports on your router.
 
 <div id='domain' />
 
-## Set up domain in Cloudflare
+## Add a domain in Cloudflare
 
-As I said, you'll need a Cloudflare account and a top-level domain that you own. Login to Cloudflare account and do the following:
+Create your <a href="https://dash.cloudflare.com/sign-up" target="_blank">free Cloudflare account</a> if you haven't already. **If you bought a domain on Cloudflare, you can skip to the next section since it is auto-configured already.** If your domain is from another registrar, we'll need to add it to Cloudflare:
 
-1. Go to **Websites** on the sidebar and click the **Add a site** button.
+1. On the Cloudflare dashboard _Account Home_, click the **+ Add a domain** button.
 
-![Adding a site to Cloudflare.](../../img/blog/cloudflare-domain.png)
+![Adding a domain to Cloudflare.](../../img/blog/cloudflare-domain.png)
 
-2. Enter your domain and click **Add site**, then click on the **Free plan** at the bottom and click **Continue**.
+2. Enter your domain, leave _Quick scan for DNS records_ selected, and click **Cotinue**.
+
+3. Click on the **Free plan** at the bottom and click **Continue**.
 
 ![Cloudflare free plan.](../../img/blog/cloudflare-free.png)
 
-3. After waiting a few moments for the DNS quick scan, you should see your domain’s DNS records appear. Click on **Continue**.
+4. You'll see your DNS records, if there are any. Don't worry about this right now and click on the **Continue to activate** button.
 
-4. Cloudflare will now present you with the URLs to two nameservers, something like `adam.ns.cloudflare.com`. Leave this page open, we’ll come back to it.
+![Cloudflare free plan.](../../img/blog/cloudflare-dns-records1.png)
 
-5. In a new tab, go to the registrar that owns your domain and login, go into your domain’s DNS settings, delete any default DNS nameservers and add both of the URLs provided by Cloudflare. Make sure to save all the changes.
+5. You'll see a pop-up window saying you should set your DNS records now, click on **Confirm**.
 
-6. Back in Cloudflare on the page showing the nameservers, click **Done, check nameservers**. It could take a few hours for the DNS changes to propagate, but usually it will take a few minutes. In the meantime, follow the **Quick Start Guide** in Cloudflare.
+![Cloudflare free plan.](../../img/blog/cloudflare-dns-records1.png)
 
-7. Leave **Automatic HTTPS Rewrites** checked as-is, and activate the checkbox for **Always Use HTTPS**.
+6. You'll be provided some instructions to update the nameservers on your domain's registrar, open a new tab and follow those instructions. Once you've added the Cloudflare nameservers at your registrar, go back to Cloudflare and click on **Continue**.
 
-8. Leave **Brotli** on. On the summary, click **Finished**.
+7. Now you'll have to wait a few minutes for the changes to propagate, then click on **Check nameservers** and reload the page. If it's still shows _Pending_ next to the domain at the top, just keep waiting and reload again after a few more minutes.
 
-9. Next go to **SSL/TLS** -> **Overview** on the sidebar, and set the encryption mode to **Full (strict)**.
-
-10. Click on **Overview** on the sidebar to go back to the domain's main page. If you still see _Complete your nameserver setup_, you can try using the **Check nameservers button**. It can take a few hours, but in my experience it usually takes more like 20 minutes.
-
-11. Once your DNS changes have propagated, the **Overview** page will say: _“Great news! Cloudflare is now protecting your site!”_ Now go to **DNS** -> **Records** on the sidebar, and delete any `A` and `CNAME` records -- the tunnel will create the appropriate DNS records automatically, and we're finally ready to set it up.
+8. Once the domain is _Active_, you're ready to set up the Cloudlare Tunnel.
 
 <div id='tunnel' />
 

@@ -2,7 +2,7 @@
 title: "Setting up a reverse proxy for HTTPS with a custom domain using Nginx Proxy Manager, Pi-Hole and Cloudflare"
 description: "I've used a reverse proxy to access my self-hosted apps and services for years, but I recently re-did everything from scratch and decided to write it down. When done, we'll be able to access our apps and services through a custom domain, with unique sub-domains for each app or service, with full HTTPS and accessible only locally."
 pubDate: 2024-10-17
-updatedDate: 2025-01-28
+updatedDate: 2025-01-31
 tags:
   - self-hosting
 ---
@@ -12,7 +12,7 @@ tags:
 1. [Pre-Requisites and Caveats](#pre)
 2. [Setting up Pi-Hole as network DNS server](#pihole)
 3. [Add the DNS records in Pi-Hole](#dns)
-4. [Configuring the domain in Cloudflare](#domain)
+4. [Add a domain in Cloudflare](#domain)
 5. [Install and configure Nginx Proxy Manager](#nginx)
 6. [Accessing Pi-Hole web UI with HTTPS](#https)
 7. [References](#ref)
@@ -69,19 +69,25 @@ services:
       - 80:80/tcp # web UI port
 ```
 
-I like to include some presets through environmental variables, but customize it as you see fit. Be aware that for Pi-Hole to work properly as a container, you should leave the variable `DNSMASQ_LISTENING-all`, it's the same as *permit all origins* in the Pi-Hole interface settings, which is what you want. When ready, download and run the container as a daemon (in the background) with command `docker compose up -d`.
-
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
-> If your Pi-Hole is on the same machine you want to run Nginx Proxy Manager, then you'll need to change the Pi-Hole's web UI port since it is also port 80 by default, which will conflict with Nginx Proxy Manager.
+> Make sure port `53` is available on your server or Pi-Hole will not work!
+> 
+> If your Pi-Hole is on the same machine you want to run Nginx Proxy Manager, then you'll need to change the _Pi-Hole web UI port_ since it is also port `80` by default, which will conflict with Nginx Proxy Manager.
 >
 > If you run Pi-Hole in a docker container, simply change the container's port mapping in the compose file from `80:80` to, for example, `8888:80`.
 >
 > If you are running Pi-Hole bare metal, you need to edit `/etc/lighttpd/lighttpd.conf` and change the line `server.port = 80` to your desired port, e.g. `server.port = 8888`.
 
-To ensure all devices on your network use Pi-Hole as their DNS server, you need to configure it as such in your router. Each router is different, but generally you're looking for the *DNS server* settings usually located within a router's *DHCP* section. If your router lets you set a custom DNS server, enter your Pi-Hole's IP address here, e.g. `192.168.0.50`.
+I like to include some presets through environmental variables, but customize it as you see fit. Be aware that for Pi-Hole to work properly as a container, you should leave the variable `DNSMASQ_LISTENING=all`, it's the same as *permit all origins* in the Pi-Hole interface settings, which is what you want. When ready, download and run the container with the following command:
 
-However, not all routers let you set a custom DNS server. If the router does let you turn off it's DHCP server (this is what hands out IP addresses to network devices) then you can opt to use Pi-Hole as the DHCP, or else manually setting Pi-Hole as the DNS on a per-device basis. I have no experience using Pi-Hole as the DHCP server, so I won't explain it further here.
+```bash
+docker compose up -d
+```
+
+To ensure all devices on your network use Pi-Hole as their DNS server, you need to set it in your router's settings. Each router is different, but generally you're looking for the *DNS server* settings, usually located within a router's *DHCP settings*. If your router lets you set a custom DNS server, enter your Pi-Hole's IP address here, e.g. `192.168.0.50`.
+
+However, not all routers let you set a custom DNS server. If the router does let you turn off it's _DHCP server_ (this is what hands out IP addresses to network devices) then you can opt to use _Pi-Hole_ as the DHCP, or else manually adding Pi-Hole as the DNS in network settings on a per-device basis. I have no experience using Pi-Hole as the DHCP server, so I won't explain it further here.
 
 Once the Pi-Hole's IP is being broadcast as the network's DNS server by the router, your devices will gradually begin querying Pi-Hole as they renew their DHCP leases. You can usually force a renew by restarting a device, or just reboot the router and it should propagate the changes to all devices.
 
@@ -91,7 +97,7 @@ Next, we'll add the DNS records in Pi-Hole that we need for Nginx Proxy Manager.
 
 ## Adding the DNS records in Pi-Hole
 
-Go into the Pi-Hole web UI, it should be accessible via your browser at `http://<ip-address>/admin`. (That's assuming you're using the default web UI port of 80, if you changed it to something like 8888, it would instead be `http://<ip-address>:8888/admin`.)
+Go into the _Pi-Hole web UI_, it should be accessible via your browser at `http://<ip-address>/admin`. (That's assuming you're using the default web UI port of 80, if you changed it to something like 8888, it would instead be `http://<ip-address>:8888/admin`.)
 
 1. In the Pi-Hole web UI, go to **Local DNS** on the sidebar, and choose **DNS Records** from the dropdown.
 
@@ -109,45 +115,51 @@ Once you're done adding your DNS records, it's time to setup Cloudflare to get t
 
 <div id='cloudflare' />
 
-## Configuring the domain in Cloudflare
+## Add a domain in Cloudflare
 
-You'll need to create a free account on Cloudflare. (Feel free to use another DNS provider if you prefer.) You can add a domain bought from another registrar to Cloudflare by following the below instructions, or if you purchase a domain on Cloudflare it will automatically be configured.
+You'll need to create a free account on Cloudflare. (Feel free to use another DNS provider if you prefer.) You can add a domain bought from another registrar to Cloudflare by following the below instructions, or if you purchase a domain on Cloudflare it will automatically be configured and you can skip this section.
 
 To add an existing domain to Cloudflare:
 
-1. Login to Cloudflare, go to _Websites_ on the sidebar if you're not already there, and click the **Add a site** button.
+1. On the Cloudflare dashboard _Account Home_, click the **+ Add a domain** button.
 
-![Adding a website to Cloudflare.](../../img/blog/cloudflare-domain.png)
+![Adding a domain to Cloudflare.](../../img/blog/cloudflare-domain.png)
 
-2. Enter your domain and click _Add site_, scroll down and click on the _Free_ plan at the bottom, and click **Continue**.
+2. Enter your domain, leave _Quick scan for DNS records_ selected, and click **Cotinue**.
 
-![Adding a website to Cloudflare.](../../img/blog/cloudflare-free.png)
+3. Click on the **Free plan** at the bottom and click **Continue**.
 
-3. After waiting a few moments for the DNS quick scan, you should see your domain's DNS records appear. Click on **Continue**.
+![Cloudflare free plan.](../../img/blog/cloudflare-free.png)
 
-4. Cloudflare will now present you with the URLs to two _nameservers_, should be something like `adam.ns.cloudflare.com`. Leave this page open, we'll come back to it.
+4. You'll see your DNS records, if there are any. Don't worry about this right now and click on the **Continue to activate** button.
 
-5. Login to the registrar that owns your domain, go into your domain's settings, and change the DNS nameservers to both of the URLs provided by Cloudflare.
+![Cloudflare free plan.](../../img/blog/cloudflare-dns-records1.png)
 
-I tend to use _Namecheap_, so I can tell you if your domain is with them, go to _Domain List_ and click _Manage_ next to the domain you want to add. Next to _Nameservers_ choose _Custom DNS_ from the dropdown list, add the two Cloudflare nameservers, and click the _green checkmark_ to finish.
+5. You'll see a pop-up window saying you should set your DNS records now, click on **Confirm**.
 
-9. Go back at your site's _Overview_. If you still see _Complete your nameserver setup_, you can try using the _Check nameservers_ button to see if it happens faster, but in the meantime, we need to do some additional setup.
+![Cloudflare free plan.](../../img/blog/cloudflare-dns-records1.png)
 
-10. From your site's _Overview_ scroll down and you'll see a section called **API** with a _Zone ID_ and _Account ID_. Under that, click on **Get your API token**.
+6. You'll be provided some instructions to update the nameservers on your domain's registrar, open a new tab and follow those instructions. Once you've added the Cloudflare nameservers at your registrar, go back to Cloudflare and click on **Continue**.
 
-11. Click the button **Create Token**, then click the **Use template** button next to _Edit DNS Zone_.
+7. Now you'll have to wait a few minutes for the changes to propagate, then click on **Check nameservers** and reload the page. If it's still shows _Pending_ next to the domain at the top, just keep waiting. In the meantime, we need to do some additional setup.
 
-12. Under _Zone Resources_, leave the first two dropdown menus as is and in the final dropdown select your domain, then click on **Continue to summary** and finally on the **Create Token** button.
+8. From your domain's _Overview_ scroll down and you'll see a section at the bottom-right called **API** with a _Zone ID_ and _Account ID_. Under that, click on **Get your API token**.
 
-On the next page you'll see your API token, _make sure to save it somewhere_ because it will not be shown again. We will need this API token for HTTPS in the reverse proxy.
+9. Click the button **Create Token**, then click the **Use template** button next to _Edit DNS Zone_.
+
+10. Under _Zone Resources_, leave the first two dropdown menus as is and in the final dropdown select your domain, then click on **Continue to summary** and finally on the **Create Token** button.
+
+11. On the next page you'll see your **API token**, make sure to _save it somewhere because it will not be shown again_. We will need this **API token** for to provision the TLS certificates in Nginx Proxy Manager.
+
+12. Once your domain is _Active_ in Cloudflare, you can move on to the next section.
 
 <div id='nginx' />
 
 ## Install and congifure Nginx Proxy Manager
 
-If you don't have Docker installed already and need to do from scratch, I suggest using Docker's own bash script to do so by running the command `curl -fsSL get.docker.com | sudo sh`. I'll be using _Docker Compose_ to install Nginx Proxy Manager, it's my preferred way of running Docker containers.
+If you don't have Docker installed already and need to do from scratch, I suggest using Docker's own bash script to do so by running the command `curl -fsSL get.docker.com | sudo sh`. I'll be using `docker compose` to install and run _Nginx Proxy Manager_, it's the easiest way to run long-term containers.
 
-Create a `compose.yml` file, use the below as a base. (If you are also running Pi-Hole as a container, I'd suggest putting them both on one compose file.)
+Create a `compose.yaml` file, use the below as a base. (If you are also running Pi-Hole as a container, I'd suggest putting them both on one compose file.)
 
 ```yaml
 services:

@@ -11,7 +11,7 @@ tags:
 1. [Pre-Requisites and Caveats](#pre)
 2. [Setting up AdGuard Home as network DNS server](#adguard)
 3. [Adding DNS rewrites in AdGuard Home](#dns)
-4. [Configuring the domain in Cloudflare](#domain)
+4. [Add a domain in Cloudflare](#domain)
 5. [Install and configure Nginx Proxy Manager](#nginx)
 6. [References](#ref)
 
@@ -33,7 +33,7 @@ In my case, AdGuard Home already comes installed and ready to use on the GL.iNet
 
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
-> Please note, I have never run AdGuard Home in a Docker container myself, I'm just using common sense defaults to get up and running fast. Using `network_mode: host` allows all necessary network ports, including *3000* for the web UI, *53* for DNS queries, *853* for DNS over TLS, etc.
+> Please note, I have never run AdGuard Home in a Docker container myself, I'm just using common sense defaults to get up and running fast. Using `network_mode: host` allows all necessary network ports, including `53` for DNS (which **must** be available for DNS resolution to work), port `3000` for the _web UI_, , `853` for _DNS over TLS_, etc.
 >
 > Check out <a href="https://hub.docker.com/r/adguard/adguardhome" target="_blank">the Docker Hub page for AdGuard Home</a> if you want to expose specific ports, or want to make other changes not covered here.
 
@@ -51,9 +51,9 @@ services:
 
 When ready, use command `docker compose up -d` to download and run the container as a daemon in the background. (If you're already running a stack of containers, you can add the above to your existing compose file.)
 
-Next you'll need to set the IP address of AdGuard Home as the DNS server in your router. (If you're setting this up on the Flint 2, skip this part because it's automatically configured.) Each router is different, but generally you're looking for the *DNS server* settings usually located within a router's *DHCP* section. If your router lets you set a custom DNS server, enter the IP address of the machine running AdGuard Home here, e.g. `192.168.0.50`.
+Next you'll need to set the IP address of AdGuard Home as the _DNS server_ in your router. (If you're setting this up on the _Flint 2_, skip this part because it's automatically configured.) Each router is different, but generally you're looking for the *DNS server* setting, usually located within a router's *DHCP settings*. If your router lets you set a custom DNS server, enter the _IP address_ of the machine running **AdGuard Home** here, e.g. `192.168.0.50`.
 
-However, not all routers let you set a custom DNS server (this is especially common in ISP-provided routers), in which case you are out of luck -- you will have to manually set the AdGuard Home IP address as the DNS server on a per-device basis. If this is undesirable or unfeasable, and if your router lets you turn off it's DHCP server, you might consider using *Pi-Hole* instead since it can act as a DHCP server for your network.
+However, not all routers let you set a custom DNS server (this is especially common in ISP-provided routers), in which case you are out of luck -- you will have to manually set the AdGuard Home IP address as the DNS in network settings on a per-device basis. If this is undesirable or unfeasable, and if your router lets you turn off it's DHCP server, you might consider using *Pi-Hole* instead since it can act as a DHCP server for your network.
 
 Once AdGuard Home is being broadcast as the network's DNS server by the router, your devices will gradually begin querying it as they renew their DHCP leases. You can usually force a renew by restarting a device, or just reboot the router and it should propagate the changes to all devices.
 
@@ -61,7 +61,7 @@ Once AdGuard Home is being broadcast as the network's DNS server by the router, 
 
 ## Add DNS rewrites in AdGuard Home
 
-Next, we'll go into the AdGuard Home web UI and add the DNS rewrites we need for Nginx Proxy Manager. The web UI should be accessible via your browser at `http://<ip-address>:3000`.
+Next, we'll go into the _AdGuard Home web UI_ and add the DNS rewrites we need for Nginx Proxy Manager. The web UI should be accessible via your browser at `http://<ip-address>:3000`.
 
 1. In the AdGuard Home web UI, click on **Filters** on the navigation bar at the top, and choose **DNS Rewrites** from the dropdown menu.
 
@@ -79,45 +79,51 @@ That's all you have to do with AdGuard Home. Next, we'll be using Cloudflare to 
 
 <div id='cloudflare' />
 
-## Configuring the domain in Cloudflare
+## Add a domain in Cloudflare
 
-You'll need to create a free account on Cloudflare. (Feel free to use another DNS provider if you prefer.) You can add a domain bought from another registrar to Cloudflare by following the below instructions, or if you purchase a domain on Cloudflare it will automatically be configured.
+You'll need to create a free account on Cloudflare. (Feel free to use another DNS provider if you prefer.) You can add a domain bought from another registrar to Cloudflare by following the below instructions, or if you purchase a domain on Cloudflare it will automatically be configured and you can skip this section.
 
 To add an existing domain to Cloudflare:
 
-1. Login to Cloudflare, go to _Websites_ on the sidebar if you're not already there, and click the **Add a site** button.
+1. On the Cloudflare dashboard _Account Home_, click the **+ Add a domain** button.
 
-![Adding a website to Cloudflare.](../../img/blog/cloudflare-domain.png)
+![Adding a domain to Cloudflare.](../../img/blog/cloudflare-domain.png)
 
-2. Enter your domain and click _Add site_, scroll down and click on the _Free_ plan at the bottom, and click **Continue**.
+2. Enter your domain, leave _Quick scan for DNS records_ selected, and click **Cotinue**.
 
-![Adding a website to Cloudflare.](../../img/blog/cloudflare-free.png)
+3. Click on the **Free plan** at the bottom and click **Continue**.
 
-3. After waiting a few moments for the DNS quick scan, you should see your domain's DNS records appear. Click on **Continue**.
+![Cloudflare free plan.](../../img/blog/cloudflare-free.png)
 
-4. Cloudflare will now present you with the URLs to two _nameservers_, should be something like `adam.ns.cloudflare.com`. Leave this page open, we'll come back to it.
+4. You'll see your DNS records, if there are any. Don't worry about this right now and click on the **Continue to activate** button.
 
-5. Login to the registrar that owns your domain, go into your domain's settings, and change the DNS nameservers to both of the URLs provided by Cloudflare.
+![Cloudflare free plan.](../../img/blog/cloudflare-dns-records1.png)
 
-I tend to use _Namecheap_, so I can tell you if your domain is with them, go to _Domain List_ and click _Manage_ next to the domain you want to add. Next to _Nameservers_ choose _Custom DNS_ from the dropdown list, add the two Cloudflare nameservers, and click the _green checkmark_ to finish.
+5. You'll see a pop-up window saying you should set your DNS records now, click on **Confirm**.
 
-9. Go back at your site's _Overview_. If you still see _Complete your nameserver setup_, you can try using the _Check nameservers_ button to see if it happens faster, but in the meantime, we need to do some additional setup.
+![Cloudflare free plan.](../../img/blog/cloudflare-dns-records1.png)
 
-10. From your site's _Overview_ scroll down and you'll see a section called **API** with a _Zone ID_ and _Account ID_. Under that, click on **Get your API token**.
+6. You'll be provided some instructions to update the nameservers on your domain's registrar, open a new tab and follow those instructions. Once you've added the Cloudflare nameservers at your registrar, go back to Cloudflare and click on **Continue**.
 
-11. Click the button **Create Token**, then click the **Use template** button next to _Edit DNS Zone_.
+7. Now you'll have to wait a few minutes for the changes to propagate, then click on **Check nameservers** and reload the page. If it's still shows _Pending_ next to the domain at the top, just keep waiting. In the meantime, we need to do some additional setup.
 
-12. Under _Zone Resources_, leave the first two dropdown menus as is and in the final dropdown select your domain, then click on **Continue to summary** and finally on the **Create Token** button.
+8. From your domain's _Overview_ scroll down and you'll see a section at the bottom-right called **API** with a _Zone ID_ and _Account ID_. Under that, click on **Get your API token**.
 
-On the next page you'll see your API token, _make sure to save it somewhere_ because it will not be shown again. We will need this API token for HTTPS in the reverse proxy.
+9. Click the button **Create Token**, then click the **Use template** button next to _Edit DNS Zone_.
+
+10. Under _Zone Resources_, leave the first two dropdown menus as is and in the final dropdown select your domain, then click on **Continue to summary** and finally on the **Create Token** button.
+
+11. On the next page you'll see your **API token**, make sure to _save it somewhere because it will not be shown again_. We will need this **API token** for to provision the TLS certificates in Nginx Proxy Manager.
+
+12. Once your domain is _Active_ in Cloudflare, you can move on to the next section.
 
 <div id='nginx' />
 
 ## Install and congifure Nginx Proxy Manager
 
-If you don't have Docker installed already and need to do from scratch, I suggest using Docker's own bash script to do so by running the command `curl -fsSL get.docker.com | sudo sh`. I'll be using _Docker Compose_ to install Nginx Proxy Manager, it's my preferred way of running Docker containers.
+If you don't have Docker installed already and need to do it from scratch, I suggest using Docker's own install script by running the command `curl -fsSL get.docker.com | sudo sh`. I'll be using `docker compose` to install and run _Nginx Proxy Manager_, it's the easiest way to run long-term containers.
 
-Create a `compose.yml` file, use the below as a base. (If you are also running Pi-Hole as a container, I'd suggest putting them both on one compose file.)
+Create a `compose.yml` file, use the below as a base. (If you are also running AdGuard Home as a container, I'd suggest putting them both on one compose file.)
 
 ```yaml
 services:
@@ -133,20 +139,27 @@ services:
       - /opt/docker/letsencrypt:/etc/letsencrypt
     restart: unless-stopped
 ```
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
+>
+> Make sure that ports `80` and `443` are available on your server and not being used by anything else! _Nginx Proxy Manager_ needs port `80` for _HTTP_ and port `443` for _HTTPS_.
 
-This compose file uses <a href="https://docs.docker.com/engine/storage/#bind-mounts" target="_blank">bind mounts</a> to store container data in specific directories on the host, as I find this easier to migrate than <a href="https://docs.docker.com/engine/storage/#volumes" target="_blank">volumes</a>. Be sure to type in your own local path to where you want the data from Nginx Proxy Manager to live in your server, e.g. `/home/bob/docker/..` etc.
+This compose file uses <a href="https://docs.docker.com/engine/storage/#bind-mounts" target="_blank">bind mounts</a> to store container data in specific directories on the host, as I find this easier to migrate than <a href="https://docs.docker.com/engine/storage/#volumes" target="_blank">volumes</a>. (If you save your site on <a href="https://github.com" target="_blank">GitHub</a> you can just clone it and install it anywhere.)
 
-Now run the command `docker-compose up -d` (using the `-d` flag has it run in the background as a daemon) within the same directory where the compose file is located to create the container.
+Be sure to type in your own local path to where you want the data from Nginx Proxy Manager to live in your server, e.g. `/home/bob/docker/..` etc. and run the following command within the same directory where the compose file is located:
+
+```bash
+docker compose up -d
+```
 
 If you are running **Portainer** and want to create the container(s) from within it's UI -- rather than creating the compose file and using commands in the terminal -- do the following:
 
-1. In the Portainer UI, go into your environment and click **Stacks** from the sidebar.
+1. In the _Portainer_ web UI, go into your environment and click **Stacks** from the sidebar.
 
 2. Click the **+ Add Stack** button at the top-left. Name the stack, copy and paste the contents of the `compose.yaml` above into the web editor.
 
 3. Once done, scroll down and click the **Deploy the stack** button.
 
-Whichever method you use, wait a few moments while the image is downloaded and the container is created. Once it's up and running (you should not encounter any issues as long as ports **53**, **80** and **443** are not in use by another service) we can login to the Nginx Proxy Manager web UI at `http://<ip-address>:81` where the IP is the server running Nginx Proxy Manager.
+Whichever method you use, wait a few moments while the image is downloaded and the container is created. Once it's up and running we can login to the Nginx Proxy Manager web UI at `http://<ip-address>:81` where the IP is the server running Nginx Proxy Manager.
 
 ![Nginx Proxy Manager login screen.](../../img/blog/nginxproxy1.png)
 
