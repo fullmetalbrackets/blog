@@ -255,6 +255,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"how-i-setup-home-server.md": {
+	id: "how-i-setup-home-server.md";
+  slug: "how-i-setup-home-server";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "how-to-format-partiton-linux.md": {
 	id: "how-to-format-partiton-linux.md";
   slug: "how-to-format-partiton-linux";
