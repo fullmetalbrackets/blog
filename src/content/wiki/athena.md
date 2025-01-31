@@ -2,10 +2,14 @@
 title: "Athena"
 description: "Details on my home server, a Dell XPS 8920."
 pubDate: 2024-06-15
-updatedDate: 2025-01-17
+updatedDate: 2025-01-31
 tags:
   - hosts
 ---
+
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
+>
+> See <a href="/blog/how-i-setup-home-server" target="_blank">this blog post</a> for more details.
 
 ![Dell XPS 8920](../../img/wiki/xps8920.jpg)
 
@@ -14,11 +18,11 @@ tags:
 - **Intel i7-7700K** @ 4.20 GHz
 - **24 GB RAM** (4 x 6 GB DDR4)
 - **256 GB PCIe M.2 NVMe SSD** (boot drive)
-- 1 x **4 TB 3.5" HDD** (large media storage)
-- 3 x **2 TB 3.5" HDD** (large media storage)
-- 1 x **1 TB 3.5" HDD** (documents, ebooks, photos)
-- 1 x **1 TB 2.5" HDD** (backups)
-- 3 x **1 Gbps Ethernet** (extra 2 port NIC)
+- 1 x **4 TB Internal 3.5" HDD** (large media storage)
+- 3 x **2 TB Internal 3.5" HDD** (large media storage)
+- 1 x **1 TB External 3.5" HDD** (documents, ebooks, photos)
+- 1 x **1 TB External 2.5" HDD** (backups)
+- 3 x **1 Gbps Ethernet** (extra 2 port NIC -- unused)
 
 ## Information
 
