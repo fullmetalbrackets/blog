@@ -99,6 +99,78 @@ Configuration is done just by editing `/etc/fstab`. Below is the fstab entry I u
 defaults,allow_other,nonempty,use_ino,cache.files=off,movieonenosprc=true,dropcacheonclose=true,category.create=mfs,fsname=mergerfs 0 0
 ```
 
+Using SMB, I share the files so they can be accessed from any PC, tablet or phone on the network. (Including via Tailscale.) Below is my `smb.conf` file:
+
+```conf
+[global]
+   interfaces = lo enp3s0
+   bind interfaces only = yes
+   smb ports = 445
+   workgroup = WORKGROUP
+   server string = Samba %v %h
+   netbios name = athena
+   security = user
+
+   log file = /var/log/samba/%m.log
+   max log size = 50
+   printcap name = /dev/null
+   load printers = no
+
+   strict allocate = Yes
+   allocation roundup size = 4096
+   read raw = Yes
+   server signing = No
+   write raw = Yes
+   strict locking = No
+   socket options = TCP_NODELAY IPTOS_LOWDELAY SO_RCVBUF=131072 SO_SNDBUF=131072
+   min receivefile size = 16384
+   use sendfile = Yes
+   aio read size = 16384
+   aio write size = 16384
+
+[home]
+   comment = Home Directory
+   path = /home/ad
+   browseable = yes
+   writeable = yes
+   read only = no
+   force user = ad
+   force group = ad
+
+[media]
+   comment = Media Share
+   path = /home/ad/media
+   browseable = yes
+   writeable = yes
+   read only = no
+   force user = ad
+   force group = ad
+   force create mode = 0666
+   force directory mode = 0777
+
+[data]
+   comment = Data Share
+   path = /mnt/data
+   browseable = yes
+   writeable = yes
+   read only = no
+   force user = ad
+   force group = ad
+   force create mode = 0666
+   force directory mode = 0777
+
+[backup]
+   comment = Backup Share
+   path = /mnt/backup
+   browseable = yes
+   writeable = yes
+   read only = no
+   force user = ad
+   force group = ad
+   force create mode = 0666
+   force directory mode = 0777
+```
+
 <div id='tailscale'/>
 
 ## Tailscale for remote access
@@ -138,6 +210,12 @@ Then to advertise subnet routes:
 
 ```bash
 tailscale up --advertise-routes=192.168.0.0/24
+```
+
+Finally, to make my SMB shares accessible via Tailscale, I use the following command:
+
+```bash
+tailscale serve --bg --tcp 445 tcp://localhost:445
 ```
 
 Now with the Tailscale client installed on my Android phone, and toggling it on as VPN, I can access my home network on the go. I have <a href="/blog/pihole-anywhere-tailscale" target="_blank">Pi-Hole running on a Libre Potato</a> that acts as the DNS server for the Tailnet, so I get ad blocking on the go too.
