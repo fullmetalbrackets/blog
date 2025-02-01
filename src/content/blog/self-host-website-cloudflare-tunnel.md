@@ -72,7 +72,7 @@ I like to use the `mainline-alpine-slim` tag for the Nginx image because it's th
 
 Still in the site's root directory we want to create a `nginx.conf` file and add the below to it for a basic configuration:
 
-```conf
+```nginx
 worker_processes  1;
 
 events {
