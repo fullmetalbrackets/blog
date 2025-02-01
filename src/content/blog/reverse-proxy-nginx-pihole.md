@@ -21,15 +21,15 @@ tags:
 
 ## Pre-Requisites and Caveats
 
-I will only be explaining how to Nginx Proxy Manager here, as I have other blog posts about <a href="/blog/set-up-pihole-on-linux" target="_blank">installing Pi-Hole</a> and <a href="/blog/setting-up-plex-in-docker" target="_blank">installing Plex</a> that you can check out for that. OpenMediaVault is more involved since it's a whole operating system installed via an ISO, so I highly suggest you read the <a href="https://docs.openmediavault.org/en/latest/installation/index.html" target="_blank">official documentation</a> for instructions on that.
+I will only be explaining how to install and configure _Nginx Proxy Manager_, as I have other blog posts about <a href="/blog/set-up-pihole-on-linux" target="_blank">installing Pi-Hole</a> and <a href="/blog/setting-up-plex-in-docker" target="_blank">installing Plex</a> that you can check out for that. OpenMediaVault is more involved since it's a whole operating system installed via an ISO, so I highly suggest you read the <a href="https://docs.openmediavault.org/en/latest/installation/index.html" target="_blank">official documentation</a> for instructions on that.
 
-This guide will proceed with the assumption that OpenMediaVault, Plex and Navidrome are already setup, and you're now wanting to set up a reverse proxy to access them via URL rather than typing an IP address and port, since that was my scenario and I wanted to write it down for future reference.
+This guide will proceed with the assumption that _OpenMediaVault_, _Plex_ and _Navidrome_ are already setup, and you're now wanting to set up a reverse proxy to access them via URL rather than typing an IP address and port, since that was my scenario and I wanted to write it down for future reference.
 
 <div id='omv' />
 
 ## Change the port of OpenMediaVault's workbench GUI
 
-By default, OpenMediaVault's workbench GUI is accessible on port 80, but Nginx Proxy Manager needs access to port 80, so we'll need OMV workbench to be on another port. (If yours is already on another port, you can skip this section.) Changing the port is quick and easy. Login to the OVM server's terminal as `root` or a user with root privileges and use the following command:
+By default, OpenMediaVault's workbench GUI is accessible on port `80`, but Nginx Proxy Manager needs access to port `80`, so we'll need OMV workbench to be on another port. (If yours is already on another port, you can skip this section.) Changing the port is quick and easy. Login to the OVM server's terminal as `root` or a user with root privileges and use the following command:
 
 ```bash
 omv-firstaid
@@ -41,18 +41,18 @@ You'll get a menu pop-up, choose `3   Configure workbench` and hit <kbd>Enter</k
 
 ## Add the DNS records in Pi-Hole
 
-I use Pi-Hole as a network-wide DNS resolver, and you can add DNS records to point a domain at an IP address through their web UI. It's very simple.
+I use _Pi-Hole_ as a network-wide DNS resolver, and you can add DNS records to point a domain at an IP address through their web UI. It's very simple.
 
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
-> I will be using <code>*.home.arpa</code> (per the <a href="https://www.rfc-editor.org/rfc/rfc8375.html" target="_target">RFC recommendation</a> for home networks) and not worrying about HTTPS at this time, but this portion of the instructions are identical even if using your own domain with HTTPS.
+> I will be using <code>*.home.arpa</code> (per the <a href="https://www.rfc-editor.org/rfc/rfc8375.html" target="_target">RFC recommendation</a> for home networks) and not worrying about HTTPS at this time. See <a href="/blog/reverse-proxy-using-nginx-pihole-cloudflare">this blog post about setup Nginx Proxy Manager for HTTPS with a custom domain</a>.
 
 1. Click on **Local DNS** on the sidebar, then click on **DNS Records**.
-2. On the **Domain:** form, type in the URL you want to use, e.g. `subdomain.home.arpa`.
-3. On the **IP address** form, type in the IP address of the server running Nginx Proxy Manager -- in my case that's `192.168.0.100`, which I will use in all examples.
+2. On the **Domain:** form, type in the full subdomain and domain you want to use, e.g. `plex.home.arpa`.
+3. On the **IP address** form, type in the _IP address of the server running Nginx Proxy Manager_ -- in my case that's `192.168.0.100`, which I will use in all examples.
 4. Click the **Add** button and wait a moment until it shows up in the list of local domains below.
 
-Repeat this for each domain you want to add, always using the IP address of the server running Nginx Proxy Manager, **NOT** the IP of the service you are proxying. This is important! For the services I want to proxy, I did this:
+**Repeat this for each domain you want to add**, always using the IP address of the server running Nginx Proxy Manager, **NOT** the IP of the service you are proxying. This is important! For the services I want to proxy, I did this:
 
 - Domain: `omv.home.arpa`, IP Address: `192.168.0.100`
 - Domain: `plex.home.arpa`, IP Address: `192.168.0.100`
@@ -60,30 +60,30 @@ Repeat this for each domain you want to add, always using the IP address of the 
 
 ## Change the port of Pi-Hole's web UI
 
-If your Pi-Hole is on a separate host from where you will install Nginx Proxy Manager, skip this section. However if you want to run Nginx Proxy Manager on the same host running Pi-Hole, as I did, then you'll need to change the Pi-Hole's web UI port since it is also port 80 by default, which will conflict with Nginx Proxy Manager.
+If your Pi-Hole is on a separate host from where you will install Nginx Proxy Manager, skip this section. However if you want to run Nginx Proxy Manager on the same host running Pi-Hole, as I did, then you'll need to change the Pi-Hole's web UI port since it is also port `80` by default, which will conflict with Nginx Proxy Manager.
 
-If you run Pi-Hole in a docker container, simply change the container's port mapping and recreate the container. In the docker run command or compose file, change `80:80` (specifically the one left of the colon which is the host mapping) to something else, for example `8080:80`.
+If you run Pi-Hole in a docker container, simply change the container's port mapping and recreate the container. In the `docker run` command or `compose.yaml` file, change `80:80` (specifically the one left of the colon, which is the host mapping) to something else, for example `8080:80`.
 
 If you are running Pi-Hole bare metal instead of in Docker, you need to edit the Lighttpd configuration file at `/etc/lighttpd/lighttpd.conf` and change the line `server.port = 80` to your desired port, e.g. `server.port = 8080`.
 
 <div id='npm' />
 
-## Install Nginx Proxy Manager
+## Install and run Nginx Proxy Manager
 
-I'll be using _Docker Compose_ to install Nginx Proxy Manager, it's my preferred way of running Docker containers. Most likely the Compose plugin was installed already when you installed Docker, but if you not use `sudo apt install docker-compose-plugin` to install it.
+Nginx Proxy Manager runs as a Docker container, so if you haven't already make sure you install Docker. You can do so via <a href="https://wiki.omv-extras.org" target="_blank">OMV-Extras</a> or just SSH into the server running OpenMediaVault and use this command:
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
-> If you don't have Docker installed already and need to do from scratch, I suggest using Docker's own bash script to do so by running the command `curl -fsSL get.docker.com | sudo sh`.
+```bash
+curl -fsSL get.docker.com | sudo sh
+```
 
-Create a `docker-compose.yml` file and insert the following:
+I'll be using `docker compose` to install Nginx Proxy Manager, it's my preferred way of running Docker containers. 
+
+Create a `compose.yml` file and insert the following (or add it to an existing file):
 
 ```yaml
-version: "3.7"
-
 services:
-  Nginx-proxy-manager:
-    container_name: Nginx-proxy-manager
+  nginx-proxy-manager:
+    container_name: nginx-proxy-manager
     image: "jc21/Nginx-proxy-manager:latest"
     ports:
       - "80:80"
@@ -95,14 +95,14 @@ services:
     restart: unless-stopped
 ```
 
-Be sure to type in your own local path to where you want Nginx Proxy Manager's directory to live in your server, e.g. `/opt/docker/nginxproxymanager/data`, etc. Using volumes as shown in the compose file example above makes your configuration files persistent and easy to migrate, so I highly recommend it.
+_Be sure to type in your own local paths_ to where you want Nginx Proxy Manager's directory to live in your server, e.g. `/opt/docker/nginxproxymanager/data`, etc. Using volumes as shown in the compose file example above makes your configuration files persistent and easy to migrate, so I highly recommend it.
 
-Now run the command `docker-compose up -d` (using the `-d` flag has it run in the background as a daemon) within the same directory where the compose file is located to create the container.
+Now run the command `docker compose up -d` (using the `-d` flag has it run in the background as a daemon) within the same directory where the compose file is located to create the container.
 
 If you are running **Portainer** and want to create the container from within it's UI -- rather than creating the compose file and using commands in the terminal -- do the following:
 
 1. In the Portainer UI, go into your environment and click **Stacks** from the sidebar.
-2. Click the **+ Add Stack** button at the top-left. Name the stack, copy and paste the contents of the `docker-compose.yml` above into the web editor.
+2. Click the **+ Add Stack** button at the top-left. Name the stack, copy and paste the contents of the `compose.yaml` above into the web editor.
 3. Once done, scroll down and click the **Deploy the stack** button.
 
 Whichever method you use, wait a few moments while the image is downloaded and the container is created. Once it's up and running (you should not encounter any issues as long as ports **80** and **443** are not in use by another service) move on to the next part.
@@ -159,7 +159,7 @@ To check the logs in Portainer:
 
 ## Related Articles
 
-> [Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS](/blog/set-up-pihole-on-linux)
+> [Setting up a reverse proxy for HTTPS with a custom domain using Nginx Proxy Manager, Pi-Hole and Cloudflare](/blog/reverse-proxy-using-nginx-pihole-cloudflare)
 
 > [OpenMediaVault Quick Reference](/blog/openmediavault-quick-reference)
 
