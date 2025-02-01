@@ -34,7 +34,7 @@ First, requirements:
 
 4. _A Linux server_. I specifically use _Debian 12_, but these instructions should work for any distro. This might be possible on Windows using WSL2 and Docker Desktop, but I wouldn't suggest it.
 
-5. Though they can be run bare metal, I like to run both _Cloudflare Tunnel_ and _Ngnix_ as Docker containers so that everything is portable and easily repeatable. So you' wi'll need to install Docker and all it's dependencies, which I'll explain below.
+5. Though they can be run bare metal, I like to run both _Cloudflare Tunnel_ and _Ngnix_ as Docker containers so that everything is portable and easily repeatable. So you'll need to install Docker and all it's dependencies, which I'll explain below.
 
 <div id='site' />
 
