@@ -2,7 +2,7 @@
 title: "Complete guide to self-hosting a website through Cloudflare Tunnel"
 description: "Self-hosting a static web blog has never been easier thanks to Cloudflare Tunnel. In this guide I explain how to expose a static website hosted on machine inside my network to the internet using Nginx as webserver and securing it with various free Cloudflare services."
 pubDate: 2023-12-29
-updatedDate: 2025-01-31
+updatedDate: 2025-02-01
 tags:
   - cloudflare
 ---
@@ -61,7 +61,7 @@ services:
   site:
     restart: unless-stopped
     container_name: site
-    image: nginx:alpine-slim-stable
+    image: nginx:mainline-alpine-slim
     volumes:
       - /home/bob/sites/my-cool-blog/dist/:/usr/share/nginx/html/
     ports:
@@ -140,26 +140,32 @@ Create your <a href="https://dash.cloudflare.com/sign-up" target="_blank">free C
 
 ## Create and configure the Cloudflare tunnel
 
-From the Cloudflare dashboard Home page, click on **Zero Trust** on the sidebar to go to the **Zero Trust dashboard**, then do the following:
+In the Cloudflare dashboard, from your domain's _Overview_ page, click on **Access** on the sidebar, and then on the next page click **Launch Zero Trust**. Once you're in the Zero Trust dashboard, do the following:
 
-1. On the sidebar, go to **Network** -> **Tunnels** and click the **Create a tunnel** button.
+1. On the sidebar, go to **Network** and choose **Tunnels** from the dropdown.
 
-2. Choose **Cloudflared** as the connector and click **Next**, give it a name and, and click **Save tunnel**.
+![Creating a Cloudflare Tunnel.](../../img/blog/cloudflare-tunnel1.png)
 
-![Choosing a connector type.](../../img/blog/cloudflare-tunnel1.png)
+2. Click on **Add a tunnel**, then on the next page choose **Select Cloudflared**.
 
-3. The next page will provide a docker command to install and run the `cloudflared` container.
+![Choosing a connector type.](../../img/blog/cloudflare-tunnel2.png)
 
-![Docker run command for cloudflared.](../../img/blog/cloudflare-tunnel2.png)
+3. On the following page name your tunnel, then click **Save tunnel**.
 
-4. Rather than copying and pasting the provided docker run command, we'll use **Docker Compose** to run `cloudflared`. All we will need is the Cloudflare tunnel token provided along with the docker run command. Open the `docker-compose.yaml` file and add the following so it looks like the below:
+![Docker run command for Cloudflared.](../../img/blog/cloudflare-tunnel3.png)
+
+4. Finally you'll be given a `docker run` command for _cloudflared_, but we'll use `docker compose` instead. All we will need from here is the _tunnel token_.
+
+![Docker run command for Cloudflared.](../../img/blog/cloudflare-tunnel4.png)
+
+5. Open the `compose.yaml` file we created earlier and edit it to look like the below:
 
 ```yaml
 services:
   site:
     restart: unless-stopped
     container_name: site
-    image: nginx:alpine-slim-stable
+    image: nginx:mainline-alpine-slim
     volumes:
       - /home/bob/sites/my-cool-blog/dist/:/usr/share/nginx/html/
     ports:
@@ -174,39 +180,57 @@ services:
       - TUNNEL_TOKEN=
 ```
 
-5. Add the **Cloudflare tunnel token** to the `TUNNEL_TOKEN=` environmental variable, save the file, and use the command `docker-compose up -d`. Once the container is up and running, check the Cloudflare configure tunnel page, your connector status be **Connected**.
+6. Add the _tunnel token_ to the `TUNNEL_TOKEN=` environmental variable, then save the file and let's run docker compose again. (It will automatically add `cloudflared` and restart the `nginx` container.)
 
-![Connector showing status Connected.](../../img/blog/cloudflare-tunnel3.png)
+```bash
+docker compose up -d
+```
 
-6. Once the tunnel shows as Healthy, click the **Next** button. Now you'll be in the _Route tunnel_ page, under the **Public Hostnames** tab do the following:
+7. Once the container is up and running, at the bottom your connector status should be **Connected**. Once the tunnel is Connected, click the **Next** button.
 
-![Configuring the Cloudflare tunnel.](../../img/blog/cloudflare-tunnel4.png)
+![Connector showing status Connected.](../../img/blog/cloudflare-tunnel5.png)
 
-7. For our purposes (hosting a site at the root of `your-domain.com`) you should leave the **Subdomain** empty. If you prefer for your site to be accessible at, say, `blog.your-domain.com` then set that subdomain here.
+6.  Now you'll be in the _Route Traffic_ page, under the **Public Hostnames** we have to add some things. For our purposes (hosting a site at the root of `your-domain.com`) you should leave the **Subdomain** empty. If you prefer for your site to be accessible at, say, `blog.your-domain.com` then set that subdomain here.
 
-8. For **Domain** type in your domain that was previously added to Cloudflare.
+7. For **Domain** type in `your-domain.com`.
 
-9. Leave the **Path** empty, unless you want the URL to be, for example, `your-domain.com/blog`.
+9. Leave the **Path** empty, unless you want the URL to be something like `your-domain.com/blog`.
 
-10. Under _Service_, for **Type** select **HTTP** (not HTTPS) from the dropdown menu.
+10. Under _Service_, for **Type** select `HTTP` (not HTTPS) from the dropdown menu.
 
-11. For **URL**, put the full LAN (internal) IP address of the machine that will host the site, and append the port you set for the docker container -- for example `192.168.1.100:8888`. (Don't use `localhost:8888` despite what the example says.)
+11. For **URL**, put the full LAN (internal) IP address of the machine that will host the site, and append the port you set for the docker container -- for example `192.168.1.100:8888`. (Don't use `localhost:8888` despite what the example says, that never works for me.)
+
+![Route traffic page.](../../img/blog/cloudflare-tunnel6.png)
 
 12. When done filling everything in, click **Save**.
 
 Now you will be back at the **Tunnels** page. Under **Your tunnels**, the tunnel you just created should appear and still show **Healthy** status.
 
-![Tunnel showing Healthy status.](../../img/blog/cloudflare-tunnel5.png)
+![Tunnel showing Healthy status.](../../img/blog/cloudflare-tunnel7.png)
 
-Now you should be able to visit `https://your-domain.com` to hit your website!
+Finally, we need to configure SSL for the website!
+
+1. From the _Cloudflare Zero Trust_ dashboard, click on the **back arrow** next to your account name at the top of the sidebar to return to the regular Cloudflare dashboard.
+
+2. Click on your domain and then click on **SSL/TLS** on the sidebar.
+
+3. You'll now be in the _SSL/TLS Overview_, click the **Configure** button.
+
+4. Select _Automatic SSL/TLS (default)_ then click **Save**.
+
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
+>
+> If you run into any HTTPS errors when accessing your site, come back to this page and try instead to select _Custom SSL/TLS_ and choose **Full (Strict)** or **Full** instead.
+
+Now you should be able to visit `https://your-domain.com` and see your website!
 
 <div id='redirect'>
 
 ## Set up a redirect
 
-Right now, going to `your-domain.com` should work, but you may notice that going to `www.your-domain.com` does not. Normally you'd set up an A record in your webhost's DNS settings, but Cloudflare Tunnels work a little differently -- they don't use A records. Instead, we'll set up a CNAME for `www`, point it at the tunnel ID, and create a redirect rule.
+Right now, going to `your-domain.com` should work, but you may notice that going to `www.your-domain.com` does not. Normally you'd set up an _A record_ in your webhost's DNS settings, but Cloudflare Tunnels work a little differently -- they don't use A records. Instead, we'll set up a _CNAME_ for `www`, point it at the tunnel ID, and create a redirect rule.
 
-First, let's add the **DNS record**.
+First, let's add the _CNAME record_.
 
 1. On the Cloudflare dashboard, click on your domain, then on the sidebar open the **DNS** dropdown and click **Records**.
 
