@@ -2,7 +2,7 @@
 title: "Setup a Cloudflare Tunnel to securely access self-hosted apps with a domain from outside the home network"
 description: "Cloudflare Tunnels have been around for a few years and are well regarded alternatives for VPNs or port-forwarding on a router. They are often used to expose access to self-hosted apps from outside the local network with minimal config or hassle. Here's how it's done."
 pubDate: 2023-07-20
-updatedDate: 2024-07-12
+updatedDate: 2025-02-01
 tags:
   - cloudflare
 ---
@@ -14,71 +14,127 @@ tags:
 3. [Create the Cloudflare Tunnel](#tunnel)
 4. [Configure OAuth with Google](#oauth)
 5. [Create an access policy](#policy)
-6. [References](#ref)
+6. [Use WAF to whitelist your IP and block all others](#waf)
+7. [References](#ref)
 
 <div id="pre" />
 
 ## Pre-Requisites
 
-This guide is assumes you already have a _Linux_ machine with Docker installed and a container you want to expose up and running. For the examples below I'll be using _Navidrome_ because that's what I set this up for in the first place and it just works. However, most self-hosted apps should work the same if you access it at, for example, `192.168.0.200:4533`.
+This guide is assumes you already have a _Linux_ machine with Docker installed and a container you want to expose up and running. For the examples below I'll be using _Navidrome_ because that's what I set this up for in the first place and it just works. However, most self-hosted apps should work the same if you access it at, for example, `192.168.0.100:4533`.
 
 Apps that have to be accessed through a specific path (like `/admin` or `/web`) and have no redirect from the index page may act weird when it comes time to proxy the tunnel. I always run into this issue with _Ubooquity_ in particular and haven't figured out how to fix it. I won't be trying to deal with that here.
 
 The process of setting up and securing a Cloudflare Tunnel is a lot of steps, so I'm basically paraphrasing the <a href="https://developers.cloudflare.com/cloudflare-one" target="_blank">Cloudflare Zero Trust Docs</a>. When in doubt, refer back to them.
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
-> I usually try to include images when making guides, but this is already going to be huge and I try to be as terse as possible. As a result there's no pretty pictures in this post, just a lot of reading step-by-step instructions on configuring various settings.
-
 <div id="domain" />
 
 ## Add a domain to Cloudflare
 
-This assumes you already own a domain from another registrar, like Namecheap or Porkbun, and just want to add it to Cloudflare. Alternately, you can register a new domain with Cloudflare, but I'm not going over how to do that here. It's pretty easy, anyway.
+If you purchased your domain with Cloudflare, you can skip this section since it will be auto-configured. If already own a domain from another registrar, like Namecheap or Porkbun, follow these instructions to add it to Cloudflare:
 
-1. Login to Cloudflare, go to _Websites_ on the sidebar if you're not already there, and click the _Add a site_ button.
+1. Log into Cloudflare and you'll be in _Account Home_, click the **+ Add a domain** button.
 
-2. Enter your domain and click _Add site_, then click on the _Free_ plan at the bottom and click _Continue_.
+2. Enter your domain, leave _Quick scan for DNS records_ selected, and click **Cotinue**.
 
-3. The waiting a few moments for the DNS quick scan, you should see your domain's DNS records appear. Click on _Continue_.
+![Adding a domain to Cloudflare.](../../img/blog/cloudflare-domain.png)
 
-4. Cloudflare will now present you with the URLs to two _nameservers_, should be something like `adam.ns.cloudflare.com`. Leave this page open, we'll come back to it.
+3. Click on the **Free plan** at the bottom and click **Continue**.
 
-5. Login to the registrar that owns your domain, go into your domain's settings, and change the DNS nameservers to both of the URLs provided by Cloudflare.
+![Cloudflare free plan.](../../img/blog/cloudflare-free.png)
 
-I tend to use _Namecheap_, so I can tell you if your domain is with them, go to _Domain List_ and click _Manage_ next to the domain you want to add. Next to _Nameservers_ choose _Custom DNS_ from the dropdown list, add the two Cloudflare nameservers, and click the _green checkmark_ to finish.
+4. You'll see your DNS records, if there are any. Don't worry about this right now and click on the **Continue to activate** button.
 
-6. Back in Cloudflare, click _Done, check nameservers_. It could take up to 24 hours for the change to propagate, but usually it will take less than an hour, and often less than 20 minutes. In the meantime, follow the _Quick Start Guide_.
+![Cloudflare free plan.](../../img/blog/cloudflare-dns-records1.png)
 
-7. Leave _Automatic HTTPS Rewrites_ checked as-is, and activate the checkbox for _Always Use HTTPS_.
+5. You'll see a pop-up window saying you should set your DNS records now, click on **Confirm**.
 
-8. Leave _Brotli_ on. On the summary, click _Finished_.
+![Add records pop-up.](../../img/blog/cloudflare-dns-records2.png)
 
-9. You'll be back at your site's Overview. If you still see `Complete your nameserver setup`, you can try using the _Check nameservers_ button. In my experience that makes the DNS changes occur within a few minutes.
+6. Now you'll be provided some instructions to update the nameservers on your domain's registrar, _open a new tab and follow those instructions_. Once you've added the Cloudflare nameservers at your registrar, go back to Cloudflare and click on **Continue**.
 
-Once your DNS changes have propagated, the Overview page will say: _"Great news! Cloudflare is now protecting your site!"_ That means you're good to go.
+7. Now you'll have to wait a few minutes for the changes to propagate, then click on **Check nameservers** and reload the page. If it's still shows _Pending_ next to the domain at the top, just keep waiting and reload again after a few more minutes.
+
+8. Once the domain is _Active_, you're ready
 
 <div id="tunnel" />
 
 ## Create the Cloudflare Tunnel
 
-Go to the Cloudflare Zero Trust dashboard by clicking _Access_ on the sidebar, then click on _Launch Zero Trust_ to open it in a new tab. Once at the dashboard, do the following:
+In the Cloudflare dashboard, from your domain's _Overview_ page, click on **Access** on the sidebar, and then on the next page click **Launch Zero Trust**. Once you're in the Zero Trust dashboard, do the following:
 
-1. On the sidebar, go to _Network_ -> _Tunnels_.
+1. On the sidebar, go to **Network** and choose **Tunnels** from the dropdown.
 
-2. Click the _Create a tunnel_ button, give it a name, and click _Save tunnel_.
+![Creating a Cloudflare Tunnel.](../../img/blog/cloudflare-tunnel1.png)
 
-3. The next page gives you instructions on how to run the connector. It varies based on how you want to do it, but is self-explanatory. Copy and paste the command provided into your server's terminal to run `cloudflared`. Give it a minute or two, then check Cloudflare -- reload the page if necessary or wait a few minutes, your tunnel will eventually show as <em>Healthy status</em>. Once it does, move on to the next step.
+2. Click on **Add a tunnel**, then on the next page choose **Select Cloudflared**.
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
-> If want to run `cloudflared` as a container with **Docker Compose** (rather than the `docker run` command), copy and paste the command into <a href="https://www.composerize.com" target="_blank">Composerize</a>. Or you can just <a href="https://gist.github.com/fullmetalbrackets/1b762a2688b81ce6b6f36fd174b335a1" target="_blank">check out this gist I made</a> to run Navidrome and Cloudflared together as a stack, which is how I have it set up. (That way I can start up and take down the stack as needed with `docker compose up` and `docker compose down`, or with one click through <em>Portainer</em>.)
+![Choosing a connector type.](../../img/blog/cloudflare-tunnel2.png)
 
-4. Next you'll be on the _Route traffic_ page. Under _Public hostnames_ type in your sub-domain (i.e. `music`) and then your domain. Below that under _Services_, for _Type_ choose _HTTP_ (*not HTTPS*), and for _URL_ enter your local IP address and port of the service you''re exposing, e.g. `192.168.0.200:4533`. To finish, click the _Save tunnel_ button.
+3. On the following page name your tunnel, then click **Save tunnel**.
 
-5. Now, to verify everything is working as intended, go to _DNS_ -> _Records_ on the sidebar. You should see a `CNAME` record pointing the `music` sub-domain to a URL like `5e126941-1234-8e13-4d80-02fe21084a62.cfargotunnel.com`. (The alpha-numeric string is your tunnel ID.)
+![Docker run command for Cloudflared.](../../img/blog/cloudflare-tunnel3.png)
 
-You should be done! Go to `https://music.your-domain.com` and you should reach the Navidrome UI! However, you're not the only one with access, technically anyone with the URL can reach it unabated.
+4. Next you'll be given a `docker run` command to install and run the _cloudflared_ connector. You can just copy and paste this into your terminal to run the tunnel, but if you prefer to use `docker compose` instead (and I do), all we will need from here is the _tunnel token_.
+
+![Docker run command for Cloudflared.](../../img/blog/cloudflare-tunnel4.png)
+
+5. To run this in `docker compose`, first create a `compose.yaml` file and we'll add both _Navidrome_ and _Cloudflare Tunnel_ to it:
+
+```yaml
+services:
+  tunnel:
+    container_name: tunnel
+    image: cloudflare/cloudflared
+    command: tunnel run
+    environment:
+      - TUNNEL_TOKEN=<tunnel-token>
+    restart: unless-stopped
+
+  navidrome:
+    container_name: navidrome
+    image: deluan/navidrome:latest
+    volumes:
+      - <path-to-local-directory>/navidrome:/data
+      - <path-to-local-directory>/music:/music:ro
+    environment:
+      ND_BASEURL: ""
+      ND_SCANSCHEDULE: 1h
+      ND_SESSIONTIMEOUT: 24h
+      ND_LOGLEVEL: info
+    network_mode: host
+    depends_on:
+      - tunnel
+    restart: unless-stopped
+```
+
+6. Add the _tunnel token_ from Cloudflare to the `TUNNEL_TOKEN=` environmental variable in the compose file. Also customize your local data and music directories for Navidrome. Save the file and use the below command:
+
+```bash
+docker compose up -d
+```
+
+7. Once the containers are up and running, you should see in Cloudflare that your _connector status_ at the bottom is **Connected**. Once the tunnel is Connected, click the **Next** button.
+
+![Connector showing status Connected.](../../img/blog/cloudflare-tunnel5.png)
+
+6.  Now you'll be in the _Route Traffic_ page, under the **Public Hostnames** we have to add some things. First, add your desired **Subdomain**, for example, `music`. (You will then access Navidrome at `https://music.your-domain.com`.)
+
+7. For **Domain** type in `your-domain.com`. (Make sure the domain is already _active_ in Cloudflare!) Leave the **Path** empty.
+
+8. Under _Service_, for **Type** select `HTTP` (not HTTPS) from the dropdown menu.
+
+9. For **URL**, put the full LAN (internal) IP address of the machine that will host the site, and append the Navidrome network port -- for example `192.168.0.100:4533`. (Don't use `localhost:4533` despite what the example says, that never works for me.)
+
+![Route traffic page.](../../img/blog/cloudflare-tunnel6.png)
+
+12. When done filling everything in, click **Save**.
+
+Now you will be back at the **Tunnels** page. Under _Your tunnels_, the tunnel you just created should show **Healthy** status.
+
+![Tunnel showing Healthy status.](../../img/blog/cloudflare-tunnel7.png)
+
+All done! Go to `https://music.your-domain.com` and you should reach the Navidrome UI! However, you're not the only one with access, technically anyone with the URL can reach it unabated.
 
 Although Navidrome, like many self-hosted services, has username and passwords for login, you can also put authentication services in front of the tunnel to stop unauthorized visitors from even reaching your app. Read on...
 
@@ -88,7 +144,9 @@ Although Navidrome, like many self-hosted services, has username and passwords f
 
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
-> You'll need a Google account to set this up, which you already do with Gmail. You'll be using that email to do some stuff on **Google Cloud Platform**. It's totally free for what we're doing.
+> It's been a while since I wrote this post and I don't use this set up anymore (<a href="/blog/tailscale" target="_blank">I switched to Tailscale</a>),  so if the rest of the guide doesn't work for you please <a href="mailto:contact@fullmetalbrackets.com?subject=The oauth section of your Cloudflare Tunnel guide is out of date!">let me know</a> and I'll update it in the future!
+
+You'll need a Google account to set this up, which you already do with Gmail. You'll be using that email to do some stuff on **Google Cloud Platform**. It's totally free for this use case.
 
 1. Go to <a href="https://cloud.google.com" target="_blank">Google Cloud Platform</a> and go to _Console_ at the top-right. On the next page click the _dropdown menu_ at the top-left and go to _New Project_. Name the project and click _Create_.
 
@@ -156,14 +214,38 @@ Now that the OAuth provider is set up, we need make use of it with <a href="http
 
 12. Unless you know what you're doing, leave the all the additional settings alone. Just scroll to the bottom and click the _Add application_ button to finish.
 
-### Success!
-
 Now when you go to `https://music.your-domain.com` you should be met with a Google account login page. Login with the email you added and you should hit the Navidrome UI.
 
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
 > If you get any DNS errors when trying to access your domain after adding OAuth with the above steps, but didn't have any issues before that, you may be hitting your ad blocker. I didn't have issues with Pi-Hole, but when testing behind NextDNS I did get `NXDOMAIN` errors.<br><br>
 > <a href="https://help.nextdns.io/t/p8h5c71/keep-getting-nxdomain-for-well-known-sites" target="_blank">See this post</a> on NextDNS Help Center. <em>TLDR:</em> Try disabling DNSSEC for your domain on the Cloudflare dashboard and see if that resolves the issue. (I have not tested it.)
+
+<div id="waf" />
+
+## Use WAF to whitelist your IP and block all others
+
+For even more security, or maybe even in lieu of setting up Oauth, you can use Cloudflare's _Web Application Firewall_ to whitelist specific IP addresses and block the rest. This is totally optional, but I will show you how to do it.
+
+1. On the Cloudflare dashboard, go to your domain, then click **Security** on the sidebar and choose **WAF** from the dropdown.
+
+2. You'll be in WAF's _Managed rules_ page, click on **Custom rules**.
+
+3. In the Custom rules page, scroll down to _Rules templates_, look for _Zone lockdown_ and click on **Use template**.
+
+![Zone lockdown template.](../../img/blog/cloudflare-waf1.png)
+
+4. The template have two rules. On the first one leave the _Field_ as **IP Source Address**, change _Operator_ to **is not equal to**, and for _Value_ enter your public IP address. (You can <a href="https://icanhazip.com" target="_blank">find out what it is here.</a>)
+
+5. Press the **X** next to the second _URI Path rule_ to delete it, we don't need it. Scroll down.
+
+6. Under _Then take action..._ choose **Block** as the action. Now scroll to the bottom and click on **Deploy**.
+
+![Editing the template.](../../img/blog/cloudflare-waf2.png)
+
+Now only your IP address should have access to `music.your-domain.com`. Be aware that if your IP address changes (and is common with residential ISPs unless you have a static IP), you will need to keep track of that and update the rule accordingly.
+
+It is possible to <a href="https://developers.cloudflare.com/dns/manage-dns-records/how-to/managing-dynamic-ip-addresses" target="_blank">dynamically update DNS records in Cloudflare</a> via API or third-party tools, but I have not gone down this particular rabbit hole, so you're on your own there for now.
 
 ## Related Articles
 
