@@ -2,7 +2,7 @@
 title: "Reverse proxy OpenMediaVault, Plex and Navidrome with Nginx Proxy Manager and Pi-Hole"
 description: "My scenario was simple: I wanted to access the web GUIs of OpenMediaVault, Plex and Navidrome via a URL like plex.home.arpa without having to remember IPs and ports, inside my home network only and without the need for SSL/HTTPS. Nothing fancy, nothing accessible from outside my house. Here's how I did that with Nginx Proxy Manager as the reverse proxy and Pi-Hole as the DNS."
 pubDate: 2023-07-15
-updatedDate: 2024-10-17
+updatedDate: 2025-02-01
 tags:
   - self-hosting
 ---
