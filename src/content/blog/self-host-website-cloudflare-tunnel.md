@@ -100,9 +100,11 @@ http {
 }
 ```
 
-If you changed the local port in the `compose.yaml` file, make sure you change it in the `nginx.conf` too.
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
+>
+> If you changed the local port in the `compose.yaml` file, make sure you change it in the `nginx.conf` too.
 
-Finally, still in the site's root directory, yse the command `docker compose up -d` to download the Nginx container image and run the webserver using the parameters from the compose file and configuration file. Based on the settings above, _Nginx_ will serve the static files from **/dist** directory on the machine's **network port 8888**. You should be able to access it by going to it's IP address and adding the port, for example `http://192.168.1.100:8888`.
+Finally, still in the site's root directory, use the command `docker compose up -d` to download the Nginx container image and run the webserver using the parameters from the compose file and configuration file. Based on the settings above, _Nginx_ will serve the static files from **/dist** directory on the machine's **network port 8888**. You should be able to access it by going to it's IP address and adding the port, for example `http://192.168.1.100:8888`.
 
 If you only want to self-host a site that you can access from within your home network, and you don't want to expose it to the internet, then you're done! Otherwise, read on to expose it to the internet with a Cloudflare Tunnel, without need to open ports on your router.
 
@@ -114,9 +116,9 @@ Create your <a href="https://dash.cloudflare.com/sign-up" target="_blank">free C
 
 1. On the Cloudflare dashboard _Account Home_, click the **+ Add a domain** button.
 
-![Adding a domain to Cloudflare.](../../img/blog/cloudflare-domain.png)
-
 2. Enter your domain, leave _Quick scan for DNS records_ selected, and click **Cotinue**.
+
+![Adding a domain to Cloudflare.](../../img/blog/cloudflare-domain.png)
 
 3. Click on the **Free plan** at the bottom and click **Continue**.
 
@@ -128,9 +130,9 @@ Create your <a href="https://dash.cloudflare.com/sign-up" target="_blank">free C
 
 5. You'll see a pop-up window saying you should set your DNS records now, click on **Confirm**.
 
-![Cloudflare free plan.](../../img/blog/cloudflare-dns-records1.png)
+![Add records pop-up.](../../img/blog/cloudflare-dns-records2.png)
 
-6. You'll be provided some instructions to update the nameservers on your domain's registrar, open a new tab and follow those instructions. Once you've added the Cloudflare nameservers at your registrar, go back to Cloudflare and click on **Continue**.
+6. Now you'll be provided some instructions to update the nameservers on your domain's registrar, _open a new tab and follow those instructions_. Once you've added the Cloudflare nameservers at your registrar, go back to Cloudflare and click on **Continue**.
 
 7. Now you'll have to wait a few minutes for the changes to propagate, then click on **Check nameservers** and reload the page. If it's still shows _Pending_ next to the domain at the top, just keep waiting and reload again after a few more minutes.
 
@@ -216,11 +218,15 @@ Finally, we need to configure SSL for the website!
 
 3. You'll now be in the _SSL/TLS Overview_, click the **Configure** button.
 
+![SSL/TLS encryption page.](../../img/blog/cloudflare-ssl1.png)
+
 4. Select _Automatic SSL/TLS (default)_ then click **Save**.
+
+![Configure encryption mode.](../../img/blog/cloudflare-ssl2.png)
 
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
-> If you run into any HTTPS errors when accessing your site, come back to this page and try instead to select _Custom SSL/TLS_ and choose **Full (Strict)** or **Full** instead.
+> If you run into any HTTPS errors later when trying to access your site, come back to this page and try instead to select _Custom SSL/TLS_ and choose **Full (Strict)** or **Full** instead. _Automatic_ should work in most cases, though.
 
 Now you should be able to visit `https://your-domain.com` and see your website!
 
