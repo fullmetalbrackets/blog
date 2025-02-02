@@ -270,9 +270,9 @@ ansible-playbook bootstrap.yml
 
 ## Related Articles
 
-> [Using MergerFS to combine multiple hard drives into one unified media storage](/blog/two-drives-mergerfs)
+> [Using MergerFS to combine multiple hard drives into one unified media storage](/blog/two-drives-mergerfs/)
 
-> [Mounting (either internal or external) hard drives in Linux](/blog/mounting-hard-drives-in-linux)
+> [Mounting (either internal or external) hard drives in Linux](/blog/mounting-hard-drives-in-linux/)
 
 <div id='ref'/>
 

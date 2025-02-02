@@ -111,9 +111,9 @@ Once the container is up and running, go to `http://ip-address:8080` in your web
 
 ## Related Articles
 
-> [Setup self-hosted Plex Media Server in Docker](/blog/setting-up-plex-in-docker)
+> [Setup self-hosted Plex Media Server in Docker](/blog/setting-up-plex-in-docker/)
 
-> [Setup self-hosted Jellyfin Media Server in Docker](/blog/setting-up-jellyfin-in-docker)
+> [Setup self-hosted Jellyfin Media Server in Docker](/blog/setting-up-jellyfin-in-docker/)
 
 <div id='ref'/>
 

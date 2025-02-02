@@ -88,9 +88,9 @@ Now you should be able to access the share from a Windows PC on the same network
 
 ## Related Articles
 
-> [Mounting (either internal or external) hard drives in Linux](/blog/mounting-hard-drives-in-linux)
+> [Mounting (either internal or external) hard drives in Linux](/blog/mounting-hard-drives-in-linux/)
 
-> [Set up NFS Shares between Linux hosts](/blog/setup-nfs-shares-linux)
+> [Set up NFS Shares between Linux hosts](/blog/setup-nfs-shares-linux/)
 
 <div id='ref' />
 

@@ -150,7 +150,7 @@ Using the `-d` flag will "detach" the process so it's in the background. You wil
 
 ## Related Articles
 
-> [Setup Watchtower to auto-update Docker containers with notifications](/blog/watchtower-notifications)
+> [Setup Watchtower to auto-update Docker containers with notifications](/blog/watchtower-notifications/)
 
 > [Setup Prometheus, Node Exporter, Cadvisor and Grafana in Docker](/blog/setup-prometheus-cadvisor-grafana/)
 

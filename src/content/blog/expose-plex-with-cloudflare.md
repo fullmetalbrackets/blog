@@ -258,7 +258,7 @@ Now your external users can access your library through their Plex apps too.
 
 There's always multiple ways to do things, and said I explained at the start, this method of sharing your Plex library may not be best. It's just what works for me, for now, so I figured I'd share it for others to try out. Some other alternatives that I've read about, but have not tried myself:
 
-- <a href="https://tailscale.com" target="_blank">Tailscale</a>: Tailscale is a Wireguard-based overlay network for connecting devices across different networks. <a href="/blog/tailscale" target="_blank">I already use Tailscale to access Plex from my phone and tablet when not home</a>, but I have not set it up for other users. It requires a machine running Tailscale by each external user, then inviting them to your tailnet and using ACLs to limit access only to Plex. There's also the beta feature <a href="https://tailscale.com/kb/1223/funnel" target="_blank">Funnel</a>, which exposes a service similar to a Cloudflare Tunnel and does not require the user to run Tailscale, but <a href="https://www.reddit.com/r/Tailscale/comments/188jvlr/is_funnels_really_slow/" target="_blank">the speed may not be great</a> and funnel traffic <a href="https://tailscale.com/kb/1223/funnel#limitations" target="_blank">is subject to bandwidth limits</a>. (Though I can't find what those limits are anywhere.)
+- <a href="https://tailscale.com" target="_blank">Tailscale</a>: Tailscale is a Wireguard-based overlay network for connecting devices across different networks. <a href="/blog/tailscale/" target="_blank">I already use Tailscale to access Plex from my phone and tablet when not home</a>, but I have not set it up for other users. It requires a machine running Tailscale by each external user, then inviting them to your tailnet and using ACLs to limit access only to Plex. There's also the beta feature <a href="https://tailscale.com/kb/1223/funnel" target="_blank">Funnel</a>, which exposes a service similar to a Cloudflare Tunnel and does not require the user to run Tailscale, but <a href="https://www.reddit.com/r/Tailscale/comments/188jvlr/is_funnels_really_slow/" target="_blank">the speed may not be great</a> and funnel traffic <a href="https://tailscale.com/kb/1223/funnel#limitations" target="_blank">is subject to bandwidth limits</a>. (Though I can't find what those limits are anywhere.)
 
 - <a href="https://www.zerotier.com" target="_blank">Zero Tier</a>: I have not used it myself, but Zero Tier is a similar product to Tailscale for similar use cases, namely securely connecting to your network from outside. I have read of people using it to access Plex remotely, but it requires each external user to run Zero Tier. (Just like Tailscale.)
 
@@ -268,9 +268,9 @@ There's always multiple ways to do things, and said I explained at the start, th
 
 ## Related Articles
 
-> [How to securely expose Plex from behind CGNAT using Tailscale and a free Oracle VM](/blog/expose-plex-tailscale-vps)
+> [How to securely expose Plex from behind CGNAT using Tailscale and a free Oracle VM](/blog/expose-plex-tailscale-vps/)
 
-> [Complete guide to self-hosting a website through Cloudflare Tunnel](/blog/self-host-website-cloudflare-tunnel)
+> [Complete guide to self-hosting a website through Cloudflare Tunnel](/blog/self-host-website-cloudflare-tunnel/)
 
 <div id="ref" />
 

@@ -21,7 +21,7 @@ tags:
 
 ## Caveats and Pre-Requisites
 
-The method I describe below requires that your phone with the PhotoSync app be connected to the same network as the server that you will be transferring your photos to, or have access to the server via a VPN or other similar solution. Also, the server must already be configured with a Samba share. (<a href="/blog/setup-a-samba-share-on-linux-via-command-line" target="_blank">See here on how to set up a Samba share on Linux.</a>)
+The method I describe below requires that your phone with the PhotoSync app be connected to the same network as the server that you will be transferring your photos to, or have access to the server via a VPN or other similar solution. Also, the server must already be configured with a Samba share. (<a href="/blog/setup-a-samba-share-on-linux-via-command-line/" target="_blank">See here on how to set up a Samba share on Linux.</a>)
 
 Finally, using the SMB option to transfer photos requires the NAS Add-On for PhotoSync, which costs $2.49 by itself. (You also have the option of spending a bit more on the Bundle Add-On, which comes with the NAS Add-On as well as the Auto-Transfer and Cloud Add-Ons, but those are not necessary for this.)
 
@@ -71,13 +71,13 @@ Finally, under _Autotransfer Trigger_ click on the **Change Trigger** button, an
 
 ## Related Articles
 
-> [Setup self-hosted Plex Media Server in Docker](/blog/setting-up-plex-in-docker)
+> [Setup self-hosted Plex Media Server in Docker](/blog/setting-up-plex-in-docker/)
 
-> [How to run self-hosted FileBrowser in Docker](/blog/how-to-run-filebrowser-in-docker)
+> [How to run self-hosted FileBrowser in Docker](/blog/how-to-run-filebrowser-in-docker/)
 
 <div id='ref'/>
 
 ## References
 
 - <a href="https://www.photosync-app.com/home" target="_blank">PhotoSync Website</a>
-- <a href="/blog/setup-a-samba-share-on-linux-via-command-line">My blog post on how to set up a Samba Share</a>
+- <a href="/blog/setup-a-samba-share-on-linux-via-command-line/">My blog post on how to set up a Samba Share</a>

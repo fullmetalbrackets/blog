@@ -134,9 +134,9 @@ Finally, for a list of ALL the rsync options with short descriptions of what the
 
 ## Related Articles
 
-> [Linux Commands & Keyboard Shortcuts Cheat Sheet](/blog/basic-linux-commands)
+> [Linux Commands & Keyboard Shortcuts Cheat Sheet](/blog/basic-linux-commands/)
 
-> [Mounting (either internal or external) hard drives in Linux](/blog/mounting-hard-drives-in-linux)
+> [Mounting (either internal or external) hard drives in Linux](/blog/mounting-hard-drives-in-linux/)
 
 <div id='ref'/>
 

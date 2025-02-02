@@ -286,9 +286,9 @@ There's more advanced commands I'm not going to talk about until I use them myse
 
 ## Related Articles
 
-> [How to generate a GPG key and use it to sign git commits](/blog/how-to-generate-gpg-to-sign-git-commits)
+> [How to generate a GPG key and use it to sign git commits](/blog/how-to-generate-gpg-to-sign-git-commits/)
 
-> [How to resolve Git error insufficient permission for adding an object to repository database](/blog/git-push-error-permissions)
+> [How to resolve Git error insufficient permission for adding an object to repository database](/blog/git-push-error-permissions/)
 
 <div id='ref'/>
 

@@ -152,9 +152,9 @@ Now to test it out, connect to Tailscale on your phone/tablet and visit some web
 
 ## Related Articles
 
-> [Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS](/blog/set-up-pihole-on-linux)
+> [Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS](/blog/set-up-pihole-on-linux/)
 
-> [How to remotely access your home server from anywhere using Tailscale](/blog/tailscale)
+> [How to remotely access your home server from anywhere using Tailscale](/blog/tailscale/)
 
 <div id='ref'/>
 

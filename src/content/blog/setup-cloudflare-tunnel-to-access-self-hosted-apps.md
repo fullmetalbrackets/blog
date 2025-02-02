@@ -144,7 +144,7 @@ Although Navidrome, like many self-hosted services, has username and passwords f
 
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
-> It's been a while since I wrote this post and I don't use this set up anymore (<a href="/blog/tailscale" target="_blank">I switched to Tailscale</a>),  so if the rest of the guide doesn't work for you please <a href="mailto:contact@fullmetalbrackets.com?subject=The oauth section of your Cloudflare Tunnel guide is out of date!">let me know</a> and I'll update it in the future!
+> It's been a while since I wrote this post and I don't use this set up anymore (<a href="/blog/tailscale/" target="_blank">I switched to Tailscale</a>),  so if the rest of the guide doesn't work for you please <a href="mailto:contact@fullmetalbrackets.com?subject=The oauth section of your Cloudflare Tunnel guide is out of date!">let me know</a> and I'll update it in the future!
 
 You'll need a Google account to set this up, which you already do with Gmail. You'll be using that email to do some stuff on **Google Cloud Platform**. It's totally free for this use case.
 
@@ -249,9 +249,9 @@ It is possible to <a href="https://developers.cloudflare.com/dns/manage-dns-reco
 
 ## Related Articles
 
-> [Complete guide to self-hosting a website through Cloudflare Tunnel](/blog/self-host-website-cloudflare-tunnel)
+> [Complete guide to self-hosting a website through Cloudflare Tunnel](/blog/self-host-website-cloudflare-tunnel/)
 
-> [How to securely expose Plex from behind CGNAT with Cloudflare Tunnel](/blog/expose-plex-with-cloudflare)
+> [How to securely expose Plex from behind CGNAT with Cloudflare Tunnel](/blog/expose-plex-with-cloudflare/)
 
 <div id="ref" />
 

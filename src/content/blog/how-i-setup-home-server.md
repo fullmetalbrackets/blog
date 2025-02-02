@@ -19,7 +19,7 @@ tags:
 
 My old desktop PC turned server is a _Dell XPS 8920_ with an **Intel i7-7700k CPU** and **24 GB of DDR4 RAM**. (I removed the _AMD RX 480 GPU_ it came with, since I was not going to use it.) I installed _Debian 12 Bookworm_ on an NVMe drive and added hard drives to every available SATA port.
 
-The large hard drives are pooled together using <a href="/blog/two-drives-mergerfs" target="_blank">MergerFS</a>. For managing the server with a pretty and user friendly GUI, I prefer and keep coming back to <a href="https://cockpit-project.org" target="_blank">Cockpit</a>. For secure remote access, I have settled on <a href="/blog/tailscale" target="_blank">Tailscale</a> for it's ease of use and exceptionally good free tier.
+The large hard drives are pooled together using <a href="/blog/two-drives-mergerfs/" target="_blank">MergerFS</a>. For managing the server with a pretty and user friendly GUI, I prefer and keep coming back to <a href="https://cockpit-project.org" target="_blank">Cockpit</a>. For secure remote access, I have settled on <a href="/blog/tailscale/" target="_blank">Tailscale</a> for it's ease of use and exceptionally good free tier.
 
 Most other self-hosted apps and services are run as <a href="https://docker.com" target="_blank">Docker</a> containers.
 
@@ -33,7 +33,7 @@ I've used <a href="https://docker.com" target="_blank">Docker</a> for years to r
 curl -fsSL get.docker.com | sudo sh
 ```
 
-I always first install <a href="https://portainer.io" target="_blank">Portainer</a> for managing the rest of my containers through a nice GUI, using the Stacks feature to create different groups of containers. I have all the compose files <a href="https://github.com/fullmetalbrackets/docker" target="_blank">saved on GitHub</a>. I also use Portainer Agent paired with Tailscale to manage another set of remote containers running on an Oracle free tier instance, with <a href="https://www.portainer.io/take-3" target="_blank">Portainer's 3 node license</a>. Finally, I run <a href="https://portainer.io" target="_blank">Nginx Proxy Manager</a> as a <a href="/blog/reverse-proxy-using-nginx-adguardhome-cloudflare" target="_blank">reverse proxy to access everything with HTTPS via a custom domain</a>.
+I always first install <a href="https://portainer.io" target="_blank">Portainer</a> for managing the rest of my containers through a nice GUI, using the Stacks feature to create different groups of containers. I have all the compose files <a href="https://github.com/fullmetalbrackets/docker" target="_blank">saved on GitHub</a>. I also use Portainer Agent paired with Tailscale to manage another set of remote containers running on an Oracle free tier instance, with <a href="https://www.portainer.io/take-3" target="_blank">Portainer's 3 node license</a>. Finally, I run <a href="https://portainer.io" target="_blank">Nginx Proxy Manager</a> as a <a href="/blog/reverse-proxy-using-nginx-adguardhome-cloudflare/" target="_blank">reverse proxy to access everything with HTTPS via a custom domain</a>.
 
 - <a href="https://dozzle.dev" target="_blank">Dozzle</a> is a robust container log viewer. Portainer shows logs as well, but Dozzle's UX is much simpler and you get to the logs much quicker too.
 
@@ -218,4 +218,4 @@ Finally, to make my SMB shares accessible via Tailscale, I use the following com
 tailscale serve --bg --tcp 445 tcp://localhost:445
 ```
 
-Now with the Tailscale client installed on my Android phone, and toggling it on as VPN, I can access my home network on the go. I have <a href="/blog/pihole-anywhere-tailscale" target="_blank">Pi-Hole running on a Libre Potato</a> that acts as the DNS server for the Tailnet, so I get ad blocking on the go too.
+Now with the Tailscale client installed on my Android phone, and toggling it on as VPN, I can access my home network on the go. I have <a href="/blog/pihole-anywhere-tailscale/" target="_blank">Pi-Hole running on a Libre Potato</a> that acts as the DNS server for the Tailnet, so I get ad blocking on the go too.

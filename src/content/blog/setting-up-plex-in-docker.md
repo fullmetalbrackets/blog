@@ -80,7 +80,7 @@ Good to go. Now to configure Plex you'll need to access it's web UI, which by de
 
 ![Plex server login.](../../img/blog/plex1.png)
 
-After signing in, after a few explanatory pages, you'll arrive at the Server Setup page. Name your server, uncheck the checkbox unless you'll be making Plex available from outside your network (not recommended unless you know what you're doing, see <a href="/blog/expose-plex-tailscale-vps)" target="_blank">this blog post for a better way</a>), and click _Next_.
+After signing in, after a few explanatory pages, you'll arrive at the Server Setup page. Name your server, uncheck the checkbox unless you'll be making Plex available from outside your network (not recommended unless you know what you're doing, see <a href="/blog/expose-plex-tailscale-vps/)" target="_blank">this blog post for a better way</a>), and click _Next_.
 
 ![Making the Plex server.](../../img/blog/plex2.png)
 
@@ -100,9 +100,9 @@ Your movies should now appear within the _Movies_ section of the Plex UI. Repeat
 
 ## Related Articles
 
-> [Setup self-hosted Jellyfin Media Server in Docker](/blog/setting-up-jellyfin-in-docker)
+> [Setup self-hosted Jellyfin Media Server in Docker](/blog/setting-up-jellyfin-in-docker/)
 
-> [How to securely expose Plex from behind CGNAT using Tailscale and a free Oracle VM](/blog/expose-plex-tailscale-vps)
+> [How to securely expose Plex from behind CGNAT using Tailscale and a free Oracle VM](/blog/expose-plex-tailscale-vps/)
 
 <div id='ref'/>
 

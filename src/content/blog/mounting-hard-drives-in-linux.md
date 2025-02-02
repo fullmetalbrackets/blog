@@ -69,9 +69,9 @@ Save and close the fstab file. Now when you reboot, the second hard drive should
 
 ## Related Articles
 
-> [Linux Commands & Keyboard Shortcuts Cheat Sheet](/blog/basic-linux-commands)
+> [Linux Commands & Keyboard Shortcuts Cheat Sheet](/blog/basic-linux-commands/)
 
-> [Formatting disks in Linux command line](/blog/formatting-on-linux)
+> [Formatting disks in Linux command line](/blog/formatting-on-linux/)
 
 
 ## References

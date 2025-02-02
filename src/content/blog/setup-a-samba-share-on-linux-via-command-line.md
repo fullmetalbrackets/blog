@@ -152,9 +152,9 @@ For an explanation of what these options do, check the original blog post linked
 
 ## Related Articles
 
-> [Create a public Samba share accessible without a login](/blog/create-public-samba-share-without-login)
+> [Create a public Samba share accessible without a login](/blog/create-public-samba-share-without-login/)
 
-> [Set up NFS Shares between Linux hosts](/blog/setup-nfs-shares-linux)
+> [Set up NFS Shares between Linux hosts](/blog/setup-nfs-shares-linux/)
 
 <div id='ref'/>
 

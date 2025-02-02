@@ -119,9 +119,9 @@ By default only the `root` user is available, which is fine if you're mostly usi
 
 ## Related Articles
 
-> [Reverse proxy OpenMediaVault, Plex and Navidrome with Nginx Proxy Manager and Pi-Hole](/blog/reverse-proxy-nginx-pihole)
+> [Reverse proxy OpenMediaVault, Plex and Navidrome with Nginx Proxy Manager and Pi-Hole](/blog/reverse-proxy-nginx-pihole/)
 
-> [Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS](/blog/set-up-pihole-on-linux)
+> [Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS](/blog/set-up-pihole-on-linux/)
 
 <div id='ref' />
 

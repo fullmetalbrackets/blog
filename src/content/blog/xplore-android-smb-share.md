@@ -80,9 +80,9 @@ All done! Once you get a hang of the UI, transferring files back and forth from 
 
 ## Related Articles
 
-> [Setup a Samba share on Linux via command line](/blog/setup-a-samba-share-on-linux-via-command-line)
+> [Setup a Samba share on Linux via command line](/blog/setup-a-samba-share-on-linux-via-command-line/)
 
-> [How to use Solid Explorer app to access SMB network shares from an Android device](/blog/solic-explorer-samba-share)
+> [How to use Solid Explorer app to access SMB network shares from an Android device](/blog/solic-explorer-samba-share/)
 
 <div id='ref' />
 

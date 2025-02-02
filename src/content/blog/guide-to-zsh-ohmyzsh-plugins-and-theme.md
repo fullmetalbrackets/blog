@@ -123,9 +123,9 @@ Now when you use `p10k configure` you'll get additional options, since you'll be
 
 ## Related Articles
 
-> [Linux Commands & Keyboard Shortcuts Cheat Sheet](/blog/basic-linux-commands)
+> [Linux Commands & Keyboard Shortcuts Cheat Sheet](/blog/basic-linux-commands/)
 
-> [Customizing the Windows Terminal command prompt with Oh-My-Posh](/blog/customizing-windows-terminal-with-ohmyposh)
+> [Customizing the Windows Terminal command prompt with Oh-My-Posh](/blog/customizing-windows-terminal-with-ohmyposh/)
 
 <div id='ref'/>
 

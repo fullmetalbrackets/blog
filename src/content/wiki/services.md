@@ -2,7 +2,7 @@
 title: "Self-Hosted Services"
 description: "A list of self-hosted services in my homelab."
 pubDate: 2023-10-02
-updatedDate: 2024-05-16
+updatedDate: 2025-02-02
 tags:
   - services
 ---
@@ -30,13 +30,11 @@ tags:
 - Uptime Kuma
 - Watchtower
 
-# Potato
-
-- Pi-Hole
-- Unbound
-
 # Outpost
 
 - Nginx Proxy Manager
 - Speedtest Tracker
 - Portainer Agent
+- File Browser
+- Uptime Kuma
+- Watchtower

@@ -96,9 +96,9 @@ tags:
 
 ## Related Articles
 
-> [Formatting disks in Linux command line](/blog/formatting-on-linux)
+> [Formatting disks in Linux command line](/blog/formatting-on-linux/)
 
-> [Mounting (either internal or external) hard drives in Linux](/blog/mounting-hard-drives-in-linux)
+> [Mounting (either internal or external) hard drives in Linux](/blog/mounting-hard-drives-in-linux/)
 
 <div id='ref'/>
 

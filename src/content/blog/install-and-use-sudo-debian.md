@@ -30,6 +30,6 @@ sudo -v
 
 ## Related Articles
 
-> [Linux Commands & Keyboard Shortcuts Cheat Sheet](/blog/basic-linux-commands)
+> [Linux Commands & Keyboard Shortcuts Cheat Sheet](/blog/basic-linux-commands/)
 
-> [Keeping a Linux laptop on when the lid is closed](/blog/keeping-a-linux-laptop-on-with-the-lid-closed)
+> [Keeping a Linux laptop on when the lid is closed](/blog/keeping-a-linux-laptop-on-with-the-lid-closed/)

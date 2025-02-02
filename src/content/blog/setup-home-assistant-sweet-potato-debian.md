@@ -109,9 +109,9 @@ Once the setup finishes, which it should without issue if you installed Docker v
 
 ## Related Articles
 
-> [Setting up a Libre Computer Sweet Potato SBC with Debian and Pi-Hole](/blog/setting-up-sweet-potato-debian-pihole)
+> [Setting up a Libre Computer Sweet Potato SBC with Debian and Pi-Hole](/blog/setting-up-sweet-potato-debian-pihole/)
 
-> [Complete guide to self-hosting a website through Cloudflare Tunnel](/blog/self-host-website-cloudflare-tunnel)
+> [Complete guide to self-hosting a website through Cloudflare Tunnel](/blog/self-host-website-cloudflare-tunnel/)
 
 <div id='ref' />
 

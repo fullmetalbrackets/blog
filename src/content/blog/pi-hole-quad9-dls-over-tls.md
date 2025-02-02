@@ -46,6 +46,6 @@ services:
 
 ## Related Articles
 
-> [Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS](/blog/set-up-pihole-on-linux)
+> [Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS](/blog/set-up-pihole-on-linux/)
 
-> [Using DNS over HTTPS with Pi-Hole and Cloudflared](/blog/using-dns-over-https-with-pihole)
+> [Using DNS over HTTPS with Pi-Hole and Cloudflared](/blog/using-dns-over-https-with-pihole/)

@@ -21,7 +21,7 @@ tags:
 
 ## Pre-Requisites and Caveats
 
-I will only be explaining how to install and configure _Nginx Proxy Manager_, as I have other blog posts about <a href="/blog/set-up-pihole-on-linux" target="_blank">installing Pi-Hole</a> and <a href="/blog/setting-up-plex-in-docker" target="_blank">installing Plex</a> that you can check out for that. OpenMediaVault is more involved since it's a whole operating system installed via an ISO, so I highly suggest you read the <a href="https://docs.openmediavault.org/en/latest/installation/index.html" target="_blank">official documentation</a> for instructions on that.
+I will only be explaining how to install and configure _Nginx Proxy Manager_, as I have other blog posts about <a href="/blog/set-up-pihole-on-linux/" target="_blank">installing Pi-Hole</a> and <a href="/blog/setting-up-plex-in-docker/" target="_blank">installing Plex</a> that you can check out for that. OpenMediaVault is more involved since it's a whole operating system installed via an ISO, so I highly suggest you read the <a href="https://docs.openmediavault.org/en/latest/installation/index.html" target="_blank">official documentation</a> for instructions on that.
 
 This guide will proceed with the assumption that _OpenMediaVault_, _Plex_ and _Navidrome_ are already setup, and you're now wanting to set up a reverse proxy to access them via URL rather than typing an IP address and port, since that was my scenario and I wanted to write it down for future reference.
 
@@ -45,7 +45,7 @@ I use _Pi-Hole_ as a network-wide DNS resolver, and you can add DNS records to p
 
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
-> I will be using <code>*.home.arpa</code> (per the <a href="https://www.rfc-editor.org/rfc/rfc8375.html" target="_target">RFC recommendation</a> for home networks) and not worrying about HTTPS at this time. See <a href="/blog/reverse-proxy-using-nginx-pihole-cloudflare">this blog post about setup Nginx Proxy Manager for HTTPS with a custom domain</a>.
+> I will be using <code>*.home.arpa</code> (per the <a href="https://www.rfc-editor.org/rfc/rfc8375.html" target="_target">RFC recommendation</a> for home networks) and not worrying about HTTPS at this time. See <a href="/blog/reverse-proxy-using-nginx-pihole-cloudflare/">this blog post about setup Nginx Proxy Manager for HTTPS with a custom domain</a>.
 
 1. Click on **Local DNS** on the sidebar, then click on **DNS Records**.
 2. On the **Domain:** form, type in the full subdomain and domain you want to use, e.g. `plex.home.arpa`.
@@ -159,16 +159,16 @@ To check the logs in Portainer:
 
 ## Related Articles
 
-> [Setting up a reverse proxy for HTTPS with a custom domain using Nginx Proxy Manager, Pi-Hole and Cloudflare](/blog/reverse-proxy-using-nginx-pihole-cloudflare)
+> [Setting up a reverse proxy for HTTPS with a custom domain using Nginx Proxy Manager, Pi-Hole and Cloudflare](/blog/reverse-proxy-using-nginx-pihole-cloudflare/)
 
-> [OpenMediaVault Quick Reference](/blog/openmediavault-quick-reference)
+> [OpenMediaVault Quick Reference](/blog/openmediavault-quick-reference/)
 
 <div id='ref' />
 
 ## Reference
 
-- <a href="/blog/set-up-pihole-on-linux" target="_blank">My blog post on how to install Pi-Hole</a>
-- <a href="/blog/setting-up-plex-in-docker" target="_blank">My blog post on how to install Plex</a>
+- <a href="/blog/set-up-pihole-on-linux/" target="_blank">My blog post on how to install Pi-Hole</a>
+- <a href="/blog/setting-up-plex-in-docker/" target="_blank">My blog post on how to install Plex</a>
 - <a href="https://docs.openmediavault.org/en/latest" target="_blank">OpenMediaVault 6 documentation</a>
 - <a href="https://nginxproxymanager.com" target="_blank">Website of Nginx Proxy Manager</a>
 - <a href="https://github.com/NginxProxyManager/nginx-proxy-manager" target="_blank">GitHub of Nginx Proxy Manager</a>

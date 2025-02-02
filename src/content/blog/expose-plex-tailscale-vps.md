@@ -15,7 +15,7 @@ tags:
 4. [Create a compute instance](#instance)
 5. [SSH into instance](#ssh)
 6. [Set up Tailscale](#tailscale)
-7. [Configure DNS on Cloudflare](#cloudflare)
+7. [Add domain in Cloudflare and configure DNS](#cloudflare)
 8. [Set up reverse proxy](#proxy)
 9. [Add ingress rules on OCI](#ingress)
 10. [Configure Plex](#plex)
@@ -27,7 +27,7 @@ tags:
 
 Plex is a self-hosted media server that lets you stream your owned (or downloaded, or otherwise acquired) media from other devices on the same network, through a web-based GUI (access via browser) or dedicated app. (Say, on a smart TV or Roku device.) Plex has a built-in feature to share your media library externally, but that requires opening a port on your router and forwarding it to the Plex server. Setting aside that port forwarding can be dangerous if you don't know what you're doing, it won't work anyway if your home network is behind Carrier-Grade Network Address Translation, or CGNAT. Many ISPs use this, and so many homelabbers may find themselves unable to expose their services.
 
-Although there are <a href="/blog/expose-plex-with-cloudflare#alt" target="_blank">other solutions</a> to get across CGNAT, this one can be set up with fairly minimal effort and does not run afoul of any service provider's rules.
+Although there are <a href="/blog/expose-plex-with-cloudflare" target="_blank">other solutions</a> to get across CGNAT, this one can be set up with fairly minimal effort and does not run afoul of any service provider's rules.
 
 What we'll be setting up is this:
 
@@ -43,7 +43,7 @@ First of all, you should be comfortable using the terminal, because we'll be doi
 
 The method I explain here requires you to own a domain -- it may be possible to instead use something like DuckDNS or NoIP, but I have not tried it. I'll also be using Cloudflare for DNS, but that's just my personal preference -- feel free to use another DNS provider.
 
-Finally, you'll need a Plex server already set up. (And I'll assume it's running in Linux or as a Docker container.) I won't go into how to do that here, <a href="/blog/setting-up-plex-in-docker" target="_blank">see this post</a> for instructions on running Plex as a Docker container.
+Finally, you'll need a Plex server already set up. (And I'll assume it's running in Linux or as a Docker container.) I won't go into how to do that here, <a href="/blog/setting-up-plex-in-docker/" target="_blank">see this post</a> for instructions on running Plex as a Docker container.
 
 <div id="account" />
 
@@ -162,11 +162,49 @@ From here on out we'll assume the Plex sever is `plex.cyber-sloth.ts.net` and th
 
 <div id="cloudflare" />
 
-## Configure DNS on Cloudflare
+## Add domain in Cloudflare and configure DNS
 
 Now we'll go to Cloudflare to set up the external DNS, so they internet can go to `your-domain.com` and end up at the Oracle instance. Create a free Cloudflare account if you haven't ready.
 
 We'll assume you need to add your domain to Cloudflare, but if you already did that [you can skip ahead](#skip).
+
+To add an existing domain to Cloudflare:
+
+1. On the Cloudflare dashboard _Account Home_, click the **+ Add a domain** button.
+
+![Adding a domain to Cloudflare.](../../img/blog/cloudflare-domain.png)
+
+2. Enter your domain, leave _Quick scan for DNS records_ selected, and click **Cotinue**.
+
+3. Click on the **Free plan** at the bottom and click **Continue**.
+
+![Cloudflare free plan.](../../img/blog/cloudflare-free.png)
+
+4. You'll see your DNS records, if there are any. Don't worry about this right now and click on the **Continue to activate** button.
+
+![Cloudflare free plan.](../../img/blog/cloudflare-dns-records1.png)
+
+5. You'll see a pop-up window saying you should set your DNS records now, click on **Confirm**.
+
+![Cloudflare free plan.](../../img/blog/cloudflare-dns-records1.png)
+
+6. You'll be provided some instructions to update the nameservers on your domain's registrar, open a new tab and follow those instructions. Once you've added the Cloudflare nameservers at your registrar, go back to Cloudflare and click on **Continue**.
+
+7. Now you'll have to wait a few minutes for the changes to propagate, then click on **Check nameservers** and reload the page. If it's still shows _Pending_ next to the domain at the top, just keep waiting. In the meantime, we need to do some additional setup.
+
+8. From your domain's _Overview_ scroll down and you'll see a section at the bottom-right called **API** with a _Zone ID_ and _Account ID_. Under that, click on **Get your API token**.
+
+9. Click the button **Create Token**, then click the **Use template** button next to _Edit DNS Zone_.
+
+10. Under _Zone Resources_, leave the first two dropdown menus as is and in the final dropdown select your domain, then click on **Continue to summary** and finally on the **Create Token** button.
+
+11. On the next page you'll see your **API token**, make sure to _save it somewhere because it will not be shown again_. We will need this **API token** for to provision the TLS certificates in Nginx Proxy Manager.
+
+12. Once your domain is _Active_ in Cloudflare, you can move on to the next section.
+
+
+
+
 
 From the Cloudflare dashboard, do the following:
 
@@ -218,7 +256,7 @@ With the domain set up in Cloudflare, we just need to add a DNS record:
 
 7. Leave _TTL_ at Auto and click **Save**.
 
-Next, we need to create an API token to edit the DNS config from third-party apps, we is necessary to get a HTTPS certificate in the reverse proxy later.
+Next, we need to create an _API token_ to edit the DNS config from third-party apps, we is necessary to get a HTTPS certificate in the reverse proxy later.
 
 1. On the Cloudflare dashboard, click on **Websites** and choose your domain.
 
@@ -377,9 +415,9 @@ Now your external users can access your library through their Plex apps too.
 
 ## Related Articles
 
-> [How to securely expose Plex from behind CGNAT using Tailscale and a free Oracle VM](/blog/expose-plex-tailscale-vps)
+> [How to securely expose Plex from behind CGNAT using Tailscale and a free Oracle VM](/blog/expose-plex-tailscale-vps/)
 
-> [How to remotely access your home server from anywhere using Tailscale](/blog/tailscale)
+> [How to remotely access your home server from anywhere using Tailscale](/blog/tailscale/)
 
 <div id="ref" />
 

@@ -19,7 +19,7 @@ tags:
 
 ## Pre-Requisites and Caveats
 
-I wrote previously about <a href="/blog/reverse-proxy-using-nginx-pihole-cloudflare" target="_blank">how to set this up using Pi-Hole</a>, but I recently bought a <a href="https://www.gl-inet.com/products/gl-mt6000" target="_blank">GL.iNet Flint 2 router</a> which has AdGuard Home built-in, so it seemed a waste not to use it. (Also for as great as Pi-Hole is, I have had to redo it multiple times over the years due to database errors or just a dead mini SD card or USB drive, etc.) So, this guide will be mostly based on my old one, with just the parts dealing with Pi-Hole replaced with AdGuard Home, since setting up Nginx Proxy Manager and Cloudflare work the same as always.
+I wrote previously about <a href="/blog/reverse-proxy-using-nginx-pihole-cloudflare/" target="_blank">how to set this up using Pi-Hole</a>, but I recently bought a <a href="https://www.gl-inet.com/products/gl-mt6000" target="_blank">GL.iNet Flint 2 router</a> which has AdGuard Home built-in, so it seemed a waste not to use it. (Also for as great as Pi-Hole is, I have had to redo it multiple times over the years due to database errors or just a dead mini SD card or USB drive, etc.) So, this guide will be mostly based on my old one, with just the parts dealing with Pi-Hole replaced with AdGuard Home, since setting up Nginx Proxy Manager and Cloudflare work the same as always.
 
 This guide uses specific third-party services, namely <a href="https://cloudflare.com" target="_blank">Cloudflare</a>, <a href="https://adguard.com/en/adguard-home/overview.html" target="_blank">AdGuard Home</a> and <a href="https://nginxproxymanager.com" target="_blank">Nginx Proxy Manager</a> to set up a secure local-only reverse proxy. The same is possible with other tools, apps and services including <a href="https://pi-hole.net" target="_blank">Pi-Hole</a> (which as I mentioned, I previously used for many years) or <a href="https://nextdns.io" target="_blank">NextDNS</a> instead of *AdGuard Home*, <a href="https://caddyserver.com" target="_blank">Caddy</a> or <a href="https://traefik.io" target="_blank">Traefik</a> instead of *Nginx*, any other DNS provider instead of *Cloudflare*, etc. I'm only writing about my preferred tools that I've used multiple times to set everything up and keep it running for over a year.
 
@@ -206,6 +206,12 @@ Barring any errors, once you set up all your proxy hosts in Nginx Proxy Manager 
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
 > One last thing, if you want to want to access the AdGuard Home web UI via HTTPS as well, be sure to use its default HTTPS network port *3001* in Nginx Proxy Manager.
+
+## Related Articles
+
+> [Setting up a reverse proxy for HTTPS with a custom domain using Nginx Proxy Manager, Pi-Hole and Cloudflare](/blog/reverse-proxy-using-nginx-pihole-cloudflare/)
+
+> [Complete guide to self-hosting a website through Cloudflare Tunnel](/blog/self-host-website-cloudflare-tunnel/)
 
 <div id='ref' />
 

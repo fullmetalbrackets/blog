@@ -146,9 +146,9 @@ Now you're ready to create your dream Grafana dashboard! Creating the actual das
 
 ## Related Articles
 
-> [Setup self-hosted Plex Media Server in Docker](/blog/setting-up-plex-in-docker)
+> [Setup self-hosted Plex Media Server in Docker](/blog/setting-up-plex-in-docker/)
 
-> [How to run self-hosted FileBrowser in Docker](/blog/how-to-run-filebrowser-in-docker)
+> [How to run self-hosted FileBrowser in Docker](/blog/how-to-run-filebrowser-in-docker/)
 
 <div id='ref'/>
 

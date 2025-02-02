@@ -23,7 +23,7 @@ tags:
 
 ## Pre-Requisites and Caveats
 
-Before anything, make sure the machine you're installing Pi-Hole on <a href="/blog/set-static-ip-debian" target="_blank">has a static IP</a>, otherwise if your machine's IP changes it will break DNS resolution for the network.\
+Before anything, make sure the machine you're installing Pi-Hole on <a href="/blog/set-static-ip-debian/" target="_blank">has a static IP</a>, otherwise if your machine's IP changes it will break DNS resolution for the network.\
 
 Also, Pi-Hole will run a web server at port 80, for serving the web UI page, so make sure no other web server like Apache or NGinx is running.
 
@@ -397,9 +397,9 @@ When you make Pi-Hole your primary DNS it becomes a critical part of your networ
 
 ## Related Articles
 
-> [How to use Pi-hole from anywhere with Tailscale](/blog/pihole-anywhere-tailscale)
+> [How to use Pi-hole from anywhere with Tailscale](/blog/pihole-anywhere-tailscale/)
 
-> [Setting up a reverse proxy for HTTPS with a custom domain using Nginx Proxy Manager, Pi-Hole and Cloudflare](/blog/reverse-proxy-using-nginx-pihole-cloudflare)
+> [Setting up a reverse proxy for HTTPS with a custom domain using Nginx Proxy Manager, Pi-Hole and Cloudflare](/blog/reverse-proxy-using-nginx-pihole-cloudflare/)
 
 <div id='ref' />
 

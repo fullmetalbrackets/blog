@@ -55,9 +55,9 @@ You’d then use `mkfs` as above to format the partition with a filesystem, if o
 
 ## Related Articles
 
-> [Linux Commands & Keyboard Shortcuts Cheat Sheet](/blog/basic-linux-commands)
+> [Linux Commands & Keyboard Shortcuts Cheat Sheet](/blog/basic-linux-commands/)
 
-> [Mounting (either internal or external) hard drives in Linux](/blog/mounting-hard-drives-in-linux)
+> [Mounting (either internal or external) hard drives in Linux](/blog/mounting-hard-drives-in-linux/)
 
 ## References
 

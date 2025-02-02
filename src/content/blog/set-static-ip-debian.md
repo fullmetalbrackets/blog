@@ -96,9 +96,9 @@ If the static IP Address you configured appears in the output, you're done!
 
 ## Related Articles
 
-> [Linux Commands & Keyboard Shortcuts Cheat Sheet](/blog/basic-linux-commands)
+> [Linux Commands & Keyboard Shortcuts Cheat Sheet](/blog/basic-linux-commands/)
 
-> [Rsync - A Quick Guide](/blog/rsync-a-quick-guide)
+> [Rsync - A Quick Guide](/blog/rsync-a-quick-guide/)
 
 ## References
 

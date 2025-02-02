@@ -123,9 +123,9 @@ Now to test it out, push out any commit to a GitHub repo. You should be prompted
 
 ## Related Articles
 
-> [Git commands cheat sheet](/blog/git-commands-cheat-sheet)
+> [Git commands cheat sheet](/blog/git-commands-cheat-sheet/)
 
-> [How to resolve Git error insufficient permission for adding an object to repository database](/blog/git-push-error-permissions)
+> [How to resolve Git error insufficient permission for adding an object to repository database](/blog/git-push-error-permissions/)
 
 <div id='ref' />
 

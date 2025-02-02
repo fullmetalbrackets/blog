@@ -42,6 +42,6 @@ Save the file and reboot for the changes to take effect. After boot, your laptop
 
 ## Related Articles
 
-> [Linux Commands & Keyboard Shortcuts Cheat Sheet](/blog/basic-linux-commands)
+> [Linux Commands & Keyboard Shortcuts Cheat Sheet](/blog/basic-linux-commands/)
 
-> [Install and use Sudo in Debian](/blog/install-and-use-sudo-debian)
+> [Install and use Sudo in Debian](/blog/install-and-use-sudo-debian/)

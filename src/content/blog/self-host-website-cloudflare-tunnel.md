@@ -304,9 +304,9 @@ Once that is done, click the **Deploy** button. Wait a few minutes, then check y
 
 ## Related Articles
 
-> [Setup a Cloudflare Tunnel to securely access self-hosted apps with a domain from outside the home network](/blog/setup-cloudflare-tunnel-to-access-self-hosted-apps)
+> [Setup a Cloudflare Tunnel to securely access self-hosted apps with a domain from outside the home network](/blog/setup-cloudflare-tunnel-to-access-self-hosted-apps/)
 
-> [How to securely expose Plex from behind CGNAT with Cloudflare Tunnel](/blog/expose-plex-with-cloudflare)
+> [How to securely expose Plex from behind CGNAT with Cloudflare Tunnel](/blog/expose-plex-with-cloudflare/)
 
 <div id='ref' />
 

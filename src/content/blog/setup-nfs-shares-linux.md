@@ -97,9 +97,9 @@ To have Linux auto-mount the share at boot, edit the _fstab_ file with `sudo nan
 
 ## Related Articles
 
-> [Mounting (either internal or external) hard drives in Linux](/blog/mounting-hard-drives-in-linux)
+> [Mounting (either internal or external) hard drives in Linux](/blog/mounting-hard-drives-in-linux/)
 
-> [Create a public Samba share accessible without a login](/blog/create-public-samba-share-without-login)
+> [Create a public Samba share accessible without a login](/blog/create-public-samba-share-without-login/)
 
 <div id='ref'/>
 

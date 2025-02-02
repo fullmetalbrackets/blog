@@ -126,9 +126,9 @@ Use `docker restart jellyfin` and once the Jellyfin container has restarted, go 
 
 ## Related Articles
 
-> [Setup self-hosted Plex Media Server in Docker](/blog/setting-up-plex-in-docker)
+> [Setup self-hosted Plex Media Server in Docker](/blog/setting-up-plex-in-docker/)
 
-> [How to run self-hosted FileBrowser in Docker](/blog/how-to-run-filebrowser-in-docker)
+> [How to run self-hosted FileBrowser in Docker](/blog/how-to-run-filebrowser-in-docker/)
 
 <div id='ref'/>
 

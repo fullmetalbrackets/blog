@@ -38,9 +38,9 @@ PowerShell cmdlets have aliases identical to their equivalent Linux commands, he
 
 ## Related Articles
 
-> [Customizing the Windows Terminal command prompt with Oh-My-Posh](/blog/customizing-windows-terminal-with-ohmyposh)
+> [Customizing the Windows Terminal command prompt with Oh-My-Posh](/blog/customizing-windows-terminal-with-ohmyposh/)
 
-> [How to remotely access your home server from anywhere using Tailscale](/blog/tailscale)
+> [How to remotely access your home server from anywhere using Tailscale](/blog/tailscale/)
 
 ## References
 

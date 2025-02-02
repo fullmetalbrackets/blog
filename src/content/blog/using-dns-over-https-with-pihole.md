@@ -17,7 +17,7 @@ tags:
 
 ## Caveats and pre-requisites
 
-This guide will assume you already have Pi-Hole up and running. If you have not yet done so, check out <a href="/blog/set-up-pihole-on-linux" target="_blank">my blog post on setting up Pi-Hole on a Linux machine</a>. If you prefer to run Pi-Hole in a docker container, <a href="https://github.com/pi-hole/docker-pi-hole" target="_blank">check out the Pi-Hole docker container GitHub page</a> for instructions and a docker-compose yaml file to get up and running quickly.
+This guide will assume you already have Pi-Hole up and running. If you have not yet done so, check out <a href="/blog/set-up-pihole-on-linux/" target="_blank">my blog post on setting up Pi-Hole on a Linux machine</a>. If you prefer to run Pi-Hole in a docker container, <a href="https://github.com/pi-hole/docker-pi-hole" target="_blank">check out the Pi-Hole docker container GitHub page</a> for instructions and a docker-compose yaml file to get up and running quickly.
 
 Also, please note that although using DNS over HTTPS prevents your ISP or anyone else from snooping on your DNS requests, since they will be encrypted, whichever upstream DNS provider you use can technically see it. Obviously a measure of a trust is required in this case, but that would be the case with any upstream DNS, and only avoidable if you want to self-host your own DNS resolver. (Certainly possible, but beyond the scope of this guide.)
 
@@ -177,9 +177,9 @@ Scroll all the way down and hit _Save_. After a minute or two your DNS requests 
 
 ## Related Articles
 
-> [Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS](/blog/set-up-pihole-on-linux)
+> [Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS](/blog/set-up-pihole-on-linux/)
 
-> [How to use Pi-hole from anywhere with Tailscale](/blog/pi-hole-quad9-dls-over-tls)
+> [How to use Pi-hole from anywhere with Tailscale](/blog/pi-hole-quad9-dls-over-tls/)
 
 <div id='ref' />
 

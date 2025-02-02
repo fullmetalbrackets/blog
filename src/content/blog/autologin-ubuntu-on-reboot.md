@@ -30,9 +30,9 @@ My reason for wanting to do this was to have my <a href="https://pi-hole.net" ta
 
 ## Related Articles
 
-> [Formatting disks in Linux command line](/blog/formatting-on-linux)
+> [Formatting disks in Linux command line](/blog/formatting-on-linux/)
 
-> [Mounting (either internal or external) hard drives in Linux](/blog/mounting-hard-drives-in-linux)
+> [Mounting (either internal or external) hard drives in Linux](/blog/mounting-hard-drives-in-linux/)
 
 ## Reference
 

@@ -9,7 +9,7 @@ tags:
 
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
-> See <a href="/blog/how-i-setup-home-server" target="_blank">this blog post</a> for more details.
+> See <a href="/blog/how-i-setup-home-server/" target="_blank">this blog post</a> for more details.
 
 ![Dell XPS 8920](../../img/wiki/xps8920.jpg)
 
@@ -32,7 +32,7 @@ I removed the GPU since Plex cannot use AMD cards for transcoding (at least not 
 
 ## Details
 
-The operating system is Debian 12 with no desktop environment. Cockpit is installed for managing the server through a GUI. Tailscale is installed bare metal for connecting with phone and tablet from outside my home network, and with a remote <a href="https://www.oracle.com/cloud/free" target="_blank">Oracle Cloud Free Tier</a> compute instance. (<a href="/blog/expose-plex-tailscale-vps" target="_blank">See here</a> for details.) Most self-hosted apps and services are run on this server via Docker containers. Three HDDs of 2 TB capacity each plus one 4 TB HDD are used for large media storage, mounted at `/mnt/media1`, `/mnt/media2`, etc. MergerFS provides a unified mount point at `/home/$USER/media` which is what Plex accesses to populate the media library. An additiona 1 TB HDD holds all my documents, photos and music and is backed up to an external 1 TB laptop drive in a USB 3.0 enclosure.
+The operating system is Debian 12 with no desktop environment. Cockpit is installed for managing the server through a GUI. Tailscale is installed bare metal for connecting with phone and tablet from outside my home network, and with a remote <a href="https://www.oracle.com/cloud/free" target="_blank">Oracle Cloud Free Tier</a> compute instance. (<a href="/blog/expose-plex-tailscale-vps/" target="_blank">See here</a> for details.) Most self-hosted apps and services are run on this server via Docker containers. Three HDDs of 2 TB capacity each plus one 4 TB HDD are used for large media storage, mounted at `/mnt/media1`, `/mnt/media2`, etc. MergerFS provides a unified mount point at `/home/$USER/media` which is what Plex accesses to populate the media library. An additiona 1 TB HDD holds all my documents, photos and music and is backed up to an external 1 TB laptop drive in a USB 3.0 enclosure.
 
 ## Containers
 
