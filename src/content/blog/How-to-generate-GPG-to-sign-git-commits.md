@@ -2,6 +2,7 @@
 title: "How to generate a GPG key and use it to sign git commits"
 description: "Generating and using a GPG key is not difficult, but every time I need to remember how to do it to sign my commits from a new machine, I need to go through several pages of explanation on GitHub. So I made myself a terse and concise one-page quick guide, here it is."
 pubDate: 2022-10-30
+updatedDate: 2025-02-03
 tags:
   - git
 ---
@@ -99,15 +100,15 @@ git config --global commit.gpgsign true
 
 To get the verified badge on commits, we need to add the GPG key on GitHub. Click on your _Profile_ picture and then choose _Settings_ from the dropdown.
 
-![Settings in GitHub menu.](../../img/blog/gh1.png)
+![GitHub settings.](../../img/blog/gh1.png 'GitHub settings')
 
 Next click on **SSH and GPG keys** in the menu on the left:
 
-![SSH and GPG keys settings in GitHub menu.](../../img/blog/gh2.png)
+![SSH and GPG keys in GitHub settings.](../../img/blog/gh2.png 'SSH and GPG keys in GitHub settings')
 
 Scroll down to where it says _GPG keys_ and click on the **New GPG key** button.
 
-![Adding GPG key in GitHub.](../../img/blog/gh-gpg1.png)
+![Adding GPG key in GitHub.](../../img/blog/gh-gpg1.png 'Adding GPG key in GitHub')
 
 To see the portion of the GPG key you need to add in GitHub, use this command:
 
@@ -119,7 +120,7 @@ You'll get a wall of text as output, copy and paste from `-----BEGIN PGP PUBLIC 
 
 Now to test it out, push out any commit to a GitHub repo. You should be prompted for the GPG password when using `git commit` and providing it will sign the commit. Now your commits should have the verified badge in GitHub.
 
-![Commit with verified badge in GitHub.](../../img/blog/gh-gpg2.png)
+![Commit with verified badge in GitHub.](../../img/blog/gh-gpg2.png 'Commit with verified badge in GitHub')
 
 ## Related Articles
 

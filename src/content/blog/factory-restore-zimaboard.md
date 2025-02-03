@@ -3,6 +3,7 @@ title: "How to factory restore a ZimaBoard"
 description: "I've recently been playing around with ZimaBoard, a single board server running Debian and CasaOS. It's a cool little machine, but I accidentally broke something and had to factory reset. It's not a simple option in a some settings menu, the process involves flashing an image on the ZimaBoard, so I wrote down the steps I took.
 "
 pubDate: 2024-12-22
+updatedDate: 2025-02-03
 tags:
   - self-hosting
 ---
@@ -47,19 +48,19 @@ Plug the USB drive into one of the ports on the ZimaBoard and then plug it into 
 
 After a moment you'll see the Clonezilla GUI -- choose the first option (_VGA 800x600_) and hit <kbd>Enter</kbd>.
 
-![Clonezilla interface.](../../img/blog/zimaboard1.webp)
+![Clonezilla interface.](../../img/blog/zimaboard1.webp 'Clonezilla interface')
 
 Next you'll have to choose the disk to install onto, choose the first option `mmcblk0`, and hit <kbd>Enter</kbd> twice.
 
-![Choosing media to install image.](../../img/blog/zimaboard2.webp)
+![Choosing media to install image.](../../img/blog/zimaboard2.webp 'Choosing media to install image')
 
 Next in the CLI, when prompted with warnings (your data will be lost, etc.) type `y` and hit <kbd>Enter</kbd> to confirm install. Wait a few minutes while the installation happens.
 
-![Image installation in progress.](../../img/blog/zimaboard3.webp)
+![Image installation in progress.](../../img/blog/zimaboard3.webp 'Image installation in progress')
 
 Once the install is finished, you'll see another menu. Choose the first option **Power off** and hit <kbd>Enter</kbd>.
 
-![Image finished installing.](../../img/blog/zimaboard4.webp)
+![Image finished installing.](../../img/blog/zimaboard4.webp 'Image finished installing')
 
 Once the countdown is complete, the ZimaBoard will shutdown. Confirm that the red light on the machine is off, unplug the power and USB drive (and keyboard, you won't need it anymore), and plug in an ethernet cable if you haven't already. When ready, plug the power cord back in and give the ZimaBoard and CasaOS a few minutes to fully boot up essentially for the first time.
 

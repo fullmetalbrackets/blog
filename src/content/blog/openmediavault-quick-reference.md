@@ -2,18 +2,18 @@
 title: "OpenMediaVault Quick Reference"
 description: "I've been using OpenMediaVault 6 for over a year now, and it's user interface can be a bit obtuse, so I wrote myself a series of quick step-by-step guides for enabling certain features within the OMV workbench UI."
 pubDate: 2023-07-30
-updatedDate: 2024-10-18
+updatedDate: 2025-02-03
 tags:
   - self-hosting
 ---
 
-<img src="/omv-header.png" alt="OpenMediaVault=" loading="eager" decoding="async" class="sq-img" />
+<img src="/omv-header.png" alt="OpenMediaVault" loading="eager" decoding="async" class="sq-img" />
 
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
 > **Important!**
 > 
-> This article is specifically about version 6.0 of OpenMediaVault, which reached end of life in July 2024. OpenMediaVault 7 was released in March 2024. The below _may_ still apply, but don't be surprised if it does not. I have not used OMV in some time, so I may not be updating this anytime soon, sorry.
+> This article is specifically about OpenMediaVault 6, which reached end of life in July 2024. _OpenMediaVault 7 was released in March 2024_, and as of January 2025 the latest version is **7.6.0**. The below may still apply, but don't be surprised if it does not. I have not used OMV in some time nor do I plan to use it any time soon, an updating to this post may not be forthcoming, sorry.
 
 ## Sections
 

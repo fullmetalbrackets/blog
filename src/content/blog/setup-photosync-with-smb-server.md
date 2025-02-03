@@ -2,7 +2,7 @@
 title: "Set up PhotoSync app to backup photos from your phone to an SMB share on your home server"
 description: "Google Photos began limiting free storage back in 2021, limiting you to 15 GB of storage when uploading photos in their original size uncompressed. Rather than wait and see if I hit the cap, I decided to try replacing Google Photos with a self-hosted solution. Here's how I did it."
 pubDate: 2023-07-07
-updatedDate: 2025-02-02
+updatedDate: 2025-02-03
 tags:
   - self-hosting
 ---
@@ -32,20 +32,20 @@ Finally, using the **SMB** option to transfer photos _requires the NAS Add-On fo
 
 In the PhotoSync app, tap the **gear icon** at the bottom-right corner to enter the _Settings_.
 
-![PhotoSync settings.](../../img/blog/photosync1.jpg)
-![PhotoSync settings.](../../img/blog/photosync2.jpg)
+![PhotoSync settings.](../../img/blog/photosync1.jpg 'PhotoSync settings')
+![PhotoSync settings.](../../img/blog/photosync2.jpg 'PhotoSync settings')
 
 Under _Transfer Targets_ tap on **Configure**. On the following page choose _SMB_ from the list, then tap **Add New Configuration**.
 
-![PhotoSync SMB configuration.](../../img/blog/photosync3.jpg)
-![PhotoSync SMB configuration.](../../img/blog/photosync4.jpg)
+![PhotoSync SMB configuration.](../../img/blog/photosync3.jpg 'PhotoSync SMB configuration')
+![PhotoSync SMB configuration.](../../img/blog/photosync4.jpg 'PhotoSync SMB configuration')
 
 Enter the IP address of the server where the Samba share is, enter the login and password (assuming you have it set up that way), then tap the **magnifying glass** button next to _Directory_. The app should automatically show any Samba shares already set up on the server, tap on the one you want to use. Next tap on **Connect** at the top-right corner and if everything works correctly, you should be sent to the SMB target page.
 
 Now under _FOLDER SETTINGS_ tap on **Destination Folder** and pick a directory in the share, if you'd like, or just use the Share's root directory if you prefer, then tap **Select** on the top-right.
 
-![PhotoSync SMB account settings.](../../img/blog/photosync5.jpg)
-![PhotoSync SMB configuration.](../../img/blog/photosync6.jpg)
+![PhotoSync SMB account settings.](../../img/blog/photosync5.jpg 'PhotoSync SMB account settings')
+![PhotoSync SMB configuration.](../../img/blog/photosync6.jpg 'PhotoSync SMB configuration')
 
 The rest of the settings you can set to your liking. If you haven't gotten any errors, everything should be working as intended. Tap on **Done** to return to the app's main page.
 
@@ -55,12 +55,12 @@ The rest of the settings you can set to your liking. If you haven't gotten any e
 
 Back on the main page, tap the _red transfer icon at the top_, tap **All** (or you can tap individual photos and choose _Selected_), then tap **SMB**.
 
-![Transfering photos in PhotoSync.](../../img/blog/photosync7.jpg)
-![Transfering photos in PhotoSync.](../../img/blog/photosync8.jpg)
+![Transfering photos in PhotoSync.](../../img/blog/photosync7.jpg 'Transfering photos in PhotoSync')
+![Transfering photos in PhotoSync.](../../img/blog/photosync8.jpg 'Transfering photos in PhotoSync')
 
 Tap on the directory to transfer your photos into (keep in mind _Destination Folder_ and _Create Sub-Directories_ in the SMB Account setting from earlier) and tap **Select**, the photo transfer should begin.
 
-![Transfering photos in PhotoSync.](../../img/blog/photosync9.jpg)
+![Transfering photos in PhotoSync.](../../img/blog/photosync9.jpg 'Transfering photos in PhotoSync')
 
 All done! Now you can manually sync new photos from your phone to your NAS at any time by opening the app and repeating the last set of instructions above. 
 

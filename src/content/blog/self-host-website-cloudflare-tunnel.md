@@ -2,7 +2,7 @@
 title: "Complete guide to self-hosting a website through Cloudflare Tunnel"
 description: "Self-hosting a static web blog has never been easier thanks to Cloudflare Tunnel. In this guide I explain how to expose a static website hosted on machine inside my network to the internet using Nginx as webserver and securing it with various free Cloudflare services."
 pubDate: 2023-12-29
-updatedDate: 2025-02-01
+updatedDate: 2025-02-03
 tags:
   - cloudflare
 ---
@@ -118,19 +118,19 @@ Create your <a href="https://dash.cloudflare.com/sign-up" target="_blank">free C
 
 2. Enter your domain, leave _Quick scan for DNS records_ selected, and click **Cotinue**.
 
-![Adding a domain to Cloudflare.](../../img/blog/cloudflare-domain.png)
+![Adding a domain to Cloudflare.](../../img/blog/cloudflare-domain.png 'Adding a domain to Cloudflare')
 
 3. Click on the **Free plan** at the bottom and click **Continue**.
 
-![Cloudflare free plan.](../../img/blog/cloudflare-free.png)
+![Cloudflare free plan.](../../img/blog/cloudflare-free.png 'Cloudflare free plan')
 
 4. You'll see your DNS records, if there are any. Don't worry about this right now and click on the **Continue to activate** button.
 
-![Cloudflare free plan.](../../img/blog/cloudflare-dns-records1.png)
+![DNS management page.](../../img/blog/cloudflare-dns-records1.png 'DNS management page')
 
 5. You'll see a pop-up window saying you should set your DNS records now, click on **Confirm**.
 
-![Add records pop-up.](../../img/blog/cloudflare-dns-records2.png)
+![Add DNS records pop-up.](../../img/blog/cloudflare-dns-records2.png 'Add DNS records pop-up')
 
 6. Now you'll be provided some instructions to update the nameservers on your domain's registrar, _open a new tab and follow those instructions_. Once you've added the Cloudflare nameservers at your registrar, go back to Cloudflare and click on **Continue**.
 
@@ -146,19 +146,19 @@ In the Cloudflare dashboard, from your domain's _Overview_ page, click on **Acce
 
 1. On the sidebar, go to **Network** and choose **Tunnels** from the dropdown.
 
-![Creating a Cloudflare Tunnel.](../../img/blog/cloudflare-tunnel1.png)
+![Creating a Cloudflare Tunnel.](../../img/blog/cloudflare-tunnel1.png 'Creating a Cloudflare Tunnel)
 
 2. Click on **Add a tunnel**, then on the next page choose **Select Cloudflared**.
 
-![Choosing a connector type.](../../img/blog/cloudflare-tunnel2.png)
+![Selecting a connector type.](../../img/blog/cloudflare-tunnel2.png 'Selecting a connector type)
 
 3. On the following page name your tunnel, then click **Save tunnel**.
 
-![Docker run command for Cloudflared.](../../img/blog/cloudflare-tunnel3.png)
+![Naming the Tunnel.](../../img/blog/cloudflare-tunnel3.png 'Naming the Tunnel')
 
 4. Finally you'll be given a `docker run` command for _cloudflared_, but we'll use `docker compose` instead. All we will need from here is the _tunnel token_.
 
-![Docker run command for Cloudflared.](../../img/blog/cloudflare-tunnel4.png)
+![Docker run command for Cloudflared.](../../img/blog/cloudflare-tunnel4.png 'Docker run command for Cloudflared')
 
 5. Open the `compose.yaml` file we created earlier and edit it to look like the below:
 
@@ -190,7 +190,7 @@ docker compose up -d
 
 7. Once the container is up and running, at the bottom your connector status should be **Connected**. Once the tunnel is Connected, click the **Next** button.
 
-![Connector showing status Connected.](../../img/blog/cloudflare-tunnel5.png)
+![Connector showing status Connected.](../../img/blog/cloudflare-tunnel5.png 'Connector showing status Connected')
 
 6.  Now you'll be in the _Route Traffic_ page, under the **Public Hostnames** we have to add some things. For our purposes (hosting a site at the root of `your-domain.com`) you should leave the **Subdomain** empty. If you prefer for your site to be accessible at, say, `blog.your-domain.com` then set that subdomain here.
 
@@ -202,13 +202,13 @@ docker compose up -d
 
 11. For **URL**, put the full LAN (internal) IP address of the machine that will host the site, and append the port you set for the docker container -- for example `192.168.1.100:8888`. (Don't use `localhost:8888` despite what the example says, that never works for me.)
 
-![Route traffic page.](../../img/blog/cloudflare-tunnel6.png)
+![Route traffic page.](../../img/blog/cloudflare-tunnel6.png 'Route traffic page')
 
 12. When done filling everything in, click **Save**.
 
 Now you will be back at the **Tunnels** page. Under **Your tunnels**, the tunnel you just created should appear and still show **Healthy** status.
 
-![Tunnel showing Healthy status.](../../img/blog/cloudflare-tunnel7.png)
+![Tunnel showing Healthy status.](../../img/blog/cloudflare-tunnel7.png 'Tunnel showing Healthy status')
 
 Finally, we need to configure SSL for the website!
 
@@ -218,11 +218,11 @@ Finally, we need to configure SSL for the website!
 
 3. You'll now be in the _SSL/TLS Overview_, click the **Configure** button.
 
-![SSL/TLS encryption page.](../../img/blog/cloudflare-ssl1.png)
+![SSL/TLS encryption page.](../../img/blog/cloudflare-ssl1.png 'SSL/TLS encryption page')
 
 4. Select _Automatic SSL/TLS (default)_ then click **Save**.
 
-![Configure encryption mode.](../../img/blog/cloudflare-ssl2.png)
+![Configuring encryption mode.](../../img/blog/cloudflare-ssl2.png 'Configuring encryrption mode')
 
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >

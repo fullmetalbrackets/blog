@@ -2,7 +2,7 @@
 title: "How to securely expose Plex from behind CGNAT using Tailscale and a free Oracle VM"
 description: "I wrote before about securely exposing Plex for external access, but my previous solution relied on Cloudflare Tunnel and it was technically against their TOS. So I switched to using a Oracle VM on their free-tier, connecting it to my home network with Tailscale, and exposing Plex via reverse proxy. It works like a charm!"
 pubDate: 2024-09-03
-updatedDate: 2025-01-22
+updatedDate: 2025-02-03
 tags:
   - tailscale
 ---
@@ -27,13 +27,13 @@ tags:
 
 Plex is a self-hosted media server that lets you stream your owned (or downloaded, or otherwise acquired) media from other devices on the same network, through a web-based GUI (access via browser) or dedicated app. (Say, on a smart TV or Roku device.) Plex has a built-in feature to share your media library externally, but that requires opening a port on your router and forwarding it to the Plex server. Setting aside that port forwarding can be dangerous if you don't know what you're doing, it won't work anyway if your home network is behind Carrier-Grade Network Address Translation, or CGNAT. Many ISPs use this, and so many homelabbers may find themselves unable to expose their services.
 
-Although there are <a href="/blog/expose-plex-with-cloudflare" target="_blank">other solutions</a> to get across CGNAT, this one can be set up with fairly minimal effort and does not run afoul of any service provider's rules.
+Although I previously wrote about <a href="/blog/expose-plex-with-cloudflare" target="_blank">how to expose Plex through CGNAT with Cloudflare Tunnel</a>, it's against their terms of service, so I don't use that method anymore and suggest you don't either. The method I explain in _this_ post has a few extra steps, but it does not run afoul of any service provider's rules.
 
 What we'll be setting up is this:
 
 - We will install Tailscale on the same server as Plex or, alternately, on another machine in the home network that will act as subnet router. (See <a href="https://tailscale.com/kb/1019/subnets" target="_blank">this section Tailscale docs</a> -- for this guide, we'll install Tailscale on the same server running Plex, so subnet routing isn't necessary.)
 
-- We will create a free tier compute instance on Oracle Cloud Insfrastructure and install Tailscale on it, so it's on the same tailnet as the Plex server. We'll expose ports 80 and 443 to the internet on the VM, but only allowing access from specific IPs, and run a reverse proxy to route the traffic from allowed IPs to Plex.
+- We will create a free tier compute instance on Oracle Cloud Insfrastructure and install Tailscale on it, so it's on the same tailnet as the Plex server. We'll expose ports 80 and 443 to the internet on the VM, but only allowing access from specific IPs, and run a reverse proxy to route the traffic from allowed IPs to Plex. Note that if you're willing and able to pay for another cloud service provider, everything besides the Oracle-specific instructions should work there too! If you don't want to pay, though, just know that I have used a free Oracle instance to share Plex with 3 family members for over 6 months and so far it's worked without a single hitch.
 
 <div id="pre" />
 
@@ -79,7 +79,7 @@ Click the **Create instance** button and do the following:
 
 5. Under _Shape series_, choose **Specialty and previous generation** which falls under the always-free tier.
 
-![Choosing an Image and Shape while creating a compute instance in OCI.](../../img/blog/oci0.png)
+![Choosing an Image and Shape while creating a compute instance in OCI.](../../img/blog/oci0.png 'Choosing an Image and Shape while creating a compute instance in OCI')
 
 6. Under _Shape name_, check the box for (the only option) **VM.Standard.E2.1.Micro**. (Notice the _"always-free" eligible_ tag.) Click the **Select shape** button at the bottom.
 
@@ -89,7 +89,7 @@ Click the **Create instance** button and do the following:
 >
 > The rest of this guide assumes you chose **Canonical Ubuntu 22.04 Minimal** as your image.
 
-![SSH key settings when creating a compute instance in OCI.](../../img/blog/oci-ssh.png)
+![SSH key settings when creating a compute instance in OCI.](../../img/blog/oci-ssh.png 'SSH key settings when creating a compute instance in OCI')
 
 8. Scroll down to _Add SSH keys_. You can upload your own public key, or you can let it generate a key pair for you. If you choose the latter, **make sure you save the private and private key** so you can SSH into the VM!
 
@@ -164,79 +164,35 @@ From here on out we'll assume the Plex sever is `plex.cyber-sloth.ts.net` and th
 
 ## Add domain in Cloudflare and configure DNS
 
-Now we'll go to Cloudflare to set up the external DNS, so they internet can go to `your-domain.com` and end up at the Oracle instance. Create a free Cloudflare account if you haven't ready.
-
-We'll assume you need to add your domain to Cloudflare, but if you already did that [you can skip ahead](#skip).
-
-To add an existing domain to Cloudflare:
+Create your <a href="https://dash.cloudflare.com/sign-up" target="_blank">free Cloudflare account</a> if you haven't already. **If you bought a domain on Cloudflare, you can skip to the next section since it is auto-configured already.** If your domain is from another registrar, we'll need to add it to Cloudflare:
 
 1. On the Cloudflare dashboard _Account Home_, click the **+ Add a domain** button.
 
-![Adding a domain to Cloudflare.](../../img/blog/cloudflare-domain.png)
-
 2. Enter your domain, leave _Quick scan for DNS records_ selected, and click **Cotinue**.
+
+![Adding a domain to Cloudflare.](../../img/blog/cloudflare-domain.png 'Adding a domain to Cloudflare')
 
 3. Click on the **Free plan** at the bottom and click **Continue**.
 
-![Cloudflare free plan.](../../img/blog/cloudflare-free.png)
+![Cloudflare free plan.](../../img/blog/cloudflare-free.png 'Cloudflare free plan')
 
 4. You'll see your DNS records, if there are any. Don't worry about this right now and click on the **Continue to activate** button.
 
-![Cloudflare free plan.](../../img/blog/cloudflare-dns-records1.png)
+![DNS management page.](../../img/blog/cloudflare-dns-records1.png 'DNS management page')
 
 5. You'll see a pop-up window saying you should set your DNS records now, click on **Confirm**.
 
-![Cloudflare free plan.](../../img/blog/cloudflare-dns-records1.png)
+![Add DNS records pop-up.](../../img/blog/cloudflare-dns-records2.png 'Add DNS records pop-up')
 
-6. You'll be provided some instructions to update the nameservers on your domain's registrar, open a new tab and follow those instructions. Once you've added the Cloudflare nameservers at your registrar, go back to Cloudflare and click on **Continue**.
+6. Now you'll be provided some instructions to update the nameservers on your domain's registrar, _open a new tab and follow those instructions_. Once you've added the Cloudflare nameservers at your registrar, go back to Cloudflare and click on **Continue**.
 
-7. Now you'll have to wait a few minutes for the changes to propagate, then click on **Check nameservers** and reload the page. If it's still shows _Pending_ next to the domain at the top, just keep waiting. In the meantime, we need to do some additional setup.
-
-8. From your domain's _Overview_ scroll down and you'll see a section at the bottom-right called **API** with a _Zone ID_ and _Account ID_. Under that, click on **Get your API token**.
-
-9. Click the button **Create Token**, then click the **Use template** button next to _Edit DNS Zone_.
-
-10. Under _Zone Resources_, leave the first two dropdown menus as is and in the final dropdown select your domain, then click on **Continue to summary** and finally on the **Create Token** button.
-
-11. On the next page you'll see your **API token**, make sure to _save it somewhere because it will not be shown again_. We will need this **API token** for to provision the TLS certificates in Nginx Proxy Manager.
-
-12. Once your domain is _Active_ in Cloudflare, you can move on to the next section.
-
-
-
-
-
-From the Cloudflare dashboard, do the following:
-
-1. On the sidebar, go to **Websites** and click the **Add a site** button.
-
-![Adding a site to Cloudflare.](../../img/blog/cloudflare-domain.png)
-
-2. Enter your domain and click **Add site**, then click on the **Free plan** at the bottom and click **Continue**.
-
-![Cloudflare free plan.](../../img/blog/cloudflare-free.png)
-
-3. After waiting a few moments for the DNS quick scan, you should see your domain’s DNS records appear. Click on **Continue**.
-
-4. Cloudflare will now present you with the URLs to two _nameservers_, should be something like `adam.ns.cloudflare.com`. Leave this page open, we'll come back to it.
-
-5. Login to the registrar that owns your domain, go into your domain's **DNS settings**, and change the _nameservers_ to both of the URLs provided by Cloudflare. (This is different for each domain registrar, you'll need to figure out how to do that on your own.)
-
-6. Back in Cloudflare, click **Done, check nameservers**. It could take up to 24 hours for the change to propagate, but usually it will take less than an hour, and often less than 20 minutes. In the meantime, follow the _Quick Start Guide_.
-
-7. Leave **Automatic HTTPS Rewrites** checked as-is, and enable the checkbox for **Always Use HTTPS**.
-
-8. Leave **Brotli** on. On the summary, click **Finished**.
-
-9. You'll be back at your site's Overview. If you still see _Complete your nameserver setup_, you can try using the **Check nameservers** button. In my experience that makes the DNS changes propagate within a few minutes.
-
-Once your DNS changes have taken effect, the Overview page will say: _"Great news! Cloudflare is now protecting your site!"_
+7. Now you'll have to wait a few minutes for the changes to propagate, then click on **Check nameservers** and reload the page. If it's still shows _Pending_ next to the domain at the top, just keep waiting and reload again after a few more minutes.
 
 <div id="skip" />
 
-With the domain set up in Cloudflare, we just need to add a DNS record:
+Once the domain is _active_ in Cloudflare, we just need to add a DNS record:
 
-1. On the sidebar go to **Websites**, choose your domain, then go to **DNS** -> **Records**.
+1. On the sidebar go **DNS** and click on **Records** from the dropdown.
 
 2. Click on **Add record**.
 
@@ -248,7 +204,7 @@ With the domain set up in Cloudflare, we just need to add a DNS record:
 
 6. Under _Proxy status_ toggle it off to **DNS only**.
 
-![Cloudflare proxy status set to DNS only.](../../img/blog/expose-plex-tailscale-vps1.png)
+![Cloudflare proxy status set to DNS only.](../../img/blog/expose-plex-tailscale-vps1.png 'Cloudflare proxy status set to DNS only')
 
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
@@ -258,19 +214,19 @@ With the domain set up in Cloudflare, we just need to add a DNS record:
 
 Next, we need to create an _API token_ to edit the DNS config from third-party apps, we is necessary to get a HTTPS certificate in the reverse proxy later.
 
-1. On the Cloudflare dashboard, click on **Websites** and choose your domain.
+1. On the Cloudflare dashboard _Account Home_, choose your domain.
 
-2. Under the _DNS column on the right side of the page_, scroll down to _API_ and click on **Get your API token**.
+2. In your _domain overview_, in the column on the right side of the page, scroll down to _API_ and click on **Get your API token**.
 
 3. Click the **Create Token** button.
 
 4. Choose the **Edit zone DNS template**.
 
-5. Under Zone Resources, it should already be set to _Include_ and _Specific zone_ -- choose your domain from the dropdown menu and click **Continue to summary**.
+5. Under _Zone Resources_, it should already be set to _Include_ and _Specific zone_ -- choose your domain from the dropdown menu and click **Continue to summary**.
 
 6. On the next page, click **Create Token**.
 
-7. *Important!* Copy your API token and **save it somewhere**, you won't be shown it again.
+7. **Important!** Copy your API token and _save it somewhere_, you won't be shown it again and you will need it each time you provision a TLS certificate in Nginx Proxy Manager.
 
 <div id="proxy" />
 
@@ -284,11 +240,11 @@ SSH into the instance and install Docker with the following command:
 curl -fsSL https://get.docker.com | sh
 ```
 
-We'll use Docker Compose to run the reverse proxy container.
+We'll use `docker compose` to run the reverse proxy container.
 
 1. Create the data directory for the reverse proxy and change into it with `mkdir ~/nginxproxy && cd ~/nginxproxy` (This assumes you're using the default `ubuntu` user.)
 
-2. Create the compose file with `touch compose.yml` and edit it with `nano compose.yml`, copy & paste these contents into it:
+2. Create the compose file with `touch compose.yaml` and edit it with `nano compose.yaml`, copy & paste these contents into it:
 
 ```yaml
 services:
@@ -311,17 +267,17 @@ Once it's up and running, we need to access the Nginx Proxy Manager GUI. _I stro
 
 Instead, it's safer to install Tailscale on your PC or tablet, connect to the Tailnet, then on a browser go to `https://oracle.cyber-sloth.ts.net:81`. When you're done just disconnect the Tailscale client, and only connect when you need to access the GUI. (You may want to disable the Tailscale client from starting up at boot.)
 
-![Nginx proxy manager login page.](../../img/blog/nginxproxy1.png)
+![Nginx proxy manager login page.](../../img/blog/nginxproxy1.png 'Nginx proxy manager login page')
 
 Once in the Nginx Proxy Manager GUI, login with the default `admin@example.com` and `changeme` as the password. You'll want to change that before anything else.
 
-![Nginx proxy manager navigation bar.](../../img/blog/nginxproxy2.png)
+![Nginx proxy manager navigation.](../../img/blog/nginxproxy2.png 'Nginx proxy manager navigation')
 
 Click on **Users** on the top nav bar, then to the right of the Administrator entry click the **three dots**. Choose **Edit Details** to change the email and **Change password** to change password. Log out and back in with the new credentials.
 
 Now to add the configuration for our custom domain:
 
-![Adding a proxy host in Nginx proxy manager.](../../img/blog/nginxproxy3.png)
+![Adding a proxy host in Nginx proxy manager.](../../img/blog/nginxproxy3.png 'Adding a proxy host in Nginx proxy manager')
 
 1. On the Dashboard, click **Proxy hosts** and then **Add proxy host**.
 
@@ -335,7 +291,7 @@ Now to add the configuration for our custom domain:
 
 6. Toggle on **Websockets Support**, but leave the other two off.
 
-![Configuring SSL in Nginx proxy manager.](../../img/blog/nginxproxy4.png)
+![Configuring SSL in Nginx proxy manager.](../../img/blog/nginxproxy4.png 'Configuring SSL in Nginx proxy manager')
 
 7. Go to **SSL** tab and choose **Request a new SSL Certificate** from the dropdown menu.
 
@@ -359,15 +315,15 @@ Now to actually allow internet connections to the Oracle instance, we need to ad
 
 - Allow access only from specific IPs, including yours, and block everyone else. (If they go to your domain they will get a 403 error.) **I strongly suggest this.**
 
-![Instance details in OCI.](../../img/blog/oci1.png)
+![Instance details in OCI.](../../img/blog/oci1.png 'Instance details in OCI')
 
 Under _Instances_, click on your instance, and under _Instance details_ click on the link for Virtual Cloud Network, it should be something like `vcn-20221216-2035`.
 
-![Default Security List in OCI.](../../img/blog/oci2.png)
+![Default Security List in OCI.](../../img/blog/oci2.png 'Default Security List in OCI')
 
 In _Subnets_ click on the only choice, something like `subnet-20221216-2035`. Finally, click on the **Default Security List**.
 
-![Adding an Ingress Rule to an OCI instance.](../../img/blog/oci3.png)
+![Adding an Ingress Rule to an OCI instance.](../../img/blog/oci3.png 'Adding an Ingress Rule to an OCI instance')
 
 1. Click **Add Ingress Rules**
 
@@ -399,13 +355,13 @@ One last thing! Although the allowed IPs can now reach Plex and stream your libr
 
 3. Next to _Secure connections_, choose **Preferred** from the downdown menu.
 
-![Secure connections setting in Plex.](../../img/blog/expose-plex1.png)
+![Secure connections setting in Plex.](../../img/blog/expose-plex1.png 'Secure connections setting in Plex')
 
 4. (Optional) Scroll down and **enable** the checkbox for _Treat WAN IP as LAN Bandwitdh_.
 
 5. Make sure to **leave disabled** the checkbox for _Enable Relay_.
 
-![Relay and Custom access URL settings in Plex.](../../img/blog/expose-plex2.png)
+![Relay and Custom access URL settings in Plex.](../../img/blog/expose-plex2.png 'Relay and Custom access URL settings in Plex')
 
 6. Under _Custom server access URLs_ type in `https://your-domain.com`. (Make sure to include the HTTPS!) As a backup, you may also want to add your Tailscale IP as `http://100.200.300.400:32400`. (I leave it as HTTP in case sometimes a secure HTTPS connection is not possible, since I trust the IPs and devices connecting.)
 

@@ -2,6 +2,7 @@
 title: "Build a minimal blog with Deno and host it on Deno Deploy"
 description: "I'd been meaning to play around with Deno and finally got around to doing it in the quickest, easiest (and laziest) way possible -- using a minimal blog template. I also took the opportunity to learn how Deno Deploy works. The whole thing is quick and painless, here's how to do it."
 pubDate: 2022-11-19
+updatedDate: 2025-02-03
 tags:
   - web development
 ---
@@ -13,6 +14,12 @@ tags:
 3. [Host the blog on Deno Deploy](#deploy)
 4. [Use your own custom domain](#domain)
 5. [References](#ref)
+
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
+>
+> **Important!**
+> 
+> I wrote this blog post years ago now when I was trying out Deno Deploy just for fun. I have not kept up with it or maintained the blog I built in this post, and I have no intention of doing so. I may try out Deno again in the future. For now, as of beginning of 2025, this post is probably beyond outdated and I doubt Deno Deploy even works the same! This blog post will stay for legacy purposes, but it's probably unwise to follow it at this point.
 
 <div id='install' />
 
@@ -58,7 +65,7 @@ $ deno run -r --allow-read --allow-write https://deno.land/x/blog/init.ts ./dire
 
 Once the blog is set up, go into the project directory and run the development server using the command `deno task dev` and go to the URL. Notice the default layout of everything.
 
-![Deno blog](../../img/blog/deno1.png)
+![A blog running on Deno Deploy.](../../img/blog/deno1.png 'A blog running on Deno Deploy')
 
 To configure and customize the blog, edit the `main.tsx` file. It should look like the below:
 
@@ -119,7 +126,7 @@ We'll be hosting our blog on <a href="https://deno.com/deploy" target="_blank" r
 
 Once logged in to Deno Deploy, you'll be on the _Projects_ dashboard. Click the _+ New Project_ button:
 
-![Deno Deploy](../../img/blog/deno2.png)
+![Creating a new project in Deno Deploy](../../img/blog/deno2.png 'Creating a new project in Deno Deploy')
 
 Click on _Select GitHub repository_ and you'll be taken to GitHub to login and choose a repo to deploy from.
 
@@ -135,11 +142,11 @@ Deno Deploy lets you easily use a custom domain you own instead of `https://proj
 
 If it says "Validation has failed" just wait a little while longer then try again. Once validation is successful, you'll be able to provision an SSL certificate.
 
-![Deno Deploy DNS](../../img/blog/deno4.png)
+![Deno Deploy provisioning TLS certificates](../../img/blog/deno4.png 'Deno Deploy provisioning TLS certificates')
 
 Click on _Get automatic certificates_ to finish. (Or upload your own certificate, if you prefer and know what you're doing.) After a few moments you should see your domain now has a green checkmark on it.
 
-![Deno Deploy DNS](../../img/blog/deno5.png)
+![Deno Deploy domain ready to go.](../../img/blog/deno5.png 'Deno Deploy domain ready to go')
 
 You should now be able to go to your custom domain to reach your blog. For whatever reason, in my experience it seems to load much faster on a custom top-level domain compared to Deno Deploy's `deno.dev` sub-domain. Enjoy!
 

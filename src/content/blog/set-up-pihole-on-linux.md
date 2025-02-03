@@ -2,7 +2,7 @@
 title: "Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS"
 description: "Besides just using a browser extension for ad blocking, I've been using Pi-Hole for years to prevent all devices on my network from getting ads, and stopping smart home devices from phoning home for telemetry and tracking. Pi-Hole will run on almost anything that can run Linux, is very easy to set up, and super effective with the right ad lists."
 pubDate: 2022-10-08
-updatedDate: 2024-11-07
+updatedDate: 2025-02-03
 tags:
   - pi-hole
 ---
@@ -242,11 +242,11 @@ If running bare metal, we need to make Unbound the upstream DNS resolver for Pi-
 
 Uncheck any public DNS in the left column, and in the right column enable the checkmark under **Custom 1** and add `127.0.0.1#5335` as the server. Scroll down to the bottom and click the **Save**.
 
-![Pi-Hole Upstream DNS Server setting.](../../img/blog/pihole-dns1.png)
+![Pi-Hole Upstream DNS Server setting.](../../img/blog/pihole-dns1.png 'Pi-Hole Upstream DNS Server setting')
 
 You can also set **Interface settings** to _Permit all origins_, as long as the machine running Pi-Hole is not accessible from the internet (and especially port 53 is not exposed) then this is totally safe, and will ensure Pi-Hole receives and answers queries from every device in your network. You can try using **Allow only local requests** first and see if it works for you.
 
-![Pi-Hole interface setting.](../../img/blog/pihole-dns2.png)
+![Pi-Hole interface setting.](../../img/blog/pihole-dns2.png 'Pi-Hole interface setting')
 
 Next, in order for Pi-Hole to work network-wide for all devices (including phones and tablets on Wi-Fi), you'll need to configure your router to use the Pi-Hole server as DNS. Some routers do not let you change this setting, like AT&T's Arris BGW210-700, but most Netgear and TP-Link routers do.
 
@@ -262,21 +262,21 @@ Otherwise you add Pi-Hole's IP manually to each device's DNS settings. As Pi-Hol
 
 Next, you'll notice the Pi-Hole web UI will show all clients as IP addresses, but there's a few methods to show hostnames instead. (Or `hostname.domain` if you prefer.) The easiest way is to use _Conditional Forwarding_, though it seems to be an uncommon feature with most consumer-grade routers, so don't be surprised if it doesn't work for you.
 
-Go to **Settings** on the sidebar, click on the **DNS** tab, and scroll down to **Advanced DNS settings**.
+Go to **Settings** on the sidebar, click on the _DNS_ tab, and scroll down to _Advanced DNS settings_.
 
-![Conditional Forwarding settings.](../../img/blog/pihole-dns3.png)
+![Conditional Forwarding settings.](../../img/blog/pihole-dns3.png 'Conditional Forwarding settings')
 
-Check the box to **Use Conditional Forwarding**, type in your subnet (most likely `192.168.0.0/24` or `192.168.1.0/24`), type in the domain if your router uses one and you know what it is (e.g. `.local` or `.home`) otherwise leave it blank, and click **Save**. Check the dashboard and see if that's enough to display hostnames instead of IP addresses. Doing a hard reload (Ctrl + F5) is usually enough to make them appear, but if you want to be sure, restart Pi-Hole by going to **Settings** -> **Restart DNS Resolver** on the web UI, or using the command `pihole restartdns` in the terminal.
+Check the box to _Use Conditional Forwarding_, type in your subnet (most likely `192.168.0.0/24` or `192.168.1.0/24`), type in the domain if your router uses one and you know what it is (e.g. `.local` or `.home`) otherwise leave it blank, and click **Save**. Check the dashboard and see if that's enough to display hostnames instead of IP addresses. Doing a hard reload (Ctrl + F5) is usually enough to make them appear, but if you want to be sure, restart Pi-Hole by going to **Settings** -> **Restart DNS Resolver** on the web UI, or using the command `pihole restartdns` in the terminal.
 
 If the hostnames are not showing up, there's something else we can try. Go back to _Advanced DNS settings_ and you'll see two checkmarks like in the picture below.
 
-![Advanced DNS settings.](../../img/blog/pihole-dns4.png)
+![Advanced DNS settings.](../../img/blog/pihole-dns4.png 'Advanced DNS settings')
 
 For the best security, both of these should be checked, but you can try unchecking one or both to see if they make the hostnames show. If the hostnames still don't populate, it's likely your router simply does not support conditional forwarding.
 
 You'll have to manually add each device's IP address and hostname/domain. Go to _Local DNS_ on the navigation bar, and click on _DNS Records_.
 
-![Adding new domain and IP.](../../img/blog/pihole-dns5.png)
+![Adding new domain and IP.](../../img/blog/pihole-dns5.png 'Adding new domain and IP')
 
 Alternately, you can manually edit the `/etc/hosts` file on the server running Pi-Hole. You can bind an IP to a hostname, domain or any other alias.
 
@@ -295,9 +295,9 @@ Alternately, you can manually edit the `/etc/hosts` file on the server running P
 
 On the Pi-Hole web UI, click on **Adlists** on the navigation bar:
 
-![Pi-Hole Adlists.](../../img/blog/adlist.png)
+![Pi-Hole Adlists.](../../img/blog/adlist.png 'Pi-Hole Adlists')
 
-The most efficient way to block URLs in Pi-Hole is to use an adlist, which is a list of URLs to block en masse. (You can also blacklist individual URLs by going to **Domains** on the sidebar.) While installing Pi-Hole you had the option of including a default adlist that blocks around 300k URLs, but there's many more adlists curated by the community that will block many more ads, malware sites, telemetry and tracking. Here are the ones I use:
+The most efficient way to block URLs in Pi-Hole is to use an adlist, which is a list of URLs to block en masse. (You can also blacklist individual URLs by going to _Domains_ on the sidebar.) While installing Pi-Hole you had the option of including a default adlist that blocks around 300k URLs, but there's many more adlists curated by the community that will block many more ads, malware sites, telemetry and tracking. Here are the ones I use:
 
 - <a href="https://firebog.net" target="_blank">The Firebog</a>
 - <a href="https://github.com/blocklistproject/Lists" target="_blank" rel="noreferrer noopener">The Block List Project</a>
@@ -306,54 +306,11 @@ The most efficient way to block URLs in Pi-Hole is to use an adlist, which is a 
 - <a href="https://oisd.nl" target="_blank" rel="noreferrer noopener">OISD</a>
 - <a href="https://github.com/mmotti/pihole-regex/blob/master/regex.list" target="_blank" rel="noreferrer noopener">This gist of Regex Expressions</a>
 
-Once you've added all the adlists (and any time you add additional ones), make sure to "update gravity" for the changes to take effect. Go to **Tools** on the navigation bar, click on **Update Gravity**, and click the big **Update** button. Do not leave the page until the process is done!
+Once you've added all the adlists (and any time you add additional ones), make sure to "update gravity" for the changes to take effect. Go to _Tools_ on the navigation bar, click on _Update Gravity_, and click the big **Update** button. Do not leave the page until the process is done!
 
 You may end up with several million "domains on adlists" as shown in the dashboard. Don't panic. You'll see your dashboard stats explode with blocked requests, especially from mobile devices. Pay attention to any issues you have visiting websites and using online apps/services that you commonly do, and whitelist domains as needed. (You can also use a <a href="https://github.com/anudeepND/whitelist" target="_blank">curated whitelist</a>.)
 
-![Over 3 million domains blocked inon Pi-Hole.](../../img/blog/blocked.png)
-
-<div id='advanced' />
-
-## Advanced DNS Settings
-
-By default the dashboard will show all clients as IP addresses, but there's a few methods to show hostnames instead. (Or `hostname.domain`) The easiest way is to use _Conditional Forwarding_, though it does not work with every router.
-
-Go to _Settings_ on the navigation bar, click on the **DNS** tab, and scroll down to **Advanced DNS settings**.
-
-![Conditional Forwarding settings.](../../img/blog/pihole-dns3.png)
-
-Check the box to _Use Conditional Forwarding_, enter your network information, and hit Save. Check the dashboard and see if that's enough to display hostnames instead of IP addresses.
-
-If the hostnames are not showing (sometimes it takes a minute), go back to **Advanced DNS settings**.
-
-![Advanced DNS settings.](../../img/blog/pihole-dns4.png)
-
-The above settings should be checked for more security, but try unchecking one or both to see if they make the hostnames show. If not, it's possible your router does not broadcast a local domain.
-
-You'll have to manually add each device's IP address and hostname/domain. Go to **Local DNS** on the navigation bar, and click on **DNS Records**.
-
-![Adding new domain and IP.](../../img/blog/pihole-dns5.png)
-
-Alternately, you can manually edit the `/etc/hosts` file on the server running Pi-Hole. You can bind an IP to a hostname, domain or any other alias.
-
-```ini
-# /etc/hosts
-
-192.168.0.200   hostname1
-192.168.0.215   hostname2
-192.168.0.230   mydomain.tld
-192.168.0.245   laptop
-```
-
-After saving your changes to the file, use the following command for them to take effect.
-
-```bash
-pihole restartdns
-```
-
-If you've been following the instructions, you're all set to block ads. Pi-Hole will be a DNS sinkhole for every device on the network, blocking many ads, tracking and telemetry domains. Domain name resolution will also be done recursively through Unbound, bypassing public DNS resolvers like Google and Cloudflare, going straight to the authoritative nameservers.
-
-If you want to go a bit deeper and improve the Pi-Hole experience, read on below.
+![Over 3 million domains blocked in Pi-Hole.](../../img/blog/blocked.png 'Over 3 million domains blocked in Pi-Hole')
 
 <div id='further' />
 
@@ -373,11 +330,11 @@ pihole -up | at 5AM
 
 ### Backup and/or restore Pi-Hole configuration
 
-You may want to regularly create a backup of your Pi-Hole configuration. You can't automate it, but that's ok because it's very simple -- just to go the web UI, click on **Settings**, then go to the **Teleporter** tab and click the **Backup** button. This will download a `tar.gz` file to the computer you're accessing the web UI from, and within this same screen you can restore from a backup file if necessary. You might consider committing your backup to a private GitHub repo too.
+You may want to regularly create a backup of your Pi-Hole configuration. You can't automate it, but that's ok because it's very simple -- just to go the web UI, click on _Settings_, then go to the _Teleporter_ tab and click the **Backup** button. This will download a `tar.gz` file to the computer you're accessing the web UI from, and within this same screen you can restore from a backup file if necessary. You might consider committing your backup to a private GitHub repo too.
 
 ### Use local time instead of UTC
 
-If you notice the query log displaying times as UTC instead of your local time zone, and you want the logs to use your time zone, use (for example if you want EST):
+If you notice the query log displaying times as UTC instead of your local time zone, and you want the logs to use your time zone, use (for example if you want to set _EST_ time zone):
 
 ```
 sudo timedatectl set-timezone America/New_York

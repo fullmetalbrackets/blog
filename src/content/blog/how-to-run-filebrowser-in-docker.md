@@ -2,7 +2,7 @@
 title: "How to run self-hosted FileBrowser in Docker"
 description: "FileBrowser is a self-hosted file manager for a specified directory in a Linux machine that lets you upload, download, move, copy, create, delete, rename, and edit your files in a nice web interface through your browser. Here's a quick guide to setting it up in Docker."
 pubDate: 2022-11-04
-updateDate: 2024-03-16
+updateDate: 2025-02-03
 tags:
   - docker
 ---
@@ -64,7 +64,7 @@ We will assume you want to use FileBrowser to manage your home directory `~/` (t
 
 ### Using docker run:
 
-If you're just using Docker without Docker Compose, use these commands:
+If you want to use plain ol' `docker run`, use these commands:
 
 ```bash
 docker run \
@@ -77,13 +77,11 @@ docker run \
     filebrowser/filebrowser:s6
 ```
 
-### Using docker compose:
+### Using Docker Compose:
 
-If you want to use Docker Compose, here's the contents of the `docker-compose.yaml`:
+If you want to use `docker compose`, create a `compose.yaml` file, copy and paste the below into it:
 
 ```yaml
-version: "3"
-
 services:
   filebrowser:
     container_name: filebrowser
@@ -101,7 +99,7 @@ services:
     restart: unless-stopped
 ```
 
-Make sure to use your own timezone, PUID and PGID. Now go to the directory containing the `docker-compose.yaml` and run the below command:
+Make sure to use your own timezone, PUID and PGID. Now go to the directory containing the `compose.yaml` and run the below command:
 
 ```bash
 docker compose up -d

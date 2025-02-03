@@ -2,7 +2,7 @@
 title: "Setup a Cloudflare Tunnel to securely access self-hosted apps with a domain from outside the home network"
 description: "Cloudflare Tunnels have been around for a few years and are well regarded alternatives for VPNs or port-forwarding on a router. They are often used to expose access to self-hosted apps from outside the local network with minimal config or hassle. Here's how it's done."
 pubDate: 2023-07-20
-updatedDate: 2025-02-01
+updatedDate: 2025-02-03
 tags:
   - cloudflare
 ---
@@ -37,19 +37,19 @@ If you purchased your domain with Cloudflare, you can skip this section since it
 
 2. Enter your domain, leave _Quick scan for DNS records_ selected, and click **Cotinue**.
 
-![Adding a domain to Cloudflare.](../../img/blog/cloudflare-domain.png)
+![Adding a domain to Cloudflare.](../../img/blog/cloudflare-domain.png 'Adding a domain to Cloudflare')
 
 3. Click on the **Free plan** at the bottom and click **Continue**.
 
-![Cloudflare free plan.](../../img/blog/cloudflare-free.png)
+![Cloudflare free plan.](../../img/blog/cloudflare-free.png 'Cloudflare free plan')
 
 4. You'll see your DNS records, if there are any. Don't worry about this right now and click on the **Continue to activate** button.
 
-![Cloudflare free plan.](../../img/blog/cloudflare-dns-records1.png)
+![DNS management page.](../../img/blog/cloudflare-dns-records1.png 'DNS management page')
 
 5. You'll see a pop-up window saying you should set your DNS records now, click on **Confirm**.
 
-![Add records pop-up.](../../img/blog/cloudflare-dns-records2.png)
+![Add DNS records pop-up.](../../img/blog/cloudflare-dns-records2.png 'Add DNS records pop-up')
 
 6. Now you'll be provided some instructions to update the nameservers on your domain's registrar, _open a new tab and follow those instructions_. Once you've added the Cloudflare nameservers at your registrar, go back to Cloudflare and click on **Continue**.
 
@@ -65,19 +65,19 @@ In the Cloudflare dashboard, from your domain's _Overview_ page, click on **Acce
 
 1. On the sidebar, go to **Network** and choose **Tunnels** from the dropdown.
 
-![Creating a Cloudflare Tunnel.](../../img/blog/cloudflare-tunnel1.png)
+![Creating a Cloudflare Tunnel.](../../img/blog/cloudflare-tunnel1.png 'Creating a Cloudflare Tunnel')
 
 2. Click on **Add a tunnel**, then on the next page choose **Select Cloudflared**.
 
-![Choosing a connector type.](../../img/blog/cloudflare-tunnel2.png)
+![Selecting a connector type.](../../img/blog/cloudflare-tunnel2.png 'Selecting a connector type')
 
 3. On the following page name your tunnel, then click **Save tunnel**.
 
-![Docker run command for Cloudflared.](../../img/blog/cloudflare-tunnel3.png)
+![Naming the Tunnel.](../../img/blog/cloudflare-tunnel3.png 'Naming the Tunnel')
 
 4. Next you'll be given a `docker run` command to install and run the _cloudflared_ connector. You can just copy and paste this into your terminal to run the tunnel, but if you prefer to use `docker compose` instead (and I do), all we will need from here is the _tunnel token_.
 
-![Docker run command for Cloudflared.](../../img/blog/cloudflare-tunnel4.png)
+![Docker run command for Cloudflared.](../../img/blog/cloudflare-tunnel4.png 'Docker run command for Cloudflared')
 
 5. To run this in `docker compose`, first create a `compose.yaml` file and we'll add both _Navidrome_ and _Cloudflare Tunnel_ to it:
 
@@ -116,7 +116,7 @@ docker compose up -d
 
 7. Once the containers are up and running, you should see in Cloudflare that your _connector status_ at the bottom is **Connected**. Once the tunnel is Connected, click the **Next** button.
 
-![Connector showing status Connected.](../../img/blog/cloudflare-tunnel5.png)
+![Connector showing status Connected.](../../img/blog/cloudflare-tunnel5.png 'Connector showing status Connected')
 
 6.  Now you'll be in the _Route Traffic_ page, under the **Public Hostnames** we have to add some things. First, add your desired **Subdomain**, for example, `music`. (You will then access Navidrome at `https://music.your-domain.com`.)
 
@@ -126,13 +126,13 @@ docker compose up -d
 
 9. For **URL**, put the full LAN (internal) IP address of the machine that will host the site, and append the Navidrome network port -- for example `192.168.0.100:4533`. (Don't use `localhost:4533` despite what the example says, that never works for me.)
 
-![Route traffic page.](../../img/blog/cloudflare-tunnel6.png)
+![Route traffic page.](../../img/blog/cloudflare-tunnel6.png 'Route traffic page')
 
 12. When done filling everything in, click **Save**.
 
 Now you will be back at the **Tunnels** page. Under _Your tunnels_, the tunnel you just created should show **Healthy** status.
 
-![Tunnel showing Healthy status.](../../img/blog/cloudflare-tunnel7.png)
+![Tunnel showing Healthy status.](../../img/blog/cloudflare-tunnel7.png 'Tunnel showing Healthy status')
 
 All done! Go to `https://music.your-domain.com` and you should reach the Navidrome UI! However, you're not the only one with access, technically anyone with the URL can reach it unabated.
 
@@ -233,7 +233,7 @@ For even more security, or maybe even in lieu of setting up Oauth, you can use C
 
 3. In the Custom rules page, scroll down to _Rules templates_, look for _Zone lockdown_ and click on **Use template**.
 
-![Zone lockdown template.](../../img/blog/cloudflare-waf1.png)
+![Zone lockdown template.](../../img/blog/cloudflare-waf1.png 'Zone lockdown template')
 
 4. The template have two rules. On the first one leave the _Field_ as **IP Source Address**, change _Operator_ to **is not equal to**, and for _Value_ enter your public IP address. (You can <a href="https://icanhazip.com" target="_blank">find out what it is here.</a>)
 
@@ -241,7 +241,7 @@ For even more security, or maybe even in lieu of setting up Oauth, you can use C
 
 6. Under _Then take action..._ choose **Block** as the action. Now scroll to the bottom and click on **Deploy**.
 
-![Editing the template.](../../img/blog/cloudflare-waf2.png)
+![Editing the template.](../../img/blog/cloudflare-waf2.png 'Editing the template')
 
 Now only your IP address should have access to `music.your-domain.com`. Be aware that if your IP address changes (and is common with residential ISPs unless you have a static IP), you will need to keep track of that and update the rule accordingly.
 

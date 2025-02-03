@@ -2,21 +2,28 @@
 title: "Setup Prometheus, Node Exporter, Cadvisor and Grafana in Docker"
 description: "When running a headless home server, you may want to set up a monitoring solution to keep track of your server's performance. Node Exporter will expose your server's metrics, cAdvisor will expose metrics for Docker containers, and Prometheus will scrape and collect those metrics, which is then used as a data source for Grafana dashboards. Here's how to get it all set up in Docker."
 pubDate: 2022-10-20
+updatedDate: 2025-02-03
 tags:
   - docker
 ---
 
-## Table of Contents
+## Sections
 
-1. [Prep the Docker-Compose file and Prometheus config files](#prep)
+1. [Preping the Compose file and Prometheus config files](#prep)
 2. [Start up the containers and confirm they are working](#start)
 3. [References](#ref)
 
 <div id='prep'/>
 
-## Prepping the Docker-Compose and config files
+## Prepping the Compose file and Prometheus config files
 
-First let's create the `docker-compose.yml` file. Note, I like to put all my Docker container volumes under one place in my home directory, but change the paths to match your own. Also, note I'll be using some different port mappings in the below examples, but you should use the default or any other ports of your choosing.
+First things first, if you haven't yet, you can install Docker and all dependencies quickly with the following command:
+
+```bash
+curl -fsSL https://get.docker.com | sh
+```
+
+First let's create the `compose.yml` file. Note, I like to put all my Docker container volumes under one place in my home directory, but change the paths to match your own. Also, note I'll be using some different port mappings in the below examples, but you should use the default or any other ports of your choosing.
 
 ```yaml
 version: "3"
@@ -124,23 +131,29 @@ sudo chmod -R 777 /home/ariel/docker/prometheus
 
 <div id='start'/>
 
-## Running the containers and confirming they work
+## Start up the containers and confirm they are working
 
-Now it's time to create the stack and get our containers up and running. Use the command `docker-compose up -d` and for everything to be finished. To confirm everything is up and running, first go to the Prometheus web UI at `http://192.168.0.100:9090`.
+Now it's time to create the stack and get our containers up and running by using the following command: 
 
-![Prometheus main page.](../../img/blog/prometheus1.png)
+```bash
+docker compose up -d
+```
+
+It'll take a few minutes to download and star the containers. To confirm everything is up and running, first go to the Prometheus web UI at `http://192.168.0.100:9090`.
+
+![Prometheus main page.](../../img/blog/prometheus1.png 'Prometheus main page')
 
 On the navigation bar at the top, click on _Status_ then select _Targets_ from the dropdown. If all the other containers are up and running as intended, and your `prometheus.yml` is filled out correctly, it should look like this:
 
-![Targets in up state within Prometheus.](../../img/blog/prometheus2.png)
+![Targets in up state within Prometheus.](../../img/blog/prometheus2.png 'Targets in up state within Prometheus')
 
 Good to go! Now go to the Grafana web UI at `http://192.168.0.100:3000`, click the _Arrow_ button on the left bar to expand the navigation menu, then click on _Configuration_ and select _Data Sources_ from the drop-down.
 
-![Navigation menu in Grafana.](../../img/blog/grafana1.png)
+![Navigation menu in Grafana.](../../img/blog/grafana1.png 'Navigation menu in Grafana')
 
 You should see _Prometheus_ with it's endpoint already set as a default Data Source.
 
-![Prometheus data source in Grafana.](../../img/blog/grafana2.png)
+![Prometheus data source in Grafana.](../../img/blog/grafana2.png 'Prometheus data source in Grafana')
 
 Now you're ready to create your dream Grafana dashboard! Creating the actual dashboard is beyond the scope of this article, but I may write about it in the future. For now, you might want to use dashboards created by others to start visualizing some metrics and learning the ropes.
 

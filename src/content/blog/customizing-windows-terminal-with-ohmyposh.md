@@ -8,7 +8,7 @@ tags:
 ---
 
 <!-- <img src="/oh-my-posh.png" class="posh-img" loading="eager" decoding="async" alt="Oh My Posh" /> -->
-![Oh My Posh](../../img/blog/oh-my-posh.png)
+![Oh My Posh](../../img/blog/oh-my-posh.png 'Oh My Posh')
 
 
 ## Sections

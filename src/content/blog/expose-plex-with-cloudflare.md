@@ -2,6 +2,7 @@
 title: "How to securely expose Plex from behind CGNAT with Cloudflare Tunnel"
 description: "Exposing Plex normally involves port forwarding from the router, which is very insecure and not recommended. If your home network is behind CGNAT - very common with most ISPs nowadays -- you can't even port forward if you wanted to. Here's how I did it in a fairly secure way that limits access by using Cloudflare."
 pubDate: 2024-07-15
+updatedDate: 2025-02-03
 tags:
   - cloudflare
 ---
@@ -28,16 +29,14 @@ Although there are many solutions to get across CGNAT, for Plex I've found that 
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
 > **Important Note**
+> 
+> You're probably much better off following <a href="/blog/expose-plex-tailscale-vps/" target="_blank">this blog post to expose Plex through CGNAT with Tailscale</a> instead of using exposing it via Cloudflare Tunnel as I write about below.
 >
-> Technically speaking, Cloudflare Tunnel is **NOT** intended for routing video and audio streams, it's intended purpose is routing HTTP traffic mainly for webpages. In fact, the <a href="https://www.cloudflare.com/service-specific-terms-application-services/#content-delivery-network-terms" target="_blank">Cloudflare Service-Specific Terms for their CDN</a> specifically state,
+> Technically speaking, Cloudflare Tunnel is **NOT** intended for routing video and audio streams, it's intended purpose is routing HTTP traffic for webpages. In fact, the <a href="https://www.cloudflare.com/service-specific-terms-application-services/#content-delivery-network-terms" target="_blank">Cloudflare Service-Specific Terms for their CDN</a> specifically state,
 >
-> *"Unless you are an Enterprise customer, Cloudflare offers specific Paid Services (e.g., the Developer Platform, Images, and Stream) that you must use in order to serve video and other large files via the CDN. Cloudflare reserves the right to disable or limit your access to or use of the CDN, or to limit your End Users’ access to certain of your resources through the CDN, if you use or are suspected of using the CDN without such Paid Services to serve video or a disproportionate percentage of pictures, audio files, or other large files."*
+> _"Unless you are an Enterprise customer, Cloudflare offers specific Paid Services (e.g., the Developer Platform, Images, and Stream) that you must use in order to serve video and other large files via the CDN. Cloudflare reserves the right to disable or limit your access to or use of the CDN, or to limit your End Users’ access to certain of your resources through the CDN, if you use or are suspected of using the CDN without such Paid Services to serve video or a disproportionate percentage of pictures, audio files, or other large files."_
 >
-> Be aware that by using Cloudflare Tunnel, you are routing traffic through Cloudflare's CDN (can't have one without the other) and so using it with Plex may cause Cloudflare to limit or potentially even outright ban your account. By following this guide, *you agree to take the risk* that such action may occur, so *think carefully about this warning and whether it's worth it*.
->
-> If you already have and use a Cloudflare account, I highly recommend creating a **separate Cloudflare account with another email address**, and only use this other account for hosting a Cloudflare Tunnel with Plex, so that any actions taken by Cloudflare against you are limited to this one account. Consider it a burner account that may not provide a permanent solution. (I suggest more permanent solutions at the end of the post.)
->
-> I have successfully used this method to share my Plex library with only one other user, but their usage is mostly limited to one or two movies every weekend, which has resulted in around 50 to 80 GB of bandwidth per month, for the last 4 months. It's impossible to know if or when Cloudflare will decide enough is enough, but it's safe to assume multiple users consuming hundreds of GB of bandwidth per month will get on their radar faster than single-user low bandwidth usage. **Your mileage will vary.**
+> Be aware that by using Cloudflare Tunnel, you are routing traffic through Cloudflare's CDN (can't have one without the other) and so using it with Plex may cause Cloudflare to limit or potentially outright ban your account. By following this guide, **you agree to take the risk** that such action may occur, so _think carefully about this warning and whether it's worth it_. If you already have a Cloudflare account and still want to expose Plex this way, I highly recommend creating a )_separate Cloudflare account with another email address_, and only use that other account for hosting a Cloudflare Tunnel with Plex, so that any actions taken by Cloudflare against you are limited to this new account, and not your main one! Consider it a burner account that may eventually blow up.
 
 <div id="pre" />
 
@@ -57,84 +56,128 @@ So if you have not already, install docker with the following command: (This wil
 curl -fsSL https://get.docker.com | sh
 ```
 
-<div id="domain" />
+<div id='domain' />
 
-## Add a domain to Cloudflare
+## Add a domain in Cloudflare
 
-If you registered a domain with Cloudflare, you can skip this part, but if you bought a domain from another registrar (Namecheap, Porkbun, etc.) you'll need to add it to Cloudflare.
+Create your <a href="https://dash.cloudflare.com/sign-up" target="_blank">free Cloudflare account</a> if you haven't already. **If you bought a domain on Cloudflare, you can skip to the next section since it is auto-configured already.** If your domain is from another registrar, we'll need to add it to Cloudflare:
 
-1. Login to Cloudflare, go to **Websites** on the sidebar, and click the **Add a site** button.
+1. On the Cloudflare dashboard _Account Home_, click the **+ Add a domain** button.
 
-![Adding a site to Cloudflare.](../../img/blog/cloudflare-domain.png)
+2. Enter your domain, leave _Quick scan for DNS records_ selected, and click **Cotinue**.
 
-2. Enter your domain and click **Add site**, then click on the **Free plan** at the bottom and click **Continue**.
+![Adding a domain to Cloudflare.](../../img/blog/cloudflare-domain.png 'Adding a domain to Cloudflare')
 
-![Cloudflare free plan.](../../img/blog/cloudflare-free.png)
+3. Click on the **Free plan** at the bottom and click **Continue**.
 
-3. After waiting a few moments for the DNS quick scan, you should see your domain’s DNS records appear. Click on **Continue**.
+![Cloudflare free plan.](../../img/blog/cloudflare-free.png 'Cloudflare free plan')
 
-4. Cloudflare will now present you with the URLs to two _nameservers_, should be something like `adam.ns.cloudflare.com`. Leave this page open, we'll come back to it.
+4. You'll see your DNS records, if there are any. Don't worry about this right now and click on the **Continue to activate** button.
 
-5. Login to the registrar that owns your domain, go into your domain's **DNS settings**, and change the _nameservers_ to both of the URLs provided by Cloudflare.
+![DNS management page.](../../img/blog/cloudflare-dns-records1.png 'DNS management page')
 
-I tend to use Namecheap, so I can tell you if your domain is with them, go to _Domain List_ and click **Manage** next to the domain you want to add. Next to _Nameservers_ choose **Custom DNS** from the dropdown list, add the two Cloudflare nameservers, and click the green checkmark to finish.
+5. You'll see a pop-up window saying you should set your DNS records now, click on **Confirm**.
 
-6. Back in Cloudflare, click **Done, check nameservers**. It could take up to 24 hours for the change to propagate, but usually it will take less than an hour, and often less than 20 minutes. In the meantime, follow the _Quick Start Guide_.
+![Add DNS records pop-up.](../../img/blog/cloudflare-dns-records2.png 'Add DNS records pop-up')
 
-7. Leave **Automatic HTTPS Rewrites** checked as-is, and enable the checkbox for **Always Use HTTPS**.
+6. Now you'll be provided some instructions to update the nameservers on your domain's registrar, _open a new tab and follow those instructions_. Once you've added the Cloudflare nameservers at your registrar, go back to Cloudflare and click on **Continue**.
 
-8. Leave **Brotli** on. On the summary, click **Finished**.
+7. Now you'll have to wait a few minutes for the changes to propagate, then click on **Check nameservers** and reload the page. If it's still shows _Pending_ next to the domain at the top, just keep waiting and reload again after a few more minutes.
 
-9. You'll be back at your site's Overview. If you still see _Complete your nameserver setup_, you can try using the **Check nameservers** button. In my experience that makes the DNS changes propagate within a few minutes.
+8. Once the domain is _Active_, you're ready to set up the Cloudlare Tunnel.
 
-Once your DNS changes have taken effect, the Overview page will say: _"Great news! Cloudflare is now protecting your site!"_ That means you're good to go.
+<div id='tunnel' />
 
-<div id="tunnel" />
+## Create and configure the Cloudflare tunnel
 
-## Create the Cloudflare Tunnel
+In the Cloudflare dashboard, from your domain's _Overview_ page, click on **Access** on the sidebar, and then on the next page click **Launch Zero Trust**. Once you're in the Zero Trust dashboard, do the following:
 
-On the Cloudflare dashboard, click on _Access_ on the sidebar, then click on _Launch Zero Trust_ to open it in a new tab. Once at the Cloudflare Zero Trust dashboard, do the following:
+1. On the sidebar, go to **Network** and choose **Tunnels** from the dropdown.
 
-1. On the sidebar, go to **Network** -> **Tunnels**.
+![Creating a Cloudflare Tunnel.](../../img/blog/cloudflare-tunnel1.png 'Creating a Cloudflare Tunnel)
 
-2. Click the **Create a tunnel** button, choose _Cloudflared_ as the connector and click **Next**, give it a name, and click **Save tunnel**.
+2. Click on **Add a tunnel**, then on the next page choose **Select Cloudflared**.
 
-![Choosing a connector type.](../../img/blog/cloudflare-tunnel1.png)
+![Selecting a connector type.](../../img/blog/cloudflare-tunnel2.png 'Selecting a connector type)
 
-3. The next page will provide a docker command to install and run the `cloudflared` container.
+3. On the following page name your tunnel, then click **Save tunnel**.
 
-![Docker run command for cloudflared.](../../img/blog/cloudflare-tunnel2.png)
+![Naming the Tunnel.](../../img/blog/cloudflare-tunnel3.png 'Naming the Tunnel')
+
+4. Finally you'll be given a `docker run` command for _cloudflared_, but we'll use `docker compose` instead. All we will need from here is the _tunnel token_.
+
+![Docker run command for Cloudflared.](../../img/blog/cloudflare-tunnel4.png 'Docker run command for Cloudflared')
+
+5. Create a `compose.yaml` file, copy and paste the below into it:
+
+```yaml
+services:
+    restart: unless-stopped
+    container_name: tunnel
+    image: cloudflare/cloudflared:latest
+    command: tunnel run
+    environment:
+      - TUNNEL_TOKEN=
+```
+
+6. Add the _tunnel token_ to the `TUNNEL_TOKEN=` environmental variable, then save the file and let's run docker compose again. (It will automatically add `cloudflared` and restart the `nginx` container.)
+
+```bash
+docker compose up -d
+```
+
+7. Once the container is up and running, at the bottom your connector status should be **Connected**. Once the tunnel is Connected, click the **Next** button.
+
+![Connector showing status Connected.](../../img/blog/cloudflare-tunnel5.png 'Connector showing status Connected')
+
+6.  Now you'll be in the _Route Traffic_ page, under the **Public Hostnames** we have to add some things. For our purposes (hosting a site at the root of `your-domain.com`) you should leave the **Subdomain** empty. If you prefer for your site to be accessible at, say, `blog.your-domain.com` then set that subdomain here.
+
+7. For **Domain** type in `your-domain.com`.
+
+9. Leave the **Path** empty, unless you want the URL to be something like `your-domain.com/blog`.
+
+10. Under _Service_, for **Type** select `HTTP` (not HTTPS) from the dropdown menu.
+
+11. For **URL**, put the full LAN (internal) IP address of the machine that will host the site, and append the port you set for the docker container -- for example `192.168.1.100:8888`. (Don't use `localhost:8888` despite what the example says, that never works for me.)
+
+![Route traffic page.](../../img/blog/cloudflare-tunnel6.png 'Route traffic page')
+
+12. When done filling everything in, click **Save**.
+
+Now you will be back at the **Tunnels** page. Under **Your tunnels**, the tunnel you just created should appear and still show **Healthy** status.
+
+![Tunnel showing Healthy status.](../../img/blog/cloudflare-tunnel7.png 'Tunnel showing Healthy status')
+
+Finally, we need to configure SSL for the website!
+
+1. From the _Cloudflare Zero Trust_ dashboard, click on the **back arrow** next to your account name at the top of the sidebar to return to the regular Cloudflare dashboard.
+
+2. Click on your domain and then click on **SSL/TLS** on the sidebar.
+
+3. You'll now be in the _SSL/TLS Overview_, click the **Configure** button.
+
+![SSL/TLS encryption page.](../../img/blog/cloudflare-ssl1.png 'SSL/TLS encryption page')
+
+4. Select _Automatic SSL/TLS (default)_ then click **Save**.
+
+![Configuring encryption mode.](../../img/blog/cloudflare-ssl2.png 'Configuring encryrption mode')
 
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
-> If you are running your Plex container in a stack via **Docker Compose**, and want to just add `cloudflared` to it, <a href="https://gist.github.com/fullmetalbrackets/f747d43682c2f56a287ea42b309792ef" target="_blank">see this gist I made</a> and add the necessary bits to your `docker-compose.yaml`.
+> If you run into any HTTPS errors later when trying to access your site, come back to this page and try instead to select _Custom SSL/TLS_ and choose **Full (Strict)** or **Full** instead. _Automatic_ should work in most cases, though.
 
-
-4. Once the container is up and running, check the Cloudflare configure tunnel page, your connector status be **Connected**.
-
-![Connector showing status Connected.](../../img/blog/cloudflare-tunnel3.png)
-
-5. Once the tunnel shows as Healthy, click the **Next** button. Now you'll be in the _Route Traffic_ page.
-
-![Configuring the Cloudflare tunnel.](../../img/blog/cloudflare-tunnel4.png)
-
-4. Under _Public hostnames_ type in your sub-domain (e.g. `plex`) and then your domain. Below that under _Services_, for _Type_ choose **HTTP** (_not HTTPS_), and for _URL_ enter the local IP address and port of the service you're exposing, e.g. `192.168.0.150:32400`. To finish, click the **Save tunnel** button.
-
-5. Now, to verify everything is working as intended, go to _DNS_ -> _Records_ on the sidebar. You should see a `CNAME` record pointing the `plex` sub-domain to a URL like `5e126941-1234-8e13-4d80-02fe21084a62.cfargotunnel.com`. (The alpha-numeric string is your tunnel ID.)
-
-![Cloudflare CNAME DNS record.](../../img/blog/plex-cf5.png)
-
+Now you should be able to visit `https://your-domain.com` and see your website!
 Now you should be able to go to `https://plex.your-domain.com` and you should reach the Plex UI and be prompted to login! However, right now Plex is fully exposed to the entire internet. We need to use Cloudflare's WAF to restrict access to only who we want!
 
-<div id="cloudflare" />
+<div id="security" />
 
-## Configure Cloudflare
+## Configure security settings
 
 First, we're going to enable some security features to block bots.
 
 1. On the Cloudflare dashboard, go to **Security** -> **Bots** on the sidebar, and enable **Bot fight mode**.
 
-![Enable bot fight mode on WAF.](../../img/blog/plex-cf0.png)
+![Enable bot fight mode on WAF.](../../img/blog/plex-cf0.png 'Enable bot fight mode on WAF')
 
 2. Next, go to **Security** -> **WAF** on the sidebar.
 
@@ -148,7 +191,7 @@ First, we're going to enable some security features to block bots.
 
 7. Click on **Deploy** to finish.
 
-![Creating WAF custom rule to block bots.](../../img/blog/plex-cf1.png)
+![Creating WAF custom rule to block bots.](../../img/blog/plex-cf1.png 'Creating WAF custom rule to block bots')
 
 For this next part, you will need the specific IP addresses of your external users, because we're going to make Cloudflare block _everyone_ except for those IP addresses. In most cases, even when ISPs don't offer a static IP, a specific customer's IP address rarely changes, so you should be safe doing this. On the rare occassion where a user's public IP address changes, you can just come in here and update it. Sometimes prioritizing security means dealing with inconvenience.
 
@@ -174,7 +217,7 @@ Now, we're going to create a rule that blocks EVERYONE except specific IPs.
 
 10. Click on **Deploy** to finish.
 
-![Creating WAF custom rule to restrict allowed IPs.](../../img/blog/plex-cf2.png)
+![Creating WAF custom rule to restrict allowed IPs.](../../img/blog/plex-cf2.png 'Creating WAF custom rule to restrict allowed IPs')
 
 Next, I like to create an additional rule that lets external users' IPs _skip_ the WAF altogether. This ensures those IPs can get in, and has the side-effect of making connections from these IPs show up as events in WAF, which is nice for monitoring. (They will show as _Skipped_ in the Events activity log.)
 
@@ -198,7 +241,7 @@ Next, I like to create an additional rule that lets external users' IPs _skip_ t
 
 10. Click on **Deploy** to finish.
 
-![Creating WAF custom rule for allowed IPs to bypass WAF.](../../img/blog/plex-cf3.png)
+![Creating WAF custom rule for allowed IPs to bypass WAF.](../../img/blog/plex-cf3.png 'Creating WAF custom rule for allowed IPs to bypass WAF')
 
 Now let's set the order of these rules in WAF.
 
@@ -228,7 +271,7 @@ Finally, let's disable caching to minimize CDN usage by our external users and e
 
 7. Click on **Deploy** to finish.
 
-![Creating cache rule to bypass CDN caching.](../../img/blog/plex-cf4.png)
+![Creating cache rule to bypass CDN caching.](../../img/blog/plex-cf4.png 'Creating cache rule to bypass CDN caching')
 
 <div id="plex" />
 

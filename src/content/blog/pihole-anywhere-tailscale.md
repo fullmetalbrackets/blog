@@ -2,6 +2,7 @@
 title: "How to use Pi-hole from anywhere with Tailscale"
 description: "Tailscale is my new homelab toy. I've been using it to access my media on the go, to connect to a VPS for sharing my Plex library with family, and now with on-the-go adblocking on my phone, tablet and laptop. Here's how. "
 pubDate: 2024-09-25
+updatedDate: 2025-02-03
 tags:
   - tailscale
 ---
@@ -120,7 +121,7 @@ Make sure your upstream DNS server is set (I recommend <a href="https://quad9.ne
 >
 > If using Docker's default `bridge` network setting, _permit all origins_ is required for Pi-hole to work properly. This can also be achieved with the environment variable `DNSMASQ_LISTENING: all` on the compose file.
 
-![Setting Pi-hole to permit all origins.](../../img/blog/pihole-tailscale-interface.png)
+![Setting Pi-hole to permit all origins.](../../img/blog/pihole-tailscale-interface.png 'Setting Pi-hole to permit all origins')
 
 <div id='dns'/>
 
@@ -138,15 +139,15 @@ Do the following:
 
 2. Under _Global nameserver_ click **Add nameserver** and choose **Custom...** from the dropdown menu.
 
-![Tailscale DNS global nameserver setting](../../img/blog/tailscale-dns1.png)
+![Tailscale default global nameservers](../../img/blog/tailscale-dns1.png 'Tailscale default global nameservers')
 
 3. Enter the Pi-Hole's tailnet IP and click **Save**.
 
-![Tailscale DNS global nameserver setting](../../img/blog/tailscale-dns2.png)
+![Adding a custom nameserver.](../../img/blog/tailscale-dns2.png 'Adding a custom nameserver')
 
 4. Enable the **Override local DNS** toggle.
 
-![Tailscale DNS global nameserver setting](../../img/blog/tailscale-dns3.png)
+![Custom nameserver with Override local DNS toggled on.](../../img/blog/tailscale-dns3.png 'Custom nameserver with Override local DNS toggled on')
 
 Now to test it out, connect to Tailscale on your phone/tablet and visit some websites. You should not be seeing ads and should start seeing the device's Tailscale IP in Pi-Hole's logs. Any devices you add to Tailscale will use the Pi-hole we just set up as their DNS server, unless you use the `--accept-dns=false` flag where available.
 

@@ -2,11 +2,12 @@
 title: "Setting up a Libre Computer Sweet Potato SBC with Debian and Pi-Hole"
 description: "I've been wanting to get a Raspberry Pi for ages, but they were out of stock for the longest time, so I never ended up with one. Recently I learned about the Le Potato from Libre Computer as a Pi-alternative, and after some research paid the $30 early access price for their new Sweet Potato SBC. Here's how I set it up."
 pubDate: 2023-11-02
+updatedDate: 2025-02-03
 tags:
   - self-hosting
 ---
 
-![Libre Computer Sweet Potato SBC.](../../img/blog/sweet-potato.jpg)
+![Libre Computer Sweet Potato.](../../img/blog/sweet-potato.jpg 'Libre Computer Sweet Potato')
 
 ## Sections
 
@@ -22,7 +23,7 @@ tags:
 
 Libre Computer Project is a crowdfunded designer of single-board computers which effectively are alternatives to Raspberry Pi. Amongst their products is the <a href="https://libre.computer/products/aml-s905x-cc/" target="_blank">Le Potato</a> which is equivalent in features to a low-end Raspberry Pi 3B, which some slight differences.
 
-Recently as of early September 2023, they've come out with a new revision known as the "Sweet Potato" with a few minor upgrades. (<a href="https://www.loverpi.com/products/libre-computer-board-aml-s905x-cc-v2" target="_blank">See here</a> for a product page with the differences.) I took the plunge and ordered it from <a href="https://www.loverpi.com" target="_blank">LoveRPi</a>, and it arrived a week later.
+In September 2023 they came out with a new revision known as the "Sweet Potato" with a few minor upgrades. (<a href="https://www.loverpi.com/products/libre-computer-board-aml-s905x-cc-v2" target="_blank">See here</a> for a product page with the differences.) I took the plunge and ordered it from <a href="https://www.loverpi.com" target="_blank">LoveRPi</a> and it arrived a week later.
 
 <div id='boot' />
 

@@ -2,6 +2,7 @@
 title: "Setting up a reverse proxy for HTTPS with a custom domain using Nginx Proxy Manager, AdGuard Home and Cloudflare"
 description: "I've used a reverse proxy to access my self-hosted apps and services for years, and used Pi-Hole as my home network DNS for even longer, but recently switched to AdGuard Home. That meant redoing all my DNS records within AdGuard so I could get my reverse proxy back up and running, and I decided to write down the steps I took. When done, we'll be able to access our apps and services through a custom domain, with unique sub-domains for each app or service, with full HTTPS and accessible only locally."
 pubDate: 2025-01-28
+updatedDate: 2025-02-03
 tags:
   - self-hosting
 ---
@@ -87,21 +88,21 @@ To add an existing domain to Cloudflare:
 
 1. On the Cloudflare dashboard _Account Home_, click the **+ Add a domain** button.
 
-![Adding a domain to Cloudflare.](../../img/blog/cloudflare-domain.png)
+![Adding a domain to Cloudflare.](../../img/blog/cloudflare-domain.png 'Adding a domain to Cloudflare')
 
 2. Enter your domain, leave _Quick scan for DNS records_ selected, and click **Cotinue**.
 
 3. Click on the **Free plan** at the bottom and click **Continue**.
 
-![Cloudflare free plan.](../../img/blog/cloudflare-free.png)
+![Cloudflare free plan.](../../img/blog/cloudflare-free.png 'Cloudflare free plan')
 
 4. You'll see your DNS records, if there are any. Don't worry about this right now and click on the **Continue to activate** button.
 
-![Cloudflare free plan.](../../img/blog/cloudflare-dns-records1.png)
+![DNS management page.](../../img/blog/cloudflare-dns-records1.png 'DNS management page')
 
 5. You'll see a pop-up window saying you should set your DNS records now, click on **Confirm**.
 
-![Cloudflare free plan.](../../img/blog/cloudflare-dns-records1.png)
+![Add DNS records pop-up.](../../img/blog/cloudflare-dns-records1.png 'Add DNS records pop-up')
 
 6. You'll be provided some instructions to update the nameservers on your domain's registrar, open a new tab and follow those instructions. Once you've added the Cloudflare nameservers at your registrar, go back to Cloudflare and click on **Continue**.
 
@@ -161,7 +162,7 @@ If you are running **Portainer** and want to create the container(s) from within
 
 Whichever method you use, wait a few moments while the image is downloaded and the container is created. Once it's up and running we can login to the Nginx Proxy Manager web UI at `http://<ip-address>:81` where the IP is the server running Nginx Proxy Manager.
 
-![Nginx Proxy Manager login screen.](../../img/blog/nginxproxy1.png)
+![Nginx Proxy Manager login screen.](../../img/blog/nginxproxy1.png 'Nginx Proxy Manager login screen')
 
 Go into the Nginx Proxy Manager web UI at `http://<your-ip-address>:81`, login with the default email `admin@example.com` and password `changeme`, and as soon as you login go to _Users_ on the nav bar, and change (ideally) both the email and password of the administrator account.
 
@@ -169,7 +170,7 @@ To add proxy hosts click on **Hosts** on the navigation bar at the top, then cli
 
 We'll create an entry for Plex first, which is running as a container on the same host at port 32400. You'll begin in the **Details** tab.
 
-![Creating a proxy host.](../../img/blog/nginxproxy3.png)
+![Creating a proxy host.](../../img/blog/nginxproxy3.png 'Creating a proxy host')
 
 1. Under _Domain Names_ type in `*.domain.com` and click the `Add *.domain.com` dropdown that appears. Make sure to include the `*` as this will create a wildcard certificate for use with all subdomains.
 
@@ -183,7 +184,7 @@ We'll create an entry for Plex first, which is running as a container on the sam
 
 6. Go to the **SSL** tab, click under _SSL Certificate_ and select **Request a new SSL Certificate** from the dropdown.
 
-![Configuring SSL on proxy host.](../../img/blog/nginxproxy4.png)
+![Configuring SSL on proxy host.](../../img/blog/nginxproxy4.png 'Configuring SSL on proxy host')
 
 7. HTTPS should work with _Force SSL_ toggled off, but feel free to toggle it on if you prefer.
 
