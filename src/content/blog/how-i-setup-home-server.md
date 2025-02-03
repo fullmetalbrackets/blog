@@ -2,6 +2,7 @@
 title: "How I set up a home server for self-hosting and as a NAS with secure remote access"
 description: "I turned my old Dell PC into an all-in-one home server and network attached storage to self-host all my data, my photos, and my media library, running Home Assistant, Plex and other services, all securely accessible from outside my home with Tailscale."
 pubDate: 2025-01-31
+updatedDate: 2025-02-03
 tags:
   - self-hosting
 ---
@@ -19,51 +20,67 @@ tags:
 
 My old desktop PC turned server is a _Dell XPS 8920_ with an **Intel i7-7700k CPU** and **24 GB of DDR4 RAM**. (I removed the _AMD RX 480 GPU_ it came with, since I was not going to use it.) I installed _Debian 12 Bookworm_ on an NVMe drive and added hard drives to every available SATA port.
 
-The large hard drives are pooled together using <a href="/blog/two-drives-mergerfs/" target="_blank">MergerFS</a>. For managing the server with a pretty and user friendly GUI, I prefer and keep coming back to <a href="https://cockpit-project.org" target="_blank">Cockpit</a>. For secure remote access, I have settled on <a href="/blog/tailscale/" target="_blank">Tailscale</a> for it's ease of use and exceptionally good free tier.
+The large hard drives are pooled together using <a href="/blog/two-drives-mergerfs/" target="_blank">MergerFS</a>. For secure remote access, I have settled on <a href="/blog/tailscale/" target="_blank">Tailscale</a> for it's ease of use and exceptionally good free tier. To manage the server with a nice GUI, I use <a href="https://cockpit-project.org" target="_blank">Cockpit</a>. You can add "applications" for visualizing performance metrics, managing storage, and configuring virtual machines. (Which I rarely use.) I also use add-ons _File Sharing_ to manage my SMB shares and _Navigator_ for a graphical file manager.
 
-Most other self-hosted apps and services are run as <a href="https://docker.com" target="_blank">Docker</a> containers.
+![Cockpit Overview](../../img/blog/cockpit1.png 'Cockpit Overview')
+![Cockpit Storage](../../img/blog/cockpit2.png 'Cockpit Storage')
+![Cockpit File Sharing](../../img/blog/cockpit3.png 'Cockpit File Sharing')
+![Cockpit Navigator](../../img/blog/cockpit4.png 'Cockpit Navigator')
 
 <div id='docker'/>
 
 ## Docker containers
 
-I've used <a href="https://docker.com" target="_blank">Docker</a> for years to run most of my self-hosted apps and services, and I love it. Docker can be installed quickly and with minimal hassle by using their official install script:
+Aside from the ones mentioned above, most of my other self-hosted apps and services are run as <a href="https://docker.com" target="_blank">Docker</a> containers. I've run Plex and many other things for years with Docker and I see no reason to stop any time soon. Docker can be installed quickly and with minimal hassle by using their official install script:
 
 ```bash
 curl -fsSL get.docker.com | sudo sh
 ```
 
-I always first install <a href="https://portainer.io" target="_blank">Portainer</a> for managing the rest of my containers through a nice GUI, using the Stacks feature to create different groups of containers. I have all the compose files <a href="https://github.com/fullmetalbrackets/docker" target="_blank">saved on GitHub</a>. I also use Portainer Agent paired with Tailscale to manage another set of remote containers running on an Oracle free tier instance, with <a href="https://www.portainer.io/take-3" target="_blank">Portainer's 3 node license</a>. Finally, I run <a href="https://portainer.io" target="_blank">Nginx Proxy Manager</a> as a <a href="/blog/reverse-proxy-using-nginx-adguardhome-cloudflare/" target="_blank">reverse proxy to access everything with HTTPS via a custom domain</a>.
+The container I always install first is <a href="https://portainer.io" target="_blank">Portainer</a> for managing the rest of my containers through a nice GUI, using the Stacks feature to create different groups of containers. I have all the compose files <a href="https://github.com/fullmetalbrackets/docker" target="_blank">saved on GitHub</a>. I also use Portainer Agent paired with Tailscale to manage another set of remote containers running on an Oracle free tier instance, with <a href="https://www.portainer.io/take-3" target="_blank">Portainer's 3 node license</a>. Finally, I run <a href="https://portainer.io" target="_blank">Nginx Proxy Manager</a> as a <a href="/blog/reverse-proxy-using-nginx-adguardhome-cloudflare/" target="_blank">reverse proxy to access everything with HTTPS via a custom domain</a>.
 
-- <a href="https://dozzle.dev" target="_blank">Dozzle</a> is a robust container log viewer. Portainer shows logs as well, but Dozzle's UX is much simpler and you get to the logs much quicker too.
+- <a href="https://dozzle.dev" target="_blank">Dozzle</a> is a container log viewer. Portainer shows logs as well, and while it's useful for "live" logging I find Dozzle's UX much better for deep analysis of past logs.
 
-- <a href="https://github.com/qdm12/gluetun" target="_blank">Gluetun</a> is a VPN client inside a docker container, it can connect to almost any VPN provider, using either OpenVPN or Wireguard protocols. By hooking up another container to Gluetun, that other container will connect through the VPN. (See my use case with *qBittorrent* below.)
+- <a href="https://github.com/qdm12/gluetun" target="_blank">Gluetun</a> is a VPN client inside a docker container, it can connect to almost any VPN provider, using either OpenVPN or WireGuard protocols. By hooking up another container's networking to Gluetun, that other container will connect through the VPN. I use *qBittorrent* with Gluetun for private torrent downloads, that way I don't expose my IP address and avoid angry letters from my ISP.
 
 - <a href="https://home-assistant.io" target="_blank">Home Assistant</a> is a smart home automation hub that provides local control over IoT and smart devices in my house. Although I use Google Home on the regular because it's easier to just speak what I want to do, everything that I can also connect to Home Assistant, I do. It has let me keep controlling my lights a few times when my internet was out, so that alone makes it worthwhile, and creating "if this then that" automations as useful as it is fun.
 
 - <a href="https://kavitareader.com" target="_blank">Kavita</a> is a simple user friendly ebook manager and reader, which I've been using to read my last few books on either my phone or tablet. It has a really nice and user friendly web GUI.
 
-- <a href="https://nginxproxymanager.com" target="_blank">Nginx Proxy Manager</a> is just nice GUI wrapper over Nginx, it lets you easily add proxy hosts and redirects. I use this for my reverse proxy. Some alternatives, but which I haven't had a reason to use yet, would be *Caddy* or *Traefik*.
+- <a href="https://nginxproxymanager.com" target="_blank">Nginx Proxy Manager</a> is just nice GUI wrapper over Nginx that lets you easily add proxy hosts and redirects. I use this for my reverse proxy. Some alternatives, but which I haven't had a reason to use yet, would be *Caddy* or *Traefik*. I use AdGuard Home as my home network DNS, so I have DNS rewrites configured for all the proxy hosts, and a custom domain from Cloudflare gets TLS certificates via DNS challenge. For details <a href="/blog/reverse-proxy-using-nginx-adguardhome-cloudflare/" target="_blank">see this blog post about setting up Nginx Proxy Manager with AdGuard Home and Cloudflare</a>.
 
 - <a href="https://opengist.io" target="_blank">OpenGist</a> is a self-hosted open source alternative to GitHub Gists. This is only accessible to me and I use it to document things like API keys, configuration files, simple instructions I can reference, etc.
 
 - <a href="https://paperless-ngx.com" target="_blank">Paperless-ngx</a> is a document management system that makes your scanned documents searchable. It does not get that much use from me, but at least my tax returns are searchable if I were to ever need them to be.
 
-- <a href="https://plex.tv" target="_blank">Plex</a> is my media server and player of choice. It's not open source, some features are behind a paid subscripton or lifetime pass, and the company hasn't always made good decisions for its users -- but it's still the best and most user friendly media player for me, my wife and my two remote users. If I had to use another media player, my favored alternative would be *Jellyfin*, but I have not been able to give up Plex.
+- <a href="https://plex.tv" target="_blank">Plex</a> is my media server and streaming player of choice for all my self-hosted media. It's not open source, some features are behind a paid subscripton or lifetime pass, and the company hasn't always made good decisions for its users -- but it's still the best and most user friendly media player for me, my wife and two family members I have shared with. See <a href="/blog/expose-plex-tailscale-vps/" target="_blank">see this blog post on how to self-host Plex as a Docker container</a> and <a href="/blog/expose-plex-tailscale-vps/" target="_blank">this blog post about how I securely exposed Plex to other users using Tailscale and an Oracle free tier compute instance</a>.
 
-- <a href="https://docs.linuxserver.io/images/docker-qbittorrent" target="_blank">qBittorrent</a> is my preferred torrent downloader, run inside a container and the web UI is accessed via browser. I have this hooked up to *Gluetun* via `network_mode: "service:gluetun"` so all my downloads are through the VPN and don't expose my IP. Downloads go to my server storage to be accessible on the network via SMB shares.
+- <a href="https://docs.linuxserver.io/images/docker-qbittorrent" target="_blank">qBittorrent</a> is my preferred torrent downloader, this containerized version makes the GUI accessible from any machine via browser, and it connects to *Gluetun* so that so all my downloads are routed through a paid VPN. Downloads go to my server's media storage to be streamable on Plex and accessible on the network via SMB shares.
 
-- <a href="https://github.com/AnalogJ/scrutiny" target="_blank">Scrutiny</a> provides a nice dashboard for hard drive S.M.A.R.T. monitoring, I use it to keep track of the health of the hard drives on my server.
+- <a href="https://github.com/AnalogJ/scrutiny" target="_blank">Scrutiny</a> provides a nice dashboard for hard drive S.M.A.R.T. monitoring. I have 7 hard drives on my server of various manufacturers, storage capacity and age so I use this to keep an eye on all of them. (See first screenshot below.) You can also see details on the test results for each drive and decide how severe it is. (See second screenshot, I'm not too worried since it's not critical and the content of both drives are backed up anyway.) Separately from Scrutiny I have `smartd` daemon configured to send mail in the server terminal when the tests show critical HDD failure, this already alerted me once to a dying HDD that I was able to replace without data loss.
+
+![Scrutiny all drives overview](../../img/blog/scrutiny1.png)
+![Scrutiny details of a specific drive](../../img/blog/scrutiny2.png)
 
 - <a href="https://docs.linuxserver.io/images/docker-syncthing" target="_blank">Syncthing</a> is used for only one thing, keeping my Obsidian notes synced across PC, phone and tablet. (Unfortunately, I'll have to switch to an alternative eventually since <a href="https://forum.syncthing.net/t/discontinuing-syncthing-android/23002" target="_blank">Syncthing for Android has been discontinued</a>.)
 
-- <a href="https://uptime.kuma.pet" target="_blank">Uptime Kuma</a> is a robust self-hosted uptime monitor, it can keep track of not just uptime of websites, but also Docker containers running on the host or even remotely. I mainly use it to monitor my containers and send a push notification to my phone (via <a href="https://pushover.net" target="_blank">Pushover</a>) when they go down and come back up, but also to keep track of Pi-Hole's DNS and of course uptime of this blog.
+- <a href="https://uptime.kuma.pet" target="_blank">Uptime Kuma</a> is a robust self-hosted uptime monitor, it can keep track of not just uptime of websites, but also Docker containers running on the host or even remotely. I mainly use it to monitor my containers and send a push notification to my phone (via <a href="https://pushover.net" target="_blank">Pushover</a>) when they go down and come back up, other than that I track the uptime of websites (including this one) and make sure AdGuard Home  is available.
 
-- <a href="https://speedtest-tracker.dev" target="_blank">Speedtest-Tracker</a> lets you schedule Ookla speedtests via cron, uses a database to keep a history of test results and provides nice graphs. I use Pushover for push notifications from Speedtest-Tracker to my phone whenever speed results are below a certain threshold.
+![Uptime Kuma various monitors](../../img/blog/uptime1.png 'Uptime Kuma various monitors')
+![Uptime Kuma container monitor](../../img/blog/uptime2.png 'Uptime Kuma container monitor')
 
-- <a href="https://tautulli.com" target="_blank">Tautulli</a> runs alongside Plex to provide monitoring and statistics tracking, so I can see a history of what media I consumed, details on when and what device, etc. I use Pushover to send push notifications when one of my users is using Plex and if they have any stream errors.
+- <a href="https://speedtest-tracker.dev" target="_blank">Speedtest-Tracker</a> lets you schedule Ookla speedtests with cron syntax and uses a database to keep a history of test results with pretty graphs. It can also send notifications when a speedtest is completed or if a threshold is met. I use Pushover for push notifications from Speedtest-Tracker to my phone whenever speed results are below a certain threshold.
 
-- <a href="https://containrrr.dev/watchtower" target="_blank">Watchtower</a> keeps track of new version of all your other container images, and (depending on your config) will automatically shut containers down, update the images, prune the old images, and then restart it. You can also schedule your updates, mine only happen on weekdays at 4 AM. Finally, it can send notifications (in my case via Pushover, but there's many providers) when updates are available or installed.
+![Speedtest Tracker dashboard with graphs](../../img/blog/speedtest-tracker.png 'Speedtest Tracker dashboard with graphs')
+![Speedtest Tracker push notification with Pushover](../../img/blog/speedtest-pushover.jpg 'Speedtest Tracker push notification with Pushover')
+
+- <a href="https://tautulli.com" target="_blank">Tautulli</a> runs alongside Plex to provide monitoring and statistics tracking, so I can see a history of what media my users and I consumed, details on when and what device, whether it was direct play or transcode, etc. It also has programmatic notifications with a lot different triggers. Aside from just keeping a comprehensive history of played media, I use Pushover to send push notifications to my phone when other users are playing something on Plex and if they have any stream errors.
+
+![Tautulli push notification with Pushover](../../img/blog/tautulli-pushover.jpg 'Tautulli push notification with Pushover')
+
+- <a href="https://containrrr.dev/watchtower" target="_blank">Watchtower</a> keeps track of new version of all your other container images, and (depending on your config) will automatically shut containers down, update the images, prune the old images, and then restart it. You can also schedule your updates for specific dates and times, mine only happen on weekdays at 3 AM. Finally, it can send notifications via many providers, but like with everything else I use Pushover to get notified on my phone when any containers have been updated.
+
+![Watchtower push notification with Pushover](../../img/blog/watchtower-pushover.jpg 'Watchtower push notification with Pushover')
 
 <div id='storage'/>
 
@@ -96,10 +113,10 @@ Configuration is done just by editing `/etc/fstab`. Below is the fstab entry I u
 
 ```ini
 /mnt/media* /home/ad/media fuse.mergerfs
-defaults,allow_other,nonempty,use_ino,cache.files=off,movieonenosprc=true,dropcacheonclose=true,category.create=mfs,fsname=mergerfs 0 0
+defaults,allow_other,nonempty,use_ino,movieonenosprc=true,dropcacheonclose=true,category.create=mfs,fsname=mergerfs 0 0
 ```
 
-Using SMB, I share the files so they can be accessed from any PC, tablet or phone on the network. (Including via Tailscale.) Below is my `smb.conf` file:
+Using SMB, I share the files so they can be accessed from any PC, tablet or phone on the network. (Including via Tailscale.) File Sharing is managed via the Cockpit GUI, below is my `smb.conf` file:
 
 ```conf
 [global]
@@ -148,9 +165,9 @@ Using SMB, I share the files so they can be accessed from any PC, tablet or phon
    force create mode = 0666
    force directory mode = 0777
 
-[data]
-   comment = Data Share
-   path = /mnt/data
+[other]
+   comment = General Share
+   path = /mnt/other
    browseable = yes
    writeable = yes
    read only = no
@@ -159,9 +176,20 @@ Using SMB, I share the files so they can be accessed from any PC, tablet or phon
    force create mode = 0666
    force directory mode = 0777
 
-[backup]
+[external]
+   comment = External Share
+   path = /mnt/external
+   browseable = yes
+   writeable = yes
+   read only = no
+   force user = ad
+   force group = ad
+   force create mode = 0666
+   force directory mode = 0777
+
+[extra]
    comment = Backup Share
-   path = /mnt/backup
+   path = /mnt/extra
    browseable = yes
    writeable = yes
    read only = no
