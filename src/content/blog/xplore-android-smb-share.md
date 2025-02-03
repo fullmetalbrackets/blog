@@ -2,6 +2,7 @@
 title: "Setup X-plore File Manager on Android to transfer files to an SMB share"
 description: "I've written about file managers for Android before, recently I found X-plore which makes it very easy to transfer files back and forth between Android and SMB network shares, once you understand how the UI works. Here's how I set that up."
 pubDate: 2024-03-26
+updatedDate: 2025-02-02
 tags:
   - android
 ---
@@ -20,9 +21,9 @@ tags:
 
 ## Adding SMB share in X-plorer
 
-I previously [wrote about using Solid Explorer as a file manager on Android](/blog/solid-explorer-samba-share), and while it's very good for accessing and consuming content from SMB shares (documents, photos, music, videos, etc.), but you can't actually transfer files back and forth -- or at least it's so user unfriendly that I haven't been able to figure out how to do it.
+I previously [wrote about using Solid Explorer as a file manager on Android](/blog/solid-explorer-samba-share/), and while I prefer it for accessing and consuming content from SMB shares (documents, photos, music, videos, etc.), I find the UI for file transfers kind of annoying compared to _X-plore File Manager_.
 
-First, make sure you're on the same Wi-Fi network as the SMB share you want to add. (Setting this up to be available from outside the home network is possible, but beyond the scope of this article.) X-plore File Manager has an odd UI, but once it clicks for you it's very easy to use. When you first open it will show your internal storage.
+First, make sure you're on the same Wi-Fi network as the SMB share you want to add. (Setting this up to be available from outside the home network is possible, but beyond the scope of this article.) X-plore File Manager's UI looks weird at first, but once it clicks for you it's very easy to use. When you first open it will show your internal storage.
 
 ![UI of X-plore File Manager.](../../img/blog/xplore1.jpg)
 
@@ -82,7 +83,7 @@ All done! Once you get a hang of the UI, transferring files back and forth from 
 
 > [Setup a Samba share on Linux via command line](/blog/setup-a-samba-share-on-linux-via-command-line/)
 
-> [How to use Solid Explorer app to access SMB network shares from an Android device](/blog/solic-explorer-samba-share/)
+> [How to use Solid Explorer app to access SMB network shares from an Android device](/blog/solid-explorer-samba-share/)
 
 <div id='ref' />
 
