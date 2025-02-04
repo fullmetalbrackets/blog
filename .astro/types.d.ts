@@ -171,6 +171,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"comprehensive-guide-tailscale-securely-access-home-network.md": {
+	id: "comprehensive-guide-tailscale-securely-access-home-network.md";
+  slug: "comprehensive-guide-tailscale-securely-access-home-network";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "copy-ssh-keys-between-hosts.md": {
 	id: "copy-ssh-keys-between-hosts.md";
   slug: "copy-ssh-keys-between-hosts";
@@ -531,13 +538,6 @@ declare module 'astro:content' {
 "sync-bare-metal-pihole-with-container.md": {
 	id: "sync-bare-metal-pihole-with-container.md";
   slug: "sync-bare-metal-pihole-with-container";
-  body: string;
-  collection: "blog";
-  data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"tailscale.md": {
-	id: "tailscale.md";
-  slug: "tailscale";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">

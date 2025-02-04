@@ -199,6 +199,10 @@ Using SMB, I share the files so they can be accessed from any PC, tablet or phon
    force directory mode = 0777
 ```
 
+SMB shares are available on the network for my wife and I to access from any PC or laptop, even any tablet or phone -- I wrote this <a href="/blog/solid-explorer-samba-share/" target="_blank">blog post about how to access SMB shares from Android</a>. On my Windows PC, I have the SMB shares mapped as network drives and mostly manage them through there.
+
+![SMB shares from Linux server mapped as network drives in Windows.](../../img/blog/smb-windows.png 'SMB shares from Linux server mapped as network drives in Windows')
+
 <div id='tailscale'/>
 
 ## Tailscale for remote access
