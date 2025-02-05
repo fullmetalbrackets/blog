@@ -1,8 +1,8 @@
 ---
 title: "Complete guide to self-hosting a website through Cloudflare Tunnel"
-description: "Self-hosting a static web blog has never been easier thanks to Cloudflare Tunnel. In this guide I explain how to expose a static website hosted on machine inside my network to the internet using Nginx as webserver and securing it with various free Cloudflare services."
+description: "Self-hosting a static web blog has never been easier thanks to Cloudflare Tunnel. In this guide I explain how to expose a static website self-hosted on a Linux server inside my home network to the internet using NginxCloudflare Tunnel, and securing it with various other free Cloudflare services."
 pubDate: 2023-12-29
-updatedDate: 2025-02-03
+updatedDate: 2025-02-05
 tags:
   - cloudflare
 ---
@@ -22,13 +22,15 @@ tags:
 
 ## What and How
 
-You can very easily set up and host a website via Netlify, Cloudflare Pages, or GitHub Pages, or many other options. Self-hosting a website instead means your website lives and operates out of a device that lives in your home or on a cloud provider like Digital Ocean.
+You can very easily set up and host a website via <a href="https://netlify.com" target="_blank">Netlify</a>, <a href="https://pages.cloudflare.com" target="_blank">Cloudflare Pages</a>, or <a href="https://pages.github.com" target="_blank">GitHub Pages</a>, <a href="https://vercel.com" target="_blank">Vercel</a>, <a href="https://surge.sh" target="_blank">Surge.sh</a>, or many other free or paid options. Honestly, it's never been easier to have a website and there's never been more free options.
+
+Self-hosting a website, however, is a whole other can of beans -- instead of letting one of these companies host your website in their infrastructure, your website will live and operate out of a server in your home, or on a cloud provider like Digital Ocean, Oracle or Hetzner. This means you have only yourself to rely on for maintaining the server, making sure it's secure and has the latest updates, etc. Cloudflare Tunnel removes a lot of the hassle, and even enhances it with other free Cloudflare services like Web Application Firewall and Web Analytics. (Note that these are also available if you host your website Cloudflare Pages.)
 
 First, requirements:
 
 1. You'll need to create a free <a href="https://cloudflare.com" target="_blank">Cloudflare</a> account.
 
-2. You need to own a domain. I suggest <a href="https://" target="_blank">Cloudflare</a> itself, alternately <a href="https://porkbun.com" target="_blank">Porkbun</a> or <a href="https://namecheap" target="_blank">Namecheap</a>. (Or literally any domain registrar you prefer.) You can get cheap domains, like those ending with `.cc` or `.us`, often for less then $10 or even as low as $4 to $5. This is the price for the first year, to hook you, but annual domain renewals can cost more after that first year, so do your research. _Cloudflare_ sells their domains at cost, so the renewal is usually only a couple dollars more than the initial price, which is why I usually prefer them. Alternately you could set up something like <a href="https://www.duckdns.org" target="_blank">DuckDNS</a> or some other Dynamic DNS to avoid buying a domain, but you're on your own there -- domains are so cheap I've never bothered.
+2. You need to own a domain. I suggest <a href="https://domains.cloudflare.com" target="_blank">Cloudflare</a> itself, alternately <a href="https://porkbun.com" target="_blank">Porkbun</a> or <a href="https://namecheap" target="_blank">Namecheap</a>. (Or literally any domain registrar you prefer.) You can get cheap domains, like those ending with `.cc` or `.us`, often for less then $10 or even as low as $4 to $5. This is the price for the first year, to hook you, but annual domain renewals can cost more after that first year, so do your research. _Cloudflare_ sells their domains at cost, so the renewal is usually only a couple dollars more than the initial price, which is why I usually prefer them. Alternately you could set up something like <a href="https://www.duckdns.org" target="_blank">DuckDNS</a> or some other Dynamic DNS to avoid buying a domain, but you're on your own there -- domains are so cheap I've never bothered.
 
 3. You'll need a website. I won't be explaining how to build a website here, you can just code one from scratch with HTML and CSS if you know how, or you can use a static site generator, of which there are many. If you want to get a quick website up and running I suggest <a href="https://astro.build" target="_blank">Astro</a> since it has a good blog template and is easy to learn. (It's what I used to build this blog!)
 

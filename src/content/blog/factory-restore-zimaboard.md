@@ -41,7 +41,7 @@ I have the ZimaBoard 216, so I used the <a href="https://drive.google.com/file/d
 >
 > For this guide I will create the bootable USB drive on a Windows machine, using <a href="https://rufus.ie" target="_blank">Rufus</a>. Another alternative is <a href="https://etcher.balena.io" target="_blank">BalenaEtcher</a> as suggested by the official Zimaboard instructions. Rufus and BalenaEtcher are both free and open-source.
 >
-> If you want to create a bootable USB on Linux, check out <a href="https://ventoy.net" target="_blank">Ventoy</a>. I have not used it myself, but I will update with Linux-specific instructions using Ventoy in the future.
+> If you want to create a bootable USB on Linux, check out <a href="https://ventoy.net" target="_blank">Ventoy</a>, or use command `dd if=<PATH TO ISO FILE> of=/dev/*** bs=8M status=progress` (Make sure to the USB device as it appears on your machine, for example `/dev/sdd`, or you could overwrite an HDD!)
 
 Once you have downloaded the image, plug into your PC a USB drive with 8 GB or more capacity, run **Rufus** as Administrator, and the USB drive should appear under _Devices_, otherwise select it from the dropdown. Under _boot selection_, click the **Select** button to the right, navigate to and select the image file, and click **Open**. Leave all options at default and click the **Start** button at the bottom.
 
