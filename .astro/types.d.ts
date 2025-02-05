@@ -367,6 +367,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"remove-casaos-zimaboard-upgrade-debian-12.md": {
+	id: "remove-casaos-zimaboard-upgrade-debian-12.md";
+  slug: "remove-casaos-zimaboard-upgrade-debian-12";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "reverse-proxy-nginx-pihole.md": {
 	id: "reverse-proxy-nginx-pihole.md";
   slug: "reverse-proxy-nginx-pihole";
