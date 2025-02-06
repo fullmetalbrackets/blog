@@ -43,6 +43,14 @@ export default defineConfig({
       status: 302,
       destination: 'https://cloud.umami.is/share/5MdOgBcRzVP6FU0x/fullmetalbrackets.com',
     },
+    '/categories/plex': {
+      status: 302,
+      destination: '/search/?q=plex',  
+    },
+    '/notes/': {
+      status: 302,
+      destination: '/blog/',
+    },
     '/blog/tailscale': {
       status: 301,
       destination: '/blog/comprehensive-guide-tailscale-securely-access-home-network/',
@@ -50,6 +58,10 @@ export default defineConfig({
     '/blog/factory-restore-zimaboardmd/': {
       status: 301,
       destination: '/blog/factory-restore-zimaboard/',
+    },
+    '/blog/expose-plex-tailscale-vps)': {
+      status: 301,
+      destination: '/blog/expose-plex-tailscale-vps/',  
     },
   },
 });
