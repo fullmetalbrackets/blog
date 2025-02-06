@@ -1,5 +1,9 @@
-name: pushover-actions
-on: push
+name: Pushover Notification
+on:
+  workflow_dispatch:
+  workflow_run:
+    workflows: ['Cloudflare Pages']
+    types: [completed]
 jobs:
   pushover-actions:
     runs-on: ubuntu-latest
@@ -12,4 +16,4 @@ jobs:
           PUSHOVER_USER: ${{ secrets.PUSHOVER_USER }}
         with:
           status: ${{ job.status }}
-          title: 'New deploy on GitHub'
+          title: 'New commit on GitHub'
