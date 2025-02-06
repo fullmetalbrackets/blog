@@ -47,5 +47,9 @@ export default defineConfig({
       status: 301,
       destination: '/blog/comprehensive-guide-tailscale-securely-access-home-network/',
     },
+    '/blog/factory-restore-zimaboardmd/': {
+      status: 301,
+      destination: '/blog/factory-restore-zimaboard/',
+    },
   },
 });
