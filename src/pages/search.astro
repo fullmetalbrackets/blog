@@ -19,11 +19,8 @@ const title = "Search";
   }
 </style>
 
-<BaseLayout title={title} description="Search for blog posts and notes.">
+<BaseLayout title={title} description="Search for blog posts.">
   <section>
-    <!-- <head>
-      <link rel="stylesheet" href="/pagefind-ui.css" />
-    </head> -->
     <h1 class="title">{title}</h1>
     <hr class="top-line" />
     <p>Use the search field below to search for blog posts.</p>
@@ -34,12 +31,31 @@ const title = "Search";
       crossorigin="anonymous"></script>
     <div id="search" class="search-results"></div>
     <script crossorigin="anonymous" is:inline>
-      window.addEventListener("DOMContentLoaded", (event) => {
-        new PagefindUI({
-          element: "#search",
-          showSubResults: false,
-          showImages: false,
-        });
+      window.addEventListener('DOMContentLoaded', (event) => {
+        const search_ui = new PagefindUI(
+          {
+            element: "#search",
+            pageSize: 10,
+            excerptLength: 50,
+            showImages: false,
+            showSubResults: false,
+            translations: {
+              placeholder: "Type your search…",
+              search_label: "Search for blog posts",
+              zero_results: "No result found for “[SEARCH_TERM]”.",
+              many_results: "[COUNT] results found for “[SEARCH_TERM]”:",
+              one_result: "[COUNT] result found for “[SEARCH_TERM]”:",
+            },
+            processTerm: function (term) {
+              history.replaceState({}, "", `?q=${encodeURIComponent(term)}`);
+              return term;
+            },
+          });
+
+          const params = new URLSearchParams(window.location.search);
+          if (params.has('q')) {
+            search_ui.triggerSearch(params.get('q'));
+          }
       });
     </script>
 
