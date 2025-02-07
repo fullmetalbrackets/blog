@@ -67,6 +67,11 @@ const { tag, posts } = Astro.props;
     padding-bottom: 0.25em;
     margin-bottom: 2em;
   }
+  @media screen and (min-width: 200px) and (max-width: 720px) {
+    ul {
+      margin: 0 0 0 -1.5em;
+    }
+  }
 </style>
 
 <BaseLayout title={`${tag}`}>
