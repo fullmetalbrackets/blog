@@ -74,7 +74,7 @@ Like before, you will be prompted during the upgrade to make choices about which
 
 ![Prompt to restart certain services during upgrade from Debian 11 to Debian 12.](../../img/blog/zimaboard-upgrade1.png 'Prompt to restart certain services during upgrade from Debian 11 to Debian 12')
 
-Certain services like `openssh-server` and `samba` will also prompt a dialog about config files, once again it's best to keep your existing version, but it's up to you. Use your arrow keys to scroll through the options and hit <kbd>Enter</kbd> on the highlighted selection to continue.
+Certain services like `openssh-server` and `samba` will also prompt a dialog about config files, once again it's best to keep your existing version, but it's up to you. Use your arrow keys to scroll through the options and hit <kbd>Enter</kbd> on the selected the highlighted option, and <kbd>Enter</kbd> again to continue.
 
 ![Prompt asking which version of SMB config file to keep.](../../img/blog/zimaboard-upgrade2.png 'Prompt asking which version of SMB config file to keep')
 
