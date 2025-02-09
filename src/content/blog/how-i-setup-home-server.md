@@ -127,7 +127,7 @@ docker run ...
 
 ![Scrutiny all drives overview.](../../img/blog/scrutiny1.png 'Scrutiny all drives overview')
 ![Scrutiny details of a specific drive.](../../img/blog/scrutiny2.png 'Scrutiny details of a specific drive')
-![Scrutiny notifications about specific drive errors via Pushover.](../../img/blog/scrutiny-pushover.png 'Scrutiny notifications about specific drive errors via Pushover')
+![Scrutiny notifications about specific drive errors via Pushover.](../../img/blog/scrutiny-pushover.jpg 'Scrutiny notifications about specific drive errors via Pushover')
 
 ```yaml
 
