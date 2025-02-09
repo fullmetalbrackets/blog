@@ -93,7 +93,7 @@ const links = (await getCollection("links")).sort(
       links.slice(0, 5).map((link) => (
         <li>
           <span>
-            <a href={link.data.url} target="_blank" data-umami-event-name="{recent-link}">
+            <a href={link.data.url} target="_blank" data-umami-event="recent-link">
               {link.data.title}
             </a>
           </span>
