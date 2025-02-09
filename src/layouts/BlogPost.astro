@@ -2,10 +2,13 @@
 import type { CollectionEntry } from "astro:content";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import FormattedDate from "@components/FormattedDate.astro";
+import { SocialShare } from "astro-social-share";
 
 type Props = CollectionEntry<"blog">["data"];
 
 const { title, description, pubDate, updatedDate, tags } = Astro.props;
+
+const { slug } = Astro.params;
 ---
 
 <BaseLayout title={title} description={description}>
@@ -15,6 +18,7 @@ const { title, description, pubDate, updatedDate, tags } = Astro.props;
   <style scoped>
     h1 {
       margin-bottom: 0.5em;
+      line-height: 1.1;
     }
     hr {
       margin-top: 1em;
@@ -42,22 +46,6 @@ const { title, description, pubDate, updatedDate, tags } = Astro.props;
     .last-updated-on {
       margin: 0 0.25em;
     }
-    a button {
-    background-color: var(--tags);
-    color: #000;
-    border-radius: 0.25em;
-    cursor: pointer;
-    font-weight: 600;
-    margin: 0 auto;
-    padding: 4px 8px;
-    text-decoration: none;
-    text-overflow: ellipsis;
-    -webkit-transition: all 0.1s ease-out;
-    -moz-transition: all 0.1s ease-out;
-    -o-transition: all 0.1s ease-out;
-    transition: all 0.1s ease-out;
-    font-family: "M Plus Rounded 1c Med";
-    }
     li:hover {
       padding-bottom: 0.25em;
       border-bottom: 2px solid var(--hover);
@@ -84,9 +72,92 @@ const { title, description, pubDate, updatedDate, tags } = Astro.props;
       color: var(--text);
       margin-right: 1em;
     }
-    @media screen and (max-width: 667px) {
+    .coffee {
+      display: grid;
+      color: var(--primary);
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr;
+      place-items: center;
+      gap: 0;
+      margin: 1px auto 0 auto;
+      padding: 0 auto;
+      cursor: default;
+    }
+    .share {
+      display: grid;
+      color: var(--primary);
+      grid-column: 2;
+      grid-template-columns: auto;
+      grid-template-rows: auto auto;
+      place-items: center;
+      gap: 0;
+      margin: 1.5em auto 0.75em auto;
+      padding: 0.25em auto 0 auto;
+      cursor: default;
+    }
+    .share span {
+      margin: 0 auto 0.5em auto;
+    }
+    .umami {
+      display: grid;
+      color: var(--primary);
+      grid-template-columns: auto;
+      grid-template-rows: auto auto;
+      margin: -2px auto 0 auto;
+      padding-top: 0.3em;
+      cursor: default;
+    }
+    .stats {
+      display: inline-block;
+      background-color: var(--info);
+      color: #000;
+      border-radius: 0.5em;
+      cursor: pointer;
+      font-weight: 600;
+      margin: 0 auto;
+      padding: 6px 10px;
+      text-decoration: none;
+      font-family: 'M Plus Rounded 1c Med';
+      line-height: 1.5;
+    }
+    .umami img {
+      display: inline;
+      filter: brightness(0) saturate(100%);
+      height: 24px;
+      width: auto;
+      padding: 0 auto;
+      margin: 0 0 -1px 0;
+      border-radius: 0;
+      cursor: pointer;
+    }
+    .stats a {
+      color: #000;
+    }
+    .stats:hover a {
+      color: var(--coffee);
+    }
+    .stats:hover img {
+      filter: var(--coffee-hover);
+    }
+    @media screen and (max-width: 900px) {
+      .post-end {
+        display: grid;
+        grid-template-columns: auto auto;
+        justify-content: space-around;
+        place-items: center;
+        gap: 0 10%;
+      }
+      .umami {
+        margin-top: 1em;
+      }
+      .share {
+        grid-row: 1;
+        grid-column: 2;
+      }
+    }
+    @media screen and (max-width: 720px) {
       h1 {
-        font-size: 1.25em;
+        font-size: 1.35em;
       }
       div {
         display: grid;
@@ -103,14 +174,52 @@ const { title, description, pubDate, updatedDate, tags } = Astro.props;
       .updated {
         margin: 0;
       }
+      .post-end {
+        display: grid;
+        grid-template-columns: auto;
+        justify-content: center;
+        place-items: center;
+        gap: 0 0;
+      }
+      .coffee {
+        grid-row: 1;
+        grid-column: 1;
+        margin: -1em auto 0.5em auto;
+      }
+      .share {
+        grid-row: 2;
+        grid-column: 1;
+        margin-bottom: 0;
+      }
+      .umami {
+        grid-row: 3;
+        grid-column: 1;
+        height: auto;
+        margin-top: 0.75em;
+      }
     }
-  </style>
+    </style>
+
+<slot name="astro-social-share-css">
+    <style is:global>
+      .astro-social-share {
+        margin: 1em auto;
+        height: 24px;
+      }
+      .astro-social-share svg {
+        filter: var(--share);
+      }
+      .astro-social-share svg:hover {
+        filter: var(--coffee-hover);
+      }
+    </style>
+  </slot>
 
   <article data-pagefind-body>
     <h1 class="title">{title}</h1>
     <hr />
     <div>
-      <span class="tag"><a href={`/categories/${tags}`}><button>{tags}</button></a></span>
+      <span class="tag"><a href={`/categories/${tags}`} data-umami-event="{category-from-article}"><button>{tags}</button></a></span>
       <span class="date" data-pagefind-ignore>
         <FormattedDate date={pubDate} />
         {
@@ -134,6 +243,53 @@ const { title, description, pubDate, updatedDate, tags } = Astro.props;
       </p>
     </slot>
   </article>
+  <aside class="post-end">
+    <div class="coffee">
+      <span>Was this article helpful?</span>
+      <script
+        type="text/javascript"
+        src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js"
+        data-name="bmc-button"
+        data-slug="arieldiaz"
+        data-color="var(--info)"
+        data-emoji="☕"
+        data-font="Bree"
+        data-text="Buy me a coffee"
+        data-outline-color="#000000"
+        data-font-color="#000000"
+        data-coffee-color="#ffffff"
+        data-umami-event="{article-coffee}">
+      </script>
+    </div>
+
+    <div class="umami">
+      <span>
+        Want to see article stats?
+      </span>
+      <button class="stats">
+        <span>
+          <a 
+            href={`https://us.umami.is/share/5MdOgBcRzVP6FU0x/fullmetalbrackets.com?view=url&url=/blog/${slug}/`}
+            target="_blank" data-umami-event="{article-stats}">
+              <img src="/assets/umami.svg"
+                class="umami"
+                loading="lazy"
+                decoding="async"
+                alt="Umami Analytics"> Umami
+          </a>
+        </span>
+      </button>
+    </div>
+
+    <div class="share">
+      <span>Want to share this article?</span>
+      <SocialShare
+      description={description}
+      title={title}
+    />
+    </div>
+
+  </aside>
   <hr />
   <aside>
     <a href="#top" class="top button blog-tag">Back to Top &uarr;</a>
