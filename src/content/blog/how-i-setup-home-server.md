@@ -37,48 +37,140 @@ Aside from the ones mentioned above, most of my other self-hosted apps and servi
 curl -fsSL get.docker.com | sudo sh
 ```
 
-The container I always install first is <a href="https://portainer.io" target="_blank">Portainer</a> for managing the rest of my containers through a nice GUI, using the Stacks feature to create different groups of containers. I have all the compose files <a href="https://github.com/fullmetalbrackets/docker" target="_blank">saved on GitHub</a>. I also use Portainer Agent paired with Tailscale to manage another set of remote containers running on an Oracle free tier instance, with <a href="https://www.portainer.io/take-3" target="_blank">Portainer's 3 node license</a>. Finally, I run <a href="https://portainer.io" target="_blank">Nginx Proxy Manager</a> as a <a href="/blog/reverse-proxy-using-nginx-adguardhome-cloudflare/" target="_blank">reverse proxy to access everything with HTTPS via a custom domain</a>.
+I'll devote a section to each docker container I run and include my `compose.yaml` file for each.
 
-- <a href="https://dozzle.dev" target="_blank">Dozzle</a> is a container log viewer. Portainer shows logs as well, and while it's useful for "live" logging I find Dozzle's UX much better for deep analysis of past logs.
+<div id='dozzle'/>
 
-- <a href="https://github.com/qdm12/gluetun" target="_blank">Gluetun</a> is a VPN client inside a docker container, it can connect to almost any VPN provider, using either OpenVPN or WireGuard protocols. By hooking up another container's networking to Gluetun, that other container will connect through the VPN. I use *qBittorrent* with Gluetun for private torrent downloads, that way I don't expose my IP address and avoid angry letters from my ISP.
+### Dozzle
 
-- <a href="https://home-assistant.io" target="_blank">Home Assistant</a> is a smart home automation hub that provides local control over IoT and smart devices in my house. Although I use Google Home on the regular because it's easier to just speak what I want to do, everything that I can also connect to Home Assistant, I do. It has let me keep controlling my lights a few times when my internet was out, so that alone makes it worthwhile, and creating "if this then that" automations as useful as it is fun.
+<a href="https://dozzle.dev" target="_blank">Dozzle</a> is a container log viewer. Portainer shows logs as well, and while it's useful for "live" logging I find Dozzle's UX much better for deep analysis of past logs.
 
-- <a href="https://kavitareader.com" target="_blank">Kavita</a> is a simple user friendly ebook manager and reader, which I've been using to read my last few books on either my phone or tablet. It has a really nice and user friendly web GUI.
+<div id='filebrowser'/>
 
-- <a href="https://nginxproxymanager.com" target="_blank">Nginx Proxy Manager</a> is just nice GUI wrapper over Nginx that lets you easily add proxy hosts and redirects. I use this for my reverse proxy. Some alternatives, but which I haven't had a reason to use yet, would be *Caddy* or *Traefik*. I use AdGuard Home as my home network DNS, so I have DNS rewrites configured for all the proxy hosts, and a custom domain from Cloudflare gets TLS certificates via DNS challenge. For details <a href="/blog/reverse-proxy-using-nginx-adguardhome-cloudflare/" target="_blank">see this blog post about setting up Nginx Proxy Manager with AdGuard Home and Cloudflare</a>.
+### Filebrowser
 
-- <a href="https://opengist.io" target="_blank">OpenGist</a> is a self-hosted open source alternative to GitHub Gists. This is only accessible to me and I use it to document things like API keys, configuration files, simple instructions I can reference, etc.
+<a href="https://github.com/qdm12/gluetun" target="_blank">Filebrowser</a> is exactly what the name implies, a GUI file explorer accessed via web UI. I rarely use it, but I have it setup to serve my `/home` directory in case I ever need to access it from another device.
 
-- <a href="https://paperless-ngx.com" target="_blank">Paperless-ngx</a> is a document management system that makes your scanned documents searchable. It does not get that much use from me, but at least my tax returns are searchable if I were to ever need them to be.
+<div id='gluetun'/>
 
-- <a href="https://plex.tv" target="_blank">Plex</a> is my media server and streaming player of choice for all my self-hosted media. It's not open source, some features are behind a paid subscripton or lifetime pass, and the company hasn't always made good decisions for its users -- but it's still the best and most user friendly media player for me, my wife and two family members I have shared with. See <a href="/blog/expose-plex-tailscale-vps/" target="_blank">see this blog post on how to self-host Plex as a Docker container</a> and <a href="/blog/expose-plex-tailscale-vps/" target="_blank">this blog post about how I securely exposed Plex to other users using Tailscale and an Oracle free tier compute instance</a>.
+### Gluetun
 
-- <a href="https://docs.linuxserver.io/images/docker-qbittorrent" target="_blank">qBittorrent</a> is my preferred torrent downloader, this containerized version makes the GUI accessible from any machine via browser, and it connects to *Gluetun* so that so all my downloads are routed through a paid VPN. Downloads go to my server's media storage to be streamable on Plex and accessible on the network via SMB shares.
+<a href="https://github.com/qdm12/gluetun" target="_blank">Gluetun</a> is a VPN client inside a docker container, it can connect to almost any VPN provider, using either OpenVPN or WireGuard protocols. By hooking up another container's networking to Gluetun, that other container will connect through the VPN. I use *qBittorrent* with Gluetun for private torrent downloads, that way I don't expose my IP address and avoid angry letters from my ISP.
 
-- <a href="https://github.com/AnalogJ/scrutiny" target="_blank">Scrutiny</a> provides a nice dashboard for hard drive S.M.A.R.T. monitoring. I have 7 hard drives on my server of various manufacturers, storage capacity and age so I use this to keep an eye on all of them. (See first screenshot below.) You can also see details on the test results for each drive and decide how severe it is. (See second screenshot, I'm not too worried since it's not critical and the content of both drives are backed up anyway.) Separately from Scrutiny I have `smartd` daemon configured to send mail in the server terminal when the tests show critical HDD failure, this already alerted me once to a dying HDD that I was able to replace without data loss.
+<div id='hass'/>
 
-![Scrutiny all drives overview](../../img/blog/scrutiny1.png)
-![Scrutiny details of a specific drive](../../img/blog/scrutiny2.png)
+### Home Assistant
 
-- <a href="https://docs.linuxserver.io/images/docker-syncthing" target="_blank">Syncthing</a> is used for only one thing, keeping my Obsidian notes synced across PC, phone and tablet. (Unfortunately, I'll have to switch to an alternative eventually since <a href="https://forum.syncthing.net/t/discontinuing-syncthing-android/23002" target="_blank">Syncthing for Android has been discontinued</a>.)
+<a href="https://home-assistant.io" target="_blank">Home Assistant</a> is a smart home automation hub that provides local control over IoT and smart devices in my house. Although I use Google Home on the regular because it's easier to just speak what I want to do, everything that I can also connect to Home Assistant, I do. It has let me keep controlling my lights a few times when my internet was out, so that alone makes it worthwhile, and creating "if this then that" automations as useful as it is fun.
 
-- <a href="https://uptime.kuma.pet" target="_blank">Uptime Kuma</a> is a robust self-hosted uptime monitor, it can keep track of not just uptime of websites, but also Docker containers running on the host or even remotely. I mainly use it to monitor my containers and send a push notification to my phone (via <a href="https://pushover.net" target="_blank">Pushover</a>) when they go down and come back up, other than that I track the uptime of websites (including this one) and make sure AdGuard Home  is available.
+<div id='kavita'/>
+
+### Kavita
+
+<a href="https://kavitareader.com" target="_blank">Kavita</a> is a simple user friendly ebook manager and reader, which I've been using to read my last few books on either my phone or tablet. It has a really nice and user friendly web GUI.
+
+<div id='proxy'/>
+
+### Nginx Proxy Manager
+
+<a href="https://nginxproxymanager.com" target="_blank">Nginx Proxy Manager</a> is nice GUI wrapper over Nginx that lets you easily add proxy hosts and redirects, configure TLS, etc. I use it as a reverse proxy to access container web UIs with HTTPS via a custom domain. I use <em>AdGuard Home</em> as my home network DNS, so I have DNS rewrites configured for all the proxy hosts, and a custom domain from Cloudflare gets TLS certificates via DNS challenge.
+
+For details <a href="/blog/reverse-proxy-using-nginx-adguardhome-cloudflare/" target="_blank">see this blog post about setting up Nginx Proxy Manager with AdGuard Home and Cloudflare</a>.
+
+<div id='opengist'/>
+
+### OpenGist
+
+<a href="https://opengist.io" target="_blank">OpenGist</a> is a self-hosted open source alternative to GitHub Gists. This is only accessible to me and I use it to save like API keys or tokens, configuration files, and code snippets so I can quickly copy & paste these things when I need to.
+
+<div id='paperless'/>
+
+### Paperless-ngx
+
+<a href="https://paperless-ngx.com" target="_blank">Paperless-ngx</a> is a document management system that can index and organize documents, performing OCR to make them searchable and selectable, and saving them as PDFs. If you have a lot of papers you want to digitize and organize, Paperless is a powerful tool for that.
+
+I honestly don't use it that much, but my wife and I have copied all our tax returns, property documents, and important receipts so that we can just go to one place from any device to access, save or print documents.
+
+<div id='plex'/>
+
+### Plex
+
+<a href="https://plex.tv" target="_blank">Plex</a> is a slick, feature packed media server and streaming player for self-hosted media. It also has some free movies and TV shows, and live TV channels. It's not open source, some features are behind a paid subscripton or lifetime pass, and the company hasn't always made good decisions for its users -- but it's still the best and most user friendly media player for me, my wife and two family members I have shared with.
+
+I have written blog posts about <a href="/blog/expose-plex-tailscale-vps/" target="_blank">how to self-host Plex as a Docker container</a> and <a href="/blog/expose-plex-tailscale-vps/" target="_blank">how to use Tailscale and an Oracle free tier compute instance to securely expose Plex to other users</a>.
+
+<div id='portainer'/>
+
+### Portainer
+
+<a href="https://portainer.io" target="_blank">Portainer</a> is always the first container I install on a server that will run Docker. It is a GUI for creating and managing containers, I use the Stacks feature to create different groups of containers with docker compose. I have copies all the compose files (with secrets removed) <a href="https://github.com/fullmetalbrackets/docker" target="_blank">saved on GitHub</a>. It's possible to setup Portainer to pull `compose.yaml` files from a GitHub repo for setting up Stacks, after which updates in GitHub will be pulled into Portainer, but I have not set this up myself. (I think I just prefer to do it manually in Portainer.)
+
+Thanks to <a href="https://www.portainer.io/take-3" target="_blank">Portainer's 3 node free license</a> I also use Portainer Agent, connected via Tailscale, to manage another set of remote containers running on an Oracle free tier instance.
+
+Portainer is usually installed with `docker run` rather than compose, it's just a quick command to get started. (Note that I use a bind mount rather than a persistent volume for Portainer.)
+
+```bash
+docker run ...
+```
+
+<div id='qbittorrent'/>
+
+### qBittorrent
+
+<a href="https://docs.linuxserver.io/images/docker-qbittorrent" target="_blank">qBittorrent</a> is my preferred torrent downloader, this containerized version makes the GUI accessible from any machine via browser, and it connects to *Gluetun* so that so all my downloads are routed through a paid VPN. Downloads go to my server's media storage to be streamable on Plex and accessible on the network via SMB shares.
+
+<div id='scrutiny'/>
+
+### Scrutiny
+
+<a href="https://github.com/AnalogJ/scrutiny" target="_blank">Scrutiny</a> provides a nice dashboard for hard drive S.M.A.R.T. monitoring. I have 7 hard drives on my server of various manufacturers, storage capacity and age so I use this to keep an eye on all of them. (See first screenshot below.) You can also see details on the test results for each drive and decide how severe it is. (See second screenshot, I'm not too worried since it's not critical and the content of both drives are backed up anyway.) Of course I have Scrutiny setup to send me notifications via Pushover (see third screenshot), but I also have `smartd` daemon configured to send mail in the server terminal when the tests show critical HDD failure, this already alerted me once to a dying HDD that I was able to replace without data loss.
+
+![Scrutiny all drives overview.](../../img/blog/scrutiny1.png 'Scrutiny all drives overview')
+![Scrutiny details of a specific drive.](../../img/blog/scrutiny2.png 'Scrutiny details of a specific drive')
+![Scrutiny notifications about specific drive errors via Pushover.](../../img/blog/scrutiny-pushover.png 'Scrutiny notifications about specific drive errors via Pushover')
+
+```yaml
+
+```
+
+<div id='syncthing'/>
+
+### Syncthing
+
+<a href="https://docs.linuxserver.io/images/docker-syncthing" target="_blank">Syncthing</a> is used for only one thing, keeping my Obsidian notes synced across PC, phone and tablet. (Unfortunately, I'll have to switch to an alternative eventually since <a href="https://forum.syncthing.net/t/discontinuing-syncthing-android/23002" target="_blank">Syncthing for Android has been discontinued</a>.)
+
+<div id='uptime'/>
+
+### Uptime Kuma
+
+<a href="https://uptime.kuma.pet" target="_blank">Uptime Kuma</a> is a robust self-hosted uptime monitor, it can keep track of not just uptime of websites, but also Docker containers running on the host or even remotely. I mainly use it to monitor my containers and send a push notification to my phone (via <a href="https://pushover.net" target="_blank">Pushover</a>) when they go down and come back up, other than that I track the uptime of websites (including this one) and make sure AdGuard Home  is available.
 
 ![Uptime Kuma various monitors](../../img/blog/uptime1.png 'Uptime Kuma various monitors')
 ![Uptime Kuma container monitor](../../img/blog/uptime2.png 'Uptime Kuma container monitor')
 
-- <a href="https://speedtest-tracker.dev" target="_blank">Speedtest-Tracker</a> lets you schedule Ookla speedtests with cron syntax and uses a database to keep a history of test results with pretty graphs. It can also send notifications when a speedtest is completed or if a threshold is met. I use Pushover for push notifications from Speedtest-Tracker to my phone whenever speed results are below a certain threshold.
+<div id='speedtest'/>
+
+### Speedtest Tracker
+
+<a href="https://speedtest-tracker.dev" target="_blank">Speedtest-Tracker</a> lets you schedule Ookla speedtests with cron syntax and uses a database to keep a history of test results with pretty graphs. It can also send notifications when a speedtest is completed or if a threshold is met. I use Pushover for push notifications from Speedtest-Tracker to my phone whenever speed results are below a certain threshold.
 
 ![Speedtest Tracker dashboard with graphs](../../img/blog/speedtest-tracker.png 'Speedtest Tracker dashboard with graphs')
 ![Speedtest Tracker push notification with Pushover](../../img/blog/speedtest-pushover.jpg 'Speedtest Tracker push notification with Pushover')
 
-- <a href="https://tautulli.com" target="_blank">Tautulli</a> runs alongside Plex to provide monitoring and statistics tracking, so I can see a history of what media my users and I consumed, details on when and what device, whether it was direct play or transcode, etc. It also has programmatic notifications with a lot different triggers. Aside from just keeping a comprehensive history of played media, I use Pushover to send push notifications to my phone when other users are playing something on Plex and if they have any stream errors.
+
+<div id='tautulli'/>
+
+### Tautulli
+
+<a href="https://tautulli.com" target="_blank">Tautulli</a> runs alongside Plex to provide monitoring and statistics tracking, so I can see a history of what media my users and I consumed, details on when and what device, whether it was direct play or transcode, etc. It also has programmatic notifications with a lot different triggers. Aside from just keeping a comprehensive history of played media, I use Pushover to send push notifications to my phone when other users are playing something on Plex and if they have any stream errors.
 
 ![Tautulli push notification with Pushover](../../img/blog/tautulli-pushover.jpg 'Tautulli push notification with Pushover')
 
-- <a href="https://containrrr.dev/watchtower" target="_blank">Watchtower</a> keeps track of new version of all your other container images, and (depending on your config) will automatically shut containers down, update the images, prune the old images, and then restart it. You can also schedule your updates for specific dates and times, mine only happen on weekdays at 3 AM. Finally, it can send notifications via many providers, but like with everything else I use Pushover to get notified on my phone when any containers have been updated.
+<div id='watchtower'/>
+
+### Watchtower
+
+<a href="https://containrrr.dev/watchtower" target="_blank">Watchtower</a> keeps track of new version of all your other container images, and (depending on your config) will automatically shut containers down, update the images, prune the old images, and then restart it. You can also schedule your updates for specific dates and times, mine only happen on weekdays at 3 AM. Finally, it can send notifications via many providers, but like with everything else I use Pushover to get notified on my phone when any containers have been updated.
 
 ![Watchtower push notification with Pushover](../../img/blog/watchtower-pushover.jpg 'Watchtower push notification with Pushover')
 

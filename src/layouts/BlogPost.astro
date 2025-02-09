@@ -219,7 +219,7 @@ const { slug } = Astro.params;
     <h1 class="title">{title}</h1>
     <hr />
     <div>
-      <span class="tag"><a href={`/categories/${tags}`} data-umami-event="{category-from-article}"><button>{tags}</button></a></span>
+      <span class="tag"><a href={`/categories/${tags}`} data-umami-event-name="{category-from-article}"><button>{tags}</button></a></span>
       <span class="date" data-pagefind-ignore>
         <FormattedDate date={pubDate} />
         {
@@ -258,7 +258,7 @@ const { slug } = Astro.params;
         data-outline-color="#000000"
         data-font-color="#000000"
         data-coffee-color="#ffffff"
-        data-umami-event="{article-coffee}">
+        data-umami-event-name="{article-coffee}">
       </script>
     </div>
 
@@ -270,7 +270,7 @@ const { slug } = Astro.params;
         <span>
           <a 
             href={`https://us.umami.is/share/5MdOgBcRzVP6FU0x/fullmetalbrackets.com?view=url&url=/blog/${slug}/`}
-            target="_blank" data-umami-event="{article-stats}">
+            target="_blank" data-umami-event-name="{article-stats}">
               <img src="/assets/umami.svg"
                 class="umami"
                 loading="lazy"

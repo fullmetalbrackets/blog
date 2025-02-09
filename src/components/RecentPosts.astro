@@ -108,7 +108,7 @@ const posts = (await getCollection("blog")).sort(
     {
       posts.slice(0, 3).map((post) => (
         <li>
-          <a href={`/blog/${post.slug}/`} rel="prefetch-intent" data-umami-event="{recent-post}">
+          <a href={`/blog/${post.slug}/`} rel="prefetch-intent" data-umami-event-name="{recent-post}">
             <p class="posts-title">{post.data.title}</p>
             <p class="date">
               <FormattedDate date={post.data.pubDate} />
