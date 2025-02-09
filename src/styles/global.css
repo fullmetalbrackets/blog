@@ -49,10 +49,13 @@
     --blockquote: rgb(255, 235, 215);
     --code-bg: hsl(0, 0%, 90%);
     --code-text: hsl(220, 13%, 18%);
+    --coffee: rgb(242, 207, 43);
     --svg: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%) contrast(98%);
     --ext: invert(88%) sepia(69%) saturate(7500%) hue-rotate(1deg) brightness(104%) contrast(104%);
     --search: invert(57%) sepia(86%) saturate(3921%) hue-rotate(13deg) brightness(99%) contrast(100%);
     --info-svg: brightness(0) saturate(100%) invert(77%) sepia(98%) saturate(1742%) hue-rotate(350deg) brightness(96%) contrast(95%);
+    --share: brightness(0) saturate(100%) invert(34%) sepia(70%) saturate(5419%) hue-rotate(20deg) brightness(94%) contrast(101%);
+    --coffee-hover: brightness(0) saturate(100%) invert(80%) sepia(82%) saturate(863%) hue-rotate(336deg) brightness(105%) contrast(90%);
     box-sizing: border-box;
     height: 100%;
     scroll-behavior: smooth;
@@ -77,11 +80,15 @@
     --blockquote: rgb(25, 22, 22);
     --code-bg: hsl(220, 13%, 18%);
     --code-text: hsl(0, 0%, 100%);
+    --coffee: rgb(202, 71, 0);
     --pagefind-ui-text: rgb(164, 174, 188);
     --pagefind-ui-background: rgb(51, 65, 85);
     --svg: invert(93%) sepia(78%) saturate(2834%) hue-rotate(213deg) brightness(148%) contrast(96%);
     --ext: invert(50%) sepia(21%) saturate(5438%) hue-rotate(150deg) brightness(87%) contrast(101%);
     --search: invert(57%) sepia(86%) saturate(3921%) hue-rotate(13deg) brightness(99%) contrast(100%);
+    --info-svg: brightness(0) saturate(100%) invert(80%) sepia(82%) saturate(863%) hue-rotate(336deg) brightness(105%) contrast(90%);
+    --share: brightness(0) saturate(100%) invert(77%) sepia(98%) saturate(1742%) hue-rotate(350deg) brightness(96%) contrast(95%);
+    --coffee-hover: brightness(0) saturate(100%) invert(26%) sepia(80%) saturate(1862%) hue-rotate(7deg) brightness(102%) contrast(101%);
     box-sizing: border-box;
     height: 100%;
     scroll-behavior: smooth;
@@ -372,6 +379,12 @@ aside > a, aside > a:active, aside > a:visited, aside > a:hover, aside > a:focus
   margin-top: 0.25em;
   background: var(--name);
 }
+.coffee a {
+  color: #000;
+}
+.coffee a:hover {
+  color:var(--coffee);
+}
 @media (hover: hover) {
   .button:hover {
     box-shadow: -4px -4px 0 #000;
@@ -392,6 +405,7 @@ aside {
   justify-content: end;
   cursor: pointer;
   margin: 2em auto;
+  cursor: default;
 }
 #related-articles + blockquote, #related-articles + blockquote + blockquote {
   margin: 2em auto;

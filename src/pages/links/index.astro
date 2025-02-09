@@ -60,7 +60,7 @@ const desc = "Links to helpful web development tools and sites.";
         links.map((link) => (
           <li>
             <span>
-              <a href={link.data.url} target="_blank">
+              <a href={link.data.url} target="_blank" data-umami-event="{links-page-used}">
                 {link.data.title}
               </a>
             </span>

@@ -68,14 +68,14 @@ const desc = "List of all blog posts";
     <h1>{title}</h1>
     <hr />
     <p class="blurb">
-      List of all blog posts. Alternatively, see <a href="/categories/">see posts by category</a> or <a href="/search/">search for specific posts</a>.
+      List of all blog posts. Alternatively, see <a href="/categories/" data-umami-event="{blog-category}">see posts by category</a> or <a href="/search/" data-umami-event="{blog-search}">search for specific posts</a>.
     </p>
     <ul>
       {
         posts.map((post) => (
           <li>
             <div>
-              <a href={`/blog/${post.slug}/`} rel="prefetch-intent">
+              <a href={`/blog/${post.slug}/`} rel="prefetch-intent" data-umami-event="{blog-post}">
                 <span class="title">{post.data.title}</span>
                 <p><FormattedDate date={post.data.pubDate} /></p>
                 <p class="desc">{post.data.description}</p>
