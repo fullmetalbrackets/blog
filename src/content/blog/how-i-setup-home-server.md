@@ -355,7 +355,9 @@ Now with the Tailscale client installed on my Android phone, and toggling it on 
 
 ## Other homelab things
 
-Most everything I self-host is on this one server, but I do have some other things going on. I have a free-tier Oracle E.2micro instance that I connect to via Tailscale which I use to <a href="/blog/expose-plex-tailscale-vps/" target="_blank" data-umami-event="home-server-expose-plex-tailscale">allow secure remote access to Plex by other users</a>.
+Most everything I self-host is on this one server, but I do have some other things going on. I have two free-tier Oracle E.2micro instances that I connect to via Tailscale. One is used to <a href="/blog/expose-plex-tailscale-vps/" target="_blank" data-umami-event="home-server-expose-plex-tailscale">allow secure remote access to Plex by other users</a>, the other runs <a href="/blog/pihole-anywhere-tailscale/" target="_blank" data-umami-event="home-server-pihole-anywhere-tailscale">Pi-Hole as DNS for the entire tailnet</a>, including my phone when I'm not home.
+
+I have a ZimaBoard running a local instance of Pi-Hole for my tailnet, but it's usually off because I prefer to use the free Oracle VM. (I may flash OpenWRT onto the ZimaBoard and turn it into a Tailscale travel router.) In addition I have two Libre Sweet Potato SBCs that used to run my home instances of Pi-Hole, but are just sitting in a drawer unused for now.
 
 ## Related Articles
 
