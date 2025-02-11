@@ -46,6 +46,13 @@ const { slug } = Astro.params;
     .last-updated-on {
       margin: 0 0.25em;
     }
+    button {
+      text-overflow: ellipsis;
+      -webkit-transition: all .10s ease-out;
+      -moz-transition: all .10s ease-out;
+      -o-transition: all .10s ease-out;
+      transition: all .10s ease-out;
+    }
     li:hover {
       padding-bottom: 0.25em;
       border-bottom: 2px solid var(--hover);
@@ -57,6 +64,7 @@ const { slug } = Astro.params;
       }
       a:hover button {
         outline-offset: 1px;
+        text-overflow: ellipsis;
       }
     }
     @media (hover: none) {
