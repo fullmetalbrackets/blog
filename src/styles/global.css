@@ -109,6 +109,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 	overflow-y: scroll;
+  font-variant-ligatures: no-common-ligatures;
+  font-smooth: always;
 }
 ::-webkit-scrollbar, ::-webkit-scrollbar-track {
   background-color: transparent;
