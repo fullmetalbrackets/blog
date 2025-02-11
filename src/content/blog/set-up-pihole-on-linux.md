@@ -23,7 +23,7 @@ tags:
 
 ## Pre-Requisites and Caveats
 
-Before anything, make sure the machine you're installing Pi-Hole on <a href="/blog/set-static-ip-debian/" target="_blank">has a static IP</a>, otherwise if your machine's IP changes it will break DNS resolution for the network.\
+Before anything, make sure the machine you're installing Pi-Hole on <a href="/blog/set-static-ip-debian/" target="_blank" data-umami-event="setup-pihole-static-ip-post">has a static IP</a>, otherwise if your machine's IP changes it will break DNS resolution for the network.\
 
 Also, Pi-Hole will run a web server at port 80, for serving the web UI page, so make sure no other web server like Apache or NGinx is running.
 
@@ -82,7 +82,7 @@ Unbound is available on most, if not all, Linux package managers and should be i
 sudo apt install unbound
 ```
 
-As per the <a href="https://docs.pi-hole.net/guides/dns/unbound" target="_blank">official docs</a>, we'll create a configuration file located at `/etc/unbound/unbound.conf.d/pi-hole.conf` with the below contents:
+As per the <a href="https://docs.pi-hole.net/guides/dns/unbound" target="_blank" data-umami-event="setup-pihole-docs">official docs</a>, we'll create a configuration file located at `/etc/unbound/unbound.conf.d/pi-hole.conf` with the below contents:
 
 ```bash
 server:
@@ -143,7 +143,7 @@ If your output looks similar to the above, then everything is working as intende
 
 I always run Pi-Hole bare metal as a personal preference, so I'll be giving instructions for something I haven't used myself. Maybe I'll spin up some containers and test it out, but for now... let me know how it goes.
 
-I'm going to suggest using <a href="https://github.com/chriscrowe/docker-pihole-unbound" target="_blank">Chris Crowe's project</a> for running both Pi-Hole and Unbound either in one or two containers.
+I'm going to suggest using <a href="https://github.com/chriscrowe/docker-pihole-unbound" target="_blank" data-umami-event="setup-pihole-chris-crowe">Chris Crowe's project</a> for running both Pi-Hole and Unbound either in one or two containers.
 
 This `compose.yaml` should get you going as a starting point:
 
@@ -254,7 +254,7 @@ If the option is available, it's usually under _DNS Servers_ in **DHCP Settings*
 
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
-> If your router does not have the option of setting a DNS server, you won't be able to block ads for all devices on your network automatically. Instead you'll have to <a href="https://discourse.pi-hole.net/t/how-do-i-configure-my-devices-to-use-pi-hole-as-their-dns-server/245#3-manually-configure-each-device-9" target="_blank">configure each device's DNS</a> or turn off DHCP on your router (if possible) and use Pi-Hole as the DHCP server. 
+> If your router does not have the option of setting a DNS server, you won't be able to block ads for all devices on your network automatically. Instead you'll have to <a href="https://discourse.pi-hole.net/t/how-do-i-configure-my-devices-to-use-pi-hole-as-their-dns-server/245#3-manually-configure-each-device-9" target="_blank" data-umami-event="setup-pihole-discourse-dns-each-device">configure each device's DNS</a> or turn off DHCP on your router (if possible) and use Pi-Hole as the DHCP server. 
 
 You should now be set up for Pi-Hole to be the DNS server for your whole network. If you added Pi-Hole's IP address as the DNS server in your router, devices will gradually begin querying Pi-Hole as they renew their DHCP leases and get the updated DNS server.
 
@@ -299,16 +299,16 @@ On the Pi-Hole web UI, click on **Adlists** on the navigation bar:
 
 The most efficient way to block URLs in Pi-Hole is to use an adlist, which is a list of URLs to block en masse. (You can also blacklist individual URLs by going to _Domains_ on the sidebar.) While installing Pi-Hole you had the option of including a default adlist that blocks around 300k URLs, but there's many more adlists curated by the community that will block many more ads, malware sites, telemetry and tracking. Here are the ones I use:
 
-- <a href="https://firebog.net" target="_blank">The Firebog</a>
-- <a href="https://github.com/blocklistproject/Lists" target="_blank" rel="noreferrer noopener">The Block List Project</a>
-- <a href="https://www.github.developerdan.com/hosts" target="_blank" rel="noreferrer noopener">Developer Dan's Adlists</a>
-- <a href="https://github.com/badmojr/1Hosts" target="_blank" rel="noreferrer noopener">1Hosts</a> (I suggest Lite or Pro)
-- <a href="https://oisd.nl" target="_blank" rel="noreferrer noopener">OISD</a>
-- <a href="https://github.com/mmotti/pihole-regex/blob/master/regex.list" target="_blank" rel="noreferrer noopener">This gist of Regex Expressions</a>
+- <a href="https://firebog.net" target="_blank" data-umami-event="setup-pihole-firebog">The Firebog</a>
+- <a href="https://github.com/blocklistproject/Lists" target="_blank" data-umami-event="setup-pihole-blocklist-project">The Block List Project</a>
+- <a href="https://www.github.developerdan.com/hosts" target="_blank" data-umami-event="setup-pihole-devdan-adlists">Developer Dan's Adlists</a>
+- <a href="https://github.com/badmojr/1Hosts" target="_blank" data-umami-event="setup-pihole-1hosts">1Hosts</a> (I suggest Lite or Pro)
+- <a href="https://oisd.nl" target="_blank" data-umami-event="setup-pihole-oisd">OISD</a>
+- <a href="https://github.com/mmotti/pihole-regex/blob/master/regex.list" target="_blank" data-umami-event="setup-pihole-mmotti-regex">This gist of Regex Expressions</a>
 
 Once you've added all the adlists (and any time you add additional ones), make sure to "update gravity" for the changes to take effect. Go to _Tools_ on the navigation bar, click on _Update Gravity_, and click the big **Update** button. Do not leave the page until the process is done!
 
-You may end up with several million "domains on adlists" as shown in the dashboard. Don't panic. You'll see your dashboard stats explode with blocked requests, especially from mobile devices. Pay attention to any issues you have visiting websites and using online apps/services that you commonly do, and whitelist domains as needed. (You can also use a <a href="https://github.com/anudeepND/whitelist" target="_blank">curated whitelist</a>.)
+You may end up with several million "domains on adlists" as shown in the dashboard. Don't panic. You'll see your dashboard stats explode with blocked requests, especially from mobile devices. Pay attention to any issues you have visiting websites and using online apps/services that you commonly do, and whitelist domains as needed. (You can also use a <a href="https://github.com/anudeepND/whitelist" target="_blank" data-umami-event="setup-pihole-anudeepND-whitelist">curated whitelist</a>.)
 
 ![Over 3 million domains blocked in Pi-Hole.](../../img/blog/blocked.png 'Over 3 million domains blocked in Pi-Hole')
 
@@ -340,29 +340,29 @@ If you notice the query log displaying times as UTC instead of your local time z
 sudo timedatectl set-timezone America/New_York
 ```
 
-If you want to find out your time zone in the tz database, <a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones" target="_blank">see here</a>.
+If you want to find out your time zone in the tz database, <a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones" target="_blank" data-umami-event="setup-pihole-tz-database">see here</a>.
 
 ### Run and sync two Pi-Holes
 
-When you make Pi-Hole your primary DNS it becomes a critical part of your network -- if it goes down, devices on your network won't be able to resolve any domains. For this reason, you may want to run another Pi-Hole as a secondary DNS in case the host running your main instance of Pi-Hole crashes. (These things happen.) If your entire network will go down from an issue with Pi-Hole, running a second instance of it makes a lot of sense. If you go this route, I strongly suggest using <a href="https://github.com/vmstan/gravity-sync" target="_blank" rel="noreferrer noopener">Gravity Sync</a> to keep the adlists and other settings identical between the two.
+When you make Pi-Hole your primary DNS it becomes a critical part of your network -- if it goes down, devices on your network won't be able to resolve any domains. For this reason, you may want to run another Pi-Hole as a secondary DNS in case the host running your main instance of Pi-Hole crashes. (These things happen.) If your entire network will go down from an issue with Pi-Hole, running a second instance of it makes a lot of sense. If you go this route, I strongly suggest using <a href="https://github.com/vmstan/gravity-sync" target="_blank" data-umami-event="setup-pihole-gravity-sync">Gravity Sync</a> to keep the adlists and other settings identical between the two.
 
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
-> Gravity Sync has been archived and is no longer updated, however it still works perfectly with the current (as of October 2024) version of Pi-Hole. In the future Pi-Hole v6 release, Gravity Sync will not work. Two alternatives that do work with v6 are <a href="https://github.com/mattwebbio/orbital-sync" target="_blank" rel="noreferrer noopener">Orbital Sync</a> and <a href="https://github.com/lovelaze/nebula-sync" target="_blank" rel="noreferrer noopener">Nebula Sync</a>.
+> Gravity Sync has been archived and is no longer updated, however it still works perfectly with the current (as of October 2024) version of Pi-Hole. In the future Pi-Hole v6 release, Gravity Sync will not work. Two alternatives that do work with v6 are <a href="https://github.com/mattwebbio/orbital-sync" target="_blank" data-umami-event="setup-pihole-orbital-sync">Orbital Sync</a> and <a href="https://github.com/lovelaze/nebula-sync" target="_blank" data-umami-event="setup-pihole-nebula-sync">Nebula Sync</a>.
 >
 > This guide will be updated in the future once Pi-Hole v6 is generally available.
-
-## Related Articles
-
-> [How to use Pi-hole from anywhere with Tailscale](/blog/pihole-anywhere-tailscale/)
-
-> [Setting up a reverse proxy for HTTPS with a custom domain using Nginx Proxy Manager, Pi-Hole and Cloudflare](/blog/reverse-proxy-using-nginx-pihole-cloudflare/)
 
 <div id='ref' />
 
 ## Reference
 
-- <a href="https://docs.pi-hole.net" target="_blank">Pi-Hole documentation</a>
-- <a href="https://man7.org/linux/man-pages/man8/cron.8.html" target="_blank">Cron man page</a>
-- <a href="https://man7.org/linux/man-pages/man5/crontab.5.html" target="_blank">Crontab man page</a>
-- <a href="https://man7.org/linux/man-pages/man1/at.1p.html" target="_blank">At man page</a>
+- <a href="https://docs.pi-hole.net" target="_blank" data-umami-event="setup-pihole-docs">Pi-Hole documentation</a>
+- <a href="https://man7.org/linux/man-pages/man8/cron.8.html" target="_blank" data-umami-event="setup-pihole-cron-manpage">Cron man page</a>
+- <a href="https://man7.org/linux/man-pages/man5/crontab.5.html" target="_blank" data-umami-event="setup-pihole-crontab-manpage">Crontab man page</a>
+- <a href="https://man7.org/linux/man-pages/man1/at.1p.html" target="_blank" data-umami-event="setup-pihole-at-manpage">At man page</a>
+
+## Related Articles
+
+> <a href="/blog/pihole-anywhere-tailscale/" data-umami-event="setup-pihole-related-anywhere-tailscale">How to use Pi-hole from anywhere with Tailscale</a>
+
+> <a href="/blog/reverse-proxy-using-nginx-pihole-cloudflare/" data-umami-event="setup-pihole-related-reverse-proxy">Setting up a reverse proxy for HTTPS with a custom domain using Nginx Proxy Manager, Pi-Hole and Cloudflare</a>

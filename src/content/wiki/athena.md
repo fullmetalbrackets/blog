@@ -9,7 +9,7 @@ tags:
 
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
-> See <a href="/blog/how-i-setup-home-server/" target="_blank">this blog post</a> for more details.
+> See <a href="/blog/how-i-setup-home-server/" target="_blank" data-umami-event="wiki-athena-home-server-blog">this blog post</a> for more details.
 
 ![Dell XPS 8920](../../img/wiki/xps8920.jpg)
 

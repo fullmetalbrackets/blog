@@ -59,13 +59,13 @@ The above instructions show how to generate a very basic SSH key using RSA encry
 ssh-keygen -t ed25519
 ```
 
-Now follow the prompts same as normal. If you are encrypting your key with a password, it's good practice to also add the flag `-a 100` which puts the key through 100 rounds of derivation function -- <a href="https://www.reddit.com/r/linuxquestions/comments/axu8te/how_many_a_repetitions_in_ed25519_are_insecure/ehwl3dz/)" target="_blank">apparently this means it is more secure</a>, so might as well do it.
+Now follow the prompts same as normal. If you are encrypting your key with a password, it's good practice to also add the flag `-a 100` which puts the key through 100 rounds of derivation function -- <a href="https://www.reddit.com/r/linuxquestions/comments/axu8te/how_many_a_repetitions_in_ed25519_are_insecure/ehwl3dz/)" target="_blank" data-umami-event="generating-ssh-key-pair-reddit-insecure-repetitions-ed25519">apparently this means it is more secure</a>, so might as well do it.
 
 ```bash
 ssh-keygen -a 100 -t ed25519
 ```
 
-If you'd like to know more this, here's a great Medium article <a href="https://nbeguier.medium.com/a-real-world-comparison-of-the-ssh-key-algorithms-b26b0b31bfd9" target="_blank">comparing the different SSH encryption algorithms</a> by <a href="https://beguier.eu/nicolas" target="_blank">Nicolas Béguier</a> that is worth a read.
+If you'd like to know more this, here's a great Medium article <a href="https://nbeguier.medium.com/a-real-world-comparison-of-the-ssh-key-algorithms-b26b0b31bfd9" target="_blank" data-umami-event="generating-ssh-key-pair-medium-comparing-ssh-algos">comparing the different SSH encryption algorithms</a> by <a href="https://beguier.eu/nicolas" target="_blank" data-umami-event="generating-ssh-key-pair-nicolas-beguier">Nicolas Béguier</a> that is worth a read.
 
 <div id='linux-copy'/>
 
@@ -101,16 +101,16 @@ Since Powershell does not recognize the `ssh-copy-id` command, we'll do the foll
 cat ~/.ssh/id_rsa.pub | ssh bob@hostname 'cat >> .ssh/authorized_keys && echo "Key copied"'
 ```
 
-## Related Articles
-
-> [Copying SSH Keys between different hosts](/blog/copy-ssh-keys-between-hosts/)
-
-> [Setup SSH authentication to push to Github](/blog/setup-ssh-authentication-to-push-to-github/)
-
 <div id='ref'/>
 
 ## References
 
-- <a href="https://linux.die.net/man/1/ssh" target="_blank">SSH Man Page</a>
-- <a href="https://linux.die.net/man/1/ssh-copy-id" target="_blank">SSH-Copy-ID Man Page</a>
-- <a href="https://nbeguier.medium.com/a-real-world-comparison-of-the-ssh-key-algorithms-b26b0b31bfd9" target="_blank" rel="noopener noreferrer">Medium article comparing the different SSH encryption algorithms</a>
+- <a href="https://linux.die.net/man/1/ssh" target="_blank" data-umami-event="generating-ssh-key-pair-ssh-manpage">SSH Man Page</a>
+- <a href="https://linux.die.net/man/1/ssh-copy-id" target="_blank" data-umami-event="generating-ssh-key-pair-ssh-copy-id-manpage">SSH-Copy-ID Man Page</a>
+- <a href="https://nbeguier.medium.com/a-real-world-comparison-of-the-ssh-key-algorithms-b26b0b31bfd9" target="_blank" data-umami-event="generating-ssh-key-pair-medium-comparing-ssh-algos">Medium article comparing the different SSH encryption algorithms</a>
+
+## Related Articles
+
+> <a href="/blog/copy-ssh-keys-between-hosts/" data-umami-event="generating-ssh-key-pair-related-copy-ssh-keys-hosts">Copying SSH Keys between different hosts</a>
+
+> <a href="/blog/setup-ssh-authentication-to-push-to-github/" data-umami-event="generating-ssh-key-pair-related-ssh-auth-github">Setup SSH authentication to push to Github</a>

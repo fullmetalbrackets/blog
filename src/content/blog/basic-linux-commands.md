@@ -94,14 +94,14 @@ tags:
 | <kbd>Ctrl</kbd> + <kbd>E</kbd> | go to end of line                  |
 | <kbd>Ctrl</kbd> + <kbd>U</kbd> | delete entire line                 |
 
-## Related Articles
-
-> [Formatting disks in Linux command line](/blog/formatting-on-linux/)
-
-> [Mounting (either internal or external) hard drives in Linux](/blog/mounting-hard-drives-in-linux/)
-
 <div id='ref'/>
 
 ## Reference
 
 - <a href="https://ss64.com/bash" target="_blank" rel="noopener noreferrer">An A-Z Index of the Linux command line</a>
+
+## Related Articles
+
+> [Formatting disks in Linux command line](/blog/formatting-on-linux/)
+
+> [Mounting (either internal or external) hard drives in Linux](/blog/mounting-hard-drives-in-linux/)

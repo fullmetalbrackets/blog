@@ -16,7 +16,7 @@ tags:
 
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
-> This will not be an exhaustive Docker tutorial, for that I always suggest <a href="https://docs.docker.com" target="_blank">the official Docker documentation</a>. The purpose of this guide is limited to explaining how to install Docker and set up various Docker containers quickly and easily via Docker Compose.
+> This will not be an exhaustive Docker tutorial, for that I always suggest <a href="https://docs.docker.com" target="_blank" data-umami-event="container-stack-compose-docs-docker">the official Docker documentation</a>. The purpose of this guide is limited to explaining how to install Docker and set up various Docker containers quickly and easily via Docker Compose.
 
 <div id='install'/>
 
@@ -34,7 +34,7 @@ This will install all dependencies while uninstalling old or conflicting package
 
 ## Setting up the Compose file
 
-For setting up multiple containers via CLI we'll be using <a href="https://docs.docker.com/compose/" target="_blank">Docker Compose</a>, which uses YAML files for configuration. Below is a `compose.yaml` based on own:
+For setting up multiple containers via CLI we'll be using <a href="https://docs.docker.com/compose/" target="_blank" data-umami-event="container-stack-compose-docs-compose">Docker Compose</a>, which uses YAML files for configuration. Below is a `compose.yaml` based on own:
 
 ```yaml
 services:
@@ -44,11 +44,11 @@ services:
     image: linuxserver/plex:latest
     network_mode: host
     volumes:
-      - ~/docker/plex:/config
-      - ~/shared/movies:/movies
-      - ~/shared/music:/music
-      - ~/shared/photos:/photos
-      - ~/shared/tvshows:/tvshows
+      - /opt/docker/plex:/config
+      - /opt/media/movies:/movies
+      - /opt/media/music:/music
+      - /opt/media/photos:/photos
+      - /opt/media/tvshows:/tvshows
     environment:
       - TZ=America/New_York
       - PLEX_UID=1000
@@ -62,10 +62,10 @@ services:
       - PGID=1000
       - TZ=America/New_York
     volumes:
-      - ~/docker/airsonic:/config
-      - ~/shared/music:/music
-      - ~/shared/music/playlists:/playlists
-      - ~/shared/music/podcasts:/podcasts
+      - /opt/docker/airsonic:/config
+      - /opt/media/music:/music
+      - /opt/media/music/playlists:/playlists
+      - /opt/media/music/podcasts:/podcasts
     ports:
       - 4040:4040
     restart: unless-stopped
@@ -78,9 +78,9 @@ services:
       - PGID=1000
       - TZ=America/New_York
     volumes:
-      - ~/docker/ubooquity:/config
-      - ~/shared/ebooks/books:/books
-      - ~/shared/ebooks/comics:/comics
+      - /opt/docker/ubooquity:/config
+      - /opt/media/ebooks/books:/books
+      - /opt/media/ebooks/comics:/comics
     restart: unless-stopped
     ports:
       - 2202:2202
@@ -91,9 +91,9 @@ services:
     restart: unless-stopped
     image: filebrowser/filebrowser:latest
     volumes:
-      - ~/:/srv
-      - ~/docker/filebrowser/filebrowser.db:/database/filebrowser.db
-      - ~/docker/filebrowser/settings.json:/config/settings.json
+      - /opt/:/srv
+      - /opt/docker/filebrowser/filebrowser.db:/database/filebrowser.db
+      - /opt/docker/filebrowser/settings.json:/config/settings.json
     ports:
       - 8080:80
     environment:
@@ -114,10 +114,10 @@ services:
       - TZ=America/New_York
       - FLOOD_AUTH=false
     volumes:
-      - ~/docker/qflood:/config
-      - ~/shared/downloads:/downloads
-      - ~/shared/movies:/4kmovies
-      - ~/shared/tvshows:/4ktvshows%
+      - /opt/docker/qflood:/config
+      - /opt/media/downloads:/downloads
+      - /opt/media/movies:/4kmovies
+      - /opt/media/tvshows:/4ktvshows%
 
   watchtower:
     image: containrrr/watchtower
@@ -148,15 +148,15 @@ docker compose up -d
 
 Using the `-d` flag will "detach" the process so it's in the background. You will see all the required container images be downloaded and the directories you specified in the compose file will also be set up. Once finished, use `docker ps` to list running containers and confirm your new services are up and running.
 
-## Related Articles
-
-> [Setup Watchtower to auto-update Docker containers with notifications](/blog/watchtower-notifications/)
-
-> [Setup Prometheus, Node Exporter, Cadvisor and Grafana in Docker](/blog/setup-prometheus-cadvisor-grafana/)
-
 <div id='ref'/>
 
 ## References
 
-- <a href="https://docs.docker.com" target="_blank">Docker documentation</a>
-- <a href="https://docs.docker.com/compose/" target="_blank">Docker Compose documentation</a>
+- <a href="https://docs.docker.com" target="_blank" data-umami-event="container-stack-compose-docs-docker">Docker documentation</a>
+- <a href="https://docs.docker.com/compose/" target="_blank" data-umami-event="container-stack-compose-docs-compose">Docker Compose documentation</a>
+
+## Related Articles
+
+> <a href="/blog/watchtower-notifications/" data-umami-event="container-stack-compose-watchtower-notifications">Setup Watchtower to auto-update Docker containers with notifications</a>
+
+> <a href="/blog/setup-prometheus-cadvisor-grafana/" data-umami-event="containers-stack-compose-prom-nodeex-cadvsr-graf">Setup Prometheus, Node Exporter, Cadvisor and Grafana in Docker</a>

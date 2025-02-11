@@ -20,7 +20,7 @@ tags:
 
 ## About Watchtower
 
-<a href="https://containrrr.dev/watchtower" target="_blank">Per their own website</a>, Watchtower is a container-based solution for automating Docker container base image updates. It runs with no config, where it will automatically update any containers with a new image available, although you can configure it with all sorts of options. I strongly suggest reading the documentation to see all the available options, I will be demonstrating very specific options which I use myself and explain their use, but that won't even scratch the surface of what's capable with Watchtower.
+<a href="https://containrrr.dev/watchtower" target="_blank" data-umami-event="watchtower-notifications-site">Per their own website</a>, Watchtower is a container-based solution for automating Docker container base image updates. It runs with no config, where it will automatically update any containers with a new image available, although you can configure it with all sorts of options. I strongly suggest reading the documentation to see all the available options, I will be demonstrating very specific options which I use myself and explain their use, but that won't even scratch the surface of what's capable with Watchtower.
 
 ## Setting up Watchtower with Docker Compose
 
@@ -61,11 +61,11 @@ At this point you can save the file and, in the same directory where the file is
 
 ## Notifications via Pushover (or other methods)
 
-Watchtower has the <a href="https://github.com/containrrr/shoutrrr" target="_blank">Shoutrrr</a> libraries built-in to send notifications through several services (Discord, Telegram, Pushover, Pushbullet, Gotify just to name a few) or email (if you have SMTP set up on your server) without needing to run another container. Each service has a specific syntax to use it, and you'll need API keys or login info for the service you'll be using, so <a href="https://containrrr.dev/shoutrrr/v0.8/services/overview" target="_blank">check the documentation here</a> for details.
+Watchtower has the <a href="https://github.com/containrrr/shoutrrr" target="_blank" data-umami-event="watchtower-notifications-shoutrrr-gh">Shoutrrr</a> libraries built-in to send notifications through several services (Discord, Telegram, Pushover, Pushbullet, Gotify just to name a few) or email (if you have SMTP set up on your server) without needing to run another container. Each service has a specific syntax to use it, and you'll need API keys or login info for the service you'll be using, so <a href="https://containrrr.dev/shoutrrr/v0.8/services/overview" target="_blank" data-umami-event="watchtower-notifications-shoutrrr-docs-services">check the documentation here</a> for details.
 
 In my case, I use Pushover to notification to my phone, but that's just my preference -- there's many others, again just check the documentation for a full list. In case you want to use Pushover too, here's a quick how-to on setting it up.
 
-1. Go to <a href="https://pushover.net" target="_blank">the Pushover website</a> and create a free account.
+1. Go to <a href="https://pushover.net" target="_blank" data-umami-event="watchtower-notifications-pushover">the Pushover website</a> and create a free account.
 
 2. Once you're logged in and on the main page, you'll see your **User Key** on the right. You'll need this to set up notifications in Watchtower.
 
@@ -90,7 +90,7 @@ In my case, I use Pushover to notification to my phone, but that's just my prefe
 ![Logging in to Pushover mobile app.](../../img/blog/pushover4.jpg 'Logging in to Pushover mobile app')
 ![Naming device in Pushover mobile app.](../../img/blog/pushover5.jpg 'Naming device in Pushover mobile app')
 
-Now that Pushover is set up, we'll make Watchtower use it for notifications. Per the <a href="https://containrrr.dev/shoutrrr/v0.8/services/pushover" target="_blank">Shoutrrr documentation</a>, Pushover uses the syntax `pushover://:token@user`, so you want to add this to your compose file under environment:
+Now that Pushover is set up, we'll make Watchtower use it for notifications. Per the <a href="https://containrrr.dev/shoutrrr/v0.8/services/pushover" target="_blank" data-umami-event="watchtower-notifications-shoutrrr-docs-pushover">Shoutrrr documentation</a>, Pushover uses the syntax `pushover://:token@user`, so you want to add this to your compose file under environment:
 
 ```yaml
   - WATCHTOWER_NOTIFICATION_URL=pushover://:<application-api-token>@<user-key>
@@ -102,7 +102,7 @@ With that your notifications will come out to something like *"Watchtower update
   - WATCHTOWER_NOTIFICATIONS_HOSTNAME=<hostname>
 ```
 
-Finally, let's schedule updates for a specific time when no one will be using them. This is done as a `cron` expression, but it takes 6 fields instead of the standard 5, and times are in UTC. (I suggest using <a href="https://crontab.cronhub.io" target="_blank">this cron expression generator by Cronhub</a>.) So, for example, the below schedule updates for _0800 UTC_ which is **3:00 AM EST**:
+Finally, let's schedule updates for a specific time when no one will be using them. This is done as a `cron` expression, but it takes 6 fields instead of the standard 5, and times are in UTC. (I suggest using <a href="https://crontab.cronhub.io" target="_blank" data-umami-event="watchtower-notifications-cronhub">this cron expression generator by Cronhub</a>.) So, for example, the below schedule updates for _0800 UTC_ which is **3:00 AM EST**:
 
 ```yaml
   - WATCHTOWER_SCHEDULE=0 0 8 * * *
@@ -134,19 +134,19 @@ In the future, any updates will result in a notification specifying which contai
 
 ![Example of Watchtower notification via Pushover.](../../img/blog/pushover7.jpg 'Example of Watchtower notification via Pushover')
 
-All done! You should now get notifications through Pushover each time Watchtower updates any container images. If you want to use a different service for notifications, simply check <a href="https://containrrr.dev/shoutrrr/v0.8/services/overview" target="_blank">the Shoutrrr documentation for the syntax</a> and use that instead. You can even customize the 
-
-## Related Articles
-
-> [Setup self-hosted Plex Media Server in Docker](/blog/setting-up-plex-in-docker/)
-
-> [How to run self-hosted FileBrowser in Docker](/blog/how-to-run-filebrowser-in-docker/)
+All done! You should now get notifications through Pushover each time Watchtower updates any container images. If you want to use a different service for notifications, simply check <a href="https://containrrr.dev/shoutrrr/v0.8/services/overview" target="_blank" data-umami-event="watchtower-notifications-shoutrrr-docs-services">the Shoutrrr documentation for the syntax</a> and use that instead. You can even customize the 
 
 <div id='ref'/>
 
 ## References
 
-- <a href="https://containrrr.dev/watchtower" target="_blank">Watchtower Documentation</a>
-- <a href="https://github.com/containrrr/watchtower" target="_blank">Watchtower GitHub</a>
-- <a href="https://containrrr.dev/shoutrrr" target="_blank">Shoutrrr Documentation</a>
-- <a href="https://github.com/containrrr/shoutrrr" target="_blank">Shoutrrr GitHub</a>
+- <a href="https://containrrr.dev/watchtower" target="_blank" data-umami-event="watchtower-notifications-docs">Watchtower Documentation</a>
+- <a href="https://github.com/containrrr/watchtower" target="_blank" data-umami-event="watchtower-notifications-gh">Watchtower GitHub</a>
+- <a href="https://containrrr.dev/shoutrrr" target="_blank" data-umami-event="watchtower-notifications-shoutrrr-docs">Shoutrrr Documentation</a>
+- <a href="https://github.com/containrrr/shoutrrr" target="_blank" data-umami-event="watchtower-notifications-shoutrrr-gh">Shoutrrr GitHub</a>
+
+## Related Articles
+
+> <a href="/blog/setting-up-plex-in-docker/" data-umami-event="watchtower-notifications-">Setup self-hosted Plex Media Server in Docker</a>
+
+> <a href="/blog/how-to-run-filebrowser-in-docker/" data-umami-event="watchtower-notifications-">How to run self-hosted FileBrowser in Docker</a>

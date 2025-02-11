@@ -87,15 +87,15 @@ Now you should be able to access the share from a Windows PC on the same network
 
 ![Connecting to SMB share via IP address in Windows Run.](../../img/blog/public.png 'Connecting to SMB share via IP address in Windows Run')
 
-## Related Articles
-
-> [Mounting (either internal or external) hard drives in Linux](/blog/mounting-hard-drives-in-linux/)
-
-> [Set up NFS Shares between Linux hosts](/blog/setup-nfs-shares-linux/)
-
 <div id='ref' />
 
 ## Reference
 
 - <a href="https://www.samba.org/samba/docs" target="_blank" rel="noopener noreferrer">Samba Documentation</a>
 - <a href="https://eggplant.pro/blog/faster-samba-smb-cifs-share-performance" target="_blank" rel="noopener noreferrer">Eggplant Systems & Design blog post about improving Samba share performance</a>
+
+## Related Articles
+
+> [Mounting (either internal or external) hard drives in Linux](/blog/mounting-hard-drives-in-linux/)
+
+> [Set up NFS Shares between Linux hosts](/blog/setup-nfs-shares-linux/)

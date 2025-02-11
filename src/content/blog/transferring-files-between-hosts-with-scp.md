@@ -20,7 +20,7 @@ tags:
 
 ## Introduction
 
-Secure Copy is a command line utility that transfers files between the local host and a remote host via the SSH protocol. You will be prompted for the remote user's password, or you can use an <a href="/blog/generating-an-ssh-key-pair/" target="_blank">authorized SSH key</a>.
+Secure Copy is a command line utility that transfers files between the local host and a remote host via the SSH protocol. You will be prompted for the remote user's password, or you can use an <a href="/blog/generating-an-ssh-key-pair/" target="_blank" data-umami-event="transfer-scp-to-generating-ssh-key-pair">authorized SSH key</a>.
 
 <div id='syntax'/>
 
@@ -100,5 +100,5 @@ scp user@192.168.0.10:/directory/file.txt user@192.168.0.12:/directory/file.txt
 
 ## References
 
-- <a href="https://linux.die.net/man/1/scp" target="_blank">SSH Man Page</a>
-- <a href="https://www.ssh.com/academy/ssh/scp" target="_blank">SSH Academy</a>
+- <a href="https://linux.die.net/man/1/scp" target="_blank" data-umami-event="transfer-scp-ssh-manpage">SSH Man Page</a>
+- <a href="https://www.ssh.com/academy/ssh/scp" target="_blank" data-umami-event="transfer-scp-ssh-academy">SSH Academy</a>

@@ -122,13 +122,13 @@ Or you can connect by _hostname_ rather than IP.
 
 You should now have the shared folder open in your Windows PC! For ease of access, right-click and pin it to _Quick Access_ or map it as a _Network Drive_.
 
-However, there MAY be an additional issue, as Windows 10 Home (but not Professional) apparently does not have the Local Security Policy settings (`secpol.msc`) that is required to interface with Samba. I can't confirm this myself since I use Windows 11 where this is not problem, but if you have issues and Windows complains about `secpol.msc`, <a href="https://www.majorgeeks.com/content/page/how_to_enable_local_security_policy_in_windows_10_home.html" target="_blank">go here for detailed instructions</a> on how to fix this issue.
+However, there MAY be an additional issue, as Windows 10 Home (but not Professional) apparently does not have the Local Security Policy settings (`secpol.msc`) that is required to interface with Samba. I can't confirm this myself since I use Windows 11 where this is not problem, but if you have issues and Windows complains about `secpol.msc`, <a href="https://www.majorgeeks.com/content/page/how_to_enable_local_security_policy_in_windows_10_home.html" target="_blank" data-umami-event="setup-smb-">go here for detailed instructions</a> on how to fix this issue.
 
 <div id='speed'/>
 
 ## Improve transfer speeds for Samba
 
-After transferring files back and forth between Windows and Linux via the Samba share, you may notice it's extremely slow! After some googling I found some additional configuration options from <a href="https://eggplant.pro/blog/faster-samba-smb-cifs-share-performance" target="_blank" rel="noopener noreferrer">a company's blog</a> that claimed to improve network performance, and in my experience it works. (SMB protocol is just slow, though, don't expect gigabit transfer speeds!)
+After transferring files back and forth between Windows and Linux via the Samba share, you may notice it's extremely slow! After some googling I found some additional configuration options from <a href="https://eggplant.pro/blog/faster-samba-smb-cifs-share-performance" target="_blank" data-umami-event="setup-smb-">a company's blog</a> that claimed to improve network performance, and in my experience it works. (SMB protocol is just slow, though, don't expect gigabit transfer speeds!)
 
 Add the following code to your `smb.conf` file under the `[global]` block:
 
@@ -151,17 +151,17 @@ Add the following code to your `smb.conf` file under the `[global]` block:
 
 For an explanation of what these options do, check the original blog post linked above, the original code includes detailed comments for each option.
 
-## Related Articles
-
-> [Create a public Samba share accessible without a login](/blog/create-public-samba-share-without-login/)
-
-> [Set up NFS Shares between Linux hosts](/blog/setup-nfs-shares-linux/)
-
 <div id='ref'/>
 
 ## References
 
-- <a href="https://www.samba.org/samba/docs" target="_blank" rel="noopener noreferrer">Samba Documentation</a>
-- <a href="https://www.samba.org/samba/docs/current/man-html/smbpasswd.8.html" target="_blank" rel="noopener noreferrer">smbpasswd Manpage</a>
-- <a href="https://eggplant.pro/blog/faster-samba-smb-cifs-share-performance" target="_blank" rel="noopener noreferrer">Eggplant Systems & Design blog post about improving Samba share performance</a>
-- <a href="https://www.majorgeeks.com/content/page/how_to_enable_local_security_policy_in_windows_10_home.html" target="_blank">Instructions to fix Local Security Policy issue</a>
+- <a href="https://www.samba.org/samba/docs" target="_blank" data-umami-event="setup-smb-docs">Samba Documentation</a>
+- <a href="https://www.samba.org/samba/docs/current/man-html/smbpasswd.8.html" target="_blank" data-umami-event="setup-smb-smbpasswd-manpage">smbpasswd Manpage</a>
+- <a href="https://eggplant.pro/blog/faster-samba-smb-cifs-share-performance" target="_blank" data-umami-event="setup-smb-eggplant-systems">Eggplant Systems & Design blog post about improving Samba share performance</a>
+- <a href="https://www.majorgeeks.com/content/page/how_to_enable_local_security_policy_in_windows_10_home.html" target="_blank" data-umami-event="setup-smb-local-security-policy-fix">Instructions to fix Local Security Policy issue</a>
+
+## Related Articles
+
+> <a href="/blog/create-public-samba-share-without-login/" data-umami-event="setup-smb-related-public-share-nologin">Create a public Samba share accessible without a login</a>
+
+> <a href="/blog/setup-nfs-shares-linux/" data-umami-event="setup-smb-related-nfs-shares">Set up NFS Shares between Linux hosts</a>

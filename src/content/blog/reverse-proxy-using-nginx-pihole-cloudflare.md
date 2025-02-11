@@ -21,15 +21,15 @@ tags:
 
 ## Pre-Requisites and Caveats
 
-First of all, this guide uses specific third-party services, namely <a href="https://cloudflare.com" target="_blank">Cloudflare</a>, <a href="https://pi-hole.net" target="_blank">Pi-Hole</a> and <a href="https://nginxproxymanager.com" target="_blank">Nginx Proxy Manager</a> to set up a secure local-only reverse proxy. The same is possible with other tools, apps and services including <a href="https://adguard.com/en/adguard-home/overview.html" target="_blank">AdGuard Home</a> or <a href="https://nextdns.io" target="_blank">NextDNS</a> instead of *Pi-Hole*, <a href="https://caddyserver.com" target="_blank">Caddy</a> or <a href="https://traefik.io" target="_blank">Traefik</a> instead of *Nginx*, any other DNS provider instead of *Cloudflare*, etc. I'm only writing about my preferred tools that I've used multiple times to set everything up and keep it running for over a year.
+First of all, this guide uses specific third-party services, namely <a href="https://cloudflare.com" target="_blank" data-umami-event="reverse-proxy-pihole-cf-site">Cloudflare</a>, <a href="https://pi-hole.net" target="_blank" data-umami-event="reverse-proxy-pihole-piholesite">Pi-Hole</a> and <a href="https://nginxproxymanager.com" target="_blank" data-umami-event="reverse-proxy-pihole-npm-site">Nginx Proxy Manager</a> to set up a secure local-only reverse proxy. The same is possible with other tools, apps and services including <a href="https://adguard.com/en/adguard-home/overview.html" target="_blank" data-umami-event="reverse-proxy-pihole-agh-site">AdGuard Home</a> or <a href="https://nextdns.io" target="_blank" data-umami-event="reverse-proxy-pihole-nextdns">NextDNS</a> instead of *Pi-Hole*, <a href="https://caddyserver.com" target="_blank" data-umami-event="reverse-proxy-pihole-caddy">Caddy</a> or <a href="https://traefik.io" target="_blank" data-umami-event="reverse-proxy-pihole-traefik">Traefik</a> instead of *Nginx*, any other DNS provider instead of *Cloudflare*, etc. I'm only writing about my preferred tools that I've used multiple times to set everything up and keep it running for over a year.
 
-This guide will require a owned custom top-level domain (TLD), such as a `.com` or `.cc` or `.xyz`, etc. Certain TLDs can be bought for super cheap on <a href="https://namecheap.com" target="_blank">Namecheap</a> or <a href="https://porkbun.com" target="_blank">Porkbun</a>, but be aware in most cases after the first year or two, the price will see a steep jump. I again prefer <a href="https://domains.cloudflare.com" target="_blank">Cloudflare</a> for purchasing domains, since they always price domains at cost, so you won't see any surprise price hike one year to the next. An alternative I won't be getting into is using dynamic DNS, as I've not had to use it, so I honestly wouldn't even know how to set that up.
+This guide will require a owned custom top-level domain (TLD), such as a `.com` or `.cc` or `.xyz`, etc. Certain TLDs can be bought for super cheap on <a href="https://namecheap.com" target="_blank">Namecheap</a> or <a href="https://porkbun.com" target="_blank">Porkbun</a>, but be aware in most cases after the first year or two, the price will see a steep jump. I again prefer <a href="https://domains.cloudflare.com" target="_blank" data-umami-event="reverse-proxy-pihole-cf-domains">Cloudflare</a> for purchasing domains, since they always price domains at cost, so you won't see any surprise price hike one year to the next. An alternative I won't be getting into is using dynamic DNS, as I've not had to use it, so I honestly wouldn't even know how to set that up.
 
-I will be using Pi-Hole as the local DNS server, and I specifically run it bare metal on a <a href="https://www.libre.computer/products/aml-s905x-cc-v2" target="_blank">Libre Sweet Potato</a>, separate from everything else. If you are running it on the same server as everything else, or in a Docker container, everything should work more or less the same with one caveat -- both Nginx Proxy Manager (and any reverse proxy) and Pi-Hole require port 80, but we need to give Nginx precedence here, so I suggest changing the port of Pi-Hole's web UI from 80 to something else. Really I suggest keeping Pi-Hole, and any dedicated DNS server more generally, separate from everything else since domain name resolution is more mission critical than, say, watching a movie.
+I will be using Pi-Hole as the local DNS server, and I specifically run it bare metal on a <a href="https://www.libre.computer/products/aml-s905x-cc-v2" target="_blank" data-umami-event="reverse-proxy-pihole-sweet-potato">Libre Sweet Potato</a>, separate from everything else. If you are running it on the same server as everything else, or in a Docker container, everything should work more or less the same with one caveat -- both Nginx Proxy Manager (and any reverse proxy) and Pi-Hole require port 80, but we need to give Nginx precedence here, so I suggest changing the port of Pi-Hole's web UI from 80 to something else. Really I suggest keeping Pi-Hole, and any dedicated DNS server more generally, separate from everything else since domain name resolution is more mission critical than, say, watching a movie.
 
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
-> This guide is for using Pi-Hole specifically as the DNS server, where we will add the DNS records for our proxied services. <a href="/blog/reverse-proxy-using-nginx-adguardhome-cloudflare" target="_blank">See here if you want to use AdGuard Home instead.</a>
+> This guide is for using Pi-Hole specifically as the DNS server, where we will add the DNS records for our proxied services. <a href="/blog/reverse-proxy-using-nginx-adguardhome-cloudflare" target="_blank" data-umami-event="reverse-proxy-pihole-to-adguard-proxy">See here if you want to use AdGuard Home instead.</a>
 
 <div id='pihole' />
 
@@ -147,11 +147,15 @@ To add an existing domain to Cloudflare:
 
 9. Click the button **Create Token**, then click the **Use template** button next to _Edit DNS Zone_.
 
-10. Under _Zone Resources_, leave the first two dropdown menus as is and in the final dropdown select your domain, then click on **Continue to summary** and finally on the **Create Token** button.
+10. Under _Permissions_, leave the first entry as is, click on **+Add more**.
 
-11. On the next page you'll see your **API token**, make sure to _save it somewhere because it will not be shown again_. We will need this **API token** for to provision the TLS certificates in Nginx Proxy Manager.
+11. For the new Permission, choose in order from the dropdown menus **Zone**, **Zone** and **Read**.
 
-12. Once your domain is _Active_ in Cloudflare, you can move on to the next section.
+12. Under _Zone Resources_, leave the first two dropdown menus as is, and in the final dropdown all the way to the right, **select your domain**. Scroll past everything else,without changing anything else, click on **Continue to summary**, and finally on the **Create Token** button.
+
+13. On the next page you'll see your **API token**, make sure to _save it somewhere because it will not be shown again_. We will need this **API token** for to provision the TLS certificates in Nginx Proxy Manager.
+
+14. Once your domain is _Active_ in Cloudflare, you can move on to the next section.
 
 <div id='nginx' />
 
@@ -176,7 +180,7 @@ services:
     restart: unless-stopped
 ```
 
-This compose file uses <a href="https://docs.docker.com/engine/storage/#bind-mounts" target="_blank">bind mounts</a> to store container data in specific directories on the host, as I find this easier to migrate than <a href="https://docs.docker.com/engine/storage/#volumes" target="_blank">volumes</a>. Be sure to type in your own local path to where you want the data from Nginx Proxy Manager to live in your server, e.g. `/home/bob/docker/..` etc.
+This compose file uses <a href="https://docs.docker.com/engine/storage/#bind-mounts" target="_blank" data-umami-event="reverse-proxy-pihole-docker-bind-mounts">bind mounts</a> to store container data in specific directories on the host, as I find this easier to migrate than <a href="https://docs.docker.com/engine/storage/#volumes" target="_blank" data-umami-event="reverse-proxy-pihole-docker-volumes">volumes</a>. Be sure to type in your own local path to where you want the data from Nginx Proxy Manager to live in your server, e.g. `/home/bob/docker/..` etc.
 
 Now run the command `docker-compose up -d` (using the `-d` flag has it run in the background as a daemon) within the same directory where the compose file is located to create the container.
 
@@ -208,7 +212,7 @@ We'll create an entry for Plex first, which is running as a container on the sam
 
 4. For _Forward Port_ type in `32400`.
 
-5. Toggle on **Websockets Support** only, leave the other two toggled off.
+5. Toggle on **Websockets Support** and **Block Common Exploits**, but leave caching off.
 
 6. Go to the **SSL** tab, click under _SSL Certificate_ and select **Request a new SSL Certificate** from the dropdown.
 
@@ -236,7 +240,7 @@ Barring any errors, once you set up all your proxy hosts in Nginx Proxy Manager 
 
 ## Accessing Pi-Hole web UI with HTTPS
 
-To be clear, the method I'm about to describe comes from <a href="https://discourse.pi-hole.net/t/how-to-access-pihole-web-interface-using-a-fqdn-with-https-using-nginx-proxy-manager/66719" target="_blank">this question and answer on the Pi-Hole discourse</a>, it is the only method that has ever worked for me.
+To be clear, the method I'm about to describe comes from <a href="https://discourse.pi-hole.net/t/how-to-access-pihole-web-interface-using-a-fqdn-with-https-using-nginx-proxy-manager/66719" target="_blank" data-umami-event="reverse-proxy-pihole-discourse-thread">this question and answer on the Pi-Hole discourse</a>, it is the only method that has ever worked for me.
 
 1. Go to the Pi-Hole web interface, and go to _Local DNS records_ -> _CNAME records_ on the sidebar. Enter the domain you want to use, e.g. `pihole.domain.com` and for _Target Domain_ use the hostname or IP address of the server running Nginx Proxy Manager.
 
@@ -260,17 +264,16 @@ Once you're done setting up the proxy host, you should be able to go to `https:/
 >
 > **Important Note** -- This works for the current v5 of Pi-Hole, but will probably change in v6 since it will use a new embedded webserver.
 
-
-## Related Articles
-
-> [Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS](/blog/set-up-pihole-on-linux/)
-
-> [Complete guide to self-hosting a website through Cloudflare Tunnel](/blog/self-host-website-cloudflare-tunnel/)
-
 <div id='ref' />
 
 ## Reference
 
-- <a href="/blog/set-up-pihole-on-linux" target="_blank">Pi-Hole setup guide</a>
-- <a href="https://nginxproxymanager.com" target="_blank">Website of Nginx Proxy Manager</a>
-- <a href="https://github.com/NginxProxyManager/nginx-proxy-manager" target="_blank">GitHub of Nginx Proxy Manager</a>
+- <a href="/blog/set-up-pihole-on-linux" target="_blank" data-umami-event="reverse-proxy-pihole-official-setup-guide">Pi-Hole setup guide</a>
+- <a href="https://nginxproxymanager.com" target="_blank" data-umami-event="reverse-proxy-pihole-npm-site">Website of Nginx Proxy Manager</a>
+- <a href="https://github.com/NginxProxyManager/nginx-proxy-manager" target="_blank" data-umami-event="reverse-proxy-pihole-npm-gh">GitHub of Nginx Proxy Manager</a>
+
+## Related Articles
+
+> <a href="/blog/set-up-pihole-on-linux/" data-umami-event="reverse-proxy-pihole-related-setup-pihole-post">Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS</a>
+
+> <a href="/blog/self-host-website-cloudflare-tunnel/" data-umami-event="reverse-proxy-pihole-related-tunnel-guide">Complete guide to self-hosting a website through Cloudflare Tunnel</a>

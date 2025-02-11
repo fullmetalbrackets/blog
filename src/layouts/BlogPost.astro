@@ -270,7 +270,7 @@ const { slug } = Astro.params;
         <span>
           <a 
             href={`https://us.umami.is/share/5MdOgBcRzVP6FU0x/fullmetalbrackets.com?view=url&url=/blog/${slug}/`}
-            target="_blank" data-umami-event="article-stats">
+            target="_blank" data-umami-event={`umami-stats-${slug}`}>
               <img src="/assets/umami.svg"
                 class="umami"
                 loading="lazy"

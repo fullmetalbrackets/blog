@@ -126,12 +126,6 @@ sudo sh -c "$(curl -fsSL https://gist.githubusercontent.com/fullmetalbrackets/5a
 
 Now when you use `p10k configure` you'll get additional options, since you'll be able to display the glyph correctly. (If using a desktop environment, make sure to go into Terminal preferences and change the font to "Meslo LGS.")
 
-## Related Articles
-
-> [Linux Commands & Keyboard Shortcuts Cheat Sheet](/blog/basic-linux-commands/)
-
-> [Customizing the Windows Terminal command prompt with Oh-My-Posh](/blog/customizing-windows-terminal-with-ohmyposh/)
-
 <div id='ref'/>
 
 ## References
@@ -140,3 +134,9 @@ Now when you use `p10k configure` you'll get additional options, since you'll be
 - <a href="https://ohmyz.sh" target="_blank">Oh-My-Zsh website</a>
 - <a href="https://github.com/ohmyzsh/ohmyzsh#using-oh-my-zsh" target="_blank">Section on Plugins in the Docs</a>
 - <a href="https://github.com/romkatv/powerlevel10k" target="_blank">Powerlevel10k Theme</a>
+
+## Related Articles
+
+> [Linux Commands & Keyboard Shortcuts Cheat Sheet](/blog/basic-linux-commands/)
+
+> [Customizing the Windows Terminal command prompt with Oh-My-Posh](/blog/customizing-windows-terminal-with-ohmyposh/)

@@ -2,7 +2,7 @@
 title: "How to securely expose Plex from behind CGNAT with Cloudflare Tunnel"
 description: "Exposing Plex normally involves port forwarding from the router, which is very insecure and not recommended. If your home network is behind CGNAT - very common with most ISPs nowadays -- you can't even port forward if you wanted to. Here's how I did it in a fairly secure way that limits access by using Cloudflare."
 pubDate: 2024-07-15
-updatedDate: 2025-02-03
+updatedDate: 2025-02-10
 tags:
   - cloudflare
 ---
@@ -30,23 +30,25 @@ Although there are many solutions to get across CGNAT, for Plex I've found that 
 >
 > **Important Note**
 > 
-> You're probably much better off following <a href="/blog/expose-plex-tailscale-vps/" target="_blank">this blog post to expose Plex through CGNAT with Tailscale</a> instead of using exposing it via Cloudflare Tunnel as I write about below.
+> You're probably much better off following <a href="/blog/expose-plex-tailscale-vps/" target="_blank" data-umami-event="expose-plex-cloudflare-to-tailscale-vps">this blog post to expose Plex through CGNAT with Tailscale</a> instead of using exposing it via Cloudflare Tunnel as I write about below.
 >
-> Technically speaking, Cloudflare Tunnel is **NOT** intended for routing video and audio streams, it's intended purpose is routing HTTP traffic for webpages. In fact, the <a href="https://www.cloudflare.com/service-specific-terms-application-services/#content-delivery-network-terms" target="_blank">Cloudflare Service-Specific Terms for their CDN</a> specifically state,
+> Technically speaking, Cloudflare Tunnel is **NOT** intended for routing video and audio streams, it's intended purpose is routing HTTP traffic for webpages. In fact, the <a href="https://www.cloudflare.com/service-specific-terms-application-services/#content-delivery-network-terms" target="_blank" data-umami-event="expose-plex-cloudflare-tos">Cloudflare Service-Specific Terms for their CDN</a> specifically state,
 >
 > _"Unless you are an Enterprise customer, Cloudflare offers specific Paid Services (e.g., the Developer Platform, Images, and Stream) that you must use in order to serve video and other large files via the CDN. Cloudflare reserves the right to disable or limit your access to or use of the CDN, or to limit your End Users’ access to certain of your resources through the CDN, if you use or are suspected of using the CDN without such Paid Services to serve video or a disproportionate percentage of pictures, audio files, or other large files."_
 >
-> Be aware that by using Cloudflare Tunnel, you are routing traffic through Cloudflare's CDN (can't have one without the other) and so using it with Plex may cause Cloudflare to limit or potentially outright ban your account. By following this guide, **you agree to take the risk** that such action may occur, so _think carefully about this warning and whether it's worth it_. If you already have a Cloudflare account and still want to expose Plex this way, I highly recommend creating a )_separate Cloudflare account with another email address_, and only use that other account for hosting a Cloudflare Tunnel with Plex, so that any actions taken by Cloudflare against you are limited to this new account, and not your main one! Consider it a burner account that may eventually blow up.
+> Be aware that by using Cloudflare Tunnel, you are routing traffic through Cloudflare's CDN (can't have one without the other) and so using it with Plex may cause Cloudflare to limit or potentially outright ban your account. By following this guide, **you agree to take the risk** that such action may occur, so _think carefully about this warning and whether it's worth it_.
+>
+> If you already have a Cloudflare account and still want to expose Plex this way, I highly recommend creating a _separate Cloudflare account with another email address_, and only use that other account for hosting a Cloudflare Tunnel with Plex, so that any actions taken by Cloudflare against you are limited to this new account, and not your main one! Consider it a burner account that may eventually self-destruct.
 
 <div id="pre" />
 
 ## Pre-Requisites
 
-This guide will assume you are already running Plex, and you're just looking to add a Cloudflare Tunnel so that you can share your library with other users. To that end, you will need a <a href="https://cloudflare.com" target="_blank">Cloudflare account</a>.
+This guide will assume you are already running Plex, and you're just looking to add a Cloudflare Tunnel so that you can share your library with other users. To that end, you will need a <a href="https://cloudflare.com" target="_blank" data-umami-event="expose-plex-cloudflare-cf-site">Cloudflare account</a>.
 
 You will either be running the Cloudflare Tunnel on the same server as Plex (preferable) or on another machine on the same network that has access to the Plex server. This guide assumes that all hardware is running _Linux_, since that is the only OS I've used to run either Plex or `cloudflared`. Other options are available, and you should be able to tweak these instructions to work on other platforms.
 
-In addition, the usage of Cloudflare Tunnel requires owning a domain. (Using a Dynamic DNS like DuckDNS or No-IP will not work.) If you need to purchase one, I suggest <a href="https://namecheap.com" target="_blank">Namecheap</a>, <a href="https://porkbun.com" target="_blank">Porkbun</a> or Cloudflare themselves.
+In addition, the usage of Cloudflare Tunnel requires owning a domain. (Using a Dynamic DNS like DuckDNS or No-IP will not work.) If you need to purchase one, I suggest <a href="https://namecheap.com" target="_blank" data-umami-event="expose-plex-cloudflare-namecheap">Namecheap</a>, <a href="https://porkbun.com" target="_blank" data-umami-event="expose-plex-cloudflare-porkbun">Porkbun</a> or Cloudflare themselves.
 
 Finally, I'll be using _Docker_ in order to run the `cloudflared` daemon as a container. You can run the daemon bare metal, but I prefer doing it as a container for that additional layer of abstraction, and so I can easily shutdown and restart the Cloudflare Tunnel as needed.
 
@@ -60,7 +62,7 @@ curl -fsSL https://get.docker.com | sh
 
 ## Add a domain in Cloudflare
 
-Create your <a href="https://dash.cloudflare.com/sign-up" target="_blank">free Cloudflare account</a> if you haven't already. **If you bought a domain on Cloudflare, you can skip to the next section since it is auto-configured already.** If your domain is from another registrar, we'll need to add it to Cloudflare:
+Create your <a href="https://dash.cloudflare.com/sign-up" target="_blank" data-umami-event="expose-plex-cloudflare-signup">free Cloudflare account</a> if you haven't already. **If you bought a domain on Cloudflare, you can skip to the next section since it is auto-configured already.** If your domain is from another registrar, we'll need to add it to Cloudflare:
 
 1. On the Cloudflare dashboard _Account Home_, click the **+ Add a domain** button.
 
@@ -301,27 +303,27 @@ Now your external users can access your library through their Plex apps too.
 
 There's always multiple ways to do things, and said I explained at the start, this method of sharing your Plex library may not be best. It's just what works for me, for now, so I figured I'd share it for others to try out. Some other alternatives that I've read about, but have not tried myself:
 
-- <a href="https://tailscale.com" target="_blank">Tailscale</a>: Tailscale is a Wireguard-based overlay network for connecting devices across different networks. <a href="/blog/tailscale/" target="_blank">I already use Tailscale to access Plex from my phone and tablet when not home</a>, but I have not set it up for other users. It requires a machine running Tailscale by each external user, then inviting them to your tailnet and using ACLs to limit access only to Plex. There's also the beta feature <a href="https://tailscale.com/kb/1223/funnel" target="_blank">Funnel</a>, which exposes a service similar to a Cloudflare Tunnel and does not require the user to run Tailscale, but <a href="https://www.reddit.com/r/Tailscale/comments/188jvlr/is_funnels_really_slow/" target="_blank">the speed may not be great</a> and funnel traffic <a href="https://tailscale.com/kb/1223/funnel#limitations" target="_blank">is subject to bandwidth limits</a>. (Though I can't find what those limits are anywhere.)
+- <a href="https://tailscale.com" target="_blank" data-umami-event="expose-plex-cloudflare-alternatives-tailscale">Tailscale</a>, a Wireguard-based overlay network for connecting devices across different networks. As I mentioned at the top of this article, <a href="/blog/expose-plex-tailscale-vps/" target="_blank" data-umami-event="expose-plex-cloudflare-to-tailscale-vps">I chose to use Tailscale with a free Oracle VM to expose Plex</a> and strongly suggest it to anyone!
 
-- <a href="https://www.zerotier.com" target="_blank">Zero Tier</a>: I have not used it myself, but Zero Tier is a similar product to Tailscale for similar use cases, namely securely connecting to your network from outside. I have read of people using it to access Plex remotely, but it requires each external user to run Zero Tier. (Just like Tailscale.)
+- <a href="https://www.zerotier.com" target="_blank" data-umami-event="expose-plex-cloudflare-alternatives-zerotier">Zero Tier</a>: I have not used it myself, but Zero Tier is a similar product to Tailscale for similar use cases, namely securely connecting to your network from outside. I have read of people using it to access Plex remotely, but it requires each external user to run Zero Tier. (Just like Tailscale.)
 
-- <a href="https://zrok.io" target="_blank">Zrok</a>: A newer kid on the block, free to self-host. I've read enough to know that you can use it for secure peer-to-peer connections and use tunnels for public sharing, but no idea how it would work with Plex. I did find <a href="https://blog.openziti.io/its-a-zitiful-life" target="_blank">this blog post from December 2022</a> about using a component of OpenZiti (the ) called <a href="https://github.com/openziti/ziti-browzer-bootstrapper" target="_blank">BrowZer</a> to remotely access Plex, but it seems they have not written anything further about this possible use case since then.
+- <a href="https://zrok.io" target="_blank" data-umami-event="expose-plex-cloudflare-alternatives-zrok">Zrok</a>: A newer kid on the block, free to self-host. I've read enough to know that you can use it for secure peer-to-peer connections and use tunnels for public sharing, but no idea how it would work with Plex. I did find <a href="https://blog.openziti.io/its-a-zitiful-life" target="_blank" data-umami-event="expose-plex-cloudflare-zitiful-life">this blog post from December 2022</a> about using a component of OpenZiti called <a href="https://github.com/openziti/ziti-browzer-bootstrapper" target="_blank" data-umami-event="expose-plex-cloudflare-openziti-browzer">BrowZer</a> to remotely access Plex, but it seems they have not written anything further about this possible use case since then.
 
-- Some others I've heard of, but have not touched or read about include <a href="https://ngrok.com" target="_blank">Ngrok</a>, <a href="https://netmaker.io" target="_blank">Netmaker</a> and <a href="https://netbird.io" target="_blank">Netbird</a>.
-
-## Related Articles
-
-> [How to securely expose Plex from behind CGNAT using Tailscale and a free Oracle VM](/blog/expose-plex-tailscale-vps/)
-
-> [Complete guide to self-hosting a website through Cloudflare Tunnel](/blog/self-host-website-cloudflare-tunnel/)
+- Some others I've heard of, but have not touched or read about include <a href="https://ngrok.com" target="_blank" data-umami-event="expose-plex-cloudflare-alternatives-ngrok">Ngrok</a>, <a href="https://netmaker.io" target="_blank" data-umami-event="expose-plex-cloudflare-alternatives-netmaker">Netmaker</a> and <a href="https://netbird.io" target="_blank" data-umami-event="expose-plex-cloudflare-alternatives-netbird">Netbird</a>.
 
 <div id="ref" />
 
 ## References
 
-- <a href="https://www.cloudflare.com/service-specific-terms-overview/" target="_blank">Cloudflare Service-Specific Terms</a>
-- <a href="https://developers.cloudflare.com/fundamentals/get-started/setup/add-site/" target="_blank">Cloudflare Docs - Add a site</a>
-- <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/install-and-setup/tunnel-guide/remote/" target="_blank">Cloudflare Docs - Tunnels</a>
-- <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/routing-to-tunnel/dns/" target="_blank">Cloudflare Docs - Routing traffic to a tunnel</a>
-- <a href="https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/google/" target="_blank">Cloudflare Docs - Identity</a>
-- <a href="https://developers.cloudflare.com/cloudflare-one/policies/access/policy-management/" target="_blank">Cloudflare Docs - Policy Management</a>
+- <a href="https://www.cloudflare.com/service-specific-terms-overview/" target="_blank" umami-data-event="expose-plex-cloudflare-ref-cf-tos">Cloudflare Service-Specific Terms</a>
+- <a href="https://developers.cloudflare.com/fundamentals/get-started/setup/add-site/" target="_blank" umami-data-event="expose-plex-cloudflare-ref-add-site">Cloudflare Docs - Add a site</a>
+- <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/install-and-setup/tunnel-guide/remote/" target="_blank" umami-data-event="expose-plex-cloudflare-ref-tunnels">Cloudflare Docs - Tunnels</a>
+- <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/routing-to-tunnel/dns/" target="_blank" umami-data-event="expose-plex-cloudflare-ref-routing-tunnels">Cloudflare Docs - Routing traffic to a tunnel</a>
+- <a href="https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/google/" target="_blank" umami-data-event="expose-plex-cloudflare-ref-identity">Cloudflare Docs - Identity</a>
+- <a href="https://developers.cloudflare.com/cloudflare-one/policies/access/policy-management/" target="_blank" umami-data-event="expose-plex-cloudflare-policy-mgmt">Cloudflare Docs - Policy Management</a>
+
+## Related Articles
+
+> <a href="/blog/expose-plex-tailscale-vps/" umami-data-event="expose-plex-cloudflare-related-expose-tailscale-vps">How to securely expose Plex from behind CGNAT using Tailscale and a free Oracle VM</a>
+
+> <a href="/blog/self-host-website-cloudflare-tunnel/" umami-data-event="expose-plex-cloudflare-related-tunnel-guide">Complete guide to self-hosting a website through Cloudflare Tunnel</a>

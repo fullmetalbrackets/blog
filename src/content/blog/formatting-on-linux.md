@@ -8,7 +8,7 @@ tags:
 
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
-> For more details see <a href="https://askubuntu.com/a/558412" target="_blank">this answer on AskUbuntu by Mateen Ulhaq</a>
+> For more details see <a href="https://askubuntu.com/a/558412" target="_blank" data-umami-event="format-linux-askubuntu">this answer on AskUbuntu by Mateen Ulhaq</a>
 
 List mounted disks
 
@@ -90,6 +90,6 @@ sudo mkfs -t vfat /dev/sdb1
 
 ## Related Articles
 
-> [Linux Commands & Keyboard Shortcuts Cheat Sheet](/blog/basic-linux-commands/)
+> <a href="/blog/basic-linux-commands/" data-umami-event="format-linux-commands-cheatsheet">Linux Commands & Keyboard Shortcuts Cheat Sheet</a>
 
-> [Mounting (either internal or external) hard drives in Linux](/blog/mounting-hard-drives-in-linux/)
+> <a href="/blog/mounting-hard-drives-in-linux/" data-umami-event="format-linux-mounting-hdds">Mounting (either internal or external) hard drives in Linux</a>

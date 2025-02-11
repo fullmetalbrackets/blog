@@ -2,20 +2,23 @@
 title: "Self-Hosted Services"
 description: "A list of self-hosted services in my homelab."
 pubDate: 2023-10-02
-updatedDate: 2025-02-02
+updatedDate: 2025-02-10
 tags:
   - services
 ---
 
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
+>
+> See <a href="/blog/how-i-setup-home-server/" target="_blank" data-umami-event="wiki-services-home-server-blog">this blog post</a> for more details.
+
 # Athena
 
-- Filebrowser
+- File Browser
 - Gluetun
 - Home Assistant
 - IT Tools
 - Kavita
 - LibrePhotos
-- Mosquitto
 - Nginx Proxy Manager
 - Opengist
 - Paperless
@@ -32,9 +35,9 @@ tags:
 
 # Outpost
 
-- Nginx Proxy Manager
-- Speedtest Tracker
-- Portainer Agent
-- File Browser
-- Uptime Kuma
-- Watchtower
+- Nginx Proxy Manager (to proxy to my Plex server back home)
+- Speedtest Tracker (mostly used as a "heartbeat" so server is always in use)
+- Portainer Agent (connected to main Portainer instance in home server)
+- File Browser (for browsing VM `/home` directory)
+- Uptime Kuma (alerts me if home network is not accessible)
+- Watchtower (auto-update containers)

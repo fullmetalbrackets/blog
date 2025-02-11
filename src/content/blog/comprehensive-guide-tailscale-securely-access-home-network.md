@@ -27,19 +27,19 @@ tags:
 
 Tailscale lets you set up a mesh virtual private network (VPN) for secure access to devices and self-hosted services on your home network from anywhere using the Wireguard protocol. An overlay network known as a Tailnet is created that all devices running Tailscale will join, with traffic between devices going through an encrypted Wireguard tunnel and using NAT traversal, without the need to open ports on your router.
 
-The personal plan is free, allows three users and up to 100 devices. I use it mainly to access Plex on my home server (though I can access all my self-hosted apps) and use my Pi-Hole as DNS through my phone, tablet and laptop when I'm not home, and that is what this guide will help you do. For details, <a href="https://tailscale.com/blog/how-tailscale-works" target="_blank">see this post on the Tailscale blog about how it works</a>.
+The personal plan is free, allows three users and up to 100 devices. I use it mainly to access Plex on my home server (though I can access all my self-hosted apps) and use my Pi-Hole as DNS through my phone, tablet and laptop when I'm not home, and that is what this guide will help you do. For details, <a href="https://tailscale.com/blog/how-tailscale-works" target="_blank" data-umami-event="tailscale-post-docs-how">see this post on the Tailscale blog about how it works</a>.
 
-To be clear, _Tailscale is itself not self-hosted_ and relies on Tailscale's own relay servers (what they call <a href="https://tailscale.com/kb/1232/derp-servers" target="_blank">Designated Encrypted Relay for Packets or DERP</a>) for NAT traversal. Also, it is important to know that everything in Tailscale is open source _except_ the <a href="https://tailscale.com/blog/how-tailscale-works#the-control-plane-key-exchange-and-coordination" target="_blank">control server</a>, which manages communication between tailnet nodes by exchanging Wireguard public keys, assigning IP addresses, and coordinating secure peer-to-peer connections between devices. (The GUI clients for Windows and macOS are also closed source, which makes sense since those two operating systems are also closed source.)
+To be clear, _Tailscale is itself not self-hosted_ and relies on Tailscale's own relay servers (what they call <a href="https://tailscale.com/kb/1232/derp-servers" target="_blank" data-umami-event="tailscale-post-docs-derp">Designated Encrypted Relay for Packets or DERP</a>) for NAT traversal. Also, it is important to know that everything in Tailscale is open source _except_ the <a href="https://tailscale.com/blog/how-tailscale-works#the-control-plane-key-exchange-and-coordination" target="_blank" data-umami-event="tailscale-post-docs-how-control">control server</a>, which manages communication between tailnet nodes by exchanging Wireguard public keys, assigning IP addresses, and coordinating secure peer-to-peer connections between devices. (The GUI clients for Windows and macOS are also closed source, which makes sense since those two operating systems are also closed source.)
 
-There is an <a href="https://tailscale.com/blog/how-tailscale-works#the-control-plane-key-exchange-and-coordination" target="_blank">open source implementation of the control server called Headscale</a>, however I have not used it and have no plans to, so this artcile will not touch on it.
+There is an <a href="https://github.com/juanfont/headscale" target="_blank" data-umami-event="tailscale-post-headscale">open source implementation of the control server called Headscale</a>, however I have not used it and have no plans to, so this artcile will not touch on it.
 
 <div id='setup'/>
 
 ## Setting up Tailscale
 
-First things first, go to the <a href="https://tailscale.com" target="_blank">Tailscale website</a> and create an account. This will create your <a href="https://tailscale.com/kb/1136/tailnet" target="_blank">Tailnet</a> (private network for all your Tailscale-connected devices) with your newly created account as the Owner and which you'll manage through the web-based <a href="https://login.tailscale.com/admin" target="_blank">admin console</a>.
+First things first, go to the <a href="https://tailscale.com" target="_blank">Tailscale website</a> and create an account. This will create your <a href="https://tailscale.com/kb/1136/tailnet" target="_blank" data-umami-event="tailscale-post-docs-tailnet">Tailnet</a> (private network for all your Tailscale-connected devices) with your newly created account as the Owner and which you'll manage through the web-based <a href="https://login.tailscale.com/admin" target="_blank" data-umami-event="tailscale-post-admin-console">admin console</a>.
 
-This guide will assume you're running Tailscale on a Linux server, although the instructions also work for Windows WSL 2. (You can also install Tailscale on <a href="https://tailscale.com/kb/1016/install-mac" target="_blank">Windows</a> and <a href="https://tailscale.com/kb/1016/install-mac" target="_blank">MacOS</a>.) On your Linux server, use the following command to run the Tailscale install script:
+This guide will assume you're running Tailscale on a Linux server, although the instructions also work for Windows WSL 2. (You can also install Tailscale on <a href="https://tailscale.com/kb/1022/install-windows" target="_blank" data-umami-event="tailscale-post-install-windows">Windows</a> and <a href="https://tailscale.com/kb/1016/install-mac" target="_blank" data-umami-event="tailscale-post-install-mac">MacOS</a>.) On your Linux server, use the following command to run the Tailscale install script:
 
 ```bash
 curl -fsSL https://tailscale.com/install.sh | sh
@@ -97,7 +97,7 @@ On the Plex web UI go to **Settings** -> **Network** and do the following:
 
 ## Additional config for SMB and NFS
 
-This is entirely optional, but I like to have access to my SMB shares on my laptop and even on my phone through Solid Explorer or X-plorer. Rarely used, but still handy. Per <a href="https://github.com/tailscale/tailscale/issues/6856#issuecomment-1485385748" target="_blank">this issue on GitHub</a> we need to do a little extra config for SMB to work through Tailscale. ([See below for additional NFS config.](#nfs))
+This is entirely optional, but I like to have access to my SMB shares on my laptop and even on my phone through Solid Explorer or X-plorer. Rarely used, but still handy. Per <a href="https://github.com/tailscale/tailscale/issues/6856#issuecomment-1485385748" target="_blank" data-umami-event="tailscale-post-smb-gh-issue">this issue on GitHub</a> we need to do a little extra config for SMB to work through Tailscale. ([See below for additional NFS config.](#nfs))
 
 First, find out your server's main interface device name with the `ip a` command and pay attention to the output: 
 
@@ -125,7 +125,7 @@ Restart Samba for the config change to take effect:
 sudo systemctl restart smbd.service
 ```
 
-Finally, we'll use <a href="https://tailscale.com/kb/1312/serve" target="_blank">Tailscale Serve</a> to allow the SMB traffic to be routed through Tailscale, using this command:
+Finally, we'll use <a href="https://tailscale.com/kb/1312/serve" target="_blank" data-umami-event="tailscale-post-docs-serve">Tailscale Serve</a> to allow the SMB traffic to be routed through Tailscale, using this command:
 
 ```bash
 tailscale serve --bg --tcp 445 tcp://localhost:445
@@ -145,7 +145,7 @@ To access NFS shares through Tailscale, we need to add the Tailscale IP of the N
 
 Technically, you can just install Tailscale on every device on your network and add them to your Tailnet, but that's not necessary. You can instead only install it on one machine and use that as a "subnet router" to access other network resources. This is especially handy for accessing devices that you can't run Tailscale on.
 
-First, on the machine you want to use as subnet router, you need to enable IP forwarding. (This is straight from the <a href="https://tailscale.com/kb/1019/subnets" target="_blank">Tailscale docs</a>.)
+First, on the machine you want to use as subnet router, you need to enable IP forwarding. (This is straight from the <a href="https://tailscale.com/kb/1019/subnets" target="_blank" data-umami-event="tailscale-post-docs-subnet">Tailscale docs</a>.)
 
 <div id='ip-forwarding'/>
 
@@ -227,7 +227,7 @@ On Windows, click on the Tailscale icon in the system tray, hover over **Exit no
 
 By default, Tailscale does not manage your DNS, and each machine on the Tailnet will use it's own configured DNS settings. Tailscale lets you set a global DNS to be used by all machines when connected to the tailnet, and you can use the public DNS resolvers like Cloudflare or Google.
 
-More importantly, you can also use a custom DNS server, including one self-hosted on a server in your network. In this way, we can <a href="https://tailscale.com/kb/1114/pi-hole" target="_blank">use Pi-Hole from anywhere through Tailscale</a>.
+More importantly, you can also use a custom DNS server, including one self-hosted on a server in your network. In this way, we can <a href="https://tailscale.com/kb/1114/pi-hole" target="_blank" data-umami-event="tailscale-post-docs-pihole-anywhere">use Pi-Hole from anywhere through Tailscale</a>.
 
 First, on the machine running Pi-Hole install Tailscale, login to add it to the tailnet and when prompted to `tailscale up` pass this flag:
 
@@ -289,7 +289,7 @@ Use the following command to download any files in the Taildrop inbox: (If you d
 tailscale file get /home/$USER/downloads
 ```
 
-I found <a href="https://davideger.github.io/blog/taildrop_on_linux" target="_blank">this blog post by David Eger</a> with a bash script to run a daemon that continuously uses the `tailscale file get <target>`, but under the circumstances I just prefer sending files to my server using <a href="https://localsend.org" target="_blank">LocalSend</a>. To use Taildrop with a NAS -- specifically Synology, QNAP, Unraid or TrueNAS -- <a href="https://tailscale.com/kb/1307/nas" target="_blank">see here</a>.
+I found <a href="https://davideger.github.io/blog/taildrop_on_linux" target="_blank" data-umami-event="tailscale-post-david-eger-blog-taildrop-script">this blog post by David Eger</a> with a bash script to run a daemon that continuously uses the `tailscale file get <target>`, but under the circumstances I just prefer sending files to my server using <a href="https://localsend.org" target="_blank" data-umami-event="tailscale-post-localsend">LocalSend</a>. To use Taildrop with a NAS -- specifically Synology, QNAP, Unraid or TrueNAS -- <a href="https://tailscale.com/kb/1307/nas" target="_blank" data-umami-event="tailscale-post-docs-nas">see here</a>.
 
 <div id='more'/>
 
@@ -297,25 +297,25 @@ I found <a href="https://davideger.github.io/blog/taildrop_on_linux" target="_bl
 
 I've only scratched the surface on what Tailscale can do in this post, because all I use it for (so far) is to access my home network from my phone, tablet and laptop when away from home. Here's some recommended reading for additional features not touched on in this post.
 
-- <a href="https://tailscale.com/kb/1271/invite-any-user" target="_blank">Invite other users to your tailnet</a>
-- <a href="https://tailscale.com/kb/1018/acls" target="_blank">Manage permissions using ACLs</a>
-- <a href="https://tailscale.com/kb/1312/serve" target="_blank">Serve static pages on your tailnet with Tailscale Serve</a>
-- <a href="https://tailscale.com/kb/1223/funnel" target="_blank">Route traffic to the internet with Tailscale Funnel</a> (I'm going to play with this soon and will update the post.)
+- <a href="https://tailscale.com/kb/1271/invite-any-user" target="_blank" data-umami-event="tailscale-post-further-docs-invite">Invite other users to your tailnet</a>
+- <a href="https://tailscale.com/kb/1018/acls" target="_blank" data-umami-event="tailscale-post-further-docs-acls">Manage permissions using ACLs</a>
+- <a href="https://tailscale.com/kb/1312/serve" target="_blank" data-umami-event="tailscale-post-further-docs-serve">Serve static pages on your tailnet with Tailscale Serve</a>
+- <a href="https://tailscale.com/kb/1223/funnel" target="_blank" data-umami-event="tailscale-post-further-docs-funnel">Route traffic to the internet with Tailscale Funnel</a> (I'm going to play with this soon and will update the post.)
 
 ## Related Articles
 
-> [How to securely expose Plex from behind CGNAT using Tailscale and a free Oracle VM](/blog/expose-plex-tailscale-vps/)
+> <a href="/blog/expose-plex-tailscale-vps/" data-umami-event="tailscale-post-related-expose-plex-vps">How to securely expose Plex from behind CGNAT using Tailscale and a free Oracle VM</a>
 
-> [How to use Pi-hole from anywhere with Tailscale](/blog/pihole-anywhere-tailscale/)
+> <a href="/blog/pihole-anywhere-tailscale/" data-umami-event="tailscale-post-related-pihole-anywhere">How to use Pi-hole from anywhere with Tailscale</a>
 
 <div id='ref'/>
 
 ## References
 
-- <a href="https://tailscale.com/kb" target="_blank">Tailscale Docs</a>
-- <a href="https://tailscale.com/kb/1136/tailnet" target="_blank">Tailnets</a>
-- <a href="https://tailscale.com/kb/1019/subnets" target="_blank">Subnet Routers</a>
-- <a href="https://tailscale.com/kb/1103/exit-nodes" target="_blank">Exit Nodes</a>
-- <a href="https://tailscale.com/kb/1081/magicdns" target="_blank">MagicDNS</a>
-- <a href="https://tailscale.com/kb/1114/pi-hole" target="_blank">Pi-Hole from anywhere</a>
-- <a href="https://tailscale.com/kb/1106/taildrop" target="_blank">Taildrop</a>
+- <a href="https://tailscale.com/kb" target="_blank" data-umami-event="tailscale-post-ref-docs">Tailscale Docs</a>
+- <a href="https://tailscale.com/kb/1136/tailnet" target="_blank" data-umami-event="tailscale-post-ref-docs-tailnet">Tailnets</a>
+- <a href="https://tailscale.com/kb/1019/subnets" target="_blank" data-umami-event="tailscale-post-ref-docs-subnets">Subnet Routers</a>
+- <a href="https://tailscale.com/kb/1103/exit-nodes" target="_blank" data-umami-event="tailscale-post-ref-docs-exitnodes">Exit Nodes</a>
+- <a href="https://tailscale.com/kb/1081/magicdns" target="_blank" data-umami-event="tailscale-post-ref-docs-magidns">MagicDNS</a>
+- <a href="https://tailscale.com/kb/1114/pi-hole" target="_blank" data-umami-event="tailscale-post-ref-docs-pihole">Pi-Hole from anywhere</a>
+- <a href="https://tailscale.com/kb/1106/taildrop" target="_blank" data-umami-event="tailscale-post-ref-docs-taildrop">Taildrop</a>

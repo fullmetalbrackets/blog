@@ -132,12 +132,6 @@ If you think you'll have a hard time remembering the scheduling expressions, jus
 
 Finally, for a list of ALL the rsync options with short descriptions of what they do, check out the <a href="https://download.samba.org/pub/rsync/rsync.1" target="_blank">Rsync man page</a>, a truly exhaustive manual for understanding all the granular details of Rsync.
 
-## Related Articles
-
-> [Linux Commands & Keyboard Shortcuts Cheat Sheet](/blog/basic-linux-commands/)
-
-> [Mounting (either internal or external) hard drives in Linux](/blog/mounting-hard-drives-in-linux/)
-
 <div id='ref'/>
 
 ## References
@@ -147,3 +141,9 @@ Finally, for a list of ALL the rsync options with short descriptions of what the
 - <a href="https://download.samba.org/pub/rsync/rsync.1" target="_blank">Rsync Man Page</a>
 - <a href="https://man7.org/linux/man-pages/man8/cron.8.html" target="_blank">Cron Man Page</a>
 - <a href="https://man7.org/linux/man-pages/man5/crontab.5.html" target="_blank">Crontab Man Page</a>
+
+## Related Articles
+
+> [Linux Commands & Keyboard Shortcuts Cheat Sheet](/blog/basic-linux-commands/)
+
+> [Mounting (either internal or external) hard drives in Linux](/blog/mounting-hard-drives-in-linux/)

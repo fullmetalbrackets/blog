@@ -38,7 +38,7 @@ Explanation:
 - `/home/ross/media` is the directory to be shared by the NFS server. (Obviously, set this to whatever you want.)
 - `*` makes the share accessible by ALL clients on the network, you can also specify an IP address or multiple IPs separated by space after the parenthesis. (See below for example.)
 - `rw` enables clients to both read and write. Without this NFS defaults to read-only, so be sure to specify it.
-- `no_subtree_check` makes NFS not check if each subdirectory is accessible to the user which may slightly improve reliability, but slightly reduce security. <a href="https://linux.die.net/man/5/exports#no_subtree_check:~:text=no_subtree_check,change%20is%20pending." target="_blank">See here for details.</a>
+- `no_subtree_check` makes NFS not check if each subdirectory is accessible to the user which may slightly improve reliability, but slightly reduce security. <a href="https://linux.die.net/man/5/exports#no_subtree_check:~:text=no_subtree_check,change%20is%20pending." target="_blank" data-umami-event="setup-nfs-linux-die-no-subtree">See here for details.</a>
 
 You can alternately make the share accessible only to one or a few specific IPs, and specify different rules for each, for example:
 
@@ -95,16 +95,16 @@ To have Linux auto-mount the share at boot, edit the _fstab_ file with `sudo nan
 192.168.1.100:/home/ross/media /mnt/share nfs defaults 0 0
 ```
 
-## Related Articles
-
-> [Mounting (either internal or external) hard drives in Linux](/blog/mounting-hard-drives-in-linux/)
-
-> [Create a public Samba share accessible without a login](/blog/create-public-samba-share-without-login/)
-
 <div id='ref'/>
 
 ## References
 
-- <a href="https://man7.org/linux/man-pages/man5/exports.5.html" target="_blank">Exports man page</a>
-- <a href="https://cloud.netapp.com/blog/azure-anf-blg-linux-nfs-server-how-to-set-up-server-and-client" target="_blank">How to setup NFS server and client by Netapp Blog</a>
-- <a href="https://www.golinuxcloud.com/nfs-exports-options-examples" target="_blank">Practical NFS share examples by OnLinuxCloud</a>
+- <a href="https://man7.org/linux/man-pages/man5/exports.5.html" target="_blank" data-umami-event="setup-nfs-exports-manpage">Exports man page</a>
+- <a href="https://cloud.netapp.com/blog/azure-anf-blg-linux-nfs-server-how-to-set-up-server-and-client" target="_blank" data-umami-event="setup-nfs-netapp-blog">How to setup NFS server and client by Netapp Blog</a>
+- <a href="https://www.golinuxcloud.com/nfs-exports-options-examples" target="_blank" data-umami-event="setup-nfs-onlinuxcloud">Practical NFS share examples by OnLinuxCloud</a>
+
+## Related Articles
+
+> <a href="/blog/mounting-hard-drives-in-linux/" data-umami-event="setup-nfs-mount-hdds">Mounting (either internal or external) hard drives in Linux</a>
+
+> <a href="/blog/create-public-samba-share-without-login/" data-umami-event="setup-nfs-public-smb-nologin">Create a public Samba share accessible without a login</a>

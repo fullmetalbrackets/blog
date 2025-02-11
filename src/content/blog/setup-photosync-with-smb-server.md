@@ -22,7 +22,7 @@ tags:
 
 ## Caveats and Pre-Requisites
 
-The method I describe below requires that your phone with the _PhotoSync_ app be _connected to the same Wi-Fi network as the server_ that you will be transferring your photos to, or have access to the server via Tailscale or other similar solution. Also, the server must already be configured with a Samba share. (<a href="/blog/setup-a-samba-share-on-linux-via-command-line/" target="_blank">See here how to set up a Samba share on Linux.</a>)
+The method I describe below requires that your phone with the _PhotoSync_ app be _connected to the same Wi-Fi network as the server_ that you will be transferring your photos to, or have access to the server via Tailscale or other similar solution. Also, the server must already be configured with a Samba share. (<a href="/blog/setup-a-samba-share-on-linux-via-command-line/" target="_blank" data-umami-event="photosync-smb-to-setup-smb-linux">See here how to set up a Samba share on Linux.</a>)
 
 Finally, using the **SMB** option to transfer photos _requires the NAS Add-On for PhotoSync_, which costs **$2.49** by itself. (You also have the option of spending a bit more on the _Bundle Add-On_, which comes with the _NAS Add-On_ as well as the _Auto-Transfer and Cloud Add-Ons_, but those are not necessary for what we'll be setting up.)
 
@@ -74,15 +74,14 @@ Next, we'll set up _background auto-transfers_, but you'll need optional the **A
 
 4. Finally, under _Autotransfer Trigger_ click on the **Change Trigger** button, and pick your desired trigger -- I like to set it so transfers occur when I connect a charger.
 
-## Related Articles
-
-> [Setup self-hosted Plex Media Server in Docker](/blog/setting-up-plex-in-docker/)
-
-> [How to run self-hosted FileBrowser in Docker](/blog/how-to-run-filebrowser-in-docker/)
-
 <div id='ref'/>
 
 ## References
 
-- <a href="https://www.photosync-app.com/home" target="_blank">PhotoSync Website</a>
-- <a href="/blog/setup-a-samba-share-on-linux-via-command-line/">My blog post on how to set up a Samba Share</a>
+- <a href="https://www.photosync-app.com/home" target="_blank" data-umami-event="photosync-smb-photosync-site">PhotoSync Website</a>
+
+## Related Articles
+
+> <a href="/blog/setup-a-samba-share-on-linux-via-command-line/" data-umami-event="photosync-smb-related-setup-smb-share">Setup a Samba share on Linux via command line</a>
+
+> <a href="/blog/setting-up-plex-in-docker/" data-umami-event="">Setup self-hosted Plex Media Server in Docker</a>

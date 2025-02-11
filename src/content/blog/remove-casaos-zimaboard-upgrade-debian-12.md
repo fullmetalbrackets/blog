@@ -1,8 +1,7 @@
 ---
 title: "How to remove CasaOS from a ZimaBoard and upgrade to Debian 12 Bookworm"
-description: "ZimaBoard is an x86 single board server that comes running Debian 11 Bullseye and CasaOS. It's a cool little machine, but after a few months I realizes I don't like CasaOS. Nothing against it, I'm just set in my way of doing things, and their GUI was limiting some of my options. In this post I'll explain how to remove CasaOS and then upgrade to the latest version of Debian.
-"
-pubDate: 2025-02-05
+description: "ZimaBoard is an x86 single board server that comes running Debian 11 Bullseye and CasaOS. It's a cool little machine, but after a few months I realizes I don't like CasaOS. Nothing against it, I'm just set in my way of doing things, and their GUI was limiting some of my options. In this post I'll explain how to remove CasaOS and then upgrade to the latest version of Debian."
+pubDate: 2025-02-10
 tags:
   - self-hosting
 ---
@@ -18,7 +17,7 @@ tags:
 
 ## About the ZimaBoard
 
-<a href="https://www.zimaspace.com/products/single-board-server" target="_blank">ZimaBoard</a> is a "hackable" x86 single board server, by default it comes running _Debian 11 Bullseye_ and _CasaOS_, and is meant to be the hub of your personal self-hosted cloud. CasaOS provides a simple web GUI that includes an "app store" to install various apps and services as Docker containers, which are then managed through the GUI. The different models have varying CPUs and RAM, but all models of Zimaboard have a 32 GB eMMC and two SATA ports for more storage, two USB 3.0 ports, two gigabit ethernet ports and even a PCIe 2.0 x4 port. Overall, it's a pretty nice little machine.
+<a href="https://www.zimaspace.com/products/single-board-server" target="_blank" data-umami-event="remove-casaos-zimaboard-site">ZimaBoard</a> is a "hackable" x86 single board server, by default it comes running _Debian 11 Bullseye_ and _CasaOS_, and is meant to be the hub of your personal self-hosted cloud. CasaOS provides a simple web GUI that includes an "app store" to install various apps and services as Docker containers, which are then managed through the GUI. The different models have varying CPUs and RAM, but all models of Zimaboard have a 32 GB eMMC and two SATA ports for more storage, two USB 3.0 ports, two gigabit ethernet ports and even a PCIe 2.0 x4 port. Overall, it's a pretty nice little machine.
 
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
@@ -103,3 +102,6 @@ N: Repository 'Debian bookworm' changed its 'non-free component' value from 'non
 N: More information about this can be found online in the Release notes at: https://www.debian.org/releases/bookworm/amd64/release-notes/ch-information.html#non-free-split
 ```
 
+## Related Articles
+
+> <a href="/blog/factory-restore-zimaboard/" umami-data-event="remove-casaos-related-factory-restore-zimaboard">How to factory restore a ZimaBoard</a>

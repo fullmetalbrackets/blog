@@ -268,15 +268,15 @@ If all looks good and there's no errors, you can run the playbook for real:
 ansible-playbook bootstrap.yml
 ```
 
-## Related Articles
-
-> [Using MergerFS to combine multiple hard drives into one unified media storage](/blog/two-drives-mergerfs/)
-
-> [Mounting (either internal or external) hard drives in Linux](/blog/mounting-hard-drives-in-linux/)
-
 <div id='ref'/>
 
 ## References
 
 - <a href="https://docs.ansible.com" target="_blank">Ansible Documentation</a>
 - <a href="https://www.learnlinux.tv/getting-started-with-ansible/" target="_blank" rel="noopener noreferrer">Learn Linux TV series of Ansible tutorials</a>
+
+## Related Articles
+
+> [Using MergerFS to combine multiple hard drives into one unified media storage](/blog/two-drives-mergerfs/)
+
+> [Mounting (either internal or external) hard drives in Linux](/blog/mounting-hard-drives-in-linux/)

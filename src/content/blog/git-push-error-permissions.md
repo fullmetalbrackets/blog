@@ -42,15 +42,15 @@ This error occurs because you accidentally committed a file or folder to git usi
 
 4. Proceed to use your git commands.
 
-## Related Articles
-
-> [Git commands cheat sheet](/blog/git-commands-cheat-sheet/)
-
-> [How to generate a GPG key and use it to sign git commits](/blog/how-to-generate-gpg-to-sign-git-commits/)
-
 <div id='ref'/>
 
 ## References
 
 - <a href="https://stackoverflow.com/questions/18324279/github-error-insufficient-permission-for-adding-an-object-to-repository-databas" target="_blank">Thread on Stack Overflow</a>
 - <a href="https://stackoverflow.com/a/26137707" target="_blank">The answer with the fix</a>
+
+## Related Articles
+
+> [Git commands cheat sheet](/blog/git-commands-cheat-sheet/)
+
+> [How to generate a GPG key and use it to sign git commits](/blog/how-to-generate-gpg-to-sign-git-commits/)

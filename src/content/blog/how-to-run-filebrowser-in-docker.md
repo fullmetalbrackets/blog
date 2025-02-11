@@ -107,16 +107,16 @@ docker compose up -d
 
 Once the container is up and running, go to `http://ip-address:8080` in your web browser. (Substitute your own IP address and configured port.) You should see a login page, the default username and password are both _admin_ -- you can change this in the Settings page of the web UI later. Once logged in you should see the contents of the directory you configured displayed.
 
-## Related Articles
-
-> [Setup self-hosted Plex Media Server in Docker](/blog/setting-up-plex-in-docker/)
-
-> [Setup self-hosted Jellyfin Media Server in Docker](/blog/setting-up-jellyfin-in-docker/)
-
 <div id='ref'/>
 
 ## References
 
-- <a href="https://filebrowser.org" target="_blank">FileBrowser documentation</a>
-- <a href="https://docs.docker.com" target="_blank">Docker documentation</a>
-- <a href="https://docs.docker.com/compose/" target="_blank">Docker Compose documentation</a>
+- <a href="https://filebrowser.org" target="_blank" data-umami-event="setup-filebrowser-site">FileBrowser documentation</a>
+- <a href="https://docs.docker.com" target="_blank" data-umami-event="setup-filebrowser-docker-docs">Docker documentation</a>
+- <a href="https://docs.docker.com/compose/" target="_blank" data-umami-event="setup-filebrowser-compose-docs">Docker Compose documentation</a>
+
+## Related Articles
+
+> <a href="/blog/setting-up-plex-in-docker/" data-umami-event="setup-filebrowser-related-setup-plex">Setup self-hosted Plex Media Server in Docker</a>
+
+> <a href="/blog/setting-up-jellyfin-in-docker/" data-umami-event="setup-filebrowser-related-setup-jellyfin">Setup self-hosted Jellyfin Media Server in Docker</a>

@@ -71,12 +71,12 @@ You should see the SMB share among the options under _Storages_.
 
 All done! Now you can easily access your SMB shares from your Android device with _Solid Explorer_, and it even has built-in media players, image viewer and text editor.
 
-## Related Articles
-
-> [Setup a Samba share on Linux via command line](/blog/setup-a-samba-share-on-linux-via-command-line/)
-
-> [Setup X-plore File Manager on Android to transfer files to an SMB share](/blog/xplore-android-smb-share/)
-
 ## References
 
-- <a href="https://play.google.com/store/apps/details?id=pl.solidexplorer2&hl=en_US&gl=US&pli=1" target="_blank">Solid Explorer on the Google Play Store</a>
+- <a href="https://play.google.com/store/apps/details?id=pl.solidexplorer2&hl=en_US&gl=US&pli=1" target="_blank"></a>
+
+## Related Articles
+
+> <a href="/blog/setup-a-samba-share-on-linux-via-command-line/" data-umami-event="solid-explorer-related-smb-share-linux-cli">Setup a Samba share on Linux via command line</a>
+
+> <a href="/blog/xplore-android-smb-share/" data-umami-event="solid-explorer-related-google-play-store">Solid Explorer on the Google Play Store</a>

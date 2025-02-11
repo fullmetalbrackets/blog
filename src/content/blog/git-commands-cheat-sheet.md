@@ -282,18 +282,18 @@ Revert the remote ORIGIN to this old commit. (Be careful doing this!)
 git revert 6e751bc32
 ```
 
-There's more advanced commands I'm not going to talk about until I use them myself -- things like `git rebase`, and I'm also not showing all the different ways to use `git checkout` because I don't know even half of them. I'll make a future blog post as I learn more of these.
-
-## Related Articles
-
-> [How to generate a GPG key and use it to sign git commits](/blog/how-to-generate-gpg-to-sign-git-commits/)
-
-> [How to resolve Git error insufficient permission for adding an object to repository database](/blog/git-push-error-permissions/)
+There's more advanced commands I'm not going to talk about until I use them myself -- things like `git rebase`, and I'm also not showing all the different ways to use `git checkout` because I don't know even half of them. I'll make a fugit-cheatsheet as I learn more of these.
 
 <div id='ref'/>
 
 ## References
 
-- <a href="https://git-scm.com/docs/git" target="_blank">Git Documentation</a>
-- <a href="https://training.github.com/downloads/github-git-cheat-sheet" target="_blank">GitHub Cheat Sheet</a>
-- Many questions and answers on <a href="https://stackoverflow.com" target="_blank" rel="noopener noreferrer">StackOverflow</a>
+- <a href="https://git-scm.com/docs/git" target="_blank" data-umami-event="git-cheatsheet-git-docs">Git Documentation</a>
+- <a href="https://training.github.com/downloads/github-git-cheat-sheet" target="_blank" data-umami-event="git-cheatsheet-gh-cheatsheet">GitHub Cheat Sheet</a>
+- Many questions and answers on <a href="https://stackoverflow.com" target="_blank" data-umami-event="git-cheatsheet-stackoverflow">StackOverflow</a>
+
+## Related Articles
+
+> <a href="/blog/how-to-generate-gpg-to-sign-git-commits/" data-umami-event="git-cheatsheet-related-gpg-sign-commits">How to generate a GPG key and use it to sign git commits</a>
+
+> <a href="/blog/git-push-error-permissions/" data-umami-event="git-cheatsheet-related-git-push-error-permissions">How to resolve Git error insufficient permission for adding an object to repository database</a>

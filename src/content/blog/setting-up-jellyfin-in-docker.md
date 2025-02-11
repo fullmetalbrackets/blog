@@ -25,7 +25,7 @@ If you haven't already, install Docker and all it's dependencies quickly their o
 curl -fsSL https://get.docker.com | sh
 ```
 
-Though Jellyfin has an <a href="https://hub.docker.com/r/jellyfin/jellyfin" target="_blank">official Docker image</a>, if this is your first time running Jellyfin I strongly suggest you instead use the <a href="https://hub.docker.com/r/linuxserver/jellyfin" target="_blank">Linuxserver image</a>, which is built and maintained by the <a href="https://www.linuxserver.io" target="_blank">Linuxserver community</a>. I have run the Linuxserver image of Jellyfin without issue, and it seems that is also the case with most self-hosters.
+Though Jellyfin has an <a href="https://hub.docker.com/r/jellyfin/jellyfin" target="_blank" data-umami-event="setup-jellyfin-official-image">official Docker image</a>, if this is your first time running Jellyfin I strongly suggest you instead use the <a href="https://hub.docker.com/r/linuxserver/jellyfin" target="_blank" data-umami-event="setup-jellyfin-linuxserver-image">Linuxserver image</a>, which is built and maintained by the <a href="https://www.linuxserver.io" target="_blank" data-umami-event="setup-jellyfin-linuxserver">Linuxserver community</a>. I have run the Linuxserver image of Jellyfin without issue, and it seems that is also the case with most self-hosters.
 
 Create a `compose.yaml` file, copy and paste the following:
 
@@ -55,7 +55,7 @@ Let's break down what each of these parameters do:
 
 | Parameter                      | Function  |
 | ------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
-| `image`                        | Here we're using the latest version of the <a href="https://docs.linuxserver.io/images/docker-jellyfin" target="_blank">Linuxserver-maintained image</a>. |
+| `image`                        | Here we're using the latest version of the <a href="https://docs.linuxserver.io/images/docker-jellyfin" target="_blank" data-umami-event="setup-jellyfin-">Linuxserver-maintained image</a>. |
 | `container_name`               | Optional, but you should give your containers a name for clarity. |
 | `PUID=1000`<br>`PGID=1000`     | These env variable sets a UID and GID for Jellyfin and should match the owner of the volumes you are adding; check your UID and GID with the command `id`. |
 | `JELLYFIN_PublishedServerUrl=` | This will allow the server to be discoverable on your home network. Add this with your server's IP to easily connect your devices to Jellyfin. Make sure to map UDP port `7359` for this to work. (See below.) |
@@ -63,7 +63,7 @@ Let's break down what each of these parameters do:
 | `volumes`                      | Here we're mapping local directories (left of the colon) to directories inside the container (right of the colon), change this to your own local paths. |
 | `restart`                      | This tells Docker under what circumstances to restart the container when it is stopped -- the options are `no`, `always`, `on-failure` and `unless-stopped`. |
 
-If you'd like to use hardware acceleration, <a href="https://jellyfin.org/docs/general/administration/hardware-acceleration" target="_blank" rel="noreferrer noopener">see this part of the Jellyfin documentation</a>. If the machine you're hosting Jellyfin on has an Intel CPU, there's a good chance is supports Quick Sync and you should let Jellyfin use it. To do so, add the following option to your docker compose:
+If you'd like to use hardware acceleration, <a href="https://jellyfin.org/docs/general/administration/hardware-acceleration" target="_blank" data-umami-event="setup-jellyfin-docs-hw-accel">see this part of the Jellyfin documentation</a>. If the machine you're hosting Jellyfin on has an Intel CPU, there's a good chance is supports Quick Sync and you should let Jellyfin use it. To do so, add the following option to your docker compose:
 
 ```yaml
 devices:
@@ -114,25 +114,25 @@ Your movies should now appear within the _Movies_ section of the Jellyfin UI. Re
 
 ## Theming the web UI with custom CSS
 
-If you'd like to change the web GUI's colors and vibe, you'll need the <a href="https://github.com/danieladov/jellyfin-plugin-skin-manager" target="_blank">Skin Manager</a> community plugin. (These affect the web UI accessed via the browser only.) As per the directions on their GitHub:
+If you'd like to change the web GUI's colors and vibe, you'll need the <a href="https://github.com/danieladov/jellyfin-plugin-skin-manager" target="_blank" data-umami-event="setup-jellyfin-">Skin Manager</a> community plugin. (These affect the web UI accessed via the browser only.) As per the directions on their GitHub:
 
 1. In jellyfin, go to _Dashboard_ -> _Plugins_ -> _Repositories_ -> add and paste this link `https://raw.githubusercontent.com/danieladov/JellyfinPluginManifest/master/manifest.json`
 2. Go to Catalog and search for Skin Manager
 3. Click on it and install
 4. Restart Jellyfin
 
-Use `docker restart jellyfin` and once the Jellyfin container has restarted, go back into the GUI, go to _Dashboard_ -> _Plugins_ and click on _Skin Manager_. Use the dropdown menu to pick a skin (my favorite is <a href="https://github.com/prayag17/JellySkin" target="_blank">JellySkin</a>), tweak any options if it has them, and click _Set Skin_. If it doesn't switch to the new time right away, try a hard refresh with <kbd>Ctrl</kbd> + <kbd>F5</kbd>. Also, sometimes <a href="https://github.com/danieladov/jellyfin-plugin-skin-manager#using-with-reverse-proxy" target="_blank">Nginx Proxy Manager</a> the skins won't work due to CSP issues. (I haven't encountered this problem, but [I have my reverse proxy set up without HTTPS](reverse-proxy-nginx-pihole.md) and that may be why.)
-
-## Related Articles
-
-> [Setup self-hosted Plex Media Server in Docker](/blog/setting-up-plex-in-docker/)
-
-> [How to run self-hosted FileBrowser in Docker](/blog/how-to-run-filebrowser-in-docker/)
+Use `docker restart jellyfin` and once the Jellyfin container has restarted, go back into the GUI, go to _Dashboard_ -> _Plugins_ and click on _Skin Manager_. Use the dropdown menu to pick a skin (my favorite is <a href="https://github.com/prayag17/JellySkin" target="_blank" data-umami-event="setup-jellyfin-jellyskin">JellySkin</a>), tweak any options if it has them, and click _Set Skin_. If it doesn't switch to the new time right away, try a hard refresh with <kbd>Ctrl</kbd> + <kbd>F5</kbd>. Also, sometimes <a href="https://github.com/danieladov/jellyfin-plugin-skin-manager#using-with-reverse-proxy" target="_blank" data-umami-event="setup-jellyfin-jellyskins-proxy">Nginx Proxy Manager</a> the skins won't work due to CSP issues. (I haven't encountered this problem, but [I have my reverse proxy set up without HTTPS](reverse-proxy-nginx-pihole.md) and that may be why.)
 
 <div id='ref'/>
 
 ## References
 
-- <a href="https://linuxserver.io" target="_blank">Linuxserver</a>
-- <a href="https://jellyfin.org" target="_blank">Jellyfin</a>
-- <a href="https://docker.com" target="_blank">Docker</a>
+- <a href="https://linuxserver.io" target="_blank" data-umami-event="setup-jellyfin-linuxserver">Linuxserver</a>
+- <a href="https://jellyfin.org" target="_blank" data-umami-event="setup-jellyfin-jfsite">Jellyfin</a>
+- <a href="https://docker.com" target="_blank" data-umami-event="setup-jellyfin-docker">Docker</a>
+
+## Related Articles
+
+> <a href="/blog/setting-up-plex-in-docker/" data-umami-event="setup-jellyfin-related-setup-plex">Setup self-hosted Plex Media Server in Docker</a>
+
+> <a href="/blog/how-to-run-filebrowser-in-docker/" data-umami-event="setup-jellyfin-related-filebrowser">How to run self-hosted FileBrowser in Docker</a>

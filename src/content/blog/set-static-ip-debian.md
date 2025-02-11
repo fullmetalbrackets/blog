@@ -109,5 +109,11 @@ If the static IP address you configured (in my case `192.168.0.125`) appears in 
 
 ## References
 
-- <a href="https://www.debian.org/doc/manuals/debian-reference/ch05.en.html" target="_blank">Debian manual, network setup chapter</a>
-- <a href="https://www.server-world.info/en/note?os=Debian_12&p=initial_conf&f=3">ServerWorld instructions</a>
+- <a href="https://www.debian.org/doc/manuals/debian-reference/ch05.en.html" target="_blank" data-umami-events="static-ip-debian-manual">Debian manual, network setup chapter</a>
+- <a href="https://www.server-world.info/en/note?os=Debian_12&p=initial_conf&f=3" target="_blank" data-umami-events="static-ip-debian-serverworld">ServerWorld instructions</a>
+
+## Related Articles
+
+> <a href="/blog/basic-linux-commands/" data-umami-event="static-ip-debian-related-linux cheatsheets">Linux Commands & Keyboard Shortcuts Cheat Sheet</a>
+
+> <a href="/blog/rsync-a-quick-guide/" data-umami-event="static-ip-debian-rsync-quick-guide">Rsync - A Quick Guide</a>

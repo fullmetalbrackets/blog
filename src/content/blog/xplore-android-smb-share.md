@@ -79,12 +79,6 @@ And then they'll be in your destination folder in the network share.
 
 All done! Once you get a hang of the UI, transferring files back and forth from Android to remote sources is very easy. You can also use other means besides SMB, including (but not limited to) FTP and SSH, cloud storage like Google Drive or Dropbox, etc. Overall, I think **X-plore** is a great file manager for Android.
 
-## Related Articles
-
-> [Setup a Samba share on Linux via command line](/blog/setup-a-samba-share-on-linux-via-command-line/)
-
-> [How to use Solid Explorer app to access SMB network shares from an Android device](/blog/solid-explorer-samba-share/)
-
 <div id='ref' />
 
 ## References
@@ -92,3 +86,9 @@ All done! Once you get a hang of the UI, transferring files back and forth from 
 - <a href="https://www.lonelycatgames.com/apps/xplore" target="_blank">X-plore website</a>
 - <a href="https://play.google.com/store/apps/details?id=com.lonelycatgames.Xplore" target="_blank">Download X-plore on Google Play</a>
 - <a href="https://www.amazon.com/Lonely-Cat-Games-X-plore-Manager/dp/B00LLG7AR8" target="_blank">Download X-plore on Amazon Appstore</a>
+
+## Related Articles
+
+> <a href="/blog/setup-a-samba-share-on-linux-via-command-line/" umami-data-event="solid-explorer-related-smb-share-linux-cli">Setup a Samba share on Linux via command line</a>
+
+> <a href="/blog/solid-explorer-samba-share/" umami-data-event="xplorer-related-solid-explorer-smb">How to use Solid Explorer app to access SMB network shares from an Android device</a>

@@ -13,5 +13,5 @@ jobs:
           PUSHOVER_TOKEN: ${{ secrets.PUSHOVER_TOKEN }}
           PUSHOVER_USER: ${{ secrets.PUSHOVER_USER }}
         with:
-          status: ${{ job.status }}
+          sound: 'pushover'
           title: 'New commit on GitHub'

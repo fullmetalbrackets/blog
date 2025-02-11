@@ -157,17 +157,17 @@ You should see _Prometheus_ with it's endpoint already set as a default Data Sou
 
 Now you're ready to create your dream Grafana dashboard! Creating the actual dashboard is beyond the scope of this article, but I may write about it in the future. For now, you might want to use dashboards created by others to start visualizing some metrics and learning the ropes.
 
-## Related Articles
-
-> [Setup self-hosted Plex Media Server in Docker](/blog/setting-up-plex-in-docker/)
-
-> [How to run self-hosted FileBrowser in Docker](/blog/how-to-run-filebrowser-in-docker/)
-
 <div id='ref'/>
 
 ## References
 
-- <a href="https://docker.com" target="_blank">Docker</a>
-- <a href="https://prometheus.io/" target="_blank">Prometheus</a>
-- <a href="https://github.com/google/cadvisor" target="_blank">cAdvisor</a>
-- <a href="https://grafana.com" target="_blank">Grafana</a>
+- <a href="https://docker.com" target="_blank" data-umami-event="setup-prom-cad-graf-docker">Docker</a>
+- <a href="https://prometheus.io/" target="_blank" data-umami-event="setup-prom-cad-graf-prometheus">Prometheus</a>
+- <a href="https://github.com/google/cadvisor" target="_blank" data-umami-event="setup-prom-cad-graf-cadvisor">cAdvisor</a>
+- <a href="https://grafana.com" target="_blank" data-umami-event="setup-prom-cad-graf-grafana">Grafana</a>
+
+## Related Articles
+
+> <a href="/blog/setting-up-plex-in-docker/" data-umami-event="setup-prom-cad-graf-related-setup-plex">Setup self-hosted Plex Media Server in Docker</a>
+
+> <a href="/blog/how-to-run-filebrowser-in-docker/" data-umami-event="setup-prom-cad-graf-related-selfhost-filebrowser">How to run self-hosted FileBrowser in Docker</a>

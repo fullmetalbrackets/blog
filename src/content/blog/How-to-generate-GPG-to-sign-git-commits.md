@@ -122,12 +122,6 @@ Now to test it out, push out any commit to a GitHub repo. You should be prompted
 
 ![Commit with verified badge in GitHub.](../../img/blog/gh-gpg2.png 'Commit with verified badge in GitHub')
 
-## Related Articles
-
-> [Git commands cheat sheet](/blog/git-commands-cheat-sheet/)
-
-> [How to resolve Git error insufficient permission for adding an object to repository database](/blog/git-push-error-permissions/)
-
 <div id='ref' />
 
 ## Reference
@@ -135,3 +129,9 @@ Now to test it out, push out any commit to a GitHub repo. You should be prompted
 - <a href="https://docs.github.com/en/authentication/managing-commit-signature-verification" target="_blank">GitHub Docs</a>
 - <a href="https://www.gnupg.org/download" target="_blank">GnuPG</a>
 - <a href="https://git-scm.com/downloads" target="_blank">Git</a>
+
+## Related Articles
+
+> [Git commands cheat sheet](/blog/git-commands-cheat-sheet/)
+
+> [How to resolve Git error insufficient permission for adding an object to repository database](/blog/git-push-error-permissions/)

@@ -20,23 +20,23 @@ tags:
 
 ## Pre-Requisites and Caveats
 
-I wrote previously about <a href="/blog/reverse-proxy-using-nginx-pihole-cloudflare/" target="_blank">how to set this up using Pi-Hole</a>, but I recently bought a <a href="https://www.gl-inet.com/products/gl-mt6000" target="_blank">GL.iNet Flint 2 router</a> which has AdGuard Home built-in, so it seemed a waste not to use it. (Also for as great as Pi-Hole is, I have had to redo it multiple times over the years due to database errors or just a dead mini SD card or USB drive, etc.) So, this guide will be mostly based on my old one, with just the parts dealing with Pi-Hole replaced with AdGuard Home, since setting up Nginx Proxy Manager and Cloudflare work the same as always.
+I wrote previously about <a href="/blog/reverse-proxy-using-nginx-pihole-cloudflare/" target="_blank" data-umami-event="reverse-proxy-adguard-to-pihole-proxy">how to set this up using Pi-Hole</a>, but I recently bought a <a href="https://www.gl-inet.com/products/gl-mt6000" target="_blank" data-umami-event="reverse-proxy-adguard-glinet">GL.iNet Flint 2 router</a> which has AdGuard Home built-in, so it seemed a waste not to use it. (Also for as great as Pi-Hole is, I have had to redo it multiple times over the years due to database errors or just a dead mini SD card or USB drive, etc.) So, this guide will be mostly based on my old one, with just the parts dealing with Pi-Hole replaced with AdGuard Home, since setting up Nginx Proxy Manager and Cloudflare work the same as always.
 
-This guide uses specific third-party services, namely <a href="https://cloudflare.com" target="_blank">Cloudflare</a>, <a href="https://adguard.com/en/adguard-home/overview.html" target="_blank">AdGuard Home</a> and <a href="https://nginxproxymanager.com" target="_blank">Nginx Proxy Manager</a> to set up a secure local-only reverse proxy. The same is possible with other tools, apps and services including <a href="https://pi-hole.net" target="_blank">Pi-Hole</a> (which as I mentioned, I previously used for many years) or <a href="https://nextdns.io" target="_blank">NextDNS</a> instead of *AdGuard Home*, <a href="https://caddyserver.com" target="_blank">Caddy</a> or <a href="https://traefik.io" target="_blank">Traefik</a> instead of *Nginx*, any other DNS provider instead of *Cloudflare*, etc. I'm only writing about my preferred tools that I've used multiple times to set everything up and keep it running for over a year.
+This guide uses specific third-party services, namely <a href="https://cloudflare.com" target="_blank" data-umami-event="reverse-proxy-adguard-cf-site">Cloudflare</a>, <a href="https://adguard.com/en/adguard-home/overview.html" target="_blank" data-umami-event="reverse-proxy-adguard-agh-site">AdGuard Home</a> and <a href="https://nginxproxymanager.com" target="_blank" data-umami-event="reverse-proxy-adguard-npm-site">Nginx Proxy Manager</a> to set up a secure local-only reverse proxy. The same is possible with other tools, apps and services including <a href="https://pi-hole.net" target="_blank" data-umami-event="reverse-proxy-adguard-pihole-site">Pi-Hole</a> (which as I mentioned, I previously used for many years) or <a href="https://nextdns.io" target="_blank" data-umami-event="reverse-proxy-adguard-nextdns">NextDNS</a> instead of *AdGuard Home*, <a href="https://caddyserver.com" target="_blank" data-umami-event="reverse-proxy-adguard-caddy">Caddy</a> or <a href="https://traefik.io" target="_blank" data-umami-event="reverse-proxy-adguard-traefik">Traefik</a> instead of *Nginx*, any other DNS provider instead of *Cloudflare*, etc. I'm only writing about my preferred tools that I've used multiple times to set everything up and keep it running for over a year.
 
-This guide will require a owned custom top-level domain (TLD), such as a `.com` or `.cc` or `.xyz`, etc. Certain TLDs can be bought for super cheap on <a href="https://namecheap.com" target="_blank">Namecheap</a> or <a href="https://porkbun.com" target="_blank">Porkbun</a>, but be aware in most cases after the first year or two, the price will see a steep jump. I again prefer <a href="https://domains.cloudflare.com" target="_blank">Cloudflare</a> for purchasing domains, since they always price domains at cost, so you won't see any surprise price hike one year to the next. An alternative I won't be getting into is using dynamic DNS, as I've not had to use it myself, so I honestly wouldn't even know how to begin to set that up.
+This guide will require a owned custom top-level domain (TLD), such as a `.com` or `.cc` or `.xyz`, etc. Certain TLDs can be bought for super cheap on <a href="https://namecheap.com" target="_blank">Namecheap</a> or <a href="https://porkbun.com" target="_blank">Porkbun</a>, but be aware in most cases after the first year or two, the price will see a steep jump. I again prefer <a href="https://domains.cloudflare.com" target="_blank" data-umami-event="reverse-proxy-adguard-cf-domains">Cloudflare</a> for purchasing domains, since they always price domains at cost, so you won't see any surprise price hike one year to the next. An alternative I won't be getting into is using dynamic DNS, as I've not had to use it myself, so I honestly wouldn't even know how to begin to set that up.
 
 <div id='adguard' />
 
 ## Setting up AdGuard Home as network DNS server
 
-In my case, AdGuard Home already comes installed and ready to use on the GL.iNet Flint 2 router, requiring only toggling it on from the router's web admin UI to activate. If you want to run it bare metal on a server, see <a href="https://github.com/AdguardTeam/AdGuardHome#getting-started" target="_blank">their getting started guide</a>. If you want to run AdGuard Home in a Docker container, this `compose.yaml` should work for you as a base.
+In my case, AdGuard Home already comes installed and ready to use on the GL.iNet Flint 2 router, requiring only toggling it on from the router's web admin UI to activate. If you want to run it bare metal on a server, see <a href="https://github.com/AdguardTeam/AdGuardHome#getting-started" target="_blank" data-umami-event="reverse-proxy-adguard-agh-getting-started">their getting started guide</a>. If you want to run AdGuard Home in a Docker container, this `compose.yaml` should work for you as a base.
 
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
 > Please note, I have never run AdGuard Home in a Docker container myself, I'm just using common sense defaults to get up and running fast. Using `network_mode: host` allows all necessary network ports, including `53` for DNS (which **must** be available for DNS resolution to work), port `3000` for the _web UI_, , `853` for _DNS over TLS_, etc.
 >
-> Check out <a href="https://hub.docker.com/r/adguard/adguardhome" target="_blank">the Docker Hub page for AdGuard Home</a> if you want to expose specific ports, or want to make other changes not covered here.
+> Check out <a href="https://hub.docker.com/r/adguard/adguardhome" target="_blank" data-umami-event="reverse-proxy-adguard-agh-docker">the Docker Hub page for AdGuard Home</a> if you want to expose specific ports, or want to make other changes not covered here.
 
 ```yaml
 services:
@@ -112,11 +112,15 @@ To add an existing domain to Cloudflare:
 
 9. Click the button **Create Token**, then click the **Use template** button next to _Edit DNS Zone_.
 
-10. Under _Zone Resources_, leave the first two dropdown menus as is and in the final dropdown select your domain, then click on **Continue to summary** and finally on the **Create Token** button.
+10. Under _Permissions_, leave the first entry as is, click on **+Add more**.
 
-11. On the next page you'll see your **API token**, make sure to _save it somewhere because it will not be shown again_. We will need this **API token** for to provision the TLS certificates in Nginx Proxy Manager.
+11. For the new Permission, choose in order from the dropdown menus **Zone**, **Zone** and **Read**.
 
-12. Once your domain is _Active_ in Cloudflare, you can move on to the next section.
+12. Under _Zone Resources_, leave the first two dropdown menus as is, and in the final dropdown all the way to the right, **select your domain**. Scroll past everything else,without changing anything else, click on **Continue to summary**, and finally on the **Create Token** button.
+
+13. On the next page you'll see your **API token**, make sure to _save it somewhere because it will not be shown again_. We will need this **API token** for to provision the TLS certificates in Nginx Proxy Manager.
+
+14. Once your domain is _Active_ in Cloudflare, you can move on to the next section.
 
 <div id='nginx' />
 
@@ -144,7 +148,7 @@ services:
 >
 > Make sure that ports `80` and `443` are available on your server and not being used by anything else! _Nginx Proxy Manager_ needs port `80` for _HTTP_ and port `443` for _HTTPS_.
 
-This compose file uses <a href="https://docs.docker.com/engine/storage/#bind-mounts" target="_blank">bind mounts</a> to store container data in specific directories on the host, as I find this easier to migrate than <a href="https://docs.docker.com/engine/storage/#volumes" target="_blank">volumes</a>. (If you save your site on <a href="https://github.com" target="_blank">GitHub</a> you can just clone it and install it anywhere.)
+This compose file uses <a href="https://docs.docker.com/engine/storage/#bind-mounts" target="_blank" data-umami-event="reverse-proxy-adguard-docker-bind-mounts">bind mounts</a> to store container data in specific directories on the host, as I find this easier to migrate than <a href="https://docs.docker.com/engine/storage/#volumes" target="_blank" data-umami-event="reverse-proxy-adguard-docker-volumes">volumes</a>. (If you save your site on <a href="https://github.com" target="_blank">GitHub</a> you can just clone it and install it anywhere.)
 
 Be sure to type in your own local path to where you want the data from Nginx Proxy Manager to live in your server, e.g. `/home/bob/docker/..` etc. and run the following command within the same directory where the compose file is located:
 
@@ -180,7 +184,7 @@ We'll create an entry for Plex first, which is running as a container on the sam
 
 4. For _Forward Port_ type in `32400`.
 
-5. Toggle on **Websockets Support** only, leave the other two toggled off.
+5. Toggle on **Websockets Support** and **Block Common Exploits**, but leave caching off.
 
 6. Go to the **SSL** tab, click under _SSL Certificate_ and select **Request a new SSL Certificate** from the dropdown.
 
@@ -210,14 +214,20 @@ Barring any errors, once you set up all your proxy hosts in Nginx Proxy Manager 
 
 ## Related Articles
 
-> [Setting up a reverse proxy for HTTPS with a custom domain using Nginx Proxy Manager, Pi-Hole and Cloudflare](/blog/reverse-proxy-using-nginx-pihole-cloudflare/)
+> []()
 
-> [Complete guide to self-hosting a website through Cloudflare Tunnel](/blog/self-host-website-cloudflare-tunnel/)
+> [](//)
 
 <div id='ref' />
 
 ## Reference
 
-- <a href="https://adguard.com/en/adguard-home/overview.html" target="_blank">Website of AdGuard Home</a>
-- <a href="https://nginxproxymanager.com" target="_blank">Website of Nginx Proxy Manager</a>
-- <a href="https://github.com/NginxProxyManager/nginx-proxy-manager" target="_blank">GitHub of Nginx Proxy Manager</a>
+- <a href="https://adguard.com/en/adguard-home/overview.html" target="_blank" data-umami-event="reverse-proxy-adguard-agh-site">Website of AdGuard Home</a>
+- <a href="https://nginxproxymanager.com" target="_blank" data-umami-event="reverse-proxy-adguard-npm-site">Website of Nginx Proxy Manager</a>
+- <a href="https://github.com/NginxProxyManager/nginx-proxy-manager" target="_blank" data-umami-event="reverse-proxy-adguard-npm-gh">GitHub of Nginx Proxy Manager</a>
+
+## Related Articles
+
+> <a href="/blog/reverse-proxy-using-nginx-pihole-cloudflare/" data-umami-event="reverse-proxy-adguard-related-reverse-proxy-pihole">Setting up a reverse proxy for HTTPS with a custom domain using Nginx Proxy Manager, Pi-Hole and Cloudflare</a>
+
+> <a href="/blog/self-host-website-cloudflare-tunnel/" data-umami-event="reverse-proxy-adguard-related-tunnel-guide">Complete guide to self-hosting a website through Cloudflare Tunnel</a>

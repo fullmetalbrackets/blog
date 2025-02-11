@@ -2,7 +2,7 @@
 title: "Complete guide to self-hosting a website through Cloudflare Tunnel"
 description: "Self-hosting a static web blog has never been easier thanks to Cloudflare Tunnel. In this guide I explain how to expose a static website self-hosted on a Linux server inside my home network to the internet using Nginx and Cloudflare Tunnel, and securing it with various other free Cloudflare services."
 pubDate: 2023-12-29
-updatedDate: 2025-02-05
+updatedDate: 2025-02-10
 tags:
   - cloudflare
 ---
@@ -22,7 +22,7 @@ tags:
 
 ## What and How
 
-You can very easily set up and host a website via <a href="https://netlify.com" target="_blank">Netlify</a>, <a href="https://pages.cloudflare.com" target="_blank">Cloudflare Pages</a>, or <a href="https://pages.github.com" target="_blank">GitHub Pages</a>, <a href="https://vercel.com" target="_blank">Vercel</a>, <a href="https://surge.sh" target="_blank">Surge.sh</a>, or many other free or paid options. Honestly, it's never been easier to have a website and there's never been more free options.
+You can very easily set up and host a website via <a href="https://netlify.com" target="_blank" data-umami-events="tunnel-guide-netlify">Netlify</a>, <a href="https://pages.cloudflare.com" target="_blank" data-umami-events="tunnel-guide-cf-pages">Cloudflare Pages</a>, or <a href="https://pages.github.com" target="_blank" data-umami-events="tunnel-guide-gh-pages">GitHub Pages</a>, <a href="https://vercel.com" target="_blank" data-umami-events="tunnel-guide-vercel">Vercel</a>, <a href="https://surge.sh" target="_blank" data-umami-events="tunnel-guide-surge">Surge.sh</a>, or many other free or paid options. Honestly, it's never been easier to have a website and there's never been more free options.
 
 Self-hosting a website, however, is a whole other can of beans -- instead of letting one of these companies host your website in their infrastructure, your website will live and operate out of a server in your home, or on a cloud provider like Digital Ocean, Oracle or Hetzner. This means you have only yourself to rely on for maintaining the server, making sure it's secure and has the latest updates, etc. Cloudflare Tunnel removes a lot of the hassle, and even enhances it with other free Cloudflare services like Web Application Firewall and Web Analytics. (Note that these are also available if you host your website Cloudflare Pages.)
 
@@ -30,9 +30,9 @@ First, requirements:
 
 1. You'll need to create a free <a href="https://cloudflare.com" target="_blank">Cloudflare</a> account.
 
-2. You need to own a domain. I suggest <a href="https://domains.cloudflare.com" target="_blank">Cloudflare</a> itself, alternately <a href="https://porkbun.com" target="_blank">Porkbun</a> or <a href="https://namecheap" target="_blank">Namecheap</a>. (Or literally any domain registrar you prefer.) You can get cheap domains, like those ending with `.cc` or `.us`, often for less then $10 or even as low as $4 to $5. This is the price for the first year, to hook you, but annual domain renewals can cost more after that first year, so do your research. _Cloudflare_ sells their domains at cost, so the renewal is usually only a couple dollars more than the initial price, which is why I usually prefer them. Alternately you could set up something like <a href="https://www.duckdns.org" target="_blank">DuckDNS</a> or some other Dynamic DNS to avoid buying a domain, but you're on your own there -- domains are so cheap I've never bothered.
+2. You need to own a domain. I suggest <a href="https://domains.cloudflare.com" target="_blank" data-umami-events="tunnel-guide-cf-domains">Cloudflare</a> itself, alternately <a href="https://porkbun.com" target="_blank" data-umami-events="tunnel-guide-porkbuns">Porkbun</a> or <a href="https://namecheap" target="_blank" data-umami-events="tunnel-guide-namecheap">Namecheap</a>. (Or literally any domain registrar you prefer.) You can get cheap domains, like those ending with `.cc` or `.us`, often for less then $10 or even as low as $4 to $5. This is the price for the first year, to hook you, but annual domain renewals can cost more after that first year, so do your research. _Cloudflare_ sells their domains at cost, so the renewal is usually only a couple dollars more than the initial price, which is why I usually prefer them. Alternately you could set up something like <a href="https://www.duckdns.org" target="_blank" data-umami-events="tunnel-guide-">DuckDNS</a> or some other Dynamic DNS to avoid buying a domain, but you're on your own there -- domains are so cheap I've never bothered.
 
-3. You'll need a website. I won't be explaining how to build a website here, you can just code one from scratch with HTML and CSS if you know how, or you can use a static site generator, of which there are many. If you want to get a quick website up and running I suggest <a href="https://astro.build" target="_blank">Astro</a> since it has a good blog template and is easy to learn. (It's what I used to build this blog!)
+3. You'll need a website. I won't be explaining how to build a website here, you can just code one from scratch with HTML and CSS if you know how, or you can use a static site generator, of which there are many. If you want to get a quick website up and running I suggest <a href="https://astro.build" target="_blank" data-umami-events="tunnel-guide-astro">Astro</a> since it has a good blog template and is easy to learn. (It's what I used to build this blog!)
 
 4. _A Linux server_. I specifically use _Debian 12_, but these instructions should work for any distro. This might be possible on Windows using WSL2 and Docker Desktop, but I wouldn't suggest it.
 
@@ -56,7 +56,7 @@ For the most hassle-free method of installing Docker, I suggest using their offi
 curl -fsSL https://get.docker.com | sh
 ```
 
-Next we'll setup _Nginx_ as our **webserver**, websites need a webserver to serve their pages to be viewed on a browser. I use the <a href="https://hub.docker.com/_/nginx" target="_blank">official Nginx docker container</a>, ol' reliable. I'll be using `docker compose` to set it up. Within the root directory of your site, create the file `compose.yaml` and add the below to it:
+Next we'll setup _Nginx_ as our **webserver**, websites need a webserver to serve their pages to be viewed on a browser. I use the <a href="https://hub.docker.com/_/nginx" target="_blank" data-umami-events="tunnel-guide-nginx-docker">official Nginx docker container</a>, ol' reliable. I'll be using `docker compose` to set it up. Within the root directory of your site, create the file `compose.yaml` and add the below to it:
 
 ```yaml
 services:
@@ -114,7 +114,7 @@ If you only want to self-host a site that you can access from within your home n
 
 ## Add a domain in Cloudflare
 
-Create your <a href="https://dash.cloudflare.com/sign-up" target="_blank">free Cloudflare account</a> if you haven't already. **If you bought a domain on Cloudflare, you can skip to the next section since it is auto-configured already.** If your domain is from another registrar, we'll need to add it to Cloudflare:
+Create your <a href="https://dash.cloudflare.com/sign-up" target="_blank" data-umami-events="tunnel-guide-cf-signup">free Cloudflare account</a> if you haven't already. **If you bought a domain on Cloudflare, you can skip to the next section since it is auto-configured already.** If your domain is from another registrar, we'll need to add it to Cloudflare:
 
 1. On the Cloudflare dashboard _Account Home_, click the **+ Add a domain** button.
 
@@ -284,7 +284,7 @@ Now when you go to `www.your-domain.com` it should redirect to `your-domain.com`
 
 ## Configure HTTP response headers on Cloudflare
 
-Though optional, it's always good practice to set up your HTTP response headers on any website you host. If you check your site on <a href="https://securityheaders.com/" target="_blank">securityheaders.com</a> you'll probably have an F grade. A lot of tech blogs don't bother with this, most that I have checked get a D+ at best, so don't think it's required by any stretch. However, if you feel like going that extra step to get an A+, here is how:
+Though optional, it's always good practice to set up your HTTP response headers on any website you host. If you check your site on <a href="https://securityheaders.com/" target="_blank" data-umami-events="tunnel-guide-securityheaders">securityheaders.com</a> you'll probably have an F grade. A lot of tech blogs don't bother with this, most that I have checked get a D+ at best, so don't think it's required by any stretch. However, if you feel like going that extra step to get an A+, here is how:
 
 1. Login to Cloudflare and on the sidebar go to **Rules** -> **Transform Rules**, choose the **Managed Transforms** tab.
 
@@ -300,22 +300,22 @@ Though optional, it's always good practice to set up your HTTP response headers 
 
 7. For the second rule, for **header name** type in `permissions-policy` and for **value** type in `geolocation=(self)`.
 
-Note that for the `permissions-policy` I've chosen to disable everything since I don't use these features on my blog. If you plan to use something, for example geolocation, you'd have to instead use `geolocation=self`. (See more about <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Permissions_Policy" target="_blank">Permission Policy at MDN Docs</a>.)
+Note that for the `permissions-policy` I've chosen to disable everything since I don't use these features on my blog. If you plan to use something, for example geolocation, you'd have to instead use `geolocation=self`. (See more about <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Permissions_Policy" target="_blank" data-umami-events="tunnel-guide-mdn-permission-policy">Permission Policy at MDN Docs</a>.)
 
 Once that is done, click the **Deploy** button. Wait a few minutes, then check your security headers again, and now it should be A+.
-
-## Related Articles
-
-> [Setup a Cloudflare Tunnel to securely access self-hosted apps with a domain from outside the home network](/blog/setup-cloudflare-tunnel-to-access-self-hosted-apps/)
-
-> [How to securely expose Plex from behind CGNAT with Cloudflare Tunnel](/blog/expose-plex-with-cloudflare/)
 
 <div id='ref' />
 
 ## Reference
 
-- <a href="https://developers.cloudflare.com/fundamentals/get-started/setup/add-site/" target="_blank">Cloudflare Docs - Add a site</a>
-- <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/install-and-setup/tunnel-guide/remote/" target="_blank">Cloudflare Docs - Tunnels</a>
-- <a href="https://developers.cloudflare.com/fundamentals/basic-tasks/manage-subdomains#set-up-redirects" target="_blank">Cloudflare Docs - Manage subdomains, Set up redirects</a>
-- <a href="https://developers.cloudflare.com/rules/url-forwarding/single-redirects/create-dashboard" target="_blank">Cloudflare Docs - Create redirect rule</a>
-- <a href="https://blog.cloudflare.com/transform-http-response-headers" target="_blank">Cloudflare Blog - Modifying HTTP response headers with Transform Rules</a>
+- <a href="https://developers.cloudflare.com/fundamentals/get-started/setup/add-site/" target="_blank" data-umami-events="tunnel-guide-docs-add-site">Cloudflare Docs - Add a site</a>
+- <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/install-and-setup/tunnel-guide/remote/" target="_blank" data-umami-events="tunnel-guide-docs-tunnels">Cloudflare Docs - Tunnels</a>
+- <a href="https://developers.cloudflare.com/fundamentals/basic-tasks/manage-subdomains#set-up-redirects" target="_blank" data-umami-events="tunnel-guide-docs-subdomains-redirects">Cloudflare Docs - Manage subdomains, Set up redirects</a>
+- <a href="https://developers.cloudflare.com/rules/url-forwarding/single-redirects/create-dashboard" target="_blank" data-umami-events="tunnel-guide-docs-redirect-rule">Cloudflare Docs - Create redirect rule</a>
+- <a href="https://blog.cloudflare.com/transform-http-response-headers" target="_blank" data-umami-events="tunnel-guide-cfblog-transform-headers">Cloudflare Blog - Modifying HTTP response headers with Transform Rules</a>
+
+## Related Articles
+
+> <a href="/blog/setup-cloudflare-tunnel-to-access-self-hosted-apps/" data-umami-event="tunnel-guide-to-tunnel-selfhosted-apps">Setup a Cloudflare Tunnel to securely access self-hosted apps with a domain from outside the home network</a>
+
+> <a href="/blog/expose-plex-with-cloudflare/" data-umami-event="tunnel-guide-related-expose-plex-tunnel">How to securely expose Plex from behind CGNAT with Cloudflare Tunnel</a>

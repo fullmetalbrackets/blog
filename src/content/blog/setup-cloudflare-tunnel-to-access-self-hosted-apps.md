@@ -25,7 +25,7 @@ This guide is assumes you already have a _Linux_ machine with Docker installed a
 
 Apps that have to be accessed through a specific path (like `/admin` or `/web`) and have no redirect from the index page may act weird when it comes time to proxy the tunnel. I always run into this issue with _Ubooquity_ in particular and haven't figured out how to fix it. I won't be trying to deal with that here.
 
-The process of setting up and securing a Cloudflare Tunnel is a lot of steps, so I'm basically paraphrasing the <a href="https://developers.cloudflare.com/cloudflare-one" target="_blank">Cloudflare Zero Trust Docs</a>. When in doubt, refer back to them.
+The process of setting up and securing a Cloudflare Tunnel is a lot of steps, so I'm basically paraphrasing the <a href="https://developers.cloudflare.com/cloudflare-one" target="_blank" data-umami-event="tunnel-apps-docs-zero-trust">Cloudflare Zero Trust Docs</a>. When in doubt, refer back to them.
 
 <div id="domain" />
 
@@ -144,11 +144,11 @@ Although Navidrome, like many self-hosted services, has username and passwords f
 
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
-> It's been a while since I wrote this post and I don't use this set up anymore (<a href="/blog/tailscale/" target="_blank">I switched to Tailscale</a>),  so if the rest of the guide doesn't work for you please <a href="mailto:contact@fullmetalbrackets.com?subject=The oauth section of your Cloudflare Tunnel guide is out of date!">let me know</a> and I'll update it in the future!
+> It's been a while since I wrote this post and I don't use this set up anymore (<a href="/blog/tailscale/" target="_blank" data-umami-event="tunnel-apps-">I switched to Tailscale</a>),  so if the rest of the guide doesn't work for you please <a href="mailto:contact@fullmetalbrackets.com?subject=The oauth section of your Cloudflare Tunnel guide is out of date!">let me know</a> and I'll update it in the future!
 
 You'll need a Google account to set this up, which you already do with Gmail. You'll be using that email to do some stuff on **Google Cloud Platform**. It's totally free for this use case.
 
-1. Go to <a href="https://cloud.google.com" target="_blank">Google Cloud Platform</a> and go to _Console_ at the top-right. On the next page click the _dropdown menu_ at the top-left and go to _New Project_. Name the project and click _Create_.
+1. Go to <a href="https://cloud.google.com" target="_blank" data-umami-event="tunnel-apps-gcp">Google Cloud Platform</a> and go to _Console_ at the top-right. On the next page click the _dropdown menu_ at the top-left and go to _New Project_. Name the project and click _Create_.
 
 2. On the project home page, go to _APIs & Services_ on the sidebar and select _Dashboard_.
 
@@ -184,7 +184,7 @@ If you don't know it, go to the Cloudflare _Zero Trust dashboard_ -> _Settings_ 
 
 ## Create an access policy
 
-Now that the OAuth provider is set up, we need make use of it with <a href="https://developers.cloudflare.com/cloudflare-one/policies/access/policy-management/" target="_blank">Access Policies</a>.
+Now that the OAuth provider is set up, we need make use of it with <a href="https://developers.cloudflare.com/cloudflare-one/policies/access/policy-management/" target="_blank" data-umami-event="tunnel-apps-docs-policy-mgmt">Access Policies</a>.
 
 1. In Zero Trust, go to _Access_ -> _Applications_ -> _Add an application_.
 
@@ -219,7 +219,7 @@ Now when you go to `https://music.your-domain.com` you should be met with a Goog
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
 > If you get any DNS errors when trying to access your domain after adding OAuth with the above steps, but didn't have any issues before that, you may be hitting your ad blocker. I didn't have issues with Pi-Hole, but when testing behind NextDNS I did get `NXDOMAIN` errors.<br><br>
-> <a href="https://help.nextdns.io/t/p8h5c71/keep-getting-nxdomain-for-well-known-sites" target="_blank">See this post</a> on NextDNS Help Center. <em>TLDR:</em> Try disabling DNSSEC for your domain on the Cloudflare dashboard and see if that resolves the issue. (I have not tested it.)
+> <a href="https://help.nextdns.io/t/p8h5c71/keep-getting-nxdomain-for-well-known-sites" target="_blank" data-umami-event="tunnel-apps-nextdns-nxdomain-errors">See this post</a> on NextDNS Help Center. <em>TLDR:</em> Try disabling DNSSEC for your domain on the Cloudflare dashboard and see if that resolves the issue. (I have not tested it.)
 
 <div id="waf" />
 
@@ -235,7 +235,7 @@ For even more security, or maybe even in lieu of setting up Oauth, you can use C
 
 ![Zone lockdown template.](../../img/blog/cloudflare-waf1.png 'Zone lockdown template')
 
-4. The template have two rules. On the first one leave the _Field_ as **IP Source Address**, change _Operator_ to **is not equal to**, and for _Value_ enter your public IP address. (You can <a href="https://icanhazip.com" target="_blank">find out what it is here.</a>)
+4. The template have two rules. On the first one leave the _Field_ as **IP Source Address**, change _Operator_ to **is not equal to**, and for _Value_ enter your public IP address. (You can <a href="https://icanhazip.com" target="_blank" data-umami-event="tunnel-apps-icanhazip">find out what it is here.</a>)
 
 5. Press the **X** next to the second _URI Path rule_ to delete it, we don't need it. Scroll down.
 
@@ -245,7 +245,7 @@ For even more security, or maybe even in lieu of setting up Oauth, you can use C
 
 Now only your IP address should have access to `music.your-domain.com`. Be aware that if your IP address changes (and is common with residential ISPs unless you have a static IP), you will need to keep track of that and update the rule accordingly.
 
-It is possible to <a href="https://developers.cloudflare.com/dns/manage-dns-records/how-to/managing-dynamic-ip-addresses" target="_blank">dynamically update DNS records in Cloudflare</a> via API or third-party tools, but I have not gone down this particular rabbit hole, so you're on your own there for now.
+It is possible to <a href="https://developers.cloudflare.com/dns/manage-dns-records/how-to/managing-dynamic-ip-addresses" target="_blank" data-umami-event="tunnel-apps-cf-ddns">dynamically update DNS records in Cloudflare</a> via API or third-party tools, but I have not gone down this particular rabbit hole, so you're on your own there for now.
 
 ## Related Articles
 
@@ -257,8 +257,14 @@ It is possible to <a href="https://developers.cloudflare.com/dns/manage-dns-reco
 
 ## References
 
-- <a href="https://developers.cloudflare.com/fundamentals/get-started/setup/add-site/" target="_blank">Cloudflare Docs - Add a site</a>
-- <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/install-and-setup/tunnel-guide/remote/" target="_blank">Cloudflare Docs - Tunnels</a>
-- <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/routing-to-tunnel/dns/" target="_blank">Cloudflare Docs - Routing traffic to a tunnel</a>
-- <a href="https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/google/" target="_blank">Cloudflare Docs - Identity</a>
-- <a href="https://developers.cloudflare.com/cloudflare-one/policies/access/policy-management/" target="_blank">Cloudflare Docs - Policy Management</a>
+- <a href="https://developers.cloudflare.com/fundamentals/get-started/setup/add-site/" target="_blank" data-umami-event="tunnel-apps-docs-add-site">Cloudflare Docs - Add a site</a>
+- <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/install-and-setup/tunnel-guide/remote/" target="_blank" data-umami-event="tunnel-apps-docs-tunnels">Cloudflare Docs - Tunnels</a>
+- <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/routing-to-tunnel/dns/" target="_blank" data-umami-event="tunnel-apps-docs-routing-traffic">Cloudflare Docs - Routing traffic to a tunnel</a>
+- <a href="https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/google/" target="_blank" data-umami-event="tunnel-apps-docs-identity">Cloudflare Docs - Identity</a>
+- <a href="https://developers.cloudflare.com/cloudflare-one/policies/access/policy-management/" target="_blank" data-umami-event="tunnel-apps-docs-policy-mgmt">Cloudflare Docs - Policy Management</a>
+
+## Related Articles
+
+> <a href="/blog/" data-umami-event=""></a>
+
+> <a href="/blog/" data-umami-event=""></a>

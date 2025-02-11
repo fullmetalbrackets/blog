@@ -156,13 +156,6 @@ To check the logs in Portainer:
 >
 > You should now be all set up and able to reach your proxied services via `http://subdomain.home.arpa` on the browser, no more IPs and ports!
 
-
-## Related Articles
-
-> [Setting up a reverse proxy for HTTPS with a custom domain using Nginx Proxy Manager, Pi-Hole and Cloudflare](/blog/reverse-proxy-using-nginx-pihole-cloudflare/)
-
-> [OpenMediaVault Quick Reference](/blog/openmediavault-quick-reference/)
-
 <div id='ref' />
 
 ## Reference
@@ -172,3 +165,9 @@ To check the logs in Portainer:
 - <a href="https://docs.openmediavault.org/en/latest" target="_blank">OpenMediaVault 6 documentation</a>
 - <a href="https://nginxproxymanager.com" target="_blank">Website of Nginx Proxy Manager</a>
 - <a href="https://github.com/NginxProxyManager/nginx-proxy-manager" target="_blank">GitHub of Nginx Proxy Manager</a>
+
+## Related Articles
+
+> [Setting up a reverse proxy for HTTPS with a custom domain using Nginx Proxy Manager, Pi-Hole and Cloudflare](/blog/reverse-proxy-using-nginx-pihole-cloudflare/)
+
+> [OpenMediaVault Quick Reference](/blog/openmediavault-quick-reference/)

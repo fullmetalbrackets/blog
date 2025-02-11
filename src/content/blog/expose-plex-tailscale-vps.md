@@ -27,11 +27,11 @@ tags:
 
 Plex is a self-hosted media server that lets you stream your owned (or downloaded, or otherwise acquired) media from other devices on the same network, through a web-based GUI (access via browser) or dedicated app. (Say, on a smart TV or Roku device.) Plex has a built-in feature to share your media library externally, but that requires opening a port on your router and forwarding it to the Plex server. Setting aside that port forwarding can be dangerous if you don't know what you're doing, it won't work anyway if your home network is behind Carrier-Grade Network Address Translation, or CGNAT. Many ISPs use this, and so many homelabbers may find themselves unable to expose their services.
 
-Although I previously wrote about <a href="/blog/expose-plex-with-cloudflare" target="_blank">how to expose Plex through CGNAT with Cloudflare Tunnel</a>, it's against their terms of service, so I don't use that method anymore and suggest you don't either. The method I explain in _this_ post has a few extra steps, but it does not run afoul of any service provider's rules.
+Although I previously wrote about <a href="/blog/expose-plex-with-cloudflare" target="_blank" umami-data-event="expose-plex-tailscale-to-expose-plex-cf">how to expose Plex through CGNAT with Cloudflare Tunnel</a>, it's against their terms of service, so I don't use that method anymore and suggest you don't either. The method I explain in _this_ post has a few extra steps, but it does not run afoul of any service provider's rules.
 
 What we'll be setting up is this:
 
-- We will install Tailscale on the same server as Plex or, alternately, on another machine in the home network that will act as subnet router. (See <a href="https://tailscale.com/kb/1019/subnets" target="_blank">this section Tailscale docs</a> -- for this guide, we'll install Tailscale on the same server running Plex, so subnet routing isn't necessary.)
+- We will install Tailscale on the same server as Plex or, alternately, on another machine in the home network that will act as subnet router. (See <a href="https://tailscale.com/kb/1019/subnets" target="_blank" umami-data-event="expose-plex-tailscale-docs-subnets">this section Tailscale docs</a> -- for this guide, we'll install Tailscale on the same server running Plex, so subnet routing isn't necessary.)
 
 - We will create a free tier compute instance on Oracle Cloud Insfrastructure and install Tailscale on it, so it's on the same tailnet as the Plex server. We'll expose ports 80 and 443 to the internet on the VM, but only allowing access from specific IPs, and run a reverse proxy to route the traffic from allowed IPs to Plex. Note that if you're willing and able to pay for another cloud service provider, everything besides the Oracle-specific instructions should work there too! If you don't want to pay, though, just know that I have used a free Oracle instance to share Plex with 3 family members for over 6 months and so far it's worked without a single hitch.
 
@@ -43,7 +43,7 @@ First of all, you should be comfortable using the terminal, because we'll be doi
 
 The method I explain here requires you to own a domain -- it may be possible to instead use something like DuckDNS or NoIP, but I have not tried it. I'll also be using Cloudflare for DNS, but that's just my personal preference -- feel free to use another DNS provider.
 
-Finally, you'll need a Plex server already set up. (And I'll assume it's running in Linux or as a Docker container.) I won't go into how to do that here, <a href="/blog/setting-up-plex-in-docker/" target="_blank">see this post</a> for instructions on running Plex as a Docker container.
+Finally, you'll need a Plex server already set up. (And I'll assume it's running in Linux or as a Docker container.) I won't go into how to do that here, <a href="/blog/setting-up-plex-in-docker/" target="_blank" umami-data-event="expose-plex-tailscale-to-setup-plex">see this post</a> for instructions on running Plex as a Docker container.
 
 <div id="account" />
 
@@ -51,9 +51,9 @@ Finally, you'll need a Plex server already set up. (And I'll assume it's running
 
 We'll be using a free-tier VM from Oracle Cloud Infrastructure (OCI) -- specifically, an E2.1.Micro VM which runs on a single-core AMD OCPU, has 1 GB of memory and a 0.48 Gbps connection, more than enough for streaming even 4K content through Plex. You can run *TWO* of these VMs **totally free**.
 
-First, go to <a href="https://www.oracle.com/cloud/free/">Oracle Cloud's website</a> and click **Start for free** to create your account. You will need a credit card, but only for verification purposes! As long as you stick to *free tier* and don't upgrade, you won't be charged.
+First, go to <a href="https://www.oracle.com/cloud/free/" target="_blank" umami-data-event="expose-plex-tailscale-oci-free">Oracle Cloud's website</a> and click **Start for free** to create your account. You will need a credit card, but only for verification purposes! As long as you stick to *free tier* and don't upgrade, you won't be charged.
 
-Once your account is set up you'll receive an email with the **Cloud Account Name** (which is your "tenant") and **Username**. (The email you used to sign up.) You'll need the Count Account Name to <a href="https://www.oracle.com/cloud/sign-in.html" target="_blank">sign-in to OCI</a>, after which you'll be asked for the email address and password.
+Once your account is set up you'll receive an email with the **Cloud Account Name** (which is your "tenant") and **Username**. (The email you used to sign up.) You'll need the Count Account Name to <a href="https://www.oracle.com/cloud/sign-in.html" target="_blank" umami-data-event="expose-plex-tailscale-oci-signin">sign-in to OCI</a>, after which you'll be asked for the email address and password.
 
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
@@ -128,7 +128,7 @@ We're done in the Oracle instance for now, but we'll be back soon.
 
 ## Set up Tailscale
 
-Go to the <a href="https://tailscale.com" target="_blank">Tailscale website</a> and create an account. This will create your <a href="https://tailscale.com/kb/1136/tailnet" target="_blank">Tailnet</a> (private mesh network for all your Tailscale-connected devices) with your newly created account as the Owner and which you'll manage through the web-based <a href="https://login.tailscale.com/admin" target="_blank">admin console</a>.
+Go to the <a href="https://tailscale.com" target="_blank" umami-data-event="expose-plex-tailscale-site">Tailscale website</a> and create an account. This will create your <a href="https://tailscale.com/kb/1136/tailnet" target="_blank" umami-data-event="expose-plex-tailscale-docs-tailnet">Tailnet</a> (private mesh network for all your Tailscale-connected devices) with your newly created account as the Owner and which you'll manage through the web-based <a href="https://login.tailscale.com/admin" target="_blank" umami-data-event="expose-plex-tailscale-admin-console">admin console</a>.
 
 Once you've got the account ready, use the following command in **both** the server where you're running Plex and the Oracle instance:
 
@@ -164,7 +164,7 @@ From here on out we'll assume the Plex sever is `plex.cyber-sloth.ts.net` and th
 
 ## Add domain in Cloudflare and configure DNS
 
-Create your <a href="https://dash.cloudflare.com/sign-up" target="_blank">free Cloudflare account</a> if you haven't already. **If you bought a domain on Cloudflare, you can skip to the next section since it is auto-configured already.** If your domain is from another registrar, we'll need to add it to Cloudflare:
+Create your <a href="https://dash.cloudflare.com/sign-up" target="_blank" umami-data-event="expose-plex-tailscale-cf-signup">free Cloudflare account</a> if you haven't already. **If you bought a domain on Cloudflare, you can skip to the next section since it is auto-configured already.** If your domain is from another registrar, we'll need to add it to Cloudflare:
 
 1. On the Cloudflare dashboard _Account Home_, click the **+ Add a domain** button.
 
@@ -369,16 +369,16 @@ One last thing! Although the allowed IPs can now reach Plex and stream your libr
 
 Now your external users can access your library through their Plex apps too.
 
-## Related Articles
-
-> [How to securely expose Plex from behind CGNAT using Tailscale and a free Oracle VM](/blog/expose-plex-tailscale-vps/)
-
-> [How to remotely access your home server from anywhere using Tailscale](/blog/tailscale/)
-
 <div id="ref" />
 
 ## References
 
-- <a href="https://tailscale.com/kb" target="_blank">Tailscale Docs</a>
-- <a href="https://developers.cloudflare.com/dns" target="_blank">Cloudflare Docs - DNS</a>
-- <a href="https://docs.oracle.com/en-us/iaas/Content/Compute/home.htm" target="_blank">OCI Docs - Compute</a>
+- <a href="https://tailscale.com/kb" target="_blank" umami-data-event="expose-plex-tailscale-docs">Tailscale Docs</a>
+- <a href="https://developers.cloudflare.com/dns" target="_blank" umami-data-event="expose-plex-tailscale-cf-docs-dns">Cloudflare Docs - DNS</a>
+- <a href="https://docs.oracle.com/en-us/iaas/Content/Compute/home.htm" target="_blank" umami-data-event="expose-plex-tailscale-oci-docs-compute">OCI Docs - Compute</a>
+
+## Related Articles
+
+> <a href="/blog/tailscale/" umami-data-event="expose-plex-tailscale-related-tailscale-guide">Comprehensive guide to setting up Tailscale to securely access your home network from anywhere</a>
+
+> <a href="/blog/expose-plex-with-cloudflare/" umami-data-event="expose-plex-tailscale-related-expose-cloudflare">How to securely expose Plex from behind CGNAT with Cloudflare Tunnel</a>

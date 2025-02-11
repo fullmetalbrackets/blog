@@ -2,6 +2,7 @@
 title: "Set up Home Assistant Supervised on a Libre Computer Sweet Potato SBC"
 description: "Home Assistant is an open source home automation solution that gives you local control over your smart home. It can also be run on Libre Computer's boards, but I ran into some issues following the official instructions from Libre, so here's how I got it working."
 pubDate: 2024-03-03
+updatedDate: 2025-02-10
 tags:
   - self-hosting
 ---
@@ -18,7 +19,7 @@ tags:
 
 ## Pre-Requisites
 
-This guide assumes you already have either a Le Potato or a Sweet Potato (the instructions work for both) up and running with Debian 12 Bookworm. See <a href="https://hub.libre.computer/t/debian-11-bullseye-and-12-bookworm-for-libre-computer-boards/230" target="_blank">Libre's official instructions</a> or <a href="/blog/setting-up-sweet-potato-debian-pihole/#boot" target="_blank">see my blog post here</a> for how I run Debian 12 off a USB stick.
+This guide assumes you already have either a Le Potato or a Sweet Potato (the instructions work for both) up and running with Debian 12 Bookworm. See <a href="https://hub.libre.computer/t/debian-11-bullseye-and-12-bookworm-for-libre-computer-boards/230" target="_blank" data-umami-event="hass-potato-libre-install-debian">Libre's official instructions</a> or <a href="/blog/setting-up-sweet-potato-debian-pihole/#boot" target="_blank" data-umami-event="hass-potato-to-setup-potato-pihole">see my blog post here</a> for how I run Debian 12 off a USB stick.
 
 Note that SSH is disabled in Debian by default, so you'll have to plug in a monitor at least initially until that's installed. The default username and password are `root`, though you are prompted to change the root password immediately the first time you login, and you can go ahead and create a new user account after that.
 
@@ -73,7 +74,7 @@ Once again, this may take a while, but when done we can finally move on to insta
 
 ## Install Home Assistant Supervised
 
-Go to the <a href="https://github.com/home-assistant/os-agent/releases/latest" target="_blank">Home Assistant OS-Agent Release Page</a>, and the copy the URL for the latest version of the asset file ending in `_aarch64.deb`. (As of this writing, that's version 1.6.0)
+Go to the <a href="https://github.com/home-assistant/os-agent/releases/latest" target="_blank" data-umami-event="hass-potato-hass-os-release">Home Assistant OS-Agent Release Page</a>, and the copy the URL for the latest version of the asset file ending in `_aarch64.deb`. (As of this writing, that's version 1.6.0)
 
 ```bash
 wget https://github.com/home-assistant/os-agent/releases/download/1.6.0/os-agent_1.6.0_linux_aarch64.deb
@@ -107,18 +108,18 @@ You should arrive at the Home Assistant UI's welcome page, where you can follow 
 
 Once the setup finishes, which it should without issue if you installed Docker version 24.0.7 as stated above, you'll be ready to go! (If you migrated from Core to Supervised via backup, be sure to login with the same username and password that you used in Core!)
 
-## Related Articles
-
-> [Setting up a Libre Computer Sweet Potato SBC with Debian and Pi-Hole](/blog/setting-up-sweet-potato-debian-pihole/)
-
-> [Complete guide to self-hosting a website through Cloudflare Tunnel](/blog/self-host-website-cloudflare-tunnel/)
-
 <div id='ref' />
 
 ## References
 
-- <a href="https://libre.computer" target="_blank">Libre Computer</a>
-- <a href="https://hub.libre.computer/t/debian-11-bullseye-and-12-bookworm-for-libre-computer-boards/230" target="_blank">Libre's instructions for installing Debian</a>
-- <a href="https://hub.libre.computer/t/libre-computer-aml-s905x-cc-emmc-flashing-steps-from-linux/33" target="_blank">Flashing Linux to eMMC</a>
-- <a href="https://hub.libre.computer/t/booting-from-external-usb-device-or-bootrom-unsupported-device/51" target="_blank">Booting from External USB Device (alternative to eMMC boot)</a>
-- <a href="https://www.home-assistant.io/docs" target="_blank">Home Assistant Documentation</a>
+- <a href="https://libre.computer" target="_blank" data-umami-event="hass-potato-libre-site">Libre Computer</a>
+- <a href="https://hub.libre.computer/t/debian-11-bullseye-and-12-bookworm-for-libre-computer-boards/230" target="_blank" data-umami-event="hass-potato-libre-install-debian">Libre's instructions for installing Debian</a>
+- <a href="https://hub.libre.computer/t/libre-computer-aml-s905x-cc-emmc-flashing-steps-from-linux/33" target="_blank" data-umami-event="hass-potato-libre-flash-emmc">Flashing Linux to eMMC</a>
+- <a href="https://hub.libre.computer/t/booting-from-external-usb-device-or-bootrom-unsupported-device/51" target="_blank" data-umami-event="hass-potato-libre-usb-boot">Booting from External USB Device (alternative to eMMC boot)</a>
+- <a href="https://www.home-assistant.io/docs" target="_blank" data-umami-event="hass-potato-hass-docs">Home Assistant Documentation</a>
+
+## Related Articles
+
+> <a href="/blog/setting-up-sweet-potato-debian-pihole/" data-umami-event="hass-potato-related-setup-potato-pihole">Setting up a Libre Computer Sweet Potato SBC with Debian and Pi-Hole</a>
+
+> <a href="/blog/self-host-website-cloudflare-tunnel/" data-umami-event="hass-potato-related-tunnel-guide">Complete guide to self-hosting a website through Cloudflare Tunnel</a>
