@@ -212,12 +212,6 @@ Barring any errors, once you set up all your proxy hosts in Nginx Proxy Manager 
 >
 > One last thing, if you want to want to access the AdGuard Home web UI via HTTPS as well, be sure to use its default HTTPS network port *3001* in Nginx Proxy Manager.
 
-## Related Articles
-
-> []()
-
-> [](//)
-
 <div id='ref' />
 
 ## Reference
