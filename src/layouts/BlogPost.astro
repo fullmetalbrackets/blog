@@ -47,11 +47,13 @@ const { slug } = Astro.params;
       margin: 0 0.25em;
     }
     button {
+      background-color: var(--info);
       text-overflow: ellipsis;
       -webkit-transition: all .10s ease-out;
       -moz-transition: all .10s ease-out;
       -o-transition: all .10s ease-out;
       transition: all .10s ease-out;
+      cursor: pointer;
     }
     li:hover {
       padding-bottom: 0.25em;
@@ -79,6 +81,9 @@ const { slug } = Astro.params;
     label {
       color: var(--text);
       margin-right: 1em;
+    }
+    .post-end {
+      font-family: "M Plus Rounded 1c Med";
     }
     .coffee {
       display: grid;
@@ -263,7 +268,7 @@ const { slug } = Astro.params;
         data-emoji="☕"
         data-font="Bree"
         data-text="Buy me a coffee"
-        data-outline-color="#000000"
+        data-outline-color="var(--main)"
         data-font-color="#000000"
         data-coffee-color="#ffffff"
         data-umami-event="article-coffee">
