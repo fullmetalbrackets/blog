@@ -36,11 +36,8 @@ const today = new Date();
     padding: 0 auto;
   }
   .bottom-row {
-    display: grid;
-    grid-template-columns: auto auto;
-    place-items: center;
+    display: flex;
     justify-content: space-between;
-    gap: 0;
     margin: -0.25em auto 1em auto;
     padding: 0 auto;
   }
@@ -93,8 +90,8 @@ const today = new Date();
   }
   .bsky {
     filter: var(--svg);
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: auto;
   }
   .gh {
     width: 20px;
@@ -107,6 +104,11 @@ const today = new Date();
   @media screen and (min-width: 200px) and (max-width: 667px) {
     .legal, .license, .privacy {
       font-size: 10px;
+    }
+    .license {
+      content:"\a";
+      white-space: pre;
+      margin: 0 4px 0 -2px;
     }
     .right {
       display: inline-block;
@@ -222,7 +224,7 @@ const today = new Date();
   </div>
   <div class="bottom-row">
     <div class="license">
-      <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" data-umami-event="footer-cc-by-sa-4.0">CC BY-SA 4.0</a>
+      <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" data-umami-event="footer-cc-by-sa-4.0">CC BY-SA 4.0</a> & <a href="https://mit-license.org" target="_blank" data-umami-event="footer-mit-license">MIT</a>
     </div>
     <div class="legal">
       <a href="/privacy" data-umami-event="footer-privacy-policy">Privacy Policy</a>
