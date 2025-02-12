@@ -340,7 +340,7 @@ blockquote a:hover, blockquote a:focus {
 .info {
   width: 32px;
   height: 32px;
-  margin: -14px 0 0 -7px;
+  margin: -14px 0 -8px -7px;
   padding: 0;
   filter: var(--info-svg);
 }
