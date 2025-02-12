@@ -31,6 +31,7 @@
 }
 @media (prefers-color-scheme: light) {
   :root, html {
+    font-size: 24px;
     --main: rgb(255, 255, 255);
     --text: rgb(32, 33, 36);
     --primary: rgb(44 156 195);
@@ -56,6 +57,7 @@
     --info-svg: brightness(0) saturate(100%) invert(77%) sepia(98%) saturate(1742%) hue-rotate(350deg) brightness(96%) contrast(95%);
     --share: brightness(0) saturate(100%) invert(34%) sepia(70%) saturate(5419%) hue-rotate(20deg) brightness(94%) contrast(101%);
     --coffee-hover: brightness(0) saturate(100%) invert(80%) sepia(82%) saturate(863%) hue-rotate(336deg) brightness(105%) contrast(90%);
+    text-wrap: pretty;
     box-sizing: border-box;
     height: 100%;
     scroll-behavior: smooth;
@@ -63,6 +65,7 @@
 }
 @media (prefers-color-scheme: dark) {
   :root, html {
+    font-size: 24px;
     --main: rgb(32, 33, 36);
     --text: rgb(164, 174, 188);
     --primary: rgb(90, 194, 175);
@@ -89,17 +92,18 @@
     --info-svg: brightness(0) saturate(100%) invert(80%) sepia(82%) saturate(863%) hue-rotate(336deg) brightness(105%) contrast(90%);
     --share: brightness(0) saturate(100%) invert(77%) sepia(98%) saturate(1742%) hue-rotate(350deg) brightness(96%) contrast(95%);
     --coffee-hover: brightness(0) saturate(100%) invert(26%) sepia(80%) saturate(1862%) hue-rotate(7deg) brightness(102%) contrast(101%);
+    text-wrap: pretty;
     box-sizing: border-box;
     height: 100%;
     scroll-behavior: smooth;
   }
 }
 body {
+  font-size: 24px;
 	font-family: 'Atkinson', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
-	font-size: 20px;
   line-height: 1.4;
 	margin: auto;
-	padding: 5px;
+	padding: 0 0.25em;
 	text-align: left;
 	word-wrap: break-word;
 	overflow-wrap: break-word;
@@ -200,22 +204,21 @@ input:focus, textarea:focus {
   box-shadow: 0 0 0 0.25rem var(--name);
 }
 button {
-  background: var(--primary);
+  font-family: 'M Plus Rounded 1c Med', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
   color: #000;
   border: 0;
   border-radius: 0.25em;
-  padding: 4px 8px;
+  padding: 4px 8px 3px 8px;
   font-weight: 600;
+  font-size: 0.75em;
 }
  u, em, i {
 	color: var(--emphasis);
 }
-
 strong, b {
 	color: var(--emphasis);
   font-weight: 700;
 }
-
 kbd {
   background-color: #ccc;
   color: #222;
@@ -268,8 +271,8 @@ mark {
 }
 time {
 	color: var(--date);
-  font-family: 'M Plus Rounded 1c Reg';
-  font-size: 16px;
+  font-family: 'M Plus Rounded 1c Reg', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-size: 0.75em;
 }
 img {
 	max-width: 80%;
@@ -337,7 +340,7 @@ blockquote a:hover, blockquote a:focus {
 .info {
   width: 32px;
   height: 32px;
-  margin: -12px;
+  margin: -14px 0 0 -7px;
   padding: 0;
   filter: var(--info-svg);
 }
@@ -427,12 +430,13 @@ aside {
   justify-content: space-between;
 }
 aside > a, aside > a:active, aside > a:visited, aside > a:hover, aside > a:focus {
+  display: flex;
   color: #000;
 }
 .top:hover {
   color: #000;
 }
-article ul, article ol {
+/* article ul, article ol {
   margin: 1.25em auto 1.5em auto;
 }
 article ul ul {
@@ -443,7 +447,7 @@ article ol:first-of-type {
 }
 article ol li, article ul li {
   line-height: 1.5;
-}
+} */
 .sr-only {
 	border: 0;
 	padding: 0;
@@ -461,7 +465,19 @@ article ol li, article ul li {
 	/* added line to stop words getting smushed together (as they go onto seperate lines and some screen readers do not understand line feeds as a space */
 	white-space: nowrap;
 }
+@media screen and (min-width: 668px) and (max-width: 980px) {
+  .top {
+    display: grid;
+    justify-content: end;
+    margin: 0 1em 0 auto;
+  }
+}
 @media screen and (min-width: 200px) and (max-width: 667px) {
+  .top {
+    display: grid;
+    justify-content: space-around;
+    margin: 0 auto;
+  }
   input {
     width: 75%;
   }

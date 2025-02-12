@@ -9,20 +9,29 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "@consts";
 
 <style scoped>
   section {
-    margin-bottom: 2em;
+    margin-bottom: 1em;
   }
   div {
     padding-top: 0.5em;
   }
   .about {
-    display: block;
-    font-size: 3.5em;
+    font-size: 3.25em;
     font-weight: 900;
     text-align: center;
     letter-spacing: -1px;
     word-spacing: -6px;
     line-height: 1;
     -webkit-appearance: none;
+    text-align: center;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
   }
   .name {
     color: var(--primary);
@@ -41,14 +50,18 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "@consts";
       text-shadow: 2px 3px 2px var(--accent);
     }
   }
-  @media screen and (min-width: 668px) and (max-width: 900px) {
+  @media screen and (min-width: 668px) and (max-width: 1048px) {
     .about {
-      font-size: 2.75em;
+      font-size: 2.45em;
     }
   }
   @media screen and (min-width: 200px) and (max-width: 667px) {
+    section {
+      font-size: 0.9em;
+      margin-bottom: 1em;
+    }
     .about {
-      font-size: 2em;
+      font-size: 1.85em;
     }
   }
   .blurb {
@@ -106,7 +119,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "@consts";
       </span>
     </div>
     <p class="blurb">
-      I'm Ariel, known as <span class="name">fullmetalbrackets</span>, a tech enthusiast and hobbyist coder. Welcome to my blog. <span class="blurb2">I mostly write for my own reference about self-hosting, Linux, web development, and really just anything tech that I've learned over many years of tinkering. Each time I learn how to install or run a new thing, I type it up and publish it here. I hope my writings will be helpful to you. Thanks for visiting!</span>
+      I'm Ariel, a tech enthusiast and hobbyist coder. Welcome to my blog. <span class="blurb2">I mostly write for my own reference about self-hosting, Linux, web development, and really just anything tech that I've learned over many years of tinkering. Each time I learn how to install or run a new thing, I type it up and publish it here. I hope my writings will be helpful to you. Thanks for visiting!</span>
     </p>
     <Featured />
     <Categories />

@@ -12,12 +12,10 @@ const posts = (await getCollection("blog")).sort(
     font-family: "M Plus Rounded 1c Reg";
   }
   span {
-    font-size: 110%;
     line-height: 1.4;
   }
   .desc {
     line-height: 1.4;
-    font-size: 90%;
   }
   ul {
     background-color: var(--blockquote);
@@ -51,10 +49,6 @@ const posts = (await getCollection("blog")).sort(
   .posts-title a:hover {
     color: var(--menu);
   }
-  .date {
-    font-size: 0.75em;
-    margin-bottom: 0.25em;
-  }
   li:hover {
     padding-bottom: 0.5em;
     border-bottom: 2px solid var(--hover);
@@ -77,10 +71,8 @@ const posts = (await getCollection("blog")).sort(
     main {
       margin: 0 10px;
     }
-    span {
-      font-size: 100%;
-    }
     ul {
+      padding: 1em 0.75em 0.5em 0.75em;
       width: 100%;
       margin: 0;
     }
