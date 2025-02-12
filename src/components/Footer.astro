@@ -17,7 +17,7 @@ const today = new Date();
       "Open Sans",
       "Helvetica Neue",
       sans-serif;
-    margin: 0 auto;
+    margin: 0 auto 1em auto;
     padding: 0 auto;
     display: grid;
     grid-template-columns: auto auto;
@@ -35,24 +35,23 @@ const today = new Date();
     margin: 0 auto;
     padding: 0 auto;
   }
-  .bottom-row {
-    display: flex;
-    justify-content: space-between;
-    margin: -0.25em auto 1em auto;
-    padding: 0 auto;
-  }
   .legal {
     font-size: 14px;
     font-weight: 700;
-    margin-left: 1em;
   }
-  .license {
+  .bottom-row {
     font-size: 14px;
+    margin: 0 auto 1em auto;
+    padding: 0 auto;
     font-weight: 700;
+  }
+  .mit {
+    margin-left: 2em;
   }
   .privacy {
     font-size: 14px;
     font-weight: 700;
+    margin: -1em auto 0 auto;
   }
   .nav {
     display: flex;
@@ -102,23 +101,28 @@ const today = new Date();
     height: 22px;
   }
   @media screen and (min-width: 200px) and (max-width: 667px) {
-    .legal, .license, .privacy {
-      font-size: 10px;
+    footer {
+      display: grid;
+      place-items: center;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto auto auto;
     }
-    .license {
-      content:"\a";
-      white-space: pre;
-      margin: 0 4px 0 -2px;
+    .legal {
+      grid-row: 1;
+      margin: 0 auto 0.5em auto;
     }
-    .right {
-      display: inline-block;
+    .nav {
+      grid-row: 2;      
+      margin: 0 auto 0.5em auto;
     }
     .bottom-row {
-      margin-top: -5px;
+      grid-row: 3;
+      margin: 0 auto;
+      margin: 0 auto 1em auto;
     }
-    .nav a {
-      margin: 0 5px;
-      padding: 5px 1px;
+    .privacy {
+      grid-row: 4;
+      margin: 0 auto 1em auto;
     }
   }
 </style>
@@ -223,11 +227,9 @@ const today = new Date();
     </div>
   </div>
   <div class="bottom-row">
-    <div class="license">
-      <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" data-umami-event="footer-cc-by-sa-4.0">CC BY-SA 4.0</a> & <a href="https://mit-license.org" target="_blank" data-umami-event="footer-mit-license">MIT</a>
-    </div>
-    <div class="legal">
-      <a href="/privacy" data-umami-event="footer-privacy-policy">Privacy Policy</a>
-    </div>
+      <span class="ccbysa">Content: <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" data-umami-event="footer-cc-by-sa-4.0">CC BY-SA 4.0</a></span> <span class="mit">Code: <a href="https://mit-license.org" target="_blank" data-umami-event="footer-mit-license">MIT</a></span>
+  </div>
+  <div class="privacy">
+    <a href="/privacy" data-umami-event="footer-privacy-policy">Privacy Policy</a>
   </div>
 </footer>
