@@ -1,7 +1,8 @@
 ---
-title: "Homelab Inventory"
-description: "A list of computers, laptops, and other devices in my homelab."
+title: "Hardware Inventory"
+description: "A list of computers, laptops, server and network devices in my home."
 pubDate: 2023-10-01
+updatedDate: 2025-02-13
 tags:
   - docs
 ---
@@ -12,12 +13,11 @@ tags:
 2. [Korben](#korben)
 3. [Potato](#potato)
 4. [Spud](#spud)
-5. [Other](#other)
+5. [Gaming PC](#gamingpc)
 6. [Apollo](#apollo)
-7. [Headless](#headless)
-8. [Worf](#worf)
-9. [Weasley](#weasley)
-10. [Hightower](#hightower)
+7. [Loki](#loki)
+8. [Other](#other)
+9. [Mothballed](#mothball)
 
 <br>
 
@@ -27,17 +27,13 @@ tags:
 
 **Dell XPS 8920**
 
-**IP:** 192.168.0.125
-
 - Intel i7-7700K CPU @ 4.20 GHz
-- 24 GB RAM (4 x 6 GB DDR4)
+- 24 GB DDR4 RAM (4 x 6 GB)
 - 250 GB NVMe SSD (boot drive)
 - 4 x 2 TB 3.5" HDD (large media storage)
 - 1 TB 2.5" HDD (documents, ebooks, photos, etc.)
 - 500 GB 3.5" HDD (backups)
 - 3 x 1 Gbps Ethernet Ports
-
-<br>
 
 <div id='korben'/>
 
@@ -45,32 +41,10 @@ tags:
 
 **Dell Optiplex 3020 Micro**
 
-**IP:** 192.168.0.225
-
 - Intel Pentium G3250T CPU @ 2.8 GHz
-- 8 GB RAM (2 x 4 GB DDR3)
+- 8 GB DDR3 RAM (2 x 4 GB)
 - Internal 320 GB 2.5" HDD (boot drive)
 - 1 Gbps Ethernet
-- 10W - 16W Power Consumption
-
-<br>
-
-<div id='apollo'/>
-
-# Apollo
-
-**Dell Optiplex 3050 SFF**
-
-**IP:** 192.168.0.100
-
-- Intel Core i5-6500 @ 3.60 GHz
-- 16 GB RAM (2 x 8GB DDR4)
-- 256 GB NVMe SSD (boot drive)
-- 1 TB 3.5" HDD (storage)
-- 1 Gbps Ethernet
-- 16W - 22W Power Consumption
-
-<br>
 
 <div id='potato'/>
 
@@ -78,14 +52,9 @@ tags:
 
 **Libre Sweet Potato SBC**
 
-**IP:** 192.168.0.200
-
 - 2 GB RAM
 - 32 GB USB 3.0 Drive
 - 100 Mbps Ethernet
-- 2W - 5W Power Consumption
-
-<br>
 
 <div id='spud'/>
 
@@ -93,107 +62,90 @@ tags:
 
 **Libre Sweet Potato SBC**
 
-**IP:** 192.168.0.205
-
 - 2 GB RAM
 - 32 GB USB 3.0 Drive
 - 100 Mbps Ethernet
-- 2W - 5W Power Consumption
 
 <br>
 
 <hr>
 
-<div id='other'/>
+<div id='gamingpc'/>
 
-# Other Network Devices
+# Gaming PC
 
-<br>
+- Windows 11 Home
+- Intel Core i5-14400 @ 2.50 GHz
+- Nvidia GeForce RTX 4070 Super
+- 32 GB DDR5 RAM (2 x 16 GB, 2 free DIMM)
+- 1 TB NVMe SSD
+- 1 TB SATA SSD
+- 1 TB 3.5" HDD
+- 1 Gbps Ethernet
 
-**Link AX3000 Router**
+<div id='apollo'/>
 
-**IP:** 192.168.0.1
+# Apollo
 
-<br>
+**Dell Optiplex 3050 SFF**
 
-**Netgear 8-port Managed Switch**
+- Debian 12 w/ KDE Plasma
+- Intel Core i5-6500 @ 3.60 GHz
+- 16 GB DDR4 RAM (2 x 8GB)
+- 256 GB NVMe SSD
+- 1 TB 3.5" HDD
+- 1 Gbps Ethernet
 
-**IP:** 192.168.0.250
+<div id='loki'/>
 
-<br>
+# Loki
 
-**Shelly Plug US** (used by Korben)
+**Dell Latitude E5370** (laptop)
 
-**IP:** 192.168.0.145
-
-<br>
-
-**Shelly Plug US** (used by Athena)
-
-**IP:** 192.168.0.150
-
-<br>
-
-**Shelly Plug US** (used by Gaming PC)
-
-**IP:** 192.168.0.155
-
-<br>
-
-<hr>
-
-The below machines are not currently in use.
-
-<br>
-
-<div id='headless'/>
-
-# Headless
-
-**HP Pavilion g7**
-
-**IP:** 192.168.0.175
-
+- Pop! OS 22.04 LTS
+- Intel Core i5-6300U @ 3.00 GHz
 - 8 GB RAM
-- 120 GB 2.5" HDD
+- 500 GB 2.5" HDD
+- 1 Gbps Ethernet
+
+<br>
+
+<hr>
+
+# Other Gear
+
+- GL.iNet Flint 2 Router
+- TP-Link Archer AX55/AX3000
+- Netgear GS108E 8-port Managed Switch
+- TP-Link AX1500 WiFi Extender
+- Netgear EX6250 WiFi Extender
+- 3 x Shelly Plus Plug US
+
+<br>
+
+<hr>
+
+<div id='mothballed'/>
+
+# Mothballed
+<br>
+
+### HP Pavilion g7
+- Hostname: **Headless**
+- Intel Core i7-3632QM @ 2.2 GHz
+- AMD Radeon HD 7670 GPU
+- 6 GB DDR3 RAM
 - 100 Mbps Ethernet
-- 15W - 25W Power Consumption
 
-<br>
-
-<div id='worf'/>
-
-# Worf
-
-**HP Compaq 6910p**
-
-- 8GB RAM
-- 120GB 2.5" HDD
+### HP Compaq 6910p
+- Hostname: **Worf**
+- Intel Core 2 Duo T7300 @ 2 GHz
+- Mobility Radeon X2300
+- 1 GB RAM
 - 1 Gbps Ethernet
-- 18W - 28W Power Consumption
 
-<br>
-
-<div id='weasley'/>
-
-# Weasley
-
-**Dell Studio 1535**
-
-- 8 GB RM
-- 120 GB 2.5" HDD Boot Drive
+### Dell Studio 1535
+- Hostname: **Weasley**
+- Intel Core 2 @ 2.66 GHz
+- 4 GB DDR2 RAM
 - 1 Gbps Ethernet
-- 30W - 40W Power Consumption
-
-<br>
-
-<div id='hightower'/>
-
-# Hightower
-
-**Dell Dimension E150**
-
-- 6 GB RAM (one broken?)
-- 80 GB 3.5" HDD
-- 100 Mbps Ethernet (optional gigabit NIC with ~600 Mbps capable)
-- 200W+ Idle Power Consumption!
