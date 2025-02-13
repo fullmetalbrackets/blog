@@ -24,7 +24,7 @@ const { slug } = Astro.params;
       margin-top: 1em;
     }
     article {
-      margin-top: 2em;
+      margin: 2em auto;
     }
     div {
       display: inline-flex;
@@ -87,6 +87,7 @@ const { slug } = Astro.params;
     }
     .post-end {
       font-family: "M Plus Rounded 1c Med";
+      margin: 0 auto 2em auto;
     }
     .coffee {
       display: grid;
@@ -95,9 +96,12 @@ const { slug } = Astro.params;
       grid-template-rows: 1fr 1fr;
       place-items: center;
       gap: 0;
-      margin: 1px auto 0 auto;
       padding: 0 auto;
       cursor: default;
+      width: 325px;
+    }
+    .coffee span {
+      margin-bottom: 1em;
     }
     .share {
       display: grid;
@@ -107,21 +111,19 @@ const { slug } = Astro.params;
       grid-template-rows: auto auto;
       place-items: center;
       gap: 0;
-      margin: 1.5em auto 0.75em auto;
-      padding: 0.25em auto 0 auto;
       cursor: default;
-    }
-    .share span {
-      margin: 0 auto 0.5em auto;
+      width: 325px;
+      height: 130px;
     }
     .umami {
       display: grid;
       color: var(--primary);
       grid-template-columns: auto;
       grid-template-rows: auto auto;
-      margin: -2px auto 0 auto;
       padding-top: 0.3em;
       cursor: default;
+      width: 325px;
+      height: 115px;
     }
     .stats {
       display: inline-block;
@@ -155,16 +157,51 @@ const { slug } = Astro.params;
     .stats:hover img {
       filter: var(--coffee-hover);
     }
+    .questions {
+      display: grid;
+      place-items: center;
+      grid-template-columns: auto;
+      grid-template-rows: auto;
+      width: 325px;
+    }
+    .questions span {
+      font-family: "M Plus Rounded 1c Med";
+      color: var(--primary);
+    }
+    .email {
+      display: inline-flex;
+      align-items: center;
+      text-align: center;
+      border-radius: 0.5em;
+      cursor: pointer;
+      font-weight: 600;
+      margin: 0 auto;
+      text-decoration: none;
+      font-family: 'M Plus Rounded 1c Med';
+      line-height: 1.5;
+    }
+    .email img {
+      margin: 1px auto -5px auto;
+      width: 25px;
+      height: auto;
+    }
+    .email:hover img {
+      filter: var(--coffee-hover);
+    }
+    .email a {
+      margin: 2px auto;
+      color: #000;
+    }
+    .email a:hover, .email a:focus {
+      color: var(--hover);
+    }
     @media screen and (max-width: 900px) {
       .post-end {
         display: grid;
         grid-template-columns: auto auto;
         justify-content: space-around;
         place-items: center;
-        gap: 0 10%;
-      }
-      .umami {
-        margin-top: 1em;
+        gap: 0;
       }
       .share {
         grid-row: 1;
@@ -174,6 +211,9 @@ const { slug } = Astro.params;
     @media screen and (max-width: 720px) {
       h1 {
         font-size: 1.35em;
+      }
+      article {
+        margin-bottom: 3em;
       }
       div {
         display: grid;
@@ -195,23 +235,28 @@ const { slug } = Astro.params;
         grid-template-columns: auto;
         justify-content: center;
         place-items: center;
+        margin: 0 auto 0.25em auto;
         gap: 0 0;
       }
       .coffee {
         grid-row: 1;
         grid-column: 1;
         margin: -1em auto 0.5em auto;
+        width: auto;
       }
       .share {
         grid-row: 2;
         grid-column: 1;
-        margin-bottom: 0;
+        margin: 1.5em auto -0.5em auto;
+        width: auto;
       }
       .umami {
-        grid-row: 3;
-        grid-column: 1;
-        height: auto;
-        margin-top: 0.75em;
+        width: auto;
+        margin: 0 auto 1em auto;
+      }
+      .questions {
+        width: auto;
+        margin: 0.5em auto 1em auto;
       }
     }
     </style>
@@ -278,6 +323,16 @@ const { slug } = Astro.params;
       </script>
     </div>
 
+    <div class="share">
+      <span>Want to share this article?</span>
+      <SocialShare
+      description={description}
+      title={title}
+    />
+    </div>
+
+  </aside>
+  <aside class="post-end">
     <div class="umami">
       <span>
         Want to see article stats?
@@ -296,15 +351,19 @@ const { slug } = Astro.params;
         </span>
       </button>
     </div>
-
-    <div class="share">
-      <span>Want to share this article?</span>
-      <SocialShare
-      description={description}
-      title={title}
-    />
+    <div class="questions">
+      <span>Have any questions?</span>
+        <button class="email">
+          <a 
+            href={`mailto:contact@fullmetalbrackets.com?subject=RE: ${title}`}>
+              <img src="/assets/email.svg"
+                class="email"
+                loading="lazy"
+                decoding="async"
+                alt="Email"> Email Me
+          </a>
+        </button>
     </div>
-
   </aside>
   <hr />
   <aside>
