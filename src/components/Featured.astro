@@ -83,7 +83,7 @@ const posts = (await getCollection("blog")).sort(
   <h2>Featured Articles</h2>
   <ul>
     <li>
-      <a href="/blog/reverse-proxy-using-nginx-pihole-cloudflare/" rel="prefetch-intent" data-umami-event="recent-post">
+      <a href="/blog/reverse-proxy-using-nginx-pihole-cloudflare/" rel="prefetch-intent" data-umami-event="recent-post-proxy-pihole">
       <p class="posts-title">Setting up a reverse proxy for HTTPS with a custom domain using Nginx Proxy Manager, Pi-Hole and Cloudflare</p>
       <p class="desc">
         I've used a reverse proxy to access my self-hosted apps and services for years, but I recently re-did everything from scratch and decided to write it down. When done, we'll be able to access our apps and services through a custom domain, with unique sub-domains for each app or service, with full HTTPS and accessible only locally.
@@ -91,18 +91,19 @@ const posts = (await getCollection("blog")).sort(
       </a>
     </li>    
     <li>
-      <a href="/blog/self-host-website-cloudflare-tunnel/" rel="prefetch-intent" data-umami-event="recent-post">
-      <p class="posts-title">Complete guide to self-hosting a website through Cloudflare Tunnel</p>
+      <a href="/blog/self-host-website-cloudflare-tunnel/" rel="prefetch-intent" data-umami-event="recent-post-tunnel-apps">
+      <p class="posts-title">Setup a Cloudflare Tunnel to securely access self-hosted apps with a domain from outside the home network</p>
       <p class="desc">
-          Self-hosting a static web blog has never been easier thanks to Cloudflare Tunnel. In this guide I explain how to expose a static website hosted on machine inside my network to the internet using Nginx as webserver and securing it with various free Cloudflare services.
+        Cloudflare Tunnels have been around for a few years and are well regarded alternatives for VPNs or port-forwarding on a router. They are often used to expose access to self-hosted apps from outside the local network with minimal config or hassle. Here's how it's done.
       </p>
       </a>
     </li>
     <li>
-      <a href="/blog/comprehensive-guide-tailscale-securely-access-home-network/" rel="prefetch-intent" data-umami-event="recent-post">
-      <p class="posts-title">Comprehensive guide to setting up Tailscale to securely access your home network from anywhere</p>
+      <a href="/blog/expose-plex-tailscale-vps/" rel="prefetch-intent" data-umami-event="recent-post-plex-tailscale">
+      <p class="posts-title">How to securely expose Plex from behind CGNAT using Tailscale and a free Oracle VM
+      </p>
       <p class="desc">
-        Accessing self-hosted services from outside the home can be a challenge, especially when dealing with CGNAT and having to forward ports from the router. It can be complex to manage and potentially dangerous to your home network's privacy and security if not done right, but Tailscale makes it easy to set up encrypted peer-to-peer connections between devices across different networks. In this guide I will explain how I use Tailscale as a VPN for secure remote access to my home network.
+        I wrote before about securely exposing Plex for external access, but my previous solution relied on Cloudflare Tunnel and it was technically against their TOS. So I switched to using a Oracle VM on their free-tier, connecting it to my home network with Tailscale, and exposing Plex via reverse proxy. It works like a charm!
       </p>
       </a>
     </li>
