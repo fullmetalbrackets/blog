@@ -63,5 +63,25 @@ export default defineConfig({
       status: 301,
       destination: '/blog/expose-plex-tailscale-vps/',  
     },
+    '/tailscale': {
+      status: 302,
+      destination: '/blog/comprehensive-guide-tailscale-securely-access-home-network/',
+    },
+    '/mergerfs': {
+      status: 302,
+      destination: '/blog/two-drives-mergerfs/',
+    },
+    '/tunnel': {
+      status: 302,
+      destination: '/blog/setup-cloudflare-tunnel-to-access-self-hosted-apps/',
+    },
+    '/plex-tailscale': {
+      status: 301,
+      destination: '/blog/expose-plex-tailscale-vps/',
+    },
+    '/reverse-proxy': {
+      status: 301,
+      destination: '/blog/reverse-proxy-using-nginx-pihole-cloudflare/',
+    },
   },
 });
