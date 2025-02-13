@@ -287,6 +287,7 @@ code {
 	border-radius: 0.25em;
   font-size: 18px;
   white-space: pre;
+  text-wrap: pretty;
 }
 pre {
 	padding: 1rem;
