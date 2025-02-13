@@ -3,7 +3,13 @@ Allow: /
 Disallow: /404
 Disallow: /feedback
 Disallow: /thanks
+Disallow: /social
+Disallow: /feed
+Disallow: /umami
+Disallow: /donate
+Disallow: /donate/
+Disallow: /feed/
 
-Host: https://arieldiaz.codes
+Host: https://fullmetalbrackets.com
 
-Sitemap: https://arieldiaz.codes/sitemap-index.xml
+Sitemap: https://fullmetalbrackets.com/sitemap-index.xml
