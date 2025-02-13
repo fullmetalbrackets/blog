@@ -2,7 +2,7 @@
 title: "How to use Solid Explorer app to access SMB network shares from an Android device"
 description: "There are many File Managers/File Explorers on the Google Play Store, but I wanted to easily access the Samba share on my server while on my home network. Solid Explorer is the solution I went with and it works well, so here is a quick guide to setting it up."
 pubDate: 2022-11-07
-updatedDate: 2025-02-02
+updatedDate: 2025-02-12
 tags:
   - android
 ---
@@ -15,7 +15,10 @@ tags:
 
 ## Connect Solid Explorer to SMB share
 
-Make sure your Android Device is connected to the same network as the machine with the SMB share. Open the Solid Explorer app and
+
+First, make sure you're on the same Wi-Fi network as the SMB share you want to access in Solid Explorer. (Setting this up to be available from outside the home network is possible, but beyond the scope of this article. But <a href="/blog/tailscale" target="_blank" data-umami-event="solid-explorer-tailscale">this might interest you.</a>)
+
+Open the Solid Explorer app and
 tap the _hamburger menu_ at the top-left to bring up the menu, then tap the _3-dots_ and choose _Storage manager_.
 
 ![Solid Explorer.](../../img/blog/solidexplorer1.jpg 'Solid Explorer')
@@ -73,10 +76,10 @@ All done! Now you can easily access your SMB shares from your Android device wit
 
 ## References
 
-- <a href="https://play.google.com/store/apps/details?id=pl.solidexplorer2&hl=en_US&gl=US&pli=1" target="_blank"></a>
+- <a href="https://play.google.com/store/apps/details?id=pl.solidexplorer2&hl=en_US&gl=US&pli=1" target="_blank" data-umami-event="solid-explorer-google-play"></a>
 
 ## Related Articles
 
-> <a href="/blog/setup-a-samba-share-on-linux-via-command-line/" data-umami-event="solid-explorer-related-smb-share-linux-cli">Setup a Samba share on Linux via command line</a>
+> <a href="/blog/xplore-android-smb-share/" data-umami-event="solid-explorer-related-xplorer">Setup X-plore File Manager on Android to transfer files to an SMB share</a>
 
-> <a href="/blog/xplore-android-smb-share/" data-umami-event="solid-explorer-related-google-play-store">Solid Explorer on the Google Play Store</a>
+> <a href="/blog/setup-a-samba-share-on-linux-via-command-line/" data-umami-event="solid-explorer-related-smb-share-linux-cli">Setup a Samba share on Linux via command line</a>
