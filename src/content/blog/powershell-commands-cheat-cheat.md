@@ -40,7 +40,7 @@ PowerShell cmdlets have aliases identical to their equivalent Linux commands, he
 
 - <a href="https://learn.microsoft.com/en-us/powershell/?view=powershell-7.2" target="_blank">PowerShell Documentation</a>
 
-## Related Articles
+### Related Articles
 
 > [Customizing the Windows Terminal command prompt with Oh-My-Posh](/blog/customizing-windows-terminal-with-ohmyposh/)
 

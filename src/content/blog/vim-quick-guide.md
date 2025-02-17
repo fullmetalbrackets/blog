@@ -6,17 +6,9 @@ tags:
   - linux
 ---
 
-## Sections
-
-1. [Vim Commands](#cmd)
-2. [Making sense of Vi (and Vim)](#vi)
-3. [Reference](#ref)
-
-<div id='cmd'/>
+## Vim Commands
 
 In my search for a tutorial or guide to help me understand how Vim works, I came upon <a href="https://stackoverflow.com/questions/11828270/how-do-i-exit-vim" target="blank">this Stack Overflow thread</a> with excellent answers. My favorite of these are below, but feel free to dive deep at the original link.
-
-## Vim Commands
 
 | Key    | Effect                                                                             |
 | ------ | ---------------------------------------------------------------------------------- |
@@ -27,8 +19,6 @@ In my search for a tutorial or guide to help me understand how Vim works, I came
 | `:x`   | to write and quit (similar to `:wq`, but only write if there are changes)          |
 | `:qa`  | to quit all (short for `:quitall`)                                                 |
 | `:cq`  | to quit without saving and make Vim return non-zero error (i.e. - exit with error) |
-
-<div id='vi'/>
 
 ## Making sense of Vi (and Vim)
 
@@ -71,8 +61,6 @@ From _INSERT_ mode, you need to push <kbd>Esc</kbd>, going to _COMMAND_ mode, an
 If you are unsure, push <kbd>Esc</kbd> and that will bring you to command mode.
 
 So, the robust method, which saves your file and quits, is to hit <kbd>Esc</kbd>, type `:x`, then hit <kbd>Enter</kbd>.
-
-<div id='ref'/>
 
 ## Reference
 

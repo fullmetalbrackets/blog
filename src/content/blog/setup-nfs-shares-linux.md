@@ -6,15 +6,6 @@ tags:
   - networking
 ---
 
-## Table of Contents
-
-1. [Set up the NFS server](#server)
-2. [Set up the NFS client](#client)
-3. [Add the NFS share to fstab](#fstab)
-4. [References](#ref)
-
-<div id='server'/>
-
 ## Set up the NFS server
 
 Install the NFS server package and all dependencies on the Linux host that will be the NFS server, sharing one of it's directories over the network:
@@ -55,8 +46,6 @@ sudo exportfs -a
 sudo systemctl restart nfs-server
 ```
 
-<div id='client'/>
-
 ## Set up the NFS client
 
 Install the NFS client package and all dependencies on a Linux host you want to allow to access the NFS server share:
@@ -85,8 +74,6 @@ sudo mount -t nfs 192.168.1.100:/home/ross/share /mnt/share
 
 `mount -t nfs` specifies the directory being mounted is an NFS share from another host, `192.168.1.100:/home/ross/share` is the IP address of the server (can also use hostname) and the path of the shared directory, and `/mnt/share` is the local directory to mount the network share to.
 
-<div id='fstab'/>
-
 ## Add the NFS share to fstab
 
 To have Linux auto-mount the share at boot, edit the _fstab_ file with `sudo nano /etc/fstab` and add the following to the bottom:
@@ -95,15 +82,13 @@ To have Linux auto-mount the share at boot, edit the _fstab_ file with `sudo nan
 192.168.1.100:/home/ross/media /mnt/share nfs defaults 0 0
 ```
 
-<div id='ref'/>
-
 ## References
 
 - <a href="https://man7.org/linux/man-pages/man5/exports.5.html" target="_blank" data-umami-event="setup-nfs-exports-manpage">Exports man page</a>
 - <a href="https://cloud.netapp.com/blog/azure-anf-blg-linux-nfs-server-how-to-set-up-server-and-client" target="_blank" data-umami-event="setup-nfs-netapp-blog">How to setup NFS server and client by Netapp Blog</a>
 - <a href="https://www.golinuxcloud.com/nfs-exports-options-examples" target="_blank" data-umami-event="setup-nfs-onlinuxcloud">Practical NFS share examples by OnLinuxCloud</a>
 
-## Related Articles
+### Related Articles
 
 > <a href="/blog/mounting-hard-drives-in-linux/" data-umami-event="setup-nfs-mount-hdds">Mounting (either internal or external) hard drives in Linux</a>
 

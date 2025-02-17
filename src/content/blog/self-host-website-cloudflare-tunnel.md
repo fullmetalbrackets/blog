@@ -7,19 +7,6 @@ tags:
   - cloudflare
 ---
 
-## Sections
-
-1. [What and How](#what)
-2. [The website](#site)
-3. [Install Docker and set up the Nginx container](#nginx)
-4. [Add a domain in Cloudflare](#domain)
-5. [Set up the Cloudflare tunnel](#tunnel)
-6. [Set up a redirect](#redirect)
-7. [Configure HTTP response headers on Cloudflare](#headers)
-8. [References](#ref)
-
-<div id='what' />
-
 ## What and How
 
 You can very easily set up and host a website via <a href="https://netlify.com" target="_blank" data-umami-events="tunnel-guide-netlify">Netlify</a>, <a href="https://pages.cloudflare.com" target="_blank" data-umami-events="tunnel-guide-cf-pages">Cloudflare Pages</a>, or <a href="https://pages.github.com" target="_blank" data-umami-events="tunnel-guide-gh-pages">GitHub Pages</a>, <a href="https://vercel.com" target="_blank" data-umami-events="tunnel-guide-vercel">Vercel</a>, <a href="https://surge.sh" target="_blank" data-umami-events="tunnel-guide-surge">Surge.sh</a>, or many other free or paid options. Honestly, it's never been easier to have a website and there's never been more free options.
@@ -38,15 +25,11 @@ First, requirements:
 
 5. Though they can be run bare metal, I like to run both _Cloudflare Tunnel_ and _Ngnix_ as Docker containers so that everything is portable and easily repeatable. So you'll need to install Docker and all it's dependencies, which I'll explain below.
 
-<div id='site' />
-
 ## The website
 
 Like I said, I'm not explaining how to build a website here. Assuming you used **Astro** as I suggested, use the command `npx run build` or `yarn build` to build the site for deployment. It will output to a `/dist` directory, these static files are what we will serve to the internet.
 
 Make a note of the full path to your website's output directory, for example `/home/bob/sites/my-cool-blog/dist`.
-
-<div id='nginx' />
 
 ## Install Docker and set up the Nginx container
 
@@ -110,8 +93,6 @@ Finally, still in the site's root directory, use the command `docker compose up 
 
 If you only want to self-host a site that you can access from within your home network, and you don't want to expose it to the internet, then you're done! Otherwise, read on to expose it to the internet with a Cloudflare Tunnel, without need to open ports on your router.
 
-<div id='domain' />
-
 ## Add a domain in Cloudflare
 
 Create your <a href="https://dash.cloudflare.com/sign-up" target="_blank" data-umami-events="tunnel-guide-cf-signup">free Cloudflare account</a> if you haven't already. **If you bought a domain on Cloudflare, you can skip to the next section since it is auto-configured already.** If your domain is from another registrar, we'll need to add it to Cloudflare:
@@ -139,8 +120,6 @@ Create your <a href="https://dash.cloudflare.com/sign-up" target="_blank" data-u
 7. Now you'll have to wait a few minutes for the changes to propagate, then click on **Check nameservers** and reload the page. If it's still shows _Pending_ next to the domain at the top, just keep waiting and reload again after a few more minutes.
 
 8. Once the domain is _Active_, you're ready to set up the Cloudlare Tunnel.
-
-<div id='tunnel' />
 
 ## Create and configure the Cloudflare tunnel
 
@@ -232,8 +211,6 @@ Finally, we need to configure SSL for the website!
 
 Now you should be able to visit `https://your-domain.com` and see your website!
 
-<div id='redirect'>
-
 ## Set up a redirect
 
 Right now, going to `your-domain.com` should work, but you may notice that going to `www.your-domain.com` does not. Normally you'd set up an _A record_ in your webhost's DNS settings, but Cloudflare Tunnels work a little differently -- they don't use A records. Instead, we'll set up a _CNAME_ for `www`, point it at the tunnel ID, and create a redirect rule.
@@ -280,8 +257,6 @@ concat("https://","your-domain.com",http.request.uri.path)
 
 Now when you go to `www.your-domain.com` it should redirect to `your-domain.com`.
 
-<div id='headers' />
-
 ## Configure HTTP response headers on Cloudflare
 
 Though optional, it's always good practice to set up your HTTP response headers on any website you host. If you check your site on <a href="https://securityheaders.com/" target="_blank" data-umami-events="tunnel-guide-securityheaders">securityheaders.com</a> you'll probably have an F grade. A lot of tech blogs don't bother with this, most that I have checked get a D+ at best, so don't think it's required by any stretch. However, if you feel like going that extra step to get an A+, here is how:
@@ -304,8 +279,6 @@ Note that for the `permissions-policy` I've chosen to disable everything since I
 
 Once that is done, click the **Deploy** button. Wait a few minutes, then check your security headers again, and now it should be A+.
 
-<div id='ref' />
-
 ## Reference
 
 - <a href="https://developers.cloudflare.com/fundamentals/get-started/setup/add-site/" target="_blank" data-umami-events="tunnel-guide-docs-add-site">Cloudflare Docs - Add a site</a>
@@ -314,7 +287,7 @@ Once that is done, click the **Deploy** button. Wait a few minutes, then check y
 - <a href="https://developers.cloudflare.com/rules/url-forwarding/single-redirects/create-dashboard" target="_blank" data-umami-events="tunnel-guide-docs-redirect-rule">Cloudflare Docs - Create redirect rule</a>
 - <a href="https://blog.cloudflare.com/transform-http-response-headers" target="_blank" data-umami-events="tunnel-guide-cfblog-transform-headers">Cloudflare Blog - Modifying HTTP response headers with Transform Rules</a>
 
-## Related Articles
+### Related Articles
 
 > <a href="/blog/setup-cloudflare-tunnel-to-access-self-hosted-apps/" data-umami-event="tunnel-guide-to-tunnel-selfhosted-apps">Setup a Cloudflare Tunnel to securely access self-hosted apps with a domain from outside the home network</a>
 

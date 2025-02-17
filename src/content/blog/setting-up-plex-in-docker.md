@@ -7,14 +7,6 @@ tags:
   - docker
 ---
 
-## Table of Contents
-
-1. [Installing Plex as a Docker container](#install)
-2. [Configuring Plex](#config)
-3. [References](#ref)
-
-<div id='install'/>
-
 ## Installing Plex as a Docker container
 
 If you haven't already, install Docker and all it's dependencies quickly their official install script:
@@ -64,8 +56,6 @@ Once your compose file is ready, save it and exit the editor. Now from within th
 docker compose up -d
 ```
 
-<div id='config'/>
-
 ## Configuring Plex
 
 Wait a minute while the container is downloaded and install. After completion, use the command `docker ps` to verify the container is up and running. You should see output similar to the below:
@@ -97,15 +87,13 @@ Next choose the local directory from the list, in this case _movies_ (the Docker
 
 Your movies should now appear within the _Movies_ section of the Plex UI. Repeat the process to add other directories for your _TV_, _Music_ and _Photos_ libraries. And you're done! You can now watch Plex right in the web UI, or (ideally) by downloading and signing into the Plex app on devices in your network.
 
-<div id='ref'/>
-
 ## References
 
 - <a href="https://linuxserver.io" target="_blank" data-umami-event="setup-plex-linuxserver">Linuxserver</a>
 - <a href="https://plex.tv" target="_blank" data-umami-event="setup-plex-plexsite">Plex</a>
 - <a href="https://docker.com" target="_blank" data-umami-event="setup-plex-docker">Docker</a>
 
-## Related Articles
+### Related Articles
 
 > <a href="/blog/expose-plex-tailscale-vps/" data-umami-event="setup-plex-related-expose-tailscale-vps">How to securely expose Plex from behind CGNAT using Tailscale and a free Oracle VM</a>
 

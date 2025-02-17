@@ -2,82 +2,146 @@
 title: "Bootstrapping a fresh Linux install with Ansible"
 description: "Ansible is an IT tool that enables Infrastructure as Code, letting you automate provisioning, configuration, management and deployment of services and applications. I like using it at a fraction of it's full power to bootstrap fresh installs of Linux for my homelab."
 pubDate: 2022-09-03
+updatedDate: 2025-02-17
 tags:
   - command line
 ---
 
-## Sections
-
-1. [Install Ansible](#install)
-2. [The playbook](#playbook)
-3. [The inventory and config files](#config)
-4. [Running the playbook](#run)
-5. [References](#ref)
-
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
-> This is not a comprehensive tutorial for Ansible, but simple a terse quick guide of my personal use case for Ansible in my home lab. For a deeper dive, I strongly suggest <a href="https://www.learnlinux.tv/getting-started-with-ansible/" target="_blank">Learn Linux TV series of Ansible tutorials</a> which is how I first learned to use it myself.
-
-<div id='install'/>
+> This is not a comprehensive tutorial for Ansible, but simply a terse quick guide of my personal use case for Ansible in my home lab. For a deeper dive on Ansible, I strongly suggest <a href="https://www.learnlinux.tv/getting-started-with-ansible/" target="_blank">Learn Linux TV series of Ansible tutorials</a> which is how I first learned to use it myself.
 
 ## Install Ansible
 
-First install <em>Ansible</em>, which requires adding the repository to download the package via APT.
+First install **Ansible** via package manager. Note that there's actually two packages to choose from: `ansible-core` is very minimal and only comes with a small set of modules and plugins, while `ansible` is a larger "batteries included" package with that comes with many Ansible Collections. The playbook I use and which I'll discuss below only uses built-in modules included in `ansible-core`, but if you plan to make more {{ ansible_user }}vanced playbooks, you should probably just install `ansible` from the start.
 
-```bash
-sudo apt-add-repository ppa:ansible/ansible
+Ansible is available in some, but not all package managers. If it's not available via your distribution's package manager, see the <a href="https://docs.ansible.com/ansible/latest/installation_guide/installation_distros.html#installing-distros" target="_blank" data-umami-event="ansible-installing-distros">Ansible documentation</a> for other ways.
+
+The below will assume you're using Debian or Ubuntu, which first requires adding the Ansible <a href="https://launchpad.net/ubuntu/+ppas" target="_blank" data-umami-event="ansible-ppas">PPA</a>:
+
+```sh
+sudo add-apt-repository ppa:ansible/ansible
 sudo apt install ansible -y
 ```
 
-<div id='playbook'/>
+## The configuration file
+
+For configuration, Ansible uses a `ansible.cfg` file, which uses INI syntax. A base config exists at `/etc/ansible/ansible.cfg`, but you can create a project-specific config file and any changes you make there will supercedes the base config. It's not required, but without it you have to pass a bunch of options when executing the playbook, like `--private_key_file` to specify an SSH key to use. Here is mine:
+
+```ini
+# ansible.cfg
+
+[defaults]
+
+inventory = hosts.yaml
+private_key_file = ~/.ssh/id_ed25519
+retry_files_enabled = False
+ansible_python_interpreter = /usr/bin/python3
+timeout = 30
+
+[privilege_escalation]
+
+become = True
+become_method = sudo
+become_user = root
+become_ask_pass = False
+
+[ssh_connections]
+
+pipelining = True
+scp_if_ssh = True
+```
+
+Some of these should be fairly self-explanatory. `scp_if_ssh` speeds up file copying a little and `pipelining = true` vastly improves the speed at which Ansible executes tasks.
+
+## The inventory file
+
+Next we need the inventory file, which can be in either YAML or INI synxtax, but I'm much more comfortable working with YAML, so that's what I use.
+
+```yaml
+# hosts.yaml
+
+---
+all:
+  vars:
+    ansible_user: # user
+    ansible_connection: ssh
+
+  children:
+    servers:
+      hosts:
+        athena:
+          ansible_host: # ip address
+        korben:
+          ansible_host: # ip address
+        zima:
+          ansible_host: # ip address
+
+    mini:
+      hosts:
+        potato:
+          ansible_host: # ip address
+        spud:
+          ansible_host: # ip address
+
+    pc:
+      hosts:
+        apollo:
+          ansible_host: # ip address
+        loki:
+          ansible_host: # ip address
+
+    remote:
+      hosts:
+        outpost:
+          ansible_host: # ip address
+        bastion:
+          ansible_host: # ip address
+```
+
+This inventory is divided into different groups of hosts, and the playbook can target specific ones -- for example only `server` hosts get Cockpit installed and only `pc` hosts (a desktop and a laptop) get Google Chrome. I use the same username on all my machines, so I pass it via the `{{ ansible_user }}` variable.
 
 ## The playbook
 
-Contents of the playbook, which I named `bootstrap.yml`:
+The below playbook is what I use to bootstrap my Linux machines. It's pretty basic, compared with all that Ansible can do, but set up my machines up with essential packages and some of my custom configurations. Copies of dotfiles and configs for SMB, Git and more are kept in a `files` subdirectory within the Ansible repo. The playbook backs up the existing files on the target machine and copy over my custom ones.
 
 ```yaml
+# bootstrap.yaml
+
 - name: Bootstrap Linux Server
-  hosts: hostname-or-IP-address
-  become: true
   vars:
-    user: admin
+    user: # user
 
   tasks:
-    - name: Update all installed packages
+    - name: Safe upgrade of all installed packages
       apt:
         update_cache: yes
-        name: "*"
-        state: latest
+        upgrade: safe
+        cache_valid_time: 86400
 
     - name: Install various apt packages
       apt:
         update_cache: yes
-        name:
+        name: # list packages to install
           - zsh
           - git
           - sudo
-          - vim
-          - htop
-          - inxi
+          - curl
+          - wget
+          - rsync
           - net-tools
-          - speedtest-cli
+          - smartmontools
           - samba
           - cifs-utils
-          - docker
-          - docker-compose
-          - smartmontools
-          - neofetch
+          - nfs-kernel-server
         state: present
         install_recommends: yes
-      when: ansible_distribution == 'Debian' or ansible_distribution == 'Kali' or ansible_distribution == 'Linuxmint' or ansible_distribution == 'Ubuntu'
 
     - name: Clean cache & remove unnecessary dependencies
       apt:
         autoclean: yes
         autoremove: yes
-      when: ansible_distribution == 'Debian' or ansible_distribution == 'Kali' or ansible_distribution == 'Linuxmint' or ansible_distribution == 'Ubuntu'
 
-    # Samba
     - name: Copy the Samba config file
       copy:
         src: files/smb
@@ -103,42 +167,42 @@ Contents of the playbook, which I named `bootstrap.yml`:
         name: nmbd
         enabled: yes
 
-    - name: Copy the zsh config file
+    - name: Backup default SMB config & copy over custom SMB config
       copy:
-        src: files/zshrc
-        dest: /home/user/zshrc # rename file to .zshrc after setting up oh-my-zsh
-        owner: user
-        group: group
-        mode: 0644
-
-    - name: Copy the aliases file
-      copy:
-        src: files/aliases
-        dest: /home/user/.aliases
-        owner: user
-        group: group
-        mode: 0644
+        src: files/samba/smb.conf
+        dest: /etc/samba/smb.conf
 
     - name: Copy the Git config file
       copy:
-        src: files/gitconfig
-        dest: /home/user/.gitconfig
-        owner: user
-        group: group
-        mode: 0644
+        src: files/git/.gitconfig
+        dest: "/home/{{ ansible_user }}/.gitconfig"
 
-    - name: Copy the Nano config file
+    - name: Backup default Nano config & copy custom Nano config
       copy:
-        src: files/nanorc
+        src: files/nano/nanorc
         dest: /etc/nanorc
+        mode: "0644"
+        backup: yes
+
+    - name: Copy .zshrc file
+      copy:
+        src: files/zshrc
+        dest: "/home/{{ ansible_user }}/.zshrc"
         owner: user
         group: group
         mode: 0644
 
-    # Final steps
+    - name: Copy .aliases file
+      copy:
+        src: files/aliases
+        dest: "/home/{{ ansible_user }}/.aliases"
+        owner: user
+        group: group
+        mode: 0644
+
     - name: Set the default shell
       user:
-        name: "user"
+        name: "{{ ansible_user }}"
         shell: "zsh"
 
     - name: Check if reboot is required
@@ -152,130 +216,30 @@ Contents of the playbook, which I named `bootstrap.yml`:
       when: reboot_required_file.stat.exists
 ```
 
-This playbook will installs a selection of packages I commonly use, changes the default shell, and copies over dotfiles and other configs.
-
-<div id='config'/>
-
-## The inventory and config files
-
-Next we need the inventory file, which I named `hosts` (no file extension) and I'm using the INI file format (you can also use YAML if you prefer):
-
-```ini
-[server]
-192.168.1.200
-192.168.1.210
-
-[test]
-192.168.1.220
-
-[all:vars]
-ansible_user=username
-ansible_sudo_pass=password
-```
-
-This inventory is very simple, it gives Ansible two groups of hosts as targets `[server]` and `[test]`, and provides a superuser and their sudo password as variables for all targets. This works for me because I use the same username and password for all the linux machines on my network, but you can make different sets of variables, for example:
-
-```clike
-[targets]
-192.168.1.200   ansible_user=user1   ansible_password=password2
-192.168.1.210   ansible_user=user2   ansible_password=password1
-192.168.1.220   ansible_user=user3   ansible_password=password3
-```
-
-Next is the configuration file, `ansible.cfg`:
-
-```ini
-[defaults]
-inventory = hosts
-private_key_file = ~/.ssh/id_ed25519
-retry_files_enabled = False
-ansible_python_interpreter=/usr/bin/python3
-timeout=30
-
-[ssh_connections]
-pipelining = true
-```
-
-This tells Ansible the name of the inventory file (`hosts`), the location of the SSH private key to use, and `pipelining = true` vastly improves the speed at which Ansible executes tasks.
-
-<div id='run'/>
+This playbook installs a selection of packages I commonly use, changes the default shell from bash to zsh, copies over dotfiles and other configs, and start/enables Samba.
 
 ## Running the playbook
 
-All that's left now is to run the playbook and bootstrap the server, but first it's highly recommended to do a <em>dry-run</em> that runs the playbook in check mode, to verify it works without making any changes. Make sure you're in the same directory as `bootstrap.yml` (the playbook), `ansible.cfg` (the config) and `hosts` (inventory file). Then, use the following command:
+All that's left now is to run the playbook, but first it's highly recommended to do a **dry-run** that runs the playbook in check mode, to verify it works without making any changes. From within the same directory as all the Ansible files, use the following command:
 
-```bash
-ansible-playbook bootstrap.yml --check
+```sh
+ansible-playbook bootstrap.yaml --check
 ```
 
-You'll see some output as the playbook carries out its tasks. Below as an example:
-
-```bash
-PLAY [Bootstrap home server] *********************************************************************
-TASK [Gathering Facts] ***************************************************************************
-ok: [apollo]
-
-TASK [Update all installed packages] *************************************************************
-ok: [apollo]
-
-TASK [Install various apt packages] **************************************************************
-ok: [apollo]
-
-TASK [Clean cache & remove unnecessary dependencies] *********************************************
-ok: [apollo]
-
-TASK [Start the Samba daemon] ********************************************************************
-ok: [apollo]
-
-TASK [Start the NetBIOs daemon] ******************************************************************
-ok: [apollo]
-
-TASK [Enable the Samba daemon] *******************************************************************
-ok: [apollo]
-
-TASK [Enable the NetBIOS daemon] *****************************************************************
-ok: [apollo]
-
-TASK [Copy the zsh config file] ******************************************************************
-changed: [apollo]
-
-TASK [Copy the aliases file] *********************************************************************
-changed: [apollo]
-
-TASK [Copy the Git config file] ******************************************************************
-ok: [apollo]
-
-TASK [Copy the Nano config file] *****************************************************************
-ok: [apollo]
-
-TASK [Set the default shell] *********************************************************************
-changed: [apollo]
-
-
-TASK [Check if reboot is required] ***************************************************************
-ok: [apollo]
-
-TASK [Reboot if required] ************************************************************************
-skipping: [apollo]
-
-PLAY RECAP ***************************************************************************************
-apollo     : ok=15   changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
-```
+You'll see some output as the playbook carries out its tasks, and if there's any errors it will clearly say so and cancel.
 
 If all looks good and there's no errors, you can run the playbook for real:
 
-```bash
-ansible-playbook bootstrap.yml
+```sh
+ansible-playbook bootstrap.yaml
 ```
-
-<div id='ref'/>
 
 ## References
 
-- <a href="https://docs.ansible.com" target="_blank">Ansible Documentation</a>
-- <a href="https://www.learnlinux.tv/getting-started-with-ansible/" target="_blank" rel="noopener noreferrer">Learn Linux TV series of Ansible tutorials</a>
+- <a href="https://docs.ansible.com" target="_blank" data-umami-event="ansible-post-ansible-site">Ansible Documentation</a>
+- <a href="https://www.learnlinux.tv/getting-started-with-ansible/" target="_blank" data-umami-event="ansible-learn-linux-tv">Learn Linux TV series of Ansible tutorials</a>
 
-## Related Articles
+### Related Articles
 
 > [Using MergerFS to combine multiple hard drives into one unified media storage](/blog/two-drives-mergerfs/)
 

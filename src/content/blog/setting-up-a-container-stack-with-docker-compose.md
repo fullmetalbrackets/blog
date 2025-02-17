@@ -7,18 +7,9 @@ tags:
   - docker
 ---
 
-## Sections
-
-1. [Installing Docker](#install)
-2. [Setting up the Compose file](#compose)
-3. [Starting up the containers](#start)
-4. [References](#ref)
-
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
 > This will not be an exhaustive Docker tutorial, for that I always suggest <a href="https://docs.docker.com" target="_blank" data-umami-event="container-stack-compose-docs-docker">the official Docker documentation</a>. The purpose of this guide is limited to explaining how to install Docker and set up various Docker containers quickly and easily via Docker Compose.
-
-<div id='install'/>
 
 ## Installing Docker
 
@@ -29,8 +20,6 @@ curl -fsSL get.docker.com | sudo sh
 ```
 
 This will install all dependencies while uninstalling old or conflicting packages. Using this method includes the `docker compose` plugin which we'll be using.
-
-<div id='compose'/>
 
 ## Setting up the Compose file
 
@@ -136,8 +125,6 @@ This will create and run the following containers:
 - **qFlood**: qBittorrent and Flood UI
 - **Watchtower**: Automatically updates containers
 
-<div id='start'/>
-
 ## Starting up the containers
 
 Once the `compose.yaml` is ready, use the following command in the same directory where the file is located:
@@ -148,14 +135,12 @@ docker compose up -d
 
 Using the `-d` flag will "detach" the process so it's in the background. You will see all the required container images be downloaded and the directories you specified in the compose file will also be set up. Once finished, use `docker ps` to list running containers and confirm your new services are up and running.
 
-<div id='ref'/>
-
 ## References
 
 - <a href="https://docs.docker.com" target="_blank" data-umami-event="container-stack-compose-docs-docker">Docker documentation</a>
 - <a href="https://docs.docker.com/compose/" target="_blank" data-umami-event="container-stack-compose-docs-compose">Docker Compose documentation</a>
 
-## Related Articles
+### Related Articles
 
 > <a href="/blog/watchtower-notifications/" data-umami-event="container-stack-compose-watchtower-notifications">Setup Watchtower to auto-update Docker containers with notifications</a>
 

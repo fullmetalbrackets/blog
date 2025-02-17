@@ -7,18 +7,6 @@ tags:
   - cloudflare
 ---
 
-## Sections
-
-1. [Pre-Requisites](#pre)
-2. [Add a domain to Cloudflare](#domain)
-3. [Create the Cloudflare Tunnel](#tunnel)
-4. [Configure OAuth with Google](#oauth)
-5. [Create an access policy](#policy)
-6. [Use WAF to whitelist your IP and block all others](#waf)
-7. [References](#ref)
-
-<div id="pre" />
-
 ## Pre-Requisites
 
 This guide is assumes you already have a _Linux_ machine with Docker installed and a container you want to expose up and running. For the examples below I'll be using _Navidrome_ because that's what I set this up for in the first place and it just works. However, most self-hosted apps should work the same if you access it at, for example, `192.168.0.100:4533`.
@@ -26,8 +14,6 @@ This guide is assumes you already have a _Linux_ machine with Docker installed a
 Apps that have to be accessed through a specific path (like `/admin` or `/web`) and have no redirect from the index page may act weird when it comes time to proxy the tunnel. I always run into this issue with _Ubooquity_ in particular and haven't figured out how to fix it. I won't be trying to deal with that here.
 
 The process of setting up and securing a Cloudflare Tunnel is a lot of steps, so I'm basically paraphrasing the <a href="https://developers.cloudflare.com/cloudflare-one" target="_blank" data-umami-event="tunnel-apps-docs-zero-trust">Cloudflare Zero Trust Docs</a>. When in doubt, refer back to them.
-
-<div id="domain" />
 
 ## Add a domain to Cloudflare
 
@@ -56,8 +42,6 @@ If you purchased your domain with Cloudflare, you can skip this section since it
 7. Now you'll have to wait a few minutes for the changes to propagate, then click on **Check nameservers** and reload the page. If it's still shows _Pending_ next to the domain at the top, just keep waiting and reload again after a few more minutes.
 
 8. Once the domain is _Active_, you're ready
-
-<div id="tunnel" />
 
 ## Create the Cloudflare Tunnel
 
@@ -138,8 +122,6 @@ All done! Go to `https://music.your-domain.com` and you should reach the Navidro
 
 Although Navidrome, like many self-hosted services, has username and passwords for login, you can also put authentication services in front of the tunnel to stop unauthorized visitors from even reaching your app. Read on...
 
-<div id="oauth" />
-
 ## Configure OAuth with Google
 
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
@@ -180,8 +162,6 @@ If you don't know it, go to the Cloudflare _Zero Trust dashboard_ -> _Settings_ 
 
 15. Select _Save_. Make sure to use the _Test_ link to make sure it works.
 
-<div id="policy" />
-
 ## Create an access policy
 
 Now that the OAuth provider is set up, we need make use of it with <a href="https://developers.cloudflare.com/cloudflare-one/policies/access/policy-management/" target="_blank" data-umami-event="tunnel-apps-docs-policy-mgmt">Access Policies</a>.
@@ -221,8 +201,6 @@ Now when you go to `https://music.your-domain.com` you should be met with a Goog
 > If you get any DNS errors when trying to access your domain after adding OAuth with the above steps, but didn't have any issues before that, you may be hitting your ad blocker. I didn't have issues with Pi-Hole, but when testing behind NextDNS I did get `NXDOMAIN` errors.<br><br>
 > <a href="https://help.nextdns.io/t/p8h5c71/keep-getting-nxdomain-for-well-known-sites" target="_blank" data-umami-event="tunnel-apps-nextdns-nxdomain-errors">See this post</a> on NextDNS Help Center. <em>TLDR:</em> Try disabling DNSSEC for your domain on the Cloudflare dashboard and see if that resolves the issue. (I have not tested it.)
 
-<div id="waf" />
-
 ## Use WAF to whitelist your IP and block all others
 
 For even more security, or maybe even in lieu of setting up Oauth, you can use Cloudflare's _Web Application Firewall_ to whitelist specific IP addresses and block the rest. This is totally optional, but I will show you how to do it.
@@ -247,14 +225,6 @@ Now only your IP address should have access to `music.your-domain.com`. Be aware
 
 It is possible to <a href="https://developers.cloudflare.com/dns/manage-dns-records/how-to/managing-dynamic-ip-addresses" target="_blank" data-umami-event="tunnel-apps-cf-ddns">dynamically update DNS records in Cloudflare</a> via API or third-party tools, but I have not gone down this particular rabbit hole, so you're on your own there for now.
 
-## Related Articles
-
-> [Complete guide to self-hosting a website through Cloudflare Tunnel](/blog/self-host-website-cloudflare-tunnel/)
-
-> [How to securely expose Plex from behind CGNAT with Cloudflare Tunnel](/blog/expose-plex-with-cloudflare/)
-
-<div id="ref" />
-
 ## References
 
 - <a href="https://developers.cloudflare.com/fundamentals/get-started/setup/add-site/" target="_blank" data-umami-event="tunnel-apps-docs-add-site">Cloudflare Docs - Add a site</a>
@@ -263,8 +233,8 @@ It is possible to <a href="https://developers.cloudflare.com/dns/manage-dns-reco
 - <a href="https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/google/" target="_blank" data-umami-event="tunnel-apps-docs-identity">Cloudflare Docs - Identity</a>
 - <a href="https://developers.cloudflare.com/cloudflare-one/policies/access/policy-management/" target="_blank" data-umami-event="tunnel-apps-docs-policy-mgmt">Cloudflare Docs - Policy Management</a>
 
-## Related Articles
+### Related Articles
 
-> <a href="/blog/" data-umami-event=""></a>
+> <a href="/blog/self-host-website-cloudflare-tunnel/" data-umami-event="tunnel-apps-related-complete-tunnel-guide">Complete guide to self-hosting a website through Cloudflare Tunnel</a>
 
-> <a href="/blog/" data-umami-event=""></a>
+> <a href="/blog/expose-plex-with-cloudflare/" data-umami-event="tunnel-apps-related-expose-plex">How to securely expose Plex from behind CGNAT with Cloudflare Tunnel</a>

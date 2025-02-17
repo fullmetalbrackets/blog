@@ -7,23 +7,9 @@ tags:
   - ssh
 ---
 
-## Sections
-
-1. [Intro](#intro)
-2. [Generate an SSH key pair](#keygen)
-3. [Important ssh-keygen command options](#options)
-4. [Generate a more secure SSH key](#secure)
-5. [Copying SSH public key from Linux to a remote server](#linux-copy)
-6. [Copying SSH public key from Windows to a remote server](#win-copy)
-7. [References](#ref)
-
-<div id='intro'/>
-
 Usually when to a computer or server via SSH, you are prompted for a username and password, but you can skip this and make your SSH sessions even more secure by using key pairs. Basically you will generate two encrypted keys that are associated with each other -- a private key and a public key. These are used to verify your identity.
 
 By default your SSH keys and configurations are located in `~/.ssh`. On Linux that is `/home/{user}/.ssh` and on Windows it's located at `C:\Users\{user}\.ssh`.
-
-<div id='keygen'/>
 
 ## Generate an SSH key pair
 
@@ -36,8 +22,6 @@ Generating SSH keys is fast and simple on Windows, Linux and Mac, just use the c
 
 It should go without saying, the private key should NEVER be given out to anyone, for any reason. In fact, there is no reason to do so. The public key is the one to give to servers and services, like GitHub or AWS, in order to connect to them. So let's give it to them.
 
-<div id='options'/>
-
 ## Important ssh-keygen command options
 
 | Options | Effect                                                                                                                                                                                                                                       |
@@ -48,8 +32,6 @@ It should go without saying, the private key should NEVER be given out to anyone
 | `-A`    | For each of the key types (<em>rsa</em>, <em>dsa</em>, <em>edsca</em> and <em>ed25519</em>) for which host keys do not exist, generate the host keys with the default key file path, an empty passphrase, and default bits for the key type. |
 | `-a`    | Specifies the number of KDF (key derivation function) rounds used. Higher numbers result in slower passphrase verification and increased resistance to brute-force password cracking (should the keys be stolen). The default is 16 rounds.  |
 | `-Z`    | Specifies the cipher to use to encrypt the created key. List available ciphers using `ssh -Q cipher`. The default is <em>aes256-ctr</em>.                                                                                                    |
-
-<div id='secure'/>
 
 ## Generate a more secure SSH key
 
@@ -66,8 +48,6 @@ ssh-keygen -a 100 -t ed25519
 ```
 
 If you'd like to know more this, here's a great Medium article <a href="https://nbeguier.medium.com/a-real-world-comparison-of-the-ssh-key-algorithms-b26b0b31bfd9" target="_blank" data-umami-event="generating-ssh-key-pair-medium-comparing-ssh-algos">comparing the different SSH encryption algorithms</a> by <a href="https://beguier.eu/nicolas" target="_blank" data-umami-event="generating-ssh-key-pair-nicolas-beguier">Nicolas Béguier</a> that is worth a read.
-
-<div id='linux-copy'/>
 
 ## Copying SSH public key from Linux to a remote server
 
@@ -91,8 +71,6 @@ ssh-copy-id -i id_rsa.pub user@hostname
 
 That's it, now when you SSH into the server it should skip asking for a login. But Windows is special and does not have the `ssh-copy-id` command.
 
-<div id='win-copy'/>
-
 ## Copying SSH public key from Windows to a remote server
 
 Since Powershell does not recognize the `ssh-copy-id` command, we'll do the following to copy the SSH public key to a Linux server.
@@ -101,15 +79,13 @@ Since Powershell does not recognize the `ssh-copy-id` command, we'll do the foll
 cat ~/.ssh/id_rsa.pub | ssh bob@hostname 'cat >> .ssh/authorized_keys && echo "Key copied"'
 ```
 
-<div id='ref'/>
-
 ## References
 
 - <a href="https://linux.die.net/man/1/ssh" target="_blank" data-umami-event="generating-ssh-key-pair-ssh-manpage">SSH Man Page</a>
 - <a href="https://linux.die.net/man/1/ssh-copy-id" target="_blank" data-umami-event="generating-ssh-key-pair-ssh-copy-id-manpage">SSH-Copy-ID Man Page</a>
 - <a href="https://nbeguier.medium.com/a-real-world-comparison-of-the-ssh-key-algorithms-b26b0b31bfd9" target="_blank" data-umami-event="generating-ssh-key-pair-medium-comparing-ssh-algos">Medium article comparing the different SSH encryption algorithms</a>
 
-## Related Articles
+### Related Articles
 
 > <a href="/blog/copy-ssh-keys-between-hosts/" data-umami-event="generating-ssh-key-pair-related-copy-ssh-keys-hosts">Copying SSH Keys between different hosts</a>
 

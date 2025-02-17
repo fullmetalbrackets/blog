@@ -7,15 +7,6 @@ tags:
   - command line
 ---
 
-## Sections
-
-1. [Rsync Basics](#basic)
-2. [Advanced Rsync-ing](#advanced)
-3. [Using Rsync with Cron](#cron)
-4. [References](#ref)
-
-<div id='basic'/>
-
 # Rsync Basics
 
 Let's start with using `rsync` to copy a directory, and all it's contents, to another location.
@@ -53,8 +44,6 @@ Or only the contents of Chander's `/stuff` into Monica's `existing` directory:
 ```bash
 rsync /home/Chandler/stuff/* Monica@192.168.1.20:/home/Monica/junk/
 ```
-
-<div id='advanced'/>
 
 ## Advanced Rsync-ing
 
@@ -106,8 +95,6 @@ Therefore, to backup important files with Rsync, like for example a `/home` dire
 rsync -azAXUNH --progress /home/Monica Chandler@192.168.1.19:/mnt/storage/backups
 ```
 
-<div id='cron'/>
-
 ## Using RSync with Cron
 
 Rsync makes a decent automatic backup solution by using a cronjob and passing Rysnc the `--daemon` flag to schedule recurring background transfers during off-hours.
@@ -132,8 +119,6 @@ If you think you'll have a hard time remembering the scheduling expressions, jus
 
 Finally, for a list of ALL the rsync options with short descriptions of what they do, check out the <a href="https://download.samba.org/pub/rsync/rsync.1" target="_blank">Rsync man page</a>, a truly exhaustive manual for understanding all the granular details of Rsync.
 
-<div id='ref'/>
-
 ## References
 
 - <a href="https://www.rsyncinator.app/web" target="_blank" rel="noopener noreferrer">Rsyncinator</a>
@@ -142,7 +127,7 @@ Finally, for a list of ALL the rsync options with short descriptions of what the
 - <a href="https://man7.org/linux/man-pages/man8/cron.8.html" target="_blank">Cron Man Page</a>
 - <a href="https://man7.org/linux/man-pages/man5/crontab.5.html" target="_blank">Crontab Man Page</a>
 
-## Related Articles
+### Related Articles
 
 > [Linux Commands & Keyboard Shortcuts Cheat Sheet](/blog/basic-linux-commands/)
 

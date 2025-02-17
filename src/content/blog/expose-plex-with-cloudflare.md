@@ -7,19 +7,6 @@ tags:
   - cloudflare
 ---
 
-## Sections
-
-1. [What and Why](#what)
-2. [Pre-Requisites](#pre)
-3. [Add a domain to Cloudflare](#domain)
-4. [Create the Cloudflare Tunnel](#tunnel)
-5. [Configure Cloudflare](#cloudflare)
-6. [Configure Plex](#plex)
-7. [Potential alternatives](#alt)
-8. [References](#ref)
-
-<div id="what" />
-
 ## What and Why
 
 Plex is a self-hosted media server that lets you stream your owned (or downloaded, or otherwise acquired) media from other devices on the same network, through a web-based GUI (access via browser) or dedicated app. (Say, on a smart TV or Roku device.) Plex has a built-in feature to share your media library externally, but that requires opening a port on your router and forwarding it to the Plex server. Setting aside that port forwarding can be dangerous if you don't know what you're doing, it won't work anyway if your home network is behind Carrier-Grade Network Address Translation, or CGNAT. Many ISPs use this, and so many homelabbers may find themselves unable to expose their services.
@@ -40,8 +27,6 @@ Although there are many solutions to get across CGNAT, for Plex I've found that 
 >
 > If you already have a Cloudflare account and still want to expose Plex this way, I highly recommend creating a _separate Cloudflare account with another email address_, and only use that other account for hosting a Cloudflare Tunnel with Plex, so that any actions taken by Cloudflare against you are limited to this new account, and not your main one! Consider it a burner account that may eventually self-destruct.
 
-<div id="pre" />
-
 ## Pre-Requisites
 
 This guide will assume you are already running Plex, and you're just looking to add a Cloudflare Tunnel so that you can share your library with other users. To that end, you will need a <a href="https://cloudflare.com" target="_blank" data-umami-event="expose-plex-cloudflare-cf-site">Cloudflare account</a>.
@@ -57,8 +42,6 @@ So if you have not already, install docker with the following command: (This wil
 ```bash
 curl -fsSL https://get.docker.com | sh
 ```
-
-<div id='domain' />
 
 ## Add a domain in Cloudflare
 
@@ -87,8 +70,6 @@ Create your <a href="https://dash.cloudflare.com/sign-up" target="_blank" data-u
 7. Now you'll have to wait a few minutes for the changes to propagate, then click on **Check nameservers** and reload the page. If it's still shows _Pending_ next to the domain at the top, just keep waiting and reload again after a few more minutes.
 
 8. Once the domain is _Active_, you're ready to set up the Cloudlare Tunnel.
-
-<div id='tunnel' />
 
 ## Create and configure the Cloudflare tunnel
 
@@ -170,8 +151,6 @@ Finally, we need to configure SSL for the website!
 
 Now you should be able to visit `https://your-domain.com` and see your website!
 Now you should be able to go to `https://plex.your-domain.com` and you should reach the Plex UI and be prompted to login! However, right now Plex is fully exposed to the entire internet. We need to use Cloudflare's WAF to restrict access to only who we want!
-
-<div id="security" />
 
 ## Configure security settings
 
@@ -275,8 +254,6 @@ Finally, let's disable caching to minimize CDN usage by our external users and e
 
 ![Creating cache rule to bypass CDN caching.](../../img/blog/plex-cf4.png 'Creating cache rule to bypass CDN caching')
 
-<div id="plex" />
-
 ## Configure Plex
 
 One last thing! Although your external users can now stream your library by logging in to the the Plex web UI at `https://plex.your-domain.com`, using Plex apps will not work until you do the following:
@@ -297,8 +274,6 @@ One last thing! Although your external users can now stream your library by logg
 
 Now your external users can access your library through their Plex apps too.
 
-<div id="alt" />
-
 ## Potential alternatives
 
 There's always multiple ways to do things, and said I explained at the start, this method of sharing your Plex library may not be best. It's just what works for me, for now, so I figured I'd share it for others to try out. Some other alternatives that I've read about, but have not tried myself:
@@ -311,8 +286,6 @@ There's always multiple ways to do things, and said I explained at the start, th
 
 - Some others I've heard of, but have not touched or read about include <a href="https://ngrok.com" target="_blank" data-umami-event="expose-plex-cloudflare-alternatives-ngrok">Ngrok</a>, <a href="https://netmaker.io" target="_blank" data-umami-event="expose-plex-cloudflare-alternatives-netmaker">Netmaker</a> and <a href="https://netbird.io" target="_blank" data-umami-event="expose-plex-cloudflare-alternatives-netbird">Netbird</a>.
 
-<div id="ref" />
-
 ## References
 
 - <a href="https://www.cloudflare.com/service-specific-terms-overview/" target="_blank" umami-data-event="expose-plex-cloudflare-ref-cf-tos">Cloudflare Service-Specific Terms</a>
@@ -322,7 +295,7 @@ There's always multiple ways to do things, and said I explained at the start, th
 - <a href="https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/google/" target="_blank" umami-data-event="expose-plex-cloudflare-ref-identity">Cloudflare Docs - Identity</a>
 - <a href="https://developers.cloudflare.com/cloudflare-one/policies/access/policy-management/" target="_blank" umami-data-event="expose-plex-cloudflare-policy-mgmt">Cloudflare Docs - Policy Management</a>
 
-## Related Articles
+### Related Articles
 
 > <a href="/blog/expose-plex-tailscale-vps/" umami-data-event="expose-plex-cloudflare-related-expose-tailscale-vps">How to securely expose Plex from behind CGNAT using Tailscale and a free Oracle VM</a>
 

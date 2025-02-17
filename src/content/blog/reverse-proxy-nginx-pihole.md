@@ -7,25 +7,11 @@ tags:
   - self-hosting
 ---
 
-## Sections
-
-1. [Pre-Requisites and Caveats](#pre)
-2. [Change the port of OpenMediaVault's workbench GUI](#omv)
-3. [Add the DNS records in Pi-Hole](#pihole)
-4. [Change the port of Pi-Hole's web UI](#piweb)
-5. [Install the Nginx Proxy Manager container](#npm)
-6. [Create the proxy hosts](#proxy)
-7. [References](#ref)
-
-<div id='pre' />
-
 ## Pre-Requisites and Caveats
 
 I will only be explaining how to install and configure _Nginx Proxy Manager_, as I have other blog posts about <a href="/blog/set-up-pihole-on-linux/" target="_blank">installing Pi-Hole</a> and <a href="/blog/setting-up-plex-in-docker/" target="_blank">installing Plex</a> that you can check out for that. OpenMediaVault is more involved since it's a whole operating system installed via an ISO, so I highly suggest you read the <a href="https://docs.openmediavault.org/en/latest/installation/index.html" target="_blank">official documentation</a> for instructions on that.
 
 This guide will proceed with the assumption that _OpenMediaVault_, _Plex_ and _Navidrome_ are already setup, and you're now wanting to set up a reverse proxy to access them via URL rather than typing an IP address and port, since that was my scenario and I wanted to write it down for future reference.
-
-<div id='omv' />
 
 ## Change the port of OpenMediaVault's workbench GUI
 
@@ -36,8 +22,6 @@ omv-firstaid
 ```
 
 You'll get a menu pop-up, choose `3   Configure workbench` and hit <kbd>Enter</kbd>, you'll see `Please enter the port to access the workbench via HTTP`. Delete the `80` and type in whatever port you want to use, I chose port `70`. Hit <kbd>Enter</kbd> again to save and we're done here.
-
-<div id='pihole' />
 
 ## Add the DNS records in Pi-Hole
 
@@ -65,8 +49,6 @@ If your Pi-Hole is on a separate host from where you will install Nginx Proxy Ma
 If you run Pi-Hole in a docker container, simply change the container's port mapping and recreate the container. In the `docker run` command or `compose.yaml` file, change `80:80` (specifically the one left of the colon, which is the host mapping) to something else, for example `8080:80`.
 
 If you are running Pi-Hole bare metal instead of in Docker, you need to edit the Lighttpd configuration file at `/etc/lighttpd/lighttpd.conf` and change the line `server.port = 80` to your desired port, e.g. `server.port = 8080`.
-
-<div id='npm' />
 
 ## Install and run Nginx Proxy Manager
 
@@ -106,8 +88,6 @@ If you are running **Portainer** and want to create the container from within it
 3. Once done, scroll down and click the **Deploy the stack** button.
 
 Whichever method you use, wait a few moments while the image is downloaded and the container is created. Once it's up and running (you should not encounter any issues as long as ports **80** and **443** are not in use by another service) move on to the next part.
-
-<div id='proxy' />
 
 ## Create the proxy hosts
 
@@ -156,8 +136,6 @@ To check the logs in Portainer:
 >
 > You should now be all set up and able to reach your proxied services via `http://subdomain.home.arpa` on the browser, no more IPs and ports!
 
-<div id='ref' />
-
 ## Reference
 
 - <a href="/blog/set-up-pihole-on-linux/" target="_blank">My blog post on how to install Pi-Hole</a>
@@ -166,7 +144,7 @@ To check the logs in Portainer:
 - <a href="https://nginxproxymanager.com" target="_blank">Website of Nginx Proxy Manager</a>
 - <a href="https://github.com/NginxProxyManager/nginx-proxy-manager" target="_blank">GitHub of Nginx Proxy Manager</a>
 
-## Related Articles
+### Related Articles
 
 > [Setting up a reverse proxy for HTTPS with a custom domain using Nginx Proxy Manager, Pi-Hole and Cloudflare](/blog/reverse-proxy-using-nginx-pihole-cloudflare/)
 

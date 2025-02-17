@@ -7,17 +7,6 @@ tags:
   - self-hosting
 ---
 
-## Sections
-
-1. [Pre-Requisites and Caveats](#pre)
-2. [Setting up AdGuard Home as network DNS server](#adguard)
-3. [Adding DNS rewrites in AdGuard Home](#dns)
-4. [Add a domain in Cloudflare](#domain)
-5. [Install and configure Nginx Proxy Manager](#nginx)
-6. [References](#ref)
-
-<div id='pre' />
-
 ## Pre-Requisites and Caveats
 
 I wrote previously about <a href="/blog/reverse-proxy-using-nginx-pihole-cloudflare/" target="_blank" data-umami-event="reverse-proxy-adguard-to-pihole-proxy">how to set this up using Pi-Hole</a>, but I recently bought a <a href="https://www.gl-inet.com/products/gl-mt6000" target="_blank" data-umami-event="reverse-proxy-adguard-glinet">GL.iNet Flint 2 router</a> which has AdGuard Home built-in, so it seemed a waste not to use it. (Also for as great as Pi-Hole is, I have had to redo it multiple times over the years due to database errors or just a dead mini SD card or USB drive, etc.) So, this guide will be mostly based on my old one, with just the parts dealing with Pi-Hole replaced with AdGuard Home, since setting up Nginx Proxy Manager and Cloudflare work the same as always.
@@ -25,8 +14,6 @@ I wrote previously about <a href="/blog/reverse-proxy-using-nginx-pihole-cloudfl
 This guide uses specific third-party services, namely <a href="https://cloudflare.com" target="_blank" data-umami-event="reverse-proxy-adguard-cf-site">Cloudflare</a>, <a href="https://adguard.com/en/adguard-home/overview.html" target="_blank" data-umami-event="reverse-proxy-adguard-agh-site">AdGuard Home</a> and <a href="https://nginxproxymanager.com" target="_blank" data-umami-event="reverse-proxy-adguard-npm-site">Nginx Proxy Manager</a> to set up a secure local-only reverse proxy. The same is possible with other tools, apps and services including <a href="https://pi-hole.net" target="_blank" data-umami-event="reverse-proxy-adguard-pihole-site">Pi-Hole</a> (which as I mentioned, I previously used for many years) or <a href="https://nextdns.io" target="_blank" data-umami-event="reverse-proxy-adguard-nextdns">NextDNS</a> instead of *AdGuard Home*, <a href="https://caddyserver.com" target="_blank" data-umami-event="reverse-proxy-adguard-caddy">Caddy</a> or <a href="https://traefik.io" target="_blank" data-umami-event="reverse-proxy-adguard-traefik">Traefik</a> instead of *Nginx*, any other DNS provider instead of *Cloudflare*, etc. I'm only writing about my preferred tools that I've used multiple times to set everything up and keep it running for over a year.
 
 This guide will require a owned custom top-level domain (TLD), such as a `.com` or `.cc` or `.xyz`, etc. Certain TLDs can be bought for super cheap on <a href="https://namecheap.com" target="_blank">Namecheap</a> or <a href="https://porkbun.com" target="_blank">Porkbun</a>, but be aware in most cases after the first year or two, the price will see a steep jump. I again prefer <a href="https://domains.cloudflare.com" target="_blank" data-umami-event="reverse-proxy-adguard-cf-domains">Cloudflare</a> for purchasing domains, since they always price domains at cost, so you won't see any surprise price hike one year to the next. An alternative I won't be getting into is using dynamic DNS, as I've not had to use it myself, so I honestly wouldn't even know how to begin to set that up.
-
-<div id='adguard' />
 
 ## Setting up AdGuard Home as network DNS server
 
@@ -58,8 +45,6 @@ However, not all routers let you set a custom DNS server (this is especially com
 
 Once AdGuard Home is being broadcast as the network's DNS server by the router, your devices will gradually begin querying it as they renew their DHCP leases. You can usually force a renew by restarting a device, or just reboot the router and it should propagate the changes to all devices.
 
-<div id='dns' />
-
 ## Add DNS rewrites in AdGuard Home
 
 Next, we'll go into the _AdGuard Home web UI_ and add the DNS rewrites we need for Nginx Proxy Manager. The web UI should be accessible via your browser at `http://<ip-address>:3000`.
@@ -77,8 +62,6 @@ Next, we'll go into the _AdGuard Home web UI_ and add the DNS rewrites we need f
 > This is also the case you want to proxy something straight to `domain.com` rather than a sub-domain, make sure to create a specific DNS rewrite for it, e.g. `domain.com` pointing to `192.168.0.200`.
 
 That's all you have to do with AdGuard Home. Next, we'll be using Cloudflare to get the TLS certificates for our custom domain.
-
-<div id='cloudflare' />
 
 ## Add a domain in Cloudflare
 
@@ -121,8 +104,6 @@ To add an existing domain to Cloudflare:
 13. On the next page you'll see your **API token**, make sure to _save it somewhere because it will not be shown again_. We will need this **API token** for to provision the TLS certificates in Nginx Proxy Manager.
 
 14. Once your domain is _Active_ in Cloudflare, you can move on to the next section.
-
-<div id='nginx' />
 
 ## Install and congifure Nginx Proxy Manager
 
@@ -212,15 +193,13 @@ Barring any errors, once you set up all your proxy hosts in Nginx Proxy Manager 
 >
 > One last thing, if you want to want to access the AdGuard Home web UI via HTTPS as well, be sure to use its default HTTPS network port *3001* in Nginx Proxy Manager.
 
-<div id='ref' />
-
 ## Reference
 
 - <a href="https://adguard.com/en/adguard-home/overview.html" target="_blank" data-umami-event="reverse-proxy-adguard-agh-site">Website of AdGuard Home</a>
 - <a href="https://nginxproxymanager.com" target="_blank" data-umami-event="reverse-proxy-adguard-npm-site">Website of Nginx Proxy Manager</a>
 - <a href="https://github.com/NginxProxyManager/nginx-proxy-manager" target="_blank" data-umami-event="reverse-proxy-adguard-npm-gh">GitHub of Nginx Proxy Manager</a>
 
-## Related Articles
+### Related Articles
 
 > <a href="/blog/reverse-proxy-using-nginx-pihole-cloudflare/" data-umami-event="reverse-proxy-adguard-related-reverse-proxy-pihole">Setting up a reverse proxy for HTTPS with a custom domain using Nginx Proxy Manager, Pi-Hole and Cloudflare</a>
 

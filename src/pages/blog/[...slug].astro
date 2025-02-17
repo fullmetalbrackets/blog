@@ -1,20 +1,32 @@
 ---
 import { type CollectionEntry, getCollection } from "astro:content";
 import BlogPost from "@layouts/BlogPost.astro";
+import type { MarkdownHeading } from 'astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
-  return posts.map((post) => ({
+
+  const headings = await Promise.all(
+    posts.map(async (post) => {
+      const data = await post.render();
+      return data.headings;
+    })
+  );
+  
+  return posts.map((post, index) => ({
     params: { slug: post.slug },
-    props: post,
+    props: { post, headings: headings[index] },
   }));
 }
-type Props = CollectionEntry<"blog">;
+type Props = {
+  post: CollectionEntry<'blog'>;
+  headings: MarkdownHeading[];
+};
 
-const post = Astro.props;
+const { post, headings } = Astro.props;
 const { Content } = await post.render();
 ---
 
-<BlogPost {...post.data}>
+<BlogPost {...post.data} headings={headings}>
   <Content />
 </BlogPost>

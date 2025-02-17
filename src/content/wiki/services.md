@@ -35,9 +35,9 @@ tags:
 
 # Outpost
 
-- Nginx Proxy Manager (to proxy to my Plex server back home)
-- Speedtest Tracker (mostly used as a "heartbeat" so server is always in use)
-- Portainer Agent (connected to main Portainer instance in home server)
-- File Browser (for browsing VM `/home` directory)
-- Uptime Kuma (alerts me if home network is not accessible)
-- Watchtower (auto-update containers)
+- Nginx Proxy Manager -- <a href="/blog/expose-plex-tailscale-vps" target="_blank" data-umami-event="">To proxy to my Plex server back home via Tailscale</a>
+- Portainer Agent -- Connected to main Portainer instance on home server via Tailscale
+- Speedtest Tracker -- Mostly used as a "heartbeat" so the server is constantly in use
+- File Browser -- For browsing the instance's `/home` directory when I can't SSH into it
+- Uptime Kuma -- Alerts me if any of the containers go down or if home network is not accessible
+- Watchtower -- Auto-update containers and prune old images

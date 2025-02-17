@@ -7,20 +7,6 @@ tags:
   - pi-hole
 ---
 
-## Sections
-
-1. [Pre-Requisites and Caveats](#pre)
-2. [Installing Pi-Hole](#pihole)
-3. [Installing Unbound](#unbound)
-4. [Running Pi-Hole and Unbound together in Docker](#docker)
-5. [Configuring DNS](#dns)
-6. [Using adlists to block domains](#adlist)
-7. [Advanced DNS settings](#advanced)
-8. [Further steps](#further)
-9. [Reference](#ref)
-
-<div id='pre' />
-
 ## Pre-Requisites and Caveats
 
 Before anything, make sure the machine you're installing Pi-Hole on <a href="/blog/set-static-ip-debian/" target="_blank" data-umami-event="setup-pihole-static-ip-post">has a static IP</a>, otherwise if your machine's IP changes it will break DNS resolution for the network.\
@@ -50,8 +36,6 @@ If you're running Unbound, disable it with the following command:
 sudo systemctl stop unbound.service
 ```
 
-<div id='pihole' />
-
 ## Installing Pi-Hole
 
 This is for installing Pi-Hole bare metal, so if you want to run it in Docker, [skip to this section](#docker).
@@ -69,8 +53,6 @@ Installation will prompt a number of dialogs, pay attention and make sure you in
 > A random password will be generated during install for logging in to the Pi-Hole web UI. You should change the admin password with `pihole -a -p newpassword` or if you don't want to login at all, leave it blank with `pihole -a -p`.
 
 Now you should be able to access the Pi-Hole Web UI via either IP address, e.g. `http://192.168.1.250/admin` or using the machine hostname, `http://hostname/admin`. (Later, when Pi-Hole is set as the DNS server, you can access the web UI at `http://pi.hole/admin`)
-
-<div id='unbound' />
 
 ## Installing Unbound
 
@@ -136,8 +118,6 @@ pi-hole.net.            300     IN      A       3.18.136.52
 ```
 
 If your output looks similar to the above, then everything is working as intended.
-
-<div id='docker' />
 
 ## Running Pi-Hole and Unbound together on Docker
 
@@ -232,8 +212,6 @@ services:
     restart: unless-stopped
 ```
 
-<div id='dns' />
-
 ## Configuring DNS
 
 (Note: If running in Docker using the above instructions, this should already be setup, but you can double-check it.)
@@ -289,8 +267,6 @@ Alternately, you can manually edit the `/etc/hosts` file on the server running P
 192.168.0.245   laptop
 ```
 
-<div id='adlist' />
-
 ## Using adlists to block domains
 
 On the Pi-Hole web UI, click on **Adlists** on the navigation bar:
@@ -311,8 +287,6 @@ Once you've added all the adlists (and any time you add additional ones), make s
 You may end up with several million "domains on adlists" as shown in the dashboard. Don't panic. You'll see your dashboard stats explode with blocked requests, especially from mobile devices. Pay attention to any issues you have visiting websites and using online apps/services that you commonly do, and whitelist domains as needed. (You can also use a <a href="https://github.com/anudeepND/whitelist" target="_blank" data-umami-event="setup-pihole-anudeepND-whitelist">curated whitelist</a>.)
 
 ![Over 3 million domains blocked in Pi-Hole.](../../img/blog/blocked.png 'Over 3 million domains blocked in Pi-Hole')
-
-<div id='further' />
 
 ## Further steps
 
@@ -352,8 +326,6 @@ When you make Pi-Hole your primary DNS it becomes a critical part of your networ
 >
 > This guide will be updated in the future once Pi-Hole v6 is generally available.
 
-<div id='ref' />
-
 ## Reference
 
 - <a href="https://docs.pi-hole.net" target="_blank" data-umami-event="setup-pihole-docs">Pi-Hole documentation</a>
@@ -361,7 +333,7 @@ When you make Pi-Hole your primary DNS it becomes a critical part of your networ
 - <a href="https://man7.org/linux/man-pages/man5/crontab.5.html" target="_blank" data-umami-event="setup-pihole-crontab-manpage">Crontab man page</a>
 - <a href="https://man7.org/linux/man-pages/man1/at.1p.html" target="_blank" data-umami-event="setup-pihole-at-manpage">At man page</a>
 
-## Related Articles
+### Related Articles
 
 > <a href="/blog/pihole-anywhere-tailscale/" data-umami-event="setup-pihole-related-anywhere-tailscale">How to use Pi-hole from anywhere with Tailscale</a>
 

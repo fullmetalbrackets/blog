@@ -6,15 +6,6 @@ tags:
   - self-hosting
 ---
 
-## Table of Contents
-
-1. [About the ZimaBoard](#about)
-2. [Removing CasaOS](#casaos)
-3. [Upgrading from Debian 11 to Debian 12](#upgrade)
-4. [References](#ref)
-
-<div id='about'/>
-
 ## About the ZimaBoard
 
 <a href="https://www.zimaspace.com/products/single-board-server" target="_blank" data-umami-event="remove-casaos-zimaboard-site">ZimaBoard</a> is a "hackable" x86 single board server, by default it comes running _Debian 11 Bullseye_ and _CasaOS_, and is meant to be the hub of your personal self-hosted cloud. CasaOS provides a simple web GUI that includes an "app store" to install various apps and services as Docker containers, which are then managed through the GUI. The different models have varying CPUs and RAM, but all models of Zimaboard have a 32 GB eMMC and two SATA ports for more storage, two USB 3.0 ports, two gigabit ethernet ports and even a PCIe 2.0 x4 port. Overall, it's a pretty nice little machine.
@@ -22,8 +13,6 @@ tags:
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
 > I used these exact steps on a **Zimaboard 216**, the cheapest and lowest end model, but it's safe to assume the process is identical on the 432 and 832 boards.
-
-<div id='casaos'/>
 
 ## Removing CasaOS
 
@@ -34,8 +23,6 @@ casaos-uninstall
 ```
 
 Wait a few minutes until the uninstall is done then move on to the next step.
-
-<div id='upgrade'/>
 
 ## Upgrading from Debian 11 to Debian 12
 
@@ -102,6 +89,6 @@ N: Repository 'Debian bookworm' changed its 'non-free component' value from 'non
 N: More information about this can be found online in the Release notes at: https://www.debian.org/releases/bookworm/amd64/release-notes/ch-information.html#non-free-split
 ```
 
-## Related Articles
+### Related Articles
 
 > <a href="/blog/factory-restore-zimaboard/" umami-data-event="remove-casaos-related-factory-restore-zimaboard">How to factory restore a ZimaBoard</a>

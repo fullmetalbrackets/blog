@@ -2,22 +2,12 @@
 title: "Linux Commands & Keyboard Shortcuts Cheat Sheet"
 description: "Just a quick cheat sheet of basic and slightly less basic Linux commands, as well as handy keyboard shortcuts, that I maintain for myself since I can't always remember them all."
 pubDate: 2022-09-18
-updatedDate: 2022-10-22
+updatedDate: 2025-02-17
 tags:
   - command line
 ---
 
-## Sections
-
-1. [Commands](#cmd)
-2. [Basic Usage Examples](#basic)
-3. [Advanced Commands & Usage](#adv)
-4. [Handy Keyboard Shortcuts](#shortcuts)
-5. [Reference](#ref)
-
-<div id='cmd'/>
-
-## Commands
+## Common Commands
 
 | Command      | Effect                                                                                       |
 | ------------ | -------------------------------------------------------------------------------------------- |
@@ -52,8 +42,6 @@ tags:
 | `shutdown`   | shuts down the machine (may require `sudo`)                                                  |
 | `sudo`       | append prior to a command to use with elevated privileges (e.g. `sudo shutdown`)             |
 
-<div id='basic'/>
-
 ## Basic Usage Examples
 
 | Command                           | Effect                                                         |
@@ -68,8 +56,6 @@ tags:
 | `find /etc -name hosts`           | shows any files in `/etc` with `hosts` in filename             |
 | `find /etc -type d -name '*.conf` | shows any directories (`d`) in `/etc` with `.conf` in filename |
 
-<div id='adv'/>
-
 ## Advanced Commands & Usage
 
 | Command                 | Effect                                                                                            |
@@ -83,24 +69,20 @@ tags:
 | `su mary passwd`        | change user password (must be done by root or with `sudo`)                                        |
 | `ssh-keygen`            | generate a basic SSH key pair                                                                     |
 
-<div id='shortcuts'/>
-
 ## Handy Keyboard Shortcuts
 
 | Key Combination                | Effect                             |
 | ------------------------------ | ---------------------------------- |
-| <kbd>Ctrl</kbd> + <kbd>C</kbd> | interupt/terminate current process |
+| <kbd>Ctrl</kbd> + <kbd>C</kbd> | interrupt/terminate current process |
 | <kbd>Ctrl</kbd> + <kbd>A</kbd> | go to start of line                |
 | <kbd>Ctrl</kbd> + <kbd>E</kbd> | go to end of line                  |
 | <kbd>Ctrl</kbd> + <kbd>U</kbd> | delete entire line                 |
-
-<div id='ref'/>
 
 ## Reference
 
 - <a href="https://ss64.com/bash" target="_blank" rel="noopener noreferrer">An A-Z Index of the Linux command line</a>
 
-## Related Articles
+### Related Articles
 
 > [Formatting disks in Linux command line](/blog/formatting-on-linux/)
 

@@ -10,8 +10,6 @@ tags:
 >
 > I want to start this off by saying <i>this is not my code</i>, but was taken from <a href="http://dylanatsmith.com/wrote/styling-the-kbd-element" target="_blank">Dylan Smith</a> from his own blog post on the subject, and I simply made a few modifications for my site. I encourage you to go read his post since mine is terse for my own purposes.
 
-<div id='kbd'/>
-
 ## How the `kbd` element looks on this site
 
 - <kbd>ESC</kbd><br><br>
@@ -55,5 +53,7 @@ kbd:hover {
   top: 1px;
 }
 ```
+
+## Reference
 
 Once again, thanks to <a href="http://dylanatsmith.com" target="_blank">Dylan Smith</a> for this!

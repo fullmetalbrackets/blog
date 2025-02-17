@@ -6,15 +6,6 @@ tags:
   - web development
 ---
 
-## Sections
-
-1. [Characters & Symbols](#char)
-2. [Creating tables in Markdown](#tables)
-3. [Making a Table of Contents in Markdown](#content)
-4. [References](#ref)
-
-<div id='char'/>
-
 ## Characters & Symbols
 
 | Entity     | Symbol                              |
@@ -70,8 +61,6 @@ tags:
 | `&beta;`   | Beta small letter (_β_)             |
 | `&epsi;`   | Epsilon small letter (_ε_)          |
 | `&lambda;` | Lambda small letter (_λ_)           |
-
-<div id='tables'/>
 
 ## Creating Tables in Markdown
 
@@ -131,8 +120,6 @@ Table with numbered/ordered list is rendered:
 | ------ | ----------------------------------------------------- |
 | Sci-Fi | Titles: <ol><li>Star Wars</li><li>Star Trek</li></ol> |
 
-<div id='content'/>
-
 ## Making a Table of Contents in Markdown
 
 This is handy for blogs! A lot of the best markdown applications can automatically generate a table of contents. Frameworks like Nuxt (with the Content module) | and Astro, among others, can make use of this.
@@ -164,8 +151,6 @@ And in HTML.
 ```html
 <a href="#ch1">Chapter 1</a>
 ```
-
-<div id='ref'/>
 
 ## References
 

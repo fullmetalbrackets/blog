@@ -7,16 +7,6 @@ tags:
   - networking
 ---
 
-## Sections
-
-1. [Installing Samba](#install)
-2. [Configuring Samba](#config)
-3. [Accessing the Samba share from Windows](#access)
-4. [Improve transfer speeds for Samba](#speed)
-5. [References](#ref)
-
-<div id='install'/>
-
 ## Installing Samba
 
 Samba usually comes installed with most Linux distributions. If you do need to install it, use the following commands to install Samba and all dependencies. On Ubuntu and other Debian-based distributions:
@@ -30,8 +20,6 @@ On Arch Linux and Manjaro distributions, you need to use the following command i
 ```bash
 yes | sudo pacman -S samba
 ```
-
-<div id='config'/>
 
 ## Configuring Samba
 
@@ -108,8 +96,6 @@ sudo systemctl enable smb nmb
 
 Now you should be able to connect to the shared directory from other computers on your network!
 
-<div id='access'/>
-
 ## Accessing the Samba share from Windows
 
 On _Windows_, go to **Start Menu** > **Run** and type the following (replacing with your Linux server's IP address) and hit <kbd>Enter</kbd>:
@@ -123,8 +109,6 @@ Or you can connect by _hostname_ rather than IP.
 You should now have the shared folder open in your Windows PC! For ease of access, right-click and pin it to _Quick Access_ or map it as a _Network Drive_.
 
 However, there MAY be an additional issue, as Windows 10 Home (but not Professional) apparently does not have the Local Security Policy settings (`secpol.msc`) that is required to interface with Samba. I can't confirm this myself since I use Windows 11 where this is not problem, but if you have issues and Windows complains about `secpol.msc`, <a href="https://www.majorgeeks.com/content/page/how_to_enable_local_security_policy_in_windows_10_home.html" target="_blank" data-umami-event="setup-smb-">go here for detailed instructions</a> on how to fix this issue.
-
-<div id='speed'/>
 
 ## Improve transfer speeds for Samba
 
@@ -151,8 +135,6 @@ Add the following code to your `smb.conf` file under the `[global]` block:
 
 For an explanation of what these options do, check the original blog post linked above, the original code includes detailed comments for each option.
 
-<div id='ref'/>
-
 ## References
 
 - <a href="https://www.samba.org/samba/docs" target="_blank" data-umami-event="setup-smb-docs">Samba Documentation</a>
@@ -160,7 +142,7 @@ For an explanation of what these options do, check the original blog post linked
 - <a href="https://eggplant.pro/blog/faster-samba-smb-cifs-share-performance" target="_blank" data-umami-event="setup-smb-eggplant-systems">Eggplant Systems & Design blog post about improving Samba share performance</a>
 - <a href="https://www.majorgeeks.com/content/page/how_to_enable_local_security_policy_in_windows_10_home.html" target="_blank" data-umami-event="setup-smb-local-security-policy-fix">Instructions to fix Local Security Policy issue</a>
 
-## Related Articles
+### Related Articles
 
 > <a href="/blog/create-public-samba-share-without-login/" data-umami-event="setup-smb-related-public-share-nologin">Create a public Samba share accessible without a login</a>
 

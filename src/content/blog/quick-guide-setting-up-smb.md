@@ -6,15 +6,6 @@ tags:
   - networking
 ---
 
-## Sections
-
-1. [Why SMB shares?](#why)
-2. [SMB config file for public share](#public)
-3. [SMB config file for private share with login](#private)
-4. [References](#ref)
-
-<div id='why' />
-
 ## Why SMB shares?
 
 My personal use case is that my main home server, which doubles as a NAS, is a Linux machine and holds copies of most of my important data -- but I access them from my PC and laptop, both of which use Windows 10. After several years of using SMB at home (and I need to stress this is for home use only and probably completely insecure and/or inadequate for enterprise networks) I have settled on two templates for `smb.conf`, the Samba configuration file. Below are the files.
@@ -22,8 +13,6 @@ My personal use case is that my main home server, which doubles as a NAS, is a L
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
 > This guide assumes Samba is installed and ready to go. If necessary, see <a href="setup-a-samba-share-on-linux-via-command-line" target="_blank">this post about setting up Samba</a>.
-
-<div id='public' />
 
 ## SMB config file for public share
 
@@ -65,8 +54,6 @@ Here is the file contents of my `smb.conf`:
 Always double-check that your config file's syntax is correct with `testparm`. For any changes to the config file to take effect, restart Samba services with `sudo systemctl restart smbd nmbd`.
 
 From Windows, opening **Run** and going to `//hostname/public` (or via IP address if you prefer) should open the folder without prompting for a login. However, any machine on the network can access this share and read/write/delete without limitation.
-
-<div id='private' />
 
 ## SMB config file for private share with login
 
@@ -123,14 +110,12 @@ As always check the file's syntax `testparm` and restart Samba services with `su
 
 From Windows, opening **Run** and going to `//hostname/public` (or via IP) should prompt for a login, with it only accepting the user `ariel` and SMB password you set, after which the folder opens. Only logging in under this user allows writing to the share.
 
-<div id='ref' />
-
 ## Reference
 
 - <a href="https://www.samba.org/samba/docs" target="_blank" rel="noopener noreferrer">Samba Documentation</a>
 - <a href="https://www.samba.org/samba/docs/current/man-html/smbpasswd.8.html" target="_blank" rel="noopener noreferrer">smbpasswd Manpage</a>
 
-## Related Articles
+### Related Articles
 
 > [Formatting disks in Linux command line](/blog/formatting-on-linux/)
 

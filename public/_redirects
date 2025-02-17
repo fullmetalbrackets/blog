@@ -3,11 +3,6 @@
 /categories/smb/    /categories/command%20line/   301
 /categories/samba/    /categories/command%20line/   301
 /categories/ansible/    /categories/command%20line/ 301
-/categories/deno/   /categories/web%20development/  301
-/categories/nuxt/   /categories/web%20development/  301
-/categories/web-dev/    /categories/web%20development/  301
-/categories/web-development/    /categories/web%20development/  301
-/categories/prismjs/   /categories/web%20development/  301
 /categories/surge/   /categories/web%20development/  301
 /categories/vercel/ /categories/web%20development/  301
 /categories/pwa/   /categories/web%20development/  301
@@ -16,5 +11,16 @@
 /categories/dns/    /categories/networking/ 301
 /categories/ubuntu/ /categories/linux/  301
 /categories/debian/ /categories/linux/  301
-/blog/bootstrapping-fresh-linstall-with-ansible/ https://fullmetalbrackets.com/blog/bootstrapping-fresh-install-with-ansible/
+/categories/web-development/    /categories/web%20development/  302
+/categories/web-dev/    /categories/web%20development/  302
+/categories/prismjs/   /categories/web%20development/  302
+/categories/deno/   /categories/web%20development/  302
+/categories/nuxt/   /categories/web%20development/  302
+/blog/create-public-samba-share-without-login/	/blog/setup-a-samba-share-on-linux-via-command-line/	301
+/blog/bootstrapping-fresh-linstall-with-ansible/	/blog/bootstrapping-fresh-install-with-ansible/	301
+/blog/create-public-samba-share-without-login/  /blog/setup-a-samba-share-on-linux-via-command-line/    301
+/blog/host-a-static-website-with-aws-amplify/   /blog/5-ways-to-host-site-free/ 301
 /blog/solic-explorer-samba-share/   /blog/solid-explorer-samba-share/   301
+/blog/formatting-on-linux/  /blog/how-to-format-partition-linux/    301
+/blog/sync-bare-metal-pihole-with-container/   /    302
+/blog/install-and-use-sudo-debian/  /   302
