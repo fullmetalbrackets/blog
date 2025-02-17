@@ -156,8 +156,12 @@ h3, h5 {
   margin: 0;
   padding: 0;  
 }
-#sections, #table-of-contents {
-  margin-top: 0;
+#related-articles {
+  font-family: 'Atkinson', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+  color: var(--primary);
+  font-size: 1.5em;
+  margin: 0;
+  padding: 0;
 }
 p {
   overflow-wrap: break-word;
@@ -285,7 +289,7 @@ code {
 	background-color: var(--code-bg);
 	color: var(--code-text);
 	border-radius: 0.25em;
-  font-size: 18px;
+  font-size: 0.85em;
   white-space: pre;
   text-wrap: pretty;
 }
