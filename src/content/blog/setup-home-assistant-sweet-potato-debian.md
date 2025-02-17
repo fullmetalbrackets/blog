@@ -7,16 +7,6 @@ tags:
   - self-hosting
 ---
 
-## Sections
-
-1. [Pre-Requisites](#pre)
-2. [Install required packages](#packages)
-3. [Install Docker](#docker)
-4. [Install Home Assistant Supervised](#ha)
-5. [References](#ref)
-
-<div id='pre' />
-
 ## Pre-Requisites
 
 This guide assumes you already have either a Le Potato or a Sweet Potato (the instructions work for both) up and running with Debian 12 Bookworm. See <a href="https://hub.libre.computer/t/debian-11-bullseye-and-12-bookworm-for-libre-computer-boards/230" target="_blank" data-umami-event="hass-potato-libre-install-debian">Libre's official instructions</a> or <a href="/blog/setting-up-sweet-potato-debian-pihole/#boot" target="_blank" data-umami-event="hass-potato-to-setup-potato-pihole">see my blog post here</a> for how I run Debian 12 off a USB stick.
@@ -28,8 +18,6 @@ Note that SSH is disabled in Debian by default, so you'll have to plug in a moni
 > I'll be following Libre's official instructions for installing Home Assistant Supervised, however it seems the guide was made with Docker version 24.0.7, but the current version of 25.0.x has a bug that causes the setup to fail at the last step, when you first go into the Home Assistant UI.
 > 
 > Some googling led me to the only solution that worked, which was downgrading to Docker version 24.0.7 -- with a fresh install, you'll have to make sure you install that specific version of Docker to avoid the issue altogether, which is part of my instructions below.
-
-<div id='packages' />
 
 ## Install required packages
 
@@ -49,8 +37,6 @@ sudo update-grub
 
 Once that's done, be sure to `sudo reboot` before you continue so that everything you did above takes effect.
 
-<div id='docker' />
-
 ## Install Docker
 
 This is where I got tripped up, the instructions from Libre say to just use Docker's script to install everything, but that defaults to the latest version of Docker which, as I said above, causes issues later. Until this is resolved, you should we'll need to install Docker version 24.0.7 specifically. (24.0.9 might also work, but I went with .7 because that's what was working in the solution I found.)
@@ -69,8 +55,6 @@ sudo sh install-docker.sh --version 24.0.7
 ```
 
 Once again, this may take a while, but when done we can finally move on to installing Home Assistant.
-
-<div id='ha' />
 
 ## Install Home Assistant Supervised
 
@@ -108,8 +92,6 @@ You should arrive at the Home Assistant UI's welcome page, where you can follow 
 
 Once the setup finishes, which it should without issue if you installed Docker version 24.0.7 as stated above, you'll be ready to go! (If you migrated from Core to Supervised via backup, be sure to login with the same username and password that you used in Core!)
 
-<div id='ref' />
-
 ## References
 
 - <a href="https://libre.computer" target="_blank" data-umami-event="hass-potato-libre-site">Libre Computer</a>
@@ -118,7 +100,7 @@ Once the setup finishes, which it should without issue if you installed Docker v
 - <a href="https://hub.libre.computer/t/booting-from-external-usb-device-or-bootrom-unsupported-device/51" target="_blank" data-umami-event="hass-potato-libre-usb-boot">Booting from External USB Device (alternative to eMMC boot)</a>
 - <a href="https://www.home-assistant.io/docs" target="_blank" data-umami-event="hass-potato-hass-docs">Home Assistant Documentation</a>
 
-## Related Articles
+### Related Articles
 
 > <a href="/blog/setting-up-sweet-potato-debian-pihole/" data-umami-event="hass-potato-related-setup-potato-pihole">Setting up a Libre Computer Sweet Potato SBC with Debian and Pi-Hole</a>
 

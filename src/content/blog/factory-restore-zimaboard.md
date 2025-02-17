@@ -7,28 +7,13 @@ tags:
   - self-hosting
 ---
 
-## Table of Contents
-
-1. [About the ZimaBoard](#about)
-2. [Pre-requisites](#pre)
-3. [Downloading image and creating bootable USB](#image)
-4. [Installing the image on ZimaBoard](#install)
-5. [References](#ref)
-
-<div id='about'/>
-
 ## About the ZimaBoard
 
 <a href="https://www.zimaspace.com/products/single-board-server" target="_blank" data-umami-event="factory-restore-zimaboard-sbc-site">ZimaBoard</a> is a "hackable" x86 single board server, by default it comes running Debian and CasaOS, and is meant to be the hub of your personal self-hosted cloud. Through a simple web GUI you can install and manage different apps and services as Docker containers. The ZimaBoard 232 specifically has a Intel Celeron dual core N3350 CPU with integrated graphics and 2 GB of DDR4 RAM. The higher end 432 and 832 models have better Celeron CPUs and more RAM. All the models have a 32 GB eMMC and two SATA ports for more storage, two USB 3.0 ports, two gigabit ethernet ports and even a PCIe 2.0 x4 port. The 12V charger sips power at around 5 to 6 watts.
 
-
-<div id='pre'/>
-
 ## Pre-requisites
 
 Installing any image will require a USB drive (<a href="https://www.amazon.com/SamData-Swivel-Storage-Indicator-8GB-1Pack/dp/B08CRMBD93" target="_blank" data-umami-event="factory-restore-zimaboard-usb8gb-amazon">here's an 8gb one for $5 on Amazon</a>) and a monitor to use the installation GUI. Since the ZimaBoard has no HDMI port, only a Mini-DisplayPort 2.0 port, a Mini DisplayPort to HDMI adapter cable is required. I used <a href="https://www.amazon.com/dp/B0757JWW81" target="_blank" data-umami-event="factory-restore-zimaboard-minidisplayport-amazon">this one from Amazon for $9</a>.
-
-<div id='image'/>
 
 ## Downloading image and creating bootable USB
 
@@ -45,8 +30,6 @@ I have the ZimaBoard 216, so I used the <a href="https://drive.google.com/file/d
 Once you have downloaded the image, plug into your PC a USB drive with 8 GB or more capacity, run **Rufus** as Administrator, and the USB drive should appear under _Devices_, otherwise select it from the dropdown. Under _boot selection_, click the **Select** button to the right, navigate to and select the image file, and click **Open**. Leave all options at default and click the **Start** button at the bottom.
 
 You may get a warning about the image, ignore it. You should get prompted to write the image either in ISO or DD mode -- _I had to choose DD mode for the Zimaboard to recognize the image_, in my experience Debian always needs _DD mode_ to flash the ISO. Once the image is done writing, you can close Rufus and remove the USB drive.
-
-<div id='install'/>
 
 ## Installing the image on ZimaBoard
 
@@ -74,8 +57,6 @@ Once the countdown is complete, the ZimaBoard will shutdown. Confirm that the re
 
 On a browser in the same local network, go to `http://casaos.local` and the CasaOS web UI should appear, prompting creation of a new user.
 
-<div id='ref'/>
-
 ## References
 
 - <a href="https://www.zimaspace.com/docs" target="_blank" umami-data-event="factory-restore-zimaboard-docs">ZimaBoard documentation</a>
@@ -84,6 +65,6 @@ On a browser in the same local network, go to `http://casaos.local` and the Casa
 - <a href="https://etcher.balena.io" target="_blank" umami-data-event="factory-restore-zimaboard-balenaetcher">BalenaEtcher</a>
 - <a href="https://ventoy.net" target="_blank" umami-data-event="factory-restore-zimaboard-ventoy">Ventoy</a>
 
-## Related Articles
+### Related Articles
 
 > <a href="/blog/remove-casaos-zimaboard-upgrade-debian-12/" umami-data-event="factory-restore-zimaboard-related-remove-casaos">How to remove CasaOS from a ZimaBoard and upgrade to Debian 12 Bookworm</a>

@@ -7,26 +7,15 @@ tags:
   - self-hosting
 ---
 
-## Table of Contents
-
-1. [Caveats and Pre-Requisites](#pre)
-2. [Configure PhotoSync](#config)
-3. [Transferring photos to the Samba share](#transfer)
-4. [References](#ref)
-
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
 > Though the **PhotoSync** app is available on iPhone as well as Android, I have an Android phone and so I _have only done this on Android_. It's safe to assume configuring PhotoSync on iPhone to connect to your NAS will be similar, if not exactly the same.
-
-<div id='pre'/>
 
 ## Caveats and Pre-Requisites
 
 The method I describe below requires that your phone with the _PhotoSync_ app be _connected to the same Wi-Fi network as the server_ that you will be transferring your photos to, or have access to the server via Tailscale or other similar solution. Also, the server must already be configured with a Samba share. (<a href="/blog/setup-a-samba-share-on-linux-via-command-line/" target="_blank" data-umami-event="photosync-smb-to-setup-smb-linux">See here how to set up a Samba share on Linux.</a>)
 
 Finally, using the **SMB** option to transfer photos _requires the NAS Add-On for PhotoSync_, which costs **$2.49** by itself. (You also have the option of spending a bit more on the _Bundle Add-On_, which comes with the _NAS Add-On_ as well as the _Auto-Transfer and Cloud Add-Ons_, but those are not necessary for what we'll be setting up.)
-
-<div id='config'/>
 
 ## Configure PhotoSync
 
@@ -48,8 +37,6 @@ Now under _FOLDER SETTINGS_ tap on **Destination Folder** and pick a directory i
 ![PhotoSync SMB configuration.](../../img/blog/photosync6.jpg 'PhotoSync SMB configuration')
 
 The rest of the settings you can set to your liking. If you haven't gotten any errors, everything should be working as intended. Tap on **Done** to return to the app's main page.
-
-<div id='transfer'/>
 
 ## Transferring photos to the Samba share
 
@@ -74,13 +61,11 @@ Next, we'll set up _background auto-transfers_, but you'll need optional the **A
 
 4. Finally, under _Autotransfer Trigger_ click on the **Change Trigger** button, and pick your desired trigger -- I like to set it so transfers occur when I connect a charger.
 
-<div id='ref'/>
-
 ## References
 
 - <a href="https://www.photosync-app.com/home" target="_blank" data-umami-event="photosync-smb-photosync-site">PhotoSync Website</a>
 
-## Related Articles
+### Related Articles
 
 > <a href="/blog/setup-a-samba-share-on-linux-via-command-line/" data-umami-event="photosync-smb-related-setup-smb-share">Setup a Samba share on Linux via command line</a>
 

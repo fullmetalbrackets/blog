@@ -9,23 +9,11 @@ tags:
 
 ![Libre Computer Sweet Potato.](../../img/blog/sweet-potato.jpg 'Libre Computer Sweet Potato')
 
-## Sections
-
-1. [WTF is Libre Computer and Sweet Potato?](#what)
-2. [Booting up Debian 12 Bookworm off a USB stick](#boot)
-3. [Updating, configuring, and installing packages](#config)
-4. [Installing and Configuring Pi-Hole](#pihole)
-5. [References](#ref)
-
-<div id='what' />
-
 ## WTF is Libre Computer and Sweet Potato?
 
 Libre Computer Project is a crowdfunded designer of single-board computers which effectively are alternatives to Raspberry Pi. Amongst their products is the <a href="https://libre.computer/products/aml-s905x-cc/" target="_blank" data-umami-event="sweet-potato-debian-pihole-libre-le-potato">Le Potato</a> which is equivalent in features to a low-end Raspberry Pi 3B, which some slight differences.
 
 In September 2023 they came out with a new revision known as the "Sweet Potato" with a few minor upgrades. (<a href="https://www.loverpi.com/products/libre-computer-board-aml-s905x-cc-v2" target="_blank" data-umami-event="sweet-potato-debian-pihole-libre-sweet-potato">See here</a> for a product page with the differences.) I took the plunge and ordered it from <a href="https://www.loverpi.com" target="_blank" data-umami-event="sweet-potato-debian-pihole-loverpi">LoveRPi</a> and it arrived a week later.
-
-<div id='boot' />
 
 ## Booting up Debian 12 Bookworm off a USB stick
 
@@ -35,15 +23,11 @@ First I found the <a href="https://distro.libre.computer/ci/debian/12/" target="
 
 I plugged it into the top-left USB port on the Sweet Potato (pretty sure any of the four USB ports will do), then plugged in the USB-C power supply, which does not come in the box, but I used a 5V 3A charger from an old Samsung phone and it works perfect. Sweet Potato turned on and automatically ran Debian from the USB, it was up and running in a few minutes, denoted by the blue light on the Sweet Potato blinking steadily.
 
-<div id='config' />
-
 ## Updating, configuring, and installing packages
 
 For the next section I consulted <a href="https://hub.libre.computer/t/debian-11-bullseye-and-12-bookworm-for-libre-computer-boards/230" target="_blank" data-umami-event="sweet-potato-debian-pihole-libre-bullseye-bookworm">Libre's post on Debian 11 and 12</a>. SSH is disabled by default, so I had to plug in a monitor to continue setting up the Sweet Potato. (This is specifically the Debian base image -- all Ubuntu releases come with SSH enabled from the start for a totally headless setup). The default username and password are `root`, though you are prompted to change the root password immediately. I also went ahead and set up my main user with `adduser ariel` and then added it to the sudo group with `adduser ariel sudo`.
 
 First things first, of course, is updating everything with `apt update && apt full-upgrade -y`, then I installed SSH so I can go headless with `sudo apt install ssh -y`. One last thing, I changed the hostname (by default it is `aml-s905x-cc`) by using `sudo hostnamectl set-hostname potato` to set the new hostname to **potato**.
-
-<div id='pihole' />
 
 ## Installing and configuring Pi-Hole
 
@@ -160,15 +144,13 @@ The docs continue with instructions for disabling `resolvconf.conf` but I didn't
 
 If you'd like a low wattage Raspberry Pi alternative, then in my opinion Libre's Sweet Potato SBC is a worthy choice for <a href="https://www.amazon.com/Libre-Computer-AML-S905X-CC-V2-Potato-Alternative/dp/B0CHHJX44N" target="_blank" data-umami-event="sweet-potato-debian-pihole-amazon-link">$30 on Amazon</a>.
 
-<div id='ref' />
-
 ## Reference
 
 - <a href="https://libre.computer" target="_blank" data-umami-event="sweet-potato-debian-pihole-libre-site">Libre Computer</a>
 - <a href="https://hub.libre.computer/t/booting-from-external-usb-device-or-bootrom-unsupported-device/51" target="_blank" data-umami-event="sweet-potato-debian-pihole-libre-boot-usb">Booting from External USB Device</a>
 - <a href="https://hub.libre.computer/t/libre-computer-aml-s905x-cc-emmc-flashing-steps-from-linux/33" target="_blank" data-umami-event="sweet-potato-debian-pihole-libre-flash-emmc">Flashing Linux to eMMC (alternative to USB boot)</a>
 
-## Related Articles
+### Related Articles
 
 > <a href="/blog/setup-home-assistant-sweet-potato-debian/" data-umami-event="sweet-potato-debian-pihole-related-hass-potato">Set up Home Assistant Supervised on a Libre Computer Sweet Potato SBC</a>
 

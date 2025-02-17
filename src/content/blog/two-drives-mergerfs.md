@@ -7,14 +7,6 @@ tags:
   - command line
 ---
 
-## Sections
-
-1. [What and why](#what)
-2. [Install and configure MergerFS](#install)
-3. [References](#ref)
-
-<div id='what' />
-
 ## What and Why
 
 <a href="https://github.com/trapexit/mergerfs" target="_blank" data-umami-event="mergerfs-post-to-mergerfs-site">MergerFS</a> is free and open source software described as a "featureful union filesystem." I discovered it (along with easy to understand set up instructions) via <a href="https://perfectmediaserver.com/02-tech-stack/mergerfs" target="_blank" data-umami-event="mergerfs-post-perfectmediaserver">Perfect Media Server</a>, itself a great resource for self-hosters. Essentially what MergerFS does is act as a proxy so that multiple hard drives can be accessed at one mount point. What does that mean? Well, lets go over my situation.
@@ -47,8 +39,6 @@ What a mess! And with movies spread across multiple drives, how to keep track of
 > Not that I am using `/srv/media` as a unified mount point just as an example. My drives will have new mount points at `/mnt/media1`, `/mnt/media2`, etc. and so I chose `/srv/media` as the unified mount point to avoid any conflicts or other weirdness. Feel free to put your unified mount point where ever you like, e.g. `/opt/media` or whatever.
 
 With their powers combined, I gain access any media across all three drives at my chosen single mount point, at `/srv/media`.
-
-<div id='install' />
 
 ## Install and configure MergerFS
 
@@ -117,14 +107,12 @@ Exploring your new unified mount point should show all your data! At that point 
 
 If you encounter a problem after reboot, you probably messed something up in the fstab file, the syntax can be tricky. Edit it to fix any issues and reboot again. If you want to be safe, try commenting out rather than editing any existing fstab entries until you know everything is working properly.
 
-<div id='ref' />
-
 ## References
 
 - <a href="https://github.com/trapexit/mergerfs" target="_blank" data-umami-event="mergerfs-post-to-mergerfs-site">MergerFS</a>
 - <a href="https://perfectmediaserver.com" target="_blank" data-umami-event="mergerfs-post-perfectmediaserver">Perfect Media Server</a>
 
-## Related Articles
+### Related Articles
 
 > <a href="/blog/setup-a-samba-share-on-linux-via-command-line/" data-umami-event="mergerfs-post-related-setup-smb-share">Setup a Samba share on Linux via command line</a>
 

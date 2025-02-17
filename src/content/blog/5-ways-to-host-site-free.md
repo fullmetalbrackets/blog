@@ -7,20 +7,11 @@ tags:
   - web development
 ---
 
-## Table of Contents
-
-1. [Netlify](#netlify)
-2. [Vercel](#vercel)
-3. [GitHub Pages](#github)
-4. [Cloudflare Pages](#cloudflare)
-5. [Surge.sh](#surge)
-6. [References](#ref)
-
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
-> This was one of my earliest blog posts when I was trying out as many different free static web hosts as I could. Although originally hosted on Netlify for years, <a href="/blog/merging-sites-and-changing-hosts" target="_blank">I switched to Cloudflare Pages</a> and haven't looked back. I don't use Netlify at all anymore, or any of the other web hosts mentioned below for that matter, because Cloudflare is just too good! That said, I don't plan to try out any other hosts, so this probably guide won't be getting an update. I will eventually make a new blog post about how to create a site on Cloudflare Pages specifically. (I'm pretty sure the below instructions are beyond outdated in 2025.)
-
-<div id='netlify'/>
+> This was one of my earliest blog posts when I was trying out as many different free static web hosts as I could. Although originally hosted on Netlify for years, <a href="/blog/merging-sites-and-changing-hosts" target="_blank">I switched to Cloudflare Pages</a> and haven't looked back. I don't use Netlify at all anymore, or any of the other web hosts mentioned below for that matter, because Cloudflare is just too good!
+>
+> For this reason, I don't plan to try out any other hosts, so this guide probably won't be getting an update. I will eventually make a new blog post about how to create a site on Cloudflare Pages specifically. (I'm pretty sure the below instructions are beyond outdated in 2025.)
 
 ## Netlify
 
@@ -44,8 +35,6 @@ Also, Netlify has some really cool features that solve problems for you, such as
 >
 > Be aware that by default ANY push to the `main`/`master` branch of the Git repo will force a build & deploy of the site on Netlify, which can quickly rack up build minutes. If you prefer to deploy manually, be sure to off auto-deploys in the **Site Settings** on the Netlify dashboard.
 
-<div id='vercel'/>
-
 ## Vercel
 
 Very similar to Netlify, but it has a major feature that Netlify does not -- server-side rendering! This means you can host your Node.js apps and stuff built with Next.js, for example. Another advantage Vercel has over Netlify is that it's free tier is very generous, with seemingly no limit on build minutes or bandwidth (at least not that I've noticed), however you cannot have collaborators on the free tier unlike Netlify. Like Netlify, Vercel auto-deploys from git repos, lets you use serverless functions, and has "branch deploys" for previewing changes before merges or pull requests. Honestly, Vercel is awesome, but I haven't used it much as of yet, though that is already changing as I've been using it for my new projects.
@@ -60,8 +49,6 @@ Very similar to Netlify, but it has a major feature that Netlify does not -- ser
 6. You'll be able to configure project settings, including framework if one is being used for the project (should be auto-detected), build and install commands (the defaults should be fine if the framework is detected correctly), output directory, and environmental variables. When you're done, scroll down and click **Deploy**.
 7. Vercel will begin the process of building your site, if there's no issues with the build then your site will deploy in a minute or two.
 
-<div id='github'/>
-
 ## GitHub Pages
 
 You can skip the third-party providers and host your site right on GitHub, though like Netlify will only host static sites, nothing with a back-end like Node.js or PHP. The only limits you really have are that both your site AND it's source repo may be no larger than 1GB, there is a soft bandwidth limit of 100GB per month, and a soft limit of 10 builds per hour. What does soft limit mean? Well, apparently your site won't automatically go offline or fail to deploy on new commits past the limits, BUT your builds may be delayed and GitHub will email you with suggestions on how to avoid hitting these limits again. The process for hosting a site is a little weird compared to others, but not difficult at all to grasp.
@@ -73,8 +60,6 @@ You can skip the third-party providers and host your site right on GitHub, thoug
 3. You'll have an empty repo now, but GitHub Pages is already set up for it automatically.
 4. Now either import another repository or push a commit from a local repo.
 5. If all goes well (and your site is compatible with GitHub Pages by default, no settings to configure/customize here, except the branch to deploy from) then your site will show up shortly at `https://username.github.io`
-
-<div id='cloudflare'/>
 
 ## Cloudflare Pages
 
@@ -88,8 +73,6 @@ This is the free hosting option I've used the least, but in my tests it seems li
 4. Choose a repository to associate with your Page, then click **Begin Setup**.
 5. Set up your project name (this will become your sub-domain), production branch, build settings, environmental variables, etc. then click **Save and Deploy**.
 6. After a few minutes, your site will be available at `https://project-name.pages.dev`
-
-<div id='surge'/>
 
 ## Surge.sh
 
@@ -111,8 +94,6 @@ That's it! Surge.sh has a crazy fast build time and instant availability on thei
 - Pass the `--domain` option prior to the URL to skip the sub-domain prompt, e.g. `npx surge --domain http://example.surge.sh`
 - If you specifically include `https://` in your URL, Surge.sh will provision an SSL certificate for the site and auto-redirect HTTP traffic to HTTPS, so that going to `http://example.surge.sh` will instead take you to `https://example.surge.sh`
 - If you want to teardown your Surge.sh site, so it's no longer available at the URL, simply use the command `npx surge teardown example.surge.sh`
-
-<div id='ref'/>
 
 ## References
 

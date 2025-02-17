@@ -6,20 +6,9 @@ tags:
   - miscellaneous
 ---
 
-## Sections
-
-1. [Merging sites](#merge)
-2. [Netlify's PR disaster](#netlify)
-3. [Moving to Cloudflare](#cloudflare)
-4. [References](#ref)
-
-<div id='merge' />
-
 ## Merging sites
 
 In case you happen to be someone that's visited my blog more than once, you may or may not have realized that I actually ran two versions of it -- one at `arieldiaz.codes` and the other at `fullmetalbrackets.com` -- which had different site designs, but identical content. For a while now I had been considering just merging the two and only maintaining a single site, and I finally took the plunge and did that. I chose `fullmetalbrackets.com` because I just like the name (it's my username on GitHub and other tech-related things) and, frankly, it gets more hits than `arieldiaz.codes` does. I suppose it makes sense that a `.com` domain would always get more traffic, and rank higher in Google search results, than a `.codes` domain. What finally made me commit to merging the sites into one is changing hosts from **Netlify** to **Cloudflare**. But why did I do that?
-
-<div id='netlify' />
 
 ## Netlify's PR disaster
 
@@ -36,8 +25,6 @@ First of all, the email from Netlify support to the affected site owner (which y
 A Reddit comment dug up an old post on Netlify's support site, <a href="https://answers.netlify.com/t/limit-bandwidth-to-avoid-high-billing-caused-by-ddos/13086" target="_blank">where a potential customer asks about Netlify's unlimited pay for usage system</a> and their concerns that traffic spikes would lead to surprise bills. In <a href="https://answers.netlify.com/t/limit-bandwidth-to-avoid-high-billing-caused-by-ddos/13086/5" target="_blank">a reply from a Netlify support team member</a>, they essentially brush off the concerns of a free site being DDOS'd or going viral unintentionally, confirming there's no safety net for free users when they get an uncontrolled and unintended spike in traffic, instead suggesting you go with a paid tier or move to another web host if you think this will happen to you. As if someone running a simple blog or hobby project would always know ahead of time the kind of traffic they are going to get. Not everyone with a website wants to go viral, and it's ridiculous to suggest everyone needs to assume ahead of time that their site will get DDOS'd. The support team member's response suggests "investigating options to mitigate the fallout from a DDOS attack or viral content on your own" without so much as pointing them in the right direction. Netlify themselves have no tools to mitigate huge traffic spikes for free sites, nothing in the site configuration to block certain traffic or cause a 503 error upon hitting a threshold, which one would think is the bare minimum. It's almost as if Netlify would rather bill a hapless victim and get paid, then push them into a paid plan, or simply force the victim to move their site to a competitor.
 
 As a result of this situation, the CEO's response to it, and these old support articles showing they will not help you, the latter is exactly what will happen -- free plan users will migrate en masse to competitors that won't take advantage of them if they are attacked, many of which offer basic DDOS protection and rate limits for their free tier. After all, what business in their right mind would risk being on the hook for a huge, but unintentional traffic spike from a freeloader that is most likely using their free tier to learn or for a proof of concept? Vercel, GitHub Pages, and Cloudflare Pages all offer actual protection against this for free users by default specifically to prevent such an occurrence. Netlify's awful way of handling this will not only scare off many free users, who may have eventually scaled to a paid plan, but it will also be a huge warning signs to those already in a paid plan or who were thinking of using Netlify for their app or business. I would not be surprised if this will end up costing Netlify a lot more than the ridiculous $104,500 they wanted to bill.
-
-<div id='cloudflare' />
 
 ## Moving to Cloudflare
 

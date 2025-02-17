@@ -7,15 +7,6 @@ tags:
   - web development
 ---
 
-## Sections
-
-1. [What is a Progressive Web App?](#what)
-2. [PWA Requirements](#req)
-3. [Service Worker](#worker)
-4. [Manifest](#manifest)
-5. [Testing your PWA](#test)
-6. [References](#ref)
-
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
 > **TL;DR**
@@ -24,13 +15,9 @@ tags:
 >
 > See a demo of it in action <a href="https://pwa-template.surge.sh" arget="_blank">here</a>.
 
-<div id='what'/>
-
 ## What is a Progressive Web App?
 
 Progressive Web Applications, or PWAs for short, are web apps that can give a user experience on par with native apps you’d install on your smartphone or computer. You can read more about it <a href="https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps" target="_blank">on the MDN web docs</a>, and I strongly suggest you do because I will not be going in-depth here.
-
-<div id='req'/>
 
 ## PWA requirements
 
@@ -39,8 +26,6 @@ Progressive Web Applications, or PWAs for short, are web apps that can give a us
 3. HTTPS, because even if you meet every other requirement, PWAs will not install without it!
 
 Let’s get right into what a Service Worker and a Manifest look like. Again, <a href="https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps" target="_blank">read the MDN docs</a> for more details.
-
-<div id='worker'/>
 
 ## Service Worker
 
@@ -96,8 +81,6 @@ if ("serviceWorker" in navigator) {
 ```
 
 The above code can be inline on your HTML file with `<script>` tags, or in a separate JavaScript file if you prefer, which is what I did above.
-
-<div id='manifest'/>
 
 ## Manifest
 
@@ -173,15 +156,11 @@ Let's break it down:
 
 For the icons, you can just google “PWA icon generator” to find a bunch of tools that let you turn an image into the various sizes needed for a PWA, but I personally prefer <a href="https://www.simicart.com/manifest-generator.html/" target="_blank">this one</a> since generates both the correct size icons and the manifest for them. Note that if **any** size of icon is missing, or the incorrect size, the site will not be installable as a PWA.
 
-<div id='test'/>
-
 ## Testing your PWA
 
 It may be tricky to test a PWA locally, since you need HTTPS and you may not have have a way to do that on your machine. If so I suggest using <a href="https://surge.sh" target="_blank">Surge.sh</a> since it lets you quickly and easily upload and teardown websites, and they provide free HTTPS. Alternately, you temporarily host your app on <a href="https://netlify.com" target="_blank">Netlify</a> or <a href="https://pages.github.com/" target="_blank">GitHub Pages</a> for that sweet free HTTPS.
 
 Either way, once you've got HTTPS figured out, go to your site's URL in Google Chrome. First, you should notice a new icon on your address bar that gives you the option to install the site as a PWA. If you see this, you're golden! If not, let's figure out why with the Chrome Developer Tools. Open the developer tools, click on the **Application** tab and it will list any issues with the PWA. Usually fixing exactly what the Chrome dev tools tell you is broken will immediately make it work.
-
-<div id='ref'/>
 
 ## References
 

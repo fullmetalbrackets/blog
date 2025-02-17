@@ -7,25 +7,11 @@ tags:
   - tailscale
 ---
 
-## Table of Contents
-
-1. [About Tailscale](#about)
-2. [The goal](#goal)
-3. [Set up Tailscale](#tailscale)
-4. [Set up Pi-hole](#pihole)
-5. [Seting Pi-hole as tailnet DNS](#dns)
-6. [Further reading](#more)
-7. [References](#ref)
-
-<div id='about'/>
-
 ## About Tailscale
 
 Tailscale lets you set up a mesh virtual private network (VPN) for secure access to devices and self-hosted services on your home network from anywhere using the Wireguard protocol. An overlay mesh network known as a Tailnet is created that all devices running Tailscale will join, with traffic between devices going through an encrypted Wireguard tunnel and using NAT traversal, without the need to open ports on your router.
 
 The personal plan is free, allows three users and up to 100 devices. I use it mainly to access Plex on my home server (though I can access all my self-hosted apps) and use my Pi-Hole as DNS through my phone, tablet and laptop when I'm not home, and that is what this guide will help you do. For details, <a href="https://tailscale.com/blog/how-tailscale-works" target="_blank" data-umami-event="pihole-anywhere-post-how-tailscale-works">see this blog post about how Tailscale works</a>.
-
-<div id='goal'/>
 
 ## The goal
 
@@ -34,8 +20,6 @@ When all is setup and working, your client devices (say phone, tablet and laptop
 Note that I will mostly be following <a href="https://tailscale.com/kb/1114/pi-hole" target="_blank" data-umami-event="pihole-anywhere-post-tailscale-docs-pihole">the official instructions from the Tailscale documentation</a>, so refer back to them when in doubt or if something I write below doesn't make sense.
 
 I'll be setting this up on a Libre Sweet Potato in my home running Debian, but everything should work the same on Ubuntu or other distributions.
-
-<div id='tailscale'/>
 
 ## Set up Tailscale
 
@@ -70,8 +54,6 @@ Once you use the command, go to the provided URL and login to connect the machin
 Next we'll set up Tailscale on another device we'll be using outside the home. For a phone or tablet, just go to the app store, download the Tailscale app and open it, then log in to your Tailscale account and tap the **Connect** button. Pretty easy. Open the Tailscale app and you'll see a list of the machines on your Tailnet, and their connection status.
 
 To install Tailscale on a laptop, see <a href="https://tailscale.com/download" target="_blank" data-umami-event="pihole-anywhere-post-download-tailscale">this page</a> for how to download and install it on your OS.
-
-<div id='pihole'/>
 
 ## Set up Pi-hole
 
@@ -123,8 +105,6 @@ Make sure your upstream DNS server is set (I recommend <a href="https://quad9.ne
 
 ![Setting Pi-hole to permit all origins.](../../img/blog/pihole-tailscale-interface.png 'Setting Pi-hole to permit all origins')
 
-<div id='dns'/>
-
 ## Setting a Pi-Hole as Tailnet DNS
 
 By default, Tailscale does not manage your DNS, and each machine on the Tailnet will use it's own configured DNS settings. Tailscale lets you set a global DNS to be used by all machines when connected to the tailnet, and you can use the public DNS resolvers like Cloudflare or Google.
@@ -151,14 +131,12 @@ Do the following:
 
 Now to test it out, connect to Tailscale on your phone/tablet and visit some websites. You should not be seeing ads and should start seeing the device's Tailscale IP in Pi-Hole's logs. Any devices you add to Tailscale will use the Pi-hole we just set up as their DNS server, unless you use the `--accept-dns=false` flag where available.
 
-<div id='ref'/>
-
 ## References
 
 - <a href="https://tailscale.com/kb" target="_blank" data-umami-event="pihole-anywhere-post-tailscale-docs">Tailscale Docs</a>
 - <a href="https://tailscale.com/kb/1114/pi-hole" target="_blank" data-umami-event="pihole-anywhere-post-tailscale-docs-pihole">Pi-Hole from anywhere</a>
 
-## Related Articles
+### Related Articles
 
 > <a href="/blog/set-up-pihole-on-linux/" data-umami-event="pihole-anywhere-post-related-setup-pihole">Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS</a>
 

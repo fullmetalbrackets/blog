@@ -7,14 +7,6 @@ tags:
   - docker
 ---
 
-## Sections
-
-1. [Preping the Compose file and Prometheus config files](#prep)
-2. [Start up the containers and confirm they are working](#start)
-3. [References](#ref)
-
-<div id='prep'/>
-
 ## Prepping the Compose file and Prometheus config files
 
 First things first, if you haven't yet, you can install Docker and all dependencies quickly with the following command:
@@ -129,8 +121,6 @@ sudo chgrp -R 65534 /home/ariel/docker/prometheus
 sudo chmod -R 777 /home/ariel/docker/prometheus
 ```
 
-<div id='start'/>
-
 ## Start up the containers and confirm they are working
 
 Now it's time to create the stack and get our containers up and running by using the following command: 
@@ -157,8 +147,6 @@ You should see _Prometheus_ with it's endpoint already set as a default Data Sou
 
 Now you're ready to create your dream Grafana dashboard! Creating the actual dashboard is beyond the scope of this article, but I may write about it in the future. For now, you might want to use dashboards created by others to start visualizing some metrics and learning the ropes.
 
-<div id='ref'/>
-
 ## References
 
 - <a href="https://docker.com" target="_blank" data-umami-event="setup-prom-cad-graf-docker">Docker</a>
@@ -166,7 +154,7 @@ Now you're ready to create your dream Grafana dashboard! Creating the actual das
 - <a href="https://github.com/google/cadvisor" target="_blank" data-umami-event="setup-prom-cad-graf-cadvisor">cAdvisor</a>
 - <a href="https://grafana.com" target="_blank" data-umami-event="setup-prom-cad-graf-grafana">Grafana</a>
 
-## Related Articles
+### Related Articles
 
 > <a href="/blog/setting-up-plex-in-docker/" data-umami-event="setup-prom-cad-graf-related-setup-plex">Setup self-hosted Plex Media Server in Docker</a>
 

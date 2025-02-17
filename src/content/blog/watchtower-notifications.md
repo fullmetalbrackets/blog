@@ -7,16 +7,7 @@ tags:
   - docker
 ---
 
-## Table of Contents
-
-1. [About Watchtower](#about)
-2. [Setting up Watchtower through Docker Compose](#setup)
-3. [Notifications via Pushover (or other methods)](#notifications)
-4. [References](#ref)
-
 ![Watchtower logo](../../img/blog/watchtower.png)
-
-<div id='about'/>
 
 ## About Watchtower
 
@@ -56,8 +47,6 @@ Here's what these environment variables do.
 - `WATCHTOWER_REVIVE_STOPPED=false`: This will cause Watchtower NOT to restart stopped containers after updating them (via the above), which by default it will.
 
 At this point you can save the file and, in the same directory where the file is located, run the command `docker compose up -d` to install and run Watchtower. You're now set up to automatically shutdown, update and restart containers when a new image is available. However, what if we want to be notified when an update happens?
-
-<div id='notifications'/>
 
 ## Notifications via Pushover (or other methods)
 
@@ -136,8 +125,6 @@ In the future, any updates will result in a notification specifying which contai
 
 All done! You should now get notifications through Pushover each time Watchtower updates any container images. If you want to use a different service for notifications, simply check <a href="https://containrrr.dev/shoutrrr/v0.8/services/overview" target="_blank" data-umami-event="watchtower-notifications-shoutrrr-docs-services">the Shoutrrr documentation for the syntax</a> and use that instead. You can even customize the 
 
-<div id='ref'/>
-
 ## References
 
 - <a href="https://containrrr.dev/watchtower" target="_blank" data-umami-event="watchtower-notifications-docs">Watchtower Documentation</a>
@@ -145,7 +132,7 @@ All done! You should now get notifications through Pushover each time Watchtower
 - <a href="https://containrrr.dev/shoutrrr" target="_blank" data-umami-event="watchtower-notifications-shoutrrr-docs">Shoutrrr Documentation</a>
 - <a href="https://github.com/containrrr/shoutrrr" target="_blank" data-umami-event="watchtower-notifications-shoutrrr-gh">Shoutrrr GitHub</a>
 
-## Related Articles
+### Related Articles
 
 > <a href="/blog/setting-up-plex-in-docker/" data-umami-event="watchtower-notifications-">Setup self-hosted Plex Media Server in Docker</a>
 

@@ -9,20 +9,9 @@ tags:
 
 ![Oh-My-Zsh](../../img/blog/oh-my-zsh.png 'Oh-My-Zsh')
 
-## Sections
-
-1. [Install the Zsh shell](#zsh)
-2. [Download and install Oh-My-Zsh](#ohmyzsh)
-3. [Using some essential plugins](#plugins)
-4. [Using a theme](#theme)
-5. [Prettify powerlevel10k with glpyhs](#pretty)
-6. [References](#ref)
-
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
 > This was one of my earliest blog posts, but even in 2025 this guide still works as written. Even now I still refer back to it all the time when setting up Oh-My-Zsh on anything!
-
-<div id='zsh'/>
 
 ## Install the Zsh shell
 
@@ -58,8 +47,6 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 
 After it's done downloading, use the command `zsh` to configure it.
 
-<div id='plugins'/>
-
 ## Using some essential plugins
 
 In my humble opinion, there's two must-have plugins when using Oh-My-Zsh; **zsh-autosuggestions** (for handy auto-completion of commands) and **zsh-syntax-highlighting** (detects and color codes different syntax on the command line and in the text editor). Let's download those:
@@ -76,8 +63,6 @@ plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 ```
 
 Save the file, exit the editor, and restart the shell for the changes to take effect. I also suggest adding _aliases_ as a plugin and adding aliases of your most used commands to your `.zshrc` file, or create a separate file just for aliases.
-
-<div id='theme'/>
 
 ## Using a theme
 
@@ -103,8 +88,6 @@ If the command isn't recognized, restart the shell first. Follow the prompts to 
 
 But wait, there's more! To make your terminal even prettier through the magic of glyphs, let's go a little deeper.
 
-<div id='pretty'/>
-
 ## Prettify powerlevel10k with glpyhs
 
 By using powerlevel10k's [recommended fonts](https://github.com/romkatv/powerlevel10k#fonts) the theme's configuration script will have more options to make the command line prompt look even better, including icons! For some reason these fonts aren't included with powerlevel10k's install instructions or script, so you have to do it manually. We'll use `wget` to download the fonts individually directly into the fonts directory.
@@ -126,8 +109,6 @@ sudo sh -c "$(curl -fsSL https://gist.githubusercontent.com/fullmetalbrackets/5a
 
 Now when you use `p10k configure` you'll get additional options, since you'll be able to display the glyph correctly. (If using a desktop environment, make sure to go into Terminal preferences and change the font to "Meslo LGS.")
 
-<div id='ref'/>
-
 ## References
 
 - <a href="https://zsh.org" target="_blank">Zsh shell website</a>
@@ -135,7 +116,7 @@ Now when you use `p10k configure` you'll get additional options, since you'll be
 - <a href="https://github.com/ohmyzsh/ohmyzsh#using-oh-my-zsh" target="_blank">Section on Plugins in the Docs</a>
 - <a href="https://github.com/romkatv/powerlevel10k" target="_blank">Powerlevel10k Theme</a>
 
-## Related Articles
+### Related Articles
 
 > [Linux Commands & Keyboard Shortcuts Cheat Sheet](/blog/basic-linux-commands/)
 

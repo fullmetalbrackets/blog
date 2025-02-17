@@ -6,14 +6,6 @@ tags:
   - git
 ---
 
-## Sections
-
-1. [The error](#error)
-2. [The fix](#fix)
-3. [References](#ref)
-
-<div id='error'/>
-
 ## The error
 
 You're working on a local version of a GitHub repo, and you use a command like `git add .` or `git pull` you are hit with this error:
@@ -23,8 +15,6 @@ insufficient permission for adding an object to repository database
 ```
 
 Coming from only working with Git and GitHub from Windows, I first encountered this on Linux when I switched to Debian KDE desktop as my daily driver. My google searching took me to <a href="https://stackoverflow.com/questions/18324279/github-error-insufficient-permission-for-adding-an-object-to-repository-databas" target="_blank">this thread on Stack Overflow</a> where an explanation and solution for the error were provided.
-
-<div id='fix'/>
 
 ## The fix
 
@@ -42,14 +32,12 @@ This error occurs because you accidentally committed a file or folder to git usi
 
 4. Proceed to use your git commands.
 
-<div id='ref'/>
-
 ## References
 
 - <a href="https://stackoverflow.com/questions/18324279/github-error-insufficient-permission-for-adding-an-object-to-repository-databas" target="_blank">Thread on Stack Overflow</a>
 - <a href="https://stackoverflow.com/a/26137707" target="_blank">The answer with the fix</a>
 
-## Related Articles
+### Related Articles
 
 > [Git commands cheat sheet](/blog/git-commands-cheat-sheet/)
 

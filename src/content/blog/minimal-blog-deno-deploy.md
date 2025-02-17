@@ -150,8 +150,6 @@ Click on _Get automatic certificates_ to finish. (Or upload your own certificate
 
 You should now be able to go to your custom domain to reach your blog. For whatever reason, in my experience it seems to load much faster on a custom top-level domain compared to Deno Deploy's `deno.dev` sub-domain. Enjoy!
 
-<div id='ref' />
-
 ## Reference
 
 - <a href="https://deno.land" target="_blank" rel="noopener">Deno</a> / <a href="https://deno.land/manual@v1.28.1/introduction" target="_blank" rel="noopener">Documentation</a>

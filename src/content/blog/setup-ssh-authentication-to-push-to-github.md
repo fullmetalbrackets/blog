@@ -2,12 +2,12 @@
 title: "Setup SSH authentication to push to Github"
 description: "Setting up SSH keys and pushing to GitHub without needing to enter a username and password has always been a good practice, but now that GitHub is deprecating basic username and password authentication, it's past time to get this set up if you haven't already. It's pretty simple and only takes a few minutes, here's the quick and dirty instructions."
 pubDate: 2021-09-21
-updatedDate: 2025-02-03
+updatedDate: 2025-02-17
 tags:
   - ssh
 ---
 
-Setting up SSH keys and pushing to GitHub without needing to enter a username and password has always been a good practice, but now that GitHub is deprecating basic username and password authentication, it's past time to get this set up if you haven't already. It's pretty simple and only takes a few minutes, here's the quick and dirty instructions.
+## Add the key in GitHub
 
 First we need to add our computer's SSH public key to GitHub. Login to your GitHub account, click on your profile icon in the top-right corner, then click on **Settings**.
 
@@ -71,7 +71,7 @@ And we're done! Git will automatically keep track of any modified files in the p
 - <a href="https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/" target="_blank" data-umami-event="ssh-to-github-gh-blog-deprecate-pw-auth">GitHub blog post about deprecating password auth</a>
 - <a href="https://docs.github.com/en" target="_blank" data-umami-event="ssh-to-github-gh-docs">GitHub documentation</a>
 
-## Related Articles
+### Related Articles
 
 > <a href="/blog/generating-an-ssh-key-pair/" data-umami-event="ssh-to-github-related-generate-ssh-key-pair">Generating an SSH key pair</a>
 

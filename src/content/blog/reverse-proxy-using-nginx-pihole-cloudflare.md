@@ -7,16 +7,6 @@ tags:
   - self-hosting
 ---
 
-## Sections
-
-1. [Pre-Requisites and Caveats](#pre)
-2. [Setting up Pi-Hole as network DNS server](#pihole)
-3. [Add the DNS records in Pi-Hole](#dns)
-4. [Add a domain in Cloudflare](#domain)
-5. [Install and configure Nginx Proxy Manager](#nginx)
-6. [Accessing Pi-Hole web UI with HTTPS](#https)
-7. [References](#ref)
-
 <div id='pre' />
 
 ## Pre-Requisites and Caveats
@@ -272,7 +262,7 @@ Once you're done setting up the proxy host, you should be able to go to `https:/
 - <a href="https://nginxproxymanager.com" target="_blank" data-umami-event="reverse-proxy-pihole-npm-site">Website of Nginx Proxy Manager</a>
 - <a href="https://github.com/NginxProxyManager/nginx-proxy-manager" target="_blank" data-umami-event="reverse-proxy-pihole-npm-gh">GitHub of Nginx Proxy Manager</a>
 
-## Related Articles
+### Related Articles
 
 > <a href="/blog/set-up-pihole-on-linux/" data-umami-event="reverse-proxy-pihole-related-setup-pihole-post">Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS</a>
 

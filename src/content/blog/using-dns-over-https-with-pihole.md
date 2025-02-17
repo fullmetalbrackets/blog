@@ -7,22 +7,11 @@ tags:
   - pi-hole
 ---
 
-## Sections
-
-1. [Caveats and pre-requisites](#pre)
-2. [Install and setup the Cloudflared daemon](#install)
-3. [Configure Pi-Hole to use Cloudflared](#config)
-4. [References](#ref)
-
-<div id='pre' />
-
 ## Caveats and pre-requisites
 
 This guide will assume you already have Pi-Hole up and running. If you have not yet done so, check out <a href="/blog/set-up-pihole-on-linux/" target="_blank">my blog post about setting up Pi-Hole on a Linux server</a>. If you prefer to run Pi-Hole in a docker container, <a href="https://github.com/pi-hole/docker-pi-hole" target="_blank">check out the Pi-Hole docker container GitHub page</a> for instructions and a `compose.yaml` file to get up and running quickly.
 
 Also, please note that although using DNS over HTTPS prevents your ISP or anyone else from snooping on your DNS requests, since they will be encrypted, whichever upstream DNS provider you use can technically see it. Obviously a measure of a trust is required in this case, but that would be the case with any upstream DNS, and only avoidable if you want to self-host your own DNS resolver. (Certainly possible, but beyond the scope of this guide.)
-
-<div id='install' />
 
 ## Install and setup the Cloudflared daemon
 
@@ -170,8 +159,6 @@ active
 enabled
 ```
 
-<div id='config' />
-
 ## Configure Pi-Hole
 
 This is the last and easiest step. In the Pi-Hole web UI go to _Settings_ and click on the _DNS_ tab. Make sure to uncheck any public Upstream DNS Servers on the left, check _Custom 1 (IPv4)_ on the right and type in `127.0.0.1#5053`. (If you setup Cloudflared on another machine than the one running Pi-Hole, use that machine's IP address instead, but be sure to append `#5053`.)
@@ -182,8 +169,6 @@ Scroll all the way down and hit _Save_. After a minute or two your DNS requests 
 
 ![Cloudflare DNS checker.](../../img/blog/cloudflared2.png 'Cloudflare DNS checker')
 
-<div id='ref' />
-
 ## Reference
 
 - <a href="set-up-pihole-on-linux" target="_blank">My blog post on how to install Pi-Hole</a>
@@ -191,7 +176,7 @@ Scroll all the way down and hit _Save_. After a minute or two your DNS requests 
 - <a href="https://github.com/cloudflare/cloudflared" target="_blank">Cloudflared GitHub</a>
 - <a href="https://1.1.1.1/help" target="_blank">Cloudflare DNS Checker</a>
 
-## Related Articles
+### Related Articles
 
 > [Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS](/blog/set-up-pihole-on-linux/)
 

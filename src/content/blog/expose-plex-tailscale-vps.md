@@ -7,22 +7,6 @@ tags:
   - tailscale
 ---
 
-## Sections
-
-1. [What and Why](#what)
-2. [Pre-Requisites](#pre)
-3. [Create OCI account](#account)
-4. [Create a compute instance](#instance)
-5. [SSH into instance](#ssh)
-6. [Set up Tailscale](#tailscale)
-7. [Add domain in Cloudflare and configure DNS](#cloudflare)
-8. [Set up reverse proxy](#proxy)
-9. [Add ingress rules on OCI](#ingress)
-10. [Configure Plex](#plex)
-11. [References](#ref)
-
-<div id="what" />
-
 ## What and Why
 
 Plex is a self-hosted media server that lets you stream your owned (or downloaded, or otherwise acquired) media from other devices on the same network, through a web-based GUI (access via browser) or dedicated app. (Say, on a smart TV or Roku device.) Plex has a built-in feature to share your media library externally, but that requires opening a port on your router and forwarding it to the Plex server. Setting aside that port forwarding can be dangerous if you don't know what you're doing, it won't work anyway if your home network is behind Carrier-Grade Network Address Translation, or CGNAT. Many ISPs use this, and so many homelabbers may find themselves unable to expose their services.
@@ -35,8 +19,6 @@ What we'll be setting up is this:
 
 - We will create a free tier compute instance on Oracle Cloud Insfrastructure and install Tailscale on it, so it's on the same tailnet as the Plex server. We'll expose ports 80 and 443 to the internet on the VM, but only allowing access from specific IPs, and run a reverse proxy to route the traffic from allowed IPs to Plex. Note that if you're willing and able to pay for another cloud service provider, everything besides the Oracle-specific instructions should work there too! If you don't want to pay, though, just know that I have used a free Oracle instance to share Plex with 3 family members for over 6 months and so far it's worked without a single hitch.
 
-<div id="pre" />
-
 ## Pre-Requisites
 
 First of all, you should be comfortable using the terminal, because we'll be doing quite a bit through command line. (Ubuntu specifically, since that's the distribution I used for OCI from the options available.)
@@ -44,8 +26,6 @@ First of all, you should be comfortable using the terminal, because we'll be doi
 The method I explain here requires you to own a domain -- it may be possible to instead use something like DuckDNS or NoIP, but I have not tried it. I'll also be using Cloudflare for DNS, but that's just my personal preference -- feel free to use another DNS provider.
 
 Finally, you'll need a Plex server already set up. (And I'll assume it's running in Linux or as a Docker container.) I won't go into how to do that here, <a href="/blog/setting-up-plex-in-docker/" target="_blank" umami-data-event="expose-plex-tailscale-to-setup-plex">see this post</a> for instructions on running Plex as a Docker container.
-
-<div id="account" />
 
 ## Create OCI account
 
@@ -58,8 +38,6 @@ Once your account is set up you'll receive an email with the **Cloud Account Nam
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
 > You'll be asked if you want to **Enable Secure Verification (MFA)** which I strongly suggest you do. You'll need a USB security key or to download and use the Oracle Authenticator app. It's annoying to have to use another Authenticator app, but it's worth the peace of mind.
-
-<div id="instance" />
 
 ## Create a compute instance
 
@@ -97,8 +75,6 @@ Click the **Create instance** button and do the following:
 
 Once the instance is fully provisioned and shows **Running**, you're good to go. Click on it and look for **Public IPv4 address**, take note of this!
 
-<div id="ssh" />
-
 ## SSH into instance
 
 We'll assume you generated a key pair and downloaded the private key to your Downloads folder. Use the following command:
@@ -124,8 +100,6 @@ sudo apt update && sudo apt upgrade -y
 
 We're done in the Oracle instance for now, but we'll be back soon.
 
-<div id="tailscale" />
-
 ## Set up Tailscale
 
 Go to the <a href="https://tailscale.com" target="_blank" umami-data-event="expose-plex-tailscale-site">Tailscale website</a> and create an account. This will create your <a href="https://tailscale.com/kb/1136/tailnet" target="_blank" umami-data-event="expose-plex-tailscale-docs-tailnet">Tailnet</a> (private mesh network for all your Tailscale-connected devices) with your newly created account as the Owner and which you'll manage through the web-based <a href="https://login.tailscale.com/admin" target="_blank" umami-data-event="expose-plex-tailscale-admin-console">admin console</a>.
@@ -139,8 +113,6 @@ curl -fsSL https://tailscale.com/install.sh | sh
 Once it's finished installing, use the command `sudo tailscale up` on both your server and the Oracle instance, go to the provided URLs and login to add both machines to your tailnet. Now go to the Tailscale admin console and you should see them both there.
 
 Note that each machine running has a hostname and unique Tailscale IP. We'll need these later.
-
-<div id="dns" />
 
 ## Configure DNS in Tailscale
 
@@ -159,8 +131,6 @@ sudo tailscale cert <name>.cyber-sloth.ts.net
 ```
 
 From here on out we'll assume the Plex sever is `plex.cyber-sloth.ts.net` and the Oracle instance is `oracle.cyber-sloth.ts.net`.
-
-<div id="cloudflare" />
 
 ## Add domain in Cloudflare and configure DNS
 
@@ -227,8 +197,6 @@ Next, we need to create an _API token_ to edit the DNS config from third-party a
 6. On the next page, click **Create Token**.
 
 7. **Important!** Copy your API token and _save it somewhere_, you won't be shown it again and you will need it each time you provision a TLS certificate in Nginx Proxy Manager.
-
-<div id="proxy" />
 
 ## Set up reverse proxy
 
@@ -305,8 +273,6 @@ Now to add the configuration for our custom domain:
 
 Give it a minute or two for Let's Encrypt to provision the TLS certificate, and the proxy host will then be created.
 
-<div id="ingress" />
-
 ## Add ingress rules on OCI
 
 Now to actually allow internet connections to the Oracle instance, we need to add ingress rules in the OCI dashboard. You really have two options here:
@@ -343,8 +309,6 @@ Repeat the above steps for **each** IP address you want to allow access. You wan
 
 Now if every step up till now has been done correctly, you should reach Plex when you go to `https://your-domain.com`. (You added ingress rules for your own IP, right?)
 
-<div id="plex" />
-
 ## Configure Plex
 
 One last thing! Although the allowed IPs can now reach Plex and stream your library by logging in to the Plex web UI at `https://your-domain.com`, using Plex apps will not work until you do the following:
@@ -369,15 +333,13 @@ One last thing! Although the allowed IPs can now reach Plex and stream your libr
 
 Now your external users can access your library through their Plex apps too.
 
-<div id="ref" />
-
 ## References
 
 - <a href="https://tailscale.com/kb" target="_blank" umami-data-event="expose-plex-tailscale-docs">Tailscale Docs</a>
 - <a href="https://developers.cloudflare.com/dns" target="_blank" umami-data-event="expose-plex-tailscale-cf-docs-dns">Cloudflare Docs - DNS</a>
 - <a href="https://docs.oracle.com/en-us/iaas/Content/Compute/home.htm" target="_blank" umami-data-event="expose-plex-tailscale-oci-docs-compute">OCI Docs - Compute</a>
 
-## Related Articles
+### Related Articles
 
 > <a href="/blog/tailscale/" umami-data-event="expose-plex-tailscale-related-tailscale-guide">Comprehensive guide to setting up Tailscale to securely access your home network from anywhere</a>
 

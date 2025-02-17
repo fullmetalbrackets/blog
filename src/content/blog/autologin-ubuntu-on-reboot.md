@@ -10,6 +10,8 @@ tags:
 >
 > Works on <em>Ubuntu 20.04</em> but untested in 22.04 or other distros.
 
+## How to do it
+
 ```bash
 sudo systemctl edit getty@.service
 ```
@@ -22,9 +24,7 @@ ExecStart=-/sbin/agetty --autologin [user] --noclear %I $TERM
 
 Look for the line `ExecStart=` and replace whatever is in there with the above. Save the file and next reboot skip the login and go straight to the terminal.
 
-<div id='case'/>
-
-### My Use Case
+## My use case
 
 My reason for wanting to do this was to have my <a href="https://pi-hole.net" target="_blank">PiHole</a> device automatically execute the <a href="https://github.com/pi-hole/PADD" target="_blank">PADD</a> script automatically on reboot and display the stats. Using the above steps I was able to get the PiHole to boot up, skip login and automatically execute the script to display the stats.
 
@@ -32,7 +32,7 @@ My reason for wanting to do this was to have my <a href="https://pi-hole.net" ta
 
 - I found this simple change buried in <a href="https://askubuntu.com/a/659268" target="_blank" rel="noopener noreferrer">this exhaustive post on AskUbuntu</a>.
 
-## Related Articles
+### Related Articles
 
 > [Formatting disks in Linux command line](/blog/formatting-on-linux/)
 

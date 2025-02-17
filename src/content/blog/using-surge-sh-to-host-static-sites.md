@@ -6,17 +6,6 @@ tags:
   - web development
 ---
 
-## Sections
-
-1. [Getting started](#start)
-2. [Using a custom sub-domain and forcing HTTPS](#https)
-3. [Using your own domain](#domain)
-4. [Ignore specific files and directories](#ignore)
-5. [Adding redirects](#redirect)
-6. [References](#ref)
-
-<div id='start'/>
-
 ## Getting started
 
 Using _Surge_ requires NodeJS, so make sure you have the latest version of Node and NPM installed. To install Surge, use the following command:
@@ -49,8 +38,6 @@ To see a list of all your published projects on Surge, use this command:
 npx surge list
 ```
 
-<div id='https'/>
-
 ## Using a custom sub-domain and forcing HTTPS
 
 To use a custom subdomain, you need to pass the `--domain` option and specify the URL you want:
@@ -66,8 +53,6 @@ npx surge --domain https://mysubdomain.surge.sh
 ```
 
 The above will also cause an automatic browser redirect when visiting the site, e.g. going to `http://mysubdomain.surge.sh` will auto-redirect to `https://mysubdomain.surge.sh`
-
-<div id='domain'/>
 
 ## Using your own domain
 
@@ -95,8 +80,6 @@ echo custom-domain.com > CNAME
 >
 > Though all projects published to `surge.sh` sub-domains include free SSL, this is not the case with custom domains! To use SSL with your own domain, you'll need the paid <a href="https://surge.sh/plus" target="_blank">Surge Plus</a> plan, which costs $30/month. For more details, see <a href="https://surge.sh/help/securing-your-custom-domain-with-ssl" target="_blank">this section of the Surge documentation</a>.
 
-<div id='ignore'/>
-
 ## Ignore specific files and directories
 
 Surge ignores `.` files and directories like `.git` on deploy, but you can also add a `.surgeignore` file at your project's root. By default, surge will ignore the following:
@@ -112,8 +95,6 @@ bower_components
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
 > If using a static site generator, place the .surgeignore file in the directory you are publishing, e.g. the `/dist` or `/public` directory.
-
-<div id='redirects'/>
 
 ## Adding redirects
 
@@ -157,8 +138,6 @@ Put all your redirects together in your `ROUTER` file, one per line:
 301     /blog/:title    /articles/:title
 307     /code           https://github.com/username
 ```
-
-<div id='ref'/>
 
 ## References
 

@@ -7,17 +7,9 @@ tags:
   - android
 ---
 
-## Sections
-
-1. [Adding SMB share in X-plorer](#add)
-2. [Transferring files from Android to SMB share](#transfer)
-3. [References](#ref)
-
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
 > Although I'm doing this on a OnePlus phone running **OxygenOS 13**, it is just a customized version of **Android 13** -- Everything below should work on any version of Android 13, and probably older versions as well.
-
-<div id='add' />
 
 ## Adding SMB share in X-plorer
 
@@ -79,15 +71,13 @@ And then they'll be in your destination folder in the network share.
 
 All done! Once you get a hang of the UI, transferring files back and forth from Android to remote sources is very easy. You can also use other means besides SMB, including (but not limited to) FTP and SSH, cloud storage like Google Drive or Dropbox, etc. Overall, I think **X-plore** is a great file manager for Android.
 
-<div id='ref' />
-
 ## References
 
 - <a href="https://www.lonelycatgames.com/apps/xplore" target="_blank" data-umami-event="x-plore-site">X-plore website</a>
 - <a href="https://play.google.com/store/apps/details?id=com.lonelycatgames.Xplore" target="_blank" data-umami-event="x-plore-google-play">Download X-plore on Google Play</a>
 - <a href="https://www.amazon.com/Lonely-Cat-Games-X-plore-Manager/dp/B00LLG7AR8" target="_blank" data-umami-event="x-plore-amazon">Download X-plore on Amazon Appstore</a>
 
-## Related Articles
+### Related Articles
 
 > <a href="/blog/solid-explorer-samba-share/" umami-data-event="xplorer-related-solid-explorer">How to use Solid Explorer app to access SMB network shares from an Android device</a>
 

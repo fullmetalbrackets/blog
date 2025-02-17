@@ -15,19 +15,6 @@ tags:
 > 
 > This article is specifically about OpenMediaVault 6, which reached end of life in July 2024. _OpenMediaVault 7 was released in March 2024_, and as of January 2025 the latest version is **7.6.0**. The below may still apply, but don't be surprised if it does not. I have not used OMV in some time nor do I plan to use it any time soon, an updating to this post may not be forthcoming, sorry.
 
-## Sections
-
-1. [Change the port for OMV workbench](#port)
-2. [Mount disks in OMV](#mount)
-3. [Sharing folders via SMB](#smb)
-4. [Sharing folders via NFS](#nfs)
-5. [Enable Wake-on-Lan](#wol)
-6. [Set a static IP address](#static)
-7. [Create a new user account](#user)
-8. [Reference](#ref)
-
-<div id='port' />
-
 ## Change the port for OMV workbench
 
 To change the port in the workbench UI:
@@ -45,8 +32,6 @@ Alternately, you can change the port in the _terminal_:
 5. Type the desired `port to access the workbench via HTTP`
 6. Hit <kbd>Enter</kbd> to finish
 
-<div id='mount' />
-
 ## Mount disks in OMV
 
 1. Go to _Storage_ -> _File Systems_
@@ -58,8 +43,6 @@ Alternately, you can change the port in the _terminal_:
 7. Leave the _permissions_ as is or change if desired
 8. Click the _Save button_ and confirm the _pending configuration changes_ by clicking the _checkmark_
 
-<div id='smb' />
-
 ## Share folders via SMB
 
 1. Go to _Services_ -> _SMB/CIFS_ -> _Settings_
@@ -69,8 +52,6 @@ Alternately, you can change the port in the _terminal_:
 5. (Optional) Add other SMB options that would appear in a `smb.conf` file at the bottom, under _Extra options_
 6. When done, click the _Save button_ and confirm the _pending configuration changes_ by clicking the _checkmark_.
 
-<div id='nfs' />
-
 ## Share folders via NFS
 
 1. Go to _Services_ -> _NFS_ -> _Settings_
@@ -78,8 +59,6 @@ Alternately, you can change the port in the _terminal_:
 3. Go to _Services_ -> _NFS_ -> _Shares_, and click the _plus (+)_
 4. Select a _shared folder_ (created at Storage -> Shared Folders) and type in at least one _Client_ IP address (who will have access to this share). Choose the _Permission_ and leave the _Extra options_ as is.
 5. Click the _Save button_ and confirm the _pending configuration changes_ by clicking the _checkmark_.
-
-<div id='wol' />
 
 ## Enable Wake-on-Lan
 
@@ -89,8 +68,6 @@ Make sure to enable **Wake-on-Lan** within the BIOS of your server too! Otherwis
 2. Click on your interface (e.g. `enp2s0`) to highlight it, then click on the _Pencil_ icon to _edit_ the interface
 3. Scroll down to _Advanced settings_ and check the box for _Wake-on-Lan_
 4. Click the _Save button_ and confirm the _pending configuration changes_ by clicking the _checkmark_.
-
-<div id='static' />
 
 ## Set a static IP address
 
@@ -102,8 +79,6 @@ Make sure to enable **Wake-on-Lan** within the BIOS of your server too! Otherwis
 6. For _Gateway_ enter your router or DHCP server (e.g. `192.168.1.1`)
 7. (Optional) Write in specific _DNS servers_ under _Advanced settings_ if desired
 8. Click the _Save button_ and then confirm the _pending configuration changes_ by clicking the _checkmark_
-
-<div id='user' />
 
 ## Create a new user account
 
@@ -117,13 +92,11 @@ By default only the `root` user is available, which is fine if you're mostly usi
 6. (Optional) Add an _SSH public key_ if desired
 7. Click the _Save button_, then confirm the _pending configuration changes_ by clicking the _checkmark_
 
-<div id='ref' />
-
 ## Reference
 
 - <a href="https://docs.openmediavault.org/en/stable" target="_blank">OpenMediaVault Documentation</a>
 
-## Related Articles
+### Related Articles
 
 > [Reverse proxy OpenMediaVault, Plex and Navidrome with Nginx Proxy Manager and Pi-Hole](/blog/reverse-proxy-nginx-pihole/)
 

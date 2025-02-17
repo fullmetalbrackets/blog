@@ -6,19 +6,11 @@ tags:
   - command line
 ---
 
-## Table of Contents
-
-1. [Install and configure Unattended-Upgrades](#unattended)
-2. [Install and configure Needrestart](#needrestart)
-3. [References](#ref)
-
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
 > This guide is specifically for **Debian 11** and **Ubuntu 20.04**. They are the only two Linux distros I commonly use, so I am unaware of how to do this on, for example, Arch or Fedora.
 > 
 > Also, it is always possible (though unlikely) that newer versions of Debian and Ubuntu may change how unattended upgrades work in the future.
-
-<div id='unattended'/>
 
 ## Install and configure Unattended-Upgrades
 
@@ -80,8 +72,6 @@ You may also wish to add `APT::Periodic::AutocleanInterval "7";` which will clea
 
 You can see a log of all the times Unattended-Upgrades has run at `/var/log/unattended-upgrades/unattended-upgrades.log`.
 
-<div id='needrestart'/>
-
 ## Install and configure Needrestart
 
 When upgrading packages and installing security updates, it is sometimes necessary to restart certain daemons for changes to take effect. When you update manually, you'll get a dialogue showing which daemons need restarting and confirming if you want to do so, but we can automate this with the Needrestart package.
@@ -105,7 +95,7 @@ $nrconf{restart} = 'a';
 
 All done! Now your server will download and install security updates (and package updates if you configured that) automatically with Unattended-Upgrades, and NeedRestart will automatically restart any daemons when necessary, without any input from you at all.
 
-## References
+### References
 
 - <a href="https://manpages.debian.org/bullseye/unattended-upgrades/unattended-upgrades.8.en.html" target="_blank">Unattended-Upgrade man page</a>
 - <a href="https://manpages.debian.org/bullseye/needrestart/needrestart.1.en.html">NeedRestart man page</a>

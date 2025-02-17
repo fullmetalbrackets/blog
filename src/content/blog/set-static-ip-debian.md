@@ -7,6 +7,8 @@ tags:
   - networking
 ---
 
+## Setting a static IP
+
 Login to Debian as `root` or as a user with sudo privileges (in which case, be sure to append `sudo` before every command). First, save a copy of the default network config as a back up:
 
 ```bash
@@ -101,18 +103,12 @@ Output should look similar to this:
 
 If the static IP address you configured (in my case `192.168.0.125`) appears in the output, you're done!
 
-## Related Articles
-
-> [Linux Commands & Keyboard Shortcuts Cheat Sheet](/blog/basic-linux-commands/)
-
-> [Rsync - A Quick Guide](/blog/rsync-a-quick-guide/)
-
 ## References
 
 - <a href="https://www.debian.org/doc/manuals/debian-reference/ch05.en.html" target="_blank" data-umami-events="static-ip-debian-manual">Debian manual, network setup chapter</a>
 - <a href="https://www.server-world.info/en/note?os=Debian_12&p=initial_conf&f=3" target="_blank" data-umami-events="static-ip-debian-serverworld">ServerWorld instructions</a>
 
-## Related Articles
+### Related Articles
 
 > <a href="/blog/basic-linux-commands/" data-umami-event="static-ip-debian-related-linux cheatsheets">Linux Commands & Keyboard Shortcuts Cheat Sheet</a>
 

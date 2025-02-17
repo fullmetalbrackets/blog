@@ -44,7 +44,7 @@ services:
     restart: unless-stopped
 ```
 
-## Related Articles
+### Related Articles
 
 > [Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS](/blog/set-up-pihole-on-linux/)
 

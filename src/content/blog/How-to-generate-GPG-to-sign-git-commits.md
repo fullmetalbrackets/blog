@@ -7,21 +7,11 @@ tags:
   - git
 ---
 
-## Sections
-
-1. [Check for an existing GPG key](#check)
-2. [Generating a new GPG key](#generate)
-3. [Tell git to use your signing key on all commits](#tell)
-4. [Add the GPG key to GitHub to get verified](#add)
-5. [References](#ref)
-
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
 > **GnuPG** is not available on Windows by default, so if necessary, <a href="https://www.gnupg.org/download" target="_blank">download it here</a> and install it first. It should go without saying you'll need <a href="https://git-scm.com/downloads" target="_blank">Git</a> installed, since you will have to use **Git Bash**.
 > 
 > On Linux, you will simply be using the Terminal and GnuPG should already be installed, if not use the command `sudo apt install gnupg2 -y` to do so.
-
-<div id='check' />
 
 ## Check for an existing GPG key
 
@@ -38,8 +28,6 @@ Users/Bob/.gnupg/pubring.kbx
 ---------------------------------
 sec   rsa4096/3AA5C34371567BD2
 ```
-
-<div id='generate' />
 
 ## Generating a new GPG key
 
@@ -72,8 +60,6 @@ gpg --list-secret-keys --keyid-format=long
 sec   rsa4096/BC0E17D7B9C98BCF 2022-01-17 [SC]
 ```
 
-<div id='tell' />
-
 ## Tell git to use your signing key on all commits
 
 Open the terminal in Linux, or Git Bash in Windows. If you had previously set up Git to use a different key format, you can unset it and use the default format of `openpgp` with this command:
@@ -93,8 +79,6 @@ And, though optional, you may want to congigure Git to sign all commits with you
 ```shell
 git config --global commit.gpgsign true
 ```
-
-<div id='add' />
 
 ## Add the GPG key to GitHub to get verified
 
@@ -122,15 +106,13 @@ Now to test it out, push out any commit to a GitHub repo. You should be prompted
 
 ![Commit with verified badge in GitHub.](../../img/blog/gh-gpg2.png 'Commit with verified badge in GitHub')
 
-<div id='ref' />
-
 ## Reference
 
 - <a href="https://docs.github.com/en/authentication/managing-commit-signature-verification" target="_blank">GitHub Docs</a>
 - <a href="https://www.gnupg.org/download" target="_blank">GnuPG</a>
 - <a href="https://git-scm.com/downloads" target="_blank">Git</a>
 
-## Related Articles
+### Related Articles
 
 > [Git commands cheat sheet](/blog/git-commands-cheat-sheet/)
 

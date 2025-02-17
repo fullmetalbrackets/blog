@@ -15,7 +15,6 @@ tags:
 
 ## Connect Solid Explorer to SMB share
 
-
 First, make sure you're on the same Wi-Fi network as the SMB share you want to access in Solid Explorer. (Setting this up to be available from outside the home network is possible, but beyond the scope of this article. But <a href="/blog/tailscale" target="_blank" data-umami-event="solid-explorer-tailscale">this might interest you.</a>)
 
 Open the Solid Explorer app and
@@ -78,7 +77,7 @@ All done! Now you can easily access your SMB shares from your Android device wit
 
 - <a href="https://play.google.com/store/apps/details?id=pl.solidexplorer2&hl=en_US&gl=US&pli=1" target="_blank" data-umami-event="solid-explorer-google-play"></a>
 
-## Related Articles
+### Related Articles
 
 > <a href="/blog/xplore-android-smb-share/" data-umami-event="solid-explorer-related-xplorer">Setup X-plore File Manager on Android to transfer files to an SMB share</a>
 

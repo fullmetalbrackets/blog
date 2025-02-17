@@ -2,7 +2,7 @@
 title: "Customizing the Windows Terminal command prompt with Oh-My-Posh"
 description: "While I use Zsh with Oh-My-Zsh for making my Linux terminal pretty, it's not available for Windows. Luckily it's brother from another mother Oh-My-Posh basically does the same thing for Windows Terminal and PowerShell."
 pubDate: 2022-10-01
-updatedDate: 2023-07-11
+updatedDate: 2025-02-17
 tags:
   - powershell
 ---
@@ -10,25 +10,11 @@ tags:
 <!-- <img src="/oh-my-posh.png" class="posh-img" loading="eager" decoding="async" alt="Oh My Posh" /> -->
 ![Oh My Posh](../../img/blog/oh-my-posh.png 'Oh My Posh')
 
-
-## Sections
-
-1. [Pre-Requisites](#pre)
-2. [Installing WinGet and using it to install Oh-My-Posh](#install)
-3. [Changing the theme](#theme)
-4. [Install a Nerd Font for themes that require it](#font)
-5. [Additional non-bundled custom themes](#custom)
-6. [References](#ref)
-
-<div id='pre'/>
-
 ## Pre-Requisites
 
 You need to have _PowerShell_ installed on Windows, and ideally you'll want to use _Windows Terminal_ as well. Follow the <a href="https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powerShell-7.2#msi" target="_blank">official Microsoft instructions to install PowerShell</a>. For Windows Terminal, you'll have to <a href="https://aka.ms/terminal" target="_blank">install it from the Windows Store</a>.
 
 The rest of this guide will assume you are using <em>Windows Terminal</em>.
-
-<div id='install'/>
 
 ## Installing WinGet and using it to install Oh-My-Posh
 
@@ -54,8 +40,6 @@ oh-my-posh init pwsh | Invoke-Expression
 
 Restart your terminal or reload the profile with the command `. $PROFILE` for changes to take effect.
 
-<div id='theme'/>
-
 ## Changing the theme
 
 Once you have installed Oh-My-Posh, the <a href="https://github.com/JanDeDobbeleer/oh-my-posh/blob/main/themes/default.omp.json" target="_blank">default theme</a> will be used. Use the following command to list all the themes and get a preview of how they'll look in the terminal. (Give it a minute, there's a lot of them.)
@@ -77,8 +61,6 @@ oh-my-posh init pwsh --config '%userprofile%\AppData\Local\Programs\oh-my-posh\t
 ```
 
 Reload the terminal again with `. $PROFILE` for the change to take effect.
-
-<div id='fonts'/>
 
 ## Install a Nerd Font for themes that require it
 
@@ -111,8 +93,6 @@ Oh-My-Posh comes with many themes that are regularly maintained, but [anyone can
 - [SubsTheTechnomancer's not-zork theme](https://github.com/SubsTheTechnomancer/Omp-themes) (I had to laugh at this one)
 - [leopoldo109's custom theme](https://github.com/leopoldo109/leopoldo-powershell)
 
-<div id='ref'/>
-
 ## References
 
 - <a href="https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powerShell-7.2#msi" target="_blank">Install PowerShell</a>
@@ -121,7 +101,7 @@ Oh-My-Posh comes with many themes that are regularly maintained, but [anyone can
 - <a href="https://ohmyposh.dev" target="_blank">Oh-My-Posh</a>
 - <a href="https://nerdfonts.com" target="_blank">Nerd Fonts</a>
 
-## Related Articles
+### Related Articles
 
 > [Quick guide to set up Zsh and Oh-My-Zsh with essential plugins and a theme](/blog/guide-to-zsh-ohmyzsh-plugins-and-theme/)
 

@@ -76,7 +76,7 @@ export default Prism;
 
 This particular file will import Prism, import the Okaidia theme (which comes included in Prism), and also import what I consider some essential plugins for it. Add or remove any to your liking.
 
-## Import Prism to \_slug.vue
+## Import Prism to _slug.vue
 
 Now we need to edit the `slug.vue` file in the `/pages` directory that is used to generate your individual blog posts/articles/whatever. It may be located in another sub-directory like `/pages/blog/_slug.vue`. Edit the file and add this to the script section:
 
