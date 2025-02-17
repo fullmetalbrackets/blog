@@ -3,12 +3,14 @@ Allow: /
 Disallow: /404
 Disallow: /feedback
 Disallow: /thanks
+Disallow: /bsky
 Disallow: /social
 Disallow: /feed
 Disallow: /umami
 Disallow: /donate
 Disallow: /donate/
 Disallow: /feed/
+Disallow: /cdn-cgi/l/email-protection
 
 Host: https://fullmetalbrackets.com
 
