@@ -2,11 +2,13 @@
 import type { CollectionEntry } from "astro:content";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import FormattedDate from "@components/FormattedDate.astro";
+import TableOfContents from '@components/TableOfContents.astro';
 import { SocialShare } from "astro-social-share";
+import type { MarkdownHeading } from 'astro';
 
-type Props = CollectionEntry<"blog">["data"];
+type Props = CollectionEntry<"blog">['data'] & { headings: MarkdownHeading[] };
 
-const { title, description, pubDate, updatedDate, tags } = Astro.props;
+const { title, description, pubDate, updatedDate, tags, headings } = Astro.props;
 
 const { slug } = Astro.params;
 ---
@@ -296,6 +298,7 @@ const { slug } = Astro.params;
     <p class="description">
       {description}
     </p>
+    <TableOfContents headings={headings} />
     <slot>
       <p>
         If you're seeing this, something went wrong! Please try <em
