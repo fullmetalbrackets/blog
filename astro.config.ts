@@ -16,11 +16,11 @@ export default defineConfig({
   },
   redirects: {
     '/feed': {
-      status: 302,
+      status: 301,
       destination: '/rss.xml',
     },
     '/mail': {
-      status: 302,
+      status: 301,
       destination: 'mailto:contact@fullmetalbrackets.com',
     },
     '/github': {
@@ -32,11 +32,11 @@ export default defineConfig({
       destination: 'https://bsky.app/profile/fullmetalbrackets.bsky.social',
     },
     '/social': {
-      status: 302,
+      status: 301,
       destination: 'https://social.lol/@adiaz',
     },
     '/donate': {
-      status: 302,
+      status: 301,
       destination: 'https://buymeacoffee.com/arieldiaz',
     },
     '/umami': {
@@ -64,15 +64,15 @@ export default defineConfig({
       destination: '/blog/expose-plex-tailscale-vps/',  
     },
     '/tailscale': {
-      status: 302,
+      status: 301,
       destination: '/blog/comprehensive-guide-tailscale-securely-access-home-network/',
     },
     '/mergerfs': {
-      status: 302,
+      status: 301,
       destination: '/blog/two-drives-mergerfs/',
     },
     '/tunnel': {
-      status: 302,
+      status: 301,
       destination: '/blog/setup-cloudflare-tunnel-to-access-self-hosted-apps/',
     },
     '/plex-tailscale': {
