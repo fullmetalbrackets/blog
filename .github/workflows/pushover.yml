@@ -2,6 +2,9 @@ name: Pushover Notification
 on:
   workflow_dispatch:
   push:
+    branches-ignore:
+    - main
+    - test
 jobs:
   pushover-actions:
     runs-on: ubuntu-latest
