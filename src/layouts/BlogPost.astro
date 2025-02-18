@@ -3,6 +3,7 @@ import type { CollectionEntry } from "astro:content";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import FormattedDate from "@components/FormattedDate.astro";
 import TableOfContents from '@components/TableOfContents.astro';
+import BlogPosting from "@components/BlogPosting.astro";
 import { SocialShare } from "astro-social-share";
 import type { MarkdownHeading } from 'astro';
 
@@ -277,7 +278,7 @@ const { slug } = Astro.params;
       }
     </style>
   </slot>
-
+  <BlogPosting slot="head" {...Astro.props} />
   <article data-pagefind-body>
     <h1 class="title">{title}</h1>
     <hr />
