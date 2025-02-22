@@ -101,13 +101,17 @@ Go into the _Pi-Hole web UI_, it should be accessible via your browser at `http:
 
 4. Click the blue **Plus (+) button** to the right to add the DNS record.
 
-5. Now under _Local CNAME records_ on the left, in the **Domain** form field type in for example, `plex.domain.com`.
+![Adding a DNS record in Pi-Hole.](../../img/blog/pihole-dns-record.png 'Adding a DNS record in Pi-Hole')
 
-6. For **Target Domain** type in the hostname you added earlier, for example `server`.
+5. Now under _Local CNAME records_ on the left, in the **Domain** form field type in for example, `server.domain.com`.
+
+6. For **Target Domain** type in the hostname you added earlier, for example `server`. Leave the _TTL_ empty.
 
 7. Click the blue **Plus (+) button** to the right to add the CNAME record.
 
-Repeat steps 5 through 7 for however many apps or services you want to access this way, just change the sub-domain for each, but keep the same target domain. You can come back and change these records as needed. Once you're done adding your DNS records, it's time to setup Cloudflare to get the TLS certificates for our custom domain.
+![Adding a CNAME in Pi-Hole.](../../img/blog/pihole-cname.png 'Adding a CNAME in Pi-Hole')
+
+Repeat steps 5 through 7 for however many apps or services you want to create CNAME records for, just change the sub-domain for each and keep the same target domain. You can come back and change these records later as needed. Once you're done adding your DNS and CNAME records in Pi-Hole, it's time to setup Cloudflare to get the TLS certificates for our custom domain.
 
 <div id='cloudflare' />
 
@@ -119,21 +123,21 @@ To add an existing domain to Cloudflare:
 
 1. On the Cloudflare dashboard _Account Home_, click the **+ Add a domain** button.
 
-![Adding a domain to Cloudflare.](../../img/blog/cloudflare-domain.png)
+![Adding a domain to Cloudflare.](../../img/blog/cloudflare-domain.png 'Adding a domain in Cloudflare')
 
 2. Enter your domain, leave _Quick scan for DNS records_ selected, and click **Cotinue**.
 
 3. Click on the **Free plan** at the bottom and click **Continue**.
 
-![Cloudflare free plan.](../../img/blog/cloudflare-free.png)
+![Cloudflare free plan.](../../img/blog/cloudflare-free.png 'Cloudflare free plan')
 
 4. You'll see your DNS records, if there are any. Don't worry about this right now and click on the **Continue to activate** button.
 
-![Cloudflare free plan.](../../img/blog/cloudflare-dns-records1.png)
+![Cloudflare DNS records.](../../img/blog/cloudflare-dns-records1.png 'Cloudflare DNS records')
 
 5. You'll see a pop-up window saying you should set your DNS records now, click on **Confirm**.
 
-![Cloudflare free plan.](../../img/blog/cloudflare-dns-records1.png)
+![Add records pop-up.](../../img/blog/cloudflare-dns-records2.png 'Add records pop-up')
 
 6. You'll be provided some instructions to update the nameservers on your domain's registrar, open a new tab and follow those instructions. Once you've added the Cloudflare nameservers at your registrar, go back to Cloudflare and click on **Continue**.
 
