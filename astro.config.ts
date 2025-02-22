@@ -63,6 +63,10 @@ export default defineConfig({
       status: 301,
       destination: '/blog/expose-plex-tailscale-vps/',  
     },
+    '/blog/expose-plex-tailscale-vps/)': {
+      status: 301,
+      destination: '/blog/expose-plex-tailscale-vps/',  
+    },
     '/tailscale': {
       status: 301,
       destination: '/blog/comprehensive-guide-tailscale-securely-access-home-network/',
