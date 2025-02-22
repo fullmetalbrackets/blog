@@ -15,7 +15,7 @@ tags:
 
 ## About Solid Explorer
 
-<a href="https://neatbytes.com/solidexplorer" target="_blank" umami-event-data="solid-explorer-site">Solid Explorer by Neatbytes</a> is a powerful, easy to use file manager for Android devices that -- among other things -- lets you connect to network folders via Google Drive, Dropbox, S/FTP, and for our purposes, SMB shares. By connecting an SMB share to Solid Explorer, you can easily interact with server files using a nice GUI, and transfer files between server and device.
+<a href="https://neatbytes.com/solidexplorer" target="_blank" umami-event-data="solid-explorer-site">Solid Explorer by Neatbytes</a> is a powerful, easy to use file manager for Android devices lets you connect to cloud storage and network folders including (among others) Google Drive, Dropbox, S/FTP, and for our purposes, SMB shares. By connecting an SMB share to Solid Explorer, you can easily interact with server files using a slick GUI and transfer files between server and device. Solid Explorer can be <a href="https://play.google.com/store/apps/details?id=pl.solidexplorer2" target="_blank" umami-event-data="solid-explorer-gplay">downloaded from the Google Play Store for free</a>.
 
 ## Connect Solid Explorer to SMB share
 
@@ -91,6 +91,11 @@ A pop-up will show the destination of the file transfer, tap either **Copy to...
 You'll see a circlular progress bar on the bottom right, when the transfer is done it turns into a _green checkmark_.
 
 ![File transfer in Solid Explorer complete.](../../img/blog/solidexplorer17.jpg 'File transfer in Solid Explorer complete')
+
+## References
+
+- <a href="https://neatbytes.com/solidexplorer" target="_blank" umami-event-data="solid-explorer-site">Solid Explorer website</a>
+- <a href="https://play.google.com/store/apps/details?id=pl.solidexplorer2" target="_blank" umami-event-data="solid-explorer-gplay">Download Solid Explorer from Google Play Store</a>
 
 ### Related Articles
 
