@@ -2,7 +2,7 @@
 title: "Setting up a reverse proxy for HTTPS with a custom domain using Nginx Proxy Manager, Pi-Hole and Cloudflare"
 description: "I've used a reverse proxy to access my self-hosted apps and services for years, but I recently re-did everything from scratch and decided to write it down. When done, we'll be able to access our apps and services through a custom domain, with unique sub-domains for each app or service, with full HTTPS and accessible only locally."
 pubDate: 2024-10-17
-updatedDate: 2025-02-03
+updatedDate: 2025-02-22
 tags:
   - self-hosting
 ---
@@ -89,19 +89,25 @@ Next, we'll add the DNS records in Pi-Hole that we need for Nginx Proxy Manager.
 
 Go into the _Pi-Hole web UI_, it should be accessible via your browser at `http://<ip-address>/admin`. (That's assuming you're using the default web UI port of 80, if you changed it to something like 8888, it would instead be `http://<ip-address>:8888/admin`.)
 
-1. In the Pi-Hole web UI, go to **Local DNS** on the sidebar, and choose **DNS Records** from the dropdown.
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
+>
+> **Note:** The below instructions have been update for _Pi-Hole v6_.
 
-2. For the **Domain**, type in the hostname of your server (or whatever name you want to use), e.g. `server`.
+1. In the Pi-Hole web UI, click on **Settings** on the sidebar and choose **Local DNS Records** from the dropdown.
 
-3. For the **IP address**, type in the IP address of the server that will be running Nginx Proxy Manager and all your other containers.
+2. Under _Local DNS records_ on the left, type in the hostname of your server in the **Domain** form field, for example `server`.
 
-4. Click the **Add** button and wait a moment until it shows up in the list of local domains below.
+3. In the **Associated IP** form field type in the IP address of the server that will be running Nginx Proxy Manager and all your other containers.
 
-5. Now to add the sub-domains, go to **Local DNS** again and this time choose **CNAME Records** from the dropdown.
+4. Click the blue **Plus (+) button** to the right to add the DNS record.
 
-6. Here we'll want to add something like `plex.domain.com` as the *Domain* and `server` as the *Target*. Your choice, obviously. Repeat for however many apps you want to access this way. You can always come back and add more later as needed.
+5. Now under _Local CNAME records_ on the left, in the **Domain** form field type in for example, `plex.domain.com`.
 
-Once you're done adding your DNS records, it's time to setup Cloudflare to get the TLS certificates for our custom domain.
+6. For **Target Domain** type in the hostname you added earlier, for example `server`.
+
+7. Click the blue **Plus (+) button** to the right to add the CNAME record.
+
+Repeat steps 5 through 7 for however many apps or services you want to access this way, just change the sub-domain for each, but keep the same target domain. You can come back and change these records as needed. Once you're done adding your DNS records, it's time to setup Cloudflare to get the TLS certificates for our custom domain.
 
 <div id='cloudflare' />
 
