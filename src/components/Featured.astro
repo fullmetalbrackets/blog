@@ -91,6 +91,15 @@ const posts = (await getCollection("blog")).sort(
       </a>
     </li>
     <li>
+      <a href="/blog/expose-plex-tailscale-vps/" rel="prefetch-intent" data-umami-event="featured-expose-plex-tailscale">
+      <p class="posts-title">How to securely expose Plex from behind CGNAT using Tailscale and a free Oracle VM
+      </p>
+      <p class="desc">
+        I wrote before about securely exposing Plex for external access, but my previous solution relied on Cloudflare Tunnel and it was technically against their TOS. So I switched to using a Oracle VM on their free-tier, connecting it to my home network with Tailscale, and exposing Plex via reverse proxy. It works like a charm!
+      </p>
+      </a>
+    </li>
+    <li>
       <a href="/blog/reverse-proxy-using-nginx-pihole-cloudflare/" rel="prefetch-intent" data-umami-event="featured-proxy-pihole">
       <p class="posts-title">Setting up a reverse proxy for HTTPS with a custom domain using Nginx Proxy Manager, Pi-Hole and Cloudflare</p>
       <p class="desc">
@@ -99,11 +108,18 @@ const posts = (await getCollection("blog")).sort(
       </a>
     </li>
     <li>
-      <a href="/blog/expose-plex-tailscale-vps/" rel="prefetch-intent" data-umami-event="featured-expose-plex-tailscale">
-      <p class="posts-title">How to securely expose Plex from behind CGNAT using Tailscale and a free Oracle VM
-      </p>
+      <a href="/blog/solid-explorer-samba-share/" rel="prefetch-intent" data-umami-event="featured-solid-explorer-samba-share">
+      <p class="posts-title">How to use Solid Explorer app to access SMB network shares from an Android device</p>
       <p class="desc">
-        I wrote before about securely exposing Plex for external access, but my previous solution relied on Cloudflare Tunnel and it was technically against their TOS. So I switched to using a Oracle VM on their free-tier, connecting it to my home network with Tailscale, and exposing Plex via reverse proxy. It works like a charm!
+        There are many File Managers/File Explorers on the Google Play Store, but I wanted to easily access the Samba share on my server while on my home network. Solid Explorer is the solution I went with and it works well, so here is a quick guide to setting it up.
+      </p>
+      </a>
+    </li>
+    <li>
+      <a href="/blog/two-drives-mergerfs/" rel="prefetch-intent" data-umami-event="featured-mergerfs">
+      <p class="posts-title">Using MergerFS to combine multiple hard drives into one unified media storage</p>
+      <p class="desc">
+        My situation was simple -- my server's media storage was filling up and I wanted to add more drives, but without having to keep track of which drive specific files were for Plex. How to pool multiple hard drives together when they're all different brands, models and capacities? Enter mergerfs, an open source union filesystem that essentially merges multiple drives into one mount point.
       </p>
       </a>
     </li>
