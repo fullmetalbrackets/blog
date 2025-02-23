@@ -2,7 +2,7 @@
 title: "Using MergerFS to combine multiple hard drives into one unified media storage"
 description: "My situation was simple -- my server's media storage was filling up and I wanted to add more drives, but without having to keep track of which drive specific files were for Plex. How to pool multiple hard drives together when they're all different brands, models and capacities? Enter mergerfs, an open source union filesystem that essentially merges multiple drives into one mount point."
 pubDate: 2024-03-11
-updatedDate: 2025-02-10
+updatedDate: 2025-02-23
 tags:
   - command line
 ---
@@ -24,7 +24,11 @@ I had a 2 TB hard drive where I kept only video files mounted at `/mnt/videos`, 
   └── movies
 ```
 
-What a mess! And with movies spread across multiple drives, how to keep track of what files are in which hard drive? What if we could just not worry about which drives specific files are in and they could all be together in mount point? MergerFS to the rescue! It will unify all three drives into one mount point where you can access everything. The new file structure will then be like this:
+What a mess! And with movies spread across multiple drives, how to keep track of what files are in which hard drive? What if we could just not worry about which drives specific files are in and they could all be together in mount point? MergerFS to the rescue! It will unify all three drives into one mount point where you can access everything. The new file structure will then be like this.
+
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
+>
+> I am using `/srv/media` as a unified mount point just as an example. Further below I will rename my drives to have new mount points at `/mnt/media1`, `/mnt/media2`, etc. and so I chose `/srv/media` as the unified mount point to avoid any conflicts or other weirdness. Feel free to put your unified mount point where ever you like depending on your prefered directory structure, e.g. `/media` or `/opt/media` or whatever.
 
 ```bash
 /srv/media
@@ -34,15 +38,17 @@ What a mess! And with movies spread across multiple drives, how to keep track of
   └── tvshows
 ```
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
-> I am using `/srv/media` as a unified mount point just as an example. My drives will have new mount points at `/mnt/media1`, `/mnt/media2`, etc. and so I chose `/srv/media` as the unified mount point to avoid any conflicts or other weirdness. Feel free to put your unified mount point where ever you like depending on your prefered directory structure, e.g. `/media` or `/opt/media` or whatever.
-
 With their powers combined, I gain access any media across all three drives at my chosen single mount point, at `/srv/media`.
 
 ## Install and configure MergerFS
 
-MergerFS can be installed via package manager, for example on Debian use the command `sudo install mergerfs`, but the stable release on your distro's repositories may not have the most up-to-date version of it available. I'll be using the <a href="https://github.com/trapexit/mergerfs/releases/latest" target="_blank" data-umami-event="mergerfs-post-github-release">latest release from the GitHub page</a> as recommended by the developer. (Note, the examples below use the `.deb` package and `amd64` architecture because that's what I use, make sure you get the correct version for the system you're running!)
+MergerFS can be installed via package manager, for example on Debian you would use the command `sudo apt install mergerfs`, but the stable release on your distro's repositories may not have the most up-to-date version of it available. I'll be using the <a href="https://github.com/trapexit/mergerfs/releases/latest" target="_blank" data-umami-event="mergerfs-post-github-release">latest release from the GitHub page</a> as recommended by the developer.
+
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
+>
+> The examples below use the `.deb` package and `amd64` architecture because that's what I use, make sure you use the correct version/architecture for the system you're running! For example on Red Hat you need to use `.rpm` packages, on other distros you might have to build from source. On a Raspberry Pi, Le Potato and many other single-board computers, you need to use the `arm64` architecture.
+>
+> You can use the command `uname -p` to print your CPU architecture on the terminal. An output of `x86_64` means the architecture is `amd64`. An output `aarch64` means the architecture is `arm64`. You can also get this info with `uname -a` and look towards the end of the output for the architecture, or get detailed CPU info with `cat /proc/cpuinfo`.
 
 First download the package from GitHub:
 
