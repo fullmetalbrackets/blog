@@ -36,7 +36,7 @@ What a mess! And with movies spread across multiple drives, how to keep track of
 
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
-> Not that I am using `/srv/media` as a unified mount point just as an example. My drives will have new mount points at `/mnt/media1`, `/mnt/media2`, etc. and so I chose `/srv/media` as the unified mount point to avoid any conflicts or other weirdness. Feel free to put your unified mount point where ever you like, e.g. `/opt/media` or whatever.
+> I am using `/srv/media` as a unified mount point just as an example. My drives will have new mount points at `/mnt/media1`, `/mnt/media2`, etc. and so I chose `/srv/media` as the unified mount point to avoid any conflicts or other weirdness. Feel free to put your unified mount point where ever you like depending on your prefered directory structure, e.g. `/media` or `/opt/media` or whatever.
 
 With their powers combined, I gain access any media across all three drives at my chosen single mount point, at `/srv/media`.
 
