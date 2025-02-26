@@ -45,7 +45,7 @@
     --date: rgb(72, 100, 100);
     --menu: rgb(205, 110, 10);
     --form: rgb(32, 33, 36);
-    --info: rgb(202, 71, 0);
+    --info: rgb(241, 84, 0);
     --info-bg: rgb(239, 201, 15);
     --blockquote: rgb(255, 235, 215);
     --code-bg: hsl(0, 0%, 90%);
@@ -309,7 +309,7 @@ figcaption {
   margin: 0;
 }
 blockquote {
-  font-family: 'M PLUS Rounded 1c Reg', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+  font-family: 'Atkinson', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
   font-size: 0.85em;
 	border: 2px solid var(--info);
   background-color: var(--blockquote);
