@@ -314,7 +314,7 @@ Here are some Blocklists that, after many years of using Pi-Hole, I make sure to
 - <a href="https://oisd.nl" target="_blank" data-umami-event="setup-pihole-oisd">OISD</a>
 - <a href="https://github.com/mmotti/pihole-regex/blob/master/regex.list" target="_blank" data-umami-event="setup-pihole-mmotti-regex">This gist of Regex Expressions</a>
 
-After adding the above Blocklists you may end up with several million "Domains on Lists" as shown in the dashboard. It's all good.
+After adding the above Blocklists you may end up with several million "Domains on Lists" as shown in the dashboard. It's all good. (Note this is all domains from blocklists and allowlists combined.)
 
 ![Over 4 million domains on lists in Pi-Hole.](../../img/blog/pihole-domains-list.png 'Over 4 million domains on lists in Pi-Hole')
 
