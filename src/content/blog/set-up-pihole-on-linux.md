@@ -1,6 +1,6 @@
 ---
 title: "Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS"
-description: "Besides just using a browser extension for ad blocking, I've been using Pi-Hole for years to prevent all devices on my network from getting ads, and stopping smart home devices from phoning home for telemetry and tracking. Pi-Hole will run on almost anything that can run Linux, is very easy to set up, and super effective with the right ad lists."
+description: "Besides just using a browser extension for ad blocking, I've been using Pi-Hole for years to prevent all devices on my network from getting ads, and stopping smart home devices from phoning home for telemetry and tracking. Pi-Hole will run on almost anything that can run Linux, is very easy to set up, and super effective with the right blocklists. (Updated for Pi-Hole v6)"
 pubDate: 2022-10-08
 updatedDate: 2025-02-26
 tags:
@@ -370,7 +370,7 @@ As of the release of Pi-Hole v6 (see below for details) the only way to sync con
 > 
 > Aside from Nebula Sync as mentioned above, there is another actively-maintained alternative, <a href="https://github.com/mattwebbio/orbital-sync" target="_blank" data-umami-event="setup-pihole-orbital-sync">Orbital Sync</a>, but support v6 is not yet available. (Although it is coming.)
 
-## Reference
+## References
 
 - <a href="https://docs.pi-hole.net" target="_blank" data-umami-event="setup-pihole-docs">Pi-Hole documentation</a>
 - <a href="https://man7.org/linux/man-pages/man8/cron.8.html" target="_blank" data-umami-event="setup-pihole-cron-manpage">Cron man page</a>
