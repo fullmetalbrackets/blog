@@ -325,7 +325,7 @@ Pay attention to any issues you have visiting websites, using online apps and st
 If you feel the need, look up some _Allowlists_ to add common domains that Pi-Hole should ignore. Personally, I keep my own small allowlist and just click "allow" on individual domains from the query log as needed, but if you wanted a curated Allowlists, check these out:
 
 - <a href="https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/whitelist-referral-native.txt" target="_blank" data-umami-event="setup-pihole-hagezi-allowlist-referral">HaGeZi's Allowlist</a> (unblocks affiliate & tracking referral links that appear in mails, search results etc.)
-- <a href="https://github.com/anudeepND/whitelist" target="_blank" data-umami-event="setup-pihole-anudeepND-whitelist">anudeepND's whitelist</a> (hasn't been updated in years, but some good stuff in there)
+- <a href="https://github.com/anudeepND/whitelist" target="_blank" data-umami-event="setup-pihole-anudeepND-whitelist">anudeepND's whitelist</a> (hasn't been updated in years, but some good stuff in there, and works in v6 as an allowlist -- <a href="https://github.com/anudeepND/whitelist/issues/273" target="_blank">see here</a>)
 - <a href="https://github.com/hl2guide/AdGuard-Home-Whitelist/" target="_blank" data-umami-event="setup-pihole-hl2guide-whitelist">hl2guide's AdGuard Home whitelist</a> (works on Pi-Hole as well, but no longer maintained as of Jan 2025)
 
 ## Updating Pi-Hole
