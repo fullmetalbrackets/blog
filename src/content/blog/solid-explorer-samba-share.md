@@ -2,7 +2,7 @@
 title: "How to use Solid Explorer app to access SMB network shares from an Android device"
 description: "There are many File Managers/File Explorers on the Google Play Store, but I wanted to easily access the Samba share on my server while on my home network. Solid Explorer is the solution I went with and it works well, so here is a quick guide to setting it up."
 pubDate: 2022-11-07
-updatedDate: 2025-02-22
+updatedDate: 2025-02-26
 tags:
   - android
 ---
@@ -34,15 +34,15 @@ In the _Network Connection Wizard_, choose **LAN / SMB** and tap _Next_.
 
 ![Network Connection Wizard in Solid Explorer.](../../img/blog/solidexplorer4.jpg 'Network Connection Wizard in Solid Explorer')
 
-You should see any SMB shares in your network under _server details_, choose one and tap _Next_.
+You should see any SMB shares in your network under _server details_, choose one and tap **Next**.
 
 ![Details in Network Connection Wizard.](../../img/blog/solidexplorer5.jpg 'Details in Network Connection Wizard')
 
-Choose your _authentication_ method and tap _Next_. (I suggest using _Username and password_ unless you have properly configured the SMB share for guest access, otherwise you may experience permissions issues.)
+Choose your _authentication_ method and tap **Next**. (I suggest using _Username and password_ unless you have properly configured the SMB share for guest access, otherwise you may experience permissions issues.)
 
 ![Authentication in Network Connection Wizard.](../../img/blog/solidexplorer6.jpg 'Authentication in Network Connection Wizard')
 
-If you chose _Username and password_ authentication, you'll be prompted for the login info. Enter it and tap _Next_.
+If you chose _Username and password_ authentication, you'll be prompted for the login info. Enter it and tap **Next**.
 
 ![Login details in Network Connection Wizard.](../../img/blog/solidexplorer7.jpg 'Login details in Network Connection Wizard')
 
@@ -54,7 +54,7 @@ For _Protocol version_ choose the recommended **SMB 2**, then tap _Next_. On the
 
 ![SMB Protocol version in Network Connection Wizard.](../../img/blog/solidexplorer9.jpg 'SMB Protocol version in Network Connection Wizard')
 
-You'll get to review your settings, if everything is correct tap _Next_.
+You'll get to review your settings, if everything is correct tap **Next**.
 
 ![Review in Network Connection Wizard.](../../img/blog/solidexplorer10.jpg 'Review in Network Connection Wizard')
 
@@ -66,7 +66,7 @@ If everything is properly configured, the button will **turn green with a checkm
 
 ![Connection successful.](../../img/blog/solidexplorer12.jpg 'Connection successful')
 
-You'll see your server under _Storage manager_. Tap the _back arrow (<-)_ to go back to the menu.
+You'll see your server under _Storage manager_. Tap the **back arrow (<-)** to go back to the menu.
 
 ![Storage manager showing SMB.](../../img/blog/solidexplorer13.jpg 'Storage manager showing SMB')
 
@@ -78,17 +78,17 @@ You're done! Now you can easily access your SMB shares from your Android device 
 
 ## Transferring files via Solid Explorer
 
-Transferring files between your Android device and SMB shares is done by using _panes_. If you swipe left and right on your phone or tablet's touchscreen, you can navigate to different directories on each. Navigate to an SMB share on one pane, and to an internal directory on the other.
+Transferring files between your Android device and SMB shares is done by using _panes_. If you swipe left and right on your phone or tablet's touchscreen, you'll switch to a different pane, and you can navigate to different directories on each pane. Navigate to an _SMB share_ on one pane, and to one of your device's _internal directories_ on the other pane.
 
-To transfer between device and share, tap a file and hold for a moment to select it. You can tap additional files to select them as well. Then tap on the _three dots (...)_ on the bottom menu, then choose **Transfer** from the options.
+To transfer between device and share, tap a file and hold for a moment to select it. You can tap additional files to select them as well. Then tap on the **three dots (...)** on the bottom menu, then choose _Transfer_ from the options.
 
 ![Transferring files in Solid Explorer.](../../img/blog/solidexplorer15.jpg 'Transferring files in Solid Explorer')
 
-A pop-up will show the destination of the file transfer, tap either **Copy to...** or **Move to...** (which removes it from the source directory) to begin the transfer.
+A pop-up will show the destination of the file transfer, tap either _Copy to..._ or _Move to..._ (which removes it from the source directory) to begin the transfer.
 
 ![Choosing to copy or move files in Solid Explorer.](../../img/blog/solidexplorer16.jpg 'Choosing to copy or move files in Solid Explorer')
 
-You'll see a circlular progress bar on the bottom right, when the transfer is done it turns into a _green checkmark_.
+You'll see a circlular progress bar on the bottom right, when the transfer is done it turns into a **green checkmark**.
 
 ![File transfer in Solid Explorer complete.](../../img/blog/solidexplorer17.jpg 'File transfer in Solid Explorer complete')
 
