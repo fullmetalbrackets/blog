@@ -83,6 +83,14 @@ const posts = (await getCollection("blog")).sort(
   <h2>Featured Articles</h2>
   <ul>
     <li>
+      <a href="/blog/set-up-pihole-on-linux/" rel="prefetch-intent" data-umami-event="featured-setup-pihole">
+      <p class="posts-title">Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS</p>
+      <p class="desc">
+        Besides just using a browser extension for ad blocking, I've been using Pi-Hole for years to prevent all devices on my network from getting ads, and stopping smart home devices from phoning home for telemetry and tracking. Pi-Hole will run on almost anything that can run Linux, is very easy to set up, and super effective with the right blocklists. (Updated for Pi-Hole v6)
+      </p>
+      </a>
+    </li>
+    <li>
       <a href="/blog/comprehensive-guide-tailscale-securely-access-home-network/" rel="prefetch-intent" data-umami-event="featured-tailscale-guide">
       <p class="posts-title">Comprehensive guide to setting up Tailscale to securely access your home network from anywhere</p>
       <p class="desc">
@@ -112,14 +120,6 @@ const posts = (await getCollection("blog")).sort(
       <p class="posts-title">How to use Solid Explorer app to access SMB network shares from an Android device</p>
       <p class="desc">
         There are many File Managers/File Explorers on the Google Play Store, but I wanted to easily access the Samba share on my server while on my home network. Solid Explorer is the solution I went with and it works well, so here is a quick guide to setting it up.
-      </p>
-      </a>
-    </li>
-    <li>
-      <a href="/blog/two-drives-mergerfs/" rel="prefetch-intent" data-umami-event="featured-mergerfs">
-      <p class="posts-title">Using MergerFS to combine multiple hard drives into one unified media storage</p>
-      <p class="desc">
-        My situation was simple -- my server's media storage was filling up and I wanted to add more drives, but without having to keep track of which drive specific files were for Plex. How to pool multiple hard drives together when they're all different brands, models and capacities? Enter mergerfs, an open source union filesystem that essentially merges multiple drives into one mount point.
       </p>
       </a>
     </li>
