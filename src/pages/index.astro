@@ -38,6 +38,27 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "@consts";
     font-weight: 900;
     word-break: all;
   }
+  .blurb {
+    margin-top: 1.5em;
+    text-align: justify;
+  }
+  .personal-links {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+    width: 50%;
+    height: 1vw;
+  }
+  .personal-links a {
+    filter: var(--svg);
+    margin: 0;
+    padding: 0;
+  }
+  .personal-links a:hover {
+    filter: var(--ext);
+  }
   @media (prefers-color-scheme: light) {
     .about {
       color: var(--primary);
@@ -63,38 +84,16 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "@consts";
     .about {
       font-size: 1.85em;
     }
-  }
-  .blurb {
-    margin-top: 1.5em;
-    text-align: justify;
-  }
-  p {
-    word-spacing: 1px;
-  }
-  .more {
-    margin: 0;
-    padding: 0;
-  }
-  .more-title {
-    margin-top: 2em;
-  }
-  .more-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 0;
-    margin: 0;
-  }
-  .more-list:first-of-type {
-    margin-left: 1.25em;
-  }
-  ul {
-    width: 85%;
-  }
-  li {
-    display: inline-flex;
-    flex-direction: column;
-    margin: 0 2em 2em -1em;
-    line-height: 1.2;
+    .personal-links {
+      margin-top: 2em;
+      width: 80%;
+    }
+    .personal-links a {
+      margin-right: 5px;
+    }
+    .personal-links a:last-of-type {
+      margin-right: 0;
+    }
   }
 </style>
 
@@ -107,6 +106,73 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "@consts";
     </div>
     <p class="blurb">
       I'm Ariel, a tech enthusiast and hobbyist coder. Welcome to my blog. <span class="blurb2">I mostly write for my own reference about self-hosting, Linux, web development, and really just anything tech that I've learned over many years of tinkering. Each time I learn how to install or run a new thing, I type it up and publish it here. I hope my writings will be helpful to you. Thanks for visiting!</span>
+    </p>
+    <p class="personal-links">
+      <a href="/mail" target="_blank"
+      ><img
+        height="auto"
+        width="40px"
+        class="email"
+        src="/assets/email.svg"
+        alt="Email"
+        title="Email"
+        loading="lazy"
+        decoding="async"
+        data-umami-event="footer-mail"
+      /></a
+    >
+    <a href="https://social.lol/@adiaz" target="_blank"
+      ><img
+        height="auto"
+        width="35px"
+        class="mastodon"
+        src="/assets/mastodon.svg"
+        alt="Mastodon"
+        title="Mastodon"
+        loading="lazy"
+        decoding="async"
+        data-umami-event="footer-social"
+      /></a
+    >
+    <a href="https://bsky.app/profile/fullmetalbrackets.com" target="_blank"
+      ><img
+        height="auto"
+        width="35px"
+        class="bsky"
+        src="/assets/bsky.svg"
+        alt="Bluesky"
+        title="Bluesky"
+        loading="lazy"
+        decoding="async"
+        data-umami-event="footer-bsky"
+      /></a
+    >
+    <a href="https://github.com/fullmetalbrackets" target="_blank"
+      ><img
+        height="auto"
+        width="35px"
+        class="github"
+        src="/assets/gh.svg"
+        alt="GitHub"
+        title="GitHub"
+        loading="lazy"
+        decoding="async"
+        data-umami-event="footer-github"
+      /></a
+    >
+    <a href="https://buymeacoffee.com/arieldiaz" target="_blank"
+      ><img
+        height="auto"
+        width="30px"
+        class="buymeacoffee"
+        src="/assets/bmc-logo.svg"
+        alt="Buy Me A Coffee"
+        title="Buy Me A Coffee"
+        loading="lazy"
+        decoding="async"
+        data-umami-event="footer-coffee"
+      /></a
+    >
     </p>
     <Featured />
     <Categories />
