@@ -2,18 +2,22 @@
 title: "Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS"
 description: "Besides just using a browser extension for ad blocking, I've been using Pi-Hole for years to prevent all devices on my network from getting ads, and stopping smart home devices from phoning home for telemetry and tracking. Pi-Hole will run on almost anything that can run Linux, is very easy to set up, and super effective with the right ad lists."
 pubDate: 2022-10-08
-updatedDate: 2025-02-03
+updatedDate: 2025-02-26
 tags:
   - pi-hole
 ---
 
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
+> 
+> This guide has been updated for **Pi-Hole v6**.
+
 ## Pre-Requisites and Caveats
 
-Before anything, make sure the machine you're installing Pi-Hole on <a href="/blog/set-static-ip-debian/" target="_blank" data-umami-event="setup-pihole-static-ip-post">has a static IP</a>, otherwise if your machine's IP changes it will break DNS resolution for the network.\
+Before anything, make sure the machine you're installing Pi-Hole on has a _static IP_, otherwise if your machine's IP changes it will break DNS resolution for the network. You can <a href="/blog/set-static-ip-debian/" target="_blank" data-umami-event="setup-pihole-static-ip-post">set a static IP on the server itself</a> or else use IP Reservation on your router.
 
-Also, Pi-Hole will run a web server at port 80, for serving the web UI page, so make sure no other web server like Apache or NGinx is running.
+In addition, Pi-Hole will run a web server -- as of Pi-Hole v6, the web server will default to port **80** if available, otherwise it will attempt to run the web server on port **8080**. As a result, make sure one of those ports are available for Pi-Hole's web UI.
 
-When installing Pi-Hole on Ubuntu you may get an error message along the lines of this:
+When installing Pi-Hole on Ubuntu (at least Pi-Hole v5, I don't know if this still happens on v6) you may get an error message along the lines of this:
 
 ```bash
 Error starting userland proxy: listen tcp4 0.0.0.0:53: bind: address already in use
@@ -50,11 +54,19 @@ Installation will prompt a number of dialogs, pay attention and make sure you in
 
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
-> A random password will be generated during install for logging in to the Pi-Hole web UI. You should change the admin password with `pihole -a -p newpassword` or if you don't want to login at all, leave it blank with `pihole -a -p`.
+> A random password will be generated during install for logging in to the Pi-Hole web UI. You should change the admin password with `pihole -a -p <password>` (on Pi-Hole v5) or `pihole setpassword <password>` (on Pi-Hole v6).
+>
+> If you prefer, you can leave the password blank and bypass login with `pihole -a -p` or `pihole setpassword`. (Don't include a password when using the commands.)
 
-Now you should be able to access the Pi-Hole Web UI via either IP address, e.g. `http://192.168.1.250/admin` or using the machine hostname, `http://hostname/admin`. (Later, when Pi-Hole is set as the DNS server, you can access the web UI at `http://pi.hole/admin`)
+Now you should be able to access the Pi-Hole Web UI via either IP address, e.g. `http://192.168.1.250/admin` or using the machine hostname, `http://hostname/admin`. Make sure to include the port number is necessary, e.g. `http://hostname:8080/admin`, etc.
+
+Later, when Pi-Hole is set as the network-wide DNS server, you'll be able to access the web UI at `http://pi.hole/admin`.
 
 ## Installing Unbound
+
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
+>
+> Running Unbound alongside Pi-Hole v6 is identical to Pi-Hole v5, so the below instructions work for both.
 
 Again, this is for installing Unbound bare metal, so if you want to run it in Docker, [skip to this section](#docker).
 
@@ -120,6 +132,10 @@ pi-hole.net.            300     IN      A       3.18.136.52
 If your output looks similar to the above, then everything is working as intended.
 
 ## Running Pi-Hole and Unbound together on Docker
+
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
+>
+> I have not run Pi-Hole v6 in Docker as of yet, so be aware that if there's any differences between v5 and v6, they are not included below. An update to this section will be forthcoming, if necessary.
 
 I always run Pi-Hole bare metal as a personal preference, so I'll be giving instructions for something I haven't used myself. Maybe I'll spin up some containers and test it out, but for now... let me know how it goes.
 
@@ -214,17 +230,23 @@ services:
 
 ## Configuring DNS
 
-(Note: If running in Docker using the above instructions, this should already be setup, but you can double-check it.)
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
+>
+> If running in Docker using the above instructions, this should already be setup, but you can double-check it to be safe.
 
-If running bare metal, we need to make Unbound the upstream DNS resolver for Pi-Hole. In the Pi-Hole web UI, go to **Settings** on the sidebar, then click on the **DNS** tab.
+If running bare metal, we need to make Unbound the upstream DNS resolver for Pi-Hole. In the Pi-Hole web UI, go to **Settings** on the sidebar, then click on the **DNS** from the dropdown.
 
-Uncheck any public DNS in the left column, and in the right column enable the checkmark under **Custom 1** and add `127.0.0.1#5335` as the server. Scroll down to the bottom and click the **Save**.
+Under _Upstream DNS Servers_, uncheck any checkmarked DNS servers, then click on _Custom DNS servers_ and type in `127.0.0.1#5335` as the server. (On Docker, you instead want to type in the machine IP, e.g. `192.168.0.250#5335`.)
 
-![Pi-Hole Upstream DNS Server setting.](../../img/blog/pihole-dns1.png 'Pi-Hole Upstream DNS Server setting')
+Scroll down to the bottom and click on **Save & Apply**.
 
-You can also set **Interface settings** to _Permit all origins_, as long as the machine running Pi-Hole is not accessible from the internet (and especially port 53 is not exposed) then this is totally safe, and will ensure Pi-Hole receives and answers queries from every device in your network. You can try using **Allow only local requests** first and see if it works for you.
+![Pi-Hole Upstream DNS Server settings.](../../img/blog/pihole-dns1.png 'Pi-Hole Upstream DNS Server settings')
+ 
+Next, click on the **Basic** slider at the top-right so it switches to **Expert**. This will make additional settings and options appear.
 
-![Pi-Hole interface setting.](../../img/blog/pihole-dns2.png 'Pi-Hole interface setting')
+Make sure under _Interface settings_ you have picked **Permit all origins**. Don't worry about this being "potentially dangerous," as long as the machine running Pi-Hole is not accessible from the internet -- and especially _port 53 is not exposed_ -- then this is totally safe and will ensure Pi-Hole receives and answers queries from every device in your network.
+
+![Pi-Hole interface settings.](../../img/blog/pihole-interface-settings.png 'Pi-Hole interface settings')
 
 Next, in order for Pi-Hole to work network-wide for all devices (including phones and tablets on Wi-Fi), you'll need to configure your router to use the Pi-Hole server as DNS. Some routers do not let you change this setting, like AT&T's Arris BGW210-700, but most Netgear and TP-Link routers do.
 
@@ -240,40 +262,50 @@ Otherwise you add Pi-Hole's IP manually to each device's DNS settings. As Pi-Hol
 
 Next, you'll notice the Pi-Hole web UI will show all clients as IP addresses, but there's a few methods to show hostnames instead. (Or `hostname.domain` if you prefer.) The easiest way is to use _Conditional Forwarding_, though it seems to be an uncommon feature with most consumer-grade routers, so don't be surprised if it doesn't work for you.
 
-Go to **Settings** on the sidebar, click on the _DNS_ tab, and scroll down to _Advanced DNS settings_.
+Go to **Settings** on the sidebar, click on the **DNS** tab, set the slider to **Expert**, and scroll down to _Conditional Forwarding_ at the bottom.
 
-![Conditional Forwarding settings.](../../img/blog/pihole-dns3.png 'Conditional Forwarding settings')
+![Pi-Hole Conditional Forwarding settings.](../../img/blog/pihole-conditional-forwarding.png 'Pi-Hole Conditional Forwarding settings')
 
-Check the box to _Use Conditional Forwarding_, type in your subnet (most likely `192.168.0.0/24` or `192.168.1.0/24`), type in the domain if your router uses one and you know what it is (e.g. `.local` or `.home`) otherwise leave it blank, and click **Save**. Check the dashboard and see if that's enough to display hostnames instead of IP addresses. Doing a hard reload (Ctrl + F5) is usually enough to make them appear, but if you want to be sure, restart Pi-Hole by going to **Settings** -> **Restart DNS Resolver** on the web UI, or using the command `pihole restartdns` in the terminal.
+Be sure to read this and figure out what pertains to your situation. In most cases you'll need to type in your subnet (most likely `192.168.0.0/24` or `192.168.1.0/24`, etc.), type in the domain if your router uses one and you know what it is (e.g. `.local` or `.home`) otherwise leave it blank, and click **Save & Apply**.
 
-If the hostnames are not showing up, there's something else we can try. Go back to _Advanced DNS settings_ and you'll see two checkmarks like in the picture below.
+Check the dashboard and see if that's enough to display hostnames instead of IP addresses. If the hostnames are not showing up, there's something else we can try. Go back to _Settings_ -> _DNS_ and set the slider to _Expert_ to see **Advanced DNS settings** and you'll see checkmarks like in the picture below.
 
-![Advanced DNS settings.](../../img/blog/pihole-dns4.png 'Advanced DNS settings')
+![Pi-Hole Advanced DNS settings.](../../img/blog/pihole-advanced-dns.png 'Pi-Hole Advanced DNS settings')
 
 For the best security, both of these should be checked, but you can try unchecking one or both to see if they make the hostnames show. If the hostnames still don't populate, it's likely your router simply does not support conditional forwarding.
 
-You'll have to manually add each device's IP address and hostname/domain. Go to _Local DNS_ on the navigation bar, and click on _DNS Records_.
+In that case, you'll have to manually add each device's IP address and hostname/domain. Go to _Settings_ -> _Local DNS Records_ on the sidebar. Here, type in a _Domain_ (or hostname) and _Associated IP_, then click the **plus [+] button**.
 
-![Adding new domain and IP.](../../img/blog/pihole-dns5.png 'Adding new domain and IP')
+![Pi-Hole Local DNS Records.](../../img/blog/pihole-dns-record.png 'Pi-Hole Local DNS Records')
 
 Alternately, you can manually edit the `/etc/hosts` file on the server running Pi-Hole. You can bind an IP to a hostname, domain or any other alias.
 
 ```ini
 # /etc/hosts
 
-192.168.0.200   hostname1
-192.168.0.215   hostname2
-192.168.0.230   mydomain.tld
-192.168.0.245   laptop
+192.168.0.100   server
+192.168.0.200   pc
+192.168.0.230   laptop
+192.168.0.245   mydomain.tld
 ```
 
-## Using adlists to block domains
+## Adding blocklists and allowlists
 
-On the Pi-Hole web UI, click on **Adlists** on the navigation bar:
+Pi-Hole blocks ads by checking DNS queries against **blocklists**, most of which are curated by the community. Until blocklists are added, no ads are being blocked. On the flipside, you can use **allowlists** tell Pi-Hole that particular domains should NOT be blocked, even if they appear in blocklists.
 
-![Pi-Hole Adlists.](../../img/blog/adlist.png 'Pi-Hole Adlists')
+Blocklists and Allowlists are just a bunch of URLs (see below), so make sure add them as the right kind of list! If you add a Blocklist as an Allowlist, you'll be telling Pi-Hole to allow a bunch of bad domains to have their way with you. Likewise adding an Allowlist as a Blocklist instead will cause bad things to happen.
 
-The most efficient way to block URLs in Pi-Hole is to use an adlist, which is a list of URLs to block en masse. (You can also blacklist individual URLs by going to _Domains_ on the sidebar.) While installing Pi-Hole you had the option of including a default adlist that blocks around 300k URLs, but there's many more adlists curated by the community that will block many more ads, malware sites, telemetry and tracking. Here are the ones I use:
+On the Pi-Hole web UI, click on **Lists** on the sidebar. Here you can type in the URL to a blocklist, or type an individual URL, or multiple comma-separated URLs, then click on **Add blocklist** or **Add allowlist**, depending on what you want Pi-Hole to do with those URLs.
+
+![Pi-Hole Lists.](../../img/blog/pihole-lists.png 'Pi-Hole Lists')
+
+Once you've added any Lists (and any time you add additional ones), make sure to **update your gravity** for the changes to take effect. Go to _Tools_ on the sidebar and click on _Update Gravity_ on the dropdown.
+
+![Update Gravity in Pi-Hole.](../../img/blog/pihole-gravity.png 'Update Gravity in Pi-Hole')
+
+You'll be taken to a separate page, click on the big **Update** button to begin, and do not leave or reload the page until the process is done!
+
+Here are some Blocklists that, after many years of using Pi-Hole, I make sure to always include:
 
 - <a href="https://firebog.net" target="_blank" data-umami-event="setup-pihole-firebog">The Firebog</a>
 - <a href="https://github.com/blocklistproject/Lists" target="_blank" data-umami-event="setup-pihole-blocklist-project">The Block List Project</a>
@@ -282,31 +314,41 @@ The most efficient way to block URLs in Pi-Hole is to use an adlist, which is a 
 - <a href="https://oisd.nl" target="_blank" data-umami-event="setup-pihole-oisd">OISD</a>
 - <a href="https://github.com/mmotti/pihole-regex/blob/master/regex.list" target="_blank" data-umami-event="setup-pihole-mmotti-regex">This gist of Regex Expressions</a>
 
-Once you've added all the adlists (and any time you add additional ones), make sure to "update gravity" for the changes to take effect. Go to _Tools_ on the navigation bar, click on _Update Gravity_, and click the big **Update** button. Do not leave the page until the process is done!
+After adding the above Blocklists you may end up with several million "Domains on Lists" as shown in the dashboard. It's all good.
 
-You may end up with several million "domains on adlists" as shown in the dashboard. Don't panic. You'll see your dashboard stats explode with blocked requests, especially from mobile devices. Pay attention to any issues you have visiting websites and using online apps/services that you commonly do, and whitelist domains as needed. (You can also use a <a href="https://github.com/anudeepND/whitelist" target="_blank" data-umami-event="setup-pihole-anudeepND-whitelist">curated whitelist</a>.)
+![Over 4 million domains on lists in Pi-Hole.](../../img/blog/pihole-domains-list.png 'Over 4 million domains on lists in Pi-Hole')
 
-![Over 3 million domains blocked in Pi-Hole.](../../img/blog/blocked.png 'Over 3 million domains blocked in Pi-Hole')
+If you set the Pi-Hole as DNS on the router, and restarted the router, then you should see your dashboard stats explode with requests soon enough, especially from mobile devices. (If you didn't do that, manually configure some devices to use Pi-Hole as the DNS to start populating the dashboard. You may have to restart those devices for them to start using Pi-Hole as their new DNS server.)
 
-## Further steps
+Pay attention to any issues you have visiting websites, using online apps and streaming services, etc. Check your **Query Log** and if you see anything that shouldn't be blocked, click on the **Allow** button to whitelist that individual domain. Likewise if you notice anything being allowed that you'd rather block, click on the **Deny** button to block that individual domain.
 
-<br>
+If you feel the need, look up some _Allowlists_ to add common domains that Pi-Hole should ignore. Personally, I keep my own small allowlist and just click "allow" on individual domains from the query log as needed, but if you wanted a curated Allowlists, check these out:
 
-### Updating Pi-Hole
+- <a href="https://github.com/anudeepND/whitelist" target="_blank" data-umami-event="setup-pihole-anudeepND-whitelist">anudeepND's whitelist</a>
+- <a href="https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/whitelist-referral-native.txt" target="_blank" data-umami-event="setup-pihole-hagezi-allowlist-referral">HaGeZi's Allowlist</a> (unblocks affiliate & tracking referral links that appear in mails, search results etc.)
+- <a href="https://github.com/hl2guide/AdGuard-Home-Whitelist/" target="_blank" data-umami-event="setup-pihole-hl2guide-whitelist">hl2guide's AdGuard Home whitelist</a> (works on Pi-Hole as well, but no longer maintained as of Jan 2025)
+
+## Updating Pi-Hole
 
 When an update to Pi-Hole, FTL and/or the Web Interface is available, you can easily update your bare metal Pi-Hole in the terminal by using the command `pihole -up`. Pi-Hole will not update on it's own, so you have to do it manually, and the Pi-Hole team does not recommend automating it. (Though you can, if you so choose.)
 
-If you'd rather update Pi-Hole during off-hours, like in the middle of the night, I suggest using `at` -- it lets you use schedule a one-time task for a later time, similar to `cron` but non-recurring. (The syntax for `at` is also more human-readable than `cron`.) For example, the below command will schedule `pihole -up` to be executed at 5:00 AM:
+If you'd rather update Pi-Hole during off-hours, like in the middle of the night, I suggest using `at` -- it lets you use schedule a one-time task for a later time, similar to `cron` but non-recurring or automated. (The syntax for `at` is also more human-readable than `cron`.) For example, the below command will schedule `pihole -up` to be executed at 5:00 AM:
 
 ```bash
 pihole -up | at 5AM
 ```
 
-### Backup and/or restore Pi-Hole configuration
+## Export or import Pi-Hole configuration
 
-You may want to regularly create a backup of your Pi-Hole configuration. You can't automate it, but that's ok because it's very simple -- just to go the web UI, click on _Settings_, then go to the _Teleporter_ tab and click the **Backup** button. This will download a `tar.gz` file to the computer you're accessing the web UI from, and within this same screen you can restore from a backup file if necessary. You might consider committing your backup to a private GitHub repo too.
+You may want to regularly create a backup of your Pi-Hole configuration. You can't automate it, but that's ok because it's very simple -- just to go the web UI, click on _Settings_ -> _Teleporter_, and click the **Export** button to download your configuration. This will download a compressed file to the device you're accessing the web UI from. (Note: The warning seems to come up even when using HTTPS, so just ignore it.)
 
-### Use local time instead of UTC
+![Export a Pi-Hole configuration.](../../img/blog/pihole-export.png 'Export a Pi-Hole configuration')
+
+From within this same screen you can import a previously exported configuration. Click on _Choose file_ and navigate to the config on your device, then checkmark the settings you want to import, and click the **Import** button.
+
+![Import a Pi-Hole configuration.](../../img/blog/pihole-import.png 'Import a Pi-Hole configuration')
+
+## Use local time instead of UTC
 
 If you notice the query log displaying times as UTC instead of your local time zone, and you want the logs to use your time zone, use (for example if you want to set _EST_ time zone):
 
@@ -316,15 +358,17 @@ sudo timedatectl set-timezone America/New_York
 
 If you want to find out your time zone in the tz database, <a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones" target="_blank" data-umami-event="setup-pihole-tz-database">see here</a>.
 
-### Run and sync two Pi-Holes
+## Run and sync two Pi-Holes
 
-When you make Pi-Hole your primary DNS it becomes a critical part of your network -- if it goes down, devices on your network won't be able to resolve any domains. For this reason, you may want to run another Pi-Hole as a secondary DNS in case the host running your main instance of Pi-Hole crashes. (These things happen.) If your entire network will go down from an issue with Pi-Hole, running a second instance of it makes a lot of sense. If you go this route, I strongly suggest using <a href="https://github.com/vmstan/gravity-sync" target="_blank" data-umami-event="setup-pihole-gravity-sync">Gravity Sync</a> to keep the adlists and other settings identical between the two.
+When you make Pi-Hole your primary DNS it becomes a critical part of your network -- if it goes down, devices on your network won't be able to resolve any domains. For this reason, you may want to run another Pi-Hole as a secondary DNS in case the host running your main instance of Pi-Hole crashes. (These things happen.) If your entire network will go down from an issue with Pi-Hole, running a second instance of it makes a lot of sense.
+
+As of the release of Pi-Hole v6 (see below for details) the only way to sync configurations between two Pi-Hole instances is with <a href="https://github.com/lovelaze/nebula-sync" target="_blank" data-umami-event="setup-pihole-nebula-sync">Nebula Sync</a>.
 
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
-> Gravity Sync has been archived and is no longer updated, however it still works perfectly with the current (as of October 2024) version of Pi-Hole. In the future Pi-Hole v6 release, Gravity Sync will not work. Two alternatives that do work with v6 are <a href="https://github.com/mattwebbio/orbital-sync" target="_blank" data-umami-event="setup-pihole-orbital-sync">Orbital Sync</a> and <a href="https://github.com/lovelaze/nebula-sync" target="_blank" data-umami-event="setup-pihole-nebula-sync">Nebula Sync</a>.
->
-> This guide will be updated in the future once Pi-Hole v6 is generally available.
+> The original Pi-Hole syncing solution, Gravity Sync, has been archived and will no longer be maintained. It does not work with Pi-Hole v6, though its last release still works with Pi-Hole v5 and older.
+> 
+> Aside from Nebula Sync as mentioned above, there is another actively-maintained alternative, <a href="https://github.com/mattwebbio/orbital-sync" target="_blank" data-umami-event="setup-pihole-orbital-sync">Orbital Sync</a>, but support v6 is not yet available. (Although it is coming.)
 
 ## Reference
 
