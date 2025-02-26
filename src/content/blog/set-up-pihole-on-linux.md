@@ -42,7 +42,7 @@ sudo systemctl stop unbound.service
 
 ## Installing Pi-Hole
 
-This is for installing Pi-Hole bare metal, so if you want to run it in Docker, [skip to this section](#docker).
+This is for installing Pi-Hole bare metal, so if you want to run it in Docker, [skip to this section](#running-pi-hole-and-unbound-together-on-docker).
 
 The quickest and easiest way to get Pi-Hole up and running bare metal is via their official installer. We'll use the following command to execute it:
 
@@ -56,19 +56,17 @@ Installation will prompt a number of dialogs, pay attention and make sure you in
 >
 > A random password will be generated during install for logging in to the Pi-Hole web UI. You should change the admin password with `pihole -a -p <password>` (on Pi-Hole v5) or `pihole setpassword <password>` (on Pi-Hole v6).
 >
-> If you prefer, you can leave the password blank and bypass login with `pihole -a -p` or `pihole setpassword`. (Don't include a password when using the commands.)
+> If you prefer, you can leave the password blank and bypass login with `pihole -a -p` or `pihole setpassword`. (Don't include a password when using the commands to set it as blank.)
 
-Now you should be able to access the Pi-Hole Web UI via either IP address, e.g. `http://192.168.1.250/admin` or using the machine hostname, `http://hostname/admin`. Make sure to include the port number is necessary, e.g. `http://hostname:8080/admin`, etc.
+Pi-Hole v6 defaults to using **port 80** for the web UI, so you should be able to access it via either IP address (`http://192.168.1.250/admin`) or using the machine hostname (`http://hostname/admin`). If port 80 is unavailable, Pi-Hole will _automatically try to use port 8080_ instead. Keep this in mind if you already have anything running on either port 80 or 8080 when installing Pi-Hole.
 
-Later, when Pi-Hole is set as the network-wide DNS server, you'll be able to access the web UI at `http://pi.hole/admin`.
+To set a custom network port for the Pi-Hole web UI, edit the configuration file at `/etc/pihole/pihole.toml`. Find the section `# Ports to be used by the webserver`. There's good instructions in the comments here on how it works.
+
+Basically, you can comment out the line `port = "80o,[::]:80o,443so, ..."` and then write a new line right under it with a different network port -- e.g. `port = "8888o,[::]:8888o"` or something. Save the file and close it, then you should be able to access the Pi-Hole web UI at the new port, e.g. `http://192.168.0.250:8888/admin`, etc.
 
 ## Installing Unbound
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
-> Running Unbound alongside Pi-Hole v6 is identical to Pi-Hole v5, so the below instructions work for both.
-
-Again, this is for installing Unbound bare metal, so if you want to run it in Docker, [skip to this section](#docker).
+Running Unbound alongside Pi-Hole v6 is identical to Pi-Hole v5. Again, I'll be explaining how to install Unbound bare metal, so if you want to run it in Docker instead, [skip to this section](#running-pi-hole-and-unbound-together-on-docker).
 
 Unbound is available on most, if not all, Linux package managers and should be installed that way whenever possible. On Debian and Ubuntu, for example, you'd install with this command:
 
@@ -161,7 +159,7 @@ services:
       - 5335:5335/tcp
       - 22/tcp
     environment:
-      - FTLCONF_LOCAL_IPV4=192.168.0.100
+      - FTLCONF_LOCAL_IPV4=192.168.0.250
       - TZ=America/New_York
       - WEBPASSWORD=changeme
       - PIHOLE_DNS_=127.0.0.1#5335
@@ -308,6 +306,7 @@ You'll be taken to a separate page, click on the big **Update** button to begin,
 Here are some Blocklists that, after many years of using Pi-Hole, I make sure to always include:
 
 - <a href="https://firebog.net" target="_blank" data-umami-event="setup-pihole-firebog">The Firebog</a>
+- <a href="https://github.com/hagezi/dns-blocklists" target="_blank">Hagezi's DNS blocklists</a> (there are many!)
 - <a href="https://github.com/blocklistproject/Lists" target="_blank" data-umami-event="setup-pihole-blocklist-project">The Block List Project</a>
 - <a href="https://www.github.developerdan.com/hosts" target="_blank" data-umami-event="setup-pihole-devdan-adlists">Developer Dan's Adlists</a>
 - <a href="https://github.com/badmojr/1Hosts" target="_blank" data-umami-event="setup-pihole-1hosts">1Hosts</a> (I suggest Lite or Pro)
@@ -358,11 +357,57 @@ sudo timedatectl set-timezone America/New_York
 
 If you want to find out your time zone in the tz database, <a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones" target="_blank" data-umami-event="setup-pihole-tz-database">see here</a>.
 
+## Accessing Pi-Hole web UI with HTTPS
+
+**Pi-Hole v6** supports accessing the web UI with HTTPS out-of-the-box. <a href="/blog/reverse-proxy-using-nginx-pihole-cloudflare/" data-umami-event="setup-pihole-related-reverse-proxy">I wrote a full blog post</a> about setting up a reverse proxy with Nginx Proxy Mananger and using Cloudflare for the DNS challenge to provision the TLS certificate. <a href="http://localhost:4321/blog/reverse-proxy-using-nginx-pihole-cloudflare/#install-and-congifure-nginx-proxy-manager" target="_blank" data-umami-event="setup-pihole-related-reverse-proxy">The pertinent section is here</a>, but assuming you already know how to work with Nginx Proxy Manager, here is a quick guide:
+
+1. Go to the Nginx Proxy Manager web UI and create a new proxy host.
+
+2. For _Domain Names_ type in the URL you want to use, e.g. `pihole.domain.com`.
+
+3. Leave the _Scheme_ as `http`, and type in your Pi-Hole server's IP address under _Forward Hostname/IP_, e.g. `192.168.0.250`.
+
+4. For the _Forward Port_, you want to use `80` if you didn't make any changes to Pi-Hole's web UI port. If you did change it, use that port here instead.
+
+5. Toggle on **Websockets Support** and **Block Common Exploits**, but leave caching off.
+
+![Proxy host settings in Nginx Proxy Manager.](../../img/blog/pihole-https1.png 'Proxy host settings in Nginx Proxy Manager')
+
+6. Go to the **SSL** tab, click under _SSL Certificate_ and select **Request a new SSL Certificate** from the dropdown.
+
+7. Toggle on both _Force SSL_ and _HTTP/2 Support_, but leave _HSTS Enabled_ toggled OFF.
+
+8. Toggle on **Use a DNS Challenge**, then under _DNS Provider_ choose your DNS provider from the dropdown. (I chose `Cloudflare`.)
+
+9. _Credentials File Content_ will be pre-filled with the necessary env variables depending on your DNS provider, you just have to provide the **API tokens or secret keys**. In my case using _Cloudflare_ it uses the `dns_cloudflare_api_token=` variable, followed by a bunch of characters. **Replace these with your Cloudflare API token or other DNS provider's secrets.**
+
+10. At the bottom, type an email address, toggle on that you agree to the Let's Encrypt TOS, and click **Save**.
+
+![Configuring SSL on proxy host in Nginx Proxy Manager.](../../img/blog/pihole-https2.png 'Configuring SSL on proxy host in Nginx Proxy Manager')
+
+Wait a moment for the TLS certificate to be provisioned, once it's done go to `https://pihole.domain.com/admin` (you'll get a 403 error without the `/admin` path, but we'll fix this in a moment) and you should be able to access the web UI with HTTPS.
+
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
+>
+> If you CANNOT access the web UI with `https` in the URL, try instead `http://pihole.domain.com/admin` and click past the warning. After that it should work as per usual by going to `https://pihole.domain.com/admin`.
+
+One last thing! You can easily _set an automatic redirect_ from `pihole.domain.com/` to `pihole.domain.com/admin` so that you don't get the 403 error by going to the domain's root.
+
+1. In the Pi-Hole web UI, go to **Settings** on the sidebar and choose **All settings** from the dropdown.
+
+2. Click on **Webserver and API**, then under _webserver.domain_ replace the Value of `pi.hole` with `pihole.domain.com`.
+
+3. Click on the **Save & Apply** button at the bottom.
+
+![Setting a custom webserver domain in Pi-Hole.](../../img/blog/pihole-https3.png 'Setting a custom webserver domain in Pi-Hole')
+
+Now you should automatically be redirected to the Pi-Hole dashboard at `/admin` when you go to `https://pihole.domain.com/`.
+
 ## Run and sync two Pi-Holes
 
 When you make Pi-Hole your primary DNS it becomes a critical part of your network -- if it goes down, devices on your network won't be able to resolve any domains. For this reason, you may want to run another Pi-Hole as a secondary DNS in case the host running your main instance of Pi-Hole crashes. (These things happen.) If your entire network will go down from an issue with Pi-Hole, running a second instance of it makes a lot of sense.
 
-As of the release of Pi-Hole v6 (see below for details) the only way to sync configurations between two Pi-Hole instances is with <a href="https://github.com/lovelaze/nebula-sync" target="_blank" data-umami-event="setup-pihole-nebula-sync">Nebula Sync</a>.
+As of the release of Pi-Hole v6 (see below for details) the only way to sync configurations between two Pi-Hole instances is with <a href="https://github.com/lovelaze/nebula-sync" target="_blank" data-umami-event="setup-pihole-nebula-sync">Nebula Sync</a>. I have yet to use it myself, but once I do, I will update this space.
 
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
