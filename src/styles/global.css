@@ -326,7 +326,7 @@ blockquote p {
 }
 blockquote p:first-of-type {
   margin: 0;
-  padding: 0.75em 1em 1em 1.25em;
+  padding: 0.7em 1em 1em 1.25em;
 }
 blockquote ol, blockquote ul {
   padding-bottom: 1em;
