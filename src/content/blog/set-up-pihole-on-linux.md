@@ -2,7 +2,7 @@
 title: "Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS"
 description: "Besides just using a browser extension for ad blocking, I've been using Pi-Hole for years to prevent all devices on my network from getting ads, and stopping smart home devices from phoning home for telemetry and tracking. Pi-Hole will run on almost anything that can run Linux, is very easy to set up, and super effective with the right blocklists. (Updated for Pi-Hole v6)"
 pubDate: 2022-10-08
-updatedDate: 2025-02-26
+updatedDate: 2025-02-27
 tags:
   - pi-hole
 ---
@@ -291,7 +291,7 @@ Alternately, you can manually edit the `/etc/hosts` file on the server running P
 
 Pi-Hole blocks ads by checking DNS queries against **blocklists**, most of which are curated by the community. Until blocklists are added, no ads are being blocked. On the flipside, you can use **allowlists** tell Pi-Hole that particular domains should NOT be blocked, even if they appear in blocklists.
 
-Blocklists and Allowlists are just a bunch of URLs (see below), so make sure add them as the right kind of list! If you add a Blocklist as an Allowlist, you'll be telling Pi-Hole to allow a bunch of bad domains to have their way with you. Likewise adding an Allowlist as a Blocklist instead will cause bad things to happen.
+Blocklists and Allowlists are just a bunch of domains (see below) that Pi-Hole will either block or ignore, so make sure add them as the right kind of list! If you add a blocklist as an allowlist, you'll be telling Pi-Hole to allow a bunch of bad domains to have their way with you. Likewise adding an allowlist as a blocklist instead will cause bad things to happen.
 
 On the Pi-Hole web UI, click on **Lists** on the sidebar. Here you can type in the URL to a blocklist, or type an individual URL, or multiple comma-separated URLs, then click on **Add blocklist** or **Add allowlist**, depending on what you want Pi-Hole to do with those URLs.
 
@@ -303,17 +303,19 @@ Once you've added any Lists (and any time you add additional ones), make sure to
 
 You'll be taken to a separate page, click on the big **Update** button to begin, and do not leave or reload the page until the process is done!
 
-Here are some Blocklists that, after many years of using Pi-Hole, I make sure to always include:
+Pi-Hole does not technically ship with any blocklists, but you do have the option to add <a href="https://github.com/StevenBlack/hosts" target="_blank" data-umami-event="setup-pihole-steven-black">Steven Black's unified hosts list</a> during bare metal install of Pi-Hole. This list will have around 127,000 of the most egregious ad-serving domains, but by itself it will not cover much. You'll have to add additional blocklists yourself.
 
-- <a href="https://firebog.net" target="_blank" data-umami-event="setup-pihole-firebog">The Firebog</a>
-- <a href="https://github.com/hagezi/dns-blocklists" target="_blank">Hagezi's DNS blocklists</a> (there are many!)
+Here are some curators of blocklists that, after many years of using Pi-Hole, I've come to trust and always add to Pi-Hole. (Or AdGuard Home, or NextDNS, etc.)
+
+- <a href="https://firebog.net" target="_blank" data-umami-event="setup-pihole-firebog">The Firebog</a> (the green lists are best)
+- <a href="https://github.com/hagezi/dns-blocklists" target="_blank" data-umami-event="setup-pihole-hagezi">Hagezi's DNS blocklists</a> (there are many to choose from!)
 - <a href="https://github.com/blocklistproject/Lists" target="_blank" data-umami-event="setup-pihole-blocklist-project">The Block List Project</a>
-- <a href="https://www.github.developerdan.com/hosts" target="_blank" data-umami-event="setup-pihole-devdan-adlists">Developer Dan's Adlists</a>
+- <a href="https://www.github.developerdan.com/hosts" target="_blank" data-umami-event="setup-pihole-developer-dan">Developer Dan's Adlists</a>
 - <a href="https://github.com/badmojr/1Hosts" target="_blank" data-umami-event="setup-pihole-1hosts">1Hosts</a> (I suggest Lite or Pro)
 - <a href="https://oisd.nl" target="_blank" data-umami-event="setup-pihole-oisd">OISD</a>
 - <a href="https://github.com/mmotti/pihole-regex/blob/master/regex.list" target="_blank" data-umami-event="setup-pihole-mmotti-regex">This gist of Regex Expressions</a>
 
-After adding the above Blocklists you may end up with several million "Domains on Lists" as shown in the dashboard. It's all good. (Note this is all domains from blocklists and allowlists combined.)
+After adding some blocklists from the above links, you may end up with several million "Domains on Lists" as shown in the dashboard. It's all good. (Note this is all domains from blocklists and allowlists combined.)
 
 ![Over 4 million domains on lists in Pi-Hole.](../../img/blog/pihole-domains-list.png 'Over 4 million domains on lists in Pi-Hole')
 
