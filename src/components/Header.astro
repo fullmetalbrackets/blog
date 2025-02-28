@@ -25,12 +25,17 @@ import HeaderLink from "./HeaderLink.astro";
     color: var(--hover);
     border-bottom: 2px solid var(--menu);
   }
-  .logo, img {
+  .logo {
     display: flex;
     align-items: center;
     margin: 0;
     padding: 0;
     border-bottom: 2px solid transparent;
+  }
+  img {
+    margin: 0;
+    padding: 0;
+    border: 0;
   }
   .name {
     margin-left: 2px; 
@@ -63,16 +68,15 @@ import HeaderLink from "./HeaderLink.astro";
 <header>
   <nav>
     <a href="/" class="logo" aria-label="logo">
-        <img
-          height="50px"
-          width="50px"
-          class="logo"
-          src="/logo.png"
-          alt="Return to Front Page"
-          title="fullmetalbrackets"
-          loading="lazy"
-          decoding="async"
-          data-umami-event="front-page-logo"
+      <img
+        height="50px"
+        width="50px"
+        src="/logo.png"
+        alt="Return to Front Page"
+        title="fullmetalbrackets"
+        loading="eager"
+        decoding="async"
+        data-umami-event="front-page-logo"
       />
         <!-- <svg
           xmlns="http://www.w3.org/2000/svg"
