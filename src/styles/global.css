@@ -317,7 +317,7 @@ blockquote {
   color: var(--info);
   padding: 0;
 	margin: 2.5em auto 2em auto;
-  border-radius: 0.5em;
+  border-radius: 0 0.5em 0.5em 0.5em;
   width: 95%;
 }
 blockquote p {
@@ -349,7 +349,7 @@ blockquote a:hover, blockquote a:focus {
 .info {
   width: 32px;
   height: 32px;
-  margin: -14px 0 -8px -7px;
+  margin: -14px 0 -8px -14px;
   padding: 0;
   filter: var(--info-svg);
 }
