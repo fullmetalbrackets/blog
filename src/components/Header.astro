@@ -30,6 +30,7 @@ import HeaderLink from "./HeaderLink.astro";
     align-items: center;
     margin: 0;
     padding: 0;
+    border-bottom: 2px solid transparent;
   }
   .name {
     margin-left: 2px; 
@@ -61,11 +62,10 @@ import HeaderLink from "./HeaderLink.astro";
 
 <header>
   <nav>
-    <a href="/" aria-label="logo">
-      <div class="logo">
+    <a href="/" class="logo" aria-label="logo">
         <img
-          height="auto"
-          width="57px"
+          height="50px"
+          width="50px"
           class="logo"
           src="/logo.png"
           alt="Return to Front Page"
@@ -85,7 +85,6 @@ import HeaderLink from "./HeaderLink.astro";
             fill="#fff"></path>
         </svg> -->
         <span class="name">Fullmetalbrackets</span>
-      </div>
     </a>
     <div class="nav-links">
       <HeaderLink href="/blog/" rel="prefetch-intent" class="nav-link">Blog</HeaderLink>
