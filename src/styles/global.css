@@ -320,6 +320,10 @@ blockquote {
   border-radius: 0 0.5em 0.5em 0.5em;
   width: 95%;
 }
+#related-articles + blockquote, #related-articles + blockquote + blockquote {
+  border-radius: 0.5em;
+}
+
 blockquote p {
   margin: 0;
   padding: 0 1em 1em 1.25em;
