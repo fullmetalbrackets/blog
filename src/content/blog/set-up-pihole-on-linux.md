@@ -2,7 +2,7 @@
 title: "Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS (Updated for Pi-Hole v6)"
 description: "Besides just using a browser extension for ad blocking, I've been using Pi-Hole for years to prevent all devices on my network from getting ads, and stopping smart home devices from phoning home for telemetry and tracking. Pi-Hole will run on almost anything that can run Linux, is very easy to set up, and super effective with the right blocklists."
 pubDate: 2022-10-08
-updatedDate: 2025-02-28
+updatedDate: 2025-02-29
 tags:
   - pi-hole
 ---
@@ -56,9 +56,9 @@ Installation will prompt a number of dialogs, pay attention and make sure you in
 
 Pi-Hole v6 defaults to using **port 80** for the web UI, so you should be able to access it via either IP address (`http://192.168.1.250/admin`) or using the machine hostname (`http://hostname/admin`). If port 80 is unavailable, Pi-Hole will _automatically try to use port 8080_ instead. Keep this in mind if you already have anything running on either port 80 or 8080 when installing Pi-Hole.
 
-To set a custom network port for the Pi-Hole web UI, edit the configuration file at `/etc/pihole/pihole.toml`. Find the section `# Ports to be used by the webserver`. There's good instructions in the comments here on how it works.
+To set a custom network port for the Pi-Hole web UI, edit the configuration file at `/etc/pihole/pihole.toml`. Find the `[webserver]` block, under it there's comments explaining how it works.
 
-Basically, you can comment out the line `port = "80o,[::]:80o,443so, ..."` and then write a new line right under it with a different network port -- e.g. `port = "8888o,[::]:8888o"` or something. Save the file and close it, then you should be able to access the Pi-Hole web UI at the new port, e.g. `http://192.168.0.250:8888/admin`, etc.
+Basically, you can change or comment out the line `port = "80o,443os,[::]:80o,[::]:443os"` and then write a new line right under it with a different network port -- e.g. `port = "8888o,[::]:8888o"` or something. (Personally I'd rather change something else's port to use 80 and 443 in Pi-Hole, but that's just me.) Save the file and close it, then you should be able to access the Pi-Hole dashboard at the new port, e.g. `http://192.168.0.250:8888/admin`, etc.
 
 ## Installing Unbound
 
@@ -383,23 +383,93 @@ If you want to find out your time zone in the tz database, <a href="https://en.w
 
 ![Configuring SSL on proxy host in Nginx Proxy Manager.](../../img/blog/pihole-https2.png 'Configuring SSL on proxy host in Nginx Proxy Manager')
 
-Wait a moment for the TLS certificate to be provisioned, once it's done go to `https://pihole.domain.com/admin` (you'll get a 403 error without the `/admin` path, but we'll fix this in a moment) and you should be able to access the web UI with HTTPS.
+Wait a moment for the TLS certificate to be provisioned, once it's done we need to edit the Pi-Hole config file at `/etc/pihole/pihole.toml` on the machine running Pi-Hole.
+
+1. In `/etc/pihole/pihole.toml` find the `[webserver]` block. First, scroll down to and change or comment out `domain = "pi.hole"` and replace with the following:
+
+```toml
+domain = "pihole.yourdomain.com"
+```
 
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
-> If you CANNOT access the web UI with `https` in the URL, try instead `http://pihole.domain.com/admin` and click past the warning. After that it should work as per usual by going to `https://pihole.domain.com/admin`.
+> This change also has the perk of automatically redirecting you to the dashboard when you go to `pihole.yourdomain.com`, without having to add `/admin` to the URL.
 
-One last thing! You can easily _set an automatic redirect_ from `pihole.domain.com/` to `pihole.domain.com/admin` so that you don't get the 403 error by going to the domain's root.
+2. Scroll down further, change or comment out `port = "80o,443os,[::]:80o,[::]:443os"` and replace with the following: (Notice after `443` the `s` before the `o`.)
 
-1. In the Pi-Hole web UI, go to **Settings** on the sidebar and choose **All settings** from the dropdown.
+```toml
+port = "80o,443so,[::]:80o,[::]:443so"
+```
 
-2. Click on **Webserver and API**, then under _webserver.domain_ replace the Value of `pi.hole` with `pihole.domain.com`.
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
+>
+> HTTPS would not work for me without this particular change, I think because `443os` makes HTTPS optional, but `443so` makes it required. Might also be because I am forcing SSL in Nginx Proxy Manager. YMMV.
 
-3. Click on the **Save & Apply** button at the bottom.
+Now you should be able to go to `https://pihole.domain.com` and the Pi-Hole dashboard with HTTPS. If you CANNOT access the web UI with `https` in the URL, try going instead to `http://pihole.domain.com/admin` first and click past the warning. After that it should work as per usual by going to `https://pihole.domain.com/admin`.
 
-![Setting a custom webserver domain in Pi-Hole.](../../img/blog/pihole-https3.png 'Setting a custom webserver domain in Pi-Hole')
+## Fixing the Certificate Domain Mismatch warning
 
-Now you should automatically be redirected to the Pi-Hole dashboard at `/admin` when you go to `https://pihole.domain.com/`.
+After using the above method to access the Pi-Hole dashboard via HTTPS using a custom domain, you will eventually get a `CERTIFICATE_DOMAIN_MISMATCH` warning in the Pi-Hole diagnosis page with a message of _SSL/TLS certificate /etc/pihole/tls.pem does not match domain_ with regard to `pihole.yourdomain.com`.
+
+![Certificate Domain Mismatch warning in Pi-Hole diagnosis.](../../img/blog/pihole-domain-mismatch.png 'Certificate Domain Mismatch warning in Pi-Hole diagnosis')
+
+You can either ignore this and keep on trucking, or you can make it go away (or prevent it bugging you in the first place) by doing the following:
+
+1. Find the `fullchain.pem` and `privkey.pem` files for your proxy host (e.g. `pihole.domain.com`) in the directory where your reverse proxy's TLS certificates live. Make copies of these two files. (In Caddy the certificates might be in `$HOME/.local/share/caddy` and in Traefik probably `/etc/certs`.)
+
+    - If using Nginx Proxy Manager, you can get these certificate files by logging into the GUI, navigate to the **SSL Certificates** tab, and look for the proxy entry you're using for Pi-Hole.
+
+    - Click the three vertical dots then choose **Download** from the dropdown menu. This will download a ZIP file with several files, including the two we need.
+
+![Saved SSL/TLS certificates in Nginx Proxy Manager.](../../img/blog/nginxproxy-cert1.png 'Saved SSL/TLS certificates in Nginx Proxy Manager')
+
+![Downloading proxy host certificates in Nginx Proxy Manager.](../../img/blog/nginxproxy-cert2.png 'Downloading proxy host certificates in Nginx Proxy Manager')
+
+2. First, create a copy of `fullchain.pem` (_this has two certificates_) and name it `pihole.pem`. (Or whatever you prefer, just make sure it's a `.pem` file extension.) Then copy the contents of `privkey.pem` (_this has the private key_) and paste it into `pihole.pem`, in a new line under the second `-----END CERTIFICATE-----`. Should look something like this: (But with more gibberish.)
+
+```
+-----BEGIN CERTIFICATE-----
+X69wLrJZGcMi%@9fpW^h!8kFe5BB
+P7yf^Pvzc$8E7fX$ErQi&qcjzpQRt8
+K*DhABHkAVYSsRYD%$GMX4NgKkY
+$qs7^z5rs2DaZJBi=
+-----END CERTIFICATE-----
+-----BEGIN CERTIFICATE-----
+1lDCLidHvoEBzCfk359DKvfOC22Yv+
+K*DhABHkAVYSsRYD%$GMX4NgKkY
+X69wLrJZGcMi%@9fpW^h!8kFe5BB
+$qs7^z5rs2DaZJBi=
+-----END CERTIFICATE-----
+-----BEGIN PRIVATE KEY-----
+MIG2ASuWV6eIPc4qcxripSnsJhW5mx6t
+1lDCLidHvoEBzCfk359DKvfOC22Yv+ZB
+Eck82ekS+Ojorr983DhABHkAVYSsRYJZ
+Gh8aDHkn7vv78pa=
+-----END PRIVATE KEY-----
+```
+
+3. Save the changes to `pihole.pem`. Now change the owner and permissions of the file:
+
+```bash
+sudo chown pihole:pihole pihole.pem &&/
+sudo chmod 400 pihole.pem
+```
+
+4. Move the file to `/etc/pihole/pihole.pem` on the machine running Pi-Hole.
+
+5. Edit the config file `/etc/pihole/pihole.toml` and find the `[webserver.tls]` block. Under this, you should see the following:
+
+```toml
+cert = "/etc/pihole/tls.pem"
+```
+
+6. Change this line (or comment it out and write a new one under it) to look like this:
+
+```toml
+cert = "/etc/pihole/pihole.pem"
+```
+
+6. Save the changes and close the config file. Reload the Pi-Hole dashboard if already open, or open it in a new browser tab. The warnings should be gone and should not come back.
 
 ## Run and sync two Pi-Holes
 
