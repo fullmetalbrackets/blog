@@ -22,7 +22,7 @@ sudo apt install unattended-packages
 
 Now we need to edit the configuration file, located at `/etc/apt/apt.conf.d/50unattended-upgrades` and scroll to the following lines:
 
-```clike
+```sh
 Unattended-Upgrade::Allowed-Origins {
         "${distro_id}:${distro_codename}";
         "${distro_id}:${distro_codename}-security";
@@ -42,7 +42,7 @@ By default you'll see that only security updates are downloaded, if you want to 
 
 Next scroll to the following line:
 
-```clike
+```sh
 // Automatically reboot *WITHOUT CONFIRMATION* if
 //  the file /var/run/reboot-required is found after the upgrade
 // Unattended-Upgrade::Automatic-Reboot "false";
@@ -50,7 +50,7 @@ Next scroll to the following line:
 
 If you want to reboot the machine when it's required after an update un-comment and change the line to `Unattended-Upgrade::Automatic-Reboot "true";`. If you do this, you should set a specific time to reboot. Scroll down to and change the following lines (this example will wait to reboot at 5:00am):
 
-```clike
+```sh
 // If automatic reboot is enabled and needed, reboot at the specific
 // time instead of immediately
 // Default: "now"
@@ -63,7 +63,7 @@ Unattended-Upgrade::Automatic-Reboot-Time "05:00";
 
 Finally, you'll want to check the file at `/etc/apt/apt.conf.d/20auto-upgrades` and make sure it has the following lines ("1" enables, while "0" disables):
 
-```clike
+```sh
 APT::Periodic::Update-Package-Lists "1";
 APT::Periodic::Unattended-Upgrade "1";
 ```

@@ -2,7 +2,7 @@
 title: "Setup a Samba share on Linux via command line"
 description: "A quick and dirty guide on how to easily set up a Samba share on Linux that can be accessed from Windows PCs on the same network."
 pubDate: 2021-09-01
-updatedDate: 2025-02-02
+updatedDate: 2025-02-29
 tags:
   - networking
 ---
@@ -32,7 +32,7 @@ sudo nano /etc/samba/smb.conf
 
 The default `smb.conf` has a whole lot of text, mostly informative/explanatory comments. (That you should read to learn what the different parameters are for.) Our new `smb.conf` file will remove this extraneous stuff and only keep the configuration options. Copy and paste the below into the file, edit with your own user and paths:
 
-```yaml
+```ini
 [global]
   workgroup = WORKGROUP
   server string = Samba %v
@@ -116,21 +116,26 @@ After transferring files back and forth between Windows and Linux via the Samba 
 
 Add the following code to your `smb.conf` file under the `[global]` block:
 
-```bash
+```ini
 [global]
-...
+  workgroup = WORKGROUP
+  server string = Samba %v
+  security = user
 
-   strict allocate = Yes
-   allocation roundup size = 4096
-   read raw = Yes
-   server signing = No
-   write raw = Yes
-   strict locking = No
-   socket options = TCP_NODELAY IPTOS_LOWDELAY SO_RCVBUF=131072 SO_SNDBUF=131072
-   min receivefile size = 16384
-   use sendfile = Yes
-   aio read size = 16384
-   aio write size = 16384
+  strict allocate = Yes
+  allocation roundup size = 4096
+  read raw = Yes
+  server signing = No
+  write raw = Yes
+  strict locking = No
+  socket options = TCP_NODELAY IPTOS_LOWDELAY SO_RCVBUF=131072 SO_SNDBUF=131072
+  min receivefile size = 16384
+  use sendfile = Yes
+  aio read size = 16384
+  aio write size = 16384
+
+[public]
+...
 ```
 
 For an explanation of what these options do, check the original blog post linked above, the original code includes detailed comments for each option.

@@ -53,13 +53,13 @@ MergerFS can be installed via package manager, for example on Debian you would u
 First download the package from GitHub:
 
 ```bash
-❯ wget https://github.com/trapexit/mergerfs/releases/download/2.40.2/mergerfs_2.40.2.debian-bookworm_amd64.deb
+wget https://github.com/trapexit/mergerfs/releases/download/2.40.2/mergerfs_2.40.2.debian-bookworm_amd64.deb
 ```
 
 Then install it with this command:
 
 ```bash
-❯ dpkg -i mergerfs_2.40.2.debian-bookworm_amd64.deb
+dpkg -i mergerfs_2.40.2.debian-bookworm_amd64.deb
 ```
 
 Configuration is simple, done just by editing `/etc/fstab`. First, an example of how my fstab file looked before MergerFS, when I was mounting each HDD into a subdirectory within my home directory.
@@ -93,15 +93,15 @@ defaults,allow_other,nonempty,use_ino,moveonenospc=true,dropcacheonclose=true,ca
 Once the changes were made in `/etc/fstab`, I unmounted all the drives from their old mount points, created the new mount point, and rebooted so the new `fstab` config would take effect and remount the drives to their new mount points.
 
 ```bash
-❯ sudo umount /mnt/videos /mnt/other /mnt/extra
-❯ mkdir /srv/media
-❯ sudo reboot
+sudo umount /mnt/videos /mnt/other /mnt/extra
+mkdir /srv/media
+sudo reboot
 ```
 
 Once the machine is back up and I'm reconnected via SSH, it's time to check if everything shows up where it's supposed to.
 
 ```bash
-❯ ls /srv/media
+ls /srv/media
 movies  music  photos  tvshows
 ```
 

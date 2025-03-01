@@ -168,7 +168,7 @@ defaults,allow_other,nonempty,use_ino,moveonenospc=true,dropcacheonclose=true,ca
 
 Using SMB, I share the files so they can be accessed from any PC, tablet or phone on the network. (Including via Tailscale.) I also have an SMB share to drop in documents for Paperless to consume. File Sharing is managed via the Cockpit GUI, below is my `smb.conf` file:
 
-```conf
+```ini
 [global]
    interfaces = lo enp3s0
    bind interfaces only = yes
