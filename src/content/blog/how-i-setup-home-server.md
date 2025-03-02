@@ -133,7 +133,7 @@ docker run ...
 The following storage is installed in the server:
 
 - 1 x 256 GB NVMe SSD
-- 1 x 4 TB Internal HDD
+- 2 x 4 TB Internal HDD
 - 3 x 2 TB Internal HDDs
 - 3 x 1 TB External HDDs
 
