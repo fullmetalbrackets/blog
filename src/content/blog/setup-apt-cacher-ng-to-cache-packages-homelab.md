@@ -1,6 +1,6 @@
 ---
 title: "Setup Apt-Cacher NG as a caching proxy server in your homelab and configure your other Linux hosts to use it"
-description: "If your homelab has more than a few servers or VMs running Debian-based distributions, it makes sense to set up a package caching proxy on one of your servers. This guide will show how to set that up and how to use Ansible to automate configuring your other Linux hosts."
+description: "If your homelab has more than a few servers or VMs running Debian-based distributions, it makes sense to set up a package caching proxy on one of your servers. This guide will show how to set that up, configure your other Linux hosts, and optionally how to use Ansible to automate configuring those other hosts."
 pubDate: 2025-03-03
 tags:
   - self-hosting
