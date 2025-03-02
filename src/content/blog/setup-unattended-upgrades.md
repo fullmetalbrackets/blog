@@ -2,15 +2,14 @@
 title: "Setup auto-updates in Debian and Ubuntu with Unattended-Upgrades and NeedRestart"
 description: "If you want your Linux machine to stay up-to-date on important security updates, but you don't want to SSH into it all the time to run updates and would rather set it and forget it, this is the way."
 pubDate: 2022-10-14
+updatedDate: 2025-03-03
 tags:
   - command line
 ---
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
-> This guide is specifically for **Debian 11** and **Ubuntu 20.04**. They are the only two Linux distros I commonly use, so I am unaware of how to do this on, for example, Arch or Fedora.
-> 
-> Also, it is always possible (though unlikely) that newer versions of Debian and Ubuntu may change how unattended upgrades work in the future.
+## Caveats
+
+This guide is specifically for **Debian-based Linux distributions** since that is what I mostly use. I'm sure unattended upgrades can also be set up on Arch, Fedora, etc. It just may not work like this and I won't be covering how to do it.
 
 ## Install and configure Unattended-Upgrades
 
@@ -72,7 +71,7 @@ You may also wish to add `APT::Periodic::AutocleanInterval "7";` which will clea
 
 You can see a log of all the times Unattended-Upgrades has run at `/var/log/unattended-upgrades/unattended-upgrades.log`.
 
-## Install and configure Needrestart
+## Install and configure NeedRestart
 
 When upgrading packages and installing security updates, it is sometimes necessary to restart certain daemons for changes to take effect. When you update manually, you'll get a dialogue showing which daemons need restarting and confirming if you want to do so, but we can automate this with the Needrestart package.
 
@@ -95,7 +94,14 @@ $nrconf{restart} = 'a';
 
 All done! Now your server will download and install security updates (and package updates if you configured that) automatically with Unattended-Upgrades, and NeedRestart will automatically restart any daemons when necessary, without any input from you at all.
 
-### References
+## References
 
 - <a href="https://manpages.debian.org/bullseye/unattended-upgrades/unattended-upgrades.8.en.html" target="_blank">Unattended-Upgrade man page</a>
 - <a href="https://manpages.debian.org/bullseye/needrestart/needrestart.1.en.html">NeedRestart man page</a>
+
+
+### Related Articles
+
+> <a href="/blog/bootstrapping-fresh-linux-install-with-ansible" data-umami-event="unattended-upgrades-related-bootstrap-ansible">Bootstrapping a fresh Linux install with Ansible</a>
+
+> <a href="/blog/setup-apt-cacher-ng-to-cache-packages-homelab" data-umami-event="unattended-upgrades-related-apt-cacher-ng"></a>

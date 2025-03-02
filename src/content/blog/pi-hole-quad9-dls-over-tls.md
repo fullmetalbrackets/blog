@@ -118,6 +118,6 @@ Now you're done with Cloudflared. You can verify it's working with the <a href="
 
 ### Related Articles
 
-> <a href="/blog/using-dns-over-https-with-pihole/" target="_blank" data-umami-event="pihole-quad9-dot-related-pihole-doh">Using DNS over HTTPS with Pi-Hole and Cloudflared</a>
+> <a href="/blog/using-dns-over-https-with-pihole/" data-umami-event="pihole-quad9-dot-related-pihole-doh">Using DNS over HTTPS with Pi-Hole and Cloudflared</a>
 
-> <a href="/blog/set-up-pihole-on-linux" target="_blank" data-umami-event="pihole-quad9-dot-related-setup-pihole">Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS</a>
+> <a href="/blog/set-up-pihole-on-linux" data-umami-event="pihole-quad9-dot-related-setup-pihole">Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS</a>

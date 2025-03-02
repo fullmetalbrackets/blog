@@ -191,6 +191,6 @@ Your DNS requests should now be going out encrypted in HTTPS. If using Cloudflar
 
 ### Related Articles
 
-> <a href="/blog/pi-hole-quad9-dls-over-tls/" target="_blank" data-umami-event="pihole-doh-related-quad9-dot">Using a forwarding resolver in Pi-Hole for DNS over TLS</a>
+> <a href="/blog/pi-hole-quad9-dls-over-tls/" data-umami-event="pihole-doh-related-quad9-dot">Using a forwarding resolver in Pi-Hole for DNS over TLS</a>
 
-> <a href="/blog/set-up-pihole-on-linux" target="_blank" data-umami-event="pihole-doh-related-setup-pihole">Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS</a>
+> <a href="/blog/set-up-pihole-on-linux" data-umami-event="pihole-doh-related-setup-pihole">Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS</a>

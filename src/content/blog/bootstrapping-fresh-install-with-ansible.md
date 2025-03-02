@@ -2,7 +2,7 @@
 title: "Bootstrapping a fresh Linux install with Ansible"
 description: "Ansible is an IT tool that enables Infrastructure as Code, letting you automate provisioning, configuration, management and deployment of services and applications. I like using it at a fraction of it's full power to bootstrap fresh installs of Linux for my homelab."
 pubDate: 2022-09-03
-updatedDate: 2025-02-17
+updatedDate: 2025-03-03
 tags:
   - command line
 ---
@@ -241,6 +241,6 @@ ansible-playbook bootstrap.yaml
 
 ### Related Articles
 
-> [Using MergerFS to combine multiple hard drives into one unified media storage](/blog/two-drives-mergerfs/)
+> <a href="/blog/bootstrapping-fresh-linux-install-with-ansible" data-umami-event="unattended-upgrades-related-bootstrap-ansible">Bootstrapping a fresh Linux install with Ansible</a>
 
-> [Mounting (either internal or external) hard drives in Linux](/blog/mounting-hard-drives-in-linux/)
+> <a href="/blog/setup-apt-cacher-ng-to-cache-packages-homelab" data-umami-event="unattended-upgrades-related-apt-cacher-ng">Setup auto-updates in Debian and Ubuntu with Unattended-Upgrades and NeedRestart</a>
