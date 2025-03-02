@@ -18,7 +18,7 @@ tags:
 - **Intel i7-7700K** @ 4.20 GHz
 - **24 GB RAM** (4 x 6 GB DDR4)
 - **256 GB PCIe M.2 NVMe SSD** (boot drive)
-- 1 x **4 TB Internal 3.5" HDD** (large media storage)
+- 2 x **4 TB Internal 3.5" HDD** (large media storage)
 - 3 x **2 TB Internal 3.5" HDD** (large media storage)
 - 1 x **1 TB External 3.5" HDD** (documents, ebooks, photos)
 - 1 x **1 TB External 2.5" HDD** (backups)
