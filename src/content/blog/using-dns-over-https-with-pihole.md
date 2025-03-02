@@ -1,11 +1,15 @@
 ---
-title: "Using DNS over HTTPS with Pi-Hole and Cloudflared"
+title: "Using DNS over HTTPS with Pi-Hole and Cloudflared (Updated for Pi-Hole v6)"
 description: "When using Pi-Hole as a network-wide ad blocker, your DNS requests still go out in plain text and can be seen by your ISP. DNS over HTTPS encrypts DNS requests between your Pi-Hole and the upstream DNS resolver. Here is a quick guide on how to set that up with Cloudflared daemon."
 pubDate: 2023-07-13
-updatedDate: 2025-02-03
+updatedDate: 2025-03-02
 tags:
   - pi-hole
 ---
+
+## What and Why
+
+PPi-Hole by itself does not support using DNS over HTTPS or DNS over TLS, but it can forward DNS requests to another resolver that does support those protocols, which then forwards the encrypted requests upstream to a public DNS endpoint. In this guide I'll show how to use either Unbound or Cloudflared as a forwarding resolver in Pi-Hole to use DNS over TLS with Quad9 as the upstream. <a href="/blog/pi-hole-quad9-dls-over-tls/" target="_blank" data-umami-event="pihole-doh-related-pihole-quad9-dot">See this blog post to use DNS over TLS instead</a>.
 
 ## Caveats and pre-requisites
 
@@ -161,23 +165,32 @@ enabled
 
 ## Configure Pi-Hole
 
-This is the last and easiest step. In the Pi-Hole web UI go to _Settings_ and click on the _DNS_ tab. Make sure to uncheck any public Upstream DNS Servers on the left, check _Custom 1 (IPv4)_ on the right and type in `127.0.0.1#5053`. (If you setup Cloudflared on another machine than the one running Pi-Hole, use that machine's IP address instead, but be sure to append `#5053`.)
+This is the last step. In the Pi-Hole dashboard click on **Settings** on the sidebar and then on **DNS** from the dropdown. Under the _Upstream DNS Servers_ column on the left, uncheck any checked DNS servers, click on **Custom DNS servers** on bottom and type in `127.0.0.1#5053`.
 
 ![Pi-Hole DNS settings.](../../img/blog/cloudflared1.png 'Pi-Hole DNS settings')
 
-Scroll all the way down and hit _Save_. After a minute or two your DNS requests should all be going out encrypted in HTTPS. If using Cloudflare for DNS over HTTPS, you can verify it's working with their <a href="https://1.1.1.1/help" target="_blank">DNS checker</a> at `https://1.1.1.1/help`, under Debug Information you look at _Using DNS over HTTPS (DoH)_ and it should say _YES_ next to it. (Note, this site may not properly work if `DNSSEC` is enabled in Pi-Hole, and will not detect other DNS over HTTPS providers like Quad9 or Google, it ONLY detects Cloudflare.)
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
+>
+> If running Cloudflared as a Docker container, instead of `127.0.0.1#5053`, use the IP address of the Docker host as the Custom DNS server, for example `192.168.0.200#5053`.
+
+Now click on **Save & Apply**. One last thing, though. <a href="https://pi-hole.net/blog/2025/02/21/v6-post-release-fixes-and-findings/#page-content:~:text=Issues%20with%20using%20cloudflared%20as%20upstream%20DNS%20server" target="_blank">There is a quick fix to mitigate a potential issue using Cloudflared</a> that we're going to make in the settings.
+
+Go to **Settings** on the sidebar and click on **All settings** from the dropdown, then click on **Miscellaneous**. Look for *misc.dnsmasq_lines* and type in `no-0x20-encode` for the _Value_, then click on **Save & Apply**.
+
+![Fix for Cloudflared in Pi-Hole settings.](../../img/blog/pihole-cloudflared-fix.png 'Fix for Cloudflared in Pi-Hole settings')
+
+Your DNS requests should now be going out encrypted in HTTPS. If using Cloudflare for DNS over HTTPS, you can verify it's working with their <a href="https://1.1.1.1/help" target="_blank">DNS checker</a> at `https://1.1.1.1/help`, under Debug Information you look at _Using DNS over HTTPS (DoH)_ and it should say _YES_ next to it. (Note, this site may not properly work if `DNSSEC` is enabled in Pi-Hole, and will not detect other DNS over HTTPS providers like Quad9 or Google, it ONLY detects Cloudflare.)
 
 ![Cloudflare DNS checker.](../../img/blog/cloudflared2.png 'Cloudflare DNS checker')
 
 ## Reference
 
-- <a href="set-up-pihole-on-linux" target="_blank">My blog post on how to install Pi-Hole</a>
 - <a href="https://docs.pi-hole.net/guides/dns/cloudflared" target="_blank">Pi-Hole docs instructions to install Cloudflared</a>
 - <a href="https://github.com/cloudflare/cloudflared" target="_blank">Cloudflared GitHub</a>
 - <a href="https://1.1.1.1/help" target="_blank">Cloudflare DNS Checker</a>
 
 ### Related Articles
 
-> [Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS](/blog/set-up-pihole-on-linux/)
+> <a href="/blog/pi-hole-quad9-dls-over-tls/" target="_blank" data-umami-event="pihole-doh-related-quad9-dot">Using a forwarding resolver in Pi-Hole for DNS over TLS</a>
 
-> [How to use Pi-hole from anywhere with Tailscale](/blog/pi-hole-quad9-dls-over-tls/)
+> <a href="/blog/set-up-pihole-on-linux" target="_blank" data-umami-event="pihole-doh-related-setup-pihole">Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS</a>
