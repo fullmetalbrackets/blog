@@ -2,7 +2,7 @@
 title: "How to securely expose Plex from behind CGNAT using Tailscale and a free Oracle VM"
 description: "I wrote before about securely exposing Plex for external access, but my previous solution relied on Cloudflare Tunnel and it was technically against their TOS. So I switched to using a Oracle VM on their free-tier, connecting it to my home network with Tailscale, and exposing Plex via reverse proxy. It works like a charm!"
 pubDate: 2024-09-03
-updatedDate: 2025-02-03
+updatedDate: 2025-03-03
 tags:
   - tailscale
 ---
@@ -133,13 +133,13 @@ sudo tailscale cert <name>.cyber-sloth.ts.net
 
 From here on out we'll assume the Plex sever is `plex.cyber-sloth.ts.net` and the Oracle instance is `oracle.cyber-sloth.ts.net`.
 
-## Add domain in Cloudflare and configure DNS
+## Add and configure domain in Cloudflare
 
 Create your <a href="https://dash.cloudflare.com/sign-up" target="_blank" umami-data-event="expose-plex-tailscale-cf-signup">free Cloudflare account</a> if you haven't already. **If you bought a domain on Cloudflare, you can skip to the next section since it is auto-configured already.** If your domain is from another registrar, we'll need to add it to Cloudflare:
 
 1. On the Cloudflare dashboard _Account Home_, click the **+ Add a domain** button.
 
-2. Enter your domain, leave _Quick scan for DNS records_ selected, and click **Cotinue**.
+2. Enter your domain, leave _Quick scan for DNS records_ selected, and click **Continue**.
 
 ![Adding a domain to Cloudflare.](../../img/blog/cloudflare-domain.png 'Adding a domain to Cloudflare')
 
@@ -147,7 +147,7 @@ Create your <a href="https://dash.cloudflare.com/sign-up" target="_blank" umami-
 
 ![Cloudflare free plan.](../../img/blog/cloudflare-free.png 'Cloudflare free plan')
 
-4. You'll see your DNS records, if there are any. Don't worry about this right now and click on the **Continue to activate** button.
+4. You'll see your DNS records, if there are any. Don't worry about this right now and click on the **Continue to activation** button.
 
 ![DNS management page.](../../img/blog/cloudflare-dns-records1.png 'DNS management page')
 
@@ -183,23 +183,29 @@ Once the domain is _active_ in Cloudflare, we just need to add a DNS record:
 
 7. Leave _TTL_ at Auto and click **Save**.
 
-Next, we need to create an _API token_ to edit the DNS config from third-party apps, we is necessary to get a HTTPS certificate in the reverse proxy later.
+Next, we need to create an _API token_ to edit the DNS config from third-party apps, which is necessary to get a TLS certificate in the reverse proxy later.
 
 1. On the Cloudflare dashboard _Account Home_, choose your domain.
 
 2. In your _domain overview_, in the column on the right side of the page, scroll down to _API_ and click on **Get your API token**.
 
-3. Click the **Create Token** button.
+3. Click the **Create Token** button. The first template should be _Edit zone DNS_, click the **Use template** button next to it.
 
-4. Choose the **Edit zone DNS template**.
+![Choosing the Edit Zone DNS template.](../../img/blog/cloudflare-api-token1.png 'Choosing the Edit Zone DNS template')
 
-5. Under _Zone Resources_, it should already be set to _Include_ and _Specific zone_ -- choose your domain from the dropdown menu and click **Continue to summary**.
+4. Under _Permissions_, leave the first entry as is, click on **+ Add more**.
 
-6. On the next page, click **Create Token**.
+5. For the new Permission, choose in order from the dropdown menus **Zone**, **Zone** and **Read**.
 
-7. **Important!** Copy your API token and _save it somewhere_, you won't be shown it again and you will need it each time you provision a TLS certificate in Nginx Proxy Manager.
+![Adding the Zone, Zone, Read permissions to API token.](../../img/blog/cloudflare-api-token2.png 'Adding the Zone, Zone, Read permissions to API token')
 
-## Set up reverse proxy
+6. Under _Zone Resources_, leave the first two dropdown menus as is, and in the final dropdown all the way to the right, **select your domain**. Scroll past everything else,without changing anything else, click on **Continue to summary**, and finally on the **Create Token** button.
+
+![Selecting the Zone Resources for API token.](../../img/blog/cloudflare-api-token3.png 'Selecting the Zone Resources for API token')
+
+17. On the next page you'll see your **API token**, make sure to _save it somewhere because it will not be shown again_. We will need this **API token** to provision the TLS certificates in Nginx Proxy Manager.
+
+## Install reverse proxy on Oracle instance
 
 Back in the Oracle compute instance, we'll be setting up Docker to run **Nginx Proxy Manager**. If you know what you're doing, feel free to use whatever reverse proxy you like, and run it however you like.
 
@@ -213,7 +219,7 @@ We'll use `docker compose` to run the reverse proxy container.
 
 1. Create the data directory for the reverse proxy and change into it with `mkdir ~/nginxproxy && cd ~/nginxproxy` (This assumes you're using the default `ubuntu` user.)
 
-2. Create the compose file with `touch compose.yaml` and edit it with `nano compose.yaml`, copy & paste these contents into it:
+2. Create the compose file with `nano compose.yaml` and copy the below into it:
 
 ```yaml
 services:
@@ -230,25 +236,73 @@ services:
     restart: always
 ```
 
-3. Once the compose file is ready, run it with `docker compose up -d`
+3. Save and close the file, then install and run the container with `docker compose up -d`
 
-Once it's up and running, we need to access the Nginx Proxy Manager GUI. _I strongly suggest NOT opening port 81 on your instance._ (I'll talk about opening ports 80 and 443 in the next section.)
+Once it's up and running, we need to access the Nginx Proxy Manager GUI, but for that we'll need to open some ports on the instance to be accessible from your IP address.
 
-Instead, it's safer to install Tailscale on your PC or tablet, connect to the Tailnet, then on a browser go to `https://oracle.cyber-sloth.ts.net:81`. When you're done just disconnect the Tailscale client, and only connect when you need to access the GUI. (You may want to disable the Tailscale client from starting up at boot.)
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
+>
+> Alternately, you can install Tailscale on your PC or tablet, then while it's connected to Tailscale go to `https://oracle.cyber-sloth.ts.net:81`. This way you can just use Tailscale to access the web UI of Nginx Proxy Manager and any other apps you decide to run, without having to add ingress rules for those ports.
+
+## Add ingress rules on OCI
+
+Connecting to the Oracle instance from the internet in any way requires adding _ingress rules_ in the OCI dashboard. (Port 22 is the only default ingress rule so that you can access the instance via SSH.) You have two options here:
+
+- Allow access from the entire internet and setup authentication to block anyone that shouldn't have access. (I won't be covering this, though.)
+
+- Allow access only from specific IPs, including yours, and block everyone else. (If they go to your domain they will get a 403 error.) **I strongly suggest this.**
+
+Under _Instances_, click on your instance, and under _Instance details_ click on the link for Virtual Cloud Network, it should be something like `vcn-20221216-2035`.
+
+![Instance details in OCI.](../../img/blog/oci1.png 'Instance details in OCI')
+
+In _Subnets_ click on the only choice, something like `subnet-20221216-2035`. Finally, click on the **Default Security List**.
+
+![Default Security List in OCI.](../../img/blog/oci2.png 'Default Security List in OCI')
+
+We'll add ingress rules to allow your IP to access ports `81` (so you can reach the Nginx Proxy Manager web UI), `80` and `443`.
+
+1. Click **Add Ingress Rules**
+
+![Adding an Ingress Rule to an OCI instance.](../../img/blog/oci3.png 'Adding an Ingress Rule to an OCI instance')
+
+2. Leave the source type as CIDR.
+
+3. Under _Source CIDR_ type in your IP address in this format: `123.45.678.90/32`.
+
+> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
+>
+> If you need to find out your public IP address, just go to <a href="https://icanhazip.com" target="_blank">icanhazip.com</a>.
+
+4. Leave the _IP Protocol_ as **TCP**.
+
+5. Leave the _Source Port Range_ as **All**.
+
+6. Set the _Destination Port Range_ to `81`.
+
+7. Click on **+ Another Ingress Rule**, do the same as above, but use `80` as _Destination Port Range_.
+
+8. Click on **+ Another Ingress Rule** and repeat one more time for `443` as _Destination Port Range_.
+
+Repeat the above steps for to open ports `80` and `443` for **each** IP address you want to allow remote access to Plex. You want to have ingress rules that allow each of your remote users to access both ports, for both HTTP and HTTPS connections.
+
+Now we can access the Nginx Proxy Manager web UI and create our proxy host.
+
+## Add proxy host in Nginx Proxy Manager
+
+You should now be able to reach the Nginx Proxy Manager web UI by going to `http://your-domain.com:81`. Login with the default `admin@example.com` and `changeme` as the password. You'll want to change that before anything else.
 
 ![Nginx proxy manager login page.](../../img/blog/nginxproxy1.png 'Nginx proxy manager login page')
 
-Once in the Nginx Proxy Manager GUI, login with the default `admin@example.com` and `changeme` as the password. You'll want to change that before anything else.
+Click on **Users** on the top nav bar, then to the right of the Administrator entry click the **three dots**. Choose **Edit Details** to change the email and **Change password** to change password. Log out and back in with the new credentials.
 
 ![Nginx proxy manager navigation.](../../img/blog/nginxproxy2.png 'Nginx proxy manager navigation')
 
-Click on **Users** on the top nav bar, then to the right of the Administrator entry click the **three dots**. Choose **Edit Details** to change the email and **Change password** to change password. Log out and back in with the new credentials.
-
-Now to add the configuration for our custom domain:
-
-![Adding a proxy host in Nginx proxy manager.](../../img/blog/nginxproxy3.png 'Adding a proxy host in Nginx proxy manager')
+Now to create a proxy host and provision the TLS certificate:
 
 1. On the Dashboard, click **Proxy hosts** and then **Add proxy host**.
+
+![Adding a proxy host in Nginx proxy manager.](../../img/blog/nginxproxy3.png 'Adding a proxy host in Nginx proxy manager')
 
 2. Type in `your-domain.com` under Domain Name.
 
@@ -258,61 +312,25 @@ Now to add the configuration for our custom domain:
 
 5. Type in `80` under **Forward Port**.
 
-6. Toggle on **Websockets Support**, but leave the other two off.
+6. Toggle on **Websockets Support** and **Block Common Exploits**, but leave caching off.
 
 ![Configuring SSL in Nginx proxy manager.](../../img/blog/nginxproxy4.png 'Configuring SSL in Nginx proxy manager')
 
-7. Go to **SSL** tab and choose **Request a new SSL Certificate** from the dropdown menu.
+7. Go to the **SSL** tab and choose **Request a new SSL Certificate** from the dropdown menu.
 
-8. Enable the toggle for **Use a DNS Challenge**.
+8. Enable only the toggles for **HTTP/2 Support** and **Use a DNS Challenge**.
 
 9. Choose **Cloudflare** as DNS Provider from the dropdown menu.
 
 10. In the credentials file content, delete the numbers after `dns_cloudflare_api_token=` and add in your **API token** instead.
 
-11. Enable the toggle to agree to the Let's Encrypt TOS and click **Save**.
+11. Type in your email address and enable the toggle to agree to the Let's Encrypt TOS, and click **Save**.
 
-Give it a minute or two for Let's Encrypt to provision the TLS certificate, and the proxy host will then be created.
+Give it a minute or two for Let's Encrypt to provision the TLS certificate, and the proxy host will then be created. If you added ingress rules for your IP to access ports 80 and 443, you should now be able to reach the Plex web UI at `https://your-domain.com`. Almost done!
 
-## Add ingress rules on OCI
+## Configure the Plex server
 
-Now to actually allow internet connections to the Oracle instance, we need to add ingress rules in the OCI dashboard. You really have two options here:
-
-- Allow access from the entire internet and rely on authentication to block anyone that shouldn't have access.
-
-- Allow access only from specific IPs, including yours, and block everyone else. (If they go to your domain they will get a 403 error.) **I strongly suggest this.**
-
-![Instance details in OCI.](../../img/blog/oci1.png 'Instance details in OCI')
-
-Under _Instances_, click on your instance, and under _Instance details_ click on the link for Virtual Cloud Network, it should be something like `vcn-20221216-2035`.
-
-![Default Security List in OCI.](../../img/blog/oci2.png 'Default Security List in OCI')
-
-In _Subnets_ click on the only choice, something like `subnet-20221216-2035`. Finally, click on the **Default Security List**.
-
-![Adding an Ingress Rule to an OCI instance.](../../img/blog/oci3.png 'Adding an Ingress Rule to an OCI instance')
-
-1. Click **Add Ingress Rules**
-
-2. Leave the source type as CIDR.
-
-3. Under _Source CIDR_ type an IP you want to allow in this format `123.45.678.90/32`.
-
-4. Leave the _IP Protocol_ as **TCP**.
-
-5. Leave the _Source Port Range_ as **All**.
-
-6. Set the _Destination Port Range_ to `80`.
-
-7. Click on **+ Another Ingress Rule**, do the same but use `443` as _Destination Port Range_.
-
-Repeat the above steps for **each** IP address you want to allow access. You want to have ingress rules that allow each IP to access both ports `80` and `443`.
-
-Now if every step up till now has been done correctly, you should reach Plex when you go to `https://your-domain.com`. (You added ingress rules for your own IP, right?)
-
-## Configure Plex
-
-One last thing! Although the allowed IPs can now reach Plex and stream your library by logging in to the Plex web UI at `https://your-domain.com`, using Plex apps will not work until you do the following:
+Already anyone you share your library with can access it by going to `https://your-domain.com`, but this way they can only play media on a browser. Let's also let them play your shared media from Plex apps on their phones, smart TVs, and other devices.
 
 1. On the Plex web UI, go to **Settings** by clicking on the _wrench icon_ at the top-left.
 
@@ -330,9 +348,23 @@ One last thing! Although the allowed IPs can now reach Plex and stream your libr
 
 6. Under _Custom server access URLs_ type in `https://your-domain.com`. (Make sure to include the HTTPS!) As a backup, you may also want to add your Tailscale IP as `http://100.200.300.400:32400`. (I leave it as HTTP in case sometimes a secure HTTPS connection is not possible, since I trust the IPs and devices connecting.)
 
-7. At the bottom of the page, click the **Save changes** button.
+7. At the bottom of the page, click the **Save changes** button. Now that apps can connect, let's finally share the library with someone!
 
-Now your external users can access your library through their Plex apps too.
+8. Go back to _Settings_ and click on **Manage Library Access**.
+
+![Managing library access in Plex.](../../img/blog/plex-library-access1.png 'Managing library access in Plex')
+
+9. Click on **Grant Library Access** and type in your friend's email address, and click on it under _Search Result_. (If they already have a Plex account, there will be a green checkmark.) Then click **Continue**.
+
+10. Now click on the checkmarks for the libraries you want to share, or click on the checkmark next to your server name to share all libraries. Then click **Continue**
+
+![Choosing libraries to share in Plex.](../../img/blog/plex-library-access2.png 'Choosing libraries to share in Plex')
+
+11. On this final page, click **Send**. If you have Plex Pass, you'll get additional options to add the user to your Plex Home (not necessary in our case), allow downloads, and also setup more fine-grained restrictions. You can ignore these options if you want.
+
+![Plex Pass options when sharing libraries.](../../img/blog/plex-library-access3.png 'Plex Pass options when sharing libraries')
+
+Now your friend will get an email invitation and once accepted they'll be able to access your Plex library both from their apps and by going straight to your domain on a browser to reach the web UI.
 
 ## References
 
