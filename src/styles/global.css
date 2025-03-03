@@ -299,9 +299,13 @@ pre {
 pre > code {
 	all: unset;
 }
+figure {
+  text-align: center;
+}
 figcaption {
   font-size: 0.65em;
-  margin: -6.25em 0 6em 0;
+  margin: -4.25em 0 4.25em 0;
+  color: var(--emphasis);
 }
 .desc {
   font-size: 90%;
