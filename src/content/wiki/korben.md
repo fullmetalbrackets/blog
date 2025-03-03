@@ -2,7 +2,7 @@
 title: "Korben"
 description: "Details on my backup server, a Dell Optiplex 3020 Micro PC."
 pubDate: 2023-12-16
-updatedDate: 2024-10-04
+updatedDate: 2025-03-03
 tags:
   - hosts
 ---
@@ -19,4 +19,4 @@ tags:
 
 ## Information
 
-Bought on EBay for $45. It came with a small laptop-sized 2.5" internal HDD. (The only kind that fits.) Currently not in use.
+Bought on EBay for $45. It came with a small laptop-sized 2.5" internal HDD (the only kind that fits) that has been trucking without issues for several years. It runs Proxmox, which I use once in a blue moon for testing stuff in VMs.
