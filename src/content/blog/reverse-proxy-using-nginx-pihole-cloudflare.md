@@ -149,7 +149,7 @@ To add an existing domain to Cloudflare:
 
 8. From your domain's _Overview_ scroll down and you'll see a section at the bottom-right called **API** with a _Zone ID_ and _Account ID_. Under that, click on **Get your API token**.
 
-9. Click the button **Create Token** button. The first template should be _Edit zone DNS_, click the **Use template** button next to it.
+9. Click the **Create Token** button. The first template should be _Edit zone DNS_, click the **Use template** button next to it.
 
 ![Choosing the Edit Zone DNS template.](../../img/blog/cloudflare-api-token1.png 'Choosing the Edit Zone DNS template')
 
@@ -226,7 +226,7 @@ We'll create an entry for Plex first, which is running as a container on the sam
 
 ![Configuring SSL on proxy host.](../../img/blog/nginxproxy4.png 'Configuring SSL on proxy host')
 
-7. HTTPS should work with _Force SSL_ toggled off, but feel free to toggle it on if you prefer.
+7. Leave _Force SSL_ toggled off, but feel free to toggle it on if you prefer.
 
 8. Toggle on **Use a DNS Challenge**, then under _DNS Provider_ choose `Cloudflare` from the dropdown.
 
