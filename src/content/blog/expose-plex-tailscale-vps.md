@@ -57,19 +57,20 @@ Click the **Create instance** button and do the following:
 
 5. Under _Shape series_, choose **Specialty and previous generation** which falls under the always-free tier.
 
-![Choosing an Image and Shape while creating a compute instance in OCI.](../../img/blog/oci0.png 'Choosing an Image and Shape while creating a compute instance in OCI')
 
 6. Under _Shape name_, check the box for (the only option) **VM.Standard.E2.1.Micro**. (Notice the _"always-free" eligible_ tag.) Click the **Select shape** button at the bottom.
 
 7. The default image is Oracle Linux 8, but you can click **Change image** and choose one of the other always-free eligible images -- **Ubuntu** (my suggestion) or **CentOS**.
 
+![Choosing an Image and Shape while creating a compute instance in OCI.](../../img/blog/oci0.png 'Choosing an Image and Shape while creating a compute instance in OCI')
+
 > <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
 >
 > The rest of this guide assumes you chose **Canonical Ubuntu 22.04 Minimal** as your image.
 
-![SSH key settings when creating a compute instance in OCI.](../../img/blog/oci-ssh.png 'SSH key settings when creating a compute instance in OCI')
+8. Scroll down to _Add SSH keys_. You can upload your own public key, or you can let it generate a key pair for you. If you choose the latter, **make sure you save the public and private keys** so you can SSH into the VM!
 
-8. Scroll down to _Add SSH keys_. You can upload your own public key, or you can let it generate a key pair for you. If you choose the latter, **make sure you save the private and private key** so you can SSH into the VM!
+![SSH key settings when creating a compute instance in OCI.](../../img/blog/oci-ssh.png 'SSH key settings when creating a compute instance in OCI')
 
 9. You can leave the rest as default, or change stuff around if you like. I'll let you make those choices yourself. When ready, click the **Create** button at the bottom.
 
