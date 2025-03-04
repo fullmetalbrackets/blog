@@ -84,16 +84,12 @@ And here is an image in a `figure` element with a `figcaption`. (Images embedded
 
 ## Blockquotes
 
-I use the `<blockquote>` element as an "information" block instead. I just use an inline `<img>` tag when writing these. (Someday I'll upgrade to migrate to using MDX instead of plain markdown files for my blog posts, and then I'll create a component to do this.)
+I use the `<blockquote>` element as an "information" block instead, styled with CSS.
 
 ```md
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > This is a blockquote, which I use for detailed information rather than quoting.
 ```
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > This is a blockquote, which I use for detailed information rather than quoting.
 
 ## Tables
