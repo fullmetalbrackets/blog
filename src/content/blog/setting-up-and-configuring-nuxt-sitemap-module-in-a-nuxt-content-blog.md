@@ -7,8 +7,6 @@ tags:
   - web development
 ---
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > The information in this blog post may be outdated, since it was regarding **Nuxt 2**, which has now been **replaced with Nuxt 3**. Please keep in mind that the problem this blog post solves may not be present in Nuxt 3, or may not work even if the problem is present!
 
 ## About Nuxt/Sitemap

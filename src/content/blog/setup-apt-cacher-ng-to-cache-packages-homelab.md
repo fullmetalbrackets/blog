@@ -184,6 +184,5 @@ You’ll see some output as the playbook carries out its tasks, and if there’s
 
 ### Related Articles
 
-> <a href="/blog/setup-unattended-upgrades" data-umami-event="apt-cacher-ng-related-unattended-upgrades">Setup auto-updates in Debian and Ubuntu with Unattended-Upgrades and NeedRestart</a>
-
-> <a href="/blog/bootstrapping-fresh-linux-install-with-ansible" data-umami-event="apt-cacher-ng-related-bootstrap-ansible">Bootstrapping a fresh Linux install with Ansible</a>
+- <a href="/blog/setup-unattended-upgrades" data-umami-event="apt-cacher-ng-related-unattended-upgrades">Setup auto-updates in Debian and Ubuntu with Unattended-Upgrades and NeedRestart</a>
+- <a href="/blog/bootstrapping-fresh-linux-install-with-ansible" data-umami-event="apt-cacher-ng-related-bootstrap-ansible">Bootstrapping a fresh Linux install with Ansible</a>

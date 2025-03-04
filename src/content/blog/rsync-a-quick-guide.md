@@ -129,6 +129,5 @@ Finally, for a list of ALL the rsync options with short descriptions of what the
 
 ### Related Articles
 
-> [Linux Commands & Keyboard Shortcuts Cheat Sheet](/blog/basic-linux-commands/)
-
-> [Mounting (either internal or external) hard drives in Linux](/blog/mounting-hard-drives-in-linux/)
+- <a href="/blog/basic-linux-commands/" data-umami-event="rsync-related-linux-commands">Linux Commands & Keyboard Shortcuts Cheat Sheet</a>
+- <a href="/blog/mounting-hard-drives-in-linux/" data-umami-event="rsync-related-mounting-hdds-linux">Mounting (either internal or external) hard drives in Linux</a>

@@ -19,8 +19,6 @@ This script will install all Docker packages and the Docker Compose plugin, the 
 
 ## Preparing the configuration file
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > Make sure to do the below steps **prior** to starting the container or else it won't work!
 
 Before starting the container, you need to create the FileBrowser directory, and within it a config file and database file. I'll be using FileBrowser's own suggested configuration with defaults.
@@ -102,6 +100,5 @@ Once the container is up and running, go to `http://ip-address:8080` in your web
 
 ### Related Articles
 
-> <a href="/blog/setting-up-plex-in-docker/" data-umami-event="setup-filebrowser-related-setup-plex">Setup self-hosted Plex Media Server in Docker</a>
-
-> <a href="/blog/setting-up-jellyfin-in-docker/" data-umami-event="setup-filebrowser-related-setup-jellyfin">Setup self-hosted Jellyfin Media Server in Docker</a>
+- <a href="/blog/setting-up-plex-in-docker/" data-umami-event="setup-filebrowser-related-setup-plex">Setup self-hosted Plex Media Server in Docker</a>
+- <a href="/blog/setting-up-jellyfin-in-docker/" data-umami-event="setup-filebrowser-related-setup-jellyfin">Setup self-hosted Jellyfin Media Server in Docker</a>

@@ -7,8 +7,6 @@ tags:
   - android
 ---
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > Although I'm doing this on a OnePlus phone running **OxygenOS 14**, it is just a customized version of **Android 14** -- everything below should work on any version of Android 14 and probably older versions as well.
 
 ## About X-plore File Manager
@@ -83,6 +81,5 @@ All done! Once you get a hang of the UI, transferring files back and forth from 
 
 ### Related Articles
 
-> <a href="/blog/solid-explorer-samba-share/" umami-data-event="xplorer-related-solid-explorer">How to use Solid Explorer app to access SMB network shares from an Android device</a>
-
-> <a href="/blog/setup-a-samba-share-on-linux-via-command-line/" umami-data-event="solid-explorer-related-smb-share-linux-cli">Setup a Samba share on Linux via command line</a>
+- <a href="/blog/solid-explorer-samba-share/" umami-data-event="xplorer-related-solid-explorer">How to use Solid Explorer app to access SMB network shares from an Android device</a>
+- <a href="/blog/setup-a-samba-share-on-linux-via-command-line/" umami-data-event="solid-explorer-related-smb-share-linux-cli">Setup a Samba share on Linux via command line</a>

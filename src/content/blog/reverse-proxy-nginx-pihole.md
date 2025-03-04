@@ -27,8 +27,6 @@ You'll get a menu pop-up, choose `3   Configure workbench` and hit <kbd>Enter</k
 
 I use _Pi-Hole_ as a network-wide DNS resolver, and you can add DNS records to point a domain at an IP address through their web UI. It's very simple.
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > I will be using <code>*.home.arpa</code> (per the <a href="https://www.rfc-editor.org/rfc/rfc8375.html" target="_target">RFC recommendation</a> for home networks) and not worrying about HTTPS at this time. See <a href="/blog/reverse-proxy-using-nginx-pihole-cloudflare/">this blog post about setup Nginx Proxy Manager for HTTPS with a custom domain</a>.
 
 1. Click on **Local DNS** on the sidebar, then click on **DNS Records**.
@@ -132,8 +130,6 @@ To check the logs in Portainer:
 2. Click on **Containers** in the sidebar.
 3. Look for the Nginx Proxy Manager container in the list, and under **Quick Actions** click on the &#xf15c; icon to see the logs.
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > You should now be all set up and able to reach your proxied services via `http://subdomain.home.arpa` on the browser, no more IPs and ports!
 
 ## Reference
@@ -146,6 +142,5 @@ To check the logs in Portainer:
 
 ### Related Articles
 
-> [Setting up a reverse proxy for HTTPS with a custom domain using Nginx Proxy Manager, Pi-Hole and Cloudflare](/blog/reverse-proxy-using-nginx-pihole-cloudflare/)
-
-> [OpenMediaVault Quick Reference](/blog/openmediavault-quick-reference/)
+- <a href="/blog/reverse-proxy-using-nginx-pihole-cloudflare/" data-umami-event="reverse-proxy-adguard-related-reverse-proxy-pihole">Setting up a reverse proxy for HTTPS with a custom domain using Nginx Proxy Manager, Pi-Hole and Cloudflare</a>
+- <a href="/blog/openmediavault-quick-reference/" data-umami-event="reverse-proxy-adguard-related-reverse-proxy-pihole">OpenMediaVault Quick Reference</a>

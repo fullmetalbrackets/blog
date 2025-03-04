@@ -7,8 +7,6 @@ tags:
   - docker
 ---
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > This will not be an exhaustive Docker tutorial, for that I always suggest <a href="https://docs.docker.com" target="_blank" data-umami-event="container-stack-compose-docs-docker">the official Docker documentation</a>. The purpose of this guide is limited to explaining how to install Docker and set up various Docker containers quickly and easily via Docker Compose.
 
 ## Installing Docker
@@ -142,6 +140,5 @@ Using the `-d` flag will "detach" the process so it's in the background. You wil
 
 ### Related Articles
 
-> <a href="/blog/watchtower-notifications/" data-umami-event="container-stack-compose-watchtower-notifications">Setup Watchtower to auto-update Docker containers with notifications</a>
-
-> <a href="/blog/setup-prometheus-cadvisor-grafana/" data-umami-event="containers-stack-compose-prom-nodeex-cadvsr-graf">Setup Prometheus, Node Exporter, Cadvisor and Grafana in Docker</a>
+- <a href="/blog/watchtower-notifications/" data-umami-event="container-stack-compose-watchtower-notifications">Setup Watchtower to auto-update Docker containers with notifications</a>
+- <a href="/blog/setup-prometheus-cadvisor-grafana/" data-umami-event="containers-stack-compose-prom-nodeex-cadvsr-graf">Setup Prometheus, Node Exporter, Cadvisor and Grafana in Docker</a>

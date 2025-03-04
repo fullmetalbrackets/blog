@@ -149,6 +149,5 @@ For an explanation of what these options do, check the original blog post linked
 
 ### Related Articles
 
-> <a href="/blog/quick-guide-setting-up-smb/" data-umami-event="setup-smb-related-quick-guide-smb">Quick guide to setting up SMB shares</a>
-
-> <a href="/blog/setup-nfs-shares-linux/" data-umami-event="setup-smb-related-nfs-shares">Set up NFS Shares between Linux hosts</a>
+- <a href="/blog/quick-guide-setting-up-smb/" data-umami-event="setup-smb-related-quick-guide-smb">Quick guide to setting up SMB shares</a>
+- <a href="/blog/setup-nfs-shares-linux/" data-umami-event="setup-smb-related-nfs-shares">Set up NFS Shares between Linux hosts</a>

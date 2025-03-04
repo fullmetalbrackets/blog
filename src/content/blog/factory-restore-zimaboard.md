@@ -21,8 +21,6 @@ I'm generally following the <a href="https://www.zimaspace.com/docs/faq/Restore-
 
 I have the ZimaBoard 216, so I used the <a href="https://drive.google.com/file/d/1PFw1JXoimwUvOX9kgkmOSUM0evi_GGxv/view" target="_blank" data-umami-event="factory-restore-zimaboard-216-image">ZimaBoard 216 image</a>. There is a <a href="https://drive.google.com/file/d/1b-k7d1LzPHNUtem-hOrHB5dDt0_AC6mK/view" target="_blank" data-umami-event="factory-restore-zimaboard-432-832-image">separate image for ZimaBoard 432 and 832</a> if you have one of those instead.
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > For this guide I will create the bootable USB drive on a Windows machine, using <a href="https://rufus.ie" target="_blank" umami-data-event="factory-restore-zimaboard-rufus">Rufus</a>. Another alternative is <a href="https://etcher.balena.io" target="_blank" umami-data-event="factory-restore-zimaboard-balenaetcher">BalenaEtcher</a> as suggested by the official Zimaboard instructions. Rufus and BalenaEtcher are both free and open-source.
 >
 > If you want to create a bootable USB on Linux, check out <a href="https://ventoy.net" target="_blank" umami-data-event="factory-restore-zimaboard-ventoy">Ventoy</a>, or use command `dd if=<PATH TO ISO FILE> of=/dev/*** bs=8M status=progress` (Make sure to the USB device as it appears on your machine, for example `/dev/sdd`, or you could overwrite an HDD!)
@@ -67,4 +65,4 @@ On a browser in the same local network, go to `http://casaos.local` and the Casa
 
 ### Related Articles
 
-> <a href="/blog/remove-casaos-zimaboard-upgrade-debian-12/" umami-data-event="factory-restore-zimaboard-related-remove-casaos">How to remove CasaOS from a ZimaBoard and upgrade to Debian 12 Bookworm</a>
+- <a href="/blog/remove-casaos-zimaboard-upgrade-debian-12/" umami-data-event="factory-restore-zimaboard-related-remove-casaos">How to remove CasaOS from a ZimaBoard and upgrade to Debian 12 Bookworm</a>

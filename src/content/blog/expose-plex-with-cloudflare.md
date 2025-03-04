@@ -13,10 +13,6 @@ Plex is a self-hosted media server that lets you stream your owned (or downloade
 
 Although there are many solutions to get across CGNAT, for Plex I've found that using Cloudflare Tunnel is the one with the least hassle. Cloudflare Tunnel provides a secure connection to a network resource behind CGNAT and without exposing your public IP, by running a `cloudflared` daemon on your server. As a by-product, the traffic flows through Cloudflare's CDN and gets all the features that come with that, including security through their Web Application Firewall. In this post I will demonstrate how I have been sharing my Plex library through a Cloudflare Tunnel and only allowing access from specific IP addresses.
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
-> **Important Note**
-> 
 > You're probably much better off following <a href="/blog/expose-plex-tailscale-vps/" target="_blank" data-umami-event="expose-plex-cloudflare-to-tailscale-vps">this blog post to expose Plex through CGNAT with Tailscale</a> instead of using exposing it via Cloudflare Tunnel as I write about below.
 >
 > Technically speaking, Cloudflare Tunnel is **NOT** intended for routing video and audio streams, it's intended purpose is routing HTTP traffic for webpages. In fact, the <a href="https://www.cloudflare.com/service-specific-terms-application-services/#content-delivery-network-terms" target="_blank" data-umami-event="expose-plex-cloudflare-tos">Cloudflare Service-Specific Terms for their CDN</a> specifically state,
@@ -145,8 +141,6 @@ Finally, we need to configure SSL for the website!
 
 ![Configuring encryption mode.](../../img/blog/cloudflare-ssl2.png 'Configuring encryrption mode')
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > If you run into any HTTPS errors later when trying to access your site, come back to this page and try instead to select _Custom SSL/TLS_ and choose **Full (Strict)** or **Full** instead. _Automatic_ should work in most cases, though.
 
 Now you should be able to visit `https://your-domain.com` and see your website!
@@ -297,6 +291,5 @@ There's always multiple ways to do things, and said I explained at the start, th
 
 ### Related Articles
 
-> <a href="/blog/expose-plex-tailscale-vps/" umami-data-event="expose-plex-cloudflare-related-expose-tailscale-vps">How to securely expose Plex from behind CGNAT using Tailscale and a free Oracle VM</a>
-
-> <a href="/blog/self-host-website-cloudflare-tunnel/" umami-data-event="expose-plex-cloudflare-related-tunnel-guide">Complete guide to self-hosting a website through Cloudflare Tunnel</a>
+- <a href="/blog/expose-plex-tailscale-vps/" umami-data-event="expose-plex-cloudflare-related-expose-tailscale-vps">How to securely expose Plex from behind CGNAT using Tailscale and a free Oracle VM</a>
+- <a href="/blog/self-host-website-cloudflare-tunnel/" umami-data-event="expose-plex-cloudflare-related-tunnel-guide">Complete guide to self-hosting a website through Cloudflare Tunnel</a>

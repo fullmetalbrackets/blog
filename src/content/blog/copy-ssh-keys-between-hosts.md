@@ -32,6 +32,5 @@ Next: <a href="https://docs.github.com/en/authentication/managing-commit-signatu
 
 ### Related Articles
 
-> [Generating an SSH key pair](/blog/generating-an-ssh-key-pair/)
-
-> [Setup SSH authentication to push to Github](/blog/setup-ssh-authentication-to-push-to-github/)
+- <a href="/blog/generating-an-ssh-key-pair/" data-umami-event="copy-shh-keys-related-generate-ssh-pair">Generating an SSH key pair</a>
+- <a href="/blog/setup-ssh-authentication-to-push-to-github/" data-umami-event="copy-shh-keys-related-ssh-auth-github">Setup SSH authentication to push to Github</a>

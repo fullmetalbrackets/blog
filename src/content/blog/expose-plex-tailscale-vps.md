@@ -35,8 +35,6 @@ First, go to <a href="https://www.oracle.com/cloud/free/" target="_blank" umami-
 
 Once your account is set up you'll receive an email with the **Cloud Account Name** (which is your "tenant") and **Username**. (The email you used to sign up.) You'll need the Count Account Name to <a href="https://www.oracle.com/cloud/sign-in.html" target="_blank" umami-data-event="expose-plex-tailscale-oci-signin">sign-in to OCI</a>, after which you'll be asked for the email address and password.
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > You'll be asked if you want to **Enable Secure Verification (MFA)** which I strongly suggest you do. You'll need a USB security key or to download and use the Oracle Authenticator app. It's annoying to have to use another Authenticator app, but it's worth the peace of mind.
 
 ## Create a compute instance
@@ -64,8 +62,6 @@ Click the **Create instance** button and do the following:
 
 ![Choosing an Image and Shape while creating a compute instance in OCI.](../../img/blog/oci0.png 'Choosing an Image and Shape while creating a compute instance in OCI')
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > The rest of this guide assumes you chose **Canonical Ubuntu 22.04 Minimal** as your image.
 
 8. Scroll down to _Add SSH keys_. You can upload your own public key, or you can let it generate a key pair for you. If you choose the latter, **make sure you save the public and private keys** so you can SSH into the VM!
@@ -177,8 +173,6 @@ Once the domain is _active_ in Cloudflare, we just need to add a DNS record:
 
 ![Cloudflare proxy status set to DNS only.](../../img/blog/expose-plex-tailscale-vps1.png 'Cloudflare proxy status set to DNS only')
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > Make sure **NOT** to leave it proxied. If you do, all traffic will go through Cloudflare's CDN which we do not want. We're only using Cloudflare to resolve our domain to the IP of the Oracle instance, nothing more!
 
 7. Leave _TTL_ at Auto and click **Save**.
@@ -240,8 +234,6 @@ services:
 
 Once it's up and running, we need to access the Nginx Proxy Manager GUI, but for that we'll need to open some ports on the instance to be accessible from your IP address.
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > Alternately, you can install Tailscale on your PC or tablet, then while it's connected to Tailscale go to `https://oracle.cyber-sloth.ts.net:81`. This way you can just use Tailscale to access the web UI of Nginx Proxy Manager and any other apps you decide to run, without having to add ingress rules for those ports.
 
 ## Add ingress rules on OCI
@@ -270,8 +262,6 @@ We'll add ingress rules to allow your IP to access ports `81` (so you can reach 
 
 3. Under _Source CIDR_ type in your IP address in this format: `123.45.678.90/32`.
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > If you need to find out your public IP address, just go to <a href="https://icanhazip.com" target="_blank">icanhazip.com</a>.
 
 4. Leave the _IP Protocol_ as **TCP**.
@@ -374,6 +364,5 @@ Now your friend will get an email invitation and once accepted they'll be able t
 
 ### Related Articles
 
-> <a href="/blog/tailscale/" umami-data-event="expose-plex-tailscale-related-tailscale-guide">Comprehensive guide to setting up Tailscale to securely access your home network from anywhere</a>
-
-> <a href="/blog/expose-plex-with-cloudflare/" umami-data-event="expose-plex-tailscale-related-expose-cloudflare">How to securely expose Plex from behind CGNAT with Cloudflare Tunnel</a>
+- <a href="/blog/tailscale/" umami-data-event="expose-plex-tailscale-related-tailscale-guide">Comprehensive guide to setting up Tailscale to securely access your home network from anywhere</a>
+- <a href="/blog/expose-plex-with-cloudflare/" umami-data-event="expose-plex-tailscale-related-expose-cloudflare">How to securely expose Plex from behind CGNAT with Cloudflare Tunnel</a>

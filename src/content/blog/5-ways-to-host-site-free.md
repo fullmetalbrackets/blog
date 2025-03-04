@@ -7,8 +7,6 @@ tags:
   - web development
 ---
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > This was one of my earliest blog posts when I was trying out as many different free static web hosts as I could. Although originally hosted on Netlify for years, <a href="/blog/merging-sites-and-changing-hosts" target="_blank">I switched to Cloudflare Pages</a> and haven't looked back. I don't use Netlify at all anymore, or any of the other web hosts mentioned below for that matter, because Cloudflare is just too good!
 >
 > For this reason, I don't plan to try out any other hosts, so this guide probably won't be getting an update. I will eventually make a new blog post about how to create a site on Cloudflare Pages specifically. (I'm pretty sure the below instructions are beyond outdated in 2025.)
@@ -31,8 +29,6 @@ Also, Netlify has some really cool features that solve problems for you, such as
 6. On the next page, you'll configure the branch to deploy and the build settings, so for example if your project uses yarn instead of npm, change the build command to `yarn build`. Once you're done click **Deploy site.**
 7. Netlify will begin the process of building your site, if there's no issues with the build then your site will deploy in a minute or two.
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > Be aware that by default ANY push to the `main`/`master` branch of the Git repo will force a build & deploy of the site on Netlify, which can quickly rack up build minutes. If you prefer to deploy manually, be sure to off auto-deploys in the **Site Settings** on the Netlify dashboard.
 
 ## Vercel
@@ -83,8 +79,6 @@ Possibly the simplest hosting solution to ever exist. Literally one command in t
 1. `npm install -g surge` - This will install surge.sh globally so you can use it from any directory without first installing/adding it locally.
 2. `npx surge` - If using Surge.sh for the first time (or from a new machine), it will prompt you for an email and password right in the command line, and log you in or create a new account if one does not exist matching the email address you entered. When logged in you'll be prompted to specify the full path to the directory to upload (it usually defaults to your present working directory), then a provides a randomly generated sub-domain of your choice (though you can specify your own sub-domain), then hit <kbd>⏎Enter</kbd> and your project gets uploaded.
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > If your site is made with a static site generator like **Astro** or **Nuxt**, make sure to use `npm build` or `yarn build` first to build the static assets, then use `npx surge dist` to serve the static site.
 
 That's it! Surge.sh has a crazy fast build time and instant availability on their CDN. If you go to the URL you should see your site, it will literally take only seconds to be online.

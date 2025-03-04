@@ -324,17 +324,45 @@ blockquote {
   border-radius: 0 0.5em 0.5em 0.5em;
   width: 95%;
 }
-#related-articles + blockquote, #related-articles + blockquote + blockquote {
-  border-radius: 0.5em;
+blockquote::before {
+  display: block;
+  margin: -0.85em 0 0 -1em;
+  padding: 0;
+  filter: var(--info-svg);
+  content: url("/assets/info.svg");
 }
-
+blockquote::before img {
+  width: 20px;
+  height: 20px;
+}
+#related-articles + ul {
+  display: block;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+#related-articles + ul li {
+  background-color: var(--blockquote);
+  border-radius: 0.5em;
+  margin: 1em auto 1.5em auto;
+  padding: 1em 1em 0.75em 1em;
+  border: 2px solid var(--primary);
+  width: 95%;
+}
+#related-articles + ul li a {
+  font-size: 1.125em;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--emphasis);
+}
+#related-articles + ul li a:hover, #related-articles + blockquote + blockquote a:hover {
+  color: var(--hover);
+  text-decoration: none;
+}
 blockquote p {
   margin: 0;
   padding: 0 1em 1em 1.25em;
-}
-blockquote p:first-of-type {
-  margin: 0;
-  padding: 0.7em 1em 1em 1.25em;
 }
 blockquote ol, blockquote ul {
   padding-bottom: 1em;
@@ -353,13 +381,6 @@ blockquote a, blockquote a:active, blockquote a:visited {
 blockquote a:hover, blockquote a:focus {
   color: var(--hover);
   text-decoration: underline;
-}
-.info {
-  width: 32px;
-  height: 32px;
-  margin: -14px 0 -8px -14px;
-  padding: 0;
-  filter: var(--info-svg);
 }
 article a:hover {
   text-decoration-color: var(--link);
@@ -429,20 +450,6 @@ aside {
   margin: 2em auto;
   cursor: default;
 }
-#related-articles + blockquote, #related-articles + blockquote + blockquote {
-  margin: 2em auto;
-  border-color: var(--primary);
-  padding: 0.5em 0 0 0;
-}
-#related-articles + blockquote a, #related-articles + blockquote + blockquote a {
-  font-size: 1.25em;
-  font-weight: 700;
-  color: var(--emphasis);
-}
-#related-articles + blockquote a:hover, #related-articles + blockquote + blockquote a:hover {
-  color: var(--hover);
-  text-decoration: none;
-}
 .blog-aside {
   justify-content: space-between;
 }
@@ -497,6 +504,9 @@ article ol li, article ul li {
   }
   input {
     width: 75%;
+  }
+  blockquote {
+    width: 90%;
   }
   .related {
     grid-template-columns: auto;

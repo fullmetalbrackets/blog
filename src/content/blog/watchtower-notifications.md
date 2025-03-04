@@ -36,8 +36,7 @@ services:
       - WATCHTOWER_INCLUDE_STOPPED=true
       - WATCHTOWER_REVIVE_STOPPED=false
 ```
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
+
 > If you're already running other containers and want them all in the same stack (although Watchtower will monitor and update ALL containers regardless of stack, unless you specifically configure it otherwise), you can simply copy and paste the above into an existing compose file and re-run it to add Watchtower.
 
 Here's what these environment variables do.
@@ -134,6 +133,5 @@ All done! You should now get notifications through Pushover each time Watchtower
 
 ### Related Articles
 
-> <a href="/blog/setting-up-plex-in-docker/" data-umami-event="watchtower-notifications-">Setup self-hosted Plex Media Server in Docker</a>
-
-> <a href="/blog/how-to-run-filebrowser-in-docker/" data-umami-event="watchtower-notifications-">How to run self-hosted FileBrowser in Docker</a>
+- <a href="/blog/setting-up-plex-in-docker/" data-umami-event="watchtower-notifications-">Setup self-hosted Plex Media Server in Docker</a>
+- <a href="/blog/how-to-run-filebrowser-in-docker/" data-umami-event="watchtower-notifications-">How to run self-hosted FileBrowser in Docker</a>

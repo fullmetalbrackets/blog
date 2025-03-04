@@ -6,10 +6,6 @@ tags:
   - linux
 ---
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
-> Referenced from <a href="https://man7.org/linux/man-pages/man5/logind.conf.5.html" target="_blank">Man page for logind.conf</a>
-
 Run the following command to edit the _login configuration file_:
 
 ```bash
@@ -40,8 +36,11 @@ HandleLidSwitchDocked=ignore
 
 Save the file and reboot for the changes to take effect. After boot, your laptop will always remain on when closed.
 
+## Reference
+
+- <a href="https://man7.org/linux/man-pages/man5/logind.conf.5.html" target="_blank" data-umami-event="keep-lid-open-logind-conf-manpage">Man page for logind.conf</a>
+
 ### Related Articles
 
-> [Linux Commands & Keyboard Shortcuts Cheat Sheet](/blog/basic-linux-commands/)
-
-> [Install and use Sudo in Debian](/blog/install-and-use-sudo-debian/)
+- <a href="/blog/basic-linux-commands/" data-umami-event="stay-on-lid-closed-related-linux-commands">Linux Commands & Keyboard Shortcuts Cheat Sheet</a>
+- <a href="/blog/mounting-hard-drives-in-linux/" data-umami-event="format-partition-related-mounting-hdd">Mounting (either internal or external) hard drives in Linux</a>

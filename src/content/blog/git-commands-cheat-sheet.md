@@ -267,6 +267,5 @@ There's more advanced commands I'm not going to talk about until I use them myse
 
 ### Related Articles
 
-> <a href="/blog/how-to-generate-gpg-to-sign-git-commits/" data-umami-event="git-cheatsheet-related-gpg-sign-commits">How to generate a GPG key and use it to sign git commits</a>
-
-> <a href="/blog/git-push-error-permissions/" data-umami-event="git-cheatsheet-related-git-push-error-permissions">How to resolve Git error insufficient permission for adding an object to repository database</a>
+- <a href="/blog/how-to-generate-gpg-to-sign-git-commits/" data-umami-event="git-cheatsheet-related-gpg-sign-commits">How to generate a GPG key and use it to sign git commits</a>
+- <a href="/blog/git-push-error-permissions/" data-umami-event="git-cheatsheet-related-git-push-error-permissions">How to resolve Git error insufficient permission for adding an object to repository database</a>

@@ -103,6 +103,5 @@ Oh-My-Posh comes with many themes that are regularly maintained, but [anyone can
 
 ### Related Articles
 
-> [Quick guide to set up Zsh and Oh-My-Zsh with essential plugins and a theme](/blog/guide-to-zsh-ohmyzsh-plugins-and-theme/)
-
-> [PowerShell commands cheat sheet](/blog/powershell-commands-cheat-cheat/)
+- <a href="/blog/guide-to-zsh-ohmyzsh-plugins-and-theme/" data-umami-event="ohmyposh-related-ohmyzsh">Quick guide to set up Zsh and Oh-My-Zsh with essential plugins and a theme</a>
+- <a href="/blog/powershell-commands-cheat-cheat/" data-umami-event="ohmyposh-related-powershell-commands">PowerShell commands cheat sheet</a>

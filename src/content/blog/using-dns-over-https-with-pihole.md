@@ -169,8 +169,6 @@ This is the last step. In the Pi-Hole dashboard click on **Settings** on the sid
 
 ![Pi-Hole DNS settings.](../../img/blog/cloudflared1.png 'Pi-Hole DNS settings')
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > If running Cloudflared as a Docker container, instead of `127.0.0.1#5053`, use the IP address of the Docker host as the Custom DNS server, for example `192.168.0.200#5053`.
 
 Now click on **Save & Apply**. One last thing, though. <a href="https://pi-hole.net/blog/2025/02/21/v6-post-release-fixes-and-findings/#page-content:~:text=Issues%20with%20using%20cloudflared%20as%20upstream%20DNS%20server" target="_blank">There is a quick fix to mitigate a potential issue using Cloudflared</a> that we're going to make in the settings.
@@ -191,6 +189,5 @@ Your DNS requests should now be going out encrypted in HTTPS. If using Cloudflar
 
 ### Related Articles
 
-> <a href="/blog/pi-hole-quad9-dls-over-tls/" data-umami-event="pihole-doh-related-quad9-dot">Using a forwarding resolver in Pi-Hole for DNS over TLS</a>
-
-> <a href="/blog/set-up-pihole-on-linux" data-umami-event="pihole-doh-related-setup-pihole">Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS</a>
+- <a href="/blog/pi-hole-quad9-dls-over-tls/" data-umami-event="pihole-doh-related-quad9-dot">Using a forwarding resolver in Pi-Hole for DNS over TLS</a>
+- <a href="/blog/set-up-pihole-on-linux" data-umami-event="pihole-doh-related-setup-pihole">Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS</a>

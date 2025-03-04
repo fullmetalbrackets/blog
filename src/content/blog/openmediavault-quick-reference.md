@@ -6,14 +6,10 @@ updatedDate: 2025-02-03
 tags:
   - self-hosting
 ---
-
-<img src="/omv-header.png" alt="OpenMediaVault" loading="eager" decoding="async" class="sq-img" />
-
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
+ 
+> This article is specifically about OpenMediaVault 6, which reached end of life in July 2024. _OpenMediaVault 7 was released in March 2024_, and as of January 2025 the latest version is **7.6.0**.
 >
-> **Important!**
-> 
-> This article is specifically about OpenMediaVault 6, which reached end of life in July 2024. _OpenMediaVault 7 was released in March 2024_, and as of January 2025 the latest version is **7.6.0**. The below may still apply, but don't be surprised if it does not. I have not used OMV in some time nor do I plan to use it any time soon, an updating to this post may not be forthcoming, sorry.
+> The below may still apply, but don't be surprised if it does not. I have not used OMV in some time nor do I plan to use it any time soon, an updating to this post may not be forthcoming, sorry.
 
 ## Change the port for OMV workbench
 
@@ -98,6 +94,5 @@ By default only the `root` user is available, which is fine if you're mostly usi
 
 ### Related Articles
 
-> [Reverse proxy OpenMediaVault, Plex and Navidrome with Nginx Proxy Manager and Pi-Hole](/blog/reverse-proxy-nginx-pihole/)
-
-> [Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS](/blog/set-up-pihole-on-linux/)
+- <a href="/blog/reverse-proxy-nginx-pihole/" data-umami-event="omv-ref-related-proxy-omv-pihole-navidrome">Reverse proxy OpenMediaVault, Plex and Navidrome with Nginx Proxy Manager and Pi-Hole</a>
+- <a href="/blog/set-up-pihole-on-linux/" data-umami-event="omv-ref-related-setup-pihole">Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS</a>
