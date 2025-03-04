@@ -88,6 +88,49 @@ const { slug } = Astro.params;
       color: var(--text);
       margin-right: 1em;
     }
+    .edit-post {
+      display: grid;
+      grid-template-columns: auto auto;
+      grid-template-columns: auto;
+      place-items: center;
+      justify-content: space-around;
+      color: var(--primary);
+      font-family: "M Plus Rounded 1c Med";
+      margin: 1em 1em 2em 1em;
+    }
+    .edit-post span {
+      margin: 0 auto;
+    }
+    .gh {
+      width: 24px;
+      height: 24px;
+      margin: 0;
+      padding: 0;
+    }
+    .edit {
+      display: inline-block;
+      background-color: var(--info);
+      color: #000;
+      border-radius: 0.5em;
+      cursor: pointer;
+      font-weight: 600;
+      margin: 0 auto;
+      padding: 6px 10px;
+      text-decoration: none;
+      font-size: 0.85em;
+      font-family: 'M Plus Rounded 1c Med';
+      line-height: 1.5;
+    }
+    .edit img {
+      display: inline;
+      filter: brightness(0) saturate(100%);
+      height: 24px;
+      width: auto;
+      padding: 0 auto;
+      margin: 2px 0 -5px 0;
+      border-radius: 0;
+      cursor: pointer;
+    }
     .post-end {
       font-family: "M Plus Rounded 1c Med";
       margin: 0 auto 2em auto;
@@ -147,17 +190,22 @@ const { slug } = Astro.params;
       height: 24px;
       width: auto;
       padding: 0 auto;
-      margin: 0 0 -1px 0;
+      margin: 0 0 -3px 0;
       border-radius: 0;
       cursor: pointer;
     }
-    .stats a {
+    .edit-post a, .stats a, .email a {
       color: #000;
     }
-    .stats:hover a {
+    .email:hover a, .email:focus a {
+      color: var(--coffee);
+    } {
+      color: #000;
+    }
+    .edit-post a:hover, .stats:hover a {
       color: var(--coffee);
     }
-    .stats:hover img {
+    .edit-post a:hover img, .stats:hover img {
       filter: var(--coffee-hover);
     }
     .questions {
@@ -182,21 +230,16 @@ const { slug } = Astro.params;
       text-decoration: none;
       font-family: 'M Plus Rounded 1c Med';
       line-height: 1.5;
+      padding-top: 4px;
+      padding-bottom: 6px;
     }
     .email img {
-      margin: 1px auto -5px auto;
+      margin: 1px auto -12px auto;
       width: 25px;
       height: auto;
     }
     .email:hover img {
       filter: var(--coffee-hover);
-    }
-    .email a {
-      margin: 2px auto;
-      color: #000;
-    }
-    .email:hover a, .email:focus a {
-      color: var(--coffee);
     }
     @media screen and (max-width: 900px) {
       .post-end {
@@ -232,6 +275,25 @@ const { slug } = Astro.params;
       }
       .updated {
         margin: 0;
+      }
+      .edit-post {
+        justify-content: space-around;
+        place-items: center;
+        margin-bottom: 3em;
+        gap: 0 0;
+        padding-left: 18px;
+      }
+      .edit-post span {
+        grid-row: 1;
+        grid-column: 1;
+        width: auto;
+      }
+      .edit {
+        grid-row: 2;
+        grid-column: 1;
+        width: auto;
+        max-width: 10em;
+        line-height: 1.325;
       }
       .post-end {
         display: grid;
@@ -308,6 +370,26 @@ const { slug } = Astro.params;
       </p>
     </slot>
   </article>
+  <aside class="edit-post">
+    <div>
+      <span>
+        Error in this article?
+      </span>
+      <button class="edit">
+        <span>
+          <a 
+          href={`https://github.com/fullmetalbrackets/blog/blob/main/src/content/blog/${slug}.md/`}
+          target="_blank" data-umami-event={`edit-gh-${slug}`}>
+            <img src="/assets/gh.svg"
+              class="gh"
+              loading="lazy"
+              decoding="async"
+              alt="Edit this page on GitHub"> <span>Edit this page on GitHub</span>
+          </a>
+        </span>
+      </button>
+    </div>
+  </aside>
   <aside class="post-end">
     <div class="coffee">
       <span>Was this article helpful?</span>
