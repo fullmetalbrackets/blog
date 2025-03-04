@@ -14,11 +14,7 @@ tags:
 3. [Host the blog on Deno Deploy](#deploy)
 4. [Use your own custom domain](#domain)
 5. [References](#ref)
-
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
-> **Important!**
-> 
+ 
 > I wrote this blog post years ago now when I was trying out Deno Deploy just for fun. I have not kept up with it or maintained the blog I built in this post, and I have no intention of doing so. I may try out Deno again in the future. For now, as of beginning of 2025, this post is probably beyond outdated and I doubt Deno Deploy even works the same! This blog post will stay for legacy purposes, but it's probably unwise to follow it at this point.
 
 <div id='install' />

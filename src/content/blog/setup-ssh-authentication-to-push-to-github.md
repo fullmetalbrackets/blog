@@ -73,6 +73,5 @@ And we're done! Git will automatically keep track of any modified files in the p
 
 ### Related Articles
 
-> <a href="/blog/generating-an-ssh-key-pair/" data-umami-event="ssh-to-github-related-generate-ssh-key-pair">Generating an SSH key pair</a>
-
-> <a href="/blog/copy-ssh-keys-between-hosts/" data-umami-event="ssh-to-github-related-copy-ssh-keys-hosts">Copying SSH Keys between different hosts</a>
+- <a href="/blog/generating-an-ssh-key-pair/" data-umami-event="ssh-to-github-related-generate-ssh-key-pair">Generating an SSH key pair</a>
+- <a href="/blog/copy-ssh-keys-between-hosts/" data-umami-event="ssh-to-github-related-copy-ssh-keys-hosts">Copying SSH Keys between different hosts</a>

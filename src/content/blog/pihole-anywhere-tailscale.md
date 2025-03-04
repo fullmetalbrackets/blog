@@ -33,8 +33,6 @@ On your Linux server, use the following command to run the Tailscale install scr
 curl -fsSL https://tailscale.com/install.sh | sh
 ```
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > By default using most Tailscale commands requires superuser privileges, i.e. `sudo`. You can change that with the command `sudo tailscale set --operator=$USER`, the specified user will then be able to execute Tailscale commands without `sudo`. The rest of the guide will assume you did this.
 
 Once it's finished installing, we're going to run Tailscale and pass a flag, which I'll explain in a second: 
@@ -45,8 +43,6 @@ tailscale up --accept-dns=false
 
 Adding the `--accept-dns=false` flag will make this machine ignore the global DNS we'll be setting up in Tailscale later. Since we're going to make the Pi-Hole _be_ our DNS server, we don't want Pi-Hole trying to use itself as its own upstream. The flag will tell Pi-hole to keep it's own local DNS settings.
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > You should also use `tailscale up --accept-dns=false` on other machines in your home network running Tailscale, so they don't go through Tailscale for DNS queries. We want local DNS queries to stay on our local network, NOT go through Tailscale. We're also setting up this Pi-hole to only respond to queries from devices outside the home network.
 
 Once you use the command, go to the provided URL and login to connect the machine to your tailnet. Now go to the Tailscale admin console and you should see the machine there.
@@ -99,8 +95,6 @@ Once Pi-hole is up and running, go to the web UI by going to e.g. `http://192.16
 
 Make sure your upstream DNS server is set (I recommend <a href="https://quad9.net" target="_blank" data-umami-event="pihole-anywhere-post-quad9">Quad9</a> or <a href="https://one.one.one.one" target="_blank" data-umami-event="pihole-anywhere-post-1111">Cloudflare</a>) and make sure the **Interface settings** has _permit all origins_ selected.
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > If using Docker's default `bridge` network setting, _permit all origins_ is required for Pi-hole to work properly. This can also be achieved with the environment variable `DNSMASQ_LISTENING: all` on the compose file.
 
 ![Setting Pi-hole to permit all origins.](../../img/blog/pihole-tailscale-interface.png 'Setting Pi-hole to permit all origins')
@@ -138,6 +132,5 @@ Now to test it out, connect to Tailscale on your phone/tablet and visit some web
 
 ### Related Articles
 
-> <a href="/blog/set-up-pihole-on-linux/" data-umami-event="pihole-anywhere-post-related-setup-pihole">Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS</a>
-
-> <a href="/blog/tailscale" data-umami-event="pihole-anywhere-post-related-tailscale">How to remotely access your home server from anywhere using Tailscale</a>
+- <a href="/blog/set-up-pihole-on-linux/" data-umami-event="pihole-anywhere-post-related-setup-pihole">Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS</a>
+- <a href="/blog/comprehensive-guide-tailscale-securely-access-home-network/" data-umami-event="pihole-anywhere-post-related-tailscale">How to remotely access your home server from anywhere using Tailscale</a>

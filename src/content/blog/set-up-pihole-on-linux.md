@@ -48,8 +48,6 @@ curl -sSL https://install.pi-hole.net | bash
 
 Installation will prompt a number of dialogs, pay attention and make sure you input all the correct information or to the best of your knowledge. (You can change it later.)
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > A random password will be generated during install for logging in to the Pi-Hole web UI. You should change the admin password with `pihole -a -p <password>` (on Pi-Hole v5) or `pihole setpassword <password>` (on Pi-Hole v6).
 >
 > If you prefer, you can leave the password blank and bypass login with `pihole -a -p` or `pihole setpassword`. (Don't include a password when using the commands to set it as blank.)
@@ -127,8 +125,6 @@ If your output looks similar to the above, then everything is working as intende
 
 ## Running Pi-Hole and Unbound together on Docker
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > I have not run Pi-Hole v6 in Docker as of yet, so be aware that if there's any differences between v5 and v6, they are not included below. An update to this section will be forthcoming, if necessary.
 
 I always run Pi-Hole bare metal as a personal preference, so I'll be giving instructions for something I haven't used myself. Maybe I'll spin up some containers and test it out, but for now... let me know how it goes.
@@ -224,8 +220,6 @@ services:
 
 ## Configuring DNS
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > If running in Docker using the above instructions, this should already be setup, but you can double-check it to be safe.
 
 If running bare metal, we need to make Unbound the upstream DNS resolver for Pi-Hole. In the Pi-Hole web UI, go to **Settings** on the sidebar, then click on the **DNS** from the dropdown.
@@ -246,8 +240,6 @@ Next, in order for Pi-Hole to work network-wide for all devices (including phone
 
 If the option is available, it's usually under _DNS Servers_ in **DHCP Settings**, change whatever IP address is there to your Pi-Hole's IP, and your router will begin handing out Pi-Hole as the network-wide DNS when clients renew their DHCP leases.
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > If your router does not have the option of setting a DNS server, you won't be able to block ads for all devices on your network automatically. Instead you'll have to <a href="https://discourse.pi-hole.net/t/how-do-i-configure-my-devices-to-use-pi-hole-as-their-dns-server/245#3-manually-configure-each-device-9" target="_blank" data-umami-event="setup-pihole-discourse-dns-each-device">configure each device's DNS</a> or turn off DHCP on your router (if possible) and use Pi-Hole as the DHCP server. 
 
 You should now be set up for Pi-Hole to be the DNS server for your whole network. If you added Pi-Hole's IP address as the DNS server in your router, devices will gradually begin querying Pi-Hole as they renew their DHCP leases and get the updated DNS server.
@@ -391,8 +383,6 @@ Wait a moment for the TLS certificate to be provisioned, once it's done we need 
 domain = "pihole.yourdomain.com"
 ```
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > This change also has the perk of automatically redirecting you to the dashboard when you go to `pihole.yourdomain.com`, without having to add `/admin` to the URL.
 
 2. Scroll down further, change or comment out `port = "80o,443os,[::]:80o,[::]:443os"` and replace with the following: (Notice after `443` the `s` before the `o`.)
@@ -401,8 +391,6 @@ domain = "pihole.yourdomain.com"
 port = "80o,443so,[::]:80o,[::]:443so"
 ```
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > HTTPS would not work for me without this particular change, I think because `443os` makes HTTPS optional, but `443so` makes it required. Might also be because I am forcing SSL in Nginx Proxy Manager. YMMV.
 
 Now you should be able to go to `https://pihole.domain.com` and the Pi-Hole dashboard with HTTPS. If you CANNOT access the web UI with `https` in the URL, try going instead to `http://pihole.domain.com/admin` first and click past the warning. After that it should work as per usual by going to `https://pihole.domain.com/admin`.
@@ -477,8 +465,6 @@ When you make Pi-Hole your primary DNS it becomes a critical part of your networ
 
 As of the release of Pi-Hole v6 (see below for details) the only way to sync configurations between two Pi-Hole instances is with <a href="https://github.com/lovelaze/nebula-sync" target="_blank" data-umami-event="setup-pihole-nebula-sync">Nebula Sync</a>. I have yet to use it myself, but once I do, I will update this space.
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > The original Pi-Hole syncing solution, Gravity Sync, has been archived and will no longer be maintained. It does not work with Pi-Hole v6, though its last release still works with Pi-Hole v5 and older.
 > 
 > Aside from Nebula Sync as mentioned above, there is another actively-maintained alternative, <a href="https://github.com/mattwebbio/orbital-sync" target="_blank" data-umami-event="setup-pihole-orbital-sync">Orbital Sync</a>, but support v6 is not yet available. (Although it is coming.)
@@ -492,6 +478,5 @@ As of the release of Pi-Hole v6 (see below for details) the only way to sync con
 
 ### Related Articles
 
-> <a href="/blog/pihole-anywhere-tailscale/" data-umami-event="setup-pihole-related-anywhere-tailscale">How to use Pi-hole from anywhere with Tailscale</a>
-
-> <a href="/blog/reverse-proxy-using-nginx-pihole-cloudflare/" data-umami-event="setup-pihole-related-reverse-proxy">Setting up a reverse proxy for HTTPS with a custom domain using Nginx Proxy Manager, Pi-Hole and Cloudflare</a>
+- <a href="/blog/pihole-anywhere-tailscale/" data-umami-event="setup-pihole-related-anywhere-tailscale">How to use Pi-hole from anywhere with Tailscale</a>
+- <a href="/blog/reverse-proxy-using-nginx-pihole-cloudflare/" data-umami-event="setup-pihole-related-reverse-proxy">Setting up a reverse proxy for HTTPS with a custom domain using Nginx Proxy Manager, Pi-Hole and Cloudflare</a>

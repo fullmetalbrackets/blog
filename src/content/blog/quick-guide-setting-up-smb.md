@@ -10,8 +10,6 @@ tags:
 
 My personal use case is that my main home server, which doubles as a NAS, is a Linux machine and holds copies of most of my important data -- but I access them from my PC and laptop, both of which use Windows 10. After several years of using SMB at home (and I need to stress this is for home use only and probably completely insecure and/or inadequate for enterprise networks) I have settled on two templates for `smb.conf`, the Samba configuration file. Below are the files.
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > This guide assumes Samba is installed and ready to go. If necessary, see <a href="setup-a-samba-share-on-linux-via-command-line" target="_blank">this post about setting up Samba</a>.
 
 ## SMB config file for public share
@@ -117,6 +115,5 @@ From Windows, opening **Run** and going to `//hostname/public` (or via IP) shoul
 
 ### Related Articles
 
-> [Formatting disks in Linux command line](/blog/formatting-on-linux/)
-
-> [Mounting (either internal or external) hard drives in Linux](/blog/mounting-hard-drives-in-linux/)
+- <a href="/blog/formatting-on-linux/" data-umami-event="autologin-related-formatting-disks-linux">Formatting disks in Linux command line</a>
+- <a href="/blog/mounting-hard-drives-in-linux/" data-umami-event="autologin-related-mounting-hdds-linux">Mounting (either internal or external) hard drives in Linux</a>

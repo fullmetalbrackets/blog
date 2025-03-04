@@ -6,10 +6,6 @@ tags:
   - linux
 ---
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
-> <a href="https://man7.org/linux/man-pages/man5/sudoers.5.html" target="_blank">Man page for logind.conf</a>
-
 ## The sudoers file
 
 Removing the sudo password prompt is done by editing the `/etc/sudoers` file, however you should never edit this file directly, but instead use `sudo visudo` to do so.
@@ -52,3 +48,7 @@ visudo -c
 /etc/sudoers: parsed OK
 /etc/sudoers.d/README: parsed OK
 ```
+
+## Reference
+
+- <a href="https://man7.org/linux/man-pages/man5/sudoers.5.html" target="_blank">Man page for logind.conf</a>

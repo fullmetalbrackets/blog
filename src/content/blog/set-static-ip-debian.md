@@ -29,8 +29,6 @@ allow-hotplug enp3s0
 iface enp3s0 inet dhcp
 ```
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > Although I use the example `enp3s0` in this post, your default network interface might be named differently, like `enp0s2` or `eth0`, or something else entirely. If you use wireless instead of ethernet it will be something like `wlan0`.
 >
 > See your default interface by using the command: `ip -o -4 route show to default`
@@ -110,6 +108,5 @@ If the static IP address you configured (in my case `192.168.0.125`) appears in 
 
 ### Related Articles
 
-> <a href="/blog/basic-linux-commands/" data-umami-event="static-ip-debian-related-linux cheatsheets">Linux Commands & Keyboard Shortcuts Cheat Sheet</a>
-
-> <a href="/blog/rsync-a-quick-guide/" data-umami-event="static-ip-debian-rsync-quick-guide">Rsync - A Quick Guide</a>
+- <a href="/blog/basic-linux-commands/" data-umami-event="static-ip-debian-related-linux cheatsheets">Linux Commands & Keyboard Shortcuts Cheat Sheet</a>
+- <a href="/blog/rsync-a-quick-guide/" data-umami-event="static-ip-debian-rsync-quick-guide">Rsync - A Quick Guide</a>

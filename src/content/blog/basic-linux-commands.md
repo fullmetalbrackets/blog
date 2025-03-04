@@ -84,6 +84,5 @@ tags:
 
 ### Related Articles
 
-> [Formatting disks in Linux command line](/blog/formatting-on-linux/)
-
-> [Mounting (either internal or external) hard drives in Linux](/blog/mounting-hard-drives-in-linux/)
+- <a href="/blog/formatting-on-linux/" data-umami-event="autologin-related-formatting-disks-linux">Formatting disks in Linux command line</a>
+- <a href="/blog/mounting-hard-drives-in-linux/" data-umami-event="autologin-related-mounting-hdds-linux">Mounting (either internal or external) hard drives in Linux</a>

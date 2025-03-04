@@ -26,8 +26,6 @@ I had a 2 TB hard drive where I kept only video files mounted at `/mnt/videos`, 
 
 What a mess! And with movies spread across multiple drives, how to keep track of what files are in which hard drive? What if we could just not worry about which drives specific files are in and they could all be together in mount point? MergerFS to the rescue! It will unify all three drives into one mount point where you can access everything. The new file structure will then be like this.
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > I am using `/srv/media` as a unified mount point just as an example. Further below I will rename my drives to have new mount points at `/mnt/media1`, `/mnt/media2`, etc. and so I chose `/srv/media` as the unified mount point to avoid any conflicts or other weirdness. Feel free to put your unified mount point where ever you like depending on your prefered directory structure, e.g. `/media` or `/opt/media` or whatever.
 
 ```bash
@@ -44,8 +42,6 @@ With their powers combined, I gain access any media across all three drives at m
 
 MergerFS can be installed via package manager, for example on Debian you would use the command `sudo apt install mergerfs`, but the stable release on your distro's repositories may not have the most up-to-date version of it available. I'll be using the <a href="https://github.com/trapexit/mergerfs/releases/latest" target="_blank" data-umami-event="mergerfs-post-github-release">latest release from the GitHub page</a> as recommended by the developer.
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > The examples below use the `.deb` package and `amd64` architecture because that's what I use, make sure you use the correct version/architecture for the system you're running! For example on Red Hat you need to use `.rpm` packages, on other distros you might have to build from source. On a Raspberry Pi, Le Potato and many other single-board computers, you need to use the `arm64` architecture.
 >
 > You can use the command `uname -p` to print your CPU architecture on the terminal. An output of `x86_64` means the architecture is `amd64`. An output `aarch64` means the architecture is `arm64`. You can also get this info with `uname -a` and look towards the end of the output for the architecture, or get detailed CPU info with `cat /proc/cpuinfo`.
@@ -84,8 +80,6 @@ UUID=cce7cdab-a2df-4d4f-aac3-98fab2afdbd5   /mnt/media3   ext4    errors=remount
 defaults,allow_other,nonempty,use_ino,moveonenospc=true,dropcacheonclose=true,category.create=mspmfs,fsname=mergerfs 0 0
 ```
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > The options above are what I use myself, originally based on suggestions by Perfect Media Server, but updated over time as I've used MergerFS and had to make changes. Make sure to read up on <a href="https://trapexit.github.io/mergerfs/config/functions_categories_and_policies/" target="_blank" data-umami-event="mergerfs-post-docs-categories-policies">available categories and policies</a> and choose your own as needed.
 >
 > I have found that `dropcacheonclose=true` and `category.create=mfs` are necessary for **qbittorrent** to work with unified mounts. When I had problems with **rsync** I switched to `category.create=mspmfs` (it is just `mfs` with some extras) and started adding the `--inplace` flag when using rsync, and haven't encountered issues again. YMMV.
@@ -107,8 +101,6 @@ movies  music  photos  tvshows
 
 Exploring your new unified mount point should show all your data! At that point you can delete the old mounts points if you haven't already and point your services at the new unified mount point.
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > Before you transfer new files into the unified mount via `rsync` or just plain old `cp` command, make sure you create the necessary duplicate folder trees in each drive. So, using my examples above, create folders for `music`, `photos` and `tvshows` in any drives that are missing it. This should prevent errors about non-existent directories and running out of space while transfering files into the unified mount point.
 
 If you encounter a problem after reboot, you probably messed something up in the fstab file, the syntax can be tricky. Edit it to fix any issues and reboot again. If you want to be safe, try commenting out rather than editing any existing fstab entries until you know everything is working properly.
@@ -120,6 +112,5 @@ If you encounter a problem after reboot, you probably messed something up in the
 
 ### Related Articles
 
-> <a href="/blog/setup-a-samba-share-on-linux-via-command-line/" data-umami-event="mergerfs-post-related-setup-smb-share">Setup a Samba share on Linux via command line</a>
-
-> <a href="/blog/mounting-hard-drives-in-linux/" data-umami-event="mergerfs-post-related-mounting-hdds-linux">Mounting (either internal or external) hard drives in Linux</a>
+- <a href="/blog/setup-a-samba-share-on-linux-via-command-line/" data-umami-event="mergerfs-post-related-setup-smb-share">Setup a Samba share on Linux via command line</a>
+- <a href="/blog/mounting-hard-drives-in-linux/" data-umami-event="mergerfs-post-related-mounting-hdds-linux">Mounting (either internal or external) hard drives in Linux</a>

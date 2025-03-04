@@ -7,8 +7,6 @@ tags:
   - self-hosting
 ---
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > This guide is for using **Pi-Hole** as the DNS server, where we will add the DNS records for your proxied services.
 >
 > <a href="/blog/reverse-proxy-using-nginx-adguardhome-cloudflare" target="_blank" data-umami-event="reverse-proxy-pihole-to-adguard-proxy">See this other post if you want to use <em>AdGuard Home</em> instead as the DNS server.</a>
@@ -57,8 +55,6 @@ services:
       - 80:80/tcp # web UI port
 ```
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > Make sure port `53` is available on your server or Pi-Hole will not work!
 > 
 > If your Pi-Hole is on the same machine you want to run Nginx Proxy Manager, then you'll need to change the _Pi-Hole web UI port_ since it is also port `80` by default, which will conflict with Nginx Proxy Manager.
@@ -89,8 +85,6 @@ Go into the _Pi-Hole web UI_, it should be accessible via your browser at `http:
 
 If you changed the web UI port it to something like 8888, it would instead be `http://<ip-address>:8888/admin` or `http://<hostname>:8888/admin`.
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > The below instructions have been updated for **Pi-Hole v6**.
 
 1. In the Pi-Hole web UI, click on **Settings** on the sidebar and choose **Local DNS Records** from the dropdown.
@@ -113,8 +107,6 @@ If you changed the web UI port it to something like 8888, it would instead be `h
 
 Repeat steps 5 through 7 for however many apps or services on that server you want to create CNAME records for, just change the _sub-domain_ for each and keep the same target domain -- for example `music.domain.com`, `books.domain.com`, etc. You can come back and change these records later as needed.
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > If you have multiple servers running self-hosted apps or services that you want to reverse proxy, create _Local DNS Records_ for each server, then create _CNAME records_ pointing `service.domain.com` at the servers hosting those services.
 
 Once you're done adding your DNS and CNAME records in Pi-Hole, it's time to setup Cloudflare to get the TLS certificates for your custom domain.
@@ -246,8 +238,6 @@ Barring any errors, once you set up all your proxy hosts in Nginx Proxy Manager 
 
 ## Accessing Pi-Hole web UI with HTTPS
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > The below instructions have been updated for Pi-Hole v6. However, the instructions for v5 and earlier are <a href="#pihole-v5-https">further down</a> if you need them.
 
 **Pi-Hole v6** supports accessing the web UI with HTTPS out-of-the-box. If you didn't make any changes to the network port in `/etc/pihole/pihole.toml`, then you just need to create an entry in Nginx Proxy Manager as per usual, same as the instructions above.
@@ -264,8 +254,6 @@ Barring any errors, once you set up all your proxy hosts in Nginx Proxy Manager 
 
 6. Once it's done, go to `https://pihole.domain.com/admin` (you'll get a 403 error without the `/admin` path, but we'll fix this below) and you should be able to access the web UI with HTTPS.
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > If you CANNOT access the web UI with `https` in the URL, try instead `http://pihole.domain.com/admin` and click past the warning. After that it should work as per usual by going to `https://pihole.domain.com/admin`.
 
 One last thing! You can easily _set an automatic redirect_ from `pihole.domain.com/` to `pihole.domain.com/admin` so that you don't get the 403 error by going to the domain's root.
@@ -310,6 +298,5 @@ Once you're done setting up the proxy host, you should be able to go to `https:/
 
 ### Related Articles
 
-> <a href="/blog/set-up-pihole-on-linux/" data-umami-event="reverse-proxy-pihole-related-setup-pihole-post">Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS</a>
-
-> <a href="/blog/self-host-website-cloudflare-tunnel/" data-umami-event="reverse-proxy-pihole-related-tunnel-guide">Complete guide to self-hosting a website through Cloudflare Tunnel</a>
+- <a href="/blog/set-up-pihole-on-linux/" data-umami-event="reverse-proxy-pihole-related-setup-pihole-post">Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS</a>
+- <a href="/blog/self-host-website-cloudflare-tunnel/" data-umami-event="reverse-proxy-pihole-related-tunnel-guide">Complete guide to self-hosting a website through Cloudflare Tunnel</a>

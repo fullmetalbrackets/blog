@@ -152,6 +152,5 @@ If you'd like a low wattage Raspberry Pi alternative, then in my opinion Libre's
 
 ### Related Articles
 
-> <a href="/blog/setup-home-assistant-sweet-potato-debian/" data-umami-event="sweet-potato-debian-pihole-related-hass-potato">Set up Home Assistant Supervised on a Libre Computer Sweet Potato SBC</a>
-
-> <a href="/blog/self-host-website-cloudflare-tunnel/" data-umami-event="sweet-potato-debian-pihole-related-tunnel-guide">Complete guide to self-hosting a website through Cloudflare Tunnel</a>
+- <a href="/blog/setup-home-assistant-sweet-potato-debian/" data-umami-event="sweet-potato-debian-pihole-related-hass-potato">Set up Home Assistant Supervised on a Libre Computer Sweet Potato SBC</a>
+- <a href="/blog/self-host-website-cloudflare-tunnel/" data-umami-event="sweet-potato-debian-pihole-related-tunnel-guide">Complete guide to self-hosting a website through Cloudflare Tunnel</a>

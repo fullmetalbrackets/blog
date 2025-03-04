@@ -9,8 +9,6 @@ tags:
 
 ![Oh-My-Zsh](../../img/blog/oh-my-zsh.png 'Oh-My-Zsh')
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > This was one of my earliest blog posts, but even in 2025 this guide still works as written. Even now I still refer back to it all the time when setting up Oh-My-Zsh on anything!
 
 ## Install the Zsh shell
@@ -118,6 +116,5 @@ Now when you use `p10k configure` you'll get additional options, since you'll be
 
 ### Related Articles
 
-> [Linux Commands & Keyboard Shortcuts Cheat Sheet](/blog/basic-linux-commands/)
-
-> [Customizing the Windows Terminal command prompt with Oh-My-Posh](/blog/customizing-windows-terminal-with-ohmyposh/)
+- <a href="/blog/basic-linux-commands/" data-umami-event="zsh-ohmyzsh-related-linux-commands">Linux Commands & Keyboard Shortcuts Cheat Sheet</a>
+- <a href="/blog/customizing-windows-terminal-with-ohmyposh/" data-umami-event="zsh-ohmyzsh-related-ohmyposh">Customizing the Windows Terminal command prompt with Oh-My-Posh</a>

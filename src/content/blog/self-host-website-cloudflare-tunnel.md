@@ -85,8 +85,6 @@ http {
 }
 ```
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > If you changed the local port in the `compose.yaml` file, make sure you change it in the `nginx.conf` too.
 
 Finally, still in the site's root directory, use the command `docker compose up -d` to download the Nginx container image and run the webserver using the parameters from the compose file and configuration file. Based on the settings above, _Nginx_ will serve the static files from **/dist** directory on the machine's **network port 8888**. You should be able to access it by going to it's IP address and adding the port, for example `http://192.168.1.100:8888`.
@@ -205,8 +203,6 @@ Finally, we need to configure SSL for the website!
 
 ![Configuring encryption mode.](../../img/blog/cloudflare-ssl2.png 'Configuring encryrption mode')
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > If you run into any HTTPS errors later when trying to access your site, come back to this page and try instead to select _Custom SSL/TLS_ and choose **Full (Strict)** or **Full** instead. _Automatic_ should work in most cases, though.
 
 Now you should be able to visit `https://your-domain.com` and see your website!
@@ -289,6 +285,5 @@ Once that is done, click the **Deploy** button. Wait a few minutes, then check y
 
 ### Related Articles
 
-> <a href="/blog/setup-cloudflare-tunnel-to-access-self-hosted-apps/" data-umami-event="tunnel-guide-to-tunnel-selfhosted-apps">Setup a Cloudflare Tunnel to securely access self-hosted apps with a domain from outside the home network</a>
-
-> <a href="/blog/expose-plex-with-cloudflare/" data-umami-event="tunnel-guide-related-expose-plex-tunnel">How to securely expose Plex from behind CGNAT with Cloudflare Tunnel</a>
+- <a href="/blog/setup-cloudflare-tunnel-to-access-self-hosted-apps/" data-umami-event="tunnel-guide-to-tunnel-selfhosted-apps">Setup a Cloudflare Tunnel to securely access self-hosted apps with a domain from outside the home network</a>
+- <a href="/blog/expose-plex-with-cloudflare/" data-umami-event="tunnel-guide-related-expose-plex-tunnel">How to securely expose Plex from behind CGNAT with Cloudflare Tunnel</a>

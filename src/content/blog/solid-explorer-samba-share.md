@@ -7,8 +7,6 @@ tags:
   - android
 ---
 
-> <img src="/assets/info.svg" class="info" loading="eager" decoding="async" alt="Information">
->
 > I used **Android 12** when making the guide, the steps to make this work may be different if you're using an older version of Android. (But most likely will be the same or similar.) As of 2025, I can confirm this process is still identical on **Android 14**.
 > 
 > Also, this guide assumes you already have an existing SMB share accessible in your home network, and you're just trying to access it via _Solid Explorer_. If necessary, <a href="/blog/setup-a-samba-share-on-linux-via-command-line/" target="_blank">see this blog post on how to create SMB shares on a Linux server</a>.
@@ -99,6 +97,5 @@ You'll see a circlular progress bar on the bottom right, when the transfer is do
 
 ### Related Articles
 
-> <a href="/blog/xplore-android-smb-share/" data-umami-event="solid-explorer-related-xplorer">Setup X-plore File Manager on Android to transfer files to an SMB share</a>
-
-> <a href="/blog/setup-a-samba-share-on-linux-via-command-line/" data-umami-event="solid-explorer-related-smb-share-linux-cli">Setup a Samba share on Linux via command line</a>
+- <a href="/blog/xplore-android-smb-share/" data-umami-event="solid-explorer-related-xplorer">Setup X-plore File Manager on Android to transfer files to an SMB share</a>
+- <a href="/blog/setup-a-samba-share-on-linux-via-command-line/" data-umami-event="solid-explorer-related-smb-share-linux-cli">Setup a Samba share on Linux via command line</a>

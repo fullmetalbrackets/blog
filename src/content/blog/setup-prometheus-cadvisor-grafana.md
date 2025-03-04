@@ -156,6 +156,5 @@ Now you're ready to create your dream Grafana dashboard! Creating the actual das
 
 ### Related Articles
 
-> <a href="/blog/setting-up-plex-in-docker/" data-umami-event="setup-prom-cad-graf-related-setup-plex">Setup self-hosted Plex Media Server in Docker</a>
-
-> <a href="/blog/how-to-run-filebrowser-in-docker/" data-umami-event="setup-prom-cad-graf-related-selfhost-filebrowser">How to run self-hosted FileBrowser in Docker</a>
+- <a href="/blog/setting-up-plex-in-docker/" data-umami-event="setup-prom-cad-graf-related-setup-plex">Setup self-hosted Plex Media Server in Docker</a>
+- <a href="/blog/how-to-run-filebrowser-in-docker/" data-umami-event="setup-prom-cad-graf-related-selfhost-filebrowser">How to run self-hosted FileBrowser in Docker</a>

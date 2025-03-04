@@ -56,8 +56,6 @@ If you want to reboot the machine when it's required after an update un-comment 
 Unattended-Upgrade::Automatic-Reboot-Time "05:00";
 ```
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > Though you can configure Unattended-Upgrades to email you when it completes an automatic update or when it encounters an error. It requires installing and configuring other packages, which I will not get into here. I may update this in the future if I ever do set up email notification.
 
 Finally, you'll want to check the file at `/etc/apt/apt.conf.d/20auto-upgrades` and make sure it has the following lines ("1" enables, while "0" disables):
@@ -102,6 +100,5 @@ All done! Now your server will download and install security updates (and packag
 
 ### Related Articles
 
-> <a href="/blog/bootstrapping-fresh-linux-install-with-ansible" data-umami-event="unattended-upgrades-related-bootstrap-ansible">Bootstrapping a fresh Linux install with Ansible</a>
-
-> <a href="/blog/setup-apt-cacher-ng-to-cache-packages-homelab" data-umami-event="unattended-upgrades-related-apt-cacher-ng"></a>
+- <a href="/blog/bootstrapping-fresh-linux-install-with-ansible" data-umami-event="unattended-upgrades-related-bootstrap-ansible">Bootstrapping a fresh Linux install with Ansible</a>
+- <a href="/blog/setup-apt-cacher-ng-to-cache-packages-homelab" data-umami-event="unattended-upgrades-related-apt-cacher-ng"></a>

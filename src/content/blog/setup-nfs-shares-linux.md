@@ -50,8 +50,6 @@ sudo systemctl restart nfs-server
 
 Install the NFS client package and all dependencies on a Linux host you want to allow to access the NFS server share:
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > If you're using **Fedora** or **CentOS**, you don't need to install a separate package, since both server and client packages are combined within `nfs-utils`.
 
 ```bash
@@ -90,6 +88,5 @@ To have Linux auto-mount the share at boot, edit the _fstab_ file with `sudo nan
 
 ### Related Articles
 
-> <a href="/blog/mounting-hard-drives-in-linux/" data-umami-event="setup-nfs-mount-hdds">Mounting (either internal or external) hard drives in Linux</a>
-
-> <a href="/blog/create-public-samba-share-without-login/" data-umami-event="setup-nfs-public-smb-nologin">Create a public Samba share accessible without a login</a>
+- <a href="/blog/mounting-hard-drives-in-linux/" data-umami-event="setup-nfs-mount-hdds">Mounting (either internal or external) hard drives in Linux</a>
+- <a href="/blog/create-public-samba-share-without-login/" data-umami-event="setup-nfs-public-smb-nologin">Create a public Samba share accessible without a login</a>

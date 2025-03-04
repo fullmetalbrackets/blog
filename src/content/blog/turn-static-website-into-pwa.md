@@ -7,8 +7,6 @@ tags:
   - web development
 ---
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > **TL;DR**
 >
 > I created <a href="https://github.com/fullmetalbrackets/pwa-template" target="_blank">a simple template repo on GitHub</a> with just the files necessary to make your HTML site a PWA, as described below - it contains `app.js` and `sw.js` to use as is, and a sample `manifest.json` you need to edit with your project's details. (Replace the `index.html` and `main.css` with your own files.)

@@ -7,8 +7,6 @@ tags:
   - android
 ---
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > As of September 2022, I no longer have AT&T as a provider, so I cannot personally confirm that these instructions will still work anymore. However, a cursory skim of the forum thread on XDA Developers shows active discussion and recent updates of the APK, so I have no reason to believe these instructions are outdated. Feel free to let me know if you try them and they do not work.
 
 ## About the fix

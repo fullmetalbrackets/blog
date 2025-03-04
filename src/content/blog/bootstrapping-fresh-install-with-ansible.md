@@ -7,8 +7,6 @@ tags:
   - command line
 ---
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > This is not a comprehensive tutorial for Ansible, but simply a terse quick guide of my personal use case for Ansible in my home lab. For a deeper dive on Ansible, I strongly suggest <a href="https://www.learnlinux.tv/getting-started-with-ansible/" target="_blank">Learn Linux TV series of Ansible tutorials</a> which is how I first learned to use it myself.
 
 ## Install Ansible
@@ -241,6 +239,5 @@ ansible-playbook bootstrap.yaml
 
 ### Related Articles
 
-> <a href="/blog/bootstrapping-fresh-linux-install-with-ansible" data-umami-event="unattended-upgrades-related-bootstrap-ansible">Bootstrapping a fresh Linux install with Ansible</a>
-
-> <a href="/blog/setup-apt-cacher-ng-to-cache-packages-homelab" data-umami-event="unattended-upgrades-related-apt-cacher-ng">Setup auto-updates in Debian and Ubuntu with Unattended-Upgrades and NeedRestart</a>
+- <a href="/blog/bootstrapping-fresh-linux-install-with-ansible" data-umami-event="unattended-upgrades-related-bootstrap-ansible">Bootstrapping a fresh Linux install with Ansible</a>
+- <a href="/blog/setup-apt-cacher-ng-to-cache-packages-homelab" data-umami-event="unattended-upgrades-related-apt-cacher-ng">Setup auto-updates in Debian and Ubuntu with Unattended-Upgrades and NeedRestart</a>

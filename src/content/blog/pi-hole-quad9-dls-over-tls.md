@@ -67,8 +67,6 @@ forward-zone:
  forward-addr: 149.112.112.11@853#dns11.quad9.net
 ```
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > These forwarding addresses for **Quad9** provide malware blocking, DNSSEC, and are ECS-enabled. Check out <a href="https://www.quad9.net/service/service-addresses-and-features" target="_blank" data-umami-event="pihole-dot-quad9-addr-feats">all of Quad9's options</a>. Alternately you may consider using the **Cloudflare** TLS endpoint at `security.cloudflare-dns.com`, which also supports DNSSEC and blocks malware.
 
 Now restart Unbound so the new config takes effect:
@@ -118,6 +116,5 @@ Now you're done with Cloudflared. You can verify it's working with the <a href="
 
 ### Related Articles
 
-> <a href="/blog/using-dns-over-https-with-pihole/" data-umami-event="pihole-quad9-dot-related-pihole-doh">Using DNS over HTTPS with Pi-Hole and Cloudflared</a>
-
-> <a href="/blog/set-up-pihole-on-linux" data-umami-event="pihole-quad9-dot-related-setup-pihole">Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS</a>
+- <a href="/blog/using-dns-over-https-with-pihole/" data-umami-event="pihole-quad9-dot-related-pihole-doh">Using DNS over HTTPS with Pi-Hole and Cloudflared</a>
+- <a href="/blog/set-up-pihole-on-linux" data-umami-event="pihole-quad9-dot-related-setup-pihole">Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS</a>

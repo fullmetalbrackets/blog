@@ -7,8 +7,6 @@ tags:
   - self-hosting
 ---
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > This guide is for using **AdGuard Home** as the DNS server, where we will add the DNS records for our proxied services.
 >
 > <a href="/blog/reverse-proxy-using-nginx-pihole-cloudflare" target="_blank" data-umami-event="reverse-proxy-adguard-to-pihole-proxy">See this other post if you want to use <em>Pi-Hole</em> instead as the DNS server.</a>
@@ -25,8 +23,6 @@ This guide will require a owned custom top-level domain (TLD), such as a `.com` 
 
 In my case, AdGuard Home already comes installed and ready to use on the GL.iNet Flint 2 router, requiring only toggling it on from the router's web admin UI to activate. If you want to run it bare metal on a server, see <a href="https://github.com/AdguardTeam/AdGuardHome#getting-started" target="_blank" data-umami-event="reverse-proxy-adguard-agh-getting-started">their getting started guide</a>. If you want to run AdGuard Home in a Docker container, this `compose.yaml` should work for you as a base.
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > Please note, I have never run AdGuard Home in a Docker container myself, I'm just using common sense defaults to get up and running fast. Using `network_mode: host` allows all necessary network ports, including `53` for DNS (which **must** be available for DNS resolution to work), port `3000` for the _web UI_, , `853` for _DNS over TLS_, etc.
 >
 > Check out <a href="https://hub.docker.com/r/adguard/adguardhome" target="_blank" data-umami-event="reverse-proxy-adguard-agh-docker">the Docker Hub page for AdGuard Home</a> if you want to expose specific ports, or want to make other changes not covered here.
@@ -61,8 +57,6 @@ Next, we'll go into the _AdGuard Home web UI_ and add the DNS rewrites we need f
 
 3. Add a your domain as a wildcard like `*.domain.com`, and under that the IP address of the server running your services, e.g. `192.168.0.50`, then click on **Save**.
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > If you want to proxy services from more than one server, create specific entries for each one rather than using a wildcard -- for example, `service1.domain.com` would point to `192.168.0.50`, `service2.domain.com` would point to `192.168.0.100`, etc.
 >
 > This is also the case you want to proxy something straight to `domain.com` rather than a sub-domain, make sure to create a specific DNS rewrite for it, e.g. `domain.com` pointing to `192.168.0.200`.
@@ -131,8 +125,6 @@ services:
       - /opt/docker/letsencrypt:/etc/letsencrypt
     restart: unless-stopped
 ```
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > Make sure that ports `80` and `443` are available on your server and not being used by anything else! _Nginx Proxy Manager_ needs port `80` for _HTTP_ and port `443` for _HTTPS_.
 
 This compose file uses <a href="https://docs.docker.com/engine/storage/#bind-mounts" target="_blank" data-umami-event="reverse-proxy-adguard-docker-bind-mounts">bind mounts</a> to store container data in specific directories on the host, as I find this easier to migrate than <a href="https://docs.docker.com/engine/storage/#volumes" target="_blank" data-umami-event="reverse-proxy-adguard-docker-volumes">volumes</a>. (If you save your site on <a href="https://github.com" target="_blank">GitHub</a> you can just clone it and install it anywhere.)
@@ -195,8 +187,6 @@ If something does not work as intended (503 error or the like), fiddle with the 
 
 Barring any errors, once you set up all your proxy hosts in Nginx Proxy Manager you should have full HTTPS when going to your services via `https://subdomain.domain.com`.
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > One last thing, if you want to want to access the AdGuard Home web UI via HTTPS as well, be sure to use its default HTTPS network port *3001* in Nginx Proxy Manager.
 
 ## Reference
@@ -207,6 +197,5 @@ Barring any errors, once you set up all your proxy hosts in Nginx Proxy Manager 
 
 ### Related Articles
 
-> <a href="/blog/reverse-proxy-using-nginx-pihole-cloudflare/" data-umami-event="reverse-proxy-adguard-related-reverse-proxy-pihole">Setting up a reverse proxy for HTTPS with a custom domain using Nginx Proxy Manager, Pi-Hole and Cloudflare</a>
-
-> <a href="/blog/self-host-website-cloudflare-tunnel/" data-umami-event="reverse-proxy-adguard-related-tunnel-guide">Complete guide to self-hosting a website through Cloudflare Tunnel</a>
+- <a href="/blog/reverse-proxy-using-nginx-pihole-cloudflare/" data-umami-event="reverse-proxy-adguard-related-reverse-proxy-pihole">Setting up a reverse proxy for HTTPS with a custom domain using Nginx Proxy Manager, Pi-Hole and Cloudflare</a>
+- <a href="/blog/self-host-website-cloudflare-tunnel/" data-umami-event="reverse-proxy-adguard-related-tunnel-guide">Complete guide to self-hosting a website through Cloudflare Tunnel</a>

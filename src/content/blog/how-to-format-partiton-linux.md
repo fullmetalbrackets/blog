@@ -6,8 +6,6 @@ tags:
   - linux
 ---
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > Be aware that using these instructions to format a disk or delete partitions will lead to the loss of any data contained therein.
 
 ## Formatting a disk
@@ -60,6 +58,5 @@ You’d then use `mkfs` as above to format the partition with a filesystem, if o
 
 ### Related Articles
 
-> [Linux Commands & Keyboard Shortcuts Cheat Sheet](/blog/basic-linux-commands/)
-
-> [Mounting (either internal or external) hard drives in Linux](/blog/mounting-hard-drives-in-linux/)
+- <a href="/blog/basic-linux-commands/" data-umami-event="format-partition-related-linux-commands">Linux Commands & Keyboard Shortcuts Cheat Sheet</a>
+- <a href="/blog/mounting-hard-drives-in-linux/" data-umami-event="format-partition-related-mounting-hdd">Mounting (either internal or external) hard drives in Linux</a>

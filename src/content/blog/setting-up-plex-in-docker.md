@@ -95,6 +95,5 @@ Your movies should now appear within the _Movies_ section of the Plex UI. Repeat
 
 ### Related Articles
 
-> <a href="/blog/expose-plex-tailscale-vps/" data-umami-event="setup-plex-related-expose-tailscale-vps">How to securely expose Plex from behind CGNAT using Tailscale and a free Oracle VM</a>
-
-> <a href="/blog/setting-up-jellyfin-in-docker/" data-umami-event="setup-plex-setup-jellyfin">Setup self-hosted Jellyfin Media Server in Docker</a>
+- <a href="/blog/expose-plex-tailscale-vps/" data-umami-event="setup-plex-related-expose-tailscale-vps">How to securely expose Plex from behind CGNAT using Tailscale and a free Oracle VM</a>
+- <a href="/blog/setting-up-jellyfin-in-docker/" data-umami-event="setup-plex-setup-jellyfin">Setup self-hosted Jellyfin Media Server in Docker</a>

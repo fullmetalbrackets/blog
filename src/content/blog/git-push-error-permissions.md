@@ -18,8 +18,6 @@ Coming from only working with Git and GitHub from Windows, I first encountered t
 
 ## The fix
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > <a href="https://stackoverflow.com/a/26137707" target="_blank">This solution</a> is credited to user <a href="https://stackoverflow.com/users/445131/eric-leschinski" target="_blank">Eric Leschinski</a> in StackOverflow.
 
 This error occurs because you accidentally committed a file or folder to git using elevated permissions and now git can't modify those objects. It is safe to recursively force ownership of all files under `.git/objects/` to your current user to clear the problem.
@@ -39,6 +37,5 @@ This error occurs because you accidentally committed a file or folder to git usi
 
 ### Related Articles
 
-> [Git commands cheat sheet](/blog/git-commands-cheat-sheet/)
-
-> [How to generate a GPG key and use it to sign git commits](/blog/how-to-generate-gpg-to-sign-git-commits/)
+- <a href="/blog/git-commands-cheat-sheet/" target="git-error-permissions-related-git-commands">Git commands cheat sheet</a>
+- <a href="/blog/how-to-generate-gpg-to-sign-git-commits/" target="git-error-permissions-related-gpg-sign">How to generate a GPG key and use it to sign git commits</a>

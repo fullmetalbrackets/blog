@@ -124,8 +124,6 @@ Although Navidrome, like many self-hosted services, has username and passwords f
 
 ## Configure OAuth with Google
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > It's been a while since I wrote this post and I don't use this set up anymore (<a href="/blog/tailscale/" target="_blank" data-umami-event="tunnel-apps-to-tailscale">I switched to Tailscale</a>),  so if the rest of the guide doesn't work for you please <a href="mailto:contact@fullmetalbrackets.com?subject=The oauth section of your Cloudflare Tunnel guide is out of date!">let me know</a> and I'll update it in the future!
 
 You'll need a Google account to set this up, which you already do with Gmail. You'll be using that email to do some stuff on **Google Cloud Platform**. It's totally free for this use case.
@@ -170,8 +168,6 @@ Now that the OAuth provider is set up, we need make use of it with <a href="http
 
 2. Select _Self-Hosted_. Under _Application Configuration_, name the application `Navidrome` and choose session duration. Add the sub-domain you want to use (e.g. `music`) and the domain you transferred to Cloudflare earlier.
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > Ignore the warning about no DNS record found for this domain. Cloudflare is complaining about no A/AAAA records, but we don't need them for access via Tunnel.
 
 3. (Optional) Leave the _Application Appearance_ the same, and if you'd like select _Custom Logo_ and paste in the Navidrome logo URL: `https://raw.githubusercontent.com/navidrome/navidrome/master/resources/logo-192x192.png`
@@ -196,8 +192,6 @@ Now that the OAuth provider is set up, we need make use of it with <a href="http
 
 Now when you go to `https://music.your-domain.com` you should be met with a Google account login page. Login with the email you added and you should hit the Navidrome UI.
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > If you get any DNS errors when trying to access your domain after adding OAuth with the above steps, but didn't have any issues before that, you may be hitting your ad blocker. I didn't have issues with Pi-Hole, but when testing behind NextDNS I did get `NXDOMAIN` errors.<br><br>
 > <a href="https://help.nextdns.io/t/p8h5c71/keep-getting-nxdomain-for-well-known-sites" target="_blank" data-umami-event="tunnel-apps-nextdns-nxdomain-errors">See this post</a> on NextDNS Help Center. <em>TLDR:</em> Try disabling DNSSEC for your domain on the Cloudflare dashboard and see if that resolves the issue. (I have not tested it.)
 
@@ -235,6 +229,5 @@ It is possible to <a href="https://developers.cloudflare.com/dns/manage-dns-reco
 
 ### Related Articles
 
-> <a href="/blog/self-host-website-cloudflare-tunnel/" data-umami-event="tunnel-apps-related-complete-tunnel-guide">Complete guide to self-hosting a website through Cloudflare Tunnel</a>
-
-> <a href="/blog/expose-plex-with-cloudflare/" data-umami-event="tunnel-apps-related-expose-plex">How to securely expose Plex from behind CGNAT with Cloudflare Tunnel</a>
+- <a href="/blog/self-host-website-cloudflare-tunnel/" data-umami-event="tunnel-apps-related-complete-tunnel-guide">Complete guide to self-hosting a website through Cloudflare Tunnel</a>
+- <a href="/blog/expose-plex-with-cloudflare/" data-umami-event="tunnel-apps-related-expose-plex">How to securely expose Plex from behind CGNAT with Cloudflare Tunnel</a>

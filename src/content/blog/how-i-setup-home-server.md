@@ -265,8 +265,6 @@ Tailscale is easy to learn and use, and when setup properly is totally secure wi
 curl -fsSL https://tailscale.com/install.sh | sh
 ```
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > By default using most Tailscale commands requires superuser privileges, i.e. `sudo`. By using the command `sudo tailscale set --operator=$USER`, the specified user will then be able to execute Tailscale commands without `sudo`.
 
 Once installed, Tailscale is run with the following command: 
@@ -308,6 +306,5 @@ I have a ZimaBoard running a local instance of Pi-Hole for my tailnet, but it's 
 
 ### Related Articles
 
-> <a href="/blog/expose-plex-tailscale-vps/" data-umami-event="tailscale-post-related-expose-plex-vps">How to securely expose Plex from behind CGNAT using Tailscale and a free Oracle VM</a>
-
-> <a href="/blog/pihole-anywhere-tailscale/" data-umami-event="tailscale-post-related-pihole-anywhere">How to use Pi-hole from anywhere with Tailscale</a>
+- <a href="/blog/expose-plex-tailscale-vps/" data-umami-event="tailscale-post-related-expose-plex-vps">How to securely expose Plex from behind CGNAT using Tailscale and a free Oracle VM</a>
+- <a href="/blog/pihole-anywhere-tailscale/" data-umami-event="tailscale-post-related-pihole-anywhere">How to use Pi-hole from anywhere with Tailscale</a>

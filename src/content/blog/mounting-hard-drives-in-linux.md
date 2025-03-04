@@ -61,8 +61,6 @@ Since the drive is mounted, it's helpfully labeled, so you can figure out which 
 
 Simple. We're using `ext4` as the file system, which is how I partitioned it, but if it the file system is different use the correct one -- e.g `ntfs`, `zfs`, etc. We are using the same options as the swap partition for this hard drive, let's call these basic options.
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > The number at the end of each line is important, its the order filesystems are checked at boot time. Make sure your root drive is always set to `1`, non-root mount points should be set to `2`.
 
 Save and close the fstab file. Now when you reboot, the second hard drive should always auto-mount to `/mnt/DATA`. This guide was for an internal hard drive specifically, but as I said before, everything is identical for external USB drives; they show up as `sdb`, `sdc`, and so on. The HDDs inside the external drives are SCSI, and so are USB sticks. Mount all the things!
@@ -74,6 +72,5 @@ Save and close the fstab file. Now when you reboot, the second hard drive should
 
 ### Related Articles
 
-> [Linux Commands & Keyboard Shortcuts Cheat Sheet](/blog/basic-linux-commands/)
-
-> [Formatting disks in Linux command line](/blog/formatting-on-linux/)
+- <a href="/blog/formatting-on-linux/" data-umami-event="mounting-hdd-related-formatting-disks-linux">Formatting disks in Linux command line</a>
+- <a href="/blog/basic-linux-commands/" data-umami-event="stay-on-lid-closed-related-linux-commands">Linux Commands & Keyboard Shortcuts Cheat Sheet</a>

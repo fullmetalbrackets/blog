@@ -22,8 +22,6 @@ npx surge
 
 The first time you do this command, you'll be prompted to create an account, just enter an email and password. Every time thereafter, `npx surge` will immediately publish the present working directory to the web, to a randomly-generated subdomain of Surge.sh, e.g. `wandering-unicorn.surge.sh`
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > If using a static site generator like **Astro** or **Eleventy**, you'll first need use `npm build` (or equivalent) to build the static assets, then specify the directory to publish, e.g. `npx surge dist`.
 
 If you want to remove a Surge site you published, it's just another simple command:
@@ -60,8 +58,6 @@ Surge lets you use your own domain instead of a surge.sh subdomain. First, you'l
 
 Alternately you can instead add an _A record_ set to IP address `45.55.110.124`
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > For detailed instructions on changing your owned domain's records, see <a href="https://surge.sh/help/adding-a-custom-domain" target="_blank">Surge's documentation</a>.
 
 If your records are set up properly, you can deploy to your custom domain like so:
@@ -76,8 +72,6 @@ You can also save your custom domain to a _CNAME file_ (no file extension) in yo
 echo custom-domain.com > CNAME
 ```
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > Though all projects published to `surge.sh` sub-domains include free SSL, this is not the case with custom domains! To use SSL with your own domain, you'll need the paid <a href="https://surge.sh/plus" target="_blank">Surge Plus</a> plan, which costs $30/month. For more details, see <a href="https://surge.sh/help/securing-your-custom-domain-with-ssl" target="_blank">this section of the Surge documentation</a>.
 
 ## Ignore specific files and directories
@@ -92,8 +86,6 @@ node_modules
 bower_components
 ```
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > If using a static site generator, place the .surgeignore file in the directory you are publishing, e.g. the `/dist` or `/public` directory.
 
 ## Adding redirects

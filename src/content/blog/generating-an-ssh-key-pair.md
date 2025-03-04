@@ -87,6 +87,5 @@ cat ~/.ssh/id_rsa.pub | ssh bob@hostname 'cat >> .ssh/authorized_keys && echo "K
 
 ### Related Articles
 
-> <a href="/blog/copy-ssh-keys-between-hosts/" data-umami-event="generating-ssh-key-pair-related-copy-ssh-keys-hosts">Copying SSH Keys between different hosts</a>
-
-> <a href="/blog/setup-ssh-authentication-to-push-to-github/" data-umami-event="generating-ssh-key-pair-related-ssh-auth-github">Setup SSH authentication to push to Github</a>
+- <a href="/blog/copy-ssh-keys-between-hosts/" data-umami-event="generating-ssh-key-pair-related-copy-ssh-keys-hosts">Copying SSH Keys between different hosts</a>
+- <a href="/blog/setup-ssh-authentication-to-push-to-github/" data-umami-event="generating-ssh-key-pair-related-ssh-auth-github">Setup SSH authentication to push to Github</a>
