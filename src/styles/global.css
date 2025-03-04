@@ -346,7 +346,7 @@ blockquote::before img {
   background-color: var(--blockquote);
   border-radius: 0.5em;
   margin: 1em auto 1.5em auto;
-  padding: 1em;
+  padding: 1em 1em 0.75em 1em;
   border: 2px solid var(--primary);
   width: 95%;
 }
