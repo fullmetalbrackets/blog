@@ -468,6 +468,8 @@ As of the release of Pi-Hole v6 (see below for details) the only way to sync con
 > The original Pi-Hole syncing solution, Gravity Sync, has been archived and will no longer be maintained. It does not work with Pi-Hole v6, though its last release still works with Pi-Hole v5 and older.
 > 
 > Aside from Nebula Sync as mentioned above, there is another actively-maintained alternative, <a href="https://github.com/mattwebbio/orbital-sync" target="_blank" data-umami-event="setup-pihole-orbital-sync">Orbital Sync</a>, but support v6 is not yet available. (Although it is coming.)
+>
+> There is also a more recent project called <a href="https://github.com/deg0nz/pihole-sync" target="_blank" data-umami-event="setup-pihole-pihole-sync">Pihole-Sync</a> that might be of interest.
 
 ## References
 
