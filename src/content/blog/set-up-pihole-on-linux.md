@@ -2,7 +2,7 @@
 title: "Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS (Updated for Pi-Hole v6)"
 description: "Besides just using a browser extension for ad blocking, I've been using Pi-Hole for years to prevent all devices on my network from getting ads, and stopping smart home devices from phoning home for telemetry and tracking. Pi-Hole will run on almost anything that can run Linux, is very easy to set up, and super effective with the right blocklists."
 pubDate: 2022-10-08
-updatedDate: 2025-02-29
+updatedDate: 2025-03-15
 tags:
   - pi-hole
 ---
@@ -457,7 +457,9 @@ cert = "/etc/pihole/tls.pem"
 cert = "/etc/pihole/pihole.pem"
 ```
 
-6. Save the changes and close the config file. Reload the Pi-Hole dashboard if already open, or open it in a new browser tab. The warnings should be gone and should not come back.
+6. Save the changes and close the config file. Reload the Pi-Hole dashboard if already open, or open it in a new browser tab. The warnings should be gone and should not come back. It if doesn't go away immediately, reboot the machine running Pi-Hole.
+
+Unfortunately, as far as I can tell, you will have to do this each time your TLS certificate it renewed. So eventually you may just want to live with the warning instead of going through this process every time.
 
 ## Run and sync two Pi-Holes
 
