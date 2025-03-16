@@ -84,6 +84,7 @@
     --code-bg: hsl(220, 13%, 18%);
     --code-text: hsl(0, 0%, 100%);
     --coffee: rgb(202, 71, 0);
+    --scroll: hsl(220, 13%, 18%);
     --pagefind-ui-text: rgb(164, 174, 188);
     --pagefind-ui-background: rgb(51, 65, 85);
     --svg: invert(93%) sepia(78%) saturate(2834%) hue-rotate(213deg) brightness(148%) contrast(96%);
@@ -117,11 +118,12 @@ body {
   font-smooth: always;
 }
 ::-webkit-scrollbar, ::-webkit-scrollbar-track {
-  background-color: transparent;
+  background-color: var(--scroll);
+  width: 0.35em;
 }
 ::-webkit-scrollbar-thumb {
   background-color: var(--primary);
-  border: 4px solid transparent;
+  border: 0 solid transparent;
   background-clip: content-box;
 }
 ::selection {
@@ -417,6 +419,7 @@ li::marker {
 }
 aside > a, aside > a:active, aside > a:visited, aside > a:hover, aside > a:focus {
   color: #000;
+  font-size: 0.75em;
 }
 .submit {
   margin-top: 0.25em;

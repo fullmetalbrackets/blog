@@ -2,6 +2,7 @@
 import type { CollectionEntry } from "astro:content";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import FormattedDate from "@components/FormattedDate.astro";
+import ScrollProgress from "@components/ScrollProgress.astro";
 
 type Props = CollectionEntry<"wiki">["data"];
 
@@ -36,35 +37,9 @@ const { title, description, pubDate, updatedDate, tags } = Astro.props;
     .bottom-line {
       margin-top: 2em;
     }
-    /* @media screen and (min-width: 200px) and (max-width: 667px) {
-      article {
-        margin-top: 4em;
-      }
-      .title {
-        padding-top: 0.15em;
-      }
-      aside {
-        font-size: 1rem;
-      }
-      label {
-        margin-right: 0.25em;
-      }
-      button {
-        margin-left: 0.25em;
-      }
-      .radio {
-        margin: 0 0.25em;
-      }
-      .submit {
-        margin-left: 0.5em;
-      }
-      .top {
-        width: 5em;
-        text-align: center;
-      }
-    } */
   </style>
 
+  <ScrollProgress />
   <article>
     <h1 class="title">{title}</h1>
     <div class="date">
