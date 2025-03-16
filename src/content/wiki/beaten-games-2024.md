@@ -1,7 +1,7 @@
 ---
 title: "Video games I finished in 2024"
 description: "A list of videogames I played from start to finish in 2024."
-pubDate: 2025-02-23
+pubDate: 2025-03-15
 tags:
   - misc
 ---
@@ -11,9 +11,10 @@ tags:
 - Doom Eternal + DLCs
 - Doom 64
 - Ducktales Remastered
-- Fallout 4
-- Final Fantasy VII Remake
+- Fallout 4 (base game only)
+- Final Fantasy VII Remake + Intergrade
 - Final Fantasy XVI
+- God of War
 - God of War: Ragnarok
 - Hollow Knight
 - Metroid Dread
