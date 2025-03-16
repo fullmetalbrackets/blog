@@ -7,8 +7,6 @@ tags:
   - services
 ---
 
-> <img src="/assets/info.svg" class="info" loading="lazy" decoding="async" alt="Information">
->
 > See <a href="/blog/how-i-setup-home-server/" target="_blank" data-umami-event="wiki-services-home-server-blog">this blog post</a> for more details.
 
 # Athena
