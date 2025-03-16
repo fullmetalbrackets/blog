@@ -9,7 +9,7 @@ tags:
 
 ## What and Why
 
-PPi-Hole by itself does not support using DNS over HTTPS or DNS over TLS, but it can forward DNS requests to another resolver that does support those protocols, which then forwards the encrypted requests upstream to a public DNS endpoint. In this guide I'll show how to use either Unbound or Cloudflared as a forwarding resolver in Pi-Hole to use DNS over TLS with Quad9 as the upstream. <a href="/blog/pi-hole-quad9-dls-over-tls/" target="_blank" data-umami-event="pihole-doh-related-pihole-quad9-dot">See this blog post to use DNS over TLS instead</a>.
+Pi-Hole by itself does not support using DNS over HTTPS or DNS over TLS, but it can forward DNS requests to another resolver that does support those protocols, which then forwards the encrypted requests upstream to a public DNS endpoint. In this guide I'll show how to use either Unbound or Cloudflared as a forwarding resolver in Pi-Hole to use DNS over TLS with Quad9 as the upstream. <a href="/blog/pi-hole-quad9-dls-over-tls/" target="_blank" data-umami-event="pihole-doh-related-pihole-quad9-dot">See this blog post to use DNS over TLS instead</a>.
 
 ## Caveats and pre-requisites
 
