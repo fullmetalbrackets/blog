@@ -1,0 +1,27 @@
+---
+---
+
+<style scoped>
+    .scroll {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      height: 0.25em;
+      background-color: var(--primary);
+    }
+</style>
+
+<div id="scroll-progress" class="scroll">
+</div>
+
+<script type="module">
+    window.addEventListener("scroll", function () {
+      const scrollableHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
+      const scrolled = window.scrollY;
+      const progressBar = document.getElementById("scroll-progress");
+      const progress = (scrolled / scrollableHeight) * 100;
+      progressBar.style.width = progress + "%";
+    });
+</script>
