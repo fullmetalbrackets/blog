@@ -1,21 +1,25 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
+import { Image } from 'astro:assets';
+import Logo from '../img/assets/logo.png';
 ---
 
 <style scoped>
+  header {
+    margin: 0 auto;
+  }
   nav {
     font-family: "M Plus Rounded 1c Med";
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 78ch;
+    max-width: 77.1ch;
     margin: 0 auto;
     padding: 0 auto;
   }
   nav a {
     color: var(--primary);
     text-decoration: none;
-    margin: auto 0.25em;
     border: 2px solid transparent;
   }
   nav a:hover {
@@ -50,6 +54,7 @@ import HeaderLink from "./HeaderLink.astro";
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 0.25em;
   }
   .search {
     filter: var(--search);
@@ -68,7 +73,8 @@ import HeaderLink from "./HeaderLink.astro";
 <header>
   <nav>
     <a href="/" class="logo" aria-label="logo">
-      <img
+      <Image src={Logo} alt="Site logo." width="50px" height="auto" loading="eager" />
+      <!-- <img
         height="auto"
         width="50px"
         src="/logo.png"
@@ -77,7 +83,7 @@ import HeaderLink from "./HeaderLink.astro";
         loading="eager"
         decoding="async"
         data-umami-event="front-page-logo"
-      />
+      /> -->
         <!-- <svg
           xmlns="http://www.w3.org/2000/svg"
           width="50"
