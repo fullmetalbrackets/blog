@@ -2,7 +2,7 @@
 title: "How to securely expose Plex from behind CGNAT with Cloudflare Tunnel"
 description: "Exposing Plex normally involves port forwarding from the router, which is very insecure and not recommended. If your home network is behind CGNAT - very common with most ISPs nowadays -- you can't even port forward if you wanted to. Here's how I did it in a fairly secure way that limits access by using Cloudflare."
 pubDate: 2024-07-15
-updatedDate: 2025-02-10
+updatedDate: 2025-03-26
 tags:
   - cloudflare
 ---
@@ -13,15 +13,17 @@ Plex is a self-hosted media server that lets you stream your owned (or downloade
 
 Although there are many solutions to get across CGNAT, for Plex I've found that using Cloudflare Tunnel is the one with the least hassle. Cloudflare Tunnel provides a secure connection to a network resource behind CGNAT and without exposing your public IP, by running a `cloudflared` daemon on your server. As a by-product, the traffic flows through Cloudflare's CDN and gets all the features that come with that, including security through their Web Application Firewall. In this post I will demonstrate how I have been sharing my Plex library through a Cloudflare Tunnel and only allowing access from specific IP addresses.
 
-> You're probably much better off following <a href="/blog/expose-plex-tailscale-vps/" target="_blank" data-umami-event="expose-plex-cloudflare-to-tailscale-vps">this blog post to expose Plex through CGNAT with Tailscale</a> instead of using exposing it via Cloudflare Tunnel as I write about below.
+> You're probably much better off following <a href="/blog/expose-plex-tailscale-vps/" target="_blank" data-umami-event="expose-plex-cloudflare-to-tailscale-vps">this blog post to expose Plex through CGNAT with Tailscale</a> instead of using exposing it via Cloudflare Tunnel as I write about below. Technically speaking, **Cloudflare Tunnel is NOT intended for routing video and audio streams**, it's intended purpose is routing HTTP traffic for webpages. In fact, the <a href="https://www.cloudflare.com/service-specific-terms-application-services/#content-delivery-network-terms" target="_blank" data-umami-event="expose-plex-cloudflare-tos">Cloudflare Service-Specific Terms for their CDN</a> specifically state:
 >
-> Technically speaking, Cloudflare Tunnel is **NOT** intended for routing video and audio streams, it's intended purpose is routing HTTP traffic for webpages. In fact, the <a href="https://www.cloudflare.com/service-specific-terms-application-services/#content-delivery-network-terms" target="_blank" data-umami-event="expose-plex-cloudflare-tos">Cloudflare Service-Specific Terms for their CDN</a> specifically state,
+> _"Unless you are an Enterprise customer, Cloudflare offers specific Paid Services (e.g., the Developer Platform, Images, and Stream) **that you must use in order to serve video and other large files via the CDN**. Cloudflare reserves the right to disable or limit your access to or use of the CDN, or to limit your End Users’ access to certain of your resources through the CDN, **if you use or are suspected of using the CDN without such Paid Services to serve video** or a disproportionate percentage of pictures, audio files, or other large files."_
 >
-> _"Unless you are an Enterprise customer, Cloudflare offers specific Paid Services (e.g., the Developer Platform, Images, and Stream) that you must use in order to serve video and other large files via the CDN. Cloudflare reserves the right to disable or limit your access to or use of the CDN, or to limit your End Users’ access to certain of your resources through the CDN, if you use or are suspected of using the CDN without such Paid Services to serve video or a disproportionate percentage of pictures, audio files, or other large files."_
+> In addition, <a href="https://developers.cloudflare.com/support/more-dashboard-apps/cloudflare-stream/delivering-videos-with-cloudflare/" target="_blank" data-umami-event="expose-plex-cloudflare-docs">the section of the Cloudflare documentation about delivering videos with Cloudflare</a> spells this out:
 >
-> Be aware that by using Cloudflare Tunnel, you are routing traffic through Cloudflare's CDN (can't have one without the other) and so using it with Plex may cause Cloudflare to limit or potentially outright ban your account. By following this guide, **you agree to take the risk** that such action may occur, so _think carefully about this warning and whether it's worth it_.
+> _"Over time we recognized that some of our customers wanted to stream video using our network. To accommodate them, we developed our Stream product. Stream delivers great performance at an affordable rate charged based on how much load you place on our network. Unfortunately, while most people respect these limitations and understand they exist to ensure high quality of service for all Cloudflare customers, **some users attempt to misconfigure our service to stream video in violation of our Terms of Service**."_
+> 
+> Be aware that by using Cloudflare Tunnel, you are routing traffic through Cloudflare's CDN (can't have one without the other) and so using it with Plex violates their terms of services and may cause Cloudflare to limit or potentially outright ban your account. By following this guide, **you agree to take the risk** that such action may occur, so _think carefully about this warning and whether it's worth it_.
 >
-> If you already have a Cloudflare account and still want to expose Plex this way, I highly recommend creating a _separate Cloudflare account with another email address_, and only use that other account for hosting a Cloudflare Tunnel with Plex, so that any actions taken by Cloudflare against you are limited to this new account, and not your main one! Consider it a burner account that may eventually self-destruct.
+> Cloudflare can see all traffic routed through their CDN and know when that traffic is video streaming. They may not care if it's just you streaming video once in a while, or if you're not using a lot of bandwidth, but constant use by multiple IPs will almost certainly rouse their attention and can lead to action being taken against you. You've been warned!
 
 ## Pre-Requisites
 
