@@ -724,10 +724,10 @@ astro-social-share@^2.1.0:
   resolved "https://registry.yarnpkg.com/astro-social-share/-/astro-social-share-2.1.0.tgz#7c0da29b24e8c900d46164cdc306e2509e1b4403"
   integrity sha512-t5DykR+T7gGNLTnrFXASCyufCpXcWhLdXFLSRYRKvMOFSUaaPIWMPu1ncIhxdFD7hm7SWHboAb33nJUUZxJH2Q==
 
-astro@^5.5.4:
-  version "5.5.4"
-  resolved "https://registry.yarnpkg.com/astro/-/astro-5.5.4.tgz#bb1ebaa3c4af3418ef9ee317ee4c8dca49f07471"
-  integrity sha512-rc9Mj6dIKM9ylTSQ0/S1l5f1iSDNs0PEjRMnvVpZ0W+wfBCu99JEuXy+fiWDNT6gf60bC4dKQehZxZGdSJB9kg==
+astro@^5.5.5:
+  version "5.5.5"
+  resolved "https://registry.yarnpkg.com/astro/-/astro-5.5.5.tgz#bc84c9f4e3d1b2211d21ccf63b20a56f09cbaab6"
+  integrity sha512-fdnnK5dhWNIQT/cXzvaGs9il4T5noi4jafobdntbuNOrRxI1JnOxDfrtBadUo6cknCRCFhYrXh4VndCqj1a4Sg==
   dependencies:
     "@astrojs/compiler" "^2.11.0"
     "@astrojs/internal-helpers" "0.6.1"
@@ -778,7 +778,7 @@ astro@^5.5.4:
     unist-util-visit "^5.0.0"
     unstorage "^1.15.0"
     vfile "^6.0.3"
-    vite "^6.2.1"
+    vite "^6.2.3"
     vitefu "^1.0.6"
     xxhash-wasm "^1.1.0"
     yargs-parser "^21.1.1"
@@ -2843,7 +2843,7 @@ vfile@^6.0.0, vfile@^6.0.3:
     "@types/unist" "^3.0.0"
     vfile-message "^4.0.0"
 
-vite@^6.2.1:
+vite@^6.2.3:
   version "6.2.3"
   resolved "https://registry.yarnpkg.com/vite/-/vite-6.2.3.tgz#249e92d32886981ab46bc1f049ac72abc6fa81e2"
   integrity sha512-IzwM54g4y9JA/xAeBPNaDXiBF8Jsgl3VBQ2YQ/wOY6fyW3xMdSoltIV3Bo59DErdqdE6RxUfv8W69DvUorE4Eg==
