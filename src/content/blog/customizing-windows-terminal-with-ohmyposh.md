@@ -45,7 +45,7 @@ Restart your terminal or reload the profile with the command `. $PROFILE` for ch
 Once you have installed Oh-My-Posh, the <a href="https://github.com/JanDeDobbeleer/oh-my-posh/blob/main/themes/default.omp.json" target="_blank">default theme</a> will be used. Use the following command to list all the themes and get a preview of how they'll look in the terminal. (Give it a minute, there's a lot of them.)
 
 ```shell
-Get Posh-Themes
+Get-PoshThemes
 ```
 
 The themes will all located in the following directory:
