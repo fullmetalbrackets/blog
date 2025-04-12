@@ -2,10 +2,12 @@
 title: "How to securely expose Plex from behind CGNAT using Tailscale and a free Oracle VM"
 description: "I wrote before about securely exposing Plex for external access, but my previous solution relied on Cloudflare Tunnel and it was technically against their TOS. So I switched to using a Oracle VM on their free-tier, connecting it to my home network with Tailscale, and exposing Plex via reverse proxy. It works like a charm!"
 pubDate: 2024-09-03
-updatedDate: 2025-03-03
+updatedDate: 2025-04-11
 tags:
   - tailscale
 ---
+
+> The method described in this article will route traffic of other users you've shared your library with through an Oracle VM running Tailscale, which connects to a Plex server also running Tailscale. Traffic from other users will be considered local and _should_ get around the requirement (effective April 29, 2025) of an active Plex Pass to allow remote access.
 
 ## What and Why
 
@@ -355,6 +357,10 @@ Already anyone you share your library with can access it by going to `https://yo
 ![Plex Pass options when sharing libraries.](../../img/blog/plex-library-access3.png 'Plex Pass options when sharing libraries')
 
 Now your friend will get an email invitation and once accepted they'll be able to access your Plex library both from their apps and by going straight to your domain on a browser to reach the web UI.
+
+Once your friend starts streaming, they'll show up on your Plex dashboard under the Tailscale IP of the Oracle VM, and it will be considered a local IP. See the screenshot below and notice the `100.x.x.x` IP.
+
+![Plex dashboard showing Tailscale IP as local client.](../../img/blog/plex-dashboard-streams.png 'Plex dashboard showing Tailscale IP as local client')
 
 ## References
 
