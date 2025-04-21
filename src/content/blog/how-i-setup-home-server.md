@@ -2,16 +2,16 @@
 title: "How I set up a home server for self-hosting and as a NAS with secure remote access via Tailscale"
 description: "I turned my old Dell PC into an all-in-one home server and network attached storage to self-host all my data, my photos, and my media library, running Home Assistant, Plex and other services, all securely accessible from outside my home with Tailscale."
 pubDate: 2025-01-31
-updatedDate: 2025-02-03
+updatedDate: 2025-04-20
 tags:
   - self-hosting
 ---
 
 ## Server hardware and software
 
-My old desktop PC turned server is a _Dell XPS 8920_ with an **Intel i7-7700k CPU** and **24 GB of DDR4 RAM**. (I removed the _AMD RX 480 GPU_ it came with, since I was not going to use it.) I installed _Debian 12 Bookworm_ on an NVMe drive and added hard drives to every available SATA port.
+My old desktop PC turned server is a _Dell XPS 8920_ with an **Intel i7-7700 CPU** and **24 GB of DDR4 RAM**. (I removed the _AMD RX 480 GPU_ it came with, since I was not going to use it.) I installed _Debian 12 Bookworm_ on the M.2 NVMe drive and added hard drives to every available SATA port, including replacing the CD-ROM with another HDD.
 
-The large hard drives are pooled together using <a href="/blog/two-drives-mergerfs/" target="_blank" data-umami-event="home-server-mergerfs-blog-post">MergerFS</a>. For secure remote access, I have settled on <a href="/blog/tailscale/" target="_blank">Tailscale</a> for it's ease of use and exceptionally good free tier. To manage the server with a nice GUI, I use <a href="https://cockpit-project.org" target="_blank" data-umami-event="home-server-cockpit">Cockpit</a>. You can add "applications" for visualizing performance metrics, managing storage, and configuring virtual machines. (Which I rarely use.) I also use add-ons _File Sharing_ to manage my SMB shares and _Navigator_ for a graphical file manager.
+The large capacity (2 and 4 TB) hard drives are pooled together using <a href="/blog/two-drives-mergerfs/" target="_blank" data-umami-event="home-server-mergerfs-blog-post">MergerFS</a>. For secure remote access, I have settled on <a href="/blog/tailscale/" target="_blank">Tailscale</a> for it's ease of use and exceptionally good free tier. To manage the server with a nice GUI, I use <a href="https://cockpit-project.org" target="_blank" data-umami-event="home-server-cockpit">Cockpit</a>. You can add "applications" for visualizing performance metrics, managing storage, and configuring virtual machines. (Which I rarely use.) I also use the Cockpit add-ons _File Sharing_ to manage my SMB shares and _Navigator_ for a graphical file manager.
 
 ![Cockpit Overview](../../img/blog/cockpit1.png 'Cockpit Overview')
 ![Cockpit Storage](../../img/blog/cockpit2.png 'Cockpit Storage')
@@ -26,37 +26,149 @@ Aside from the ones mentioned above, most of my other self-hosted apps and servi
 curl -fsSL get.docker.com | sudo sh
 ```
 
-I'll devote a section to each docker container I run and include my `compose.yaml` file for each.
+I'll devote a section to each docker container I run and include a `compose.yaml` snippet.
 
 ### Dozzle
 
 <a href="https://dozzle.dev" target="_blank" data-umami-event="home-server-dozzle">Dozzle</a> is a container log viewer. Portainer shows logs as well, and while it's useful for "live" logging I find Dozzle's UX much better for deep analysis of past logs.
 
+```yaml
+   dozzle:
+      restart: unless-stopped
+      container_name: dozzle
+      image: amir20/dozzle:latest
+      volumes:
+         - /var/run/docker.sock:/var/run/docker.sock
+      ports:
+         - 20080:8080
+```
+<br>
+
 ### File Browser
 
 <a href="https://github.com/filebrowser/filebrowser" target="_blank" data-umami-event="home-server-filebrowser">Filebrowser</a> is exactly what the name implies, a GUI file explorer accessed via web UI. I rarely use it, but I have it setup to serve my `/home` directory in case I ever need to access it from another device.
+
+```yaml
+   filebrowser:
+      image: filebrowser/filebrowser:latest
+      container_name: filebrowser
+      environment:
+         - PUID=1000
+         - PGID=1000
+      volumes:
+         - /home/ad:/srv
+         - /opt/docker/filebrowser/filebrowser.db:/database/filebrowser.db
+         - /opt/docker/filebrowser/settings.json:/config/settings.json
+      ports:
+         - 18888:80
+      restart: unless-stopped
+```
+<br>
 
 ### Gluetun
 
 <a href="https://github.com/qdm12/gluetun" target="_blank" data-umami-event="home-server-gluetun">Gluetun</a> is a VPN client inside a docker container, it can connect to almost any VPN provider, using either OpenVPN or WireGuard protocols. By hooking up another container's networking to Gluetun, that other container will connect through the VPN. I use *qBittorrent* with Gluetun for private torrent downloads, that way I don't expose my IP address and avoid angry letters from my ISP.
 
+```yaml
+   gluetun:
+      image: qmcgaw/gluetun
+      container_name: gluetun
+      network_mode: bridge
+      cap_add:
+         - NET_ADMIN
+      devices:
+         - /dev/net/tun:/dev/net/tun
+      ports:
+         - 8080:8080/tcp # qBittorrent
+         - 8888:8888/tcp # HTTP proxy
+         - 8388:8388/tcp # Shadowsocks
+         - 8388:8388/udp # Shadowsocks
+         - 58279:58279/tcp # Virtual port forwarding
+         - 58279:58279/udp # Virtual port forwarding
+      volumes:
+         - /opt/docker/gluetun:/gluetun
+      restart: unless-stopped
+      environment:
+         - TZ=America/New_York
+         - UPDATER_PERIOD=24h
+         - SERVER_COUNTRIES="United States"
+         - SERVER_CITIES=Miami,Atlanta Georgia,Chicago Illinois,Dallas Texas,Denver Colorado,New York City
+         - VPN_TYPE=wireguard
+         - VPN_SERVICE_PROVIDER=airvpn
+         - FIREWALL_VPN_INPUT_PORTS=58279
+         - WIREGUARD_PRIVATE_KEY=
+         - WIREGUARD_PRESHARED_KEY=
+         - WIREGUARD_ADDRESSES=
+```
+<br>
+
 ### Home Assistant
 
-<a href="https://home-assistant.io" target="_blank" data-umami-event="home-server-home-assistant">Home Assistant</a> is a smart home automation hub that provides local control over IoT and smart devices in my house. Although I use Google Home on the regular because it's easier to just speak what I want to do, everything that I can also connect to Home Assistant, I do. It has let me keep controlling my lights a few times when my internet was out, so that alone makes it worthwhile, and creating "if this then that" automations as useful as it is fun.
+<a href="https://home-assistant.io" target="_blank" data-umami-event="home-server-home-assistant">Home Assistant</a> is a smart home automation hub that provides local control over IoT and smart devices in my house. Although I use Google Home on the regular because it's easier to just speak what I want to do, everything that I can also connect to Home Assistant, I do. It has let me keep controlling my lights a few times when my internet was out, so that alone makes it worthwhile, and creating "if this then that" automations are as useful as they are fun.
+
+```yaml
+   homeassistant:
+      container_name: homeassistant
+      image: ghcr.io/home-assistant/home-assistant:stable
+      volumes:
+      - /opt/docker/homeassistant:/config
+      - /srv/media:/media
+      - /srv/data:/data
+      - /etc/localtime:/etc/localtime:ro
+      - /run/dbus:/run/dbus:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+      restart: unless-stopped
+      privileged: true
+      network_mode: host
+```
+<br>
 
 ### Kavita
 
 <a href="https://kavitareader.com" target="_blank" data-umami-event="home-server-kavita">Kavita</a> is a simple user friendly ebook manager and reader, which I've been using to read my last few books on either my phone or tablet. It has a really nice and user friendly web GUI.
+
+```yaml
+   kavita:
+      restart: unless-stopped
+      image: jvmilazz0/kavita:latest
+      container_name: kavita
+      ports:
+         - 5000:5000
+      volumes:
+         - /srv/data/ebooks/comics:/comics
+         - /srv/data/ebooks/books:/books
+         - /opt/docker/kavita:/kavita/config
+      environment:
+         - TZ=America/New_York
+```
+<br>
 
 ### Nginx Proxy Manager
 
 <a href="https://nginxproxymanager.com" target="_blank" data-umami-event="home-server-nginxproxy">Nginx Proxy Manager</a> is nice GUI wrapper over Nginx that lets you easily add proxy hosts and redirects, configure TLS, etc. I use it as a reverse proxy to access container web UIs with HTTPS via a custom domain. I use <em>AdGuard Home</em> as my home network DNS, so I have DNS rewrites configured for all the proxy hosts, and a custom domain from Cloudflare gets TLS certificates via DNS challenge.
 
 For details <a href="/blog/reverse-proxy-using-nginx-adguardhome-cloudflare/" target="_blank">see this blog post about setting up Nginx Proxy Manager with AdGuard Home and Cloudflare</a>.
+<br><br>
 
 ### OpenGist
 
 <a href="https://opengist.io" target="_blank" data-umami-event="home-server-opengist">OpenGist</a> is a self-hosted open source alternative to GitHub Gists. This is only accessible to me and I use it to save like API keys or tokens, configuration files, and code snippets so I can quickly copy & paste these things when I need to.
+
+```yaml
+   opengist:
+      image: ghcr.io/thomiceli/opengist:1
+      container_name: opengist
+      restart: unless-stopped
+      environment:
+         UID: 1000
+         GID: 1000
+      ports:
+         - 6157:6157
+         - 2222:2222
+      volumes:
+         - /opt/docker/opengist:/opengist
+```
+<br>
 
 ### Paperless-ngx
 
@@ -64,11 +176,80 @@ For details <a href="/blog/reverse-proxy-using-nginx-adguardhome-cloudflare/" ta
 
 I honestly don't use it that much, but my wife and I have fed all our tax returns, property documents, and important receipts to it so that we can just go to one place from any device to view, edit and print documents.
 
+Paperless runs as three containers, so I put them all in a stack.
+
+```yaml
+services:
+   broker:
+      container_name: paperless-broker
+      image: docker.io/library/redis:7
+      restart: unless-stopped
+      volumes:
+         - /home/ad/docker/paperless/redis:/data
+
+   db:
+      container_name: paperless-db
+      image: docker.io/library/postgres:15
+      restart: unless-stopped
+      volumes:
+         - /home/ad/docker/paperless/postgres:/var/lib/postgresql/data
+      environment:
+         POSTGRES_DB: paperless
+         POSTGRES_USER: paperless
+         POSTGRES_PASSWORD: paperless
+
+   webserver:
+      container_name: paperless-web
+      image: ghcr.io/paperless-ngx/paperless-ngx:latest
+      restart: unless-stopped
+      depends_on:
+         - db
+         - broker
+      ports:
+         - 8008:8000
+      volumes:
+         - /opt/docker/paperless/data:/usr/src/paperless/data
+         - /opt/docker/paperless/media:/usr/src/paperless/media
+         - /srv/data/documents:/usr/src/paperless/export
+         - /srv/data/paperless:/usr/src/paperless/consume
+      environment:
+         USERMAP_UID: 1000
+         USERMAP_GID: 1000
+         PAPERLESS_REDIS: redis://broker:6379
+         PAPERLESS_DBHOST: db
+         PAPERLESS_TIME_ZONE: America/New_York
+         PAPERLESS_ADMIN_USER:
+         PAPERLESS_ADMIN_PASSWORD:
+         PAPERLESS_URL:
+```
+<br>
+
 ### Plex
 
 <a href="https://plex.tv" target="_blank" data-umami-event="home-server-plex-site">Plex</a> is a slick, feature packed media server and streaming player for self-hosted media. It also has some free movies and TV shows, and live TV channels. It's not open source, some features are behind a paid subscripton or lifetime pass, and the company hasn't always made good decisions for its users -- but it's still the best and most user friendly media player for me, my wife and two family members I have shared with.
 
 I have written blog posts about <a href="/blog/setting-up-plex-in-docker/" target="_blank" data-umami-event="home-server-plex-guide">how to self-host Plex as a Docker container</a> and <a href="/blog/expose-plex-tailscale-vps/" target="_blank" data-umami-event="home-server-expose-plex-tailscale">how to use Tailscale and an Oracle free tier compute instance to securely expose Plex to other users</a>.
+
+```yaml
+   plex:
+      restart: unless-stopped
+      container_name: plex
+      image: linuxserver/plex:latest
+      network_mode: host
+      environment:
+         - TZ=America/New_York
+         - PLEX_UID=1000
+         - PLEX_GID=1000
+      volumes:
+         - /opt/docker/plex:/config
+         - /srv/media/movies:/movies
+         - /srv/media/tvshows:/tvshows
+         - /srv/media/transcode:/transcode
+         - /srv/media/music:/music
+      devices:
+         - /dev/dri:/dev/dri
+```
+<br>
 
 ### Portainer
 
@@ -76,45 +257,120 @@ I have written blog posts about <a href="/blog/setting-up-plex-in-docker/" targe
 
 Thanks to <a href="https://www.portainer.io/take-3" target="_blank">Portainer's 3 node free license</a> I also use Portainer Agent, connected via Tailscale, to manage another set of remote containers running on an Oracle free tier instance.
 
-Portainer is usually installed with `docker run` rather than compose, it's just a quick command to get started. (Note that I use a bind mount rather than a persistent volume for Portainer.)
+Portainer is usually deployed with `docker run` rather than compose, it's just a quick command to get started. (Note that I use a bind mount rather than a persistent volume for Portainer.)
 
 ```bash
-docker run ...
+docker run -d -p 8000:8000 -p 9000:9000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:lts
 ```
+<br>
 
 ### qBittorrent
 
-<a href="https://docs.linuxserver.io/images/docker-qbittorrent" target="_blank" data-umami-event="home-server-qbittorrent">qBittorrent</a> is my preferred torrent downloader, this containerized version makes the GUI accessible from any machine via browser, and it connects to *Gluetun* so that so all my downloads are routed through a paid VPN. Downloads go to my server's media storage to be streamable on Plex and accessible on the network via SMB shares.
+<a href="https://docs.linuxserver.io/images/docker-qbittorrent" target="_blank" data-umami-event="home-server-qbittorrent">qBittorrent</a> is my preferred torrent downloader, this containerized version makes the GUI accessible from any machine via browser, and it connects to *Gluetun* so that so all my downloads are routed through my VPN provider. Rather than using the *arr suite for automated downloads, because I just don't download often enough to bother setting it up, I will manually grab a magnet link from my preferred torrent sites and put it into qBittorrent. I have storage paths configured by categories so that I can just choose "Movies", "TV Shows" or "Music" categories for each download, and it will be stored in the corresponding path where it is streamable from Plex. I also use the VueTorrent mod for an improved UI.
+
+```yaml
+   qbittorrent:
+      image: lscr.io/linuxserver/qbittorrent:latest
+      container_name: qbittorrent
+      environment:
+         - PUID=1000
+         - PGID=1000
+         - TZ=America/New_York
+         - WEBUI_PORT=8080
+         - DOCKER_MODS=ghcr.io/vuetorrent/vuetorrent-lsio-mod:latest
+      volumes:
+         - /opt/docker/qbittorrent:/config
+         - /srv/media/downloads:/downloads
+         - /srv/media/movies:/movies
+         - /srv/media/tvshows:/tvshows
+         - /srv/media/music:/music
+      network_mode: "service:gluetun"
+      restart: unless-stopped
+      depends_on:
+         gluetun:
+         condition: service_healthy
+```
+<br>
 
 ### Scrutiny
 
-<a href="https://github.com/AnalogJ/scrutiny" target="_blank" data-umami-event="home-server-scrutiny">Scrutiny</a> provides a nice dashboard for hard drive S.M.A.R.T. monitoring. I have 7 hard drives on my server of various manufacturers, storage capacity and age so I use this to keep an eye on all of them. (See first screenshot below.) You can also see details on the test results for each drive and decide how severe it is. (See second screenshot, I'm not too worried since it's not critical and the content of both drives are backed up anyway.) Of course I have Scrutiny setup to send me notifications via Pushover (see third screenshot), but I also have `smartd` daemon configured to send mail in the server terminal when the tests show critical HDD failure, this already alerted me once to a dying HDD that I was able to replace without data loss.
+<a href="https://github.com/AnalogJ/scrutiny" target="_blank" data-umami-event="home-server-scrutiny">Scrutiny</a> provides a nice dashboard for hard drive S.M.A.R.T. monitoring. I have 10 hard drives on my server of various manufacturers, storage capacities and age so I use this to keep an eye on all of them. (See first screenshot below.) You can also see details on the test results for each drive and decide how severe it is. (See second screenshot, I'm not too worried since it's not critical and the content of both drives are backed up anyway.) Of course I have Scrutiny setup to send me notifications via Pushover (see third screenshot), but I also have `smartd` daemon configured to send mail in the server terminal when the tests show critical HDD failure, this already alerted me once to a dying HDD that I was able to replace without data loss.
 
 ![Scrutiny all drives overview.](../../img/blog/scrutiny1.png 'Scrutiny all drives overview')
 ![Scrutiny details of a specific drive.](../../img/blog/scrutiny2.png 'Scrutiny details of a specific drive with errors')
 ![Scrutiny notifications about specific drive errors via Pushover.](../../img/blog/scrutiny-pushover.jpg 'Scrutiny notifications about specific drive errors via Pushover')
 
 ```yaml
-
+   scrutiny:
+      container_name: scrutiny
+      image: ghcr.io/analogj/scrutiny:master-omnibus
+      restart: unless-stopped
+      cap_add:
+         - SYS_RAWIO
+         - SYS_ADMIN
+      ports:
+         - "8880:8080" # webapp
+         - "8086:8086" # influxDB admin
+      volumes:
+         - /run/udev:/run/udev:ro
+         - /home/ad/docker/scrutiny:/opt/scrutiny/config
+         - /home/ad/docker/scrutiny/influxdb:/opt/scrutiny/influxdb
+      environment:
+        SCRUTINY_NOTIFY_URLS: "pushover://shoutrrr:...@.../"
+      devices:
+         - "/dev"
 ```
-
-### Syncthing
-
-<a href="https://docs.linuxserver.io/images/docker-syncthing" target="_blank" data-umami-event="home-server-syncthing">Syncthing</a> is used for only one thing, keeping my Obsidian notes synced across PC, phone and tablet. (Unfortunately, I'll have to switch to an alternative eventually since <a href="https://forum.syncthing.net/t/discontinuing-syncthing-android/23002" target="_blank">Syncthing for Android has been discontinued</a>.)
-
-### Uptime Kuma
-
-<a href="https://uptime.kuma.pet" target="_blank" data-umami-event="home-server-uptime-kuma">Uptime Kuma</a> is a robust self-hosted uptime monitor, it can keep track of not just uptime of websites, but also Docker containers running on the host or even remotely. I mainly use it to monitor my containers and send a push notification to my phone (via <a href="https://pushover.net" target="_blank" data-umami-event="home-server-pushover">Pushover</a>) when they go down and come back up, other than that I track the uptime of websites (including this one) and make sure AdGuard Home  is available.
-
-![Uptime Kuma various monitors](../../img/blog/uptime1.png 'Uptime Kuma various monitors')
-![Uptime Kuma container monitor](../../img/blog/uptime2.png 'Uptime Kuma container monitor')
+<br>
 
 ### Speedtest Tracker
 
-<a href="https://speedtest-tracker.dev" target="_blank" data-umami-event="home-server-speedtest-tracker">Speedtest-Tracker</a> lets you schedule Ookla speedtests with cron syntax and uses a database to keep a history of test results with pretty graphs. It can also send notifications when a speedtest is completed or if a threshold is met. I use Pushover for push notifications from Speedtest-Tracker to my phone whenever speed results are below a certain threshold.
+<a href="https://speedtest-tracker.dev" target="_blank" data-umami-event="home-server-speedtest-tracker">Speedtest-Tracker</a> lets you schedule Ookla speedtests with cron syntax and uses a database to keep a history of test results with pretty graphs. It can also send notifications when a speedtest is completed or if a threshold is met. I use Pushover for push notifications from Speedtest-Tracker to my phone whenever speed results are below 700 Mpbs. (I pay for gigabit fiber, so I like to know how often it's not actually at those speeds.)
 
 ![Speedtest Tracker dashboard with graphs](../../img/blog/speedtest-tracker.png 'Speedtest Tracker dashboard with graphs')
 ![Speedtest Tracker push notification with Pushover](../../img/blog/speedtest-pushover.jpg 'Speedtest Tracker push notification with Pushover')
+
+```yaml
+   speedtest-tracker:
+      image: lscr.io/linuxserver/speedtest-tracker:latest
+      container_name: speedtest-tracker
+      environment:
+         - PUID=1000
+         - PGID=1000
+         - TZ=America/New_York
+         - DB_CONNECTION=sqlite
+         - APP_KEY=
+         - DISPLAY_TIMEZONE=America/New_York
+         - SPEEDTEST_SCHEDULE=0 * * * *
+         - PRUNE_RESULTS_OLDER_THAN=30
+         - CHART_DATETIME_FORMAT=j M Y, g:i:s
+         - APP_URL=
+      volumes:
+         - /opt/docker/speedtest:/config
+      ports:
+         - 8800:80
+      restart: unless-stopped
+```
+<br>
+
+### Syncthing
+
+<a href="https://docs.linuxserver.io/images/docker-syncthing" target="_blank" data-umami-event="home-server-syncthing">Syncthing</a> is used for only one thing, keeping my Obsidian notes synced across PC, phone and tablet. Unfortunately, I'll have to switch to an alternative eventually since <a href="https://forum.syncthing.net/t/discontinuing-syncthing-android/23002" target="_blank">Syncthing for Android has been discontinued</a>. For now I continue using it and it still works. (There's also <a href="https://github.com/Catfriend1/syncthing-android" target="_blank" data-umami-event="home-server-syncthingfork">Syncthing-Fork</a> as a drop-in replacement for the Android Syncthing app.)
+
+```yaml
+   syncthing:
+      image: syncthing/syncthing
+      container_name: syncthing
+      # hostname: syncthing
+      environment:
+         - PUID=1000
+         - PGID=1000
+      volumes:
+         - /home/ad/docker/syncthing:/var/syncthing
+         - /srv/data:/data
+      network_mode: host
+      restart: unless-stopped
+```
+<br>
 
 ### Tautulli
 
@@ -122,11 +378,70 @@ docker run ...
 
 ![Tautulli push notification with Pushover](../../img/blog/tautulli-pushover.jpg 'Tautulli push notification with Pushover')
 
+```yaml
+   tautulli:
+      restart: unless-stopped
+      image: lscr.io/linuxserver/tautulli:latest
+      container_name: tautulli
+      ports:
+         - 8181:8181
+      environment:
+         - PUID=1000
+         - PGID=1000
+         - TZ=America/New_York
+      volumes:
+         - /opt/docker/tautulli:/config
+      depends_on:
+         - plex
+```
+<br>
+
+### Uptime Kuma
+
+<a href="https://uptime.kuma.pet" target="_blank" data-umami-event="home-server-uptime-kuma">Uptime Kuma</a> is a robust self-hosted uptime monitor, it can keep track of not just uptime of websites, but also Docker containers running on the host or even remotely. I mainly use it to monitor my containers and send a push notification to my phone (via <a href="https://pushover.net" target="_blank" data-umami-event="home-server-pushover">Pushover</a>) when they go down and come back up, other than that I track the uptime of websites (including this one) and make sure AdGuard Home is available.
+
+![Uptime Kuma various monitors](../../img/blog/uptime1.png 'Uptime Kuma various monitors')
+![Uptime Kuma container monitor](../../img/blog/uptime2.png 'Uptime Kuma container monitor')
+
+```yaml
+   uptime-kuma:
+      image: louislam/uptime-kuma:beta
+      container_name: uptime-kuma
+      volumes:
+         - /opt/docker/uptime:/app/data
+         - /var/run/docker.sock:/var/run/docker.sock
+      ports:
+         - 3001:3001
+      dns:
+         - 1.1.1.1
+         - 8.8.8.8
+      restart: unless-stopped
+```
+<br>
+
 ### Watchtower
 
 <a href="https://containrrr.dev/watchtower" target="_blank" data-umami-event="home-server-watchtower">Watchtower</a> keeps track of new version of all your other container images, and (depending on your config) will automatically shut containers down, update the images, prune the old images, and then restart it. You can also schedule your updates for specific dates and times, mine only happen on weekdays at 3 AM. Finally, it can send notifications via many providers, but like with everything else I use Pushover to get notified on my phone when any containers have been updated.
 
 ![Watchtower push notification with Pushover](../../img/blog/watchtower-pushover.jpg 'Watchtower push notification with Pushover')
+
+```yaml
+   watchtower:
+      container_name: watchtower
+      image: containrrr/watchtower
+      restart: unless-stopped
+      environment:
+         - WATCHTOWER_NOTIFICATION_URL=pushover://:...@...
+         - WATCHTOWER_NOTIFICATIONS_HOSTNAME=
+         - WATCHTOWER_CLEANUP=true
+         - WATCHTOWER_INCLUDE_STOPPED=true
+         - WATCHTOWER_REVIVE_STOPPED=false
+         - WATCHTOWER_SCHEDULE=0 0 8 * * *
+      volumes:
+         - "/var/run/docker.sock:/var/run/docker.sock"
+```
+
+> It's important to note that Watchtower has not been updated in over 2 years and is basically unmaintained at this point. There's some maintained alternatives, in some cases with even more features, but I personally I have really had a reason to migrate as of yet. If you're starting out new, I suggest instead checking out <a href="https://github.com/fmartinou/whats-up-docker" target="_blank" data-umami-event="home-server-whatsupdocker">What's Up Docker</a> or <a href="https://github.com/crazy-max/diun" target="_blank" data-umami-event="home-server-diun">Diun</a>
 
 ## Storage, SMB shares and MergerFS
 
