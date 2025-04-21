@@ -174,7 +174,7 @@ For details <a href="/blog/reverse-proxy-using-nginx-adguardhome-cloudflare/" ta
 
 <a href="https://paperless-ngx.com" target="_blank" data-umami-event="home-server-paperless">Paperless-ngx</a> is a document management system that can index and organize documents, performing OCR to make them searchable and selectable, and saving them as PDFs. If you have a lot of papers you want to digitize and organize, Paperless is a powerful tool for that. You can designate a `consume` folder and any documents dropped in there will automatically be processed by Paperless.
 
-I honestly don't use it that much, but my wife and I have fed all our tax returns, property documents, and important receipts to it so that we can just go to one place from any device to view, edit and print documents.
+My wife and I have fed all our tax returns, property documents, medical claims, invoices and receipts to it so that we can just go to a web page with a nice UI from any device to view, edit and print documents. I have an SMB share that points to the `consume` folder, so anything placed in there (including directly from the scanner) is processed into Paperless.
 
 Paperless runs as three containers, so I put them all in a stack.
 
@@ -253,14 +253,14 @@ I have written blog posts about <a href="/blog/setting-up-plex-in-docker/" targe
 
 ### Portainer
 
-<a href="https://portainer.io" target="_blank" data-umami-event="home-server-portainer">Portainer</a> is always the first container I install on a server that will run Docker. It is a GUI for creating and managing containers, I use the Stacks feature to create different groups of containers with docker compose. I have copies all the compose files (with secrets removed) <a href="https://github.com/fullmetalbrackets/docker" target="_blank" data-umami-event="home-server-docker-repo">saved on GitHub</a>. It's possible to setup Portainer to pull `compose.yaml` files from a GitHub repo for setting up Stacks, after which updates in GitHub will be pulled into Portainer, but I have not set this up myself. (I think I just prefer to do it manually in Portainer.)
+<a href="https://portainer.io" target="_blank" data-umami-event="home-server-portainer">Portainer</a> is always the first container I install on a server that will run Docker. It is a GUI for creating and managing containers, I use the Stacks feature to create different groups of containers with docker compose. I have copies of all my compose files (with secrets removed) <a href="https://github.com/fullmetalbrackets/docker" target="_blank" data-umami-event="home-server-docker-repo">saved on GitHub</a>. It's possible to setup Portainer to pull `compose.yaml` files from a GitHub repo for setting up Stacks, after which updates in GitHub will be pulled into Portainer, but I have not set this up myself. (I think I just prefer to do it manually in Portainer.)
 
 Thanks to <a href="https://www.portainer.io/take-3" target="_blank">Portainer's 3 node free license</a> I also use Portainer Agent, connected via Tailscale, to manage another set of remote containers running on an Oracle free tier instance.
 
-Portainer is usually deployed with `docker run` rather than compose, it's just a quick command to get started. (Note that I use a bind mount rather than a persistent volume for Portainer.)
+Portainer is usually deployed with `docker run` rather than compose, it's just a quick command to get started. (Note that I use a bind mount rather than a standard volume for Portainer data.)
 
 ```bash
-docker run -d -p 8000:8000 -p 9000:9000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:lts
+docker run -d -p 8000:8000 -p 9000:9000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v /opt/docker/portainer:/data portainer/portainer-ce:lts
 ```
 <br>
 
