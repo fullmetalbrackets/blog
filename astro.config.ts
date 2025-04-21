@@ -19,10 +19,10 @@ export default defineConfig({
       status: 301,
       destination: '/rss.xml',
     },
-    '/mail': {
-      status: 301,
-      destination: 'mailto:contact@fullmetalbrackets.com',
-    },
+    // '/mail': {
+    //   status: 301,
+    //   destination: 'mailto:contact@fullmetalbrackets.com',
+    // },
     '/github': {
       status: 302,
       destination: 'https://github.com/fullmetalbrackets',
