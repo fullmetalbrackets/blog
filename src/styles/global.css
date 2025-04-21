@@ -161,7 +161,7 @@ h3, h5 {
   font-family: 'Atkinson', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
   color: var(--primary);
   font-size: 1.5em;
-  margin: 0;
+  margin: 1.25em 0 0 0;
   padding: 0;
 }
 p {
