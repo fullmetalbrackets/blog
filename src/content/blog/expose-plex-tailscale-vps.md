@@ -60,7 +60,7 @@ Click the **Create instance** button and do the following:
 
 6. Under _Shape name_, check the box for (the only option) **VM.Standard.E2.1.Micro**. (Notice the _"always-free" eligible_ tag.) Click the **Select shape** button at the bottom.
 
-7. The default image is Oracle Linux 8, but you can click **Change image** and choose one of the other always-free eligible images -- **Ubuntu** (my suggestion) or **CentOS**.
+7. The default image is Oracle Linux 8, but you can click **Change image** and choose one of the other always-free eligible images -- **Ubuntu** or **CentOS**. Personally, I use **Ubuntu 24.04 Minimal**.
 
 ![Choosing an Image and Shape while creating a compute instance in OCI.](../../img/blog/oci0.png 'Choosing an Image and Shape while creating a compute instance in OCI')
 
