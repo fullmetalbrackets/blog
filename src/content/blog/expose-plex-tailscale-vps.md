@@ -324,7 +324,7 @@ Give it a minute or two for Let's Encrypt to provision the TLS certificate, and 
 
 Already anyone you share your library with can access it by going to `https://your-domain.com`, but this way they can only play media on a browser. Let's also let them play your shared media from Plex apps on their phones, smart TVs, and other devices.
 
-1. On the Plex web UI, go to **Settings** by clicking on the _wrench icon_ at the top-left.
+1. On the Plex web UI, go to **Settings** by clicking on the _wrench icon_ at the top-right.
 
 2. On the sidebar, scroll down to **Settings** and click **Network**.
 

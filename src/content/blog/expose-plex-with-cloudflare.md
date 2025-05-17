@@ -254,7 +254,7 @@ Finally, let's disable caching to minimize CDN usage by our external users and e
 
 One last thing! Although your external users can now stream your library by logging in to the the Plex web UI at `https://plex.your-domain.com`, using Plex apps will not work until you do the following:
 
-1. On the Plex web UI, go to **Settings** by clicking on the _wrench icon_ at the top-left.
+1. On the Plex web UI, go to **Settings** by clicking on the _wrench icon_ at the top-right.
 
 2. On the sidebar, scroll down to **Settings** and click **Network**.
 
