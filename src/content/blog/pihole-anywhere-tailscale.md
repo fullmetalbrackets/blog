@@ -63,7 +63,7 @@ curl -sSL https://install.pi-hole.net | bash
 
 Follow the prompts during install, but don't worry about it too much, you can change everything afterwards in the web UI. Note, you can (and should) change your Pi-hole web UI password from the terminal with the command `pihole -a -p`. You can even leave it blank and skip login.
 
-If you prefer to run Pi-hole as a Docker container, use the following `compose.yml` (make sure to change password, timezone, volumes, etc.):
+If you prefer to run Pi-hole as a Docker container, use the following `compose.yml` (be sure to use your own password, timezone, volumes, etc.):
 
 ```yaml
 services:
@@ -91,11 +91,11 @@ docker compose up -d
 
 <div id='config'/>
 
-Once Pi-hole is up and running, go to the web UI by going to e.g. `http://192.168.0.100/admin`. Login (unless you left the password blank) and from the dashboard, go to **Settings** on the sidebar and go to the **DNS** tab. Here you can change your upstream DNS servers, if you didn't set them during install or on the compose file.
+Once Pi-hole is up and running, go to the web UI by going to the machine local IP, e.g. `http://192.168.0.100/admin`. Login (unless you left the password blank) and from the dashboard, go to **Settings** on the sidebar and go to the **DNS** tab. Here you can change your upstream DNS servers, if you didn't set them during install or on the compose file.
 
-Make sure your upstream DNS server is set (I recommend <a href="https://quad9.net" target="_blank" data-umami-event="pihole-anywhere-post-quad9">Quad9</a> or <a href="https://one.one.one.one" target="_blank" data-umami-event="pihole-anywhere-post-1111">Cloudflare</a>) and make sure the **Interface settings** has _permit all origins_ selected.
+Make sure you set at least one upstream DNS server (I recommend <a href="https://quad9.net" target="_blank" data-umami-event="pihole-anywhere-post-quad9">Quad9</a> or <a href="https://one.one.one.one" target="_blank" data-umami-event="pihole-anywhere-post-1111">Cloudflare</a>) and that the **Interface settings** has _permit all origins_ selected.
 
-> If using Docker's default `bridge` network setting, _permit all origins_ is required for Pi-hole to work properly. This can also be achieved with the environment variable `DNSMASQ_LISTENING: all` on the compose file.
+> If using Docker's default `bridge` network setting, _permit all origins_ is required for Pi-hole to work properly. This can also be set by adding the environment variable `DNSMASQ_LISTENING: all` to the compose file.
 
 ![Setting Pi-hole to permit all origins.](../../img/blog/pihole-tailscale-interface.png 'Setting Pi-hole to permit all origins')
 
