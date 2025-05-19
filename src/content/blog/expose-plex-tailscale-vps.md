@@ -31,11 +31,11 @@ Finally, you'll need a Plex server already set up. (And I'll assume it's running
 
 ## Create OCI account
 
-We'll be using a free-tier VM from Oracle Cloud Infrastructure (OCI) -- specifically, an E2.Micro instance which runs on a single-core AMD OCPU, has 1 GB of memory and a 0.48 Gbps connection, more than enough for streaming even 4K content through Plex. You can run *TWO* of these VMs **totally free**.
+We'll be using a free-tier VM from Oracle Cloud Infrastructure (OCI) -- specifically, an E2 Micro instance which runs on a single-core AMD OCPU, has 1 GB of memory and a 0.48 Gbps connection, more than enough for streaming even 4K content through Plex. You can run *TWO* of these VMs **totally free**.
 
-> In addition to two E2.Micro instances, the OCI free tier includes one A2.Flex instance with up to 4 Arm OCPUs, up to 24 GB of memory, and a 6 Gbps connection. (These are the total limits, you can also split it with two A2.Flex instances with 2 OCPUs and 12 GB of memory, or 4 OCPUs with 6 GB of memory each, etc.)
+> In addition to two E2 Micro instances, the OCI free tier includes one A1 Flex instance with up to 4 Arm OCPUs, up to 24 GB of memory, and a 6 Gbps connection. (These are the total limits, you can also split it with two A1 Flex instances with 2 OCPUs and 12 GB of memory, or 4 OCPUs with 6 GB of memory each, etc.)
 >
-> It may be preferable to use the A2.Flex instance for this instead of the E2.Micro if you want faster connection for more concurrent remote streams, if sharing your library with more than 1 or 2 users. In many cases you will encounter an "out of capacity" error when trying to provision an A2.Flex instance of any shape and configuration, but if you upgrade your free tier account to Pay As You Go, the errors will disappear. I have confirmed this myself by upgrading my account. Just be sure to stay within the free limits noted above if you do this!
+> It may be preferable to use the A1 Flex instance for this instead of the E2 Micro if you want faster connection for more concurrent remote streams, if sharing your library with more than 1 or 2 users. In many cases you will encounter an "out of capacity" error when trying to provision an A1 Flex instance of any shape and configuration, but if you upgrade your free tier account to Pay As You Go, the errors will disappear. I have confirmed this myself by upgrading my account. Just be sure to stay within the free limits noted above if you do this!
 
 First, go to <a href="https://www.oracle.com/cloud/free/" target="_blank" umami-data-event="expose-plex-tailscale-oci-free">Oracle Cloud's website</a> and click **Start for free** to create your account. You will need a credit card, but only for verification purposes! As long as you stick to *free tier* and don't upgrade, you won't be charged.
 
@@ -55,7 +55,7 @@ Click the **Create instance** button and do the following:
 
 2. Scroll down to _Image and shape_, and click **Edit**.
 
-3. The default _Shape_ (VM.Standard.A1.Flex) is nearly impossible to get, it's always "out of capacity." That's fine, it's overkill for this anyway. Click on **Change shape**.
+3. The default _Shape_ (VM.Standard.A1 Flex) is nearly impossible to get, it's always "out of capacity." That's fine, it's overkill for this anyway. Click on **Change shape**.
 
 4. Make sure _Instance type_ is **Virtual machines**.
 
