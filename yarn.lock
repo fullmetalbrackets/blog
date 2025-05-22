@@ -757,10 +757,10 @@ astro-social-share@^2.2.0:
   resolved "https://registry.yarnpkg.com/astro-social-share/-/astro-social-share-2.2.0.tgz#4e7609e251cd614a414d884cefc07888ff73d4f4"
   integrity sha512-Z5ebhO6Yw4GLggw7wsTahdpS0f4pf/XuVjQlBpWZ0zyt0cKaVrlG/+u6RzrzN9B2t27wxp90XiosZNwvBZqA+Q==
 
-astro@^5.7.13:
-  version "5.7.13"
-  resolved "https://registry.yarnpkg.com/astro/-/astro-5.7.13.tgz#48d15f9949659baf9a328b9838a715ce6e268ade"
-  integrity sha512-cRGq2llKOhV3XMcYwQpfBIUcssN6HEK5CRbcMxAfd9OcFhvWE7KUy50zLioAZVVl3AqgUTJoNTlmZfD2eG0G1w==
+astro@^5.7.14:
+  version "5.7.14"
+  resolved "https://registry.yarnpkg.com/astro/-/astro-5.7.14.tgz#e126b16bb748f08d3ecd85abd15ef8b43cbc3aaf"
+  integrity sha512-DfuDD49f7mbHB7ygLm8KXEC6QQtpLoNrmoylcMLKdl1ahXNdiw+mgW8ApEMyHTUyVrqEUnr4gZCKSlZ9POCHjQ==
   dependencies:
     "@astrojs/compiler" "^2.11.0"
     "@astrojs/internal-helpers" "0.6.1"
@@ -792,6 +792,7 @@ astro@^5.7.13:
     github-slugger "^2.0.0"
     html-escaper "3.0.3"
     http-cache-semantics "^4.1.1"
+    import-meta-resolve "^4.1.0"
     js-yaml "^4.1.0"
     kleur "^4.1.5"
     magic-string "^0.30.17"
