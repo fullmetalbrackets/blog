@@ -1,8 +1,8 @@
 ---
 title: "Setup Watchtower to auto-update Docker containers with notifications"
-description: "I'm running almost 30 containers on my home server at this point, and I'm extremely lazy when it comes to updating them. Watchtower is a lightweight set-it-and-forget-it solution to auto-updating containers, and it even has built-in notifications. Here's how to set it up."
+description: "I'm running almost 30 containers on my home server at this point, and I'm extremely lazy when it comes to updating them. Watchtower is a lightweight set-it-and-forget-it solution to auto-updating containers, and it even has built-in notifications. Here's how to set it up using either Pushover or Discord."
 pubDate: 2024-05-31
-updatedDate: 2025-02-03
+updatedDate: 2025-05-26
 tags:
   - docker
 ---
