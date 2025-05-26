@@ -122,7 +122,53 @@ In the future, any updates will result in a notification specifying which contai
 
 ![Example of Watchtower notification via Pushover.](../../img/blog/pushover7.jpg 'Example of Watchtower notification via Pushover')
 
-All done! You should now get notifications through Pushover each time Watchtower updates any container images. If you want to use a different service for notifications, simply check <a href="https://containrrr.dev/shoutrrr/v0.8/services/overview" target="_blank" data-umami-event="watchtower-notifications-shoutrrr-docs-services">the Shoutrrr documentation for the syntax</a> and use that instead. You can even customize the 
+All done! You should now get notifications through Pushover each time Watchtower updates any container images. If you want to use a different service for notifications, simply check <a href="https://containrrr.dev/shoutrrr/v0.8/services/overview" target="_blank" data-umami-event="watchtower-notifications-shoutrrr-docs-services">the Shoutrrr documentation for the syntax</a> and use that instead.
+
+## Notifications via Discord
+
+To use Discord notifications with Watchtower requires enabling webhooks, only possible in the web interface on a browser. (Not possible from any Discord app.)
+
+Click on settings (gear icon?)
+
+![Discord server settings.](../../img/blog/watchtower-discord1.png 'Discord server setting')
+
+Scroll down to _Apps_ and click on **Integrations**.
+
+![Integrations setting in Discord server.](../../img/blog/watchtower-discord2.png 'Integrations setting in Discord server')
+
+Click on **Create a webhook**.
+
+![Creating a webhook in Discord.](../../img/blog/watchtower-discord3.png 'Creating a webhook in Discord')
+
+Click on **copy webhook URL**
+
+![Configuring the Discord server bot.](../../img/blog/watchtower-discord4.png 'Configuring the Discord server bot')
+
+If you paste it somewhere, you'll see the URL is something like `https://discord.com/api/webhooks/098349569125/n_AJKSH792n_H07a45solpjag90&-yGr1`. Based on the <a href="https://containrrr.dev/shoutrrr/v0.8/services/discord/" target="_blank">Shoutrrr documentation</a>, we're looking for the two alphanumerics at the end, `098349569125` is the **webhook-id**, while at the end `n_AJKSH792n_H07a45solpjag90&-yGr1` is the **token**.
+
+Now for the `compose.yaml` file, it should look something should look like this:
+
+```yaml
+  watchtower:
+    container_name: watchtower
+    image: containrrr/watchtower
+    restart: always
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    environment:
+      - WATCHTOWER_NOTIFICATION_URL=discord://token@webhook-id
+      - WATCHTOWER_CLEANUP=true
+      - WATCHTOWER_INCLUDE_STOPPED=true
+      - WATCHTOWER_REVIVE_STOPPED=false
+      - WATCHTOWER_NOTIFICATIONS_HOSTNAME=<hostname>
+      - WATCHTOWER_SCHEDULE=0 0 8 * * *
+```
+
+Note that for Shoutrrr, we'll need to reverse the *token* and *webhook-id* on the URL environment variable. Make sure to use something like `discord://n_AJKSH792n_H07a45solpjag90&-yGr1@098349569125` using the example above. (These are not real webhooks and tokens.)
+
+Use `docker compose up -d` to run the container. Once it's up and running, you should get a notification from the Discord that looks like this (with the hostname you set, in the example below it shows my server's hostname):
+
+![Watchtower notification on Discord general channel.](../../img/blog/watchtower-discord5.png 'Watchtower notification on Discord general channel')
 
 ## References
 
