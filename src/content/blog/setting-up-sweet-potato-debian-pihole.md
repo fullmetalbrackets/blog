@@ -2,7 +2,7 @@
 title: "Setting up a Libre Computer Sweet Potato SBC with Debian and Pi-Hole"
 description: "I've been wanting to get a Raspberry Pi for ages, but they were out of stock for the longest time, so I never ended up with one. Recently I learned about the Le Potato from Libre Computer as a Pi-alternative, and after some research paid the $30 early access price for their new Sweet Potato SBC. Here's how I set it up."
 pubDate: 2023-11-02
-updatedDate: 2025-02-10
+updatedDate: 2025-05-22
 tags:
   - self-hosting
 ---
@@ -21,13 +21,31 @@ Libre's <a href="https://hub.libre.computer/t/2023-09-01-libre-computer-aml-s905
 
 First I found the <a href="https://distro.libre.computer/ci/debian/12/" target="_blank" data-umami-event="sweet-potato-debian-pihole-libre-debian12">latest release of Debian 12 base image</a> and downloaded the `arm64` package. This comes as a `.img.xz` file but there's no need to extract it, using <a href="https://rufus.ie/en" target="_blank" data-umami-event="sweet-potato-debian-pihole-rufus">Rufus</a> I just created a bootable USB drive right from the archive file.
 
-I plugged it into the top-left USB port on the Sweet Potato (pretty sure any of the four USB ports will do), then plugged in the USB-C power supply, which does not come in the box, but I used a 5V 3A charger from an old Samsung phone and it works perfect. Sweet Potato turned on and automatically ran Debian from the USB, it was up and running in a few minutes, denoted by the blue light on the Sweet Potato blinking steadily.
+I plugged it into the top-left USB port on the Sweet Potato (pretty sure any of the four USB ports will do), then plugged in the USB-C power supply, which does not come in the box, but I used a 5V 3A charger from an old Samsung phone and it works perfect. Sweet Potato turned on and automatically ran Debian from the USB, it was up and running in a few minutes. Look at the lights on the back of the Sweet Potato, you should see a _blue light blinking steadily_ and a _solid green light_.
+
+## Booting up Debian 12 Bookworm off a Micro SD card
+
+The process will be identical to a USB stick, but we'll use Rufus to flash the Debian 12 image onto a Micro SD card instead. You'll need a Windows PC with some way of reading and writing to a Micro SD card -- most likely that will be through a built-in SD Card Reader, putting the Micro SD card into a SD adapter which then goes into the slot. (Alternately, I use <a href="https://www.amazon.com/dp/B00W02VHM6" target="_blank" data-umami-event="sweet-potato-debian-pihole-usb-card-reader-thing">this $6 USB Card Reader thing from Amazon</a>.)
+
+Just open Rufus, choose the Micro SD card from the choices, and pick the same Debian 12 image already downloaded. Hit start and when it's done, pop in the Micro SD card into the slot in the back of the Sweet Potato. Plug in the USB-C power supply and the Sweet Potato should boot into Debian after a few minutes. Again, look for the blinking blue light and solid green light on the back of the unit.
 
 ## Updating, configuring, and installing packages
 
-For the next section I consulted <a href="https://hub.libre.computer/t/debian-11-bullseye-and-12-bookworm-for-libre-computer-boards/230" target="_blank" data-umami-event="sweet-potato-debian-pihole-libre-bullseye-bookworm">Libre's post on Debian 11 and 12</a>. SSH is disabled by default, so I had to plug in a monitor to continue setting up the Sweet Potato. (This is specifically the Debian base image -- all Ubuntu releases come with SSH enabled from the start for a totally headless setup). The default username and password are `root`, though you are prompted to change the root password immediately. I also went ahead and set up my main user with `adduser ariel` and then added it to the sudo group with `adduser ariel sudo`.
+For the next section I consulted <a href="https://hub.libre.computer/t/debian-11-bullseye-and-12-bookworm-for-libre-computer-boards/230" target="_blank" data-umami-event="sweet-potato-debian-pihole-libre-bullseye-bookworm">Libre's post on Debian 11 and 12</a>. SSH is disabled by default, so I had to plug in a monitor to continue setting up the Sweet Potato. (This is specifically the Debian base image -- all Ubuntu releases come with SSH enabled from the start for a totally headless setup, so keep that in mind when choosing your image).
 
-First things first, of course, is updating everything with `apt update && apt full-upgrade -y`, then I installed SSH so I can go headless with `sudo apt install ssh -y`. One last thing, I changed the hostname (by default it is `aml-s905x-cc`) by using `sudo hostnamectl set-hostname potato` to set the new hostname to **potato**.
+The default username and password for Debian are both `root`, though you are prompted to change the root password immediately. I also went ahead and set up my main user with `adduser ariel`, installed sudo (not included with Debian) with `apt install sudo` and then added my new user to the sudo group with `adduser ariel sudo`.
+
+We can now logout of root and login with the new admin user, which requiring adding `sudo` before every command that needs root escalation. First things first, making sure Debian is up to date with `apt update && apt full-upgrade -y`.
+
+After any upgrades, I then installed *Sudo* and *SSH* so I can go headless and work through SSH.
+
+```
+sudo apt install ssh sudo -y
+```
+
+Next add a new user with `adduser ariel` and following the prompts, then make it an administrator by adding to the sudo group with `adduser ariel sudo`. One last thing, I changed the hostname (by default it is `aml-s905x-cc`) by using `hostnamectl set-hostname potato` to set the new hostname to **potato**.
+
+At this point I like to reboot and login via SSH from another machine. Make sure to copy over the SSH key pair from whatever machine you're using with `ssh-copy-id ariel@<IP-of-sweet-potato>`.
 
 ## Installing and configuring Pi-Hole
 
