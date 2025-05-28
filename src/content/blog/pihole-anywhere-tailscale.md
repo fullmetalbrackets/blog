@@ -133,4 +133,4 @@ Now to test it out, connect to Tailscale on your phone/tablet and visit some web
 ### Related Articles
 
 - <a href="/blog/set-up-pihole-on-linux/" data-umami-event="pihole-anywhere-post-related-setup-pihole">Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS</a>
-- <a href="/blog/comprehensive-guide-tailscale-securely-access-home-network/" data-umami-event="pihole-anywhere-post-related-tailscale">How to remotely access your home server from anywhere using Tailscale</a>
+- <a href="/blog/comprehensive-guide-tailscale-securely-access-home-network/" data-umami-event="pihole-anywhere-post-related-tailscale">Comprehensive guide to setting up Tailscale to securely access your home network from anywhere</a>

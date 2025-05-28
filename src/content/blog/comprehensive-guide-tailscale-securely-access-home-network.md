@@ -302,5 +302,5 @@ I've only scratched the surface on what Tailscale can do in this post, because a
 
 ### Related Articles
 
-- <a href="/blog/expose-plex-tailscale-vps/" data-umami-event="tailscale-post-related-expose-plex-vps">How to securely expose Plex from behind CGNAT using Tailscale and a free Oracle VM</a>
+- <a href="/blog/expose-plex-tailscale-vps/" data-umami-event="tailscale-post-related-expose-plex-vps">How to securely expose Plex from behind CGNAT for library sharing using Tailscale and a free Oracle VM</a>
 - <a href="/blog/pihole-anywhere-tailscale/" data-umami-event="tailscale-post-related-pihole-anywhere">How to use Pi-hole from anywhere with Tailscale</a>

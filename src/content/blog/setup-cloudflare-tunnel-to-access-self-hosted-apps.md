@@ -230,4 +230,4 @@ It is possible to <a href="https://developers.cloudflare.com/dns/manage-dns-reco
 ### Related Articles
 
 - <a href="/blog/self-host-website-cloudflare-tunnel/" data-umami-event="tunnel-apps-related-complete-tunnel-guide">Complete guide to self-hosting a website through Cloudflare Tunnel</a>
-- <a href="/blog/expose-plex-with-cloudflare/" data-umami-event="tunnel-apps-related-expose-plex">How to securely expose Plex from behind CGNAT with Cloudflare Tunnel</a>
+- <a href="/blog/expose-plex-with-cloudflare/" data-umami-event="tunnel-apps-related-expose-plex">How to securely expose Plex from behind CGNAT for library sharing with Cloudflare Tunnel</a>

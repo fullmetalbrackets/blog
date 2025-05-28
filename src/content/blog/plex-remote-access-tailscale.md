@@ -113,4 +113,4 @@ Now your Plex apps should be able to connect through Tailscale!
 ### Related Articles
 
 - <a href="/blog/tailscale/" umami-data-event="plex-remote-access-related-tailscale-guide">Comprehensive guide to setting up Tailscale to securely access your home network from anywhere</a>
-- <a href="/blog/expose-plex-tailscale-vps/" data-umami-event="plex-remote-access-related-expose-plex-vps">How to securely expose Plex from behind CGNAT using Tailscale and a free Oracle VM</a>
+- <a href="/blog/expose-plex-tailscale-vps/" data-umami-event="plex-remote-access-related-expose-plex-vps">How to securely expose Plex from behind CGNAT for library sharing using Tailscale and a free Oracle VM</a>
