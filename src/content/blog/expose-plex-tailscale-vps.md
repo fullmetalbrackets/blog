@@ -1,6 +1,6 @@
 ---
-title: "How to securely expose Plex from behind CGNAT using Tailscale and a free Oracle VM"
-description: "I wrote before about securely exposing Plex for external access, but my previous solution relied on Cloudflare Tunnel and it was technically against their TOS. So I switched to using a Oracle VM on their free-tier, connecting it to my home network with Tailscale, and exposing Plex via reverse proxy. It works like a charm!"
+title: "How to securely expose Plex from behind CGNAT for library sharing using Tailscale and a free Oracle VM"
+description: "I wrote before about securely exposing Plex for sharing your library, but my previous solution relied on Cloudflare Tunnel and it was technically against their TOS. So I switched to using a Oracle VM on their free-tier, connecting it to my home network with Tailscale, and exposing Plex via reverse proxy on the VM. It works like a charm!"
 pubDate: 2024-09-03
 updatedDate: 2025-05-18
 tags:
@@ -374,5 +374,5 @@ Once your friend starts streaming, they'll show up on your Plex dashboard under 
 
 ### Related Articles
 
-- <a href="/blog/tailscale/" umami-data-event="expose-plex-tailscale-related-tailscale-guide">Comprehensive guide to setting up Tailscale to securely access your home network from anywhere</a>
-- <a href="/blog/expose-plex-with-cloudflare/" umami-data-event="expose-plex-tailscale-related-expose-cloudflare">How to securely expose Plex from behind CGNAT with Cloudflare Tunnel</a>
+- <a href="comprehensive-guide-tailscale-securely-access-home-network/" umami-data-event="expose-plex-tailscale-related-tailscale-guide">Comprehensive guide to setting up Tailscale to securely access your home network from anywhere</a>
+- <a href="/blog/expose-plex-with-cloudflare/" umami-data-event="expose-plex-tailscale-related-expose-cloudflare">How to securely expose Plex from behind CGNAT for library sharing with Cloudflare Tunnel</a>
