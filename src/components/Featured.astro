@@ -82,19 +82,11 @@ const posts = (await getCollection("blog")).sort(
 <section>
   <h2>Featured Articles</h2>
   <ul>
-    <li>
-      <a href="/blog/set-up-pihole-on-linux/" rel="prefetch-intent" data-umami-event="featured-setup-pihole">
-      <p class="posts-title">Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS (Updated for Pi-Hole v6)</p>
+        <li>
+      <a href="/blog/reverse-proxy-using-nginx-adguardhome-cloudflare/" rel="prefetch-intent" data-umami-event="featured-proxy-adguard">
+      <p class="posts-title">Setting up a reverse proxy for HTTPS with a custom domain using Nginx Proxy Manager, AdGuard Home and Cloudflare</p>
       <p class="desc">
-        Besides just using a browser extension for ad blocking, I've been using Pi-Hole for years to prevent all devices on my network from getting ads, and stopping smart home devices from phoning home for telemetry and tracking. Pi-Hole will run on almost anything that can run Linux, is very easy to set up, and super effective with the right blocklists.
-      </p>
-      </a>
-    </li>
-    <li>
-      <a href="/blog/comprehensive-guide-tailscale-securely-access-home-network/" rel="prefetch-intent" data-umami-event="featured-tailscale-guide">
-      <p class="posts-title">Comprehensive guide to setting up Tailscale to securely access your home network from anywhere</p>
-      <p class="desc">
-        Accessing self-hosted services from outside the home can be a challenge, especially when dealing with CGNAT and having to forward ports from the router. It can be complex to manage and potentially dangerous to your home network's privacy and security if not done right, but Tailscale makes it easy to set up encrypted peer-to-peer connections between devices across different networks. In this guide I will explain how I use Tailscale as a VPN for secure remote access to my home network.
+        I've used a reverse proxy to access my self-hosted apps and services for years, and used Pi-Hole as my home network DNS for even longer, but recently switched to AdGuard Home. That meant redoing all my DNS records within AdGuard so I could get my reverse proxy back up and running, and I decided to write down the steps I took. When done, we'll be able to access our apps and services through a custom domain, with unique sub-domains for each app or service, with full HTTPS and accessible only locally.
       </p>
       </a>
     </li>
@@ -108,20 +100,29 @@ const posts = (await getCollection("blog")).sort(
       </a>
     </li>
     <li>
-      <a href="/blog/reverse-proxy-using-nginx-pihole-cloudflare/" rel="prefetch-intent" data-umami-event="featured-proxy-pihole">
-      <p class="posts-title">Setting up a reverse proxy for HTTPS with a custom domain using Nginx Proxy Manager, Pi-Hole and Cloudflare</p>
+      <a href="/blog/comprehensive-guide-tailscale-securely-access-home-network/" rel="prefetch-intent" data-umami-event="featured-tailscale-guide">
+      <p class="posts-title">Comprehensive guide to setting up Tailscale to securely access your home network from anywhere</p>
       <p class="desc">
-        I've used a reverse proxy to access my self-hosted apps and services for years, but I recently re-did everything from scratch and decided to write it down. When done, we'll be able to access our apps and services through a custom domain, with unique sub-domains for each app or service, with full HTTPS and accessible only locally.
+        Accessing self-hosted services from outside the home can be a challenge, especially when dealing with CGNAT and having to forward ports from the router. It can be complex to manage and potentially dangerous to your home network's privacy and security if not done right, but Tailscale makes it easy to set up encrypted peer-to-peer connections between devices across different networks. In this guide I will explain how I use Tailscale as a VPN for secure remote access to my home network.
       </p>
       </a>
     </li>
     <li>
-      <a href="/blog/solid-explorer-samba-share/" rel="prefetch-intent" data-umami-event="featured-solid-explorer-samba-share">
-      <p class="posts-title">How to use Solid Explorer app to access SMB network shares from an Android device</p>
+      <a href="/blog/xplore-android-smb-share/" rel="prefetch-intent" data-umami-event="featured-xplore-android-smb-share">
+      <p class="posts-title">Setup X-plore File Manager on Android to transfer files to an SMB share</p>
       <p class="desc">
-        There are many File Managers/File Explorers on the Google Play Store, but I wanted to easily access the Samba share on my server while on my home network. Solid Explorer is the solution I went with and it works well, so here is a quick guide to setting it up.
+        I've wrote before about file managers for Android before, recently I found X-plore which makes it very easy to transfer files back and forth between Android and SMB network shares, once you understand how the UI works. Here's to connect X-plore to an SMB network share so you can transfer files between devices.
       </p>
       </a>
     </li>
+    <li>
+      <a href="/blog/two-drives-merger-fs/" rel="prefetch-intent" data-umami-event="featured-two-drives-mergerfs">
+      <p class="posts-title">Using MergerFS to combine multiple hard drives into one unified media storage</p>
+      <p class="desc">
+        My situation was simple -- my server's media storage was filling up and I wanted to add more drives, but without having to keep track of which drive specific files were for Plex. How to pool multiple hard drives together when they're all different brands, models and capacities? Enter mergerfs, an open source union filesystem that essentially merges multiple drives into one mount point.
+      </p>
+      </a>
+    </li>
+
   </ul>
 </section>
