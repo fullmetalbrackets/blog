@@ -65,12 +65,12 @@
   dependencies:
     prismjs "^1.30.0"
 
-"@astrojs/rss@^4.0.11":
-  version "4.0.11"
-  resolved "https://registry.yarnpkg.com/@astrojs/rss/-/rss-4.0.11.tgz#7feff9646f62025f5348c90c21ea25d2bc48d86e"
-  integrity sha512-3e3H8i6kc97KGnn9iaZBJpIkdoQi8MmR5zH5R+dWsfCM44lLTszOqy1OBfGGxDt56mpQkYVtZJWoxMyWuUZBfw==
+"@astrojs/rss@^4.0.12":
+  version "4.0.12"
+  resolved "https://registry.yarnpkg.com/@astrojs/rss/-/rss-4.0.12.tgz#ce3505a184232b59b596dbb77e496ca8b1b00fd2"
+  integrity sha512-O5yyxHuDVb6DQ6VLOrbUVFSm+NpObulPxjs6XT9q3tC+RoKbN4HXMZLpv0LvXd1qdAjzVgJ1NFD+zKHJNDXikw==
   dependencies:
-    fast-xml-parser "^4.5.0"
+    fast-xml-parser "^5.2.0"
     kleur "^4.1.5"
 
 "@astrojs/sitemap@^3.4.0":
@@ -1242,12 +1242,12 @@ fast-deep-equal@^3.1.3:
   resolved "https://registry.yarnpkg.com/fast-deep-equal/-/fast-deep-equal-3.1.3.tgz#3a7d56b559d6cbc3eb512325244e619a65c6c525"
   integrity sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==
 
-fast-xml-parser@^4.5.0:
-  version "4.5.0"
-  resolved "https://registry.yarnpkg.com/fast-xml-parser/-/fast-xml-parser-4.5.0.tgz#2882b7d01a6825dfdf909638f2de0256351def37"
-  integrity sha512-/PlTQCI96+fZMAOLMZK4CWG1ItCbfZ/0jx7UIJFChPNrx7tcEgerUgWbeieCM9MfHInUDyK8DWYZ+YrywDJuTg==
+fast-xml-parser@^5.2.0:
+  version "5.2.3"
+  resolved "https://registry.yarnpkg.com/fast-xml-parser/-/fast-xml-parser-5.2.3.tgz#cd6d353998857313b92c7fba5e5d8a66802b0111"
+  integrity sha512-OdCYfRqfpuLUFonTNjvd30rCBZUneHpSQkCqfaeWQ9qrKcl6XlWeDBNVwGb+INAIxRshuN2jF+BE0L6gbBO2mw==
   dependencies:
-    strnum "^1.0.5"
+    strnum "^2.1.0"
 
 fdir@^6.4.4:
   version "6.4.4"
@@ -2780,10 +2780,10 @@ strip-ansi@^7.1.0:
   dependencies:
     ansi-regex "^6.0.1"
 
-strnum@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/strnum/-/strnum-1.0.5.tgz#5c4e829fe15ad4ff0d20c3db5ac97b73c9b072db"
-  integrity sha512-J8bbNyKKXl5qYcR36TIO8W3mVGVHrmmxsd5PAItGkmyzwJvybiw2IVq5nqd0i4LSNSkB/sx9VHllbfFdr9k1JA==
+strnum@^2.1.0:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/strnum/-/strnum-2.1.1.tgz#cf2a6e0cf903728b8b2c4b971b7e36b4e82d46ab"
+  integrity sha512-7ZvoFTiCnGxBtDqJ//Cu6fWtZtc7Y3x+QOirG15wztbdngGSkht27o2pyGWrVy0b4WAy3jbKmnoK6g5VlVNUUw==
 
 style-to-object@^0.4.0:
   version "0.4.4"
