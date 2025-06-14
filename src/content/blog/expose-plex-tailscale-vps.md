@@ -2,18 +2,20 @@
 title: "How to securely expose Plex from behind CGNAT for library sharing using Tailscale and a free Oracle VM"
 description: "I wrote before about securely exposing Plex for sharing your library, but my previous solution relied on Cloudflare Tunnel and it was technically against their TOS. So I switched to using a Oracle VM on their free-tier, connecting it to my home network with Tailscale, and exposing Plex via reverse proxy on the VM. It works like a charm!"
 pubDate: 2024-09-03
-updatedDate: 2025-05-18
+updatedDate: 2025-06-13
 tags:
   - tailscale
 ---
 
-> The method described in this article will route traffic of other users you've shared your library with through an Oracle VM running Tailscale, which connects to a Plex server also running Tailscale. Traffic from other users will be considered local and _should_ get around the requirement (effective April 29, 2025) of an active Plex Pass to allow remote access.
+> Please note that effective April 29, 2025 an active Plex Pass subscription is required to remotely access Plex -- the below still works as is to get through CGNAT _with Plex Pass_, however if you are trying to share your library _without_ Plex Pass (or without the user you're sharing with have a Remote Watch Pass) then additional configuration is required. I have added a section at the end to setup the Plex server as a subnet router and exit node, which seems to be a workaround to get this to work. Please <a href="mailto:contact@fullmetalbrackets.com">let me know</a> if this no longer works, since I cannot test it myself as a lifetime Plex Pass owner!
 
 ## What and Why
 
 Plex is a self-hosted media server that lets you stream your owned (or downloaded, or otherwise acquired) media from other devices on the same network, through a web-based GUI (access via browser) or dedicated app. (Say, on a smart TV or Roku device.) Plex has a built-in feature to share your media library externally, but that requires opening a port on your router and forwarding it to the Plex server. Setting aside that port forwarding can be dangerous if you don't know what you're doing, it won't work anyway if your home network is behind Carrier-Grade Network Address Translation, or CGNAT. Many ISPs use this, and so many self-hosters may find themselves unable to expose their services.
 
 Although I previously wrote about <a href="/blog/expose-plex-with-cloudflare" target="_blank" umami-data-event="expose-plex-tailscale-to-expose-plex-cf">how to expose Plex through CGNAT with Cloudflare Tunnel</a>, it's against their terms of service, so I don't use that method anymore and suggest you don't either. The method I explain in _this_ post has a few extra steps, but it does not run afoul of any service provider's rules.
+
+> Note: The following is ONLY for exposing Plex to _other users you've shared libraries with_, and is not required if you're trying to access your own Plex server. For that, a VPS is not required, just install Tailscale on the Plex server and on whatever external device you want to access Plex from. An external VPS (free or otherwise) is only necessary to expose Plex to other users without them needing to run Tailscale themselves!
 
 What we'll be setting up is this:
 
@@ -365,6 +367,60 @@ Now your friend will get an email invitation and once accepted they'll be able t
 Once your friend starts streaming, they'll show up on your Plex dashboard under the Tailscale IP of the Oracle VM, and it will be considered a local IP. See the screenshot below and notice the `100.x.x.x` IP.
 
 ![Plex dashboard showing Tailscale IP as local client.](../../img/blog/plex-dashboard-streams.png 'Plex dashboard showing Tailscale IP as local client')
+
+> If you have an active Plex Pass subscription, or the users you're sharing library with have an active Remote Watch Pass subscription, then you're done. The user you've shared library to should be able to access your Plex library. _However, without Plex Pass additional configuration is required, as detailed below._
+
+## Using the Plex server as subnet router and exit node
+
+As explained above, the following is required in order for this to work _without a Plex Pass or Remote Watch Pass subscription_. If you do have Plex Pass, or the users you're sharing with have Remote Watch Pass, then this isn't necessary.
+
+First, in order to use either subnet routing or exit node, you need to enable IP forwarding on the server. (This is straight from the <a href="https://tailscale.com/kb/1019/subnets" target="_blank" data-umami-event="tailscale-post-docs-subnet">Tailscale docs</a>.)
+
+If your machine has an `/etc/sysctl.d` directory (which most likely it does) then use these commands:
+
+```sh
+echo 'net.ipv4.ip_forward = 1' | sudo tee -a /etc/sysctl.d/99-tailscale.conf
+echo 'net.ipv6.conf.all.forwarding = 1' | sudo tee -a /etc/sysctl.d/99-tailscale.conf
+sudo sysctl -p /etc/sysctl.d/99-tailscale.conf
+```
+
+If your machine does NOT have the directory (`ls /etc/sysctl.d` returns `No such file or directory`) then instead use these commands:
+
+```sh
+echo 'net.ipv4.ip_forward = 1' | sudo tee -a /etc/sysctl.conf
+echo 'net.ipv6.conf.all.forwarding = 1' | sudo tee -a /etc/sysctl.conf
+sudo sysctl -p /etc/sysctl.conf
+```
+
+Also, if you are running `firewalld` on your server, you should allow masquerading with the following command:
+
+```sh
+sudo firewall-cmd --permanent --add-masquerade
+```
+
+Now we'll advertise both the subnet routes and the exit node with this command: (This assumes your local IP addresses are `192.168.0.x`, make sure to use the appropriate subnet for your LAN!)
+
+```sh
+sudo tailscale up --advertise-routes=192.168.0.0/24 --advertise-exit-node
+```
+
+Now go to the admin console, on the **Machines** tab, and do the following:
+
+1. Click the three dots to the right of the machine want you want to use as subnet router. (Notice the `subnets` tag.)
+
+2. Choose **Edit route settings...** from the dropdown menu.
+
+3. Click both checkboxes for **Subnet routes** and **Use as exit node**, then click the **Save** button to finish.
+
+![Enabling subnets in Tailscale admin console.](../../img/blog/tailscale-subnets.png 'Enabling subnets in Tailscale admin console')
+
+![Enabling exit node in Tailscale admin console.](../../img/blog/tailscale-exit-node.png 'Enabling exit node in Tailscale admin console')
+
+Now, we have to set the Oracle VM to use your Plex server as exit node. SSH into it and use the following command in the terminal:
+
+```sh
+sudo tailscale up --exit-node=<ip or machine name>
+```
 
 ## References
 

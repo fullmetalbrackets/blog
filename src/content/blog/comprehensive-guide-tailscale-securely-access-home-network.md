@@ -2,7 +2,7 @@
 title: "Comprehensive guide to setting up Tailscale to securely access your home network from anywhere"
 description: "Accessing self-hosted services from outside the home can be a challenge, especially when dealing with CGNAT and having to forward ports from the router. It can be complex to manage and potentially dangerous to your home network's privacy and security if not done right, but Tailscale makes it easy to set up encrypted peer-to-peer connections between devices across different networks. In this guide I will explain how I use Tailscale as a VPN for secure remote access to my home network."
 pubDate: 2024-06-25
-updatedDate: 2025-02-22
+updatedDate: 2025-06-13
 tags:
   - tailscale
 ---
@@ -63,73 +63,9 @@ Use this command to generate the certificate: (In this example the Linux server'
 tailscale cert server.emperor-sloth.ts.net
 ```
 
-## Configuring Plex for Tailscale
- 
-Although you should be able to reach your Plex media server's web UI via browser on your phone or tablet when connecting through Tailscale, the Plex and Plexamp apps will not work until you change some settings.
-
-On the Plex web UI go to **Settings** -> **Network** and do the following:
-
-1. Set _Secure connections_ to **Preferred**
-
-![Secure connections setting in Plex.](../../img/blog/plex-secure-connections.png 'Secure connections setting in Plex')
-
-2. Set _Preferred network interface_ to **Any**
-
-3. Make sure _Enable Relays_ is **unchecked**
-
-4. Go to _Custom server access URLs_ and type in the server's tailnet URL with the Plex port, e.g. `https://server.emperor-sloth.ts.net:32400`
-
-![Relay and Server Access URL settings in Plex.](../../img/blog/plex-server-access-url.png 'Relay and Server Access URL settings in Plex')
-
-5. Click on **Save changes**
-
-## Additional config for SMB and NFS
-
-This is entirely optional, but I like to have access to my SMB shares on my laptop and even on my phone through Solid Explorer or X-plorer. Rarely used, but still handy. Per <a href="https://github.com/tailscale/tailscale/issues/6856#issuecomment-1485385748" target="_blank" data-umami-event="tailscale-post-smb-gh-issue">this issue on GitHub</a> we need to do a little extra config for SMB to work through Tailscale. ([See below for additional NFS config.](#nfs))
-
-First, find out your server's main interface device name with the `ip a` command and pay attention to the output: 
-
-```sh
-1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
-    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
-2: en2sp0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000
-    link/ether 6f:cc:a2:e8:72:30 brd ff:ff:ff:ff:ff:ff
-```
-
-In the above case, the ethernet interface is called `en2sp0`, but for you it may be called something different like `end0`, `eth0`, etc. (Wi-Fi interfaces are usually `wlan0` or similar.) Notice also the loopback interface named `lo`.
-
-Edit the Samba config file at `/etc/samba/smb.conf` and add the following under `[global]`:
-
-```ini
-[global]
-interfaces = lo enp2s0
-bind interfaces only = yes
-smb ports = 445
-```
-
-Restart Samba for the config change to take effect:
-
-```sh
-sudo systemctl restart smbd.service
-```
-
-Finally, we'll use <a href="https://tailscale.com/kb/1312/serve" target="_blank" data-umami-event="tailscale-post-docs-serve">Tailscale Serve</a> to allow the SMB traffic to be routed through Tailscale, using this command:
-
-```sh
-tailscale serve --bg --tcp 445 tcp://localhost:445
-```
-
-<div id='nfs'/>
-
-To access NFS shares through Tailscale, we need to add the Tailscale IP of the NFS client (the machine that will be accessing the shares) to `/etc/exports`, for example:
-
-```sh
-/path/to/share 100.143.11.92(rw,sync,no_subtree_check)
-```
-
 ## Setting up a subnet router
 
-Technically, you can just install Tailscale on every device on your network and add them to your Tailnet, but that's not necessary. You can instead only install it on one machine and use that as a "subnet router" to access other network resources. This is especially handy for accessing devices that you can't run Tailscale on.
+Technically, you can just install Tailscale on every device on your network and add them to your Tailnet, but that's not necessary. You can instead only install it on one machine and use that as a "subnet router" to access other network resources. This is especially handy for accessing devices that you can't or don't want to run Tailscale on.
 
 First, on the machine you want to use as subnet router, you need to enable IP forwarding. (This is straight from the <a href="https://tailscale.com/kb/1019/subnets" target="_blank" data-umami-event="tailscale-post-docs-subnet">Tailscale docs</a>.)
 
@@ -208,6 +144,76 @@ tailscale up --exit-node=<ip or name>
 ```
 
 On Windows, click on the Tailscale icon in the system tray, hover over **Exit nodes** and choose your node from the menu.
+
+## Configuring Plex for Tailscale
+ 
+> Plex recently put remote access -- whether accessing your own content outside your network OR other users accessing your shared libraries -- behind Plex Pass. I have been told, and also have seen others report on Reddit, that Plex considers Tailscale IPs to be external and thus not allow access unless you have a <a href="https://www.plex.tv/plans/" target="_blank">Plex Pass subscription</a> or the external users have a <a href="https://support.plex.tv/articles/remote-watch-pass-overview/" target="_blank">Remote Watch Pass</a>.
+>
+> Per <a href="https://www.reddit.com/r/Tailscale/comments/1kes22h/comment/mqpp8l4/" target="_blank">this post on the Tailscale subreddit</a>, it will work if you set up the Plex server as both subnet router and exit node, and set the external device to use the Plex server as exit node. I have a lifetime Plex Pass myself and only use Tailscale to punch through CGNAT, so unfortunately I am unable to test this. (However, I can confirm that with Plex Pass, this works without advertising subnet routes or exit node.) I suggest trying first with subnet router only, as [described above](#setting-up-a-subnet-router) and see if that works -- if it does not, [advertise your server as an exit node](#setting-up-an-exit-node) and set your external device to use it.
+>
+> Please feel free to [contact me](mailto:contact@fullmetalbrackets.com) and let me know if it does or does not work!
+
+Although you should be able to reach your Plex media server's web UI via browser on your phone or tablet when connecting through Tailscale (and using subnet router/exit node as explained above), the Plex and Plexamp apps will not work until you do the following configuration in the Plex.
+
+On the Plex web UI go to **Settings** -> **Network** and do the following:
+
+1. Set _Secure connections_ to **Preferred**
+
+![Secure connections setting in Plex.](../../img/blog/plex-secure-connections.png 'Secure connections setting in Plex')
+
+2. Set _Preferred network interface_ to **Any**
+
+3. Make sure _Enable Relays_ is **unchecked**
+
+4. Go to _Custom server access URLs_ and type in the server's tailnet URL with the Plex port, e.g. `https://server.emperor-sloth.ts.net:32400`
+
+![Relay and Server Access URL settings in Plex.](../../img/blog/plex-server-access-url.png 'Relay and Server Access URL settings in Plex')
+
+5. Click on **Save changes**
+
+## Additional config for SMB and NFS
+
+This is entirely optional, but I like to have access to my SMB shares on my laptop and even on my phone through Solid Explorer or X-plorer. Rarely used, but still handy. Per <a href="https://github.com/tailscale/tailscale/issues/6856#issuecomment-1485385748" target="_blank" data-umami-event="tailscale-post-smb-gh-issue">this issue on GitHub</a> we need to do a little extra config for SMB to work through Tailscale. ([See below for additional NFS config.](#nfs))
+
+First, find out your server's main interface device name with the `ip a` command and pay attention to the output: 
+
+```sh
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+2: en2sp0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000
+    link/ether 6f:cc:a2:e8:72:30 brd ff:ff:ff:ff:ff:ff
+```
+
+In the above case, the ethernet interface is called `en2sp0`, but for you it may be called something different like `end0`, `eth0`, etc. (Wi-Fi interfaces are usually `wlan0` or similar.) Notice also the loopback interface named `lo`.
+
+Edit the Samba config file at `/etc/samba/smb.conf` and add the following under `[global]`:
+
+```ini
+[global]
+interfaces = lo enp2s0
+bind interfaces only = yes
+smb ports = 445
+```
+
+Restart Samba for the config change to take effect:
+
+```sh
+sudo systemctl restart smbd.service
+```
+
+Finally, we'll use <a href="https://tailscale.com/kb/1312/serve" target="_blank" data-umami-event="tailscale-post-docs-serve">Tailscale Serve</a> to allow the SMB traffic to be routed through Tailscale, using this command:
+
+```sh
+tailscale serve --bg --tcp 445 tcp://localhost:445
+```
+
+<div id='nfs'/>
+
+To access NFS shares through Tailscale, we need to add the Tailscale IP of the NFS client (the machine that will be accessing the shares) to `/etc/exports`, for example:
+
+```sh
+/path/to/share 100.143.11.92(rw,sync,no_subtree_check)
+```
 
 ## Setting a Pi-Hole as Tailnet DNS
 
