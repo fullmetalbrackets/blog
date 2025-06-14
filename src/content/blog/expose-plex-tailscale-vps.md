@@ -65,6 +65,8 @@ Click the **Create instance** button and do the following:
 
 5. By choosing the Ubuntu 24.04 Minimal image, it should have automatically changed the shape to _VM.Standard.E2.1.Micro_ -- if it did not, click on **Change shape** and choose it. Also, make sure _Instance type_ is **Virtual machine** and NOT bare metal. Click on the **Select shape** button to confirm your choice.
 
+![Choosing a Shape while creating a compute instance in OCI.](../../img/blog/oci00.png 'Choosing a Shape while creating a compute instance in OCI')
+
 > If provisioning an Ampere A1 instance, click on the arrow to the left of the Shape name to change the number of OCPUs and amount of memory -- remember, the Ampere A1 free-tier includes 4 OCPUs and 24 GB of memory -- when you increase the OCPU, it will also increase the memory automatically. Make sure you don't go over these free limits!
 
 6. Leave the rest of the options as-is and click on the **Next** button at the bottom-right.
