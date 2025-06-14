@@ -35,9 +35,9 @@ Finally, you'll need a Plex server already set up. (And I'll assume it's running
 
 We'll be using a free-tier VM from Oracle Cloud Infrastructure (OCI) -- specifically, an E2 Micro instance which runs on a single-core AMD OCPU, has 1 GB of memory and a 0.48 Gbps connection, more than enough for streaming even 4K content through Plex. You can run *TWO* of these VMs **totally free**.
 
-> In addition to two E2 Micro instances, the OCI free tier includes one A1 Flex instance with up to 4 Arm OCPUs, up to 24 GB of memory, and a 6 Gbps connection. (These are the total limits, you can also split it with two A1 Flex instances with 2 OCPUs and 12 GB of memory, or 4 OCPUs with 6 GB of memory each, etc.)
+> In addition to two AMD E2 Micro instances, the OCI free tier includes one Ampere A1 Flex instance with up to 4 Arm OCPUs, up to 24 GB of memory, and a connection of 1 Gbps per OCPU. (These are the total limits, you can also split it with two A1 Flex instances with 2 OCPUs and 12 GB of memory, or 4 OCPUs with 6 GB of memory each, etc.)
 >
-> It may be preferable to use the A1 Flex instance for this instead of the E2 Micro if you want faster connection for more concurrent remote streams, if sharing your library with more than 1 or 2 users. In many cases you will encounter an "out of capacity" error when trying to provision an A1 Flex instance of any shape and configuration, but if you upgrade your free tier account to Pay As You Go, the errors will disappear. I have confirmed this myself by upgrading my account. Just be sure to stay within the free limits noted above if you do this!
+> It may be preferable to use the A1 Flex instance for this instead of the E2 Micro if you want faster connection for more concurrent remote streams, if sharing your library with more than 1 or 2 users. However, you will most likely encounter an "out of capacity" error when trying to provision an A1 Flex instance of any shape and configuration, but if you upgrade your free tier account to Pay As You Go, the errors will disappear. I have confirmed this myself by upgrading my account. Just be sure to stay within the free limits noted above if you do this!
 
 First, go to <a href="https://www.oracle.com/cloud/free/" target="_blank" umami-data-event="expose-plex-tailscale-oci-free">Oracle Cloud's website</a> and click **Start for free** to create your account. You will need a credit card, but only for verification purposes! As long as you stick to *free tier* and don't upgrade, you won't be charged.
 
@@ -55,44 +55,49 @@ Click the **Create instance** button and do the following:
 
 1. Name your instance to whatever you want. (Or leave the default generated name if you prefer.)
 
-2. Scroll down to _Image and shape_, and click **Edit**.
+2. Under the _Placement_ section, just leave it default. Note that Ampere A1 instances can use any availability domain, while AMD E2 instances can only be created on the AD 3 availability domain. It should automatically default to the right one depending on your Shape choice, so you can ignore this.
 
-3. The default _Shape_ (VM.Standard.A1 Flex) is nearly impossible to get, it's always "out of capacity." That's fine, it's overkill for this anyway. Click on **Change shape**.
+3. Scroll down to _Image and shape_. The default image is _Oracle Linux 9_ and the default shape is _VM.Standard.A1 Flex_ -- as explained above, this shape is nearly impossible to get and is almost always "out of capacity." You can upgrade your Oracle account to Pay As You Go to make it accessible, but we'll just go with _E2.1.Micro_ instead which is also free-tier and is always available.
 
-4. Make sure _Instance type_ is **Virtual machines**.
+4. First, if you don't want to use Oracle Linux, click on **Change image** and choose a different one. I suggest _Ubuntu_, click on it and then choose the image name **Canonical Ubuntu 24.04 Minimal**, this is the latest version of Ubuntu and minimal means no extra bloat. (If using the Ampere A1 Flex shape, make sure you choose an image that says aarch64, since Ampere instances uses Arm CPUs -- for E2.1.Micro which uses an AMD CPU, you need to choose an image that doesn't say that.)
 
-5. Under _Shape series_, choose **Specialty and previous generation** which falls under the always-free tier.
+![Choosing an Image while creating a compute instance in OCI.](../../img/blog/oci0.png 'Choosing an Image while creating a compute instance in OCI')
 
+5. By choosing the Ubuntu 24.04 Minimal image, it should have automatically changed the shape to _VM.Standard.E2.1.Micro_ -- if it did not, click on **Change shape** and choose it. Also, make sure _Instance type_ is **Virtual machine** and NOT bare metal. Click on the **Select shape** button to confirm your choice.
 
-6. Under _Shape name_, check the box for (the only option) **VM.Standard.E2.1.Micro**. (Notice the _"always-free" eligible_ tag.) Click the **Select shape** button at the bottom.
+> If provisioning an Ampere A1 instance, click on the arrow to the left of the Shape name to change the number of OCPUs and amount of memory -- remember, the Ampere A1 free-tier includes 4 OCPUs and 24 GB of memory -- when you increase the OCPU, it will also increase the memory automatically. Make sure you don't go over these free limits!
 
-7. The default image is Oracle Linux 8, but you can click **Change image** and choose one of the other always-free eligible images -- **Ubuntu** or **CentOS**. Personally, I use **Ubuntu 24.04 Minimal**.
+6. Leave the rest of the options as-is and click on the **Next** button at the bottom-right.
 
-![Choosing an Image and Shape while creating a compute instance in OCI.](../../img/blog/oci0.png 'Choosing an Image and Shape while creating a compute instance in OCI')
+7. Under the _Security_ section, read what it says and make your choice. Personally I always leave the toggle for Shielded instance at OFF. The toggle for Confidential computing will always be grayed out because free-tier shapes don't support it. Click on the **Next** button at the bottom-right.
 
-> The rest of this guide assumes you chose **Canonical Ubuntu 22.04 Minimal** as your image.
+8. Under the _Networking_ section, you can customize your VNIC name, subnet, IP addresses, etc. Or just leave it all to be automatically assigned as is the default, I usually do.
 
-8. Scroll down to _Add SSH keys_. You can upload your own public key, or you can let it generate a key pair for you. If you choose the latter, **make sure you save the public and private keys** so you can SSH into the VM!
+9. Scroll down to _Add SSH keys_. You can upload your own public key, or you can let it generate a key pair for you, which is the default. If you choose the default option, **make sure you download the public and private keys**, you'll need them to SSH into the VM! When done, click on the **Next** button.
 
 ![SSH key settings when creating a compute instance in OCI.](../../img/blog/oci-ssh.png 'SSH key settings when creating a compute instance in OCI')
 
-9. You can leave the rest as default, or change stuff around if you like. I'll let you make those choices yourself. When ready, click the **Create** button at the bottom.
+10. Under the _Storage_ section, I just leave everything as default. A 46.6 GB boot volume is automatically included with the instance, but if you want it to be a larger size, turn on the toggle and choose a larger size. Note that the free-tier limit is 200 GB, which is shared between ALL instances, so be sure not to go over this! I usually just leave this as default. (I also never mess with the Boot Volume Performance and suggest you don't either, unless you know what you're doing.)
+
+11. If you've made a _Block volume_ separately (this also falls under the combined 200 GB of space for all instances) you can attach it here. I don't use block volumes, and it's not necessary for our purposes here, so just leave it alone. Click on **Next**.
+
+12. Under the _Review_ section, you'll see all the details of your choices made thus far. If everything looks good, click on the **Create** button at the bottom-right.
 
 Once the instance is fully provisioned and shows **Running**, you're good to go. Click on it and look for **Public IPv4 address**, take note of this!
 
 ## SSH into instance
 
-We'll assume you generated a key pair and downloaded the private key to your Downloads folder. Use the following command:
+We'll assume you generated a key pair and downloaded the private key to your Downloads folder. In your Linux terminal, or if using Windows in Powershell or Windows Terminal, use the following command: (Obviously, use the correct filename of your SSH key, it'll have the date you created it on in the name. You can rename this key file if you want.)
 
 ```bash
-ssh -i ~/Downloads/ssh-ssh-key-2024-01-30.key ubuntu@<Instance-IP>
+ssh -i ~/Downloads/ssh-key-2024-01-30.key ubuntu@<Instance Public IP>
 ```
 
 For the future, you should create or edit the `~/.ssh/config` file, and add in something like the following:
 
 ```bash
 Host oracle
-    HostName <Instance-IP>
+    HostName <Instance Public IP>
     IdentityFile ~/Downloads/ssh-key-2024-01-30.key
     User ubuntu
 ```
