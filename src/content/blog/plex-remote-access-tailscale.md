@@ -1,7 +1,8 @@
 ---
 title: "How to get around the Plex Pass requirement for Plex remote access by using Tailscale"
 description: "Beginning April 29th, 2025 the pricing for Plex Pass increased at the same time that remote access got paywalled behind it. That means you can no longer stream your own content outside of your home network, like say on your phone or tablet while at work or on vacation, without paying for Plex Pass. You can get around this by using Tailscale to remotely access your Plex server from other devices while still appearing as local traffic, which does not require Plex Pass."
-pubDate: 2025-06-13
+pubDate: 2025-05-17
+updatedDate: 2025-06-13
 tags:
   - tailscale
 ---
