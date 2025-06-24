@@ -2,16 +2,16 @@
 title: "How to get around the Plex Pass requirement for Plex remote access by using Tailscale"
 description: "Beginning April 29th, 2025 the pricing for Plex Pass increased at the same time that remote access got paywalled behind it. That means you can no longer stream your own content outside of your home network, like say on your phone or tablet while at work or on vacation, without paying for Plex Pass. You can get around this by using Tailscale to remotely access your Plex server from other devices while still appearing as local traffic, which does not require Plex Pass."
 pubDate: 2025-05-17
-updatedDate: 2025-06-13
+updatedDate: 2025-06-24
 tags:
   - tailscale
 ---
 
-> I have been told, and also have seen others report on Reddit, that Plex considers Tailscale IPs to be external and thus will not allow access unless you have a <a href="https://www.plex.tv/plans/" target="_blank">Plex Pass subscription</a> or the external users have a <a href="https://support.plex.tv/articles/remote-watch-pass-overview/" target="_blank">Remote Watch Pass</a>.
+> I have seen posts on Reddit that Plex considers Tailscale IPs to be external and thus will not allow access unless you have a <a href="https://www.plex.tv/plans/" target="_blank">Plex Pass subscription</a> or the external users have a <a href="https://support.plex.tv/articles/remote-watch-pass-overview/" target="_blank">Remote Watch Pass</a>.
 >
-> Per <a href="https://www.reddit.com/r/Tailscale/comments/1kes22h/comment/mqpp8l4/" target="_blank">this comment on the Tailscale subreddit</a>, it will work if you set up the Plex server as both subnet router and exit node, and set the external device to use the Plex server as exit node. I have a lifetime Plex Pass myself and only use Tailscale to punch through CGNAT, so unfortunately I am unable to test this. (However, I can confirm that with Plex Pass, this works without advertising subnet routes or exit node.) I have added instructions below on how to setup the Plex server and both subnet router and exit node. It's possible that only one or the other is required, so I suggest trying first subnet router and see if that works -- if it does not, then advertise your Plex server as exit node and have your external device use it.
+> Per <a href="https://www.reddit.com/r/Tailscale/comments/1kes22h/comment/mqpp8l4/" target="_blank">this comment on the Tailscale subreddit</a>, it will work if you set up the Plex server as both subnet router and exit node, and set the external device to use the Plex server as exit node. I have a lifetime Plex Pass myself and only use Tailscale to punch through CGNAT, so unfortunately I am unable to test this. (However, I can confirm that with Plex Pass, this works without advertising subnet routes or exit node.) Please make sure you follow the instructions below on how to setup the Plex server as both subnet router and exit node.
 >
-> Please feel free to [contact me](mailto:contact@fullmetalbrackets.com) and let me know if it does or does not work!
+> I have received confirmation from several people that remotely accessing Plex works with this setup without Plex Pass, at least for now -- it's entirely possible Plex will change something in the future to break this workaround. Please feel free to [contact me](mailto:contact@fullmetalbrackets.com) and let me know if you have any issues.
 
 ## About Plex and the service changes
 
@@ -83,7 +83,7 @@ Also, if you are running `firewalld` on your server, you should allow masqueradi
 sudo firewall-cmd --permanent --add-masquerade
 ```
 
-Now we'll advertise both the subnet routes and the exit node with this command: (This assumes your local IP addresses are `192.168.0.x`, make sure to use the appropriate subnet for your LAN!)
+Now we'll advertise both the subnet routes and the exit node with this command. *Make sure to use the correct subnet for your LAN* -- if your Plex server's local IP address is something like `192.168.0.100` then subnet will be `192.168.0.0/24`, if it's instead `192.168.1.100` then your subnet is `192.168.1.0/24`, etc.
 
 ```sh
 sudo tailscale up --advertise-routes=192.168.0.0/24 --advertise-exit-node
