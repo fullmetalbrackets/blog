@@ -1,15 +1,15 @@
 ---
 title: "How to get around the Plex Pass requirement for Plex remote access by using Tailscale"
-description: "Beginning April 29th, 2025 the pricing for Plex Pass increased at the same time that remote access got paywalled behind it. That means you can no longer stream your own content outside of your home network, like say on your phone or tablet while at work or on vacation, without paying for Plex Pass. You can get around this by using Tailscale to remotely access your Plex server from other devices while still appearing as local traffic, which does not require Plex Pass."
+description: "Beginning April 29th, 2025 the pricing for Plex Pass increased at the same time that remote access got paywalled behind it. That means you can no longer stream your own content outside of your home network, like say on your phone or tablet while at work or on vacation, without paying for Plex Pass. You can bypass the Plex Pass requirement by using Tailscale to remotely access your Plex server from your other devices."
 pubDate: 2025-05-17
-updatedDate: 2025-06-24
+updatedDate: 2025-07-31
 tags:
   - tailscale
 ---
 
 > I have seen posts on Reddit that Plex considers Tailscale IPs to be external and thus will not allow access unless you have a <a href="https://www.plex.tv/plans/" target="_blank">Plex Pass subscription</a> or the external users have a <a href="https://support.plex.tv/articles/remote-watch-pass-overview/" target="_blank">Remote Watch Pass</a>.
 >
-> Per <a href="https://www.reddit.com/r/Tailscale/comments/1kes22h/comment/mqpp8l4/" target="_blank">this comment on the Tailscale subreddit</a>, it will work if you set up the Plex server as both subnet router and exit node, and set the external device to use the Plex server as exit node. I have a lifetime Plex Pass myself and only use Tailscale to punch through CGNAT, so unfortunately I am unable to test this. (However, I can confirm that with Plex Pass, this works without advertising subnet routes or exit node.) Please make sure you follow the instructions below on how to setup the Plex server as both subnet router and exit node.
+> Per <a href="https://www.reddit.com/r/Tailscale/comments/1kes22h/comment/mqpp8l4/" target="_blank">this comment on the Tailscale subreddit</a>, for Tailscale to bypass the Plex Pass requirement you need to set up the Plex server as both subnet router and exit node, and set the external device you're connecting with (phone, tablet, etc.) to use the Plex server as exit node. I have a lifetime Plex Pass and only use Tailscale to punch through CGNAT, so unfortunately I am unable to test this myself. (However, I can confirm that with Plex Pass, Tailscale allows remote access without advertising subnet routes or using an exit node.) Please make sure you follow the instructions below on how to setup the Plex server as both subnet router and exit node.
 >
 > I have received confirmation from several people that remotely accessing Plex works with this setup without Plex Pass, at least for now -- it's entirely possible Plex will change something in the future to break this workaround. Please feel free to [contact me](mailto:contact@fullmetalbrackets.com) and let me know if you have any issues.
 
