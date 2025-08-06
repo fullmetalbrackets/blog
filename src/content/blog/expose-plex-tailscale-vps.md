@@ -315,7 +315,7 @@ Now to create a proxy host and provision the TLS certificate:
 
 4. Type in `plex.cyber-sloth.ts.net` under **Forward Hostname/IP**.
 
-5. Type in `80` under **Forward Port**.
+5. Type in `32400` under **Forward Port**.
 
 6. Toggle on **Websockets Support** and **Block Common Exploits**, but leave caching off.
 
