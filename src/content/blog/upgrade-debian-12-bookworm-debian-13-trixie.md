@@ -2,6 +2,7 @@
 title: "How I upgraded my Linux desktop from Debian 12 Bookworm to Debian 13 Trixie"
 description: "My old Dell Optiplex has been a great desktop PC for just minimal interneting and coding. I've been running Debian 12 Bookworm on it since it became available, and usually I stick to the latest Stable release of Debian. However, I decided to live on the edge just a little and upgrade to Debian 13 Trixie, which is still in testing."
 pubDate: 2025-05-21
+updatedDate: 2025-09-11
 tags:
   - linux
 ---
@@ -11,6 +12,8 @@ tags:
 Note that I'm just basing this off my own experience. I went from Debian 12 Bookworm, with all my settings, installed apps and custom configurations to Debian 13 Trixie, and had no major issues during or after the upgrade. Applications like Google Chrome, VSCode, the Tailscale GUI client, LibreOffice and all pre-installed apps have worked completely fine.
 
 Just because I encountered no problems does not mean you won't. Make sure to make a backup of your main user Home directory and anything else you deem important, just in case you encounter some fatal error and have to start from scratch. (Highly doubtful, but just saying.)
+
+> Note: I originally wrote this post in May 2025, when Trixie was in "release candidate" state. Trixie officially released on August 9, so if you're here after that date, you should have absolutely zero problems updating from Bookworm to Trixie.
 
 ## Upgrading apt repositories to Trixie
 
