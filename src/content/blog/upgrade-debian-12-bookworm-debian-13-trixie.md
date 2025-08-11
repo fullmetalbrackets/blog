@@ -1,6 +1,6 @@
 ---
 title: "How I upgraded my Linux desktop from Debian 12 Bookworm to Debian 13 Trixie"
-description: "My old Dell Optiplex has been a great desktop PC for just minimal interneting and coding. I've been running Debian 12 Bookworm on it since it became available, and usually I stick to the latest Stable release of Debian. However, I decided to live on the edge just a little and upgrade to Debian 13 Trixie, which is still in testing."
+description: "My old Dell Optiplex has been a great desktop PC for just minimal interneting and coding. I've been running Debian 12 Bookworm on it since it became available, and usually I stick to the latest Stable release of Debian. However, I decided to live on the edge just a little and upgrade to Debian 13 Trixie, the latest version."
 pubDate: 2025-05-21
 updatedDate: 2025-09-11
 tags:
