@@ -82,31 +82,40 @@ const posts = (await getCollection("blog")).sort(
 <section>
   <h2>Featured Articles</h2>
   <ul>
-        <li>
+
+    <li>
+      <a href="/blog/upgrade-debian-12-bookworm-debian-13-trixie/" rel="prefetch-intent" data-umami-event="featured-upgrade-bookworm-to-trixie">
+      <p class="posts-title">
+        How I upgraded my Linux desktop from Debian 12 Bookworm to Debian 13 Trixie
+      </p>
+      <p class="desc">
+        My old Dell Optiplex has been a great desktop PC for just minimal interneting and coding. I've been running Debian 12 Bookworm on it since it became available, and usually I stick to the latest Stable release of Debian. However, I decided to live on the edge just a little and upgrade to Debian 13 Trixie, the latest version.
+      </p>
+      </a>
+    </li>
+
+    <li>
+      <a href="/blog/plex-remote-access-tailscale/" rel="prefetch-intent" data-umami-event="featured-plex-remote-access-tailscale">
+      <p class="posts-title">
+        How to get around the Plex Pass requirement for Plex remote access by using Tailscale
+      </p>
+      <p class="desc">
+        Beginning April 29th, 2025 the pricing for Plex Pass increased at the same time that remote access got paywalled behind it. That means you can no longer stream your own content outside of your home network, like say on your phone or tablet while at work or on vacation, without paying for Plex Pass. You can bypass the Plex Pass requirement by using Tailscale to remotely access your Plex server from your other devices.
+      </p>
+      </a>
+    </li>
+
+    <li>
       <a href="/blog/reverse-proxy-using-nginx-adguardhome-cloudflare/" rel="prefetch-intent" data-umami-event="featured-proxy-adguard">
-      <p class="posts-title">Setting up a reverse proxy for HTTPS with a custom domain using Nginx Proxy Manager, AdGuard Home and Cloudflare</p>
+      <p class="posts-title">
+        Setting up a reverse proxy for HTTPS with a custom domain using Nginx Proxy Manager, AdGuard Home and Cloudflare
+      </p>
       <p class="desc">
         I've used a reverse proxy to access my self-hosted apps and services for years, and used Pi-Hole as my home network DNS for even longer, but recently switched to AdGuard Home. That meant redoing all my DNS records within AdGuard so I could get my reverse proxy back up and running, and I decided to write down the steps I took. When done, we'll be able to access our apps and services through a custom domain, with unique sub-domains for each app or service, with full HTTPS and accessible only locally.
       </p>
       </a>
     </li>
-    <li>
-      <a href="/blog/expose-plex-tailscale-vps/" rel="prefetch-intent" data-umami-event="featured-expose-plex-tailscale">
-      <p class="posts-title">How to securely expose Plex from behind CGNAT using Tailscale and a free Oracle VM
-      </p>
-      <p class="desc">
-        I wrote before about securely exposing Plex for external access, but my previous solution relied on Cloudflare Tunnel and it was technically against their TOS. So I switched to using a Oracle VM on their free-tier, connecting it to my home network with Tailscale, and exposing Plex via reverse proxy. It works like a charm!
-      </p>
-      </a>
-    </li>
-    <li>
-      <a href="/blog/comprehensive-guide-tailscale-securely-access-home-network/" rel="prefetch-intent" data-umami-event="featured-tailscale-guide">
-      <p class="posts-title">Comprehensive guide to setting up Tailscale to securely access your home network from anywhere</p>
-      <p class="desc">
-        Accessing self-hosted services from outside the home can be a challenge, especially when dealing with CGNAT and having to forward ports from the router. It can be complex to manage and potentially dangerous to your home network's privacy and security if not done right, but Tailscale makes it easy to set up encrypted peer-to-peer connections between devices across different networks. In this guide I will explain how I use Tailscale as a VPN for secure remote access to my home network.
-      </p>
-      </a>
-    </li>
+
     <li>
       <a href="/blog/xplore-android-smb-share/" rel="prefetch-intent" data-umami-event="featured-xplore-android-smb-share">
       <p class="posts-title">Setup X-plore File Manager on Android to transfer files to an SMB share</p>
@@ -115,6 +124,7 @@ const posts = (await getCollection("blog")).sort(
       </p>
       </a>
     </li>
+
     <li>
       <a href="/blog/two-drives-merger-fs/" rel="prefetch-intent" data-umami-event="featured-two-drives-mergerfs">
       <p class="posts-title">Using MergerFS to combine multiple hard drives into one unified media storage</p>
