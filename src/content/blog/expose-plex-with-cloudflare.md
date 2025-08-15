@@ -1,8 +1,8 @@
 ---
-title: "How to securely expose Plex from behind CGNAT for library sharing with Cloudflare Tunnel"
+title: "How to expose Plex to share your library with others from behind CGNAT with Cloudflare Tunnel"
 description: "Exposing Plex to share your library with other users normally involves port forwarding from the router, which is very insecure and not recommended. If your home network is behind CGNAT - very common with most ISPs nowadays -- you can't even port forward if you wanted to. Here's how I did it in a fairly secure way that limits access by using Cloudflare."
 pubDate: 2024-07-15
-updatedDate: 2025-03-26
+updatedDate: 2025-08-15
 tags:
   - cloudflare
 ---
@@ -13,7 +13,7 @@ Plex is a self-hosted media server that lets you stream your owned (or downloade
 
 There are many solutions to get across CGNAT, using Cloudflare Tunnel for Plex fairly hassle-free. (However, it is technically against Cloudflare's terms of service. Details below.) Cloudflare Tunnel provides a secure connection to a network resource behind CGNAT and without exposing your public IP, by running a `cloudflared` daemon on your server. As a by-product, the traffic flows through Cloudflare's CDN and gets all the features that come with that, including security through their Web Application Firewall. In this post I will demonstrate how I have been sharing my Plex library through a Cloudflare Tunnel and only allowing access from specific IP addresses.
 
-> You're probably much better off following <a href="/blog/expose-plex-tailscale-vps/" target="_blank" data-umami-event="expose-plex-cloudflare-to-tailscale-vps">this blog post to expose Plex for library sharing through CGNAT with Tailscale</a> instead of using exposing it via Cloudflare Tunnel as I write about below. Technically speaking, **Cloudflare Tunnel is NOT intended for routing video and audio streams**, it's intended purpose is routing HTTP traffic for webpages. In fact, the <a href="https://www.cloudflare.com/service-specific-terms-application-services/#content-delivery-network-terms" target="_blank" data-umami-event="expose-plex-cloudflare-tos">Cloudflare Service-Specific Terms for their CDN</a> specifically state:
+> You're probably much better off following <a href="/blog/expose-plex-tailscale-vps/" target="_blank" data-umami-event="expose-plex-cloudflare-to-tailscale-vps">this blog post share your Plex library sharing through CGNAT with Tailscale</a> instead of using a Cloudflare Tunnel as I write about in this article. Technically speaking, **Cloudflare Tunnel is NOT intended for routing video and audio streams**, it's intended purpose is exclusively for routing HTTP traffic for webpages. In fact, the <a href="https://www.cloudflare.com/service-specific-terms-application-services/#content-delivery-network-terms" target="_blank" data-umami-event="expose-plex-cloudflare-tos">Cloudflare Service-Specific Terms for their CDN</a> specifically state:
 >
 > _"Unless you are an Enterprise customer, Cloudflare offers specific Paid Services (e.g., the Developer Platform, Images, and Stream) **that you must use in order to serve video and other large files via the CDN**. Cloudflare reserves the right to disable or limit your access to or use of the CDN, or to limit your End Users’ access to certain of your resources through the CDN, **if you use or are suspected of using the CDN without such Paid Services to serve video** or a disproportionate percentage of pictures, audio files, or other large files."_
 >
@@ -21,9 +21,9 @@ There are many solutions to get across CGNAT, using Cloudflare Tunnel for Plex f
 >
 > _"Over time we recognized that some of our customers wanted to stream video using our network. To accommodate them, we developed our Stream product. Stream delivers great performance at an affordable rate charged based on how much load you place on our network. Unfortunately, while most people respect these limitations and understand they exist to ensure high quality of service for all Cloudflare customers, **some users attempt to misconfigure our service to stream video in violation of our Terms of Service**."_
 > 
-> Be aware that by using Cloudflare Tunnel, you are routing traffic through Cloudflare's CDN (can't have one without the other) and so using it with Plex violates their terms of services and may cause Cloudflare to limit or potentially outright ban your account. By following this guide, **you agree to take the risk** that such action may occur, so _think carefully about this warning and whether it's worth it_.
+> Be aware that by using Cloudflare Tunnel, you are routing traffic through Cloudflare's CDN (can't have one without the other) and so using it with Plex violates their terms of services and may cause Cloudflare to limit or potentially outright ban your account. Cloudflare can see all traffic routed through their CDN and know when that traffic is video streaming. They may not care if it's just you streaming a Plex movie remotely once in a while and not using much bandwidth, but constant usage by multiple IPs will almost certainly rouse their attention and can lead to action being taken against you.
 >
-> Cloudflare can see all traffic routed through their CDN and know when that traffic is video streaming. They may not care if it's just you streaming video once in a while, or if you're not using a lot of bandwidth, but constant use by multiple IPs will almost certainly rouse their attention and can lead to action being taken against you. You've been warned!
+> I switched to <a href="/blog/expose-plex-tailscale-vps/" target="_blank" data-umami-event="expose-plex-cloudflare-to-tailscale-vps">sharing my library via Tailscale and a free Oracle Cloud instance</a>, which has worked great for over a year, and as a result I highly recommend it. By following the below guide to share your Plex library through a Cloudflare Tunnel, **you are going against the Cloudflare terms of service and risking your Cloudflare account**, so think carefully about this warning and whether it's worth it. You've been warned!
 
 ## Pre-Requisites
 

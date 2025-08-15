@@ -1,8 +1,8 @@
 ---
-title: "How to securely expose Plex from behind CGNAT for library sharing using Tailscale and a free Oracle VM"
-description: "I wrote before about securely exposing Plex for sharing your library, but my previous solution relied on Cloudflare Tunnel and it was technically against their TOS. So I switched to using a Oracle VM on their free-tier, connecting it to my home network with Tailscale, and exposing Plex via reverse proxy on the VM. It works like a charm!"
+title: "How to expose Plex to share your library with others from behind CGNAT using Tailscale and a free Oracle Cloud instance"
+description: "I wrote before about sharing my Plex library via Cloudflare Tunnel, but that is technically against their TOS and liable to get your account in trouble. So I switched to using a free-tier Oracle VM, securely connecting it to my home network via Tailscale, and exposing Plex via reverse proxy on the VM. It works like a charm!"
 pubDate: 2024-09-03
-updatedDate: 2025-06-13
+updatedDate: 2025-08-15
 tags:
   - tailscale
 ---
@@ -21,7 +21,7 @@ What we'll be setting up is this:
 
 - We will install Tailscale on the same server as Plex or, alternately, on another machine in the home network that will act as subnet router. (See <a href="https://tailscale.com/kb/1019/subnets" target="_blank" umami-data-event="expose-plex-tailscale-docs-subnets">this section Tailscale docs</a> -- for this guide, we'll install Tailscale on the same server running Plex, so subnet routing isn't necessary.)
 
-- We will create a free tier compute instance on Oracle Cloud Insfrastructure and install Tailscale on it, so it's on the same tailnet as the Plex server. We'll expose ports 80 and 443 to the internet on the VM, but only allowing access from specific IPs, and run a reverse proxy to route the traffic from allowed IPs to Plex. Note that if you're willing and able to pay for another cloud service provider, everything besides the Oracle-specific instructions should work there too! If you don't want to pay, though, just know that I have used a free Oracle instance to share Plex with 3 family members for over 6 months and so far it's worked without a single hitch.
+- We will create a free tier compute instance on Oracle Cloud Insfrastructure and install Tailscale on it, so it's on the same tailnet as the Plex server. We'll expose ports 80 and 443 to the internet on the VM, but only allowing access from specific IPs, and run a reverse proxy to route the traffic from allowed IPs to Plex. Note that if you're willing and able to pay for another cloud service provider, everything besides the Oracle-specific instructions should work there too! If you don't want to pay, though, just know that I have used a free Oracle instance to share Plex with 3 family members for over a year and so far it's worked great.
 
 ## Pre-Requisites
 
