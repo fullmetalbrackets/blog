@@ -2,7 +2,7 @@
 title: "Comprehensive guide to setting up Tailscale to securely access your home network from anywhere"
 description: "Accessing self-hosted services from outside the home can be a challenge, especially when dealing with CGNAT and having to forward ports from the router. It can be complex to manage and potentially dangerous to your home network's privacy and security if not done right, but Tailscale makes it easy to set up encrypted peer-to-peer connections between devices across different networks. In this guide I will explain how I use Tailscale as a VPN for secure remote access to my home network."
 pubDate: 2024-06-25
-updatedDate: 2025-06-13
+updatedDate: 2025-08-13
 tags:
   - tailscale
 ---
@@ -117,7 +117,7 @@ This is an entirely optional step, but a very cool feature. You can set a machin
 
 This way you can, for example, not only access your home network, but all internet traffic will be routed through your home internet as if you were home, so you also get the advantage of any hardware firewalls and network-wide DNS sinkholes on the network. Another use case could be installing Tailscale on a VPS and using it as an exit node to mask your IP, like a more traditional VPN.
 
-First, if you haven't set up IP forwarding, [as explained above](#ip-forwarding) in the subnet router section. (If you setup a subnet router on the same machine you will use as exit node, then you already did this and can skip it.)
+First, if you haven't set up IP forwarding, [as explained above](#ip-forwarding) in the subnet router section, go ahead and do so. (If you setup a subnet router on the same machine you will use as exit node, then you already did this and can skip it.)
 
 Once that's done, use the following command to advertise the machine as an exit node:
 
