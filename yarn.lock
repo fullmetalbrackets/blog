@@ -105,10 +105,10 @@
     fast-xml-parser "^5.2.0"
     kleur "^4.1.5"
 
-"@astrojs/sitemap@^3.4.2":
-  version "3.4.2"
-  resolved "https://registry.yarnpkg.com/@astrojs/sitemap/-/sitemap-3.4.2.tgz#f44e8fe3d855000106cf86b18f2e97ead8339ad0"
-  integrity sha512-wfN2dZzdkto6yaMtOFa/J9gc60YE3wl3rgSBoNJ+MU3lJVUMsDY9xf9uAVi8Mp/zEQKFDSJlQzBvqQUpw0Hf6g==
+"@astrojs/sitemap@^3.5.1":
+  version "3.5.1"
+  resolved "https://registry.yarnpkg.com/@astrojs/sitemap/-/sitemap-3.5.1.tgz#70dac9eee4fdfd9da9e1809e107d6747652332fc"
+  integrity sha512-uX5z52GLtQTgOe8r3jeGmFRYrFe52mdpLYJzqjvL1cdy5Kg3MLOZEvaZ/OCH0fSq0t7e50uJQ6oBMZG0ffszBg==
   dependencies:
     sitemap "^8.0.0"
     stream-replace-string "^2.0.0"
