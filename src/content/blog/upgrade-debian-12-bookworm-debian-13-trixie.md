@@ -2,7 +2,7 @@
 title: "How I upgraded my Linux desktop from Debian 12 Bookworm to Debian 13 Trixie"
 description: "My old Dell Optiplex has been a great desktop PC for just minimal interneting and coding. I've been running Debian 12 Bookworm on it since it became available, and usually I stick to the latest Stable release of Debian. However, I decided to live on the edge just a little and upgrade to Debian 13 Trixie, the latest version."
 pubDate: 2025-05-21
-updatedDate: 2025-09-11
+updatedDate: 2025-08-30
 tags:
   - linux
 ---
@@ -13,9 +13,9 @@ Note that I'm just basing this off my own experience. I went from Debian 12 Book
 
 Just because I encountered no problems does not mean you won't. Make sure to make a backup of your main user Home directory and anything else you deem important, just in case you encounter some fatal error and have to start from scratch. (Highly doubtful, but just saying.)
 
-> Note: I originally wrote this post in May 2025, when Trixie was in "release candidate" state. Trixie officially released on August 9, so if you're here after that date, you should have absolutely zero problems updating from Bookworm to Trixie.
-
 ## Upgrading apt repositories to Trixie
+
+> The below has worked for me to upgrade from Bookworm to Trixie on a Debian desktop graphical install, a Debian headless server, and Windows System for Linux 2. In the case of WSL2, you might want to first create a backup of your instance by using this command in Windows Terminal or Powershell: `wsl --export Debian-WSL-Backup /path/to/Debian-WSL-Backup.tar`. Follow all instructions as-is and when it's time to reboot at the end, just `exit` out of your WSL Debian instance and close the window with <kbd>Ctrl</kbd>+<kbd>D</kbd>, then open a new one.
 
 Before anything else, let's do a full upgrade of all existing packages while still on Bookworm:
 
