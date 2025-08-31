@@ -15,7 +15,9 @@ Just because I encountered no problems does not mean you won't. Make sure to mak
 
 ## Upgrading apt repositories to Trixie
 
-> The below has worked for me to upgrade from Bookworm to Trixie on a Debian desktop graphical install, a Debian headless server, and Windows System for Linux 2. In the case of WSL2, you might want to first create a backup of your instance by using this command in Windows Terminal or Powershell: `wsl --export Debian-WSL-Backup /path/to/Debian-WSL-Backup.tar`. Follow all instructions as-is and when it's time to reboot at the end, just `exit` out of your WSL Debian instance and close the window with <kbd>Ctrl</kbd>+<kbd>D</kbd>, then open a new one.
+> The below has worked for me to upgrade from Bookworm to Trixie on a Debian desktop graphical install, a Debian headless server, and Windows System for Linux 2. In the case of WSL2, you might want to first create a backup of your instance by using this command in Windows Terminal or Powershell: `wsl --export Debian-WSL-Backup /path/to/Debian-WSL-Backup.tar`.
+>
+> Follow all instructions as-is and when it's time to reboot at the end, just `exit` out of your WSL Debian instance and close the window with <kbd>Ctrl</kbd>+<kbd>D</kbd>, then open a new one.
 
 Before anything else, let's do a full upgrade of all existing packages while still on Bookworm:
 
