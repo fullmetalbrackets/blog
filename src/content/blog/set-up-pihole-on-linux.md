@@ -439,8 +439,7 @@ Gh8aDHkn7vv78pa=
 3. Save the changes to `pihole.pem`. Now change the owner and permissions of the file:
 
 ```bash
-sudo chown pihole:pihole pihole.pem &&/
-sudo chmod 400 pihole.pem
+sudo chown pihole:pihole pihole.pem && sudo chmod 400 pihole.pem
 ```
 
 4. Move the file to `/etc/pihole/pihole.pem` on the machine running Pi-Hole.
