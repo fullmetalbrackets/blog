@@ -179,7 +179,7 @@ const { slug } = Astro.params;
       border-radius: 0.5em;
       cursor: pointer;
       font-weight: 600;
-      margin: 0 auto;
+      margin: -0.75em auto 0 auto;
       padding: 6px 10px;
       text-decoration: none;
       font-family: 'M Plus Rounded 1c Med';
@@ -428,7 +428,7 @@ const { slug } = Astro.params;
       <button class="stats">
         <span>
           <a 
-            href={`https://us.umami.is/share/5MdOgBcRzVP6FU0x/fullmetalbrackets.com?view=url&url=/blog/${slug}/`}
+            href={`https://cloud.umami.is/analytics/us/share/5MdOgBcRzVP6FU0x/fullmetalbrackets.com?path=eq./blog/${slug}/`}
             target="_blank" data-umami-event={`umami-stats-${slug}`}>
               <img src="/assets/umami.svg"
                 class="umami"
