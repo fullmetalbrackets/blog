@@ -2,7 +2,7 @@
 title: "Comprehensive guide to setting up Tailscale to securely access your home network from anywhere"
 description: "Accessing self-hosted services from outside the home can be a challenge, especially when dealing with CGNAT and having to forward ports from the router. It can be complex to manage and potentially dangerous to your home network's privacy and security if not done right, but Tailscale makes it easy to set up encrypted peer-to-peer connections between devices across different networks. In this guide I will explain how I use Tailscale as a VPN for secure remote access to my home network."
 pubDate: 2024-06-25
-updatedDate: 2025-08-13
+updatedDate: 2025-10-21
 tags:
   - tailscale
 ---
@@ -27,11 +27,11 @@ This guide will assume you're running Tailscale on a Linux server, although the 
 curl -fsSL https://tailscale.com/install.sh | sh
 ```
 
+Once it's finished installing, use the command `tailscale up`, go to the provided URL and login to connect the machine to your tailnet. (You'll go through the same quick process for each Linux machine you add to your tailnet.)
+
 > By default using most Tailscale commands requires superuser privileges, i.e. `sudo`. You can change that with the command `sudo tailscale set --operator=$USER`, the specified user will then be able to execute Tailscale commands without `sudo`. The rest of the guide will assume you did this.
 
-Once it's finished installing, use the command `tailscale up`, go to the provided URL and login to connect the machine to your tailnet. (You'll go through the same quick process for each Linux machine you add to your tailnet.) Now go to the Tailscale admin console and you should see the machine there.
-
-By default all machines added to your tailnet need to re-authenticate every few months, which is a nice security measure, but you probably want to disable it at least for those machines that you trust and want to access through Tailscale long-term.
+Now go to the Tailscale admin console and you should see the machine there. By default all machines added to your tailnet need to re-authenticate every 90 days, which is a nice security measure, but you probably want to disable it at least for those machines that you trust and want to access through Tailscale long-term.
 
 To do so, on the admin console go to the **Machines** tab, click on the three dots to the right of the machine's entry, then from the dropdown menu choose **Disable key expiry**. You'll need to do this for each new machine you add if you don't want to have to re-authenticate later.
 
@@ -87,7 +87,28 @@ echo 'net.ipv6.conf.all.forwarding = 1' | sudo tee -a /etc/sysctl.conf
 sudo sysctl -p /etc/sysctl.conf
 ```
 
-Also, if you are running `firewalld` on your server, you should allow masquerading with the following command:
+You may also get a warning on some systems:
+
+```sh
+Warning: UDP GRO forwarding is suboptimally configured on end0, UDP forwarding throughput capability will increase with a configuration change.
+See https://tailscale.com/s/ethtool-config-udp-gro
+```
+
+You can try to do as the link advises, but I've found that on some systems their instructions to persist changes in `ethtool` do not actually work. Instead, <a href="https://github.com/tailscale/tailscale/issues/14473#issue-2758485605" target="_blank">I found these instructions in the GitHub issues</a> which I tweaked to place the script in `/etc/NetworkManager/dispatcher.d/pre-up.d/50-tailscale` and make it executable, and it works on my Raspberry Pi running Debian Bookworm:
+
+```sh
+sudo printf '#!/bin/sh\n\nethtool -K %s rx-udp-gro-forwarding on rx-gro-list off \n' "$(ip -o route get 8.8.8.8 | cut -f 5 -d " ")" | sudo tee /etc/NetworkManager/dispatcher.d/pre-up.d/50-tailscale
+sudo chmod 755 /etc/NetworkManager/dispatcher.d/pre-up.d/50-tailscale && sudo chmod +x /etc/NetworkManager/dispatcher.d/pre-up.d/50-tailscale
+```
+
+You can then test if this works with the following command:
+
+```sh
+sudo /etc/NetworkManager/dispatcher.d/pre-up.d/50-tailscale
+test $? -eq 0 || echo 'An error occurred.'
+```
+
+Finally, if you're running firewalld on a machine where you've installed Tailscale, you should allow masquerading with the following command:
 
 ```sh
 sudo firewall-cmd --permanent --add-masquerade
@@ -96,7 +117,7 @@ sudo firewall-cmd --permanent --add-masquerade
 Now advertise the subnet routes with this command: (This assumes your local IP addresses are `192.168.0.x`)
 
 ```sh
-tailscale up --advertise-routes=192.168.0.0/24
+tailscale set --advertise-routes=192.168.0.0/24
 ```
 
 Now go to the admin console, on the **Machines** tab, and do the following:
@@ -109,20 +130,20 @@ Now go to the admin console, on the **Machines** tab, and do the following:
 
 ![Enabling subnets in Tailscale admin console.](../../img/blog/tailscale-subnets.png 'Enabling subnets in Tailscale admin console')
 
-One last thing, if you are running Tailscale on multiple machines in your home network, you should use the command `tailscale up --accept-routes=false` on those other machines, that way they will keep using local routes (e.g. `192.168.0.x`) instead of going through the tailnet -- you don't want to access your local network resources through Tailscale when you're home!
+One last thing, if you are running Tailscale on multiple machines in your home network, you should use the command `tailscale set --accept-routes=false` on those other machines, that way they will keep using local routes (e.g. `192.168.0.x`) instead of going through the tailnet -- you don't want to access your local network resources through Tailscale when you're home!
 
 ## Setting up an exit node
 
-This is an entirely optional step, but a very cool feature. You can set a machine running Tailscale to function as an _exit node_, so all traffic is forwarded through the machine running as exit node.
+This is an entirely optional step, but a very cool feature. You can set a machine running Tailscale to function as an _exit node_, so all traffic is route through the machine running as exit node.
 
 This way you can, for example, not only access your home network, but all internet traffic will be routed through your home internet as if you were home, so you also get the advantage of any hardware firewalls and network-wide DNS sinkholes on the network. Another use case could be installing Tailscale on a VPS and using it as an exit node to mask your IP, like a more traditional VPN.
 
-First, if you haven't set up IP forwarding, [as explained above](#ip-forwarding) in the subnet router section, go ahead and do so. (If you setup a subnet router on the same machine you will use as exit node, then you already did this and can skip it.)
+First, if you haven't set up IP forwarding, [as explained above](#ip-forwarding) in the subnet router section, go ahead and do so since this is also required for running an exit node. (If you setup a subnet router on the same machine you will use as exit node, then you already did this and can [skip to the next section](#configuring-plex-for-tailscale).)
 
 Once that's done, use the following command to advertise the machine as an exit node:
 
 ```sh
-tailscale up --advertise-exit-node
+tailscale set --advertise-exit-node
 ```
 
 Now go to the admin console, on the **Machines** tab, and do the following:
@@ -140,7 +161,7 @@ Finally, to use the exit node on your phone/tablet open the Tailscale app, tap t
 To use an exit node from a Linux machine, use the following command: (Use the tailnet IP or machine name of your exit node.)
 
 ```sh
-tailscale up --exit-node=<ip or name>
+tailscale set --exit-node=<ip or name>
 ```
 
 On Windows, click on the Tailscale icon in the system tray, hover over **Exit nodes** and choose your node from the menu.
@@ -221,19 +242,15 @@ By default, Tailscale does not manage your DNS, and each machine on the Tailnet 
 
 More importantly, you can also use a custom DNS server, including one self-hosted on a server in your network. In this way, we can <a href="https://tailscale.com/kb/1114/pi-hole" target="_blank" data-umami-event="tailscale-post-docs-pihole-anywhere">use Pi-Hole from anywhere through Tailscale</a>.
 
-First, on the machine running Pi-Hole install Tailscale, login to add it to the tailnet and when prompted to `tailscale up` pass this flag:
-
-```sh
-tailscale up --accept-dns=false
-```
+First, on the machine running Pi-Hole install Tailscale, login to add it to the tailnet and when prompted to `tailscale up` use with command `tailscale up --accept-dns=false`. (Alternately you can add the option after Tailscale is already up with the command `tailscale set --accept-dns=false`.)
 
 Pi-Hole uses DNS servers configured within Linux as its upstream servers, where it will send DNS queries that it cannot answer on its own. Since you're going to make the Pi-Hole be your DNS server, you don't want Pi-Hole trying to use itself as its own upstream, and the `--accept-dns=false` flag achieves that.
 
-> You should also use `tailscale up --accept-dns=false` on other machines in your home network running Tailscale, so they don't go through Tailscale for DNS queries.
+> You should also use the `--accept-dns=false` flag on other machines in your home network running Tailscale, so they don't go through Tailscale for DNS requests.
 >
-> You want local DNS queries to stay on your local network, NOT go through Tailscale, or they'll show up with Tailscale IPs (e.g. `100.90.80.70`) instead of your local network IPs (e.g. `192.168.0.100`). This cannot be avoided with GUI clients on phones, tablets and desktops/laptops, when connected to Tailscale they will query Pi-Hole with Tailscale IPs.
+> You want any DNS requests from machines in your local network to stay on your local network, NOT to go through Tailscale, or they'll show up with Tailscale IPs (e.g. `100.90.80.70`) instead of your local network IPs (e.g. `192.168.0.100`). Only remote devices outside of your network should be sending DNS requests to Pi-Hole through the tailnet, and only when connected to Tailscale.
 
-To set the Pi-Hole as global DNS for the tailnet, go to the admin console and make note of the Pi-Hole's tailnet IP address. Then do the following:
+Now to set the Pi-Hole as global DNS for the tailnet, go to the Tailscale admin console and make note of the Pi-Hole's Tailscale IP address in the *Machines* list. Then do the following:
 
 1. Go to the **DNS** tab and scroll down to _Nameservers_.
 
@@ -255,9 +272,21 @@ To set the Pi-Hole as global DNS for the tailnet, go to the admin console and ma
 
 ![Setting Pi-Hole interface to permit all origins.](../../img/blog/pihole-interface-settings.png 'Setting Pi-Hole interface to permit all origins')
 
-7. Scroll down and click **Save**.
+7. Scroll to the bottom and click **Save* & Apply*.
 
-Now to test it out, connect to Tailscale on your phone/tablet and visit some websites. You should not be seeing ads and should start seeing the device's Tailscale IP in Pi-Hole's logs.
+Now to test it out, connect to Tailscale on your phone/tablet and visit some websites. You should not be seeing ads and should start seeing the device's Tailscale IP in Pi-Hole's logs. You can manually create DNS Records for these IPs or you can use *Conditional Forwarding*:
+
+1. On the Pi-Hole's web UI, go to _Settings_ -> _DNS_.
+
+2. If using Pi-Hole v6, click on the toggle at the top-right to switch from _Basic_ to _Expert_. (If using Pi-Hole v5 or earlier, this step is unnecessary.)
+
+3. Scroll down to _Conditional Forwarding_ and type this into the textarea:
+
+```
+true,100.64.0.0/10,100.100.100.100
+```
+
+4. Scroll to the bottom and click **Save* & Apply*.
 
 ## Transfer files with Taildrop
 
