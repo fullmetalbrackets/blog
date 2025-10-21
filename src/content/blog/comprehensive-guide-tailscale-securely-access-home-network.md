@@ -274,20 +274,7 @@ Now to set the Pi-Hole as global DNS for the tailnet, go to the Tailscale admin 
 
 7. Scroll to the bottom and click **Save* & Apply*.
 
-Now to test it out, connect to Tailscale on your phone/tablet and visit some websites. You should not be seeing ads and should start seeing the device's Tailscale IP in Pi-Hole's logs. You can manually create DNS Records for these IPs or you can use *Conditional Forwarding*:
-
-1. On the Pi-Hole's web UI, go to _Settings_ -> _DNS_.
-
-2. If using Pi-Hole v6, click on the toggle at the top-right to switch from _Basic_ to _Expert_. (If using Pi-Hole v5 or earlier, this step is unnecessary.)
-
-3. Scroll down to _Conditional Forwarding_ and type this into the textarea:
-
-```
-true,100.64.0.0/10,100.100.100.100
-```
-
-4. Scroll to the bottom and click **Save* & Apply*.
-
+Now to test it out, connect to Tailscale on your phone/tablet and visit some websites. You should not be seeing ads and should start seeing the device's Tailscale IP in Pi-Hole's logs.
 ## Transfer files with Taildrop
 
 Taildrop is an Alpha feature that lets you securely transfer files between devices on a tailnet. To enable it, on the admin console go to the **Settings** tab, scroll down to **Feature previews** and switch on **Send Files**.
