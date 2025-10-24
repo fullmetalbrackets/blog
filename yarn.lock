@@ -39,10 +39,10 @@
     unist-util-visit-parents "^6.0.1"
     vfile "^6.0.3"
 
-"@astrojs/mdx@^4.3.7":
-  version "4.3.7"
-  resolved "https://registry.yarnpkg.com/@astrojs/mdx/-/mdx-4.3.7.tgz#a6cb6e2c05af037e8abdc6049be342f35210158c"
-  integrity sha512-5SRmvMyT/UMWaU2eoD+htnXtE2mUZZEH2K/nEzhuEy+iCsOSuS/DUry59WuKUJRQETi1mgJFdNR4dZLJHYVuRA==
+"@astrojs/mdx@^4.3.8":
+  version "4.3.8"
+  resolved "https://registry.yarnpkg.com/@astrojs/mdx/-/mdx-4.3.8.tgz#b27fb8514d6069dac990f978d7f00186460abbb9"
+  integrity sha512-PXT0n2FfZAWEmQi4u4AZ0OPDDrDIF+aXPZGT5HCf52dex5EV3htMByeJUqYIoXdmazAFTASub0vRZLWBqJhJ9w==
   dependencies:
     "@astrojs/markdown-remark" "6.3.8"
     "@mdx-js/mdx" "^3.1.1"
@@ -50,7 +50,7 @@
     es-module-lexer "^1.7.0"
     estree-util-visit "^2.0.0"
     hast-util-to-html "^9.0.5"
-    kleur "^4.1.5"
+    picocolors "^1.1.1"
     rehype-raw "^7.0.0"
     remark-gfm "^4.0.1"
     remark-smartypants "^3.0.2"
@@ -1557,11 +1557,6 @@ kleur@^3.0.3:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/kleur/-/kleur-3.0.3.tgz#a79c9ecc86ee1ce3fa6206d1216c501f147fc07e"
   integrity sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==
-
-kleur@^4.1.5:
-  version "4.1.5"
-  resolved "https://registry.yarnpkg.com/kleur/-/kleur-4.1.5.tgz#95106101795f7050c6c650f350c683febddb1780"
-  integrity sha512-o+NO+8WrRiQEE4/7nwRJhN1HWpVmJm511pBHUxPLtp0BUISzlBplORYSmTclCnJvQq2tKu/sgl3xVpkc7ZWuQQ==
 
 longest-streak@^3.0.0:
   version "3.1.0"
