@@ -135,25 +135,38 @@ const { slug } = Astro.params;
     .post-end {
       font-family: "M Plus Rounded 1c Med";
       margin: 0 auto 2em auto;
+      justify-content: space-around;
     }
     .coffee {
       display: grid;
       color: var(--primary);
-      grid-template-columns: 1fr;
-      grid-template-rows: 1fr 1fr;
+      grid-template-columns: auto;
+      grid-template-rows: auto auto;
       place-items: center;
       gap: 0;
+      margin: 0 auto;
       padding: 0 auto;
       cursor: default;
-      width: 325px;
+      height: 115px;
     }
-    .coffee span {
-      margin-bottom: 1em;
+    .coffee-btn {
+      display: grid;
+      background-color: var(--info);
+      border-radius: 0.25em;
+      font-family: 'M Plus Rounded 1c Med';
+      color: var(--primary);
+      grid-template-columns: auto;
+      grid-template-rows: auto auto;
+      cursor: pointer;
+      padding: 0;
+      margin-top: 1em;
+    }
+    .coffee-btn:hover {
+      background: var(--menu);
     }
     .share {
       display: grid;
       color: var(--primary);
-      grid-column: 2;
       grid-template-columns: auto;
       grid-template-rows: auto auto;
       place-items: center;
@@ -199,12 +212,12 @@ const { slug } = Astro.params;
       color: #000;
     }
     .email:hover a, .email:focus a {
-      color: var(--coffee);
+      color: var(--menu);
     } {
       color: #000;
     }
     .edit-post a:hover, .stats:hover a {
-      color: var(--coffee);
+      color: var(--menu);
     }
     .edit-post a:hover img, .stats:hover img {
       filter: var(--coffee-hover);
@@ -392,25 +405,14 @@ const { slug } = Astro.params;
       </button>
     </div>
   </aside>
-  <aside class="post-end">
+
+  <!-- <aside class="post-end">
     <div class="coffee">
       <span>Was this article helpful?</span>
-      <script
-        type="text/javascript"
-        src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js"
-        data-name="bmc-button"
-        data-slug="arieldiaz"
-        data-color="var(--info)"
-        data-emoji="☕"
-        data-font="Bree"
-        data-text="Buy me a coffee"
-        data-outline-color="var(--main)"
-        data-font-color="#000000"
-        data-coffee-color="#ffffff"
-        data-umami-event="article-coffee">
-      </script>
+        <a href="https://www.buymeacoffee.com/arieldiaz">
+          <img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=arieldiaz&coffee_colour=ffffff" class="coffee-btn" />
+        </a>
     </div>
-
     <div class="share">
       <span>Want to share this article?</span>
       <SocialShare
@@ -418,8 +420,24 @@ const { slug } = Astro.params;
       title={title}
     />
     </div>
+  </aside> -->
 
+  <aside class="post-end">
+    <div class="coffee">
+      <span>Was this article helpful?</span>
+        <a href="https://www.buymeacoffee.com/arieldiaz">
+          <img src="https://img.buymeacoffee.com/button-api/?slug=arieldiaz&font_family=Lato&coffee_colour=ffffff" class="coffee-btn" />
+        </a>
+    </div>
+    <div class="share">
+      <span>Want to share this article?</span>
+      <SocialShare
+      description={description}
+      title={title}
+    />
+    </div>
   </aside>
+
   <aside class="post-end">
     <div class="umami">
       <span>
