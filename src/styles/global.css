@@ -121,6 +121,7 @@ body {
 ::-webkit-scrollbar, ::-webkit-scrollbar-track {
   background-color: var(--code-bg);
   width: 0.35em;
+  height: 0.4em;
 }
 ::-webkit-scrollbar-thumb {
   background-color: var(--primary);
@@ -385,6 +386,10 @@ blockquote a:hover, blockquote a:focus {
   color: var(--hover);
   text-decoration: underline;
 }
+blockquote pre[class*="language-"] {
+  margin: auto 1.5em 1.5em 1.5em;
+  width: auto;
+}
 article a:hover {
   text-decoration-color: var(--link);
 }
@@ -464,18 +469,6 @@ aside > a, aside > a:active, aside > a:visited, aside > a:hover, aside > a:focus
 .top:hover {
   color: #000;
 }
-/* article ul, article ol {
-  margin: 1.25em auto 1.5em auto;
-}
-article ul ul {
-  margin: 0;
-}
-article ol:first-of-type {
-  margin-bottom: 0;
-}
-article ol li, article ul li {
-  line-height: 1.5;
-} */
 .sr-only {
 	border: 0;
 	padding: 0;
