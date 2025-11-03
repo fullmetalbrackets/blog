@@ -67,6 +67,10 @@ export default defineConfig({
       status: 301,
       destination: '/blog/expose-plex-tailscale-vps/',  
     },
+    '/blog/how-to-use-sudo-without-a-password/': {
+      status: 301,
+      destination: '/blog/sudo-without-password/',
+    },
     '/tailscale': {
       status: 301,
       destination: '/blog/comprehensive-guide-tailscale-securely-access-home-network/',
