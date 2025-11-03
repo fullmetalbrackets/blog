@@ -51,7 +51,6 @@
     --blockquote: rgb(260, 250, 240);
     --code-bg: hsl(0, 0%, 90%);
     --code-text: hsl(220, 13%, 18%);
-    --coffee: rgb(242, 207, 43);
     --svg: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%) contrast(98%);
     --ext: invert(88%) sepia(69%) saturate(7500%) hue-rotate(1deg) brightness(104%) contrast(104%);
     --search: invert(57%) sepia(86%) saturate(3921%) hue-rotate(13deg) brightness(99%) contrast(100%);
@@ -85,7 +84,6 @@
     --blockquote: rgb(25, 22, 22);
     --code-bg: hsl(220, 13%, 18%);
     --code-text: hsl(0, 0%, 100%);
-    --coffee: rgb(202, 71, 0);
     --pagefind-ui-text: rgb(164, 174, 188);
     --pagefind-ui-background: rgb(51, 65, 85);
     --svg: invert(93%) sepia(78%) saturate(2834%) hue-rotate(213deg) brightness(148%) contrast(96%);
@@ -211,6 +209,21 @@ input:focus, textarea:focus {
   outline: 0;
   box-shadow: 0 0 0 0.25rem var(--name);
 }
+/* button effects */
+@media (hover: hover) {
+  a:hover button {
+    box-shadow: -4px -4px 0 #000;
+    transform: translate(4px, 4px);
+  }
+  a:hover button {
+    outline-offset: 1px;
+  }
+}
+@media (hover: none) {
+  a:hover button {
+    background-color: var(--menu);
+  }
+}
 button {
   font-family: 'M Plus Rounded 1c Med', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
   color: #000;
@@ -220,7 +233,7 @@ button {
   font-weight: 600;
   font-size: 0.75em;
 }
- u, em, i {
+u, em, i {
 	color: var(--emphasis);
 }
 strong, b {
