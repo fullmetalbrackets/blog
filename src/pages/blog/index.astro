@@ -6,6 +6,8 @@ import FormattedDate from "@components/FormattedDate.astro";
 const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
+const { tags } = Astro.props;
+
 const title = "Blog";
 const desc = "List of all blog posts";
 ---
@@ -30,16 +32,12 @@ const desc = "List of all blog posts";
     padding-bottom: 0.25em;
     border-bottom: 2px solid transparent;
   }
-  span, p {
-    margin: 0 auto;
+  p {
+    margin: 0 auto 0.125em auto;
     padding: 0 auto;
   }
-  .date {
-    margin: 0;
-    padding: 0;
-  }
-  .title {
-    margin: 0 auto;
+  button {
+    background: var(--info);
   }
   .title a,
   .title a:active,
@@ -77,7 +75,10 @@ const desc = "List of all blog posts";
             <div>
               <a href={`/blog/${post.slug}/`} rel="prefetch-intent" data-umami-event={post.slug}>
                 <span class="title">{post.data.title}</span>
-                <p><FormattedDate date={post.data.pubDate} /></p>
+                <p class="info">
+                  <FormattedDate date={post.data.pubDate} />&nbsp;
+                  <button>{post.data.tags}</button>
+                </p>
                 <p class="desc">{post.data.description}</p>
               </a>
             </div>

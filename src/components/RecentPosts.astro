@@ -45,9 +45,6 @@ const posts = (await getCollection("blog")).sort(
   .posts-title a:hover {
     color: var(--menu);
   }
-  .date {
-    margin-bottom: 0.25em;
-  }
   a button {
     background-color: var(--tags);
     color: #000;
@@ -67,20 +64,6 @@ const posts = (await getCollection("blog")).sort(
   li:hover {
     padding-bottom: 0.5em;
     border-bottom: 2px solid var(--hover);
-  }
-  @media (hover: hover) {
-    a:hover button {
-      box-shadow: -4px -4px 0 #000;
-      transform: translate(4px, 4px);
-    }
-    a:hover button {
-      outline-offset: 1px;
-    }
-  }
-  @media (hover: none) {
-    a:hover button {
-      background-color: var(--menu);
-    }
   }
   @media screen and (min-width: 200px) and (max-width: 667px) {
     main {
@@ -105,8 +88,9 @@ const posts = (await getCollection("blog")).sort(
         <li>
           <a href={`/blog/${post.slug}/`} rel="prefetch-intent" data-umami-event="recent-post">
             <p class="posts-title">{post.data.title}</p>
-            <p class="date">
-              <FormattedDate date={post.data.pubDate} />
+            <p class="info">
+              <FormattedDate date={post.data.pubDate} />&nbsp;
+              <button>{post.data.tags}</button>
             </p>
             <p class="desc">{post.data.description}</p>
           </a>
