@@ -7,9 +7,14 @@ Disallow: /bsky
 Disallow: /social
 Disallow: /feed
 Disallow: /umami
+Disallow: /github
 Disallow: /donate
-Disallow: /donate/
+Disallow: /bsky/
+Disallow: /social/
 Disallow: /feed/
+Disallow: /umami/
+Disallow: /github/
+Disallow: /donate/
 Disallow: /cdn-cgi/l/email-protection
 
 Host: https://fullmetalbrackets.com
