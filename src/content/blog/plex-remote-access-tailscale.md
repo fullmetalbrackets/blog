@@ -1,17 +1,15 @@
 ---
-title: "How to get around the Plex Pass requirement for Plex remote access by using Tailscale"
-description: "Beginning April 29th, 2025 the pricing for Plex Pass increased at the same time that remote access got paywalled behind it. That means you can no longer stream your own content outside of your home network, like say on your phone or tablet while at work or on vacation, without paying for Plex Pass. You can bypass the Plex Pass requirement by using Tailscale to remotely access your Plex server from your other devices."
+title: "Get around the Plex Pass and Remote Watch Pass requirements for Plex remote access by using Tailscale"
+description: "Beginning April 29th, 2025 the pricing for Plex Pass increased at the same time that remote access got paywalled behind it. Plex no longer allows streaming your own content outside of your home network without paying for Plex Pass, or the new Remote Watch Pass. You can bypass these paywalls, at least for now, by using Tailscale."
 pubDate: 2025-05-17
-updatedDate: 2025-07-31
+updatedDate: 2025-11-03
 tags:
   - tailscale
 ---
 
-> I have seen posts on Reddit that Plex considers Tailscale IPs to be external and thus will not allow access unless you have a <a href="https://www.plex.tv/plans/" target="_blank">Plex Pass subscription</a> or the external users have a <a href="https://support.plex.tv/articles/remote-watch-pass-overview/" target="_blank">Remote Watch Pass</a>.
+> I have received confirmation from several people that remotely accessing Plex works with this setup without Plex Pass or Remote Watch Pass, at least for now -- it's entirely possible Plex will change something in the future to break this workaround. In fact, I would not be surprised if they do.
 >
-> Per <a href="https://www.reddit.com/r/Tailscale/comments/1kes22h/comment/mqpp8l4/" target="_blank">this comment on the Tailscale subreddit</a>, for Tailscale to bypass the Plex Pass requirement you need to set up the Plex server as both subnet router and exit node, and set the external device you're connecting with (phone, tablet, etc.) to use the Plex server as exit node. I have a lifetime Plex Pass and only use Tailscale to punch through CGNAT, so unfortunately I am unable to test this myself. (However, I can confirm that with Plex Pass, Tailscale allows remote access without advertising subnet routes or using an exit node.) Please make sure you follow the instructions below on how to setup the Plex server as both subnet router and exit node.
->
-> I have received confirmation from several people that remotely accessing Plex works with this setup without Plex Pass, at least for now -- it's entirely possible Plex will change something in the future to break this workaround. Please feel free to [contact me](mailto:contact@fullmetalbrackets.com) and let me know if you have any issues.
+> Please feel free to [contact me](mailto:contact@fullmetalbrackets.com) and let me know if you have any issues, or even to let me know that it did work!
 
 ## About Plex and the service changes
 
@@ -19,7 +17,7 @@ tags:
 
 Plex Media Server has a built-in feature called <a href="https://support.plex.tv/articles/200289506-remote-access/" target="_blank" umami-data-event="plex-remote-access-to-remote-access-docs">Remote Access</a> that can be configured from the web UI. By enabling Remote Access, and forwarding network port 32400 from your router (ideally with some firewall rules for security), you can access Plex from other devices using your account, like a phone or tablet. It also allows you to share your media library externally with other users, allow them to access your server and stream the shared content. (This does not to work behind CGNAT, however, which is why I started using Tailscale for remote access and <a href="/blog/expose-plex-tailscale-vps/" target="_blank" umami-data-event="plex-remote-access-to-expose-plex-tailscale">library sharing</a> in the first place.)
 
-The remote access feature has always been free until the Plex service changes and price increases on April 29, 2025. From this day forward, remote access is now locked behind <a href="https://www.plex.tv/plans/" target="_blank" umami-data-event="plex-remote-access-to-plex-pass">Plex Pass</a>. If you bought a Plex lifetime pass before that date it was $119, with occasional sales as low as $80, but after the change it now costs a whopping $250 for the lifetime pass. That's a more than 100% increase on the base price!
+The remote access feature, as well as sharing your library with friends, has always been free until the Plex service changes and price increases on April 29, 2025. From that day forward, remote access -- by yourself and by others you've shared library with -- is now locked behind <a href="https://www.plex.tv/plans/" target="_blank" umami-data-event="plex-remote-access-to-plex-pass">Plex Pass</a>. If you bought a Plex lifetime pass before that date it was $119, with occasional sales as low as $80, but after the change it now costs a whopping $250 for the lifetime pass. That's a more than 100% increase on the base price!
 
 The monthly Plex Pass subscription also rose from $4.99 to $6.99 per month, a less egregious price increase. However, keep this in mind -- at the old prices, a lifetime pass of $120 was roughly equivalent to two years at $5/month, so it paid for itself after two years. With the new pricing structure, a $250 lifetime pass is roughly equivalent to three years at $7/month. No matter how you slice it, the value proposition is less than before.
 
@@ -27,7 +25,15 @@ So basically if you're running a Plex server on your home network, a Plex Pass w
 
 ## About Tailscale
 
-Tailscale is a mesh VPN service that lets you connect multiple devices across multiple networks seamlessly and securely. It uses NAT traversal to punch through firewalls and obviate the need for port forwarding, and communication between devices occurs through encrypted WireGuard tunnels, so really it's even more secure than regular Plex remote access where you're exposing a port to the internet. The cool part is that by using Tailscale, we can skip the Plex Pass requirement for remotely accessing our own content, since the Plex server and other devices will act as if they are on the same network. Technically, _they will be on the same network_ since all machines running Tailscale are placed in the same <a href="https://tailscale.com/kb/1136/tailnet" target="_blank" umami-data-event="plex-remote-access-tailscale-to-expose-plex-vps">Tailnet</a>. So this won't even run afoul of the Plex terms of service.
+Tailscale is a mesh VPN service that lets you connect multiple devices across different networks seamlessly as if they were on the same network. Tailscale creates a <a href="https://tailscale.com/kb/1136/tailnet" target="_blank" umami-data-event="plex-remote-access-tailscale-to-expose-plex-vps">Tailnet</a> that all your devices will join as nodes, a coordination server facilitates NAT traversal to punch through firewalls, negating the need for port forwarding (technically safer than Plex's built-in remote access), and exchanges encryption keys between devices. After the handshake it's handed off to the individual nodes which are now directly connected to each other through encrypted WireGuard tunnels. Each node is directly connected to every other node, creating a mesh rather than a hub-and-spoke design -- the coordination server is only ever involved to help reconnect nodes to each other and to propagate configuration changes. See how it all works <a href="https://tailscale.com/blog/how-tailscale-works" target="_blank">here</a>.
+
+## The Workaround
+
+Per <a href="https://www.reddit.com/r/Tailscale/comments/1kes22h/comment/mqpp8l4/" target="_blank">this comment on the Tailscale subreddit</a>, you need to set up Tailscale on the Plex server as both subnet router and exit node, and set the external device you're connecting with (phone, tablet, etc.) to use the Plex server as exit node. I have a lifetime Plex Pass and only use Tailscale to punch through CGNAT, so unfortunately I am unable to test this myself, though why the method works makes sense -- by connecting to an exit node in the same network, you're routing traffic from the remote device through the exit node, so it will appear to Plex as a local stream.
+
+I have been told by many people that the below instructions have worked to allow them to remotely stream their own library without having a Plex Pass or Remote Watch Pass. I don't know if it also allows external users to remotely stream a shared library, so please feel free to let me know if it does and I can credit you if you'd like!
+
+Please make sure you follow the instructions below on how to setup the Plex server as both subnet router and exit node, since both are necessary and you _must_ be connected to an exit node in your home network to access it remotely.
 
 ## Pre-Requisites
 
