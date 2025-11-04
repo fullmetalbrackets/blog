@@ -1,15 +1,15 @@
 ---
 title: "Setup self-hosted Jellyfin Media Server in Docker"
-description: "Though Plex is a very popular media server for self-hosting, some open source enthusiasts prefer to use an alternative since Plex Media Server is not open source. A nice, simpler and admittedly less pretty alternative is Jellyfin. This guide will show you how to run it in Docker container."
+description: "Plex is a popular media server for self-hosting, but it's not open source and recently locked the ability to remotely stream your own content behind a paywall, so one cannot be blamed for seeking an alternative to Plex. Jellyfin is a free and open source self-hosted media server that just might be what you're looking for."
 pubDate: 2022-10-18
-updatedDate: 2025-02-03
+updatedDate: 2025-11-03
 tags:
   - docker
 ---
 
 ## Installing Jellyfin as a Docker container
 
-If you haven't already, install Docker and all it's dependencies quickly their official install script:
+If you haven't already, install Docker and all it's dependencies quickly with their official install script:
 
 ```bash
 curl -fsSL https://get.docker.com | sh
@@ -25,6 +25,7 @@ services:
   jellyfin:
     image: lscr.io/linuxserver/jellyfin:latest
     container_name: jellyfin
+    network_mode: host
     environment:
       - PUID=1000
       - PGID=1000
@@ -32,12 +33,8 @@ services:
       - JELLYFIN_PublishedServerUrl=192.168.0.100
     volumes:
       - /opt/docker/jellyfin:/config
-      - /mnt/media/tvshows:/data/tvshows
-      - /mnt/media/movies:/data/movies
-    ports:
-      - 8096:8096
-      - 8920:8920
-      - 7359:7359/udp
+      - /srv/media/tvshows:/data/tvshows
+      - /srv/media/movies:/data/movies
     restart: unless-stopped
 ```
 
@@ -45,20 +42,23 @@ Let's break down what each of these parameters do:
 
 | Parameter                      | Function  |
 | ------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
-| `image`                        | Here we're using the latest version of the <a href="https://docs.linuxserver.io/images/docker-jellyfin" target="_blank" data-umami-event="setup-jellyfin-">Linuxserver-maintained image</a>. |
+| `image`                        | Here we're using the latest version of the <a href="https://docs.linuxserver.io/images/docker-jellyfin" target="_blank" data-umami-event="setup-jellyfin-linuxserver">Linuxserver-maintained image</a>. If you prefer to use the <a href="https://hub.docker.com/r/jellyfin/jellyfin" target="_blank" data-umami-event="setup-jellyfin-official-image">official image</a> instead, replace with `jellyfin/jellyfin:latest`. |
 | `container_name`               | Optional, but you should give your containers a name for clarity. |
-| `PUID=1000`<br>`PGID=1000`     | These env variable sets a UID and GID for Jellyfin and should match the owner of the volumes you are adding; check your UID and GID with the command `id`. |
-| `JELLYFIN_PublishedServerUrl=` | This will allow the server to be discoverable on your home network. Add this with your server's IP to easily connect your devices to Jellyfin. Make sure to map UDP port `7359` for this to work. (See below.) |
-| `ports`                        | This will map ports on your machine (left of the colon) to ports inside the container (right of the colon) -- optional in Linux but required in Windows and WSL.<br><br>Port `8096` is for HTTP access, `8920` for HTTPS (optional) and `7359:7359/udp` lets the server be discoverable on your local network when using the `JELLYFIN_PublishedServerUrl` parameter. (See above.) |
+| `network mode: host`           | This allows the container to use the host's networking. Alternately, you can remove this and specify ports, and re-map any ports if you'd like. |
+| `PUID=1000`<br>`PGID=1000`     | These environmental variables map Jellyfin's internal user to match the primary user on the host machine (usually UID/GID 1000). Check your UID and GID with the command `id` and change if necessary. |
+| `JELLYFIN_PublishedServerUrl=` | This will allow the server to be discoverable on your home network. If you don't use it, you can just manually input your server's URL when setting up clients. |
 | `volumes`                      | Here we're mapping local directories (left of the colon) to directories inside the container (right of the colon), change this to your own local paths. |
 | `restart`                      | This tells Docker under what circumstances to restart the container when it is stopped -- the options are `no`, `always`, `on-failure` and `unless-stopped`. |
 
-If you'd like to use hardware acceleration, <a href="https://jellyfin.org/docs/general/administration/hardware-acceleration" target="_blank" data-umami-event="setup-jellyfin-docs-hw-accel">see this part of the Jellyfin documentation</a>. If the machine you're hosting Jellyfin on has an Intel CPU, there's a good chance is supports Quick Sync and you should let Jellyfin use it. To do so, add the following option to your docker compose:
+If you'd like to use hardware acceleration, <a href="https://jellyfin.org/docs/general/administration/hardware-acceleration" target="_blank" data-umami-event="setup-jellyfin-docs-hw-accel">see this part of the Jellyfin documentation</a>. If the machine you're hosting Jellyfin an Intel CPU, then you can use Quick Sync for transcoding video, especially if it's 7th generation or later. (See this <a href="https://en.wikipedia.org/wiki/Intel_Quick_Sync_Video#Hardware_decoding_and_encoding" target="_blank" data-umami-event="setup-jellyfin-wiki-quicksync-table">table of codec support by chip generation</a>.) To enable Quick Sync in Jellyfin, add the following option to your docker compose:
 
 ```yaml
-devices:
-  - /dev/dri/renderD128:/dev/dri/renderD128
-  - /dev/dri/card0:/dev/dri/card0
+services:
+  jellyfin:
+  ...
+    devices:
+      - /dev/dri/renderD128:/dev/dri/renderD128
+      - /dev/dri/card0:/dev/dri/card0
 ```
 
 Once your compose file is ready, save it and exit the editor. Now from within the same directory as the `compose.yaml` is located, use the following command to install and start the container in the background as a daemon:
@@ -107,7 +107,7 @@ If you'd like to change the web GUI's colors and vibe, you'll need the <a href="
 3. Click on it and install
 4. Restart Jellyfin
 
-Use `docker restart jellyfin` and once the Jellyfin container has restarted, go back into the GUI, go to _Dashboard_ -> _Plugins_ and click on _Skin Manager_. Use the dropdown menu to pick a skin (my favorite is <a href="https://github.com/prayag17/JellySkin" target="_blank" data-umami-event="setup-jellyfin-jellyskin">JellySkin</a>), tweak any options if it has them, and click _Set Skin_. If it doesn't switch to the new time right away, try a hard refresh with <kbd>Ctrl</kbd> + <kbd>F5</kbd>. Also, sometimes <a href="https://github.com/danieladov/jellyfin-plugin-skin-manager#using-with-reverse-proxy" target="_blank" data-umami-event="setup-jellyfin-jellyskins-proxy">Nginx Proxy Manager</a> the skins won't work due to CSP issues. (I haven't encountered this problem, but [I have my reverse proxy set up without HTTPS](reverse-proxy-nginx-pihole.md) and that may be why.)
+Use `docker restart jellyfin` and once the Jellyfin container has restarted, go back into the GUI, go to _Dashboard_ -> _Plugins_ and click on _Skin Manager_. Use the dropdown menu to pick a skin (my favorite is <a href="https://github.com/prayag17/JellySkin" target="_blank" data-umami-event="setup-jellyfin-jellyskin">JellySkin</a>), tweak any options if it has them, and click _Set Skin_. If it doesn't switch to the new time right away, try a hard refresh with <kbd>Ctrl</kbd> + <kbd>F5</kbd>. Also, sometimes <a href="https://github.com/danieladov/jellyfin-plugin-skin-manager#using-with-reverse-proxy" target="_blank" data-umami-event="setup-jellyfin-jellyskins-proxy">Nginx Proxy Manager</a> the skins won't work due to CSP issues. (I haven't encountered this problem, but [I have my reverse proxy set up without HTTPS](/blog/reverse-proxy-nginx-pihole/) and that may be why.)
 
 ## References
 
