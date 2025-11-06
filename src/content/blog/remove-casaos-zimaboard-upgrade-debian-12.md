@@ -1,7 +1,7 @@
 ---
 title: "How to remove CasaOS from a ZimaBoard and upgrade to Debian 12 Bookworm"
-description: "ZimaBoard is an x86 single board server that comes running Debian 11 Bullseye and CasaOS. It's a cool little machine, but after a few months I realizes I don't like CasaOS. Nothing against it, I'm just set in my way of doing things, and their GUI was limiting some of my options. In this post I'll explain how to remove CasaOS and then upgrade to the latest version of Debian."
-pubDate: 2025-02-10
+description: "ZimaBoard is an x86 single board server that comes running Debian 11 Bullseye and CasaOS. It's a cool little machine, but after a few months I realized I don't like CasaOS. Nothing against it, I'm just set in my way of doing things, and their GUI was limiting some of my options. In this post I'll explain how to remove CasaOS from the ZimaBoard and then upgrade it to Debian 12."
+pubDate: 2025-11-06
 tags:
   - self-hosting
 ---
@@ -25,6 +25,8 @@ Wait a few minutes until the uninstall is done then move on to the next step.
 ## Upgrading from Debian 11 to Debian 12
 
 Zimaboard 216 comes with Debian 11 Bullseye installed (no idea if the 432 and 832 do as well) which has been superseded by Debian 12 Bookworm, so let's upgrade it.
+
+> Debian 13 Trixie was released on August 9, 2025 after I wrote this. If you want to upgrade the ZimaBoard to Trixie, _make sure you upgrade from Bullseye to Bookworm first, then upgrade from Bookworm to Trixie_. Debian does not support upgrading from 11 straight to 13, you have to upgrade to 12 first. <a href="/blog/upgrade-debian-12-bookworm-debian-13-trixie/" target="_blank">See this article for details on upgrading from Debian 12 Bookworm to Debian 13 Trixie</a>.
 
 First let's do a full upgrade of all existing packages:
 
@@ -90,3 +92,4 @@ N: More information about this can be found online in the Release notes at: http
 ### Related Articles
 
 - <a href="/blog/factory-restore-zimaboard/" umami-data-event="remove-casaos-related-factory-restore-zimaboard">How to factory restore a ZimaBoard</a>
+- <a href="/blog/upgrade-debian-12-bookworm-debian-13-trixie/" umami-data-event="remove-casaos-related-factory-restore-zimaboard">How to upgrade from Debian 12 Bookworm to Debian 13 Trixie</a>
