@@ -9,17 +9,25 @@ tags:
 
 ## About upgrading
 
-Note that I'm just basing this off my own experience. I went from Debian 12 Bookworm with a desktop environment, and all my settings, installed apps and custom configurations were still there in Debian 13 Trixie. Applications like Google Chrome, VSCode, the Tailscale GUI client, LibreOffice and all pre-installed apps have worked completely fine.
+Please note that I'm just basing this off my own experience. I upgraded from Debian 12 Bookworm with a desktop environment, and all my settings, installed apps and custom configurations were still there in Debian 13 Trixie. Applications like Google Chrome, VSCode, the Tailscale GUI client, LibreOffice and all pre-installed apps have worked completely fine after the upgrade too.
+
+I've also used these same instructions (I write this stuff down mainly for my own future reference after all) to upgrade numerous headless Debian servers, both x86 and Arm-based systems like Raspberry Pi 5 and Libre Sweet Potato, as well as Windows System for Linux 2.
 
 Just because I encountered no problems does not mean you won't. If you want to be absolutely safe, you should make a backup of your main user Home directory and anything else you deem important, just in case you encounter some irreversable fatal error and have to start from scratch. (Highly doubtful, but you never know.)
 
+In the case of WSL2, you can create a backup of your instance by using this command in Windows Terminal or Powershell:
+
+```psl
+wsl --export Debian-WSL-Backup /path/to/Debian-WSL-Backup.tar
+```
+
+Follow all instructions as-is and when it's time to reboot at the end, just `exit` out of your WSL Debian instance and close the window with <kbd>Ctrl</kbd>+<kbd>D</kbd>, then open a new one.
+
 ## Upgrading apt repositories to Trixie
 
-> The below is written for upgrading from Bookworm to Trixie on a Debian desktop graphical install, but it has also worked the same on numerous Debian headless servers and on Windows System for Linux 2. In additiona, I've used this method to upgrade Debian on both x86 and Arm-based systems like Raspberry Pi 5 and Libre Sweet Potato.
+> **Important note for Nvidia GPU users:** I've received reports from some people trying to use this guide that they've had trouble upgrading on a system with an Nvidia card. There may be some issue with Nvidia drivers on Trixie, so I recommend following either <a href="https://wiki.debian.org/NvidiaGraphicsDrivers#Debian_13_.22Trixie.22" target="_blank">these instructions on the Debian wiki</a> or <a href="https://github.com/mexersus/debian-nvidia-drivers" target="_blank">this GitHub gist</a>.
 >
-> In the case of WSL2, you might want to first create a backup of your instance by using this command in Windows Terminal or Powershell: `wsl --export Debian-WSL-Backup /path/to/Debian-WSL-Backup.tar`. Follow all instructions as-is and when it's time to reboot at the end, just `exit` out of your WSL Debian instance and close the window with <kbd>Ctrl</kbd>+<kbd>D</kbd>, then open a new one.
->
-> **Important note for Nvidia GPU users:** I've received reports from some people trying to use this guide that they've had trouble upgrading on a system with an Nvidia card. There may be some issue with Nvidia drivers on Trixie, so I recommend <a href="https://wiki.debian.org/NvidiaGraphicsDrivers#Debian_13_.22Trixie.22" target="_blank">following these instructions on the Debian wiki</a>. I don't run Linux on any systems with a dedicated GPU, so I cannot test this out myself.
+> I don't run Linux on any systems with a dedicated GPU, so unfortunately I cannot test these out myself.
 
 Before anything else, let's do a full upgrade of all existing packages while still on Bookworm:
 
