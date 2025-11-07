@@ -1,6 +1,6 @@
 ---
 title: "How to upgrade from Debian 12 Bookworm to Debian 13 Trixie"
-description: "My old Dell Optiplex has been a great desktop PC for just minimal interneting and coding. I've been running Debian 12 Bookworm on it since it became available, and usually I stick to the latest Stable release of Debian. However, I decided to live on the edge just a little and upgrade to Debian 13 Trixie, the latest version."
+description: "My old Dell Optiplex has been a great desktop PC for just minimal interneting and coding. I've been running Debian 12 Bookworm on it since it became available. Now that Debian 13 Trixie is available I upgraded to it, and it was a smooth and painless transition. Here's the process."
 pubDate: 2025-05-21
 updatedDate: 2025-11-06
 tags:
@@ -9,15 +9,17 @@ tags:
 
 ## About upgrading
 
-Note that I'm just basing this off my own experience. I went from Debian 12 Bookworm, with all my settings, installed apps and custom configurations to Debian 13 Trixie, and had no major issues during or after the upgrade. Applications like Google Chrome, VSCode, the Tailscale GUI client, LibreOffice and all pre-installed apps have worked completely fine.
+Note that I'm just basing this off my own experience. I went from Debian 12 Bookworm with a desktop environment, and all my settings, installed apps and custom configurations were still there in Debian 13 Trixie. Applications like Google Chrome, VSCode, the Tailscale GUI client, LibreOffice and all pre-installed apps have worked completely fine.
 
-Just because I encountered no problems does not mean you won't. Make sure to make a backup of your main user Home directory and anything else you deem important, just in case you encounter some fatal error and have to start from scratch. (Highly doubtful, but just saying.)
+Just because I encountered no problems does not mean you won't. If you want to be absolutely safe, you should make a backup of your main user Home directory and anything else you deem important, just in case you encounter some irreversable fatal error and have to start from scratch. (Highly doubtful, but you never know.)
 
 ## Upgrading apt repositories to Trixie
 
-> The below has worked for me to upgrade from Bookworm to Trixie on a Debian desktop graphical install, a Debian headless server, and Windows System for Linux 2.
+> The below is written for upgrading from Bookworm to Trixie on a Debian desktop graphical install, but it has also worked the same on numerous Debian headless servers and on Windows System for Linux 2. In additiona, I've used this method to upgrade Debian on both x86 and Arm-based systems like Raspberry Pi 5 and Libre Sweet Potato.
 >
 > In the case of WSL2, you might want to first create a backup of your instance by using this command in Windows Terminal or Powershell: `wsl --export Debian-WSL-Backup /path/to/Debian-WSL-Backup.tar`. Follow all instructions as-is and when it's time to reboot at the end, just `exit` out of your WSL Debian instance and close the window with <kbd>Ctrl</kbd>+<kbd>D</kbd>, then open a new one.
+>
+> **Important note for Nvidia GPU users:** I've received reports from some people trying to use this guide that they've had trouble upgrading on a system with an Nvidia card. There may be some issue with Nvidia drivers on Trixie, so I recommend <a href="https://wiki.debian.org/NvidiaGraphicsDrivers#Debian_13_.22Trixie.22" target="_blank">following these instructions on the Debian wiki</a>. I don't run Linux on any systems with a dedicated GPU, so I cannot test this out myself.
 
 Before anything else, let's do a full upgrade of all existing packages while still on Bookworm:
 
@@ -62,4 +64,6 @@ Finally, we need reboot the machine to complete the upgrade. Trying to restart t
 sudo reboot
 ```
 
-When you're back in, you may notice some things look different (for me, the new version of KDE Plasma was immediately apparent) but all your applications and most settings will be as you left them. I only had to re-favorite and re-pin to taskbar my important apps, and re-confirm Chrome as the default browser.
+When you're back in, you should notice some differences if you are using a desktop environment (for me, the new version of KDE Plasma was immediately apparent), but all your applications and most settings will be as you left them. I only had to re-favorite and re-pin to taskbar my important apps, and re-confirm Chrome as the default browser. On a headless server, it should look and work mostly the same, although you will probably notice the new look of <a href="https://news.itsfoss.com/apt-3-release/" target="_blank">Apt 3.0</a>.
+
+Enjoy using the latest version of Debian!
