@@ -41,9 +41,9 @@ This guide assumes you have a Plex server already set up and that it's running o
 
 Note that I use plain Linux to run Plex in a Docker container, there may be additional configuration needed to run Plex on Proxmox, TrueNAS, Synology, etc. I can't help you with that, since I don't run Plex on any of those and have no interest in doing so.
 
-This post will instruct you on how to run Tailscale on the same machine running Plex, but alternately you can run Tailscale on a separate machine in your network and configure it as subnet router. I won't cover that here, <a href="/blog/comprehensive-guide-tailscale-securely-access-home-network/#setting-up-a-subnet-router" target="_blank" umami-data-event="plex-remote-access-tailscale-to-comprehensive-guide">see this section of my comprehensive Tailscale guide</a> or check out <a href="#" target="_blank" umami-data-event="plex-remote-access-tailscale-docs-subnets">the Tailscale documentation</a> for details.
+This post will instruct you on how to run Tailscale on the same machine running Plex, but alternately you can run Tailscale on a separate machine in your network and configure it as subnet router. I'll provide instructions below to install and configure Tailscale on the same machine running Plex Media Server, but it's identical if you prefer to do it on another machine, since we'll be setting up subnet router as well as exit node.
 
-I'll provide instructions to install and configure Tailscale on the Plex server and on other devices, specifically a Windows laptop and Android tablet. (It should work similar on iOS, the apps look identical at least, but I don't have an iOS device to confirm this myself.)
+I'll also quickly explain installing Tailscale on other devices, specifically a Windows laptop and Android phone/tablet. (It should work similar on iOS, the apps look identical at least, but I don't have an iOS device to confirm this myself.)
 
 ## Set up Tailscale on Plex server
 
