@@ -97,7 +97,7 @@ sudo tailscale up --advertise-routes=192.168.0.0/24 --advertise-exit-node
 
 Now go to the admin console, on the **Machines** tab, and do the following:
 
-1. Click the three dots to the right of the machine want you want to use as subnet router. (Notice the `subnets` tag.)
+1. Click the three dots to the right of the machine want you want to use as subnet router. (Notice the machine has `subnets` and `exit node` badges.)
 
 2. Choose **Edit route settings...** from the dropdown menu.
 
