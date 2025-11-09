@@ -499,6 +499,18 @@ aside > a, aside > a:active, aside > a:visited, aside > a:hover, aside > a:focus
 	/* added line to stop words getting smushed together (as they go onto seperate lines and some screen readers do not understand line feeds as a space */
 	white-space: nowrap;
 }
+@media screen and (min-width: 200px) and (max-width: 720px) {
+  h1 {
+    font-size: 1.35em;
+    line-height: 1.15;
+  }
+  h2 {
+    font-size: 1.25em;
+  }
+  article p {
+    line-height: 1.4;
+  }
+}
 @media screen and (min-width: 668px) and (max-width: 980px) {
   .top {
     display: grid;
@@ -520,5 +532,8 @@ aside > a, aside > a:active, aside > a:visited, aside > a:hover, aside > a:focus
   }
   .related {
     grid-template-columns: auto;
+  }
+  #related-articles + ul li a {
+    font-size: 1em;
   }
 }
