@@ -66,12 +66,12 @@ sudo apt --purge autoremove -y
 sudo apt autoclean
 ```
 
-Finally, we need reboot the machine to complete the upgrade. Trying to restart through the GUI was not working for me, so just use a terminal command to reboot:
+Finally, we need to reboot the machine to complete the upgrade. If using a desktop environment you may find that restarting through the GUI doesn't work, so just use a terminal command to reboot:
 
 ```bash
 sudo reboot
 ```
 
-When you're back in, you should notice some differences if you are using a desktop environment (for me, the new version of KDE Plasma was immediately apparent), but all your applications and most settings will be as you left them. I only had to re-favorite and re-pin to taskbar my important apps, and re-confirm Chrome as the default browser. On a headless server, it should look and work mostly the same, although you will probably notice the new look of <a href="https://news.itsfoss.com/apt-3-release/" target="_blank">Apt 3.0</a>.
+When you're back in, you should notice some differences if you are using a desktop environment (for me, the new version of KDE Plasma was immediately apparent), but all your applications and most settings will be as you left them. I only had to re-favorite and re-pin to taskbar my important apps, and re-confirm Chrome as the default browser. On a headless server, it should look and work mostly the same, although you will probably notice the new look of <a href="https://news.itsfoss.com/apt-3-release/" target="_blank">Apt 3.0</a> when you use it.
 
 Enjoy using the latest version of Debian!
