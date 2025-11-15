@@ -1,0 +1,6 @@
+title: "Dozzle"
+description: "A realtime log viewer for containers, supports Docker and K8s."
+tags:
+- self-hosted
+pubDate: 2025-11-14
+url: "https://dozzle.dev"

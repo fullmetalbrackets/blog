@@ -3,4 +3,5 @@ description: "Convert hex or RGB color codes into CSS filter properties, handy f
 tags:
 - tool
 pubDate: 2023-08-18
-url: "https://cssfiltergenerator.lol"
+updatedDate: 2025-11-14
+url: "https://angel-rs.github.io/css-color-filter-generator/"
