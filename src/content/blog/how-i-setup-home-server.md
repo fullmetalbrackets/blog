@@ -366,7 +366,6 @@ docker run -d -p 8000:8000 -p 9000:9000 -p 9443:9443 --name portainer --restart=
    syncthing:
       image: syncthing/syncthing
       container_name: syncthing
-      # hostname: syncthing
       environment:
          - PUID=1000
          - PGID=1000
