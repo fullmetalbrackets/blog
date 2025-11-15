@@ -2,7 +2,7 @@
 title: "How I set up a home server for self-hosting and as a NAS with secure remote access via Tailscale"
 description: "I turned my old Dell PC into an all-in-one home server and network attached storage to self-host all my data, my photos, and my media library, running Home Assistant, Plex and other services, all securely accessible from outside my home with Tailscale."
 pubDate: 2025-01-31
-updatedDate: 2025-04-20
+updatedDate: 2025-11-14
 tags:
   - self-hosting
 ---
@@ -44,19 +44,19 @@ I'll devote a section to each docker container I run and include a `compose.yaml
 ```
 <br>
 
-### File Browser
+### FileBrowser Quantum
 
-<a href="https://github.com/filebrowser/filebrowser" target="_blank" data-umami-event="home-server-filebrowser">Filebrowser</a> is exactly what the name implies, a GUI file explorer accessed via web UI. I rarely use it, but I have it setup to serve my `/home` directory in case I ever need to access it from another device.
+<a href="https://github.com/gtsteffaniak/filebrowser" target="_blank" data-umami-event="home-server-filebrowser">FileBrowser Quantum</a> is a slick web-based graphical file explorer accessed via browser. I rarely use it, but I have it setup to serve my `/home` directory in case I ever need to access it from another device.
 
 ```yaml
    filebrowser:
-      image: filebrowser/filebrowser:latest
+      image: gtstef/filebrowser
       container_name: filebrowser
       environment:
          - PUID=1000
          - PGID=1000
       volumes:
-         - /home/ad:/srv
+         - /home/ariel:/srv
          - /opt/docker/filebrowser/filebrowser.db:/database/filebrowser.db
          - /opt/docker/filebrowser/settings.json:/config/settings.json
       ports:
@@ -105,6 +105,8 @@ I'll devote a section to each docker container I run and include a `compose.yaml
 ### Home Assistant
 
 <a href="https://home-assistant.io" target="_blank" data-umami-event="home-server-home-assistant">Home Assistant</a> is a smart home automation hub that provides local control over IoT and smart devices in my house. Although I use Google Home on the regular because it's easier to just speak what I want to do, everything that I can also connect to Home Assistant, I do. It has let me keep controlling my lights a few times when my internet was out, so that alone makes it worthwhile, and creating "if this then that" automations are as useful as they are fun.
+
+![Part of a Home Assistant dashboard.](../../img/blog/homeassistant.png 'Part of a Home Assistant dashboard')
 
 ```yaml
    homeassistant:
@@ -182,17 +184,17 @@ Paperless runs as three containers, so I put them all in a stack.
 services:
    broker:
       container_name: paperless-broker
-      image: docker.io/library/redis:7
+      image: docker.io/library/redis:8
       restart: unless-stopped
       volumes:
-         - /home/ad/docker/paperless/redis:/data
+         - /home/ariel/docker/paperless/redis:/data
 
    db:
       container_name: paperless-db
-      image: docker.io/library/postgres:15
+      image: docker.io/library/postgres:18
       restart: unless-stopped
       volumes:
-         - /home/ad/docker/paperless/postgres:/var/lib/postgresql/data
+         - /home/ariel/docker/paperless/postgresql:/var/lib/postgresql
       environment:
          POSTGRES_DB: paperless
          POSTGRES_USER: paperless
@@ -218,9 +220,6 @@ services:
          PAPERLESS_REDIS: redis://broker:6379
          PAPERLESS_DBHOST: db
          PAPERLESS_TIME_ZONE: America/New_York
-         PAPERLESS_ADMIN_USER:
-         PAPERLESS_ADMIN_PASSWORD:
-         PAPERLESS_URL:
 ```
 <br>
 
@@ -259,14 +258,20 @@ Thanks to <a href="https://www.portainer.io/take-3" target="_blank">Portainer's 
 
 Portainer is usually deployed with `docker run` rather than compose, it's just a quick command to get started. (Note that I use a bind mount rather than a standard volume for Portainer data.)
 
+![Multiple environments in Portainer.](../../img/blog/portainer1.png 'Multiple environments in Portainer')
+![List of Docker containers in Portainer.](../../img/blog/portainer2.png 'List of Docker containers in Portainer')
+
 ```bash
 docker run -d -p 8000:8000 -p 9000:9000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v /opt/docker/portainer:/data portainer/portainer-ce:lts
 ```
+
 <br>
 
 ### qBittorrent
 
-<a href="https://docs.linuxserver.io/images/docker-qbittorrent" target="_blank" data-umami-event="home-server-qbittorrent">qBittorrent</a> is my preferred torrent downloader, this containerized version makes the GUI accessible from any machine via browser, and it connects to *Gluetun* so that so all my downloads are routed through my VPN provider. Rather than using the *arr suite for automated downloads, because I just don't download often enough to bother setting it up, I will manually grab a magnet link from my preferred torrent sites and put it into qBittorrent. I have storage paths configured by categories so that I can just choose "Movies", "TV Shows" or "Music" categories for each download, and it will be stored in the corresponding path where it is streamable from Plex. I also use the VueTorrent mod for an improved UI.
+<a href="https://docs.linuxserver.io/images/docker-qbittorrent" target="_blank" data-umami-event="home-server-qbittorrent">qBittorrent</a> is my preferred torrent downloader, this containerized version makes the GUI accessible from any machine via browser, and it connects to *Gluetun* so that so all my downloads are routed through my VPN provider. Rather than using the *arr suite for automated downloads, because I just don't download often enough to bother setting it up, I will manually grab a magnet link from my preferred torrent sites and put it into qBittorrent. I have storage paths configured by categories so that I can just choose "Movies", "TV Shows" or "Music" categories for each download, and it will be stored in the corresponding path where it is streamable from Plex. I also use the <a href="https://github.com/VueTorrent/VueTorrent" target="_blank">VueTorrent mod</a> for an improved UI.
+
+![qBittorrent with VueTorrent UI mod.](../../img/blog/qbittorrent.png 'qBittorrent with VueTorrent UI mod')
 
 ```yaml
    qbittorrent:
@@ -290,6 +295,7 @@ docker run -d -p 8000:8000 -p 9000:9000 -p 9443:9443 --name portainer --restart=
          gluetun:
          condition: service_healthy
 ```
+
 <br>
 
 ### Scrutiny
@@ -313,8 +319,8 @@ docker run -d -p 8000:8000 -p 9000:9000 -p 9443:9443 --name portainer --restart=
          - "8086:8086" # influxDB admin
       volumes:
          - /run/udev:/run/udev:ro
-         - /home/ad/docker/scrutiny:/opt/scrutiny/config
-         - /home/ad/docker/scrutiny/influxdb:/opt/scrutiny/influxdb
+         - /home/ariel/docker/scrutiny:/opt/scrutiny/config
+         - /home/ariel/docker/scrutiny/influxdb:/opt/scrutiny/influxdb
       environment:
         SCRUTINY_NOTIFY_URLS: "pushover://shoutrrr:...@.../"
       devices:
@@ -365,7 +371,7 @@ docker run -d -p 8000:8000 -p 9000:9000 -p 9443:9443 --name portainer --restart=
          - PUID=1000
          - PGID=1000
       volumes:
-         - /home/ad/docker/syncthing:/var/syncthing
+         - /home/ariel/docker/syncthing:/var/syncthing
          - /srv/data:/data
       network_mode: host
       restart: unless-stopped
@@ -376,7 +382,9 @@ docker run -d -p 8000:8000 -p 9000:9000 -p 9443:9443 --name portainer --restart=
 
 <a href="https://tautulli.com" target="_blank" data-umami-event="home-server-tautulli">Tautulli</a> runs alongside Plex to provide monitoring and statistics tracking, so I can see a history of what media my users and I consumed, details on when and what device, whether it was direct play or transcode, etc. It also has programmatic notifications with a lot different triggers. Aside from just keeping a comprehensive history of played media, I use Pushover to send push notifications to my phone when other users are playing something on Plex and if they have any stream errors.
 
-![Tautulli push notification with Pushover](../../img/blog/tautulli-pushover.jpg 'Tautulli push notification with Pushover')
+![Plex Media Server streaming history in Tautulli.](../../img/blog/tautulli.png 'Plex Media Server streaming history in Tautulli')
+
+![Tautulli push notification with Pushover.](../../img/blog/tautulli-pushover.jpg 'Tautulli push notification with Pushover')
 
 ```yaml
    tautulli:
@@ -572,7 +580,7 @@ SMB shares are available on the network for my wife and I to access from any PC 
 
 My preferred way of remotely accessing my home network is <a href="https://tailscale.com" target="_blank" data-umami-event="home-server-tailscale">Tailscale</a>. If you don't know, Tailscale is a mesh virtual private network (VPN) that uses the WireGuard protocal for encrypted peer-to-peer connections. For details on how it works, <a href="https://tailscale.com/kb/1151/what-is-tailscale" target="_blank">see here</a>.
 
-Tailscale not the only remote access solution, and technically it is not self-hosted, it's just the solution I landed on and ended up loving. Creating a Tailscale account also creates a <a href="https://tailscale.com/kb/1136/tailnet" target="_blank">Tailnet</a>. Any machines that run Tailscale are added to the Tailnet as nodes, which you'll manage through the web-based <a href="https://login.tailscale.com/admin" target="_blank">admin console</a>.
+Tailscale not the only remote access solution, and technically it is not self-hosted, it's just the solution I landed on and ended up loving. Creating a Tailscale account also creates a <a href="https://tailscale.com/kb/1136/tailnet" target="_blank">Tailnet</a>. Any machines that run Tailscale are added to the Tailnet as nodes, which you'll manage through the web-based <a href="https://login.tailscale.com/arielmin" target="_blank">admin console</a>.
 
 Tailscale is easy to learn and use, and when setup properly is totally secure without port forwarding or exposing anything to the internet. I wrote <a href="/blog/comprehensive-guide-tailscale-securely-access-home-network" target="_blank" data-umami-event="home-server-tailscale-guide">a blog post with more details</a> on how to set it up. The easiest way to install on a Linux server is to use the Tailscale install script:
 
