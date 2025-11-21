@@ -17,7 +17,7 @@
   "dependencies": {
     "@astrojs/markdown-remark": "^6.3.8",
     "@astrojs/mdx": "^4.3.12",
-    "@astrojs/rss": "^4.0.13",
+    "@astrojs/rss": "^4.0.14",
     "@astrojs/sitemap": "^3.6.0",
     "astro": "^5.16.0",
     "astro-social-share": "^2.2.0",
