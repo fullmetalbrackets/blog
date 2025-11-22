@@ -6,6 +6,7 @@ import TableOfContents from '@components/TableOfContents.astro';
 import BlogPosting from "@components/BlogPosting.astro";
 import ScrollProgress from "@components/ScrollProgress.astro";
 import { SocialShare } from "astro-social-share";
+import { Image } from 'astro:assets';
 import type { MarkdownHeading } from 'astro';
 
 type Props = CollectionEntry<"blog">['data'] & { headings: MarkdownHeading[] };
@@ -16,9 +17,11 @@ const { slug } = Astro.params;
 ---
 
 <BaseLayout title={title} description={description}>
+
   <head>
     <link rel="stylesheet" href="/prism.css" />
   </head>
+
   <style scoped>
     h1 {
       margin-bottom: 0.5em;
@@ -307,7 +310,7 @@ const { slug } = Astro.params;
       .share {
         grid-row: 2;
         grid-column: 1;
-        margin: 1.5em auto -0.5em auto;
+        margin: 0 auto;
         width: auto;
       }
       .umami {
@@ -321,11 +324,12 @@ const { slug } = Astro.params;
     }
     </style>
 
-<slot name="astro-social-share-css">
+  <slot name="astro-social-share-css">
     <style is:global>
       .astro-social-share {
-        margin: 1em auto;
+        margin: 0 auto 2em auto;
         height: 24px;
+        padding: 0.5em 0 0 0;
       }
       .astro-social-share svg {
         filter: var(--share);
@@ -335,8 +339,11 @@ const { slug } = Astro.params;
       }
     </style>
   </slot>
+
   <BlogPosting slot="head" {...Astro.props} />
+
   <ScrollProgress />
+
   <article data-pagefind-body>
     <h1 class="title">{title}</h1>
     <hr />
@@ -366,6 +373,7 @@ const { slug } = Astro.params;
       </p>
     </slot>
   </article>
+
   <aside class="edit-post">
     <div>
       <span>
@@ -391,7 +399,15 @@ const { slug } = Astro.params;
     <div class="coffee">
       <span>Was this article helpful?</span>
         <a href="https://www.buymeacoffee.com/arieldiaz">
-          <img src="https://img.buymeacoffee.com/button-api/?slug=arieldiaz&font_family=Lato&coffee_colour=ffffff" class="coffee-btn" alt="Buy Me A Coffee" title="Buy Me A Coffee" loading="eager" decoding="async" />
+          <Image
+            src="https://img.buymeacoffee.com/button-api/?slug=arieldiaz&font_family=Lato&coffee_colour=ffffff"
+            class="coffee-btn"
+            alt="Buy Me A Coffee"
+            title="Buy Me A Coffee"
+            loading="lazy"
+            decoding="async"
+            inferSize={true}
+          />
         </a>
     </div>
     <div class="share">
@@ -436,10 +452,12 @@ const { slug } = Astro.params;
         </button>
     </div>
   </aside>
+
   <hr />
   <aside class="blog-aside">
     <a href="/blog" class="top button blog-tag">&larr; Blog</a>
     <a href="/" class="top button blog-tag home">&#8626; Home</a>
     <a href="#top" class="top button blog-tag">Top &uarr;</a>
   </aside>
+
 </BaseLayout>

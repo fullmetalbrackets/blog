@@ -11,13 +11,13 @@ const links = (await getCollection("links")).sort(
     margin-bottom: 0.3em;
     font-family: "M Plus Rounded 1c Reg";
   }
-  ul {
+  .container {
     background-color: var(--blockquote);
     border-radius: 0.5em;
     margin: 0.5em auto 0 auto;
     padding: 1.5em;
   }
-  ul li {
+  .list {
     display: flex;
     flex-direction: column;
     margin: 0 auto 1em auto;
@@ -89,10 +89,10 @@ const links = (await getCollection("links")).sort(
 
 <section>
   <h2>Recent Links</h2>
-  <ul>
+  <div class="container">
     {
       links.slice(0, 5).map((link) => (
-        <li>
+        <div class="list">
           <span>
             <a href={link.data.url} target="_blank" data-umami-event="recent-link">
               {link.data.title}
@@ -100,9 +100,9 @@ const links = (await getCollection("links")).sort(
           </span>
           <span class="tag">Type: <span>{link.data.tags}</span></span>
           <span>{link.data.description}</span>
-        </li>
+        </div>
       ))
     }
-  <a href="/links/"><button>More Links</button></a>
-</ul>
+    <a href="/links/"><button>More Links</button></a>
+  </div>
 </section>

@@ -1,0 +1,64 @@
+---
+import Email from '@icons/email.svg';
+import Mastodon from '@icons/mastodon.svg';
+import Bluesky from '@icons/bsky.svg';
+import GitHub from '@icons/gh.svg';
+import BuyMeCoffee from '@icons/bmc.svg';
+---
+
+<style scoped>
+    .personal-links {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        gap: 5em;
+        margin: 2em 0 0 0;
+        padding: 0;
+        height: 1vw;
+    }
+    .personal-links a {
+        filter: var(--svg);
+        width: auto;
+        height: auto;
+        margin: 0;
+        padding: 0;
+    }
+    .personal-links a:hover {
+        filter: var(--share);
+    }
+    svg {
+        height: auto;
+        width: 32px;
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    @media screen and (min-width: 200px) and (max-width: 667px) {
+        .personal-links {
+            justify-content: center;
+            gap: 2em;
+        }
+        .personal-links a:last-of-type {
+            margin-right: 0;
+        }
+    }
+</style>
+
+<div class="personal-links">
+    <a href="mailto:contact@fullmetalbrackets.com" target="_blank" data-umami-event="front-page-mail">
+        <Email />
+    </a>
+    <a href="https://social.lol/@adiaz" target="_blank" data-umami-event="front-page-social">
+        <Mastodon />
+    </a>
+    <a href="https://bsky.app/profile/fullmetalbrackets.com" target="_blank" data-umami-event="front-page-bsky">
+        <Bluesky />
+    </a>
+    <a href="https://github.com/fullmetalbrackets" target="_blank" data-umami-event="front-page-github">
+        <GitHub />
+    </a>
+    <a href="https://buymeacoffee.com/arieldiaz" target="_blank" data-umami-event="front-page-coffee">
+        <BuyMeCoffee />
+    </a>
+</div>
