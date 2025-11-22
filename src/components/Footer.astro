@@ -1,5 +1,13 @@
 ---
 const today = new Date();
+import Umami from '@icons/umami.svg';
+import Feed from '@icons/rss.svg';
+import Email from '@icons/email.svg';
+import Mastodon from '@icons/mastodon.svg';
+import Bluesky from '@icons/bsky.svg';
+import GitHub from '@icons/gh.svg';
+import BuyMeCoffee from '@icons/bmc.svg';
+
 ---
 
 <style scoped>
@@ -57,48 +65,16 @@ const today = new Date();
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    margin: 0 0 0.25em 0;
-    padding: 0;
-  }
-  .nav a {
-    margin: 0 5px;
-    padding: 5px;
+    margin: 0 auto;
+    padding: 0 auto;
+    gap: 0.5em;
   }
   .nav a:hover {
     filter: var(--ext);
   }
-  img {
+  svg {
     filter: var(--svg);
-    width: 25px;
-    height: 25px;
-    margin: 1px 2px;
-    padding: 0;
     border-radius: 0;
-  }
-  .rss {
-    width: 15px;
-    height: 15px;
-  }
-  .mail {
-    width: 25px;
-    height: 25px;
-  }
-  .mastodon {
-    width: 20px;
-    height: 20px;
-  }
-  .bsky {
-    filter: var(--svg);
-    width: 24px;
-    height: auto;
-  }
-  .gh {
-    width: 20px;
-    height: 20px;
-  }
-  .buymeacoffee {
-    width: auto;
-    height: 25px;
   }
   @media screen and (min-width: 200px) and (max-width: 667px) {
     footer {
@@ -112,8 +88,9 @@ const today = new Date();
       margin: 0 auto 0.5em auto;
     }
     .nav {
-      grid-row: 2;      
+      grid-row: 2;
       margin: 0 auto 0.5em auto;
+      gap: 1em;
     }
     .bottom-row {
       grid-row: 3;
@@ -134,7 +111,40 @@ const today = new Date();
     </div>
     </div>
     <div class="nav">
-      <a href="https://us.umami.is/share/5MdOgBcRzVP6FU0x/fullmetalbrackets.com" target="_blank"
+      <a href="https://us.umami.is/share/5MdOgBcRzVP6FU0x/fullmetalbrackets.com" target="_blank" data-umami-event="footer-umami">
+        <Umami height={25} width={25} />
+      </a>
+      <a href="/rss.xml" target="_blank" data-umami-event="footer-rss">
+        <Feed height={20} width={20} />
+      </a>
+      <a href="mailto:contact@fullmetalbrackets.com" target="_blank" data-umami-event="footer-mail">
+        <Email height={28} width={28} class="email" />
+      </a>
+      <a href="https://social.lol/@adiaz" target="_blank" data-umami-event="footer-social">
+        <Mastodon height={25} width={25} />
+      </a>
+      <a href="https://bsky.app/profile/fullmetalbrackets.com" target="_blank" data-umami-event="footer-bsky">
+        <Bluesky height={25} width={25} />
+      </a>
+      <a href="https://github.com/fullmetalbrackets" target="_blank" data-umami-event="footer-github">
+        <GitHub height={25} width={25} />
+      </a>
+      <a href="https://buymeacoffee.com/arieldiaz" target="_blank" data-umami-event="footer-coffee">
+        <BuyMeCoffee height={25} width={25} />
+      </a>
+    </div>
+  </div>
+  <div class="bottom-row">
+      <span class="ccbysa">Content: <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" data-umami-event="footer-cc-by-sa-4.0">CC BY-SA 4.0</a></span> <span class="mit">Code: <a href="https://mit-license.org" target="_blank" data-umami-event="footer-mit-license">MIT</a></span>
+  </div>
+  <div class="privacy">
+    <a href="/privacy" data-umami-event="footer-privacy-policy">Privacy Policy</a>
+  </div>
+</footer>
+
+
+
+      <!-- <a href="https://us.umami.is/share/5MdOgBcRzVP6FU0x/fullmetalbrackets.com" target="_blank"
         ><img
           height="25px"
           width="25px"
@@ -223,13 +233,4 @@ const today = new Date();
           decoding="async"
           data-umami-event="footer-coffee"
         /></a
-      >
-    </div>
-  </div>
-  <div class="bottom-row">
-      <span class="ccbysa">Content: <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" data-umami-event="footer-cc-by-sa-4.0">CC BY-SA 4.0</a></span> <span class="mit">Code: <a href="https://mit-license.org" target="_blank" data-umami-event="footer-mit-license">MIT</a></span>
-  </div>
-  <div class="privacy">
-    <a href="/privacy" data-umami-event="footer-privacy-policy">Privacy Policy</a>
-  </div>
-</footer>
+      > -->
