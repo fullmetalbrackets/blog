@@ -18,13 +18,13 @@ const posts = (await getCollection("blog")).sort(
   .desc {
     line-height: 1.4;
   }
-  ul {
+  .container {
     background-color: var(--blockquote);
     border-radius: 0.5em;
     margin: 0.5em auto 0 auto;
     padding: 1.5em;
   }
-  li {
+  .list {
     display: inline-flex;
     flex-direction: column;
     margin: 0 auto 1em auto;
@@ -61,7 +61,7 @@ const posts = (await getCollection("blog")).sort(
     margin: 0 0 0.5em 0.25em;
     font-family: "M Plus Rounded 1c Med";
   }
-  li:hover {
+  .list:hover {
     padding-bottom: 0.5em;
     border-bottom: 2px solid var(--hover);
   }
@@ -82,10 +82,10 @@ const posts = (await getCollection("blog")).sort(
 
 <section>
   <h2>Recent Posts</h2>
-  <ul>
+  <div class="container">
     {
       posts.slice(0, 5).map((post) => (
-        <li>
+        <div class="list">
           <a href={`/blog/${post.slug}/`} rel="prefetch-intent" data-umami-event="recent-post">
             <p class="posts-title">{post.data.title}</p>
             <p class="info">
@@ -94,9 +94,9 @@ const posts = (await getCollection("blog")).sort(
             </p>
             <p class="desc">{post.data.description}</p>
           </a>
-        </li>
+        </div>
       ))
     }
-  <a href="/blog/"><button>More Posts</button></a>
-</ul>
+    <a href="/blog/"><button>More Posts</button></a>
+  </div>
 </section>
