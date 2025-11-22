@@ -98,10 +98,10 @@ const { title, description, image = "/social.png" } = Astro.props;
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
 
 <!-- Umami tracking code -->
-<script defer src="https://cloud.umami.is/script.js" data-website-id="4c9061c2-889a-48d1-ba07-6adc444c9768"></script>
+<script is:inline defer src="https://cloud.umami.is/script.js" data-website-id="4c9061c2-889a-48d1-ba07-6adc444c9768"></script>
 
 <!-- Track outbound links w/ Umami -->
-<script type="text/javascript">
+<script is:inline type="text/javascript">
   (() => {
     const name = 'outbound-link-click';
     document.querySelectorAll('a').forEach(a => {

@@ -1,9 +1,5 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
-import FormattedDate from "@components/FormattedDate.astro";
-import { getCollection } from "astro:content";
-
-const posts = (await getCollection("blog"));
 
 const title = "Categories";
 const desc = "Blog posts by category";
