@@ -32,6 +32,10 @@ const posts = (await getCollection("blog")).sort(
     line-height: 1.2;
     border-bottom: 2px solid transparent;
   }
+  .list:hover {
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--hover);
+  }
   .posts-title {
     display: inline-flex;
     flex-direction: row;
@@ -61,9 +65,18 @@ const posts = (await getCollection("blog")).sort(
     margin: 0 0 0.5em 0.25em;
     font-family: "M Plus Rounded 1c Med";
   }
-  .list:hover {
-    padding-bottom: 0.5em;
-    border-bottom: 2px solid var(--hover);
+  .more {
+    font-family: "M Plus Rounded 1c Reg";
+    font-weight: 900;
+    font-size: 1.2em;
+  }
+  .more a {
+    color: var(--menu);
+    border-bottom: 2px solid transparent;
+  }
+  .more a:hover {
+    color: var(--link);
+    border-bottom: 2px solid var(--link);
   }
   @media screen and (min-width: 200px) and (max-width: 667px) {
     main {
@@ -97,6 +110,8 @@ const posts = (await getCollection("blog")).sort(
         </div>
       ))
     }
-    <a href="/blog/"><button>More Posts</button></a>
+    <div class="more">
+      <a href="/blog/">More Posts &rarr;</a>
+    </div>
   </div>
 </section>
