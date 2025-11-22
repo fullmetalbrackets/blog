@@ -1,6 +1,6 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
-import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
 import Logo from '../img/assets/logo.png';
 import Search from '@icons/search.svg';
 ---
@@ -74,7 +74,7 @@ import Search from '@icons/search.svg';
 <header>
   <nav>
     <a href="/" class="logo" aria-label="logo">
-      <Image src={Logo} alt="Site logo." width="50" height="50" loading="eager" decoding="async" />
+      <Picture src={Logo} formats={['avif', 'webp']} alt="Site logo." width="50" height="50" loading="eager" decoding="async" />
         <span class="name">Fullmetalbrackets</span>
     </a>
     <div class="nav-links">
