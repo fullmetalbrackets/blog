@@ -42,7 +42,7 @@
     --tags: rgb(44 156 195);
     --emphasis: rgb(40, 108, 96);
     --name: rgb(44 156 195);
-    --date: rgb(72, 100, 100);
+    --date: rgb(40, 108, 96);
     --menu: rgb(205, 110, 10);
     --form: rgb(32, 33, 36);
     --info: rgb(255, 221, 0);
@@ -146,7 +146,13 @@ hr {
   border: 0.25px solid var(--primary);
 	opacity: 0.5;
 }
-h1, h2, h4, h6 {
+h1 {
+  font-family: 'Atkinson', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+	color: var(--code-text);
+  margin: 0;
+  padding: 0;
+}
+h2, h4, h6 {
   font-family: 'Atkinson', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
 	color: var(--primary);
   margin: 0;
