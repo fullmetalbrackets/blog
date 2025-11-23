@@ -231,7 +231,7 @@ input:focus, textarea:focus {
   }
 }
 button {
-  font-family: 'M Plus Rounded 1c Med', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-family: 'M Plus Rounded 1c Med', 'Atkinson', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
   color: #000;
   border: 0;
   border-radius: 0.25em;
@@ -298,7 +298,7 @@ mark {
 }
 time {
 	color: var(--date);
-  font-family: 'M Plus Rounded 1c Reg', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-family: 'M Plus Rounded 1c Reg', 'Atkinson', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
   font-size: 0.75em;
 }
 img {
@@ -308,7 +308,7 @@ img {
 }
 code {
 	padding: 1px 4.5px;
-  font-family: 'M Plus Rounded 1c Med', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-family: 'M Plus Rounded 1c Med', 'Atkinson', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
 	background-color: var(--code-bg);
 	color: var(--code-text);
 	border-radius: 0.25em;
@@ -440,7 +440,7 @@ li::marker {
   -o-transition: all .10s ease-out;
   transition: all .10s ease-out;
   margin: 0;
-  font-family: 'M Plus Rounded 1c Med';
+  font-family: 'M Plus Rounded 1c Med', 'Atkinson', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
 }
 aside > a, aside > a:active, aside > a:visited, aside > a:hover, aside > a:focus {
   color: #000;
