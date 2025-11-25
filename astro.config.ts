@@ -7,12 +7,7 @@ import playformCompress from '@playform/compress';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://fullmetalbrackets.com',
-  integrations: [mdx(), sitemap(), playformCompress(
-    {
-      HTML: false,
-      SVG: false,
-    }
-  )],
+  integrations: [mdx(), sitemap(), playformCompress()],
   prefetch: true,
   markdown: {
     syntaxHighlight: 'prism'
