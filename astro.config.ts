@@ -10,7 +10,6 @@ export default defineConfig({
   integrations: [mdx(), sitemap(), playformCompress(
     {
       HTML: false,
-      Image: false,
       SVG: false,
     }
   )],
