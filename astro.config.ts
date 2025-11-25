@@ -99,4 +99,7 @@ export default defineConfig({
       destination: '/blog/reverse-proxy-using-nginx-pihole-cloudflare/',
     },
   },
+    experimental: {
+    svgo: true,
+  },
 });
