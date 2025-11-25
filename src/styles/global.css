@@ -1,16 +1,18 @@
 @font-face {
   font-family: 'M Plus Rounded 1c Reg';
+  src: url('/fonts/MPLUSRounded1c-Regular.woff2') format('woff2');
   src: url('/fonts/MPLUSRounded1c-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
-  font-display: block;
+  font-display: fallback;
 }
 @font-face {
   font-family: 'M Plus Rounded 1c Med';
+  src: url('/fonts/MPLUSRounded1c-Regular.woff') format('woff2');
   src: url('/fonts/MPLUSRounded1c-Medium.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
-  font-display: block;
+  font-display: fallback;
 }
 @font-face {
 	font-family: 'Atkinson';
