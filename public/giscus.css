@@ -158,7 +158,7 @@ background-image: url("/spinner.svg");
   --color-fg-default: #c9d1d9;
   --color-fg-muted: #8b949e;
   --color-fg-subtle: #6e7681;
-  --color-canvas-default: rgb(32, 33, 36);
+  --color-canvas-default: rgb(25, 22, 22);
   --color-canvas-overlay: rgb(51, 65, 85);
   --color-canvas-inset: rgb(32, 33, 36);
   --color-canvas-subtle: rgb(25, 22, 22);
