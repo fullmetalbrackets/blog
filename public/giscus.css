@@ -1,4 +1,5 @@
 main {
+  font-family: 'Atkinson', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
   --color-prettylights-syntax-comment: #6e7781;
   --color-prettylights-syntax-constant: #0550ae;
   --color-prettylights-syntax-entity: #8250df;
@@ -39,7 +40,7 @@ main {
   --color-btn-active-bg: hsl(220deg 14% 93% / 100%);
   --color-btn-active-border: rgb(31 35 40 / 15%);
   --color-btn-selected-bg: hsl(220deg 14% 94% / 100%);
-  --color-btn-primary-text: #fff;
+  --color-btn-primary-text: #000;
   --color-btn-primary-bg: #2c9cc3;
   --color-btn-primary-border: rgb(31 35 40 / 15%);
   --color-btn-primary-shadow: 0 1px 0 rgb(31 35 40 / 10%);
@@ -101,6 +102,7 @@ background-image: url("/spinner.svg");
    */
 
   main {
+  font-family: 'Atkinson', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
   --color-prettylights-syntax-comment: #8b949e;
   --color-prettylights-syntax-constant: #79c0ff;
   --color-prettylights-syntax-entity: #d2a8ff;
@@ -141,7 +143,7 @@ background-image: url("/spinner.svg");
   --color-btn-active-bg: hsl(212deg 12% 18% / 100%);
   --color-btn-active-border: #6e7681;
   --color-btn-selected-bg: #161b22;
-  --color-btn-primary-text: #fff;
+  --color-btn-primary-text: #000;
   --color-btn-primary-bg: #f2cf2b;
   --color-btn-primary-border: rgb(240 246 252 / 10%);
   --color-btn-primary-shadow: 0 0 transparent;
