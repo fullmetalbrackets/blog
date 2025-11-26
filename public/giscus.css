@@ -5,6 +5,8 @@
 
 .gsc-comment-box-buttons {
   font-family: 'M Plus Rounded 1c Med', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-size: 1em;
+  font-weight: 600;
 }
 
 main {
