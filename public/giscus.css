@@ -216,7 +216,7 @@ background-image: url("/spinner.svg");
   --color-neutral-muted: rgb(110 118 129 / 40%);
   --color-accent-fg: #58a6ff;
   --color-accent-emphasis: #f2cf2b;
-  --color-accent-muted: rgb(56 139 253 / 40%);
+  --color-accent-muted: rgb(90, 194, 175);
   --color-accent-subtle: rgb(56 139 253 / 10%);
   --color-success-fg: #58a6ff;
   --color-attention-fg: #d29922;
