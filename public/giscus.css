@@ -40,12 +40,16 @@
   font-weight: 600;
 }
 
+.btn:hover {
+  background: rgb(200, 0, 0);
+}
+
 .gsc-reactions-count {
   font-family: 'M Plus Rounded 1c Med', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
 }
 
 .gsc-reactions {
-  margin-bottom: -3em;
+  margin-bottom: -3.5em;
 }
 
 main {
@@ -189,7 +193,7 @@ background-image: url("/spinner.svg");
   --color-btn-primary-border: rgb(240 246 252 / 10%);
   --color-btn-primary-shadow: 0 0 transparent;
   --color-btn-primary-inset-shadow: 0 0 transparent;
-  --color-btn-primary-hover-bg: #f97316;
+  --color-btn-primary-hover-bg: rgb(249, 115, 22);
   --color-btn-primary-hover-border: rgb(240 246 252 / 10%);
   --color-btn-primary-selected-bg: rgb(242, 207, 43);
   --color-btn-primary-selected-shadow: 0 0 transparent;
@@ -229,6 +233,10 @@ background-image: url("/spinner.svg");
     --color-social-reaction-bg-reacted-hover: var(--color-scale-blue-8);
   }
 
+.btn:hover {
+  background: rgb(249, 115, 22);
+}
+  
   main .pagination-loader-container {
     background-image: url("https://github.com/images/modules/pulls/progressive-disclosure-line-dark.svg");
   }
