@@ -1,6 +1,9 @@
-main {
+:host, html {
   --font-family-sans: 'Atkinson', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
   --font-family-monospace: 'M Plus Rounded 1c Med', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
+}
+
+main {
   --color-prettylights-syntax-comment: #6e7781;
   --color-prettylights-syntax-constant: #0550ae;
   --color-prettylights-syntax-entity: #8250df;
@@ -81,7 +84,6 @@ main {
   --color-primer-shadow-inset: inset 0 1px 0 rgb(208 215 222 / 20%);
   --color-scale-gray-1: #eaeef2;
   --color-scale-blue-1: #b6e3ff;
-
   /*! Extensions from @primer/css/alerts/flash.scss */
   --color-social-reaction-bg-hover: var(--color-scale-gray-1);
   --color-social-reaction-bg-reacted-hover: var(--color-scale-blue-1);
@@ -95,16 +97,8 @@ main .gsc-loading-image {
 background-image: url("/spinner.svg");
 }
 
-/*! Dark mode */
 @media (prefers-color-scheme: dark) {
-  /*! MIT License
-   * Copyright (c) 2018 GitHub Inc.
-   * https://github.com/primer/primitives/blob/main/LICENSE
-   */
-
   main {
-  --font-family-sans: 'Atkinson', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
-  --font-family-monospace: 'M Plus Rounded 1c Med', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
   --color-prettylights-syntax-comment: #8b949e;
   --color-prettylights-syntax-constant: #79c0ff;
   --color-prettylights-syntax-entity: #d2a8ff;
@@ -185,7 +179,6 @@ background-image: url("/spinner.svg");
   --color-primer-shadow-inset: 0 0 transparent;
   --color-scale-gray-7: #21262d;
   --color-scale-blue-8: #0c2d6b;
-
     /*! Extensions from @primer/css/alerts/flash.scss */
     --color-social-reaction-bg-hover: var(--color-scale-gray-7);
     --color-social-reaction-bg-reacted-hover: var(--color-scale-blue-8);
