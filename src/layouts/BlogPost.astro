@@ -85,7 +85,7 @@ const { slug } = Astro.params;
       justify-content: space-around;
       color: var(--primary);
       font-family: "M Plus Rounded 1c Med";
-      margin: 1em 1em 2em 1em;
+      margin: 2em 1em;
     }
     .edit-post span {
       margin: 0 auto;
@@ -373,7 +373,24 @@ const { slug } = Astro.params;
       </p>
     </slot>
   </article>
-
+  <hr>
+  <script is:inline src="https://giscus.app/client.js"
+    data-theme="https://blog-8c6.pages.dev/giscus.css"
+    data-repo="fullmetalbrackets/blog"
+    data-repo-id="R_kgDOIBwrhQ"
+    data-category="Comments"
+    data-category-id="DIC_kwDOIBwrhc4CzE-1"
+    data-mapping="title"
+    data-strict="1"
+    data-reactions-enabled="1"
+    data-emit-metadata="1"
+    data-input-position="top"
+    data-theme="dark_protanopia"
+    data-lang="en"
+    data-loading="lazy"
+    crossorigin="anonymous"
+    async>
+  </script>
   <aside class="edit-post">
     <div>
       <span>
