@@ -34,7 +34,7 @@
   --font-family-monospace: 'M Plus Rounded 1c Med', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
 }
 
-.gsc-comment-box-buttons {
+.btn {
   font-family: 'M Plus Rounded 1c Med', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
   font-size: 18px;
   font-weight: 600;
