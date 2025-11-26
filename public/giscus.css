@@ -251,3 +251,9 @@ background-image: url("/spinner.svg");
     background-image: url("/spinner.svg");
   }
 }
+
+@media screen and (min-width: 200px) and (max-width: 720px) {
+  .gsc-reactions {
+    margin-bottom: -1em;
+  }
+}
