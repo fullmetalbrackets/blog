@@ -51,7 +51,7 @@
     --info-text: rgb(160, 90, 40);
     --info-bg: rgb(239, 201, 15);
     --blockquote: rgb(260, 250, 240);
-    --code-bg: hsl(0, 0%, 90%);
+    --code-bg: #e6e6e6;
     --code-text: hsl(220, 13%, 18%);
     --svg: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%) contrast(98%);
     --ext: invert(88%) sepia(69%) saturate(7500%) hue-rotate(1deg) brightness(104%) contrast(104%);
@@ -84,7 +84,7 @@
     --info: rgb(255, 221, 0);
     --info-text: rgb(255, 221, 0);
     --blockquote: rgb(25, 22, 22);
-    --code-bg: hsl(220, 13%, 18%);
+    --code-bg: #282c34;
     --code-text: hsl(0, 0%, 100%);
     --pagefind-ui-text: rgb(164, 174, 188);
     --pagefind-ui-background: rgb(51, 65, 85);
