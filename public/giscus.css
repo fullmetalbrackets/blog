@@ -248,7 +248,9 @@ background-image: url("/spinner.svg");
   }
 
   main .gsc-loading-image {
-    background-image: url("/spinner200.svg");
+    background-image: url("/spinner.svg");
+    width: 100px;
+    height: 100px;
   }
 }
 
