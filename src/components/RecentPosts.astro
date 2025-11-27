@@ -15,6 +15,14 @@ const posts = (await getCollection("blog")).sort(
   p {
     margin: 0;
   }
+  .tag button {
+    margin-right: 0.15em;
+    background: var(--info);
+    cursor: pointer;
+  }
+  .tag button:first-of-type {
+    margin-left: 0;
+  }
   .desc {
     line-height: 1.4;
   }
@@ -103,7 +111,11 @@ const posts = (await getCollection("blog")).sort(
             <p class="posts-title">{post.data.title}</p>
             <p class="info">
               <FormattedDate date={post.data.pubDate} />&nbsp;
-              <button>{post.data.tags}</button>
+              <span class="tag">
+                {post.data.tags.map((tag) => (
+                  <button>{tag}</button>
+                ))}
+              </span>
             </p>
             <p class="desc">{post.data.description}</p>
           </a>

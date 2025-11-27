@@ -3,8 +3,7 @@ title: "Bypass the Plex Pass and Remote Watch Pass requirements for Plex remote 
 description: "Beginning April 29th, 2025 the pricing for Plex Pass increased at the same time that remote access got paywalled behind it. Plex no longer allows streaming your own content outside of your home network without paying for Plex Pass, or the new Remote Watch Pass. You can bypass these paywalls, at least for now, by using Tailscale."
 pubDate: 2025-05-17
 updatedDate: 2025-11-08
-tags:
-  - tailscale
+tags: ["tailscale", "plex"]
 ---
 
 > I have received confirmation from several people that remotely accessing Plex works with this setup without Plex Pass or Remote Watch Pass, at least for now -- it's entirely possible Plex will change something in the future to break this workaround. In fact, I would not be surprised if they do.

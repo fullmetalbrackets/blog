@@ -2,8 +2,7 @@
 title: "Using a Google TV streaming device with Tailscale to remotely stream my Plex library while on vacation"
 description: "I have a Plex Pass subscription, unfortunately Plex's built-in remote access won't work behind CGNAT, so I use Tailscale to securely access my Plex library and entire home network when I'm not home. Aside from streaming music or video from my phone or tablet at work, I've also started taking a Google TV stick on vacation with me, and with the Tailscale and Plex apps I can to stream my library of movies, TV shows and music from anywhere that has a TV and Wi-Fi."
 pubDate: 2025-10-28
-tags:
-  - tailscale
+tags: ["tailscale", "plex", "android"]
 ---
 
 ## What and How

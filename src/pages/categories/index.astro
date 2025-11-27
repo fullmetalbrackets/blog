@@ -1,6 +1,17 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
+import { getCollection } from 'astro:content';
 
+const allPosts = await getCollection('blog');
+const tagCounts = {};
+allPosts.forEach(post => {
+  post.data.tags?.forEach(tag => {
+    tagCounts[tag] = (tagCounts[tag] || 0) + 1;
+  });
+});
+const tags = Object.entries(tagCounts)
+  .map(([tag, count]) => ({ tag, count }))
+  .sort((a, b) => a.tag.localeCompare(b.tag));
 const title = "Categories";
 const desc = "Blog posts by category";
 ---
@@ -11,7 +22,7 @@ const desc = "Blog posts by category";
   }
   ul {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, auto);
     gap: auto;
     list-style-type: none;
     margin: 0 auto 2em auto;
@@ -27,24 +38,40 @@ const desc = "Blog posts by category";
   li a:hover {
     margin: 2px auto;
     padding: 0 auto;
-    border-bottom: 2px solid var(--hover);
+  }
+  button {
+    background: var(--tags);
+  }
+  button:hover {
+    cursor: pointer;
+  }
+  .count {
+    font-family: 'M Plus Rounded 1c Med', 'Atkinson', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
+    color: var(--emphasis);
   }
   p {
     margin-bottom: 2em;
   }
-  @media screen and (min-width: 721px) and (max-width: 900px) {
+  @media screen and (min-width: 755px) and (max-width: 1000px) {
     ul {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, auto);
       }
   }
-  @media screen and (min-width: 200px) and (max-width: 720px) {
+  @media screen and (min-width: 601px) and (max-width: 754px) {
     ul {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0 1.5em;
+      grid-template-columns: repeat(2, auto);
+    }
+  }
+  @media screen and (max-width: 600px) {
+    ul {
+      grid-template-columns: repeat(1, auto);
+      gap: 0 auto;
+      justify-content: space-around;
+      place-items: center;
+      margin-bottom: 1.5em;
     }
     li {
-      margin: 0 0 1em -1em;
-      line-height: 1.1;
+      margin: 0.5em auto;
     }
   }
 </style>
@@ -56,77 +83,15 @@ const desc = "Blog posts by category";
     <p>
       Click on categories below to see blog posts about that subject.
     </p>
+
     <ul>
-      <li>
-        <a href="/categories/android/" rel="prefetch-intent" data-umami-event="category-page-android">
-          Android
-        </a>
-      </li>
-      <li>
-        <a href="/categories/cloudflare/" rel="prefetch-intent" data-umami-event="category-page-cloudflare">
-          Cloudflare
-        </a>
-      </li>
-      <li>
-      <a href="/categories/command line/" rel="prefetch-intent" data-umami-event="category-page-command-line">
-          Command Line
-      </a>
-      </li>
-      <li>
-        <a href="/categories/docker/" rel="prefetch-intent" data-umami-event="category-page-docker">
-          Docker
-        </a>
-      </li>
-      <li>
-        <a href="/categories/git/" rel="prefetch-intent" data-umami-event="category-page-git">
-          Git
-        </a>
-      </li>
-      <li>
-        <a href="/categories/linux/" rel="prefetch-intent" data-umami-event="category-page-linux">
-          Linux
-        </a>
-      </li>
-      <li>
-        <a href="/categories/miscellaneous/" rel="prefetch-intent" data-umami-event="category-page-misc">
-          Miscellaneous
-        </a>
-      </li>
-      <li>
-        <a href="/categories/networking/" rel="prefetch-intent" data-umami-event="category-page-networking">
-          Networking
-        </a>
-      </li>
-      <li>
-        <a href="/categories/pi-hole/" rel="prefetch-intent" data-umami-event="category-page-pihole">
-          Pi-Hole
-        </a>
-      </li>
-      <li>
-        <a href="/categories/powershell/" rel="prefetch-intent" data-umami-event="category-page-powershell">
-          PowerShell
-        </a>
-      </li>
-      <li>
-        <a href="/categories/self-hosting/" rel="prefetch-intent" data-umami-event="category-page-self-hosting">
-          Self-Hosting
-        </a>
-      </li>
-      <li>
-        <a href="/categories/ssh/" rel="prefetch-intent" data-umami-event=category-ssh">
-          SSH
-        </a>
-      </li>
-      <li>
-        <a href="/categories/tailscale/" rel="prefetch-intent" data-umami-event=category-tailscale">
-          Tailscale
-        </a>
-      </li>
-      <li>
-        <a href="/categories/web development/" rel="prefetch-intent" data-umami-event=category-web-dev">
-          Web Development
-        </a>
-      </li>
+      {tags.map(({ tag, count }) => (
+        <li>
+          <a href={`/categories/${tag}`}>
+            <button>{tag}</button> <span class="count"> ({count})</span>
+          </a>
+        </li>
+      ))}
     </ul>
     <hr />
   </section>

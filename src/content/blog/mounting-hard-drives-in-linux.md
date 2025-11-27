@@ -3,8 +3,7 @@ title: "Mounting (either internal or external) hard drives in Linux"
 description: "When using Linux headless, such as via SSH or with no desktop environment, accessing a newly installed hard drive (not just external USB drives, but additional internal HDDs too) is not obvious, and most people end up having to Google it. I know I did. So let's have a quick and dirty guide on how."
 pubDate: 2021-09-13
 updatedDate: 2024-02-03
-tags:
-  - command line
+tags: ["linux", "command line"]
 ---
 
 When using Linux headless, such as via SSH or with no desktop environment, accessing a newly So how do we access a newly added hard drive in Linux? In Windows and most Linux desktop environments, a newly connected internal or external hard drive will be automatically detected, mounted and show up in file explorer (or your desktop environment's equivalent), but how does it work over command line with no GUI?

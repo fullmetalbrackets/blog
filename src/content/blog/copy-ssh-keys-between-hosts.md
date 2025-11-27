@@ -3,8 +3,7 @@ title: "Copying SSH Keys between different hosts"
 description: "How to copy SSH keys between Linux hosts and from Windows to Linux."
 pubDate: 2021-07-09
 updatedDate: 2025-02-17
-tags:
-  - ssh
+tags: ["ssh", "command line"]
 ---
 
 ## Copy SSH key between Linux hosts

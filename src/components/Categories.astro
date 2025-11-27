@@ -1,125 +1,89 @@
 ---
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('blog');
+const tagCounts = {};
+allPosts.forEach(post => {
+  post.data.tags?.forEach(tag => {
+    tagCounts[tag] = (tagCounts[tag] || 0) + 1;
+  });
+});
+const tags = Object.entries(tagCounts)
+  .map(([tag, count]) => ({ tag, count }))
+  .sort((a, b) => a.tag.localeCompare(b.tag));
 ---
 
 <style scoped>
   h2 {
-    margin-bottom: 0.3em;
     font-family: "M Plus Rounded 1c Reg";
   }
   ul {
     background-color: var(--blockquote);
     border-radius: 0.5em;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, auto);
+    gap: auto 1em;
     list-style-type: none;
-    margin: 0 auto;
-    padding: 1.5em 1.5em 0.5em 1.5em;
+    margin: 0.5em auto 2em auto;
+    padding: 1.25em 1.5em;
   }
   li {
-    margin: 0 auto 1em auto;
+    margin: 0.5em 0;
+  }
+  li a {
+    margin: 2px auto;
+    padding: 0 auto;
   }
   li a:hover {
-    border-bottom: 2px solid var(--hover);
+    margin: 2px auto;
+    padding: 0 auto;
+  }
+  button {
+    background: var(--tags);
+  }
+  button:hover {
+    cursor: pointer;
+  }
+  .count {
+    font-family: 'M Plus Rounded 1c Med', 'Atkinson', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
+    color: var(--emphasis);
   }
   p {
-    margin: -0.75em auto 1.75em auto;
+    margin-bottom: 2em;
   }
-  .desc {
-  }
-  .title {
-    margin: 0 auto;
-  }
-  @media screen and (min-width: 721px) and (max-width: 900px) {
+  @media screen and (min-width: 755px) and (max-width: 1000px) {
     ul {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, auto);
       }
   }
-  @media screen and (min-width: 200px) and (max-width: 720px) {
+  @media screen and (min-width: 601px) and (max-width: 754px) {
     ul {
-      grid-template-columns: repeat(2, 1fr);
-      padding: 0.75em 0.5em 0 0.5em;
-      text-align: center;
+      grid-template-columns: repeat(2, auto);
+    }
+  }
+  @media screen and (max-width: 600px) {
+    ul {
+      grid-template-columns: repeat(1, auto);
+      gap: 0 auto;
+      justify-content: space-around;
+      place-items: center;
+      margin-bottom: 1.5em;
     }
     li {
-      margin-bottom: 0.5em;
-      line-height: 1.2;
+      margin: 0.5em auto;
     }
   }
 </style>
 
 <section>
   <h2>Categories</h2>
-  <ul>
-    <li>
-      <a href="/categories/android/" rel="prefetch-intent" data-umami-event="home-categories-android">
-        Android
-      </a>
-    </li>
-    <li>
-      <a href="/categories/cloudflare/" rel="prefetch-intent" data-umami-event="home-categories-cloudflare">
-        Cloudflare
-      </a>
-    </li>
-    <li>
-    <a href="/categories/command line/" rel="prefetch-intent" data-umami-event="home-categories-command-line">
-        Command Line
-    </a>
-    </li>
-    <li>
-      <a href="/categories/docker/" rel="prefetch-intent" data-umami-event="home-categories-docker">
-        Docker
-      </a>
-    </li>
-    <li>
-      <a href="/categories/git/" rel="prefetch-intent" data-umami-event="home-categories-git">
-        Git
-      </a>
-    </li>
-    <li>
-      <a href="/categories/linux/" rel="prefetch-intent" data-umami-event="home-categories-linux">
-        Linux
-      </a>
-    </li>
-    </li>
-    <li>
-      <a href="/categories/miscellaneous/" rel="prefetch-intent" data-umami-event="home-categories-misc">
-        Miscellaneous
-      </a>
-    </li>
-    <li>
-      <a href="/categories/networking/" rel="prefetch-intent" data-umami-event="home-categories-networking">
-        Networking
-      </a>
-    </li>
-    <li>
-      <a href="/categories/pi-hole/" rel="prefetch-intent" data-umami-event="home-categories-pihole">
-        Pi-Hole
-      </a>
-    </li>
-    <li>
-      <a href="/categories/powershell/" rel="prefetch-intent" data-umami-event="home-categories-powershell">
-        PowerShell
-      </a>
-    </li>
-    <li>
-      <a href="/categories/self-hosting/" rel="prefetch-intent" data-umami-event="home-categories-self-hosting">
-        Self-Hosting
-      </a>
-    </li>
-    <li>
-      <a href="/categories/ssh/" rel="prefetch-intent" data-umami-event="home-categories-ssh">
-        SSH
-      </a>
-    </li>
-    <li>
-      <a href="/categories/tailscale/" rel="prefetch-intent" data-umami-event="home-categories-tailscale">
-        Tailscale
-      </a>
-    </li>
-    <li>
-      <a href="/categories/web development/" rel="prefetch-intent" data-umami-event="home-categories-web-dev">
-        Web Development
-      </a>
-    </li>
-  </ul>
+    <ul>
+      {tags.map(({ tag, count }) => (
+        <li>
+          <a href={`/categories/${tag}`}>
+            <button>{tag}</button> <span class="count"> ({count})</span>
+          </a>
+        </li>
+      ))}
+    </ul>
 </section>

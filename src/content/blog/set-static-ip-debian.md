@@ -3,8 +3,7 @@ title: "Set a static IP in Debian"
 description: "Debian's non-graphical install does not give you the option to set a static IP, here's a quick guide to doing it manually on the command line."
 pubDate: 2022-10-07
 updatedDate: 2025-02-04
-tags:
-  - networking
+tags: ["networking", "linux"]
 ---
 
 ## Setting a static IP

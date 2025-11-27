@@ -3,8 +3,7 @@ title: "Comprehensive guide to setting up Tailscale to securely access your home
 description: "Accessing self-hosted services from outside the home can be a challenge, especially when dealing with CGNAT and having to forward ports from the router. It can be complex to manage and potentially dangerous to your home network's privacy and security if not done right, but Tailscale makes it easy to set up encrypted peer-to-peer connections between devices across different networks. In this guide I will explain how I use Tailscale as a VPN for secure remote access to my home network."
 pubDate: 2024-06-25
 updatedDate: 2025-10-21
-tags:
-  - tailscale
+tags: ["tailscale", "networking"]
 ---
 
 ## About Tailscale

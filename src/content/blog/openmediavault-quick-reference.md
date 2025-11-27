@@ -3,8 +3,7 @@ title: "OpenMediaVault Quick Reference"
 description: "I've been using OpenMediaVault 6 for over a year now, and it's user interface can be a bit obtuse, so I wrote myself a series of quick step-by-step guides for enabling certain features within the OMV workbench UI."
 pubDate: 2023-07-30
 updatedDate: 2025-02-03
-tags:
-  - self-hosting
+tags: ["self-hosting", "openmediavault"]
 ---
  
 > This article is specifically about OpenMediaVault 6, which reached end of life in July 2024. _OpenMediaVault 7 was released in March 2024_, and as of January 2025 the latest version is **7.6.0**.

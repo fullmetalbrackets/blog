@@ -3,8 +3,7 @@ title: "Setting up a reverse proxy for HTTPS with a custom domain using Nginx Pr
 description: "I've used a reverse proxy to access my self-hosted apps and services for years, and used Pi-Hole as my home network DNS for even longer, but recently switched to AdGuard Home. That meant redoing all my DNS records within AdGuard so I could get my reverse proxy back up and running, and I decided to write down the steps I took. When done, we'll be able to access our apps and services through a custom domain, with unique sub-domains for each app or service, with full HTTPS and accessible only locally."
 pubDate: 2025-01-28
 updatedDate: 2025-02-26
-tags:
-  - self-hosting
+tags: ["self-hosting", "adguard", "cloudflare"]
 ---
 
 > This guide is for using **AdGuard Home** as the DNS server, where we will add the DNS records for our proxied services.

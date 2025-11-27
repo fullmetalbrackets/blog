@@ -3,8 +3,7 @@ title: "How I set up a home server for self-hosting and as a NAS with secure rem
 description: "I turned my old Dell PC into an all-in-one home server and network attached storage to self-host all my data, my photos, and my media library, running Home Assistant, Plex and other services, all securely accessible from outside my home with Tailscale."
 pubDate: 2025-01-31
 updatedDate: 2025-11-14
-tags:
-  - self-hosting
+tags: ["self-hosting", "tailscale"]
 ---
 
 ## Server hardware and software

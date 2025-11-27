@@ -3,8 +3,7 @@ title: "How to run self-hosted FileBrowser in Docker"
 description: "FileBrowser is a self-hosted file manager for a specified directory in a Linux machine that lets you upload, download, move, copy, create, delete, rename, and edit your files in a nice web interface through your browser. Here's a quick guide to setting it up in Docker."
 pubDate: 2022-11-04
 updateDate: 2025-06-24
-tags:
-  - docker
+tags: ["self-hosting", "docker"]
 ---
 
 ## Pre-Requisites

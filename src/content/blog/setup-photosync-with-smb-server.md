@@ -3,8 +3,7 @@ title: "Set up PhotoSync app to backup photos from your phone to an SMB share on
 description: "Google Photos began limiting free storage back in 2021, limiting you to 15 GB of storage when uploading photos in their original size uncompressed. Rather than wait and see if I hit the cap, I decided to try replacing Google Photos with a self-hosted solution. Here's how I did it."
 pubDate: 2023-07-07
 updatedDate: 2025-02-03
-tags:
-  - self-hosting
+tags: ["self-hosting", "android", "smb"]
 ---
 
 > Though the **PhotoSync** app is available on iPhone as well as Android, I have an Android phone and so I _have only done this on Android_. It's safe to assume configuring PhotoSync on iPhone to connect to your NAS will be similar, if not exactly the same.

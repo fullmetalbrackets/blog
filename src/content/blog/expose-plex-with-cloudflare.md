@@ -3,8 +3,7 @@ title: "How to expose Plex to share your library with others from behind CGNAT w
 description: "Exposing Plex to share your library with other users normally involves port forwarding from the router, which is very insecure and not recommended. If your home network is behind CGNAT - very common with most ISPs nowadays -- you can't even port forward if you wanted to. Here's how I did it in a fairly secure way that limits access by using Cloudflare."
 pubDate: 2024-07-15
 updatedDate: 2025-08-15
-tags:
-  - cloudflare
+tags: ["plex", "cloudflare"]
 ---
 
 ## What and Why

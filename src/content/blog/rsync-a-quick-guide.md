@@ -3,8 +3,7 @@ title: "Rsync - A Quick Guide"
 description: "Rsync is a very handy tool for doing high-speed file transfers between Linux hosts over a local network or remote hosts on the internet, such as EC2 instances on Amazon Web Services. You can pass options to Rsync to do things like recursive transfer (all files and sub-directories within the source directory are also transferred), ignore existing or newer files at the destination, and more."
 pubDate: 2021-09-15
 updatedDate: 2023-07-24
-tags:
-  - command line
+tags: ["linux", "command line"]
 ---
 
 # Rsync Basics

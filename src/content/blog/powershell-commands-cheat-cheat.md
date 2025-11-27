@@ -2,8 +2,7 @@
 title: "PowerShell commands cheat sheet"
 description: "I'm much more comfortable using Bash over PowerShell, but there are definitely times that you need to use command line on Windows. So I keep a small, but growing list of my most commonly used cmdlets, their Linux-like aliases, and other must-know commands."
 pubDate: 2022-10-09
-tags:
-  - powershell
+tags: ["powershell", "command line"]
 ---
 
 ## Cmdlets & Linux Equivalents

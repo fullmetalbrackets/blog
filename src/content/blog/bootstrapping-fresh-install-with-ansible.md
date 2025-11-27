@@ -3,8 +3,7 @@ title: "Bootstrapping a fresh Linux install with Ansible"
 description: "Ansible is an IT tool that enables Infrastructure as Code, letting you automate provisioning, configuration, management and deployment of services and applications. I like using it at a fraction of it's full power to bootstrap fresh installs of Linux for my homelab."
 pubDate: 2022-09-03
 updatedDate: 2025-03-03
-tags:
-  - command line
+tags: ["linux", "ansible"]
 ---
 
 > This is not a comprehensive tutorial for Ansible, but simply a terse quick guide of my personal use case for Ansible in my home lab. For a deeper dive on Ansible, I strongly suggest <a href="https://www.learnlinux.tv/getting-started-with-ansible/" target="_blank">Learn Linux TV series of Ansible tutorials</a> which is how I first learned to use it myself.

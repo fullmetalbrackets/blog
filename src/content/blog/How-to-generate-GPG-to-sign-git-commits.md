@@ -3,8 +3,7 @@ title: "How to generate a GPG key and use it to sign git commits"
 description: "Generating and using a GPG key is not difficult, but every time I need to remember how to do it to sign my commits from a new machine, I need to go through several pages of explanation on GitHub. So I made myself a terse and concise one-page quick guide, here it is."
 pubDate: 2022-10-30
 updatedDate: 2025-02-03
-tags:
-  - git
+tags: ["git", "linux"]
 ---
 
 > **GnuPG** is not available on Windows by default, so if necessary, <a href="https://www.gnupg.org/download" target="_blank">download it here</a> and install it first. It should go without saying you'll need <a href="https://git-scm.com/downloads" target="_blank">Git</a> installed, since you will have to use **Git Bash**.

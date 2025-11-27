@@ -3,8 +3,7 @@ title: "Setting up a Docker container stack with Docker Compose"
 description: "I've been running a bunch of services on my home server in docker containers for a few years now. It's quick and easy to set up once you get used to it. Here's a quick and dirty guide to installing Docker and Docker Compose, and getting several containers up and running."
 pubDate: 2022-09-29
 updatedDate: 2024-11-04
-tags:
-  - docker
+tags: ["self-hosting", "docker"]
 ---
 
 > This will not be an exhaustive Docker tutorial, for that I always suggest <a href="https://docs.docker.com" target="_blank" data-umami-event="container-stack-compose-docs-docker">the official Docker documentation</a>. The purpose of this guide is limited to explaining how to install Docker and set up various Docker containers quickly and easily via Docker Compose.

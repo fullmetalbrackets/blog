@@ -2,8 +2,7 @@
 title: "Autologin on Ubuntu and go straight to terminal"
 description: "Configure an Ubuntu machine to autologin and go straight into the terminal on boot."
 pubDate: 2022-11-25
-tags:
-  - command line
+tags: ["linux", "command line"]
 ---
 
 > Works on <em>Ubuntu 20.04</em> but untested in 22.04 or other distros.

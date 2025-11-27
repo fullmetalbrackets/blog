@@ -3,8 +3,7 @@ title: "How to expose Plex to share your library with others from behind CGNAT u
 description: "I wrote before about sharing my Plex library via Cloudflare Tunnel, but that is technically against their TOS and liable to get your account in trouble. So I switched to using a free-tier Oracle VM, securely connecting it to my home network via Tailscale, and exposing Plex via reverse proxy on the VM. It works like a charm!"
 pubDate: 2024-09-03
 updatedDate: 2025-08-15
-tags:
-  - tailscale
+tags: ["plex", "tailscale"]
 ---
 
 > Please note that effective April 29, 2025 an active Plex Pass subscription is required to remotely access Plex -- the below still works as is to get through CGNAT _with Plex Pass_, however if you are trying to share your library _without_ Plex Pass (or without the user you're sharing with have a Remote Watch Pass) then additional configuration is required. I have added a section at the end to setup the Plex server as a subnet router and exit node, which seems to be a workaround to get this to work. Please <a href="mailto:contact@fullmetalbrackets.com">let me know</a> if this no longer works, since I cannot test it myself as a lifetime Plex Pass owner!

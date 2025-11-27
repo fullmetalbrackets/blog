@@ -36,7 +36,12 @@ const desc = "List of all blog posts";
     padding: 0 auto;
   }
   button {
+    margin: 0 0.175em;
     background: var(--info);
+    cursor: pointer;
+  }
+  button:first-of-type {
+    margin-left: 0;
   }
   .title a,
   .title a:active,
@@ -76,7 +81,11 @@ const desc = "List of all blog posts";
                 <span class="title">{post.data.title}</span>
                 <p class="info">
                   <FormattedDate date={post.data.pubDate} />&nbsp;
-                  <button>{post.data.tags}</button>
+                  <span class="tag">
+                    {post.data.tags.map((tag) => (
+                      <button>{tag}</button>
+                    ))}
+                  </span>
                 </p>
                 <p class="desc">{post.data.description}</p>
               </a>

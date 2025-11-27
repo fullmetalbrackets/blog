@@ -3,8 +3,7 @@ title: "Customizing the Windows Terminal command prompt with Oh-My-Posh"
 description: "While I use Zsh with Oh-My-Zsh for making my Linux terminal pretty, it's not available for Windows. Luckily it's brother from another mother Oh-My-Posh basically does the same thing for Windows Terminal and PowerShell."
 pubDate: 2022-10-01
 updatedDate: 2025-02-17
-tags:
-  - powershell
+tags: ["powershell", "command line"]
 ---
 
 <!-- <img src="/oh-my-posh.png" class="posh-img" loading="eager" decoding="async" alt="Oh My Posh" /> -->

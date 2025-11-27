@@ -3,8 +3,7 @@ title: "Setting up a reverse proxy for HTTPS with a custom domain using Nginx Pr
 description: "I've used a reverse proxy to access my self-hosted apps and services for years, but I recently re-did everything from scratch and decided to write it down. When done, you'll be able to access your apps and services through a custom domain, with unique sub-domains for each app or service, with full HTTPS and accessible only locally."
 pubDate: 2024-10-17
 updatedDate: 2025-02-26
-tags:
-  - self-hosting
+tags: ["self-hosting", "pi-hole", "nginx proxy manager"]
 ---
 
 > This guide is for using **Pi-Hole** as the DNS server, where we will add the DNS records for your proxied services.

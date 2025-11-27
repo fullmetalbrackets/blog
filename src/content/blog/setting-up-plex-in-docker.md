@@ -3,8 +3,7 @@ title: "Setup self-hosted Plex Media Server in Docker"
 description: "Plex Media Server is one of the most popular services to self-host since serves your personal media library -- videos, music and even photos -- with a nice Netflix-like UI. Though you can install and run it bare-metal, the most common and easiest way is in a Docker container. Here's how."
 pubDate: 2022-10-17
 updatedDate: 2025-11-03
-tags:
-  - docker
+tags: ["self-hosting", "plex", "docker"]
 ---
 
 ## Installing Plex as a Docker container

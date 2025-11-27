@@ -3,8 +3,7 @@ title: "Linux Commands & Keyboard Shortcuts Cheat Sheet"
 description: "Just a quick cheat sheet of basic and slightly less basic Linux commands, as well as handy keyboard shortcuts, that I maintain for myself since I can't always remember them all."
 pubDate: 2022-09-18
 updatedDate: 2025-02-17
-tags:
-  - command line
+tags: ["linux", "command line"]
 ---
 
 ## Common Commands
