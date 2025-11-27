@@ -88,7 +88,7 @@ const { slug } = Astro.params;
       justify-content: space-around;
       color: var(--primary);
       font-family: "M Plus Rounded 1c Med";
-      margin: 1em;
+      margin: 2em auto 1.5em auto;
     }
     .edit-post span {
       margin: 0 auto;
@@ -125,7 +125,7 @@ const { slug } = Astro.params;
     }
     .post-end {
       font-family: "M Plus Rounded 1c Med";
-      margin: 0 auto 2em auto;
+      margin: 0 auto;
       justify-content: space-around;
     }
     .coffee {
@@ -175,6 +175,7 @@ const { slug } = Astro.params;
       cursor: default;
       width: 325px;
       height: 115px;
+      margin-bottom: 1em;
     }
     .stats {
       display: inline-block;
@@ -232,6 +233,7 @@ const { slug } = Astro.params;
       line-height: 1.5;
       padding-top: 4px;
       padding-bottom: 6px;
+      margin-bottom: 1em;
     }
     .email img {
       margin: 1px auto -12px auto;
@@ -279,15 +281,14 @@ const { slug } = Astro.params;
       .edit-post {
         justify-content: space-around;
         place-items: center;
-        margin-bottom: 3em;
         gap: 0 0;
         padding-left: 18px;
       }
       .edit-post span {
-        font-size: 0.9em;
         grid-row: 1;
         grid-column: 1;
         width: auto;
+        margin-bottom: -0.5em;
       }
       .edit {
         grid-row: 2;
@@ -301,28 +302,37 @@ const { slug } = Astro.params;
         grid-template-columns: auto;
         justify-content: center;
         place-items: center;
-        margin: 0 auto 0.25em auto;
+        margin: 0 auto -0.75em auto;
         gap: 0 0;
       }
       .coffee {
         grid-row: 1;
         grid-column: 1;
-        margin: -1em auto 0.5em auto;
+        margin: 0.25em auto 0.5em auto;
         width: auto;
+      }
+      .coffee span {
+        margin-bottom: -0.5em;
       }
       .share {
         grid-row: 2;
         grid-column: 1;
-        margin: 0 auto;
+        margin: 0 auto -0.25em auto;
         width: auto;
       }
       .umami {
         width: auto;
-        margin: 0 auto 1em auto;
+        margin: 0 auto 0.75em auto;
       }
       .questions {
         width: auto;
-        margin: 0.5em auto 1em auto;
+        margin: 0 auto 0.75em auto;
+      }
+      .questions span {
+        margin-bottom: -0.5em;
+      }
+      .email {
+        margin-bottom: 1.5em;
       }
     }
     </style>
@@ -473,7 +483,7 @@ const { slug } = Astro.params;
     </div>
   </aside>
 
-  <hr />
+  <hr class="endline" />
   <aside class="blog-aside">
     <a href="/blog" class="top button blog-tag">&larr; Blog</a>
     <a href="/" class="top button blog-tag home">&#8626; Home</a>
