@@ -1,14 +1,9 @@
 /notes/ /blog/  301
-/categories/zsh/    /categories/command%20line/ 301
-/categories/smb/    /categories/command%20line/   301
-/categories/samba/    /categories/command%20line/   301
-/categories/ansible/    /categories/command%20line/ 301
+/categories/samba/    /categories/smb/   301
 /categories/surge/   /categories/web%20development/  301
 /categories/vercel/ /categories/web%20development/  301
 /categories/pwa/   /categories/web%20development/  301
 /categories/aws/   /categories/web%20development/  301
-/categories/windows/    /categories/powershell/ 301
-/categories/dns/    /categories/networking/ 301
 /categories/ubuntu/ /categories/linux/  301
 /categories/debian/ /categories/linux/  301
 /categories/web-development/    /categories/web%20development/  302

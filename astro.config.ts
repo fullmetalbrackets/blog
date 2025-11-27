@@ -45,10 +45,6 @@ export default defineConfig({
       status: 302,
       destination: 'https://cloud.umami.is/share/5MdOgBcRzVP6FU0x/fullmetalbrackets.com',
     },
-    '/categories/plex': {
-      status: 302,
-      destination: '/search/?q=plex',  
-    },
     '/notes/': {
       status: 302,
       destination: '/blog/',
