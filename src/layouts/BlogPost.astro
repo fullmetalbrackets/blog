@@ -5,9 +5,18 @@ import FormattedDate from "@components/FormattedDate.astro";
 import TableOfContents from '@components/TableOfContents.astro';
 import BlogPosting from "@components/BlogPosting.astro";
 import ScrollProgress from "@components/ScrollProgress.astro";
-import { SocialShare } from "astro-social-share";
 import { Image } from 'astro:assets';
 import type { MarkdownHeading } from 'astro';
+import {
+  BlueskyShareButton,
+  ThreadsShareButton,
+  TwitterShareButton,
+  RedditShareButton,
+  HackerNewsShareButton,
+  SocialShare
+} from "astro-social-share";
+
+const BUTTONS = [BlueskyShareButton, ThreadsShareButton, TwitterShareButton, RedditShareButton, HackerNewsShareButton]
 
 type Props = CollectionEntry<"blog">['data'] & { headings: MarkdownHeading[] };
 
@@ -342,10 +351,11 @@ const { slug } = Astro.params;
       .astro-social-share {
         margin: 0 auto 2em auto;
         height: 24px;
-        padding: 0.5em 0 0 0;
+        padding: 0.35em 0 0 0;
       }
       .astro-social-share svg {
         filter: var(--share);
+        margin: 0 0.25em;
       }
       .astro-social-share svg:hover {
         filter: var(--coffee-hover);
@@ -443,9 +453,10 @@ const { slug } = Astro.params;
     <div class="share">
       <span>Want to share this article?</span>
       <SocialShare
-      description={description}
-      title={title}
-    />
+        buttons={BUTTONS}
+        description={description}
+        title={title}
+      />
     </div>
   </aside>
 
