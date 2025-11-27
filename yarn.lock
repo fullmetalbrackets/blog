@@ -2,12 +2,12 @@
 # yarn lockfile v1
 
 
-"@astrojs/check@^0.9.5":
-  version "0.9.5"
-  resolved "https://registry.yarnpkg.com/@astrojs/check/-/check-0.9.5.tgz#302a2bacda608556185eabdd413ab593b08d2729"
-  integrity sha512-88vc8n2eJ1Oua74yXSGo/8ABMeypfQPGEzuoAx2awL9Ju8cE6tZ2Rz9jVx5hIExHK5gKVhpxfZj4WXm7e32g1w==
+"@astrojs/check@^0.9.6":
+  version "0.9.6"
+  resolved "https://registry.yarnpkg.com/@astrojs/check/-/check-0.9.6.tgz#e279b0094812d73b9cd2eefb4ed1b7c690b0e651"
+  integrity sha512-jlaEu5SxvSgmfGIFfNgcn5/f+29H61NJzEMfAZ82Xopr4XBchXB1GVlcJsE+elUlsYSbXlptZLX+JMG3b/wZEA==
   dependencies:
-    "@astrojs/language-server" "^2.15.0"
+    "@astrojs/language-server" "^2.16.1"
     chokidar "^4.0.1"
     kleur "^4.1.5"
     yargs "^17.7.2"
@@ -22,10 +22,10 @@
   resolved "https://registry.yarnpkg.com/@astrojs/internal-helpers/-/internal-helpers-0.7.5.tgz#c1491b70a7ac00efbd0de650f3a4058e07112a31"
   integrity sha512-vreGnYSSKhAjFJCWAwe/CNhONvoc5lokxtRoZims+0wa3KbHBdPHSSthJsKxPd8d/aic6lWKpRTYGY/hsgK6EA==
 
-"@astrojs/language-server@^2.15.0":
-  version "2.16.0"
-  resolved "https://registry.yarnpkg.com/@astrojs/language-server/-/language-server-2.16.0.tgz#39c51c48caac12ac37c54a0072f13632664757de"
-  integrity sha512-oX2KkuIfEEM5d4/+lfuxy6usRDYko0S02YvtHFTrnqW0h9e4ElAfWZRKyqxWlwpuPdciBPKef5YJ7DFH3PPssw==
+"@astrojs/language-server@^2.16.1":
+  version "2.16.1"
+  resolved "https://registry.yarnpkg.com/@astrojs/language-server/-/language-server-2.16.1.tgz#c3261e965950494c43af55d13e0740c2ca08e75f"
+  integrity sha512-OzTpyEPeCPLpp0oyeI/fSCBYemlVos0GewCTYglAW+TAJAMR3nRl5nYlf9ESMFy97SlptZCsRdKlQXDvFHJRNQ==
   dependencies:
     "@astrojs/compiler" "^2.10.3"
     "@astrojs/yaml2ts" "^0.2.2"
@@ -182,8 +182,9 @@
   dependencies:
     "@emmetio/scanner" "^1.0.4"
 
-"@emmetio/css-parser@github:ramya-rao-a/css-parser#vscode":
+"@emmetio/css-parser@ramya-rao-a/css-parser#vscode":
   version "0.4.0"
+  uid "370c480ac103bd17c7bcfb34bf5d577dc40d3660"
   resolved "https://codeload.github.com/ramya-rao-a/css-parser/tar.gz/370c480ac103bd17c7bcfb34bf5d577dc40d3660"
   dependencies:
     "@emmetio/stream-reader" "^2.2.0"
