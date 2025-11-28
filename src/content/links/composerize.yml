@@ -1,6 +1,5 @@
 title: "Composerize"
 description: "Tool that lets you paste in a docker run command and convert it into yaml syntax used in docker compose files."
-tags:
-- tool
 pubDate: 2023-11-02
 url: "https://www.composerize.com"
+tag: tool

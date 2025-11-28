@@ -3,8 +3,7 @@ title: "Korben"
 description: "Details on my backup server, a Dell Optiplex 3020 Micro PC."
 pubDate: 2023-12-16
 updatedDate: 2025-03-03
-tags:
-  - hosts
+tag:  server
 ---
 
 ![Dell Optiplex 3020 Micro](../../img/wiki/optiplex3020micro.jpg)

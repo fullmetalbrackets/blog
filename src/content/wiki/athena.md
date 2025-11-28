@@ -2,9 +2,8 @@
 title: "Athena"
 description: "Details on my home server, a Dell XPS 8920."
 pubDate: 2024-06-15
-updatedDate: 2025-01-31
-tags:
-  - hosts
+updatedDate: 2025-11-28
+tag: server
 ---
 
 > See <a href="/blog/how-i-setup-home-server/" target="_blank" data-umami-event="wiki-athena-home-server-blog">this blog post</a> for more details.
@@ -16,10 +15,10 @@ tags:
 - **Intel i7-7700K** @ 4.20 GHz
 - **24 GB RAM** (4 x 6 GB DDR4)
 - **256 GB PCIe M.2 NVMe SSD** (boot drive)
-- 2 x **4 TB Internal 3.5" HDD** (large media storage)
-- 3 x **2 TB Internal 3.5" HDD** (large media storage)
-- 1 x **1 TB External 3.5" HDD** (documents, ebooks, photos)
-- 1 x **1 TB External 2.5" HDD** (backups)
+- 3 x **4 TB Internal 3.5" HDD**
+- 3 x **2 TB Internal 3.5" HDD**
+- 1 x **1 TB External 3.5" HDD**
+- 1 x **1 TB External 2.5" HDD**
 - 3 x **1 Gbps Ethernet** (extra 2 port NIC -- unused)
 
 ## Information
@@ -34,14 +33,21 @@ The operating system is Debian 12 with no desktop environment. Cockpit is instal
 
 ## Containers
 
+- Cadvisor
+- Calibre
+- Dozzle
 - Filebrowser
+- Glances
 - Gluetun
 - Home Assistant
+- iSponsorBlock
 - IT Tools
 - Kavita
 - LibrePhotos
+- MKVToolnix
 - Mosquitto
 - Nginx Proxy Manager
+- Omni Tools
 - Opengist
 - Paperless
 - Plex

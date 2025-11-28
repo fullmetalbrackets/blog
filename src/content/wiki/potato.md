@@ -3,8 +3,7 @@ title: "Potato"
 description: "Details on Potato, my Libre Sweet Potato SBC running Pi-Hole."
 pubDate: 2023-11-16
 updatedDate: 2024-10-04
-tags:
-  - hosts
+tag: server
 ---
 
 ![Libre Sweet Potato](../../img/blog/sweet-potato.jpg)

@@ -59,15 +59,14 @@ const links = (await getCollection("links")).sort(
   .more {
     font-family: "M Plus Rounded 1c Reg";
     font-weight: 900;
-    font-size: 1.2em;
   }
   .more a {
-    color: var(--menu);
+    color: var(--emphasis);
     border-bottom: 2px solid transparent;
   }
   .more a:hover {
-    color: var(--link);
-    border-bottom: 2px solid var(--link);
+    color: var(--hover);
+    border-bottom: 2px solid var(--hover);
   }
   @media (hover: hover) {
     a:hover button {
@@ -111,13 +110,13 @@ const links = (await getCollection("links")).sort(
               {link.data.title}
             </a>
           </span>
-          <span class="tag">Type: <span>{link.data.tags}</span></span>
+          <span class="tag">Type: <span>{link.data.tag}</span></span>
           <span>{link.data.description}</span>
         </div>
       ))
     }
     <div class="more">
-      <a href="/blog/">More Links &rarr;</a>
+      <a href="/links/">Browse all links &rarr;</a>
     </div>
   </div>
 </section>

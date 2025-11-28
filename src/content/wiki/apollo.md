@@ -3,8 +3,7 @@ title: "Apollo"
 description: "Details on Apollo, my Dell Optiplex 3050 Small-Form Factor PC."
 pubDate: 2023-11-15
 updatedDate: 2025-02-23
-tags:
-  - hosts
+tag: server
 ---
 
 ![Dell Optiplex 3050 SFF](../../img/wiki/optiplex3050sff.jpg)

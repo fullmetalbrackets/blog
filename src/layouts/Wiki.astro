@@ -3,10 +3,11 @@ import type { CollectionEntry } from "astro:content";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import FormattedDate from "@components/FormattedDate.astro";
 import ScrollProgress from "@components/ScrollProgress.astro";
+import BackToTop from "@components/BackToTop.astro";
 
 type Props = CollectionEntry<"wiki">["data"];
 
-const { title, description, pubDate, updatedDate } = Astro.props;
+const { title, description, tag, pubDate, updatedDate } = Astro.props;
 ---
 
 <BaseLayout title={title} description={description}>
@@ -15,7 +16,7 @@ const { title, description, pubDate, updatedDate } = Astro.props;
   </head>
   <style>
     h1 {
-      margin-bottom: 0.5em;
+      margin: 1.1em 0 0 0;
     }
     hr {
       margin-top: 1em;
@@ -23,8 +24,18 @@ const { title, description, pubDate, updatedDate } = Astro.props;
     article {
       margin-top: 2em;
     }
-    .description {
-      margin-bottom: 1.5em auto;
+    .tag {
+      margin: 0.6em auto 1em auto;
+    }
+    .tag span {
+      font-family: 'M Plus Rounded 1c Med', 'Atkinson', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
+      background-color: var(--info);
+      color: #000;
+      border: 0;
+      border-radius: 0.25em;
+      padding: 4px 8px;
+      font-weight: 600;
+      font-size: 0.75em;
     }
     form {
       display: flex;
@@ -37,11 +48,19 @@ const { title, description, pubDate, updatedDate } = Astro.props;
     .bottom-line {
       margin-top: 2em;
     }
+    @media screen and (max-width: 667px) {
+      .tag {
+        margin: 1em auto;
+      }
+    }
   </style>
 
   <ScrollProgress />
   <article>
     <h1 class="title">{title}</h1>
+    <p class="tag">
+      <span>{tag}</span>
+    </p>
     <div class="date">
       <FormattedDate date={pubDate} />
       {
@@ -62,7 +81,5 @@ const { title, description, pubDate, updatedDate } = Astro.props;
     </slot>
   </article>
   <hr class="bottom-line" />
-  <aside>
-    <a href="#top" class="top button blog-tag">Back to Top &uarr;</a>
-  </aside>
+  <BackToTop />
 </BaseLayout>

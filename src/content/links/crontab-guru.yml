@@ -1,6 +1,5 @@
 title: "Crontab Guru"
 description: "A quick and simple editor for cron schedule expressions."
-tags:
-- tool
 pubDate: 2023-06-02
 url: "https://crontab.guru"
+tag: tool

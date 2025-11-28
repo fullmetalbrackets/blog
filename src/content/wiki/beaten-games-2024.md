@@ -2,8 +2,7 @@
 title: "Video games I finished in 2024"
 description: "A list of videogames I played from start to finish in 2024."
 pubDate: 2025-03-15
-tags:
-  - misc
+tag: information
 ---
 
 - Deus Ex: Human Revolution
@@ -12,7 +11,7 @@ tags:
 - Doom 64
 - Ducktales Remastered
 - Fallout 4 (base game only)
-- Final Fantasy VII Remake + Intergrade
+- Final Fantasy VII Remake
 - Final Fantasy XVI
 - God of War
 - God of War: Ragnarok

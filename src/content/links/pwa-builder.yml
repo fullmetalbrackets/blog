@@ -1,6 +1,5 @@
 title: "PWA Builder"
 description: "A suite of tools that help you build PWAs, from beginning to publishing on an app store, and everything in-between."
-tags:
-- tool
 pubDate: 2023-08-02
 url: "https://pwabuilder.com"
+tag: tool

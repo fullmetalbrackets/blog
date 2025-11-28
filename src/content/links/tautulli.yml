@@ -1,6 +1,5 @@
 title: "Tautulli"
 description: "A web app that you can run alongside your Plex Media Server to monitor activity and track various statistics."
-tags:
-- self-hosted
 pubDate: 2024-10-16
 url: "https://tautulli.com"
+tag: self-hosted

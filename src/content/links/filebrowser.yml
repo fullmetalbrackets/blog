@@ -1,6 +1,5 @@
 title: "FileBrower Quantum"
 description: "A web-based graphical file browser for Linux servers."
-tags:
-- self-hosted
 pubDate: 2025-11-14
 url: "https://github.com/gtsteffaniak/filebrowser"
+tag: self-hosted

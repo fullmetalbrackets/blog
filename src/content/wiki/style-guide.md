@@ -2,8 +2,7 @@
 title: "Markdown Style Guide"
 description: "I decided to bring back the style guide because I don't know why."
 pubDate: 2025-03-03
-tags:
-  - website
+tag: website
 ---
 
 ## Headings

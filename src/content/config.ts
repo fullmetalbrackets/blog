@@ -19,7 +19,7 @@ const links = defineCollection({
 		title: z.string(),
 		description: z.string(),
 		url: z.string(),
-		tags: z.array(z.string()),
+		tag: z.string(),
 		// Transform string to Date object
 		pubDate: z
 			.string()
@@ -36,7 +36,7 @@ const wiki = defineCollection({
 		// Transform string to Date object
 		pubDate: z.coerce.date(),
 		updatedDate: z.coerce.date().optional(),
-		tags: z.array(z.string()),
+		tag: z.string(),
 	}),
 });
 

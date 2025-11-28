@@ -1,4 +1,5 @@
 ---
+import BackToTop from "@components/BackToTop.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 
@@ -25,17 +26,23 @@ const desc = "Links to helpful web development tools and sites.";
   ul li {
     display: flex;
     flex-direction: column;
-    margin: 0 auto 1em 0.5em;
+    margin: 0 0.25em 1em 0.25em;
   }
   .tag {
-    margin-top: 4px;
-    color: var(--date);
-  }
-  .tag span {
     color: var(--primary);
   }
   .tag, .data {
     font-size: 0.9em;
+  }
+  .link-tag {
+    font-family: 'M Plus Rounded 1c Med', 'Atkinson', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
+    background-color: var(--info);
+    color: #000;
+    border: 0;
+    border-radius: 0.25em;
+    padding: 4px 8px;
+    font-weight: 600;
+    font-size: 0.75em;
   }
   span a {
     border-bottom: 2px transparent;
@@ -44,16 +51,21 @@ const desc = "Links to helpful web development tools and sites.";
     color: var(--hover);
     border-bottom: 2px solid var(--hover);
   }
+  @media screen and (max-width: 667px) {
+    section {
+      line-height: 1.2;
+    }
+    .tag {
+      margin: 0.25em 0;
+    }
+  }
 </style>
 <BaseLayout title={title} description={desc}>
   <section>
     <h1>Links</h1>
     <hr />
     <p>
-      Links to self-hosted apps, helpful sites and other tools that I use regularly. If you'd like to share
-      similar tools you find to be very useful for system administrators or web
-      developers, comment below and I'll gladly add them, or open a pull request
-      on GitHub with new links added!
+      Websites, self-hosted apps and other online tools that I like or find useful.
     </p>
     <ul>
       {
@@ -64,15 +76,27 @@ const desc = "Links to helpful web development tools and sites.";
                 {link.data.title}
               </a>
             </span>
-            <span class="tag">Type: <span>{link.data.tags}</span></span>
+            <span class="tag">Type: <span class="link-tag">{link.data.tag}</span></span>
             <span class="data">{link.data.description}</span>
           </li>
         ))
       }
     </ul>
-    <hr />
-    <aside>
-      <a href="#top" class="top button blog-tag">Back to Top &uarr;</a>
-    </aside>
+    <p>
+      <button class="edit">
+        <span>
+          <a 
+          href={`https://github.com/fullmetalbrackets/blog/new/main/src/content/links`}
+          target="_blank" data-umami-event="edit-links-gh">
+            <img src="/assets/gh.svg"
+              class="gh"
+              loading="lazy"
+              decoding="async"
+              alt="Edit this page on GitHub"> <span>Edit on GitHub</span>
+          </a>
+        </span>
+      </button>
+    </p>
+    <BackToTop />
   </section>
 </BaseLayout>

@@ -1,6 +1,5 @@
 title: "Nginx Proxy Manager"
 description: "Docker container app that lets you easily manage a reverse proxy through a GUI."
-tags:
-- self-hosted
 pubDate: 2024-03-20
 url: "https://nginxproxymanager.com"
+tag: self-hosted

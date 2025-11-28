@@ -3,8 +3,7 @@ title: "Self-Hosted Services"
 description: "A list of self-hosted services in my homelab."
 pubDate: 2023-10-02
 updatedDate: 2025-02-10
-tags:
-  - services
+tag:  documentation
 ---
 
 > See <a href="/blog/how-i-setup-home-server/" target="_blank" data-umami-event="wiki-services-home-server-blog">this blog post</a> for more details.

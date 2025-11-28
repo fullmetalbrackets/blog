@@ -1,6 +1,5 @@
 title: "nekoCalc"
 description: "A bunch of useful CSS typography (and also non-webdev) calculators including for golden ratio, px to em or rem (and vice versa), etc."
-tags:
-- tool
 pubDate: 2023-07-23
 url: "https://nekocalc.com"
+tag: tool

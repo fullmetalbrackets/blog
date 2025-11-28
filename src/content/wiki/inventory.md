@@ -3,76 +3,94 @@ title: "Hardware Inventory"
 description: "A list of computers, laptops, server and network devices in my home."
 pubDate: 2023-10-01
 updatedDate: 2025-02-13
-tags:
-  - docs
+tag: documentation
 ---
 
-# Inventory
+## Inventory
 
 1. [Athena](#athena)
 2. [Korben](#korben)
 3. [Potato](#potato)
 4. [Spud](#spud)
-5. [Gaming PC](#gamingpc)
-6. [Apollo](#apollo)
-7. [Loki](#loki)
-8. [Other](#other)
-9. [Mothballed](#mothball)
-
-<br>
+5. [Pi](#pi)
+6. [Gaming PC](#gamingpc)
+7. [Apollo](#apollo)
+8. [Loki](#loki)
+9. [Other](#other)
+10. [Mothballed](#mothball)
 
 <div id='athena'/>
 
-# Athena
+## Athena
 
-**Dell XPS 8920**
+### Dell XPS 8920
+
+<h4 class="inv">Home Server</h4>
 
 - Intel i7-7700K CPU @ 4.20 GHz
 - 24 GB DDR4 RAM (4 x 6 GB)
-- 250 GB NVMe SSD (boot drive)
-- 4 x 2 TB 3.5" HDD (large media storage)
-- 1 TB 2.5" HDD (documents, ebooks, photos, etc.)
-- 500 GB 3.5" HDD (backups)
+- 250 GB NVMe SSD
+- 3 x 4 TB HDDs
+- 3 x 2 TB HDDs
+- 2 x 1 TB HDDs
 - 3 x 1 Gbps Ethernet Ports
 
 <div id='korben'/>
 
-# Korben
+## Korben
 
-**Dell Optiplex 3020 Micro**
+### Dell Optiplex 3020 Micro
+
+<h4 class="inv">Backup Server</h4>
 
 - Intel Pentium G3250T CPU @ 2.8 GHz
 - 8 GB DDR3 RAM (2 x 4 GB)
-- Internal 320 GB 2.5" HDD (boot drive)
+- 320 GB HDD
+- 1 TB External HDD
+- 1 Gbps Ethernet
+
+<div id='pi'/>
+
+## Pi
+
+### Raspberry Pi 5
+
+<h4 class="inv">Tailnet Pi-Hole</h4>
+
+- 4 GB RAM
+- 32 GB Micro SD Card
+- 1 TB External 2.5" HDD
 - 1 Gbps Ethernet
 
 <div id='potato'/>
 
-# Potato
+## Potato
 
-**Libre Sweet Potato SBC**
+### Libre Sweet Potato SBC
+
+<h4 class="inv">Backup Tailnet Pi-Hole</h4>
 
 - 2 GB RAM
-- 32 GB USB 3.0 Drive
+- 32 GB USB Drive
 - 100 Mbps Ethernet
 
 <div id='spud'/>
 
-# Spud
+## Spud
 
-**Libre Sweet Potato SBC**
+### Libre Sweet Potato SBC
+
+<h4 class="inv">EmuElec Box</h4>
 
 - 2 GB RAM
-- 32 GB USB 3.0 Drive
+- 32 GB USB Drive
 - 100 Mbps Ethernet
-
-<br>
-
-<hr>
 
 <div id='gamingpc'/>
 
-# Gaming PC
+## Gaming PC
+
+<h4 class="inv">Strictly mostly for gaming</h4>
 
 - Windows 11 Home
 - Intel Core i5-14400 @ 2.50 GHz
@@ -85,11 +103,13 @@ tags:
 
 <div id='apollo'/>
 
-# Apollo
+## Apollo
 
-**Dell Optiplex 3050 SFF**
+### Dell Optiplex 3050 SFF
 
-- Debian 12 w/ KDE Plasma
+<h4 class="inv">Daily driver for interneting and coding</h4>
+
+- Debian 13 Trixie w/ KDE Plasma
 - Intel Core i5-6500 @ 3.60 GHz
 - 16 GB DDR4 RAM (2 x 8GB)
 - 256 GB NVMe SSD
@@ -98,54 +118,53 @@ tags:
 
 <div id='loki'/>
 
-# Loki
+## Loki
 
-**Dell Latitude E5370** (laptop)
+### Dell Latitude E5370
 
-- Pop! OS 22.04 LTS
+<h4 class="inv">Beat up old laptop used once in a blue moon</h4>
+
+- Debian 13 Trixie
 - Intel Core i5-6300U @ 3.00 GHz
 - 8 GB RAM
 - 500 GB 2.5" HDD
 - 1 Gbps Ethernet
 
-<br>
+<div id='other'/>
 
-<hr>
+## Other Stuff
 
-# Other Gear
-
-- GL.iNet Flint 2 Router
+- GL.iNet MT6000 Flint 2 Router
 - TP-Link Archer AX55/AX3000
 - Netgear GS108E 8-port Managed Switch
-- TP-Link AX1500 WiFi Extender
-- Netgear EX6250 WiFi Extender
-- 3 x Shelly Plus Plug US
-
-<br>
-
-<hr>
+- 4 x Shelly Plus Plug US
+- 4 x Kasa Smart Plug
+- 8 x Gosund Smart Plug
 
 <div id='mothballed'/>
 
-# Mothballed
+## Mothballed
 <br>
 
-### HP Pavilion g7
-- Hostname: **Headless**
+<h3 class="mothball">HP Pavilion g7</h3>
+<h4 class="inv">Old laptop that was my first Plex server</h4>
+
 - Intel Core i7-3632QM @ 2.2 GHz
 - AMD Radeon HD 7670 GPU
 - 6 GB DDR3 RAM
 - 100 Mbps Ethernet
 
-### HP Compaq 6910p
-- Hostname: **Worf**
+<h3 class="mothball">Dell Studio 1535</h3>
+<h4 class="inv">Forgotten old work laptop used as first Pi-Hole</h4>
+
+- Intel Core 2 @ 2.66 GHz
+- 4 GB DDR2 RAM
+- 1 Gbps Ethernet
+
+<h3 class="mothball">HP Compaq 6910p</h3>
+<h4 class="inv">Some other fossil I used for something at some point</h4>
+
 - Intel Core 2 Duo T7300 @ 2 GHz
 - Mobility Radeon X2300
 - 1 GB RAM
-- 1 Gbps Ethernet
-
-### Dell Studio 1535
-- Hostname: **Weasley**
-- Intel Core 2 @ 2.66 GHz
-- 4 GB DDR2 RAM
 - 1 Gbps Ethernet

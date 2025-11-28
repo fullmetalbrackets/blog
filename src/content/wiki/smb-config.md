@@ -3,8 +3,7 @@ title: "Samba configuration"
 description: "Working copy of the current smb.conf file being used on home server."
 pubDate: 2024-02-04
 updatedDate: 2025-02-10
-tags:
-  - config
+tag: documentation
 ---
 
 # SMB configuration file

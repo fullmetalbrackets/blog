@@ -1,6 +1,5 @@
 title: "Paperless"
 description: "A document management system that transforms your physical documents into a searchable online archive so you can keep less paper."
-tags:
-- tool
 pubDate: 2024-10-15
-url: "https://it-tools.tech"
+url: "https://docs.paperless-ngx.com"
+tag: self-hosted

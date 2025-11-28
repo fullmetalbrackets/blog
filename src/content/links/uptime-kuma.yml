@@ -1,6 +1,5 @@
 title: "Uptime-Kuma"
 description: "A self-hosted uptime monitoring solution, free and open source alternative to Uptime Robot."
-tags:
-- self-hosted
 pubDate: 2024-03-19
 url: "https://uptime.kuma.pet"
+tag: self-hosted

@@ -2,6 +2,7 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 import FormattedDate from "@components/FormattedDate.astro";
+import BackToTop from "@components/BackToTop.astro";
 
 const posts = (await getCollection("wiki")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
@@ -24,6 +25,9 @@ const desc = "List of all wiki articles";
     padding-bottom: 0.25em;
     margin-bottom: 2em;
   }
+  button {
+    margin-bottom: 0.25em;
+  }
   div {
     padding-bottom: 0.25em;
     border-bottom: 2px solid transparent;
@@ -45,8 +49,8 @@ const desc = "List of all wiki articles";
     color: var(--hover);
   }
   @media screen and (min-width: 200px) and (max-width: 667px) {
-    .title {
-      font-size: 20px;
+    section {
+      line-height: 1.2;
     }
   }
 </style>
@@ -68,6 +72,9 @@ const desc = "List of all wiki articles";
               <p class="date">
                 <FormattedDate date={post.data.pubDate} />
               </p>
+              <p class="tag">
+                <button>{post.data.tag}</button>
+              </p>
               <p class="desc">{post.data.description}</p>
               </a>
             </div>
@@ -76,8 +83,6 @@ const desc = "List of all wiki articles";
       }
     </ul>
     <hr />
-    <aside>
-      <a href="#top" class="top button blog-tag">Back to Top &uarr;</a>
-    </aside>
+    <BackToTop />
   </section>
 </BaseLayout>
