@@ -50,11 +50,20 @@ const links = (await getCollection("links")).sort(
     text-decoration-color: var(--link);
   }
   .tag {
-    color: var(--date);
-    margin-top: 4px;
-  }
-  .tag span {
     color: var(--primary);
+  }
+  .tag, .data {
+    font-size: 0.9em;
+  }
+  .link-tag {
+    font-family: 'M Plus Rounded 1c Med', 'Atkinson', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
+    background-color: var(--info);
+    color: #000;
+    border: 0;
+    border-radius: 0.25em;
+    padding: 4px 8px;
+    font-weight: 600;
+    font-size: 0.75em;
   }
   .more {
     font-family: "M Plus Rounded 1c Reg";
@@ -110,7 +119,7 @@ const links = (await getCollection("links")).sort(
               {link.data.title}
             </a>
           </span>
-          <span class="tag">Type: <span>{link.data.tag}</span></span>
+          <span class="tag">Type: <span class="link-tag">{link.data.tag}</span></span>
           <span>{link.data.description}</span>
         </div>
       ))
