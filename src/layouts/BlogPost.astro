@@ -40,7 +40,7 @@ const { slug } = Astro.params;
       margin-top: 1em;
     }
     article {
-      margin: 2em auto;
+      margin: 2.5em auto;
     }
     div {
       display: inline-flex;
@@ -70,15 +70,6 @@ const { slug } = Astro.params;
     }
     .tag button:first-of-type {
       margin-left: 0;
-    }
-    button {
-      background-color: var(--info);
-      text-overflow: ellipsis;
-      -webkit-transition: all .10s ease-out;
-      -moz-transition: all .10s ease-out;
-      -o-transition: all .10s ease-out;
-      transition: all .10s ease-out;
-      cursor: pointer;
     }
     .top {
       font-size: 0.75em;
@@ -260,6 +251,10 @@ const { slug } = Astro.params;
     }
     aside button:hover {
       background: var(--menu);
+    }
+    .blog-aside {
+      font-size: 1.5em;
+      justify-content: space-between;
     }
     @media screen and (max-width: 900px) {
       .post-end {
@@ -511,9 +506,9 @@ const { slug } = Astro.params;
 
   <hr class="endline" />
   <aside class="blog-aside">
-    <a href="/blog" class="top button blog-tag">&larr; Blog</a>
-    <a href="/" class="top button blog-tag home">&#8626; Home</a>
-    <a href="#top" class="top button blog-tag">Top &uarr;</a>
+    <a href="/blog" class="top blog-tag"><button>&larr; Blog</button></a>
+    <a href="/" class="top blog-tag home"><button>&#8626; Home</button></a>
+    <a href="#top" class="top blog-tag"><button>Top &uarr;</button></a>
   </aside>
 
 </BaseLayout>
