@@ -2,6 +2,7 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 import FormattedDate from "@components/FormattedDate.astro";
+import BackToTop from "@components/BackToTop.astro";
 
 const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
@@ -59,8 +60,15 @@ const desc = "List of all blog posts";
     color: var(--hover);
   }
   @media screen and (min-width: 200px) and (max-width: 667px) {
-    .title {
-      font-size: 20px;
+    section {
+      line-height: 1.2;
+    }
+    .info {
+      margin-bottom: 0.25em;
+    }
+    .tag {
+      display: block;
+      margin-top: 0.25em;
     }
   }
 </style>
@@ -95,8 +103,6 @@ const desc = "List of all blog posts";
       }
     </ul>
     <hr />
-    <aside>
-      <a href="#top" class="top button blog-tag">Back to Top &uarr;</a>
-    </aside>
+    <BackToTop />
   </section>
 </BaseLayout>
