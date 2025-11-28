@@ -217,30 +217,6 @@ input:focus, textarea:focus {
   outline: 0;
   box-shadow: 0 0 0 0.25rem var(--name);
 }
-/* button effects */
-@media (hover: hover) {
-  a:hover button {
-    box-shadow: -4px -4px 0 #000;
-    transform: translate(4px, 4px);
-  }
-  a:hover button {
-    outline-offset: 1px;
-  }
-}
-@media (hover: none) {
-  a:hover button {
-    background-color: var(--menu);
-  }
-}
-button {
-  font-family: 'M Plus Rounded 1c Med', 'Atkinson', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
-  color: #000;
-  border: 0;
-  border-radius: 0.25em;
-  padding: 4px 8px 3px 8px;
-  font-weight: 600;
-  font-size: 0.75em;
-}
 u, em, i {
 	color: var(--emphasis);
 }
@@ -296,7 +272,7 @@ th {
 	vertical-align: top;
 }
 mark {
-  background: #aaa;
+  background: var(--info);
 }
 time {
 	color: var(--date);
@@ -420,6 +396,11 @@ article h2 {
 li::marker {
 	color: var(--primary);
 }
+.inv {
+  font-style: italic;
+  font-weight: 100;
+  color: var(--secondary);
+}
 .ext {
   display: inline-block;
   margin: 0;
@@ -427,22 +408,6 @@ li::marker {
   height: 18px;
   width: 20px;
   filter: var(--ext);
-}
-.button {
-  background-color: var(--tags);
-  color: #000;
-  border-radius: 0.25em;
-  cursor: pointer;
-  font-weight: 600;
-  padding: 4px 8px;
-  text-decoration: none;
-  text-overflow: ellipsis;
-  -webkit-transition: all .10s ease-out;
-  -moz-transition: all .10s ease-out;
-  -o-transition: all .10s ease-out;
-  transition: all .10s ease-out;
-  margin: 0;
-  font-family: 'M Plus Rounded 1c Med', 'Atkinson', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
 }
 aside > a, aside > a:active, aside > a:visited, aside > a:hover, aside > a:focus {
   color: #000;
@@ -458,20 +423,6 @@ aside > a, aside > a:active, aside > a:visited, aside > a:hover, aside > a:focus
 .coffee a:hover {
   color:var(--coffee);
 }
-@media (hover: hover) {
-  .button:hover {
-    box-shadow: -4px -4px 0 #000;
-    transform: translate(4px,4px);
-  }
-  .button:focus-visible{
-    outline-offset: 1px;
-  }
-}
-@media (hover: none) {
-  .button:hover {
-    background-color: var(--menu);
-  }
-}
 aside {
   display: flex;
   align-items: center;
@@ -480,14 +431,8 @@ aside {
   margin: 2em auto;
   cursor: default;
 }
-.blog-aside {
-  justify-content: space-between;
-}
 aside > a, aside > a:active, aside > a:visited, aside > a:hover, aside > a:focus {
   display: flex;
-  color: #000;
-}
-.top:hover {
   color: #000;
 }
 .sr-only {
@@ -507,6 +452,57 @@ aside > a, aside > a:active, aside > a:visited, aside > a:hover, aside > a:focus
 	/* added line to stop words getting smushed together (as they go onto seperate lines and some screen readers do not understand line feeds as a space */
 	white-space: nowrap;
 }
+
+
+/* button effects */
+button {
+  font-family: 'M Plus Rounded 1c Med', 'Atkinson', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
+  background-color: var(--info);
+  color: #000;
+  border: 0;
+  border-radius: 0.25em;
+  padding: 4px 8px;
+  font-weight: 600;
+  font-size: 0.75em;
+}
+@media (hover: hover) {
+  a:hover button {
+    box-shadow: -4px -4px 0 #000;
+    transform: translate(4px, 4px);
+  }
+  a:hover button {
+    outline-offset: 1px;
+  }
+  button {
+    text-overflow: ellipsis;
+    -webkit-transition: all .10s ease-out;
+    -moz-transition: all .10s ease-out;
+    -o-transition: all .10s ease-out;
+    transition: all .10s ease-out;
+    cursor: pointer;
+  }
+  button:hover {
+    box-shadow: -4px -4px 0 #000;
+    transform: translate(4px,4px);
+    cursor: pointer;
+  }
+  button:focus-visible{
+    outline-offset: 1px;
+  }
+
+}
+@media (hover: none) {
+  a:hover button {
+    background-color: var(--menu);
+  }
+}
+@media (hover: none) {
+  button:hover {
+    background-color: var(--menu);
+  }
+}
+
+/* screen width media queries */
 @media screen and (min-width: 200px) and (max-width: 720px) {
   h1 {
     font-size: 1.35em;
