@@ -21,57 +21,29 @@ const desc = "Blog posts by category";
     font-family: "M Plus Rounded 1c Reg";
   }
   ul {
-    display: grid;
-    grid-template-columns: repeat(4, auto);
-    gap: auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     list-style-type: none;
-    margin: 0 auto 2em auto;
-    padding: 0 auto;
+    margin: 0 0 2em 0;
+    padding: 0;
   }
   li {
-    margin: 0.5em 0;
-  }
-  li a {
-    margin: 2px auto;
-    padding: 0 auto;
-  }
-  li a:hover {
-    margin: 2px auto;
-    padding: 0 auto;
+    margin: 0.25em;
   }
   button {
-    background: var(--tags);
+    background: var(--info);
+    color: #000;
   }
-  button:hover {
-    cursor: pointer;
-  }
-  .count {
-    font-family: 'M Plus Rounded 1c Med', 'Atkinson', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
-    color: var(--emphasis);
+  button a {
+    color: #000;
   }
   p {
     margin-bottom: 2em;
   }
-  @media screen and (min-width: 755px) and (max-width: 1000px) {
-    ul {
-        grid-template-columns: repeat(3, auto);
-      }
-  }
-  @media screen and (min-width: 601px) and (max-width: 754px) {
-    ul {
-      grid-template-columns: repeat(2, auto);
-    }
-  }
-  @media screen and (max-width: 600px) {
-    ul {
-      grid-template-columns: repeat(1, auto);
-      gap: 0 auto;
-      justify-content: space-around;
-      place-items: center;
-      margin-bottom: 1.5em;
-    }
-    li {
-      margin: 0.5em auto;
+  @media screen and (max-width: 667px) {
+    section {
+      line-height: 1.2;
     }
   }
 </style>
@@ -87,9 +59,11 @@ const desc = "Blog posts by category";
     <ul>
       {tags.map(({ tag, count }) => (
         <li>
-          <a href={`/categories/${tag}`}>
-            <button>{tag}</button> <span class="count"> ({count})</span>
-          </a>
+          <button>
+            <a href={`/categories/${tag}`}>
+              {tag} <span class="count"> ({count})</span>
+            </a>
+          </button>
         </li>
       ))}
     </ul>
