@@ -76,27 +76,19 @@ const posts = (await getCollection("blog")).sort(
   .more {
     font-family: "M Plus Rounded 1c Reg";
     font-weight: 900;
-    font-size: 1.2em;
   }
   .more a {
-    color: var(--menu);
+    color: var(--emphasis);
     border-bottom: 2px solid transparent;
   }
   .more a:hover {
-    color: var(--link);
-    border-bottom: 2px solid var(--link);
+    color: var(--hover);
+    border-bottom: 2px solid var(--hover);
   }
-  @media screen and (min-width: 200px) and (max-width: 667px) {
-    main {
-      margin: 0 10px;
-    }
-    span {
-      font-size: 100%;
-    }
-    ul {
-      padding: 0.75em 0.75em 0.5em 0.75em;
-      width: 100%;
-      margin: 0;
+  @media screen and (max-width: 667px) {
+    .tag {
+      display: block;
+      margin-top: 0.25em;
     }
   }
 </style>
@@ -123,7 +115,7 @@ const posts = (await getCollection("blog")).sort(
       ))
     }
     <div class="more">
-      <a href="/blog/">More Posts &rarr;</a>
+      <a href="/blog/">Browse all posts &rarr;</a>
     </div>
   </div>
 </section>
