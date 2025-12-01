@@ -3,7 +3,9 @@ title: "Setup auto-updates in Debian and Ubuntu with Unattended-Upgrades and Nee
 description: "If you want your Linux machine to stay up-to-date on important security updates, but you don't want to SSH into it all the time to run updates and would rather set it and forget it, this is the way."
 pubDate: 2022-10-14
 updatedDate: 2025-03-03
-tags: ["linux", "command line"]
+tags: ["debian", "linux", "command line"]
+related1: bootstrapping-fresh-install-with-ansible
+related2: setup-apt-cacher-ng-to-cache-packages-homelab
 ---
 
 ## Caveats
@@ -95,9 +97,3 @@ All done! Now your server will download and install security updates (and packag
 
 - <a href="https://manpages.debian.org/bullseye/unattended-upgrades/unattended-upgrades.8.en.html" target="_blank">Unattended-Upgrade man page</a>
 - <a href="https://manpages.debian.org/bullseye/needrestart/needrestart.1.en.html">NeedRestart man page</a>
-
-
-### Related Articles
-
-- <a href="/blog/bootstrapping-fresh-linux-install-with-ansible" data-umami-event="unattended-upgrades-related-bootstrap-ansible">Bootstrapping a fresh Linux install with Ansible</a>
-- <a href="/blog/setup-apt-cacher-ng-to-cache-packages-homelab" data-umami-event="unattended-upgrades-related-apt-cacher-ng"></a>

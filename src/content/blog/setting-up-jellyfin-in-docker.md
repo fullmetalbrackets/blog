@@ -4,6 +4,8 @@ description: "Plex is a popular media server for self-hosting, but it's not open
 pubDate: 2022-10-18
 updatedDate: 2025-11-03
 tags: ["self-hosting", "docker"]
+related1: setting-up-plex-in-docker
+related2: how-to-run-filebrowser-in-docker
 ---
 
 ## Installing Jellyfin as a Docker container
@@ -113,8 +115,3 @@ Use `docker restart jellyfin` and once the Jellyfin container has restarted, go 
 - <a href="https://linuxserver.io" target="_blank" data-umami-event="setup-jellyfin-linuxserver">Linuxserver</a>
 - <a href="https://jellyfin.org" target="_blank" data-umami-event="setup-jellyfin-jfsite">Jellyfin</a>
 - <a href="https://docker.com" target="_blank" data-umami-event="setup-jellyfin-docker">Docker</a>
-
-### Related Articles
-
-- <a href="/blog/setting-up-plex-in-docker/" data-umami-event="setup-jellyfin-related-setup-plex">Setup self-hosted Plex Media Server in Docker</a>
-- <a href="/blog/how-to-run-filebrowser-in-docker/" data-umami-event="setup-jellyfin-related-filebrowser">How to run self-hosted FileBrowser in Docker</a>

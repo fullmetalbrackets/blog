@@ -4,6 +4,8 @@ description: "Generating and using a GPG key is not difficult, but every time I 
 pubDate: 2022-10-30
 updatedDate: 2025-02-03
 tags: ["git", "linux"]
+related1: git-commands-cheat-sheet
+related2: git-push-error-permissions
 ---
 
 > **GnuPG** is not available on Windows by default, so if necessary, <a href="https://www.gnupg.org/download" target="_blank">download it here</a> and install it first. It should go without saying you'll need <a href="https://git-scm.com/downloads" target="_blank">Git</a> installed, since you will have to use **Git Bash**.
@@ -106,8 +108,3 @@ Now to test it out, push out any commit to a GitHub repo. You should be prompted
 - <a href="https://docs.github.com/en/authentication/managing-commit-signature-verification" target="_blank">GitHub Docs</a>
 - <a href="https://www.gnupg.org/download" target="_blank">GnuPG</a>
 - <a href="https://git-scm.com/downloads" target="_blank">Git</a>
-
-### Related Articles
-
-- <a href="/blog/git-commands-cheat-sheet/" data-umami-event="gpg-sign-related-git-commands">Git commands cheat sheet</a>
-- <a href="/blog/git-push-error-permissions/" data-umami-event="gpg-sign-related-git-error-permissions">How to resolve Git error insufficient permission for adding an object to repository database</a>

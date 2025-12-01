@@ -4,6 +4,8 @@ description: "My situation was simple -- my server's media storage was filling u
 pubDate: 2024-03-11
 updatedDate: 2025-02-23
 tags: ["command line", "self-hosting"]
+related1: setup-a-samba-share-on-linux-via-command-line
+related2: mounting-hard-drives-in-linux
 ---
 
 ## What and Why
@@ -108,8 +110,3 @@ If you encounter a problem after reboot, you probably messed something up in the
 
 - <a href="https://github.com/trapexit/mergerfs" target="_blank" data-umami-event="mergerfs-post-to-mergerfs-site">MergerFS</a>
 - <a href="https://perfectmediaserver.com" target="_blank" data-umami-event="mergerfs-post-perfectmediaserver">Perfect Media Server</a>
-
-### Related Articles
-
-- <a href="/blog/setup-a-samba-share-on-linux-via-command-line/" data-umami-event="mergerfs-post-related-setup-smb-share">Setup a Samba share on Linux via command line</a>
-- <a href="/blog/mounting-hard-drives-in-linux/" data-umami-event="mergerfs-post-related-mounting-hdds-linux">Mounting (either internal or external) hard drives in Linux</a>

@@ -85,7 +85,7 @@ const desc = "List of all blog posts";
         posts.map((post) => (
           <li>
             <div>
-              <a href={`/blog/${post.slug}/`} rel="prefetch-intent" data-umami-event={post.slug}>
+              <a href={`/blog/${post.id}/`} rel="prefetch-intent" data-umami-event={post.id}>
                 <span class="title">{post.data.title}</span>
                 <p class="info">
                   <FormattedDate date={post.data.pubDate} />&nbsp;

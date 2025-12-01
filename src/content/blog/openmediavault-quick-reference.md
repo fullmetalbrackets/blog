@@ -4,6 +4,8 @@ description: "I've been using OpenMediaVault 6 for over a year now, and it's use
 pubDate: 2023-07-30
 updatedDate: 2025-02-03
 tags: ["self-hosting", "openmediavault"]
+related1: reverse-proxy-nginx-pihole
+related2: set-up-pihole-on-linux
 ---
  
 > This article is specifically about OpenMediaVault 6, which reached end of life in July 2024. _OpenMediaVault 7 was released in March 2024_, and as of January 2025 the latest version is **7.6.0**.
@@ -90,8 +92,3 @@ By default only the `root` user is available, which is fine if you're mostly usi
 ## Reference
 
 - <a href="https://docs.openmediavault.org/en/stable" target="_blank">OpenMediaVault Documentation</a>
-
-### Related Articles
-
-- <a href="/blog/reverse-proxy-nginx-pihole/" data-umami-event="omv-ref-related-proxy-omv-pihole-navidrome">Reverse proxy OpenMediaVault, Plex and Navidrome with Nginx Proxy Manager and Pi-Hole</a>
-- <a href="/blog/set-up-pihole-on-linux/" data-umami-event="omv-ref-related-setup-pihole">Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS</a>

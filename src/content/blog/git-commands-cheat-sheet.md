@@ -3,6 +3,8 @@ title: "Git commands cheat sheet"
 description: "When I was learning Git, in order to avoid giant articles and get right to the commands I needed reminding of, I made myself a cheat sheet that plainly and succinctly explained each Git command. Here is that quick and dirty guide of Git commands that you will likely use often as a web developer."
 pubDate: 2021-09-08
 tags: ["git", "command line"]
+related1: how-to-generate-gpg-to-sign-git-commits
+related2: git-push-error-permissions
 ---
 
 ## Setting up git
@@ -263,8 +265,3 @@ There's more advanced commands I'm not going to talk about until I use them myse
 - <a href="https://git-scm.com/docs/git" target="_blank" data-umami-event="git-cheatsheet-git-docs">Git Documentation</a>
 - <a href="https://training.github.com/downloads/github-git-cheat-sheet" target="_blank" data-umami-event="git-cheatsheet-gh-cheatsheet">GitHub Cheat Sheet</a>
 - Many questions and answers on <a href="https://stackoverflow.com" target="_blank" data-umami-event="git-cheatsheet-stackoverflow">StackOverflow</a>
-
-### Related Articles
-
-- <a href="/blog/how-to-generate-gpg-to-sign-git-commits/" data-umami-event="git-cheatsheet-related-gpg-sign-commits">How to generate a GPG key and use it to sign git commits</a>
-- <a href="/blog/git-push-error-permissions/" data-umami-event="git-cheatsheet-related-git-push-error-permissions">How to resolve Git error insufficient permission for adding an object to repository database</a>

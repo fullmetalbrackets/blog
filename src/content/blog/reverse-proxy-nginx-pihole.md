@@ -4,6 +4,8 @@ description: "My scenario was simple: I wanted to access the web GUIs of OpenMed
 pubDate: 2023-07-15
 updatedDate: 2025-02-01
 tags: ["self-hosting", "openmediavault", "nginx proxy manager"]
+related1: reverse-proxy-using-nginx-pihole-cloudflare
+related2: openmediavault-quick-reference
 ---
 
 ## Pre-Requisites and Caveats
@@ -138,8 +140,3 @@ To check the logs in Portainer:
 - <a href="https://docs.openmediavault.org/en/latest" target="_blank">OpenMediaVault 6 documentation</a>
 - <a href="https://nginxproxymanager.com" target="_blank">Website of Nginx Proxy Manager</a>
 - <a href="https://github.com/NginxProxyManager/nginx-proxy-manager" target="_blank">GitHub of Nginx Proxy Manager</a>
-
-### Related Articles
-
-- <a href="/blog/reverse-proxy-using-nginx-pihole-cloudflare/" data-umami-event="reverse-proxy-adguard-related-reverse-proxy-pihole">Setting up a reverse proxy for HTTPS with a custom domain using Nginx Proxy Manager, Pi-Hole and Cloudflare</a>
-- <a href="/blog/openmediavault-quick-reference/" data-umami-event="reverse-proxy-adguard-related-reverse-proxy-pihole">OpenMediaVault Quick Reference</a>

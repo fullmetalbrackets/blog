@@ -4,6 +4,8 @@ description: "A quick and dirty guide on how to easily set up a Samba share on L
 pubDate: 2021-09-01
 updatedDate: 2025-02-29
 tags: ["smb", "linux", "networking"]
+related1: quick-guide-setting-up-smb
+related2: setup-nfs-shares-linux
 ---
 
 ## Installing Samba
@@ -145,8 +147,3 @@ For an explanation of what these options do, check the original blog post linked
 - <a href="https://www.samba.org/samba/docs/current/man-html/smbpasswd.8.html" target="_blank" data-umami-event="setup-smb-smbpasswd-manpage">smbpasswd Manpage</a>
 - <a href="https://eggplant.pro/blog/faster-samba-smb-cifs-share-performance" target="_blank" data-umami-event="setup-smb-eggplant-systems">Eggplant Systems & Design blog post about improving Samba share performance</a>
 - <a href="https://www.majorgeeks.com/content/page/how_to_enable_local_security_policy_in_windows_10_home.html" target="_blank" data-umami-event="setup-smb-local-security-policy-fix">Instructions to fix Local Security Policy issue</a>
-
-### Related Articles
-
-- <a href="/blog/quick-guide-setting-up-smb/" data-umami-event="setup-smb-related-quick-guide-smb">Quick guide to setting up SMB shares</a>
-- <a href="/blog/setup-nfs-shares-linux/" data-umami-event="setup-smb-related-nfs-shares">Set up NFS Shares between Linux hosts</a>

@@ -4,6 +4,9 @@ description: "I've been getting more and more comfortable working on the command
 pubDate: 2021-12-04
 updatedDate: 2025-02-03
 tags: ["zsh", "command line", "linux"]
+related1: basic-linux-commands
+related2: windows-terminal-with-ohmyposh
+
 ---
 
 ![Oh-My-Zsh](../../img/blog/oh-my-zsh.png 'Oh-My-Zsh')
@@ -112,8 +115,3 @@ Now when you use `p10k configure` you'll get additional options, since you'll be
 - <a href="https://ohmyz.sh" target="_blank">Oh-My-Zsh website</a>
 - <a href="https://github.com/ohmyzsh/ohmyzsh#using-oh-my-zsh" target="_blank">Section on Plugins in the Docs</a>
 - <a href="https://github.com/romkatv/powerlevel10k" target="_blank">Powerlevel10k Theme</a>
-
-### Related Articles
-
-- <a href="/blog/basic-linux-commands/" data-umami-event="zsh-ohmyzsh-related-linux-commands">Linux Commands & Keyboard Shortcuts Cheat Sheet</a>
-- <a href="/blog/customizing-windows-terminal-with-ohmyposh/" data-umami-event="zsh-ohmyzsh-related-ohmyposh">Customizing the Windows Terminal command prompt with Oh-My-Posh</a>

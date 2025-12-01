@@ -4,6 +4,8 @@ description: "There are many File Managers/File Explorers on the Google Play Sto
 pubDate: 2022-11-07
 updatedDate: 2025-02-26
 tags: ["android", "smb"]
+related1: xplore-android-smb-share
+related2: setup-a-samba-share-on-linux-via-command-line
 ---
 
 > I used **Android 12** when making the guide, the steps to make this work may be different if you're using an older version of Android. (But most likely will be the same or similar.) As of 2025, I can confirm this process is still identical on **Android 14**.
@@ -93,8 +95,3 @@ You'll see a circlular progress bar on the bottom right, when the transfer is do
 
 - <a href="https://neatbytes.com/solidexplorer" target="_blank" umami-event-data="solid-explorer-site">Solid Explorer website</a>
 - <a href="https://play.google.com/store/apps/details?id=pl.solidexplorer2" target="_blank" umami-event-data="solid-explorer-gplay">Download Solid Explorer from Google Play Store</a>
-
-### Related Articles
-
-- <a href="/blog/xplore-android-smb-share/" data-umami-event="solid-explorer-related-xplorer">Setup X-plore File Manager on Android to transfer files to an SMB share</a>
-- <a href="/blog/setup-a-samba-share-on-linux-via-command-line/" data-umami-event="solid-explorer-related-smb-share-linux-cli">Setup a Samba share on Linux via command line</a>

@@ -4,6 +4,8 @@ description: "I've used a reverse proxy to access my self-hosted apps and servic
 pubDate: 2024-10-17
 updatedDate: 2025-02-26
 tags: ["self-hosting", "pi-hole", "nginx proxy manager"]
+related1: set-up-pihole-on-linux
+related2: self-host-website-cloudflare-tunnel
 ---
 
 > This guide is for using **Pi-Hole** as the DNS server, where we will add the DNS records for your proxied services.
@@ -294,8 +296,3 @@ Once you're done setting up the proxy host, you should be able to go to `https:/
 - <a href="https://pi-hole.net" target="_blank" data-umami-event="reverse-proxy-pihole-official-site">Pi-Hole website</a>
 - <a href="https://nginxproxymanager.com" target="_blank" data-umami-event="reverse-proxy-pihole-npm-site">Nginx Proxy Manager website</a>
 - <a href="https://github.com/NginxProxyManager/nginx-proxy-manager" target="_blank" data-umami-event="reverse-proxy-pihole-npm-gh">Nginx Proxy Manager GitHub</a>
-
-### Related Articles
-
-- <a href="/blog/set-up-pihole-on-linux/" data-umami-event="reverse-proxy-pihole-related-setup-pihole-post">Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS</a>
-- <a href="/blog/self-host-website-cloudflare-tunnel/" data-umami-event="reverse-proxy-pihole-related-tunnel-guide">Complete guide to self-hosting a website through Cloudflare Tunnel</a>

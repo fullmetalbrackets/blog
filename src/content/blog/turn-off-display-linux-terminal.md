@@ -3,6 +3,7 @@ title: "Commands to turn off display in the Linux terminal"
 description: "Sometimes I use laptops in the home lab, and to save myself on a few watts of power usage I use these terminal commands to turn off the display, then just SSH into it from my PC."
 pubDate: 2022-12-03
 tags: ["linux", "command line"]
+related1: sudo-without-password
 ---
 
 > Reference: <a href="https://askubuntu.com/questions/62858/turn-off-monitor-using-command-line" target="_blank">Several answers to this post on AskUbuntu</a>

@@ -4,6 +4,8 @@ description: "Home Assistant is an open source home automation solution that giv
 pubDate: 2024-03-03
 updatedDate: 2025-02-10
 tags: ["self-hosting", "home assistant", "sbc"]
+related1: setting-up-sweet-potato-debian-pihole
+related2: self-host-website-cloudflare-tunnel
 ---
 
 ## Pre-Requisites
@@ -94,8 +96,3 @@ Once the setup finishes, which it should without issue if you installed Docker v
 - <a href="https://hub.libre.computer/t/libre-computer-aml-s905x-cc-emmc-flashing-steps-from-linux/33" target="_blank" data-umami-event="hass-potato-libre-flash-emmc">Flashing Linux to eMMC</a>
 - <a href="https://hub.libre.computer/t/booting-from-external-usb-device-or-bootrom-unsupported-device/51" target="_blank" data-umami-event="hass-potato-libre-usb-boot">Booting from External USB Device (alternative to eMMC boot)</a>
 - <a href="https://www.home-assistant.io/docs" target="_blank" data-umami-event="hass-potato-hass-docs">Home Assistant Documentation</a>
-
-### Related Articles
-
-- <a href="/blog/setting-up-sweet-potato-debian-pihole/" data-umami-event="hass-potato-related-setup-potato-pihole">Setting up a Libre Computer Sweet Potato SBC with Debian and Pi-Hole</a>
-- <a href="/blog/self-host-website-cloudflare-tunnel/" data-umami-event="hass-potato-related-tunnel-guide">Complete guide to self-hosting a website through Cloudflare Tunnel</a>

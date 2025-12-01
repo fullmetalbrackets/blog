@@ -4,6 +4,8 @@ description: "Ansible is an IT tool that enables Infrastructure as Code, letting
 pubDate: 2022-09-03
 updatedDate: 2025-03-03
 tags: ["linux", "ansible"]
+related1: bootstrapping-fresh-install-with-ansible
+related2: setup-apt-cacher-ng-to-cache-packages-homelab
 ---
 
 > This is not a comprehensive tutorial for Ansible, but simply a terse quick guide of my personal use case for Ansible in my home lab. For a deeper dive on Ansible, I strongly suggest <a href="https://www.learnlinux.tv/getting-started-with-ansible/" target="_blank">Learn Linux TV series of Ansible tutorials</a> which is how I first learned to use it myself.
@@ -235,8 +237,3 @@ ansible-playbook bootstrap.yaml
 
 - <a href="https://docs.ansible.com" target="_blank" data-umami-event="ansible-post-ansible-site">Ansible Documentation</a>
 - <a href="https://www.learnlinux.tv/getting-started-with-ansible/" target="_blank" data-umami-event="ansible-learn-linux-tv">Learn Linux TV series of Ansible tutorials</a>
-
-### Related Articles
-
-- <a href="/blog/bootstrapping-fresh-linux-install-with-ansible" data-umami-event="unattended-upgrades-related-bootstrap-ansible">Bootstrapping a fresh Linux install with Ansible</a>
-- <a href="/blog/setup-apt-cacher-ng-to-cache-packages-homelab" data-umami-event="unattended-upgrades-related-apt-cacher-ng">Setup auto-updates in Debian and Ubuntu with Unattended-Upgrades and NeedRestart</a>

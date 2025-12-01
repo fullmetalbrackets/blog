@@ -4,6 +4,8 @@ description: "Self-hosting a static web blog has never been easier thanks to Clo
 pubDate: 2023-12-29
 updatedDate: 2025-02-10
 tags: ["self-hosting", "cloudflare"]
+related1: setup-cloudflare-tunnel-to-access-self-hosted-apps
+related2: expose-plex-with-cloudflare
 ---
 
 ## What and How
@@ -281,8 +283,3 @@ Once that is done, click the **Deploy** button. Wait a few minutes, then check y
 - <a href="https://developers.cloudflare.com/fundamentals/basic-tasks/manage-subdomains#set-up-redirects" target="_blank" data-umami-events="tunnel-guide-docs-subdomains-redirects">Cloudflare Docs - Manage subdomains, Set up redirects</a>
 - <a href="https://developers.cloudflare.com/rules/url-forwarding/single-redirects/create-dashboard" target="_blank" data-umami-events="tunnel-guide-docs-redirect-rule">Cloudflare Docs - Create redirect rule</a>
 - <a href="https://blog.cloudflare.com/transform-http-response-headers" target="_blank" data-umami-events="tunnel-guide-cfblog-transform-headers">Cloudflare Blog - Modifying HTTP response headers with Transform Rules</a>
-
-### Related Articles
-
-- <a href="/blog/setup-cloudflare-tunnel-to-access-self-hosted-apps/" data-umami-event="tunnel-guide-to-tunnel-selfhosted-apps">Setup a Cloudflare Tunnel to securely access self-hosted apps with a domain from outside the home network</a>
-- <a href="/blog/expose-plex-with-cloudflare/" data-umami-event="tunnel-guide-related-expose-plex-tunnel">How to securely expose Plex from behind CGNAT for library sharing with Cloudflare Tunnel</a>

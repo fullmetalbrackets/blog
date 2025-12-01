@@ -166,13 +166,6 @@ h3, h5 {
   margin: 0;
   padding: 0;  
 }
-#related-articles {
-  font-family: 'Atkinson', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
-  color: var(--primary);
-  font-size: 1.5em;
-  margin: 1.25em 0 0 0;
-  padding: 0;
-}
 p {
   overflow-wrap: break-word;
   hyphens: auto;
@@ -335,31 +328,6 @@ blockquote::before {
 blockquote::before img {
   width: 20px;
   height: 20px;
-}
-#related-articles + ul {
-  display: block;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-}
-#related-articles + ul li {
-  background-color: var(--blockquote);
-  border-radius: 0.5em;
-  margin: 1em auto 1.5em auto;
-  padding: 1em 1em 0.75em 1em;
-  border: 2px solid var(--primary);
-  width: 95%;
-}
-#related-articles + ul li a {
-  font-size: 1.125em;
-  font-weight: 700;
-  line-height: 1;
-  color: var(--emphasis);
-}
-#related-articles + ul li a:hover, #related-articles + blockquote + blockquote a:hover {
-  color: var(--hover);
-  text-decoration: none;
 }
 blockquote p {
   margin: 0;
@@ -533,11 +501,5 @@ button {
   }
   blockquote {
     width: 90%;
-  }
-  .related {
-    grid-template-columns: auto;
-  }
-  #related-articles + ul li a {
-    font-size: 1em;
   }
 }

@@ -4,6 +4,8 @@ description: "My old Dell Optiplex has been a great desktop PC for just minimal 
 pubDate: 2025-05-21
 updatedDate: 2025-11-06
 tags: ["linux", "debian", "command line"]
+related1: remove-casaos-zimaboard-upgrade-debian-12
+related2: basic-linux-commands
 ---
 
 ## About upgrading

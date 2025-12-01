@@ -4,6 +4,8 @@ description: "Accessing self-hosted services from outside the home can be a chal
 pubDate: 2024-06-25
 updatedDate: 2025-10-21
 tags: ["tailscale", "networking"]
+related1: expose-plex-tailscale-vps
+related2: pihole-anywhere-tailscale
 ---
 
 ## About Tailscale
@@ -320,8 +322,3 @@ I've only scratched the surface on what Tailscale can do in this post, because a
 - <a href="https://tailscale.com/kb/1081/magicdns" target="_blank" data-umami-event="tailscale-post-ref-docs-magidns">MagicDNS</a>
 - <a href="https://tailscale.com/kb/1114/pi-hole" target="_blank" data-umami-event="tailscale-post-ref-docs-pihole">Pi-Hole from anywhere</a>
 - <a href="https://tailscale.com/kb/1106/taildrop" target="_blank" data-umami-event="tailscale-post-ref-docs-taildrop">Taildrop</a>
-
-### Related Articles
-
-- <a href="/blog/expose-plex-tailscale-vps/" data-umami-event="tailscale-post-related-expose-plex-vps">How to securely expose Plex from behind CGNAT for library sharing using Tailscale and a free Oracle VM</a>
-- <a href="/blog/pihole-anywhere-tailscale/" data-umami-event="tailscale-post-related-pihole-anywhere">How to use Pi-hole from anywhere with Tailscale</a>

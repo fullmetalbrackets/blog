@@ -4,6 +4,8 @@ description: "Google Photos began limiting free storage back in 2021, limiting y
 pubDate: 2023-07-07
 updatedDate: 2025-02-03
 tags: ["self-hosting", "android", "smb"]
+related1: setup-a-samba-share-on-linux-via-command-line
+related2: setting-up-plex-in-docker
 ---
 
 > Though the **PhotoSync** app is available on iPhone as well as Android, I have an Android phone and so I _have only done this on Android_. It's safe to assume configuring PhotoSync on iPhone to connect to your NAS will be similar, if not exactly the same.
@@ -61,8 +63,3 @@ Next, we'll set up _background auto-transfers_, but you'll need optional the **A
 ## References
 
 - <a href="https://www.photosync-app.com/home" target="_blank" data-umami-event="photosync-smb-photosync-site">PhotoSync Website</a>
-
-### Related Articles
-
-- <a href="/blog/setup-a-samba-share-on-linux-via-command-line/" data-umami-event="photosync-smb-related-setup-smb-share">Setup a Samba share on Linux via command line</a>
-- <a href="/blog/setting-up-plex-in-docker/" data-umami-event="photosync-smb-related-setup-plex">Setup self-hosted Plex Media Server in Docker</a>

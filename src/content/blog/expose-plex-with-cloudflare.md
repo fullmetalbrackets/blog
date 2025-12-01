@@ -4,6 +4,8 @@ description: "Exposing Plex to share your library with other users normally invo
 pubDate: 2024-07-15
 updatedDate: 2025-08-15
 tags: ["plex", "cloudflare"]
+related1: expose-plex-tailscale-vps
+related2: self-host-website-cloudflare-tunnel
 ---
 
 ## What and Why
@@ -289,8 +291,3 @@ There's always multiple ways to do things, and said I explained at the start, th
 - <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/routing-to-tunnel/dns/" target="_blank" umami-data-event="expose-plex-cloudflare-ref-routing-tunnels">Cloudflare Docs - Routing traffic to a tunnel</a>
 - <a href="https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/google/" target="_blank" umami-data-event="expose-plex-cloudflare-ref-identity">Cloudflare Docs - Identity</a>
 - <a href="https://developers.cloudflare.com/cloudflare-one/policies/access/policy-management/" target="_blank" umami-data-event="expose-plex-cloudflare-policy-mgmt">Cloudflare Docs - Policy Management</a>
-
-### Related Articles
-
-- <a href="/blog/expose-plex-tailscale-vps/" umami-data-event="expose-plex-cloudflare-related-expose-tailscale-vps">How to securely expose Plex from behind CGNAT for library sharing using Tailscale and a free Oracle VM</a>
-- <a href="/blog/self-host-website-cloudflare-tunnel/" umami-data-event="expose-plex-cloudflare-related-tunnel-guide">Complete guide to self-hosting a website through Cloudflare Tunnel</a>

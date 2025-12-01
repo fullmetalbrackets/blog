@@ -4,6 +4,8 @@ description: "Rsync is a very handy tool for doing high-speed file transfers bet
 pubDate: 2021-09-15
 updatedDate: 2023-07-24
 tags: ["linux", "command line"]
+related1: basic-linux-commands
+related2: mounting-hard-drives-in-linux
 ---
 
 # Rsync Basics
@@ -125,8 +127,3 @@ Finally, for a list of ALL the rsync options with short descriptions of what the
 - <a href="https://download.samba.org/pub/rsync/rsync.1" target="_blank">Rsync Man Page</a>
 - <a href="https://man7.org/linux/man-pages/man8/cron.8.html" target="_blank">Cron Man Page</a>
 - <a href="https://man7.org/linux/man-pages/man5/crontab.5.html" target="_blank">Crontab Man Page</a>
-
-### Related Articles
-
-- <a href="/blog/basic-linux-commands/" data-umami-event="rsync-related-linux-commands">Linux Commands & Keyboard Shortcuts Cheat Sheet</a>
-- <a href="/blog/mounting-hard-drives-in-linux/" data-umami-event="rsync-related-mounting-hdds-linux">Mounting (either internal or external) hard drives in Linux</a>

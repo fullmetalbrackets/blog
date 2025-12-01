@@ -4,6 +4,8 @@ description: "When using Pi-Hole as a network-wide ad blocker, your DNS requests
 pubDate: 2023-07-13
 updatedDate: 2025-03-02
 tags: ["pi-hole", "networking"]
+related1: pi-hole-quad9-dls-over-tls
+related2: set-up-pihole-on-linux
 ---
 
 ## What and Why
@@ -185,8 +187,3 @@ Your DNS requests should now be going out encrypted in HTTPS. If using Cloudflar
 - <a href="https://docs.pi-hole.net/guides/dns/cloudflared" target="_blank">Pi-Hole docs instructions to install Cloudflared</a>
 - <a href="https://github.com/cloudflare/cloudflared" target="_blank">Cloudflared GitHub</a>
 - <a href="https://1.1.1.1/help" target="_blank">Cloudflare DNS Checker</a>
-
-### Related Articles
-
-- <a href="/blog/pi-hole-quad9-dls-over-tls/" data-umami-event="pihole-doh-related-quad9-dot">Using a forwarding resolver in Pi-Hole for DNS over TLS</a>
-- <a href="/blog/set-up-pihole-on-linux" data-umami-event="pihole-doh-related-setup-pihole">Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS</a>

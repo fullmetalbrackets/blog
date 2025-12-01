@@ -4,6 +4,8 @@ description: "Setting up SSH keys and pushing to GitHub without needing to enter
 pubDate: 2021-09-21
 updatedDate: 2025-02-17
 tags: ["ssh", "command line", "github"]
+related1: generating-an-ssh-key-pair
+related2: copy-ssh-keys-between-hosts
 ---
 
 ## Add the key in GitHub
@@ -69,8 +71,3 @@ And we're done! Git will automatically keep track of any modified files in the p
 
 - <a href="https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/" target="_blank" data-umami-event="ssh-to-github-gh-blog-deprecate-pw-auth">GitHub blog post about deprecating password auth</a>
 - <a href="https://docs.github.com/en" target="_blank" data-umami-event="ssh-to-github-gh-docs">GitHub documentation</a>
-
-### Related Articles
-
-- <a href="/blog/generating-an-ssh-key-pair/" data-umami-event="ssh-to-github-related-generate-ssh-key-pair">Generating an SSH key pair</a>
-- <a href="/blog/copy-ssh-keys-between-hosts/" data-umami-event="ssh-to-github-related-copy-ssh-keys-hosts">Copying SSH Keys between different hosts</a>

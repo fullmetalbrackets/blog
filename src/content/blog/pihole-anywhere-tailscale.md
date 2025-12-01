@@ -4,6 +4,8 @@ description: "Tailscale is my new homelab toy. I've been using it to access my m
 pubDate: 2024-09-25
 updatedDate: 2025-02-03
 tags: ["tailscale", "pi-hole"]
+related1: set-up-pihole-on-linux
+related2: comprehensive-guide-tailscale-securely-access-home-network
 ---
 
 ## About Tailscale
@@ -128,8 +130,3 @@ Now to test it out, connect to Tailscale on your phone/tablet and visit some web
 
 - <a href="https://tailscale.com/kb" target="_blank" data-umami-event="pihole-anywhere-post-tailscale-docs">Tailscale Docs</a>
 - <a href="https://tailscale.com/kb/1114/pi-hole" target="_blank" data-umami-event="pihole-anywhere-post-tailscale-docs-pihole">Pi-Hole from anywhere</a>
-
-### Related Articles
-
-- <a href="/blog/set-up-pihole-on-linux/" data-umami-event="pihole-anywhere-post-related-setup-pihole">Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS</a>
-- <a href="/blog/comprehensive-guide-tailscale-securely-access-home-network/" data-umami-event="pihole-anywhere-post-related-tailscale">Comprehensive guide to setting up Tailscale to securely access your home network from anywhere</a>

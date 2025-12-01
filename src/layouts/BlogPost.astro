@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import FormattedDate from "@components/FormattedDate.astro";
 import TableOfContents from '@components/TableOfContents.astro';
@@ -20,9 +21,15 @@ const BUTTONS = [BlueskyShareButton, ThreadsShareButton, TwitterShareButton, Red
 
 type Props = CollectionEntry<"blog">['data'] & { headings: MarkdownHeading[] };
 
-const { title, description, pubDate, updatedDate, tags, headings } = Astro.props;
+const { title, description, pubDate, updatedDate, tags, headings, related1, related2 } = Astro.props;
 
 const { slug } = Astro.params;
+
+const allPosts = await getCollection("blog");
+const relatedPosts = [ related1, related2 ];
+const selectedPosts = allPosts.filter(post => 
+  relatedPosts.includes(post.id)
+);
 ---
 
 <BaseLayout title={title} description={description}>
@@ -256,6 +263,31 @@ const { slug } = Astro.params;
       font-size: 1.5em;
       justify-content: space-between;
     }
+    .related {
+      display: inline;
+    }
+    .related h3 {
+      font-size: 1.5em;
+      color: var(--primary);
+      margin: 1em 0 1em 0;
+    }
+    .related ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    .related li {
+      font-size: 1.15em;
+      font-weight: 700;
+      border: 2px solid var(--primary);
+      background-color: var(--blockquote);
+      color: var(--emphasis);
+      padding: 1em 1em 0.85em 1em;
+      margin: 1em;
+      border-radius: 0.5em;
+    }
+    .related li:hover {
+      color: var(--hover);
+    }
     @media screen and (max-width: 900px) {
       .post-end {
         display: grid;
@@ -291,6 +323,9 @@ const { slug } = Astro.params;
       .last-updated-on:before {
         content:"\a";
         white-space: pre;
+      }
+      .related li {
+        font-size: 1em;
       }
       .edit-post {
         justify-content: space-around;
@@ -361,6 +396,8 @@ const { slug } = Astro.params;
       .astro-social-share svg {
         filter: var(--share);
         margin: 0 0.25em;
+        width: 32px;
+        height: 32px;
       }
       .astro-social-share svg:hover {
         filter: var(--coffee-hover);
@@ -405,8 +442,23 @@ const { slug } = Astro.params;
         >.
       </p>
     </slot>
+
+    <div class="related">
+      <h3>Related Articles</h3>
+      <ul>
+        {selectedPosts.map(post => (
+          <a href={`/blog/${post.id}`} rel="prefetch-intent" data-umami-event={`featured-${post.id}`}>
+            <li>
+              {post.data.title}
+            </li>
+          </a>
+        ))}
+      </ul>
+    </p>
+
   </article>
   <hr class="midline">
+
   <script is:inline src="https://giscus.app/client.js"
     data-theme="https://blog-8c6.pages.dev/giscus.css"
     data-repo="fullmetalbrackets/blog"
@@ -418,12 +470,12 @@ const { slug } = Astro.params;
     data-reactions-enabled="1"
     data-emit-metadata="1"
     data-input-position="top"
-    data-theme="dark_protanopia"
     data-lang="en"
     data-loading="lazy"
     crossorigin="anonymous"
     async>
   </script>
+
   <aside class="edit-post">
     <div>
       <span>

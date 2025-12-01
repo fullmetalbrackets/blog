@@ -4,6 +4,8 @@ description: "When running a headless home server, you may want to set up a moni
 pubDate: 2022-10-20
 updatedDate: 2025-02-03
 tags: ["docker", "self-hosting"]
+related1: setting-up-plex-in-docker
+related2: how-to-run-filebrowser-in-docker
 ---
 
 ## Prepping the Compose file and Prometheus config files
@@ -152,8 +154,3 @@ Now you're ready to create your dream Grafana dashboard! Creating the actual das
 - <a href="https://prometheus.io/" target="_blank" data-umami-event="setup-prom-cad-graf-prometheus">Prometheus</a>
 - <a href="https://github.com/google/cadvisor" target="_blank" data-umami-event="setup-prom-cad-graf-cadvisor">cAdvisor</a>
 - <a href="https://grafana.com" target="_blank" data-umami-event="setup-prom-cad-graf-grafana">Grafana</a>
-
-### Related Articles
-
-- <a href="/blog/setting-up-plex-in-docker/" data-umami-event="setup-prom-cad-graf-related-setup-plex">Setup self-hosted Plex Media Server in Docker</a>
-- <a href="/blog/how-to-run-filebrowser-in-docker/" data-umami-event="setup-prom-cad-graf-related-selfhost-filebrowser">How to run self-hosted FileBrowser in Docker</a>

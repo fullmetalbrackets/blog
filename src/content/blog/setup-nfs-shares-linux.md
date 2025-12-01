@@ -3,6 +3,8 @@ title: "Set up NFS Shares between Linux hosts"
 description: "Network File Share or NFS allows sharing directories between Linux hosts on the same network, similar to Samba though it has better performance with small and medium-sized files comparatively. Here's a quick guide on setting up an NFS share between Linux hosts."
 pubDate: 2022-10-29
 tags: ["networking", "linux"]
+related1: mounting-hard-drives-in-linux
+related2: create-public-samba-share-without-login
 ---
 
 ## Set up the NFS server
@@ -84,8 +86,3 @@ To have Linux auto-mount the share at boot, edit the _fstab_ file with `sudo nan
 - <a href="https://man7.org/linux/man-pages/man5/exports.5.html" target="_blank" data-umami-event="setup-nfs-exports-manpage">Exports man page</a>
 - <a href="https://cloud.netapp.com/blog/azure-anf-blg-linux-nfs-server-how-to-set-up-server-and-client" target="_blank" data-umami-event="setup-nfs-netapp-blog">How to setup NFS server and client by Netapp Blog</a>
 - <a href="https://www.golinuxcloud.com/nfs-exports-options-examples" target="_blank" data-umami-event="setup-nfs-onlinuxcloud">Practical NFS share examples by OnLinuxCloud</a>
-
-### Related Articles
-
-- <a href="/blog/mounting-hard-drives-in-linux/" data-umami-event="setup-nfs-mount-hdds">Mounting (either internal or external) hard drives in Linux</a>
-- <a href="/blog/create-public-samba-share-without-login/" data-umami-event="setup-nfs-public-smb-nologin">Create a public Samba share accessible without a login</a>

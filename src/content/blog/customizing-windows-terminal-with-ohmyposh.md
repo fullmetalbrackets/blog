@@ -4,6 +4,8 @@ description: "While I use Zsh with Oh-My-Zsh for making my Linux terminal pretty
 pubDate: 2022-10-01
 updatedDate: 2025-02-17
 tags: ["powershell", "command line"]
+related1: guide-to-zsh-ohmyzsh-plugins-and-theme
+related2: powershell-commands-cheat-cheat
 ---
 
 <!-- <img src="/oh-my-posh.png" class="posh-img" loading="eager" decoding="async" alt="Oh My Posh" /> -->
@@ -99,8 +101,3 @@ Oh-My-Posh comes with many themes that are regularly maintained, but [anyone can
 - <a href="https://learn.microsoft.com/en-us/windows/package-manager/winget" target="_blank">Install WinGet Package Manager</a>
 - <a href="https://ohmyposh.dev" target="_blank">Oh-My-Posh</a>
 - <a href="https://nerdfonts.com" target="_blank">Nerd Fonts</a>
-
-### Related Articles
-
-- <a href="/blog/guide-to-zsh-ohmyzsh-plugins-and-theme/" data-umami-event="ohmyposh-related-ohmyzsh">Quick guide to set up Zsh and Oh-My-Zsh with essential plugins and a theme</a>
-- <a href="/blog/powershell-commands-cheat-cheat/" data-umami-event="ohmyposh-related-powershell-commands">PowerShell commands cheat sheet</a>

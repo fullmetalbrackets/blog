@@ -3,7 +3,8 @@ title: "How to factory restore a ZimaBoard"
 description: "I've recently been playing around with ZimaBoard, a single board server running Debian and CasaOS. It's a cool little machine, but I accidentally broke something and had to factory reset. It's not a simple option in a some settings menu, the process involves flashing an image on the ZimaBoard, so I wrote down the steps I took."
 pubDate: 2024-12-22
 updatedDate: 2025-02-10
-tags: ["zimaboard", "linux"]
+tags: ["zimaboard", "debian"]
+related1: remove-casaos-zimaboard-upgrade-debian-12
 ---
 
 ## About the ZimaBoard
@@ -61,7 +62,3 @@ On a browser in the same local network, go to `http://casaos.local` and the Casa
 - <a href="https://rufus.ie" target="_blank" umami-data-event="factory-restore-zimaboard-rufus">Rufus</a>
 - <a href="https://etcher.balena.io" target="_blank" umami-data-event="factory-restore-zimaboard-balenaetcher">BalenaEtcher</a>
 - <a href="https://ventoy.net" target="_blank" umami-data-event="factory-restore-zimaboard-ventoy">Ventoy</a>
-
-### Related Articles
-
-- <a href="/blog/remove-casaos-zimaboard-upgrade-debian-12/" umami-data-event="factory-restore-zimaboard-related-remove-casaos">How to remove CasaOS from a ZimaBoard and upgrade to Debian 12 Bookworm</a>

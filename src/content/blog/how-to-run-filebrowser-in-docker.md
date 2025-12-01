@@ -4,6 +4,8 @@ description: "FileBrowser is a self-hosted file manager for a specified director
 pubDate: 2022-11-04
 updateDate: 2025-06-24
 tags: ["self-hosting", "docker"]
+related1: setting-up-plex-in-docker
+related2: setting-up-jellyfin-in-docker
 ---
 
 ## Pre-Requisites
@@ -96,8 +98,3 @@ Once the container is up and running, go to `http://ip-address:8080` in your web
 - <a href="https://filebrowser.org" target="_blank" data-umami-event="setup-filebrowser-site">FileBrowser documentation</a>
 - <a href="https://docs.docker.com" target="_blank" data-umami-event="setup-filebrowser-docker-docs">Docker documentation</a>
 - <a href="https://docs.docker.com/compose/" target="_blank" data-umami-event="setup-filebrowser-compose-docs">Docker Compose documentation</a>
-
-### Related Articles
-
-- <a href="/blog/setting-up-plex-in-docker/" data-umami-event="setup-filebrowser-related-setup-plex">Setup self-hosted Plex Media Server in Docker</a>
-- <a href="/blog/setting-up-jellyfin-in-docker/" data-umami-event="setup-filebrowser-related-setup-jellyfin">Setup self-hosted Jellyfin Media Server in Docker</a>

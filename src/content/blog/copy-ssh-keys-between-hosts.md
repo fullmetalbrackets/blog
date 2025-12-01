@@ -4,6 +4,8 @@ description: "How to copy SSH keys between Linux hosts and from Windows to Linux
 pubDate: 2021-07-09
 updatedDate: 2025-02-17
 tags: ["ssh", "command line"]
+related1: generating-an-ssh-key-pair
+related2: setup-ssh-authentication-to-push-to-github
 ---
 
 ## Copy SSH key between Linux hosts
@@ -28,8 +30,3 @@ cat ~/.ssh/id_rsa.pub | ssh <user>@<hostname> 'umask 0077; mkdir -p .ssh; cat >>
 ```
 
 Next: <a href="https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key" target="_blank" rel="noopener noreferrer">GitHub Docs instructions for adding a GPG keys.</a>
-
-### Related Articles
-
-- <a href="/blog/generating-an-ssh-key-pair/" data-umami-event="copy-shh-keys-related-generate-ssh-pair">Generating an SSH key pair</a>
-- <a href="/blog/setup-ssh-authentication-to-push-to-github/" data-umami-event="copy-shh-keys-related-ssh-auth-github">Setup SSH authentication to push to Github</a>

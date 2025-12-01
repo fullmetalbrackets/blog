@@ -3,6 +3,8 @@ title: "How to format and/or partition disks in Linux"
 description: "Just a quick guide to format and partition hard drives in Linux command line that I wrote for myself a long time ago, and recently had to reference again."
 pubDate: 2022-10-08
 tags: ["linux", "command line"]
+related1: basic-linux-commands
+related2: mounting-hard-drives-in-linux
 ---
 
 > Be aware that using these instructions to format a disk or delete partitions will lead to the loss of any data contained therein.
@@ -54,8 +56,3 @@ You’d then use `mkfs` as above to format the partition with a filesystem, if o
 
 - <a href="https://man7.org/linux/man-pages/man8/fdisk.8.html" target="_blank">FDisk man page</a>
 - <a href="https://man7.org/linux/man-pages/man8/mkfs.8.html" target="_blank">MKFS man page</a>
-
-### Related Articles
-
-- <a href="/blog/basic-linux-commands/" data-umami-event="format-partition-related-linux-commands">Linux Commands & Keyboard Shortcuts Cheat Sheet</a>
-- <a href="/blog/mounting-hard-drives-in-linux/" data-umami-event="format-partition-related-mounting-hdd">Mounting (either internal or external) hard drives in Linux</a>
