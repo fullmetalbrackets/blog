@@ -3,8 +3,8 @@ title: "5 ways to easily host your web site for free"
 description: "So you're learning web development, building things locally and only ever seeing your site or app when you run it on your computer. But how do you get this thing online so you can make sure it works on the interwebs? How do you learn headers, content-security-policy and CORS without having a site hosted online to work with? And how to do it FOR FREE?"
 pubDate: 2021-09-06
 updatedDate: 2025-02-03
-tags:
-  - web development
+tags: ["web development"]
+related1: using-surge-sh-to-host-static-sites
 ---
 
 > This was one of my earliest blog posts when I was trying out as many different free static web hosts as I could. Although originally hosted on Netlify for years, <a href="/blog/merging-sites-and-changing-hosts" target="_blank">I switched to Cloudflare Pages</a> and haven't looked back. I don't use Netlify at all anymore, or any of the other web hosts mentioned below for that matter, because Cloudflare is just too good!

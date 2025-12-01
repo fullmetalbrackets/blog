@@ -2,15 +2,17 @@
 title: "How I set up a home server for self-hosting and as a NAS with secure remote access via Tailscale"
 description: "I turned my old Dell PC into an all-in-one home server and network attached storage to self-host all my data, my photos, and my media library, running Home Assistant, Plex and other services, all securely accessible from outside my home with Tailscale."
 pubDate: 2025-01-31
-updatedDate: 2025-11-14
-tags: ["self-hosting", "tailscale"]
+updatedDate: 2025-11-30
+tags: ["self-hosting", "debian", "tailscale"]
+related1: expose-plex-tailscale-vps
+related2: pihole-anywhere-tailscale
 ---
 
 ## Server hardware and software
 
 My old desktop PC turned server is a _Dell XPS 8920_ with an **Intel i7-7700 CPU** and **24 GB of DDR4 RAM**. (I removed the _AMD RX 480 GPU_ it came with, since I was not going to use it.) I installed _Debian 12 Bookworm_ on the M.2 NVMe drive and added hard drives to every available SATA port, including replacing the CD-ROM with another HDD. Additional hard drives are connected via two external docks each holding two HDDs, both connected to USB 3.1 ports utilizing USB Attached SCSI. (UASP)
 
-The large capacity (2 and 4 TB) hard drives are pooled together using <a href="/blog/two-drives-mergerfs/" target="_blank" data-umami-event="home-server-mergerfs-blog-post">MergerFS</a>. For secure remote access to my server and all it's services (plus everything else on my home network), I have settled on <a href="/blog/tailscale/" target="_blank">Tailscale</a> for it's ease of use and exceptionally good free tier. To manage the server with a nice GUI, I use <a href="https://cockpit-project.org" target="_blank" data-umami-event="home-server-cockpit">Cockpit</a>. You can add "applications" for visualizing performance metrics, managing storage, and configuring virtual machines. (Which I rarely use.) I also use the Cockpit add-ons _File Sharing_ to manage my SMB shares and _Navigator_ for a graphical file manager.
+Several hard drives pooled together using <a href="/blog/two-drives-mergerfs/" target="_blank" data-umami-event="home-server-mergerfs-blog-post">MergerFS</a>, with around 10 TB dedicated exclusively to movies and TV shows, while another 6 TB is for other data. For secure remote access to my server and all it's services (plus everything else on my home network), I have settled on <a href="/blog/tailscale/" target="_blank">Tailscale</a> for it's ease of use and exceptionally good free tier. To manage the server with a nice GUI, I use <a href="https://cockpit-project.org" target="_blank" data-umami-event="home-server-cockpit">Cockpit</a>. You can add "applications" for visualizing performance metrics, managing storage, and configuring virtual machines. (Which I rarely use.) I also use the Cockpit add-ons _File Sharing_ to manage my SMB shares and _Navigator_ for a graphical file manager.
 
 ![Cockpit Overview](../../img/blog/cockpit1.png 'Cockpit Overview')
 ![Cockpit Storage](../../img/blog/cockpit2.png 'Cockpit Storage')
@@ -624,8 +626,3 @@ Now with the Tailscale client installed on my Android phone, and toggling it on 
 Most everything I self-host is on this one server, but I do have some other things going on. I have two free-tier Oracle E.2micro instances that I connect to via Tailscale. One is used to <a href="/blog/expose-plex-tailscale-vps/" target="_blank" data-umami-event="home-server-expose-plex-tailscale">allow secure remote access to Plex by other users</a>, the other runs <a href="/blog/pihole-anywhere-tailscale/" target="_blank" data-umami-event="home-server-pihole-anywhere-tailscale">Pi-Hole as DNS for the entire tailnet</a>, including my phone when I'm not home.
 
 I have a ZimaBoard running a local instance of Pi-Hole for my tailnet, but it's usually off because I prefer to use the free Oracle VM. (I may flash OpenWRT onto the ZimaBoard and turn it into a Tailscale travel router.) In addition I have two Libre Sweet Potato SBCs that used to run my home instances of Pi-Hole, but are just sitting in a drawer unused for now.
-
-### Related Articles
-
-- <a href="/blog/expose-plex-tailscale-vps/" data-umami-event="tailscale-post-related-expose-plex-vps">How to securely expose Plex from behind CGNAT using Tailscale and a free Oracle VM</a>
-- <a href="/blog/pihole-anywhere-tailscale/" data-umami-event="tailscale-post-related-pihole-anywhere">How to use Pi-hole from anywhere with Tailscale</a>

@@ -4,6 +4,7 @@ description: "I'd been meaning to play around with Deno and finally got around t
 pubDate: 2022-11-19
 updatedDate: 2025-02-03
 tags: ["deno", "web development"]
+related1: 5-ways-to-host-site-free
 ---
 
 ## Sections
@@ -151,4 +152,3 @@ You should now be able to go to your custom domain to reach your blog. For whate
 - <a href="https://deno.com" target="_blank" rel="noopener">Deno Deploy</a> / <a href="https://deno.com/deploy/docs" target="_blank" rel="noopener">Documentation</a>
 - <a href="https://github.com/denoland/deno_blog" target="_blank" rel="noopener">Deno Blog Boilerplate</a>
 - <a href="https://github.com/fullmetalbrackets/deno-blog" target="_blank" rel="noopener">GitHub Repo of my Deno blog</a>
-- <a href="https://adiaz.us" target="_blank" rel="noopener">My Deno Blog on Deno Deploy</a>

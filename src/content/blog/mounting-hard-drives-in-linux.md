@@ -4,6 +4,8 @@ description: "When using Linux headless, such as via SSH or with no desktop envi
 pubDate: 2021-09-13
 updatedDate: 2024-02-03
 tags: ["linux", "command line"]
+related1: formatting-on-linux
+related2: basic-linux-commands
 ---
 
 When using Linux headless, such as via SSH or with no desktop environment, accessing a newly So how do we access a newly added hard drive in Linux? In Windows and most Linux desktop environments, a newly connected internal or external hard drive will be automatically detected, mounted and show up in file explorer (or your desktop environment's equivalent), but how does it work over command line with no GUI?
@@ -68,8 +70,3 @@ Save and close the fstab file. Now when you reboot, the second hard drive should
 
 - <a href="https://man7.org/linux/man-pages/man2/mount.2.html" target="_blank">Linux man page for MOUNT</a>
 - <a href="https://man7.org/linux/man-pages/man5/fstab.5.html" target="_blank">Linux man page for FSTAB</a>
-
-### Related Articles
-
-- <a href="/blog/formatting-on-linux/" data-umami-event="mounting-hdd-related-formatting-disks-linux">Formatting disks in Linux command line</a>
-- <a href="/blog/basic-linux-commands/" data-umami-event="stay-on-lid-closed-related-linux-commands">Linux Commands & Keyboard Shortcuts Cheat Sheet</a>

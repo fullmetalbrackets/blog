@@ -4,6 +4,8 @@ description: "I wrote before about sharing my Plex library via Cloudflare Tunnel
 pubDate: 2024-09-03
 updatedDate: 2025-08-15
 tags: ["plex", "tailscale"]
+related1: comprehensive-guide-tailscale-securely-access-home-network
+related2: expose-plex-with-cloudflare
 ---
 
 > Please note that effective April 29, 2025 an active Plex Pass subscription is required to remotely access Plex -- the below still works as is to get through CGNAT _with Plex Pass_, however if you are trying to share your library _without_ Plex Pass (or without the user you're sharing with have a Remote Watch Pass) then additional configuration is required. I have added a section at the end to setup the Plex server as a subnet router and exit node, which seems to be a workaround to get this to work. Please <a href="mailto:contact@fullmetalbrackets.com">let me know</a> if this no longer works, since I cannot test it myself as a lifetime Plex Pass owner!
@@ -433,8 +435,3 @@ sudo tailscale up --exit-node=<ip or machine name>
 - <a href="https://tailscale.com/kb" target="_blank" umami-data-event="expose-plex-tailscale-docs">Tailscale Docs</a>
 - <a href="https://developers.cloudflare.com/dns" target="_blank" umami-data-event="expose-plex-tailscale-cf-docs-dns">Cloudflare Docs - DNS</a>
 - <a href="https://docs.oracle.com/en-us/iaas/Content/Compute/home.htm" target="_blank" umami-data-event="expose-plex-tailscale-oci-docs-compute">OCI Docs - Compute</a>
-
-### Related Articles
-
-- <a href="comprehensive-guide-tailscale-securely-access-home-network/" umami-data-event="expose-plex-tailscale-related-tailscale-guide">Comprehensive guide to setting up Tailscale to securely access your home network from anywhere</a>
-- <a href="/blog/expose-plex-with-cloudflare/" umami-data-event="expose-plex-tailscale-related-expose-cloudflare">How to securely expose Plex from behind CGNAT for library sharing with Cloudflare Tunnel</a>

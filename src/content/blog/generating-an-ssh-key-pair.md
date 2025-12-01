@@ -4,6 +4,8 @@ description: "Secure Shell is a protocol for securely connecting from one comput
 pubDate: 2021-09-12
 updatedDate: 2022-09-23
 tags: ["ssh", "command line"]
+related1: copy-ssh-keys-between-hosts
+related2: setup-ssh-authentication-to-push-to-github
 ---
 
 Usually when to a computer or server via SSH, you are prompted for a username and password, but you can skip this and make your SSH sessions even more secure by using key pairs. Basically you will generate two encrypted keys that are associated with each other -- a private key and a public key. These are used to verify your identity.
@@ -83,8 +85,3 @@ cat ~/.ssh/id_rsa.pub | ssh bob@hostname 'cat >> .ssh/authorized_keys && echo "K
 - <a href="https://linux.die.net/man/1/ssh" target="_blank" data-umami-event="generating-ssh-key-pair-ssh-manpage">SSH Man Page</a>
 - <a href="https://linux.die.net/man/1/ssh-copy-id" target="_blank" data-umami-event="generating-ssh-key-pair-ssh-copy-id-manpage">SSH-Copy-ID Man Page</a>
 - <a href="https://nbeguier.medium.com/a-real-world-comparison-of-the-ssh-key-algorithms-b26b0b31bfd9" target="_blank" data-umami-event="generating-ssh-key-pair-medium-comparing-ssh-algos">Medium article comparing the different SSH encryption algorithms</a>
-
-### Related Articles
-
-- <a href="/blog/copy-ssh-keys-between-hosts/" data-umami-event="generating-ssh-key-pair-related-copy-ssh-keys-hosts">Copying SSH Keys between different hosts</a>
-- <a href="/blog/setup-ssh-authentication-to-push-to-github/" data-umami-event="generating-ssh-key-pair-related-ssh-auth-github">Setup SSH authentication to push to Github</a>

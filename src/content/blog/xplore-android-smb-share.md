@@ -4,6 +4,8 @@ description: "I've wrote before about file managers for Android before, recently
 pubDate: 2024-03-26
 updatedDate: 2025-02-22
 tags: ["android", "smb"]
+related1: solid-explorer-samba-share
+related2: setup-a-samba-share-on-linux-via-command-line
 ---
 
 > Although I'm doing this on a OnePlus phone running **OxygenOS 14**, it is just a customized version of **Android 14** -- everything below should work on any version of Android 14 and probably older versions as well.
@@ -77,8 +79,3 @@ All done! Once you get a hang of the UI, transferring files back and forth from 
 - <a href="https://www.lonelycatgames.com/apps/xplore" target="_blank" data-umami-event="x-plore-site">X-plore File Manager website</a>
 - <a href="https://play.google.com/store/apps/details?id=com.lonelycatgames.Xplore" target="_blank" data-umami-event="x-plore-google-play">Download X-plore from Google Play Store</a>
 - <a href="https://www.amazon.com/Lonely-Cat-Games-X-plore-Manager/dp/B00LLG7AR8" target="_blank" data-umami-event="x-plore-amazon">Download X-plore from Amazon Appstore</a>
-
-### Related Articles
-
-- <a href="/blog/solid-explorer-samba-share/" umami-data-event="xplorer-related-solid-explorer">How to use Solid Explorer app to access SMB network shares from an Android device</a>
-- <a href="/blog/setup-a-samba-share-on-linux-via-command-line/" umami-data-event="solid-explorer-related-smb-share-linux-cli">Setup a Samba share on Linux via command line</a>

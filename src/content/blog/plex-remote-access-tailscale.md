@@ -4,6 +4,8 @@ description: "Beginning April 29th, 2025 the pricing for Plex Pass increased at 
 pubDate: 2025-05-17
 updatedDate: 2025-11-08
 tags: ["tailscale", "plex"]
+related1: comprehensive-guide-tailscale-securely-access-home-network
+related2: expose-plex-tailscale-vps
 ---
 
 > I have received confirmation from several people that remotely accessing Plex works with this setup without Plex Pass or Remote Watch Pass, at least for now -- it's entirely possible Plex will change something in the future to break this workaround. In fact, I would not be surprised if they do.
@@ -150,8 +152,3 @@ You should now be able to remote access Plex and stream your content when you ar
 - <a href="https://tailscale.com/kb/1136/tailnet" target="_blank" data-umami-event="plex-remote-access-to-docs-tailnet">Tailnets</a>
 - <a href="https://tailscale.com/kb/1081/magicdns" target="_blank" data-umami-event="plex-remote-access-to-docs-magidns">MagicDNS</a>
 - <a href="https://tailscale.com/kb/1019/subnets" target="_blank" data-umami-event="plex-remote-access-to-docs-subnets">Subnet Routers</a>
-
-### Related Articles
-
-- <a href="/blog/tailscale/" umami-data-event="plex-remote-access-related-tailscale-guide">Comprehensive guide to setting up Tailscale to securely access your home network from anywhere</a>
-- <a href="/blog/expose-plex-tailscale-vps/" data-umami-event="plex-remote-access-related-expose-plex-vps">How to securely expose Plex from behind CGNAT for library sharing using Tailscale and a free Oracle VM</a>

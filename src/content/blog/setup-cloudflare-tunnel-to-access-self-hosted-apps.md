@@ -4,6 +4,8 @@ description: "Cloudflare Tunnels have been around for a few years and are well r
 pubDate: 2023-07-20
 updatedDate: 2025-02-03
 tags: ["self-hosting", "cloudflare"]
+related1: self-host-website-cloudflare-tunnel
+related2: expose-plex-with-cloudflare
 ---
 
 ## Pre-Requisites
@@ -225,8 +227,3 @@ It is possible to <a href="https://developers.cloudflare.com/dns/manage-dns-reco
 - <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/routing-to-tunnel/dns/" target="_blank" data-umami-event="tunnel-apps-docs-routing-traffic">Cloudflare Docs - Routing traffic to a tunnel</a>
 - <a href="https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/google/" target="_blank" data-umami-event="tunnel-apps-docs-identity">Cloudflare Docs - Identity</a>
 - <a href="https://developers.cloudflare.com/cloudflare-one/policies/access/policy-management/" target="_blank" data-umami-event="tunnel-apps-docs-policy-mgmt">Cloudflare Docs - Policy Management</a>
-
-### Related Articles
-
-- <a href="/blog/self-host-website-cloudflare-tunnel/" data-umami-event="tunnel-apps-related-complete-tunnel-guide">Complete guide to self-hosting a website through Cloudflare Tunnel</a>
-- <a href="/blog/expose-plex-with-cloudflare/" data-umami-event="tunnel-apps-related-expose-plex">How to securely expose Plex from behind CGNAT for library sharing with Cloudflare Tunnel</a>

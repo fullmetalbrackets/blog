@@ -4,6 +4,8 @@ description: "A quick guide on configuring Pi-Hole to use either Cloudflared or 
 pubDate: 2023-07-27
 updatedDate: 2025-03-02
 tags: ["pi-hole", "networking"]
+related1: using-dns-over-https-with-pihole
+related2: set-up-pihole-on-linux
 ---
 
 ## What and Why
@@ -112,8 +114,3 @@ Go to **Settings** on the sidebar and click on **All settings** from the dropdow
 ![Fix for Cloudflared in Pi-Hole settings.](../../img/blog/pihole-cloudflared-fix.png 'Fix for Cloudflared in Pi-Hole settings')
 
 Now you're done with Cloudflared. You can verify it's working with the <a href="https://1.1.1.1/help" target="_blank">Cloudflare DNS checker</a>, under Debug Information you look at _Using DNS over HTTPS (DoH)_ and it should say **YES** next to it. (This site may not properly work if `DNSSEC` is enabled in Pi-Hole, and will not detect DNS over TLS to other providers like Quad9 or Google, it ONLY detects Cloudflare.)
-
-### Related Articles
-
-- <a href="/blog/using-dns-over-https-with-pihole/" data-umami-event="pihole-quad9-dot-related-pihole-doh">Using DNS over HTTPS with Pi-Hole and Cloudflared</a>
-- <a href="/blog/set-up-pihole-on-linux" data-umami-event="pihole-quad9-dot-related-setup-pihole">Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS</a>

@@ -4,6 +4,8 @@ description: "Just a quick cheat sheet of basic and slightly less basic Linux co
 pubDate: 2022-09-18
 updatedDate: 2025-02-17
 tags: ["linux", "command line"]
+related1: formatting-on-linux
+related2: mounting-hard-drives-in-linux
 ---
 
 ## Common Commands
@@ -80,8 +82,3 @@ tags: ["linux", "command line"]
 ## Reference
 
 - <a href="https://ss64.com/bash" target="_blank" rel="noopener noreferrer">An A-Z Index of the Linux command line</a>
-
-### Related Articles
-
-- <a href="/blog/formatting-on-linux/" data-umami-event="autologin-related-formatting-disks-linux">Formatting disks in Linux command line</a>
-- <a href="/blog/mounting-hard-drives-in-linux/" data-umami-event="autologin-related-mounting-hdds-linux">Mounting (either internal or external) hard drives in Linux</a>

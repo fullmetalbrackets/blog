@@ -3,6 +3,8 @@ title: "PowerShell commands cheat sheet"
 description: "I'm much more comfortable using Bash over PowerShell, but there are definitely times that you need to use command line on Windows. So I keep a small, but growing list of my most commonly used cmdlets, their Linux-like aliases, and other must-know commands."
 pubDate: 2022-10-09
 tags: ["powershell", "command line"]
+related1: customizing-windows-terminal-with-ohmyposh
+related2: basic-linux-commands
 ---
 
 ## Cmdlets & Linux Equivalents
@@ -38,8 +40,3 @@ PowerShell cmdlets have aliases identical to their equivalent Linux commands, he
 ## References
 
 - <a href="https://learn.microsoft.com/en-us/powershell/?view=powershell-7.2" target="_blank">PowerShell Documentation</a>
-
-### Related Articles
-
-- <a href="/blog/customizing-windows-terminal-with-ohmyposh/" data-umami-event="powershell-commands-related-ohmyposh">Customizing the Windows Terminal command prompt with Oh-My-Posh</a>
-- <a href="/blog/basic-linux-commands/" data-umami-event="powershell-commands-related-linux-commands">Linux Commands & Keyboard Shortcuts Cheat Sheet</a>

@@ -4,6 +4,8 @@ description: "I've used a reverse proxy to access my self-hosted apps and servic
 pubDate: 2025-01-28
 updatedDate: 2025-02-26
 tags: ["self-hosting", "adguard", "cloudflare"]
+related1: reverse-proxy-using-nginx-pihole-cloudflare
+related2: self-host-website-cloudflare-tunnel
 ---
 
 > This guide is for using **AdGuard Home** as the DNS server, where we will add the DNS records for our proxied services.
@@ -193,8 +195,3 @@ Barring any errors, once you set up all your proxy hosts in Nginx Proxy Manager 
 - <a href="https://adguard.com/en/adguard-home/overview.html" target="_blank" data-umami-event="reverse-proxy-adguard-agh-site">Website of AdGuard Home</a>
 - <a href="https://nginxproxymanager.com" target="_blank" data-umami-event="reverse-proxy-adguard-npm-site">Website of Nginx Proxy Manager</a>
 - <a href="https://github.com/NginxProxyManager/nginx-proxy-manager" target="_blank" data-umami-event="reverse-proxy-adguard-npm-gh">GitHub of Nginx Proxy Manager</a>
-
-### Related Articles
-
-- <a href="/blog/reverse-proxy-using-nginx-pihole-cloudflare/" data-umami-event="reverse-proxy-adguard-related-reverse-proxy-pihole">Setting up a reverse proxy for HTTPS with a custom domain using Nginx Proxy Manager, Pi-Hole and Cloudflare</a>
-- <a href="/blog/self-host-website-cloudflare-tunnel/" data-umami-event="reverse-proxy-adguard-related-tunnel-guide">Complete guide to self-hosting a website through Cloudflare Tunnel</a>

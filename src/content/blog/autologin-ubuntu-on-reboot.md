@@ -3,6 +3,8 @@ title: "Autologin on Ubuntu and go straight to terminal"
 description: "Configure an Ubuntu machine to autologin and go straight into the terminal on boot."
 pubDate: 2022-11-25
 tags: ["linux", "command line"]
+related1: formatting-on-linux
+related2: mounting-hard-drives-in-linux
 ---
 
 > Works on <em>Ubuntu 20.04</em> but untested in 22.04 or other distros.
@@ -28,8 +30,3 @@ My reason for wanting to do this was to have my <a href="https://pi-hole.net" ta
 ## Reference
 
 - I found this simple change buried in <a href="https://askubuntu.com/a/659268" target="_blank" rel="noopener noreferrer">this exhaustive post on AskUbuntu</a>.
-
-### Related Articles
-
-- <a href="/blog/formatting-on-linux/" data-umami-event="autologin-related-formatting-disks-linux">Formatting disks in Linux command line</a>
-- <a href="/blog/mounting-hard-drives-in-linux/" data-umami-event="autologin-related-mounting-hdds-linux">Mounting (either internal or external) hard drives in Linux</a>

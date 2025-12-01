@@ -4,6 +4,8 @@ description: "Besides just using a browser extension for ad blocking, I've been 
 pubDate: 2022-10-08
 updatedDate: 2025-03-15
 tags: ["self-hosting", "pi-hole"]
+related1: pihole-anywhere-tailscale
+related2: reverse-proxy-using-nginx-pihole-cloudflare
 ---
 
 ## Pre-Requisites and Caveats
@@ -477,8 +479,3 @@ As of the release of Pi-Hole v6 (see below for details) the only way to sync con
 - <a href="https://man7.org/linux/man-pages/man8/cron.8.html" target="_blank" data-umami-event="setup-pihole-cron-manpage">Cron man page</a>
 - <a href="https://man7.org/linux/man-pages/man5/crontab.5.html" target="_blank" data-umami-event="setup-pihole-crontab-manpage">Crontab man page</a>
 - <a href="https://man7.org/linux/man-pages/man1/at.1p.html" target="_blank" data-umami-event="setup-pihole-at-manpage">At man page</a>
-
-### Related Articles
-
-- <a href="/blog/pihole-anywhere-tailscale/" data-umami-event="setup-pihole-related-anywhere-tailscale">How to use Pi-hole from anywhere with Tailscale</a>
-- <a href="/blog/reverse-proxy-using-nginx-pihole-cloudflare/" data-umami-event="setup-pihole-related-reverse-proxy">Setting up a reverse proxy for HTTPS with a custom domain using Nginx Proxy Manager, Pi-Hole and Cloudflare</a>

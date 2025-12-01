@@ -3,7 +3,8 @@ title: "Setup Apt-Cacher NG as a caching proxy server in your homelab and config
 description: "If your homelab has more than a few servers or VMs running Debian-based distributions, it makes sense to set up a package caching proxy on one of your servers. This guide will show how to set that up, configure your other Linux hosts, and optionally how to use Ansible to automate configuring those other hosts."
 pubDate: 2025-03-03
 tags: ["self-hosting", "linux"]
-
+related1: setup-unattended-upgrades
+related2: bootstrapping-fresh-linux-install-with-ansible
 ---
 
 ## About Apt-Cacher NG
@@ -181,8 +182,3 @@ You’ll see some output as the playbook carries out its tasks, and if there’s
 
 - <a href="https://unix-ag.uni-kl.de/~bloch/acng/" target="_blank" data-umami-event="apt-cacher-ng-ref-site">Apt-Cacher NG</a>
 - <a href="https://ansible.com" target="_blank" data-umami-event="apt-cacher-ng-ref-ansible-docs">Ansible</a>
-
-### Related Articles
-
-- <a href="/blog/setup-unattended-upgrades" data-umami-event="apt-cacher-ng-related-unattended-upgrades">Setup auto-updates in Debian and Ubuntu with Unattended-Upgrades and NeedRestart</a>
-- <a href="/blog/bootstrapping-fresh-linux-install-with-ansible" data-umami-event="apt-cacher-ng-related-bootstrap-ansible">Bootstrapping a fresh Linux install with Ansible</a>

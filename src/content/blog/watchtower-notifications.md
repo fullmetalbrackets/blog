@@ -4,6 +4,8 @@ description: "I'm running almost 30 containers on my home server at this point, 
 pubDate: 2024-05-31
 updatedDate: 2025-05-26
 tags: ["self-hosting", "docker"]
+related1: setting-up-plex-in-docker
+related2: how-to-run-filebrowser-in-docker
 ---
 
 ![Watchtower logo](../../img/blog/watchtower.png)
@@ -175,8 +177,3 @@ Use `docker compose up -d` to run the container. Once it's up and running, you s
 - <a href="https://github.com/containrrr/watchtower" target="_blank" data-umami-event="watchtower-notifications-gh">Watchtower GitHub</a>
 - <a href="https://containrrr.dev/shoutrrr" target="_blank" data-umami-event="watchtower-notifications-shoutrrr-docs">Shoutrrr Documentation</a>
 - <a href="https://github.com/containrrr/shoutrrr" target="_blank" data-umami-event="watchtower-notifications-shoutrrr-gh">Shoutrrr GitHub</a>
-
-### Related Articles
-
-- <a href="/blog/setting-up-plex-in-docker/" data-umami-event="watchtower-notifications-">Setup self-hosted Plex Media Server in Docker</a>
-- <a href="/blog/how-to-run-filebrowser-in-docker/" data-umami-event="watchtower-notifications-">How to run self-hosted FileBrowser in Docker</a>

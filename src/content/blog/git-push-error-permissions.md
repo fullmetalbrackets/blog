@@ -3,6 +3,8 @@ title: 'How to resolve Git error insufficient permission for adding an object to
 description: 'When working on a GitHub repo from different Linux hosts, I encountered an "insufficient permission" error when using git commands. Here is the solution that worked for me from StackOverflow.'
 pubDate: 2024-03-17
 tags: ["git", "command line"]
+related1: git-commands-cheat-sheet
+related2: how-to-generate-gpg-to-sign-git-commits
 ---
 
 ## The error
@@ -33,8 +35,3 @@ This error occurs because you accidentally committed a file or folder to git usi
 
 - <a href="https://stackoverflow.com/questions/18324279/github-error-insufficient-permission-for-adding-an-object-to-repository-databas" target="_blank">Thread on Stack Overflow</a>
 - <a href="https://stackoverflow.com/a/26137707" target="_blank">The answer with the fix</a>
-
-### Related Articles
-
-- <a href="/blog/git-commands-cheat-sheet/" target="git-error-permissions-related-git-commands">Git commands cheat sheet</a>
-- <a href="/blog/how-to-generate-gpg-to-sign-git-commits/" target="git-error-permissions-related-gpg-sign">How to generate a GPG key and use it to sign git commits</a>

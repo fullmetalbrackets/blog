@@ -3,6 +3,8 @@ title: "Quick guide to setting up SMB shares"
 description: "Setting up SMB shares is fairly easy, but I do it so infrequently I often forget the steps and need to look them up anyway. So I made myself two sets of smb config files for quickly setting up shares, either public or with a login required."
 pubDate: 2023-11-01
 tags: ["smb", "networking", "linux"]
+related1: formatting-on-linux
+related2: mounting-hard-drives-in-linux
 ---
 
 ## Why SMB shares?
@@ -111,8 +113,3 @@ From Windows, opening **Run** and going to `//hostname/public` (or via IP) shoul
 
 - <a href="https://www.samba.org/samba/docs" target="_blank" rel="noopener noreferrer">Samba Documentation</a>
 - <a href="https://www.samba.org/samba/docs/current/man-html/smbpasswd.8.html" target="_blank" rel="noopener noreferrer">smbpasswd Manpage</a>
-
-### Related Articles
-
-- <a href="/blog/formatting-on-linux/" data-umami-event="autologin-related-formatting-disks-linux">Formatting disks in Linux command line</a>
-- <a href="/blog/mounting-hard-drives-in-linux/" data-umami-event="autologin-related-mounting-hdds-linux">Mounting (either internal or external) hard drives in Linux</a>

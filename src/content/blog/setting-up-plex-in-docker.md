@@ -4,6 +4,8 @@ description: "Plex Media Server is one of the most popular services to self-host
 pubDate: 2022-10-17
 updatedDate: 2025-11-03
 tags: ["self-hosting", "plex", "docker"]
+related1: expose-plex-tailscale-vps
+related2: setting-up-jellyfin-in-docker
 ---
 
 ## Installing Plex as a Docker container
@@ -91,8 +93,3 @@ Your movies should now appear within the _Movies_ section of the Plex UI. Repeat
 - <a href="https://linuxserver.io" target="_blank" data-umami-event="setup-plex-linuxserver">Linuxserver</a>
 - <a href="https://plex.tv" target="_blank" data-umami-event="setup-plex-plexsite">Plex</a>
 - <a href="https://docker.com" target="_blank" data-umami-event="setup-plex-docker">Docker</a>
-
-### Related Articles
-
-- <a href="/blog/expose-plex-tailscale-vps/" data-umami-event="setup-plex-related-expose-tailscale-vps">How to securely expose Plex from behind CGNAT using Tailscale and a free Oracle VM</a>
-- <a href="/blog/setting-up-jellyfin-in-docker/" data-umami-event="setup-plex-setup-jellyfin">Setup self-hosted Jellyfin Media Server in Docker</a>

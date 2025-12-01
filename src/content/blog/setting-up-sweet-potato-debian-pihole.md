@@ -4,6 +4,8 @@ description: "I've been wanting to get a Raspberry Pi for ages, but they were ou
 pubDate: 2023-11-02
 updatedDate: 2025-05-22
 tags: ["self-hosting", "pi-hole", "sbc"]
+related1: setup-home-assistant-sweet-potato-debian
+related2: self-host-website-cloudflare-tunnel
 ---
 
 ![Libre Computer Sweet Potato.](../../img/blog/sweet-potato.jpg 'Libre Computer Sweet Potato')
@@ -166,8 +168,3 @@ If you'd like a low wattage Raspberry Pi alternative, then in my opinion Libre's
 - <a href="https://libre.computer" target="_blank" data-umami-event="sweet-potato-debian-pihole-libre-site">Libre Computer</a>
 - <a href="https://hub.libre.computer/t/booting-from-external-usb-device-or-bootrom-unsupported-device/51" target="_blank" data-umami-event="sweet-potato-debian-pihole-libre-boot-usb">Booting from External USB Device</a>
 - <a href="https://hub.libre.computer/t/libre-computer-aml-s905x-cc-emmc-flashing-steps-from-linux/33" target="_blank" data-umami-event="sweet-potato-debian-pihole-libre-flash-emmc">Flashing Linux to eMMC (alternative to USB boot)</a>
-
-### Related Articles
-
-- <a href="/blog/setup-home-assistant-sweet-potato-debian/" data-umami-event="sweet-potato-debian-pihole-related-hass-potato">Set up Home Assistant Supervised on a Libre Computer Sweet Potato SBC</a>
-- <a href="/blog/self-host-website-cloudflare-tunnel/" data-umami-event="sweet-potato-debian-pihole-related-tunnel-guide">Complete guide to self-hosting a website through Cloudflare Tunnel</a>
