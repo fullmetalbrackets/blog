@@ -1,39 +1,35 @@
 import { defineCollection, z } from 'astro:content';
+import { glob } from 'astro/loaders';
 
 const blog = defineCollection({
-	// Type-check frontmatter using a schema
+	loader: glob({ pattern: '**/[^_]*.md', base: "./src/content/blog" }),
 	schema: z.object({
 		title: z.string(),
 		description: z.string(),
 		tags: z.array(z.string()),
-		// Transform string to Date object
+		related1: z.string().optional(),
+		related2: z.string().optional(),
 		pubDate: z.coerce.date(),
 		updatedDate: z.coerce.date().optional(),
 	}),
 });
 
 const links = defineCollection({
-	// Type-check frontmatter using a schema
-	type: 'data',
+	loader: glob({ pattern: '**/[^_]*.yml', base: "./src/content/links" }),
 	schema: z.object({
 		title: z.string(),
 		description: z.string(),
 		url: z.string(),
 		tag: z.string(),
-		// Transform string to Date object
-		pubDate: z
-			.string()
-			.or(z.date())
-			.transform((val) => new Date(val)),
+		pubDate: z.coerce.date(),
 	}),
 });
 
 const wiki = defineCollection({
-	// Type-check frontmatter using a schema
+	loader: glob({ pattern: '**/[^_]*.md', base: "./src/content/wiki" }),
 	schema: z.object({
 		title: z.string(),
 		description: z.string(),
-		// Transform string to Date object
 		pubDate: z.coerce.date(),
 		updatedDate: z.coerce.date().optional(),
 		tag: z.string(),

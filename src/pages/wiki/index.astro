@@ -67,7 +67,7 @@ const desc = "List of all wiki articles";
         posts.map((post) => (
           <li>
             <div>
-              <a href={`/wiki/${post.slug}/`} rel="prefetch-intent" data-umami-event={post.slug}>
+              <a href={`/wiki/${post.id}/`} rel="prefetch-intent" data-umami-event={post.id}>
               <span class="title">{post.data.title}</span>
               <p class="date">
                 <FormattedDate date={post.data.pubDate} />

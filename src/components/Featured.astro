@@ -12,7 +12,7 @@ const featuredPosts = [
 ];
 
 const selectedPosts = allPosts.filter(post => 
-  featuredPosts.includes(post.slug)
+  featuredPosts.includes(post.id)
 );
 ---
 
@@ -111,7 +111,7 @@ const selectedPosts = allPosts.filter(post =>
   <div class="container">
     {selectedPosts.map(post => (
       <div class="list">
-        <a href={`/blog/${post.slug}`} rel="prefetch-intent" data-umami-event={`featured-${post.slug}`}>
+        <a href={`/blog/${post.id}`} rel="prefetch-intent" data-umami-event={`featured-${post.id}`}>
         <p class="posts-title">
           {post.data.title}
         </p>

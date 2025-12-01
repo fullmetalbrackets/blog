@@ -92,7 +92,7 @@ const { tag, posts } = Astro.props;
         posts.map((post) => (
           <li>
             <div>
-              <a href={`/blog/${post.slug}/`} rel="prefetch-intent">
+              <a href={`/blog/${post.id}/`} rel="prefetch-intent">
                 <span class="title">{post.data.title}</span>
                 <p class="date"><FormattedDate date={post.data.pubDate} /></p>
                 <p class="tag">
