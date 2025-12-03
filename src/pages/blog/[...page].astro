@@ -1,12 +1,24 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
-import { getCollection } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
 import FormattedDate from "@components/FormattedDate.astro";
 import BackToTop from "@components/BackToTop.astro";
+import type { Page } from "astro";
 
-const posts = (await getCollection("blog")).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
+export async function getStaticPaths({ paginate }) {
+  const posts = (await getCollection("blog")).sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+  );
+  
+  // Paginate with 5 posts per page
+  return paginate(posts, { pageSize: 5 });
+}
+
+interface Props {
+  page: Page<CollectionEntry<'blog'>>;
+}
+
+const { page } = Astro.props;
 
 const title = "Blog";
 const desc = "List of all blog posts";
@@ -21,12 +33,16 @@ const desc = "List of all blog posts";
   }
   ul {
     list-style-type: none;
-    margin: 0 auto 0 -1.5em;
+    margin: 0 auto;
+    padding: 0;
   }
   li {
     display: inline-block;
     margin: 0 auto;
     margin-bottom: 2em;
+  }
+  li:last-of-type {
+    margin-bottom: 0;
   }
   div {
     padding-bottom: 0.25em;
@@ -59,6 +75,29 @@ const desc = "List of all blog posts";
   li:hover .title {
     color: var(--hover);
   }
+  .pagination {
+    display: grid;
+    justify-content: space-between;
+    font-family: 'M Plus Rounded 1c Med', 'Atkinson', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
+    color: var(--primary);
+    margin: 1em 0 2em 0;
+  }
+  .pagination a {
+    border-bottom: 2px solid transparent;
+  }
+  .pagination a:hover {
+    border-bottom: 2px solid var(--hover);
+  }
+  .prev {
+    grid-column: 1;
+  }
+  .page-info {
+    grid-column: 2;
+    font-weight: 500;
+  }
+  .next {
+    grid-column: 3;
+  }
   @media screen and (min-width: 200px) and (max-width: 667px) {
     section {
       line-height: 1.2;
@@ -69,6 +108,22 @@ const desc = "List of all blog posts";
     .tag {
       display: block;
       margin-top: 0.25em;
+    }
+    .pagination {
+      display: grid;
+      justify-content: space-around;
+      place-items: center;
+    }
+    .page-info {
+      display: grid;
+      grid-row: 1;
+      margin-bottom: 0.5em;
+    }
+    .prev, .next {
+      display: grid;
+      grid-row: 2;
+      margin: 0 auto;
+      padding: 0 auto;
     }
   }
 </style>
@@ -82,7 +137,7 @@ const desc = "List of all blog posts";
     </p>
     <ul>
       {
-        posts.map((post) => (
+        page.data.map((post) => (
           <li>
             <div>
               <a href={`/blog/${post.id}/`} rel="prefetch-intent" data-umami-event={post.id}>
@@ -102,6 +157,24 @@ const desc = "List of all blog posts";
         ))
       }
     </ul>
+    
+    <nav class="pagination" aria-label="Blog pagination">
+      <span class="prev">
+        {page.url.prev ? (
+          <a href={page.url.prev} rel="prev">&larr; Newer</a>
+        ) : (
+          <span></span>
+        )}
+      </span>
+      <span class="page-info">Page {page.currentPage} of {page.lastPage}</span>
+      <span class="next">
+        {page.url.next ? (
+          <a href={page.url.next} rel="next">Older &rarr;</a>
+        ) : (
+          <span></span>
+        )}
+      </span>
+    </nav>
     <hr />
     <BackToTop />
   </section>
