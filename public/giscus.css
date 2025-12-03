@@ -41,7 +41,7 @@
 }
 
 .btn:hover {
-  background: rgb(200, 0, 0);
+  background: rgb(205, 110, 10);
 }
 
 .gsc-reactions-count {
@@ -239,9 +239,9 @@ background-image: url("/spinner.svg");
     --color-social-reaction-bg-reacted-hover: var(--color-scale-blue-8);
   }
 
-.btn:hover {
-  background: rgb(249, 115, 22);
-}
+  .btn:hover {
+    background: rgb(249, 115, 22);
+  }
   
   main .pagination-loader-container {
     background-image: url("https://github.com/images/modules/pulls/progressive-disclosure-line-dark.svg");
