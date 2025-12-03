@@ -1,16 +1,16 @@
 @font-face {
-  font-family: 'M Plus Rounded 1c Reg';
+  font-family: 'M Plus Rounded 1c';
   src: url('/fonts/MPLUSRounded1c-Regular.woff2') format('woff2');
   src: url('/fonts/MPLUSRounded1c-Regular.ttf') format('truetype');
-  font-weight: normal;
+  font-weight: 400;
   font-style: normal;
   font-display: fallback;
 }
 @font-face {
-  font-family: 'M Plus Rounded 1c Med';
-  src: url('/fonts/MPLUSRounded1c-Regular.woff2') format('woff2');
+  font-family: 'M Plus Rounded 1c';
+  src: url('/fonts/MPLUSRounded1c-Medium.woff2') format('woff2');
   src: url('/fonts/MPLUSRounded1c-Medium.ttf') format('truetype');
-  font-weight: normal;
+  font-weight: 700;
   font-style: normal;
   font-display: fallback;
 }
@@ -31,11 +31,11 @@
 
 :host, html {
   --font-family-sans: 'Atkinson', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
-  --font-family-monospace: 'M Plus Rounded 1c Med', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
+  --font-family-monospace: 'M Plus Rounded 1c', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', 'Courier New', Courier, monospace;
 }
 
 .btn {
-  font-family: 'M Plus Rounded 1c Med', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-family: 'M Plus Rounded 1c', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
   font-size: 18px;
   font-weight: 600;
 }
@@ -45,7 +45,7 @@
 }
 
 .gsc-reactions-count {
-  font-family: 'M Plus Rounded 1c Med', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-family: 'M Plus Rounded 1c', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
 }
 
 .gsc-reactions {

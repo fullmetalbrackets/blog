@@ -24,11 +24,23 @@ const { title, description, tag, pubDate, updatedDate } = Astro.props;
     article {
       margin-top: 2em;
     }
+    .date {
+      font-size: 0.875em;
+      margin-top: 0.5em;
+      display: grid;
+      grid-template-columns: 3;
+      grid-template-rows: 2;
+    }
+    .last-updated-on {
+      display: inline-flex;
+      place-items: center;
+      color: var(--emphasis);
+    }
     .tag {
-      margin: 0.6em auto 1em auto;
+      margin: -0.2em auto 0.3em auto;
     }
     .tag span {
-      font-family: 'M Plus Rounded 1c Med', 'Atkinson', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
+      font-family: var(--sub-font);
       background-color: var(--info);
       color: #000;
       border: 0;
@@ -50,7 +62,7 @@ const { title, description, tag, pubDate, updatedDate } = Astro.props;
     }
     @media screen and (max-width: 667px) {
       .tag {
-        margin: 1em auto;
+        margin: 0.5em auto;
       }
     }
   </style>
@@ -66,7 +78,7 @@ const { title, description, tag, pubDate, updatedDate } = Astro.props;
       {
         updatedDate && (
           <div class="last-updated-on">
-            Last updated on <FormattedDate date={updatedDate} />
+            Updated&nbsp;<FormattedDate date={updatedDate} />
           </div>
         )
       }

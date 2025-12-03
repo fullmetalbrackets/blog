@@ -1,4 +1,6 @@
 ---
+import Date from "@icons/calendar.svg";
+
 interface Props {
   date: Date;
 }
@@ -8,17 +10,31 @@ const { date } = Astro.props;
 
 <style scoped>
   time {
+    color: var(--date);
+    font-family: var(--sub-font);
+    display: inline-flex;
     font-size: 0.875em;
     font-weight: 700;
+    place-items: center;
+  }
+  svg {
+    display: inline-flex;
+    margin-left: -0.1em;
+    margin-right: 0.25em;
+    filter: var(--time-svg);
   }
 </style>
 
+
 <time datetime={date?.toISOString()}>
-  {
-    date?.toLocaleDateString("en-us", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    })
-  }
+  <Date width={24} height={24} />
+  <span>
+    {
+      date?.toLocaleDateString("en-us", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      })
+    }
+  </span>
 </time>

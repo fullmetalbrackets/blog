@@ -10,13 +10,23 @@ const posts = (await getCollection("blog")).sort(
 <style scoped>
   h2 {
     margin-bottom: 0.3em;
-    font-family: "M Plus Rounded 1c Reg";
+    font-family: var(--sub-font);
   }
   p {
     margin: 0;
   }
+  .info {
+    display: inline-flex;
+    place-items: center;
+    margin: 0.25em 0 0 0;
+    padding: 0;
+  }
+  .tag {
+    display: inline-flex;
+    place-items: center;
+  }
   .tag button {
-    margin-right: 0.15em;
+    margin: 0 0.25em 0.25em 0;
     background: var(--info);
     cursor: pointer;
   }
@@ -47,7 +57,7 @@ const posts = (await getCollection("blog")).sort(
   .posts-title {
     display: inline-flex;
     flex-direction: row;
-    margin: 0.25em auto;
+    margin: 0 auto;
   }
   .posts-title a,
   .posts-title a:active,
@@ -58,11 +68,11 @@ const posts = (await getCollection("blog")).sort(
     color: var(--menu);
   }
   a button {
+    font-family: var(--sub-font);
     background-color: var(--info);
     color: #000;
     border-radius: 0.25em;
     cursor: pointer;
-    font-weight: 600;
     padding: 4px 8px;
     text-decoration: none;
     text-overflow: ellipsis;
@@ -71,10 +81,9 @@ const posts = (await getCollection("blog")).sort(
     -o-transition: all 0.1s ease-out;
     transition: all 0.1s ease-out;
     margin: 0 0 0.5em 0.25em;
-    font-family: "M Plus Rounded 1c Med";
   }
   .more {
-    font-family: "M Plus Rounded 1c Reg";
+    font-family: var(--sub-font);
     font-weight: 900;
   }
   .more a {
@@ -84,9 +93,15 @@ const posts = (await getCollection("blog")).sort(
     border-bottom: 2px solid var(--hover);
   }
   @media screen and (max-width: 667px) {
-    .tag {
+    .info {
       display: block;
       margin-top: 0.25em;
+    }
+    .date {
+      display: block;
+    }
+    .tag {
+      display: inline-block;
     }
   }
 </style>

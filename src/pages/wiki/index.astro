@@ -13,7 +13,7 @@ const desc = "List of all wiki articles";
 
 <style scoped>
   h1 {
-    font-family: "M Plus Rounded 1c Reg";
+      font-family: var(--sub-font);
   }
   ul {
     list-style-type: none;
@@ -69,14 +69,14 @@ const desc = "List of all wiki articles";
           <li>
             <div>
               <a href={`/wiki/${post.id}/`} rel="prefetch-intent" data-umami-event={post.id}>
-              <span class="title">{post.data.title}</span>
-              <p class="date">
-                <FormattedDate date={post.data.pubDate} />
-              </p>
-              <p class="tag">
-                <button>{post.data.tag}</button>
-              </p>
-              <p class="desc">{post.data.description}</p>
+                <span class="title">{post.data.title}</span>
+                <p class="date">
+                  <FormattedDate date={post.data.pubDate} />
+                </p>
+                <p class="tag">
+                  <button>{post.data.tag}</button>
+                </p>
+                <p class="desc">{post.data.description}</p>
               </a>
             </div>
           </li>

@@ -1,16 +1,16 @@
 @font-face {
-  font-family: 'M Plus Rounded 1c Reg';
+  font-family: 'M Plus Rounded 1c';
   src: url('/fonts/MPLUSRounded1c-Regular.woff2') format('woff2');
   src: url('/fonts/MPLUSRounded1c-Regular.ttf') format('truetype');
-  font-weight: normal;
+  font-weight: 400;
   font-style: normal;
   font-display: fallback;
 }
 @font-face {
-  font-family: 'M Plus Rounded 1c Med';
-  src: url('/fonts/MPLUSRounded1c-Regular.woff2') format('woff2');
+  font-family: 'M Plus Rounded 1c';
+  src: url('/fonts/MPLUSRounded1c-Medium.woff2') format('woff2');
   src: url('/fonts/MPLUSRounded1c-Medium.ttf') format('truetype');
-  font-weight: normal;
+  font-weight: 700;
   font-style: normal;
   font-display: fallback;
 }
@@ -34,6 +34,8 @@
 @media (prefers-color-scheme: light) {
   :root, html {
     font-size: 24px;
+    --main-font: 'Atkinson', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    --sub-font: 'M Plus Rounded 1c', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', 'Courier New', Courier, monospace;
     --main: rgb(255, 255, 255);
     --text: rgb(32, 33, 36);
     --primary: rgb(44 156 195);
@@ -59,6 +61,7 @@
     --info-svg: brightness(0) saturate(100%) invert(77%) sepia(98%) saturate(1742%) hue-rotate(350deg) brightness(96%) contrast(95%);
     --share: brightness(0) saturate(100%) invert(74%) sepia(77%) saturate(474%) hue-rotate(356deg) brightness(104%) contrast(90%);
     --coffee-hover: brightness(0) saturate(100%) invert(45%) sepia(98%) saturate(1756%) hue-rotate(7deg) brightness(89%) contrast(92%);
+    --time-svg: brightness(0) saturate(100%) invert(35%) sepia(53%) saturate(496%) hue-rotate(120deg) brightness(87%) contrast(84%);
     text-wrap: pretty;
     box-sizing: border-box;
     height: 100%;
@@ -68,6 +71,8 @@
 @media (prefers-color-scheme: dark) {
   :root, html {
     font-size: 24px;
+    --main-font: 'Atkinson', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    --sub-font: 'M Plus Rounded 1c', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', 'Courier New', Courier, monospace;
     --main: rgb(32, 33, 36);
     --text: rgb(164, 174, 188);
     --primary: rgb(90, 194, 175);
@@ -94,6 +99,7 @@
     --info-svg: brightness(0) saturate(100%) invert(80%) sepia(82%) saturate(863%) hue-rotate(336deg) brightness(105%) contrast(90%);
     --share: brightness(0) saturate(100%) invert(77%) sepia(98%) saturate(1742%) hue-rotate(350deg) brightness(96%) contrast(95%);
     --coffee-hover: brightness(0) saturate(100%) invert(43%) sepia(96%) saturate(937%) hue-rotate(352deg) brightness(101%) contrast(95%);
+    --time-svg: invert(93%) sepia(78%) saturate(2834%) hue-rotate(213deg) brightness(148%) contrast(96%);
     text-wrap: pretty;
     box-sizing: border-box;
     height: 100%;
@@ -102,7 +108,7 @@
 }
 body {
   font-size: 24px;
-	font-family: 'Atkinson', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+	font-family: var(--main-font);
   line-height: 1.4;
 	margin: auto;
 	padding: 0 0.25em;
@@ -149,19 +155,19 @@ hr {
 	opacity: 0.5;
 }
 h1 {
-  font-family: 'Atkinson', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+  font-family: var(--main-font);
 	color: var(--code-text);
   margin: 0;
   padding: 0;
 }
 h2, h4, h6 {
-  font-family: 'Atkinson', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+  font-family: var(--main-font);
 	color: var(--primary);
   margin: 0;
   padding: 0;
 }
 h3, h5 {
-  font-family: 'Atkinson', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+  font-family: var(--main-font);
 	color: var(--emphasis);
   margin: 0;
   padding: 0;  
@@ -176,10 +182,14 @@ main .title {
 article p, article ol, article p li, #ref {
   line-height: 1.6;
 }
-img, picture, video, canvas, svg {
+img, picture, video, canvas {
   display: block;
   max-width: 100%;
   border-radius: 0.5em;
+}
+svg {
+  display: block;
+  max-width: 100%;
 }
 .sq-img {
   border-radius: 0;
@@ -220,18 +230,18 @@ strong, b {
 kbd {
   background-color: #ccc;
   color: #222;
-  border-radius: 0.25rem;
+  border-radius: 0.2em;
   border: 1px solid #000;
-  box-shadow: 0 2px 0 1px #aaa;
+  box-shadow: 0 2px 0 1px #888;
   cursor: default;
   font-family: sans-serif;
   font-size: 0.75em;
-	font-weight: 600;
+	font-weight: 700;
   line-height: 1.2;
   min-width: 0.75rem;
   display: inline-block;
   text-align: center;
-  padding: 2px 5px;
+  padding: 3px 5px 2px;
   position: relative;
   top: -1px;
 }
@@ -267,11 +277,6 @@ th {
 mark {
   background: var(--info);
 }
-time {
-	color: var(--date);
-  font-family: 'M Plus Rounded 1c Reg', 'Atkinson', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
-  font-size: 0.75em;
-}
 img {
 	max-width: 80%;
 	height: auto;
@@ -279,7 +284,7 @@ img {
 }
 code {
 	padding: 1px 4.5px;
-  font-family: 'M Plus Rounded 1c Med', 'Atkinson', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-family: var(--sub-font);
 	background-color: var(--code-bg);
 	color: var(--code-text);
 	border-radius: 0.25em;
@@ -307,7 +312,7 @@ figcaption {
   margin: 0;
 }
 blockquote {
-  font-family: 'Atkinson', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+  font-family: var(--main-font);
   font-size: 0.85em;
 	border: 2px solid var(--info);
   background-color: var(--blockquote);
@@ -424,13 +429,13 @@ aside > a, aside > a:active, aside > a:visited, aside > a:hover, aside > a:focus
 
 /* button effects */
 button {
-  font-family: 'M Plus Rounded 1c Med', 'Atkinson', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-family: var(--sub-font);
   background-color: var(--info);
   color: #000;
   border: 0;
   border-radius: 0.25em;
   padding: 4px 8px;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.75em;
 }
 @media (hover: hover) {
@@ -481,13 +486,6 @@ button {
   }
   article p {
     line-height: 1.4;
-  }
-}
-@media screen and (min-width: 668px) and (max-width: 980px) {
-  .top {
-    display: grid;
-    justify-content: end;
-    margin: 0 1em 0 auto;
   }
 }
 @media screen and (min-width: 200px) and (max-width: 667px) {

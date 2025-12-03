@@ -9,7 +9,7 @@ const links = (await getCollection("links")).sort(
 <style scoped>
   h2 {
     margin-bottom: 0.3em;
-    font-family: "M Plus Rounded 1c Reg";
+    font-family: var(--sub-font);
   }
   .container {
     background-color: var(--blockquote);
@@ -30,12 +30,11 @@ const links = (await getCollection("links")).sort(
     color: var(--hover);
     border-bottom: 2px solid var(--hover);
   }
-  a button {
-    background-color: var(--tags);
+  /* a button {
     color: #000;
     border-radius: 0.25em;
     cursor: pointer;
-    font-weight: 600;
+    font-weight: 700;
     padding: 4px 8px;
     text-decoration: none;
     text-overflow: ellipsis;
@@ -44,8 +43,7 @@ const links = (await getCollection("links")).sort(
     -o-transition: all 0.1s ease-out;
     transition: all 0.1s ease-out;
     margin: 0 0 0.5em 0;
-    font-family: "M Plus Rounded 1c Med";
-  }
+  } */
   section a:hover {
     text-decoration-color: var(--link);
   }
@@ -56,18 +54,18 @@ const links = (await getCollection("links")).sort(
     font-size: 0.9em;
   }
   .link-tag {
-    font-family: 'M Plus Rounded 1c Med', 'Atkinson', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
+    font-family: var(--sub-font);
     background-color: var(--info);
     color: #000;
     border: 0;
     border-radius: 0.25em;
     padding: 4px 8px;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 0.75em;
   }
   .more {
-    font-family: "M Plus Rounded 1c Reg";
-    font-weight: 900;
+    font-family: var(--sub-font);
+    font-weight: 700;
   }
   .more a {
     border-bottom: 2px solid transparent;
@@ -102,6 +100,9 @@ const links = (await getCollection("links")).sort(
     }
     li {
       margin: 0 1em 2em -1em;
+    }
+    .tag {
+      margin: 0.15em 0;
     }
   }
 </style>

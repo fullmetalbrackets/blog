@@ -26,7 +26,7 @@ const desc = "List of all blog posts";
 
 <style scoped>
   h1 {
-    font-family: "M Plus Rounded 1c Reg";
+    font-family: var(--sub-font);
   }
   .blurb {
     margin-bottom: 2em;
@@ -45,6 +45,7 @@ const desc = "List of all blog posts";
     margin-bottom: 0;
   }
   div {
+    display: block;
     padding-bottom: 0.25em;
     border-bottom: 2px solid transparent;
   }
@@ -59,6 +60,13 @@ const desc = "List of all blog posts";
   }
   button:first-of-type {
     margin-left: 0;
+  }
+  .info {
+    margin-top: 0.1em;
+    display: inline-flex;
+  }
+  .title {
+    display: block;
   }
   .title a,
   .title a:active,
@@ -78,7 +86,7 @@ const desc = "List of all blog posts";
   .pagination {
     display: grid;
     justify-content: space-between;
-    font-family: 'M Plus Rounded 1c Med', 'Atkinson', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
+    font-family: var(--sub-font);
     color: var(--primary);
     margin: 1em 0 2em 0;
   }
@@ -103,11 +111,11 @@ const desc = "List of all blog posts";
       line-height: 1.2;
     }
     .info {
+      display: block;
       margin-bottom: 0.25em;
     }
     .tag {
       display: block;
-      margin-top: 0.25em;
     }
     .pagination {
       display: grid;

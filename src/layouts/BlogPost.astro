@@ -40,7 +40,7 @@ const selectedPosts = allPosts.filter(post =>
 
   <style scoped>
     h1 {
-      margin-bottom: 0.5em;
+      margin-bottom: 0.125em;
       line-height: 1.1;
     }
     hr {
@@ -49,28 +49,8 @@ const selectedPosts = allPosts.filter(post =>
     article {
       margin: 2.5em auto;
     }
-    div {
-      display: inline-flex;
-      gap: 1em;
-      place-items: center;
-      justify-content: center;
-      grid-template-columns: 1fr 1fr;
-      margin: 0 auto;
-      padding: 0 auto;
-      text-wrap: auto;
-    }
-    .date {
-      font-size: 0.875em;
-      margin: 1em auto 0 auto;
-    }
-    .capitalize {
-      text-transform: lowercase;
-    }
     .description {
       margin: 1.5em auto 1.5em ;
-    }
-    .last-updated-on {
-      margin: 0 0.25em;
     }
     .tag button {
       margin: 0 0.25em;
@@ -78,8 +58,17 @@ const selectedPosts = allPosts.filter(post =>
     .tag button:first-of-type {
       margin-left: 0;
     }
-    .top {
-      font-size: 0.75em;
+    .date {
+      font-size: 0.875em;
+      margin-top: 0.5em;
+      display: grid;
+      grid-template-columns: 3;
+      grid-template-rows: 2;
+    }
+    .last-updated-on {
+      display: inline-flex;
+      place-items: center;
+      color: var(--emphasis);
     }
     li:hover {
       padding-bottom: 0.25em;
@@ -97,14 +86,12 @@ const selectedPosts = allPosts.filter(post =>
       margin-bottom: 1.5em;
     }
     .edit-post {
-      display: grid;
-      grid-template-columns: auto auto;
-      grid-template-columns: auto;
-      place-items: center;
+      display: flex;
       justify-content: space-around;
       color: var(--primary);
-      font-family: "M Plus Rounded 1c Med";
-      margin: 2em auto 1.5em auto;
+      font-family: var(--sub-font);
+      font-weight: 700;
+      margin: 1em auto;
     }
     .edit-post span {
       margin: 0 auto;
@@ -121,12 +108,12 @@ const selectedPosts = allPosts.filter(post =>
       color: #000;
       border-radius: 0.5em;
       cursor: pointer;
-      font-weight: 600;
+      font-weight: 700;
       margin: 0 auto;
       padding: 6px 10px;
       text-decoration: none;
       font-size: 0.85em;
-      font-family: 'M Plus Rounded 1c Med';
+      font-family: var(--sub-font);
       line-height: 1.5;
     }
     .edit img {
@@ -140,7 +127,17 @@ const selectedPosts = allPosts.filter(post =>
       cursor: pointer;
     }
     .post-end {
-      font-family: "M Plus Rounded 1c Med";
+      font-family: var(--sub-font);
+      font-weight: 700;
+      margin: 0 auto;
+      justify-content: space-around;
+    }
+    .mid-end {
+      display: grid;
+      place-items: center;
+      grid-template-columns: auto auto;
+      font-family: var(--sub-font);
+      font-weight: 700;
       margin: 0 auto;
       justify-content: space-around;
     }
@@ -160,7 +157,7 @@ const selectedPosts = allPosts.filter(post =>
       display: grid;
       background-color: var(--info);
       border-radius: 0.25em;
-      font-family: 'M Plus Rounded 1c Med';
+      font-family: var(--sub-font);
       color: var(--primary);
       grid-template-columns: auto;
       grid-template-rows: auto auto;
@@ -187,11 +184,12 @@ const selectedPosts = allPosts.filter(post =>
       color: var(--primary);
       grid-template-columns: auto;
       grid-template-rows: auto auto;
-      padding-top: 0.3em;
+      padding-top: 1em;
       cursor: default;
       width: 325px;
       height: 115px;
       margin-bottom: 1em;
+      font-weight: 700;
     }
     .stats {
       display: inline-block;
@@ -199,20 +197,19 @@ const selectedPosts = allPosts.filter(post =>
       color: #000;
       border-radius: 0.5em;
       cursor: pointer;
-      font-weight: 600;
-      margin: -0.75em auto 0 auto;
-      padding: 6px 10px;
+      font-weight: 700;
+      margin: 0 auto;
+      padding: 1px 10px 0 10px;
       text-decoration: none;
-      font-family: 'M Plus Rounded 1c Med';
-      line-height: 1.5;
+      font-family: var(--sub-font);
     }
     .umami img {
       display: inline;
       filter: brightness(0) saturate(100%);
       height: 24px;
       width: auto;
-      padding: 0 auto;
-      margin: 0 0 -3px 0;
+      padding: 0;
+      margin: 0 0 -0.3em 0;
       border-radius: 0;
       cursor: pointer;
     }
@@ -233,8 +230,10 @@ const selectedPosts = allPosts.filter(post =>
       width: 325px;
     }
     .questions span {
-      font-family: "M Plus Rounded 1c Med";
+      font-family: var(--sub-font);
+      font-weight: 700;
       color: var(--primary);
+      margin-bottom: 0.65em;
     }
     .email {
       display: inline-flex;
@@ -242,10 +241,10 @@ const selectedPosts = allPosts.filter(post =>
       text-align: center;
       border-radius: 0.5em;
       cursor: pointer;
-      font-weight: 600;
+      font-weight: 700;
       margin: 0 auto;
       text-decoration: none;
-      font-family: 'M Plus Rounded 1c Med';
+      font-family: var(--sub-font);
       line-height: 1.5;
       padding-top: 4px;
       padding-bottom: 6px;
@@ -260,8 +259,12 @@ const selectedPosts = allPosts.filter(post =>
       background: var(--menu);
     }
     .blog-aside {
+      display: inline-flex;
+      justify-content: space-around;
       font-size: 1.5em;
-      justify-content: space-between;
+      margin: -1em auto 1em auto;
+      padding: 0 auto;
+      width: 100%;
     }
     .related {
       display: inline;
@@ -288,65 +291,28 @@ const selectedPosts = allPosts.filter(post =>
     .related li:hover {
       color: var(--hover);
     }
-    @media screen and (max-width: 900px) {
-      .post-end {
-        display: grid;
-        grid-template-columns: auto auto;
-        justify-content: space-around;
-        place-items: center;
-        gap: 0;
-      }
-      .share {
-        grid-row: 1;
-        grid-column: 2;
-      }
-    }
-    @media screen and (max-width: 720px) {
+    @media screen and (max-width: 667px) {
       h1 {
         font-size: 1.35em;
       }
       article {
         margin-bottom: 3em;
       }
-      div {
-        display: grid;
-        gap: 1em;
-        grid-template-columns: auto auto;
-        place-content: start;
-        place-items: start;
-        margin: 0 auto;
-        padding: 0 auto;
-      }
-      .capitalize {
-        text-transform: capitalize;
-      }
-      .last-updated-on:before {
-        content:"\a";
-        white-space: pre;
-      }
       .related li {
         font-size: 1em;
       }
-      .edit-post {
+      .edit-post {        
         justify-content: space-around;
-        place-items: center;
-        gap: 0 0;
-        padding-left: 18px;
+        align-content: center;
       }
-      .edit-post span {
-        grid-row: 1;
-        grid-column: 1;
-        width: auto;
-        margin-bottom: -0.5em;
+      .edit-button::before {
+        content: "\a";
+        white-space: pre;
       }
       .edit {
-        grid-row: 2;
-        grid-column: 1;
-        width: auto;
-        max-width: 10em;
-        line-height: 1.325;
+        margin-left: 1em;
       }
-      .post-end {
+      .post-end, .mid-end {
         display: grid;
         grid-template-columns: auto;
         justify-content: center;
@@ -357,7 +323,7 @@ const selectedPosts = allPosts.filter(post =>
       .coffee {
         grid-row: 1;
         grid-column: 1;
-        margin: 0.25em auto 0.5em auto;
+        margin: 0.25em auto -0.25em auto;
         width: auto;
       }
       .coffee span {
@@ -366,22 +332,22 @@ const selectedPosts = allPosts.filter(post =>
       .share {
         grid-row: 2;
         grid-column: 1;
-        margin: 0 auto -0.25em auto;
+        margin: 0 auto -0.675em auto;
         width: auto;
       }
       .umami {
         width: auto;
-        margin: 0 auto 0.75em auto;
+        margin: 0 auto 0.15em auto;
       }
       .questions {
         width: auto;
         margin: 0 auto 0.75em auto;
       }
       .questions span {
-        margin-bottom: -0.5em;
+        margin: 1em auto 0 auto;
       }
       .email {
-        margin-bottom: 1.5em;
+        margin: 1em auto;
       }
     }
     </style>
@@ -420,12 +386,12 @@ const selectedPosts = allPosts.filter(post =>
         ))}
       </span>
     </div>
-    <p class="date" data-pagefind-ignore>
-      Posted on <FormattedDate date={pubDate} />
+    <div class="date" data-pagefind-ignore>
+      <FormattedDate date={pubDate} />
       {
         updatedDate && (
           <span class="last-updated-on">
-            <span class="capitalize">u</span>pdated on <span class="updated"><FormattedDate date={updatedDate} /></span>
+            Updated&nbsp;<FormattedDate date={updatedDate} />
           </span>
         )
       }
@@ -481,8 +447,8 @@ const selectedPosts = allPosts.filter(post =>
       <span>
         Error in this article?
       </span>
-      <button class="edit">
-        <span>
+      <span class="edit-button">
+        <button class="edit">
           <a 
           href={`https://github.com/fullmetalbrackets/blog/blob/main/src/content/blog/${slug}.md/`}
           target="_blank" data-umami-event={`edit-gh-${slug}`}>
@@ -492,12 +458,12 @@ const selectedPosts = allPosts.filter(post =>
               decoding="async"
               alt="Edit this page on GitHub"> <span>Edit on GitHub</span>
           </a>
-        </span>
-      </button>
+        </button>
+      </span>
     </div>
   </aside>
 
-  <aside class="post-end">
+  <aside class="mid-end">
     <div class="coffee">
       <span>Was this article helpful?</span>
         <a href="https://www.buymeacoffee.com/arieldiaz">
