@@ -15,7 +15,7 @@ export async function getStaticPaths({ paginate }) {
 }
 
 interface Props {
-  page: Page<CollectionEntry<'blog'>>; // Assuming 'blog' is your collection and Page is correctly imported
+  page: Page<CollectionEntry<'blog'>>;
 }
 
 const { page } = Astro.props;
@@ -79,7 +79,7 @@ const desc = "List of all blog posts";
     display: grid;
     justify-content: space-between;
     font-family: 'M Plus Rounded 1c Med', 'Atkinson', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
-    color: var(--emphasis);
+    color: var(--primary);
     margin: 1em 0 2em 0;
   }
   .pagination a {
@@ -175,7 +175,6 @@ const desc = "List of all blog posts";
         )}
       </span>
     </nav>
-    <!-- <p class="back-latest"><a href="/blog/1">&#8626; Back to Latest Articles</p> -->
     <hr />
     <BackToTop />
   </section>
