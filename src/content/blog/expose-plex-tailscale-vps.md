@@ -42,7 +42,7 @@ We'll be using a free-tier VM from Oracle Cloud Infrastructure (OCI) -- specific
 
 First, go to <a href="https://www.oracle.com/cloud/free/" target="_blank" umami-data-event="expose-plex-tailscale-oci-free">Oracle Cloud's website</a> and click **Start for free** to create your account. You will need a credit card, but only for verification purposes! As long as you stick to *free tier* and don't upgrade, you won't be charged.
 
-Once your account is set up you'll receive an email with the **Cloud Account Name** (which is your "tenant") and **Username**. (The email you used to sign up.) You'll need the Count Account Name to <a href="https://www.oracle.com/cloud/sign-in.html" target="_blank" umami-data-event="expose-plex-tailscale-oci-signin">sign-in to OCI</a>, after which you'll be asked for the email address and password.
+Once your account is set up you'll receive an email with the **Cloud Account Name** (which is your "tenant") and **Username**. (The email you used to sign up.) You'll need the Cloud Account Name to <a href="https://www.oracle.com/cloud/sign-in.html" target="_blank" umami-data-event="expose-plex-tailscale-oci-signin">sign-in to OCI</a>, after which you'll be asked for the email address and password.
 
 > You'll be asked if you want to **Enable Secure Verification (MFA)** which I strongly suggest you do. You'll need a USB security key or to download and use the Oracle Authenticator app. It's annoying to have to use another Authenticator app, but it's worth the peace of mind.
 
@@ -105,7 +105,7 @@ Host oracle
     User ubuntu
 ```
 
-Once you're in, let's make sure everything is up-to-date.
+Then you'll be able to SSH into your Oracle instance by just doing `ssh oracle`. Once you're logged in to your Oracle instance's terminal, let's make sure everything is up-to-date.
 
 ```bash
 sudo apt update && sudo apt upgrade -y
@@ -147,7 +147,11 @@ From here on out we'll assume the Plex sever is `plex.cyber-sloth.ts.net` and th
 
 ## Add and configure domain in Cloudflare
 
-Create your <a href="https://dash.cloudflare.com/sign-up" target="_blank" umami-data-event="expose-plex-tailscale-cf-signup">free Cloudflare account</a> if you haven't already. **If you bought a domain on Cloudflare, you can skip to the next section since it is auto-configured already.** If your domain is from another registrar, we'll need to add it to Cloudflare:
+> If you bought a domain on Cloudflare, [you can skip this and move on to creating the DNS record](#skip) since the domain will be auto-configured already.
+
+If your domain is from another registrar, and you want to use Cloudflare for DNS like I do, we'll need to reate your <a href="https://dash.cloudflare.com/sign-up" target="_blank" umami-data-event="expose-plex-tailscale-cf-signup">free Cloudflare account</a>.
+
+Once your account is created, let's add the domain to Cloudflare:
 
 1. On the Cloudflare dashboard _Account Home_, click the **+ Add a domain** button.
 
