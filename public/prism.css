@@ -3,7 +3,8 @@
    background: var(--code-bg);
    color: var(--code-text);
    font-family: var(--sub-font);
-   font-size: 0.9em;
+   font-size: 0.925em;
+   font-weight: 700;
    direction: ltr;
    text-align: left;
    white-space: pre;

@@ -285,10 +285,11 @@ img {
 code {
 	padding: 1px 4.5px;
   font-family: var(--sub-font);
+  font-size: 0.9em;
+  font-weight: 700;
 	background-color: var(--code-bg);
 	color: var(--code-text);
 	border-radius: 0.25em;
-  font-size: 0.85em;
   white-space: pre;
   text-wrap: pretty;
 }
