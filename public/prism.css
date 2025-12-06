@@ -2,7 +2,7 @@
  pre[class*="language-"] {
    background: var(--code-bg);
    color: var(--code-text);
-   font-family: 'M Plus Rounded 1c Med', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
+   font-family: var(--sub-font);
    font-size: 0.9em;
    direction: ltr;
    text-align: left;
