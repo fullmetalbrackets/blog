@@ -77,6 +77,11 @@ const { title, description, image = "/social.jpg" } = Astro.props;
 <meta name="title" content={title} />
 <meta name="description" content={description} />
 
+<!-- Google / Search Engine Tags -->
+<meta itemprop="name" content={title} />
+<meta itemprop="description" content={description} />
+<meta itemprop="image" content={new URL(image, Astro.url)} />
+
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
 <meta property="og:url" content={Astro.url} />
