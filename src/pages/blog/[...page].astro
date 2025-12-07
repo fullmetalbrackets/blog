@@ -20,7 +20,7 @@ interface Props {
 
 const { page } = Astro.props;
 
-const title = "Blog";
+const title = `Blog Posts - Page ${page.currentPage} of ${page.lastPage}`;
 const desc = "List of all blog posts";
 ---
 
@@ -83,12 +83,22 @@ const desc = "List of all blog posts";
   li:hover .title {
     color: var(--hover);
   }
+  .page-info {
+    display: flex;
+    font-weight: 500;
+    margin: 1em auto -1.7em auto;
+    justify-content: space-around;
+    place-items: center;
+    font-family: var(--sub-font);
+    font-weight: 700;
+    color: var(--primary);
+  }
   .pagination {
     display: grid;
     justify-content: space-between;
     font-family: var(--sub-font);
-    color: var(--primary);
-    margin: 1em 0 2em 0;
+    font-weight: 700;
+    margin: 0 0 1em 0;
   }
   .pagination a {
     border-bottom: 2px solid transparent;
@@ -98,13 +108,11 @@ const desc = "List of all blog posts";
   }
   .prev {
     grid-column: 1;
-  }
-  .page-info {
-    grid-column: 2;
-    font-weight: 500;
+    justify-content: start;
   }
   .next {
     grid-column: 3;
+    justify-content: end;
   }
   @media screen and (min-width: 200px) and (max-width: 667px) {
     section {
@@ -117,28 +125,15 @@ const desc = "List of all blog posts";
     .tag {
       display: block;
     }
-    .pagination {
-      display: grid;
-      justify-content: space-around;
-      place-items: center;
-    }
     .page-info {
-      display: grid;
-      grid-row: 1;
-      margin-bottom: 0.5em;
-    }
-    .prev, .next {
-      display: grid;
-      grid-row: 2;
-      margin: 0 auto;
-      padding: 0 auto;
+      margin: 1em auto 0 auto;
     }
   }
 </style>
 
 <BaseLayout title={title} description={desc}>
   <section>
-    <h1>{title}</h1>
+    <h1>Blog</h1>
     <hr />
     <p class="blurb">
       List of all blog posts. Alternatively, see <a href="/categories/" data-umami-event="blog-category">see posts by category</a> or <a href="/search/" data-umami-event="blog-search">search for specific posts</a>.
@@ -166,6 +161,7 @@ const desc = "List of all blog posts";
       }
     </ul>
     
+    <div class="page-info">Page {page.currentPage} of {page.lastPage}</div>
     <nav class="pagination" aria-label="Blog pagination">
       <span class="prev">
         {page.url.prev ? (
@@ -174,7 +170,6 @@ const desc = "List of all blog posts";
           <span></span>
         )}
       </span>
-      <span class="page-info">Page {page.currentPage} of {page.lastPage}</span>
       <span class="next">
         {page.url.next ? (
           <a href={page.url.next} rel="next">Older &rarr;</a>
