@@ -1,0 +1,5 @@
+title: "Tailscale"
+description: "A mesh VPN service that makes it easy to connect devices across network through encrypted WireGuard tunnels."
+pubDate: 2025-12-07
+url: "https://tailscale.com"
+tag: service
