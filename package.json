@@ -17,11 +17,11 @@
   "dependencies": {
     "@astrojs/check": "^0.9.6",
     "@astrojs/markdown-remark": "^6.3.8",
-    "@astrojs/mdx": "^4.3.12",
+    "@astrojs/mdx": "^4.3.13",
     "@astrojs/rss": "^4.0.14",
     "@astrojs/sitemap": "^3.6.0",
     "@playform/compress": "^0.2.0",
-    "astro": "^5.16.4",
+    "astro": "^5.16.5",
     "astro-social-share": "^2.2.0",
     "typescript": "^5.9.3"
   },
