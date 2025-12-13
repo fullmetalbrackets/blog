@@ -10,6 +10,7 @@ const links = (await getCollection("links")).sort(
   h2 {
     margin-bottom: 0.3em;
     font-family: var(--sub-font);
+    font-weight: 900;
   }
   .container {
     background-color: var(--blockquote);
@@ -30,20 +31,6 @@ const links = (await getCollection("links")).sort(
     color: var(--hover);
     border-bottom: 2px solid var(--hover);
   }
-  /* a button {
-    color: #000;
-    border-radius: 0.25em;
-    cursor: pointer;
-    font-weight: 700;
-    padding: 4px 8px;
-    text-decoration: none;
-    text-overflow: ellipsis;
-    -webkit-transition: all 0.1s ease-out;
-    -moz-transition: all 0.1s ease-out;
-    -o-transition: all 0.1s ease-out;
-    transition: all 0.1s ease-out;
-    margin: 0 0 0.5em 0;
-  } */
   section a:hover {
     text-decoration-color: var(--link);
   }

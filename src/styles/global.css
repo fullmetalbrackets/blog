@@ -10,10 +10,35 @@
   font-family: 'M Plus Rounded 1c';
   src: url('/fonts/MPLUSRounded1c-Medium.woff2') format('woff2');
   src: url('/fonts/MPLUSRounded1c-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: medium;
+  font-display: fallback;
+}
+@font-face {
+  font-family: 'M Plus Rounded 1c';
+  src: url('/fonts/MPLUSRounded1c-Bold.woff2') format('woff2');
+  src: url('/fonts/MPLUSRounded1c-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: bold;
   font-display: fallback;
 }
+@font-face {
+  font-family: 'M Plus Rounded 1c';
+  src: url('/fonts/MPLUSRounded1c-ExtraBold.woff2') format('woff2');
+  src: url('/fonts/MPLUSRounded1c-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: bold;
+  font-display: fallback;
+}
+@font-face {
+  font-family: 'M Plus Rounded 1c';
+  src: url('/fonts/MPLUSRounded1c-Black.woff2') format('woff2');
+  src: url('/fonts/MPLUSRounded1c-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: bold;
+  font-display: fallback;
+}
+
 @font-face {
 	font-family: 'Atkinson';
 	src: url('/fonts/Atkinson-Regular.woff') format('woff');
@@ -454,7 +479,7 @@ button {
   color: #000;
   border: 0;
   border-radius: 0.25em;
-  padding: 4px 8px;
+  padding: 4px 8px 3px 8px;
   font-weight: 700;
   font-size: 0.75em;
 }
