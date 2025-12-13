@@ -60,6 +60,14 @@ const { title, description, tag, pubDate, updatedDate } = Astro.props;
     .bottom-line {
       margin-top: 2em;
     }
+    .wiki-aside {
+      display: inline-flex;
+      justify-content: space-between;
+      font-size: 1.5em;
+      margin: -1em auto 1em auto;
+      padding: 0 auto;
+      width: 100%;
+    }
     @media screen and (max-width: 667px) {
       .tag {
         margin: 0.5em auto;
@@ -93,5 +101,9 @@ const { title, description, tag, pubDate, updatedDate } = Astro.props;
     </slot>
   </article>
   <hr class="bottom-line" />
-  <BackToTop />
+  <aside class="wiki-aside">
+    <a href="/wiki" class="top blog-tag"><button>&larr; Wiki</button></a>
+    <a href="/" class="top blog-tag home"><button>&#8626; Home</button></a>
+    <a href="#top" class="top blog-tag"><button>Top &uarr;</button></a>
+  </aside>
 </BaseLayout>

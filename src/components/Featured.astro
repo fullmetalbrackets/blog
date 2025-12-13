@@ -74,6 +74,16 @@ const selectedPosts = allPosts.filter(post =>
   .list:hover {
     padding-bottom: 0.5em;
     border-bottom: 2px solid var(--hover);
+    -webkit-transition: all .25s ease-out;
+    -moz-transition: all .25s ease-out;
+    -o-transition: all .25s ease-out;
+    transition: all .25s ease-out;
+  }
+  .list:hover .posts-title {
+    -webkit-transition: all .25s ease-out;
+    -moz-transition: all .25s ease-out;
+    -o-transition: all .25s ease-out;
+    transition: all .25s ease-out;
   }
   @media (hover: hover) {
     a:hover button {

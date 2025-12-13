@@ -54,6 +54,17 @@ const { tag, posts } = Astro.props;
   li:hover .desc {
     border-bottom: 2px solid var(--hover);
     cursor: pointer;
+    -webkit-transition: all .25s ease-out;
+    -moz-transition: all .25s ease-out;
+    -o-transition: all .25s ease-out;
+    transition: all .25s ease-out;
+  }
+  li:hover .title {
+    color: var(--hover);
+    -webkit-transition: all .25s ease-out;
+    -moz-transition: all .25s ease-out;
+    -o-transition: all .25s ease-out;
+    transition: all .25s ease-out;
   }
   .date {
     margin: 0;
@@ -72,6 +83,15 @@ const { tag, posts } = Astro.props;
   .back {
     margin-top: 0;
     font-size: 1.35em;
+  }
+  @media (hover: hover) {
+    li:hover button {
+      box-shadow: -4px -4px 0 #000;
+      transform: translate(4px, 4px);
+    }
+    li:hover button {
+      outline-offset: 1px;
+    }
   }
   @media screen and (min-width: 200px) and (max-width: 720px) {
     ul {
