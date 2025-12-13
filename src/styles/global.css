@@ -544,4 +544,7 @@ button {
   blockquote {
     width: 90%;
   }
+  article ul, article ol {
+    padding-left: 1em;
+  }
 }
