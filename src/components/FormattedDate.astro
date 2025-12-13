@@ -13,7 +13,7 @@ const { date } = Astro.props;
     color: var(--date);
     font-family: var(--sub-font);
     display: inline-flex;
-    font-size: 0.875em;
+    font-size: 0.875rem;
     font-weight: 700;
     place-items: center;
   }
@@ -22,6 +22,11 @@ const { date } = Astro.props;
     margin-left: -0.1em;
     margin-right: 0.25em;
     filter: var(--time-svg);
+  }
+  @media screen and (max-width: 667px) {
+    time {
+      font-size: 0.8rem;
+    }
   }
 </style>
 
