@@ -1,6 +1,7 @@
 ---
 import BackToTop from "@components/BackToTop.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
+import FormattedDate from "@components/FormattedDate.astro";
 import { getCollection } from "astro:content";
 
 const links = (await getCollection("links")).sort(
@@ -31,8 +32,12 @@ const desc = "Links to websites, self-hosted apps and online tools that I like a
   .tag {
     color: var(--primary);
   }
-  .tag, .data {
+  .tag {
     font-size: 0.9em;
+  }
+  .desc {
+    font-size: 0.9em;
+    margin-top: -0.35em;
   }
   .link-tag {
     font-family: var(--sub-font);
@@ -107,7 +112,8 @@ const desc = "Links to websites, self-hosted apps and online tools that I like a
               </a>
             </span>
             <span class="tag">Type: <span class="link-tag">{link.data.tag}</span></span>
-            <span class="data">{link.data.description}</span>
+            <span class="date"><FormattedDate date={link.data.pubDate} />&nbsp;</span>
+            <span class="desc">{link.data.description}</span>
           </li>
         ))
       }
