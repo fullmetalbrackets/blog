@@ -2,15 +2,13 @@
  pre[class*="language-"] {
    background: var(--code-bg);
    color: var(--code-text);
-   font-family: var(--sub-font);
-   font-size: 0.925em;
-   font-weight: 700;
+   font-family: var(--code-font);
+   font-size: 0.8rem;
    direction: ltr;
    text-align: left;
    white-space: pre;
    word-spacing: normal;
    word-break: normal;
-   line-height: 1.5;
    -moz-tab-size: 2;
    -o-tab-size: 2;
    tab-size: 2;
