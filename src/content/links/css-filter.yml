@@ -1,6 +1,5 @@
 title: "CSS Filter Generator"
 description: "Convert hex or RGB color codes into CSS filter properties, handy for figuring out how to apply colors to SVGs."
 pubDate: 2023-08-18
-updatedDate: 2025-11-14
 url: "https://angel-rs.github.io/css-color-filter-generator/"
-tag: tool
+tag: website

@@ -1,5 +1,5 @@
 title: "Decomposerize"
-description: "Tool that is opposite of Composerize, you paste in a docker compose file's yaml and it gets converted into a docker run command."
+description: "This site does the opposite of Composerize, you paste in a YAML from a Docker Compose file and it gets converted into a Docker Run command."
 pubDate: 2024-03-19
 url: "https://www.decomposerize.com"
-tag: tool
+tag: website
