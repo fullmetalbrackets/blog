@@ -5,6 +5,12 @@ pubDate: 2025-03-03
 tag: website
 ---
 
+## Fonts
+
+- <a href="https://www.brailleinstitute.org/freefont/" target="_blank">Atkinson Hyperlegible</a> (Body text and blog post headings)
+- <a href="https://github.com/googlefonts/atkinson-hyperlegible-next-mono" target="_blank">Atkinson Hyperlegible Mono</a> (Inline code and Prism code blocks)
+- <a href="https://fonts.google.com/specimen/M+PLUS+Rounded+1c" target="_blank">MPlus Rounded 1c</a> (Buttons and main page headings)
+
 ## Headings
 
 The following HTML `<h1>`—`<h6>` elements represent six levels of section headings. `<h1>` is the highest section level while `<h6>` is the lowest. (**Note:** The `<h2>` element has extra spacing at the top margin for design reasons.)
@@ -61,23 +67,23 @@ Code blocks (three backticks) look like this:
 Here is a simple image using Markdown. (Images embedded using markdown syntax and stored in `/src/img` will be processed by Astro Image.)
 
 ```md
-![Image alt info goes here](../../img/blog/placeholder.png 'This text appears as tooltip when hovering cursor over image')
+![Image alt info goes here](../../img/assets/social.jpg 'This text appears as tooltip when hovering cursor over image')
 ```
 
-![Image alt info goes here](../../img/blog/placeholder.png 'This text appears as tooltip when hovering cursor over image')
+![Image alt info goes here](../../img/assets/social.jpg 'This text appears as tooltip when hovering cursor over image')
 
 
 And here is an image in a `figure` element with a `figcaption`. (Images embedded using HTML and stored in `/public` are **not** processed by Astro Image.)
 
 ```html
 <figure>
-  <img src="/social.png" alt="This is a placeholder image description" />
+  <img src="/social.jpg" alt="This is a placeholder image description" />
   <figcaption>This is a caption, a quick blurb about the above image.</figcaption>
 </figure>
 ```
 
 <figure>
-<img src="/social.png" alt="This is a placeholder image description" />
+<img src="/social.jpg" alt="This is a placeholder image description" />
 <figcaption>This is a caption, a quick blurb about the above image.</figcaption>
 </figure>
 
