@@ -720,6 +720,13 @@ button {
 }
 
 /* pagefind styling */
+.pagefind-ui__result {
+  font-family: var(--sub-font);
+  font-weight: 500;
+}
+.pagefind-ui__result-title {
+  margin-bottom: 0;
+}
 .pagefind-ui__result-title .pagefind-ui__result-link {
   color: var(--link);
   text-decoration: none;
@@ -733,9 +740,6 @@ button {
   font-family: var(--sub-font);
   font-weight: 500;
   color: var(--emphasis);
-}
-.pagefind-ui__result-excerpt {
-  margin-top: 0;
 }
 
 /* screen width media queries */
