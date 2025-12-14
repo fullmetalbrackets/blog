@@ -454,6 +454,7 @@ input {
   box-sizing: border-box;
   outline: none;
   width: 90%;
+  place-items: center;
 }
 input:focus, textarea:focus {
   color: var(--form);
@@ -723,7 +724,7 @@ button {
 
 /* pagefind styling */
 .pagefind-ui__search-clear {
-  margin-top: 0.25em;
+  place-items: center;
 }
 .pagefind-ui__result-excerpt {
   padding-top: 0;
