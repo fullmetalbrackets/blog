@@ -723,8 +723,7 @@ button {
 
 /* pagefind styling */
 .pagefind-ui__search-clear {
-  place-items: center;
-  margin-top: 0.5em;
+  padding: 6px 8px;
 }
 .pagefind-ui__result-excerpt {
   padding-top: 0;
