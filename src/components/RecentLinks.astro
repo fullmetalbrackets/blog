@@ -26,6 +26,7 @@ const links = (await getCollection("links")).sort(
     padding-bottom: 0.5em;
   }
   span a {
+    color: var(--emphasis);
     border-bottom: 2px transparent;
     font-weight: bold;
     line-height: 1.2;
@@ -38,7 +39,6 @@ const links = (await getCollection("links")).sort(
     text-decoration-color: var(--link);
   }
   .tag {
-    color: var(--primary);
     margin-bottom: 0.25em;
   }
   .tag, .data {
@@ -59,7 +59,6 @@ const links = (await getCollection("links")).sort(
     font-weight: 500;
   }
   .more a {
-    color: var(--emphasis);
     border-bottom: 2px solid transparent;
   }
   .more a:hover {
@@ -81,7 +80,7 @@ const links = (await getCollection("links")).sort(
   }
   @media (hover: none) {
     a:hover button {
-      background-color: var(--menu);
+      background-color: var(--hover);
     }
   }
   @media screen and (min-width: 200px) and (max-width: 667px) {

@@ -60,6 +60,7 @@ const posts = (await getCollection("blog")).sort(
     transition: all .25s ease-out;
   }
   .list:hover .posts-title {
+    color: var(--hover);    
     -webkit-transition: all .25s ease-out;
     -moz-transition: all .25s ease-out;
     -o-transition: all .25s ease-out;
@@ -71,14 +72,7 @@ const posts = (await getCollection("blog")).sort(
     margin: 0 auto;
     font-weight: bold;
     line-height: 1.2;
-  }
-  .posts-title a,
-  .posts-title a:active,
-  .posts-title a:visited {
-    color: var(--primary);
-  }
-  .posts-title a:hover {
-    color: var(--menu);
+    color: var(--emphasis);
   }
   a button {
     font-family: var(--sub-font);
@@ -100,7 +94,6 @@ const posts = (await getCollection("blog")).sort(
     font-weight: 500;
   }
   .more a {
-    color: var(--emphasis);
     border-bottom: 2px solid transparent;
   }
   .more a:hover {

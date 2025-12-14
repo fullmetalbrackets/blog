@@ -59,20 +59,20 @@ const selectedPosts = allPosts.filter(post =>
     margin: 0 auto;
     padding: auto;
   }
+  .list:hover .posts-title {
+    color: var(--hover);    
+    -webkit-transition: all .25s ease-out;
+    -moz-transition: all .25s ease-out;
+    -o-transition: all .25s ease-out;
+    transition: all .25s ease-out;
+  }
   .posts-title {
     display: inline-flex;
     flex-direction: row;
     margin: 0.25em auto;
     font-weight: bold;
     line-height: 1.2;
-  }
-  .posts-title a,
-  .posts-title a:active,
-  .posts-title a:visited {
-    color: var(--primary);
-  }
-  .posts-title a:hover {
-    color: var(--menu);
+    color: var(--emphasis);
   }
   .list:hover {
     padding-bottom: 0.5em;
@@ -99,7 +99,7 @@ const selectedPosts = allPosts.filter(post =>
   }
   @media (hover: none) {
     a:hover button {
-      background-color: var(--menu);
+      background-color: var(--hover);
     }
   }
   @media screen and (min-width: 200px) and (max-width: 667px) {
