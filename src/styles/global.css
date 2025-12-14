@@ -612,6 +612,9 @@ article h2 {
   margin-top: 1em;
 }
 li::marker {
+  font-family: var(--sub-font);
+  font-size: 0.875em;
+  font-weight: 500;
 	color: var(--primary);
 }
 .inv {
@@ -720,10 +723,6 @@ button {
 }
 
 /* pagefind styling */
-.pagefind-ui__result {
-  font-family: var(--sub-font);
-  font-weight: 500;
-}
 .pagefind-ui__result-title {
   margin-bottom: 0;
 }
