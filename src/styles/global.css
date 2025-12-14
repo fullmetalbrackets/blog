@@ -734,6 +734,9 @@ button {
   font-weight: 500;
   color: var(--emphasis);
 }
+.pagefind-ui__result-excerpt {
+  margin-top: 0;
+}
 
 /* screen width media queries */
 @media screen and (min-width: 200px) and (max-width: 720px) {
