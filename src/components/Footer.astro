@@ -44,6 +44,14 @@ import BuyMeCoffee from '@icons/bmc.svg';
     font-size: 14px;
     margin: -0.5em auto 0 auto;
   }
+  .not-by-ai {
+    margin: -3.35em auto 0 auto;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .not-by-ai img {
+    margin: 0 auto;
+  }
   .nav {
     display: flex;
     align-items: center;
@@ -88,7 +96,9 @@ import BuyMeCoffee from '@icons/bmc.svg';
       grid-row: 4;
       margin: 0 auto 0.5em auto;
     }
-  }
+    .not-by-ai {
+      margin: -1em auto 0 auto;
+    }
 </style>
 
 <footer>
@@ -128,3 +138,12 @@ import BuyMeCoffee from '@icons/bmc.svg';
     <a href="/privacy" data-umami-event="footer-privacy-policy">Privacy Policy</a>
   </div>
 </footer>
+<aside class="not-by-ai">
+  <a href="https://notbyai.fyi" target="_blank" data-umami-event="notbyai">
+    <picture>
+      <source srcset="/Written-By-a-Human-Not-By-AI-Badge-white.png" media="(prefers-color-scheme: light)">
+      <source srcset="/Written-By-a-Human-Not-By-AI-Badge-black.png" media="(prefers-color-scheme: dark)">
+      <img src="/Written-By-a-Human-Not-By-AI-Badge-white.png" alt="Written by a human, not AI" class="sq-img">
+    </picture>
+  </a>
+</aside>
