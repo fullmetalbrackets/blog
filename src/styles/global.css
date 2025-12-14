@@ -447,7 +447,7 @@ input {
   border-style: none;
   margin: 0 auto;
   margin-right: 0.25em;
-  padding: 4px 8px;
+  padding: 4px 8px 2px 8px;
   border-radius: 0.25em;
   background: var(--accent);
   color: var(--form);
@@ -612,6 +612,9 @@ article h2 {
   margin-top: 1em;
 }
 li::marker {
+  font-family: var(--sub-font);
+  font-size: 0.875em;
+  font-weight: 500;
 	color: var(--primary);
 }
 .inv {
@@ -671,7 +674,6 @@ aside > a, aside > a:active, aside > a:visited, aside > a:hover, aside > a:focus
 	white-space: nowrap;
 }
 
-
 /* button effects */
 button {
   font-family: var(--sub-font);
@@ -717,6 +719,34 @@ button {
   button:hover {
     background-color: var(--menu);
   }
+}
+
+/* pagefind styling */
+.pagefind-ui__search-clear {
+  padding: 5px 8px;
+}
+.pagefind-ui__result-excerpt {
+  padding-top: 0;
+}
+.pagefind-ui__result-title .pagefind-ui__result-link {
+  color: var(--link);
+  text-decoration: none;
+  font-weight: bold;
+  border-bottom: 1px solid transparent;
+}
+.pagefind-ui__result-title .pagefind-ui__result-link:hover {
+  color: var(--hover);
+  text-decoration: none;
+  border-bottom: 1px solid var(--hover);
+  -webkit-transition: all .25s ease-out;
+  -moz-transition: all .25s ease-out;
+  -o-transition: all .25s ease-out;
+  transition: all .25s ease-out;
+}
+.pagefind-ui__message {
+  font-family: var(--sub-font);
+  font-weight: 500;
+  color: var(--emphasis);
 }
 
 /* screen width media queries */

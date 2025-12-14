@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import FormattedDate from "@components/FormattedDate.astro";
 
 const links = (await getCollection("links")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
@@ -38,6 +39,7 @@ const links = (await getCollection("links")).sort(
   }
   .tag {
     color: var(--primary);
+    margin-bottom: 0.25em;
   }
   .tag, .data {
     font-size: 0.9em;
@@ -96,9 +98,6 @@ const links = (await getCollection("links")).sort(
     li {
       margin: 0 1em 2em -1em;
     }
-    .tag {
-      margin: 0.15em 0;
-    }
   }
 </style>
 
@@ -113,7 +112,8 @@ const links = (await getCollection("links")).sort(
               {link.data.title}
             </a>
           </span>
-          <span class="tag">Type: <span class="link-tag">{link.data.tag}</span></span>
+          <span class="info"><FormattedDate date={link.data.pubDate} />&nbsp;</span>
+          <span class="tag"><span class="link-tag">{link.data.tag}</span></span>
           <span>{link.data.description}</span>
         </div>
       ))
