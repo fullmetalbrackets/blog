@@ -38,6 +38,10 @@ const desc = "List of all wiki articles";
     margin: 0 auto;
     padding: 0 auto;
   }
+  .title {
+    font-weight: bold;
+    line-height: 1.2;
+  }
   .title a,
   .title a:active,
   .title a:visited {
@@ -57,6 +61,20 @@ const desc = "List of all wiki articles";
     -moz-transition: all .25s ease-out;
     -o-transition: all .25s ease-out;
     transition: all .25s ease-out;
+  }
+  @media (hover: hover) {
+    li:hover button {
+      box-shadow: -4px -4px 0 #000;
+      transform: translate(4px, 4px);
+    }
+    li:hover button {
+      outline-offset: 1px;
+    }
+  }
+  @media (hover: none) {
+    li:hover button {
+      background-color: var(--menu);
+    }
   }
   @media screen and (min-width: 200px) and (max-width: 667px) {
     section {
