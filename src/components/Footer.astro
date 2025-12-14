@@ -11,7 +11,7 @@ import BuyMeCoffee from '@icons/bmc.svg';
 
 <style scoped>
   footer {
-    margin: 0 auto 1em auto;
+    margin: 0 auto;
     padding: 0 auto;
     display: grid;
     grid-template-columns: auto auto;
@@ -34,7 +34,7 @@ import BuyMeCoffee from '@icons/bmc.svg';
   }
   .bottom-row {
     font-size: 14px;
-    margin: 0 auto 1em auto;
+    margin: 0 auto 0.5em auto;
     padding: 0 auto;
   }
   .mit {
@@ -42,14 +42,6 @@ import BuyMeCoffee from '@icons/bmc.svg';
   }
   .privacy {
     font-size: 14px;
-    margin: -0.5em auto 0 auto;
-  }
-  .not-by-ai {
-    margin: -3.35em auto 0 auto;
-    justify-content: space-around;
-    align-items: center;
-  }
-  .not-by-ai img {
     margin: 0 auto;
   }
   .nav {
@@ -70,6 +62,25 @@ import BuyMeCoffee from '@icons/bmc.svg';
   svg {
     filter: var(--svg);
     border-radius: 0;
+  }
+  .footer-aside {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto;
+    margin: 0 auto;
+    padding: 0 auto;
+    gap: 0;
+    place-items: center;
+    justify-content: space-between;
+    max-width: 75ch;
+  }
+  .notbyai {
+    margin: 0 -5em 0 5em;
+    padding: 0 auto;
+  }
+  .astro {
+    margin: 0;
+    padding: 0 auto;
   }
   @media screen and (min-width: 200px) and (max-width: 667px) {
     footer {
@@ -96,9 +107,13 @@ import BuyMeCoffee from '@icons/bmc.svg';
       grid-row: 4;
       margin: 0 auto 0.5em auto;
     }
-    .not-by-ai {
-      margin: -1em auto 0 auto;
+    .footer-aside {
+      margin: 0 auto;
     }
+    .notbyai, .astro {
+      margin: 0 auto;
+    }
+  }
 </style>
 
 <footer>
@@ -138,12 +153,15 @@ import BuyMeCoffee from '@icons/bmc.svg';
     <a href="/privacy" data-umami-event="footer-privacy-policy">Privacy Policy</a>
   </div>
 </footer>
-<aside class="not-by-ai">
+<aside class="footer-aside">
   <a href="https://notbyai.fyi" target="_blank" data-umami-event="notbyai">
     <picture>
       <source srcset="/Written-By-a-Human-Not-By-AI-Badge-white.png" media="(prefers-color-scheme: light)">
       <source srcset="/Written-By-a-Human-Not-By-AI-Badge-black.png" media="(prefers-color-scheme: dark)">
-      <img src="/Written-By-a-Human-Not-By-AI-Badge-white.png" alt="Written by a human, not AI" class="sq-img">
+      <img src="/Written-By-a-Human-Not-By-AI-Badge-white.png" alt="Written by a human, not AI" class="sq-img notbyai">
     </picture>
+  </a>
+  <a href="https://astro.build">
+    <img src="/built-with-astro.svg" alt="Built with Astro" width="192" height="32" class="sq-img astro">
   </a>
 </aside>
