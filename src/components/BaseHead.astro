@@ -26,32 +26,216 @@ const { title, description, image = "/social.jpg" } = Astro.props;
 <meta name="generator" content={Astro.generator} />
 
 <!-- Font preloads -->
-<link
+ <link
   rel="preload"
-  href="/fonts/Atkinson-Regular.woff"
-  as="font"
-  type="font/woff"
-  crossorigin
-/>
-<link
-  rel="preload"
-  href="/fonts/Atkinson-Bold.woff"
-  as="font"
-  type="font/woff"
-  crossorigin
-/>
-<link
-  rel="preload"
-  href="/fonts/AtkinsonMono-Regular.woff2"
+  href="/fonts/AtkinsonHyperlegibleNext-ExtraLight.woff2"
   as="font"
   type="font/woff2"
   crossorigin
 />
 <link
   rel="preload"
-  href="/fonts/AtkinsonMono-Bold.woff2"
+  href="/fonts/AtkinsonHyperlegibleNext-ExtraLightItalic.woff2"
   as="font"
-  type="font/woff"
+  type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="/fonts/AtkinsonHyperlegibleNext-Light.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="/fonts/AtkinsonHyperlegibleNext-LightItalic.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="/fonts/AtkinsonHyperlegibleNext-Regular.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="/fonts/AtkinsonHyperlegibleNext-RegularItalic.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="/fonts/AtkinsonHyperlegibleNext-Medium.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="/fonts/AtkinsonHyperlegibleNext-MediumItalic.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="/fonts/AtkinsonHyperlegibleNext-SemiBold.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="/fonts/AtkinsonHyperlegibleNext-SemiBoldItalic.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="/fonts/AtkinsonHyperlegibleNext-Bold.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="/fonts/AtkinsonHyperlegibleNext-BoldItalic.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="/fonts/AtkinsonHyperlegibleNext-ExtraBold.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="/fonts/AtkinsonHyperlegibleNext-ExtraBoldItalic.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+
+<link
+  rel="preload"
+  href="/fonts/AtkinsonHyperlegibleMono-ExtraLight.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="/fonts/AtkinsonHyperlegibleMono-ExtraLightItalic.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="/fonts/AtkinsonHyperlegibleMono-Light.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="/fonts/AtkinsonHyperlegibleMono-LightItalic.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="/fonts/AtkinsonHyperlegibleMono-Regular.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="/fonts/AtkinsonHyperlegibleMono-RegularItalic.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="/fonts/AtkinsonHyperlegibleMono-Medium.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="/fonts/AtkinsonHyperlegibleMono-MediumItalic.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="/fonts/AtkinsonHyperlegibleMono-SemiBold.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="/fonts/AtkinsonHyperlegibleMono-SemiBoldItalic.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="/fonts/AtkinsonHyperlegibleMono-Bold.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="/fonts/AtkinsonHyperlegibleMono-BoldItalic.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="/fonts/AtkinsonHyperlegibleMono-ExtraBold.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="/fonts/AtkinsonHyperlegibleMono-ExtraBoldItalic.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+
+<link
+  rel="preload"
+  href="/fonts/MPLUSRounded1c-Thin.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="/fonts/MPLUSRounded1c-Light.woff2"
+  as="font"
+  type="font/woff2"
   crossorigin
 />
 <link
@@ -87,6 +271,21 @@ const { title, description, image = "/social.jpg" } = Astro.props;
   href="/fonts/MPLUSRounded1c-Black.woff2"
   as="font"
   type="font/woff2"
+  crossorigin
+/>
+
+<link
+  rel="preload"
+  href="/fonts/MPLUSRounded1c-Thin.ttf"
+  as="font"
+  type="font/truetype"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="/fonts/MPLUSRounded1c-Light.ttf"
+  as="font"
+  type="font/truetype"
   crossorigin
 />
 <link
