@@ -33,6 +33,10 @@ const wiki = defineCollection({
 		pubDate: z.coerce.date(),
 		updatedDate: z.coerce.date().optional(),
 		tag: z.string(),
+		image: z.object({
+			src: z.string(),
+			alt: z.string(),
+		}).optional(),
 	}),
 });
 
