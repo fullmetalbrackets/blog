@@ -26,6 +26,8 @@ const links = (await getCollection("links")).sort(
   }
   span a {
     border-bottom: 2px transparent;
+    font-weight: bold;
+    line-height: 1.2;
   }
   span a:hover {
     color: var(--hover);
@@ -52,12 +54,14 @@ const links = (await getCollection("links")).sort(
   }
   .more {
     font-family: var(--sub-font);
-    font-weight: 700;
+    font-weight: 500;
   }
   .more a {
+    color: var(--emphasis);
     border-bottom: 2px solid transparent;
   }
   .more a:hover {
+    color: var(--hover);
     border-bottom: 2px solid var(--hover);
     -webkit-transition: all .5s ease-out;
     -moz-transition: all .5s ease-out;

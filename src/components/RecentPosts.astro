@@ -69,6 +69,8 @@ const posts = (await getCollection("blog")).sort(
     display: inline-flex;
     flex-direction: row;
     margin: 0 auto;
+    font-weight: bold;
+    line-height: 1.2;
   }
   .posts-title a,
   .posts-title a:active,
@@ -95,12 +97,14 @@ const posts = (await getCollection("blog")).sort(
   }
   .more {
     font-family: var(--sub-font);
-    font-weight: 700;
+    font-weight: 500;
   }
   .more a {
+    color: var(--emphasis);
     border-bottom: 2px solid transparent;
   }
   .more a:hover {
+    color: var(--hover);
     border-bottom: 2px solid var(--hover);
     -webkit-transition: all .5s ease-out;
     -moz-transition: all .5s ease-out;

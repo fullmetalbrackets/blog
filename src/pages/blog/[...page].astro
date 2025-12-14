@@ -9,8 +9,6 @@ export async function getStaticPaths({ paginate }) {
   const posts = (await getCollection("blog")).sort(
     (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
   );
-  
-  // Paginate with 5 posts per page
   return paginate(posts, { pageSize: 5 });
 }
 
@@ -27,6 +25,7 @@ const desc = "List of all blog posts";
 <style scoped>
   h1 {
     font-family: var(--sub-font);
+    font-weight: 900;
   }
   .blurb {
     margin-bottom: 2em;
@@ -67,6 +66,8 @@ const desc = "List of all blog posts";
   }
   .title {
     display: block;
+    font-weight: bold;
+    line-height: 1.2;
   }
   .title a,
   .title a:active,
@@ -123,14 +124,14 @@ const desc = "List of all blog posts";
     justify-content: space-around;
     place-items: center;
     font-family: var(--sub-font);
-    font-weight: 700;
+    font-weight: 500;
     color: var(--primary);
   }
   .pagination {
     display: grid;
     justify-content: space-between;
     font-family: var(--sub-font);
-    font-weight: 700;
+    font-weight: 500;
     margin: 0 0 1em 0;
   }
   .pagination a {
