@@ -719,6 +719,22 @@ button {
   }
 }
 
+/* pagefind styling */
+.pagefind-ui__result-title .pagefind-ui__result-link {
+  color: var(--link);
+  text-decoration: none;
+  font-weight: bold;
+}
+.pagefind-ui__result-title .pagefind-ui__result-link:hover {
+  color: var(--hover);
+  text-decoration: none;
+}
+.pagefind-ui__message {
+  font-family: var(--sub-font);
+  font-weight: 500;
+  color: var(--emphasis);
+}
+
 /* screen width media queries */
 @media screen and (min-width: 200px) and (max-width: 720px) {
   h1 {
