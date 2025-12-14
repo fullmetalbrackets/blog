@@ -674,7 +674,6 @@ aside > a, aside > a:active, aside > a:visited, aside > a:hover, aside > a:focus
 	white-space: nowrap;
 }
 
-
 /* button effects */
 button {
   font-family: var(--sub-font);
@@ -723,8 +722,11 @@ button {
 }
 
 /* pagefind styling */
-.pagefind-ui__result-title {
-  margin-bottom: 0;
+.pagefind-ui__search-clear {
+  margin-top: 0.25em;
+}
+.pagefind-ui__result-excerpt {
+  padding-top: 0;
 }
 .pagefind-ui__result-title .pagefind-ui__result-link {
   color: var(--link);
