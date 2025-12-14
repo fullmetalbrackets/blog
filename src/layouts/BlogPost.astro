@@ -287,17 +287,30 @@ const selectedPosts = allPosts.filter(post =>
       padding: 0;
     }
     .related li {
-      font-size: 1.15em;
-      font-weight: 700;
       border: 2px solid var(--primary);
       background-color: var(--blockquote);
       color: var(--emphasis);
-      padding: 1em 1em 0.85em 1em;
+      padding: 0.75em 1em 0.85em 1em;
       margin: 1em;
       border-radius: 0.5em;
     }
+    .related li span {
+      font-size: 0.875em;
+      font-size: 1em;
+      font-weight: 700;
+      margin-bottom: 0;
+      line-height: 1.2;
+    }
+    .related li p {
+      color: var(--text);
+      font-size: 0.75em;
+      margin-top: 0.25em;
+      margin-bottom: 0;
+      line-height: 1.2;
+    }
     .related li:hover {
       color: var(--hover);
+      border: 2px solid var(--emphasis);
     }
     @media screen and (max-width: 667px) {
       h1 {
@@ -308,6 +321,8 @@ const selectedPosts = allPosts.filter(post =>
       }
       .related li {
         font-size: 1em;
+        line-height: 1.2;
+        padding: 1em 1em 0.85em 1em;
       }
       .edit-post {        
         justify-content: space-around;
@@ -424,7 +439,15 @@ const selectedPosts = allPosts.filter(post =>
         {selectedPosts.map(post => (
           <a href={`/blog/${post.id}`} rel="prefetch-intent" data-umami-event={`featured-${post.id}`}>
             <li>
-              {post.data.title}
+              <span>{post.data.title}</span>
+                  <div>
+                    <span class="tag">
+                      {post.data.tags.map((tag) => (
+                        <button>{tag}</button>
+                      ))}
+                    </span>
+                  </div>
+              <p>{post.data.description}</p>
             </li>
           </a>
         ))}
