@@ -38,7 +38,10 @@ const desc = "Links to websites, self-hosted apps and other cool online things t
   }
   .desc {
     font-size: 0.9em;
-    margin-top: -0.35em;
+  }
+  .info {
+    display: inline-flex;
+    place-items: center;
   }
   .link-tag {
     font-family: var(--sub-font);
@@ -103,6 +106,9 @@ const desc = "Links to websites, self-hosted apps and other cool online things t
     .edit {
       font-size: 0.75em;
     }
+    .info {
+      margin: 0.125em 0;
+    }
   }
 </style>
 <BaseLayout title={title} description={desc}>
@@ -121,8 +127,7 @@ const desc = "Links to websites, self-hosted apps and other cool online things t
                 {link.data.title}
               </a>
             </span>
-            <span class="tag">Type: <span class="link-tag">{link.data.tag}</span></span>
-            <span class="date"><FormattedDate date={link.data.pubDate} />&nbsp;</span>
+            <span class="info"><FormattedDate date={link.data.pubDate} />&nbsp;<span class="link-tag">{link.data.tag}</span></span>
             <span class="desc">{link.data.description}</span>
           </li>
         ))
