@@ -6,6 +6,8 @@ import FormattedDate from "@components/FormattedDate.astro";
 import TableOfContents from '@components/TableOfContents.astro';
 import BlogPosting from "@components/BlogPosting.astro";
 import ScrollProgress from "@components/ScrollProgress.astro";
+import ReadingTime from "@components/ReadingTime.astro";
+
 import { Image } from 'astro:assets';
 import type { MarkdownHeading } from 'astro';
 import {
@@ -19,10 +21,9 @@ import {
 
 const BUTTONS = [BlueskyShareButton, ThreadsShareButton, TwitterShareButton, RedditShareButton, HackerNewsShareButton]
 
-type Props = CollectionEntry<"blog">['data'] & { headings: MarkdownHeading[] };
+type Props = CollectionEntry<"blog">['data'] & { headings: MarkdownHeading[]; readingTime: string };
 
-const { title, description, pubDate, updatedDate, tags, headings, related1, related2 } = Astro.props;
-
+const { title, description, pubDate, updatedDate, tags, headings, related1, related2, readingTime } = Astro.props;
 const { slug } = Astro.params;
 
 const allPosts = await getCollection("blog");
@@ -59,18 +60,30 @@ const selectedPosts = allPosts.filter(post =>
     .tag button:first-of-type {
       margin-left: 0;
     }
-    .date {
-      font-size: 0.875em;
-      margin-top: 0.5em;
-      display: grid;
-      grid-template-columns: 3;
-      grid-template-rows: 2;
+    .info {
+      display: flex;
+      margin: 0.25em 0 -0.25em 0;
+      padding: 0;
+      place-items: center;
+      gap: 0.5em;
+      justify-content: left;
+    }
+    .readingtime {
+      display: flex;
+      place-items: center;
+      margin: -0.375em 0 0 0;
+    }
+    .updated {
+      display: flex;
+      place-items: center;
+      margin: 0;
+      padding: 0;
     }
     .last-updated-on {
       display: inline-flex;
-      place-items: center;
       color: var(--emphasis);
       font-family: var(--sub-font);
+      font-size: 0.875em;
       font-weight: 500;
     }
     li:hover {
@@ -321,6 +334,13 @@ const selectedPosts = allPosts.filter(post =>
       article {
         margin-bottom: 3em;
       }
+      .last-updated-on {
+        font-size: 18px;
+        place-items: center;
+      }
+      .updated {
+        place-items: center;
+      }
       .related li {
         font-size: 1em;
         line-height: 1.2;
@@ -410,7 +430,7 @@ const selectedPosts = allPosts.filter(post =>
   <article data-pagefind-body>
     <h1 class="title">{title}</h1>
     <div>
-      <span class="tag">
+      <span class="tag" data-pagefind-ignore>
         {tags.map((tag) => (
           <a href={`/categories/${tag}`} data-umami-event="category-from-article">
             <button>{tag}</button>
@@ -418,16 +438,20 @@ const selectedPosts = allPosts.filter(post =>
         ))}
       </span>
     </div>
-    <div class="date" data-pagefind-ignore>
-      <FormattedDate date={pubDate} />
-      {
-        updatedDate && (
-          <span class="last-updated-on">
-            Updated&nbsp;<FormattedDate date={updatedDate} />
-          </span>
-        )
-      }
+    <div class="info" data-pagefind-ignore>
+      <span><FormattedDate date={pubDate} /></span>
+      <span class="readingtime"><ReadingTime time={readingTime} data-pagefind-ignore /></span>
     </div>
+      <p class="updated">
+        {
+          updatedDate && (
+            <span class="last-updated-on">
+              Updated&nbsp;
+            </span>
+              <FormattedDate date={updatedDate} />
+          )
+        }
+      </p>
     <hr />
     <p class="description">
       {description}

@@ -1,19 +1,32 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
-import { getCollection, type CollectionEntry } from "astro:content";
+import { getCollection, render, type CollectionEntry } from "astro:content";
 import FormattedDate from "@components/FormattedDate.astro";
+import ReadingTime from "@components/ReadingTime.astro";
 import BackToTop from "@components/BackToTop.astro";
 import type { Page } from "astro";
 
 export async function getStaticPaths({ paginate }) {
-  const posts = (await getCollection("blog")).sort(
+  const allPosts = (await getCollection("blog")).sort(
     (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
   );
-  return paginate(posts, { pageSize: 5 });
+  
+  // Get reading times for all posts
+  const postsWithReadingTime = await Promise.all(
+    allPosts.map(async (post) => {
+      const { remarkPluginFrontmatter } = await render(post);
+      return {
+        ...post,
+        readingTime: remarkPluginFrontmatter.readingTime
+      };
+    })
+  );
+  
+  return paginate(postsWithReadingTime, { pageSize: 5 });
 }
 
 interface Props {
-  page: Page<CollectionEntry<'blog'>>;
+  page: Page<CollectionEntry<'blog'> & { readingTime: string }>;
 }
 
 const { page } = Astro.props;
@@ -27,10 +40,20 @@ const desc = "List of all blog posts";
     font-family: var(--sub-font);
     font-weight: 900;
   }
-  .blurb {
+  .total {
+    font-family: var(--sub-font);
+    font-weight: 900;
+    font-size: 0.95em;
+    color: var(--emphasis)
+  }
+  .rss {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 1.5em;
+    place-items: center;
+    margin-top: 1em;
+    gap: 0.25em;
+    font-family: var(--sub-font);
+    color: var(--emphasis);
+    font-weight: 900;
   }
   ul {
     list-style-type: none;
@@ -63,8 +86,13 @@ const desc = "List of all blog posts";
     margin-left: 0;
   }
   .info {
+    place-items: center;
     margin-top: 0.1em;
     display: inline-flex;
+    gap: 0.25em
+  }
+  .tag {
+    margin-top: 0.25em;
   }
   .title {
     display: block;
@@ -74,6 +102,9 @@ const desc = "List of all blog posts";
   }
   .title a:hover {
     color: var(--hover);
+  }
+  .desc {
+    margin-top: -0.25em;
   }
   li:hover div {
     border-bottom: 2px solid var(--hover);
@@ -165,7 +196,6 @@ const desc = "List of all blog posts";
     25% { transform: rotate(-5deg); }
     75% { transform: rotate(5deg); }
   }
-
   .blurb svg:hover {
     animation: wiggle 0.5s ease-in-out infinite;
   }
@@ -175,29 +205,24 @@ const desc = "List of all blog posts";
   }
 
   @media screen and (max-width: 900px) {
-    .blurb {
-      display: grid;
-      gap: 1em;
-    }
+
   }
-  @media screen and (min-width: 200px) and (max-width: 667px) {
+  @media screen and (max-width: 667px) {
     section {
       line-height: 1.2;
     }
-    .blurb {
-      display: grid;
-      gap: 1em;
-    }
     .info {
       display: block;
-      margin-bottom: 0.25em;
+      margin-top: 0.25em;
+      margin-bottom: 0.5em;
     }
     .tag {
       display: block;
+      margin-top: 0.1em;
     }
     .page-info-top {
       font-size: 0.875em;
-      margin: 0 auto -1.5em auto;
+      /* margin: 0 auto -1.5em auto; */
     }
     .page-info {
       font-size: 0.875em;
@@ -214,26 +239,28 @@ const desc = "List of all blog posts";
     <h1>Blog</h1>
     <hr />
     <p class="blurb">
-      <span>List of all <b>{page.total}</b> blog posts. Alternatively, <a href="/categories/" data-umami-event="blog-category">see posts by category</a> or <a href="/search/" data-umami-event="blog-search">search the blog</a>.</span>
-      <a href="/rss.xml">
-        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="vertical-align: text-bottom; width: 1.325em; height: 1.325em;" class="pr-1" id="RSSicon" viewBox="0 0 256 256">
-          <title>RSS Feed</title>
-          <defs>
-            <linearGradient x1="0.085" y1="0.085" x2="0.915" y2="0.915" id="RSSg">
-              <stop  offset="0.0" stop-color="#E3702D"/><stop  offset="0.1071" stop-color="#EA7D31"/>
-              <stop  offset="0.3503" stop-color="#F69537"/><stop  offset="0.5" stop-color="#FB9E3A"/>
-              <stop  offset="0.7016" stop-color="#EA7C31"/><stop  offset="0.8866" stop-color="#DE642B"/>
-              <stop  offset="1.0" stop-color="#D95B29"/>
-            </linearGradient>
-          </defs>
-          <rect width="256" height="256" rx="55" ry="55" x="0"  y="0"  fill="#CC5D15"/>
-          <rect width="246" height="246" rx="50" ry="50" x="5"  y="5"  fill="#F49C52"/>
-          <rect width="236" height="236" rx="47" ry="47" x="10" y="10" fill="url(#RSSg)"/>
-          <circle cx="68" cy="189" r="24" fill="#FFF"/>
-          <path d="M160 213h-34a82 82 0 0 0 -82 -82v-34a116 116 0 0 1 116 116z" fill="#FFF"/>
-          <path d="M184 213A140 140 0 0 0 44 73 V 38a175 175 0 0 1 175 175z" fill="#FFF"/>
-        </svg>
-      </a>
+      <span>List of all <span class="total">{page.total}</span> blog posts. Alternatively, <a href="/categories/" data-umami-event="blog-category">see posts by category</a> or <a href="/search/" data-umami-event="blog-search">search the blog</a>.</span>
+      <span class="rss">RSS Feed: 
+        <a href="/rss.xml">
+          <svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="vertical-align: text-bottom; width: 1.325em; height: 1.325em;" class="pr-1" id="RSSicon" viewBox="0 0 256 256">
+            <title>RSS Feed</title>
+            <defs>
+              <linearGradient x1="0.085" y1="0.085" x2="0.915" y2="0.915" id="RSSg">
+                <stop  offset="0.0" stop-color="#E3702D"/><stop  offset="0.1071" stop-color="#EA7D31"/>
+                <stop  offset="0.3503" stop-color="#F69537"/><stop  offset="0.5" stop-color="#FB9E3A"/>
+                <stop  offset="0.7016" stop-color="#EA7C31"/><stop  offset="0.8866" stop-color="#DE642B"/>
+                <stop  offset="1.0" stop-color="#D95B29"/>
+              </linearGradient>
+            </defs>
+            <rect width="256" height="256" rx="55" ry="55" x="0"  y="0"  fill="#CC5D15"/>
+            <rect width="246" height="246" rx="50" ry="50" x="5"  y="5"  fill="#F49C52"/>
+            <rect width="236" height="236" rx="47" ry="47" x="10" y="10" fill="url(#RSSg)"/>
+            <circle cx="68" cy="189" r="24" fill="#FFF"/>
+            <path d="M160 213h-34a82 82 0 0 0 -82 -82v-34a116 116 0 0 1 116 116z" fill="#FFF"/>
+            <path d="M184 213A140 140 0 0 0 44 73 V 38a175 175 0 0 1 175 175z" fill="#FFF"/>
+          </svg>
+        </a>
+      </span>
     </p>
     <div class="page-info-top">Page {page.currentPage} of {page.lastPage}</div>
     <nav class="pagination" aria-label="Blog pagination">
@@ -259,13 +286,14 @@ const desc = "List of all blog posts";
             <div>
               <a href={`/blog/${post.id}/`} rel="prefetch-intent" data-umami-event={post.id}>
                 <span class="title">{post.data.title}</span>
+                <p class="tag">
+                  {post.data.tags.map((tag) => (
+                    <button>{tag}</button>
+                  ))}
+                </p>
                 <p class="info">
                   <FormattedDate date={post.data.pubDate} />&nbsp;
-                  <span class="tag">
-                    {post.data.tags.map((tag) => (
-                      <button>{tag}</button>
-                    ))}
-                  </span>
+                  <span class="reading"><ReadingTime time={post.readingTime} /></span>
                 </p>
                 <p class="desc">{post.data.description}</p>
               </a>

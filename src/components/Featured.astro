@@ -1,5 +1,7 @@
 ---
-import { getCollection } from 'astro:content';
+import FormattedDate from "./FormattedDate.astro";
+import ReadingTime from "@components/ReadingTime.astro";
+import { getCollection, render } from 'astro:content';
 
 const allPosts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
@@ -11,8 +13,18 @@ const featuredPosts = [
   'comprehensive-guide-tailscale-securely-access-home-network'
 ];
 
-const selectedPosts = allPosts.filter(post => 
+const filteredPosts = allPosts.filter(post => 
   featuredPosts.includes(post.id)
+);
+
+const selectedPosts = await Promise.all(
+  filteredPosts.map(async (post) => {
+    const { remarkPluginFrontmatter } = await render(post);
+    return {
+      ...post,
+      readingTime: remarkPluginFrontmatter.readingTime
+    };
+  })
 );
 ---
 
@@ -22,11 +34,31 @@ const selectedPosts = allPosts.filter(post =>
     font-family: var(--sub-font);
     font-weight: 900;
   }
+  p {
+    margin: 0;
+  }
   span {
-    line-height: 1.4;
+    line-height: 1.3;
+  }
+  .info {
+    display: flex;
+    place-items: center;
+    margin: 0;
+    padding: 0;
+    gap: 0.25em;
+  }
+  .reading {
+    margin: 0;
   }
   .tag {
-    margin: 0 0 0.25em 0;
+    display: flex;
+    place-items: center;
+    margin: 0.25em 0;
+  }
+  .tag button {
+    margin: 0 0.25em 0 0;
+    background: var(--info);
+    cursor: pointer;
   }
   button {
     background: var(--info);
@@ -44,20 +76,23 @@ const selectedPosts = allPosts.filter(post =>
     background-color: var(--blockquote);
     border-radius: 0.5em;
     margin: 0.5em auto 0 auto;
-    padding: 1.5em 1.5em 1em 1.5em;
-    border: 2px solid var(--primary);
+    padding: 1.5em;
   }
   .list {
     display: inline-flex;
     flex-direction: column;
     margin: 0 auto 1em auto;
     padding-bottom: 0.5em;
-    line-height: 1.2;
+    line-height: 1.3;
     border-bottom: 2px solid transparent;
   }
-  .list:last-of-type {
-    margin: 0 auto;
-    padding: auto;
+  .list:hover {
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--hover);
+    -webkit-transition: all .25s ease-out;
+    -moz-transition: all .25s ease-out;
+    -o-transition: all .25s ease-out;
+    transition: all .25s ease-out;
   }
   .list:hover .posts-title {
     color: var(--hover);    
@@ -69,24 +104,10 @@ const selectedPosts = allPosts.filter(post =>
   .posts-title {
     display: inline-flex;
     flex-direction: row;
-    margin: 0.25em auto;
+    margin: 0 auto;
     font-weight: bold;
     line-height: 1.2;
     color: var(--emphasis);
-  }
-  .list:hover {
-    padding-bottom: 0.5em;
-    border-bottom: 2px solid var(--hover);
-    -webkit-transition: all .25s ease-out;
-    -moz-transition: all .25s ease-out;
-    -o-transition: all .25s ease-out;
-    transition: all .25s ease-out;
-  }
-  .list:hover .posts-title {
-    -webkit-transition: all .25s ease-out;
-    -moz-transition: all .25s ease-out;
-    -o-transition: all .25s ease-out;
-    transition: all .25s ease-out;
   }
   @media (hover: hover) {
     a:hover button {
@@ -102,7 +123,7 @@ const selectedPosts = allPosts.filter(post =>
       background-color: var(--hover);
     }
   }
-  @media screen and (min-width: 200px) and (max-width: 667px) {
+  @media screen and (max-width: 667px) {
     main {
       margin: 0 10px;
     }
@@ -111,9 +132,16 @@ const selectedPosts = allPosts.filter(post =>
       width: 100%;
       margin: 0;
     }
-    button {
-      margin-right: 0.25em;
-      margin-bottom: 0.25em;
+    .info {
+      display: block;
+      margin: 0.5em 0 0.25em 0;
+    }
+    .tag {
+      display: block;
+      margin: 0.25em 0 0 0;
+    }
+    .tag button {
+      margin: 0.1em 0.25em 0.1em 0;
     }
   }
 </style>
@@ -123,21 +151,22 @@ const selectedPosts = allPosts.filter(post =>
   <h2>Featured Articles</h2>
   <div class="container">
     {selectedPosts.map(post => (
-      <div class="list">
-        <a href={`/blog/${post.id}`} rel="prefetch-intent" data-umami-event={`featured-${post.id}`}>
-        <p class="posts-title">
-          {post.data.title}
-        </p>
-        <p class="tag">
-          {post.data.tags.map((tag) => (
-            <button>{tag}</button>
-          ))}
-        </p>
-        <p class="desc">
-          {post.data.description}
-        </p>
-        </a>
-      </div>
+        <div class="list">
+          <a href={`/blog/${post.id}/`} rel="prefetch-intent" data-umami-event="recent-post">
+            <p class="posts-title">{post.data.title}</p>
+            <span class="tag">
+              {post.data.tags.map((tag) => (
+                <button>{tag}</button>
+              ))}
+            </span>
+            <p class="info">
+              <FormattedDate date={post.data.pubDate} />&nbsp;
+              <span class="reading"><ReadingTime time={post.readingTime} /></span>
+            </p>
+            <p class="desc">{post.data.description}</p>
+          </a>
+        </div>
+
     ))}
   </div>
 </section>

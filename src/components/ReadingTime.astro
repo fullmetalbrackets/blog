@@ -1,0 +1,44 @@
+---
+import Clock from "@icons/clock.svg";
+
+type Props = {
+  time: string;
+};
+
+const { time } = Astro.props;
+---
+<style scoped>
+    .readtime {
+        display: flex;
+        justify-content: start;
+        place-items: center;
+        font-family: var(--sub-font);
+        font-size: 0.875em;
+        font-weight: 500;
+        color: var(--secondary);
+        margin: 0;
+        padding: 0;
+    }
+    .minutes {
+        display: inherit;
+        justify-content: flex-start;
+        place-items: center;
+    }
+    svg {
+        filter: var(--clock-svg);
+        margin-left: -0.1em;
+        margin-right: 0.15em;
+    }
+    a, a:active, a:visited, a:hover, a:focus {
+        color: var(--text);
+    }
+      @media screen and (max-width: 667px) {
+        .readtime {
+            font-size: 18px;
+        }
+    }
+</style>
+
+<span class="readtime">
+    {time && <span class="minutes"><Clock width={24} height={24} /> {time}</span>}
+</span>
