@@ -11,6 +11,7 @@
       "@layouts/*": ["src/layouts/*"],
       "@styles/*": ["src/styles/*"],
       "@icons/*": ["src/img/icons/*"],
+      "@assets/*": ["src/img/assets/*"],
       "@consts": ["src/consts"]
     }
   }
