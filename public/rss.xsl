@@ -55,7 +55,6 @@
         <div class="container-md px-3 py-3 markdown-body">
           <header class="pb-5">
             <h1 class="border-0">
-              <!-- https://commons.wikimedia.org/wiki/File:Feed-icon.svg -->
               <svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="vertical-align: text-bottom; width: 1.325em; height: 1.325em;" class="pr-1" id="RSSicon" viewBox="0 0 256 256">
                 <title>RSS Feed</title>
                 <defs>
@@ -87,8 +86,8 @@
                     <span>Visit <a href="https://aboutfeeds.com">About Feeds</a> to learn more.</span>
                 </p>
             </nav>
-            <h1><xsl:value-of select="/rss/channel/title"/></h1>
-            <p class="f2 text-italic"><xsl:value-of select="/rss/channel/description"/></p>
+            <h1 class="site-name"><xsl:value-of select="/rss/channel/title"/></h1>
+            <p class="f2 text-italic site-desc"><xsl:value-of select="/rss/channel/description"/></p>
             <a class="head_link" target="_blank">
               <xsl:attribute name="href">
                 <xsl:value-of select="/rss/channel/link"/>
