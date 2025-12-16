@@ -74,7 +74,7 @@ Here is a simple image using Markdown. (Images embedded using markdown syntax an
 
 To use an image in a `figure` element with a `figcaption`, [RemarkDirective](https://github.com/remarkjs/remark-directive) and [RemarkDirectiveSugar](https://github.com/lin-stephanie/remark-directive-sugar) allows using custom markdown syntax.
 
-```md
+```markdown
 :::image-figure[This is a descriptive caption.]
 ![Alt text goes here](../../img/assets/social.jpg)
 :::
