@@ -7,22 +7,37 @@ import BackToTop from "@components/BackToTop.astro";
 import type { Page } from "astro";
 
 export async function getStaticPaths({ paginate }) {
-  const allPosts = (await getCollection("blog")).sort(
+  const posts = (await getCollection("blog")).sort(
     (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
   );
   
-  // Get reading times for all posts
-  const postsWithReadingTime = await Promise.all(
-    allPosts.map(async (post) => {
-      const { remarkPluginFrontmatter } = await render(post);
+  // Paginate first, then only process posts on each page
+  const pages = paginate(posts, { pageSize: 5 });
+  
+  // Add reading time to each page's posts
+  return await Promise.all(
+    pages.map(async (page) => {
+      const postsWithReadingTime = await Promise.all(
+        page.props.page.data.map(async (post) => {
+          const { remarkPluginFrontmatter } = await render(post);
+          return {
+            ...post,
+            readingTime: remarkPluginFrontmatter.readingTime
+          };
+        })
+      );
+      
       return {
-        ...post,
-        readingTime: remarkPluginFrontmatter.readingTime
+        ...page,
+        props: {
+          page: {
+            ...page.props.page,
+            data: postsWithReadingTime
+          }
+        }
       };
     })
   );
-  
-  return paginate(postsWithReadingTime, { pageSize: 5 });
 }
 
 interface Props {
@@ -148,12 +163,11 @@ const desc = "List of all blog posts";
   }
   .page-info-top {
     display: flex;
-    font-weight: 500;
+    font-weight: 900;
     margin: 1em auto -1.75em auto;
     justify-content: space-around;
     place-items: center;
     font-family: var(--sub-font);
-    font-weight: 500;
     color: var(--primary);
   }
   .page-info {
@@ -163,7 +177,7 @@ const desc = "List of all blog posts";
     justify-content: space-around;
     place-items: center;
     font-family: var(--sub-font);
-    font-weight: 500;
+    font-weight: 900;
     color: var(--primary);
   }
   .pagination {
@@ -203,10 +217,6 @@ const desc = "List of all blog posts";
   .blurb svg:not(:hover) {
     animation: none;
   }
-
-  @media screen and (max-width: 900px) {
-
-  }
   @media screen and (max-width: 667px) {
     section {
       line-height: 1.2;
@@ -222,11 +232,13 @@ const desc = "List of all blog posts";
     }
     .page-info-top {
       font-size: 0.875em;
-      /* margin: 0 auto -1.5em auto; */
+      margin: 1.5em 0 -1.3em 0;
+      padding: 0;
     }
     .page-info {
       font-size: 0.875em;
-      margin: 1.5em auto -1.5em auto;
+      margin: 1.5em 0 -1.25em 0;
+      padding: 0.1em 0 0 0;
     }
     .pagination {
       font-size: 0.875em;
