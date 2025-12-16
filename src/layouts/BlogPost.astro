@@ -7,7 +7,6 @@ import TableOfContents from '@components/TableOfContents.astro';
 import BlogPosting from "@components/BlogPosting.astro";
 import ScrollProgress from "@components/ScrollProgress.astro";
 import ReadingTime from "@components/ReadingTime.astro";
-
 import { Image } from 'astro:assets';
 import type { MarkdownHeading } from 'astro';
 import {
@@ -19,13 +18,11 @@ import {
   SocialShare
 } from "astro-social-share";
 
-const BUTTONS = [BlueskyShareButton, ThreadsShareButton, TwitterShareButton, RedditShareButton, HackerNewsShareButton]
-
 type Props = CollectionEntry<"blog">['data'] & { headings: MarkdownHeading[]; readingTime: string };
 
+const BUTTONS = [BlueskyShareButton, ThreadsShareButton, TwitterShareButton, RedditShareButton, HackerNewsShareButton]
 const { title, description, pubDate, updatedDate, tags, headings, related1, related2, readingTime } = Astro.props;
 const { slug } = Astro.params;
-
 const allPosts = await getCollection("blog");
 const relatedPosts = [ related1, related2 ];
 const selectedPosts = allPosts.filter(post => 
