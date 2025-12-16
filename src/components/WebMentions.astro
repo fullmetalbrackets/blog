@@ -1,0 +1,85 @@
+---
+// src/components/Webmentions.astro
+---
+
+<h3>Webmentions</h3>
+<section class="webmentions">
+  <div id="webmentions-container">
+    <p class="loading">Loading mentions...</p>
+  </div>
+</section>
+
+<style>
+  h3 {
+    display: flex;
+    font-family: var(--sub-font);
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+  }
+  .webmentions {
+    margin: 0 0 2em 0;
+    padding: 1em;
+    background-color: var(--blockquote);
+    border-radius: 0.5em;
+    font-size: 0.875em;
+  }
+    
+  .loading, .no-mentions {
+    font-family: var(--sub-font);
+    color: var(--text);
+    font-style: italic;
+    margin: 1em 0;
+  }
+  
+  .webmention {
+    border-bottom: 1px solid var(--primary);
+    padding: 1em 0;
+  }
+  
+  .webmention:last-child {
+    border-bottom: none;
+  }
+  
+  .webmention-author {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    margin-bottom: 0.5em;
+    font-weight: 700;
+  }
+  
+  .webmention-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+  }
+  
+  .webmention-content {
+    margin: 0.5em 0;
+    line-height: 1.5;
+  }
+  
+  .webmention-meta {
+    font-size: 0.875em;
+    color: var(--text);
+    font-family: var(--sub-font);
+  }
+  
+  .webmention-meta a {
+    color: var(--link);
+  }
+  
+  .webmention-stats {
+    display: flex;
+    gap: 1em;
+    margin: 1em 0;
+    font-family: var(--sub-font);
+    font-weight: 500;
+  }
+</style>
+
+<script>
+  import { loadWebmentions } from '@utils/webmentions';
+  loadWebmentions();
+</script>

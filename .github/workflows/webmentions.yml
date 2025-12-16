@@ -1,0 +1,31 @@
+name: Send Webmentions
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/content/blog/**'
+  workflow_dispatch:
+
+jobs:
+  send-webmentions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      
+      - name: Check for new blog posts
+        id: check
+        run: |
+          NEW_POSTS=$(git diff --name-only --diff-filter=A HEAD~1 HEAD | grep '^src/content/blog/' || true)
+          
+          if [ -z "$NEW_POSTS" ]; then
+            echo "has_new_posts=false" >> $GITHUB_OUTPUT
+            echo "❌ No new blog posts found."
+          else
+            echo "has_new_posts=true" >> $GITHUB_OUTPUT
+            echo "✅ New blog posts found:"
+            echo "$NEW_POSTS"
+          fi
