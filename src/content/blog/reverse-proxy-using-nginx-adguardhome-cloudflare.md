@@ -72,21 +72,29 @@ To add an existing domain to Cloudflare:
 
 1. On the Cloudflare dashboard _Account Home_, click the **+ Add a domain** button.
 
-![Adding a domain to Cloudflare.](../../img/blog/cloudflare-domain.png 'Adding a domain to Cloudflare')
+:::image-figure[Adding a domain to Cloudflare.]
+![A screenshot of the Cloudflare website user interface](../../img/blog/cloudflare-domain.png)
+:::
 
 2. Enter your domain, leave _Quick scan for DNS records_ selected, and click **Cotinue**.
 
 3. Click on the **Free plan** at the bottom and click **Continue**.
 
-![Cloudflare free plan.](../../img/blog/cloudflare-free.png 'Cloudflare free plan')
+:::image-figure[Cloudflare free plan details.]
+![A screenshot of the Cloudflare website Plans page](../../img/blog/cloudflare-free.png)
+:::
 
 4. You'll see your DNS records, if there are any. Don't worry about this right now and click on the **Continue to activate** button.
 
-![DNS management page.](../../img/blog/cloudflare-dns-records1.png 'DNS management page')
+:::image-figure[DNS management page in Cloudflare.]
+![A screenshot of the Cloudflare website user interface, DNS records section](../../img/blog/cloudflare-dns-records1.png)
+:::
 
 5. You'll see a pop-up window saying you should set your DNS records now, click on **Confirm**.
 
-![Add DNS records pop-up.](../../img/blog/cloudflare-dns-records1.png 'Add DNS records pop-up')
+:::image-figure[Add DNS records pop-up.]
+![A screenshot of the Cloudflare website user interface, DNS records section](../../img/blog/cloudflare-dns-records2.png)
+:::
 
 6. You'll be provided some instructions to update the nameservers on your domain's registrar, open a new tab and follow those instructions. Once you've added the Cloudflare nameservers at your registrar, go back to Cloudflare and click on **Continue**.
 
@@ -146,15 +154,17 @@ If you are running **Portainer** and want to create the container(s) from within
 
 Whichever method you use, wait a few moments while the image is downloaded and the container is created. Once it's up and running we can login to the Nginx Proxy Manager web UI at `http://<ip-address>:81` where the IP is the server running Nginx Proxy Manager.
 
-![Nginx Proxy Manager login screen.](../../img/blog/nginxproxy1.png 'Nginx Proxy Manager login screen')
+:::image-figure[Nginx Proxy Manager login screen.]
+![A screenshot of Nginx Proxy Manager web-based user interface](../../img/blog/nginxproxy1.png)
+:::
 
 Go into the Nginx Proxy Manager web UI at `http://<your-ip-address>:81`, login with the default email `admin@example.com` and password `changeme`, and as soon as you login go to _Users_ on the nav bar, and change (ideally) both the email and password of the administrator account.
 
-To add proxy hosts click on **Hosts** on the navigation bar at the top, then click the **Add Proxy Host** button.
+To add proxy hosts click on **Hosts** on the navigation bar at the top, then click the **Add Proxy Host** button. We'll create an entry for Plex first, which is running as a container on the same host at port `32400`. You'll begin in the **Details** tab.
 
-We'll create an entry for Plex first, which is running as a container on the same host at port 32400. You'll begin in the **Details** tab.
-
-![Creating a proxy host.](../../img/blog/nginxproxy3.png 'Creating a proxy host')
+:::image-figure[Creating a proxy host in Nginx Proxy Manager.]
+![A screenshot of Nginx Proxy Manager web-based user interface](../../img/blog/nginxproxy3.png)
+:::
 
 1. Under _Domain Names_ type in `*.domain.com` and click the `Add *.domain.com` dropdown that appears. Make sure to include the `*` as this will create a wildcard certificate for use with all subdomains.
 
@@ -168,7 +178,9 @@ We'll create an entry for Plex first, which is running as a container on the sam
 
 6. Go to the **SSL** tab, click under _SSL Certificate_ and select **Request a new SSL Certificate** from the dropdown.
 
-![Configuring SSL on proxy host.](../../img/blog/nginxproxy4.png 'Configuring SSL on proxy host')
+:::image-figure[Configuring SSL on proxy host in Nginx Proxy Manager.]
+![A screenshot of Nginx Proxy Manager web-based user interface](../../img/blog/nginxproxy4.png)
+:::
 
 7. HTTPS should work with _Force SSL_ toggled off, but feel free to toggle it on if you prefer.
 

@@ -98,9 +98,13 @@ Now go to the admin console, on the **Machines** tab, and do the following:
 
 3. Click both checkboxes for **Subnet routes** and **Use as exit node**, then click the **Save** button to finish.
 
-![Enabling subnets in Tailscale admin console.](../../img/blog/tailscale-subnets.png 'Enabling subnets in Tailscale admin console')
+:::image-figure[Enabling subnets in Tailscale admin console.]
+![A screenshot of the Tailscale web-based admin console](../../img/blog/tailscale-subnets.png)
+:::
 
-![Enabling exit node in Tailscale admin console.](../../img/blog/tailscale-exit-node.png 'Enabling exit node in Tailscale admin console')
+:::image-figure[Enabling exit node in Tailscale admin console.]
+![A screenshot of the Tailscale web-based admin console](../../img/blog/tailscale-exit-node.png)
+:::
 
 ## Configure the Plex server
 
@@ -112,15 +116,21 @@ The following will be necessary for _Plex apps_ on phones, smart TVs, and other 
 
 3. Next to _Secure connections_, choose **Preferred** from the downdown menu.
 
-![Secure connections setting in Plex.](../../img/blog/expose-plex1.png 'Secure connections setting in Plex')
+:::image-figure[Secure connections setting in Plex.]
+![A screenshot of the Plex Media Server web-based user interface](../../img/blog/plex-secure-connections.png)
+:::
 
 4. Make sure to **leave disabled** the checkbox for _Enable Relay_.
 
-![Relay setting in Plex.](../../img/blog/plex-remote-access0.png 'Relay setting in Plex')
+:::image-figure[Relay setting in Plex.]
+![A screenshot of the Plex Media Server web-based user interface](../../img/blog/plex-relay.png)
+:::
 
 5. **This is the really important part.** Under _Custom server access URLs_ type in Plex's server's Tailscale IP, i.e. `http://100.80.225.40:32400`. (Make sure to use **http** for this one, this is a fallback in case HTTPS does not work.) You can get the machine's Tailscale IP from the admin console.
 
-![Custom server access URL setting in Plex.](../../img/blog/plex-remote-access1.png 'Custom server access URL setting in Plex')
+:::image-figure[Custom server access URL setting in Plex.]
+![A screenshot of the Plex Media Server web-based user interface](../../img/blog/plex-remote-access1.png)
+:::
 
 6. Scroll down to the bottom of the page and click the **Save changes** button.
 
@@ -140,8 +150,9 @@ sudo tailscale up --exit-node=plex
 
 You should now be able to remote access Plex and stream your content when you are _Connected_ on the Tailscale app and your Plex server is _Enabled_ as exit node. See my example below:
 
-![Tailscale app on Android phone connected to tailnet and exit node enabled.](../../img/blog/plex-remote-access.jpg 'Tailscale app on Android phone connected to tailnet and exit node enabled')
-
+:::image-figure[Tailscale app on Android phone connected to tailnet with an exit node enabled.]
+![A screenshot of the Tailscale mobile app](../../img/blog/plex-remote-access-android.jpg)
+:::
 
 ## References
 
