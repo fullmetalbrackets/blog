@@ -64,28 +64,27 @@ Code blocks (three backticks) look like this:
 
 ## Images
 
-Here is a simple image using Markdown. (Images embedded using markdown syntax and stored in `/src/img` will be processed by Astro Image.)
+Here is a simple image using Markdown. (Images embedded using markdown syntax and stored in `/src/img` will be processed and optimized by Astro Image.)
 
 ```md
-![Image alt info goes here](../../img/assets/social.jpg 'This text appears as tooltip when hovering cursor over image')
+![Alt text goes here](../../img/assets/social.jpg 'This text appears as tooltip when hovering cursor over image')
 ```
 
-![Image alt info goes here](../../img/assets/social.jpg 'This text appears as tooltip when hovering cursor over image')
+![Alt text goes here](../../img/assets/social.jpg 'This text appears as tooltip when hovering cursor over image')
 
+To use an image in a `figure` element with a `figcaption`, [RemarkDirective](https://github.com/remarkjs/remark-directive) and [RemarkDirectiveSugar](https://github.com/lin-stephanie/remark-directive-sugar) allows using custom markdown syntax.
 
-And here is an image in a `figure` element with a `figcaption`. (Images embedded using HTML and stored in `/public` are **not** processed by Astro Image.)
-
-```html
-<figure>
-  <img src="/social.jpg" alt="This is a placeholder image description" />
-  <figcaption>This is a caption, a quick blurb about the above image.</figcaption>
-</figure>
+```md
+:::image-figure[This is a descriptive caption.]
+![Alt text goes here](../../img/assets/social.jpg)
+:::
 ```
 
-<figure>
-<img src="/social.jpg" alt="This is a placeholder image description" />
-<figcaption>This is a caption, a quick blurb about the above image.</figcaption>
-</figure>
+That markdown is rendered like this: 
+
+:::image-figure[This is a descriptive caption.]
+![Alt text goes here](../../img/assets/social.jpg)
+:::
 
 ## Blockquotes
 
