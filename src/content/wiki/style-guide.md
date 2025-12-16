@@ -49,7 +49,7 @@ Inline code (single backticks) `look like this`.
 
 Code blocks (three backticks) look like this:
 
-```bash
+```html
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -66,7 +66,7 @@ Code blocks (three backticks) look like this:
 
 Here is a simple image using Markdown. (Images embedded using markdown syntax and stored in `/src/img` will be processed and optimized by Astro Image.)
 
-```md
+```markdown
 ![Alt text goes here](../../img/assets/social.jpg 'This text appears as tooltip when hovering cursor over image')
 ```
 
@@ -90,7 +90,7 @@ That markdown is rendered like this:
 
 I use the `<blockquote>` element as an "information" block instead, styled with CSS.
 
-```md
+```markdown
 > This is a blockquote, which I use for detailed information rather than quoting.
 ```
 
@@ -100,7 +100,7 @@ I use the `<blockquote>` element as an "information" block instead, styled with 
 
 Sometimes I use tables to display information. Below are the code and result:
 
-```md
+```markdown
 | Emphasis     | Strong     | Strikethrough       |
 | ------------ | ---------- | ------------------- |
 | `_emphasis_` | `*strong*` | `~~strikethrough~~` |
@@ -132,7 +132,7 @@ I like lists! I use them all the time in the blog and wiki becausing organizing 
 
 **Code**
 
-```md
+```markdown
 - Gear
   1. Laptop
   2. Camera
@@ -147,7 +147,7 @@ I like lists! I use them all the time in the blog and wiki becausing organizing 
 
 **Code**
 
-```md
+```markdown
 - Genres
   - Science Fiction
     - The Reality Dysfunction
