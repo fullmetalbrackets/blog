@@ -23,6 +23,8 @@
     "@playform/compress": "^0.2.0",
     "astro": "^5.16.5",
     "astro-social-share": "^2.2.0",
+    "mdast-util-to-string": "^4.0.0",
+    "reading-time": "^1.5.0",
     "typescript": "^5.9.3"
   },
   "devDependencies": {},

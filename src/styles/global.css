@@ -281,6 +281,7 @@
     --primary: rgb(44 156 195);
     --secondary: rgb(0, 150, 150);
     --accent: rgb(182, 193, 210);
+    --border: rgba(32, 33, 36, 0.25);
     --link: rgb(250, 85, 0);
     --hover: rgb(200, 0, 0);
     --tags: rgb(44 156 195);
@@ -302,6 +303,7 @@
     --share: brightness(0) saturate(100%) invert(74%) sepia(77%) saturate(474%) hue-rotate(356deg) brightness(104%) contrast(90%);
     --coffee-hover: brightness(0) saturate(100%) invert(45%) sepia(98%) saturate(1756%) hue-rotate(7deg) brightness(89%) contrast(92%);
     --time-svg: brightness(0) saturate(100%) invert(35%) sepia(53%) saturate(496%) hue-rotate(120deg) brightness(87%) contrast(84%);
+    --clock-svg: brightness(0) saturate(100%) invert(10%) sepia(11%) saturate(791%) hue-rotate(169deg) brightness(94%) contrast(89%);
     text-wrap: pretty;
     box-sizing: border-box;
     height: 100%;
@@ -319,6 +321,7 @@
     --primary: rgb(90, 194, 175);
     --secondary: rgb(95, 193, 232);
     --accent: rgb(51, 65, 85);
+    --border: rgba(164, 174, 188, 0.25);
     --link: rgb(255, 221, 0);
     --hover: rgb(249, 115, 22);
     --tags: rgb(255, 221, 0);
@@ -341,6 +344,7 @@
     --share: brightness(0) saturate(100%) invert(77%) sepia(98%) saturate(1742%) hue-rotate(350deg) brightness(96%) contrast(95%);
     --coffee-hover: brightness(0) saturate(100%) invert(43%) sepia(96%) saturate(937%) hue-rotate(352deg) brightness(101%) contrast(95%);
     --time-svg: brightness(0) saturate(100%) invert(68%) sepia(15%) saturate(1141%) hue-rotate(119deg) brightness(97%) contrast(92%);
+    --clock-svg: brightness(0) saturate(100%) invert(64%) sepia(80%) saturate(281%) hue-rotate(154deg) brightness(92%) contrast(98%);
     text-wrap: pretty;
     box-sizing: border-box;
     height: 100%;

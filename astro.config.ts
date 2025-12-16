@@ -1,6 +1,7 @@
 import { defineConfig, passthroughImageService } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
+import { remarkReadingTime } from './remark-reading-time.ts';
 
 import playformCompress from '@playform/compress';
 
@@ -10,7 +11,8 @@ export default defineConfig({
   integrations: [mdx(), sitemap(), playformCompress()],
   prefetch: true,
   markdown: {
-    syntaxHighlight: 'prism'
+    syntaxHighlight: 'prism',
+    remarkPlugins: [remarkReadingTime],
   },
   compressHTML: true,
   image: {
