@@ -351,6 +351,10 @@ const { title, description, image = "/social.jpg" } = Astro.props;
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
 
+<!-- Webmentions -->
+<link rel="webmention" href="https://webmention.io/fullmetalbrackets.com/webmention" />
+<link rel="me" href="https://bsky.app/profile/fullmetalbrackets.bsky.social" />
+
 <!-- Umami tracking code -->
 <script is:inline defer src="https://cloud.umami.is/script.js" data-website-id="4c9061c2-889a-48d1-ba07-6adc444c9768"></script>
 

@@ -3669,8 +3669,11 @@ h2.posts {
 .date {
     display: flex;
     place-items: center;
+    font-family: var(--sub-font);
+    font-weight: 500;
     color: var(--date);
-    font-size: 0.875em
+    font-size: 0.875em;
+    margin-bottom: 0.25em;
 }
 
 .date svg {
@@ -3678,9 +3681,7 @@ h2.posts {
     height: 24px;
     filter: var(--time-svg);
     margin-left: -0.1em;
-    margin-right: 0.25em;
-    padding-top: -3px;
-    padding-bottom: 3px;
+    margin-right: 0.15em;
 }
 
 
@@ -6282,11 +6283,6 @@ h2.posts {
     background-color: #f8f8f8
 }
 
-.about {
-    display: flex;
-    justify-content: center;
-}
-
 strong, em {
     color: var(--emphasis)
 }
@@ -6310,6 +6306,22 @@ button {
   font-size: 0.75em;
   margin: -2em 0 2em 0;
 }
+
+.about {
+    display: flex;
+    justify-content: center;
+    font-family: var(--sub-font);
+}
+
+.site-name, .site-desc, .head_link {
+    display: flex;
+    justify-content: space-around;
+}
+
+.head_link button {
+    font-size: 1em;
+}
+
 @media (hover: hover) {
   a:hover button {
     box-shadow: -4px -4px 0 #000;
