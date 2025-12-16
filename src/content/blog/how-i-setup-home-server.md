@@ -14,10 +14,18 @@ My old desktop PC turned server is a _Dell XPS 8920_ with an **Intel i7-7700 CPU
 
 Several hard drives pooled together using <a href="/blog/two-drives-mergerfs/" target="_blank" data-umami-event="home-server-mergerfs-blog-post">MergerFS</a>, with around 10 TB dedicated exclusively to movies and TV shows, while another 6 TB is for other data. For secure remote access to my server and all it's services (plus everything else on my home network), I have settled on <a href="/blog/tailscale/" target="_blank">Tailscale</a> for it's ease of use and exceptionally good free tier. To manage the server with a nice GUI, I use <a href="https://cockpit-project.org" target="_blank" data-umami-event="home-server-cockpit">Cockpit</a>. You can add "applications" for visualizing performance metrics, managing storage, and configuring virtual machines. (Which I rarely use.) I also use the Cockpit add-ons _File Sharing_ to manage my SMB shares and _Navigator_ for a graphical file manager.
 
-![Cockpit Overview](../../img/blog/cockpit1.png 'Cockpit Overview')
-![Cockpit Storage](../../img/blog/cockpit2.png 'Cockpit Storage')
-![Cockpit File Sharing](../../img/blog/cockpit3.png 'Cockpit File Sharing')
-![Cockpit Navigator](../../img/blog/cockpit4.png 'Cockpit Navigator')
+:::image-figure[Overview in Cockpit]
+![A screenshot of the Cockpit web-based user interfacet](../../img/blog/cockpit1.png)
+:::
+:::image-figure[Storage in Cockpit]
+![A screenshot of the Cockpit web-based user interface](../../img/blog/cockpit2.png)
+:::
+:::image-figure[File Sharing in Cockpit]
+![A screenshot of the Cockpit web-based user interface](../../img/blog/cockpit3.png)
+:::
+:::image-figure[Navigator in Cockpit]
+![A screenshot of the Cockpit web-based user interface](../../img/blog/cockpit4.png)
+:::
 
 ## Docker containers
 
@@ -107,7 +115,9 @@ I'll devote a section to each docker container I run and include a `compose.yaml
 
 <a href="https://home-assistant.io" target="_blank" data-umami-event="home-server-home-assistant">Home Assistant</a> is a smart home automation hub that provides local control over IoT and smart devices in my house. Although I use Google Home on the regular because it's easier to just speak what I want to do, everything that I can also connect to Home Assistant, I do. It has let me keep controlling my lights a few times when my internet was out, so that alone makes it worthwhile, and creating "if this then that" automations are as useful as they are fun.
 
-![Part of a Home Assistant dashboard.](../../img/blog/homeassistant.png 'Part of a Home Assistant dashboard')
+:::image-figure[A dashboard in Home Assistant.]
+![A screenshot of the Home Assistant web-based user interface](../../img/blog/homeassistant.png)
+:::
 
 ```yaml
    homeassistant:
@@ -259,8 +269,12 @@ Thanks to <a href="https://www.portainer.io/take-3" target="_blank">Portainer's 
 
 Portainer is usually deployed with `docker run` rather than compose, it's just a quick command to get started. (Note that I use a bind mount rather than a standard volume for Portainer data.)
 
-![Multiple environments in Portainer.](../../img/blog/portainer1.png 'Multiple environments in Portainer')
-![List of Docker containers in Portainer.](../../img/blog/portainer2.png 'List of Docker containers in Portainer')
+:::image-figure[Multiple environments in Portainer]
+![A screenshot of the Portainer web-based user interface](../../img/blog/portainer1.png)
+:::
+:::image-figure[List of Docker containers in Portainer]
+![A screenshot of the Portainer web-based user interface](../../img/blog/portainer2.png)
+:::
 
 ```bash
 docker run -d -p 8000:8000 -p 9000:9000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v /opt/docker/portainer:/data portainer/portainer-ce:lts
@@ -272,7 +286,9 @@ docker run -d -p 8000:8000 -p 9000:9000 -p 9443:9443 --name portainer --restart=
 
 <a href="https://docs.linuxserver.io/images/docker-qbittorrent" target="_blank" data-umami-event="home-server-qbittorrent">qBittorrent</a> is my preferred torrent downloader, this containerized version makes the GUI accessible from any machine via browser, and it connects to *Gluetun* so that so all my downloads are routed through my VPN provider. Rather than using the *arr suite for automated downloads, because I just don't download often enough to bother setting it up, I will manually grab a magnet link from my preferred torrent sites and put it into qBittorrent. I have storage paths configured by categories so that I can just choose "Movies", "TV Shows" or "Music" categories for each download, and it will be stored in the corresponding path where it is streamable from Plex. I also use the <a href="https://github.com/VueTorrent/VueTorrent" target="_blank">VueTorrent mod</a> for an improved UI.
 
-![qBittorrent with VueTorrent UI mod.](../../img/blog/qbittorrent.png 'qBittorrent with VueTorrent UI mod')
+:::image-figure[qBittorrent dashboard with VueTorrent UI mod.]
+![A screenshot of the qBittorrent web-based user interface with the VueTorrent mod](../../img/blog/qbittorrent.png)
+:::
 
 ```yaml
    qbittorrent:
@@ -303,9 +319,15 @@ docker run -d -p 8000:8000 -p 9000:9000 -p 9443:9443 --name portainer --restart=
 
 <a href="https://github.com/AnalogJ/scrutiny" target="_blank" data-umami-event="home-server-scrutiny">Scrutiny</a> provides a nice dashboard for hard drive S.M.A.R.T. monitoring. I have 10 hard drives on my server of various manufacturers, storage capacities and age so I use this to keep an eye on all of them. (See first screenshot below.) You can also see details on the test results for each drive and decide how severe it is. (See second screenshot, I'm not too worried since it's not critical and the content of both drives are backed up anyway.) Of course I have Scrutiny setup to send me notifications via Pushover (see third screenshot), but I also have `smartd` daemon configured to send mail in the server terminal when the tests show critical HDD failure, this already alerted me once to a dying HDD that I was able to replace without data loss.
 
-![Scrutiny all drives overview.](../../img/blog/scrutiny1.png 'Scrutiny all drives overview')
-![Scrutiny details of a specific drive.](../../img/blog/scrutiny2.png 'Scrutiny details of a specific drive with errors')
-![Scrutiny notifications about specific drive errors via Pushover.](../../img/blog/scrutiny-pushover.jpg 'Scrutiny notifications about specific drive errors via Pushover')
+:::image-figure[Overview of all drives Scrutiny]
+![A screenshot of the Scrutiny web-based user interface](../../img/blog/scrutiny1.png)
+:::
+:::image-figure[Details of a specific drive in Scrutiny]
+![A screenshot of the Scrutiny web-based user interface](../../img/blog/scrutiny2.png)
+:::
+:::image-figure[Scrutiny notifications about specific drive errors via Pushover]
+![A screenshot of the Scrutiny web-based user interface](../../img/blog/scrutiny-pushover.jpg)
+:::
 
 ```yaml
    scrutiny:
@@ -333,8 +355,12 @@ docker run -d -p 8000:8000 -p 9000:9000 -p 9443:9443 --name portainer --restart=
 
 <a href="https://speedtest-tracker.dev" target="_blank" data-umami-event="home-server-speedtest-tracker">Speedtest-Tracker</a> lets you schedule Ookla speedtests with cron syntax and uses a database to keep a history of test results with pretty graphs. It can also send notifications when a speedtest is completed or if a threshold is met. I use Pushover for push notifications from Speedtest-Tracker to my phone whenever speed results are below 700 Mpbs. (I pay for gigabit fiber, so I like to know how often it's not actually at those speeds.)
 
-![Speedtest Tracker dashboard with graphs](../../img/blog/speedtest-tracker.png 'Speedtest Tracker dashboard with graphs')
-![Speedtest Tracker push notification with Pushover](../../img/blog/speedtest-pushover.jpg 'Speedtest Tracker push notification with Pushover')
+:::image-figure[Speedtest Tracker dashboard with graphs.]
+![A screenshot of the Speedtest Tracker web-based user interface](../../img/blog/speedtest-tracker.png)
+:::
+:::image-figure[Speedtest Tracker notification via Pushover.]
+![A screenshot of the Pushover mobile app](../../img/blog/speedtest-pushover.jpg)
+:::
 
 ```yaml
    speedtest-tracker:
@@ -382,9 +408,13 @@ docker run -d -p 8000:8000 -p 9000:9000 -p 9443:9443 --name portainer --restart=
 
 <a href="https://tautulli.com" target="_blank" data-umami-event="home-server-tautulli">Tautulli</a> runs alongside Plex to provide monitoring and statistics tracking, so I can see a history of what media my users and I consumed, details on when and what device, whether it was direct play or transcode, etc. It also has programmatic notifications with a lot different triggers. Aside from just keeping a comprehensive history of played media, I use Pushover to send push notifications to my phone when other users are playing something on Plex and if they have any stream errors.
 
-![Plex Media Server streaming history in Tautulli.](../../img/blog/tautulli.png 'Plex Media Server streaming history in Tautulli')
 
-![Tautulli push notification with Pushover.](../../img/blog/tautulli-pushover.jpg 'Tautulli push notification with Pushover')
+:::image-figure[Plex Media Server streaming history in Tautulli]
+![A screenshot of Tautulli web-based interface](../../img/blog/tautulli.png)
+:::
+:::image-figure[Tautulli notification via Pushover]
+![A screenshot of the Pushover mobile app](../../img/blog/tautulli-pushover.jpg)
+:::
 
 ```yaml
    tautulli:
@@ -408,8 +438,12 @@ docker run -d -p 8000:8000 -p 9000:9000 -p 9443:9443 --name portainer --restart=
 
 <a href="https://uptime.kuma.pet" target="_blank" data-umami-event="home-server-uptime-kuma">Uptime Kuma</a> is a robust self-hosted uptime monitor, it can keep track of not just uptime of websites, but also Docker containers running on the host or even remotely. I mainly use it to monitor my containers and send a push notification to my phone (via <a href="https://pushover.net" target="_blank" data-umami-event="home-server-pushover">Pushover</a>) when they go down and come back up, other than that I track the uptime of websites (including this one) and make sure AdGuard Home is available.
 
-![Uptime Kuma various monitors](../../img/blog/uptime1.png 'Uptime Kuma various monitors')
-![Uptime Kuma container monitor](../../img/blog/uptime2.png 'Uptime Kuma container monitor')
+:::image-figure[Various monitors in Uptime Kuma]
+![A screenshot of the Uptime Kuma web-based user interface](../../img/blog/uptime1.png)
+:::
+:::image-figure[Monitoring containers in Uptime Kuma]
+![A screenshot of the Uptime Kuma web-based user interface](../../img/blog/uptime2.png)
+:::
 
 ```yaml
    uptime-kuma:
@@ -431,7 +465,9 @@ docker run -d -p 8000:8000 -p 9000:9000 -p 9443:9443 --name portainer --restart=
 
 <a href="https://containrrr.dev/watchtower" target="_blank" data-umami-event="home-server-watchtower">Watchtower</a> keeps track of new version of all your other container images, and (depending on your config) will automatically shut containers down, update the images, prune the old images, and then restart it. You can also schedule your updates for specific dates and times, mine only happen on weekdays at 3 AM. Finally, it can send notifications via many providers, but like with everything else I use Pushover to get notified on my phone when any containers have been updated.
 
-![Watchtower push notification with Pushover](../../img/blog/watchtower-pushover.jpg 'Watchtower push notification with Pushover')
+:::image-figure[Watchtower notification via Pushover]
+![A screenshot of the Pushover mobile app](../../img/blog/watchtower-pushover.jpg)
+:::
 
 ```yaml
    watchtower:
@@ -574,7 +610,9 @@ Using SMB, I share the files so they can be accessed from any PC, tablet or phon
 
 SMB shares are available on the network for my wife and I to access from any PC or laptop, even any tablet or phone -- I wrote this <a href="/blog/solid-explorer-samba-share/" target="_blank" data-umami-event="home-server-solid-explorer">blog post about how to access SMB shares from Android</a>. On my Windows PC, I have the SMB shares mapped as network drives and mostly manage them through there.
 
-![SMB shares from Linux server mapped as network drives in Windows.](../../img/blog/smb-windows.png 'SMB shares from Linux server mapped as network drives in Windows')
+:::image-figure[SMB shares from Linux server mapped as network drives in Windows.]
+![A screenshot of Windows Explorer showing multiple network locations](../../img/blog/smb-windows.png)
+:::
 
 ## Tailscale for remote access
 
