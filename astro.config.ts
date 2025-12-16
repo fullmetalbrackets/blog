@@ -3,6 +3,8 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import { remarkReadingTime } from './remark-reading-time.ts';
 import rehypeExternalLinks from 'rehype-external-links';
+import remarkDirective from 'remark-directive'
+import remarkDirectiveSugar from 'remark-directive-sugar'
 import playformCompress from '@playform/compress';
 
 export default defineConfig({
@@ -20,7 +22,7 @@ export default defineConfig({
       ]
     ],
     syntaxHighlight: 'prism',
-    remarkPlugins: [remarkReadingTime],
+    remarkPlugins: [remarkReadingTime, remarkDirective, remarkDirectiveSugar],
   },
   compressHTML: true,
   image: {
