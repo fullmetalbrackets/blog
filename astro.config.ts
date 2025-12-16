@@ -2,15 +2,23 @@ import { defineConfig, passthroughImageService } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import { remarkReadingTime } from './remark-reading-time.ts';
-
+import rehypeExternalLinks from 'rehype-external-links';
 import playformCompress from '@playform/compress';
 
-// https://astro.build/config
 export default defineConfig({
   site: 'https://fullmetalbrackets.com',
   integrations: [mdx(), sitemap(), playformCompress()],
   prefetch: true,
   markdown: {
+    rehypePlugins: [
+      [
+        rehypeExternalLinks,
+        {
+          target: '_blank',
+          rel: ['noopener', 'noreferrer']
+        }
+      ]
+    ],
     syntaxHighlight: 'prism',
     remarkPlugins: [remarkReadingTime],
   },

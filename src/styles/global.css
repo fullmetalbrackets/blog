@@ -540,6 +540,7 @@ code {
 	border-radius: 0.25em;
   white-space: pre;
   text-wrap: pretty;
+  letter-spacing: -0.5px;
 }
 pre {
 	padding: 1rem;
@@ -752,7 +753,15 @@ button {
   font-weight: 900;
   color: var(--emphasis);
 }
-
+article a[target="_blank"]::after {
+  content: "↗";
+  font-size: 0.875em;
+  margin-left: 0.2em;
+}
+article a[target="_blank"][href^="/"]::after,
+article a[target="_blank"][href^="#"]::after {
+  content: none;
+}
 /* screen width media queries */
 @media screen and (min-width: 200px) and (max-width: 720px) {
   h1 {
