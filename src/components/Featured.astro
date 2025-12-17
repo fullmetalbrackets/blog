@@ -63,7 +63,6 @@ const selectedPosts = await Promise.all(
   button {
     background: var(--info);
     margin-right: 0.325em;
-    background: var(--info);
     cursor: pointer;
   }
   button:first-of-type {
@@ -89,16 +88,10 @@ const selectedPosts = await Promise.all(
   .list:hover {
     padding-bottom: 0.5em;
     border-bottom: 2px solid var(--hover);
-    -webkit-transition: all .25s ease-out;
-    -moz-transition: all .25s ease-out;
-    -o-transition: all .25s ease-out;
     transition: all .25s ease-out;
   }
   .list:hover .posts-title {
     color: var(--hover);    
-    -webkit-transition: all .25s ease-out;
-    -moz-transition: all .25s ease-out;
-    -o-transition: all .25s ease-out;
     transition: all .25s ease-out;
   }
   .posts-title {
