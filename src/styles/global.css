@@ -84,19 +84,19 @@
 }
 body {
   font-size: 24px;
-	font-family: var(--main-font);
+  font-family: var(--main-font);
   line-height: 1.4;
-	margin: auto;
-	padding: 0 0.25em;
-	text-align: left;
-	word-wrap: break-word;
-	overflow-wrap: break-word;
-	color: var(--text);
-	background: var(--main);
-	height: 100%;
+  margin: auto;
+  padding: 0 0.25em;
+  text-align: left;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  color: var(--text);
+  background: var(--main);
+  height: 100%;
   -webkit-font-smoothing: antialiased;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
-	overflow-y: scroll;
+  overflow-y: scroll;
   font-variant-ligatures: no-common-ligatures;
   font-smooth: always;
 }
@@ -112,11 +112,11 @@ body {
 }
 ::selection {
   color: #000;
-  background: var(--primary); /* WebKit/Blink Browsers */
+  background: var(--primary);
 }
 ::-moz-selection {
   color: #000;
-  background: var(--primary); /* Gecko Browsers */
+  background: var(--primary);
 }
 main {
   margin: 0 auto;
@@ -128,25 +128,24 @@ section {
 hr {
   margin-bottom: 2em;
   border: 0.25px solid var(--primary);
-	opacity: 0.5;
+  opacity: 0.5;
 }
 h1 {
   font-family: var(--main-font);
-	color: var(--code-text);
+  color: var(--code-text);
+  margin: 0;
+  padding: 0;
+}
+h2, h3, h4, h5, h6 {
+  font-family: var(--main-font);
   margin: 0;
   padding: 0;
 }
 h2, h4, h6 {
-  font-family: var(--main-font);
-	color: var(--primary);
-  margin: 0;
-  padding: 0;
+  color: var(--primary);
 }
 h3, h5 {
-  font-family: var(--main-font);
-	color: var(--emphasis);
-  margin: 0;
-  padding: 0;  
+  color: var(--emphasis);
 }
 p {
   overflow-wrap: break-word;
@@ -169,10 +168,6 @@ svg {
 }
 .sq-img {
   border-radius: 0;
-}
-.posh-img {
-  max-width: 50%;
-  max-height: 50%;
 }
 input, button, textarea, select {
   font: inherit;
@@ -197,10 +192,10 @@ input:focus, textarea:focus {
   box-shadow: 0 0 0 0.25rem var(--name);
 }
 u, em, i {
-	color: var(--emphasis);
+  color: var(--emphasis);
 }
 strong, b {
-	color: var(--emphasis);
+  color: var(--emphasis);
   font-weight: 700;
 }
 kbd {
@@ -212,7 +207,7 @@ kbd {
   cursor: default;
   font-family: sans-serif;
   font-size: 0.75em;
-	font-weight: 700;
+  font-weight: 700;
   line-height: 1.2;
   min-width: 0.75rem;
   display: inline-block;
@@ -222,62 +217,59 @@ kbd {
   top: -1px;
 }
 a, a:active, a:visited {
-	color: var(--link);
-	text-decoration: none;
+  color: var(--link);
+  text-decoration: none;
 }
 a:hover {
-	color: var(--hover);
-	text-decoration: none;
-  -webkit-transition: all .1s ease-out;
-  -moz-transition: all .1s ease-out;
-  -o-transition: all .1s ease-out;
+  color: var(--hover);
+  text-decoration: none;
   transition: all .1s ease-out;
 }
 textarea {
-	width: 100%;
-	font-size: 16px;
+  width: 100%;
+  font-size: 16px;
 }
 table {
-	width: 100%;
+  width: 100%;
   border-spacing: 0;
   margin: 1em auto;
 }
 tbody, td {
-	border: 1px solid var(--accent);
-	padding: 5px;
-	vertical-align: top;
+  border: 1px solid var(--accent);
+  padding: 5px;
+  vertical-align: top;
 }
 th {
   background: var(--code-bg);
-	border: 1px solid var(--accent);
+  border: 1px solid var(--accent);
   color: var(--emphasis);
-	padding: 5px;
-	vertical-align: top;
+  padding: 5px;
+  vertical-align: top;
 }
 mark {
   background: var(--info);
 }
 img {
-	max-width: 80%;
-	height: auto;
+  max-width: 80%;
+  height: auto;
   margin: 3em auto;
 }
 code {
-	padding: 4px 4.5px 1px 4.5px;
+  padding: 4px 4.5px 1px 4.5px;
   font-size: 0.825rem;
   font-family: var(--code-font);
-	background-color: var(--code-bg);
-	color: var(--code-text);
-	border-radius: 0.25em;
+  background-color: var(--code-bg);
+  color: var(--code-text);
+  border-radius: 0.25em;
   white-space: pre;
   text-wrap: pretty;
   letter-spacing: -0.5px;
 }
 pre {
-	padding: 1rem;
+  padding: 1rem;
 }
 pre > code {
-	all: unset;
+  all: unset;
 }
 figure {
   text-align: center;
@@ -296,12 +288,12 @@ figcaption {
 blockquote {
   font-family: var(--main-font);
   font-size: 0.85em;
-	border: 2px solid var(--info);
+  border: 2px solid var(--info);
   background-color: var(--blockquote);
   border-color: var(--info-bg);
   color: var(--info-text);
   padding: 0;
-	margin: 2.5em auto 2em auto;
+  margin: 2.5em auto 2em auto;
   border-radius: 0 0.5em 0.5em 0.5em;
   width: 95%;
 }
@@ -352,12 +344,28 @@ li::marker {
   font-family: var(--sub-font);
   font-size: 0.875em;
   font-weight: 500;
-	color: var(--primary);
+  color: var(--primary);
+}
+aside {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  margin: 2em auto;
+  cursor: default;
+}
+aside > a, aside > a:active, aside > a:visited, aside > a:hover, aside > a:focus {
+  display: flex;
+  color: #000;
+  font-size: 0.75em;
 }
 .inv {
   font-style: italic;
   font-weight: 100;
   color: var(--secondary);
+}
+.posh-img {
+  max-width: 50%;
+  max-height: 50%;
 }
 .ext {
   display: inline-block;
@@ -367,48 +375,24 @@ li::marker {
   width: 20px;
   filter: var(--ext);
 }
-aside > a, aside > a:active, aside > a:visited, aside > a:hover, aside > a:focus {
-  color: #000;
-  font-size: 0.75em;
-}
-.submit {
-  margin-top: 0.25em;
-  background: var(--name);
-}
 .coffee a {
   color: #000;
 }
 .coffee a:hover {
-  color:var(--coffee);
-}
-aside {
-  display: flex;
-  align-items: center;
-  justify-content: end;
-  cursor: pointer;
-  margin: 2em auto;
-  cursor: default;
-}
-aside > a, aside > a:active, aside > a:visited, aside > a:hover, aside > a:focus {
-  display: flex;
   color: #000;
 }
 .sr-only {
-	border: 0;
-	padding: 0;
-	margin: 0;
-	position: absolute !important;
-	height: 1px;
-	width: 1px;
-	overflow: hidden;
-	/* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
-	clip: rect(1px 1px 1px 1px);
-	/* maybe deprecated but we need to support legacy browsers */
-	clip: rect(1px, 1px, 1px, 1px);
-	/* modern browsers, clip-path works inwards from each corner */
-	clip-path: inset(50%);
-	/* added line to stop words getting smushed together (as they go onto seperate lines and some screen readers do not understand line feeds as a space */
-	white-space: nowrap;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 /* button effects */
@@ -426,15 +410,10 @@ button {
   a:hover button {
     box-shadow: -4px -4px 0 #000;
     transform: translate(4px, 4px);
-  }
-  a:hover button {
     outline-offset: 1px;
   }
   button {
     text-overflow: ellipsis;
-    -webkit-transition: all .10s ease-out;
-    -moz-transition: all .10s ease-out;
-    -o-transition: all .10s ease-out;
     transition: all .10s ease-out;
     cursor: pointer;
   }
@@ -443,16 +422,12 @@ button {
     transform: translate(4px,4px);
     cursor: pointer;
   }
-  button:focus-visible{
+  button:focus-visible {
     outline-offset: 1px;
   }
 }
 @media (hover: none) {
-  a:hover button {
-    background-color: var(--menu);
-  }
-}
-@media (hover: none) {
+  a:hover button,
   button:hover {
     background-color: var(--menu);
   }
@@ -475,9 +450,6 @@ button {
   color: var(--hover);
   text-decoration: none;
   border-bottom: 1px solid var(--hover);
-  -webkit-transition: all .25s ease-out;
-  -moz-transition: all .25s ease-out;
-  -o-transition: all .25s ease-out;
   transition: all .25s ease-out;
 }
 .pagefind-ui__message {
@@ -485,6 +457,8 @@ button {
   font-weight: 900;
   color: var(--emphasis);
 }
+
+/* external link indicator */
 article a[target="_blank"]::after {
   content: "↗";
   font-size: 0.875em;
@@ -494,6 +468,7 @@ article a[target="_blank"][href^="/"]::after,
 article a[target="_blank"][href^="#"]::after {
   content: none;
 }
+
 /* screen width media queries */
 @media screen and (min-width: 200px) and (max-width: 720px) {
   h1 {
