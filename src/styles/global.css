@@ -37,8 +37,12 @@
     --clock-svg: brightness(0) saturate(100%) invert(10%) sepia(11%) saturate(791%) hue-rotate(169deg) brightness(94%) contrast(89%);
     text-wrap: pretty;
     box-sizing: border-box;
-    height: 100%;
+    max-width: 1200px;
+    min-height: 100vh;
+    scrollbar-color: var(--primary) var(--code-bg);
+    scrollbar-width: thin;
     scroll-behavior: smooth;
+    margin: 0 auto;
   }
 }
 @media (prefers-color-scheme: dark) {
@@ -78,8 +82,12 @@
     --clock-svg: brightness(0) saturate(100%) invert(64%) sepia(80%) saturate(281%) hue-rotate(154deg) brightness(92%) contrast(98%);
     text-wrap: pretty;
     box-sizing: border-box;
-    height: 100%;
+    max-width: 1200px;
+    min-height: 100vh;
+    scrollbar-color: var(--primary) var(--code-bg);
+    scrollbar-width: thin;
     scroll-behavior: smooth;
+    margin: 0 auto;
   }
 }
 body {
@@ -94,21 +102,11 @@ body {
   color: var(--text);
   background: var(--main);
   height: 100%;
+  -moz-osx-font-smoothing: antialiased;
   -webkit-font-smoothing: antialiased;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
-  overflow-y: scroll;
   font-variant-ligatures: no-common-ligatures;
-  font-smooth: always;
-}
-::-webkit-scrollbar, ::-webkit-scrollbar-track {
-  background-color: var(--code-bg);
-  width: 0.35em;
-  height: 0.4em;
-}
-::-webkit-scrollbar-thumb {
-  background-color: var(--primary);
-  border: 0 solid transparent;
-  background-clip: content-box;
+  overflow-y: scroll;
 }
 ::selection {
   color: #000;
@@ -118,9 +116,18 @@ body {
   color: #000;
   background: var(--primary);
 }
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 main {
   margin: 0 auto;
   max-width: 75ch;
+  animation: 0.25s fade-in;
 }
 section {
   margin-top: 2em;
