@@ -1,79 +1,11 @@
-@font-face {
-  font-family: 'M Plus Rounded 1c';
-  src: url('/fonts/MPLUSRounded1c-Regular.woff2') format('woff2');
-  src: url('/fonts/MPLUSRounded1c-Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: fallback;
-}
-@font-face {
-  font-family: 'M Plus Rounded 1c';
-  src: url('/fonts/MPLUSRounded1c-Medium.woff2') format('woff2');
-  src: url('/fonts/MPLUSRounded1c-Medium.ttf') format('truetype');
-  font-weight: 500;
-  font-style: medium;
-  font-display: fallback;
-}
-@font-face {
-  font-family: 'M Plus Rounded 1c';
-  src: url('/fonts/MPLUSRounded1c-Bold.woff2') format('woff2');
-  src: url('/fonts/MPLUSRounded1c-Bold.ttf') format('truetype');
-  font-weight: 700;
-  font-style: bold;
-  font-display: fallback;
-}
-@font-face {
-  font-family: 'M Plus Rounded 1c';
-  src: url('/fonts/MPLUSRounded1c-ExtraBold.woff2') format('woff2');
-  src: url('/fonts/MPLUSRounded1c-ExtraBold.ttf') format('truetype');
-  font-weight: 800;
-  font-style: bold;
-  font-display: fallback;
-}
-@font-face {
-  font-family: 'M Plus Rounded 1c';
-  src: url('/fonts/MPLUSRounded1c-Black.woff2') format('woff2');
-  src: url('/fonts/MPLUSRounded1c-Black.ttf') format('truetype');
-  font-weight: 900;
-  font-style: bold;
-  font-display: fallback;
-}
-@font-face {
-	font-family: 'Atkinson';
-	src: url('/fonts/Atkinson-Regular.woff') format('woff');
-	font-weight: 400;
-	font-style: normal;
-	font-display: swap;
-}
-@font-face {
-	font-family: 'Atkinson';
-	src: url('/fonts/Atkinson-Bold.woff') format('woff');
-	font-weight: 700;
-	font-style: bold;
-	font-display: swap;
-}
-@font-face {
-	font-family: 'Atkinson Mono';
-	src: url('/fonts/AtkinsonMono-Regular.woff2') format('woff2');
-	font-weight: 400;
-	font-style: normal;
-	font-display: swap;
-}
-@font-face {
-	font-family: 'Atkinson Mono';
-	src: url('/fonts/AtkinsonMono-Bold.woff2') format('woff2');
-	font-weight: 700;
-	font-style: bold;
-	font-display: swap;
-}
-
 :host, html {
-  --font-family-sans: 'Atkinson', system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
-  --font-family-monospace: 'Atkinson Mono', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', 'Courier New', Courier, monospace;
+  --font-family-sans: "Atkinson Hyperlegible Next", sans-serif;
+  --font-family-monospace: "Atkinson Hyperlegible Mono", sans-serif;
+  --font-family-other: "M PLUS Rounded 1c", sans-serif;
 }
 
 .btn {
-  font-family: 'M Plus Rounded 1c', Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+  font-family: var(--font-family-other);
   font-size: 18px;
   font-weight: 700;
 }
@@ -83,7 +15,7 @@
 }
 
 .gsc-reactions-count {
-  font-family: 'M Plus Rounded 1c', Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-family: var(--font-family-monospace);
 }
 
 .gsc-reactions {
