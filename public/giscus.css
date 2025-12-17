@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:ital,wght@0,200..800;1,200..800&family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&display=swap');
+
 :host, html {
   --font-family-sans: "Atkinson Hyperlegible Next", sans-serif;
   --font-family-monospace: "Atkinson Hyperlegible Mono", sans-serif;
