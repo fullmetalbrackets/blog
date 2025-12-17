@@ -7,9 +7,11 @@ import remarkDirective from 'remark-directive'
 import remarkDirectiveSugar from 'remark-directive-sugar'
 import playformCompress from '@playform/compress';
 
+import purgecss from 'astro-purgecss';
+
 export default defineConfig({
   site: 'https://fullmetalbrackets.com',
-  integrations: [mdx(), sitemap(), playformCompress()],
+  integrations: [mdx(), sitemap(), playformCompress(), purgecss()],
   prefetch: true,
   markdown: {
     rehypePlugins: [
