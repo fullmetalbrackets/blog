@@ -9,7 +9,10 @@ import playformCompress from '@playform/compress';
 
 export default defineConfig({
   site: 'https://fullmetalbrackets.com',
-  integrations: [mdx(), sitemap(), playformCompress()],
+  integrations: [mdx(), sitemap(), (await import("@playform/compress")).default({
+			HTML: false,
+		}),
+  ],
   prefetch: true,
   markdown: {
     rehypePlugins: [
