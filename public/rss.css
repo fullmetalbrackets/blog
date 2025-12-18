@@ -212,9 +212,14 @@ strong, em {
 }
 
 h2.posts {
+  color: var(--primary);
   font-weight: 900;
   border-bottom: 1px solid var(--border);
   padding-bottom: 8px;
+}
+
+.post-titles {
+  font-size: 1em;
 }
 
 .date {

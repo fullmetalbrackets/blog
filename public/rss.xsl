@@ -83,15 +83,12 @@
                     <button id="copyBtn" onclick="copyURL(this)" style="font-family: var(--sub-font); background-color: var(--info); color: #000; border: 0; border-radius: 0.25em; padding: 4px 8px 3px 8px; font-weight: 700; font-size: 0.75em; margin: -2em 0 2em 0;">Copy URL</button>
                 </p>
                 <p class="text-gray f4 text-italic about">
-                    <span>Visit <a href="https://aboutfeeds.com">About Feeds</a> to learn more.</span>
+                    <span>Visit <a href="https://aboutfeeds.com" target="_blank">About Feeds</a> to learn more.</span>
                 </p>
             </nav>
             <h1 class="site-name"><xsl:value-of select="/rss/channel/title"/></h1>
             <p class="f2 text-italic site-desc"><xsl:value-of select="/rss/channel/description"/></p>
-            <a class="head_link" target="_blank">
-              <xsl:attribute name="href">
-                <xsl:value-of select="/rss/channel/link"/>
-              </xsl:attribute>
+            <a href="/" class="head_link" target="_blank">
               <button>Go To Site</button>
             </a>
           </header>
@@ -101,7 +98,7 @@
             <xsl:sort select="string-length(substring-before('JanFebMarAprMayJunJulAugSepOctNovDec', substring(pubDate, 9, 3)))" order="descending" data-type="number" />
             <xsl:sort select="substring(pubDate, 6, 2)" order="descending" data-type="number" />
             <div class="pb-5" id="top">
-              <h3 class="mb-0">
+              <h3 class="mb-0 post-titles">
                 <a target="_blank">
                   <xsl:attribute name="href">
                     <xsl:value-of select="link"/>
