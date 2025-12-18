@@ -1,4 +1,29 @@
-export async function loadWebmentions() {
+interface Webmention {
+  'wm-property': string;
+  author?: {
+    name?: string;
+    photo?: string;
+  };
+  content?: {
+    text?: string;
+    html?: string;
+  };
+  published?: string;
+  url?: string;
+}
+
+interface WebmentionGroup {
+  likes: Webmention[];
+  reposts: Webmention[];
+  replies: Webmention[];
+  mentions: Webmention[];
+}
+
+interface WebmentionResponse {
+  children: Webmention[];
+}
+
+export async function loadWebmentions(): Promise<void> {
   const container = document.getElementById('webmentions-container');
   if (!container) return;
   
@@ -13,19 +38,19 @@ export async function loadWebmentions() {
       throw new Error('Failed to fetch webmentions');
     }
     
-    const data = await response.json();
-    const mentions = data.children || [];
+    const data: WebmentionResponse = await response.json();
+    const mentions: Webmention[] = data.children || [];
     
     if (mentions.length === 0) {
       container.innerHTML = '<p class="no-mentions">No mentions yet. Be the first to mention this post!</p>';
       return;
     }
 
-    const grouped = {
-      likes: mentions.filter(m => m['wm-property'] === 'like-of'),
-      reposts: mentions.filter(m => m['wm-property'] === 'repost-of'),
-      replies: mentions.filter(m => m['wm-property'] === 'in-reply-to'),
-      mentions: mentions.filter(m => m['wm-property'] === 'mention-of')
+    const grouped: WebmentionGroup = {
+      likes: mentions.filter((m: Webmention) => m['wm-property'] === 'like-of'),
+      reposts: mentions.filter((m: Webmention) => m['wm-property'] === 'repost-of'),
+      replies: mentions.filter((m: Webmention) => m['wm-property'] === 'in-reply-to'),
+      mentions: mentions.filter((m: Webmention) => m['wm-property'] === 'mention-of')
     };
     
     let html = '';

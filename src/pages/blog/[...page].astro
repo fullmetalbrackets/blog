@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
-import { getCollection, render, type CollectionEntry } from "astro:content";
+import { getCollection, render, type CollectionEntry, type InferEntrySchema, type RenderedContent } from "astro:content";
 import FormattedDate from "@components/FormattedDate.astro";
 import ReadingTime from "@components/ReadingTime.astro";
 import BackToTop from "@components/BackToTop.astro";
@@ -16,9 +16,9 @@ export async function getStaticPaths({ paginate }) {
   
   // Add reading time to each page's posts
   return await Promise.all(
-    pages.map(async (page) => {
+    pages.map(async (page: { props: { page: { data: any[]; }; }; }) => {
       const postsWithReadingTime = await Promise.all(
-        page.props.page.data.map(async (post) => {
+        page.props.page.data.map(async (post: { id: string; body?: string; collection: "blog"; data: InferEntrySchema<"blog">; rendered?: RenderedContent; filePath?: string; } | { id: string; body?: string; collection: "links"; data: InferEntrySchema<"links">; rendered?: RenderedContent; filePath?: string; } | { id: string; body?: string; collection: "wiki"; data: InferEntrySchema<"wiki">; rendered?: RenderedContent; filePath?: string; }) => {
           const { remarkPluginFrontmatter } = await render(post);
           return {
             ...post,
