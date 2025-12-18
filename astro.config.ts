@@ -101,6 +101,10 @@ export default defineConfig({
       status: 301,
       destination: '/blog/reverse-proxy-using-nginx-pihole-cloudflare/',
     },
+    '/uses': {
+      status: 301,
+      destination: '/wiki/uses/',
+    }
   },
     experimental: {
     svgo: true,
