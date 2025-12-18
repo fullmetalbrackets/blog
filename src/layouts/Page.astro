@@ -1,0 +1,39 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import BackToTop from "@components/BackToTop.astro";
+
+const { frontmatter } = Astro.props;
+---
+
+<BaseLayout title={frontmatter.title} description={frontmatter.description}>
+  <style scoped>
+    h1 {
+      margin: 1em 0 0 0;
+      font-family: var(--sub-font);
+      font-weight: 900;
+    }
+    hr {
+      margin-top: 1em;
+    }
+    article {
+      margin-top: 2em;
+    }
+    .bottom-line {
+      margin: 2em auto 1.5em auto;
+    }
+  </style>
+
+  <article>
+    <h1>{frontmatter.title}</h1>
+    <hr />
+    <slot>
+      <p>
+        If you're seeing this, something went wrong! Please try <em
+          >reloading the page</em
+        >.
+      </p>
+    </slot>
+  </article>
+  <hr class="bottom-line" />
+  <BackToTop />
+</BaseLayout>
