@@ -1,7 +1,8 @@
 ---
 title: "Zsh and Oh-My-Zsh configuration files"
-description: "Working copies of Zsh config files for use in all my Linux servers."
+description: "Working copies of Zsh config files used on my Linux desktop and servers."
 pubDate: 2024-02-04
+updatedDate: 2025-12-12
 tag: documentation
 ---
 
@@ -81,6 +82,23 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # see 'man strftime' for details.
 HIST_STAMPS="mm/dd/yyyy"
 
+# CUSTOM STUFF
+bindkey -e
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
+HISTSIZE=5000
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu no
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
@@ -89,7 +107,7 @@ HIST_STAMPS="mm/dd/yyyy"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(aliases git z zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(aliases git z zsh-autosuggestions zsh-syntax-highlighting zsh-completions colored-man-pages sudo colorize dirhistory)
 
 source $ZSH/oh-my-zsh.sh
 source $HOME/.aliases
@@ -120,23 +138,34 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-cd ~
+# cd ~
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 ```
 
 # Aliases file
 
 ```bash
-# Place the '.aliases' in ~/ home directory
-## If using zsh add the following to '.zshrc' file:
-### source $HOME/.aliases
+# If using bash, place this file in ~/
+# If using zsh & oh-my-zsh, rename this file to aliases.zsh
+# and place in directory ~/.oh-my-zsh/custom
 
+alias ls='ls --color'
+alias sup='sudo apt update'
+alias yup='sudo apt upgrade -y'
 alias up='sudo apt update && sudo apt full-upgrade -y'
 alias si='sudo apt install -y'
+alias clean='sudo apt autoremove -y && sudo apt clean'
 alias sn='sudo nano'
 alias rb='sudo reboot'
+alias sc='sudo cp'
+alias scr='sudo cp -rf'
+alias sm='sudo mv'
 alias sd='sudo shutdown'
 alias sr='sudo rm'
 alias srr='sudo rm -rf'
@@ -146,51 +175,57 @@ alias c='code'
 alias v='vim'
 alias x='clear'
 alias q='exit'
-alias g='grep'
-alias speed='speedtest'
-alias os='neofetch'
-alias hs='history | grep'
+alias hs='history'
 alias ap='ansible-playbook'
-alias dc='docker-compose up -d'
-alias myip='curl http://ipecho.net/plain; echo'
+alias play='ansible-playbook -i ~/ansible/hosts ~/ansible/playbooks/updates.yml'
+alias dc='sudo docker-compose up -d'
+alias myip='curl https://icanhazip.com'
+alias tun='sudo docker exec -it qbittorrent sh -c "curl https://icanhazip.com"'
+alias dnsleak='bash /home/ad/dnsleaktest.sh'
 
-# git
+function acp() {
+  git add .
+  git commit -m "$1"
+  git push
+}
+
+function tech-build {
+  ssh -t ad@spud -- "cd techservatory && git pull && sudo yarn build"
+}
+
+function tech-pull {
+  ssh ad@spud -- "cd techservatory && git pull"
+}
+
+# Git short-cuts.
 alias g='git'
-alias pull='git pull'
-alias fetch='git fetch'
-alias status='git status'
-alias main='git switch main'
-alias gbm='git branch -M main'
-alias ga='git add.'
-alias gc='git commit -m'
-alias gac='git add . && git commit -m'
 alias gi='git init'
-alias gp='git push'
+alias ga='git add'
 alias gr='git rm'
-alias gf='git fetch'
-alias gm='git merge'
+alias fetch='git fetch'
+alias pull='git pull'
 alias gs='git status --short'
 alias gd='git diff'
 alias gdis='git discard'
-alias gs='git switch -c'
-alias gcl='git clone'
-alias gch='git checkout'
-alias gbr='git branch'
-alias gbd='git branch -D'
-
 
 function gc() {
   args=$@
   git commit -m "$args"
 }
-
 function gca() {
   args=$@
   git commit --amend -m "$args"
 }
 
+alias gp='git push'
+
 function gcp() {
   title="$@"
   git commit -am $title && git push -u origin
 }
+alias gcl='git clone'
+alias gch='git checkout'
+alias gbr='git branch'
+alias gbrcl='git checkout --orphan'
+alias gbrd='git branch -D'
 ```
