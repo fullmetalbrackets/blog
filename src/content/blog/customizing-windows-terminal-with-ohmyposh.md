@@ -8,7 +8,6 @@ related1: guide-to-zsh-ohmyzsh-plugins-and-theme
 related2: powershell-commands-cheat-cheat
 ---
 
-<!-- <img src="/oh-my-posh.png" class="posh-img" loading="eager" decoding="async" alt="Oh My Posh" /> -->
 ![Oh My Posh](../../img/blog/oh-my-posh.png 'Oh My Posh')
 
 ## Pre-Requisites
