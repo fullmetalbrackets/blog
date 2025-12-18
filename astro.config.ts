@@ -1,7 +1,7 @@
 import { defineConfig, passthroughImageService } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
-import { remarkReadingTime } from './remark-reading-time.ts';
+import { remarkReadingTime } from './src/utils/remark-reading-time.ts';
 import rehypeExternalLinks from 'rehype-external-links';
 import remarkDirective from 'remark-directive'
 import remarkDirectiveSugar from 'remark-directive-sugar'
