@@ -4,9 +4,13 @@ import { getCollection } from "astro:content";
 import FormattedDate from "@components/FormattedDate.astro";
 import BackToTop from "@components/BackToTop.astro";
 
-const posts = (await getCollection("wiki")).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
+const posts = (await getCollection("wiki")).sort((a, b) => {
+  // Use updatedDate if available, otherwise use pubDate
+  const dateA = a.data.updatedDate || a.data.pubDate;
+  const dateB = b.data.updatedDate || b.data.pubDate;
+  return dateB.valueOf() - dateA.valueOf();
+});
+
 const title = "Wiki";
 const desc = "List of all wiki articles";
 ---
@@ -88,7 +92,7 @@ const desc = "List of all wiki articles";
               <a href={`/wiki/${post.id}/`} rel="prefetch-intent" data-umami-event={post.id}>
                 <span class="title">{post.data.title}</span>
                 <p class="date">
-                  <FormattedDate date={post.data.pubDate} />
+                  <FormattedDate date={post.data.updatedDate || post.data.pubDate} />
                 </p>
                 <p class="tag">
                   <button>{post.data.tag}</button>
