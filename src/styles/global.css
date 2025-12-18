@@ -370,10 +370,6 @@ aside > a, aside > a:active, aside > a:visited, aside > a:hover, aside > a:focus
   font-weight: 100;
   color: var(--secondary);
 }
-.posh-img {
-  max-width: 50%;
-  max-height: 50%;
-}
 .ext {
   display: inline-block;
   margin: 0;
@@ -382,11 +378,19 @@ aside > a, aside > a:active, aside > a:visited, aside > a:hover, aside > a:focus
   width: 20px;
   filter: var(--ext);
 }
-  .important {
-    color: var(--primary);
-    font-family: var(--sub-font);
-    font-weight: 500;
-  }
+.important {
+  color: var(--primary);
+  font-family: var(--sub-font);
+  font-weight: 500;
+}
+.img-left {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
+.img-left img {
+  margin: 0 0 -2em 0;
+}
 .coffee a {
   color: #000;
 }
