@@ -18,6 +18,7 @@ import {
   HackerNewsShareButton,
   SocialShare
 } from "astro-social-share";
+import Comments from "@components/Comments.astro";
 
 type Props = CollectionEntry<"blog">['data'] & { headings: MarkdownHeading[]; readingTime: string };
 
@@ -34,7 +35,6 @@ const selectedPosts = allPosts.filter(post =>
 <BaseLayout title={title} description={description}>
 
   <link slot="head" rel="stylesheet" href="/prism.css" />
-  <link slot="head" rel="stylesheet" href="https://unpkg.com/@chrisburnell/webmention.js@latest/dist/webmention.css">
 
   <style scoped>
     h1 {
@@ -387,7 +387,7 @@ const selectedPosts = allPosts.filter(post =>
         margin: 1em auto;
       }
     }
-    </style>
+  </style>
 
   <slot name="astro-social-share-css">
     <style is:global>
@@ -427,16 +427,16 @@ const selectedPosts = allPosts.filter(post =>
       <span><FormattedDate date={pubDate} /></span>
       <span class="readingtime"><ReadingTime time={readingTime} data-pagefind-ignore /></span>
     </div>
-      <p class="updated">
-        {
-          updatedDate && (
-            <span class="last-updated-on">
-              Updated&nbsp;
-            </span>
-              <FormattedDate date={updatedDate} />
-          )
-        }
-      </p>
+    <p class="updated">
+      {
+        updatedDate && (
+          <span class="last-updated-on">
+            Updated&nbsp;
+          </span>
+            <FormattedDate date={updatedDate} />
+        )
+      }
+    </p>
     <hr />
     <p class="description">
       {description}
@@ -457,41 +457,26 @@ const selectedPosts = allPosts.filter(post =>
           <a href={`/blog/${post.id}`} rel="prefetch-intent" data-umami-event={`featured-${post.id}`}>
             <li>
               <span>{post.data.title}</span>
-                  <div>
-                    <span class="tag">
-                      {post.data.tags.map((tag) => (
-                        <button>{tag}</button>
-                      ))}
-                    </span>
-                  </div>
+              <div>
+                <span class="tag">
+                  {post.data.tags.map((tag) => (
+                    <button>{tag}</button>
+                  ))}
+                </span>
+              </div>
               <p>{post.data.description}</p>
             </li>
           </a>
         ))}
       </ul>
-    </p>
+    </div>
 
   </article>
   <hr class="midline">
   
   <WebMentions />
-
-  <script is:inline src="https://giscus.app/client.js"
-    data-theme="https://blog-8c6.pages.dev/giscus.css"
-    data-repo="fullmetalbrackets/blog"
-    data-repo-id="R_kgDOIBwrhQ"
-    data-category="Comments"
-    data-category-id="DIC_kwDOIBwrhc4CzE-1"
-    data-mapping="title"
-    data-strict="1"
-    data-reactions-enabled="1"
-    data-emit-metadata="1"
-    data-input-position="top"
-    data-lang="en"
-    data-loading="lazy"
-    crossorigin="anonymous"
-    async>
-  </script>
+  
+  <Comments />
 
   <aside class="edit-post">
     <div>
