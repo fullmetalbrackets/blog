@@ -4,9 +4,6 @@
 @media (prefers-color-scheme: light) {
   :root, html {
     font-size: 24px;
-    --main-font: "Atkinson Hyperlegible Next", sans-serif;
-    --sub-font: "M PLUS Rounded 1c", sans-serif;
-    --code-font: "Atkinson Hyperlegible Mono", sans-serif;
     --main: rgb(255, 255, 255);
     --text: rgb(32, 33, 36);
     --primary: rgb(44 156 195);
@@ -48,9 +45,6 @@
 @media (prefers-color-scheme: dark) {
   :root, html {
     font-size: 24px;
-    --main-font: "Atkinson Hyperlegible Next", sans-serif;
-    --sub-font: "M PLUS Rounded 1c", sans-serif;
-    --code-font: "Atkinson Hyperlegible Mono", sans-serif;
     --main: rgb(32, 33, 36);
     --text: rgb(164, 174, 188);
     --primary: rgb(90, 194, 175);
