@@ -256,7 +256,7 @@ img {
   margin: 3em auto;
 }
 code {
-  padding: 4px 4.5px 1px 4.5px;
+  padding: 0 4.5px 1px 4.5px;
   font-size: 0.825rem;
   font-family: var(--code-font);
   background-color: var(--code-bg);
@@ -314,6 +314,8 @@ blockquote p {
   padding: 0 1em 1em 1.25em;
 }
 blockquote ol, blockquote ul {
+  margin: 0 1em;
+  padding-top: 0;
   padding-bottom: 1em;
 }
 blockquote li {
@@ -321,7 +323,7 @@ blockquote li {
   padding: 0;
 }
 blockquote li::marker {
-  color: var(--info);
+  color: var(--emphasis);
 }
 blockquote a, blockquote a:active, blockquote a:visited {
   color: var(--hover);
