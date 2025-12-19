@@ -7,7 +7,21 @@ tag: information
 
 ## Site and Webhost
 
-The site is built with [Astro](https://astro.build) and deployed on [Cloudflare Pages](https://pages.cloudflare.com) from a [public GitHub repository](https://github.com/fullmetalbrackets/blog), totally free. Paying for my domain every year is literally the only cost I incur for this website; it was around $18/year through Namecheap, but transferring to Cloudflare dropped the cost to just under $10/year. (Cloudflare sells and renews domains at cost so I highly suggest transferring out of Namecheap after the first year rather than paying a huge markup on renewals!) And thanks to a few readers that [Bought Me A Coffee](https://buymeacoffee.com/arieldiaz) 2025 was covered and I have a few bucks leftover towards 2026's renewal, so thanks!
+The site is built with [Astro](https://astro.build) and deployed 
+on [Cloudflare Pages](https://pages.cloudflare.com) from a [public 
+GitHub repository](https://github.com/fullmetalbrackets/blog), 
+totally free. Paying for my domain every year is literally the 
+only cost I incur for this website; it was around $18/year through 
+Namecheap, but transferring to Cloudflare dropped the cost to just 
+under $10/year. (Cloudflare sells and renews domains at cost so I 
+highly suggest transferring out of Namecheap after the first year 
+rather than paying a huge markup on renewals!)
+
+And thanks to a few 
+readers that [Bought Me A 
+Coffee](https://buymeacoffee.com/arieldiaz)the bill for  2025 was 
+covered 
+and I have a few bucks leftover towards 2026's renewal, so thanks!
 
 ## Astro, Integrations and Packages
 
