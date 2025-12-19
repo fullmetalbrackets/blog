@@ -1,4 +1,4 @@
-import { defineConfig, passthroughImageService } from 'astro/config';
+import { defineConfig, fontProviders, passthroughImageService } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import { remarkReadingTime } from './src/utils/remark-reading-time.ts';
@@ -110,6 +110,32 @@ export default defineConfig({
     }
   },
     experimental: {
-    svgo: true,
+    fonts: [
+      {
+        name: "Atkinson Hyperlegible Next",
+        cssVariable: "--main-font",
+        provider: fontProviders.fontsource(),
+        weights: [200, 300, 400, 500, 600, 700, 800],
+        styles: ["normal", "italic"],
+        subsets: ["latin"],
+      },
+      {
+        name: "Atkinson Hyperlegible Mono",
+        cssVariable: "--code-font",
+        provider: fontProviders.fontsource(),
+        weights: [200, 300, 400, 500, 600, 700, 800],
+        styles: ["normal", "italic"],
+        subsets: ["latin"],
+      },
+      {
+        name: "M PLUS Rounded 1c",
+        cssVariable: "--sub-font",
+        provider: fontProviders.fontsource(),
+        weights: [100, 300, 400, 500, 700, 800, 900],
+        styles: ["normal"],
+        subsets: ["latin"],
+      },
+    ],
+    svgo: true
   },
 });

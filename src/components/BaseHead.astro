@@ -1,5 +1,6 @@
 ---
 import "@styles/global.css";
+import { Font } from 'astro:assets';
 
 interface Props {
   title: string;
@@ -12,8 +13,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const { title, description, image = "/social.jpg" } = Astro.props;
 ---
 
-<!-- Google/Cloudflare Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:ital,wght@0,200..800;1,200..800&family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&display=swap" rel="stylesheet">
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -51,6 +50,15 @@ const { title, description, image = "/social.jpg" } = Astro.props;
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
+
+<!-- Atkinson Hyperlegible Next -->
+<Font cssVariable="--main-font" preload />
+
+<!-- Atkinson Hyperlegible Mono -->
+<Font cssVariable="--code-font" preload />
+
+<!-- M PLUS Rounded 1c -->
+<Font cssVariable="--sub-font" preload />
 
 <!-- Webmentions -->
 <link rel="webmention" href="https://webmention.io/fullmetalbrackets.com/webmention" />
