@@ -1,15 +1,17 @@
 ---
 title: "Markdown Style Guide"
-description: "I decided to bring back the style guide because I don't know why."
+description: "Style guide for the website, updated whenever I make big changes to the design."
 pubDate: 2025-03-03
 tag: website
 ---
 
 ## Fonts
 
-- <a href="https://www.brailleinstitute.org/freefont/" target="_blank">Atkinson Hyperlegible</a> (Body text and blog post headings)
-- <a href="https://github.com/googlefonts/atkinson-hyperlegible-next-mono" target="_blank">Atkinson Hyperlegible Mono</a> (Inline code and Prism code blocks)
-- <a href="https://fonts.google.com/specimen/M+PLUS+Rounded+1c" target="_blank">MPlus Rounded 1c</a> (Buttons and main page headings)
+- <span class="main-font">[Atkinson Hyperlegible](https://www.brailleinstitute.org/freefont/)</span> (Body text and blog post headings)
+- <span class="code-font">[Atkinson Hyperlegible Mono](https://github.com/googlefonts/atkinson-hyperlegible-next-mono)</span> (Inline code and Prism code blocks)
+- <span class="sub-font">[MPlus Rounded 1c](https://fonts.google.com/specimen/M+PLUS+Rounded+1c)</span> (Buttons and main page headings)
+
+<br>
 
 ## Headings
 
@@ -37,11 +39,15 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum exercitationem con
 
 ###### H6 - Smallest Heading
 
-## Paragraph
+<br>
+
+## Paragraphs
 
 Xerum, quo qui aut unt expliquam qui dolut labo. Aque venitatiusda cum, voluptionse latur sitiae dolessi aut parist aut dollo enim qui voluptate ma dolestendit peritin re plis aut quas inctum laceat est volestemque commosa as cus endigna tectur, offic to cor sequas etum rerum idem sintibus eiur? Quianimin porecus evelectur, cum que nis nust voloribus ratem aut omnimi, sitatur? Quiatem. Nam, omnis sum am facea corem alique molestrunt et eos evelece arcillit ut aut eos eos nus, sin conecerem erum fuga. Ri oditatquam, ad quibus unda veliamenimin cusam et facea ipsamus es exerum sitate dolores editium rerore eost, temped molorro ratiae volorro te reribus dolorer sperchicium faceata tiustia prat.
 
 Itatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne sapicia is sinveli squiatum, core et que aut hariosam ex eat.
+
+<br>
 
 ## Code Blocks
 
@@ -61,6 +67,8 @@ Code blocks (three backticks) look like this:
   </body>
 </html>
 ```
+
+<br>
 
 ## Images
 
@@ -88,13 +96,47 @@ That markdown is rendered like this:
 
 ## Blockquotes
 
-I use the `<blockquote>` element as an "information" block instead, styled with CSS.
+I use the default `<blockquote>` element as an "information" block almost exclusively.
 
 ```markdown
-> This is a blockquote, which I use for detailed information rather than quoting.
+> This is a default "informational" blockquote.
+>
+> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id eleifend libero. Nullam tristique ullamcorper lorem nec molestie. Sed vehicula.
 ```
 
-> This is a blockquote, which I use for detailed information rather than quoting.
+> This is default "informational" blockquote.
+>
+> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id eleifend libero. Nullam tristique ullamcorper lorem nec molestie. Sed vehicula.
+
+<br>
+I also have differently styled data types for other kinds of blockquotes, which I use less often. This is the `[quote]` data type for actual quotes and attribution.
+
+```markdown
+> [quote]
+> 
+> This is a direct quote from a person or article.
+> --Author, pg. 69, etc.
+```
+
+> [quote]
+> This is a direct quote from a person or article.
+>
+> --Author, pg. 69, etc.
+
+<br>
+And this is the `[warning]` data type for things more important or urgent information.
+
+```markdown
+> [warning] **This is a warning**
+>
+> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id eleifend libero. Nullam tristique ullamcorper lorem nec molestie. Sed vehicula.
+```
+
+> [warning] **This is a warning**
+>
+> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id eleifend libero. Nullam tristique ullamcorper lorem nec molestie. Sed vehicula.
+
+<br>
 
 ## Tables
 
@@ -111,6 +153,8 @@ Sometimes I use tables to display information. Below are the code and result:
 | ------------ | ---------- | ------------------- |
 | `_emphasis_` | `*strong*` | `~~strikethrough~~` |
 | _emphasis_   | **strong** | ~~strikethrough~~   |
+
+<br>
 
 ## Lists
 
