@@ -51,12 +51,6 @@ const selectedPosts = allPosts.filter(post =>
     .description {
       margin: 1.5em auto 1.5em ;
     }
-    .tag button {
-      margin: 0 0.25em;
-    }
-    .tag button:first-of-type {
-      margin-left: 0;
-    }
     .info {
       display: flex;
       margin: 0.25em 0 -0.25em 0;
@@ -285,7 +279,7 @@ const selectedPosts = allPosts.filter(post =>
       padding: 0;
     }
     .related li {
-      border: 2px solid var(--primary);
+      border: 2px solid transparent;
       background-color: var(--blockquote);
       color: var(--emphasis);
       padding: 0.75em 1em 0.85em 1em;
@@ -318,6 +312,9 @@ const selectedPosts = allPosts.filter(post =>
       }
       article {
         margin-bottom: 3em;
+      }
+      .tag button {
+        margin: 0 0 0.25em 0;
       }
       .last-updated-on {
         font-size: 18px;
@@ -560,9 +557,30 @@ const selectedPosts = allPosts.filter(post =>
 
   <hr class="endline" />
   <aside class="blog-aside">
-    <a href="/blog" class="top blog-tag"><button>&larr; Blog</button></a>
-    <a href="/" class="top blog-tag home"><button>&#8626; Home</button></a>
-    <a href="#top" class="top blog-tag"><button>Top &uarr;</button></a>
+    <a href="/blog" class="top blog-tag"><button>↩ Blog</button></a>
+    <a href="/" class="top blog-tag home"><button>↰ Home</button></a>
+    <a href="#top" class="top blog-tag"><button>Top ↑</button></a>
   </aside>
+
+  <script is:inline>
+    document.querySelectorAll('blockquote').forEach((blockquote) => {
+      const firstPara = blockquote.querySelector('p');
+      if (firstPara) {
+        const text = firstPara.textContent || '';
+        const match = text.match(/^\[(\w+)\]\s*/);
+        
+        if (match) {
+          const type = match[1];
+          blockquote.setAttribute('data-type', type);
+          blockquote.classList.add(`blockquote-${type}`);
+          
+          const textNode = firstPara.firstChild;
+          if (textNode && textNode.nodeType === Node.TEXT_NODE && textNode.textContent) {
+            textNode.textContent = textNode.textContent.replace(/^\[(\w+)\]\s*/, '');
+          }
+        }
+      }
+    });
+  </script>
 
 </BaseLayout>
