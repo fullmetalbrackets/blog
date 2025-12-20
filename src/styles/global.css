@@ -598,7 +598,7 @@ article a[target="_blank"]::after {
   width: 0.65em;
   height: 0.65em;
   margin-left: 0.2em;
-  margin-bottom: 0.15em;
+  margin-bottom: 0;
   background-color: currentColor;
   mask-image: url('/assets/external.svg');
   mask-repeat: no-repeat;
