@@ -1,7 +1,5 @@
 {
-  "name": "fullmetalbrackets",
   "type": "module",
-  "version": "0.3.0",
   "homepage": "https://fullmetalbrackets.com",
   "description": "Tech articles, quick guides, and other stuff.",
   "author": "Ariel Diaz",
