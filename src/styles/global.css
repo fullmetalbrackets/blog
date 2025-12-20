@@ -19,10 +19,11 @@
     --menu: rgb(205, 110, 10);
     --form: rgb(32, 33, 36);
     --info: rgb(255, 221, 0);
-    --info-text: rgb(160, 90, 40);
-    --info-bg: rgb(239, 201, 15);
+    --info-text: rgb(130, 114, 40);
+    --info-bg: rgb(124, 105, 9);
     --blockquote: rgb(255, 245, 235);
     --code-bg: #e6e6e6;
+    --code-bg-bq: #e6e6e6;
     --code-text: hsl(220, 13%, 18%);
     --svg: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%) contrast(98%);
     --ext: invert(88%) sepia(69%) saturate(7500%) hue-rotate(1deg) brightness(104%) contrast(104%);
@@ -60,9 +61,10 @@
     --menu: rgb(222, 122, 0);
     --form: rgb(250, 250, 250);
     --info: rgb(255, 221, 0);
-    --info-text: rgb(255, 221, 0);
+    --info-text: rgb(187, 188, 164);
     --blockquote: rgb(25, 22, 22);
     --code-bg: rgb(40, 44, 52);
+    --code-bg-bq: rgb(60, 60, 60);
     --code-text: hsl(0, 0%, 100%);
     --pagefind-ui-text: rgb(164, 174, 188);
     --pagefind-ui-background: rgb(51, 65, 85);
@@ -290,8 +292,8 @@ blockquote {
   font-family: var(--main-font);
   font-size: 0.85em;
   border: 2px solid var(--info);
-  background-color: var(--blockquote);
-  border-color: var(--info-bg);
+  background-color: rgb(from var(--info, var(--info-text)) r g b / 0.05);
+  border-color: var(--info);
   color: var(--info-text);
   padding: 0;
   margin: 2.5em auto 2em auto;
@@ -300,14 +302,9 @@ blockquote {
 }
 blockquote::before {
   display: block;
-  margin: -0.85em 0 0 -1em;
+  margin: -0.75em 0 0 -0.75em;
   padding: 0;
-  filter: var(--info-svg);
   content: url("/assets/info.svg");
-}
-blockquote::before img {
-  width: 20px;
-  height: 20px;
 }
 blockquote p {
   margin: 0;
@@ -333,10 +330,17 @@ blockquote a:hover, blockquote a:focus {
   color: var(--hover);
   text-decoration: underline;
 }
-blockquote pre[class*="language-"] {
+blockquote code[class*="language-"], blockquote pre[class*="language-"] {
   margin: auto 1.5em 1.5em 1.5em;
+  background: var(--code-bg-bq);
+  padding-left: 0;
   width: auto;
 }
+
+blockquote code {
+  background: var(--code-bg-bq);
+}
+
 article a:hover {
   text-decoration-color: var(--link);
 }
