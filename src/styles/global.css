@@ -11,6 +11,7 @@
     --accent: rgb(182, 193, 210);
     --border: rgba(32, 33, 36, 0.25);
     --link: rgb(250, 85, 0);
+    --bq-link: rgb(195, 65, 0);
     --hover: rgb(200, 0, 0);
     --tags: rgb(44 156 195);
     --emphasis: rgb(0, 0, 0);
@@ -18,12 +19,17 @@
     --date: rgb(40, 108, 96);
     --menu: rgb(205, 110, 10);
     --form: rgb(32, 33, 36);
+    --blockquote: rgb(255, 245, 235);
     --info: rgb(255, 221, 0);
     --info-text: rgb(130, 114, 40);
-    --info-bg: rgb(124, 105, 9);
-    --blockquote: rgb(255, 245, 235);
-    --code-bg: #e6e6e6;
-    --code-bg-bq: #e6e6e6;
+    --info-bg: rgb(from var(--info, var(--info)) r g b / 0.175);
+    --warning: rgb(255, 45, 50);
+    --warning-text: rgb(206, 0, 0);
+    --warning-bg: rgb(from var(--warning, var(--warning)) r g b / 0.11);
+    --warning-link: rgb(0, 110, 150);
+    --warning-hover: rgb(0, 150, 150);
+    --code-bg: rgb(230, 230, 230);
+    --code-bg-bq: rgb(230, 230, 230);
     --code-text: hsl(220, 13%, 18%);
     --svg: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%) contrast(98%);
     --ext: invert(88%) sepia(69%) saturate(7500%) hue-rotate(1deg) brightness(104%) contrast(104%);
@@ -53,6 +59,7 @@
     --accent: rgb(51, 65, 85);
     --border: rgba(164, 174, 188, 0.25);
     --link: rgb(255, 221, 0);
+    --bq-link: rgb(255, 221, 0);
     --hover: rgb(249, 115, 22);
     --tags: rgb(255, 221, 0);
     --emphasis: rgb(255, 255, 255);
@@ -60,12 +67,18 @@
     --date: rgb(90, 194, 175);
     --menu: rgb(222, 122, 0);
     --form: rgb(250, 250, 250);
+    --blockquote: rgb(25, 22, 22);
     --info: rgb(255, 221, 0);
     --info-text: rgb(187, 188, 164);
-    --blockquote: rgb(25, 22, 22);
+    --info-bg: rgb(from var(--info, var(--info)) r g b / 0.05);
+    --warning: rgb(255, 45, 50);
+    --warning-text: rgb(250, 200, 200);
+    --warning-bg: rgb(from var(--warning, var(--warning)) r g b / 0.075);
+    --warning-link: rgb(255, 221, 0);
+    --warning-hover: rgb(249, 115, 22);
     --code-bg: rgb(40, 44, 52);
     --code-bg-bq: rgb(60, 60, 60);
-    --code-text: hsl(0, 0%, 100%);
+    --code-text: rgb(255, 255, 255);
     --pagefind-ui-text: rgb(164, 174, 188);
     --pagefind-ui-background: rgb(51, 65, 85);
     --svg: invert(93%) sepia(78%) saturate(2834%) hue-rotate(213deg) brightness(148%) contrast(96%);
@@ -288,12 +301,13 @@ figcaption {
   color: var(--text);
   margin: 0;
 }
+
+/* default info style */
 blockquote {
   font-family: var(--main-font);
   font-size: 0.85em;
-  border: 2px solid var(--info);
-  background-color: rgb(from var(--info, var(--info-text)) r g b / 0.05);
-  border-color: var(--info);
+  border: 2px solid transparent;
+  background-color: var(--info-bg);
   color: var(--info-text);
   padding: 0;
   margin: 2.5em auto 2em auto;
@@ -307,8 +321,14 @@ blockquote::before {
   content: url("/assets/info.svg");
 }
 blockquote p {
-  margin: 0;
-  padding: 0 1em 1em 1.25em;
+  margin: -0.25em 0 0 0;
+  padding: 0 1.5em 1em 1.25em;
+  font-weight: 300;
+}
+blockquote p:first-of-type strong {
+  color: inherit;
+  font-family: var(--sub-font);
+  font-weight: 800;
 }
 blockquote ol, blockquote ul {
   margin: 0 1em;
@@ -323,12 +343,11 @@ blockquote li::marker {
   color: var(--emphasis);
 }
 blockquote a, blockquote a:active, blockquote a:visited {
-  color: var(--hover);
+  color: var(--bq-link);
   text-decoration: none;
 }
 blockquote a:hover, blockquote a:focus {
   color: var(--hover);
-  text-decoration: underline;
 }
 blockquote code[class*="language-"], blockquote pre[class*="language-"] {
   margin: auto 1.5em 1.5em 1.5em;
@@ -336,9 +355,95 @@ blockquote code[class*="language-"], blockquote pre[class*="language-"] {
   padding-left: 0;
   width: auto;
 }
-
 blockquote code {
   background: var(--code-bg-bq);
+}
+
+/* Quote style */
+blockquote[data-type="quote"],
+blockquote.blockquote-quote {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-color: transparent;
+  background-color: rgb(from var(--border) r g b / 0.2);
+  border-radius: 2em 0.5em 2em 0.5em;
+  max-width: 75%;
+}
+
+blockquote[data-type="quote"] p,
+blockquote.blockquote-quote p {
+  margin: 0;
+  padding: 0 1em;
+}
+
+blockquote[data-type="quote"] p:first-of-type,
+blockquote.blockquote-quote p:first-of-type {
+  font-style: italic;
+  font-family: var(--sub-font);
+  font-size: 22px;
+  color: var(--text);
+  margin-top: -0.5em;
+  padding-left: 0.65em;
+}
+
+blockquote[data-type="quote"] p + p,
+blockquote.blockquote-quote p + p {
+  display: flex;
+  color: var(--emphasis);
+  font-size: 20px;
+  font-weight: 300;
+  justify-content: flex-end;
+  margin-bottom: -0.5em;
+}
+
+
+blockquote[data-type="quote"]::before,
+blockquote.blockquote-quote::before {
+  content: url("/assets/quote.svg");
+  display: block;
+  align-self: flex-start;
+  margin: -0.75em 0 0 -0.845em;
+  padding: 0;
+  filter: var(--svg);
+}
+
+blockquote[data-type="quote"]::after,
+blockquote.blockquote-quote::after {
+  content: url("/assets/quote.svg");
+  display: block;
+  align-self: flex-end;
+  transform: rotate(180deg);
+  margin: 0 -0.845em -0.75em 0;
+  padding: 0;
+  filter: var(--svg);
+}
+
+/* warning style */
+blockquote[data-type="warning"]::before {
+  content: url("/assets/alert.svg");
+}
+blockquote[data-type="warning"] {
+  border-color: var(--hover);
+  font-family: var(--info-text);
+  font-size: 0.85em;
+  border: 2px solid transparent;
+  background-color: var(--warning-bg);
+  color: var(--warning-text);
+  padding: 0;
+  margin: 2.5em auto 2em auto;
+  border-radius: 0 0.5em 0.5em 0.5em;
+  width: 95%;
+}
+blockquote[data-type="warning"] p {
+  margin: -0.25em 0 0 0;
+  padding: 0 1.5em 1em 1.25em;
+}
+blockquote[data-type="warning"] a {
+  color: var(--warning-link);
+}
+blockquote[data-type="warning"] a:hover {
+  color: var(--warning-hover);
 }
 
 article a:hover {
@@ -365,6 +470,8 @@ aside > a, aside > a:active, aside > a:visited, aside > a:hover, aside > a:focus
   color: #000;
   font-size: 0.75em;
 }
+
+/* utility classes */
 .inv {
   font-style: italic;
   font-weight: 100;
@@ -396,6 +503,16 @@ aside > a, aside > a:active, aside > a:visited, aside > a:hover, aside > a:focus
 }
 .coffee a:hover {
   color: #000;
+}
+.main-font {
+  font-family: var(--main-font);
+}
+.code-font {
+  font-family: var(--code-font);
+  letter-spacing: -0.5px;
+}
+.sub-font {
+  font-family: var(--sub-font);
 }
 .sr-only {
   border: 0;
@@ -476,9 +593,18 @@ button {
 
 /* external link indicator */
 article a[target="_blank"]::after {
-  content: "↗";
-  font-size: 0.875em;
+  content: "";
+  display: inline-block;
+  width: 0.65em;
+  height: 0.65em;
   margin-left: 0.2em;
+  margin-bottom: 0.15em;
+  background-color: currentColor;
+  mask-image: url('/assets/external.svg');
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  vertical-align: middle;
 }
 article a[target="_blank"][href^="/"]::after,
 article a[target="_blank"][href^="#"]::after {
