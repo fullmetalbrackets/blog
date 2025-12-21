@@ -27,7 +27,6 @@ export async function getStaticPaths() {
 				post.data.tags.map((tag) => tag.toLowerCase()).includes(tag),
 			);
 
-			// Get reading times for posts in this tag
 			const postsWithReadingTime = await Promise.all(
 				filteredPosts.map(async (post) => {
 					const { remarkPluginFrontmatter } = await render(post);
@@ -67,7 +66,7 @@ const { tag, posts } = Astro.props;
     justify-content: left;
     font-family: var(--sub-font);
     font-weight: 500;
-    margin: 0;
+    margin: 0 0 1em 0;
     padding: 0;
   }
   .back a {
@@ -168,7 +167,7 @@ const { tag, posts } = Astro.props;
     <h1>Posts about <span class="tag">{`${tag}`}</span></h1>
     <hr />
     <aside class="back">
-      <a href="/categories/">&larr; Back to Categories</a>
+      <a href="/categories/">↩ Back to Categories</a>
     </aside>
     <ul>
       {
