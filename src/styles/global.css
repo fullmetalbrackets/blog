@@ -349,6 +349,20 @@ blockquote a, blockquote a:active, blockquote a:visited {
 blockquote a:hover, blockquote a:focus {
   color: var(--hover);
 }
+blockquote a strong, blockquote a strong:active, blockquote a strong:visited {
+  color: inherit;
+  text-decoration: none;
+}
+blockquote a strong:hover, blockquote a strong:focus {
+  color: inherit;
+}
+blockquote a em, blockquote a em:active, blockquote a em:visited {
+  color: inherit;
+  text-decoration: none;
+}
+blockquote a em:hover, blockquote a em:focus {
+  color: inherit;
+}
 blockquote code[class*="language-"], blockquote pre[class*="language-"] {
   margin: auto 1.5em 1.5em 1.5em;
   background: var(--code-bg-bq);
