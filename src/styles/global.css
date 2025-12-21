@@ -325,11 +325,6 @@ blockquote p {
   padding: 0 1.5em 1em 1.25em;
   font-weight: 300;
 }
-blockquote p:first-of-type strong {
-  color: inherit;
-  font-family: var(--sub-font);
-  font-weight: 800;
-}
 blockquote ol, blockquote ul {
   margin: 0 1em;
   padding-top: 0;
@@ -452,6 +447,12 @@ blockquote[data-type="warning"] {
 blockquote[data-type="warning"] p {
   margin: -0.25em 0 0 0;
   padding: 0 1.5em 1em 1.25em;
+}
+blockquote[data-type="warning"] p:first-of-type strong {
+  color: inherit;
+  font-family: var(--sub-font);
+  font-weight: 800;
+  font-size: 1.0785em;
 }
 blockquote[data-type="warning"] a {
   color: var(--warning-link);
