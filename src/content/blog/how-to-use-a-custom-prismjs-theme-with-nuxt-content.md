@@ -7,7 +7,9 @@ tags: ["web development"]
 related1: using-prismjs-in-a-nuxt-static-site
 ---
 
-> The information in this blog post may be outdated, since it was regarding **Nuxt 2** and **Content v1**, which have now been **replaced with Nuxt 3 and Content v2** respectively. Please keep in mind that the problem this blog post solves may not be present in Nuxt 3/Content v2, or may not work even if the problem is present!
+> [warning] **Outdated Content**
+>
+> This blog post is regarding **Nuxt 2** and **Content v1**, which have long since been deprecated. Please keep in mind that the problem this blog post solves is most likely not present in the current or recent versions of Nuxt.
 
 PrismJS is great for making code blocks look pretty, it comes with a set of several themes out of the box, and there's also many more additional themes available as a separate package on NPM and Yarn. But what if none of those matches the color scheme of your website? With Nuxt you can easily use a custom CSS file to make your code blocks perfectly match the overall look of your site or blog. Here's how.
 

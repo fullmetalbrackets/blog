@@ -6,6 +6,10 @@ tags: ["web development"]
 related1: 5-ways-to-host-site-free
 ---
 
+> [warning] **Outdated Content**
+>
+> The information in this blog post may be out of date, as I haven't used Surge.sh in over two years and for all I know it works totally different now. Or maybe it works the same. That will be for you to find out.
+
 ## Getting started
 
 Using _Surge_ requires NodeJS, so make sure you have the latest version of Node and NPM installed. To install Surge, use the following command:
@@ -22,7 +26,7 @@ npx surge
 
 The first time you do this command, you'll be prompted to create an account, just enter an email and password. Every time thereafter, `npx surge` will immediately publish the present working directory to the web, to a randomly-generated subdomain of Surge.sh, e.g. `wandering-unicorn.surge.sh`
 
-> If using a static site generator like **Astro** or **Eleventy**, you'll first need use `npm build` (or equivalent) to build the static assets, then specify the directory to publish, e.g. `npx surge dist`.
+> If using a static site generator like *Astro* or *Eleventy*, you'll first need use `npm build` (or equivalent) to build the static assets, then specify the directory to publish, e.g. `npx surge dist`.
 
 If you want to remove a Surge site you published, it's just another simple command:
 

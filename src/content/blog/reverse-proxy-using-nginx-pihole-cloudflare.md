@@ -8,7 +8,7 @@ related1: set-up-pihole-on-linux
 related2: self-host-website-cloudflare-tunnel
 ---
 
-> [warning] **Important!**
+> [warning] **Important**
 >
 > This guide is for using **Pi-Hole** as the DNS server, where we will add the DNS records for your proxied services.
 >
@@ -58,7 +58,7 @@ services:
       - 80:80/tcp # web UI port
 ```
 
-> [warning] **Important!**
+> [warning] **Important**
 >
 > Make sure port `53` is available on your server or Pi-Hole will not work!
 > 

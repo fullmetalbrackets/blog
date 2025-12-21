@@ -7,7 +7,9 @@ tags: ["web development"]
 related1: using-prismjs-in-a-nuxt-static-site
 ---
 
-> The information in this blog post may be outdated, since it was regarding **Nuxt 2**, which has now been **replaced with Nuxt 3**. Please keep in mind that the problem this blog post solves may not be present in Nuxt 3, or may not work even if the problem is present!
+> [warning] **Outdated Content**
+>
+> This blog post is regarding **Nuxt 2** and **Content v1**, which have long since been deprecated. Please keep in mind that the problem this blog post solves is most likely not present in the current or recent versions of Nuxt.
 
 ## About Nuxt/Sitemap
 

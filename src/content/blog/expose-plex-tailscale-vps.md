@@ -8,7 +8,7 @@ related1: comprehensive-guide-tailscale-securely-access-home-network
 related2: expose-plex-with-cloudflare
 ---
 
-> [warning] **Important!**
+> [warning] **Important**
 >
 >  Effective April 29, 2025 an active Plex Pass subscription is required to remotely access Plex -- the below still works as is to get through CGNAT with **Plex Pass**, however if you are trying to share your library **without** Plex Pass (or without the user you're sharing with have a Remote Watch Pass) then additional configuration is required.
 >
@@ -48,7 +48,7 @@ We'll be using a free-tier VM from Oracle Cloud Infrastructure (OCI) -- specific
 > These are the **total limits across all Ampere instances**, you can instead split these resources -- for example two instances with 2 OCPUs and 12 GB of memory, or 4 OCPUs with 6 GB of memory each, etc.
 
 
-> [warning] **Important!**
+> [warning] **Important**
 >
 >  It may be preferable to use the free *Ampere A1 Flex* instance for this instead of an *AMD E2 Micro* if you want faster connection for more concurrent remote streams, if sharing your library with more than 1 or 2 users, and especially for stable multiple 4K streams.
 >
@@ -396,7 +396,7 @@ Once your friend starts streaming, they'll show up on your Plex dashboard under 
 
 ![Plex dashboard showing Tailscale IP as local client.](../../img/blog/plex-dashboard-streams.png 'Plex dashboard showing Tailscale IP as local client')
 
-> [warning] **Important!**
+> [warning] **Important**
 >
 > If you have an active Plex Pass subscription, or the users you're sharing library with have an active Remote Watch Pass subscription, then you're done. The user you've shared library to should be able to access your Plex library.
 >

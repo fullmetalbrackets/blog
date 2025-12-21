@@ -7,7 +7,9 @@ tags: ["android"]
 related1: rsync-a-quick-guide
 ---
 
-> As of September 2022, I no longer have AT&T as a provider, so I cannot personally confirm that these instructions will still work anymore. However, a cursory skim of the forum thread on XDA Developers shows active discussion and recent updates of the APK, so I have no reason to believe these instructions are outdated. Feel free to let me know if you try them and they do not work.
+> [warning] **Outdated Content**
+>
+> I haven't had AT&T as a cable provider (nor have I had cable at all) in years, and enough time has passed that it's almost certain the information in this blog post is no longer relevant. It will remain for legacy purposes, but it's probably unwise to try doing anything it says at this point.
 
 ## About the fix
 

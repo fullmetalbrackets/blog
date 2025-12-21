@@ -8,7 +8,7 @@ related1: comprehensive-guide-tailscale-securely-access-home-network
 related2: expose-plex-tailscale-vps
 ---
 
-> [warning] **Important!**
+> [warning] **Important**
 >
 > I have received confirmation from several people that remotely accessing Plex works with this setup without Plex Pass or Remote Watch Pass, at least for now -- it's entirely possible Plex will change something in the future to break this workaround. In fact, I would not be surprised if they do.
 >

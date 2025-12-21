@@ -7,15 +7,9 @@ tags: ["deno", "web development"]
 related1: 5-ways-to-host-site-free
 ---
 
-## Sections
-
-1. [Install Deno](#install)
-2. [Create the blog from template and customize it](#blog)
-3. [Host the blog on Deno Deploy](#deploy)
-4. [Use your own custom domain](#domain)
-5. [References](#ref)
- 
-> I wrote this blog post years ago now when I was trying out Deno Deploy just for fun. I have not kept up with it or maintained the blog I built in this post, and I have no intention of doing so. I may try out Deno again in the future. For now, as of beginning of 2025, this post is probably beyond outdated and I doubt Deno Deploy even works the same! This blog post will stay for legacy purposes, but it's probably unwise to follow it at this point.
+> [warning] **Outdated Content**
+> 
+> I wrote this blog post years ago when I was trying out Deno Deploy just for fun. I have not kept up with it, did not maintain the blog I built in this post, and let the domain lapse. Safe to assume Deno has changed enough in the intervening years that this project probably no longer works. This blog post will remain for legacy purposes, but it's probably unwise to try doing anything it says at this point.
 
 <div id='install' />
 

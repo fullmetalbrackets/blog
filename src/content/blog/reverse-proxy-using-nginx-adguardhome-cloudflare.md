@@ -8,7 +8,7 @@ related1: reverse-proxy-using-nginx-pihole-cloudflare
 related2: self-host-website-cloudflare-tunnel
 ---
 
-> [warning] **Important!**
+> [warning] **Important**
 >
 > This guide is for using **AdGuard Home** as the DNS server, where we will add the DNS records for our proxied services.
 >
@@ -137,7 +137,7 @@ services:
     restart: unless-stopped
 ```
 
-> [warning] **Important!**
+> [warning] **Important**
 >
 > Make sure that ports `80` and `443` are available on your server and not being used by anything else! Nginx Proxy Manager needs port `80` for **HTTP** and port `443` for **HTTPS**.
 
