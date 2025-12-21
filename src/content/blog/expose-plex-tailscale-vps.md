@@ -19,7 +19,7 @@ related2: expose-plex-with-cloudflare
 
 Plex is a self-hosted media server that lets you stream your owned (or downloaded, or otherwise acquired) media from other devices on the same network, through a web-based GUI (access via browser) or dedicated app. (Say, on a smart TV or Roku device.) Plex has a built-in feature to share your media library externally, but that requires opening a port on your router and forwarding it to the Plex server. Setting aside that port forwarding can be dangerous if you don't know what you're doing, it won't work anyway if your home network is behind Carrier-Grade Network Address Translation, or CGNAT. Many ISPs use this, and so many self-hosters may find themselves unable to expose their services.
 
-Although I previously wrote about <a href="/blog/expose-plex-with-cloudflare" target="_blank" umami-data-event="expose-plex-tailscale-to-expose-plex-cf">how to expose Plex through CGNAT with Cloudflare Tunnel</a>, it's against their terms of service, so I don't use that method anymore and suggest you don't either. The method I explain in _this_ post has a few extra steps, but it does not run afoul of any service provider's rules.
+Although I previously wrote about [how to expose Plex through CGNAT with Cloudflare Tunnel](/blog/expose-plex-with-cloudflare), it's against their terms of service, so I don't use that method anymore and suggest you don't either. The method I explain in _this_ post has a few extra steps, but it does not run afoul of any service provider's rules.
 
 > The following is only for exposing Plex to *other users you've shared libraries with*, and is not required for you to remotely access your own Plex server.
 >
@@ -27,7 +27,7 @@ Although I previously wrote about <a href="/blog/expose-plex-with-cloudflare" ta
 
 What we'll be setting up is this:
 
-- We will install Tailscale on the same server as Plex or, alternately, on another machine in the home network that will act as subnet router. (See <a href="https://tailscale.com/kb/1019/subnets" target="_blank" umami-data-event="expose-plex-tailscale-docs-subnets">this section Tailscale docs</a> -- for this guide, we'll install Tailscale on the same server running Plex, so subnet routing isn't necessary.)
+- We will install Tailscale on the same server as Plex or, alternately, on another machine in the home network that will act as subnet router. (See [this section Tailscale docs](https://tailscale.com/kb/1019/subnets) -- for this guide, we'll install Tailscale on the same server running Plex, so subnet routing isn't necessary.)
 
 - We will create a free tier compute instance on Oracle Cloud Insfrastructure and install Tailscale on it, so it's on the same tailnet as the Plex server. We'll expose ports 80 and 443 to the internet on the VM, but only allowing access from specific IPs, and run a reverse proxy to route the traffic from allowed IPs to Plex. Note that if you're willing and able to pay for another cloud service provider, everything besides the Oracle-specific instructions should work there too! If you don't want to pay, though, just know that I have used a free Oracle instance to share Plex with 3 family members for over a year and so far it's worked great.
 
@@ -37,7 +37,7 @@ First of all, you should be comfortable using the terminal, because we'll be doi
 
 The method I explain here requires you to own a domain -- it may be possible to instead use something like DuckDNS or NoIP, but I have not tried it. I'll also be using Cloudflare for DNS, but that's just my personal preference -- feel free to use another DNS provider.
 
-Finally, you'll need a Plex server already set up. (And I'll assume it's running in Linux or as a Docker container.) I won't go into how to do that here, <a href="/blog/setting-up-plex-in-docker/" target="_blank" umami-data-event="expose-plex-tailscale-to-setup-plex">see this post</a> for instructions on running Plex as a Docker container.
+Finally, you'll need a Plex server already set up. (And I'll assume it's running in Linux or as a Docker container.) I won't go into how to do that here, [see this post](/blog/setting-up-plex-in-docker) for instructions on running Plex as a Docker container.
 
 ## Create OCI account
 
@@ -47,7 +47,6 @@ We'll be using a free-tier VM from Oracle Cloud Infrastructure (OCI) -- specific
 > 
 > These are the **total limits across all Ampere instances**, you can instead split these resources -- for example two instances with 2 OCPUs and 12 GB of memory, or 4 OCPUs with 6 GB of memory each, etc.
 
-
 > [warning] **Important**
 >
 >  It may be preferable to use the free *Ampere A1 Flex* instance for this instead of an *AMD E2 Micro* if you want faster connection for more concurrent remote streams, if sharing your library with more than 1 or 2 users, and especially for stable multiple 4K streams.
@@ -56,9 +55,9 @@ We'll be using a free-tier VM from Oracle Cloud Infrastructure (OCI) -- specific
 > 
 > **Just be sure to stay within the free limits noted above if you do this!**
 
-First, go to <a href="https://www.oracle.com/cloud/free/" target="_blank" umami-data-event="expose-plex-tailscale-oci-free">Oracle Cloud's website</a> and click **Start for free** to create your account. You will need a credit card, but only for verification purposes! As long as you stick to *free tier* and don't upgrade, you won't be charged.
+First, go to [Oracle Cloud's website](https://www.oracle.com/cloud/free/) and click **Start for free** to create your account. You will need a credit card, but only for verification purposes! As long as you stick to *free tier* and don't upgrade, you won't be charged.
 
-Once your account is set up you'll receive an email with the **Cloud Account Name** (which is your "tenant") and **Username**. (The email you used to sign up.) You'll need the Cloud Account Name to <a href="https://www.oracle.com/cloud/sign-in.html" target="_blank" umami-data-event="expose-plex-tailscale-oci-signin">sign-in to OCI</a>, after which you'll be asked for the email address and password.
+Once your account is set up you'll receive an email with the **Cloud Account Name** (which is your "tenant") and **Username**. (The email you used to sign up.) You'll need the Cloud Account Name to [sign-in to OCI](https://www.oracle.com/cloud/sign-in.html), after which you'll be asked for the email address and password.
 
 > You'll be asked if you want to *Enable Secure Verification (MFA)* which I strongly suggest you do. You'll need a USB security key or to download and use the Oracle Authenticator app. It's annoying to have to use another Authenticator app, but it's worth the peace of mind.
 
@@ -78,11 +77,15 @@ Click the **Create instance** button and do the following:
 
 4. First, if you don't want to use Oracle Linux, click on **Change image** and choose a different one. I suggest _Ubuntu_, click on it and then choose the image name **Canonical Ubuntu 24.04 Minimal**, this is the latest version of Ubuntu and minimal means no extra bloat. (If using the Ampere A1 Flex shape, make sure you choose an image that says aarch64, since Ampere instances uses Arm CPUs -- for E2.1.Micro which uses an AMD CPU, you need to choose an image that doesn't say that.)
 
-![Choosing an Image while creating a compute instance in OCI.](../../img/blog/oci0.png 'Choosing an Image while creating a compute instance in OCI')
+:::image-figure[Choosing an Image while creating a compute instance.]
+![A screenshot of the Oracle Cloud Infrastructure web-based user interfacet](../../img/blog/oci0.png)
+:::
 
 5. By choosing the Ubuntu 24.04 Minimal image, it should have automatically changed the shape to _VM.Standard.E2.1.Micro_ -- if it did not, click on **Change shape** and choose it. Also, make sure _Instance type_ is **Virtual machine** and NOT bare metal. Click on the **Select shape** button to confirm your choice.
 
-![Choosing a Shape while creating a compute instance in OCI.](../../img/blog/oci00.png 'Choosing a Shape while creating a compute instance in OCI')
+:::image-figure[Choosing a Shape while creating a compute instance.]
+![A screenshot of the Oracle Cloud Infrastructure web-based user interfacet](../../img/blog/oci00.png)
+:::
 
 > If provisioning an *Ampere A1 Flex* instance, click on the arrow to the left of the Shape name to change the number of OCPUs and amount of memory, *as you increase the OCPU it will also increase the memory automatically*.
 
@@ -94,7 +97,9 @@ Click the **Create instance** button and do the following:
 
 9. Scroll down to _Add SSH keys_. You can upload your own public key, or you can let it generate a key pair for you, which is the default. If you choose the default option, **make sure you download the public and private keys**, you'll need them to SSH into the VM! When done, click on the **Next** button.
 
-![SSH key settings when creating a compute instance in OCI.](../../img/blog/oci-ssh.png 'SSH key settings when creating a compute instance in OCI')
+:::image-figure[SSH key settings when creating a compute instance.]
+![A screenshot of the Oracle Cloud Infrastructure web-based user interface](../../img/blog/oci-ssh.png)
+:::
 
 10. Under the _Storage_ section, I just leave everything as default. A 46.6 GB boot volume is automatically included with the instance, but if you want it to be a larger size, turn on the toggle and choose a larger size. Note that the free-tier limit is 200 GB, which is shared between ALL instances, so be sure not to go over this! I usually just leave this as default. (I also never mess with the Boot Volume Performance and suggest you don't either, unless you know what you're doing.)
 
@@ -131,7 +136,7 @@ We're done in the Oracle instance for now, but we'll be back soon.
 
 ## Set up Tailscale
 
-Go to the <a href="https://tailscale.com" target="_blank" umami-data-event="expose-plex-tailscale-site">Tailscale website</a> and create an account. This will create your <a href="https://tailscale.com/kb/1136/tailnet" target="_blank" umami-data-event="expose-plex-tailscale-docs-tailnet">Tailnet</a> (private mesh network for all your Tailscale-connected devices) with your newly created account as the Owner and which you'll manage through the web-based <a href="https://login.tailscale.com/admin" target="_blank" umami-data-event="expose-plex-tailscale-admin-console">admin console</a>.
+Go to the [Tailscale website](https://tailscale.com) and create an account. This will create your [Tailnet](https://tailscale.com/kb/1136/tailnet) (private mesh network for all your Tailscale-connected devices) with your newly created account as the Owner and which you'll manage through the [web-based admin console](https://login.tailscale.com/admin) on the website.
 
 Once you've got the account ready, use the following command in **both** the server where you're running Plex and the Oracle instance:
 
@@ -149,23 +154,23 @@ On the _admin console_ go to the **DNS** tab.
 
 First, notice the _Tailnet name_ is something auto-generated like `tailfe8c.ts.net`. You can keep this if you want, but instead we'll change it to a "fun name" that is more human-readable and easier to remember. You can't just type one in, you choose from ones generated by Tailscale.
 
-Click the **Rename tailnet...** button and follow the prompts. You can keep reloading until you find a fun name you like. For future examples, we'll assume your tailnet name is `cyber-sloth`.
+Click the **Rename tailnet...** button and follow the prompts. You can keep reloading until you find a fun name you like. For future examples, we'll assume your tailnet name is `cetacean-nessie`.
 
-Scroll down to the end of the page and click the **Enable HTTPS** button. Now we can provision TLS certificates for machines in your tailnet, so that you can reach them at `https://<name>.cyber-sloth.ts.net`.
+Scroll down to the end of the page and click the **Enable HTTPS** button. Now we can provision TLS certificates for machines in your tailnet, so that you can reach them at `https://<name>.cetacean-nessie.ts.net`.
 
 In the terminals for each machine -- the Plex server and the Oracle instance -- use this command to generate the certificates:
 
 ```bash
-sudo tailscale cert <name>.cyber-sloth.ts.net
+sudo tailscale cert <name>.cetacean-nessie.ts.net
 ```
 
-From here on out we'll assume the Plex sever is `plex.cyber-sloth.ts.net` and the Oracle instance is `oracle.cyber-sloth.ts.net`.
+From here on out we'll assume the Plex sever is `plex.cetacean-nessie.ts.net` and the Oracle instance is `oracle.cetacean-nessie.ts.net`.
 
 ## Add and configure domain in Cloudflare
 
 > If you bought a domain on Cloudflare, [you can skip this and move on to creating the DNS record](#skip) since the domain will be auto-configured already.
 
-If your domain is from another registrar, and you want to use Cloudflare for DNS like I do, we'll need to reate your <a href="https://dash.cloudflare.com/sign-up" target="_blank" umami-data-event="expose-plex-tailscale-cf-signup">free Cloudflare account</a>.
+If your domain is from another registrar, and you want to use Cloudflare for DNS like I do, we'll need to [create a free Cloudflare account](https://dash.cloudflare.com/sign-up).
 
 Once your account is created, let's add the domain to Cloudflare:
 
@@ -173,19 +178,27 @@ Once your account is created, let's add the domain to Cloudflare:
 
 2. Enter your domain, leave _Quick scan for DNS records_ selected, and click **Continue**.
 
-![Adding a domain to Cloudflare.](../../img/blog/cloudflare-domain.png 'Adding a domain to Cloudflare')
+:::image-figure[Adding a domain to Cloudflare.]
+![A screenshot of the Cloudflare web-based user interface](../../img/blog/cloudflare-domain.png)
+:::
 
 3. Click on the **Free plan** at the bottom and click **Continue**.
 
-![Cloudflare free plan.](../../img/blog/cloudflare-free.png 'Cloudflare free plan')
+:::image-figure[Details of Cloudflare free plan.]
+![A screenshot of the Cloudflare web-based user interface](../../img/blog/cloudflare-free.png)
+:::
 
 4. You'll see your DNS records, if there are any. Don't worry about this right now and click on the **Continue to activation** button.
 
-![DNS management page.](../../img/blog/cloudflare-dns-records1.png 'DNS management page')
+:::image-figure[DNS management page.]
+![A screenshot of the Cloudflare web-based user interface](../../img/blog/cloudflare-dns-records1.png)
+:::
 
 5. You'll see a pop-up window saying you should set your DNS records now, click on **Confirm**.
 
-![Add DNS records pop-up.](../../img/blog/cloudflare-dns-records2.png 'Add DNS records pop-up')
+:::image-figure[Add DNS records pop-up.]
+![A screenshot of the Cloudflare web-based user interface](../../img/blog/cloudflare-dns-records2.png)
+:::
 
 6. Now you'll be provided some instructions to update the nameservers on your domain's registrar, _open a new tab and follow those instructions_. Once you've added the Cloudflare nameservers at your registrar, go back to Cloudflare and click on **Continue**.
 
@@ -207,7 +220,9 @@ Once the domain is _active_ in Cloudflare, we just need to add a DNS record:
 
 6. Under _Proxy status_ toggle it off to **DNS only**.
 
-![Cloudflare proxy status set to DNS only.](../../img/blog/expose-plex-tailscale-vps1.png 'Cloudflare proxy status set to DNS only')
+:::image-figure[Cloudflare proxy status set to DNS only.]
+![A screenshot of the Cloudflare web-based user interface](../../img/blog/expose-plex-tailscale-vps1.png)
+:::
 
 > Make sure *NOT* to leave it proxied. If you do, all traffic will go through Cloudflare's CDN which we do not want. We're only using Cloudflare to resolve our domain to the IP of the Oracle instance, nothing more!
 
@@ -221,17 +236,23 @@ Next, we need to create an _API token_ to edit the DNS config from third-party a
 
 3. Click the **Create Token** button. The first template should be _Edit zone DNS_, click the **Use template** button next to it.
 
-![Choosing the Edit Zone DNS template.](../../img/blog/cloudflare-api-token1.png 'Choosing the Edit Zone DNS template')
+:::image-figure[Choosing the Edit Zone DNS template.]
+![A screenshot of the Cloudflare web-based user interface](../../img/blog/cloudflare-api-token1.png)
+:::
 
 4. Under _Permissions_, leave the first entry as is, click on **+ Add more**.
 
 5. For the new Permission, choose in order from the dropdown menus **Zone**, **Zone** and **Read**.
 
-![Adding the Zone, Zone, Read permissions to API token.](../../img/blog/cloudflare-api-token2.png 'Adding the Zone, Zone, Read permissions to API token')
+:::image-figure[Adding the Zone, Zone, Read permissions to API token.]
+![A screenshot of the Cloudflare web-based user interface](../../img/blog/cloudflare-api-token2.png)
+:::
 
 6. Under _Zone Resources_, leave the first two dropdown menus as is, and in the final dropdown all the way to the right, **select your domain**. Scroll past everything else,without changing anything else, click on **Continue to summary**, and finally on the **Create Token** button.
 
-![Selecting the Zone Resources for API token.](../../img/blog/cloudflare-api-token3.png 'Selecting the Zone Resources for API token')
+:::image-figure[Selecting the Zone Resources for API token.]
+![A screenshot of the Cloudflare web-based user interface](../../img/blog/cloudflare-api-token3.png)
+:::
 
 17. On the next page you'll see your **API token**, make sure to _save it somewhere because it will not be shown again_. We will need this **API token** to provision the TLS certificates in Nginx Proxy Manager.
 
@@ -270,7 +291,7 @@ services:
 
 Once it's up and running, we need to access the Nginx Proxy Manager GUI, but for that we'll need to open some ports on the instance to be accessible from your IP address.
 
-> Alternately, you can install Tailscale on your PC or tablet, then while it's connected to Tailscale go to `https://oracle.cyber-sloth.ts.net:81`. This way you can just use Tailscale to access the web UI of Nginx Proxy Manager and any other apps you decide to run, without having to add ingress rules for those ports.
+> Alternately, you can install Tailscale on your PC or tablet, then while it's connected to Tailscale go to `https://oracle.cetacean-nessie.ts.net:81`. This way you can just use Tailscale to access the web UI of Nginx Proxy Manager and any other apps you decide to run, without having to add ingress rules for those ports.
 
 ## Add ingress rules on OCI
 
@@ -282,23 +303,29 @@ Connecting to the Oracle instance from the internet in any way requires adding _
 
 Under _Instances_, click on your instance, and under _Instance details_ click on the link for Virtual Cloud Network, it should be something like `vcn-20221216-2035`.
 
-![Instance details in OCI.](../../img/blog/oci1.png 'Instance details in OCI')
+:::image-figure[Instance details in OCI.]
+![A screenshot of the Oracle Cloud Infrastructure web-based user interface](../../img/blog/oci1.png)
+:::
 
 In _Subnets_ click on the only choice, something like `subnet-20221216-2035`. Finally, click on the **Default Security List**.
 
-![Default Security List in OCI.](../../img/blog/oci2.png 'Default Security List in OCI')
+:::image-figure[Default Security List in OCI.]
+![A screenshot of the Oracle Cloud Infrastructure web-based user interface](../../img/blog/oci2.png)
+:::
 
 We'll add ingress rules to allow your IP to access ports `81` (so you can reach the Nginx Proxy Manager web UI), `80` and `443`.
 
 1. Click **Add Ingress Rules**
 
-![Adding an Ingress Rule to an OCI instance.](../../img/blog/oci3.png 'Adding an Ingress Rule to an OCI instance')
+:::image-figure[Adding an Ingress Rule to an OCI instance.]
+![A screenshot of the Oracle Cloud Infrastructure web-based user interface](../../img/blog/oci3.png)
+:::
 
 2. Leave the source type as CIDR.
 
 3. Under _Source CIDR_ type in your IP address in this format: `123.45.678.90/32`.
 
-> If you need to find out your public IP address, just go to <a href="https://icanhazip.com" target="_blank">icanhazip.com</a>.
+> If you need to find out your public IP address, just go to [icanhazip.com](https://icanhazip.com).
 
 4. Leave the _IP Protocol_ as **TCP**.
 
@@ -318,29 +345,37 @@ Now we can access the Nginx Proxy Manager web UI and create our proxy host.
 
 You should now be able to reach the Nginx Proxy Manager web UI by going to `http://your-domain.com:81`. Login with the default `admin@example.com` and `changeme` as the password. You'll want to change that before anything else.
 
-![Nginx proxy manager login page.](../../img/blog/nginxproxy1.png 'Nginx proxy manager login page')
+:::image-figure[Nginx proxy manager login page.]
+![A screenshot of the Nginx Proxy Manager web-based user interface](../../img/blog/nginxproxy1.png)
+:::
 
 Click on **Users** on the top nav bar, then to the right of the Administrator entry click the **three dots**. Choose **Edit Details** to change the email and **Change password** to change password. Log out and back in with the new credentials.
 
-![Nginx proxy manager navigation.](../../img/blog/nginxproxy2.png 'Nginx proxy manager navigation')
+:::image-figure[Nginx proxy manager navigation bar.]
+![A screenshot of the Nginx Proxy Manager web-based user interface](../../img/blog/nginxproxy2.png)
+:::
 
 Now to create a proxy host and provision the TLS certificate:
 
 1. On the Dashboard, click **Proxy hosts** and then **Add proxy host**.
 
-![Adding a proxy host in Nginx proxy manager.](../../img/blog/nginxproxy3.png 'Adding a proxy host in Nginx proxy manager')
+:::image-figure[Adding a proxy host.]
+![A screenshot of the Nginx Proxy Manager web-based user interface](../../img/blog/nginxproxy3.png)
+:::
 
 2. Type in `your-domain.com` under Domain Name.
 
 3. Leave the Scheme as **http**.
 
-4. Type in `plex.cyber-sloth.ts.net` under **Forward Hostname/IP**.
+4. Type in `plex.cetacean-nessie.ts.net` under **Forward Hostname/IP**.
 
 5. Type in `32400` under **Forward Port**.
 
 6. Toggle on **Websockets Support** and **Block Common Exploits**, but leave caching off.
 
-![Configuring SSL in Nginx proxy manager.](../../img/blog/nginxproxy4.png 'Configuring SSL in Nginx proxy manager')
+:::image-figure[Configuring SSL settings.]
+![A screenshot of the Nginx Proxy Manager web-based user interface](../../img/blog/nginxproxy4.png)
+:::
 
 7. Go to the **SSL** tab and choose **Request a new SSL Certificate** from the dropdown menu.
 
@@ -364,13 +399,17 @@ Already anyone you share your library with can access it by going to `https://yo
 
 3. Next to _Secure connections_, choose **Preferred** from the downdown menu.
 
-![Secure connections setting in Plex.](../../img/blog/expose-plex1.png 'Secure connections setting in Plex')
+:::image-figure[Secure connections setting.]
+![A screenshot of the Plex Media Server web-based interface](../../img/blog/expose-plex1.png)
+:::
 
 4. (Optional) Scroll down and **enable** the checkbox for _Treat WAN IP as LAN Bandwitdh_.
 
 5. Make sure to **leave disabled** the checkbox for _Enable Relay_.
 
-![Relay and Custom access URL settings in Plex.](../../img/blog/expose-plex2.png 'Relay and Custom access URL settings in Plex')
+:::image-figure[Relay and Custom Server Access URL settings.]
+![A screenshot of the Plex Media Server web-based interface](../../img/blog/expose-plex2.png)
+:::
 
 6. Under _Custom server access URLs_ type in `https://your-domain.com`. (Make sure to include the HTTPS!) As a backup, you may also want to add your Tailscale IP as `http://100.200.300.400:32400`. (I leave it as HTTP in case sometimes a secure HTTPS connection is not possible, since I trust the IPs and devices connecting.)
 
@@ -378,23 +417,31 @@ Already anyone you share your library with can access it by going to `https://yo
 
 8. Go back to _Settings_ and click on **Manage Library Access**.
 
-![Managing library access in Plex.](../../img/blog/plex-library-access1.png 'Managing library access in Plex')
+:::image-figure[Managing library access.]
+![A screenshot of the Plex Media Server web-based interface](../../img/blog/plex-library-access1.png)
+:::
 
 9. Click on **Grant Library Access** and type in your friend's email address, and click on it under _Search Result_. (If they already have a Plex account, there will be a green checkmark.) Then click **Continue**.
 
 10. Now click on the checkmarks for the libraries you want to share, or click on the checkmark next to your server name to share all libraries. Then click **Continue**
 
-![Choosing libraries to share in Plex.](../../img/blog/plex-library-access2.png 'Choosing libraries to share in Plex')
+:::image-figure[Choosing libraries to share.]
+![A screenshot of the Plex Media Server web-based interface](../../img/blog/plex-library-access2.png)
+:::
 
 11. On this final page, click **Send**. If you have Plex Pass, you'll get additional options to add the user to your Plex Home (not necessary in our case), allow downloads, and also setup more fine-grained restrictions. You can ignore these options if you want.
 
-![Plex Pass options when sharing libraries.](../../img/blog/plex-library-access3.png 'Plex Pass options when sharing libraries')
+:::image-figure[Plex Pass options when sharing libraries.]
+![A screenshot of the Plex Media Server web-based interface](../../img/blog/plex-library-access3.png)
+:::
 
 Now your friend will get an email invitation and once accepted they'll be able to access your Plex library both from their apps and by going straight to your domain on a browser to reach the web UI.
 
 Once your friend starts streaming, they'll show up on your Plex dashboard under the Tailscale IP of the Oracle VM, and it will be considered a local IP. See the screenshot below and notice the `100.x.x.x` IP.
 
-![Plex dashboard showing Tailscale IP as local client.](../../img/blog/plex-dashboard-streams.png 'Plex dashboard showing Tailscale IP as local client')
+:::image-figure[Plex dashboard showing Tailscale IP address as local client.]
+![A screenshot of the Plex Media Server web-based interface](../../img/blog/plex-dashboard-streams.png)
+:::
 
 > [warning] **Important**
 >
@@ -406,7 +453,7 @@ Once your friend starts streaming, they'll show up on your Plex dashboard under 
 
 As explained above, the following is required in order for this to work _without a Plex Pass or Remote Watch Pass subscription_. If you do have Plex Pass, or the users you're sharing with have Remote Watch Pass, then this isn't necessary.
 
-First, in order to use either subnet routing or exit node, you need to enable IP forwarding on the server. (This is straight from the <a href="https://tailscale.com/kb/1019/subnets" target="_blank" data-umami-event="tailscale-post-docs-subnet">Tailscale docs</a>.)
+First, in order to use either subnet routing or exit node, you need to enable IP forwarding on the server. (This is straight from the [Tailscale documentation](https://tailscale.com/kb/1019/subnets).)
 
 If your machine has an `/etc/sysctl.d` directory (which most likely it does) then use these commands:
 
@@ -444,9 +491,13 @@ Now go to the admin console, on the **Machines** tab, and do the following:
 
 3. Click both checkboxes for **Subnet routes** and **Use as exit node**, then click the **Save** button to finish.
 
-![Enabling subnets in Tailscale admin console.](../../img/blog/tailscale-subnets.png 'Enabling subnets in Tailscale admin console')
+:::image-figure[Enabling subnets on a machine.]
+![A screenshot of the Tailscale web-based admin console interface](../../img/blog/tailscale-subnets.png)
+:::
 
-![Enabling exit node in Tailscale admin console.](../../img/blog/tailscale-exit-node.png 'Enabling exit node in Tailscale admin console')
+:::image-figure[Enabling exit node on a machine.]
+![A screenshot of the Tailscale web-based admin console interface](../../img/blog/tailscale-exit-node.png)
+:::
 
 Now, we have to set the Oracle VM to use your Plex server as exit node. SSH into it and use the following command in the terminal:
 
@@ -456,6 +507,6 @@ sudo tailscale up --exit-node=<ip or machine name>
 
 ## References
 
-- <a href="https://tailscale.com/kb" target="_blank" umami-data-event="expose-plex-tailscale-docs">Tailscale Docs</a>
-- <a href="https://developers.cloudflare.com/dns" target="_blank" umami-data-event="expose-plex-tailscale-cf-docs-dns">Cloudflare Docs - DNS</a>
-- <a href="https://docs.oracle.com/en-us/iaas/Content/Compute/home.htm" target="_blank" umami-data-event="expose-plex-tailscale-oci-docs-compute">OCI Docs - Compute</a>
+- <a href="https://tailscale.com/kb" target="_blank" rel="noopener noreferrer" umami-data-event="expose-plex-tailscale-docs">Tailscale Docs</a>
+- <a href="https://developers.cloudflare.com/dns" target="_blank" rel="noopener noreferrer" umami-data-event="expose-plex-tailscale-cf-docs-dns">Cloudflare Docs - DNS</a>
+- <a href="https://docs.oracle.com/en-us/iaas/Content/Compute/home.htm" target="_blank" rel="noopener noreferrer" umami-data-event="expose-plex-tailscale-oci-docs-compute">OCI Docs - Compute</a>

@@ -7,10 +7,12 @@ tags: ["self-hosting", "openmediavault"]
 related1: reverse-proxy-nginx-pihole
 related2: set-up-pihole-on-linux
 ---
- 
+
+> [important] **Outdated Content**
+> 
 > This article is specifically about OpenMediaVault 6, which reached end of life in July 2024. _OpenMediaVault 7 was released in March 2024_, and as of January 2025 the latest version is **7.6.0**.
 >
-> The below may still apply, but don't be surprised if it does not. I have not used OMV in some time nor do I plan to use it any time soon, an updating to this post may not be forthcoming, sorry.
+> The below may still apply, but don't be surprised if it does not. I have not used OMV in some time nor do I plan to use it any time soon, so I probably will not be updating this post.
 
 ## Change the port for OMV workbench
 

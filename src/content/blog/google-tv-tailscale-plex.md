@@ -14,23 +14,25 @@ There are several Android TV, Google TV and Fire TV set-top boxes and HDMI stick
 
 There are different brands and form factors with specific features to choose from, but I went with a $15 *Onn* brand Google TV HDMI stick from Wal-Mart which came with the device itself, a remote control and a power cable. This particular device is limited to 1080p, which is fine for me when I do occasionally sit down to watch TV while on a trip, but you can buy a set-top box version with full 4K streaming for $20. Plex and Tailscale can both be downloaded from the Google Play Store on Android/Google TV, and from the Amazon Appstore on Amazon Fire TV.
 
-You probably know that Plex is a Media Server that lets you stream your own media to Plex clients available to download on most devices. (By the way this would probably work with Jellyfin as well, I just haven't done it myself.) Tailscale is a mesh VPN that facilitates creating WireGuard tunnels that securely connect devices to each other even across different networks, in many cases even through NAT, with end-to-end encryption. You will need to <a href="https://login.tailscale.com/start" target="_blank" data-umami-event="google-tv-tailscale-to-tailscale-signup">create a free Tailscale account</a> which also creates your Tailnet, a secure private network that each device you run Tailscale on will join -- any device on the Tailnet will create direct encrypted connections between each other. Tailscale's free tier is (at least for now) very generous with up to three users and 100 devices.
+You probably know that Plex is a Media Server that lets you stream your own media to Plex clients available to download on most devices. (By the way this would probably work with Jellyfin as well, I just haven't done it myself.) Tailscale is a mesh VPN that facilitates creating WireGuard tunnels that securely connect devices to each other even across different networks, in many cases even through NAT, with end-to-end encryption. You will need to [create a free Tailscale account](https://login.tailscale.com/start) which also creates your Tailnet, a secure private network that each device you run Tailscale on will join -- any device on the Tailnet will create direct encrypted connections between each other. Tailscale's free tier is (at least for now) very generous with up to three users and 100 devices.
 
 What we will achieve with this article is running Tailscale on a Plex server, or some other device in your home network, so the Tailscale app on the Google TV streaming device can connect to the Plex server and the Plex app can stream your library through a WireGuard tunnel. Once setup you'll just have to connect the Onn device to a Wi-Fi network, open the Tailscale app and connect to your Tailnet. Optionally, but ideally in my opinion, you should also set up an exit node in your home network and enable it on the Google TV so that all of the device's traffic is encrypted and routed through your home network -- this way you don't have to worry about using someone else's unsecured Wi-Fi at a hotel or Air B&B.
 
 > Please note that the instructions in this article assume you have an active Plex Pass subscription. If you already have it and have the built-in Plex Remote Access working, this may not be necessary for you -- unless you want the added security of using Tailscale's encrypted WireGuard tunnel to stream Plex (and other any app for that matter) while on someone else's Wi-Fi.
 >
-> It's not about bypassing the Plex Pass requirement for remote access, but if you're interested in that, <a href="/blog/plex-remote-access-tailscale" target="_blank" data-umami-event="google-tv-tailscale-plex-to-plex-remote-access-tailscale">see this article</a>.
+> It's not about bypassing the Plex Pass requirement for remote access, but if you're interested in that, [see this article](/blog/plex-remote-access-tailscale).
 
 ## Setting up Tailscale at home
 
 The easiest way to get where we're going is to run Tailscale on the same machine that hosts your Plex server. Alternately, you can run Tailscale on another device in your network, and use subnet routing to access the Plex server and your entire network. You also should use the exit node feature to route all traffic from your Onn device through an encrypted tunnel to your home network, it will be much more secure when using your Onn device on a public, hotel or AirBnB Wi-Fi network. I'll explain how to set this all up.
 
-First, go to the <a href="https://tailscale.com" target="_blank" data-umami-event="google-tv-tailscale-plex-to-website">Tailscale website</a> and create an account. This will create your <a href="https://tailscale.com/kb/1136/tailnet" target="_blank" data-umami-event="onn-android-tailscale-docs-tailnet">Tailnet</a> (private network for all your Tailscale-connected devices) with your newly created account as the Owner and which you'll manage through the web-based <a href="https://login.tailscale.com/admin" target="_blank" data-umami-event="onn-android-tailscale-admin-console">admin console</a>.
+First, go to the [Tailscale website](https://tailscale.com) and create an account. This will create your [Tailnet](https://tailscale.com/kb/1136/tailnet) (private network for all your Tailscale-connected devices) with your newly created account as the Owner and which you'll manage through the [web-based admin console](https://login.tailscale.com/admin).
 
 On the admin console, go to the _DNS_ tab and take note of your *tailnet name*, you'll need this later. You may want to change your Tailnet name to a "fun name," which is more human readable and easy to remember, by clicking on *Rename tailnet* and then choosing from the selections available. You can keep cycling through different ones until you find one you like.
 
-![Choosing a tailnet fun name.](../../img/blog/tailscale-fun-name.png 'Choosing a tailnet fun name')
+:::image-figure[Choosing a tailnet fun name.]
+![A screenshot of the Tailscale web-based admin console interface](../../img/blog/tailscale-fun-name.png)
+:::
 
 Next let's install Tailscale. I recommend running Tailscale on a Linux server, ideally the same one hosting Plex itself so that you don't even have to bother with subnet routing if you don't want to. You can also run it in a Docker container, on a Windows computer or even on another Google TV device in your home -- just be aware that not every platform will have the subnet routing and exit node features, and I highly recommend always connecting to an exit node for added security when using the Onn device away from home.
 
@@ -92,7 +94,9 @@ Now go to the admin console, on the **Machines** tab, and do the following:
 
 3. Click the checkbox for **Subnet routes** and click the **Save** button to finish.
 
-![Enabling subnets in Tailscale admin console.](../../img/blog/tailscale-subnets.png 'Enabling subnets in Tailscale admin console')
+:::image-figure[Enabling subnets in Tailscale admin console.]
+![A screenshot of the Tailscale web-based admin console interface](../../img/blog/tailscale-subnets.png)
+:::
 
 ## Setting up an exit node
 
@@ -162,7 +166,9 @@ Go to the Plex web UI in a browser and navigate to **Settings** -> **Network**, 
 
 1. Set _Secure connections_ to **Preferred**
 
-![Secure connections setting in Plex.](../../img/blog/plex-secure-connections.png 'Secure connections setting in Plex')
+:::image-figure[Secure connections setting.]
+![A screenshot of the Plex Media Server web-based interface](../../img/blog/plex-secure-connections.png)
+:::
 
 2. Set _Preferred network interface_ to **Any**
 
@@ -170,7 +176,9 @@ Go to the Plex web UI in a browser and navigate to **Settings** -> **Network**, 
 
 4. Go to _Custom server access URLs_ and type in the tailnet domain as a URL with the Plex port, e.g. `http://server.emperor-sloth.ts.net:32400`
 
-![Relay and Server Access URL settings in Plex.](../../img/blog/googletv-tailscale-plex1.png 'Relay and Server Access URL settings in Plex')
+:::image-figure[Relay and Custom Server Access URL settings.]
+![A screenshot of the Plex Media Server web-based interface](../../img/blog/googletv-tailscale-plex1.png)
+:::
 
 5. Click on **Save changes**
 

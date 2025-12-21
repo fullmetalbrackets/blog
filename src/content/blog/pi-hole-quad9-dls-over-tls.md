@@ -68,7 +68,7 @@ forward-zone:
  forward-addr: 149.112.112.11@853#dns11.quad9.net
 ```
 
-> These forwarding addresses for **Quad9** provide malware blocking, DNSSEC, and are ECS-enabled. Check out <a href="https://www.quad9.net/service/service-addresses-and-features" target="_blank" data-umami-event="pihole-dot-quad9-addr-feats">all of Quad9's options</a>. Alternately you may consider using the **Cloudflare** TLS endpoint at `security.cloudflare-dns.com`, which also supports DNSSEC and blocks malware.
+> These forwarding addresses for **Quad9** provide malware blocking, DNSSEC, and are ECS-enabled. Check out all of [Quad9's options](https://www.quad9.net/service/service-addresses-and-features). Alternately you may consider using the **Cloudflare** TLS endpoint at `security.cloudflare-dns.com`, which also supports DNSSEC and blocks malware.
 
 Now restart Unbound so the new config takes effect:
 
@@ -80,7 +80,7 @@ Now <a href="#configure-pi-hole">skip to this section to configure Pi-Hole</a>, 
 
 ## Cloudflared as forwarding resolver
 
-Running Cloudflared bare metal is a bit involved, but if prefer it that way, see <a href="/blog/using-dns-over-https-with-pihole#install-and-setup-the-cloudflared-daemon" target="_blank" data-umami-event="pihole-quad9-dot-related-pihole-doh">this blog post about running Cloudflared bare metal as a systemd daemon</a>.
+Running Cloudflared bare metal is a bit involved, but if prefer it that way, see [this blog post about running Cloudflared bare metal as a systemd daemon](/blog/using-dns-over-https-with-pihole#install-and-setup-the-cloudflared-daemon).
 
 Running Cloudflared as a Docker container requires less configuration, so I'll explain that here. Create a `compose.yaml` file with the below contents: (Or copy & paste the below into an existing compose file if you prefer.)
 
