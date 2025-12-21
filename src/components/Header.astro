@@ -1,5 +1,6 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
+import ThemeToggle from "./ThemeToggle.astro";
 import { Picture } from 'astro:assets';
 import Logo from '../img/assets/logo.avif';
 import Search from '@icons/search.svg';
@@ -8,6 +9,28 @@ import Search from '@icons/search.svg';
 <style scoped>
   header {
     margin: 0 auto;
+  }
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    z-index: 100;
+  }
+  .skip-link:focus {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    background: var(--primary);
+    color: var(--main);
+    padding: 0.5em 1em;
+    text-decoration: none;
+    border-radius: 0 0 4px 0;
   }
   nav {
     font-family: var(--sub-font);
@@ -26,10 +49,12 @@ import Search from '@icons/search.svg';
   }
   nav a:hover {
     color: var(--hover);
-    -webkit-transition: all .15s ease-out;
-    -moz-transition: all .15s ease-out;
-    -o-transition: all .15s ease-out;
     transition: all .15s ease-out;
+  }
+  nav a:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+    border-radius: 2px;
   }
   nav a.active {
     color: var(--hover);
@@ -56,9 +81,6 @@ import Search from '@icons/search.svg';
   .logo:hover .name {
     color: var(--hover);
     border: 0;
-    -webkit-transition: all .15s ease-out;
-    -moz-transition: all .15s ease-out;
-    -o-transition: all .15s ease-out;
     transition: all .15s ease-out;
   }
   .nav-links {
@@ -73,7 +95,13 @@ import Search from '@icons/search.svg';
   svg {
     margin: 2.8px 0;
   }
-  @media screen and (min-width: 200px) and (max-width: 667px) {
+  @media (prefers-reduced-motion: reduce) {
+    nav a,
+    .logo:hover .name {
+      transition: none;
+    }
+  }
+  @media screen and (max-width: 667px) {
     .name {
       font-size: 0;
       visibility: hidden;
@@ -81,19 +109,23 @@ import Search from '@icons/search.svg';
   }
 </style>
 
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
 <header>
-  <nav>
-    <a href="/" class="logo" aria-label="logo">
-      <Picture src={Logo} formats={['avif', 'webp']} alt="Site logo." width={50} height={50} loading="eager" decoding="async" />
-        <span class="name">Fullmetalbrackets</span>
+  <nav aria-label="Main navigation">
+    <a href="/" class="logo" aria-label="Fullmetalbrackets home">
+      <Picture src={Logo} formats={['avif', 'webp']} alt="" width={50} height={50} loading="eager" decoding="async" />
+        <span class="name" aria-hidden="true">Fullmetalbrackets</span>
     </a>
     <div class="nav-links">
       <HeaderLink href="/blog/" rel="prefetch-intent" class="nav-link">Blog</HeaderLink>
       <HeaderLink href="/wiki/" rel="prefetch-intent" class="nav-link" data-umami-event="wiki">Wiki</HeaderLink>
       <HeaderLink href="/links/" rel="prefetch-intent" class="nav-link" data-umami-event="links">Links</HeaderLink>
-      <HeaderLink href="/search/" rel="prefetch-intent" class="search-link" data-umami-event="search">
-        <Search />
+      <HeaderLink href="/search/" rel="prefetch-intent" class="search-link" data-umami-event="search" aria-label="Search">
+        <Search aria-hidden="true" />
+        <span class="sr-only">Search</span>
       </HeaderLink>
+      <ThemeToggle />
     </div>
   </nav>
 </header>
