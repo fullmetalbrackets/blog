@@ -26,7 +26,7 @@ Follow all instructions as-is and when it's time to reboot at the end, just `exi
 
 ## Upgrading apt repositories to Trixie
 
-> **Important note for Nvidia GPU users**
+> [warning] **Important note for Nvidia GPU users**
 >
 > I've received reports from some people trying to use this guide that they've had trouble upgrading on a system with an Nvidia card. There may be some issue with Nvidia drivers on Trixie, so I recommend following either <a href="https://wiki.debian.org/NvidiaGraphicsDrivers#Debian_13_.22Trixie.22" target="_blank">these instructions on the Debian wiki</a> or <a href="https://github.com/mexersus/debian-nvidia-drivers" target="_blank">this GitHub gist</a>.
 >

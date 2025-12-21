@@ -111,7 +111,7 @@
  }
  
  .token.url {
-   color: var(--success);
+   color: var(--secondary);
  }
  
  /* HTML overrides */
@@ -131,7 +131,7 @@
  
  .language-css .token.function,
  .language-css .token.url > .token.function {
-   color: var(--success);
+   color: var(--secondary);
  }
  
  .language-css .token.url > .token.string.url {
@@ -174,7 +174,7 @@
  
  .language-markdown .token.url > .token.url,
  .language-markdown .token.url-reference.url {
-   color: var(--success);
+   color: var(--secondary);
  }
  
  .language-markdown .token.blockquote.punctuation,

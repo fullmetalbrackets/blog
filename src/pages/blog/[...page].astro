@@ -107,7 +107,11 @@ const desc = "List of all blog posts";
     gap: 0.25em
   }
   .tag {
-    margin-top: 0.25em;
+    margin: 0;
+    padding: 0;
+  }
+  .tag button {
+    margin: 0.25em 0.25em 0.25em 0;
   }
   .title {
     display: block;
@@ -217,9 +221,8 @@ const desc = "List of all blog posts";
       margin-top: 0.25em;
       margin-bottom: 0.5em;
     }
-    .tag {
-      display: block;
-      margin-top: 0.1em;
+    .tag button {
+      margin: 0 0.25em 0.25em 0;
     }
     .page-info-top {
       font-size: 0.875em;
@@ -269,14 +272,14 @@ const desc = "List of all blog posts";
     <nav class="pagination" aria-label="Blog pagination">
       <span class="prev">
         {page.url.prev ? (
-          <a href={page.url.prev} rel="prev">&larr; Newer</a>
+          <a href={page.url.prev} rel="prev">↖ Newer</a>
         ) : (
           <span></span>
         )}
       </span>
       <span class="next">
         {page.url.next ? (
-          <a href={page.url.next} rel="next">Older &rarr;</a>
+          <a href={page.url.next} rel="next">Older ↘</a>
         ) : (
           <span></span>
         )}
@@ -310,14 +313,14 @@ const desc = "List of all blog posts";
     <nav class="pagination" aria-label="Blog pagination">
       <span class="prev">
         {page.url.prev ? (
-          <a href={page.url.prev} rel="prev">&larr; Newer</a>
+          <a href={page.url.prev} rel="prev">↖ Newer</a>
         ) : (
           <span></span>
         )}
       </span>
       <span class="next">
         {page.url.next ? (
-          <a href={page.url.next} rel="next">Older &rarr;</a>
+          <a href={page.url.next} rel="next">Older ↘</a>
         ) : (
           <span></span>
         )}

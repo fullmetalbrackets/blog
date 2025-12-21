@@ -96,9 +96,31 @@ const { title, description, tag, pubDate, updatedDate } = Astro.props;
     </slot>
   </article>
   <hr class="bottom-line" />
+
   <aside class="wiki-aside">
-    <a href="/wiki" class="top blog-tag"><button>&larr; Wiki</button></a>
-    <a href="/" class="top blog-tag home"><button>&#8626; Home</button></a>
-    <a href="#top" class="top blog-tag"><button>Top &uarr;</button></a>
+    <a href="/wiki" class="top blog-tag"><button>↩ Wiki</button></a>
+    <a href="/" class="top blog-tag home"><button>↰ Home</button></a>
+    <a href="#top" class="top blog-tag"><button>Top ↑</button></a>
   </aside>
+
+  <script is:inline>
+    document.querySelectorAll('blockquote').forEach((blockquote) => {
+      const firstPara = blockquote.querySelector('p');
+      if (firstPara) {
+        const text = firstPara.textContent || '';
+        const match = text.match(/^\[(\w+)\]\s*/);
+        
+        if (match) {
+          const type = match[1];
+          blockquote.setAttribute('data-type', type);
+          blockquote.classList.add(`blockquote-${type}`);
+          
+          const textNode = firstPara.firstChild;
+          if (textNode && textNode.nodeType === Node.TEXT_NODE && textNode.textContent) {
+            textNode.textContent = textNode.textContent.replace(/^\[(\w+)\]\s*/, '');
+          }
+        }
+      }
+    });
+  </script>
 </BaseLayout>

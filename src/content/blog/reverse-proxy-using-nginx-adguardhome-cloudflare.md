@@ -8,9 +8,11 @@ related1: reverse-proxy-using-nginx-pihole-cloudflare
 related2: self-host-website-cloudflare-tunnel
 ---
 
+> [warning] **Important!**
+>
 > This guide is for using **AdGuard Home** as the DNS server, where we will add the DNS records for our proxied services.
 >
-> <a href="/blog/reverse-proxy-using-nginx-pihole-cloudflare" target="_blank" data-umami-event="reverse-proxy-adguard-to-pihole-proxy">See this other post if you want to use <em>Pi-Hole</em> instead as the DNS server.</a>
+> [See this other post if you want to use **Pi-Hole** instead as the DNS server.](/blog/reverse-proxy-using-nginx-pihole-cloudflare)
 
 ## Pre-Requisites and Caveats
 
@@ -134,7 +136,10 @@ services:
       - /opt/docker/letsencrypt:/etc/letsencrypt
     restart: unless-stopped
 ```
-> Make sure that ports `80` and `443` are available on your server and not being used by anything else! _Nginx Proxy Manager_ needs port `80` for _HTTP_ and port `443` for _HTTPS_.
+
+> [warning] **Important!**
+>
+> Make sure that ports `80` and `443` are available on your server and not being used by anything else! Nginx Proxy Manager needs port `80` for **HTTP** and port `443` for **HTTPS**.
 
 This compose file uses <a href="https://docs.docker.com/engine/storage/#bind-mounts" target="_blank" data-umami-event="reverse-proxy-adguard-docker-bind-mounts">bind mounts</a> to store container data in specific directories on the host, as I find this easier to migrate than <a href="https://docs.docker.com/engine/storage/#volumes" target="_blank" data-umami-event="reverse-proxy-adguard-docker-volumes">volumes</a>. (If you save your site on <a href="https://github.com" target="_blank">GitHub</a> you can just clone it and install it anywhere.)
 
@@ -200,7 +205,7 @@ If something does not work as intended (503 error or the like), fiddle with the 
 
 Barring any errors, once you set up all your proxy hosts in Nginx Proxy Manager you should have full HTTPS when going to your services via `https://subdomain.domain.com`.
 
-> One last thing, if you want to want to access the AdGuard Home web UI via HTTPS as well, be sure to use its default HTTPS network port *3001* in Nginx Proxy Manager.
+> One last thing, if you want to want to access the AdGuard Home web UI via HTTPS as well, be sure to use its default HTTPS network port `3001` in Nginx Proxy Manager.
 
 ## Reference
 

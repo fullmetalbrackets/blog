@@ -8,9 +8,11 @@ related1: set-up-pihole-on-linux
 related2: self-host-website-cloudflare-tunnel
 ---
 
+> [warning] **Important!**
+>
 > This guide is for using **Pi-Hole** as the DNS server, where we will add the DNS records for your proxied services.
 >
-> <a href="/blog/reverse-proxy-using-nginx-adguardhome-cloudflare" target="_blank" data-umami-event="reverse-proxy-pihole-to-adguard-proxy">See this other post if you want to use <em>AdGuard Home</em> instead as the DNS server.</a>
+> [See this other post if you want to use **AdGuard** Home instead as the DNS server.](/blog/reverse-proxy-using-nginx-adguardhome-cloudflare)
 
 ## Pre-Requisites and Caveats
 
@@ -56,15 +58,17 @@ services:
       - 80:80/tcp # web UI port
 ```
 
+> [warning] **Important!**
+>
 > Make sure port `53` is available on your server or Pi-Hole will not work!
 > 
-> If your Pi-Hole is on the same machine you want to run Nginx Proxy Manager, then you'll need to change the _Pi-Hole web UI port_ since it is also port `80` by default, which will conflict with Nginx Proxy Manager.
+> If your Pi-Hole is o*n the same machine* you want to run Nginx Proxy Manager, then you'll need to change the **Pi-Hole web UI port** since it is also port `80` by default, which will conflict with Nginx Proxy Manager.
 >
-> If you run Pi-Hole in a docker container, simply change the container's port mapping in the compose file from `80:80` to, for example, `8888:80`.
+> If you run Pi-Hole in a **Docker container**, simply change the container's port mapping in the compose file from `80:80` to, for example, `8888:80` or something similar.
 >
-> If you are running Pi-Hole bare metal, you need to edit some config files. On _Pi-Hole v5 and earlier_, edit `/etc/lighttpd/lighttpd.conf` and change the line `server.port = 80` to your desired port, e.g. `server.port = 8888`.
->
-> On _Pi-Hole v6_, open the file at `/etc/pihole/pihole.toml` and find the section `# Ports to be used by the webserver`. There's good instructions in the comments here on how it works. Basically, you can comment out the line `port = "80o,[::]:80o,443so, ..."` and then write a new line right under it with a different network port -- e.g. `port = "8888o,[::]:8888o"` or something.
+> If you are running **bare metal**, you'll need to edit the Pi-Hole configuration file:
+> 1. Open the file at `/etc/pihole/pihole.toml` with a text editor and find the section `# Ports to be used by the webserver`.
+> 2. Comment out the line `port = "80o,[::]:80o,443so, ..."` and then write a new line right under it with a different network port, like `port = "8888o,[::]:8888o"` or something.
 
 I include some presets through environmental variables in the compose file, but customize it as you see fit. Be aware that for Pi-Hole to work properly as a container, you should leave the variable `DNSMASQ_LISTENING=all`, it's the same as *permit all origins* in the Pi-Hole interface settings, which is what you want. When ready, download and run the container with the following command:
 
@@ -85,8 +89,6 @@ Next, we'll add the DNS records in Pi-Hole that we need for Nginx Proxy Manager.
 Go into the _Pi-Hole web UI_, it should be accessible via your browser at `http://<ip-address>/admin` or `http://<hostname>/admin` if you're using the default web UI port of 80.
 
 If you changed the web UI port it to something like 8888, it would instead be `http://<ip-address>:8888/admin` or `http://<hostname>:8888/admin`.
-
-> The below instructions have been updated for **Pi-Hole v6**.
 
 1. In the Pi-Hole web UI, click on **Settings** on the sidebar and choose **Local DNS Records** from the dropdown.
 
@@ -266,30 +268,6 @@ One last thing! You can easily _set an automatic redirect_ from `pihole.domain.c
 3. Click on the **Save & Apply** button at the bottom.
 
 Now you should automatically be redirected to the Pi-Hole dashboard at `/admin` when you go to `https://pihole.domain.com/`.
-
-<div id='pihole-v5-https'/>
-
-### Accessing the web UI with HTTPS in Pi-Hole v5
-
-To be clear, the method I'm about to describe comes from <a href="https://discourse.pi-hole.net/t/how-to-access-pihole-web-interface-using-a-fqdn-with-https-using-nginx-proxy-manager/66719" target="_blank" data-umami-event="reverse-proxy-pihole-discourse-thread">this question and answer on the Pi-Hole discourse</a>, it is the only method that has ever worked for me.
-
-1. Go to the Pi-Hole web interface, and go to _Local DNS records_ -> _CNAME records_ on the sidebar. Enter the domain you want to use, e.g. `pihole.domain.com` and for _Target Domain_ use the hostname or IP address of the server running Nginx Proxy Manager.
-
-2. SSH into the Pi-Hole terminal and create a new file at `/etc/lighttpd/conf-enabled/15-pihole-custom-admin-redirect.conf`, then copy and paste the code below:
-
-```ini
-$HTTP["url"] == "/" {
-    $HTTP["host"] == "pihole.domain.com" {
-         url.redirect = ("" => "/admin/")
-    }
-}
-```
-
-3. Save the file and run the command `sudo service lighttpd restart` for the newly created config file to take effect.
-
-4. Go to Nginx Proxy Manager and create the proxy host for `pihole.domain.com` as normal, but make sure under _Forward Hostname/IP_ to enter the hostname/IP of the machine running Pi-Hole and under _Forward Port_ enter `80`. Do everything as normal in the _SSL_ tab too.
-
-Once you're done setting up the proxy host, you should be able to go to `https://pihole.domain.com`, be automatically forwarded to the `/admin` page and have full HTTPS on the web UI.
 
 ## References
 
