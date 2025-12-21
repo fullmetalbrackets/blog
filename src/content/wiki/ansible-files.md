@@ -5,7 +5,7 @@ pubDate: 2024-02-04
 tag: documentation
 ---
 
-<img src="/ansible.svg" alt="Ansible" loading="eager" encoding="async" />
+![Ansible Branding](../../img/wiki/ansible.svg)
 
 # Ansible files
 

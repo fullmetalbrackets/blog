@@ -6,7 +6,7 @@ updatedDate: 2025-11-28
 tag: server
 ---
 
-> See <a href="/blog/how-i-setup-home-server/" target="_blank" data-umami-event="wiki-athena-home-server-blog">this blog post</a> for more details.
+> See [this blog post](/blog/how-i-setup-home-server) for more details.
 
 ![Dell XPS 8920](../../img/wiki/xps8920.jpg)
 

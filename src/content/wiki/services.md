@@ -6,7 +6,7 @@ updatedDate: 2025-02-10
 tag:  documentation
 ---
 
-> See <a href="/blog/how-i-setup-home-server/" target="_blank" data-umami-event="wiki-services-home-server-blog">this blog post</a> for more details.
+> See [this blog post](/blog/how-i-setup-home-server) for more details.
 
 # Athena
 
