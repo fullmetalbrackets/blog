@@ -1,57 +1,56 @@
 *, *:before, *:after {
   box-sizing: inherit;
 }
-@media (prefers-color-scheme: light) {
-  :root, html {
-    font-size: 24px;
-    --main: rgb(255, 255, 255);
-    --text: rgb(32, 33, 36);
-    --primary: rgb(44 156 195);
-    --secondary: rgb(0, 150, 150);
-    --accent: rgb(182, 193, 210);
-    --border: rgba(32, 33, 36, 0.25);
-    --link: rgb(250, 85, 0);
-    --bq-link: rgb(195, 65, 0);
-    --hover: rgb(200, 0, 0);
-    --tags: rgb(44 156 195);
-    --emphasis: rgb(0, 0, 0);
-    --name: rgb(44 156 195);
-    --date: rgb(40, 108, 96);
-    --menu: rgb(205, 110, 10);
-    --form: rgb(32, 33, 36);
-    --blockquote: rgb(255, 245, 235);
-    --info: rgb(255, 221, 0);
-    --info-text: rgb(130, 114, 40);
-    --info-bg: rgb(from var(--info, var(--info)) r g b / 0.175);
-    --warning: rgb(255, 45, 50);
-    --warning-text: rgb(206, 0, 0);
-    --warning-bg: rgb(from var(--warning, var(--warning)) r g b / 0.11);
-    --warning-link: rgb(0, 110, 150);
-    --warning-hover: rgb(0, 150, 150);
-    --code-bg: rgb(230, 230, 230);
-    --code-bg-bq: rgb(230, 230, 230);
-    --code-text: hsl(220, 13%, 18%);
-    --svg: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%) contrast(98%);
-    --ext: invert(88%) sepia(69%) saturate(7500%) hue-rotate(1deg) brightness(104%) contrast(104%);
-    --search: invert(57%) sepia(86%) saturate(3921%) hue-rotate(13deg) brightness(99%) contrast(100%);
-    --info-svg: brightness(0) saturate(100%) invert(77%) sepia(98%) saturate(1742%) hue-rotate(350deg) brightness(96%) contrast(95%);
-    --share: brightness(0) saturate(100%) invert(74%) sepia(77%) saturate(474%) hue-rotate(356deg) brightness(104%) contrast(90%);
-    --coffee-hover: brightness(0) saturate(100%) invert(45%) sepia(98%) saturate(1756%) hue-rotate(7deg) brightness(89%) contrast(92%);
-    --time-svg: brightness(0) saturate(100%) invert(35%) sepia(53%) saturate(496%) hue-rotate(120deg) brightness(87%) contrast(84%);
-    --clock-svg: brightness(0) saturate(100%) invert(10%) sepia(11%) saturate(791%) hue-rotate(169deg) brightness(94%) contrast(89%);
-    text-wrap: pretty;
-    box-sizing: border-box;
-    max-width: 1200px;
-    min-height: 100vh;
-    scrollbar-color: var(--primary) var(--code-bg);
-    scrollbar-width: thin;
-    scroll-behavior: smooth;
-    margin: 0 auto;
-  }
+:root, html {
+  font-size: 24px;
+  text-wrap: pretty;
+  box-sizing: border-box;
+  max-width: 1200px;
+  min-height: 100vh;
+  scrollbar-color: var(--primary) var(--code-bg);
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
+  margin: 0 auto;
+}
+:root, html {
+  --main: rgb(255, 255, 255);
+  --text: rgb(32, 33, 36);
+  --primary: rgb(44 156 195);
+  --secondary: rgb(0, 150, 150);
+  --accent: rgb(182, 193, 210);
+  --border: rgba(32, 33, 36, 0.25);
+  --link: rgb(250, 85, 0);
+  --bq-link: rgb(195, 65, 0);
+  --hover: rgb(200, 0, 0);
+  --tags: rgb(44 156 195);
+  --emphasis: rgb(0, 0, 0);
+  --name: rgb(44 156 195);
+  --date: rgb(40, 108, 96);
+  --menu: rgb(205, 110, 10);
+  --form: rgb(32, 33, 36);
+  --blockquote: rgb(255, 245, 235);
+  --info: rgb(255, 221, 0);
+  --info-text: rgb(130, 114, 40);
+  --info-bg: rgb(from var(--info, var(--info)) r g b / 0.175);
+  --warning: rgb(255, 45, 50);
+  --warning-text: rgb(206, 0, 0);
+  --warning-bg: rgb(from var(--warning, var(--warning)) r g b / 0.11);
+  --warning-link: rgb(0, 110, 150);
+  --warning-hover: rgb(0, 150, 150);
+  --code-bg: rgb(230, 230, 230);
+  --code-bg-bq: rgb(230, 230, 230);
+  --code-text: hsl(220, 13%, 18%);
+  --svg: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%) contrast(98%);
+  --ext: invert(88%) sepia(69%) saturate(7500%) hue-rotate(1deg) brightness(104%) contrast(104%);
+  --search: invert(57%) sepia(86%) saturate(3921%) hue-rotate(13deg) brightness(99%) contrast(100%);
+  --info-svg: brightness(0) saturate(100%) invert(77%) sepia(98%) saturate(1742%) hue-rotate(350deg) brightness(96%) contrast(95%);
+  --share: brightness(0) saturate(100%) invert(74%) sepia(77%) saturate(474%) hue-rotate(356deg) brightness(104%) contrast(90%);
+  --coffee-hover: brightness(0) saturate(100%) invert(45%) sepia(98%) saturate(1756%) hue-rotate(7deg) brightness(89%) contrast(92%);
+  --time-svg: brightness(0) saturate(100%) invert(35%) sepia(53%) saturate(496%) hue-rotate(120deg) brightness(87%) contrast(84%);
+  --clock-svg: brightness(0) saturate(100%) invert(10%) sepia(11%) saturate(791%) hue-rotate(169deg) brightness(94%) contrast(89%);
 }
 @media (prefers-color-scheme: dark) {
   :root, html {
-    font-size: 24px;
     --main: rgb(32, 33, 36);
     --text: rgb(164, 174, 188);
     --primary: rgb(90, 194, 175);
@@ -89,15 +88,85 @@
     --coffee-hover: brightness(0) saturate(100%) invert(43%) sepia(96%) saturate(937%) hue-rotate(352deg) brightness(101%) contrast(95%);
     --time-svg: brightness(0) saturate(100%) invert(68%) sepia(15%) saturate(1141%) hue-rotate(119deg) brightness(97%) contrast(92%);
     --clock-svg: brightness(0) saturate(100%) invert(64%) sepia(80%) saturate(281%) hue-rotate(154deg) brightness(92%) contrast(98%);
-    text-wrap: pretty;
-    box-sizing: border-box;
-    max-width: 1200px;
-    min-height: 100vh;
-    scrollbar-color: var(--primary) var(--code-bg);
-    scrollbar-width: thin;
-    scroll-behavior: smooth;
-    margin: 0 auto;
   }
+}
+@media (prefers-color-scheme: dark) {
+  html:not(.dark) {
+    --main: rgb(255, 255, 255);
+    --text: rgb(32, 33, 36);
+    --primary: rgb(44 156 195);
+    --secondary: rgb(0, 150, 150);
+    --accent: rgb(182, 193, 210);
+    --border: rgba(32, 33, 36, 0.25);
+    --link: rgb(250, 85, 0);
+    --bq-link: rgb(195, 65, 0);
+    --hover: rgb(200, 0, 0);
+    --tags: rgb(44 156 195);
+    --emphasis: rgb(0, 0, 0);
+    --name: rgb(44 156 195);
+    --date: rgb(40, 108, 96);
+    --menu: rgb(205, 110, 10);
+    --form: rgb(32, 33, 36);
+    --blockquote: rgb(255, 245, 235);
+    --info: rgb(255, 221, 0);
+    --info-text: rgb(130, 114, 40);
+    --info-bg: rgb(from var(--info, var(--info)) r g b / 0.175);
+    --warning: rgb(255, 45, 50);
+    --warning-text: rgb(206, 0, 0);
+    --warning-bg: rgb(from var(--warning, var(--warning)) r g b / 0.11);
+    --warning-link: rgb(0, 110, 150);
+    --warning-hover: rgb(0, 150, 150);
+    --code-bg: rgb(230, 230, 230);
+    --code-bg-bq: rgb(230, 230, 230);
+    --code-text: hsl(220, 13%, 18%);
+    --svg: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%) contrast(98%);
+    --ext: invert(88%) sepia(69%) saturate(7500%) hue-rotate(1deg) brightness(104%) contrast(104%);
+    --search: invert(57%) sepia(86%) saturate(3921%) hue-rotate(13deg) brightness(99%) contrast(100%);
+    --info-svg: brightness(0) saturate(100%) invert(77%) sepia(98%) saturate(1742%) hue-rotate(350deg) brightness(96%) contrast(95%);
+    --share: brightness(0) saturate(100%) invert(74%) sepia(77%) saturate(474%) hue-rotate(356deg) brightness(104%) contrast(90%);
+    --coffee-hover: brightness(0) saturate(100%) invert(45%) sepia(98%) saturate(1756%) hue-rotate(7deg) brightness(89%) contrast(92%);
+    --time-svg: brightness(0) saturate(100%) invert(35%) sepia(53%) saturate(496%) hue-rotate(120deg) brightness(87%) contrast(84%);
+    --clock-svg: brightness(0) saturate(100%) invert(10%) sepia(11%) saturate(791%) hue-rotate(169deg) brightness(94%) contrast(89%);
+  }
+}
+html.dark {
+  --main: rgb(32, 33, 36);
+  --text: rgb(164, 174, 188);
+  --primary: rgb(90, 194, 175);
+  --secondary: rgb(95, 193, 232);
+  --accent: rgb(51, 65, 85);
+  --border: rgba(164, 174, 188, 0.25);
+  --link: rgb(255, 221, 0);
+  --bq-link: rgb(255, 221, 0);
+  --hover: rgb(249, 115, 22);
+  --tags: rgb(255, 221, 0);
+  --emphasis: rgb(255, 255, 255);
+  --name: rgb(0, 158, 170);
+  --date: rgb(90, 194, 175);
+  --menu: rgb(222, 122, 0);
+  --form: rgb(250, 250, 250);
+  --blockquote: rgb(25, 22, 22);
+  --info: rgb(255, 221, 0);
+  --info-text: rgb(187, 188, 164);
+  --info-bg: rgb(from var(--info, var(--info)) r g b / 0.05);
+  --warning: rgb(255, 45, 50);
+  --warning-text: rgb(250, 200, 200);
+  --warning-bg: rgb(from var(--warning, var(--warning)) r g b / 0.075);
+  --warning-link: rgb(255, 221, 0);
+  --warning-hover: rgb(249, 115, 22);
+  --code-bg: rgb(40, 44, 52);
+  --code-bg-bq: rgb(60, 60, 60);
+  --code-text: rgb(255, 255, 255);
+  --pagefind-ui-text: rgb(164, 174, 188);
+  --pagefind-ui-background: rgb(51, 65, 85);
+  --svg: invert(93%) sepia(78%) saturate(2834%) hue-rotate(213deg) brightness(148%) contrast(96%);
+  --ext: invert(50%) sepia(21%) saturate(5438%) hue-rotate(150deg) brightness(87%) contrast(101%);
+  --search: invert(57%) sepia(86%) saturate(3921%) hue-rotate(13deg) brightness(99%) contrast(100%);
+  --info-svg: brightness(0) saturate(100%) invert(80%) sepia(82%) saturate(863%) hue-rotate(336deg) brightness(105%) contrast(90%);
+  --share: brightness(0) saturate(100%) invert(77%) sepia(98%) saturate(1742%) hue-rotate(350deg) brightness(96%) contrast(95%);
+  --coffee-hover: brightness(0) saturate(100%) invert(43%) sepia(96%) saturate(937%) hue-rotate(352deg) brightness(101%) contrast(95%);
+  --time-svg: brightness(0) saturate(100%) invert(68%) sepia(15%) saturate(1141%) hue-rotate(119deg) brightness(97%) contrast(92%);
+  --clock-svg: brightness(0) saturate(100%) invert(64%) sepia(80%) saturate(281%) hue-rotate(154deg) brightness(92%) contrast(98%);
 }
 body {
   font-size: 24px;
@@ -548,17 +617,15 @@ blockquote[data-type="warning"] a:hover {
   font-family: var(--sub-font);
 }
 .sr-only {
-  border: 0;
-  padding: 0;
-  margin: 0;
-  position: absolute !important;
-  height: 1px;
+  position: absolute;
   width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
   overflow: hidden;
-  clip: rect(1px 1px 1px 1px);
-  clip: rect(1px, 1px, 1px, 1px);
-  clip-path: inset(50%);
+  clip: rect(0, 0, 0, 0);
   white-space: nowrap;
+  border-width: 0;
 }
 
 /* button effects */
@@ -573,17 +640,17 @@ button {
   font-size: 0.75em;
 }
 @media (hover: hover) {
-  a:hover button {
+  a:hover button:not(.theme-toggle) {
     box-shadow: -4px -4px 0 #000;
     transform: translate(4px, 4px);
     outline-offset: 1px;
   }
-  button {
+  button:not(.theme-toggle) {
     text-overflow: ellipsis;
     transition: all .10s ease-out;
     cursor: pointer;
   }
-  button:hover {
+  button:not(.theme-toggle):hover {
     box-shadow: -4px -4px 0 #000;
     transform: translate(4px,4px);
     cursor: pointer;
@@ -593,12 +660,11 @@ button {
   }
 }
 @media (hover: none) {
-  a:hover button,
-  button:hover {
+  a:hover button:not(.theme-toggle),
+  button:not(.theme-toggle):hover {
     background-color: var(--menu);
   }
 }
-
 /* pagefind styling */
 .pagefind-ui__search-clear {
   padding: 5px 8px;

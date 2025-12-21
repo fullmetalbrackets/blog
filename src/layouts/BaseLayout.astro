@@ -9,6 +9,15 @@ const { description } = Astro.props.frontmatter || Astro.props;
 
 <html lang="en">
 	<head>
+		<script is:inline>
+			const theme = localStorage.getItem('theme') || 
+				(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+			
+			if (theme === 'dark') {
+				document.documentElement.classList.add('dark');
+			}
+		</script>
+		
 		<BaseHead title={title} description={description} />
 		<slot name="head" />
 	</head>
@@ -16,7 +25,7 @@ const { description } = Astro.props.frontmatter || Astro.props;
 	<body>
 		<Header />
 		<main>
-      		<slot>
+			<slot>
 				<p>
 					If you're seeing this, something went wrong! Please try <em>reloading the page</em>.
 				</p>
