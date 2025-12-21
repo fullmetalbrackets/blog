@@ -176,14 +176,11 @@ article p, article ol, article p li, #ref {
 img, picture, video, canvas {
   display: block;
   max-width: 100%;
-  border-radius: 0.5em;
+  height: auto;
 }
 svg {
   display: block;
   max-width: 100%;
-}
-.sq-img {
-  border-radius: 0;
 }
 input, button, textarea, select {
   font: inherit;
@@ -268,7 +265,7 @@ mark {
 img {
   max-width: 80%;
   height: auto;
-  margin: 3em auto;
+  margin: 1.5em auto;
 }
 code {
   padding: 0 4.5px 1px 4.5px;
@@ -287,19 +284,71 @@ pre {
 pre > code {
   all: unset;
 }
+.desc {
+  font-size: 90%;
+  color: var(--text);
+  margin: 0;
+}
+article a:hover {
+  text-decoration-color: var(--link);
+}
+article h2 {
+  margin-top: 1.5em;
+}
+article h3 {
+  margin-top: 1em;
+}
+
+li::marker {
+  font-family: var(--sub-font);
+  font-size: 0.875em;
+  font-weight: 500;
+  color: var(--primary);
+}
+aside {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  margin: 2em auto;
+  cursor: default;
+}
+aside > a, aside > a:active, aside > a:visited, aside > a:hover, aside > a:focus {
+  display: flex;
+  color: #000;
+  font-size: 0.75em;
+}
+.tag button {
+  margin-right: 0.125em;
+}
+/* figures & figcaptions */
 figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 100%;
+}
+figure img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 figcaption {
   font-size: 0.833em;
   font-weight: 100;
   font-style: italic;
-  margin: -3.5em 0 4.25em 0;
+  line-height: 1;
+  margin: -1.5em 0 1.5em 0;
+  max-width: 90%;
 }
-.desc {
-  font-size: 90%;
-  color: var(--text);
-  margin: 0;
+@media screen and (max-width: 667px) {
+  figcaption {
+    font-size: 0.75em;
+    max-width: 95%;
+    padding: 0 0.5em;
+  }
 }
 
 /* default info style */
@@ -379,13 +428,11 @@ blockquote.blockquote-quote {
   border-radius: 2em 0.5em 2em 0.5em;
   max-width: 75%;
 }
-
 blockquote[data-type="quote"] p,
 blockquote.blockquote-quote p {
   margin: 0;
   padding: 0 1em;
 }
-
 blockquote[data-type="quote"] p:first-of-type,
 blockquote.blockquote-quote p:first-of-type {
   font-style: italic;
@@ -395,7 +442,6 @@ blockquote.blockquote-quote p:first-of-type {
   margin-top: -0.5em;
   padding-left: 0.65em;
 }
-
 blockquote[data-type="quote"] p + p,
 blockquote.blockquote-quote p + p {
   display: flex;
@@ -405,8 +451,6 @@ blockquote.blockquote-quote p + p {
   justify-content: flex-end;
   margin-bottom: -0.5em;
 }
-
-
 blockquote[data-type="quote"]::before,
 blockquote.blockquote-quote::before {
   content: url("/assets/quote.svg");
@@ -416,7 +460,6 @@ blockquote.blockquote-quote::before {
   padding: 0;
   filter: var(--svg);
 }
-
 blockquote[data-type="quote"]::after,
 blockquote.blockquote-quote::after {
   content: url("/assets/quote.svg");
@@ -459,31 +502,6 @@ blockquote[data-type="warning"] a {
 }
 blockquote[data-type="warning"] a:hover {
   color: var(--warning-hover);
-}
-
-article a:hover {
-  text-decoration-color: var(--link);
-}
-article h2 {
-  margin-top: 1em;
-}
-li::marker {
-  font-family: var(--sub-font);
-  font-size: 0.875em;
-  font-weight: 500;
-  color: var(--primary);
-}
-aside {
-  display: flex;
-  align-items: center;
-  justify-content: end;
-  margin: 2em auto;
-  cursor: default;
-}
-aside > a, aside > a:active, aside > a:visited, aside > a:hover, aside > a:focus {
-  display: flex;
-  color: #000;
-  font-size: 0.75em;
 }
 
 /* utility classes */
@@ -627,7 +645,7 @@ article a[target="_blank"][href^="#"]::after {
 }
 
 /* screen width media queries */
-@media screen and (min-width: 200px) and (max-width: 720px) {
+@media screen and (max-width: 720px) {
   h1 {
     font-size: 1.35em;
     line-height: 1.15;
@@ -639,7 +657,7 @@ article a[target="_blank"][href^="#"]::after {
     line-height: 1.4;
   }
 }
-@media screen and (min-width: 200px) and (max-width: 667px) {
+@media screen and (max-width: 667px) {
   .top {
     display: grid;
     justify-content: space-around;
