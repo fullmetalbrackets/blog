@@ -6,10 +6,6 @@
   --font-family-other: "M PLUS Rounded 1c", sans-serif;
 }
 
-.giscus, .giscus-frame {
-  min-height: 400px;
-}
-
 .btn {
   font-family: var(--font-family-other);
   font-size: 18px;
