@@ -11,16 +11,19 @@
     align-items: center;
     color: var(--primary);
     transition: color 0.15s ease-out;
-    margin-left: -0.385em;
+    margin-left: -0.325em;
   }
+  
   .theme-toggle:hover {
     color: var(--hover);
   }
+  
   .theme-toggle:focus-visible {
     outline: 2px solid var(--primary);
     outline-offset: 2px;
     border-radius: 2px;
   }
+  
   .theme-toggle svg {
     width: 20px;
     height: 20px;
@@ -28,14 +31,7 @@
     margin: 0;
     padding: 0;
   }
-  .sun-icon,
-  .moon-icon {
-    display: none;
-  }
-  html:not(.dark) .sun-icon,
-  html.dark .moon-icon {
-    display: block;
-  }
+  
   .sr-only {
     position: absolute;
     width: 1px;
@@ -47,6 +43,27 @@
     white-space: nowrap;
     border-width: 0;
   }
+  
+  .sun-icon,
+  .moon-icon {
+    display: none;
+  }
+  
+  html:not(.dark):not(.light) .sun-icon,
+  html.light .sun-icon,
+  html.dark .moon-icon {
+    display: block;
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    html:not(.dark):not(.light) .moon-icon {
+      display: block;
+    }
+    html:not(.dark):not(.light) .sun-icon {
+      display: none;
+    }
+  }
+  
   @media (hover: none) {
     .theme-toggle:hover,
     .theme-toggle:active {
@@ -54,6 +71,7 @@
       transform: none;
     }
   }
+  
   @media (prefers-reduced-motion: reduce) {
     .theme-toggle {
       transition: none;
@@ -65,8 +83,8 @@
   class="theme-toggle" 
   id="theme-toggle" 
   type="button"
-  aria-label="Toggle dark mode"
-  onclick="window.toggleTheme()"
+  aria-label="Toggle theme"
+  aria-live="polite"
 >
   <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true">
     <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
@@ -75,25 +93,116 @@
     <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
     <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162z"/>
   </svg>
-  <span class="sr-only">Toggle theme</span>
+  <span class="sr-only" id="theme-label">Toggle theme</span>
 </button>
 
-<script is:inline>
-  window.toggleTheme = function() {
+<script>
+  declare global {
+    interface Window {
+      toggleTheme: (event: MouseEvent) => void;
+    }
+  }
+
+  function updateAriaLabel() {
+    const html = document.documentElement;
+    const button = document.getElementById('theme-toggle');
+    const isDark = html.classList.contains('dark') || 
+                   (!html.classList.contains('light') && 
+                    window.matchMedia('(prefers-color-scheme: dark)').matches);
+    
+    if (button) {
+      button.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+    }
+  }
+
+  window.toggleTheme = function(event: MouseEvent) {
     const html = document.documentElement;
     const isDark = html.classList.contains('dark');
+
+    const hasViewTransition = typeof document.startViewTransition === 'function';
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isViewTransitionSupported = hasViewTransition && !prefersReducedMotion;
     
-    if (isDark) {
-      html.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    } else {
-      html.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
+    if (!isViewTransitionSupported) {
+      html.classList.remove('dark', 'light');
+      
+      if (isDark) {
+        html.classList.add('light');
+      } else {
+        html.classList.add('dark');
+      }
+      
+      const themeToggle = document.getElementById('theme-toggle');
+      if (themeToggle) themeToggle.blur();
+      updateAriaLabel();
+      return;
     }
 
+    const x = event.clientX;
+    const y = event.clientY;
+
+    const endRadius = Math.hypot(
+      Math.max(x, window.innerWidth - x),
+      Math.max(y, window.innerHeight - y)
+    );
+
+    const transition = document.startViewTransition(() => {
+      html.classList.remove('dark', 'light');
+      
+      if (isDark) {
+        html.classList.add('light');
+      } else {
+        html.classList.add('dark');
+      }
+    });
+
+    transition.ready.then(() => {
+      const animation = document.documentElement.animate(
+        {
+          clipPath: [
+            `circle(0px at ${x}px ${y}px)`,
+            `circle(${endRadius}px at ${x}px ${y}px)`
+          ]
+        },
+        {
+          duration: 600,
+          easing: 'ease-in-out',
+          pseudoElement: '::view-transition-new(root)'
+        }
+      );
+      
+      return animation.finished;
+    });
+
     const themeToggle = document.getElementById('theme-toggle');
-    if (themeToggle) {
-      themeToggle.blur();
-    }
+    if (themeToggle) themeToggle.blur();
+    updateAriaLabel();
   };
+
+  const themeToggleBtn = document.getElementById('theme-toggle');
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', window.toggleTheme);
+  }
+
+  updateAriaLabel();
+
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e: MediaQueryListEvent) => {
+    const html = document.documentElement;
+    const hasManualOverride = html.classList.contains('dark') || html.classList.contains('light');
+    
+    if (!hasManualOverride) {
+      if (e.matches) {
+        html.classList.add('dark');
+        html.classList.remove('light');
+      } else {
+        html.classList.add('light');
+        html.classList.remove('dark');
+      }
+      
+      setTimeout(() => {
+        html.classList.remove('dark', 'light');
+        updateAriaLabel();
+      }, 50);
+    }
+  });
 </script>

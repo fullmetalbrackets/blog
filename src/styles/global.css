@@ -2,17 +2,6 @@
   box-sizing: inherit;
 }
 :root, html {
-  font-size: 24px;
-  text-wrap: pretty;
-  box-sizing: border-box;
-  max-width: 1200px;
-  min-height: 100vh;
-  scrollbar-color: var(--primary) var(--code-bg);
-  scrollbar-width: thin;
-  scroll-behavior: smooth;
-  margin: 0 auto;
-}
-:root, html {
   --main: rgb(255, 255, 255);
   --text: rgb(32, 33, 36);
   --primary: rgb(44 156 195);
@@ -50,7 +39,7 @@
   --clock-svg: brightness(0) saturate(100%) invert(10%) sepia(11%) saturate(791%) hue-rotate(169deg) brightness(94%) contrast(89%);
 }
 @media (prefers-color-scheme: dark) {
-  :root, html {
+  html:not(.light) {
     --main: rgb(32, 33, 36);
     --text: rgb(164, 174, 188);
     --primary: rgb(90, 194, 175);
@@ -90,44 +79,42 @@
     --clock-svg: brightness(0) saturate(100%) invert(64%) sepia(80%) saturate(281%) hue-rotate(154deg) brightness(92%) contrast(98%);
   }
 }
-@media (prefers-color-scheme: dark) {
-  html:not(.dark) {
-    --main: rgb(255, 255, 255);
-    --text: rgb(32, 33, 36);
-    --primary: rgb(44 156 195);
-    --secondary: rgb(0, 150, 150);
-    --accent: rgb(182, 193, 210);
-    --border: rgba(32, 33, 36, 0.25);
-    --link: rgb(250, 85, 0);
-    --bq-link: rgb(195, 65, 0);
-    --hover: rgb(200, 0, 0);
-    --tags: rgb(44 156 195);
-    --emphasis: rgb(0, 0, 0);
-    --name: rgb(44 156 195);
-    --date: rgb(40, 108, 96);
-    --menu: rgb(205, 110, 10);
-    --form: rgb(32, 33, 36);
-    --blockquote: rgb(255, 245, 235);
-    --info: rgb(255, 221, 0);
-    --info-text: rgb(130, 114, 40);
-    --info-bg: rgb(from var(--info, var(--info)) r g b / 0.175);
-    --warning: rgb(255, 45, 50);
-    --warning-text: rgb(206, 0, 0);
-    --warning-bg: rgb(from var(--warning, var(--warning)) r g b / 0.11);
-    --warning-link: rgb(0, 110, 150);
-    --warning-hover: rgb(0, 150, 150);
-    --code-bg: rgb(230, 230, 230);
-    --code-bg-bq: rgb(230, 230, 230);
-    --code-text: hsl(220, 13%, 18%);
-    --svg: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%) contrast(98%);
-    --ext: invert(88%) sepia(69%) saturate(7500%) hue-rotate(1deg) brightness(104%) contrast(104%);
-    --search: invert(57%) sepia(86%) saturate(3921%) hue-rotate(13deg) brightness(99%) contrast(100%);
-    --info-svg: brightness(0) saturate(100%) invert(77%) sepia(98%) saturate(1742%) hue-rotate(350deg) brightness(96%) contrast(95%);
-    --share: brightness(0) saturate(100%) invert(74%) sepia(77%) saturate(474%) hue-rotate(356deg) brightness(104%) contrast(90%);
-    --coffee-hover: brightness(0) saturate(100%) invert(45%) sepia(98%) saturate(1756%) hue-rotate(7deg) brightness(89%) contrast(92%);
-    --time-svg: brightness(0) saturate(100%) invert(35%) sepia(53%) saturate(496%) hue-rotate(120deg) brightness(87%) contrast(84%);
-    --clock-svg: brightness(0) saturate(100%) invert(10%) sepia(11%) saturate(791%) hue-rotate(169deg) brightness(94%) contrast(89%);
-  }
+html.light {
+  --main: rgb(255, 255, 255);
+  --text: rgb(32, 33, 36);
+  --primary: rgb(44 156 195);
+  --secondary: rgb(0, 150, 150);
+  --accent: rgb(182, 193, 210);
+  --border: rgba(32, 33, 36, 0.25);
+  --link: rgb(250, 85, 0);
+  --bq-link: rgb(195, 65, 0);
+  --hover: rgb(200, 0, 0);
+  --tags: rgb(44 156 195);
+  --emphasis: rgb(0, 0, 0);
+  --name: rgb(44 156 195);
+  --date: rgb(40, 108, 96);
+  --menu: rgb(205, 110, 10);
+  --form: rgb(32, 33, 36);
+  --blockquote: rgb(255, 245, 235);
+  --info: rgb(255, 221, 0);
+  --info-text: rgb(130, 114, 40);
+  --info-bg: rgb(from var(--info, var(--info)) r g b / 0.175);
+  --warning: rgb(255, 45, 50);
+  --warning-text: rgb(206, 0, 0);
+  --warning-bg: rgb(from var(--warning, var(--warning)) r g b / 0.11);
+  --warning-link: rgb(0, 110, 150);
+  --warning-hover: rgb(0, 150, 150);
+  --code-bg: rgb(230, 230, 230);
+  --code-bg-bq: rgb(230, 230, 230);
+  --code-text: hsl(220, 13%, 18%);
+  --svg: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%) contrast(98%);
+  --ext: invert(88%) sepia(69%) saturate(7500%) hue-rotate(1deg) brightness(104%) contrast(104%);
+  --search: invert(57%) sepia(86%) saturate(3921%) hue-rotate(13deg) brightness(99%) contrast(100%);
+  --info-svg: brightness(0) saturate(100%) invert(77%) sepia(98%) saturate(1742%) hue-rotate(350deg) brightness(96%) contrast(95%);
+  --share: brightness(0) saturate(100%) invert(74%) sepia(77%) saturate(474%) hue-rotate(356deg) brightness(104%) contrast(90%);
+  --coffee-hover: brightness(0) saturate(100%) invert(45%) sepia(98%) saturate(1756%) hue-rotate(7deg) brightness(89%) contrast(92%);
+  --time-svg: brightness(0) saturate(100%) invert(35%) sepia(53%) saturate(496%) hue-rotate(120deg) brightness(87%) contrast(84%);
+  --clock-svg: brightness(0) saturate(100%) invert(10%) sepia(11%) saturate(791%) hue-rotate(169deg) brightness(94%) contrast(89%);
 }
 html.dark {
   --main: rgb(32, 33, 36);
@@ -737,5 +724,24 @@ article a[target="_blank"][href^="#"]::after {
   }
   article ul, article ol {
     padding-left: 1em;
+  }
+}
+
+/* view transition api */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  mix-blend-mode: normal;
+}
+::view-transition-group(root) {
+  animation-duration: 0s;
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none !important;
   }
 }
