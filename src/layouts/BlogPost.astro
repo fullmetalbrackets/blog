@@ -161,7 +161,7 @@ const selectedPosts = allPosts.filter(post =>
       margin-top: 1em;
     }
     .coffee-btn:hover {
-      background: var(--menu);
+      background: var(--hover);
     }
     .share {
       display: grid;
@@ -217,6 +217,9 @@ const selectedPosts = allPosts.filter(post =>
     .edit-post a:hover, .stats:hover a {
       color: #000;
     }
+    .edit-post button:hover, .mid-end button:hover, .post-end button:hover {
+      background: var(--hover);
+    }
     .questions {
       display: grid;
       place-items: center;
@@ -254,9 +257,6 @@ const selectedPosts = allPosts.filter(post =>
     .endline {
       margin-top: 0.5em;
       margin-bottom: 1.5em;
-    }
-    aside button:hover {
-      background: var(--menu);
     }
     .blog-aside {
       display: inline-flex;
