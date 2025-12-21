@@ -32,8 +32,6 @@ const desc = "Links to websites, self-hosted apps and other cool online things t
   }
   .tag {
     color: var(--primary);
-  }
-  .tag {
     font-size: 0.9em;
   }
   .desc {
@@ -42,6 +40,7 @@ const desc = "Links to websites, self-hosted apps and other cool online things t
   .info {
     display: inline-flex;
     place-items: center;
+    margin: 0.125em 0;
   }
   .link-tag {
     font-family: var(--sub-font);
@@ -52,14 +51,16 @@ const desc = "Links to websites, self-hosted apps and other cool online things t
     padding: 4px 8px;
     font-weight: 600;
     font-size: 0.75em;
+    display: inline-block;
+    transition: all 0.2s ease;
   }
-  span a {
+  .title-link {
     color: var(--emphasis);
     border-bottom: 2px transparent;
     font-weight: bold;
     line-height: 1.2;
   }
-  span a:hover {
+  .title-link:hover {
     color: var(--hover);
     border-bottom: 2px solid var(--hover);
   }
@@ -97,6 +98,16 @@ const desc = "Links to websites, self-hosted apps and other cool online things t
   aside {
     margin-top: -2em;
   }
+  
+  /* Hover effect: when title is hovered, animate the tag */
+  @media (hover: hover) {
+    li:has(.title-link:hover) .link-tag {
+      box-shadow: -4px -4px 0 #000;
+      transform: translate(4px, 4px);
+      outline-offset: 1px;
+    }
+  }
+  
   @media screen and (max-width: 667px) {
     section {
       line-height: 1.2;
@@ -124,7 +135,7 @@ const desc = "Links to websites, self-hosted apps and other cool online things t
         links.map((link) => (
           <li>
             <span>
-              <a href={link.data.url} target="_blank" data-umami-event={`links-${link.data.title}`}>
+              <a href={link.data.url} target="_blank" class="title-link" data-umami-event={`links-${link.data.title}`}>
                 {link.data.title}
               </a>
             </span>

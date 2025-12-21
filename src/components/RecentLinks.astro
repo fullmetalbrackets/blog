@@ -25,18 +25,15 @@ const links = (await getCollection("links")).sort(
     margin: 0 auto 1em auto;
     padding-bottom: 0.5em;
   }
-  span a {
+  .title-link {
     color: var(--emphasis);
     border-bottom: 2px transparent;
     font-weight: bold;
     line-height: 1.2;
   }
-  span a:hover {
+  .title-link:hover {
     color: var(--hover);
     border-bottom: 2px solid var(--hover);
-  }
-  section a:hover {
-    text-decoration-color: var(--link);
   }
   .tag {
     margin-bottom: 0.25em;
@@ -52,7 +49,9 @@ const links = (await getCollection("links")).sort(
     border-radius: 0.25em;
     padding: 4px 8px;
     font-weight: 700;
-    font-size: 18px
+    font-size: 18px;
+    display: inline-block;
+    transition: all 0.2s ease;
   }
   .more {
     font-family: var(--sub-font);
@@ -66,34 +65,16 @@ const links = (await getCollection("links")).sort(
     border-bottom: 2px solid var(--hover);
     transition: all .5s ease-out;
   }
+  
   @media (hover: hover) {
-    a:hover button {
+    .list:has(.title-link:hover) .link-tag {
       box-shadow: -4px -4px 0 #000;
       transform: translate(4px, 4px);
-    }
-    a:hover button {
       outline-offset: 1px;
     }
   }
-  @media (hover: none) {
-    a:hover button {
-      background-color: var(--hover);
-    }
-  }
-  @media screen and (min-width: 200px) and (max-width: 667px) {
-    main {
-      margin: 0 10px;
-    }
-    span {
-      font-size: 100%;
-    }
-    ul {
-      padding: 0.75em;
-      width: 100%;
-    }
-    li {
-      margin: 0 1em 2em -1em;
-    }
+  
+  @media screen and (max-width: 667px) {
     .link-tag {
       font-size: 16.65px;
     }
@@ -107,7 +88,7 @@ const links = (await getCollection("links")).sort(
       links.slice(0, 5).map((link) => (
         <div class="list">
           <span>
-            <a href={link.data.url} target="_blank" data-umami-event="recent-link">
+            <a href={link.data.url} target="_blank" class="title-link" data-umami-event="recent-link">
               {link.data.title}
             </a>
           </span>
