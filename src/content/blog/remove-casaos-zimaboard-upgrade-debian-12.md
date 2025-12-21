@@ -28,7 +28,11 @@ Wait a few minutes until the uninstall is done then move on to the next step.
 
 Zimaboard 216 comes with Debian 11 Bullseye installed (no idea if the 432 and 832 do as well) which has been superseded by Debian 12 Bookworm, so let's upgrade it.
 
-> Debian 13 Trixie was released on August 9, 2025 after I wrote this. If you want to upgrade the ZimaBoard to Trixie, _make sure you upgrade from Bullseye to Bookworm first, then upgrade from Bookworm to Trixie_. Debian does not support upgrading from 11 straight to 13, you have to upgrade to 12 first. <a href="/blog/upgrade-debian-12-bookworm-debian-13-trixie/" target="_blank">See this article for details on upgrading from Debian 12 Bookworm to Debian 13 Trixie</a>.
+> [warning] **Important!**
+>
+>  Debian 13 Trixie was released on August 9, 2025 after I wrote this. If you want to upgrade the ZimaBoard to Trixie, _make sure you upgrade from Debian 11 Bullseye to Debian 12 Bookworm first,_ **then** _upgrade from Debian 12 Bookworm to Debian 13 Trixie_.
+> 
+> Debian does not support upgrading from 11 straight to 13, you have to upgrade to 12 first. <a href="/blog/upgrade-debian-12-bookworm-debian-13-trixie/" target="_blank">See this article for details on upgrading from Debian 12 Bookworm to Debian 13 Trixie</a>.
 
 First let's do a full upgrade of all existing packages:
 
