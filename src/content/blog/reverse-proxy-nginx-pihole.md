@@ -2,11 +2,17 @@
 title: "Reverse proxy OpenMediaVault, Plex and Navidrome with Nginx Proxy Manager and Pi-Hole"
 description: "My scenario was simple: I wanted to access the web GUIs of OpenMediaVault, Plex and Navidrome via a URL like plex.home.arpa without having to remember IPs and ports, inside my home network only and without the need for SSL/HTTPS. Nothing fancy, nothing accessible from outside my house. Here's how I did that with Nginx Proxy Manager as the reverse proxy and Pi-Hole as the DNS."
 pubDate: 2023-07-15
-updatedDate: 2025-02-01
+updatedDate: 2025-12-21
 tags: ["self-hosting", "openmediavault", "nginx proxy manager"]
 related1: reverse-proxy-using-nginx-pihole-cloudflare
 related2: openmediavault-quick-reference
 ---
+
+> [warning] **Important**
+>
+> This is a simple guide to get a reverse proxy working *without TLS certificates* and therefore *not using HTTPS* to access services.
+>
+> If you want to use HTTPS using *Cloudflare* and a *DNS challenge* to provision TLS certificates, [see this blog post](/blog/reverse-proxy-using-nginx-pihole-cloudflare).
 
 ## Pre-Requisites and Caveats
 
