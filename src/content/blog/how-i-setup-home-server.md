@@ -12,7 +12,7 @@ related2: pihole-anywhere-tailscale
 
 My old desktop PC turned server is a _Dell XPS 8920_ with an **Intel i7-7700 CPU** and **24 GB of DDR4 RAM**. (I removed the _AMD RX 480 GPU_ it came with, since I was not going to use it.) I installed _Debian 12 Bookworm_ on the M.2 NVMe drive and added hard drives to every available SATA port, including replacing the CD-ROM with another HDD. Additional hard drives are connected via two external docks each holding two HDDs, both connected to USB 3.1 ports utilizing USB Attached SCSI. (UASP)
 
-Several hard drives pooled together using <a href="/blog/two-drives-mergerfs/" target="_blank" data-umami-event="home-server-mergerfs-blog-post">MergerFS</a>, with around 10 TB dedicated exclusively to movies and TV shows, while another 6 TB is for other data. For secure remote access to my server and all it's services (plus everything else on my home network), I have settled on <a href="/blog/tailscale/" target="_blank">Tailscale</a> for it's ease of use and exceptionally good free tier. To manage the server with a nice GUI, I use <a href="https://cockpit-project.org" target="_blank" data-umami-event="home-server-cockpit">Cockpit</a>. You can add "applications" for visualizing performance metrics, managing storage, and configuring virtual machines. (Which I rarely use.) I also use the Cockpit add-ons _File Sharing_ to manage my SMB shares and _Navigator_ for a graphical file manager.
+Several hard drives pooled together using [MergerFS](/blog/two-drives-mergerfs/), with around 10 TB dedicated exclusively to movies and TV shows, while another 6 TB is for other data. For secure remote access to my server and all it's services (plus everything else on my home network), I have settled on [Tailscale](https://tailscale.com) for it's ease of use and exceptionally good free tier. (I wrote a detailed post about Tailscale [here](/blog/comprehensive-guide-tailscale-securely-access-home-network/).) To manage the server with a nice GUI, I use <a href="https://cockpit-project.org" target="_blank" data-umami-event="home-server-cockpit">Cockpit</a>. You can add "applications" for visualizing performance metrics, managing storage, and configuring virtual machines. (Which I rarely use.) I also use the Cockpit add-ons _File Sharing_ to manage my SMB shares and _Navigator_ for a graphical file manager.
 
 :::image-figure[Overview in Cockpit]
 ![A screenshot of the Cockpit web-based user interfacet](../../img/blog/cockpit1.png)
@@ -160,7 +160,7 @@ I'll devote a section to each docker container I run and include a `compose.yaml
 
 <a href="https://nginxproxymanager.com" target="_blank" data-umami-event="home-server-nginxproxy">Nginx Proxy Manager</a> is nice GUI wrapper over Nginx that lets you easily add proxy hosts and redirects, configure TLS, etc. I use it as a reverse proxy to access container web UIs with HTTPS via a custom domain. I use <em>AdGuard Home</em> as my home network DNS, so I have DNS rewrites configured for all the proxy hosts, and a custom domain from Cloudflare gets TLS certificates via DNS challenge.
 
-For details <a href="/blog/reverse-proxy-using-nginx-adguardhome-cloudflare/" target="_blank">see this blog post about setting up Nginx Proxy Manager with AdGuard Home and Cloudflare</a>.
+For details see [this blog post](/blog/reverse-proxy-using-nginx-adguardhome-cloudflare/) about setting up Nginx Proxy Manager with AdGuard Home and Cloudflare</a>.
 <br><br>
 
 ### OpenGist
@@ -238,7 +238,7 @@ services:
 
 <a href="https://plex.tv" target="_blank" data-umami-event="home-server-plex-site">Plex</a> is a slick, feature packed media server and streaming player for self-hosted media. It also has some free movies and TV shows, and live TV channels. It's not open source, some features are behind a paid subscripton or lifetime pass, and the company hasn't always made good decisions for its users -- but it's still the best and most user friendly media player for me, my wife and two family members I have shared with.
 
-I have written blog posts about <a href="/blog/setting-up-plex-in-docker/" target="_blank" data-umami-event="home-server-plex-guide">how to self-host Plex as a Docker container</a> and <a href="/blog/expose-plex-tailscale-vps/" target="_blank" data-umami-event="home-server-expose-plex-tailscale">how to use Tailscale and an Oracle free tier compute instance to securely expose Plex to other users</a>.
+I have written blog posts about [how to self-host Plex as a Docker container](/blog/setting-up-plex-in-docker/) and [how to use Tailscale and an Oracle free tier VM to share your Plex library to other users](/blog/expose-plex-tailscale-vps/).
 
 ```yaml
    plex:
@@ -608,7 +608,7 @@ Using SMB, I share the files so they can be accessed from any PC, tablet or phon
    force directory mode = 0777
 ```
 
-SMB shares are available on the network for my wife and I to access from any PC or laptop, even any tablet or phone -- I wrote this <a href="/blog/solid-explorer-samba-share/" target="_blank" data-umami-event="home-server-solid-explorer">blog post about how to access SMB shares from Android</a>. On my Windows PC, I have the SMB shares mapped as network drives and mostly manage them through there.
+SMB shares are available on the network for my wife and I to access from any PC or laptop, even any tablet or phone -- I wrote blog posts about how to access SMB shares from Android, [using Solid Explorer](/blog/solid-explorer-samba-share/) or [using Xplorer File Manager](/blog/xplore-android-smb-share/). On my Windows PC, I have the SMB shares mapped as network drives and mostly manage them through there.
 
 :::image-figure[SMB shares from Linux server mapped as network drives in Windows.]
 ![A screenshot of Windows Explorer showing multiple network locations](../../img/blog/smb-windows.png)
@@ -620,7 +620,7 @@ My preferred way of remotely accessing my home network is <a href="https://tails
 
 Tailscale not the only remote access solution, and technically it is not self-hosted, it's just the solution I landed on and ended up loving. Creating a Tailscale account also creates a <a href="https://tailscale.com/kb/1136/tailnet" target="_blank">Tailnet</a>. Any machines that run Tailscale are added to the Tailnet as nodes, which you'll manage through the web-based <a href="https://login.tailscale.com/arielmin" target="_blank">admin console</a>.
 
-Tailscale is easy to learn and use, and when setup properly is totally secure without port forwarding or exposing anything to the internet. I wrote <a href="/blog/comprehensive-guide-tailscale-securely-access-home-network" target="_blank" data-umami-event="home-server-tailscale-guide">a blog post with more details</a> on how to set it up. The easiest way to install on a Linux server is to use the Tailscale install script:
+Tailscale is easy to learn and use, and when setup properly is totally secure without port forwarding or exposing anything to the internet. I wrote [a blog post with more details](/blog/comprehensive-guide-tailscale-securely-access-home-network/) on how to set it up. The easiest way to install on a Linux server is to use the Tailscale install script:
 
 ```bash
 curl -fsSL https://tailscale.com/install.sh | sh
@@ -657,10 +657,10 @@ Finally, to make my SMB shares accessible via Tailscale, I use the following com
 tailscale serve --bg --tcp 445 tcp://localhost:445
 ```
 
-Now with the Tailscale client installed on my Android phone, and toggling it on as VPN, I can access my home network on the go. I have <a href="/blog/pihole-anywhere-tailscale/" target="_blank">Pi-Hole running on a Libre Potato</a> that acts as the DNS server for the Tailnet, so I get ariel blocking on the go too.
+Now with the Tailscale client installed on my Android phone, and toggling it on as VPN, I can access my home network on the go. I have [Pi-Hole running on a Libre Potato](/blog/pihole-anywhere-tailscale/) that acts as the DNS server for the Tailnet, so I get ariel blocking on the go too.
 
 ## Other homelab things
 
-Most everything I self-host is on this one server, but I do have some other things going on. I have two free-tier Oracle E.2micro instances that I connect to via Tailscale. One is used to <a href="/blog/expose-plex-tailscale-vps/" target="_blank" data-umami-event="home-server-expose-plex-tailscale">allow secure remote access to Plex by other users</a>, the other runs <a href="/blog/pihole-anywhere-tailscale/" target="_blank" data-umami-event="home-server-pihole-anywhere-tailscale">Pi-Hole as DNS for the entire tailnet</a>, including my phone when I'm not home.
+Most everything I self-host is on this one server, but I do have some other things going on. I have two free-tier Oracle Cloud Infrastructure E.2 Micro instances that I connect to via Tailscale. One is used to [allow secure remote access to Plex by other users](/blog/expose-plex-tailscale-vps/), the other runs Pi-Hole as DNS for the entire tailnet</a>, including my phone when I'm not home. (I also have an Ampere A1 Flex Arm-based instance using the resource limits of 4 OCPUs and 24 GB memory, where I test out some stuff.)
 
 I have a ZimaBoard running a local instance of Pi-Hole for my tailnet, but it's usually off because I prefer to use the free Oracle VM. (I may flash OpenWRT onto the ZimaBoard and turn it into a Tailscale travel router.) In addition I have two Libre Sweet Potato SBCs that used to run my home instances of Pi-Hole, but are just sitting in a drawer unused for now.

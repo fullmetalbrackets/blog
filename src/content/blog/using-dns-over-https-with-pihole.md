@@ -10,11 +10,11 @@ related2: set-up-pihole-on-linux
 
 ## What and Why
 
-Pi-Hole by itself does not support using DNS over HTTPS or DNS over TLS, but it can forward DNS requests to another resolver that does support those protocols, which then forwards the encrypted requests upstream to a public DNS endpoint. In this guide I'll show how to use either Unbound or Cloudflared as a forwarding resolver in Pi-Hole to use DNS over TLS with Quad9 as the upstream. <a href="/blog/pi-hole-quad9-dls-over-tls/" target="_blank" data-umami-event="pihole-doh-related-pihole-quad9-dot">See this blog post to use DNS over TLS instead</a>.
+Pi-Hole by itself does not support using DNS over HTTPS or DNS over TLS, but it can forward DNS requests to another resolver that does support those protocols, which then forwards the encrypted requests upstream to a public DNS endpoint. In this guide I'll show how to use either Unbound or Cloudflared as a forwarding resolver in Pi-Hole to use DNS over TLS with Quad9 as the upstream. [See this blog post to use DNS over TLS instead](/blog/pi-hole-quad9-dls-over-tls/).
 
 ## Caveats and pre-requisites
 
-This guide will assume you already have Pi-Hole up and running. If you have not yet done so, check out <a href="/blog/set-up-pihole-on-linux/" target="_blank">my blog post about setting up Pi-Hole on a Linux server</a>. If you prefer to run Pi-Hole in a docker container, <a href="https://github.com/pi-hole/docker-pi-hole" target="_blank">check out the Pi-Hole docker container GitHub page</a> for instructions and a `compose.yaml` file to get up and running quickly.
+This guide will assume you already have Pi-Hole up and running. If you have not yet done so, check out [my blog post about setting up Pi-Hole on a Linux server](/blog/set-up-pihole-on-linux/). If you prefer to run Pi-Hole in a docker container, <a href="https://github.com/pi-hole/docker-pi-hole" target="_blank">check out the Pi-Hole docker container GitHub page</a> for instructions and a `compose.yaml` file to get up and running quickly.
 
 Also, please note that although using DNS over HTTPS prevents your ISP or anyone else from snooping on your DNS requests, since they will be encrypted, whichever upstream DNS provider you use can technically see it. Obviously a measure of a trust is required in this case, but that would be the case with any upstream DNS, and only avoidable if you want to self-host your own DNS resolver. (Certainly possible, but beyond the scope of this guide.)
 
@@ -45,7 +45,7 @@ services:
     restart: unless-stopped
 ```
 
-Running Cloudflared as a container makes it easy to update, since you can simply use the commands use `docker compose down` to stop your container (or multiple containers in one compose file), then `docker compose pull` to grab the latest image, and recreate the container with the updated image by running `docker compose up -d` again. You can even automate container image updates with <a href="https://hub.docker.com/r/containrrr/watchtower" target="_blank">Watchtower</a>. For details, see <a href="/blog/watchtower/" target="_blank">this blog post for my Watchtower setup</a>.
+Running Cloudflared as a container makes it easy to update, since you can simply use the commands use `docker compose down` to stop your container (or multiple containers in one compose file), then `docker compose pull` to grab the latest image, and recreate the container with the updated image by running `docker compose up -d` again. You can even automate container image updates with <a href="https://hub.docker.com/r/containrrr/watchtower" target="_blank">Watchtower</a>. For details, see [this blog post for my Watchtower setup](/blog/watchtower-notifications/).
 
 ### Cloudflared as a daemon
 

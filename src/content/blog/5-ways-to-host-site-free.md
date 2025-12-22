@@ -9,7 +9,7 @@ related1: using-surge-sh-to-host-static-sites
 
 > [warning] Outdated Content
 >
-> This was one of my earliest blog posts when I was trying out as many different free static web hosts as I could. Although originally hosted on Netlify for years, <a href="/blog/merging-sites-and-changing-hosts" target="_blank">I switched to Cloudflare Pages</a> and haven't looked back. I don't use Netlify at all anymore, or any of the other web hosts mentioned below for that matter, because Cloudflare is just too good!
+> This was one of my earliest blog posts when I was trying out as many different free static web hosts as I could. Although originally hosted on Netlify for years, [I switched to Cloudflare Pages](/blog/merging-sites-and-changing-hosts) and haven't looked back. I don't use Netlify at all anymore, or any of the other web hosts mentioned below for that matter, because Cloudflare is just too good!
 >
 > For this reason, I don't plan to try out any other hosts, so this guide probably won't be getting an update. I will eventually make a new blog post about how to create a site on Cloudflare Pages specifically. (I'm pretty sure the below instructions are beyond outdated in 2025.)
 

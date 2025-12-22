@@ -19,7 +19,7 @@ related2: expose-plex-with-cloudflare
 
 Plex is a self-hosted media server that lets you stream your owned (or downloaded, or otherwise acquired) media from other devices on the same network, through a web-based GUI (access via browser) or dedicated app. (Say, on a smart TV or Roku device.) Plex has a built-in feature to share your media library externally, but that requires opening a port on your router and forwarding it to the Plex server. Setting aside that port forwarding can be dangerous if you don't know what you're doing, it won't work anyway if your home network is behind Carrier-Grade Network Address Translation, or CGNAT. Many ISPs use this, and so many self-hosters may find themselves unable to expose their services.
 
-Although I previously wrote about [how to expose Plex through CGNAT with Cloudflare Tunnel](/blog/expose-plex-with-cloudflare), it's against their terms of service, so I don't use that method anymore and suggest you don't either. The method I explain in _this_ post has a few extra steps, but it does not run afoul of any service provider's rules.
+Although I previously wrote about [how to expose Plex through CGNAT with Cloudflare Tunnel](/blog/expose-plex-with-cloudflare/), it's against their terms of service, so I don't use that method anymore and suggest you don't either. The method I explain in _this_ post has a few extra steps, but it does not run afoul of any service provider's rules.
 
 > The following is only for exposing Plex to *other users you've shared libraries with*, and is not required for you to remotely access your own Plex server.
 >
@@ -37,7 +37,7 @@ First of all, you should be comfortable using the terminal, because we'll be doi
 
 The method I explain here requires you to own a domain -- it may be possible to instead use something like DuckDNS or NoIP, but I have not tried it. I'll also be using Cloudflare for DNS, but that's just my personal preference -- feel free to use another DNS provider.
 
-Finally, you'll need a Plex server already set up. (And I'll assume it's running in Linux or as a Docker container.) I won't go into how to do that here, [see this post](/blog/setting-up-plex-in-docker) for instructions on running Plex as a Docker container.
+Finally, you'll need a Plex server already set up. (And I'll assume it's running in Linux or as a Docker container.) I won't go into how to do that here, [see this post](/blog/setting-up-plex-in-docker/) for instructions on running Plex as a Docker container.
 
 ## Create OCI account
 

@@ -12,7 +12,7 @@ related2: openmediavault-quick-reference
 >
 > This is a simple guide to get a reverse proxy working *without TLS certificates* and therefore *not using HTTPS* to access services.
 >
-> If you want to use HTTPS using *Cloudflare* and a *DNS challenge* to provision TLS certificates, [see this blog post](/blog/reverse-proxy-using-nginx-pihole-cloudflare).
+> If you want to use HTTPS using *Cloudflare* and a *DNS challenge* to provision TLS certificates, [see this blog post](/blog/reverse-proxy-using-nginx-pihole-cloudflare/).
 
 ## Pre-Requisites and Caveats
 

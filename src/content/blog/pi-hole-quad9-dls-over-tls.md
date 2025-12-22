@@ -80,7 +80,7 @@ Now <a href="#configure-pi-hole">skip to this section to configure Pi-Hole</a>, 
 
 ## Cloudflared as forwarding resolver
 
-Running Cloudflared bare metal is a bit involved, but if prefer it that way, see [this blog post about running Cloudflared bare metal as a systemd daemon](/blog/using-dns-over-https-with-pihole#install-and-setup-the-cloudflared-daemon).
+Running Cloudflared bare metal is a bit involved, but if prefer it that way, see [this blog post about running Cloudflared bare metal as a systemd daemon](/blog/using-dns-over-https-with-pihole#install-and-setup-the-cloudflared-daemon/).
 
 Running Cloudflared as a Docker container requires less configuration, so I'll explain that here. Create a `compose.yaml` file with the below contents: (Or copy & paste the below into an existing compose file if you prefer.)
 

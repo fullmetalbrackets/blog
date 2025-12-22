@@ -16,7 +16,7 @@ related2: setup-a-samba-share-on-linux-via-command-line
 
 ## Adding SMB share in X-plorer
 
-First, make sure you're on the same Wi-Fi network as the SMB share you want to add in X-plore. (Setting this up to be available from outside the home network is possible, but beyond the scope of this article. But <a href="/blog/comprehensive-guide-tailscale-securely-access-home-network/" target="_blank" data-umami-event="x-plore-tailscale">this might interest you.</a>)
+First, make sure you're on the same Wi-Fi network as the SMB share you want to add in X-plore. (Setting this up to be available from outside the home network is possible, but beyond the scope of this article. If you are considering Tailscale, [this blog post might interest you](/blog/comprehensive-guide-tailscale-securely-access-home-network/).)
 
 X-plore File Manager's UI looks weird at first, but once it clicks for you it's very easy to use. When you first open it will show your internal storage.
 
