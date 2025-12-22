@@ -103,7 +103,7 @@
     }
   }
 
-  function updateAriaLabel() {
+  function updateAriaLabel(): void {
     const html = document.documentElement;
     const button = document.getElementById('theme-toggle');
     const isDark = html.classList.contains('dark') || 
@@ -115,9 +115,12 @@
     }
   }
 
-  window.toggleTheme = function(event: MouseEvent) {
+  window.toggleTheme = function(event: MouseEvent): void {
     const html = document.documentElement;
-    const isDark = html.classList.contains('dark');
+    
+    const currentlyDark = html.classList.contains('dark') || 
+                          (!html.classList.contains('light') && 
+                           window.matchMedia('(prefers-color-scheme: dark)').matches);
 
     const hasViewTransition = typeof document.startViewTransition === 'function';
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -126,10 +129,12 @@
     if (!isViewTransitionSupported) {
       html.classList.remove('dark', 'light');
       
-      if (isDark) {
+      if (currentlyDark) {
         html.classList.add('light');
+        localStorage.setItem('theme', 'light');
       } else {
         html.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
       }
       
       const themeToggle = document.getElementById('theme-toggle');
@@ -149,10 +154,12 @@
     const transition = document.startViewTransition(() => {
       html.classList.remove('dark', 'light');
       
-      if (isDark) {
+      if (currentlyDark) {
         html.classList.add('light');
+        localStorage.setItem('theme', 'light');
       } else {
         html.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
       }
     });
 
@@ -186,23 +193,13 @@
 
   updateAriaLabel();
 
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e: MediaQueryListEvent) => {
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (): void => {
     const html = document.documentElement;
     const hasManualOverride = html.classList.contains('dark') || html.classList.contains('light');
     
     if (!hasManualOverride) {
-      if (e.matches) {
-        html.classList.add('dark');
-        html.classList.remove('light');
-      } else {
-        html.classList.add('light');
-        html.classList.remove('dark');
-      }
-      
-      setTimeout(() => {
-        html.classList.remove('dark', 'light');
-        updateAriaLabel();
-      }, 50);
+      html.classList.remove('dark', 'light');
+      updateAriaLabel();
     }
   });
 </script>
