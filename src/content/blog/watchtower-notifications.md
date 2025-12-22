@@ -2,17 +2,23 @@
 title: "Setup Watchtower to auto-update Docker containers with notifications"
 description: "I'm running almost 30 containers on my home server at this point, and I'm extremely lazy when it comes to updating them. Watchtower is a lightweight set-it-and-forget-it solution to auto-updating containers, and it even has built-in notifications. Here's how to set it up using either Pushover or Discord."
 pubDate: 2024-05-31
-updatedDate: 2025-05-26
+updatedDate: 2025-12-22
 tags: ["self-hosting", "docker"]
 related1: setting-up-plex-in-docker
 related2: how-to-run-filebrowser-in-docker
 ---
 
+> [warning] Urgent!
+>
+> As of December 2025 the [original Watchtower project](https://github.com/containrrr/watchtower) has been archived and will no longer be maintained, as per [this message by the developer](https://github.com/containrrr/watchtower/discussions/2135).
+>
+> There are several forks and alternative projects, but I have been using [this Watchtower fork by Nick Fedor](https://github.com/nicholas-fedor/watchtower) which he has been maintaining and improving since the main project stopped receiving updates in early 2024. **It is a drop-in replacement** for the original Watchtower, just change the image to `nickfedor/watchtower` and you literally have to change nothing else. (All examples below have been updated to this.)
+
 ![Watchtower logo](../../img/blog/watchtower.png)
 
 ## About Watchtower
 
-<a href="https://containrrr.dev/watchtower" target="_blank" data-umami-event="watchtower-notifications-site">Per their own website</a>, Watchtower is a container-based solution for automating Docker container base image updates. It runs with no config, where it will automatically update any containers with a new image available, although you can configure it with all sorts of options. I strongly suggest reading the documentation to see all the available options, I will be demonstrating very specific options which I use myself and explain their use, but that won't even scratch the surface of what's capable with Watchtower.
+[Watchtower](https://github.com/nicholas-fedor/watchtower) is a container-based solution for automating Docker container base image updates. It runs with zero config and will automatically update any containers with a new image available and reload it, although you can configure it with all sorts of options. I strongly suggest [reading the documentation](http://watchtower.nickfedor.com/) to see all the available options, I will be demonstrating very specific options which I use myself and explain their use, but that won't even scratch the surface of what's capable with Watchtower.
 
 ## Setting up Watchtower with Docker Compose
 
@@ -28,7 +34,7 @@ I like to use `docker compose` for everything, or at least as much as possible, 
 services:
   watchtower:
     container_name: watchtower
-    image: containrrr/watchtower
+    image: nickfedor/watchtower:latest
     restart: always
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
@@ -62,7 +68,7 @@ In my case, I use Pushover to notification to my phone, but that's just my prefe
 
 3. Scroll down to the bottom and click on **Create an Application/API token**.
 
-4. Name the application (in this case Watchtower, or whatever you want), give it a description if you want, and optionally upload a logo. (I just used <a href="https://github.com/containrrr/watchtower/blob/main/logo.png" target="_blank">the logo from their GitHub</a>.)
+4. Name the application (in this case Watchtower, or whatever you want), give it a description if you want, and optionally upload a logo. (I just used <a href="https://github.com/nicholas-fedor/watchtower/blob/main/logo.png" target="_blank">the logo from their GitHub</a>.)
 
 ![Creating new application in Pushover.](../../img/blog/pushover2.png 'Creating new application in Pushover')
 
@@ -102,7 +108,7 @@ Your `compose.yaml` file should look like this:
 ```yaml
   watchtower:
     container_name: watchtower
-    image: containrrr/watchtower
+    image: nickfedor/watchtower:latest
     restart: always
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
@@ -152,7 +158,7 @@ Now for the `compose.yaml` file, it should look something should look like this:
 ```yaml
   watchtower:
     container_name: watchtower
-    image: containrrr/watchtower
+    image: nickfedor/watchtower:latest
     restart: always
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
@@ -173,7 +179,7 @@ Use `docker compose up -d` to run the container. Once it's up and running, you s
 
 ## References
 
-- <a href="https://containrrr.dev/watchtower" target="_blank" data-umami-event="watchtower-notifications-docs">Watchtower Documentation</a>
-- <a href="https://github.com/containrrr/watchtower" target="_blank" data-umami-event="watchtower-notifications-gh">Watchtower GitHub</a>
+- <a href="https://watchtower.nickfedor.com/" target="_blank" data-umami-event="watchtower-notifications-docs">Watchtower Documentation</a>
+- <a href="https://github.com/nicholas-fedor/watchtower" target="_blank" data-umami-event="watchtower-notifications-gh">Watchtower GitHub</a>
 - <a href="https://containrrr.dev/shoutrrr" target="_blank" data-umami-event="watchtower-notifications-shoutrrr-docs">Shoutrrr Documentation</a>
 - <a href="https://github.com/containrrr/shoutrrr" target="_blank" data-umami-event="watchtower-notifications-shoutrrr-gh">Shoutrrr GitHub</a>
