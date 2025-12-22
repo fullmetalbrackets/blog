@@ -10,10 +10,14 @@ const { description } = Astro.props.frontmatter || Astro.props;
 <html lang="en">
 	<head>
 		<script is:inline>
-			const theme = localStorage.getItem('theme') || 
-				(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+			const savedTheme = localStorage.getItem('theme');
+			const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 			
-			if (theme === 'dark') {
+			if (savedTheme === 'dark') {
+				document.documentElement.classList.add('dark');
+			} else if (savedTheme === 'light') {
+				document.documentElement.classList.add('light');
+			} else if (systemPrefersDark) {
 				document.documentElement.classList.add('dark');
 			}
 		</script>
