@@ -5,14 +5,11 @@ import { remarkReadingTime } from './src/utils/remark-reading-time.ts';
 import rehypeExternalLinks from 'rehype-external-links';
 import remarkDirective from 'remark-directive'
 import remarkDirectiveSugar from 'remark-directive-sugar'
-import playformCompress from '@playform/compress';
 
 export default defineConfig({
   site: 'https://fullmetalbrackets.com',
   trailingSlash: 'always',
-  integrations: [mdx(), sitemap(), (await import("@playform/compress")).default({
-			HTML: false,
-		}),
+  integrations: [mdx(), sitemap(), (await import("@playform/compress")).default(),
   ],
   prefetch: true,
   markdown: {
