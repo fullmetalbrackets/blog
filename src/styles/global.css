@@ -561,7 +561,7 @@ blockquote[data-type="warning"] p {
   margin: -0.25em 0 0 0;
   padding: 0 1.5em 1em 1.25em;
 }
-blockquote[data-type="warning"] p:first-of-type strong {
+blockquote[data-type="warning"] p:first-of-type {
   color: inherit;
   font-family: var(--sub-font);
   font-weight: 800;
