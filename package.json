@@ -1,7 +1,7 @@
 {
   "type": "module",
   "homepage": "https://fullmetalbrackets.com",
-  "description": "Tech articles, quick guides, and other stuff.",
+  "description": "A blog about self-hosting, Linux, Docker, and other tech things.",
   "author": "Ariel Diaz",
   "license": "MIT",
   "private": true,
@@ -10,7 +10,8 @@
     "start": "astro dev",
     "build": "astro build && npx -y pagefind --site dist",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "check": "astro check"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.6",
@@ -28,6 +29,5 @@
     "remark-directive-sugar": "^2.0.0",
     "typescript": "^5.9.3"
   },
-  "devDependencies": {},
-  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+  "packageManager": "yarn@4.12.0"
 }
