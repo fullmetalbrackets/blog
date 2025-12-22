@@ -7,7 +7,7 @@ tags: ["web development"]
 related1: using-surge-sh-to-host-static-sites
 ---
 
-> [warning] **Outdated Content**
+> [warning] Outdated Content
 >
 > This was one of my earliest blog posts when I was trying out as many different free static web hosts as I could. Although originally hosted on Netlify for years, <a href="/blog/merging-sites-and-changing-hosts" target="_blank">I switched to Cloudflare Pages</a> and haven't looked back. I don't use Netlify at all anymore, or any of the other web hosts mentioned below for that matter, because Cloudflare is just too good!
 >

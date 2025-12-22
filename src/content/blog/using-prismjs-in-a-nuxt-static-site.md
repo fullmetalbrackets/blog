@@ -7,7 +7,7 @@ tags: ["web development"]
 related1: setting-up-and-configuring-nuxt-sitemap-module-in-a-nuxt-content-blog
 ---
 
-> [warning] **Outdated Content**
+> [warning] Outdated Content
 >
 > This blog post is regarding **Nuxt 2** and **Content v1**, which have long since been deprecated. Please keep in mind that the problem this blog post solves is most likely not present in the current or recent versions of Nuxt.
 

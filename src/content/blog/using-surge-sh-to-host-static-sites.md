@@ -6,7 +6,7 @@ tags: ["web development"]
 related1: 5-ways-to-host-site-free
 ---
 
-> [warning] **Outdated Content**
+> [warning] Outdated Content
 >
 > The information in this blog post may be out of date, as I haven't used Surge.sh in over two years and for all I know it works totally different now. Or maybe it works the same. That will be for you to find out.
 

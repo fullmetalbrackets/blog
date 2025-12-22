@@ -30,7 +30,7 @@ curl -fsSL https://tailscale.com/install.sh | sh
 
 Once it's finished installing, use the command `tailscale up`, go to the provided URL and login to connect the machine to your tailnet. (You'll go through the same quick process for each Linux machine you add to your tailnet.)
 
-> [warning] **Important**
+> [warning] Important
 >
 > By default using most Tailscale commands requires superuser privileges, i.e. `sudo`. You can change that with the command `sudo tailscale set --operator=$USER`, the specified user will then be able to execute Tailscale commands without `sudo`.
 > 
@@ -173,7 +173,7 @@ On Windows, click on the Tailscale icon in the system tray, hover over **Exit no
 
 ## Configuring Plex for Tailscale
  
-> [warning] **Important**
+> [warning] Important
 >
 >  Plex recently put remote access -- whether accessing your own content outside your network OR other users accessing your shared libraries -- behind Plex Pass. I have been told, and also have seen others report on Reddit, that Plex considers Tailscale IPs to be external and thus not allow access unless you have a <a href="https://www.plex.tv/plans/" target="_blank">Plex Pass subscription</a> or the external users have a <a href="https://support.plex.tv/articles/remote-watch-pass-overview/" target="_blank">Remote Watch Pass</a>.
 >

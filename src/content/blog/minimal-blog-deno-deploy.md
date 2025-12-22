@@ -7,7 +7,7 @@ tags: ["deno", "web development"]
 related1: 5-ways-to-host-site-free
 ---
 
-> [warning] **Outdated Content**
+> [warning] Outdated Content
 > 
 > I wrote this blog post years ago when I was trying out Deno Deploy just for fun. I have not kept up with it, did not maintain the blog I built in this post, and let the domain lapse. Safe to assume Deno has changed enough in the intervening years that this project probably no longer works. This blog post will remain for legacy purposes, but it's probably unwise to try doing anything it says at this point.
 

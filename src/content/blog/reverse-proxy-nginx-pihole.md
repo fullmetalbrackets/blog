@@ -8,7 +8,7 @@ related1: reverse-proxy-using-nginx-pihole-cloudflare
 related2: openmediavault-quick-reference
 ---
 
-> [warning] **Important**
+> [warning] Important
 >
 > This is a simple guide to get a reverse proxy working *without TLS certificates* and therefore *not using HTTPS* to access services.
 >

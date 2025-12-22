@@ -8,27 +8,27 @@ related1: reverse-proxy-using-nginx-pihole-cloudflare
 related2: self-host-website-cloudflare-tunnel
 ---
 
-> [warning] **Important**
+> [warning] Important
 >
 > This guide is for using **AdGuard Home** as the DNS server, where we will add the DNS records for our proxied services.
 >
-> [See this other post if you want to use **Pi-Hole** instead as the DNS server.](/blog/reverse-proxy-using-nginx-pihole-cloudflare)
+> [See this other post if you want to use **Pi-Hole** instead as the DNS server.](/blog/reverse-proxy-using-nginx-pihole-cloudflare/)
 
 ## Pre-Requisites and Caveats
 
-I wrote previously about <a href="/blog/reverse-proxy-using-nginx-pihole-cloudflare/" target="_blank" data-umami-event="reverse-proxy-adguard-to-pihole-proxy">how to set this up using Pi-Hole</a>, but I recently bought a <a href="https://www.gl-inet.com/products/gl-mt6000" target="_blank" data-umami-event="reverse-proxy-adguard-glinet">GL.iNet Flint 2 router</a> which has AdGuard Home built-in, so it seemed a waste not to use it. (Also for as great as Pi-Hole is, I have had to redo it multiple times over the years due to database errors or just a dead mini SD card or USB drive, etc.) So, this guide will be mostly based on my old one, with just the parts dealing with Pi-Hole replaced with AdGuard Home, since setting up Nginx Proxy Manager and Cloudflare work the same as always.
+I wrote previously about [how to set this up using Pi-Hole](/blog/reverse-proxy-using-nginx-pihole-cloudflare/), but after buying a [GL.iNet Flint 2 router](https://www.gl-inet.com/products/gl-mt6000) which has AdGuard Home built-in, so it seemed a waste not to use it. (Also for as great as Pi-Hole is, I have had to redo it multiple times over the years due to database errors or just a dead mini SD card or USB drive, etc.) So, this guide will be mostly based on my old one, with just the parts dealing with Pi-Hole replaced with AdGuard Home, since setting up Nginx Proxy Manager and Cloudflare work the same as always.
 
-This guide uses specific third-party services, namely <a href="https://cloudflare.com" target="_blank" data-umami-event="reverse-proxy-adguard-cf-site">Cloudflare</a>, <a href="https://adguard.com/en/adguard-home/overview.html" target="_blank" data-umami-event="reverse-proxy-adguard-agh-site">AdGuard Home</a> and <a href="https://nginxproxymanager.com" target="_blank" data-umami-event="reverse-proxy-adguard-npm-site">Nginx Proxy Manager</a> to set up a secure local-only reverse proxy. The same is possible with other tools, apps and services including <a href="https://pi-hole.net" target="_blank" data-umami-event="reverse-proxy-adguard-pihole-site">Pi-Hole</a> (which as I mentioned, I previously used for many years) or <a href="https://nextdns.io" target="_blank" data-umami-event="reverse-proxy-adguard-nextdns">NextDNS</a> instead of *AdGuard Home*, <a href="https://caddyserver.com" target="_blank" data-umami-event="reverse-proxy-adguard-caddy">Caddy</a> or <a href="https://traefik.io" target="_blank" data-umami-event="reverse-proxy-adguard-traefik">Traefik</a> instead of *Nginx*, any other DNS provider instead of *Cloudflare*, etc. I'm only writing about my preferred tools that I've used multiple times to set everything up and keep it running for years.
+This guide uses specific third-party services, namely [Cloudflare](https://cloudflare.com), [AdGuard Home](https://adguard.com/en/adguard-home/overview.html) and [Nginx Proxy Manager](https://nginxproxymanager.com) to set up a secure local-only reverse proxy. The same is possible with other tools, apps and services including [Pi-Hole](https://pi-hole.net) (which as I mentioned, I previously used for many years) or [NextDNS](https://nextdns.io) instead of *AdGuard Home*, [Caddy](https://caddyserver.com) or [Traefik](https://traefik.io) instead of *Nginx*, any other DNS provider instead of *Cloudflare*, etc. I'm only writing about my preferred tools that I've used multiple times to set everything up and keep it running for years.
 
-This guide will require a owned custom top-level domain (TLD), such as a `.com` or `.cc` or `.xyz`, etc. Certain TLDs can be bought for super cheap on <a href="https://namecheap.com" target="_blank">Namecheap</a> or <a href="https://porkbun.com" target="_blank">Porkbun</a>, but be aware in most cases after the first year or two, the price will see a steep jump. I again prefer <a href="https://domains.cloudflare.com" target="_blank" data-umami-event="reverse-proxy-adguard-cf-domains">Cloudflare</a> for purchasing domains, since they always price domains at cost, so you won't see any surprise price hike one year to the next. An alternative I won't be getting into is using dynamic DNS, as I've not had to use it myself, so I honestly wouldn't even know how to begin to set that up.
+This guide will require a owned custom top-level domain (TLD), such as a `.com` or `.cc` or `.xyz`, etc. Certain TLDs can be bought for super cheap on [Namecheap](https://namecheap.com) or [Porkbun](https://porkbun.com), but be aware in most cases after the first year or two, the price will see a steep jump. I again prefer [Cloudflare](https://domains.cloudflare.com) for purchasing domains, since they always price domains at cost, so you won't see any surprise price hike one year to the next. An alternative I won't be getting into is using dynamic DNS, as I've not had to use it myself, so I honestly wouldn't even know how to begin to set that up.
 
 ## Setting up AdGuard Home as network DNS server
 
-In my case, AdGuard Home already comes installed and ready to use on the GL.iNet Flint 2 router, requiring only toggling it on from the router's web admin UI to activate. If you want to run it bare metal on a server, see <a href="https://github.com/AdguardTeam/AdGuardHome#getting-started" target="_blank" data-umami-event="reverse-proxy-adguard-agh-getting-started">their getting started guide</a>. If you want to run AdGuard Home in a Docker container, this `compose.yaml` should work for you as a base.
+In my case, AdGuard Home already comes installed and ready to use on the GL.iNet Flint 2 router, requiring only toggling it on from the router's web admin UI to activate. If you want to run it bare metal on a server, see [their getting started guide](https://github.com/AdguardTeam/AdGuardHome#getting-started). If you want to run AdGuard Home in a Docker container, this `compose.yaml` should work for you as a base.
 
 > Please note, I have never run AdGuard Home in a Docker container myself, I'm just using common sense defaults to get up and running fast. Using `network_mode: host` allows all necessary network ports, including `53` for DNS (which **must** be available for DNS resolution to work), port `3000` for the _web UI_, , `853` for _DNS over TLS_, etc.
 >
-> Check out <a href="https://hub.docker.com/r/adguard/adguardhome" target="_blank" data-umami-event="reverse-proxy-adguard-agh-docker">the Docker Hub page for AdGuard Home</a> if you want to expose specific ports, or want to make other changes not covered here.
+> Check out [the Docker Hub page for AdGuard Home](https://hub.docker.com/r/adguard/adguardhome) if you want to expose specific ports, or want to make other changes not covered here.
 
 ```yaml
 services:
@@ -137,7 +137,7 @@ services:
     restart: unless-stopped
 ```
 
-> [warning] **Important**
+> [warning] Important
 >
 > Make sure that ports `80` and `443` are available on your server and not being used by anything else! Nginx Proxy Manager needs port `80` for **HTTP** and port `443` for **HTTPS**.
 

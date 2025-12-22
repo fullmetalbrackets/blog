@@ -127,12 +127,12 @@ I also have differently styled data types for other kinds of blockquotes, which 
 And this is the `[warning]` data type for things more important or urgent information.
 
 ```markdown
-> [warning] **This is a warning**
+> [warning] Warning! (the first paragraph is auto bolded)
 >
 > Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id eleifend libero. Nullam tristique ullamcorper lorem nec molestie. Sed vehicula.
 ```
 
-> [warning] **This is a warning**
+> [warning] Warning! (the first paragraph is auto bolded)
 >
 > Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id eleifend libero. Nullam tristique ullamcorper lorem nec molestie. Sed vehicula.
 

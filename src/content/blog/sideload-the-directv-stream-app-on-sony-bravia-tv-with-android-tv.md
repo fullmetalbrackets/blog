@@ -7,7 +7,7 @@ tags: ["android"]
 related1: rsync-a-quick-guide
 ---
 
-> [warning] **Outdated Content**
+> [warning] Outdated Content
 >
 > I haven't had AT&T as a cable provider (nor have I had cable at all) in years, and enough time has passed that it's almost certain the information in this blog post is no longer relevant. It will remain for legacy purposes, but it's probably unwise to try doing anything it says at this point.
 

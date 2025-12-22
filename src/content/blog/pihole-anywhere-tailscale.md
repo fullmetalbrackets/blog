@@ -34,7 +34,7 @@ On your Linux server, use the following command to run the Tailscale install scr
 curl -fsSL https://tailscale.com/install.sh | sh
 ```
 
-> [warning] **Important**
+> [warning] Important
 >
 >  By default using most Tailscale commands requires superuser privileges, i.e. `sudo`. You can change that with the command `sudo tailscale set --operator=$USER`, the specified user will then be able to execute Tailscale commands without `sudo`. The rest of the guide will assume you did this.
 
@@ -98,7 +98,7 @@ Once Pi-hole is up and running, go to the web UI by going to the machine local I
 
 Make sure you set at least one upstream DNS server (I recommend <a href="https://quad9.net" target="_blank" data-umami-event="pihole-anywhere-post-quad9">Quad9</a> or <a href="https://one.one.one.one" target="_blank" data-umami-event="pihole-anywhere-post-1111">Cloudflare</a>) and that the **Interface settings** has _permit all origins_ selected.
 
-> [warning] **Important**
+> [warning] Important
 >
 > If using Docker's default `bridge` network setting, _permit all origins_ is required for Pi-hole to work properly. This can also be set by adding the environment variable `DNSMASQ_LISTENING: all` to the compose file.
 
