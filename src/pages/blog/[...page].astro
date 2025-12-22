@@ -11,10 +11,8 @@ export async function getStaticPaths({ paginate }) {
     (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
   );
   
-  // Paginate first, then only process posts on each page
   const pages = paginate(posts, { pageSize: 5 });
   
-  // Add reading time to each page's posts
   return await Promise.all(
     pages.map(async (page: { props: { page: { data: any[]; }; }; }) => {
       const postsWithReadingTime = await Promise.all(
