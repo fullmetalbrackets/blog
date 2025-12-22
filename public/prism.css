@@ -1,23 +1,26 @@
  code[class*="language-"],
  pre[class*="language-"] {
-   background: var(--code-bg);
-   color: var(--code-text);
-   font-family: var(--code-font);
-   font-size: 0.8rem;
-   direction: ltr;
-   text-align: left;
-   white-space: pre;
-   word-spacing: normal;
-   word-break: normal;
-   -moz-tab-size: 2;
-   -o-tab-size: 2;
-   tab-size: 2;
-   -webkit-hyphens: none;
-   -moz-hyphens: none;
-   -ms-hyphens: none;
-   hyphens: none;
-   letter-spacing: -0.5px;
- }
+  background: var(--code-bg);
+  color: var(--code-text);
+  font-family: var(--code-font);
+  font-size: 0.95em;
+  direction: ltr;
+  text-align: left;
+  white-space: pre; 
+  word-spacing: normal;
+  word-break: normal;
+  overflow-wrap: normal; 
+  -moz-tab-size: 2;
+  -o-tab-size: 2;
+  tab-size: 2;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+  letter-spacing: -0.5px;
+  /* scrollbar-color: var(--code-text) var(--code-bg); */
+  scrollbar-width: thin; 
+}
  
  /* Selection */
  code[class*="language-"]::-moz-selection,
@@ -38,12 +41,14 @@
  
  /* Code blocks */
  pre[class*="language-"] {
-   padding: 1.15em 1em 1em 1em;
-   margin: 2em auto;
-   overflow: auto;
-   border-radius: 0.5em;
-   width: 100%;
-  }
+  padding: 1.15em 1em;
+  margin: 2em 0;
+  overflow: auto;
+  border-radius: 0.5em;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+ }
  
  /* Inline code */
  :not(pre) > code[class*="language-"] {
