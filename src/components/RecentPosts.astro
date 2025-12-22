@@ -67,7 +67,7 @@ const recentPosts = await Promise.all(
   .list:hover {
     padding-bottom: 0.5em;
     border-bottom: 2px solid var(--hover);
-    transition: all .25s ease-out;
+    transition: all .5s ease-out;
   }
   .list:hover .posts-title {
     color: var(--hover);    
@@ -90,7 +90,6 @@ const recentPosts = await Promise.all(
     padding: 4px 8px;
     text-decoration: none;
     text-overflow: ellipsis;
-    transition: all 0.1s ease-out;
     margin: 0 0 0.5em 0.25em;
   }
   .more {
@@ -103,7 +102,6 @@ const recentPosts = await Promise.all(
   .more a:hover {
     color: var(--hover);
     border-bottom: 2px solid var(--hover);
-    transition: all .5s ease-out;
   }
   @media screen and (max-width: 667px) {
     .info {
@@ -116,6 +114,9 @@ const recentPosts = await Promise.all(
     }
     .tag button {
       margin: 0.1em 0.25em 0.1em 0;
+    }
+    .list:hover, .list:hover .posts-title {
+      transition: none !important;
     }
   }
 </style>
