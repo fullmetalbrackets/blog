@@ -414,7 +414,7 @@ const selectedPosts = allPosts.filter(post =>
     <div>
       <span class="tag" data-pagefind-ignore>
         {tags.map((tag) => (
-          <a href={`/categories/${tag}/`} data-umami-event="category-from-article">
+          <a href={`/categories/${tag}/`} rel="prefetch-intent" data-umami-event="category-from-article">
             <button>{tag}</button>
           </a>
         ))}
@@ -557,8 +557,8 @@ const selectedPosts = allPosts.filter(post =>
 
   <hr class="endline" />
   <aside class="blog-aside">
-    <a href="/blog/" class="top blog-tag"><button>↩ Blog</button></a>
-    <a href="/" class="top blog-tag home"><button>↰ Home</button></a>
+    <a href="/blog/" rel="prefetch-intent" class="top blog-tag"><button>↩ Blog</button></a>
+    <a href="/" rel="prefetch-intent" class="top blog-tag home"><button>↰ Home</button></a>
     <a href="#top" class="top blog-tag"><button>Top ↑</button></a>
   </aside>
 

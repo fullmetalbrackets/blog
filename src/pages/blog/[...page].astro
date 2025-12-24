@@ -240,9 +240,9 @@ const desc = "List of all blog posts";
     <h1>Blog</h1>
     <hr />
     <p class="blurb">
-      <span>List of all <span class="total">{page.total}</span> blog posts. Alternatively, <a href="/categories/" data-umami-event="blog-category">see posts by category</a> or <a href="/search/" data-umami-event="blog-search">search the blog</a>.</span>
+      <span>List of all <span class="total">{page.total}</span> blog posts. Alternatively, <a href="/categories/" rel="prefetch-intent" data-umami-event="blog-category">see posts by category</a> or <a href="/search/" rel="prefetch-intent" data-umami-event="blog-search">search the blog</a>.</span>
       <span class="rss">RSS Feed: 
-        <a href="/rss.xml">
+        <a href="/rss.xml" rel="prefetch-intent">
           <svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="vertical-align: text-bottom; width: 1.325em; height: 1.325em;" class="pr-1" id="RSSicon" viewBox="0 0 256 256">
             <title>RSS Feed</title>
             <defs>
@@ -267,14 +267,14 @@ const desc = "List of all blog posts";
     <nav class="pagination" aria-label="Blog pagination">
       <span class="prev">
         {page.url.prev ? (
-          <a href={page.url.prev} rel="prev">↖ Newer</a>
+          <a href={page.url.prev} rel="prefetch-intent prev">↖ Newer</a>
         ) : (
           <span></span>
         )}
       </span>
       <span class="next">
         {page.url.next ? (
-          <a href={page.url.next} rel="next">Older ↘</a>
+          <a href={page.url.next} rel="prefetch-intent next">Older ↘</a>
         ) : (
           <span></span>
         )}
@@ -308,14 +308,14 @@ const desc = "List of all blog posts";
     <nav class="pagination" aria-label="Blog pagination">
       <span class="prev">
         {page.url.prev ? (
-          <a href={page.url.prev} rel="prev">↖ Newer</a>
+          <a href={page.url.prev} rel="prefetch-intent prev">↖ Newer</a>
         ) : (
           <span></span>
         )}
       </span>
       <span class="next">
         {page.url.next ? (
-          <a href={page.url.next} rel="next">Older ↘</a>
+          <a href={page.url.next} rel="prefetch-next">Older ↘</a>
         ) : (
           <span></span>
         )}

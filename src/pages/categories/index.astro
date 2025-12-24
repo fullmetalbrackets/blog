@@ -61,7 +61,7 @@ const desc = "Blog posts by category";
       {tags.map(({ tag, count }) => (
         <li>
           <button>
-            <a href={`/categories/${tag}/`}>
+            <a href={`/categories/${tag}/`} rel="prefetch-intent">
               {tag} <span class="count"> ({count})</span>
             </a>
           </button>
