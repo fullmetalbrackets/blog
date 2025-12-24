@@ -581,6 +581,26 @@ const selectedPosts = allPosts.filter(post =>
         }
       }
     });
+
+    const article = document.querySelector('article');
+    if (article) {
+      const hr = article.querySelector('hr');
+      const description = article.querySelector('.description');
+      
+      if (hr && description) {
+        let tocElement = description.nextElementSibling;
+
+        if (tocElement) {
+          const firstContentElement = tocElement.nextElementSibling;
+
+          if (firstContentElement && 
+              firstContentElement.tagName === 'BLOCKQUOTE' &&
+              firstContentElement.getAttribute('data-type') === 'warning') {
+            hr.parentNode.insertBefore(firstContentElement, hr.nextSibling);
+          }
+        }
+      }
+    }
   </script>
 
 </BaseLayout>
