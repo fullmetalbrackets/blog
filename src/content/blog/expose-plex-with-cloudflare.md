@@ -261,13 +261,17 @@ One last thing! Although your external users can now stream your library by logg
 
 3. Next to _Secure connections_, choose **Preferred** from the downdown menu.
 
-4. (Optional) Scroll down and **enable** the checkbox for _Treat WAN IP as LAN Bandwitdh_.
+![Setting secure connections to Preferred.](../../img/blog/plex-secure-connections.png 'Setting secure connections to Preferred')
 
-5. Make sure to **leave disabled** the checkbox for _Enable Relay_.
+4. Make sure to **leave disabled** the checkbox for _Enable Relay_.
 
-6. Under _Custom server access URLs_ type in your tunnel URL, e.g. `https://plex.your-domain.com` (Make sure to include the HTTPS!)
+![Setting secure connections to Preferred.](../../img/blog/plex-remote-access0.png 'Setting secure connections to Preferred')
 
-7. At the bottom of the page, click the **Save changes** button.
+5. Under _Custom server access URLs_ type in your tunnel URL, e.g. `https://plex.your-domain.com` (Make sure to include the HTTPS!)
+
+![Custom server access URL in Plex network settings.](../../img/blog/plex-server-access-url1.png 'Custom server access URL in Plex network settings')
+
+6. At the bottom of the page, click the **Save changes** button.
 
 Now your external users can access your library through their Plex apps too.
 
