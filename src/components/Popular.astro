@@ -5,16 +5,16 @@ import { getCollection, render } from 'astro:content';
 
 const allPosts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-const featuredPosts = [
+const popularPosts = [
   'upgrade-debian-12-bookworm-debian-13-trixie',
   'plex-remote-access-tailscale', 
   'reverse-proxy-using-nginx-adguardhome-cloudflare',
+  'comprehensive-guide-tailscale-securely-access-home-network',
   'how-i-setup-home-server',
-  'comprehensive-guide-tailscale-securely-access-home-network'
 ];
 
 const filteredPosts = allPosts.filter(post => 
-  featuredPosts.includes(post.id)
+  popularPosts.includes(post.id)
 );
 
 const selectedPosts = await Promise.all(
@@ -142,8 +142,8 @@ const selectedPosts = await Promise.all(
 </style>
 
 <section>
-<div id="featured" />
-  <h2>Featured Articles</h2>
+<div id="popular" />
+  <h2>Popular Posts</h2>
   <div class="container">
     {selectedPosts.map(post => (
         <div class="list">

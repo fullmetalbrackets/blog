@@ -1,33 +1,58 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
+import Popular from "@components/Popular.astro";
+import { Image } from 'astro:assets';
+import Lost from "@assets/404.png";
 
 const title = "Page not found";
 const desc = "This page does not seem to exist.";
 ---
 
 <BaseLayout title={title} description={desc}>
-  <head>
-    <meta http-equiv="refresh" content="5;url=/" />
-  </head>
   <style>
     h1 {
       font-family: var(--sub-font);
     }
-    p {
-      margin: 2em auto 10em auto;
-    }
     #go-back {
       cursor: pointer;
+    }
+    .endline {
+      margin-top: 2em;
+      margin-bottom: 1.5em;
+    }
+    .lost-aside {
+      display: inline-flex;
+      justify-content: space-between;
+      font-size: 1.5em;
+      margin: 0 auto 1em auto;
+      padding: 0 auto;
+      width: 100%;
     }
   </style>
   <section>
     <h1>{title}</h1>
     <hr />
     <p>
-      {desc}&nbsp;<a href="javascript:javascript:history.go(-1)" id="go-back"
-        >Go back</a
-      > or <a href="/" data-umami-event="404">return to the Home page</a>. You will be redirected to
-      the Home page in 5 seconds.
+      I think you took a wrong turn at Albuquerque. (Or hit a broken link, if so <a href="mailto:contact@fullmetalbrackets.com&subject=Broken%20link">bug me about it</a>.)
     </p>
+    <Image
+      src={Lost}
+      alt="Bugs Bunny looking at a map because he took a wrong turn at Albuquerque."
+      title="Took a wrong turn at Albuquerque."
+      loading="eager"
+      decoding="async"
+      inferSize={true}
+    />
+    <p>
+      Check out popular posts below, <a href="javascript:javascript:history.go(-1)" id="go-back"
+        >go back</a
+      > where you came from, or <a href="/" data-umami-event="404">return to the home page</a>. 
+    </p>
+    <Popular />
   </section>
+  <hr class="endline" />
+  <aside class="lost-aside">
+    <a href="/" rel="prefetch-intent"><button>Home</button></a>
+    <a href="#top"><button>Top ↑</button></a>
+  </aside>
 </BaseLayout>
