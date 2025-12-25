@@ -617,6 +617,18 @@ blockquote[data-type="warning"] a:hover {
 .sub-font {
   font-family: var(--sub-font);
 }
+.grid-col {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.5em;
+  margin: 0 auto;
+  padding: 0;
+  justify-content: space-between;
+  place-items: center;
+}
+.grid-col button {
+  width: 8em;
+}
 .sr-only {
   position: absolute;
   width: 1px;
