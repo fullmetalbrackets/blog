@@ -407,11 +407,15 @@ Already anyone you share your library with can access it by going to `https://yo
 
 5. Make sure to **leave disabled** the checkbox for _Enable Relay_.
 
-:::image-figure[Relay and Custom Server Access URL settings.]
-![A screenshot of the Plex Media Server web-based interface](../../img/blog/expose-plex2.png)
+:::image-figure[Relay setting disabled.]
+![A screenshot of the Plex Media Server web-based interface, Network settings](../../img/blog/plex-remote-access0.png)
 :::
 
 6. Under _Custom server access URLs_ type in `https://your-domain.com`. (Make sure to include the HTTPS!) As a backup, you may also want to add your Tailscale IP as `http://100.200.300.400:32400`. (I leave it as HTTP in case sometimes a secure HTTPS connection is not possible, since I trust the IPs and devices connecting.)
+
+:::image-figure[Custom server access URL setting.]
+![A screenshot of the Plex Media Server web-based interface, Network settings](../../img/blog/plex-server-access-url2.png)
+:::
 
 7. At the bottom of the page, click the **Save changes** button. Now that apps can connect, let's finally share the library with someone!
 
