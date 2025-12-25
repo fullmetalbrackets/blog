@@ -36,4 +36,44 @@ const { frontmatter } = Astro.props;
   </article>
   <hr class="bottom-line" />
   <BackToTop />
+  <script is:inline>
+    document.querySelectorAll('blockquote').forEach((blockquote) => {
+      const firstPara = blockquote.querySelector('p');
+      if (firstPara) {
+        const text = firstPara.textContent || '';
+        const match = text.match(/^\[(\w+)\]\s*/);
+        
+        if (match) {
+          const type = match[1];
+          blockquote.setAttribute('data-type', type);
+          blockquote.classList.add(`blockquote-${type}`);
+          
+          const textNode = firstPara.firstChild;
+          if (textNode && textNode.nodeType === Node.TEXT_NODE && textNode.textContent) {
+            textNode.textContent = textNode.textContent.replace(/^\[(\w+)\]\s*/, '');
+          }
+        }
+      }
+    });
+
+    const article = document.querySelector('article');
+    if (article) {
+      const hr = article.querySelector('hr');
+      const description = article.querySelector('.description');
+      
+      if (hr && description) {
+        let tocElement = description.nextElementSibling;
+
+        if (tocElement) {
+          const firstContentElement = tocElement.nextElementSibling;
+
+          if (firstContentElement && 
+              firstContentElement.tagName === 'BLOCKQUOTE' &&
+              firstContentElement.getAttribute('data-type') === 'warning') {
+            hr.parentNode.insertBefore(firstContentElement, hr.nextSibling);
+          }
+        }
+      }
+    }
+  </script>
 </BaseLayout>

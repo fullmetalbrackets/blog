@@ -1,17 +1,16 @@
 ---
-title: "Markdown Style Guide"
-description: "Style guide for the website, updated whenever I make big changes to the design."
-pubDate: 2025-03-03
-tag: website
+layout: ../layouts/Page.astro
+title: Style Guide
+description: Markdown style guide for fullmetalbrackets.com
 ---
+
+Markdown style guide for this website.
 
 ## Fonts
 
 - <span class="main-font">[Atkinson Hyperlegible](https://www.brailleinstitute.org/freefont/)</span> (Body text and blog post headings)
 - <span class="code-font">[Atkinson Hyperlegible Mono](https://github.com/googlefonts/atkinson-hyperlegible-next-mono)</span> (Inline code and Prism code blocks)
 - <span class="sub-font">[MPlus Rounded 1c](https://fonts.google.com/specimen/M+PLUS+Rounded+1c)</span> (Buttons and main page headings)
-
-<br>
 
 ## Headings
 
@@ -39,15 +38,12 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum exercitationem con
 
 ###### H6 - Smallest Heading
 
-<br>
 
 ## Paragraphs
 
 Xerum, quo qui aut unt expliquam qui dolut labo. Aque venitatiusda cum, voluptionse latur sitiae dolessi aut parist aut dollo enim qui voluptate ma dolestendit peritin re plis aut quas inctum laceat est volestemque commosa as cus endigna tectur, offic to cor sequas etum rerum idem sintibus eiur? Quianimin porecus evelectur, cum que nis nust voloribus ratem aut omnimi, sitatur? Quiatem. Nam, omnis sum am facea corem alique molestrunt et eos evelece arcillit ut aut eos eos nus, sin conecerem erum fuga. Ri oditatquam, ad quibus unda veliamenimin cusam et facea ipsamus es exerum sitate dolores editium rerore eost, temped molorro ratiae volorro te reribus dolorer sperchicium faceata tiustia prat.
 
 Itatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne sapicia is sinveli squiatum, core et que aut hariosam ex eat.
-
-<br>
 
 ## Code Blocks
 
@@ -68,30 +64,28 @@ Code blocks (three backticks) look like this:
 </html>
 ```
 
-<br>
-
 ## Images
 
 Here is a simple image using Markdown. (Images embedded using markdown syntax and stored in `/src/img` will be processed and optimized by Astro Image.)
 
 ```markdown
-![Alt text goes here](../../img/assets/social.jpg 'This text appears as tooltip when hovering cursor over image')
+![Alt text goes here](../img/assets/social.jpg 'This text appears as tooltip when hovering cursor over image')
 ```
 
-![Alt text goes here](../../img/assets/social.jpg 'This text appears as tooltip when hovering cursor over image')
+![Alt text goes here](../img/assets/social.jpg 'This text appears as tooltip when hovering cursor over image')
 
 To use an image in a `figure` element with a `figcaption`, [RemarkDirective](https://github.com/remarkjs/remark-directive) and [RemarkDirectiveSugar](https://github.com/lin-stephanie/remark-directive-sugar) allows using custom markdown syntax.
 
 ```markdown
 :::image-figure[This is a descriptive caption.]
-![Alt text goes here](../../img/assets/social.jpg)
+![Alt text goes here](../img/assets/social.jpg)
 :::
 ```
 
 That markdown is rendered like this: 
 
 :::image-figure[This is a descriptive caption.]
-![Alt text goes here](../../img/assets/social.jpg)
+![Alt text goes here](../img/assets/social.jpg)
 :::
 
 ## Blockquotes
@@ -101,27 +95,26 @@ I use the default `<blockquote>` element as an "information" block almost exclus
 ```markdown
 > This is a default "informational" blockquote.
 >
-> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id eleifend libero. Nullam tristique ullamcorper lorem nec molestie. Sed vehicula.
+> Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 ```
 
 > This is default "informational" blockquote.
 >
-> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id eleifend libero. Nullam tristique ullamcorper lorem nec molestie. Sed vehicula.
+> Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
-<br>
 I also have differently styled data types for other kinds of blockquotes, which I use less often. This is the `[quote]` data type for actual quotes and attribution.
 
 ```markdown
 > [quote]
 > 
 > This is a direct quote from a person or article.
-> --Author, pg. 69, etc.
+> --Author, Book, pg. 69, etc.
 ```
 
 > [quote]
 > This is a direct quote from a person or article.
 >
-> --Author, pg. 69, etc.
+> --Author, Book, pg. 69, etc.
 
 <br>
 And this is the `[warning]` data type for things more important or urgent information.
@@ -129,12 +122,12 @@ And this is the `[warning]` data type for things more important or urgent inform
 ```markdown
 > [warning] Warning! (the first paragraph is auto bolded)
 >
-> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id eleifend libero. Nullam tristique ullamcorper lorem nec molestie. Sed vehicula.
+> Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 ```
 
 > [warning] Warning! (the first paragraph is auto bolded)
 >
-> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id eleifend libero. Nullam tristique ullamcorper lorem nec molestie. Sed vehicula.
+> Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
 <br>
 
