@@ -72,12 +72,12 @@ related2: mounting-hard-drives-in-linux
 
 ## Handy Keyboard Shortcuts
 
-| Key Combination                | Effect                             |
-| ------------------------------ | ---------------------------------- |
-| <kbd>Ctrl</kbd> + <kbd>C</kbd> | interrupt/terminate current process |
-| <kbd>Ctrl</kbd> + <kbd>A</kbd> | go to start of line                |
-| <kbd>Ctrl</kbd> + <kbd>E</kbd> | go to end of line                  |
-| <kbd>Ctrl</kbd> + <kbd>U</kbd> | delete entire line                 |
+| Key Combination                           | Effect                             |
+| ----------------------------------------- | ---------------------------------- |
+| <kbd><kbd>Ctrl</kbd> + <kbd>C</kbd></kbd> | interrupt/terminate current process |
+| <kbd><kbd>Ctrl</kbd> + <kbd>A</kbd></kbd> | go to start of line                |
+| <kbd><kbd>Ctrl</kbd> + <kbd>E</kbd></kbd> | go to end of line                  |
+| <kbd><kbd>Ctrl</kbd> + <kbd>U</kbd></kbd> | delete entire line                 |
 
 ## Reference
 

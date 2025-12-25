@@ -37,11 +37,11 @@ When you want to actually edit text, you should go to _INSERT_ mode on key press
 | Key                             | Effect                                           |
 | ------------------------------- | ------------------------------------------------ |
 | <kbd>i</kbd>                    | go to INSERT in the place of the cursor          |
-| <kbd>Shift</kbd> + <kbd>i</kbd> | go to INSERT mode at the beginning of the line   |
+| <kbd><kbd>Shift</kbd> + <kbd>i</kbd></kbd> | go to INSERT mode at the beginning of the line   |
 | <kbd>a</kbd>                    | append after the cursor                          |
-| <kbd>Shift</kbd> + <kbd>a</kbd> | append at the end of line                        |
+| <kbd><kbd>Shift</kbd> + <kbd>a</kbd></kbd> | append at the end of line                        |
 | <kbd>o</kbd>                    | open a new line below the current line           |
-| <kbd>Shift</kbd> + <kbd>o</kbd> | open a new line in the place of the current line |
+| <kbd><kbd>Shift</kbd> + <kbd>o</kbd></kbd> | open a new line in the place of the current line |
 | <kbd>Esc</kbd>                  | go to COMMAND mode                               |
 
 Now, exiting. You can exit vi from _EX_ mode:

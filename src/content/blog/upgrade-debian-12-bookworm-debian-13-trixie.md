@@ -22,7 +22,7 @@ In the case of WSL2, you can create a backup of your instance by using this comm
 wsl --export Debian-WSL-Backup /path/to/Debian-WSL-Backup.tar
 ```
 
-Follow all instructions as-is and when it's time to reboot at the end, just `exit` out of your WSL Debian instance and close the window with <kbd>Ctrl</kbd>+<kbd>D</kbd>, then open a new one.
+Follow all instructions as-is and when it's time to reboot at the end, just `exit` out of your WSL Debian instance and close the window with <kbd><kbd>Ctrl</kbd>+<kbd>D</kbd></kbd>, then open a new one.
 
 ## Upgrading apt repositories to Trixie
 
