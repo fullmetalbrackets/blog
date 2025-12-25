@@ -30,7 +30,7 @@ export default defineConfig({
     service: passthroughImageService()
   },
   redirects: {
-    '/feed': {
+    '/feed/': {
       status: 302,
       destination: '/rss.xml',
     },
