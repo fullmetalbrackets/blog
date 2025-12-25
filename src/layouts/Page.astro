@@ -6,6 +6,9 @@ const { frontmatter } = Astro.props;
 ---
 
 <BaseLayout title={frontmatter.title} description={frontmatter.description}>
+
+  <link slot="head" rel="stylesheet" href="/prism.css" />
+
   <style scoped>
     h1 {
       margin: 1em 0 0 0;
