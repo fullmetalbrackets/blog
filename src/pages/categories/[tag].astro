@@ -156,9 +156,6 @@ const { tag, posts } = Astro.props;
     .back {
       margin: 0 0 1em 0;
     }
-    ul {
-      margin: 0 0 0 -1.5em;
-    }
   }
 </style>
 
@@ -173,8 +170,8 @@ const { tag, posts } = Astro.props;
       {
         posts.map((post) => (
           <li>
-            <div>
-              <a href={`/blog/${post.id}/`} rel="prefetch-intent">
+            <a href={`/blog/${post.id}/`} rel="prefetch-intent">
+              <div>
                 <span class="title">{post.data.title}</span>
                 <p class="tag">
                   {post.data.tags.map((tag) => (
@@ -186,9 +183,8 @@ const { tag, posts } = Astro.props;
                   <span class="reading"><ReadingTime time={post.readingTime} /></span>
                 </p>
                 <p class="desc">{post.data.description}</p>
-
-              </a>
-            </div>
+              </div>
+            </a>
           </li>
         ))
       }
