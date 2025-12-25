@@ -1,12 +1,11 @@
 ---
-title: "Uses"
-description: "My computer and server hardware, and also smart home things."
-pubDate: 2025-12-16
-tag: information
+layout: ../layouts/Page.astro
+title: Uses
+description: My computer and server hardware, and also smart home things.
 ---
 
 :::div{.img-left}
-![A screenshot of a gaming computer with glass side showing internals, including RGB fans and RAM sticks](../../img/wiki/gamingpc.webp)
+![A screenshot of a gaming computer with glass side showing internals, including RGB fans and RAM sticks](../img/wiki/gamingpc.webp)
 :::
 
 ## [ABD Flux Aqua Gaming PC](https://www.newegg.com/abs-flux-aqua-gaming-desktop-geforce-rtx-4070-super-intel-core-i5-14400f-32gb-ddr5-1tb-pcie-ssd-fa14400f4070s/p/N82E16883360471?Item=N82E16883360471)
@@ -25,7 +24,7 @@ tag: information
 <br><br>
 
 :::div{.img-left}
-![A screenshot of a plain slim black tower Dell brand office PC](../../img/wiki/optiplex3050sff.jpg)
+![A screenshot of a plain slim black tower Dell brand office PC](../img/wiki/optiplex3050sff.jpg)
 :::
 
 ## Dell Optiplex 3050 SFF
@@ -41,7 +40,7 @@ tag: information
 <br><br>
 
 :::div{.img-left}
-![A screenshot of a black full tower Dell brand PC](../../img/wiki/xps8920.jpg)
+![A screenshot of a black full tower Dell brand PC](../img/wiki/xps8920.jpg)
 :::
 
 ## Dell XPS 8920
