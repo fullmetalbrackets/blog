@@ -43,7 +43,7 @@ const tags = Object.entries(tagCounts)
   }
   @media screen and (max-width: 755px) {
     ul {
-      padding: 1em 0.25em;
+      padding: 1em 0.175em;
     }
   }
 </style>
@@ -54,7 +54,7 @@ const tags = Object.entries(tagCounts)
       {tags.map(({ tag, count }) => (
         <li>
           <button>
-            <a href={`/categories/${tag}`}>
+            <a href={`/categories/${tag}/`}>
               {tag} <span class="count"> ({count})</span>
             </a>
           </button>
