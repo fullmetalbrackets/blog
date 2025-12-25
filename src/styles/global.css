@@ -629,6 +629,18 @@ blockquote[data-type="warning"] a:hover {
 .grid-col button {
   width: 8em;
 }
+.b {
+  font-weight: bold;
+}
+.em {
+  color: var(--emphasis);
+}
+.xl {
+  font-size: 1.25em;
+}
+.sm {
+  font-size: 0.75em;
+}
 .sr-only {
   position: absolute;
   width: 1px;
