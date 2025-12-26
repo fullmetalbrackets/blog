@@ -4,6 +4,8 @@ title: Colophon
 description: How fullmetalbrackets.com is made, with what tools, supporting what technologies, etc.
 ---
 
+How this site is made, with what tools, supporting what technologies, etc.
+
 ## Site and Webhost
 
 The site is built with [Astro](https://astro.build) and deployed 
@@ -35,3 +37,19 @@ the bottom of blog posts.
 - [Pagefind](https://pagefind.app/): Dead simple fully static search library for static websites, used here to search blog posts. Doesn't even require adding it to your dependencies.
 - [Giscus](https://giscus.app): Alternative to Discus for comments in blog posts using GitHub Discussions, rather than Issues, as the backend.
 - [Webmention.io](https://webmention.io) + [Webmention.app](https://webmention.app): Webmention is an open protocol used by websites to be notified when they link to each other. Webmention.app is a free service to automate outgoing webmentions with a simple API. (Might switch to [Bridgy](https://brid.gy/about) though.)
+
+## WTF is a Colophon anyway?
+
+> [quote]
+> <span class="i b u em">colophon</span> *noun* (col·​o·​phon ˈkä-lə-fən -ˌfän)
+>
+> 1: an inscription at the end of a book or manuscript <span class="em">usually with facts about its production</span>.
+>
+> [Merriam-Webster Dictionary](https://www.merriam-webster.com/dictionary/colophon)
+
+Or in a modern context...
+
+> [quote]
+> A <span class="i b u em">colophon</span> is a page or section (typically in a footer) of a site that <span class="em">describes how the site is made, with what tools, supporting what technologies</span>, and often published on personal sites at a top level `/colophon` page.
+>
+> [IndieWeb](https://indieweb.org/colophon)
