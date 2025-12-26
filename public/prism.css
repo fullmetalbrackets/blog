@@ -26,7 +26,7 @@
  code[class*="language-"]::-moz-selection,
  code[class*="language-"] *::-moz-selection,
  pre[class*="language-"] *::-moz-selection {
-   background: hsl(220, 13%, 28%);
+   background: var(--code-bg);
    color: inherit;
    text-shadow: none;
  }
@@ -34,7 +34,7 @@
  code[class*="language-"]::selection,
  code[class*="language-"] *::selection,
  pre[class*="language-"] *::selection {
-   background: hsl(220, 13%, 28%);
+   background: var(--code-bg);
    color: inherit;
    text-shadow: none;
  }
@@ -83,11 +83,11 @@
  .token.constant,
  .token.number,
  .token.atrule {
-   color: var(--menu);
+   color: var(--primary);
  }
  
  .token.keyword {
-   color: var(--hover);
+   color: var(--primary);
  }
  
  .token.property,
@@ -95,7 +95,7 @@
  .token.symbol,
  .token.deleted,
  .token.important {
-   color: var(--hover);
+   color: var(--primary);
  }
  
  .token.selector,
@@ -112,7 +112,7 @@
  .token.variable,
  .token.operator,
  .token.function {
-   color: var(--name);
+   color: var(--secondary);
  }
  
  .token.url {
@@ -127,7 +127,7 @@
  
  /* CSS overrides */
  .language-css .token.selector {
-   color: var(--hover);
+   color: var(--primary);
  }
  
  .language-css .token.property {
@@ -140,17 +140,17 @@
  }
  
  .language-css .token.url > .token.string.url {
-   color: var(--name);
+   color: var(--secondary);
  }
  
  .language-css .token.important,
  .language-css .token.atrule .token.rule {
-   color: var(--hover);
+   color: var(--primary);
  }
  
  /* JS overrides */
  .language-javascript .token.operator {
-   color: var(--hover);
+   color: var(--primary);
  }
  
  .language-javascript .token.template-string > .token.interpolation > .token.interpolation-punctuation.punctuation {
@@ -159,22 +159,22 @@
  
  /* JSON overrides */
  .language-json .token.operator {
-   color: hsl(220, 14%, 71%);
+   color: var(--primary);
  }
  
  .language-json .token.null.keyword {
-   color: var(--menu);
+   color: var(--primary);
  }
  
  /* MD overrides */
  .language-markdown .token.url,
  .language-markdown .token.url > .token.operator,
  .language-markdown .token.url-reference.url > .token.string {
-   color: hsl(220, 14%, 71%);
+   color: var(--secondary);
  }
  
  .language-markdown .token.url > .token.content {
-   color: var(--name);
+   color: var(--secondary);
  }
  
  .language-markdown .token.url > .token.url,
@@ -184,27 +184,26 @@
  
  .language-markdown .token.blockquote.punctuation,
  .language-markdown .token.hr.punctuation {
-   color: hsl(220, 10%, 40%);
-   font-style: italic;
+   color: var(--primary);
  }
  
  .language-markdown .token.code-snippet {
-   color: var(--name);
+   color: var(--secondary);
  }
  
  .language-markdown .token.bold .token.content {
-   color: var(--menu);
+   color: var(--primary);
  }
  
  .language-markdown .token.italic .token.content {
-   color: var(--hover);
+   color: var(--secondary);
  }
  
  .language-markdown .token.strike .token.content,
  .language-markdown .token.strike .token.punctuation,
  .language-markdown .token.list.punctuation,
  .language-markdown .token.title.important > .token.punctuation {
-   color: var(--hover);
+   color: var(--primary);
  }
  
  /* General */
@@ -259,7 +258,7 @@
  div.code-toolbar > .toolbar.toolbar > .toolbar-item > a:focus,
  div.code-toolbar > .toolbar.toolbar > .toolbar-item > span:hover,
  div.code-toolbar > .toolbar.toolbar > .toolbar-item > span:focus {
-   background: hsl(220, 13%, 28%);
+   background: var(--code-bg);
    color: hsl(220, 14%, 71%);
  }
  
@@ -295,7 +294,7 @@
  /* Stuff in the gutter */
  .line-numbers .line-numbers-rows > span:before,
  .command-line .command-line-prompt > span:before {
-   color: hsl(220, 14%, 45%);
+   color: var(--secondary);
  }
  
  /* Match Braces plugin overrides */
@@ -303,25 +302,25 @@
  .rainbow-braces .token.token.punctuation.brace-level-1,
  .rainbow-braces .token.token.punctuation.brace-level-5,
  .rainbow-braces .token.token.punctuation.brace-level-9 {
-   color: var(--hover);
+   color: var(--primary);
  }
  
  .rainbow-braces .token.token.punctuation.brace-level-2,
  .rainbow-braces .token.token.punctuation.brace-level-6,
  .rainbow-braces .token.token.punctuation.brace-level-10 {
-   color: var(--name);
+   color: var(--secondary);
  }
  
  .rainbow-braces .token.token.punctuation.brace-level-3,
  .rainbow-braces .token.token.punctuation.brace-level-7,
  .rainbow-braces .token.token.punctuation.brace-level-11 {
-   color: var(--name);
+   color: var(--secondary);
  }
  
  .rainbow-braces .token.token.punctuation.brace-level-4,
  .rainbow-braces .token.token.punctuation.brace-level-8,
  .rainbow-braces .token.token.punctuation.brace-level-12 {
-   color: var(--hover);
+   color: var(--primary);
  }
  
  /* Diff Highlight plugin overrides */
