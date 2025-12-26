@@ -271,7 +271,7 @@ input:focus, textarea:focus {
   color: var(--form);
   background: var(--accent);
   outline: 0;
-  box-shadow: 0 0 0 0.25rem var(--name);
+  box-shadow: 0 0 0 0.25rem var(--primary);
 }
 u, em, i {
   color: var(--emphasis);
@@ -500,11 +500,17 @@ blockquote.blockquote-quote {
 }
 blockquote[data-type="quote"] p,
 blockquote.blockquote-quote p {
-  margin: 0;
-  padding: 0 1em;
+  display: block;
+  font-style: italic;
+  font-family: var(--sub-font);
+  font-size: 22px;
+  color: var(--text);
+  margin: 1em 0 0 0;
+  padding: 0 1em 0 0.65em;
 }
 blockquote[data-type="quote"] p:first-of-type,
 blockquote.blockquote-quote p:first-of-type {
+  display: block;
   font-style: italic;
   font-family: var(--sub-font);
   font-size: 22px;
@@ -512,8 +518,8 @@ blockquote.blockquote-quote p:first-of-type {
   margin-top: -0.5em;
   padding-left: 0.65em;
 }
-blockquote[data-type="quote"] p + p,
-blockquote.blockquote-quote p + p {
+blockquote[data-type="quote"] p:last-of-type,
+blockquote.blockquote-quote p:last-of-type {
   display: flex;
   color: var(--emphasis);
   font-size: 20px;
@@ -631,6 +637,12 @@ blockquote[data-type="warning"] a:hover {
 }
 .b {
   font-weight: bold;
+}
+.u {
+  text-decoration: underline;
+}
+.i {
+  font-style: italic;
 }
 .em {
   color: var(--emphasis);
