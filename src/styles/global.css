@@ -47,6 +47,11 @@ html {
   --clock-svg: brightness(0) saturate(100%) invert(10%) sepia(11%) saturate(791%) hue-rotate(169deg) brightness(94%) contrast(89%);
   --lifestream: brightness(0) saturate(100%) invert(39%) sepia(15%) saturate(1395%) hue-rotate(120deg) brightness(89%) contrast(95%);
   --controller: brightness(0) saturate(100%) invert(46%) sepia(12%) saturate(386%) hue-rotate(169deg) brightness(93%) contrast(92%);
+  --foot-svg: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%) contrast(98%);
+  --foot-ext: brightness(0) saturate(100%) invert(11%) sepia(80%) saturate(5816%) hue-rotate(358deg) brightness(94%) contrast(113%);
+  --foot-link: rgb(44 156 195);
+  --foot-hover: rgb(200, 0, 0);
+  --foot-active: rgb(255, 255, 255);
   scroll-behavior: smooth;
 }
 
@@ -89,7 +94,7 @@ pre[class*="language-"] {
     --pagefind-ui-text: rgb(164, 174, 188);
     --pagefind-ui-background: rgb(51, 65, 85);
     --svg: invert(93%) sepia(78%) saturate(2834%) hue-rotate(213deg) brightness(148%) contrast(96%);
-    --ext: invert(50%) sepia(21%) saturate(5438%) hue-rotate(150deg) brightness(87%) contrast(101%);
+    --ext: brightness(0) saturate(100%) invert(88%) sepia(9%) saturate(2244%) hue-rotate(108deg) brightness(82%) contrast(81%);
     --search: invert(57%) sepia(86%) saturate(3921%) hue-rotate(13deg) brightness(99%) contrast(100%);
     --info-svg: brightness(0) saturate(100%) invert(80%) sepia(82%) saturate(863%) hue-rotate(336deg) brightness(105%) contrast(90%);
     --share: brightness(0) saturate(100%) invert(77%) sepia(98%) saturate(1742%) hue-rotate(350deg) brightness(96%) contrast(95%);
@@ -98,6 +103,11 @@ pre[class*="language-"] {
     --clock-svg: brightness(0) saturate(100%) invert(64%) sepia(80%) saturate(281%) hue-rotate(154deg) brightness(92%) contrast(98%);
     --lifestream: brightness(0) saturate(100%) invert(83%) sepia(27%) saturate(715%) hue-rotate(112deg) brightness(81%) contrast(86%);
     --controller: brightness(0) saturate(100%) invert(75%) sepia(15%) saturate(240%) hue-rotate(176deg) brightness(89%) contrast(91%);
+    --foot-svg: invert(93%) sepia(78%) saturate(2834%) hue-rotate(213deg) brightness(148%) contrast(96%);
+    --foot-ext: brightness(0) saturate(100%) invert(88%) sepia(9%) saturate(2244%) hue-rotate(108deg) brightness(82%) contrast(81%);
+    --foot-link: rgb(255, 255, 255);
+    --foot-hover: rgb(90, 194, 175);
+    --foot-active: rgb(0, 0, 0);
   }
 
   code[class*="language-"],
@@ -146,6 +156,11 @@ html.light {
   --clock-svg: brightness(0) saturate(100%) invert(10%) sepia(11%) saturate(791%) hue-rotate(169deg) brightness(94%) contrast(89%);
   --lifestream: brightness(0) saturate(100%) invert(39%) sepia(15%) saturate(1395%) hue-rotate(120deg) brightness(89%) contrast(95%);
   --controller: brightness(0) saturate(100%) invert(46%) sepia(12%) saturate(386%) hue-rotate(169deg) brightness(93%) contrast(92%);
+  --foot-svg: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%) contrast(98%);
+  --foot-ext: brightness(0) saturate(100%) invert(11%) sepia(80%) saturate(5816%) hue-rotate(358deg) brightness(94%) contrast(113%);
+  --foot-link: rgb(44 156 195);
+  --foot-hover: rgb(200, 0, 0);
+  --foot-active: rgb(255, 255, 255);
 }
 
 html.light code[class*="language-"],
@@ -186,7 +201,7 @@ html.dark {
   --pagefind-ui-text: rgb(164, 174, 188);
   --pagefind-ui-background: rgb(51, 65, 85);
   --svg: invert(93%) sepia(78%) saturate(2834%) hue-rotate(213deg) brightness(148%) contrast(96%);
-  --ext: invert(50%) sepia(21%) saturate(5438%) hue-rotate(150deg) brightness(87%) contrast(101%);
+  --ext: brightness(0) saturate(100%) invert(88%) sepia(9%) saturate(2244%) hue-rotate(108deg) brightness(82%) contrast(81%);
   --search: invert(57%) sepia(86%) saturate(3921%) hue-rotate(13deg) brightness(99%) contrast(100%);
   --info-svg: brightness(0) saturate(100%) invert(80%) sepia(82%) saturate(863%) hue-rotate(336deg) brightness(105%) contrast(90%);
   --share: brightness(0) saturate(100%) invert(77%) sepia(98%) saturate(1742%) hue-rotate(350deg) brightness(96%) contrast(95%);
@@ -195,6 +210,11 @@ html.dark {
   --clock-svg: brightness(0) saturate(100%) invert(64%) sepia(80%) saturate(281%) hue-rotate(154deg) brightness(92%) contrast(98%);
   --lifestream: brightness(0) saturate(100%) invert(83%) sepia(27%) saturate(715%) hue-rotate(112deg) brightness(81%) contrast(86%);
   --controller: brightness(0) saturate(100%) invert(75%) sepia(15%) saturate(240%) hue-rotate(176deg) brightness(89%) contrast(91%);
+  --foot-svg: invert(93%) sepia(78%) saturate(2834%) hue-rotate(213deg) brightness(148%) contrast(96%);
+  --foot-ext: brightness(0) saturate(100%) invert(88%) sepia(9%) saturate(2244%) hue-rotate(108deg) brightness(82%) contrast(81%);
+  --foot-link: rgb(255, 255, 255);
+  --foot-hover: rgb(90, 194, 175);
+  --foot-active: rgb(0, 0, 0);
 }
 
 html.dark code[class*="language-"],
