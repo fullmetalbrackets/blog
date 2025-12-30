@@ -1,0 +1,134 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+import FormattedDate from './FormattedDate.astro';
+import Icon from '@icons/image.svg';
+
+type Props = CollectionEntry<'lifestream'>['data'] & {
+  type: 'image';
+  index?: number;
+};
+
+const { 
+  image,
+  index = 0,
+  title,
+  note,
+  tag, 
+  pubDate,
+  url 
+} = Astro.props;
+
+const isAboveFold = index < 6;
+---
+
+<div class="image-card">
+    {image && (
+      <Image src={image} alt={title} loading={isAboveFold ? 'eager' : 'lazy'} inferSize />
+    )}
+    {title && <h3 class="image-title">{title}</h3>}
+    {note && <p class="note">{note}</p>}
+    <div class="image-info">
+      <span class="tag">{tag}</span>
+      <span class="external-link">
+        {url && (
+          <a href={url} target="_blank" rel="noopener noreferrer" aria-label="external link">
+            Source
+          </a>
+        )}
+      </span>
+    </div>
+</div>
+<span class="info"><FormattedDate date={pubDate} /><Icon width={36} height={36} /></span>
+
+<style>
+  .date {
+    display: block;
+    font-size: 0.875em;
+    margin: 0.25em 0 0 0.25em;
+  }
+  
+  .external-link {
+    display: absolute;
+    font-size: 0.875rem;
+    font-family: var(--sub-font);
+    font-weight: 500;
+    right: 0;
+  }
+
+  .image-card {
+    background: var(--blockquote);
+    border-radius: 0 0 0.5em 0.5em;
+    overflow: hidden;
+    min-width: 100%;
+    width: 100%;
+    transition: transform 0.2s;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  
+  .image-card:hover {
+    transform: translateY(-4px);
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: 0;
+    display: block;
+  }
+
+  .image-title {
+    margin: 1rem 1rem 0.5rem;
+    font-family: var(--sub-font);
+    font-size: 1.25em;
+    font-weight: 900;
+    line-height: 1.1;
+  }
+
+  .image-info {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 1em 1em 1em;
+    font-size: 0.875rem;
+    place-items: center;
+  }
+
+  .info {
+    display: flex;
+    justify-content: space-between;
+    place-items: center;
+    font-size: 0.5em;
+    margin: -0.1em 0.25em 0 0.15em;
+    padding: 0;
+    font-family: var(--sub-font);
+    font-size: 0.875em;
+  }
+
+  .info svg {
+    filter: var(--lifestream);
+    margin: 0 0.15em 0 0;
+    padding: 0;
+  }
+
+  .note {
+    margin: 0.5rem 1rem;
+    font-style: italic;
+    font-size: 0.75em;
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1.2;
+  }
+
+  .tag {
+    font-family: var(--sub-font);
+    background-color: var(--info);
+    color: #000;
+    border: 0;
+    border-radius: 0.25em;
+    padding: 4px 8px 3px 8px;
+    font-weight: 700;
+    font-size: 0.75em;
+  }
+</style>

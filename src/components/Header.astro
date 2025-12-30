@@ -8,6 +8,7 @@ import Search from '@icons/search.svg';
 
 <style scoped>
   header {
+    background: var(--tertiary);
     margin: 0 auto;
   }
   .skip-link {
@@ -39,26 +40,27 @@ import Search from '@icons/search.svg';
     justify-content: space-between;
     max-width: 77.1ch;
     margin: 0 auto;
-    padding: 0 auto;
+    padding: 0;
     font-weight: 500;
     height: 1.75em;
   }
   nav a {
     color: var(--primary);
     text-decoration: none;
-    border: 2px solid transparent;
   }
   nav a:hover {
     color: var(--hover);
   }
   nav a:focus-visible {
-    outline: 2px solid var(--primary);
+    outline: 2px solid var(--hover);
     outline-offset: 2px;
     border-radius: 2px;
   }
   nav a.active {
-    color: var(--hover);
-    border-bottom: 2px solid var(--hover);
+    color: var(--link);
+  }
+  .blog-link {
+    margin-right: 3px;
   }
   .logo {
     display: flex;
@@ -136,8 +138,8 @@ import Search from '@icons/search.svg';
     z-index: 1;
     border-radius: 0.5em;
     padding: 0;
-    backdrop-filter: blur(0.1em);
-    -webkit-backdrop-filter: blur(0.1em);
+    backdrop-filter: blur(0.2em);
+    -webkit-backdrop-filter: blur(0.2em);
     opacity: 0;
     transform: translateY(-10px);
     transition: opacity 0.25s ease, transform 0.25s ease, visibility 0s 0.25s;
@@ -181,9 +183,16 @@ import Search from '@icons/search.svg';
     vertical-align: middle;
     filter: var(--chevron-filter, none);
   }
-  @media screen and (max-width: 720px) {
+  @media screen and (max-width: 768px) {
+    header {
+      display: grid;
+    }
     .name::before {
-      content: ""
+      content: "";
+      margin: 0;
+    }
+    .nav-link, .dropdown {
+      font-size: 0.825em;
     }
   }
 </style>
@@ -197,8 +206,8 @@ import Search from '@icons/search.svg';
         <span class="name" aria-hidden="true"></span>
     </a>
     <div class="nav-links">
-      <HeaderLink href="/blog/" rel="prefetch-intent" class="nav-link" data-umami-event="nav-blog">Blog</HeaderLink>
-      <HeaderLink href="/links/" rel="prefetch-intent" class="nav-link" data-umami-event="nav-links">Links</HeaderLink>
+      <HeaderLink href="/blog/" rel="prefetch-intent" aria-label="Blog" class="nav-link blog-link" data-umami-event="nav-blog">Blog</HeaderLink>
+      <HeaderLink href="/categories/" rel="prefetch-intent" aria-label="Categories" class="nav-link categories-link" data-umami-event="nav-links">Categories</HeaderLink>
     <div class="dropdown">
       <span class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">
         More
@@ -207,17 +216,19 @@ import Search from '@icons/search.svg';
         </svg>
       </span>
       <div class="dropdown-content">
-        <HeaderLink href="/wiki/" rel="prefetch-intent" data-umami-event="nav-wiki">Wiki</a>
-        <HeaderLink href="/colophon/" rel="prefetch-intent" data-umami-event="nav-colophon">Colophon</a>
-        <HeaderLink href="/blogroll/" rel="prefetch-intent" data-umami-event="nav-blogroll">Blogroll</a>
-        <HeaderLink href="/self-hosted/" rel="prefetch-intent" data-umami-event="nav-style">Self-hosted</a>
-        <HeaderLink href="/uses/" rel="prefetch-intent" data-umami-event="nav-uses">Uses</a>
-        <HeaderLink href="/style/" rel="prefetch-intent" data-umami-event="nav-style">Style</a>
-        <HeaderLink href="/verify/" rel="prefetch-intent" data-umami-event="nav-verify">Verify</a>
+        <HeaderLink href="/wiki/" rel="prefetch-intent" aria-label="Wiki" data-umami-event="nav-wiki">Wiki</HeaderLink>
+        <HeaderLink href="/colophon/" rel="prefetch-intent" aria-label="Colophon" data-umami-event="nav-colophon">Colophon</HeaderLink>
+        <HeaderLink href="/blogroll/" rel="prefetch-intent" aria-label="Blogroll" data-umami-event="nav-blogroll">Blogroll</HeaderLink>
+        <HeaderLink href="/lifestream/" rel="prefetch-intent" aria-label="Lifestream" data-umami-event="nav-lifestream">Lifestream</HeaderLink>
+        <HeaderLink href="/links/" rel="prefetch-intent" aria-label="Links" data-umami-event="nav-links">Links</HeaderLink>
+        <HeaderLink href="/self-hosted/" rel="prefetch-intent" aria-label="Self-hosted" data-umami-event="nav-self-hosted">Self-hosted</HeaderLink>
+        <HeaderLink href="/uses/" rel="prefetch-intent" aria-label="Uses" data-umami-event="nav-uses">Uses</HeaderLink>
+        <HeaderLink href="/style/" rel="prefetch-intent" aria-label="Style" data-umami-event="nav-style">Style</HeaderLink>
+        <HeaderLink href="/verify/" rel="prefetch-intent" aria-label="Verify" data-umami-event="nav-verify">Verify</HeaderLink>
       </div>
     </div>
       <HeaderLink href="/search/" rel="prefetch-intent" class="search-link" data-umami-event="search" aria-label="Search">
-        <Search aria-hidden="true" />
+        <Search aria-hidden="true" width="26px" height="26px" />
         <span class="sr-only">Search</span>
       </HeaderLink>
       <ThemeToggle />

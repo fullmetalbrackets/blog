@@ -273,6 +273,10 @@ const selectedPosts = allPosts.filter(post =>
       font-size: 1.5em;
       color: var(--primary);
       margin: 1em 0 1em 0;
+      border-top: transparent;
+      border-left: transparent;
+      border-right: transparent;
+      border-bottom: thick dotted var(--border);
     }
     .related ul {
       list-style-type: none;
@@ -327,6 +331,7 @@ const selectedPosts = allPosts.filter(post =>
         font-size: 1em;
         line-height: 1.2;
         padding: 1em 1em 0.85em 1em;
+        margin: 1em auto;
       }
       .related li p {
         margin-top: 0;

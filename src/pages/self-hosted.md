@@ -1,10 +1,10 @@
 ---
 layout: ../layouts/Page.astro
 title: Self-hosted
-description: A list of things I self-host on my home server.
+description: Information about the apps and services that I self-host.
 ---
 
-A list of things I self-host on my home server.
+Information about the apps and services that I self-host.
 
 > See [this blog post](/blog/how-i-setup-home-server) for more details.
 

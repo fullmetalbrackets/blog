@@ -41,8 +41,7 @@ the bottom of blog posts.
 ## WTF is a Colophon anyway?
 
 > [quote]
-> <span class="i b u em">colophon</span> *noun* (col·​o·​phon ˈkä-lə-fən -ˌfän)
->
+> <span class="i b u em">colophon</span> *noun* (col·​o·​phon ˈkä-lə-fən -ˌfän)<br>
 > 1: an inscription at the end of a book or manuscript <span class="em">usually with facts about its production</span>.
 >
 > [Merriam-Webster Dictionary](https://www.merriam-webster.com/dictionary/colophon)

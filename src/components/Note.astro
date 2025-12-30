@@ -1,0 +1,109 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import FormattedDate from './FormattedDate.astro';
+import Icon from '@icons/note.svg';
+
+type Props = CollectionEntry<'lifestream'>['data'] & {
+  type: 'note';
+};
+
+const { 
+  note,
+  title,
+  url,
+  tag,
+  pubDate 
+} = Astro.props;
+---
+
+<div class="note-card">
+  {title && <h3 class="note-title">{title}</h3>}
+  <p class="note">{note}</p>
+  <div class="note-info">
+    <span class="tag">{tag}</span>
+    <span class="external-link">
+      {url && (
+        <a href={url} target="_blank" rel="noopener noreferrer" aria-label="external link">
+          Read more
+        </a>
+      )}
+    </span>
+  </div>
+</div>
+<span class="info"><FormattedDate date={pubDate} /><Icon width={32} height={32} /></span>
+
+<style>  
+  .external-link {
+    font-size: 0.875rem;
+    font-family: var(--sub-font);
+    font-weight: 500;
+  }
+
+  .info {
+    display: flex;
+    justify-content: space-between;
+    place-items: center;
+    font-size: 0.5em;
+    margin: 0.1em 0.15em 0 0.15em;
+    padding: 0;
+    font-family: var(--sub-font);
+    font-size: 0.875em;
+  }
+
+  .info svg {
+    filter: var(--lifestream);
+    margin: 0 0.25em 0 0;
+    padding: 0;
+  }
+
+  .note-info {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto 0.5em auto;
+    font-size: 0.875rem;
+  }
+
+  .note-card {
+    background: var(--blockquote);
+    padding: 0.5em 1em 0.5em 1em;
+    line-height: 1.2;
+    min-width: min-content;
+    width: 100%;
+    max-width: 100%;
+    transition: transform 0.2s;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  .note-card:hover {
+    transform: translateY(-4px);
+    z-index: 15;
+  }
+
+  .note-title {
+    margin: 0;
+    font-size: 1.25em;
+    font-weight: 800;
+    color: var(--emphasis);
+  }
+
+  .note {
+    margin: 0 auto 1em auto;
+    line-height: 1.3;
+    font-size: 0.75em;
+    font-family: var(--sub-font);
+    font-weight: 300;
+    font-style: italic;
+  }
+
+  .tag {
+    font-family: var(--sub-font);
+    background-color: var(--info);
+    color: #000;
+    border: 0;
+    border-radius: 0.25em;
+    padding: 5px 8px 4px 8px;
+    font-weight: 700;
+    font-size: 0.75em;
+  }
+</style>

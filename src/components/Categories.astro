@@ -31,12 +31,26 @@ const tags = Object.entries(tagCounts)
   li {
     margin: 0.25em;
   }
-  button {
-    background: var(--info);
-    color: #000;
+  .label a {
+    color: #000
   }
-  button a {
-    color: #000;
+  .count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.25em;
+    height: 1rem;
+    padding: 1px 0 0 0;
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 9999px;
+    font-family: var(--main-font);
+    font-size: 0.675em;
+  }
+  button {
+    display: flex;
+    place-items: center;
+    gap: 0.25em;
   }
   p {
     margin-bottom: 2em;
@@ -54,9 +68,12 @@ const tags = Object.entries(tagCounts)
       {tags.map(({ tag, count }) => (
         <li>
           <button>
-            <a href={`/categories/${tag}/`}>
-              {tag} <span class="count"> ({count})</span>
-            </a>
+            <span class="label">
+              <a href={`/categories/${tag}/`} rel="prefetch-intent">{tag}</a>
+              </span>
+            <span class="count">
+              {count}
+            </span>
           </button>
         </li>
       ))}

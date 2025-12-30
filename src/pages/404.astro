@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
+import Explore from "@components/Explore.astro";
 import Popular from "@components/Popular.astro";
 import { Image } from 'astro:assets';
 import Lost from "@assets/404.png";
@@ -44,10 +45,10 @@ const desc = "This page does not seem to exist.";
       inferSize={true}
     />
     <p>
-      Check out popular posts below, <a href="javascript:javascript:history.go(-1)" id="go-back"
-        >go back</a
-      > where you came from, <a href="/slashes">see a list of all pages</a>, or <a href="/">return home</a>. 
+      Explore the site below, check out <a href="#popular">popular posts</a>, <a href="javascript:javascript:history.go(-1)" id="go-back">go back</a> where you came from, or <a href="/">return home</a>. 
     </p>
+    <Explore />
+    <div id="popular"/>
     <Popular />
   </section>
   <hr class="endline" />
