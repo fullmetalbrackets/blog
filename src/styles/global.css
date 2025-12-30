@@ -274,7 +274,7 @@ section {
 }
 
 hr {
-  margin-bottom: 2em;
+  margin-bottom: 1em;
   border-top: transparent;
   border-left: transparent;
   border-right: transparent;
@@ -829,7 +829,7 @@ blockquote[data-type="warning"] a:hover {
 }
 
 .img-left img {
-  margin: 0 0 -2em 0;
+  margin: -0.5em 0 -2em 0;
 }
 
 .coffee a {
@@ -851,6 +851,15 @@ blockquote[data-type="warning"] a:hover {
 
 .sub-font {
   font-family: var(--sub-font);
+}
+
+.flex {
+  display: flex;
+}
+
+.iflex {
+  display: inline-flex;
+  place-items: center;
 }
 
 .grid-col {
@@ -891,8 +900,42 @@ blockquote[data-type="warning"] a:hover {
   font-size: 0.75em;
 }
 
+.xs {
+  font-size: 0.5em;
+}
+
+.w2 {
+  font-weight: 200;
+}
+.w3 {
+  font-weight: 300;
+}
+.w5 {
+  font-weight: 500;
+}
+.w7 {
+  font-weight: 700;
+}
+.w9 {
+  font-weight: 900;
+}
+
 .no-list {
   list-style-type: none
+}
+
+.latest {
+  display: inline-flex;
+  justify-content: center;
+  place-items: center;
+  padding: 0 4px;
+  color: var(--main);
+  background: var(--foot-link);
+  font-family: var(--sub-font);
+  font-size: 0.35em;
+  font-weight: 900;
+  border-radius: 2em;
+  margin: 0.85em 0;
 }
 
 .sr-only {
