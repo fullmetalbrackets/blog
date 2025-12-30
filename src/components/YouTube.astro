@@ -1,0 +1,77 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { YouTube as YouTubeEmbed } from 'astro-embed';
+import FormattedDate from './FormattedDate.astro';
+import Icon from '@icons/youtube.svg';
+
+type Props = CollectionEntry<'lifestream'>['data'] & {
+  type: 'youtube';
+  index?: number;
+  videoId: 'string';
+};
+
+const { 
+  videoId,
+  title,
+  note,
+  pubDate 
+} = Astro.props;
+---
+
+<div class="youtube-card">
+  <div class="youtube-embed">
+    <YouTubeEmbed id={videoId} />
+  </div>
+  {title && <h3 class="youtube-title">{title}</h3>}
+  {note && <p class="note">{note}</p>}
+  <span class="icon">
+    <Icon width={40} height={40} />
+  </span>
+</div>
+<span class="date"><FormattedDate date={pubDate} /></span>
+
+<style>
+  .youtube-card {
+    background: var(--code-bg);
+    border-radius: 0.5em;
+    overflow: hidden;
+    width: 100%;
+  }
+  
+  .youtube-embed, .youtube-embed :global(lite-youtube) {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 0;
+  }
+  
+  .youtube-title {
+    margin: 1rem 1rem 0.5rem;
+    font-family: var(--sub-font);
+    font-size: 1.25em;
+    font-weight: 900;
+    line-height: 1.1;
+  }
+  
+  .note {
+    margin: 0.6em 2.75em 1em 1em;
+    font-style: italic;
+    font-size: 0.75em;
+    font-weight: 200;
+    color: var(--text);
+    line-height: 1.2;
+  }
+  
+  .icon {
+    position: absolute;
+    filter: var(--lifestream);
+    right: 0.2em;
+    bottom: 0;
+  }
+
+  .date {
+    display: block;
+    font-size: 0.875em;
+    margin: 0.25em 0 0 0.25em;
+  }
+</style>
