@@ -54,10 +54,6 @@ export default defineConfig({
       status: 302,
       destination: 'https://cloud.umami.is/share/5MdOgBcRzVP6FU0x/fullmetalbrackets.com',
     },
-    '/notes/': {
-      status: 302,
-      destination: '/blog/',
-    },
     '/blog/tailscale/': {
       status: 302,
       destination: '/blog/comprehensive-guide-tailscale-securely-access-home-network/',
