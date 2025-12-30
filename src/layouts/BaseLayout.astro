@@ -23,7 +23,19 @@ const { description } = Astro.props.frontmatter || Astro.props;
 		</script>
 		
 		<BaseHead title={title} description={description} />
-		<slot name="head" />
+
+		<style>
+			main {
+				margin: 0 auto;
+				padding: 0;
+				animation: 0.25s fade-in;
+			}
+			@media screen and (max-width: 1292px) {
+				main {
+					padding: 0 0.25em;
+				}
+			}
+		</style>
 	</head>
 
 	<body>
