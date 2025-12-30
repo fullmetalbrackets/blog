@@ -20,7 +20,7 @@ And thanks to a few readers that [Bought Me A Coffee](https://buymeacoffee.com/a
 
 ## Astro, Integrations and Packages
 
-Blog posts and Wiki articles are all written in [Markdown](https://www.markdownguide.org/) with YAML frontmatter and managed via [Astro's Content Collections](https://docs.astro.build/en/guides/content-collections/). [Links](/links) are also done through Content Collection and exist as YAML files. 
+Blog posts and Wiki articles are all written in [Markdown](https://www.markdownguide.org/) with YAML frontmatter and managed via [Astro's Content Collections](https://docs.astro.build/en/guides/content-collections/). [Links](/links/) and [Lifestream](/lifestream/) are also done through Content Collection and exist as YAML files.
 
 I use several packages to help with building the site and writing posts.
 - [astrojs/rss](hhttps://docs.astro.build/en/recipes/rss/): Astro integration to add an RSS feed, in my case the feed is blog posts only.
@@ -30,7 +30,9 @@ I use several packages to help with building the site and writing posts.
 the bottom of blog posts.
 - [reading-time](https://github.com/ngryman/reading-time) + [mdast-util-to-string](https://github.com/syntax-tree/mdast-util-to-string): Used to calculate and display how many minutes it takes to read individual blog posts.
 - [remark-directive](https://github.com/remarkjs/remark-directive) + [remark-directive-sugar](https://github.com/lin-stephanie/remark-directive-sugar): Used to add new Markdown syntax for images, video embeds, etc.
-- [rehype-external-links](https://docs.astro.build/en/recipes/external-links/): Used to automatically add the little arrow next to external links on blog and wiki posts.
+- [rehype-external-links](https://docs.astro.build/en/recipes/external-links/): Used to automatically add the little arrow next to external links throughout the site.
+- [astro-embed](https://astro-embed.netlify.app/) for embedding YouTube videos, Bluesky posts, etc.
+- [isotope.js](https://isotope.metafizzy.co/layout) for grid layout in [Lifestream](/lifestream/).
 
 ## Third-Party Services
 
