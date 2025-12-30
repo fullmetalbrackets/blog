@@ -24,6 +24,11 @@ Explore all of the [slashpages](https://slashpages.net/) on this site below.
             <p>View blog posts by category.</p>
         </li>
         <li>
+            <a href="/changelog/">Changelog</a>
+            <hr>
+            <p>A log of major changes made to this site over the years.</p>
+        </li>
+        <li>
             <a href="/colophon/">Colophon</a>
             <hr>
             <p>How this site is made, with what tools, supporting what technologies, etc.</p>
