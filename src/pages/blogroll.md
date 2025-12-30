@@ -16,7 +16,7 @@ Last updated on <span class="important">December 23, 2025</span>
         <button>Chris Lu</button>
     </a>
     <a href="https://www.joshwcomeau.com/" target="_blank" rel="noopener noreferrer" data-umami-event="blogroll-jwcomeau">
-        <button>Josh W. Comeau</button>
+        <button>Josh Comeau</button>
     </a>
     <a href="https://kevinkipp.com/" target="_blank" rel="noopener noreferrer" data-umami-event="blogroll-kkipp">
         <button>Kevin Kipp</button>
