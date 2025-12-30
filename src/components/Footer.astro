@@ -46,7 +46,7 @@ import Top from '@icons/arrow-up.svg';
     font-family: var(--sub-font);
     font-weight: 500;
     font-size: 0.75em;
-    margin: 1em auto 0 auto;
+    margin: 0 auto;
   }
   nav button {
     width: 95px;
@@ -63,6 +63,13 @@ import Top from '@icons/arrow-up.svg';
   }
   nav a:active {
     color: var(--foot-active);
+  }
+  .nav-row-1 {
+    gap: 20em;
+    margin-top: -1.675em;
+  }
+  .nav-row-2 {
+    margin-top: 0.5em;
   }
   .legal {
     display: flex;
@@ -110,6 +117,10 @@ import Top from '@icons/arrow-up.svg';
     .copyright {
       margin: 1em auto 0 auto;
     }
+    .nav-row-1 {
+      gap: 1.35em;
+      margin-top: 0.5em;
+    }
   }
 </style>
 
@@ -137,7 +148,15 @@ import Top from '@icons/arrow-up.svg';
       <BuyMeCoffee height={25} width={25} />
     </a>
   </div>
-  <nav>
+  <nav class="nav-row-1">
+    <button>
+      <a href="/blog/">Blog</a>
+    </button>
+    <button>
+      <a href="/categories/">Categories</a>
+    </button>
+  </nav>
+  <nav class="nav-row-2">
     <button>
       <a href="/blogroll/">Blogroll</a>
     </button>
