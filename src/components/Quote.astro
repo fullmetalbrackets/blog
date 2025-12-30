@@ -27,11 +27,8 @@ const {
       </span>
     )}
   </blockquote>
-  <span class="icon">
-    <Icon width={24} height={24} />
-  </span>
 </div>
-<span class="date"><FormattedDate date={pubDate} /></span>
+<span class="info"><FormattedDate date={pubDate} /><Icon width={24} height={24} /></span>
 
 <style>
   .quote-card {
@@ -42,6 +39,13 @@ const {
     justify-content: center;
     place-items: center;
     gap: 0;
+    transition: transform 0.2s;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  .quote-card:hover {
+    transform: translateY(-4px);
   }
 
   blockquote p:first-of-type {
@@ -65,18 +69,21 @@ const {
     margin: 0;
     padding: 0;
   }
-  
-  .date {
-    display: block;
-    font-size: 0.875em;
-    margin: -1.25em 0 0 0.25em;
+
+  .info {
+    display: flex;
+    justify-content: space-between;
+    place-items: center;
+    font-size: 0.5em;
+    margin: -1.2em 0.15em 0 0.15em;
     padding: 0;
+    font-family: var(--sub-font);
+    font-size: 0.875em;
   }
 
-  .icon {
-    position: absolute;
+  .info svg {
     filter: var(--lifestream);
-    right: 0.25em;
-    bottom: 0.3em;
+    margin: 0 0.25em 0 0;
+    padding: 0;
   }
 </style>

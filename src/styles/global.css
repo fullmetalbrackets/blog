@@ -756,7 +756,7 @@ blockquote[data-type="warning"] a:hover {
   color: var(--warning-hover);
 }
 
-/* lifestream image override */
+/* lifestream */
 .lifestream-item img {
   width: 100% !important;
   max-width: 100% !important;
@@ -768,6 +768,36 @@ blockquote[data-type="warning"] a:hover {
 .lifestream-item > * {
   width: 100%;
   max-width: 100%;
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutToLeft {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+}
+
+.lifestream-item {
+  animation: slideInFromRight 0.3s ease forwards;
+}
+
+.lifestream-item.hiding {
+  animation: slideOutToLeft 0.3s ease forwards;
 }
 
 /* utility classes */

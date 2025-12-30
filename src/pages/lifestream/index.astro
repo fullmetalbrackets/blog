@@ -116,12 +116,11 @@ const desc = "A chronicle of things I've experienced, enjoyed or learned from"
   );
 
   let msnry: Masonry | null = null;
-  let iso: any = null; // We'll use Isotope instead
+  let iso: any = null;
   
   async function initMasonry() {
     if (!grid) return;
     
-    // Dynamically import Isotope (better for filtering than Masonry)
     const Isotope = (await import('isotope-layout')).default;
     
     iso = new Isotope(grid, {
@@ -130,7 +129,7 @@ const desc = "A chronicle of things I've experienced, enjoyed or learned from"
       masonry: {
         gutter: 32
       },
-      transitionDuration: '0.3s',
+      transitionDuration: 0,
       hiddenStyle: {
         opacity: 0
       },
@@ -139,7 +138,6 @@ const desc = "A chronicle of things I've experienced, enjoyed or learned from"
       }
     });
 
-    // Wait for images
     imagesLoaded(grid, () => {
       if (iso) {
         iso.layout();
@@ -152,16 +150,24 @@ const desc = "A chronicle of things I've experienced, enjoyed or learned from"
     
     const items = grid.querySelectorAll<HTMLElement>('.lifestream-item');
     let visibleCount = 0;
+    const itemsToHide: HTMLElement[] = [];
+    const itemsToShow: HTMLElement[] = [];
     
-    // Count visible items
     items.forEach(item => {
       const itemType = item.dataset.type as FilterType;
-      if (activeFilters.has(itemType)) {
+      const shouldBeVisible = activeFilters.has(itemType);
+      const isCurrentlyVisible = item.style.display !== 'none';
+      
+      if (shouldBeVisible) {
         visibleCount++;
+        if (!isCurrentlyVisible) {
+          itemsToShow.push(item);
+        }
+      } else if (isCurrentlyVisible) {
+        itemsToHide.push(item);
       }
     });
     
-    // Update empty state
     if (emptyState) {
       if (visibleCount === 0) {
         emptyState.style.display = 'block';
@@ -170,20 +176,33 @@ const desc = "A chronicle of things I've experienced, enjoyed or learned from"
       }
     }
 
-    // Filter with Isotope
-    if (activeFilters.size === 0) {
-      iso.arrange({ filter: () => false });
-    } else {
-      iso.arrange({
-        filter: function(itemElem: HTMLElement) {
-          const itemType = itemElem.dataset.type as FilterType;
-          return activeFilters.has(itemType);
-        }
+    itemsToHide.forEach(item => {
+      item.classList.add('hiding');
+    });
+    
+    setTimeout(() => {
+      itemsToHide.forEach(item => {
+        item.style.display = 'none';
+        item.classList.remove('hiding');
       });
-    }
+      
+      itemsToShow.forEach(item => {
+        item.style.display = '';
+      });
+      
+      if (activeFilters.size === 0) {
+        iso.arrange({ filter: () => false });
+      } else {
+        iso.arrange({
+          filter: function(itemElem: HTMLElement) {
+            const itemType = itemElem.dataset.type as FilterType;
+            return activeFilters.has(itemType);
+          }
+        });
+      }
+    }, 250);
   }
 
-  // Filter button handlers
   filterButtons.forEach(button => {
     button.addEventListener('click', () => {
       const filterType = button.dataset.filter as FilterType;
@@ -203,7 +222,6 @@ const desc = "A chronicle of things I've experienced, enjoyed or learned from"
     });
   });
 
-  // Keyboard support
   filterButtons.forEach(button => {
     button.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
@@ -213,14 +231,12 @@ const desc = "A chronicle of things I've experienced, enjoyed or learned from"
     });
   });
 
-  // Initialize
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initMasonry);
   } else {
     initMasonry();
   }
 
-  // Resize handler
   let resizeTimer: number;
   window.addEventListener('resize', () => {
     clearTimeout(resizeTimer);
@@ -233,7 +249,6 @@ const desc = "A chronicle of things I've experienced, enjoyed or learned from"
 </script>
 
 <script>
-  // Toggle tooltip on click for mobile
   const infoButton = document.querySelector('.info-button');
   
   if (infoButton) {
@@ -242,14 +257,12 @@ const desc = "A chronicle of things I've experienced, enjoyed or learned from"
       infoButton.classList.toggle('active');
     });
 
-    // Close when clicking outside
     document.addEventListener('click', (e) => {
       if (!infoButton.contains(e.target as Node)) {
         infoButton.classList.remove('active');
       }
     });
 
-    // Close on Escape key
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         infoButton.classList.remove('active');
@@ -323,7 +336,7 @@ const desc = "A chronicle of things I've experienced, enjoyed or learned from"
     margin: 0 auto;
     padding: 0;
     overflow: hidden;
-    z-index: 25;
+    z-index: 10;
   }
 
   .lifestream-item {
@@ -334,28 +347,11 @@ const desc = "A chronicle of things I've experienced, enjoyed or learned from"
     overflow-x: hidden;
     overflow-y: visible;
     padding-top: 1em;
-    transition: transform 0.2s;
-    z-index: 50;
   }
   
   .lifestream-item * {
     max-width: 100%;
     box-sizing: border-box;
-  }
-
-  .lifestream-item:hover {
-    transform: translateY(-4px);
-  }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
   }
   
   .empty-state {
@@ -408,7 +404,6 @@ const desc = "A chronicle of things I've experienced, enjoyed or learned from"
     left: 50%;
     transform: translateX(-50%);
     background-color: rgb(from var(--blockquote, var(--blockquote)) r g b / 0.875);
-    /* background: var(--blockquote); */
     border: 1px solid var(--blockquote);
     border-radius: 2em;
     padding: 1rem;
@@ -426,7 +421,6 @@ const desc = "A chronicle of things I've experienced, enjoyed or learned from"
     -webkit-backdrop-filter: blur(0.25em);
   }
 
-  /* Arrow pointing up */
   .tooltip::before {
     content: '';
     position: absolute;
@@ -458,20 +452,17 @@ const desc = "A chronicle of things I've experienced, enjoyed or learned from"
     border-color: var(--info);
   }
 
-  /* Show on hover (desktop) */
   .info-button:hover .tooltip,
   .info-button:focus .tooltip {
     opacity: 1;
     visibility: visible;
   }
 
-  /* Show on click (mobile) */
   .info-button.active .tooltip {
     opacity: 1;
     visibility: visible;
   }
 
-  /* Responsive positioning */
 @media (max-width: 768px) {
   .tooltip {
     left: 50%;

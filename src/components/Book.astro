@@ -34,7 +34,7 @@ const isAboveFold = index < 6;
   <div class="book-info">
     <h3 class="book-title">{title}</h3>
     {author && <p class="book-author"><span class="written">Written by</span> {author}</p>}
-    <p class="info">
+    <p class="pub-info">
       <span><span>Published</span> <time datetime={startDate.toISOString()}>
         {startDate.toLocaleDateString('en-US', { 
           year: 'numeric', 
@@ -60,11 +60,8 @@ const isAboveFold = index < 6;
       )}
     </div>
   </div>
-  <span class="icon">
-    <Icon width={36} height={36} />
-  </span>
 </div>
-<span class="date"><FormattedDate date={pubDate} /></span>
+<span class="info"><FormattedDate date={pubDate} /><Icon width={32} height={32} /></span>
 
 <style>
   .book-card {
@@ -73,8 +70,13 @@ const isAboveFold = index < 6;
     overflow: hidden;
     border: 1px solid transparent;
     width: 100%;
+    transition: transform 0.2s;
   }
   
+  .book-card:hover {
+    transform: translateY(-4px);
+  }
+
   .book-info {
     padding: 1rem;
   }
@@ -99,12 +101,6 @@ const isAboveFold = index < 6;
     margin: 0;
     font-size: 0.75rem;
     color: var(--secondary)
-  }
-
-  .date {
-    display: block;
-    font-size: 0.875em;
-    margin: 0.25em 0 0 0.25em;
   }
   
   .external-link {
@@ -133,13 +129,6 @@ const isAboveFold = index < 6;
     font-weight: 700;
   }
 
-  .icon {
-    position: absolute;
-    filter: var(--lifestream);
-    right: 0.2em;
-    bottom: 0.05em;
-  }
-
   img {
     width: 100%;
     height: auto;
@@ -153,27 +142,44 @@ const isAboveFold = index < 6;
     justify-content: space-between;
     place-items: center;
     font-size: 0.5em;
+    margin: 0 0 0 0.15em;
+    padding: 0;
+    font-family: var(--sub-font);
+    font-size: 0.875em;
+  }
+
+  .info svg {
+    filter: var(--lifestream);
+    margin: 0 0.25em 0 0;
+    padding: 0;
+  }
+  
+  .pub-info {
+    display: flex;
+    justify-content: space-between;
+    place-items: center;
+    font-size: 0.5em;
     margin: 0;
     padding: 0;
     font-family: var(--sub-font);
   }
 
-  .info span {
+  .pub-info span {
     color: var(--primary);
     font-style: italic;
   }
 
-  .info span span, .book-author .written {
+  .pub-info span span, .book-author .written {
     color: var(--text)    
   }
 
-  .info .isbn {
+  .pub-info .isbn {
     display: block;
     color: var(--emphasis);
     font-style: normal;
   }
 
-  .info .isbn-number {
+  .pub-info .isbn-number {
     font-weight: 700;
     font-style: normal;
     color: var(--secondary);

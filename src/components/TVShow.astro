@@ -68,11 +68,8 @@ const isAboveFold = index < 6;
       )}
     </div>
   </div>
-  <span class="icon">
-    <Icon width={36} height={36} />
-  </span>
 </div>
-<span class="date"><FormattedDate date={pubDate} /></span>
+<span class="info"><FormattedDate date={pubDate} /><Icon width={32} height={32} /></span>
 
 <style>
   .date {
@@ -113,11 +110,21 @@ const isAboveFold = index < 6;
     border-color: var(--border);
   }
 
-  .icon {
-    position: absolute;
+  .info {
+    display: flex;
+    justify-content: space-between;
+    place-items: center;
+    font-size: 0.5em;
+    margin: 0 0.15em;
+    padding: 0;
+    font-family: var(--sub-font);
+    font-size: 0.875em;
+  }
+
+  .info svg {
     filter: var(--lifestream);
-    right: 0.2em;
-    bottom: 0.1em;
+    margin: 0 0.25em 0 0;
+    padding: 0;
   }
   
   .note {
@@ -136,6 +143,8 @@ const isAboveFold = index < 6;
     font-size: 0.75rem;
     font-weight: 600;
     text-transform: uppercase;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
   }
   
   .status-badge.in-progress {
@@ -153,8 +162,16 @@ const isAboveFold = index < 6;
     border-radius: 0.5em;
     overflow: hidden;
     width: 100%;
+    transition: transform 0.2s;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
   }
   
+  .tvshow-card:hover {
+    transform: translateY(-4px);
+    z-index: 15;
+  }
+
   .tvshow-poster {
     position: relative;
     width: 100%;

@@ -64,25 +64,33 @@ const isAboveFold = index < 6;
       )}
     </div>
   </div>
-  <span class="icon">
-    <Icon width={32} height={32} />
-  </span>
 </div>
-<span class="date"><FormattedDate date={pubDate} /></span>
+<span class="info"><FormattedDate date={pubDate} /><Icon width={28} height={28} /></span>
 
 <style>
-  .date {
-    display: block;
-    font-size: 0.875em;
-    margin: 0.25em 0 0 0.25em;
-  }
-  
   .external-link {
     margin-top: 0.75em;
     font-size: 0.875rem;
     text-align: right;
     font-family: var(--sub-font);
     font-weight: 500;
+  }
+
+  .info {
+    display: flex;
+    justify-content: space-between;
+    place-items: center;
+    font-size: 0.5em;
+    margin: 0.15em 0.15em 0 0.15em;
+    padding: 0;
+    font-family: var(--sub-font);
+    font-size: 0.875em;
+  }
+
+  .info svg {
+    filter: var(--lifestream);
+    margin: 0 0.25em 0 0;
+    padding: 0;
   }
 
   .genre {
@@ -103,18 +111,18 @@ const isAboveFold = index < 6;
     gap: 0.25em;
   }
 
-  .icon {
-    position: absolute;
-    filter: var(--lifestream);
-    right: 0.2em;
-    bottom: 0.1em;
-  }
-
   .movie-card {
     background: var(--code-bg);
     border-radius: 0.5em;
     overflow: hidden;
     width: 100%;
+    transition: transform 0.2s;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  .movie-card:hover {
+    transform: translateY(-4px);
   }
     
   .movie-info {
