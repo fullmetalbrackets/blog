@@ -1,0 +1,11 @@
+type: tvshow
+title: Stranger Things
+genre: ["sci-fi", "fantasy", "mystery"]
+pubDate: 2025-12-30
+startDate: 2016-07-15
+endDate: 2025-12-31
+inProgress: true
+seasons: 5
+note: It's almost time!
+image: ./_images/stranger-things.webp
+dbid: 66732
