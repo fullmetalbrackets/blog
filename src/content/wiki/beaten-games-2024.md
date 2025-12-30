@@ -5,6 +5,8 @@ pubDate: 2025-03-15
 tag: information
 ---
 
+Total: <span class="sub-font b">18</span>
+
 - Deus Ex: Human Revolution
 - Dishonored
 - Doom Eternal + DLCs
@@ -23,3 +25,5 @@ tag: information
 - Resident Evil 2 (remake)
 - XCOM: Enemy Within
 - XCOM 2
+
+Notes: *This is more than my average.*
