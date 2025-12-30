@@ -68,7 +68,7 @@ const lifestream = defineCollection({
 		developer: z.string().optional(),
 		completed: z.boolean().default(true),
 		// tvshows
-		inProgress: z.boolean().optional(),
+		inProgress: z.boolean().optional().default(false),
 		current: z.boolean().optional(),
 		seasons: z.number().max(99).optional(),
 		// youtube
