@@ -135,7 +135,7 @@ import Search from '@icons/search.svg';
     right: 0;
     background-color: rgb(from var(--code-bg, var(--code-bg)) r g b / 0.75);
     min-width: 148px;
-    z-index: 1;
+    z-index: 1000;
     border-radius: 0.5em;
     padding: 0;
     backdrop-filter: blur(0.2em);
@@ -217,6 +217,7 @@ import Search from '@icons/search.svg';
       </span>
       <div class="dropdown-content">
         <HeaderLink href="/wiki/" rel="prefetch-intent" aria-label="Wiki" data-umami-event="nav-wiki">Wiki</HeaderLink>
+        <HeaderLink href="/changelog/" rel="prefetch-intent" aria-label="Changelog" data-umami-event="nav-changelog">Changelog</HeaderLink>
         <HeaderLink href="/colophon/" rel="prefetch-intent" aria-label="Colophon" data-umami-event="nav-colophon">Colophon</HeaderLink>
         <HeaderLink href="/blogroll/" rel="prefetch-intent" aria-label="Blogroll" data-umami-event="nav-blogroll">Blogroll</HeaderLink>
         <HeaderLink href="/lifestream/" rel="prefetch-intent" aria-label="Lifestream" data-umami-event="nav-lifestream">Lifestream</HeaderLink>
