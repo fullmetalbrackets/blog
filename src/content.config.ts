@@ -55,6 +55,7 @@ const lifestream = defineCollection({
 		publisher: z.string().optional(),
 		platform: z.array(z.string()).optional(),
 		image: image().optional(),
+		dbid: z.number().optional(),
 		// notes
 		tag: z.string().optional(),
 		// movies
