@@ -20,7 +20,7 @@ const {
   pubDate, 
   startDate, 
   genre,
-  url 
+  dbid 
 } = Astro.props;
 
 const isAboveFold = index < 6;
@@ -57,9 +57,9 @@ const isAboveFold = index < 6;
     </span>}
     {note && <p class="note">{note}</p>}
     <div class="external-link">
-      {url && (
-        <a href={url} target="_blank" rel="noopener noreferrer" aria-label="external link">
-          More from this director
+      {dbid && (
+        <a href={`https://www.themoviedb.org/movie/${dbid}`} target="_blank" rel="noopener noreferrer" aria-label="external link">
+          The Movie DB
         </a>
       )}
     </div>
