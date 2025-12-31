@@ -1,4 +1,5 @@
 ---
+import BackToTop from "@components/BackToTop.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
 
 const title = "Search";
@@ -27,8 +28,9 @@ const title = "Search";
   <section>
     <h1 class="title">{title}</h1>
     <hr class="top-line" />
-    <p>Use the search field below to search for blog posts.</p>
-
+    <p>
+      Use this page to search for blog posts. Or, see posts <a href="/categories/" rel="prefetch-intent">by category</a> or <a href="/blog/years/" rel="prefetch-intent">by year</a>.
+    </p>
     <script
       is:inline src="/pagefind/pagefind-ui.js"
       type="text/javascript"
@@ -65,6 +67,7 @@ const title = "Search";
     </script>
 
     <br /><br />
-    <hr class="foot-line" />
+    <hr />
+    <BackToTop />
   </section>
 </BaseLayout>

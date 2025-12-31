@@ -12,7 +12,7 @@ const posts = (await getCollection("wiki")).sort((a, b) => {
 });
 
 const title = "Wiki";
-const desc = "List of all wiki articles";
+const desc = "List of all wikis";
 ---
 
 <style scoped>
@@ -27,9 +27,8 @@ const desc = "List of all wiki articles";
     font-size: 1em;
   }
   li {
-    margin: 0 auto;
-    padding-bottom: 0.25em;
-    margin-bottom: 2em;
+    margin: 0 auto 1em auto;
+    padding: 0;
   }
   button {
     margin-bottom: 0.25em;
@@ -82,7 +81,7 @@ const desc = "List of all wiki articles";
     <h1>{title}</h1>
     <hr />
     <p>
-      This is a place for things that don't make sense as a blog post. Random notes, homelab documentation, etc. Mostly for my own reference, might not be of much use to anyone else.
+      This is a place for things that don't make sense as a blog post. Random notes, homelab documentation, etc.
     </p>
     <ul>
       {

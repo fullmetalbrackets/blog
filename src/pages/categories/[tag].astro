@@ -91,10 +91,6 @@ const { tag, posts } = Astro.props;
   li {
     display: inline-block;
     margin: 0 auto;
-    margin-bottom: 2em;
-  }
-  li:last-of-type {
-    margin-bottom: 0;
   }
   div {
     display: block;
@@ -104,6 +100,19 @@ const { tag, posts } = Astro.props;
   p {
     margin: 0 auto 0.125em auto;
     padding: 0 auto;
+  }
+  .years {
+    margin: 1em auto;
+  }
+  .years a {
+    font-family: var(--sub-font);
+    font-weight: 700;
+    font-size: 0.9em;
+  }
+  .back {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1em;
   }
   button {
     margin: 0 0.175em;
@@ -144,10 +153,6 @@ const { tag, posts } = Astro.props;
     color: var(--hover);
     transition: all .25s ease-out;
   }
-  .back {
-    margin-top: 0;
-    font-size: 1.35em;
-  }
   @media (hover: hover) {
     li:hover button {
       box-shadow: -4px -4px 0 #000;
@@ -157,11 +162,6 @@ const { tag, posts } = Astro.props;
       outline-offset: 1px;
     }
   }
-  @media screen and (max-width: 667px) {
-    .back {
-      margin: 0 0 1em 0;
-    }
-  }
 </style>
 
 <BaseLayout title={`${tag}`}>
@@ -169,7 +169,16 @@ const { tag, posts } = Astro.props;
     <h1>Posts about <span class="tag">{`${tag}`}</span></h1>
     <hr />
     <p class="back">
-      <a href="/categories/" rel="prefetch-intent">↩ Back to Categories</a>
+      <a href="/categories/" rel="prefetch-intent">↩ Categories</a>
+      <a href="/blog/" rel="prefetch-intent">All posts ↪</a>
+    </p>
+    <p class="years">
+      Alternately, see posts by year:&nbsp;
+      <a href="/blog/years/2025/">2025</a>&nbsp;
+      <a href="/blog/years/2024/">2024</a>&nbsp;
+      <a href="/blog/years/2023/">2023</a>&nbsp;
+      <a href="/blog/years/2022/">2022</a>&nbsp;
+      <a href="/blog/years/2021/">2021</a>
     </p>
     <ul>
       {
