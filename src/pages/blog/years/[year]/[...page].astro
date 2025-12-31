@@ -3,49 +3,51 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import { getCollection, render, type CollectionEntry, type InferEntrySchema, type RenderedContent } from "astro:content";
 import FormattedDate from "@components/FormattedDate.astro";
 import ReadingTime from "@components/ReadingTime.astro";
+import Link from "@components/Link.astro";
 import BackToTop from "@components/BackToTop.astro";
-import type { Page } from "astro";
+import type { Page, GetStaticPaths } from "astro";
 
-export async function getStaticPaths({ paginate }) {
-  const posts = (await getCollection("blog")).sort(
-    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-  );
-  
-  const pages = paginate(posts, { pageSize: 5 });
-  
-  return await Promise.all(
-    pages.map(async (page: { props: { page: { data: any[]; }; }; }) => {
-      const postsWithReadingTime = await Promise.all(
-        page.props.page.data.map(async (post: { id: string; body?: string; collection: "blog"; data: InferEntrySchema<"blog">; rendered?: RenderedContent; filePath?: string; } | { id: string; body?: string; collection: "links"; data: InferEntrySchema<"links">; rendered?: RenderedContent; filePath?: string; } | { id: string; body?: string; collection: "wiki"; data: InferEntrySchema<"wiki">; rendered?: RenderedContent; filePath?: string; }) => {
-          const { remarkPluginFrontmatter } = await render(post);
-          return {
-            ...post,
-            readingTime: remarkPluginFrontmatter.readingTime
-          };
-        })
-      );
-      
-      return {
-        ...page,
-        props: {
-          page: {
-            ...page.props.page,
-            data: postsWithReadingTime
-          }
-        }
-      };
-    })
-  );
+function getReadingTime(content: string | undefined): string {
+  if (!content) return '0 min read';
+  const wordsPerMinute = 200;
+  const words = content.trim().split(/\s+/).length;
+  const minutes = Math.ceil(words / wordsPerMinute);
+  return `${minutes} min read`;
 }
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const allPosts = await getCollection('blog');
+  
+  const sortedPosts = allPosts.sort((a, b) => 
+    new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
+  );
+  
+  const postsByYear = sortedPosts.reduce((acc, post) => {
+    const year = new Date(post.data.pubDate).getFullYear().toString();
+    if (!acc[year]) {
+      acc[year] = [];
+    }
+    acc[year].push(post);
+    return acc;
+  }, {} as Record<string, typeof allPosts>);
+  
+  return Object.entries(postsByYear).flatMap(([year, posts]) => {
+    return paginate(posts, {
+      params: { year },
+      pageSize: 10,
+    });
+  });
+}) satisfies GetStaticPaths;
 
 interface Props {
   page: Page<CollectionEntry<'blog'> & { readingTime: string }>;
 }
 
 const { page } = Astro.props;
+const { year } = Astro.params;
 
-const title = `Blog Posts - Page ${page.currentPage} of ${page.lastPage}`;
-const desc = "List of all blog posts";
+const title = `Blog Posts - ${year}`;
+const desc = `A list of blog posts written in ${year}`;
 ---
 
 <style scoped>
@@ -87,16 +89,30 @@ const desc = "List of all blog posts";
     border-bottom: 2px solid transparent;
   }
   p {
-    margin: 0 auto;
+    margin: 0 auto 0.125em auto;
     padding: 0 auto;
   }
   .years {
-    margin: 1em auto;
+    margin: 1em auto 2em;
   }
   .years a {
     font-family: var(--sub-font);
     font-weight: 700;
     font-size: 0.9em;
+    margin-right: 0.5em;
+    border-bottom: 1px solid transparent;
+  }
+  .years span.active {
+    font-family: var(--sub-font);
+    font-weight: 900;
+    font-size: 0.9em;
+    color: var(--primary);
+    margin-right: 0.5em;
+    border-bottom: 1px solid var(--primary);
+  }
+  .back {
+    display: flex;
+    justify-content: space-between;
   }
   button {
     margin: 0 0.175em;
@@ -202,7 +218,6 @@ const desc = "List of all blog posts";
   .bottom-line {
     margin-top: 2em;
   }
-
   @keyframes wiggle {
     0%, 100% { transform: rotate(0deg); }
     25% { transform: rotate(-5deg); }
@@ -218,6 +233,9 @@ const desc = "List of all blog posts";
   @media screen and (max-width: 667px) {
     section {
       line-height: 1.2;
+    }
+    .years {
+      margin-bottom: 1em;
     }
     .info {
       display: block;
@@ -245,58 +263,19 @@ const desc = "List of all blog posts";
 
 <BaseLayout title={title} description={desc}>
   <section>
-    <h1>Blog</h1>
+    <h1>Blog Posts - {year}</h1>
     <hr />
-    <p class="blurb">
-      <span>
-        List of all <span class="total">{page.total}</span> blog posts. Alternatively, <a href="/categories/" rel="prefetch-intent" data-umami-event="blog-category">see posts by category</a> or <a href="/search/" rel="prefetch-intent" data-umami-event="blog-search">search the blog</a>.
-      </span>
-      <p class="years">
-        See posts by year:&nbsp;
-        <a href="/blog/years/2025/">2025</a>&nbsp;
-        <a href="/blog/years/2024/">2024</a>&nbsp;
-        <a href="/blog/years/2023/">2023</a>&nbsp;
-        <a href="/blog/years/2022/">2022</a>&nbsp;
-        <a href="/blog/years/2021/">2021</a>
-      </p>
-      <span class="rss">RSS Feed: 
-        <a href="/rss.xml" rel="prefetch-intent">
-          <svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="vertical-align: text-bottom; width: 1.325em; height: 1.325em;" class="pr-1" id="RSSicon" viewBox="0 0 256 256">
-            <title>RSS Feed</title>
-            <defs>
-              <linearGradient x1="0.085" y1="0.085" x2="0.915" y2="0.915" id="RSSg">
-                <stop  offset="0.0" stop-color="#E3702D"/><stop  offset="0.1071" stop-color="#EA7D31"/>
-                <stop  offset="0.3503" stop-color="#F69537"/><stop  offset="0.5" stop-color="#FB9E3A"/>
-                <stop  offset="0.7016" stop-color="#EA7C31"/><stop  offset="0.8866" stop-color="#DE642B"/>
-                <stop  offset="1.0" stop-color="#D95B29"/>
-              </linearGradient>
-            </defs>
-            <rect width="256" height="256" rx="55" ry="55" x="0"  y="0"  fill="#CC5D15"/>
-            <rect width="246" height="246" rx="50" ry="50" x="5"  y="5"  fill="#F49C52"/>
-            <rect width="236" height="236" rx="47" ry="47" x="10" y="10" fill="url(#RSSg)"/>
-            <circle cx="68" cy="189" r="24" fill="#FFF"/>
-            <path d="M160 213h-34a82 82 0 0 0 -82 -82v-34a116 116 0 0 1 116 116z" fill="#FFF"/>
-            <path d="M184 213A140 140 0 0 0 44 73 V 38a175 175 0 0 1 175 175z" fill="#FFF"/>
-          </svg>
-        </a>
-      </span>
+    <p class="back">
+      <a href="/blog/" rel="prefetch-intent">↩ Back to Blog</a>
+      <a href="/categories/" rel="prefetch-intent">Categories ↪</a>
     </p>
-    <div class="page-info-top">Page {page.currentPage} of {page.lastPage}</div>
-    <nav class="pagination" aria-label="Blog pagination">
-      <span class="prev">
-        {page.url.prev ? (
-          <a href={page.url.prev} rel="prefetch-intent prev">↖ Newer</a>
-        ) : (
-          <span></span>
-        )}
-      </span>
-      <span class="next">
-        {page.url.next ? (
-          <a href={page.url.next} rel="prefetch-intent next">Older ↘</a>
-        ) : (
-          <span></span>
-        )}
-      </span>
+    <nav class="years">
+      See more years:&nbsp;
+      <Link href="/blog/years/2025/" rel="prefetch-intent" aria-label="2025">2025</Link>
+      <Link href="/blog/years/2024/" rel="prefetch-intent" aria-label="2024">2024</Link>
+      <Link href="/blog/years/2023/" rel="prefetch-intent" aria-label="2023">2023</Link>
+      <Link href="/blog/years/2022/" rel="prefetch-intent" aria-label="2022">2022</Link>
+      <Link href="/blog/years/2021/" rel="prefetch-intent" aria-label="2021">2021</Link>
     </nav>
     <ul>
       {
@@ -312,7 +291,7 @@ const desc = "List of all blog posts";
                 </p>
                 <p class="info">
                   <FormattedDate date={post.data.pubDate} />&nbsp;
-                  <span class="reading"><ReadingTime time={post.readingTime} /></span>
+                  <span class="reading"><ReadingTime time={getReadingTime(post.body)} /></span>
                 </p>
                 <p class="desc">{post.data.description}</p>
               </a>
@@ -321,24 +300,6 @@ const desc = "List of all blog posts";
         ))
       }
     </ul>
-    
-    <div class="page-info">Page {page.currentPage} of {page.lastPage}</div>
-    <nav class="pagination" aria-label="Blog pagination">
-      <span class="prev">
-        {page.url.prev ? (
-          <a href={page.url.prev} rel="prefetch-intent prev">↖ Newer</a>
-        ) : (
-          <span></span>
-        )}
-      </span>
-      <span class="next">
-        {page.url.next ? (
-          <a href={page.url.next} rel="prefetch-next">Older ↘</a>
-        ) : (
-          <span></span>
-        )}
-      </span>
-    </nav>
     <hr class="bottom-line" />
     <BackToTop />
   </section>
