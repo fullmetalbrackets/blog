@@ -870,6 +870,11 @@ blockquote[data-type="warning"] a:hover {
   place-items: center;
 }
 
+.space-between {
+  display: flex;
+  justify-content: space-between;
+}
+
 .grid-col {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -926,6 +931,26 @@ blockquote[data-type="warning"] a:hover {
 }
 .w9 {
   font-weight: 900;
+}
+
+.v25-min {
+  min-height: 25vh;
+}
+.v50-min {
+  min-height: 50vh;
+}
+.v75-min {
+  min-height: 75vh;
+}
+.v100-min {
+  min-height: 100vh;
+}
+
+.mb2 {
+  margin-bottom: 2em;
+}
+.mb4 {
+  margin-bottom: 4em;
 }
 
 .no-list {
