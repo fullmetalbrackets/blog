@@ -96,9 +96,13 @@ A log of major changes made to my site over the years. For more granular details
 
 ## The before-fore times...
 
-### 2022-09-20
+### 2022-09-19
 
 - Old blog is archived
+
+### 2022-08-31
+
+- [First blog post.](/blog/sideload-the-directv-stream-app-on-sony-bravia-tv-with-android-tv/)
 
 ### 2021-08-30
 
