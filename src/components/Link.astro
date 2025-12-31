@@ -1,0 +1,34 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"a">;
+
+const { href, class: className, ...props } = Astro.props;
+
+const { pathname } = Astro.url;
+
+// Normalize both URLs by removing trailing slashes
+const normalizedPathname = pathname.replace(/\/$/, "");
+const hrefString = typeof href === 'string' ? href : href?.toString() || "";
+const normalizedHref = hrefString.replace(/\/$/, "");
+
+// Check if current page matches this link
+const isActive = normalizedPathname === normalizedHref;
+---
+
+{isActive ? (
+  <span class:list={[className, "active"]} {...props}>
+    <slot />
+  </span>
+) : (
+  <a href={href} class:list={[className]} {...props}>
+    <slot />
+  </a>
+)}
+
+<style>
+  a {
+    display: inline-block;
+    text-decoration: none;
+  }
+</style>
