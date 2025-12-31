@@ -3,6 +3,7 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import BackToTop from "@components/BackToTop.astro";
 
 const { frontmatter } = Astro.props;
+const showTop = frontmatter.showTop !== false;
 ---
 
 <BaseLayout title={frontmatter.title} description={frontmatter.description}>
@@ -25,6 +26,9 @@ const { frontmatter } = Astro.props;
     .bottom-line {
       margin: 2em auto 1.5em auto;
     }
+    .years {
+      margin: 1em auto;
+    }
   </style>
 
   <article>
@@ -38,8 +42,10 @@ const { frontmatter } = Astro.props;
       </p>
     </slot>
   </article>
-  <hr class="bottom-line" />
-  <BackToTop />
+    {showTop && 
+      <hr class="bottom-line" />
+      <BackToTop />
+    }
   <script is:inline>
     document.querySelectorAll('blockquote').forEach((blockquote) => {
       const firstPara = blockquote.querySelector('p');
