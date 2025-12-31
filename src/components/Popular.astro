@@ -6,10 +6,10 @@ import { getCollection, render } from 'astro:content';
 const allPosts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 const popularPosts = [
-  'upgrade-debian-12-bookworm-debian-13-trixie',
   'plex-remote-access-tailscale', 
-  'reverse-proxy-using-nginx-adguardhome-cloudflare',
+  'upgrade-debian-12-bookworm-debian-13-trixie',
   'comprehensive-guide-tailscale-securely-access-home-network',
+  'reverse-proxy-using-nginx-adguardhome-cloudflare',
   'how-i-setup-home-server',
 ];
 
@@ -29,6 +29,10 @@ const selectedPosts = await Promise.all(
 ---
 
 <style scoped>
+  section {
+    margin: 0 auto;
+    padding: 0;
+  }
   h2 {
     margin-bottom: 0.3em;
     font-family: var(--sub-font);
@@ -158,7 +162,6 @@ const selectedPosts = await Promise.all(
               <FormattedDate date={post.data.pubDate} />&nbsp;
               <span class="reading"><ReadingTime time={post.readingTime} /></span>
             </p>
-            <p class="desc">{post.data.description}</p>
           </a>
         </div>
 

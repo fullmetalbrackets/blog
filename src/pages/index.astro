@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 import SocialLinks from "@components/SocialLinks.astro";
+import PostsColumns from "@components/PostsColumns.astro";
 import Popular from "@components/Popular.astro";
 import Categories from "@components/Categories.astro";
 import RecentPosts from "@components/RecentPosts.astro";
@@ -15,6 +16,12 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "@consts";
   }
   div {
     padding-top: 0.5em;
+  }
+  .column-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1em;
+    margin-top: 1rem;
   }
   .about {
     text-shadow: 2px 3px 2px var(--accent);
@@ -38,13 +45,13 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "@consts";
     margin-top: 1.5em;
     text-align: justify;
   }
-  @media screen and (min-width: 668px) and (max-width: 1048px) {
-    .about {
-      font-size: 2.45em;
+  @media screen and (max-width: 992px) {
+    .column-item {
+      grid-template-columns: auto;
     }
   }
-  @media screen and (min-width: 200px) and (max-width: 667px) {
-    section {
+  @media screen and (max-width: 667px) {
+      section {
       font-size: 0.925em;
       margin-bottom: 1em;
       line-height: 1.2;
@@ -67,9 +74,19 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "@consts";
     </p>
     <SocialLinks />
     <Explore />
-    <Popular />
-    <Categories />
-    <RecentPosts />
-    <RecentLinks />
+    <div class="column-item">
+      <PostsColumns>
+        <Popular />
+      </PostsColumns>
+      <PostsColumns>
+        <RecentPosts />
+      </PostsColumns>
+      <PostsColumns>
+        <Categories />
+      </PostsColumns>
+      <PostsColumns>
+        <RecentLinks />
+      </PostsColumns>
+    </div>
   </section>
 </BaseLayout>
