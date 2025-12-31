@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import FormattedDate from "@components/FormattedDate.astro";
+import More from '@icons/arrow-right.svg';
 
 const links = (await getCollection("links")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
@@ -8,6 +9,10 @@ const links = (await getCollection("links")).sort(
 ---
 
 <style scoped>
+  section {
+    margin: 0 auto;
+    padding: 0;
+  }
   h2 {
     margin-bottom: 0.3em;
     font-family: var(--sub-font);
@@ -17,12 +22,18 @@ const links = (await getCollection("links")).sort(
     background-color: var(--blockquote);
     border-radius: 0.5em;
     margin: 0.5em auto 0 auto;
-    padding: 1.5em;
+    padding: 1.5em 1.5em 0.5em 1.5em;
+  }
+  .info {
+    display: flex;
+    place-items: center;
+    margin: 0;
+    padding: 0;
   }
   .list {
     display: flex;
     flex-direction: column;
-    margin: 0 auto 1em auto;
+    margin: 0 auto ;
     padding-bottom: 0.5em;
   }
   .title-link {
@@ -35,12 +46,6 @@ const links = (await getCollection("links")).sort(
     color: var(--hover);
     border-bottom: 2px solid var(--hover);
   }
-  .tag {
-    margin-bottom: 0.25em;
-  }
-  .tag, .data {
-    font-size: 0.9em;
-  }
   .link-tag {
     font-family: var(--sub-font);
     background-color: var(--info);
@@ -49,21 +54,35 @@ const links = (await getCollection("links")).sort(
     border-radius: 0.25em;
     padding: 4px 8px;
     font-weight: 700;
-    font-size: 18px;
+    font-size: 0.625em;
     display: inline-block;
     transition: all 0.2s ease;
   }
   .more {
+    display: flex;
     font-family: var(--sub-font);
-    font-weight: 500;
+    font-weight: 900;
+    justify-content: end;
+    margin: -0.85em -1.25em -0.5em 0;
+    padding: 0.25em;
+  }
+  .more svg {
+    display: inline-flex;
+    place-content: center;
+    margin: 2px 0 -3px 0;
+    padding: 0;
+    filter: var(--svg2);
   }
   .more a {
-    border-bottom: 2px solid transparent;
+    color: var(--secondary);
   }
   .more a:hover {
-    color: var(--hover);
-    border-bottom: 2px solid var(--hover);
-    transition: all .5s ease-out;
+    color: var(--foot-link);
+    transform: 0.2;
+  }
+  .more a:hover svg {
+    transition: all .1s ease-out;
+    transform: translateX(4px);
   }
   
   @media (hover: hover) {
@@ -75,6 +94,9 @@ const links = (await getCollection("links")).sort(
   }
   
   @media screen and (max-width: 667px) {
+    .info {
+      display: block;
+    }
     .link-tag {
       font-size: 16.65px;
     }
@@ -92,14 +114,15 @@ const links = (await getCollection("links")).sort(
               {link.data.title}
             </a>
           </span>
-          <span class="info"><FormattedDate date={link.data.pubDate} />&nbsp;</span>
-          <span class="tag"><span class="link-tag">{link.data.tag}</span></span>
-          <span>{link.data.description}</span>
+          <span class="info"><FormattedDate date={link.data.pubDate} />&nbsp;
+            <span class="link-tag">{link.data.tag}</span>
+          </span>
+          {/* <span class="tag"></span> */}
         </div>
       ))
     }
-    <div class="more">
-      <a href="/links/" rel="prefetch-intent">Browse all links &rarr;</a>
-    </div>
+    <span class="more">
+      <a href="/links/" rel="prefetch-intent">MORE <More height={24} width={24} /></a>
+    </span>
   </div>
 </section>
