@@ -21,6 +21,14 @@ const desc = "Blog posts by category";
     font-family: var(--sub-font);
     font-weight: 900;
   }
+  p {
+    margin: 0 auto 1em auto;
+    padding: 0;
+  }
+  .back {
+    display: flex;
+    justify-content: space-between;
+  }
   ul {
     display: flex;
     justify-content: center;
@@ -53,9 +61,6 @@ const desc = "Blog posts by category";
     place-items: center;
     gap: 0.25em;
   }
-  p {
-    margin-bottom: 2em;
-  }
   @media screen and (max-width: 667px) {
     section {
       line-height: 1.2;
@@ -67,10 +72,13 @@ const desc = "Blog posts by category";
   <section>
     <h1>{title}</h1>
     <hr />
-    <p>
-      Click on categories below to see blog posts about that subject.
+    <p class="back">
+      <a href="/blog/" rel="prefetch-intent">↩ All posts</a>
+      <a href="/blog/years/" rel="prefetch-intent">Posts by year ↪</a>
     </p>
-
+    <p>
+      Click on categories below to see blog posts about that subject. Or go to the <a href="/blog/">blog</a>.
+    </p>
     <ul>
       {tags.map(({ tag, count }) => (
         <li>

@@ -62,14 +62,18 @@ const { tag, posts } = Astro.props;
     font-family: var(--sub-font);
     font-weight: 900;
   }
+  hr {
+    margin-bottom: 0.5em;
+  }
   .back {
-    justify-content: left;
+    justify-content: space-between;
     font-family: var(--sub-font);
     font-weight: 500;
-    margin: 0 0 1em 0;
+    margin: 0 auto;
     padding: 0;
   }
   .back a {
+    font-size: 24px;
     color: var(--link);
     border-bottom: 1px solid transparent;
   }
@@ -77,6 +81,7 @@ const { tag, posts } = Astro.props;
     color: var(--hover);
     border-bottom: 1px solid var(--hover);
     transition: all .25s ease-out;
+    margin: 0;
   }
   ul {
     list-style-type: none;
@@ -163,9 +168,9 @@ const { tag, posts } = Astro.props;
   <section>
     <h1>Posts about <span class="tag">{`${tag}`}</span></h1>
     <hr />
-    <aside class="back">
+    <p class="back">
       <a href="/categories/" rel="prefetch-intent">↩ Back to Categories</a>
-    </aside>
+    </p>
     <ul>
       {
         posts.map((post) => (
