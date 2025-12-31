@@ -946,6 +946,15 @@ blockquote[data-type="warning"] a:hover {
   min-height: 100vh;
 }
 
+.p0 {
+  padding: 0;
+}
+.m0 {
+  margin: 0;
+}
+.m0a {
+  margin: 0 auto;
+}
 .mb2 {
   margin-bottom: 2em;
 }

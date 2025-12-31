@@ -7,24 +7,94 @@ showTop: false
 
 Pick a year below to see only blog posts written that year.
 
-<div class="grid-col v25-min">
-    <a href="2025/">
-        <button>2025</button>
-    </a>
-    <a href="2024/">
-        <button>2024</button>
-    </a>
-    <a href="2023/">
-        <button>2023</button>
-    </a>
-    <a href="2022/">
-        <button>2022</button>
-    </a>
-    <a href="2021/">
-        <button>2021</button>
-    </a>
-</div>
+<style>
+ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    list-style-type: none;
+    margin: 2em auto;
+    padding: 0;
+    gap: 1em;
+  }
+  /* li {
+    margin: 0.25em;
+  } */
+  .label a {
+    color: #000
+  }
+  .count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.25em;
+    height: 1rem;
+    padding: 1px 0 0 0;
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 9999px;
+    font-family: var(--main-font);
+    font-size: 0.675em;
+  }
+  button {
+    display: flex;
+    place-items: center;
+    gap: 0.25em;
+  }
+</style>
 
+<ul>
+    <li>
+        <button>
+            <span class="label">
+                <a href="/blog/years/2025/" rel="prefetch-intent">2025</a>
+            </span>
+            <span class="count">
+                8
+            </span>
+        </button>
+    </li>
+    <li>
+        <button>
+            <span class="label">
+                <a href="/blog/years/2024/" rel="prefetch-intent">2024</a>
+            </span>
+            <span class="count">
+                12
+            </span>
+        </button>
+    </li>
+    <li>
+        <button>
+            <span class="label">
+                <a href="/blog/years/2023/" rel="prefetch-intent">2023</a>
+            </span>
+            <span class="count">
+                9
+            </span>
+        </button>
+    </li>
+    <li>
+        <button>
+            <span class="label">
+                <a href="/blog/years/2022/" rel="prefetch-intent">2022</a>
+            </span>
+            <span class="count">
+                27
+            </span>
+        </button>
+    </li>
+    <li>
+        <button>
+            <span class="label">
+                <a href="/blog/years/2021/" rel="prefetch-intent">2021</a>
+            </span>
+            <span class="count">
+                16
+            </span>
+        </button>
+    </li>
+</ul>
 <p class="space-between mb2">
     <a href="/blog/" rel="prefetch-intent">↩ All posts</a>
     <a href="/categories/" rel="prefetch-intent">Categories ↪</a>

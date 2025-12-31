@@ -1,11 +1,11 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
-import { getCollection, render, type CollectionEntry, type InferEntrySchema, type RenderedContent } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
 import FormattedDate from "@components/FormattedDate.astro";
 import ReadingTime from "@components/ReadingTime.astro";
 import Link from "@components/Link.astro";
 import BackToTop from "@components/BackToTop.astro";
-import type { Page, GetStaticPaths } from "astro";
+import type { GetStaticPaths } from "astro";
 
 function getReadingTime(content: string | undefined): string {
   if (!content) return '0 min read';
@@ -15,7 +15,7 @@ function getReadingTime(content: string | undefined): string {
   return `${minutes} min read`;
 }
 
-export const getStaticPaths = (async ({ paginate }) => {
+export const getStaticPaths = (async () => {
   const allPosts = await getCollection('blog');
   
   const sortedPosts = allPosts.sort((a, b) => 
@@ -31,20 +31,19 @@ export const getStaticPaths = (async ({ paginate }) => {
     return acc;
   }, {} as Record<string, typeof allPosts>);
   
-  return Object.entries(postsByYear).flatMap(([year, posts]) => {
-    return paginate(posts, {
-      params: { year },
-      pageSize: 10,
-    });
-  });
+  return Object.entries(postsByYear).map(([year, posts]) => ({
+    params: { year },
+    props: { posts }
+  }));
 }) satisfies GetStaticPaths;
 
 interface Props {
-  page: Page<CollectionEntry<'blog'> & { readingTime: string }>;
+  posts: CollectionEntry<'blog'>[];
 }
 
-const { page } = Astro.props;
+const { posts } = Astro.props;
 const { year } = Astro.params;
+const postCount = posts.length
 
 const title = `Blog Posts - ${year}`;
 const desc = `A list of blog posts written in ${year}`;
@@ -61,27 +60,14 @@ const desc = `A list of blog posts written in ${year}`;
     font-size: 0.95em;
     color: var(--emphasis)
   }
-  .rss {
-    display: flex;
-    place-items: center;
-    margin-top: 1em;
-    gap: 0.25em;
-    font-family: var(--sub-font);
-    color: var(--emphasis);
-    font-weight: 900;
-  }
   ul {
     list-style-type: none;
-    margin: 0 auto;
+    margin: 0 auto 2em auto;
     padding: 0;
   }
   li {
     display: inline-block;
     margin: 0 auto;
-    margin-bottom: 2em;
-  }
-  li:last-of-type {
-    margin-bottom: 0;
   }
   div {
     display: block;
@@ -175,61 +161,6 @@ const desc = `A list of blog posts written in ${year}`;
       outline-offset: 1px;
     }
   }
-  .page-info-top {
-    display: flex;
-    font-weight: 900;
-    margin: 1em auto -1.75em auto;
-    justify-content: space-around;
-    place-items: center;
-    font-family: var(--sub-font);
-    color: var(--primary);
-  }
-  .page-info {
-    display: flex;
-    font-weight: 500;
-    margin: 1em auto -1.75em auto;
-    justify-content: space-around;
-    place-items: center;
-    font-family: var(--sub-font);
-    font-weight: 900;
-    color: var(--primary);
-  }
-  .pagination {
-    display: grid;
-    justify-content: space-between;
-    font-family: var(--sub-font);
-    font-weight: 500;
-    margin: 0 0 1em 0;
-  }
-  .pagination a {
-    border-bottom: 2px solid transparent;
-  }
-  .pagination a:hover {
-    border-bottom: 2px solid var(--hover);
-  }
-  .prev {
-    grid-column: 1;
-    justify-content: start;
-  }
-  .next {
-    grid-column: 3;
-    justify-content: end;
-  }
-  .bottom-line {
-    margin-top: 2em;
-  }
-  @keyframes wiggle {
-    0%, 100% { transform: rotate(0deg); }
-    25% { transform: rotate(-5deg); }
-    75% { transform: rotate(5deg); }
-  }
-  .blurb svg:hover {
-    animation: wiggle 0.5s ease-in-out infinite;
-  }
-
-  .blurb svg:not(:hover) {
-    animation: none;
-  }
   @media screen and (max-width: 667px) {
     section {
       line-height: 1.2;
@@ -245,19 +176,6 @@ const desc = `A list of blog posts written in ${year}`;
     .tag button {
       margin: 0 0.25em 0.25em 0;
     }
-    .page-info-top {
-      font-size: 0.875em;
-      margin: 1.5em 0 -1.3em 0;
-      padding: 0;
-    }
-    .page-info {
-      font-size: 0.875em;
-      margin: 1.5em 0 -1.25em 0;
-      padding: 0.1em 0 0 0;
-    }
-    .pagination {
-      font-size: 0.875em;
-    }
   }
 </style>
 
@@ -270,7 +188,7 @@ const desc = `A list of blog posts written in ${year}`;
       <a href="/categories/" rel="prefetch-intent">Categories ↪</a>
     </p>
     <nav class="years">
-      See more years:&nbsp;
+      Showing <span class="total">{postCount}&nbsp;{postCount === 1 ? 'post' : 'posts'}</span> from <span class="total">{year}</span>. See more years:&nbsp;
       <Link href="/blog/years/2025/" rel="prefetch-intent" aria-label="2025">2025</Link>
       <Link href="/blog/years/2024/" rel="prefetch-intent" aria-label="2024">2024</Link>
       <Link href="/blog/years/2023/" rel="prefetch-intent" aria-label="2023">2023</Link>
@@ -279,7 +197,7 @@ const desc = `A list of blog posts written in ${year}`;
     </nav>
     <ul>
       {
-        page.data.map((post) => (
+        posts.map((post) => (
           <li>
             <div>
               <a href={`/blog/${post.id}/`} rel="prefetch-intent" data-umami-event={post.id}>
@@ -300,7 +218,7 @@ const desc = `A list of blog posts written in ${year}`;
         ))
       }
     </ul>
-    <hr class="bottom-line" />
+    <hr />
     <BackToTop />
   </section>
 </BaseLayout>
