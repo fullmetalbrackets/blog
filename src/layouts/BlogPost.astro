@@ -425,7 +425,7 @@ const selectedPosts = allPosts.filter(post =>
         ))}
       </span>
     </div>
-    <div class="info" data-pagefind-ignore>
+    <div class="info">
       <span><FormattedDate date={pubDate} /></span>
       <span class="readingtime"><ReadingTime time={readingTime} data-pagefind-ignore /></span>
     </div>
@@ -452,7 +452,7 @@ const selectedPosts = allPosts.filter(post =>
       </p>
     </slot>
 
-    <div class="related">
+    <div class="related" data-pagefind-ignore>
       <h3>Related Articles</h3>
       <ul>
         {selectedPosts.map(post => (

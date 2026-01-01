@@ -946,7 +946,6 @@ blockquote[data-type="warning"] a:hover {
   min-height: 100vh;
 }
 
-<<<<<<< HEAD
 .p0 {
   padding: 0;
 }
@@ -956,8 +955,6 @@ blockquote[data-type="warning"] a:hover {
 .m0a {
   margin: 0 auto;
 }
-=======
->>>>>>> 6a24bac13c11e3ccaab0120e41759f01a5ffb343
 .mb2 {
   margin-bottom: 2em;
 }
@@ -1064,7 +1061,7 @@ button {
 .pagefind-ui__message {
   font-family: var(--sub-font);
   font-weight: 900;
-  color: var(--emphasis);
+  color: var(--primary);
 }
 
 /* external link indicator */

@@ -3,6 +3,7 @@ import BackToTop from "@components/BackToTop.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
 
 const title = "Search";
+const desc = "Search the site for pages, posts and wikis."
 ---
 
 <style scoped>
@@ -24,12 +25,12 @@ const title = "Search";
   }
 </style>
 
-<BaseLayout title={title} description="Search for blog posts.">
+<BaseLayout title={title} description={desc}>
   <section>
     <h1 class="title">{title}</h1>
     <hr class="top-line" />
     <p>
-      Use this page to search for blog posts. Or, see posts <a href="/categories/" rel="prefetch-intent">by category</a> or <a href="/blog/years/" rel="prefetch-intent">by year</a>.
+      {desc}
     </p>
     <script
       is:inline src="/pagefind/pagefind-ui.js"
@@ -42,13 +43,12 @@ const title = "Search";
           {
             element: "#search",
             pageSize: 10,
-            excerptLength: 50,
             showImages: false,
             showSubResults: false,
             autofocus: true,
             translations: {
               placeholder: "Type your search…",
-              search_label: "Search for blog posts",
+              search_label: "Search the site",
               zero_results: "No result found for “[SEARCH_TERM]”.",
               many_results: "[COUNT] results found for “[SEARCH_TERM]”:",
               one_result: "[COUNT] result found for “[SEARCH_TERM]”:",
