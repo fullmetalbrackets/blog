@@ -1,0 +1,13 @@
+type: game
+title: Elden Ring
+developer: From Software
+publisher: Bandai Namco
+platform: ["PC", "PlayStation 4", "PlayStation 5"]
+genre: ["metroidvania", "action-adventure", "first-person"]
+pubDate: 2026-01-01
+startDate: 2022-02-25
+completed: true
+image: ./_images/elden-ring.webp
+note: The only souls-like I've ever stuck with and actually beaten. I think it's time for a replay, and maybe this time I can actually beat the DLC final boss...
+dbid: 174989
+steamdb: 1245620
