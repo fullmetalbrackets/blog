@@ -22,7 +22,8 @@ const {
   pubDate, 
   startDate, 
   genre,
-  dbid 
+  dbid,
+  steamdb
 } = Astro.props;
 
 const isAboveFold = index < 6;
@@ -66,8 +67,13 @@ const isAboveFold = index < 6;
     </span>}
     {note && <p class="note">{note}</p>}
     <div class="external-link">
+      {steamdb && (
+        <a href={`https://steamdb.info/app/${steamdb}/`} target="_blank" rel="noopener noreferrer" aria-label="Steam DB" class="steamdb">
+          SteamDB
+        </a>
+      )}
       {dbid && (
-        <a href={`https://www.mobygames.com/game/${dbid}`} target="_blank" rel="noopener noreferrer" aria-label="external link">
+        <a href={`https://www.mobygames.com/game/${dbid}/`} target="_blank" rel="noopener noreferrer" aria-label="Moby Games">
           Moby Games
         </a>
       )}
@@ -85,6 +91,11 @@ const isAboveFold = index < 6;
     text-align: right;
     font-family: var(--sub-font);
     font-weight: 500;
+  }
+  .steamdb {
+    display: block;
+    text-align: left;
+    margin: 0 0 -1.4em 0;
   }
 
   .info {

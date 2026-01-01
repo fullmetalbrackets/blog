@@ -67,6 +67,7 @@ const lifestream = defineCollection({
 		// games
 		developer: z.string().optional(),
 		completed: z.boolean().default(true),
+		steamdb: z.number().optional(),
 		// tvshows
 		inProgress: z.boolean().optional().default(false),
 		current: z.boolean().optional(),
