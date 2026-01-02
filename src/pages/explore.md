@@ -39,6 +39,11 @@ Explore all of the [slashpages](https://slashpages.net/) on this site below.
             <p>Links to websites, self-hosted apps and other cool online things that I use.</p>
         </li>
         <li>
+            <a href="/shelf/movies/">Movies</a>
+            <hr>
+            <p>My movie shelf, basically a tracker of movies I've seen on Plex. (TV shows and video games tracker soon.)
+        </li>
+        <li>
             <a href="/privacy/">Privacy</a>
             <hr>
             <p>Read the privacy policy for this website.

@@ -21,3 +21,4 @@ pnpm-debug.log*
 
 # other
 .yarn/install-state.gz
+fetch-plex-data.js
