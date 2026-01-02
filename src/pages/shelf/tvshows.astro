@@ -4,14 +4,14 @@ import Calendar from "@icons/calendar.svg";
 import BackToTop from "@components/BackToTop.astro";
 import { Image } from 'astro:assets';
 
-const title = "Movies"
-const desc = "My watch history of movies I have seen  on Plex"
+const title = "TV Shows"
+const desc = "My watch history of TV shows I have seen on Plex"
 
 let plexData;
 let error: string | null = null;
 
 try {
-  plexData = await import('../../data/recently-played_movies.json');
+  plexData = await import('../../data/recently-watched_tvshows.json');
 } catch (e) {
   error = 'Something went wrong! No Plex data available.';
 }
@@ -160,12 +160,12 @@ function formatDate(timestamp) {
     <h1>{title}</h1>
     <hr>
     <p>
-      Watch History of movies that I (or my wife, or both of us) have watched on Plex since I started keeping history with Tautulli.
+      Watch History of TV shows that I (or my wife, or both of us) have watched on Plex since I started keeping history with Tautulli.
     </p>
     <div class="plex-header">
       {lastUpdated && (
         <p class="info">
-          <span class="stats"><span>{totalItems}</span> movies watched. </span>Last updated: <span class=" last-updated">{new Date(lastUpdated).toLocaleDateString('en-US', {
+          <span class="stats"><span>{totalItems}</span> shows watched. </span>Last updated: <span class=" last-updated">{new Date(lastUpdated).toLocaleDateString('en-US', {
             month: 'long',
             day: 'numeric',
             year: 'numeric',
@@ -192,7 +192,7 @@ function formatDate(timestamp) {
                 quality={80}
               />
             ) : (
-              <div class="poster-placeholder">🎬</div>
+              <div class="poster-placeholder">📺</div>
             )}
             <div class="watch-date"><Calendar width={24} height={24} />{formatDate(item.stopped)}</div>
           </div>
