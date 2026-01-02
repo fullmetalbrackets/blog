@@ -41,7 +41,7 @@ Explore all of the [slashpages](https://slashpages.net/) on this site below.
         <li>
             <a href="/shelf/movies/">Movies</a>
             <hr>
-            <p>My movie shelf, basically a tracker of movies I've seen on Plex. (TV shows and video games tracker soon.)
+            <p>My movie shelf, basically a tracker of movies I've seen on Plex.
         </li>
         <li>
             <a href="/privacy/">Privacy</a>
@@ -62,6 +62,11 @@ Explore all of the [slashpages](https://slashpages.net/) on this site below.
             <a href="/style/">Style</a>
             <hr>
             <p>Markdown style guide for the website.</p>
+        </li>
+        <li>
+            <a href="/shelf/tvshows/">TV Shows</a>
+            <hr>
+            <p>My TV show shelf, basically a tracker of TV shows I've seen on Plex.
         </li>
         <li>
             <a href="/uses/">Uses</a>
