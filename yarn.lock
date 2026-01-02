@@ -5,95 +5,84 @@ __metadata:
   version: 8
   cacheKey: 10c0
 
-"@astro-community/astro-embed-baseline-status@npm:^0.2.1":
-  version: 0.2.1
-  resolution: "@astro-community/astro-embed-baseline-status@npm:0.2.1"
+"@astro-community/astro-embed-baseline-status@npm:^0.2.2":
+  version: 0.2.2
+  resolution: "@astro-community/astro-embed-baseline-status@npm:0.2.2"
   dependencies:
-    "@astro-community/astro-embed-utils": "npm:^0.1.5"
-  peerDependencies:
-    astro: ^4.0.0-beta || ^5.0.0-beta
-  checksum: 10c0/6af34537cf8fc66025371f2e970f9d849325643ea5d7e9114da37bc4d6c2632d8a683b452b476fe176198818c00ddfd63f0d7e2a9dc802b0a2c41e668817cc1d
+    "@astro-community/astro-embed-utils": "npm:^0.2.0"
+  checksum: 10c0/81b8d90191f86026ea2d3edb6a3bc4e61a750f03afdd0e451f86abcf3532588c95a565fd530f899c85679707781fe873dfb65f7e3b60c374bcf316e3492245ce
   languageName: node
   linkType: hard
 
-"@astro-community/astro-embed-bluesky@npm:^0.1.5":
-  version: 0.1.5
-  resolution: "@astro-community/astro-embed-bluesky@npm:0.1.5"
+"@astro-community/astro-embed-bluesky@npm:^0.1.6":
+  version: 0.1.6
+  resolution: "@astro-community/astro-embed-bluesky@npm:0.1.6"
   dependencies:
     "@atproto/api": "npm:^0.13.14"
-    ts-pattern: "npm:^5.5.0"
-  peerDependencies:
-    astro: ^4.0.0 || ^5.0.0-beta.0
-  checksum: 10c0/c71653bb65494c51eb35bb5713f59a28ace500b6ef5367d99f5855741d86410c374b963a518fa67e84e56800b57769e686b69c83e2114fd8ba4f13420b05876c
+  checksum: 10c0/22f7bdac85ded7226dc79aeee6f9f550b0d4b2eef4b67230034cdb17759f846a9a374022925621f2e339be4c4b04700add214d384ede5cb3ea52ce01736df192
   languageName: node
   linkType: hard
 
-"@astro-community/astro-embed-integration@npm:^0.8.3":
-  version: 0.8.3
-  resolution: "@astro-community/astro-embed-integration@npm:0.8.3"
+"@astro-community/astro-embed-integration@npm:^0.9.0":
+  version: 0.9.0
+  resolution: "@astro-community/astro-embed-integration@npm:0.9.0"
   dependencies:
-    "@astro-community/astro-embed-bluesky": "npm:^0.1.5"
-    "@astro-community/astro-embed-link-preview": "npm:^0.2.3"
-    "@astro-community/astro-embed-twitter": "npm:^0.5.9"
-    "@astro-community/astro-embed-vimeo": "npm:^0.3.11"
-    "@astro-community/astro-embed-youtube": "npm:^0.5.9"
+    "@astro-community/astro-embed-bluesky": "npm:^0.1.6"
+    "@astro-community/astro-embed-link-preview": "npm:^0.3.0"
+    "@astro-community/astro-embed-twitter": "npm:^0.5.10"
+    "@astro-community/astro-embed-vimeo": "npm:^0.3.12"
+    "@astro-community/astro-embed-youtube": "npm:^0.5.10"
     "@types/unist": "npm:^2.0.0"
     astro-auto-import: "npm:^0.4.5"
     unist-util-select: "npm:^4.0.1"
   peerDependencies:
-    astro: ^2.0.0 || ^3.0.0-beta || ^4.0.0-beta || ^5.0.0-beta
-  checksum: 10c0/03d4faadedea575330dde61e1ffd81376ca051e180f1c6d3606e5bdb5d9509e240f60e19c863645ee4f23ea6e910d5c067bf155231be854f63f881708773563b
+    astro: ^5.0.0 || ^6.0.0-alpha
+  checksum: 10c0/9cd1a170a7d49f0e90a7f1f42d1b714c9a1937b7a971a1298fcfc7c4c3df700895a13dccac699df2bdebe2412b9beaefa2acf49e632a4453b5c688318b8e8b46
   languageName: node
   linkType: hard
 
-"@astro-community/astro-embed-link-preview@npm:^0.2.3":
-  version: 0.2.3
-  resolution: "@astro-community/astro-embed-link-preview@npm:0.2.3"
+"@astro-community/astro-embed-link-preview@npm:^0.3.0":
+  version: 0.3.1
+  resolution: "@astro-community/astro-embed-link-preview@npm:0.3.1"
   dependencies:
-    "@astro-community/astro-embed-utils": "npm:^0.1.5"
-  checksum: 10c0/00447a95794a0dbd3d28771ee10aa9918213b32a38e2f1e63b4bd85c6efd2e7e1fb20c06e8381a1f1ee25a01c88c463cccafdd33a35a75e10f81a96c68f6b0fa
+    "@astro-community/astro-embed-utils": "npm:^0.2.0"
+    "@parse5/tools": "npm:^0.7.0"
+    parse5: "npm:^8.0.0"
+  checksum: 10c0/1a84eea53de8e42791813d843b83dab27b7cf83283bc4b1f92d84afbfc244f00efbad710303f1fdaed5f341ad604cff9b51034ebb4977468365bbf546d01a38c
   languageName: node
   linkType: hard
 
-"@astro-community/astro-embed-twitter@npm:^0.5.9":
-  version: 0.5.9
-  resolution: "@astro-community/astro-embed-twitter@npm:0.5.9"
+"@astro-community/astro-embed-twitter@npm:^0.5.10":
+  version: 0.5.10
+  resolution: "@astro-community/astro-embed-twitter@npm:0.5.10"
   dependencies:
-    "@astro-community/astro-embed-utils": "npm:^0.1.5"
-  peerDependencies:
-    astro: ^2.0.0 || ^3.0.0-beta || ^4.0.0-beta || ^5.0.0-beta
-  checksum: 10c0/528615f8e25f37366a523bb89b1d5391c628fb8555eceaee2bbf7f9bf019c72895a0b6704aaa58f32a1d7fa36ee4063b52100c383c38815a9ae16b71c5149587
+    "@astro-community/astro-embed-utils": "npm:^0.2.0"
+  checksum: 10c0/93597cd27bc8ee4f91ec288d3b997c8208e461c25518691920437a26552ce065ffb41596495fe6f4a76338c5d335dce5f9aedbe3e467cb29f74d0fd69bb3c270
   languageName: node
   linkType: hard
 
-"@astro-community/astro-embed-utils@npm:^0.1.5":
-  version: 0.1.5
-  resolution: "@astro-community/astro-embed-utils@npm:0.1.5"
+"@astro-community/astro-embed-utils@npm:^0.2.0":
+  version: 0.2.0
+  resolution: "@astro-community/astro-embed-utils@npm:0.2.0"
+  checksum: 10c0/0473d49f3b1f326b88678e4b81fdf059c47901c49346292323f30e3c17ea50646b59a668cff75c8516839048dd2257cb45367f904653ce1f7b5c57be73184713
+  languageName: node
+  linkType: hard
+
+"@astro-community/astro-embed-vimeo@npm:^0.3.12":
+  version: 0.3.12
+  resolution: "@astro-community/astro-embed-vimeo@npm:0.3.12"
   dependencies:
-    linkedom: "npm:^0.18.12"
-  checksum: 10c0/faabd775be096b9e64b71ad1f7430ea05db6316684b4a0aa30e7ccc73dcf09eb0a6d352005eaeae1df0ff34b87949c06ccd67ba2335a45972745d485c663fb23
+    "@astro-community/astro-embed-utils": "npm:^0.2.0"
+  checksum: 10c0/8124e9e2e6242ac07ec6b74efc6d7c0ffc3eb1151d1441ed1bfbfefb575777a5583556203d65fde6d64c9671d24d64ddd3256591c8b6138277940956cd50505e
   languageName: node
   linkType: hard
 
-"@astro-community/astro-embed-vimeo@npm:^0.3.11":
-  version: 0.3.11
-  resolution: "@astro-community/astro-embed-vimeo@npm:0.3.11"
-  dependencies:
-    "@astro-community/astro-embed-utils": "npm:^0.1.5"
-  peerDependencies:
-    astro: ^2.0.0 || ^3.0.0-beta || ^4.0.0-beta || ^5.0.0-beta
-  checksum: 10c0/30b8c98374c449a2fa5f8556ec2116a02a809efe7e456d0eb843b3caadd1748fab2c02c1f8c1077a48edf5164e08756cd9ad2c6b21c9196389e8417681688177
-  languageName: node
-  linkType: hard
-
-"@astro-community/astro-embed-youtube@npm:^0.5.9":
-  version: 0.5.9
-  resolution: "@astro-community/astro-embed-youtube@npm:0.5.9"
+"@astro-community/astro-embed-youtube@npm:^0.5.10":
+  version: 0.5.10
+  resolution: "@astro-community/astro-embed-youtube@npm:0.5.10"
   dependencies:
     lite-youtube-embed: "npm:^0.3.4"
-  peerDependencies:
-    astro: ^2.0.0 || ^3.0.0-beta || ^4.0.0-beta || ^5.0.0-beta
-  checksum: 10c0/7bb8922254f0bb7165aff985f665df9df62c384f9cb91a616e3063b2e5d217469616f8d3e13c39beccaa5bd029b756b30928de1f43feca59dd0eba287ed0f43e
+  checksum: 10c0/21b227cbb5f708a963711318a9ad091ec715698827f56c82bddc5d1ed2eb802f95c1b04d348a1c86e94354c1a5911e35453ec8d9334a577148db7e9af525ca1b
   languageName: node
   linkType: hard
 
@@ -1223,6 +1212,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@parse5/tools@npm:^0.7.0":
+  version: 0.7.0
+  resolution: "@parse5/tools@npm:0.7.0"
+  peerDependencies:
+    parse5: 7.x || 8.x
+  checksum: 10c0/7793d0e9ad8f7266535dbca6254857194193cc0d0afec658397f448c534ebe1565b59adac38d1dc38242c3de6a586733668e6b51bdfd6b6314db3ca1c1032ce9
+  languageName: node
+  linkType: hard
+
 "@playform/compress@npm:^0.2.0":
   version: 0.2.0
   resolution: "@playform/compress@npm:0.2.0"
@@ -1949,20 +1947,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"astro-embed@npm:^0.9.2":
-  version: 0.9.2
-  resolution: "astro-embed@npm:0.9.2"
+"astro-embed@npm:^0.10.0":
+  version: 0.10.0
+  resolution: "astro-embed@npm:0.10.0"
   dependencies:
-    "@astro-community/astro-embed-baseline-status": "npm:^0.2.1"
-    "@astro-community/astro-embed-bluesky": "npm:^0.1.5"
-    "@astro-community/astro-embed-integration": "npm:^0.8.3"
-    "@astro-community/astro-embed-link-preview": "npm:^0.2.3"
-    "@astro-community/astro-embed-twitter": "npm:^0.5.9"
-    "@astro-community/astro-embed-vimeo": "npm:^0.3.11"
-    "@astro-community/astro-embed-youtube": "npm:^0.5.9"
+    "@astro-community/astro-embed-baseline-status": "npm:^0.2.2"
+    "@astro-community/astro-embed-bluesky": "npm:^0.1.6"
+    "@astro-community/astro-embed-integration": "npm:^0.9.0"
+    "@astro-community/astro-embed-link-preview": "npm:^0.3.0"
+    "@astro-community/astro-embed-twitter": "npm:^0.5.10"
+    "@astro-community/astro-embed-vimeo": "npm:^0.3.12"
+    "@astro-community/astro-embed-youtube": "npm:^0.5.10"
   peerDependencies:
-    astro: ^2.0.0 || ^3.0.0-beta || ^4.0.0-beta || ^5.0.0-beta
-  checksum: 10c0/8353123e275eef0139da0b27ac97349567b94ecbb6a79a28ebae1408a7b04112a8ecbc916788d11bdc23e4ac69b28c15db551d3243ef83bb4381aa343b50e685
+    astro: ^5.0.0 || ^6.0.0-alpha
+  checksum: 10c0/374fa648ca81c4b282cc88a6ed9ae8fa2786782ede286e9eababfbec5382bcebf9da94430bddd33fa6b957687a0b54a8df9f37c07fa568921be5aaead7b54d17
   languageName: node
   linkType: hard
 
@@ -2465,13 +2463,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cssom@npm:^0.5.0":
-  version: 0.5.0
-  resolution: "cssom@npm:0.5.0"
-  checksum: 10c0/8c4121c243baf0678c65dcac29b201ff0067dfecf978de9d5c83b2ff127a8fdefd2bfd54577f5ad8c80ed7d2c8b489ae01c82023545d010c4ecb87683fb403dd
-  languageName: node
-  linkType: hard
-
 "debug@npm:4, debug@npm:^4.0.0, debug@npm:^4.3.4, debug@npm:^4.4.0, debug@npm:^4.4.3":
   version: 4.4.3
   resolution: "debug@npm:4.4.3"
@@ -2608,7 +2599,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"domutils@npm:^3.0.1, domutils@npm:^3.2.1":
+"domutils@npm:^3.0.1":
   version: 3.2.2
   resolution: "domutils@npm:3.2.2"
   dependencies:
@@ -3336,7 +3327,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"html-escaper@npm:3.0.3, html-escaper@npm:^3.0.3":
+"html-escaper@npm:3.0.3":
   version: 3.0.3
   resolution: "html-escaper@npm:3.0.3"
   checksum: 10c0/a042fa4139127ff7546513e90ea39cc9161a1938ce90122dbc4260d4b7252c9aa8452f4509c0c2889901b8ae9a8699179150f1f99d3f80bcf7317573c5f08f4e
@@ -3364,18 +3355,6 @@ __metadata:
   version: 3.0.0
   resolution: "html-void-elements@npm:3.0.0"
   checksum: 10c0/a8b9ec5db23b7c8053876dad73a0336183e6162bf6d2677376d8b38d654fdc59ba74fdd12f8812688f7db6fad451210c91b300e472afc0909224e0a44c8610d2
-  languageName: node
-  linkType: hard
-
-"htmlparser2@npm:^10.0.0":
-  version: 10.0.0
-  resolution: "htmlparser2@npm:10.0.0"
-  dependencies:
-    domelementtype: "npm:^2.3.0"
-    domhandler: "npm:^5.0.3"
-    domutils: "npm:^3.2.1"
-    entities: "npm:^6.0.0"
-  checksum: 10c0/47cfa37e529c86a7ba9a1e0e6f951ad26ef8ca5af898ab6e8916fa02c0264c1453b4a65f28b7b8a7f9d0d29b5a70abead8203bf8b3f07bc69407e85e7d9a68e4
   languageName: node
   linkType: hard
 
@@ -3750,24 +3729,6 @@ __metadata:
     lightningcss-win32-x64-msvc:
       optional: true
   checksum: 10c0/1e1ad908f3c68bf39d964a6735435a8dd5474fb2765076732d64a7b6aa2af1f084da65a9462443a9adfebf7dcfb02fb532fce1d78697f2a9de29c8f40f09aee3
-  languageName: node
-  linkType: hard
-
-"linkedom@npm:^0.18.12":
-  version: 0.18.12
-  resolution: "linkedom@npm:0.18.12"
-  dependencies:
-    css-select: "npm:^5.1.0"
-    cssom: "npm:^0.5.0"
-    html-escaper: "npm:^3.0.3"
-    htmlparser2: "npm:^10.0.0"
-    uhyphen: "npm:^0.2.0"
-  peerDependencies:
-    canvas: ">= 2"
-  peerDependenciesMeta:
-    canvas:
-      optional: true
-  checksum: 10c0/d7e4f9f40e02da81effa4d462a1ea9e23c0ed2d478aa2f0a96279cf2b51b77e3e637d074c9d5d92877816ab9f4c098bcf5151c8ceb82855b60e9dbba2f91b143
   languageName: node
   linkType: hard
 
@@ -4977,6 +4938,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"parse5@npm:^8.0.0":
+  version: 8.0.0
+  resolution: "parse5@npm:8.0.0"
+  dependencies:
+    entities: "npm:^6.0.0"
+  checksum: 10c0/8279892dcd77b2f2229707f60eb039e303adf0288812b2a8fd5acf506a4d432da833c6c5d07a6554bef722c2367a81ef4a1f7e9336564379a7dba3e798bf16b3
+  languageName: node
+  linkType: hard
+
 "pascal-case@npm:^3.1.2":
   version: 3.1.2
   resolution: "pascal-case@npm:3.1.2"
@@ -5561,7 +5531,7 @@ __metadata:
     "@types/imagesloaded": "npm:^4.1.7"
     "@types/isotope-layout": "npm:^3"
     astro: "npm:^5.16.6"
-    astro-embed: "npm:^0.9.2"
+    astro-embed: "npm:^0.10.0"
     astro-social-share: "npm:^2.2.0"
     imagesloaded: "npm:^5.0.0"
     isotope-layout: "npm:^3.0.6"
@@ -6106,13 +6076,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-pattern@npm:^5.5.0":
-  version: 5.9.0
-  resolution: "ts-pattern@npm:5.9.0"
-  checksum: 10c0/7640db25c39d29b287471b2b82d4f7b4674a02098c6ba4d10fed180adfb07d0e0c71930d9e59dc0d90654145e02fd320af63cf0df3c41e100d4154658a612a0a
-  languageName: node
-  linkType: hard
-
 "tsconfck@npm:^3.1.6":
   version: 3.1.6
   resolution: "tsconfck@npm:3.1.6"
@@ -6181,13 +6144,6 @@ __metadata:
   version: 1.6.1
   resolution: "ufo@npm:1.6.1"
   checksum: 10c0/5a9f041e5945fba7c189d5410508cbcbefef80b253ed29aa2e1f8a2b86f4bd51af44ee18d4485e6d3468c92be9bf4a42e3a2b72dcaf27ce39ce947ec994f1e6b
-  languageName: node
-  linkType: hard
-
-"uhyphen@npm:^0.2.0":
-  version: 0.2.0
-  resolution: "uhyphen@npm:0.2.0"
-  checksum: 10c0/1e7129fe7a5c86445d1adf04d5c58913b5992e4899ea5553d9ddf6e7ef88af0f807a47f1bf9673b92f705276e5cf1b2c1d3852f1ab5d08ecac3382bcc3a642f9
   languageName: node
   linkType: hard
 

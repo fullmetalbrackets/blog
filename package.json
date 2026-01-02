@@ -22,7 +22,7 @@
     "@playform/compress": "^0.2.0",
     "@types/imagesloaded": "^4.1.7",
     "astro": "^5.16.6",
-    "astro-embed": "^0.9.2",
+    "astro-embed": "^0.10.0",
     "astro-social-share": "^2.2.0",
     "imagesloaded": "^5.0.0",
     "isotope-layout": "^3.0.6",
