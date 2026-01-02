@@ -11,7 +11,10 @@
     "build": "astro build && npx -y pagefind --site dist",
     "preview": "astro preview",
     "astro": "astro",
-    "check": "astro check"
+    "check": "astro check",
+    "fetch-plex": "node fetch-plex-data.js",
+    "update-plex": "yarn fetch-plex && git add src/data/recently-played.json && git diff --cached --quiet || git commit -m 'Update Plex recently played data'",
+    "deploy": "yarn fetch-plex && yarn build"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.6",
