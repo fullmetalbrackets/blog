@@ -8,7 +8,7 @@ const title = "Movies"
 const desc = "My watch history of movies I have seen  on Plex"
 
 let plexData;
-let error = null;
+let error: string | null = null;
 
 try {
   plexData = await import('../../data/recently-played_movies.json');
@@ -120,16 +120,6 @@ function formatDate(timestamp) {
     padding: 0;
     margin: 0 auto;
   }
-
-  /* .poster-placeholder {
-    width: 100%;
-    aspect-ratio: 2/3;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 3rem;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  } */
 
   .watch-date {
     display: flex;
