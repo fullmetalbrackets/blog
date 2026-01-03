@@ -11,7 +11,9 @@ export default defineConfig({
   site: 'https://fullmetalbrackets.com',
   trailingSlash: 'always',
   integrations: [mdx(), sitemap(), (await import("@playform/compress")).default(), yeskunallumami(
-    ({ id: "d9921361-56b2-4c33-8377-4c73cb1add2d" }),
+    ({ id: "d9921361-56b2-4c33-8377-4c73cb1add2d",
+       hostUrl: "https://u.adiaz.fyi"
+     }),
   )],
   prefetch: true,
   markdown: {
