@@ -10,8 +10,9 @@ const { title, description, tag, pubDate, updatedDate } = Astro.props;
 ---
 
 <BaseLayout title={title} description={description}>
-
-  <link slot="head" rel="stylesheet" href="/prism.css" />
+  <head>
+    <link rel="stylesheet" href="/prism.css" />
+  </head>
 
   <style>
     h1 {

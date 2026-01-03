@@ -7,8 +7,9 @@ const showTop = frontmatter.showTop !== false;
 ---
 
 <BaseLayout title={frontmatter.title} description={frontmatter.description}>
-
-  <link slot="head" rel="stylesheet" href="/prism.css" />
+  <head>
+    <link rel="stylesheet" href="/prism.css" />
+  </head>
 
   <style scoped>
     h1 {
