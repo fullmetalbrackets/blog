@@ -1793,6 +1793,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@yeskunall/astro-umami@npm:^0.0.7":
+  version: 0.0.7
+  resolution: "@yeskunall/astro-umami@npm:0.0.7"
+  peerDependencies:
+    astro: ^3.0.0 || ^4.0.0 || ^5.0.0
+  checksum: 10c0/87610992d43685b36f3944be0a454a794903adb425effb2d2ca12b673be1140e0656495eb72736920e137a7ca6876299cc59760bba6dca695c198df9f1bb21b1
+  languageName: node
+  linkType: hard
+
 "abbrev@npm:^4.0.0":
   version: 4.0.0
   resolution: "abbrev@npm:4.0.0"
@@ -5530,6 +5539,7 @@ __metadata:
     "@playform/compress": "npm:^0.2.0"
     "@types/imagesloaded": "npm:^4.1.7"
     "@types/isotope-layout": "npm:^3"
+    "@yeskunall/astro-umami": "npm:^0.0.7"
     astro: "npm:^5.16.6"
     astro-embed: "npm:^0.10.0"
     astro-social-share: "npm:^2.2.0"

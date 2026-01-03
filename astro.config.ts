@@ -5,12 +5,14 @@ import { remarkReadingTime } from './src/utils/remark-reading-time.ts';
 import rehypeExternalLinks from 'rehype-external-links';
 import remarkDirective from 'remark-directive'
 import remarkDirectiveSugar from 'remark-directive-sugar'
+import yeskunallumami from '@yeskunall/astro-umami';
 
 export default defineConfig({
   site: 'https://fullmetalbrackets.com',
   trailingSlash: 'always',
-  integrations: [mdx(), sitemap(), (await import("@playform/compress")).default(),
-  ],
+  integrations: [mdx(), sitemap(), (await import("@playform/compress")).default(), yeskunallumami(
+    ({ id: "d9921361-56b2-4c33-8377-4c73cb1add2d" }),
+  )],
   prefetch: true,
   markdown: {
     rehypePlugins: [
