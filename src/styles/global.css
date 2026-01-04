@@ -889,6 +889,14 @@ blockquote[data-type="warning"] a:hover {
   width: 8em;
 }
 
+.center {
+  text-align: center;
+}
+
+.text {
+  color: var(--text);
+}
+
 .b {
   font-weight: bold;
 }
@@ -960,6 +968,12 @@ blockquote[data-type="warning"] a:hover {
 }
 .mb4 {
   margin-bottom: 4em;
+}
+.mt1 {
+  margin-top: 1em;
+}
+.mt2 {
+  margin-top: 2em;
 }
 
 .no-list {
