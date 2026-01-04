@@ -39,6 +39,7 @@ the bottom of blog posts.
 - [Pagefind](https://pagefind.app/): Dead simple fully static search library for static websites, used here to search blog posts. Doesn't even require adding it to your dependencies.
 - [Giscus](https://giscus.app): Alternative to Discus for comments in blog posts using GitHub Discussions, rather than Issues, as the backend.
 - [Webmention.io](https://webmention.io) + [Webmention.app](https://webmention.app): Webmention is an open protocol used by websites to be notified when they link to each other. Webmention.app is a free service to automate outgoing webmentions with a simple API. (Might switch to [Bridgy](https://brid.gy/about) though.)
+- [Umami](http://umami.is): GDPR-compliant and privacy friendly Google Analytics alternative, self-hosted on a VPS. ([See website stats here.](https://u.adiaz.fyi/share/TtTytHU8rJy0oEzN))
 
 ## WTF is a Colophon anyway?
 

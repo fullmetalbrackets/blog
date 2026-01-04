@@ -4,7 +4,7 @@ title: Privacy Policy
 description: Privacy policy of fullmetalbrackets.com
 ---
 
-Last updated on <span class="important">December 17, 2025</span>
+Last updated on <span class="important">January 3, 2026</span>
 
 This privacy policy will advise of what information, if any, is collected when you use this website and for what purpose. The policy may change in the future, at which time this page will be updated. Check back from time to time and note that date the Privacy Policy was last updated.
 
@@ -18,9 +18,9 @@ I will never sell, distribute or lease your personal information to anyone even 
 
 ## Analytics
 
-This website uses [Umami](https://umami.is), a Google Analytics alternative which is [GDPR-compliant](https://umami.is/blog/gdpr-compliant-website-analytics) and collects only anonymized data. You can see the stats yourself [right here](https://us.umami.is/share/5MdOgBcRzVP6FU0x/fullmetalbrackets.com). (Please note that this website uses [Umami Cloud](https://docs.umami.is/docs/cloud) and not the self-hosted version.)
+This website uses [Umami](https://umami.is), a Google Analytics alternative which is [GDPR-compliant](https://umami.is/blog/gdpr-compliant-website-analytics) and collects only anonymized traffic data. You can see the stats yourself [right here](https://u.adiaz.fyi/share/TtTytHU8rJy0oEzN). Data collected through Umami includes visitors referrers, country and region, and when certain internal and external links are clicked. This data is anonymized and cannot be used to identify you.
 
-Through Umami this website tracks certain when certain internal and external links are clicked to gauge user traffic flow, but this data is anonymized and cannot be used to identify you.
+Additionally, because this website is hosted at Cloudflare Pages, by default Cloudflare's own Web Analytics tracks all HTTP requests, bandwidth usage and unique visitor metrics when visiting this website. Please see [Cloudflare Web Analytics](https://www.cloudflare.com/web-analytics/) for more information.
 
 ## Comments
 
@@ -30,7 +30,7 @@ For blog posts, [Giscus](https://github.com/laymonage/giscus) is used for commen
 
 This website supports [Webmentions](https://webmention.io) for blog posts.
 
-By supporting Webmentions on your website, you explicitly signal your wish for linked websites to process and publish your public replies to their content. You can at any time request the rboval of one or all Webmentions originating from your website.
+By supporting Webmentions on your website, you explicitly signal your wish for linked websites to process and publish your public replies to their content. You can at any time request the removal of one or all Webmentions originating from your website.
 
 An incoming Webmention request is by design a request for publishing a comment from elsewhere on the web; this is what the protocol was designed for and why it is active on your website. Commonly, received Webmentions are displayed as comments on a web page. This means that a copy of your content is displayed on the website you link to in your own post.
 
