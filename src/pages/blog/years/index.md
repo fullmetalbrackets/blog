@@ -47,7 +47,7 @@ ul {
     <li>
         <button>
             <span class="label">
-                <a href="/blog/years/2025/" rel="prefetch-intent">2025</a>
+                <a href="/blog/years/2025/" rel="prefetch-intent" data-umami-events="blog-2025">2025</a>
             </span>
             <span class="count">
                 8
@@ -57,7 +57,7 @@ ul {
     <li>
         <button>
             <span class="label">
-                <a href="/blog/years/2024/" rel="prefetch-intent">2024</a>
+                <a href="/blog/years/2024/" rel="prefetch-intent" data-umami-events="blog-2024">2024</a>
             </span>
             <span class="count">
                 12
@@ -67,7 +67,7 @@ ul {
     <li>
         <button>
             <span class="label">
-                <a href="/blog/years/2023/" rel="prefetch-intent">2023</a>
+                <a href="/blog/years/2023/" rel="prefetch-intent" data-umami-events="blog-2023">2023</a>
             </span>
             <span class="count">
                 9
@@ -77,7 +77,7 @@ ul {
     <li>
         <button>
             <span class="label">
-                <a href="/blog/years/2022/" rel="prefetch-intent">2022</a>
+                <a href="/blog/years/2022/" rel="prefetch-intent" data-umami-events="blog-2022">2022</a>
             </span>
             <span class="count">
                 27
@@ -87,7 +87,7 @@ ul {
     <li>
         <button>
             <span class="label">
-                <a href="/blog/years/2021/" rel="prefetch-intent">2021</a>
+                <a href="/blog/years/2021/" rel="prefetch-intent" data-umami-events="blog-2021">2021</a>
             </span>
             <span class="count">
                 16

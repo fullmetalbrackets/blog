@@ -151,7 +151,7 @@ const selectedPosts = await Promise.all(
   <div class="container">
     {selectedPosts.map(post => (
         <div class="list">
-          <a href={`/blog/${post.id}/`} rel="prefetch-intent" data-umami-event="recent-post">
+          <a href={`/blog/${post.id}/`} rel="prefetch-intent" data-umami-event={`popular-${post.id}`}>
             <p class="posts-title">{post.data.title}</p>
             <span class="tag">
               {post.data.tags.map((tag) => (

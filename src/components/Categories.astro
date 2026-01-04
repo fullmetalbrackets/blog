@@ -73,7 +73,7 @@ const tags = Object.entries(tagCounts)
         <li>
           <button>
             <span class="label">
-              <a href={`/categories/${tag}/`} rel="prefetch-intent">{tag}</a>
+              <a href={`/categories/${tag}/`} rel="prefetch-intent" data-umami-event={`categories-${tag}`}>{tag}</a>
               </span>
             <span class="count">
               {count}

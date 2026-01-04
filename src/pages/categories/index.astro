@@ -74,7 +74,7 @@ const desc = "Blog posts by category";
     <hr />
     <p class="back">
       <a href="/blog/" rel="prefetch-intent">↩ All posts</a>
-      <a href="/blog/years/" rel="prefetch-intent">Posts by year ↪</a>
+      <a href="/blog/years/" rel="prefetch-intent" data-umami-event="blog-years">Posts by year ↪</a>
     </p>
     <p>
       Click on categories below to see blog posts about that subject. Alternately, see <a href="/blog/">all posts</a> or <a href="/search/">search</a>.
@@ -84,7 +84,7 @@ const desc = "Blog posts by category";
         <li>
           <button>
             <span class="label">
-              <a href={`/categories/${tag}/`} rel="prefetch-intent">{tag}</a>
+              <a href={`/categories/${tag}/`} rel="prefetch-intent" data-umami-event={`categories-${tag}`}>{tag}</a>
               </span>
             <span class="count">
               {count}

@@ -136,7 +136,7 @@ const recentPosts = await Promise.all(
     {
       recentPosts.map((post) => (
         <div class="list">
-          <a href={`/blog/${post.id}/`} rel="prefetch-intent" data-umami-event="recent-post">
+          <a href={`/blog/${post.id}/`} rel="prefetch-intent" data-umami-event={`recent-post-${post.id}`}>
             <p class="posts-title">{post.data.title}</p>
             <span class="tag">
               {post.data.tags.map((tag) => (

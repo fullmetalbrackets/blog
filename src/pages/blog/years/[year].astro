@@ -189,11 +189,11 @@ const desc = `A list of blog posts written in ${year}`;
     </p>
     <nav class="years">
       Showing <span class="total">{postCount}&nbsp;{postCount === 1 ? 'post' : 'posts'}</span> from <span class="total">{year}</span>. See more years:&nbsp;
-      <Link href="/blog/years/2025/" rel="prefetch-intent" aria-label="2025">2025</Link>
-      <Link href="/blog/years/2024/" rel="prefetch-intent" aria-label="2024">2024</Link>
-      <Link href="/blog/years/2023/" rel="prefetch-intent" aria-label="2023">2023</Link>
-      <Link href="/blog/years/2022/" rel="prefetch-intent" aria-label="2022">2022</Link>
-      <Link href="/blog/years/2021/" rel="prefetch-intent" aria-label="2021">2021</Link>
+      <Link href="/blog/years/2025/" rel="prefetch-intent" aria-label="2025" data-umami-event="blog-2025">2025</Link>
+      <Link href="/blog/years/2024/" rel="prefetch-intent" aria-label="2024" data-umami-event="blog-2024">2024</Link>
+      <Link href="/blog/years/2023/" rel="prefetch-intent" aria-label="2023" data-umami-event="blog-2023">2023</Link>
+      <Link href="/blog/years/2022/" rel="prefetch-intent" aria-label="2022" data-umami-event="blog-2022">2022</Link>
+      <Link href="/blog/years/2021/" rel="prefetch-intent" aria-label="2021" data-umami-event="blog-2021">2021</Link>
     </nav>
     <ul>
       {

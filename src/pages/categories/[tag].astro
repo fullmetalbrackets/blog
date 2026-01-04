@@ -174,17 +174,17 @@ const { tag, posts } = Astro.props;
     </p>
     <p class="years">
       Alternately, see posts by year:&nbsp;
-      <a href="/blog/years/2025/">2025</a>&nbsp;
-      <a href="/blog/years/2024/">2024</a>&nbsp;
-      <a href="/blog/years/2023/">2023</a>&nbsp;
-      <a href="/blog/years/2022/">2022</a>&nbsp;
-      <a href="/blog/years/2021/">2021</a>
+      <a href="/blog/years/2025/" data-umami-event="blog-2025">2025</a>&nbsp;
+      <a href="/blog/years/2024/" data-umami-event="blog-2024">2024</a>&nbsp;
+      <a href="/blog/years/2023/" data-umami-event="blog-2023">2023</a>&nbsp;
+      <a href="/blog/years/2022/" data-umami-event="blog-2022">2022</a>&nbsp;
+      <a href="/blog/years/2021/" data-umami-event="blog-2021">2021</a>
     </p>
     <ul>
       {
         posts.map((post) => (
           <li>
-            <a href={`/blog/${post.id}/`} rel="prefetch-intent">
+            <a href={`/blog/${post.id}/`} rel="prefetch-intent" data-umami-event={`${tag}-${post.id}`}>
               <div>
                 <span class="title">{post.data.title}</span>
                 <p class="tag">
