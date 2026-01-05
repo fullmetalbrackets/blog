@@ -2,4 +2,4 @@ title: "Composerize"
 description: "This site lets you paste in a Docker Run command and convert it into YAML syntax for Docker Compose files."
 pubDate: 2023-11-02
 url: "https://www.composerize.com"
-tag: website
+tag: web app
