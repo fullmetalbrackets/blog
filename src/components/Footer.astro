@@ -8,6 +8,7 @@ import Bluesky from '@icons/bsky.svg';
 import GitHub from '@icons/gh.svg';
 import BuyMeCoffee from '@icons/bmc.svg';
 import Top from '@icons/arrow-up.svg';
+import Proven from '@icons/proven.svg';
 ---
 
 <style>
@@ -103,16 +104,33 @@ import Top from '@icons/arrow-up.svg';
     margin: 0 auto;
     padding: 0;
   }
-  .badges svg {
+  .proof svg {
+    filter: currentColor;
+  }
+  .top {
     filter: var(--foot-svg);
   }
-  .badges svg:hover {
+  .top:hover {
     filter: var(--foot-ext);
     transition: all .2s ease-out;
+  }
+  @keyframes wiggle {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(-5deg); }
+      75% { transform: rotate(5deg); }
+  }
+
+  .proof:hover {
+      animation: wiggle 0.5s ease-in-out infinite;
+  }
+
+  .proof:not(:hover) {
+      animation: none;
   }
   @media screen and (max-width: 667px) {
     .badges {
       gap: 0;
+      padding: 0;
     }
     .copyright {
       margin: 1em auto 0 auto;
@@ -197,6 +215,9 @@ import Top from '@icons/arrow-up.svg';
     &copy; 2021-{today.getFullYear()} Ariel Diaz. Some rights reserved.
   </span>
   <div class="badges">
+    <a href="https://proven.lol/1a7300" target="_blank" data-umami-event="proof">
+      <Proven height={32} width={32} class="proof" />
+    </a>
     <a href="https://notbyai.fyi/" target="_blank" data-umami-event="notbyai">
       <picture>
         <source srcset="/assets/Written-By-a-Human-Not-By-AI-Badge-white.png" media="(prefers-color-scheme: light)">
@@ -207,6 +228,6 @@ import Top from '@icons/arrow-up.svg';
     <a href="https://astro.build/" target="_blank" data-umami-event="astro">
       <img src="/assets/built-with-astro.svg" alt="Built with Astro" width="192" height="32" class="sq-img astro" loading="lazy" decoding="async">
     </a>
-    <a href="#top"><Top height={32} width={32} /></a>
+    <a href="#top"><Top height={32} width={32} class="top" /></a>
   </div>
 </footer>
