@@ -1,0 +1,62 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from 'astro:content';
+import Note from '@components/Note.astro';
+import ImageCard from '@components/ImageCard.astro';
+import BackToTop from "@components/BackToTop.astro";
+
+const dataTypes = ['note', 'image'] as const;
+
+const lifestream = await getCollection('lifestream');
+
+const notes = lifestream
+  .filter((entry): entry is CollectionEntry<'lifestream'> & { data: { type: typeof dataTypes[number] } } => 
+    dataTypes.includes(entry.data.type as any)
+  )
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+
+const title = "Notes";
+const desc = "List of all short-form notes and images posted as part of my lifestream.";
+---
+
+<style scoped>
+  h1 {
+    font-family: var(--sub-font);
+    font-weight: 900;
+  }
+  ul {
+    list-style-type: none;
+    margin: 0 auto;
+    padding: 0;
+    font-size: 1em;
+  }
+  li {
+    margin: 2em auto;
+    padding: 0;
+    width: 100%;
+    max-width: 800px;
+  }
+  span, p {
+    margin: 0 auto;
+    padding: 0 auto;
+  }
+</style>
+
+<BaseLayout title={title} description={desc}>
+  <section>
+    <h1>{title}</h1>
+    <hr />
+    <p>
+      Notes are short-form content like bookmarks, random thoughts or memes that I post as part of my <a href="/lifestream/">Lifestream</a>.
+    </p>
+    <ul>
+        {notes.map((note) => (<li>
+            {note.data.type === 'note' && <Note {...note.data as any} />}
+            {note.data.type === 'image' && <ImageCard {...note.data as any} />}
+        </li>))}
+    </ul>
+    <hr />
+    <BackToTop />
+  </section>
+</BaseLayout>
