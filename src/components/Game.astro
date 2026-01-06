@@ -68,12 +68,12 @@ const isAboveFold = index < 6;
     {note && <p class="note">{note}</p>}
     <div class="external-link">
       {steamdb && (
-        <a href={`https://steamdb.info/app/${steamdb}/`} target="_blank" rel="noopener noreferrer" aria-label="Steam DB" class="steamdb">
+        <a href={`https://steamdb.info/app/${steamdb}/`} target="_blank" rel="noopener noreferrer" aria-label="Steam DB" class="steamdb" data-umami-event={`${title}-steamdb`}>
           SteamDB
         </a>
       )}
       {dbid && (
-        <a href={`https://www.mobygames.com/game/${dbid}/`} target="_blank" rel="noopener noreferrer" aria-label="Moby Games">
+        <a href={`https://www.mobygames.com/game/${dbid}/`} target="_blank" rel="noopener noreferrer" aria-label="Moby Games" data-umami-event={`${title}-mobygames`}>
           Moby Games
         </a>
       )}

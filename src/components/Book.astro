@@ -43,7 +43,7 @@ const isAboveFold = index < 6;
         })}
         </time>
       </span>
-      <span class="isbn">ISBN: {isbn && <span class="isbn-number"><a href={`https://goodreads.com/search?q=${isbn}`} target="_blank" rel="noopener noreferrer">{isbn}</a></span>}</span>
+      <span class="isbn">ISBN: {isbn && <span class="isbn-number"><a href={`https://goodreads.com/search?q=${isbn}`} target="_blank" rel="noopener noreferrer" data-umami-event={`${title}-goodreads`}>{isbn}</a></span>}</span>
     </p>
     {publisher && <p class="book-publisher">{publisher}</p>}
     {genre && <span class="genre-tag">
@@ -54,7 +54,7 @@ const isAboveFold = index < 6;
     {note && <p class="note">{note}</p>}
     <div class="external-link">
       {url && (
-        <a href={url} target="_blank" rel="noopener noreferrer" aria-label="external link">
+        <a href={url} target="_blank" rel="noopener noreferrer" aria-label="external link" data-umami-event={`${title}-more`}>
           More from this author
         </a>
       )}

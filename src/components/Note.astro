@@ -23,7 +23,7 @@ const {
     <span class="tag">{tag}</span>
     <span class="external-link">
       {url && (
-        <a href={url} target="_blank" rel="noopener noreferrer" aria-label="external link">
+        <a href={url} target="_blank" rel="noopener noreferrer" aria-label="external link" data-umami-event={`${title}-more`}>
           Read more
         </a>
       )}
