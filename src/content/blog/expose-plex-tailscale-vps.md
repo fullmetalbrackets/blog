@@ -3,7 +3,10 @@ title: "How to expose Plex to share your library with others from behind CGNAT u
 description: "I wrote before about sharing my Plex library via Cloudflare Tunnel, but that is technically against their TOS and liable to get your account in trouble. So I switched to using a free-tier Oracle VM, securely connecting it to my home network via Tailscale, and exposing Plex via reverse proxy on the VM. It works like a charm!"
 pubDate: 2024-09-03
 updatedDate: 2025-08-15
-tags: ["plex", "tailscale"]
+tags:
+  - plex
+  - tailscale
+  - oracle cloud
 related1: comprehensive-guide-tailscale-securely-access-home-network
 related2: expose-plex-with-cloudflare
 ---
