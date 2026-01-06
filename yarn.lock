@@ -23,21 +23,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@astro-community/astro-embed-integration@npm:^0.9.0":
-  version: 0.9.0
-  resolution: "@astro-community/astro-embed-integration@npm:0.9.0"
+"@astro-community/astro-embed-integration@npm:^0.10.0":
+  version: 0.10.0
+  resolution: "@astro-community/astro-embed-integration@npm:0.10.0"
   dependencies:
     "@astro-community/astro-embed-bluesky": "npm:^0.1.6"
     "@astro-community/astro-embed-link-preview": "npm:^0.3.0"
+    "@astro-community/astro-embed-mastodon": "npm:^0.1.0"
     "@astro-community/astro-embed-twitter": "npm:^0.5.10"
     "@astro-community/astro-embed-vimeo": "npm:^0.3.12"
     "@astro-community/astro-embed-youtube": "npm:^0.5.10"
-    "@types/unist": "npm:^2.0.0"
+    "@types/unist": "npm:^3.0.3"
     astro-auto-import: "npm:^0.4.5"
-    unist-util-select: "npm:^4.0.1"
+    unist-util-select: "npm:^5.1.0"
   peerDependencies:
     astro: ^5.0.0 || ^6.0.0-alpha
-  checksum: 10c0/9cd1a170a7d49f0e90a7f1f42d1b714c9a1937b7a971a1298fcfc7c4c3df700895a13dccac699df2bdebe2412b9beaefa2acf49e632a4453b5c688318b8e8b46
+  checksum: 10c0/54294f9edbd67fbd1298f1fcbcbbb8e1da6ca30da717e4ef75c1dd794b294cab893c0f0b09f6849c90a08c0971eaaba201bc28d96300691416830335d979ec9c
   languageName: node
   linkType: hard
 
@@ -49,6 +50,15 @@ __metadata:
     "@parse5/tools": "npm:^0.7.0"
     parse5: "npm:^8.0.0"
   checksum: 10c0/1a84eea53de8e42791813d843b83dab27b7cf83283bc4b1f92d84afbfc244f00efbad710303f1fdaed5f341ad604cff9b51034ebb4977468365bbf546d01a38c
+  languageName: node
+  linkType: hard
+
+"@astro-community/astro-embed-mastodon@npm:^0.1.0":
+  version: 0.1.0
+  resolution: "@astro-community/astro-embed-mastodon@npm:0.1.0"
+  dependencies:
+    "@astro-community/astro-embed-utils": "npm:^0.2.0"
+  checksum: 10c0/cde5bed78d6f409173d1ff2465193d5384979dda116bef67c76b0a00fc09f941d45c39dd7a023d0de8fb6380301b0fa4ab8e2997f2a139df0f4e7349f0720915
   languageName: node
   linkType: hard
 
@@ -1681,7 +1691,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/unist@npm:*, @types/unist@npm:^3.0.0":
+"@types/unist@npm:*, @types/unist@npm:^3.0.0, @types/unist@npm:^3.0.3":
   version: 3.0.3
   resolution: "@types/unist@npm:3.0.3"
   checksum: 10c0/2b1e4adcab78388e088fcc3c0ae8700f76619dbcb4741d7d201f87e2cb346bfc29a89003cfea2d76c996e1061452e14fcd737e8b25aacf949c1f2d6b2bc3dd60
@@ -1956,20 +1966,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"astro-embed@npm:^0.10.0":
-  version: 0.10.0
-  resolution: "astro-embed@npm:0.10.0"
+"astro-embed@npm:^0.11.0":
+  version: 0.11.0
+  resolution: "astro-embed@npm:0.11.0"
   dependencies:
     "@astro-community/astro-embed-baseline-status": "npm:^0.2.2"
     "@astro-community/astro-embed-bluesky": "npm:^0.1.6"
-    "@astro-community/astro-embed-integration": "npm:^0.9.0"
+    "@astro-community/astro-embed-integration": "npm:^0.10.0"
     "@astro-community/astro-embed-link-preview": "npm:^0.3.0"
+    "@astro-community/astro-embed-mastodon": "npm:^0.1.0"
     "@astro-community/astro-embed-twitter": "npm:^0.5.10"
     "@astro-community/astro-embed-vimeo": "npm:^0.3.12"
     "@astro-community/astro-embed-youtube": "npm:^0.5.10"
   peerDependencies:
     astro: ^5.0.0 || ^6.0.0-alpha
-  checksum: 10c0/374fa648ca81c4b282cc88a6ed9ae8fa2786782ede286e9eababfbec5382bcebf9da94430bddd33fa6b957687a0b54a8df9f37c07fa568921be5aaead7b54d17
+  checksum: 10c0/28cdd8007ecff3aaecd5455e8f736accb5178088a13f1407887604e3b751cb34eb8d357613f32f67a7c7b9261065ed8e086d7044eb15ad94ae94b37e0ebfd66c
   languageName: node
   linkType: hard
 
@@ -2410,10 +2421,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"css-selector-parser@npm:^1.0.0":
-  version: 1.4.1
-  resolution: "css-selector-parser@npm:1.4.1"
-  checksum: 10c0/4a89a7b61072cf0e4d09e8abbb9a77bc661232b6fe6a6fe51ba775757bae0e3fc462b0db4c9a857da55afb89a1c1746a7b2ec1200f639c539556ebdc758b0101
+"css-selector-parser@npm:^3.0.0":
+  version: 3.3.0
+  resolution: "css-selector-parser@npm:3.3.0"
+  checksum: 10c0/7ec2c19800ce52591cf32d3d3745db5a8715b40dbd01057c9b799577c47b0ce5e29c19369a50bf3d6f8990fc3278544f1f73d5c03646c0fe752ce83330eff608
   languageName: node
   linkType: hard
 
@@ -5541,7 +5552,7 @@ __metadata:
     "@types/isotope-layout": "npm:^3"
     "@yeskunall/astro-umami": "npm:^0.0.7"
     astro: "npm:^5.16.6"
-    astro-embed: "npm:^0.10.0"
+    astro-embed: "npm:^0.11.0"
     astro-social-share: "npm:^2.2.0"
     imagesloaded: "npm:^5.0.0"
     isotope-layout: "npm:^3.0.6"
@@ -6329,15 +6340,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"unist-util-select@npm:^4.0.1":
-  version: 4.0.3
-  resolution: "unist-util-select@npm:4.0.3"
+"unist-util-select@npm:^5.1.0":
+  version: 5.1.0
+  resolution: "unist-util-select@npm:5.1.0"
   dependencies:
-    "@types/unist": "npm:^2.0.0"
-    css-selector-parser: "npm:^1.0.0"
+    "@types/unist": "npm:^3.0.0"
+    css-selector-parser: "npm:^3.0.0"
+    devlop: "npm:^1.1.0"
     nth-check: "npm:^2.0.0"
     zwitch: "npm:^2.0.0"
-  checksum: 10c0/3749329e23e6a0707f3e9ab53d259e1a85b83646ecff97c33e2f04c6a93ad35125efa1b000c7e5a19b5ad6841534d947b38d6c04d6637d5c0acf77481de891f2
+  checksum: 10c0/2be09c8c146d92f606d7383faa3df0f905b67c0618ac8128f99f8b02cf980f0ee1035b12c598a79fe5aebfef9e10f1e9eb8eb26d605fc65122946f56332bd257
   languageName: node
   linkType: hard
 
