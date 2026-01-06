@@ -5,7 +5,6 @@ import FormattedDate from "@components/FormattedDate.astro";
 import BackToTop from "@components/BackToTop.astro";
 
 const posts = (await getCollection("wiki")).sort((a, b) => {
-  // Use updatedDate if available, otherwise use pubDate
   const dateA = a.data.updatedDate || a.data.pubDate;
   const dateB = b.data.updatedDate || b.data.pubDate;
   return dateB.valueOf() - dateA.valueOf();
