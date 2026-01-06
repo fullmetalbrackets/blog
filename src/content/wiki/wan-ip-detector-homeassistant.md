@@ -1,12 +1,12 @@
 ---
-title: "WAN IP Detector for Home Assistant"
-description: Add this to Home Assistant comfiguration.yaml to 
-crrare a sensor that detects your current WAN IP address.
+title: WAN IP Detector for Home Assistant
+description: "Add this to Home Assistant configuration.yaml to 
+create a sensor that detects your current WAN IP address."
 pubDate: 2026-01-06
 tag: snippet
 ---
 
-```
+```yaml
 command_line:
   - sensor:
       unique_id: wan_address
@@ -21,7 +21,7 @@ dynamic IP that changed every now and then.  I also used the
 below automation to notify my phone (via the Home Assistant 
 companion app) when the IP changes.
 
-```
+```yaml
 alias: Notify when Public IP changes
 description: ""
 triggers:
