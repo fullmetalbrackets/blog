@@ -16,7 +16,7 @@ export async function getStaticPaths({ paginate }) {
   return await Promise.all(
     pages.map(async (page: { props: { page: { data: any[]; }; }; }) => {
       const postsWithReadingTime = await Promise.all(
-        page.props.page.data.map(async (post: { id: string; body?: string; collection: "blog"; data: InferEntrySchema<"blog">; rendered?: RenderedContent; filePath?: string; } | { id: string; body?: string; collection: "links"; data: InferEntrySchema<"links">; rendered?: RenderedContent; filePath?: string; } | { id: string; body?: string; collection: "wiki"; data: InferEntrySchema<"wiki">; rendered?: RenderedContent; filePath?: string; }) => {
+        page.props.page.data.map(async (post: { id: string; body?: string; collection: "blog"; data: InferEntrySchema<"blog">; rendered?: RenderedContent; filePath?: string; }) => {
           const { remarkPluginFrontmatter } = await render(post);
           return {
             ...post,
