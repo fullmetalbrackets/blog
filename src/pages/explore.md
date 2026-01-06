@@ -44,6 +44,11 @@ Explore all of the [slashpages](https://slashpages.net/) on this site below.
             <p>My movie shelf, basically a tracker of movies I've seen on Plex.
         </li>
         <li>
+            <a href="/notes/" data-umami-event="explore-notes">Notes</a>
+            <hr>
+            <p>Short-form content like bookmarks, random thoughts or memes that I post as part of my Lifestream.</p>
+        </li>
+        <li>
             <a href="/privacy/" data-umami-event="explore-privacy">Privacy</a>
             <hr>
             <p>Read the privacy policy for this website.
