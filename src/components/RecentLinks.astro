@@ -33,7 +33,7 @@ const links = (await getCollection("links")).sort(
   .list {
     display: flex;
     flex-direction: column;
-    margin: 0 auto ;
+    margin: 0 auto;
     padding-bottom: 0.5em;
   }
   .title-link {
@@ -94,11 +94,11 @@ const links = (await getCollection("links")).sort(
   }
   
   @media screen and (max-width: 667px) {
-    .info {
-      display: block;
+    a.active {
+      border-bottom: 1px solid transparent;
     }
-    .link-tag {
-      font-size: 16.65px;
+    .more {
+      margin-top: 0;
     }
   }
 </style>
