@@ -91,7 +91,7 @@ const recentPosts = await Promise.all(
     font-family: var(--sub-font);
     font-weight: 900;
     justify-content: end;
-    margin: -0.325em -1.25em -0.5em 0;
+    margin: 0.9em -1.25em -0.5em 0;
     padding: 0.25em;
   }
   .more svg {
@@ -112,6 +112,13 @@ const recentPosts = await Promise.all(
     transition: all .1s ease-out;
     transform: translateX(4px);
   }
+
+  @media screen and (max-width: 1245px) {
+    .more {
+      margin: -0.25em -1.25em -0.5em 0;
+    }
+  }
+
   @media screen and (max-width: 667px) {
     .info {
       display: block;
