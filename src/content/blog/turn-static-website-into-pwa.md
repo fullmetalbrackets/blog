@@ -2,7 +2,7 @@
 title: "Turn a static website into a progressive web app"
 description: "Frameworks and libraries are great and all, but sometimes you just want to make a simple website with only HTML, CSS and JavaScript — maybe without the latter even. When making a PWA, it’s common to use a framework like Vue or a library like Workbox, which requires a bundler like Webpack. In truth, that’s completely unnecessary!"
 pubDate: 2022-01-07
-updateDate: 2025-01-30
+updatedDate: 2026-01-17
 tags: ["web development"]
 related1: styling-the-kbd-element
 ---
@@ -145,20 +145,23 @@ Let's break it down:
 
 - `"name"` is the text displayed on the splash screen below the icon
 - `"short_name"` is the text displayed below the shortcut on the desktop or the home screen of mobile devices
-- `"scope"` tells the browser which pages are part of the PWA, generally this should be “/” (project root directory and all subdirectories) or “.” (same directory as the manifest, which should be project root anyway, and all subdirectories)
-- `"display"` specifies how the app is displayed on a mobile device — there’s several options, but “standalone” gives the most native-like feel, with the PWA having it’s own app window and launcher icon
+- `"start_url"` is the initial page when the PWA is opened, in this case **/** means **index.html** or equivalent
+- `"scope"` defines the navigation boundary of the PWA, generally this should be **/** which sets the scope to the root directory and all subdirectories
+- `"display"` specifies how the app is displayed on a mobile device — there’s several options, but **standalone** gives the most native-like feel, with the PWA having it’s own app window and launcher icon
 - `"background_color"` is the color of the splash screen’s background
 - `"theme_color"` is the color of the status bars and navigation if used in the app
-- `"orientation"` determines whether the app is meant to be primarily displayed in portrait, landscape or either mode on a mobile device — you should probably set this to “any” or “natural” until you get a feel for whether or not you like one orientation over the other
+- `"orientation"` determines whether the app is meant to be primarily displayed in portrait, landscape or either mode on a mobile device — I use **portrait-primary** because it's how I tend to use my phone and therefore how I want to use my PWA
 - `"icons"` is an array of the app icons in their various sizes, each for a different size display of mobile device — you want this to be the same image (your app’s icon or logo) just in the specific different sizes
 
-For the icons, you can just google “PWA icon generator” to find a bunch of tools that let you turn an image into the various sizes needed for a PWA, but I personally prefer <a href="https://www.simicart.com/manifest-generator.html/" target="_blank">this one</a> since generates both the correct size icons and the manifest for them. Note that if **any** size of icon is missing, or the incorrect size, the site will not be installable as a PWA.
+For the icons, you can just google “PWA icon generator” to find a bunch of tools that let you turn an image into the various sizes needed for a PWA, but I personally prefer <a href="https://www.simicart.com/manifest-generator.html/" target="_blank">this one</a> since generates both the correct size icons and the manifest for them. Note that if *any* size of icon is missing, or the incorrect size, the site will not be installable as a PWA.
 
 ## Testing your PWA
 
-It may be tricky to test a PWA locally, since you need HTTPS and you may not have have a way to do that on your machine. If so I suggest using <a href="https://surge.sh" target="_blank">Surge.sh</a> since it lets you quickly and easily upload and teardown websites, and they provide free HTTPS. Alternately, you temporarily host your app on <a href="https://netlify.com" target="_blank">Netlify</a> or <a href="https://pages.github.com/" target="_blank">GitHub Pages</a> for that sweet free HTTPS.
+It may be tricky to test a PWA locally, since you need HTTPS and you may not have have a way to do that on your machine. If so I suggest using [Surge.sh](https://surge.sh) since it lets you quickly and easily upload and teardown websites, and they provide free HTTPS. Alternately, you temporarily or permanently host your app on [Netlify](https://netlify.com), [GitHub Pages](https://pages.github.com/) or [Cloudflare Pages](https://pages.cloudflare.com/) for that sweet free HTTPS.
 
-Either way, once you've got HTTPS figured out, go to your site's URL in Google Chrome. First, you should notice a new icon on your address bar that gives you the option to install the site as a PWA. If you see this, you're golden! If not, let's figure out why with the Chrome Developer Tools. Open the developer tools, click on the **Application** tab and it will list any issues with the PWA. Usually fixing exactly what the Chrome dev tools tell you is broken will immediately make it work.
+Either way, once you've got HTTPS figured out, go to your site's URL in Google Chrome. First, you should notice a new icon on your address bar that gives you the option to install the site as a PWA. If you see this, you're golden!
+
+If not, you can figure out why with the Chrome Developer Tools. Open the developer tools with <kbd>F12</kbd>, click on the **Application** tab and it will list any issues with the PWA. Usually fixing exactly what the Chrome dev tools tell you is broken will immediately make it work.
 
 ## References
 

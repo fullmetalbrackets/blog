@@ -2,6 +2,7 @@
 title: "Styling the kbd element"
 description: "I wanted to style my <kbd> element to look like a keyboard, and a google search took me to someone else's blog post that had a nice bit of code and invited others to steal it. So I did."
 pubDate: 2022-09-09
+updatedDate: 2026-01-17
 tags: ["web development"]
 related1: turn-static-website-into-pwa
 ---
@@ -22,32 +23,36 @@ related1: turn-static-website-into-pwa
 
 ## The code
 
+This is my version, obviously change the colors and other things as you see fit.
+
 ```css
 kbd {
   background-color: #ccc;
   color: #222;
-  border-radius: 0.25rem;
+  border-radius: 0.2em;
   border: 1px solid #000;
-  box-shadow: 0 2px 0 1px #aaa;
+  box-shadow: 0 2px 0 1px #888;
   cursor: default;
   font-family: sans-serif;
   font-size: 0.75em;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.2;
   min-width: 0.75rem;
   display: inline-block;
   text-align: center;
-  padding: 2px 5px;
+  padding: 3px 5px 2px;
   position: relative;
+  transition: all .1s linear;
   top: -1px;
 }
 ```
 
-Optionally, you can add a "pushed" effect on hover with the below code. (I don't use it for this site.)
+Optionally, you can add a "pushed" effect on hover with the below code.
 
 ```css
 kbd:hover {
-  box-shadow: 0 1px 0 0.5px #ccc;
+  box-shadow: 0 1px 0 0.5px #888;
+  transition: all .1s linear;
   top: 1px;
 }
 ```
