@@ -6,7 +6,12 @@ description: A log of major changes made to fullmetalbrackets.com
 
 A log of major changes made to my site over the years. For more granular details, [see the GitHub repo](https://github.com/fullmetalbrackets/blog/commits/main/).
 
-<h2 class="flex">2025-12-30&nbsp;<span class="latest">latest</span></h2>
+<h2 class="flex">2026-01-02&nbsp;<span class="latest">latest</span></h2>
+
+- Add [movies](/movies) page
+- Add [tvshows](/tvshows) page
+
+## 2025-12-30
 
 - Add [changelog](/changelog) page (this page you are reading)
 
