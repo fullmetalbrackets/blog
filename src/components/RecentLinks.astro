@@ -38,13 +38,11 @@ const links = (await getCollection("links")).sort(
   }
   .title-link {
     color: var(--emphasis);
-    border-bottom: 2px transparent;
     font-weight: bold;
     line-height: 1.2;
   }
   .title-link:hover {
     color: var(--hover);
-    border-bottom: 2px solid var(--hover);
   }
   .link-tag {
     font-family: var(--sub-font);
@@ -69,7 +67,7 @@ const links = (await getCollection("links")).sort(
   .more svg {
     display: inline-flex;
     place-content: center;
-    margin: 2px 0 -3px 0;
+    margin: 4px 0 -3px 0;
     padding: 0;
     filter: var(--svg2);
   }
@@ -95,7 +93,7 @@ const links = (await getCollection("links")).sort(
   
   @media screen and (max-width: 667px) {
     a.active {
-      border-bottom: 1px solid transparent;
+      border-bottom: 1px dotted transparent;
     }
     .more {
       margin-top: 0;

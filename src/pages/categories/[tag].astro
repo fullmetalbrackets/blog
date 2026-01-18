@@ -75,11 +75,9 @@ const { tag, posts } = Astro.props;
   .back a {
     font-size: 24px;
     color: var(--link);
-    border-bottom: 1px solid transparent;
   }
   .back a:hover {
     color: var(--hover);
-    border-bottom: 1px solid var(--hover);
     transition: all .25s ease-out;
     margin: 0;
   }
@@ -95,7 +93,7 @@ const { tag, posts } = Astro.props;
   div {
     display: block;
     padding-bottom: 0.25em;
-    border-bottom: 2px solid transparent;
+    border-bottom: 4px dotted transparent;
   }
   p {
     margin: 0 auto 0.125em auto;
@@ -145,7 +143,7 @@ const { tag, posts } = Astro.props;
     margin-top: -0.25em;
   }
   li:hover div {
-    border-bottom: 2px solid var(--hover);
+    border-bottom: 4px dotted var(--hover);
     cursor: pointer;
     transition: all .25s ease-out;
   }

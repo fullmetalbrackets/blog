@@ -67,11 +67,11 @@ const recentPosts = await Promise.all(
     margin: 0 auto 1em auto;
     padding-bottom: 0.5em;
     line-height: 1.3;
-    border-bottom: 2px solid transparent;
+    border-bottom: 4px dotted transparent;
   }
   .list:hover {
     padding-bottom: 0.5em;
-    border-bottom: 2px solid var(--hover);
+    border-bottom: 4px dotted var(--hover);
     transition: all .5s ease-out;
   }
   .list:hover .posts-title {
@@ -91,13 +91,13 @@ const recentPosts = await Promise.all(
     font-family: var(--sub-font);
     font-weight: 900;
     justify-content: end;
-    margin: 0.9em -1.25em -0.5em 0;
+    margin: 0.875em -1.25em -0.5em 0;
     padding: 0.25em;
   }
   .more svg {
     display: inline-flex;
     place-content: center;
-    margin: 2px 0 -3px 0;
+    margin: 4px 0 -3px 0;
     padding: 0;
     filter: var(--svg2);
   }
