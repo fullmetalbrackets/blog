@@ -102,7 +102,6 @@ const desc = "A chronicle of things I've experienced, enjoyed or learned from"
 </BaseLayout>
 
 <script>
-  import Masonry from 'masonry-layout';
   import imagesLoaded from 'imagesloaded';
   
   type FilterType = 'book' | 'game' | 'image' | 'movie' | 'note' | 'quote' | 'tvshow' | 'youtube';
@@ -115,92 +114,41 @@ const desc = "A chronicle of things I've experienced, enjoyed or learned from"
     Array.from(filterButtons).map(btn => btn.dataset.filter as FilterType)
   );
 
-  let msnry: Masonry | null = null;
   let iso: any = null;
   
   async function initMasonry() {
     if (!grid) return;
     
     const Isotope = (await import('isotope-layout')).default;
-    
+
     iso = new Isotope(grid, {
       itemSelector: '.lifestream-item',
       layoutMode: 'masonry',
       masonry: {
         gutter: 32
       },
-      transitionDuration: 0,
-      hiddenStyle: {
-        opacity: 0
-      },
-      visibleStyle: {
-        opacity: 1
-      }
+      transitionDuration: 0
     });
 
-    imagesLoaded(grid, () => {
-      if (iso) {
-        iso.layout();
-      }
-    });
+    imagesLoaded(grid, () => iso?.layout());
   }
 
   function updateVisibleItems() {
     if (!iso) return;
     
-    const items = grid.querySelectorAll<HTMLElement>('.lifestream-item');
-    let visibleCount = 0;
-    const itemsToHide: HTMLElement[] = [];
-    const itemsToShow: HTMLElement[] = [];
-    
-    items.forEach(item => {
-      const itemType = item.dataset.type as FilterType;
-      const shouldBeVisible = activeFilters.has(itemType);
-      const isCurrentlyVisible = item.style.display !== 'none';
-      
-      if (shouldBeVisible) {
-        visibleCount++;
-        if (!isCurrentlyVisible) {
-          itemsToShow.push(item);
-        }
-      } else if (isCurrentlyVisible) {
-        itemsToHide.push(item);
-      }
-    });
+    const visibleCount = grid.querySelectorAll<HTMLElement>(
+      Array.from(activeFilters).map(type => `.lifestream-item[data-type="${type}"]`).join(',')
+    ).length;
     
     if (emptyState) {
-      if (visibleCount === 0) {
-        emptyState.style.display = 'block';
-      } else {
-        emptyState.style.display = 'none';
-      }
+      emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
     }
 
-    itemsToHide.forEach(item => {
-      item.classList.add('hiding');
+    iso.arrange({
+      filter: activeFilters.size === 0 
+        ? () => false 
+        : (itemElem: HTMLElement) => activeFilters.has(itemElem.dataset.type as FilterType)
     });
-    
-    setTimeout(() => {
-      itemsToHide.forEach(item => {
-        item.style.display = 'none';
-        item.classList.remove('hiding');
-      });
-      
-      itemsToShow.forEach(item => {
-        item.style.display = '';
-      });
-      
-      if (activeFilters.size === 0) {
-        iso.arrange({ filter: () => false });
-      } else {
-        iso.arrange({
-          filter: function(itemElem: HTMLElement) {
-            const itemType = itemElem.dataset.type as FilterType;
-            return activeFilters.has(itemType);
-          }
-        });
-      }
-    }, 250);
   }
 
   filterButtons.forEach(button => {
@@ -208,26 +156,18 @@ const desc = "A chronicle of things I've experienced, enjoyed or learned from"
       const filterType = button.dataset.filter as FilterType;
       if (!filterType) return;
       
-      if (activeFilters.has(filterType)) {
+      const isActive = activeFilters.has(filterType);
+      
+      if (isActive) {
         activeFilters.delete(filterType);
-        button.classList.remove('active');
-        button.setAttribute('aria-pressed', 'false');
       } else {
         activeFilters.add(filterType);
-        button.classList.add('active');
-        button.setAttribute('aria-pressed', 'true');
       }
       
+      button.classList.toggle('active', !isActive);
+      button.setAttribute('aria-pressed', String(!isActive));
+      
       updateVisibleItems();
-    });
-  });
-
-  filterButtons.forEach(button => {
-    button.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        button.click();
-      }
     });
   });
 
@@ -240,11 +180,7 @@ const desc = "A chronicle of things I've experienced, enjoyed or learned from"
   let resizeTimer: number;
   window.addEventListener('resize', () => {
     clearTimeout(resizeTimer);
-    resizeTimer = window.setTimeout(() => {
-      if (iso) {
-        iso.layout();
-      }
-    }, 250);
+    resizeTimer = window.setTimeout(() => iso?.layout(), 250);
   });
 </script>
 

@@ -807,14 +807,6 @@ blockquote[data-type="warning"] a:hover {
   }
 }
 
-.lifestream-item {
-  animation: slideInFromRight 0.3s ease forwards;
-}
-
-.lifestream-item.hiding {
-  animation: slideOutToLeft 0.3s ease forwards;
-}
-
 /* utility classes */
 .inv {
   font-style: italic;
