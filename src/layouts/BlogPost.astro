@@ -105,7 +105,7 @@ const selectedPosts = allPosts.filter(post =>
       cursor: pointer;
       font-weight: 700;
       margin: 0 auto;
-      padding: 6px 10px;
+      padding: 6px 10px 4px 10px;
       text-decoration: none;
       font-size: 0.85em;
       font-family: var(--sub-font);
@@ -151,7 +151,7 @@ const selectedPosts = allPosts.filter(post =>
     .coffee-btn {
       display: grid;
       background-color: var(--info);
-      border-radius: 0.25em;
+      border-radius: 0.325em;
       font-family: var(--sub-font);
       color: var(--primary);
       grid-template-columns: auto;
@@ -162,6 +162,7 @@ const selectedPosts = allPosts.filter(post =>
     }
     .coffee-btn:hover {
       background: var(--hover);
+      transition: all .15s ease-out;
     }
     .share {
       display: grid;
@@ -213,12 +214,18 @@ const selectedPosts = allPosts.filter(post =>
     }
     .email:hover a, .email:focus a {
       color: #000;
+      transform: none;
+      box-shadow: 0 0 0 0;
     }
     .edit-post a:hover, .stats:hover a {
       color: #000;
+      transform: none;
+      box-shadow: 0 0 0 0;
     }
     .edit-post button:hover, .mid-end button:hover, .post-end button:hover {
       background: var(--hover);
+      transform: none;
+      box-shadow: 0 0 0 0;
     }
     .questions {
       display: grid;
@@ -409,6 +416,7 @@ const selectedPosts = allPosts.filter(post =>
       }
       .astro-social-share svg:hover {
         filter: var(--coffee-hover);
+        transition: all .2s ease-out;
       }
     </style>
   </slot>
@@ -509,7 +517,7 @@ const selectedPosts = allPosts.filter(post =>
       <span>Was this article helpful?</span>
         <a href="https://www.buymeacoffee.com/arieldiaz">
           <Image
-            src="https://img.buymeacoffee.com/button-api/?slug=arieldiaz&font_family=Lato&coffee_colour=ffffff"
+            src="https://img.buymeacoffee.com/button-api/?slug=arieldiaz&font_family=Inter&coffee_colour=6F4E37"
             class="coffee-btn"
             alt="Buy Me A Coffee"
             title="Buy Me A Coffee"
