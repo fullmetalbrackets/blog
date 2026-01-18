@@ -405,7 +405,14 @@ kbd {
   text-align: center;
   padding: 3px 5px 2px;
   position: relative;
+  transition: all .1s linear;
   top: -1px;
+}
+
+kbd:hover {
+  box-shadow: 0 1px 0 0.5px #888;
+  transition: all .1s linear;
+  top: 1px;
 }
 
 a,
