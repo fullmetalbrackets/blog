@@ -2,6 +2,7 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import BackToTop from "@components/BackToTop.astro";
 
+
 const { frontmatter } = Astro.props;
 const showTop = frontmatter.showTop !== false;
 ---
@@ -86,5 +87,24 @@ const showTop = frontmatter.showTop !== false;
         }
       }
     }
+  </script>
+  <script is:inline>
+    function copyToClipboard(copyBtn, text) {
+      navigator.clipboard.writeText(text).then(() => {
+        copyBtn.innerText = "Copied!";
+        copyBtn.style.backgroundColor = "var(--hover)";
+        setTimeout(() => {
+          copyBtn.innerText = "Copy";
+          copyBtn.style.backgroundColor = "var(--info)";
+        }, 2000);
+      });
+    }
+    document.addEventListener("click", (e) => {
+      if (!e.target.classList.contains("copy-btn")) return;
+      const copyBtn = e.target;
+      const wrapper = e.target.closest(".code-wrapper");
+      const code = wrapper.querySelector("pre code");
+      copyToClipboard(copyBtn, code.innerText);
+    });
   </script>
 </BaseLayout>
