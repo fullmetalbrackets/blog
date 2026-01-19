@@ -1095,13 +1095,13 @@ button {
   color: var(--emphasis);
   text-decoration: none;
   font-weight: bold;
-  border-bottom: 1px solid transparent;
+  border-bottom: 4px dotted transparent;
 }
 
 .pagefind-ui__result-title .pagefind-ui__result-link:hover {
   color: var(--hover);
   text-decoration: none;
-  border-bottom: 1px solid var(--hover);
+  border-bottom: 4px dotted var(--hover);
   transition: all .25s ease-out;
 }
 
