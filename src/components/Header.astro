@@ -8,6 +8,9 @@ import Search from '@icons/search.svg';
 
 <style scoped>
   header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
     background: var(--tertiary);
     margin: 0 auto;
   }
@@ -68,6 +71,17 @@ import Search from '@icons/search.svg';
     margin: 0;
     padding: 0;
     font-weight: 900;
+    color: var(--primary);
+    background: linear-gradient(to right, var(--hover) 50%, var(--primary) 50%);
+    background-size: 200% 100%;
+    background-position: right;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: background-position 0.35s ease-in-out;
+  }
+  .logo:hover {
+    background-position: left;
   }
   img {
     margin: 0;
