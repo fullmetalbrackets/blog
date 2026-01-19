@@ -12,14 +12,23 @@ Last updated on <span class="important">December 23, 2025</span>
     <a href="https://antfu.me/" target="_blank" rel="noopener noreferrer" data-umami-event="blogroll-antfu">
         <button>Anthony Fu</button>
     </a>
+    <a href="https://chriscoyier.net/" target="_blank" rel="noopener noreferrer" data-umami-event="blogroll-chriscoyier">
+        <button>Chris Coyier</button>
+    </a>
     <a href="https://chris.lu/" target="_blank" rel="noopener noreferrer" data-umami-event="blogroll-chrislu">
         <button>Chris Lu</button>
     </a>
+    <a href="https://henry.codes/" target="_blank" rel="noopener noreferrer" data-umami-event="blogroll-henrycodes">
+        <button>Henry From Online</button>
+    </a>
     <a href="https://www.joshwcomeau.com/" target="_blank" rel="noopener noreferrer" data-umami-event="blogroll-jwcomeau">
-        <button>Josh Comeau</button>
+        <button>Josh W. Comeau</button>
     </a>
     <a href="https://kevinkipp.com/" target="_blank" rel="noopener noreferrer" data-umami-event="blogroll-kkipp">
         <button>Kevin Kipp</button>
+    </a>
+    <a href="https://localghost.dev/" target="_blank" rel="noopener noreferrer" data-umami-event="blogroll-localghost">
+        <button>Localghost</button>
     </a>
     <a href="https://rknight.me/" target="_blank" rel="noopener noreferrer" data-umami-event="blogroll-rknight">
         <button>Robb Knight</button>
