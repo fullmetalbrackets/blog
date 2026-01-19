@@ -13,6 +13,7 @@ html {
   --primary: rgb(44 156 195);
   --secondary: rgb(0, 150, 150);
   --tertiary: rgb(from var(--secondary, var(--secondary)) r g b / 0.1);
+  --dropdown: rgb(from var(--secondary, var(--secondary)) r g b / 0.1);
   --other: rgb(200, 0, 0);
   --accent: rgb(143, 156, 174);
   --border: rgba(182, 193, 210, 0.25);
@@ -69,6 +70,7 @@ pre[class*="language-"] {
     --primary: rgb(90, 194, 175);
     --secondary: rgb(95, 193, 232);
     --tertiary: rgb(from var(--blockquote, var(--blockquote)) r g b / 0.75);
+    --dropdown: rgb(from var(--blockquote, var(--blockquote)) r g b / 0.25);
     --other: rgb(255, 175, 225);
     --accent: rgb(51, 65, 85);
     --border: rgba(182, 193, 210, 0.25);
@@ -126,6 +128,7 @@ html.light {
   --primary: rgb(44 156 195);
   --secondary: rgb(0, 150, 150);
   --tertiary: rgb(from var(--primary, var(--primary)) r g b / 0.1);
+  --dropdown: rgb(from var(--secondary, var(--secondary)) r g b / 0.1);
   --other: rgb(200, 0, 0);
   --accent: rgb(182, 193, 210);
   --border: rgba(182, 193, 210, 0.25);
@@ -180,6 +183,7 @@ html.dark {
   --primary: rgb(90, 194, 175);
   --secondary: rgb(95, 193, 232);
   --tertiary: rgb(from var(--blockquote, var(--blockquote)) r g b / 0.75);
+  --dropdown: rgb(from var(--blockquote, var(--blockquote)) r g b / 0.75);
   --other: rgb(255, 175, 225);
   --accent: rgb(51, 65, 85);
   --border: rgba(182, 193, 210, 0.25);
