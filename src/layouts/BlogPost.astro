@@ -31,8 +31,9 @@ const selectedPosts = allPosts.filter(post =>
   relatedPosts.includes(post.id)
 );
 ---
+<ScrollProgress />
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description}>  
   <head>
     <link rel="stylesheet" href="/prism.css" />
   </head>
@@ -423,8 +424,6 @@ const selectedPosts = allPosts.filter(post =>
 
   <BlogPosting slot="head" {...Astro.props} />
 
-  <ScrollProgress />
-
   <article data-pagefind-body>
     <h1>{title}</h1>
     <div>
@@ -618,5 +617,23 @@ const selectedPosts = allPosts.filter(post =>
       }
     }
   </script>
-
+  <script is:inline>
+    function copyToClipboard(copyBtn, text) {
+      navigator.clipboard.writeText(text).then(() => {
+        copyBtn.innerText = "Copied!";
+        copyBtn.style.backgroundColor = "var(--hover)";
+        setTimeout(() => {
+          copyBtn.innerText = "Copy";
+          copyBtn.style.backgroundColor = "var(--info)";
+        }, 2000);
+      });
+    }
+    document.addEventListener("click", (e) => {
+      if (!e.target.classList.contains("copy-btn")) return;
+      const copyBtn = e.target;
+      const wrapper = e.target.closest(".code-wrapper");
+      const code = wrapper.querySelector("pre code");
+      copyToClipboard(copyBtn, code.innerText);
+    });
+  </script>
 </BaseLayout>
