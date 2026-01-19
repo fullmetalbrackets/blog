@@ -12,7 +12,7 @@ html {
   --text: rgb(32, 33, 36);
   --primary: rgb(44 156 195);
   --secondary: rgb(0, 150, 150);
-  --tertiary: rgb(from var(--secondary, var(--secondary)) r g b / 0.1);
+  --tertiary: rgb(233, 245, 249);
   --dropdown: rgb(from var(--secondary, var(--secondary)) r g b / 0.1);
   --other: rgb(200, 0, 0);
   --accent: rgb(143, 156, 174);
@@ -69,7 +69,7 @@ pre[class*="language-"] {
     --text: rgb(164, 174, 188);
     --primary: rgb(90, 194, 175);
     --secondary: rgb(95, 193, 232);
-    --tertiary: rgb(from var(--blockquote, var(--blockquote)) r g b / 0.75);
+    --tertiary: rgb(12, 22, 32);
     --dropdown: rgb(from var(--blockquote, var(--blockquote)) r g b / 0.25);
     --other: rgb(255, 175, 225);
     --accent: rgb(51, 65, 85);
@@ -127,7 +127,7 @@ html.light {
   --text: rgb(32, 33, 36);
   --primary: rgb(44 156 195);
   --secondary: rgb(0, 150, 150);
-  --tertiary: rgb(from var(--primary, var(--primary)) r g b / 0.1);
+  --tertiary: rgb(233, 245, 249);
   --dropdown: rgb(from var(--secondary, var(--secondary)) r g b / 0.1);
   --other: rgb(200, 0, 0);
   --accent: rgb(182, 193, 210);
@@ -182,7 +182,7 @@ html.dark {
   --text: rgb(164, 174, 188);
   --primary: rgb(90, 194, 175);
   --secondary: rgb(95, 193, 232);
-  --tertiary: rgb(from var(--blockquote, var(--blockquote)) r g b / 0.75);
+  --tertiary: rgb(0, 8, 16);
   --dropdown: rgb(from var(--blockquote, var(--blockquote)) r g b / 0.75);
   --other: rgb(255, 175, 225);
   --accent: rgb(51, 65, 85);
@@ -471,25 +471,6 @@ img {
   margin: 1.5em auto;
 }
 
-code {
-  padding: 0 4.5px 1px 4.5px;
-  font-family: var(--code-font);
-  background-color: var(--code-bg);
-  color: var(--code-text);
-  border-radius: 0.25em;
-  white-space: pre;
-  text-wrap: pretty;
-  letter-spacing: -0.5px;
-}
-
-pre {
-  padding: 1rem;
-}
-
-pre>code {
-  all: unset;
-}
-
 .desc {
   font-size: 90%;
   color: var(--text);
@@ -543,6 +524,55 @@ aside>a:focus {
 
 .tag button {
   margin-right: 0.125em;
+}
+
+/* codeblocks */
+code {
+  padding: 0 4.5px 1px 4.5px;
+  font-family: var(--code-font);
+  background-color: var(--code-bg);
+  color: var(--code-text);
+  border-radius: 0.25em;
+  white-space: pre;
+  text-wrap: pretty;
+  letter-spacing: -0.5px;
+}
+pre {
+  padding: 1rem;
+}
+pre>code {
+  all: unset;
+}
+.code-wrapper {
+  position: relative;
+  margin: 1.25rem 0;
+}
+.code-wrapper pre {
+  overflow-x: auto;
+  padding-right: 2.5rem;
+}
+.copy-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: var(--info);
+  color: #000;
+  border: none;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.5em;
+  cursor: pointer;
+  opacity: 0;
+}
+.code-wrapper:hover .copy-btn {
+  opacity: 1;
+}
+.copy-btn:hover {
+  background: var(--info);
+  transform: none;
+}
+.copy-btn[onclick] {
+  background: var(--hover);
 }
 
 /* figures & figcaptions */

@@ -6,6 +6,7 @@ import rehypeExternalLinks from 'rehype-external-links';
 import remarkDirective from 'remark-directive'
 import remarkDirectiveSugar from 'remark-directive-sugar'
 import yeskunallumami from '@yeskunall/astro-umami';
+import rehypeCodeblockCopy from "./src/utils/rehype-codeblock-copy.ts";
 
 export default defineConfig({
   site: 'https://fullmetalbrackets.com',
@@ -24,7 +25,8 @@ export default defineConfig({
           target: '_blank',
           rel: ['noopener', 'noreferrer']
         }
-      ]
+      ],
+      rehypeCodeblockCopy,
     ],
     syntaxHighlight: 'prism',
     remarkPlugins: [remarkReadingTime, remarkDirective, remarkDirectiveSugar],
