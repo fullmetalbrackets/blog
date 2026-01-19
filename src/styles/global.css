@@ -889,7 +889,7 @@ blockquote[data-type="warning"] a:hover {
 }
 
 .grid-col button {
-  width: 8em;
+  width: 10em;
 }
 
 .center {
@@ -1144,8 +1144,8 @@ article a[target="_blank"][href^="#"]::after {
 
   .grid-col {
     display: grid;
-    grid-template-columns: 50% 50%;
-    gap: 0;
+    grid-template-columns: 1fr;
+    gap: 0.5em 0;
     margin: 0 auto;
     padding: 0;
     justify-content: space-between;
