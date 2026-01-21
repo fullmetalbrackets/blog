@@ -243,14 +243,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@astrojs/sitemap@npm:^3.6.1":
-  version: 3.6.1
-  resolution: "@astrojs/sitemap@npm:3.6.1"
+"@astrojs/sitemap@npm:^3.7.0":
+  version: 3.7.0
+  resolution: "@astrojs/sitemap@npm:3.7.0"
   dependencies:
     sitemap: "npm:^8.0.2"
     stream-replace-string: "npm:^2.0.0"
     zod: "npm:^3.25.76"
-  checksum: 10c0/eba13a16fe03eb06c1d5010807d34faf560bd1c22cea40430724ea9999725ac362b10a49d0b97efc7a42a776126110db5ba1c376587a40726e1681cdf954ecff
+  checksum: 10c0/17b117881143da9bea3d348ba119d9ad9a3d1db55eb5efe81b97620c3f655e8d6b7306e6e92713d2cc67b0b2a10192f0825373b74bb6aa0ba99d50785990c1c0
   languageName: node
   linkType: hard
 
@@ -5394,7 +5394,7 @@ __metadata:
     "@astrojs/markdown-remark": "npm:^6.3.8"
     "@astrojs/mdx": "npm:^4.3.13"
     "@astrojs/rss": "npm:^4.0.15"
-    "@astrojs/sitemap": "npm:^3.6.1"
+    "@astrojs/sitemap": "npm:^3.7.0"
     "@playform/compress": "npm:^0.2.1"
     "@types/imagesloaded": "npm:^4.1.7"
     "@types/isotope-layout": "npm:^3"
