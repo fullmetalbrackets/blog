@@ -11,15 +11,16 @@
     margin: 0;
   }
   ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    place-items: center;
     background-color: var(--blockquote);
     border-radius: 0.5em;
     margin: 0.5em auto 0 auto;
     padding: 1.5em;
   }
   li {
-    display: inline-flex;
-    flex-direction: column;
-    margin: 0 auto;
+    margin: 0.25em auto;
     line-height: 1;
     border-bottom: 4px dotted transparent;
   }
@@ -28,8 +29,11 @@
     transition: all .25s ease-out;
   }
   @media screen and (max-width: 667px) {
+    ul {
+        grid-template-columns: auto auto;
+    }
     li {
-        margin-bottom: 0.25em;
+        margin: 0 auto 0.25em auto;
     }
     li:hover, a {
       transition: none !important;
@@ -40,7 +44,7 @@
 <section>
     <h2>Explore Site</h2>
     <nav>
-        <ul class="grid-col no-list b">
+        <ul class="no-list b">
             <li>
                 <a href="/blog/" data-umami-event="explore-blog">Blog</a>
             </li>
