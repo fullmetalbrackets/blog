@@ -1,5 +1,6 @@
 ---
 import type { MarkdownHeading } from 'astro';
+import TOC from '@icons/toc.svg';
 
 interface Props {
   headings: MarkdownHeading[];
@@ -10,8 +11,39 @@ const { headings } = Astro.props;
 const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
 ---
 
+<style>
+  h2 {
+    display: flex;
+    place-items: center;
+    border-color: var(--border2);
+  }
+  h2 svg {
+    filter: var(--toc);
+    margin-left: -0.1em;
+    margin-right: 0.1em;
+  }
+  @media screen and (min-width: 2108px) {
+    div {
+      position: fixed;
+      top: 2.75em;
+      right: 2em;
+      width: 20%;
+      max-width: 20%;
+      font-size: 0.85em;
+    }
+    span {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+    .top-btn {
+      position: sticky;
+    }
+  }
+</style>
+
 <div>
-  <h2>Table of Contents</h2>
+  <h2><TOC width={36} height={36}/>Table of Contents</h2>
   <ol>
     {
       filteredHeadings.map((heading) => (
