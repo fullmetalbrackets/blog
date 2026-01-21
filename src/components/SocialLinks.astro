@@ -33,21 +33,12 @@ import BuyMeCoffee from '@icons/bmc.svg';
         padding: 0;
         border: 0;
     }
-
-    @keyframes wiggle {
-        0%, 100% { transform: rotate(0deg); }
-        25% { transform: rotate(-5deg); }
-        75% { transform: rotate(5deg); }
-    }
-
     svg:hover {
         animation: wiggle 0.5s ease-in-out infinite;
     }
-
     svg:not(:hover) {
         animation: none;
     }
-
     @media screen and (min-width: 200px) and (max-width: 667px) {
         .personal-links {
             justify-content: center;

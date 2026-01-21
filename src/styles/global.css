@@ -17,6 +17,7 @@ html {
   --other: rgb(200, 0, 0);
   --accent: rgb(143, 156, 174);
   --border: rgba(182, 193, 210, 0.25);
+  --border2: rgba(44, 156, 195, 0.25);
   --link: rgb(250, 85, 0);
   --bq-link: rgb(195, 65, 0);
   --hover: rgb(200, 0, 0);
@@ -41,6 +42,7 @@ html {
   --svg: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%) contrast(98%);
   --svg2: brightness(0) saturate(100%) invert(39%) sepia(70%) saturate(4875%) hue-rotate(160deg) brightness(97%) contrast(101%);
   --svg-hover: brightness(0) saturate(100%) invert(9%) sepia(94%) saturate(6019%) hue-rotate(360deg) brightness(92%) contrast(110%);
+  --toc: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%) contrast(98%);
   --ext: brightness(0) saturate(100%) invert(11%) sepia(80%) saturate(5816%) hue-rotate(358deg) brightness(94%) contrast(113%);
   --search: invert(57%) sepia(86%) saturate(3921%) hue-rotate(13deg) brightness(99%) contrast(100%);
   --info-svg: brightness(0) saturate(100%) invert(77%) sepia(98%) saturate(1742%) hue-rotate(350deg) brightness(96%) contrast(95%);
@@ -74,6 +76,7 @@ pre[class*="language-"] {
     --other: rgb(255, 175, 225);
     --accent: rgb(51, 65, 85);
     --border: rgba(182, 193, 210, 0.25);
+    --border2: rgb(90, 194, 175, 0.25);
     --link: rgb(255, 221, 0);
     --bq-link: rgb(255, 221, 0);
     --hover: rgb(249, 115, 22);
@@ -100,6 +103,7 @@ pre[class*="language-"] {
     --svg: invert(93%) sepia(78%) saturate(2834%) hue-rotate(213deg) brightness(148%) contrast(96%);
     --svg2: brightness(0) saturate(100%) invert(72%) sepia(10%) saturate(3204%) hue-rotate(169deg) brightness(104%) contrast(82%);
     --svg-hover: brightness(0) saturate(100%) invert(55%) sepia(24%) saturate(6501%) hue-rotate(352deg) brightness(101%) contrast(95%);
+    --toc: brightness(0) saturate(100%) invert(68%) sepia(15%) saturate(1141%) hue-rotate(119deg) brightness(97%) contrast(92%);
     --ext: brightness(0) saturate(100%) invert(88%) sepia(9%) saturate(2244%) hue-rotate(108deg) brightness(82%) contrast(81%);
     --search: invert(57%) sepia(86%) saturate(3921%) hue-rotate(13deg) brightness(99%) contrast(100%);
     --info-svg: brightness(0) saturate(100%) invert(80%) sepia(82%) saturate(863%) hue-rotate(336deg) brightness(105%) contrast(90%);
@@ -132,6 +136,7 @@ html.light {
   --other: rgb(200, 0, 0);
   --accent: rgb(182, 193, 210);
   --border: rgba(182, 193, 210, 0.25);
+  --border2: rgba(44, 156, 195, 0.25);
   --link: rgb(250, 85, 0);
   --bq-link: rgb(195, 65, 0);
   --hover: rgb(200, 0, 0);
@@ -156,6 +161,7 @@ html.light {
   --svg: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%) contrast(98%);
   --svg2: brightness(0) saturate(100%) invert(39%) sepia(70%) saturate(4875%) hue-rotate(160deg) brightness(97%) contrast(101%);
   --svg-hover: brightness(0) saturate(100%) invert(9%) sepia(94%) saturate(6019%) hue-rotate(360deg) brightness(92%) contrast(110%);
+  --toc: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%) contrast(98%);
   --ext: brightness(0) saturate(100%) invert(11%) sepia(80%) saturate(5816%) hue-rotate(358deg) brightness(94%) contrast(113%);
   --search: invert(57%) sepia(86%) saturate(3921%) hue-rotate(13deg) brightness(99%) contrast(100%);
   --info-svg: brightness(0) saturate(100%) invert(77%) sepia(98%) saturate(1742%) hue-rotate(350deg) brightness(96%) contrast(95%);
@@ -187,6 +193,7 @@ html.dark {
   --other: rgb(255, 175, 225);
   --accent: rgb(51, 65, 85);
   --border: rgba(182, 193, 210, 0.25);
+  --border2: rgb(90, 194, 175, 0.25);
   --link: rgb(255, 221, 0);
   --bq-link: rgb(255, 221, 0);
   --hover: rgb(249, 115, 22);
@@ -213,6 +220,7 @@ html.dark {
   --svg: invert(93%) sepia(78%) saturate(2834%) hue-rotate(213deg) brightness(148%) contrast(96%);
   --svg2: brightness(0) saturate(100%) invert(72%) sepia(10%) saturate(3204%) hue-rotate(169deg) brightness(104%) contrast(82%);
   --svg-hover: brightness(0) saturate(100%) invert(55%) sepia(24%) saturate(6501%) hue-rotate(352deg) brightness(101%) contrast(95%);
+  --toc: brightness(0) saturate(100%) invert(68%) sepia(15%) saturate(1141%) hue-rotate(119deg) brightness(97%) contrast(92%);
   --ext: brightness(0) saturate(100%) invert(88%) sepia(9%) saturate(2244%) hue-rotate(108deg) brightness(82%) contrast(81%);
   --search: invert(57%) sepia(86%) saturate(3921%) hue-rotate(13deg) brightness(99%) contrast(100%);
   --info-svg: brightness(0) saturate(100%) invert(80%) sepia(82%) saturate(863%) hue-rotate(336deg) brightness(105%) contrast(90%);
@@ -840,6 +848,19 @@ blockquote[data-type="warning"] a:hover {
     transform: translateX(-20px);
   }
 }
+
+@keyframes wiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-5deg); }
+    75% { transform: rotate(5deg); }
+}
+.wiggle:hover {
+  animation: wiggle 0.5s ease-in-out infinite;
+}
+.wiggle:not(:hover) {
+  animation: none;
+}
+
 
 /* utility classes */
 .inv {

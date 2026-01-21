@@ -114,18 +114,11 @@ import Proven from '@icons/proven.svg';
     filter: var(--foot-ext);
     transition: all .2s ease-out;
   }
-  @keyframes wiggle {
-      0%, 100% { transform: rotate(0deg); }
-      25% { transform: rotate(-5deg); }
-      75% { transform: rotate(5deg); }
-  }
-
   .proof:hover {
-      animation: wiggle 0.5s ease-in-out infinite;
+    animation: wiggle 0.5s ease-in-out infinite;
   }
-
   .proof:not(:hover) {
-      animation: none;
+    animation: none;
   }
   @media screen and (max-width: 667px) {
     .badges {
