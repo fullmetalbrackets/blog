@@ -5,7 +5,7 @@ pubDate: 2025-03-15
 tag: information
 ---
 
-Total: <span class="sub-font b">18</span>
+Total: <span class="sub-font b em">18</span>
 
 - Deus Ex: Human Revolution
 - Dishonored

@@ -5,7 +5,7 @@ pubDate: 2025-12-30
 tag: information
 ---
 
-Total: <span class="sub-font b">8</span>
+Total: <span class="sub-font b em">8</span>
 
 - Donkey Kong Country Returns HD
 - Elden Ring (and Shadow of the Erdtree... except the final boss who I gave up on)
