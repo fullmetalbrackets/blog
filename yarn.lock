@@ -233,13 +233,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@astrojs/rss@npm:^4.0.14":
-  version: 4.0.14
-  resolution: "@astrojs/rss@npm:4.0.14"
+"@astrojs/rss@npm:^4.0.15":
+  version: 4.0.15
+  resolution: "@astrojs/rss@npm:4.0.15"
   dependencies:
-    fast-xml-parser: "npm:^5.3.0"
+    fast-xml-parser: "npm:^5.3.3"
     piccolore: "npm:^0.1.3"
-  checksum: 10c0/3b4f0fceb7042e13a1a2df3d82f280175b3e20233b7adfdd5d548eef6f002e09221d25bfe9b05def8c104d874c229d50ff528ac104c5d690b402e73b3ba2dcba
+  checksum: 10c0/0346bee2c3d94b086977ca634e97b434dba34b2e8b797fe6f3cd6bdd0408ec93ce3a91ad8585ad332a5173d180fbd845734b23efac6035cbcc1fcc1ddf104b14
   languageName: node
   linkType: hard
 
@@ -2854,7 +2854,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fast-xml-parser@npm:^5.3.0":
+"fast-xml-parser@npm:^5.3.3":
   version: 5.3.3
   resolution: "fast-xml-parser@npm:5.3.3"
   dependencies:
@@ -5393,7 +5393,7 @@ __metadata:
     "@astrojs/check": "npm:^0.9.6"
     "@astrojs/markdown-remark": "npm:^6.3.8"
     "@astrojs/mdx": "npm:^4.3.13"
-    "@astrojs/rss": "npm:^4.0.14"
+    "@astrojs/rss": "npm:^4.0.15"
     "@astrojs/sitemap": "npm:^3.6.1"
     "@playform/compress": "npm:^0.2.1"
     "@types/imagesloaded": "npm:^4.1.7"
