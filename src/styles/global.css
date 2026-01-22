@@ -715,7 +715,7 @@ blockquote.blockquote-quote {
   justify-content: space-between;
   border-color: transparent;
   background-color: rgb(from var(--border) r g b / 0.2);
-  border-radius: 0;
+  border-radius: 0.5em 0 0.5em 0;
   margin: 1.5em auto;
   padding: 0;
   width: 100%;
