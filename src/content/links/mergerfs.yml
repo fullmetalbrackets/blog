@@ -1,5 +1,5 @@
-title: "Mergerfs"
-description: "A union filesystem that makes multiple storage devices or filesystems appear as a single unified directory."
+title: 'Mergerfs'
+description: 'A union filesystem that makes multiple storage devices or filesystems appear as a single unified directory.'
 pubDate: 2025-12-07
-url: "https://trapexit.github.io/mergerfs/latest/"
+url: 'https://trapexit.github.io/mergerfs/latest/'
 tag: self-hosted

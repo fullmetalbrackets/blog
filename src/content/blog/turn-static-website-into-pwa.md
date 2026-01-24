@@ -1,9 +1,9 @@
 ---
-title: "Turn a static website into a progressive web app"
-description: "Frameworks and libraries are great and all, but sometimes you just want to make a simple website with only HTML, CSS and JavaScript — maybe without the latter even. When making a PWA, it’s common to use a framework like Vue or a library like Workbox, which requires a bundler like Webpack. In truth, that’s completely unnecessary!"
+title: 'Turn a static website into a progressive web app'
+description: 'Frameworks and libraries are great and all, but sometimes you just want to make a simple website with only HTML, CSS and JavaScript — maybe without the latter even. When making a PWA, it’s common to use a framework like Vue or a library like Workbox, which requires a bundler like Webpack. In truth, that’s completely unnecessary!'
 pubDate: 2022-01-07
 updatedDate: 2026-01-17
-tags: ["web development"]
+tags: ['web development']
 related1: styling-the-kbd-element
 ---
 
@@ -32,23 +32,23 @@ You can name this whatever you want, but most commonly they are called **sw.js**
 ```js
 // sw.js
 
-const staticSite = "website";
-const assets = ["/", "app.js"];
+const staticSite = 'website';
+const assets = ['/', 'app.js'];
 
-self.addEventListener("install", (installEvent) => {
-  installEvent.waitUntil(
-    caches.open(staticSite).then((cache) => {
-      cache.addAll(assets);
-    })
-  );
+self.addEventListener('install', (installEvent) => {
+	installEvent.waitUntil(
+		caches.open(staticSite).then((cache) => {
+			cache.addAll(assets);
+		})
+	);
 });
 
-self.addEventListener("fetch", (fetchEvent) => {
-  fetchEvent.respondWith(
-    caches.match(fetchEvent.request).then((res) => {
-      return res || fetch(fetchEvent.request);
-    })
-  );
+self.addEventListener('fetch', (fetchEvent) => {
+	fetchEvent.respondWith(
+		caches.match(fetchEvent.request).then((res) => {
+			return res || fetch(fetchEvent.request);
+		})
+	);
 });
 ```
 
@@ -59,22 +59,22 @@ Next you’ll need to register the service worker, which is done with this simpl
 ```js
 // app.js
 
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", function () {
-    navigator.serviceWorker.register("/sw.js").then(
-      function (registration) {
-        // Registration was successful
-        console.log(
-          "ServiceWorker registration successful with scope: ",
-          registration.scope
-        );
-      },
-      function (err) {
-        // registration failed :(
-        console.log("ServiceWorker registration failed: ", err);
-      }
-    );
-  });
+if ('serviceWorker' in navigator) {
+	window.addEventListener('load', function () {
+		navigator.serviceWorker.register('/sw.js').then(
+			function (registration) {
+				// Registration was successful
+				console.log(
+					'ServiceWorker registration successful with scope: ',
+					registration.scope
+				);
+			},
+			function (err) {
+				// registration failed :(
+				console.log('ServiceWorker registration failed: ', err);
+			}
+		);
+	});
 }
 ```
 
@@ -88,56 +88,56 @@ The `manifest.json` file that tells the browser how the PWA should behave when i
 // manifest.json
 
 {
-  "name": "PWA Name",
-  "short_name": "PWA Name",
-  "start_url": "/",
-  "scope": "/",
-  "display": "standalone",
-  "background_color": "#000000",
-  "theme_color": "#000000",
-  "orientation": "portrait-primary",
-  "icons": [
-    {
-      "src": "/icon-72x72.png",
-      "type": "image/png",
-      "sizes": "72x72"
-    },
-    {
-      "src": "/icon-96x96.png",
-      "type": "image/png",
-      "sizes": "96x96"
-    },
-    {
-      "src": "/icon-128x128.png",
-      "type": "image/png",
-      "sizes": "128x128"
-    },
-    {
-      "src": "/icon-144x144.png",
-      "type": "image/png",
-      "sizes": "144x144"
-    },
-    {
-      "src": "/icon-152x152.png",
-      "type": "image/png",
-      "sizes": "152x152"
-    },
-    {
-      "src": "/icon-192x192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "/icon-384x384.png",
-      "type": "image/png",
-      "sizes": "384x384"
-    },
-    {
-      "src": "/icon-512x512.png",
-      "type": "image/png",
-      "sizes": "512x512"
-    }
-  ]
+	"name": "PWA Name",
+	"short_name": "PWA Name",
+	"start_url": "/",
+	"scope": "/",
+	"display": "standalone",
+	"background_color": "#000000",
+	"theme_color": "#000000",
+	"orientation": "portrait-primary",
+	"icons": [
+		{
+			"src": "/icon-72x72.png",
+			"type": "image/png",
+			"sizes": "72x72"
+		},
+		{
+			"src": "/icon-96x96.png",
+			"type": "image/png",
+			"sizes": "96x96"
+		},
+		{
+			"src": "/icon-128x128.png",
+			"type": "image/png",
+			"sizes": "128x128"
+		},
+		{
+			"src": "/icon-144x144.png",
+			"type": "image/png",
+			"sizes": "144x144"
+		},
+		{
+			"src": "/icon-152x152.png",
+			"type": "image/png",
+			"sizes": "152x152"
+		},
+		{
+			"src": "/icon-192x192.png",
+			"type": "image/png",
+			"sizes": "192x192"
+		},
+		{
+			"src": "/icon-384x384.png",
+			"type": "image/png",
+			"sizes": "384x384"
+		},
+		{
+			"src": "/icon-512x512.png",
+			"type": "image/png",
+			"sizes": "512x512"
+		}
+	]
 }
 ```
 
@@ -153,7 +153,7 @@ Let's break it down:
 - `"orientation"` determines whether the app is meant to be primarily displayed in portrait, landscape or either mode on a mobile device — I use **portrait-primary** because it's how I tend to use my phone and therefore how I want to use my PWA
 - `"icons"` is an array of the app icons in their various sizes, each for a different size display of mobile device — you want this to be the same image (your app’s icon or logo) just in the specific different sizes
 
-For the icons, you can just google “PWA icon generator” to find a bunch of tools that let you turn an image into the various sizes needed for a PWA, but I personally prefer <a href="https://www.simicart.com/manifest-generator.html/" target="_blank">this one</a> since generates both the correct size icons and the manifest for them. Note that if *any* size of icon is missing, or the incorrect size, the site will not be installable as a PWA.
+For the icons, you can just google “PWA icon generator” to find a bunch of tools that let you turn an image into the various sizes needed for a PWA, but I personally prefer <a href="https://www.simicart.com/manifest-generator.html/" target="_blank">this one</a> since generates both the correct size icons and the manifest for them. Note that if _any_ size of icon is missing, or the incorrect size, the site will not be installable as a PWA.
 
 ## Testing your PWA
 

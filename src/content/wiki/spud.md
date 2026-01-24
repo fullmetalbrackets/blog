@@ -1,6 +1,6 @@
 ---
-title: "Spud"
-description: "Details on Spud, my Libre Sweet Potato SBC running my back-up Pi-Hole."
+title: 'Spud'
+description: 'Details on Spud, my Libre Sweet Potato SBC running my back-up Pi-Hole.'
 pubDate: 2023-11-16
 updatedDate: 2025-12-22
 tag: server

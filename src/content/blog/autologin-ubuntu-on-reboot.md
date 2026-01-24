@@ -1,8 +1,8 @@
 ---
-title: "Autologin on Ubuntu and go straight to terminal"
-description: "Configure an Ubuntu machine to autologin and go straight into the terminal on boot."
+title: 'Autologin on Ubuntu and go straight to terminal'
+description: 'Configure an Ubuntu machine to autologin and go straight into the terminal on boot.'
 pubDate: 2022-11-25
-tags: ["linux", "command line"]
+tags: ['linux', 'command line']
 related1: formatting-on-linux
 related2: mounting-hard-drives-in-linux
 ---

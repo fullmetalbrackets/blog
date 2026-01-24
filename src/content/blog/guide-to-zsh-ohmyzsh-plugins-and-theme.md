@@ -1,12 +1,11 @@
 ---
-title: "Quick guide to set up Zsh and Oh-My-Zsh with essential plugins and a theme"
+title: 'Quick guide to set up Zsh and Oh-My-Zsh with essential plugins and a theme'
 description: "I've been getting more and more comfortable working on the command line in Linux, and looked into ways to pretty it up and make it more user friendly. Enter Zsh, an alternative to Bash shell, and the Oh-My-Zsh framework used to customize the terminal experience to your heart's content. Here's my basic set up."
 pubDate: 2021-12-04
 updatedDate: 2025-02-03
-tags: ["zsh", "command line", "linux"]
+tags: ['zsh', 'command line', 'linux']
 related1: basic-linux-commands
 related2: windows-terminal-with-ohmyposh
-
 ---
 
 ![Oh-My-Zsh](../../img/blog/oh-my-zsh.png 'Oh-My-Zsh')

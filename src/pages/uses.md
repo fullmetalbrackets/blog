@@ -21,7 +21,7 @@ description: My computer and server hardware, and also smart home things.
 - 1 TB SATA SSD
 - 1 TB SATA HDD
 - 1 Gbps Ethernet
-<br><br>
+  <br><br>
 
 :::div{.img-left}
 ![A screenshot of a plain slim black tower Dell brand office PC](../img/wiki/optiplex3050sff.jpg)
@@ -37,7 +37,7 @@ description: My computer and server hardware, and also smart home things.
 - 256 GB NVMe SSD
 - 1 TB SATA HDD
 - 1 Gbps Ethernet
-<br><br>
+  <br><br>
 
 :::div{.img-left}
 ![A screenshot of a black full tower Dell brand PC](../img/wiki/xps8920.jpg)
@@ -55,7 +55,7 @@ description: My computer and server hardware, and also smart home things.
 - 4 x 2 TB HDDs
 - 2 x 1 TB HDDs
 - 3 x 1 Gbps Ethernet Ports (only one used though)
-<br><br>
+  <br><br>
 
 ## Software
 

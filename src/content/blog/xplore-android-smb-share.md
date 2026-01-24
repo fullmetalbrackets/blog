@@ -1,9 +1,9 @@
 ---
-title: "Setup X-plore File Manager on Android to transfer files to an SMB share"
+title: 'Setup X-plore File Manager on Android to transfer files to an SMB share'
 description: "I've wrote before about file managers for Android before, recently I found X-plore which makes it very easy to transfer files back and forth between Android and SMB network shares, once you understand how the UI works. Here's to connect X-plore to an SMB network share so you can transfer files between devices."
 pubDate: 2024-03-26
 updatedDate: 2025-02-22
-tags: ["android", "smb"]
+tags: ['android', 'smb']
 related1: solid-explorer-samba-share
 related2: setup-a-samba-share-on-linux-via-command-line
 ---

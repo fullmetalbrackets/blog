@@ -1,8 +1,8 @@
 ---
-title: "Using Surge.sh to quickly and easily host static sites"
-description: "Although I love using Netlify to host my site, for testing out sites and simple apps I have fallen in love with Surge.sh, a ridiculously simple web hosting solution that works entirely from the command line."
+title: 'Using Surge.sh to quickly and easily host static sites'
+description: 'Although I love using Netlify to host my site, for testing out sites and simple apps I have fallen in love with Surge.sh, a ridiculously simple web hosting solution that works entirely from the command line.'
 pubDate: 2022-10-05
-tags: ["web development"]
+tags: ['web development']
 related1: 5-ways-to-host-site-free
 ---
 
@@ -26,7 +26,7 @@ npx surge
 
 The first time you do this command, you'll be prompted to create an account, just enter an email and password. Every time thereafter, `npx surge` will immediately publish the present working directory to the web, to a randomly-generated subdomain of Surge.sh, e.g. `wandering-unicorn.surge.sh`
 
-> If using a static site generator like *Astro* or *Eleventy*, you'll first need use `npm build` (or equivalent) to build the static assets, then specify the directory to publish, e.g. `npx surge dist`.
+> If using a static site generator like _Astro_ or _Eleventy_, you'll first need use `npm build` (or equivalent) to build the static assets, then specify the directory to publish, e.g. `npx surge dist`.
 
 If you want to remove a Surge site you published, it's just another simple command:
 

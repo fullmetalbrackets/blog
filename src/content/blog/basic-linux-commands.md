@@ -1,9 +1,9 @@
 ---
-title: "Linux Commands & Keyboard Shortcuts Cheat Sheet"
+title: 'Linux Commands & Keyboard Shortcuts Cheat Sheet'
 description: "Just a quick cheat sheet of basic and slightly less basic Linux commands, as well as handy keyboard shortcuts, that I maintain for myself since I can't always remember them all."
 pubDate: 2022-09-18
 updatedDate: 2025-02-17
-tags: ["linux", "command line"]
+tags: ['linux', 'command line']
 related1: formatting-on-linux
 related2: mounting-hard-drives-in-linux
 ---
@@ -72,12 +72,12 @@ related2: mounting-hard-drives-in-linux
 
 ## Handy Keyboard Shortcuts
 
-| Key Combination                           | Effect                             |
-| ----------------------------------------- | ---------------------------------- |
+| Key Combination                           | Effect                              |
+| ----------------------------------------- | ----------------------------------- |
 | <kbd><kbd>Ctrl</kbd> + <kbd>C</kbd></kbd> | interrupt/terminate current process |
-| <kbd><kbd>Ctrl</kbd> + <kbd>A</kbd></kbd> | go to start of line                |
-| <kbd><kbd>Ctrl</kbd> + <kbd>E</kbd></kbd> | go to end of line                  |
-| <kbd><kbd>Ctrl</kbd> + <kbd>U</kbd></kbd> | delete entire line                 |
+| <kbd><kbd>Ctrl</kbd> + <kbd>A</kbd></kbd> | go to start of line                 |
+| <kbd><kbd>Ctrl</kbd> + <kbd>E</kbd></kbd> | go to end of line                   |
+| <kbd><kbd>Ctrl</kbd> + <kbd>U</kbd></kbd> | delete entire line                  |
 
 ## Reference
 

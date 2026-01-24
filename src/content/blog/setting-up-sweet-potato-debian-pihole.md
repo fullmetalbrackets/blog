@@ -1,9 +1,9 @@
 ---
-title: "Setting up a Libre Computer Sweet Potato SBC with Debian and Pi-Hole"
+title: 'Setting up a Libre Computer Sweet Potato SBC with Debian and Pi-Hole'
 description: "I've been wanting to get a Raspberry Pi for ages, but they were out of stock for the longest time, so I never ended up with one. Recently I learned about the Le Potato from Libre Computer as a Pi-alternative, and after some research paid the $30 early access price for their new Sweet Potato SBC. Here's how I set it up."
 pubDate: 2023-11-02
 updatedDate: 2025-05-22
-tags: ["self-hosting", "pi-hole", "sbc"]
+tags: ['self-hosting', 'pi-hole', 'sbc']
 related1: setup-home-assistant-sweet-potato-debian
 related2: self-host-website-cloudflare-tunnel
 ---
@@ -38,7 +38,7 @@ The default username and password for Debian are both `root`, though you are pro
 
 We can now logout of root and login with the new admin user, which requiring adding `sudo` before every command that needs root escalation. First things first, making sure Debian is up to date with `apt update && apt full-upgrade -y`.
 
-After any upgrades, I then installed *Sudo* and *SSH* so I can go headless and work through SSH.
+After any upgrades, I then installed _Sudo_ and _SSH_ so I can go headless and work through SSH.
 
 ```
 sudo apt install ssh sudo -y

@@ -1,6 +1,6 @@
 ---
-title: "Video games I finished in 2024"
-description: "A list of videogames I played from start to finish in 2024."
+title: 'Video games I finished in 2024'
+description: 'A list of videogames I played from start to finish in 2024.'
 pubDate: 2025-03-15
 tag: information
 ---
@@ -26,4 +26,4 @@ Total: <span class="sub-font b em">18</span>
 - XCOM: Enemy Within
 - XCOM 2
 
-Notes: *This is more than my average.*
+Notes: _This is more than my average._

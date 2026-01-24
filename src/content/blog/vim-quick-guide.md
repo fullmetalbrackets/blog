@@ -1,8 +1,8 @@
 ---
-title: "VIM Quick Guide"
-description: "Whenever I use Vim to edit files on Linux, I need to relearn how to use it. Years ago I found a thread on Stack Overflow with two simple and extremely useful answers that helped me make sense of Vim. So here it is."
+title: 'VIM Quick Guide'
+description: 'Whenever I use Vim to edit files on Linux, I need to relearn how to use it. Years ago I found a thread on Stack Overflow with two simple and extremely useful answers that helped me make sense of Vim. So here it is.'
 pubDate: 2022-09-17
-tags: ["linux", "command line"]
+tags: ['linux', 'command line']
 related1: rsync-a-quick-guide
 ---
 
@@ -34,15 +34,15 @@ Upon starting, vi goes into _COMMAND_ mode, where you can type short, few charac
 
 When you want to actually edit text, you should go to _INSERT_ mode on key press:
 
-| Key                             | Effect                                           |
-| ------------------------------- | ------------------------------------------------ |
-| <kbd>i</kbd>                    | go to INSERT in the place of the cursor          |
+| Key                                        | Effect                                           |
+| ------------------------------------------ | ------------------------------------------------ |
+| <kbd>i</kbd>                               | go to INSERT in the place of the cursor          |
 | <kbd><kbd>Shift</kbd> + <kbd>i</kbd></kbd> | go to INSERT mode at the beginning of the line   |
-| <kbd>a</kbd>                    | append after the cursor                          |
+| <kbd>a</kbd>                               | append after the cursor                          |
 | <kbd><kbd>Shift</kbd> + <kbd>a</kbd></kbd> | append at the end of line                        |
-| <kbd>o</kbd>                    | open a new line below the current line           |
+| <kbd>o</kbd>                               | open a new line below the current line           |
 | <kbd><kbd>Shift</kbd> + <kbd>o</kbd></kbd> | open a new line in the place of the current line |
-| <kbd>Esc</kbd>                  | go to COMMAND mode                               |
+| <kbd>Esc</kbd>                             | go to COMMAND mode                               |
 
 Now, exiting. You can exit vi from _EX_ mode:
 

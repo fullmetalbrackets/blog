@@ -1,9 +1,9 @@
 ---
-title: "Using DNS over HTTPS with Pi-Hole and Cloudflared (Updated for Pi-Hole v6)"
-description: "When using Pi-Hole as a network-wide ad blocker, your DNS requests still go out in plain text and can be seen by your ISP. DNS over HTTPS encrypts DNS requests between your Pi-Hole and the upstream DNS resolver. Here is a quick guide on how to set that up with Cloudflared daemon."
+title: 'Using DNS over HTTPS with Pi-Hole and Cloudflared (Updated for Pi-Hole v6)'
+description: 'When using Pi-Hole as a network-wide ad blocker, your DNS requests still go out in plain text and can be seen by your ISP. DNS over HTTPS encrypts DNS requests between your Pi-Hole and the upstream DNS resolver. Here is a quick guide on how to set that up with Cloudflared daemon.'
 pubDate: 2023-07-13
 updatedDate: 2025-03-02
-tags: ["pi-hole", "networking"]
+tags: ['pi-hole', 'networking']
 related1: pi-hole-quad9-dls-over-tls
 related2: set-up-pihole-on-linux
 ---
@@ -34,15 +34,15 @@ To run Cloudflared in a container, we'll use `docker compose`. Create a `compose
 
 ```yaml
 services:
-  cloudflared:
-    container_name: cloudflared
-    image: cloudflare/cloudflared
-    command: proxy-dns
-    environment:
-      - "TUNNEL_DNS_UPSTREAM=https://1.1.1.1/dns-query,https://1.0.0.1/dns-query"
-      - "TUNNEL_DNS_PORT=5053"
-      - "TUNNEL_DNS_ADDRESS=0.0.0.0"
-    restart: unless-stopped
+ cloudflared:
+  container_name: cloudflared
+  image: cloudflare/cloudflared
+  command: proxy-dns
+  environment:
+   - 'TUNNEL_DNS_UPSTREAM=https://1.1.1.1/dns-query,https://1.0.0.1/dns-query'
+   - 'TUNNEL_DNS_PORT=5053'
+   - 'TUNNEL_DNS_ADDRESS=0.0.0.0'
+  restart: unless-stopped
 ```
 
 Running Cloudflared as a container makes it easy to update, since you can simply use the commands use `docker compose down` to stop your container (or multiple containers in one compose file), then `docker compose pull` to grab the latest image, and recreate the container with the updated image by running `docker compose up -d` again. You can even automate container image updates with <a href="https://hub.docker.com/r/containrrr/watchtower" target="_blank">Watchtower</a>. For details, see [this blog post for my Watchtower setup](/blog/watchtower-notifications/).
@@ -174,7 +174,7 @@ This is the last step. In the Pi-Hole dashboard click on **Settings** on the sid
 
 Now click on **Save & Apply**. One last thing, though. <a href="https://pi-hole.net/blog/2025/02/21/v6-post-release-fixes-and-findings/#page-content:~:text=Issues%20with%20using%20cloudflared%20as%20upstream%20DNS%20server" target="_blank">There is a quick fix to mitigate a potential issue using Cloudflared</a> that we're going to make in the settings.
 
-Go to **Settings** on the sidebar and click on **All settings** from the dropdown, then click on **Miscellaneous**. Look for *misc.dnsmasq_lines* and type in `no-0x20-encode` for the _Value_, then click on **Save & Apply**.
+Go to **Settings** on the sidebar and click on **All settings** from the dropdown, then click on **Miscellaneous**. Look for _misc.dnsmasq_lines_ and type in `no-0x20-encode` for the _Value_, then click on **Save & Apply**.
 
 ![Fix for Cloudflared in Pi-Hole settings.](../../img/blog/pihole-cloudflared-fix.png 'Fix for Cloudflared in Pi-Hole settings')
 

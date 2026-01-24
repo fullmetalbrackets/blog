@@ -1,6 +1,6 @@
 ---
-title: "Video games I finished in 2025"
-description: "A list of videogames I played from start to finish in 2025."
+title: 'Video games I finished in 2025'
+description: 'A list of videogames I played from start to finish in 2025.'
 pubDate: 2025-12-30
 tag: information
 ---
@@ -16,4 +16,4 @@ Total: <span class="sub-font b em">8</span>
 - The Legend of Zelda: Tears of the Kingdom (Nintendo Switch 2 Edition)
 - Victoria 3
 
-Notes: *Way down from last year, but the two Zelda games did take up a lot of my overall playtime.*
+Notes: _Way down from last year, but the two Zelda games did take up a lot of my overall playtime._

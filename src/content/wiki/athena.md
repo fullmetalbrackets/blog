@@ -1,6 +1,6 @@
 ---
-title: "Athena"
-description: "Details on my home server, a Dell XPS 8920."
+title: 'Athena'
+description: 'Details on my home server, a Dell XPS 8920.'
 pubDate: 2024-06-15
 updatedDate: 2025-11-28
 tag: server
@@ -10,7 +10,7 @@ tag: server
 
 ![Dell XPS 8920](../../img/wiki/xps8920.jpg)
 
-# Dell XPS 8920 
+# Dell XPS 8920
 
 - **Intel i7-7700K** @ 4.20 GHz
 - **24 GB RAM** (4 x 6 GB DDR4)

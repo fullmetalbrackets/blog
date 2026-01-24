@@ -1,5 +1,5 @@
-title: "Speedtest Tracker"
-description: "Self-hosted app that runs in Docker which does an Ookla speedtest every hour (though it can be scheduled however you like) and plots it to the chart, so you can see differences in speed and ping over time on pretty graphs."
+title: 'Speedtest Tracker'
+description: 'Self-hosted app that runs in Docker which does an Ookla speedtest every hour (though it can be scheduled however you like) and plots it to the chart, so you can see differences in speed and ping over time on pretty graphs.'
 pubDate: 2024-03-20
-url: "https://github.com/alexjustesen/speedtest-tracker"
+url: 'https://github.com/alexjustesen/speedtest-tracker'
 tag: self-hosted

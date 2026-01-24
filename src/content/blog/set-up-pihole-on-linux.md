@@ -1,9 +1,9 @@
 ---
-title: "Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS (Updated for Pi-Hole v6)"
+title: 'Set up Pi-Hole for network-wide ad blocking and Unbound for recursive DNS (Updated for Pi-Hole v6)'
 description: "Besides just using a browser extension for ad blocking, I've been using Pi-Hole for years to prevent all devices on my network from getting ads, and stopping smart home devices from phoning home for telemetry and tracking. Pi-Hole will run on almost anything that can run Linux, is very easy to set up, and super effective with the right blocklists."
 pubDate: 2022-10-08
 updatedDate: 2025-03-15
-tags: ["self-hosting", "pi-hole"]
+tags: ['self-hosting', 'pi-hole']
 related1: pihole-anywhere-tailscale
 related2: reverse-proxy-using-nginx-pihole-cloudflare
 ---
@@ -136,32 +136,32 @@ This `compose.yaml` should get you going as a starting point:
 
 ```yaml
 volumes:
-  etc_pihole-unbound:
-  etc_pihole_dnsmasq-unbound:
+ etc_pihole-unbound:
+ etc_pihole_dnsmasq-unbound:
 
 services:
-  pihole:
-    container_name: pihole
-    image: cbcrowe/pihole-unbound:latest
-    hostname: pihole
-    ports:
-      - 443:443/tcp
-      - 53:53/tcp
-      - 53:53/udp
-      - 8800:80/tcp
-      - 5335:5335/tcp
-      - 22/tcp
-    environment:
-      - FTLCONF_LOCAL_IPV4=192.168.0.250
-      - TZ=America/New_York
-      - WEBPASSWORD=changeme
-      - PIHOLE_DNS_=127.0.0.1#5335
-      - DNSSEC="true"
-      - DNSMASQ_LISTENING=all
-    volumes:
-      - etc_pihole-unbound:/etc/pihole:rw
-      - etc_pihole_dnsmasq-unbound:/etc/dnsmasq.d:rw
-    restart: unless-stopped
+ pihole:
+  container_name: pihole
+  image: cbcrowe/pihole-unbound:latest
+  hostname: pihole
+  ports:
+   - 443:443/tcp
+   - 53:53/tcp
+   - 53:53/udp
+   - 8800:80/tcp
+   - 5335:5335/tcp
+   - 22/tcp
+  environment:
+   - FTLCONF_LOCAL_IPV4=192.168.0.250
+   - TZ=America/New_York
+   - WEBPASSWORD=changeme
+   - PIHOLE_DNS_=127.0.0.1#5335
+   - DNSSEC="true"
+   - DNSMASQ_LISTENING=all
+  volumes:
+   - etc_pihole-unbound:/etc/pihole:rw
+   - etc_pihole_dnsmasq-unbound:/etc/dnsmasq.d:rw
+  restart: unless-stopped
 ```
 
 I've never really run Unbound in a container, even when using Pi-Hole in a container I just run Unbound bare metal. That said, you can try it out and let me know if these instructions work or not.
@@ -170,53 +170,53 @@ Here is a `compose.yaml` to run Pi-Hole and Unbound containers together:
 
 ```yaml
 networks:
-  dns_net:
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 10.1.1.0/16
+ dns_net:
+  driver: bridge
+  ipam:
+   config:
+    - subnet: 10.1.1.0/16
 
 services:
-  pihole:
-    container_name: pihole
-    hostname: pihole
-    image: pihole/pihole:latest
-    networks:
-      dns_net:
-        ipv4_address: 10.1.1.2
-    ports:
-      - "53:53/tcp"
-      - "53:53/udp"
-      - "67:67/udp"
-      - "8000:80/tcp"
-      - "4430:443/tcp"
-    environment:
-      - 'TZ=America/New_York'
-      - 'WEBPASSWORD='
-      - 'DNS1=10.1.1.3#53'
-      - 'DNS2=no'
-    volumes:
-      - './etc-pihole/:/etc/pihole/'
-      - './etc-dnsmasq.d/:/etc/dnsmasq.d/'
-    cap_add:
-      - NET_ADMIN
-    restart: unless-stopped
+ pihole:
+  container_name: pihole
+  hostname: pihole
+  image: pihole/pihole:latest
+  networks:
+   dns_net:
+    ipv4_address: 10.1.1.2
+  ports:
+   - '53:53/tcp'
+   - '53:53/udp'
+   - '67:67/udp'
+   - '8000:80/tcp'
+   - '4430:443/tcp'
+  environment:
+   - 'TZ=America/New_York'
+   - 'WEBPASSWORD='
+   - 'DNS1=10.1.1.3#53'
+   - 'DNS2=no'
+  volumes:
+   - './etc-pihole/:/etc/pihole/'
+   - './etc-dnsmasq.d/:/etc/dnsmasq.d/'
+  cap_add:
+   - NET_ADMIN
+  restart: unless-stopped
 
-  unbound:
-    container_name: unbound
-    image: mvance/unbound:latest
-    networks:
-      dns_net:
-        ipv4_address: 10.1.1.3
-    volumes:
-      - '/opt/docker/unbound:/opt/unbound/etc/unbound'
-      - '/opt/docker/unbound/pihole.conf:/opt/unbound/etc/unbound/pihole.conf'
-    ports:
-      - "5053:53/tcp"
-      - "5053:53/udp"
-    healthcheck:
-      disable: true
-    restart: unless-stopped
+ unbound:
+  container_name: unbound
+  image: mvance/unbound:latest
+  networks:
+   dns_net:
+    ipv4_address: 10.1.1.3
+  volumes:
+   - '/opt/docker/unbound:/opt/unbound/etc/unbound'
+   - '/opt/docker/unbound/pihole.conf:/opt/unbound/etc/unbound/pihole.conf'
+  ports:
+   - '5053:53/tcp'
+   - '5053:53/udp'
+  healthcheck:
+   disable: true
+  restart: unless-stopped
 ```
 
 ## Configuring DNS
@@ -230,7 +230,7 @@ Under _Upstream DNS Servers_, uncheck any checkmarked DNS servers, then click on
 Scroll down to the bottom and click on **Save & Apply**.
 
 ![Pi-Hole Upstream DNS Server settings.](../../img/blog/pihole-dns1.png 'Pi-Hole Upstream DNS Server settings')
- 
+
 Next, click on the **Basic** slider at the top-right so it switches to **Expert**. This will make additional settings and options appear.
 
 Make sure under _Interface settings_ you have picked **Permit all origins**. Don't worry about this being "potentially dangerous," as long as the machine running Pi-Hole is not accessible from the internet -- and especially _port 53 is not exposed_ -- then this is totally safe and will ensure Pi-Hole receives and answers queries from every device in your network.
@@ -241,7 +241,7 @@ Next, in order for Pi-Hole to work network-wide for all devices (including phone
 
 If the option is available, it's usually under _DNS Servers_ in **DHCP Settings**, change whatever IP address is there to your Pi-Hole's IP, and your router will begin handing out Pi-Hole as the network-wide DNS when clients renew their DHCP leases.
 
-> If your router does not have the option of setting a DNS server, you won't be able to block ads for all devices on your network automatically. Instead you'll have to <a href="https://discourse.pi-hole.net/t/how-do-i-configure-my-devices-to-use-pi-hole-as-their-dns-server/245#3-manually-configure-each-device-9" target="_blank" data-umami-event="setup-pihole-discourse-dns-each-device">configure each device's DNS</a> or turn off DHCP on your router (if possible) and use Pi-Hole as the DHCP server. 
+> If your router does not have the option of setting a DNS server, you won't be able to block ads for all devices on your network automatically. Instead you'll have to <a href="https://discourse.pi-hole.net/t/how-do-i-configure-my-devices-to-use-pi-hole-as-their-dns-server/245#3-manually-configure-each-device-9" target="_blank" data-umami-event="setup-pihole-discourse-dns-each-device">configure each device's DNS</a> or turn off DHCP on your router (if possible) and use Pi-Hole as the DHCP server.
 
 You should now be set up for Pi-Hole to be the DNS server for your whole network. If you added Pi-Hole's IP address as the DNS server in your router, devices will gradually begin querying Pi-Hole as they renew their DHCP leases and get the updated DNS server.
 
@@ -405,10 +405,9 @@ After using the above method to access the Pi-Hole dashboard via HTTPS using a c
 You can either ignore this and keep on trucking, or you can make it go away (or prevent it bugging you in the first place) by doing the following:
 
 1. Find the `fullchain.pem` and `privkey.pem` files for your proxy host (e.g. `pihole.domain.com`) in the directory where your reverse proxy's TLS certificates live. Make copies of these two files. (In Caddy the certificates might be in `$HOME/.local/share/caddy` and in Traefik probably `/etc/certs`.)
+   - If using Nginx Proxy Manager, you can get these certificate files by logging into the GUI, navigate to the **SSL Certificates** tab, and look for the proxy entry you're using for Pi-Hole.
 
-    - If using Nginx Proxy Manager, you can get these certificate files by logging into the GUI, navigate to the **SSL Certificates** tab, and look for the proxy entry you're using for Pi-Hole.
-
-    - Click the three vertical dots then choose **Download** from the dropdown menu. This will download a ZIP file with several files, including the two we need.
+   - Click the three vertical dots then choose **Download** from the dropdown menu. This will download a ZIP file with several files, including the two we need.
 
 ![Saved SSL/TLS certificates in Nginx Proxy Manager.](../../img/blog/nginxproxy-cert1.png 'Saved SSL/TLS certificates in Nginx Proxy Manager')
 
@@ -468,7 +467,7 @@ When you make Pi-Hole your primary DNS it becomes a critical part of your networ
 As of the release of Pi-Hole v6 (see below for details) the only way to sync configurations between two Pi-Hole instances is with <a href="https://github.com/lovelaze/nebula-sync" target="_blank" data-umami-event="setup-pihole-nebula-sync">Nebula Sync</a>. I have yet to use it myself, but once I do, I will update this space.
 
 > The original Pi-Hole syncing solution, Gravity Sync, has been archived and will no longer be maintained. It does not work with Pi-Hole v6, though its last release still works with Pi-Hole v5 and older.
-> 
+>
 > Aside from Nebula Sync as mentioned above, there is another actively-maintained alternative, <a href="https://github.com/mattwebbio/orbital-sync" target="_blank" data-umami-event="setup-pihole-orbital-sync">Orbital Sync</a>, but support v6 is not yet available. (Although it is coming.)
 >
 > There is also a more recent project called <a href="https://github.com/deg0nz/pihole-sync" target="_blank" data-umami-event="setup-pihole-pihole-sync">Pihole-Sync</a> that might be of interest.

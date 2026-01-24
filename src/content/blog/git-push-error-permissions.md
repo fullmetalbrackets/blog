@@ -2,7 +2,7 @@
 title: 'How to resolve Git error insufficient permission for adding an object to repository database'
 description: 'When working on a GitHub repo from different Linux hosts, I encountered an "insufficient permission" error when using git commands. Here is the solution that worked for me from StackOverflow.'
 pubDate: 2024-03-17
-tags: ["git", "command line"]
+tags: ['git', 'command line']
 related1: git-commands-cheat-sheet
 related2: how-to-generate-gpg-to-sign-git-commits
 ---

@@ -1,9 +1,9 @@
 ---
-title: "How to use Pi-hole from anywhere with Tailscale"
+title: 'How to use Pi-hole from anywhere with Tailscale'
 description: "Tailscale is my new homelab toy. I've been using it to access my media on the go, to connect to a VPS for sharing my Plex library with family, and now for on-the-go adblocking on my phone, tablet and laptop -- here's how. "
 pubDate: 2024-09-25
 updatedDate: 2025-02-03
-tags: ["tailscale", "pi-hole"]
+tags: ['tailscale', 'pi-hole']
 related1: set-up-pihole-on-linux
 related2: comprehensive-guide-tailscale-securely-access-home-network
 ---
@@ -36,9 +36,9 @@ curl -fsSL https://tailscale.com/install.sh | sh
 
 > [warning] Important
 >
->  By default using most Tailscale commands requires superuser privileges, i.e. `sudo`. You can change that with the command `sudo tailscale set --operator=$USER`, the specified user will then be able to execute Tailscale commands without `sudo`. The rest of the guide will assume you did this.
+> By default using most Tailscale commands requires superuser privileges, i.e. `sudo`. You can change that with the command `sudo tailscale set --operator=$USER`, the specified user will then be able to execute Tailscale commands without `sudo`. The rest of the guide will assume you did this.
 
-Once it's finished installing, we're going to run Tailscale and pass a flag, which I'll explain in a second: 
+Once it's finished installing, we're going to run Tailscale and pass a flag, which I'll explain in a second:
 
 ```
 tailscale up --accept-dns=false
@@ -70,20 +70,20 @@ If you prefer to run Pi-hole as a Docker container, use the following `compose.y
 
 ```yaml
 services:
-  pihole:
-    container_name: pihole
-    image: pihole/pihole:latest
-    ports:
-      - 53:53/tcp
-      - 53:53/udp
-      - 80:80/tcp
-    environment:
-      TZ: 'America/New_York'
-      WEBPASSWORD: 'password'
-    volumes:
-      - /opt/docker/pihole:/etc/pihole
-      - /opt/docker/dnsmasq.d:/etc/dnsmasq.d
-    restart: unless-stopped
+ pihole:
+  container_name: pihole
+  image: pihole/pihole:latest
+  ports:
+   - 53:53/tcp
+   - 53:53/udp
+   - 80:80/tcp
+  environment:
+   TZ: 'America/New_York'
+   WEBPASSWORD: 'password'
+  volumes:
+   - /opt/docker/pihole:/etc/pihole
+   - /opt/docker/dnsmasq.d:/etc/dnsmasq.d
+  restart: unless-stopped
 ```
 
 This is a very basic compose file, there are <a href="https://github.com/pi-hole/docker-pi-hole?tab=readme-ov-file#environment-variables" target="_blank" data-umami-event="pihole-anywhere-post-pihole-docker-env">many environmental variables</a> you can add. When ready, build and run the container with the command:
@@ -110,7 +110,7 @@ By default, Tailscale does not manage your DNS, and each machine on the Tailnet 
 
 More importantly for our purposes, you can also use a custom DNS server, including one self-hosted on a server in your network. (As long as it is running Tailscale of course.)
 
-To set the Pi-Hole as global DNS for the tailnet, go to the admin console and make note of the Pi-Hole's tailnet IP address -- it will always begin with `100`, for example `100.2.3.4`. 
+To set the Pi-Hole as global DNS for the tailnet, go to the admin console and make note of the Pi-Hole's tailnet IP address -- it will always begin with `100`, for example `100.2.3.4`.
 
 Do the following:
 

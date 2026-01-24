@@ -1,9 +1,9 @@
 ---
-title: "Setup self-hosted Plex Media Server in Docker"
+title: 'Setup self-hosted Plex Media Server in Docker'
 description: "Plex Media Server is one of the most popular services to self-host since serves your personal media library -- videos, music and even photos -- with a nice Netflix-like UI. Though you can install and run it bare-metal, the most common and easiest way is in a Docker container. Here's how."
 pubDate: 2022-10-17
 updatedDate: 2025-11-03
-tags: ["self-hosting", "plex", "docker"]
+tags: ['self-hosting', 'plex', 'docker']
 related1: expose-plex-tailscale-vps
 related2: setting-up-jellyfin-in-docker
 ---
@@ -22,34 +22,34 @@ Create a `compose.yaml` file, copy and paste the following:
 
 ```yaml
 services:
-  plex:
-    image: lscr.io/linuxserver/plex:latest
-    container_name: plex
-    network_mode: host
-    environment:
-      - PUID=1000
-      - PGID=1000
-    ports:
-    volumes:
-      - /opt/docker/plex:/config
-      - /mnt/media/tv:/tv
-      - /mnt/media/movies:/movies
-      - /mnt/media/music:/music
-      - /mnt/media/photos:/photos
-    restart: unless-stopped
+ plex:
+  image: lscr.io/linuxserver/plex:latest
+  container_name: plex
+  network_mode: host
+  environment:
+   - PUID=1000
+   - PGID=1000
+  ports:
+  volumes:
+   - /opt/docker/plex:/config
+   - /mnt/media/tv:/tv
+   - /mnt/media/movies:/movies
+   - /mnt/media/music:/music
+   - /mnt/media/photos:/photos
+  restart: unless-stopped
 ```
 
 Let's break down what each of these parameters do:
 
-| Paramter                   | Function                                                                                                                                                         |
-| -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `image`                    | Here we're using the latest version of the <a href="https://docs.linuxserver.io/images/docker-plex" target="_blank" data-umami-event="setup-plex-">Linuxserver-maintained image</a>.            |
-| `container_name`           | Optional, but you should give your containers a name for clarity.                                                                                                |
-| `network_mode: host`       | This is required to run Plex on Linux, but _cannot_ be used when running Plex on Windows or WSL.                                                                 |
-| `PUID=1000`<br>`PGID=1000` | These environmental variable sets a UID and GID for Plex and should match the owner of the volumes you are adding; check your UID and GID with the command `id`. |
-| `ports`                    | This will map ports on your machine (left of the colon) to ports inside the container (right of colon) -- optional in Linux but required in Windows and WSL.     |
-| `volumes`                  | Here we're mapping local directories (left of the colon) to directories inside the container (right of the colon), change this to your own local paths.          |
-| `restart`                  | This tells Docker under what circumstances to restart the container when it is stopped -- the options are `no`, `always`, `on-failure` and `unless-stopped`.     |
+| Paramter                   | Function                                                                                                                                                                             |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `image`                    | Here we're using the latest version of the <a href="https://docs.linuxserver.io/images/docker-plex" target="_blank" data-umami-event="setup-plex-">Linuxserver-maintained image</a>. |
+| `container_name`           | Optional, but you should give your containers a name for clarity.                                                                                                                    |
+| `network_mode: host`       | This is required to run Plex on Linux, but _cannot_ be used when running Plex on Windows or WSL.                                                                                     |
+| `PUID=1000`<br>`PGID=1000` | These environmental variable sets a UID and GID for Plex and should match the owner of the volumes you are adding; check your UID and GID with the command `id`.                     |
+| `ports`                    | This will map ports on your machine (left of the colon) to ports inside the container (right of colon) -- optional in Linux but required in Windows and WSL.                         |
+| `volumes`                  | Here we're mapping local directories (left of the colon) to directories inside the container (right of the colon), change this to your own local paths.                              |
+| `restart`                  | This tells Docker under what circumstances to restart the container when it is stopped -- the options are `no`, `always`, `on-failure` and `unless-stopped`.                         |
 
 Once your compose file is ready, save it and exit the editor. Now from within the same directory as the `compose.yaml` is located, use the following command to install and start the container in the background as a daemon:
 

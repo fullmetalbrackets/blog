@@ -2,8 +2,8 @@ type: game
 title: Elden Ring
 developer: From Software
 publisher: Bandai Namco
-platform: ["PC", "PlayStation 4", "PlayStation 5"]
-genre: ["rpg", "action-adventure"]
+platform: ['PC', 'PlayStation 4', 'PlayStation 5']
+genre: ['rpg', 'action-adventure']
 pubDate: 2026-01-01
 startDate: 2022-02-25
 completed: true

@@ -3,7 +3,7 @@ title: Using Prism.js in a Nuxt static site
 description: I was having some issue getting this to work on a static (not SSR) site made with Nuxt, and although I read through a bunch of blog articles, most of them seemed to be missing some piece of information or other that made it not work for me. After mixing and matching some of the instructions, and combining the useful info with the official Nuxt documentation, I finally did all the necessary steps and got it to work. So here's a clear, succinct guide to using Prism.js in a Nuxt static site.
 pubDate: 2021-09-17
 updatedDate: 2022-10-17
-tags: ["web development"]
+tags: ['web development']
 related1: setting-up-and-configuring-nuxt-sitemap-module-in-a-nuxt-content-blog
 ---
 
@@ -35,11 +35,11 @@ You need to add this line to your `nuxt.config.js` file:
 // nuxt.config.js
 
 content: {
-  markdown: {
-    prism: {
-      theme: false;
-    }
-  }
+	markdown: {
+		prism: {
+			theme: false;
+		}
+	}
 }
 ```
 
@@ -50,23 +50,23 @@ I know setting `theme: false` seems counter-intuitive, but it's necessary for Pr
 If it doesn't already exist, create a directory in your project root named `/plugins`, and within it create a file named `prism.js`. We want to import all the things we need in `/plugins/prism.js`:
 
 ```js
-import Prism from "prismjs";
+import Prism from 'prismjs';
 
 // Include a theme:
-import "prismjs/themes/prism-okaidia.css";
+import 'prismjs/themes/prism-okaidia.css';
 
 // Include some plugins:
-import "prismjs/plugins/normalize-whitespace/prism-normalize-whitespace";
-import "prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard";
-import "prismjs/plugins/highlight-keywords/prism-highlight-keywords";
-import "prismjs/plugins/show-language/prism-show-language";
-import "prismjs/plugins/autoloader/prism-autoloader";
+import 'prismjs/plugins/normalize-whitespace/prism-normalize-whitespace';
+import 'prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard';
+import 'prismjs/plugins/highlight-keywords/prism-highlight-keywords';
+import 'prismjs/plugins/show-language/prism-show-language';
+import 'prismjs/plugins/autoloader/prism-autoloader';
 
 // Include additional languages:
-import "prismjs/components/prism-bash";
-import "prismjs/components/prism-powershell";
-import "prismjs/components/prism-yaml";
-import "prismjs/components/prism-toml";
+import 'prismjs/components/prism-bash';
+import 'prismjs/components/prism-powershell';
+import 'prismjs/components/prism-yaml';
+import 'prismjs/components/prism-toml';
 
 // Set vue SFC to markdown
 Prism.languages.vue = Prism.languages.markup;
@@ -76,19 +76,19 @@ export default Prism;
 
 This particular file will import Prism, import the Okaidia theme (which comes included in Prism), and also import what I consider some essential plugins for it. Add or remove any to your liking.
 
-## Import Prism to _slug.vue
+## Import Prism to \_slug.vue
 
 Now we need to edit the `slug.vue` file in the `/pages` directory that is used to generate your individual blog posts/articles/whatever. It may be located in another sub-directory like `/pages/blog/_slug.vue`. Edit the file and add this to the script section:
 
 ```js
 // _slug.vue
 
-import Prism from "~/plugins/prism";
+import Prism from '~/plugins/prism';
 
 export default {
-  mounted() {
-    Prism.highlightAll();
-  },
+	mounted() {
+		Prism.highlightAll();
+	},
 };
 ```
 
@@ -100,8 +100,8 @@ Prism.js only works on code _blocks_ and not inline code snippets `like this one
 
 ```css
 p code {
-  background: #272822;
-  color: #fe10bf;
+	background: #272822;
+	color: #fe10bf;
 }
 ```
 

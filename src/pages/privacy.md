@@ -35,6 +35,7 @@ By supporting Webmentions on your website, you explicitly signal your wish for l
 An incoming Webmention request is by design a request for publishing a comment from elsewhere on the web; this is what the protocol was designed for and why it is active on your website. Commonly, received Webmentions are displayed as comments on a web page. This means that a copy of your content is displayed on the website you link to in your own post.
 
 The personal data being processed and published might include:
+
 - Your name
 - The profile picture from your website
 - The URL of your website

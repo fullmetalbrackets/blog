@@ -1,18 +1,18 @@
 ---
-title: "Reverse proxy OpenMediaVault, Plex and Navidrome with Nginx Proxy Manager and Pi-Hole"
+title: 'Reverse proxy OpenMediaVault, Plex and Navidrome with Nginx Proxy Manager and Pi-Hole'
 description: "My scenario was simple: I wanted to access the web GUIs of OpenMediaVault, Plex and Navidrome via a URL like plex.home.arpa without having to remember IPs and ports, inside my home network only and without the need for SSL/HTTPS. Nothing fancy, nothing accessible from outside my house. Here's how I did that with Nginx Proxy Manager as the reverse proxy and Pi-Hole as the DNS."
 pubDate: 2023-07-15
 updatedDate: 2025-12-21
-tags: ["self-hosting", "openmediavault", "nginx proxy manager"]
+tags: ['self-hosting', 'openmediavault', 'nginx proxy manager']
 related1: reverse-proxy-using-nginx-pihole-cloudflare
 related2: openmediavault-quick-reference
 ---
 
 > [warning] Important
 >
-> This is a simple guide to get a reverse proxy working *without TLS certificates* and therefore *not using HTTPS* to access services.
+> This is a simple guide to get a reverse proxy working _without TLS certificates_ and therefore _not using HTTPS_ to access services.
 >
-> If you want to use HTTPS using *Cloudflare* and a *DNS challenge* to provision TLS certificates, [see this blog post](/blog/reverse-proxy-using-nginx-pihole-cloudflare/).
+> If you want to use HTTPS using _Cloudflare_ and a _DNS challenge_ to provision TLS certificates, [see this blog post](/blog/reverse-proxy-using-nginx-pihole-cloudflare/).
 
 ## Pre-Requisites and Caveats
 
@@ -34,7 +34,7 @@ You'll get a menu pop-up, choose `3   Configure workbench` and hit <kbd>Enter</k
 
 I use _Pi-Hole_ as a network-wide DNS resolver, and you can add DNS records to point a domain at an IP address through their web UI. It's very simple.
 
-> I will be using <code>*.home.arpa</code> (per the <a href="https://www.rfc-editor.org/rfc/rfc8375.html" target="_target">RFC recommendation</a> for home networks) and not worrying about HTTPS at this time. See <a href="/blog/reverse-proxy-using-nginx-pihole-cloudflare/">this blog post about setup Nginx Proxy Manager for HTTPS with a custom domain</a>.
+> I will be using <code>\*.home.arpa</code> (per the <a href="https://www.rfc-editor.org/rfc/rfc8375.html" target="_target">RFC recommendation</a> for home networks) and not worrying about HTTPS at this time. See <a href="/blog/reverse-proxy-using-nginx-pihole-cloudflare/">this blog post about setup Nginx Proxy Manager for HTTPS with a custom domain</a>.
 
 1. Click on **Local DNS** on the sidebar, then click on **DNS Records**.
 2. On the **Domain:** form, type in the full subdomain and domain you want to use, e.g. `plex.home.arpa`.
@@ -63,23 +63,23 @@ Nginx Proxy Manager runs as a Docker container, so if you haven't already make s
 curl -fsSL get.docker.com | sudo sh
 ```
 
-I'll be using `docker compose` to install Nginx Proxy Manager, it's my preferred way of running Docker containers. 
+I'll be using `docker compose` to install Nginx Proxy Manager, it's my preferred way of running Docker containers.
 
 Create a `compose.yml` file and insert the following (or add it to an existing file):
 
 ```yaml
 services:
-  nginx-proxy-manager:
-    container_name: nginx-proxy-manager
-    image: "jc21/Nginx-proxy-manager:latest"
-    ports:
-      - "80:80"
-      - "81:81"
-      - "443:443"
-    volumes:
-      - <path-to-Nginx-proxy-manager-local-directory>/data:/data
-      - <path-to-Nginx-proxy-manager-local-directory>/letsencrypt:/etc/letsencrypt
-    restart: unless-stopped
+ nginx-proxy-manager:
+  container_name: nginx-proxy-manager
+  image: 'jc21/Nginx-proxy-manager:latest'
+  ports:
+   - '80:80'
+   - '81:81'
+   - '443:443'
+  volumes:
+   - <path-to-Nginx-proxy-manager-local-directory>/data:/data
+   - <path-to-Nginx-proxy-manager-local-directory>/letsencrypt:/etc/letsencrypt
+  restart: unless-stopped
 ```
 
 _Be sure to type in your own local paths_ to where you want Nginx Proxy Manager's directory to live in your server, e.g. `/opt/docker/nginxproxymanager/data`, etc. Using volumes as shown in the compose file example above makes your configuration files persistent and easy to migrate, so I highly recommend it.

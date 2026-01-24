@@ -1,9 +1,9 @@
 ---
-title: "Complete guide to self-hosting a website through Cloudflare Tunnel"
-description: "Self-hosting a static web blog has never been easier thanks to Cloudflare Tunnel. In this guide I explain how to expose a static website self-hosted on a Linux server inside my home network to the internet using Nginx and Cloudflare Tunnel, and securing it with various other free Cloudflare services."
+title: 'Complete guide to self-hosting a website through Cloudflare Tunnel'
+description: 'Self-hosting a static web blog has never been easier thanks to Cloudflare Tunnel. In this guide I explain how to expose a static website self-hosted on a Linux server inside my home network to the internet using Nginx and Cloudflare Tunnel, and securing it with various other free Cloudflare services.'
 pubDate: 2023-12-29
 updatedDate: 2025-02-10
-tags: ["self-hosting", "cloudflare"]
+tags: ['self-hosting', 'cloudflare']
 related1: setup-cloudflare-tunnel-to-access-self-hosted-apps
 related2: expose-plex-with-cloudflare
 ---
@@ -44,14 +44,14 @@ Next we'll setup _Nginx_ as our **webserver**, websites need a webserver to serv
 
 ```yaml
 services:
-  site:
-    restart: unless-stopped
-    container_name: site
-    image: nginx:mainline-alpine-slim
-    volumes:
-      - /home/bob/sites/my-cool-blog/dist/:/usr/share/nginx/html/
-    ports:
-      - 8888:80
+ site:
+  restart: unless-stopped
+  container_name: site
+  image: nginx:mainline-alpine-slim
+  volumes:
+   - /home/bob/sites/my-cool-blog/dist/:/usr/share/nginx/html/
+  ports:
+   - 8888:80
 ```
 
 I like to use the `mainline-alpine-slim` tag for the Nginx image because it's the smallest and most up to date, but there are <a href="https://hub.docker.com/_/nginx/tags" target="_blank">many other tags</a> if you prefer. Make sure the local port, `8888` above, does not conflict with any other self-hosted services you may have. Feel free to change it to anything else.
@@ -144,22 +144,22 @@ In the Cloudflare dashboard, from your domain's _Overview_ page, click on **Acce
 
 ```yaml
 services:
-  site:
-    restart: unless-stopped
-    container_name: site
-    image: nginx:mainline-alpine-slim
-    volumes:
-      - /home/bob/sites/my-cool-blog/dist/:/usr/share/nginx/html/
-    ports:
-      - 8888:80
+ site:
+  restart: unless-stopped
+  container_name: site
+  image: nginx:mainline-alpine-slim
+  volumes:
+   - /home/bob/sites/my-cool-blog/dist/:/usr/share/nginx/html/
+  ports:
+   - 8888:80
 
-  tunnel:
-    restart: unless-stopped
-    container_name: tunnel
-    image: cloudflare/cloudflared:latest
-    command: tunnel run
-    environment:
-      - TUNNEL_TOKEN=
+ tunnel:
+  restart: unless-stopped
+  container_name: tunnel
+  image: cloudflare/cloudflared:latest
+  command: tunnel run
+  environment:
+   - TUNNEL_TOKEN=
 ```
 
 6. Add the _tunnel token_ to the `TUNNEL_TOKEN=` environmental variable, then save the file and let's run docker compose again. (It will automatically add `cloudflared` and restart the `nginx` container.)
@@ -172,15 +172,15 @@ docker compose up -d
 
 ![Connector showing status Connected.](../../img/blog/cloudflare-tunnel5.png 'Connector showing status Connected')
 
-6.  Now you'll be in the _Route Traffic_ page, under the **Public Hostnames** we have to add some things. For our purposes (hosting a site at the root of `your-domain.com`) you should leave the **Subdomain** empty. If you prefer for your site to be accessible at, say, `blog.your-domain.com` then set that subdomain here.
+6. Now you'll be in the _Route Traffic_ page, under the **Public Hostnames** we have to add some things. For our purposes (hosting a site at the root of `your-domain.com`) you should leave the **Subdomain** empty. If you prefer for your site to be accessible at, say, `blog.your-domain.com` then set that subdomain here.
 
 7. For **Domain** type in `your-domain.com`.
 
-9. Leave the **Path** empty, unless you want the URL to be something like `your-domain.com/blog`.
+8. Leave the **Path** empty, unless you want the URL to be something like `your-domain.com/blog`.
 
-10. Under _Service_, for **Type** select `HTTP` (not HTTPS) from the dropdown menu.
+9. Under _Service_, for **Type** select `HTTP` (not HTTPS) from the dropdown menu.
 
-11. For **URL**, put the full LAN (internal) IP address of the machine that will host the site, and append the port you set for the docker container -- for example `192.168.1.100:8888`. (Don't use `localhost:8888` despite what the example says, that never works for me.)
+10. For **URL**, put the full LAN (internal) IP address of the machine that will host the site, and append the port you set for the docker container -- for example `192.168.1.100:8888`. (Don't use `localhost:8888` despite what the example says, that never works for me.)
 
 ![Route traffic page.](../../img/blog/cloudflare-tunnel6.png 'Route traffic page')
 

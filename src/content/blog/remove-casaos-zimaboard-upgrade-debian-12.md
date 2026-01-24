@@ -1,9 +1,9 @@
 ---
-title: "How to remove CasaOS from a ZimaBoard and upgrade to Debian 12 Bookworm"
+title: 'How to remove CasaOS from a ZimaBoard and upgrade to Debian 12 Bookworm'
 description: "ZimaBoard is an x86 single board server that comes running Debian 11 Bullseye and CasaOS. It's a cool little machine, but after a few months I realized I don't like CasaOS. Nothing against it, I'm just set in my way of doing things, and their GUI was limiting some of my options. In this post I'll explain how to remove CasaOS from the ZimaBoard and then upgrade it to Debian 12."
 pubDate: 2025-02-10
 updatedDate: 2025-11-06
-tags: ["zimaboard", "debian", "command line"]
+tags: ['zimaboard', 'debian', 'command line']
 related1: factory-restore-zimaboard
 related2: upgrade-debian-12-bookworm-debian-13-trixie
 ---
@@ -30,8 +30,8 @@ Zimaboard 216 comes with Debian 11 Bullseye installed (no idea if the 432 and 83
 
 > [warning] Important
 >
->  Debian 13 Trixie was released on August 9, 2025 after I wrote this. If you want to upgrade the ZimaBoard to Trixie, _make sure you upgrade from Debian 11 Bullseye to Debian 12 Bookworm first,_ **then** _upgrade from Debian 12 Bookworm to Debian 13 Trixie_.
-> 
+> Debian 13 Trixie was released on August 9, 2025 after I wrote this. If you want to upgrade the ZimaBoard to Trixie, _make sure you upgrade from Debian 11 Bullseye to Debian 12 Bookworm first,_ **then** _upgrade from Debian 12 Bookworm to Debian 13 Trixie_.
+>
 > Debian does not support upgrading from 11 straight to 13, you have to upgrade to 12 first. <a href="/blog/upgrade-debian-12-bookworm-debian-13-trixie/" target="_blank">See this article for details on upgrading from Debian 12 Bookworm to Debian 13 Trixie</a>.
 
 First let's do a full upgrade of all existing packages:

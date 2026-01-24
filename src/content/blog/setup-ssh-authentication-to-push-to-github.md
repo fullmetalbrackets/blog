@@ -1,9 +1,9 @@
 ---
-title: "Setup SSH authentication to push to Github"
+title: 'Setup SSH authentication to push to Github'
 description: "Setting up SSH keys and pushing to GitHub without needing to enter a username and password has always been a good practice, but now that GitHub is deprecating basic username and password authentication, it's past time to get this set up if you haven't already. It's pretty simple and only takes a few minutes, here's the quick and dirty instructions."
 pubDate: 2021-09-21
 updatedDate: 2025-02-17
-tags: ["ssh", "command line", "github"]
+tags: ['ssh', 'command line', 'github']
 related1: generating-an-ssh-key-pair
 related2: copy-ssh-keys-between-hosts
 ---

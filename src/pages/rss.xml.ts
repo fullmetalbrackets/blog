@@ -13,6 +13,6 @@ export async function GET(context: APIContext) {
 			...post.data,
 			link: `/blog/${post.id}/`,
 		})),
-		stylesheet: "/rss.xsl",
+		stylesheet: '/rss.xsl',
 	});
 }

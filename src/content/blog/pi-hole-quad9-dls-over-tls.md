@@ -1,9 +1,9 @@
 ---
-title: "Using a forwarding resolver in Pi-Hole for DNS over TLS (Upgrade Pi-Hole v6)"
-description: "A quick guide on configuring Pi-Hole to use either Cloudflared or Unbound as forwarding resolver to Quad9, for encrypted queries using DNS over TLS."
+title: 'Using a forwarding resolver in Pi-Hole for DNS over TLS (Upgrade Pi-Hole v6)'
+description: 'A quick guide on configuring Pi-Hole to use either Cloudflared or Unbound as forwarding resolver to Quad9, for encrypted queries using DNS over TLS.'
 pubDate: 2023-07-27
 updatedDate: 2025-03-02
-tags: ["pi-hole", "networking"]
+tags: ['pi-hole', 'networking']
 related1: using-dns-over-https-with-pihole
 related2: set-up-pihole-on-linux
 ---
@@ -86,15 +86,15 @@ Running Cloudflared as a Docker container requires less configuration, so I'll e
 
 ```yaml
 services:
-  cloudflared:
-    container_name: cloudflared
-    image: cloudflare/cloudflared:latest
-    command: proxy-dns
-    environment:
-      - "TUNNEL_DNS_UPSTREAM=tls://9.9.9.9@853#dns.quad9.net,tls://149.112.112.112@853#dns.quad9.net"
-      - "TUNNEL_DNS_PORT=853"
-      - "TUNNEL_DNS_ADDRESS=0.0.0.0"
-    restart: unless-stopped
+ cloudflared:
+  container_name: cloudflared
+  image: cloudflare/cloudflared:latest
+  command: proxy-dns
+  environment:
+   - 'TUNNEL_DNS_UPSTREAM=tls://9.9.9.9@853#dns.quad9.net,tls://149.112.112.112@853#dns.quad9.net'
+   - 'TUNNEL_DNS_PORT=853'
+   - 'TUNNEL_DNS_ADDRESS=0.0.0.0'
+  restart: unless-stopped
 ```
 
 To run the container, use command `docker compose up -d` and you're good to go, nothing further needed for Cloudflared. We're ready to configure Pi-Hole.
@@ -109,7 +109,7 @@ If using Cloudflared, type in `127.0.0.1#5053`. If using Unbound, type instead `
 
 If using Unbound, you're done! Your DNS queries should now be encrypted and sent upstream to Quad9 using DNS over TLS. If using Cloudflared as the forwarding resolver, <a href="https://pi-hole.net/blog/2025/02/21/v6-post-release-fixes-and-findings/#page-content:~:text=Issues%20with%20using%20cloudflared%20as%20upstream%20DNS%20server" target="_blank">there is a quick fix to mitigate a potential issue using Cloudflared</a> that we're going to make in the Pi-Hole settings.
 
-Go to **Settings** on the sidebar and click on **All settings** from the dropdown, then click on **Miscellaneous**. Look for *misc.dnsmasq_lines* and type in `no-0x20-encode` for the _Value_, then click on **Save & Apply**.
+Go to **Settings** on the sidebar and click on **All settings** from the dropdown, then click on **Miscellaneous**. Look for _misc.dnsmasq_lines_ and type in `no-0x20-encode` for the _Value_, then click on **Save & Apply**.
 
 ![Fix for Cloudflared in Pi-Hole settings.](../../img/blog/pihole-cloudflared-fix.png 'Fix for Cloudflared in Pi-Hole settings')
 

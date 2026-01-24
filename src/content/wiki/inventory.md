@@ -1,6 +1,6 @@
 ---
-title: "Hardware Inventory"
-description: "A list of computers, laptops, server and network devices in my home."
+title: 'Hardware Inventory'
+description: 'A list of computers, laptops, server and network devices in my home.'
 pubDate: 2023-10-01
 updatedDate: 2025-02-13
 tag: documentation
@@ -144,6 +144,7 @@ tag: documentation
 <div id='mothballed'/>
 
 ## Mothballed
+
 <br>
 
 <h3 class="mothball">HP Pavilion g7</h3>
