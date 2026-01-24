@@ -2,6 +2,20 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import { getEntry } from 'astro:content';
 import { Image } from 'astro:assets';
+import Switch2 from '@img/games/switch2.svg';
+import Switch from '@img/games/switch.svg';
+import Wii from '@img/games/wii.svg';
+import GC from '@img/games/gc.svg';
+import N3DS from '@img/games/3ds.svg';
+import DS from '@img/games/ds.svg';
+import GBA from '@img/games/gba.svg';
+import PS5 from '@img/games/ps5.svg';
+import PS4 from '@img/games/ps4.svg';
+import PS3 from '@img/games/ps3.svg';
+import PS2 from '@img/games/ps2.svg';
+import PS1 from '@img/games/psx.svg';
+import XB from '@img/games/xbox.svg';
+import Steam from '@img/games/steam.svg';
 
 const gamesEntry = await getEntry('games', 'games');
 const gamesByPlatform = gamesEntry?.data.games;
@@ -12,28 +26,27 @@ type GameEntry = {
   image?: ImageMetadata;
 };
 
-const platformIcons: Record<string, { src: string; class?: string }> = {
-  'PlayStation 5': { src: '/src/img/games/ps5.svg' },
-  'PlayStation 4': { src: '/src/img/games/ps4.svg' },
-  'PlayStation 3': { src: '/src/img/games/ps3.svg' },
-  'PlayStation 2': { src: '/src/img/games/ps2.svg' },
-  'PlayStation': { src: '/src/img/games/psx.svg' },
-  'Nintendo Switch 2': { src: '/src/img/games/switch2.svg', class: 'switch2-icon' },
-  'Nintendo Switch': { src: '/src/img/games/switch.svg' },
-  'Wii': { src: '/src/img/games/wii.svg', class: 'wii-icon' },
-  'GameCube': { src: '/src/img/games/gc.svg' },
-  'Nintendo 3DS': { src: '/src/img/games/3ds.svg' },
-  'Nintendo DS': { src: '/src/img/games/ds.svg' },
-  'GameBoy Advance': { src: '/src/img/games/gba.svg' },
-  'XBox 360': { src: '/src/img/games/xbox.svg' },
-  'Steam': { src: '/src/img/games/steam.svg' },
+const platformIcons: Record<string, { component: any; class?: string }> = {
+  'PlayStation 5': { component: PS5 },
+  'PlayStation 4': { component: PS4 },
+  'PlayStation 3': { component: PS3 },
+  'PlayStation 2': { component: PS2 },
+  'PlayStation': { component: PS1 },
+  'Nintendo Switch 2': { component: Switch2, class: 'switch2-icon' },
+  'Nintendo Switch': { component: Switch },
+  'Wii': { component: Wii, class: 'wii-icon' },
+  'GameCube': { component: GC },
+  'Nintendo 3DS': { component: N3DS },
+  'Nintendo DS': { component: DS },
+  'GameBoy Advance': { component: GBA },
+  'XBox 360': { component: XB },
+  'Steam': { component: Steam },
 };
 
 const title = "Games";
 const desc = "List of all video games I own by platform.";
 ---
 <BaseLayout title={title} description={desc}>
-
 <section>
   <h1>{title}</h1>
   <hr />
@@ -41,13 +54,12 @@ const desc = "List of all video games I own by platform.";
   {gamesByPlatform && Object.entries(gamesByPlatform).map(([platform, games]) => {
     const typedGames = games as GameEntry[];
     const icon = platformIcons[platform];
+    const IconComponent = icon?.component;
     return (
       <details>
         <summary>
-          {icon ? (
-            <img 
-              src={icon.src} 
-              alt={platform} 
+          {IconComponent ? (
+            <IconComponent 
               class={`platform-icon ${icon.class || ''}`}
             />
           ) : (
@@ -95,7 +107,7 @@ const desc = "List of all video games I own by platform.";
     vertical-align: middle;
   }
 
-  summary img {
+  summary svg {
     filter: var(--game-platform);
   }
 
