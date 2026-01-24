@@ -4,14 +4,14 @@ import Calendar from "@icons/calendar.svg";
 import BackToTop from "@components/BackToTop.astro";
 import { Image } from 'astro:assets';
 
-const title = "Movies"
-const desc = "My watch history of movies I have seen  on Plex"
+const title = "Movies - Older"
+const desc = "A history of movies watched in my household on Plex in 2024 and 2025."
 
 let plexData;
 let error: string | null = null;
 
 try {
-  plexData = await import('../../data/recently-played_movies.json');
+  plexData = await import('../../../data/older-watched_movies.json');
 } catch (e) {
   error = 'Something went wrong! No Plex data available.';
 }
@@ -20,14 +20,33 @@ const historyItems = plexData?.response?.data?.data || [];
 const lastUpdated = plexData?.lastUpdated;
 const totalItems = plexData?.totalItems || historyItems.length;
 
-const images = import.meta.glob('../../data/_images/*.{jpg,jpeg,png,webp}');
+const images = import.meta.glob('../../../data/_images/*.{jpg,jpeg,png,webp,avif}');
 
-async function getImage(posterPath) {
+async function getImage(posterPath: string) {
   if (!posterPath) return null;
-  const imagePath = posterPath;
-  if (images[imagePath]) {
-    return await images[imagePath]();
+  
+  // Log for debugging
+  console.log('Looking for:', posterPath);
+  
+  // Try direct match first
+  if (images[posterPath]) {
+    return await images[posterPath]();
   }
+  
+  // Try with relative path prefix
+  const withPrefix = `../../../data/_images/${posterPath}`;
+  if (images[withPrefix]) {
+    return await images[withPrefix]();
+  }
+  
+  // Try just the filename
+  const filename = posterPath.split('/').pop();
+  const withFilename = `../../../data/_images/${filename}`;
+  if (images[withFilename]) {
+    return await images[withFilename]();
+  }
+  
+  console.warn('Image not found:', posterPath);
   return null;
 }
 
@@ -46,6 +65,62 @@ function formatDate(timestamp) {
   });
 }
 ---
+
+<BaseLayout title={title} description={desc}>
+  <section>
+    <h1>{title}</h1>
+    <hr>
+    <p>
+      {desc}
+    </p>
+    <p>
+      See <a href="/digest/older/tvshows/">TV shows seen during this time period</a>, or see <a href="/digest/">Digest</a> for the latest media (including video games) that I have consumed.
+    </p>
+    <p>
+      <span class="primary b sub-font">78</span> shows watched in <span class="primary b sub-font">2025</span><br>
+      <span class="primary b sub-font">19</span> shows watched in <span class="primary b sub-font">2024</span>
+    </p>
+    <div class="plex-header">
+      {lastUpdated && (
+        <p class="info">
+          <span class="stats"><span>{totalItems}</span> movies watched. </span>Last updated: <span class=" last-updated">{new Date(lastUpdated).toLocaleDateString('en-US', {
+            month: 'long',
+            day: 'numeric',
+            year: 'numeric',
+          })}</span>
+        </p>
+      )}
+    </div>
+
+    {error ? (
+      <div class="error">
+        <p>{error}</p>
+      </div>
+    ) : (
+      <div class="poster-grid">
+        {itemsWithImages.map((item) => (
+          <div class="poster-card">
+            {item.imageModule ? (
+              <Image 
+                src={item.imageModule.default}
+                alt={item.title}
+                width={300}
+                height={450}
+                loading="lazy"
+                quality={80}
+              />
+            ) : (
+              <div class="poster-placeholder">🎬</div>
+            )}
+            <div class="watch-date"><Calendar width={24} height={24} />{formatDate(item.stopped)}</div>
+          </div>
+        ))}
+      </div>
+    )}
+  </section>
+  <hr>
+  <BackToTop />
+</BaseLayout>
 
 <style scoped>
   section {
@@ -154,52 +229,3 @@ function formatDate(timestamp) {
     }
   }
 </style>
-
-<BaseLayout title={title} description={desc}>
-  <section>
-    <h1>{title}</h1>
-    <hr>
-    <p>
-      Watch History of movies that I (or my wife, or both of us) have watched on Plex since I started keeping history with Tautulli.
-    </p>
-    <div class="plex-header">
-      {lastUpdated && (
-        <p class="info">
-          <span class="stats"><span>{totalItems}</span> movies watched. </span>Last updated: <span class=" last-updated">{new Date(lastUpdated).toLocaleDateString('en-US', {
-            month: 'long',
-            day: 'numeric',
-            year: 'numeric',
-          })}</span>
-        </p>
-      )}
-    </div>
-
-    {error ? (
-      <div class="error">
-        <p>{error}</p>
-      </div>
-    ) : (
-      <div class="poster-grid">
-        {itemsWithImages.map((item) => (
-          <div class="poster-card">
-            {item.imageModule ? (
-              <Image 
-                src={item.imageModule.default}
-                alt={item.title}
-                width={300}
-                height={450}
-                loading="lazy"
-                quality={80}
-              />
-            ) : (
-              <div class="poster-placeholder">🎬</div>
-            )}
-            <div class="watch-date"><Calendar width={24} height={24} />{formatDate(item.stopped)}</div>
-          </div>
-        ))}
-      </div>
-    )}
-  </section>
-  <hr>
-  <BackToTop />
-</BaseLayout>
