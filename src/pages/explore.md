@@ -34,14 +34,23 @@ Explore all of the [slashpages](https://slashpages.net/) on this site below.
             <p>How this site is made, with what tools, supporting what technologies, etc.</p>
         </li>
         <li>
+            <a href="/digest/">Digest</a>
+            <hr>
+            <p>
+                A log of all the movies, TV shows, video games and books that I consume. (Work in progress.)
+            </p>
+        </li>
+        <li>
+            <a href="/games/">Games</a>
+            <hr>
+            <p>
+                My video game collection by platform.
+            </p>
+        </li>
+        <li>
             <a href="/links/" data-umami-event="explore-links">Links</a>
             <hr>
             <p>Links to websites, self-hosted apps and other cool online things that I use.</p>
-        </li>
-        <li>
-            <a href="/shelf/movies/">Movies</a>
-            <hr>
-            <p>My movie shelf, basically a tracker of movies I've seen on Plex.
         </li>
         <li>
             <a href="/notes/" data-umami-event="explore-notes">Notes</a>
@@ -67,11 +76,6 @@ Explore all of the [slashpages](https://slashpages.net/) on this site below.
             <a href="/style/" data-umami-event="explore-style">Style</a>
             <hr>
             <p>Markdown style guide for the website.</p>
-        </li>
-        <li>
-            <a href="/shelf/tvshows/">TV Shows</a>
-            <hr>
-            <p>My TV show shelf, basically a tracker of TV shows I've seen on Plex.
         </li>
         <li>
             <a href="/uses/" data-umami-event="explore-uses">Uses</a>
