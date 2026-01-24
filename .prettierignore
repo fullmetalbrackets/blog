@@ -1,0 +1,13 @@
+.astro
+.github
+.vscode
+.yarn
+dist
+node_modules
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.svg
+*.webp
+*.avif
