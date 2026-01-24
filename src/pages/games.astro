@@ -1,0 +1,155 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { getEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+
+const gamesEntry = await getEntry('games', 'games');
+const gamesByPlatform = gamesEntry?.data.games;
+
+type GameEntry = {
+  moby: number;
+  title: string;
+  image?: ImageMetadata;
+};
+
+const platformIcons: Record<string, { src: string; class?: string }> = {
+  'PlayStation 5': { src: '/src/img/games/ps5.svg' },
+  'PlayStation 4': { src: '/src/img/games/ps4.svg' },
+  'PlayStation 3': { src: '/src/img/games/ps3.svg' },
+  'PlayStation 2': { src: '/src/img/games/ps2.svg' },
+  'PlayStation': { src: '/src/img/games/psx.svg' },
+  'Nintendo Switch 2': { src: '/src/img/games/switch2.svg', class: 'switch2-icon' },
+  'Nintendo Switch': { src: '/src/img/games/switch.svg' },
+  'Wii': { src: '/src/img/games/wii.svg', class: 'wii-icon' },
+  'GameCube': { src: '/src/img/games/gc.svg' },
+  'Nintendo 3DS': { src: '/src/img/games/3ds.svg' },
+  'Nintendo DS': { src: '/src/img/games/ds.svg' },
+  'GameBoy Advance': { src: '/src/img/games/gba.svg' },
+  'XBox 360': { src: '/src/img/games/xbox.svg' },
+  'Steam': { src: '/src/img/games/steam.svg' },
+};
+
+const title = "Games";
+const desc = "List of all video games I own by platform.";
+---
+<BaseLayout title={title} description={desc}>
+
+<section>
+  <h1>{title}</h1>
+  <hr />
+  <p>{desc}</p>
+  {gamesByPlatform && Object.entries(gamesByPlatform).map(([platform, games]) => {
+    const typedGames = games as GameEntry[];
+    const icon = platformIcons[platform];
+    return (
+      <details>
+        <summary>
+          {icon ? (
+            <img 
+              src={icon.src} 
+              alt={platform} 
+              class={`platform-icon ${icon.class || ''}`}
+            />
+          ) : (
+            <span>{platform}</span>
+          )}
+          <span class="count">{typedGames.length}</span>
+        </summary>
+        {platform === 'Steam' && <p class="platform-note">This is only games <b>I've actually played</b> since I have many games on Steam I've never even installed...</p>}
+        <ul>
+          {typedGames.map(game => (
+            <li>
+              <span>{game.title}</span>
+            </li>
+          ))}
+        </ul>
+      </details>
+    );
+  })}
+</section>
+
+<style>
+  section {
+    margin-bottom: 2em;
+  }
+
+  details {
+    margin-bottom: 0.5em;
+    padding: 0;
+  }
+  
+  summary {
+    cursor: pointer;
+    font-weight: bold;
+    padding: 0.25em;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    color: var(--primary);
+    display: list-item;
+    list-style-position: inside;
+  }
+
+  summary > * {
+    display: inline-flex;
+    vertical-align: middle;
+  }
+
+  summary img {
+    filter: var(--game-platform);
+  }
+
+  .platform-icon {
+    width: 100px;
+    height: auto;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .count {
+    display: inline-flex;
+    justify-content: center;
+    place-items: center;
+    min-width: 22px;
+    height: 22px;
+    padding: 0 1px 0 0;
+    margin-left: 0.25em;
+    background: var(--border);
+    border-radius: 9999px;
+    font-family: var(--sub-font);
+    font-size: 0.5em;
+  }
+  
+  .platform-note {
+    padding: 4px 8px;
+    background-color: var(--dropdown);
+    border-left: 1px solid var(--primary);
+    margin: 0.5em 0 0.5em 0.85em;
+    font-family: var(--sub-font);
+    font-style: italic;
+    font-size: 0.75em;
+  }
+  
+  ul {
+    padding: 0 0 0 1em;
+    margin: 0 0 1em 0;
+  }
+  
+  li {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin: 0;
+    padding: 0 0 0 0.25em;
+  }
+
+  .switch2-icon {
+    width: 36px;
+    height: auto;
+  }
+
+  .wii-icon {
+    width: 36px;
+    height: auto;
+  }
+</style>
