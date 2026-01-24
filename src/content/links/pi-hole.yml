@@ -1,5 +1,5 @@
-title: "Pi-Hole"
-description: "Self-hosted network-wide DNS sinkhole, can block many ads on most devices through the use of community-maintained block lists. This was my first self-hosted app and what got me into self-hosting!"
+title: 'Pi-Hole'
+description: 'Self-hosted network-wide DNS sinkhole, can block many ads on most devices through the use of community-maintained block lists. This was my first self-hosted app and what got me into self-hosting!'
 pubDate: 2024-03-16
-url: "https://pi-hole.net"
+url: 'https://pi-hole.net'
 tag: self-hosted

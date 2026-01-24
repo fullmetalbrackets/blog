@@ -1,0 +1,131 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Calendar from "@icons/calendar.svg";
+import BackToTop from "@components/BackToTop.astro";
+import { Image } from 'astro:assets';
+
+const title = "Movies"
+const desc = "Movies watched in my household in 2026"
+
+---
+
+<style scoped>
+  section {
+    margin-bottom: 2em;
+  }
+  
+  @media screen and (max-width: 667px) {
+    section {
+      font-size: 0.925em;
+      margin-bottom: 1em;
+      line-height: 1.2;
+    }
+  }
+
+  h1 {
+    font-family: var(--sub-font);
+    font-weight: 900;
+    margin: 0;
+    padding: 0;
+  }
+
+  .plex-header {
+    margin-bottom: 2rem;
+  }
+
+  .info {
+    font-family: var(--sub-font);
+    font-size: 0.85em;
+  }
+
+  .last-updated {
+    color: var(--primary);
+    font-family: var(--sub-font);
+    font-weight: 700;
+  }
+
+  .stats span {
+    color: var(--emphasis);
+    font-weight: 700;
+  }
+
+  .error {
+    padding: 1.5rem;
+    background: #fee;
+    border: 1px solid #fcc;
+    border-radius: 8px;
+    color: #c00;
+  }
+
+  .poster-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, auto));
+    gap: 1em 0;
+    padding: 0;
+    margin: 0;
+  }
+
+  .poster-card {
+    transition: transform 0.2s;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .poster-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .poster-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    padding: 0;
+    margin: 0 auto;
+  }
+
+  .watch-date {
+    display: flex;
+    place-items: center;
+    background: var(--blockquote);
+    color: var(--primary);
+    font-family: var(--sub-font);
+    font-size: 0.75em;
+    font-weight: 700;
+    border-radius: 0;
+    margin: 0 1.15em;
+    padding: 0.25em;
+  }
+  .watch-date svg {
+    filter: var(--time-svg);
+    margin-right: 0.25em;
+  }
+
+  @media screen and (max-width: 667px) {
+    .poster-grid {
+      grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+      gap: 1rem;
+    }
+
+    .poster-placeholder {
+      font-size: 2rem;
+    }
+
+    .watch-date {
+      font-size: 0.7rem;
+      padding: 0.3rem 0.5rem;
+    }
+  }
+</style>
+
+<BaseLayout title={title} description={desc}>
+  <section>
+    <h1>{title}</h1>
+    <hr>
+    <p>{desc}</p>
+    <p>
+      <img src="/under-construction.gif" alt="A pixelated under construction gif straight out of the 90's world wide web.">
+    </p>
+  </section>
+  <hr>
+  <BackToTop />
+</BaseLayout>

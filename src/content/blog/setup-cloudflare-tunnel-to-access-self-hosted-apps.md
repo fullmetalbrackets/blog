@@ -1,9 +1,9 @@
 ---
-title: "Setup a Cloudflare Tunnel to securely access self-hosted apps with a domain from outside the home network"
+title: 'Setup a Cloudflare Tunnel to securely access self-hosted apps with a domain from outside the home network'
 description: "Cloudflare Tunnels have been around for a few years and are well regarded alternatives for VPNs or port-forwarding on a router. They are often used to expose access to self-hosted apps from outside the local network with minimal config or hassle. Here's how it's done."
 pubDate: 2023-07-20
 updatedDate: 2025-02-03
-tags: ["self-hosting", "cloudflare"]
+tags: ['self-hosting', 'cloudflare']
 related1: self-host-website-cloudflare-tunnel
 related2: expose-plex-with-cloudflare
 ---
@@ -68,29 +68,29 @@ In the Cloudflare dashboard, from your domain's _Overview_ page, click on **Acce
 
 ```yaml
 services:
-  tunnel:
-    container_name: tunnel
-    image: cloudflare/cloudflared
-    command: tunnel run
-    environment:
-      - TUNNEL_TOKEN=<tunnel-token>
-    restart: unless-stopped
+ tunnel:
+  container_name: tunnel
+  image: cloudflare/cloudflared
+  command: tunnel run
+  environment:
+   - TUNNEL_TOKEN=<tunnel-token>
+  restart: unless-stopped
 
-  navidrome:
-    container_name: navidrome
-    image: deluan/navidrome:latest
-    volumes:
-      - <path-to-local-directory>/navidrome:/data
-      - <path-to-local-directory>/music:/music:ro
-    environment:
-      ND_BASEURL: ""
-      ND_SCANSCHEDULE: 1h
-      ND_SESSIONTIMEOUT: 24h
-      ND_LOGLEVEL: info
-    network_mode: host
-    depends_on:
-      - tunnel
-    restart: unless-stopped
+ navidrome:
+  container_name: navidrome
+  image: deluan/navidrome:latest
+  volumes:
+   - <path-to-local-directory>/navidrome:/data
+   - <path-to-local-directory>/music:/music:ro
+  environment:
+   ND_BASEURL: ''
+   ND_SCANSCHEDULE: 1h
+   ND_SESSIONTIMEOUT: 24h
+   ND_LOGLEVEL: info
+  network_mode: host
+  depends_on:
+   - tunnel
+  restart: unless-stopped
 ```
 
 6. Add the _tunnel token_ from Cloudflare to the `TUNNEL_TOKEN=` environmental variable in the compose file. Also customize your local data and music directories for Navidrome. Save the file and use the below command:
@@ -103,7 +103,7 @@ docker compose up -d
 
 ![Connector showing status Connected.](../../img/blog/cloudflare-tunnel5.png 'Connector showing status Connected')
 
-6.  Now you'll be in the _Route Traffic_ page, under the **Public Hostnames** we have to add some things. First, add your desired **Subdomain**, for example, `music`. (You will then access Navidrome at `https://music.your-domain.com`.)
+6. Now you'll be in the _Route Traffic_ page, under the **Public Hostnames** we have to add some things. First, add your desired **Subdomain**, for example, `music`. (You will then access Navidrome at `https://music.your-domain.com`.)
 
 7. For **Domain** type in `your-domain.com`. (Make sure the domain is already _active_ in Cloudflare!) Leave the **Path** empty.
 
@@ -125,7 +125,7 @@ Although Navidrome, like many self-hosted services, has username and passwords f
 
 ## Configure OAuth with Google
 
-> It's been a while since I wrote this post and I don't use this set up anymore (<a href="/blog/tailscale/" target="_blank" data-umami-event="tunnel-apps-to-tailscale">I switched to Tailscale</a>),  so if the rest of the guide doesn't work for you please <a href="mailto:contact@fullmetalbrackets.com?subject=The oauth section of your Cloudflare Tunnel guide is out of date!">let me know</a> and I'll update it in the future!
+> It's been a while since I wrote this post and I don't use this set up anymore (<a href="/blog/tailscale/" target="_blank" data-umami-event="tunnel-apps-to-tailscale">I switched to Tailscale</a>), so if the rest of the guide doesn't work for you please <a href="mailto:contact@fullmetalbrackets.com?subject=The oauth section of your Cloudflare Tunnel guide is out of date!">let me know</a> and I'll update it in the future!
 
 You'll need a Google account to set this up, which you already do with Gmail. You'll be using that email to do some stuff on **Google Cloud Platform**. It's totally free for this use case.
 

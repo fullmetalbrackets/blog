@@ -1,5 +1,5 @@
-title: "Decomposerize"
-description: "This site does the opposite of Composerize, you paste in a YAML from a Docker Compose file and it gets converted into a Docker Run command."
+title: 'Decomposerize'
+description: 'This site does the opposite of Composerize, you paste in a YAML from a Docker Compose file and it gets converted into a Docker Run command.'
 pubDate: 2024-03-19
-url: "https://www.decomposerize.com"
+url: 'https://www.decomposerize.com'
 tag: web app

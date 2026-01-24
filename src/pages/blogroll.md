@@ -4,7 +4,7 @@ title: Blogroll
 description: A list of blogs that I follow and regularly read.
 ---
 
-A list of blogs that I follow and regularly read. *(Links in alphabetical order.)*
+A list of blogs that I follow and regularly read. _(Links in alphabetical order.)_
 
 Last updated on <span class="important">December 23, 2025</span>
 

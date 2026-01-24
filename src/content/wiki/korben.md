@@ -1,9 +1,9 @@
 ---
-title: "Korben"
-description: "Details on my backup server, a Dell Optiplex 3020 Micro PC."
+title: 'Korben'
+description: 'Details on my backup server, a Dell Optiplex 3020 Micro PC.'
 pubDate: 2023-12-16
 updatedDate: 2025-03-03
-tag:  server
+tag: server
 ---
 
 ![Dell Optiplex 3020 Micro](../../img/wiki/optiplex3020micro.jpg)

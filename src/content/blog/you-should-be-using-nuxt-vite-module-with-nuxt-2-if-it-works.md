@@ -2,9 +2,8 @@
 title: You should be using Nuxt-Vite module with Nuxt 2 (if it works)
 description: One of the not-so-great parts of developing with Nuxt is the several seconds of wait time for your dev server to warm up, and several more seconds of waiting for hot-module reloading or HMR. The forthcoming Nuxt 3 (currently in beta) will have Vite built-in for ultra-fast HMR in development. Because the Nuxt/Content module does not work with Nuxt 3 as of this writing, we must continue using Nuxt 2, but we can still get fast HMR with the awesome Nuxt-Vite module!
 pubDate: 2021-10-23
-tags: ["web development"]
+tags: ['web development']
 ---
-
 
 > [warning] Outdated Content
 >

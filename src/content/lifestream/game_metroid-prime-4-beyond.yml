@@ -1,9 +1,9 @@
 type: game
-title: "Metroid Prime 4: Beyond"
+title: 'Metroid Prime 4: Beyond'
 developer: Retro Studios
 publisher: Nintendo
-platform: ["Nintendo Switch", "Nintendo Switch 2"]
-genre: ["metroidvania", "action-adventure", "first-person"]
+platform: ['Nintendo Switch', 'Nintendo Switch 2']
+genre: ['metroidvania', 'action-adventure', 'first-person']
 pubDate: 2025-12-26
 startDate: 2025-12-04
 completed: true

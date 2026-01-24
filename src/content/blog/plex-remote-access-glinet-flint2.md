@@ -1,8 +1,8 @@
 ---
-title: "Set up Plex remote access with a GL.iNet Flint 2 router"
-description: "Plex has built-in remote access that mostly just works, but you still have to configure your router to use it properly. Here is a quick guide on configuring a GL.iNet Flint 2 router, which probably also works with other GL.iNet routers using the same GUI."
+title: 'Set up Plex remote access with a GL.iNet Flint 2 router'
+description: 'Plex has built-in remote access that mostly just works, but you still have to configure your router to use it properly. Here is a quick guide on configuring a GL.iNet Flint 2 router, which probably also works with other GL.iNet routers using the same GUI.'
 pubDate: 2025-12-23
-tags: ["plex", "gl-inet", "networking"]
+tags: ['plex', 'gl-inet', 'networking']
 related1: plex-remote-access-tailscale
 related2: expose-plex-tailscale-vps
 ---
@@ -15,9 +15,9 @@ Plex Media Server has a built-in feature called <a href="https://support.plex.tv
 
 > [warning] Important!
 >
-> The remote access feature, and sharing your library with friends, requires *either* a <a href="https://www.plex.tv/plans/" target="_blank" umami-data-event="plex-remote-access-to-plex-pass">Plex Pass subscription</a> for the person running Plex Media Server, *or* any external users you've shared with will *each* require a <a href="https://support.plex.tv/articles/remote-watch-pass-overview/" target="_blank" umami-data-event="plex-remote-access-to-watch-pass">Remote Watch Pass subscription</a>.
+> The remote access feature, and sharing your library with friends, requires _either_ a <a href="https://www.plex.tv/plans/" target="_blank" umami-data-event="plex-remote-access-to-plex-pass">Plex Pass subscription</a> for the person running Plex Media Server, _or_ any external users you've shared with will _each_ require a <a href="https://support.plex.tv/articles/remote-watch-pass-overview/" target="_blank" umami-data-event="plex-remote-access-to-watch-pass">Remote Watch Pass subscription</a>.
 
-> Another caveat to note is that Plex remote access will *not* work if your Plex Media Server is behind CGNAT. Many ISPs put their users behind *CGNAT* unless they have a *static IP address*, but this often comes at an additional cost. Check with your ISP for details.
+> Another caveat to note is that Plex remote access will _not_ work if your Plex Media Server is behind CGNAT. Many ISPs put their users behind _CGNAT_ unless they have a _static IP address_, but this often comes at an additional cost. Check with your ISP for details.
 >
 > If you want to remotely access Plex for yourself through CGNAT, I suggest using [Tailscale](https://tailscale.com) -- [see this blog post](/blog/plex-remote-access-tailscale/) for a guide on setting that up. To then share your library with friends, they would normally have to run Tailscale themselves too, but there is another way if you're willing to work for it -- [see this other post for details](/blog/expose-plex-tailscale-vps/).
 
@@ -45,19 +45,19 @@ On your browser, go to your Flint 2 router's web UI (most likely something like 
 ![A screenshot of the GL.iNet Flint 2 router's web-based user interface, port forwarding settings](../../img/blog/glinet-flint2-1.png)
 :::
 
-On this page, ignore the DMZ section and under *Port Forwarding* click on the **+ Add** button. You should fill out the information like so:
+On this page, ignore the DMZ section and under _Port Forwarding_ click on the **+ Add** button. You should fill out the information like so:
 
-1. Leave the *Protocol* as **TCP/UDP**, and leave *External Zone* as **WAN**.
+1. Leave the _Protocol_ as **TCP/UDP**, and leave _External Zone_ as **WAN**.
 
-2. For the *External Port* type in the Plex port, `32400`.
+2. For the _External Port_ type in the Plex port, `32400`.
 
-3. For the *Internal Zone*, leave it as **LAN**.
+3. For the _Internal Zone_, leave it as **LAN**.
 
-4. For the *Internal IP* type in the Plex server's **internal IP address**, for example `192.168.0.125`.
+4. For the _Internal IP_ type in the Plex server's **internal IP address**, for example `192.168.0.125`.
 
-5. For the *Internal Port* type in the Plex port again, `32400`.
+5. For the _Internal Port_ type in the Plex port again, `32400`.
 
-6. Add a *Description* if you want, make the **Enable is toggled on**, and click **Apply**.
+6. Add a _Description_ if you want, make the **Enable is toggled on**, and click **Apply**.
 
 :::image-figure[Setting up a port forward in GL.iNet Flint 2]
 ![A screenshot of the GL.iNet Flint 2 router's web-based user interface, port forwarding settings](../../img/blog/glinet-flint2-2.png)
@@ -85,19 +85,19 @@ Click on the wrench icon at the top right of the window to get into the Plex ser
 ![A screenshot of the Plex Media Server web-based user interface, top navigation bar, right corner](../../img/blog/plex-settings.png)
 :::
 
-Now on the sidebar to the left, scroll down to *Settings* and go to **Network**.
+Now on the sidebar to the left, scroll down to _Settings_ and go to **Network**.
 
 :::image-figure[Wrench icon leading to Plex Media Server settings.]
 ![A screenshot of the Plex Media Server web-based user interface, top navigation bar, right corner](../../img/blog/plex-remote-access2.png)
 :::
 
-First things first, *secure connections* is probably set to **Required**. This is the default setting and should work without issue, but some older clients not have trouble connecting. If any of your devices, or devices of friends you've shared with, are unable to connect in the future you can change this to **Preferred** and it should work. Modern clients should be able to connect securely, though.
+First things first, _secure connections_ is probably set to **Required**. This is the default setting and should work without issue, but some older clients not have trouble connecting. If any of your devices, or devices of friends you've shared with, are unable to connect in the future you can change this to **Preferred** and it should work. Modern clients should be able to connect securely, though.
 
 :::image-figure[Secure connections setting in Plex Media Server.]
 ![A screenshot of the Plex Media Server web-based user interface, Network settings](../../img/blog/plex-secure-connections.png)
 :::
 
-Next, scroll down to where it says *Enable Relay*. If this setting is on, and a remote Plex client is unable to establish a direct connection, Plex's own servers will relay the connection to allow access. This should not be necessary if you set up Plex Remote Access properly, and Plex relays have an upper bandwidth limit of around 4 Mbps, so it's not an ideal experience anyway.
+Next, scroll down to where it says _Enable Relay_. If this setting is on, and a remote Plex client is unable to establish a direct connection, Plex's own servers will relay the connection to allow access. This should not be necessary if you set up Plex Remote Access properly, and Plex relays have an upper bandwidth limit of around 4 Mbps, so it's not an ideal experience anyway.
 
 Personally, I always **uncheck the box to turn off relay** to force a direct connection, or else not allow access at all if direct is not possible.
 
@@ -105,9 +105,9 @@ Personally, I always **uncheck the box to turn off relay** to force a direct con
 ![A screenshot of the Plex Media Server web-based user interface, Network settings](../../img/blog/plex-relay.png)
 :::
 
-You can customize some other settings here to your liking, but since we are just port forwarding from the router, nothing else is required here. On the sidebar, go to *Remote Access*. On this page, click on the button to **Enable Remote Access**.
+You can customize some other settings here to your liking, but since we are just port forwarding from the router, nothing else is required here. On the sidebar, go to _Remote Access_. On this page, click on the button to **Enable Remote Access**.
 
-You should also enable *Manually specify public port*, type in the Plex port and click **Apply**. It may not be required for everyone, but remote access doesn't work for me without it. 
+You should also enable _Manually specify public port_, type in the Plex port and click **Apply**. It may not be required for everyone, but remote access doesn't work for me without it.
 
 :::image-figure[Manually specifying Plex public port.]
 ![A screenshot of the Plex Media Server web-based user interface, Network settings, Remote Access page](../../img/blog/plex-remote-access3.png)
@@ -115,15 +115,15 @@ You should also enable *Manually specify public port*, type in the Plex port and
 
 > If you're setting things up differently and forwarding another outside port (rather than `32400`) to Plex's internal port, then type in that outside port here.
 >
-> In that case the above would be `[internal IP]:32400 <- [external IP]:50000 <- Internet` if you were forwarding *external port 50000* on the router to Plex's internal port of 32400.
+> In that case the above would be `[internal IP]:32400 <- [external IP]:50000 <- Internet` if you were forwarding _external port 50000_ on the router to Plex's internal port of 32400.
 
-Give it a minute and you should see it say *Fully accessible outside your network* in green.
+Give it a minute and you should see it say _Fully accessible outside your network_ in green.
 
 :::image-figure[Plex Media Server with remote access enabled and working.]
 ![A screenshot of the Plex Media Server web-based user interface, settings page](../../img/blog/plex-remote-access4.png)
 :::
 
-If you see this message remain and not turn red saying "Not available outside your network," then you're good to go. You should also see a green checkmark next to *Remote Access* on the sidebar.
+If you see this message remain and not turn red saying "Not available outside your network," then you're good to go. You should also see a green checkmark next to _Remote Access_ on the sidebar.
 
 :::image-figure[Remote Access green checkmark in Plex Media Server settings.]
 ![A screenshot of the Plex Media Server web-based user interface, settings page](../../img/blog/plex-remote-access5.png)

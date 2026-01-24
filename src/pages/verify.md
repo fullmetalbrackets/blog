@@ -35,6 +35,6 @@ This is a [concept pioneered by Molly White](https://www.mollywhite.net/verify/)
 > [quote]
 > A <span class="i b u em">verify slashpage</span> is a specific web page, typically found at the URL path `yourwebsite.com`, that is used to establish the authenticity of associated social media accounts or other online profiles. [...]
 >
-> It is a low-tech, independent alternative to platform-specific verification badges (like the blue checkmarks on Instagram or Facebook) and is a way to build trust with an audience in a decentralized web environment. 
+> It is a low-tech, independent alternative to platform-specific verification badges (like the blue checkmarks on Instagram or Facebook) and is a way to build trust with an audience in a decentralized web environment.
 >
 > [Google AI Overview](https://www.google.com/search?q=what+is+a+verify+slashpage)

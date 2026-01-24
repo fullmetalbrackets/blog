@@ -1,9 +1,9 @@
 ---
-title: "Setting up a reverse proxy for HTTPS with a custom domain using Nginx Proxy Manager, Pi-Hole and Cloudflare"
+title: 'Setting up a reverse proxy for HTTPS with a custom domain using Nginx Proxy Manager, Pi-Hole and Cloudflare'
 description: "I've used a reverse proxy to access my self-hosted apps and services for years, but I recently re-did everything from scratch and decided to write it down. When done, you'll be able to access your apps and services through a custom domain, with unique sub-domains for each app or service, with full HTTPS and accessible only locally."
 pubDate: 2024-10-17
 updatedDate: 2025-02-26
-tags: ["self-hosting", "pi-hole", "nginx proxy manager"]
+tags: ['self-hosting', 'pi-hole', 'nginx proxy manager']
 related1: set-up-pihole-on-linux
 related2: self-host-website-cloudflare-tunnel
 ---
@@ -16,7 +16,7 @@ related2: self-host-website-cloudflare-tunnel
 
 ## Pre-Requisites and Caveats
 
-First of all, this guide uses specific third-party services, namely <a href="https://cloudflare.com" target="_blank" data-umami-event="reverse-proxy-pihole-cf-site">Cloudflare</a>, <a href="https://pi-hole.net" target="_blank" data-umami-event="reverse-proxy-pihole-piholesite">Pi-Hole</a> (specifically **v6**, but older versions will work too) and <a href="https://nginxproxymanager.com" target="_blank" data-umami-event="reverse-proxy-pihole-npm-site">Nginx Proxy Manager</a> to set up a secure local-only reverse proxy. The same is possible with other tools, apps and services including <a href="https://adguard.com/en/adguard-home/overview.html" target="_blank" data-umami-event="reverse-proxy-pihole-agh-site">AdGuard Home</a> or <a href="https://nextdns.io" target="_blank" data-umami-event="reverse-proxy-pihole-nextdns">NextDNS</a> instead of *Pi-Hole*, <a href="https://caddyserver.com" target="_blank" data-umami-event="reverse-proxy-pihole-caddy">Caddy</a> or <a href="https://traefik.io" target="_blank" data-umami-event="reverse-proxy-pihole-traefik">Traefik</a> instead of *Nginx*, any other DNS provider instead of *Cloudflare*, etc. I'm only writing about my preferred tools that I've used multiple times to set everything up and keep it running for years.
+First of all, this guide uses specific third-party services, namely <a href="https://cloudflare.com" target="_blank" data-umami-event="reverse-proxy-pihole-cf-site">Cloudflare</a>, <a href="https://pi-hole.net" target="_blank" data-umami-event="reverse-proxy-pihole-piholesite">Pi-Hole</a> (specifically **v6**, but older versions will work too) and <a href="https://nginxproxymanager.com" target="_blank" data-umami-event="reverse-proxy-pihole-npm-site">Nginx Proxy Manager</a> to set up a secure local-only reverse proxy. The same is possible with other tools, apps and services including <a href="https://adguard.com/en/adguard-home/overview.html" target="_blank" data-umami-event="reverse-proxy-pihole-agh-site">AdGuard Home</a> or <a href="https://nextdns.io" target="_blank" data-umami-event="reverse-proxy-pihole-nextdns">NextDNS</a> instead of _Pi-Hole_, <a href="https://caddyserver.com" target="_blank" data-umami-event="reverse-proxy-pihole-caddy">Caddy</a> or <a href="https://traefik.io" target="_blank" data-umami-event="reverse-proxy-pihole-traefik">Traefik</a> instead of _Nginx_, any other DNS provider instead of _Cloudflare_, etc. I'm only writing about my preferred tools that I've used multiple times to set everything up and keep it running for years.
 
 This guide will require a owned custom top-level domain (TLD), such as a `.com` or `.cc` or `.xyz`, etc. Certain TLDs can be bought for super cheap on <a href="https://namecheap.com" target="_blank">Namecheap</a> or <a href="https://porkbun.com" target="_blank">Porkbun</a>, but be aware in most cases after the first year or two, the price will see a steep jump. I again prefer <a href="https://domains.cloudflare.com" target="_blank" data-umami-event="reverse-proxy-pihole-cf-domains">Cloudflare</a> for purchasing domains, since they always price domains at cost, so you won't see any surprise price hike one year to the next. An alternative I won't be getting into is using dynamic DNS, as I've not had to use it, so I honestly wouldn't even know how to set that up.
 
@@ -36,47 +36,48 @@ If you want to run Pi-Hole in a container, use this `compose.yaml` as a base and
 
 ```yaml
 services:
-  pihole:
-    restart: unless-stopped
-    container_name: pihole
-    image: pihole/pihole
-    environment:
-      - "TZ=America/New_York"
-      - "WEBPASSWORD=CHANGE-ME"
-      - "FTLCONF_LOCAL_IPV4=192.168.0.50"
-      - "DNS1=1.1.1.1"
-      - "DNS2=1.0.0.1"
-      - "DNSMASQ_LISTENING=all"
-      - "DNSSEC=true"
-      - "QUERY_LOGGING=true"
-    volumes:
-      - /opt/docker/pihole:/etc/pihole/
-      - /opt/docker/dnsmasq:/etc/dnsmasq.d/
-    ports:
-      - 53:53/tcp
-      - 53:53/udp
-      - 80:80/tcp # web UI port
+ pihole:
+  restart: unless-stopped
+  container_name: pihole
+  image: pihole/pihole
+  environment:
+   - 'TZ=America/New_York'
+   - 'WEBPASSWORD=CHANGE-ME'
+   - 'FTLCONF_LOCAL_IPV4=192.168.0.50'
+   - 'DNS1=1.1.1.1'
+   - 'DNS2=1.0.0.1'
+   - 'DNSMASQ_LISTENING=all'
+   - 'DNSSEC=true'
+   - 'QUERY_LOGGING=true'
+  volumes:
+   - /opt/docker/pihole:/etc/pihole/
+   - /opt/docker/dnsmasq:/etc/dnsmasq.d/
+  ports:
+   - 53:53/tcp
+   - 53:53/udp
+   - 80:80/tcp # web UI port
 ```
 
 > [warning] Important
 >
 > Make sure port `53` is available on your server or Pi-Hole will not work!
-> 
+>
 > If your Pi-Hole is o*n the same machine* you want to run Nginx Proxy Manager, then you'll need to change the **Pi-Hole web UI port** since it is also port `80` by default, which will conflict with Nginx Proxy Manager.
 >
 > If you run Pi-Hole in a **Docker container**, simply change the container's port mapping in the compose file from `80:80` to, for example, `8888:80` or something similar.
 >
 > If you are running **bare metal**, you'll need to edit the Pi-Hole configuration file:
+>
 > 1. Open the file at `/etc/pihole/pihole.toml` with a text editor and find the section `# Ports to be used by the webserver`.
 > 2. Comment out the line `port = "80o,[::]:80o,443so, ..."` and then write a new line right under it with a different network port, like `port = "8888o,[::]:8888o"` or something.
 
-I include some presets through environmental variables in the compose file, but customize it as you see fit. Be aware that for Pi-Hole to work properly as a container, you should leave the variable `DNSMASQ_LISTENING=all`, it's the same as *permit all origins* in the Pi-Hole interface settings, which is what you want. When ready, download and run the container with the following command:
+I include some presets through environmental variables in the compose file, but customize it as you see fit. Be aware that for Pi-Hole to work properly as a container, you should leave the variable `DNSMASQ_LISTENING=all`, it's the same as _permit all origins_ in the Pi-Hole interface settings, which is what you want. When ready, download and run the container with the following command:
 
 ```bash
 docker compose up -d
 ```
 
-To ensure all devices on your network use Pi-Hole as their DNS server, you need to set it in your router's settings. Each router is different, but generally you're looking for the *DNS server* settings, usually located within a router's *DHCP settings*. If your router lets you set a custom DNS server, enter your Pi-Hole's IP address here, e.g. `192.168.0.50`.
+To ensure all devices on your network use Pi-Hole as their DNS server, you need to set it in your router's settings. Each router is different, but generally you're looking for the _DNS server_ settings, usually located within a router's _DHCP settings_. If your router lets you set a custom DNS server, enter your Pi-Hole's IP address here, e.g. `192.168.0.50`.
 
 However, not all routers let you set a custom DNS server. If the router does let you turn off it's _DHCP server_ (this is what hands out IP addresses to network devices) then you can opt to use _Pi-Hole_ as the DHCP, or else manually adding Pi-Hole as the DNS in network settings on a per-device basis. I have no experience using Pi-Hole as the DHCP server, so I won't explain it further here.
 
@@ -170,17 +171,17 @@ Create a `compose.yaml` file, use the below as a base. (If you are also running 
 
 ```yaml
 services:
-  nginx-proxy-manager:
-    container_name: nginx-proxy-manager
-    image: "jc21/Nginx-proxy-manager:latest"
-    ports:
-      - 81:81 # web UI port
-      - 80:80
-      - 443:443
-    volumes:
-      - /opt/docker/nginx:/data
-      - /opt/docker/letsencrypt:/etc/letsencrypt
-    restart: unless-stopped
+ nginx-proxy-manager:
+  container_name: nginx-proxy-manager
+  image: 'jc21/Nginx-proxy-manager:latest'
+  ports:
+   - 81:81 # web UI port
+   - 80:80
+   - 443:443
+  volumes:
+   - /opt/docker/nginx:/data
+   - /opt/docker/letsencrypt:/etc/letsencrypt
+  restart: unless-stopped
 ```
 
 This compose file uses <a href="https://docs.docker.com/engine/storage/#bind-mounts" target="_blank" data-umami-event="reverse-proxy-pihole-docker-bind-mounts">bind mounts</a> to store container data in specific directories on the host, as I find this easier to migrate than <a href="https://docs.docker.com/engine/storage/#volumes" target="_blank" data-umami-event="reverse-proxy-pihole-docker-volumes">volumes</a>. Be sure to type in your own local path to where you want the data from Nginx Proxy Manager to live in your server, e.g. `/home/bob/docker/..` etc.

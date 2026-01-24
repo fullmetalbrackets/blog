@@ -1,9 +1,9 @@
 ---
-title: "Set up PhotoSync app to backup photos from your phone to an SMB share on your home server"
+title: 'Set up PhotoSync app to backup photos from your phone to an SMB share on your home server'
 description: "Google Photos began limiting free storage back in 2021, limiting you to 15 GB of storage when uploading photos in their original size uncompressed. Rather than wait and see if I hit the cap, I decided to try replacing Google Photos with a self-hosted solution. Here's how I did it."
 pubDate: 2023-07-07
 updatedDate: 2025-02-03
-tags: ["self-hosting", "android", "smb"]
+tags: ['self-hosting', 'android', 'smb']
 related1: setup-a-samba-share-on-linux-via-command-line
 related2: setting-up-plex-in-docker
 ---
@@ -48,7 +48,7 @@ Tap on the directory to transfer your photos into (keep in mind _Destination Fol
 
 ![Transfering photos in PhotoSync.](../../img/blog/photosync9.jpg 'Transfering photos in PhotoSync')
 
-All done! Now you can manually sync new photos from your phone to your NAS at any time by opening the app and repeating the last set of instructions above. 
+All done! Now you can manually sync new photos from your phone to your NAS at any time by opening the app and repeating the last set of instructions above.
 
 Next, we'll set up _background auto-transfers_, but you'll need optional the **Auto-Transfer Add-On**.
 

@@ -1,22 +1,22 @@
 ---
-title: "How to expose Plex to share your library with others from behind CGNAT using Tailscale and a free Oracle Cloud instance"
-description: "I wrote before about sharing my Plex library via Cloudflare Tunnel, but that is technically against their TOS and liable to get your account in trouble. So I switched to using a free-tier Oracle VM, securely connecting it to my home network via Tailscale, and exposing Plex via reverse proxy on the VM. It works like a charm!"
+title: 'How to expose Plex to share your library with others from behind CGNAT using Tailscale and a free Oracle Cloud instance'
+description: 'I wrote before about sharing my Plex library via Cloudflare Tunnel, but that is technically against their TOS and liable to get your account in trouble. So I switched to using a free-tier Oracle VM, securely connecting it to my home network via Tailscale, and exposing Plex via reverse proxy on the VM. It works like a charm!'
 pubDate: 2024-09-03
 updatedDate: 2025-08-15
 tags:
-  - plex
-  - tailscale
-  - oracle cloud
+ - plex
+ - tailscale
+ - oracle cloud
 related1: comprehensive-guide-tailscale-securely-access-home-network
 related2: expose-plex-with-cloudflare
 ---
 
 > [warning] Important
 >
->  Effective April 29, 2025 an active Plex Pass subscription is required to remotely access Plex -- the below still works as is to get through CGNAT with **Plex Pass**, however if you are trying to share your library **without** Plex Pass (or without the user you're sharing with have a Remote Watch Pass) then additional configuration is required.
+> Effective April 29, 2025 an active Plex Pass subscription is required to remotely access Plex -- the below still works as is to get through CGNAT with **Plex Pass**, however if you are trying to share your library **without** Plex Pass (or without the user you're sharing with have a Remote Watch Pass) then additional configuration is required.
 >
-> I have added a section at the end to setup the Plex server as a 
->subnet router and exit node, which seems to be a workaround to get this to work. Please <a href="mailto:contact@fullmetalbrackets.com">let me know</a> if this no longer works, since I cannot test it myself as a lifetime Plex Pass owner!
+> I have added a section at the end to setup the Plex server as a
+> subnet router and exit node, which seems to be a workaround to get this to work. Please <a href="mailto:contact@fullmetalbrackets.com">let me know</a> if this no longer works, since I cannot test it myself as a lifetime Plex Pass owner!
 
 ## What and Why
 
@@ -24,7 +24,7 @@ Plex is a self-hosted media server that lets you stream your owned (or downloade
 
 Although I previously wrote about [how to expose Plex through CGNAT with Cloudflare Tunnel](/blog/expose-plex-with-cloudflare/), it's against their terms of service, so I don't use that method anymore and suggest you don't either. The method I explain in _this_ post has a few extra steps, but it does not run afoul of any service provider's rules.
 
-> The following is only for exposing Plex to *other users you've shared libraries with*, and is not required for you to remotely access your own Plex server.
+> The following is only for exposing Plex to _other users you've shared libraries with_, and is not required for you to remotely access your own Plex server.
 >
 > For your own remote access through Tailscale, just install it on the Plex server and also on whatever external device(s) you want to access Plex from. **A cloud VM or VPS is only necessary to expose Plex to other users without them needing to run Tailscale themselves.**
 
@@ -44,25 +44,25 @@ Finally, you'll need a Plex server already set up. (And I'll assume it's running
 
 ## Create OCI account
 
-We'll be using a free-tier VM from Oracle Cloud Infrastructure (OCI) -- specifically, an E2 Micro instance which runs on a single-core AMD OCPU, has 1 GB of memory and a 0.48 Gbps connection, more than enough for streaming even 4K content through Plex. You can run *TWO* of these VMs **totally free**.
+We'll be using a free-tier VM from Oracle Cloud Infrastructure (OCI) -- specifically, an E2 Micro instance which runs on a single-core AMD OCPU, has 1 GB of memory and a 0.48 Gbps connection, more than enough for streaming even 4K content through Plex. You can run _TWO_ of these VMs **totally free**.
 
-> In addition to two *AMD E2 Micro* instances, the OCI free tier includes one *Ampere A1 Flex* instance with up to 4 Arm OCPUs, up to 24 GB of memory, and a connection of 1 Gbps per OCPU.
-> 
+> In addition to two _AMD E2 Micro_ instances, the OCI free tier includes one _Ampere A1 Flex_ instance with up to 4 Arm OCPUs, up to 24 GB of memory, and a connection of 1 Gbps per OCPU.
+>
 > These are the **total limits across all Ampere instances**, you can instead split these resources -- for example two instances with 2 OCPUs and 12 GB of memory, or 4 OCPUs with 6 GB of memory each, etc.
 
 > [warning] Important
 >
->  It may be preferable to use the free *Ampere A1 Flex* instance for this instead of an *AMD E2 Micro* if you want faster connection for more concurrent remote streams, if sharing your library with more than 1 or 2 users, and especially for stable multiple 4K streams.
+> It may be preferable to use the free _Ampere A1 Flex_ instance for this instead of an _AMD E2 Micro_ if you want faster connection for more concurrent remote streams, if sharing your library with more than 1 or 2 users, and especially for stable multiple 4K streams.
 >
-> However, you will most likely encounter an **"out of capacity" error** when trying to provision an *Ampere A1 Flex*, but if you upgrade your free tier account to *Pay As You Go*, the errors will disappear. I have confirmed this myself by upgrading my account.
-> 
+> However, you will most likely encounter an **"out of capacity" error** when trying to provision an _Ampere A1 Flex_, but if you upgrade your free tier account to _Pay As You Go_, the errors will disappear. I have confirmed this myself by upgrading my account.
+>
 > **Just be sure to stay within the free limits noted above if you do this!**
 
-First, go to [Oracle Cloud's website](https://www.oracle.com/cloud/free/) and click **Start for free** to create your account. You will need a credit card, but only for verification purposes! As long as you stick to *free tier* and don't upgrade, you won't be charged.
+First, go to [Oracle Cloud's website](https://www.oracle.com/cloud/free/) and click **Start for free** to create your account. You will need a credit card, but only for verification purposes! As long as you stick to _free tier_ and don't upgrade, you won't be charged.
 
 Once your account is set up you'll receive an email with the **Cloud Account Name** (which is your "tenant") and **Username**. (The email you used to sign up.) You'll need the Cloud Account Name to [sign-in to OCI](https://www.oracle.com/cloud/sign-in.html), after which you'll be asked for the email address and password.
 
-> You'll be asked if you want to *Enable Secure Verification (MFA)* which I strongly suggest you do. You'll need a USB security key or to download and use the Oracle Authenticator app. It's annoying to have to use another Authenticator app, but it's worth the peace of mind.
+> You'll be asked if you want to _Enable Secure Verification (MFA)_ which I strongly suggest you do. You'll need a USB security key or to download and use the Oracle Authenticator app. It's annoying to have to use another Authenticator app, but it's worth the peace of mind.
 
 ## Create a compute instance
 
@@ -90,7 +90,7 @@ Click the **Create instance** button and do the following:
 ![A screenshot of the Oracle Cloud Infrastructure web-based user interfacet](../../img/blog/oci00.png)
 :::
 
-> If provisioning an *Ampere A1 Flex* instance, click on the arrow to the left of the Shape name to change the number of OCPUs and amount of memory, *as you increase the OCPU it will also increase the memory automatically*.
+> If provisioning an _Ampere A1 Flex_ instance, click on the arrow to the left of the Shape name to change the number of OCPUs and amount of memory, _as you increase the OCPU it will also increase the memory automatically_.
 
 6. Leave the rest of the options as-is and click on the **Next** button at the bottom-right.
 
@@ -227,7 +227,7 @@ Once the domain is _active_ in Cloudflare, we just need to add a DNS record:
 ![A screenshot of the Cloudflare web-based user interface](../../img/blog/expose-plex-tailscale-vps1.png)
 :::
 
-> Make sure *NOT* to leave it proxied. If you do, all traffic will go through Cloudflare's CDN which we do not want. We're only using Cloudflare to resolve our domain to the IP of the Oracle instance, nothing more!
+> Make sure _NOT_ to leave it proxied. If you do, all traffic will go through Cloudflare's CDN which we do not want. We're only using Cloudflare to resolve our domain to the IP of the Oracle instance, nothing more!
 
 7. Leave _TTL_ at Auto and click **Save**.
 
@@ -277,17 +277,17 @@ We'll use `docker compose` to run the reverse proxy container.
 
 ```yaml
 services:
-  nginxproxy:
-    image: docker.io/jc21/nginx-proxy-manager:latest
-    container_name: nginxproxy
-    volumes:
-      - /home/ubuntu/nginxproxy:/data
-      - /home/ubuntu/nginxproxy/letsencrypt:/etc/letsencrypt
-    ports:
-      - 80:80
-      - 81:81
-      - 443:443
-    restart: always
+ nginxproxy:
+  image: docker.io/jc21/nginx-proxy-manager:latest
+  container_name: nginxproxy
+  volumes:
+   - /home/ubuntu/nginxproxy:/data
+   - /home/ubuntu/nginxproxy/letsencrypt:/etc/letsencrypt
+  ports:
+   - 80:80
+   - 81:81
+   - 443:443
+  restart: always
 ```
 
 3. Save and close the file, then install and run the container with `docker compose up -d`

@@ -1,0 +1,875 @@
+{
+	"games": {
+		"Nintendo Switch 2": [
+			{
+				"moby": 102091,
+				"title": "Animal Crossing: New Horizons"
+			},
+			{
+				"moby": 76855,
+				"title": "Hollow Knight: Silksong"
+			},
+			{
+				"moby": 42320,
+				"title": "Mario Kart World"
+			},
+			{
+				"moby": 42320,
+				"title": "The Legend of Zelda: Breath of the Wild"
+			},
+			{
+				"moby": 42320,
+				"title": "The Legend of Zelda: Tears of the Kingdom"
+			}
+		],
+		"Nintendo Switch": [
+			{
+				"moby": 0,
+				"title": "Animal Crossing: New Horizons"
+			},
+			{
+				"moby": 0,
+				"title": "Bloodstained: Ritual of the Moon"
+			},
+			{
+				"moby": 0,
+				"title": "Capcom Arcade Stadium"
+			},
+			{
+				"moby": 0,
+				"title": "Castlevania Advance Collection"
+			},
+			{
+				"moby": 0,
+				"title": "Castlevania Anniversary Collection"
+			},
+			{
+				"moby": 0,
+				"title": "Chrono Cross: The Radical Dreamers Edition"
+			},
+			{
+				"moby": 0,
+				"title": "Cosmic Star Heroine"
+			},
+			{
+				"moby": 0,
+				"title": "Cult of the Lamb"
+			},
+			{
+				"moby": 0,
+				"title": "Disgaea 5 Complete"
+			},
+			{
+				"moby": 0,
+				"title": "Donkey Kong Country Returns HD"
+			},
+			{
+				"moby": 0,
+				"title": "Final Fantasy VI"
+			},
+			{
+				"moby": 84194,
+				"title": "Hollow Knight"
+			},
+			{
+				"moby": 0,
+				"title": "Hyrule Warriors: Age of Calamity"
+			},
+			{
+				"moby": 0,
+				"title": "Hyrule Warriors: Definitive Edition"
+			},
+			{
+				"moby": 0,
+				"title": "Iconoclasts"
+			},
+			{
+				"moby": 0,
+				"title": "Mario + Rabbids Kingdom Battle"
+			},
+			{
+				"moby": 102091,
+				"title": "Mario + Rabbids Sparks of Hope"
+			},
+			{
+				"moby": 0,
+				"title": "Mario Kart 8 Deluxe"
+			},
+			{
+				"moby": 0,
+				"title": "Mark of the Ninja: Remastered"
+			},
+			{
+				"moby": 0,
+				"title": "Metroid Dread"
+			},
+			{
+				"moby": 0,
+				"title": "Metroid Prime Remastered"
+			},
+			{
+				"moby": 0,
+				"title": "Mortal Kombat 11"
+			},
+			{
+				"moby": 0,
+				"title": "Mr. Driller DrillLand"
+			},
+			{
+				"moby": 0,
+				"title": "Scott Pilgrim vs. The World: The Game"
+			},
+			{
+				"moby": 76855,
+				"title": "Super Mario 3D All-Stars"
+			},
+			{
+				"moby": 0,
+				"title": "Super Mario 3D World + Bowser's Fury"
+			},
+			{
+				"moby": 42320,
+				"title": "Super Mario Odyssey"
+			},
+			{
+				"moby": 0,
+				"title": "Super Smash Bros. Ultimate"
+			},
+			{
+				"moby": 0,
+				"title": "The Jackbox Party Pack 4"
+			},
+			{
+				"moby": 0,
+				"title": "The Legend of Zelda: Breath of the Wild"
+			},
+			{
+				"moby": 0,
+				"title": "The Legend of Zelda: Echoes of Wisdom"
+			},
+			{
+				"moby": 0,
+				"title": "The Legend of Zelda: Link's Awakening"
+			},
+			{
+				"moby": 0,
+				"title": "The Legend of Zelda: Tears of the Kingdom"
+			}
+		],
+		"Wii": [
+			{
+				"moby": 169,
+				"title": "Mario Kart Wii"
+			},
+			{
+				"moby": 7659,
+				"title": "Mario Strikers Charged"
+			},
+			{
+				"moby": 44577,
+				"title": "My Fitness Coach: Get In Shape"
+			},
+			{
+				"moby": 170,
+				"title": "New Super Mario Bros. Wii"
+			},
+			{
+				"moby": 3257,
+				"title": "Wii Fit"
+			},
+			{
+				"moby": 3495,
+				"title": "Wii Play"
+			},
+			{
+				"moby": 3194,
+				"title": "Wii Sports Resort"
+			},
+			{
+				"moby": 76992,
+				"title": "Wii Sports [Pack In]"
+			}
+		],
+		"GameCube": [
+			{
+				"moby": 0,
+				"title": ""
+			},
+			{
+				"moby": 0,
+				"title": "Animal Crossing"
+			},
+			{
+				"moby": 0,
+				"title": "Eternal Darkness: Sanity's Requiem"
+			},
+			{
+				"moby": 0,
+				"title": "Final Fantasy Crystal Chronicles"
+			},
+			{
+				"moby": 0,
+				"title": "F-Zero GX"
+			},
+			{
+				"moby": 166,
+				"title": "Mario Kart: Double Dash!!"
+			},
+			{
+				"moby": 0,
+				"title": "Metroid Prime"
+			},
+			{
+				"moby": 0,
+				"title": "Metroid Prime 2: Echoes"
+			},
+			{
+				"moby": 0,
+				"title": "Metal Gear Solid: The Twin Snakes"
+			},
+			{
+				"moby": 0,
+				"title": "Paper Mario: The Thousand Year Door"
+			},
+			{
+				"moby": 0,
+				"title": "Prince of Persia: Sands of Time"
+			},
+			{
+				"moby": 0,
+				"title": "Resident Evil 4"
+			},
+			{
+				"moby": 0,
+				"title": "Resident Evil Zero"
+			},
+			{
+				"moby": 0,
+				"title": "Super Smash Bros. Melee"
+			},
+			{
+				"moby": 0,
+				"title": "Tales of Symphonia"
+			},
+			{
+				"moby": 0,
+				"title": "The Legend of Zelda: The Wind Waker"
+			},
+			{
+				"moby": 0,
+				"title": "The Legend of Zelda: Twilight Princess"
+			}
+		],
+		"Nintendo 3DS": [
+			{
+				"moby": 0,
+				"title": "The"
+			},
+			{
+				"moby": 12733,
+				"title": "Mario Kart 7"
+			},
+			{
+				"moby": 0,
+				"title": "Metroid: Samus Returns"
+			},
+			{
+				"moby": 0,
+				"title": "The Legend of Zelda: A Link Between Worlds"
+			}
+		],
+		"Nintendo DS": [
+			{
+				"moby": 0,
+				"title": "Castlevania: Dawn of Sorrow"
+			},
+			{
+				"moby": 0,
+				"title": "Chrono Trigger"
+			},
+			{
+				"moby": 0,
+				"title": "Dragon Quest IX: Sentinels of the Starry Sky"
+			},
+			{
+				"moby": 0,
+				"title": "Final Fantasy Tactics Advance 2"
+			},
+			{
+				"moby": 0,
+				"title": "The Legend of Zelda: A Link Between Worlds"
+			},
+			{
+				"moby": 12733,
+				"title": "Mario Kart DS"
+			},
+			{
+				"moby": 0,
+				"title": "Meteos"
+			},
+			{
+				"moby": 0,
+				"title": "New Super Mario Bros."
+			},
+			{
+				"moby": 0,
+				"title": "Tetris DS"
+			},
+			{
+				"moby": 0,
+				"title": "The Legend of Zelda: Phantom Hourglass"
+			}
+		],
+		"GameBoy Advance": [
+			{
+				"moby": 0,
+				"title": "Castlevania: Aria of Sorrow"
+			},
+			{
+				"moby": 0,
+				"title": "Final Fantasy Tactics Advance"
+			},
+			{
+				"moby": 12733,
+				"title": "Mario Kart Advance"
+			},
+			{
+				"moby": 0,
+				"title": "Metroid Fusion"
+			},
+			{
+				"moby": 0,
+				"title": "Metroid Zero Mission"
+			},
+			{
+				"moby": 0,
+				"title": "Pokemon: Fire Red Version"
+			}
+		],
+
+		"PlayStation 5": [
+			{
+				"moby": 73744,
+				"title": "Final Fantasy VII Remake Intergrade"
+			},
+			{
+				"moby": 73744,
+				"title": "Final Fantasy XVI"
+			},
+			{
+				"moby": 73744,
+				"title": "God of War: Ragnarok"
+			},
+			{
+				"moby": 73917,
+				"title": "Marvel's Spider-Man: Miles Morales"
+			},
+			{
+				"moby": 73744,
+				"title": "Ratchet & Clank: Rift Apart"
+			},
+			{
+				"moby": 73744,
+				"title": "The Elder Scrolls IV: Oblivion Remastered"
+			}
+		],
+		"PlayStation 4": [
+			{
+				"moby": 73917,
+				"title": "God of War"
+			},
+			{
+				"moby": 73744,
+				"title": "Red Dead Redemption 2"
+			}
+		],
+		"PlayStation 3": [
+			{
+				"moby": 2780,
+				"title": "Kingdom Hearts HD 2.5 ReMIX"
+			},
+			{
+				"moby": 2780,
+				"title": "Metal Gear Solid 4: Guns of the Patriots"
+			},
+			{
+				"moby": 2780,
+				"title": "Ratchet & Clank Collection"
+			},
+			{
+				"moby": 2780,
+				"title": "The Last Of Us"
+			},
+			{
+				"moby": 2780,
+				"title": "Uncharted"
+			},
+			{
+				"moby": 2780,
+				"title": "Uncharted 2"
+			}
+		],
+		"PlayStation 2": [
+			{
+				"moby": 4165,
+				"title": "Final Fantasy X"
+			},
+			{
+				"moby": 4165,
+				"title": "Final Fantasy XII"
+			},
+			{
+				"moby": 4165,
+				"title": "Grand Theft Auto III"
+			},
+			{
+				"moby": 4166,
+				"title": "Grand Theft Auto: Vice City"
+			},
+			{
+				"moby": 4867,
+				"title": "Jak II"
+			},
+			{
+				"moby": 2780,
+				"title": "Metal Gear Solid 2: Sons of Liberty"
+			},
+			{
+				"moby": 2780,
+				"title": "Metal Gear Solid 3: Substance"
+			},
+			{
+				"moby": 7797,
+				"title": "Ratchet & Clank"
+			}
+		],
+		"PlayStation": [
+			{
+				"moby": 2780,
+				"title": "Chrono Cross"
+			},
+			{
+				"moby": 2780,
+				"title": "Colony Wars"
+			},
+			{
+				"moby": 2780,
+				"title": "Colony Wars: Vengence"
+			},
+			{
+				"moby": 2780,
+				"title": "Final Fantasy Tactics"
+			},
+			{
+				"moby": 2780,
+				"title": "Final Fantasy VII"
+			},
+			{
+				"moby": 2780,
+				"title": "Final Fantasy VIII"
+			},
+			{
+				"moby": 2780,
+				"title": "Final Fantasy IX"
+			},
+			{
+				"moby": 2780,
+				"title": "Resident Evil 2"
+			},
+			{
+				"moby": 2780,
+				"title": "Tenchu 2: Birth of the Stealth Assassins"
+			}
+		],
+
+		"XBox 360": [
+			{
+				"moby": 0,
+				"title": "Call of Duty: Modern Warfare"
+			},
+			{
+				"moby": 0,
+				"title": "Call of Duty: Modern Warfare 2"
+			},
+			{
+				"moby": 0,
+				"title": "Call of Duty: Modern Warfare 3"
+			},
+			{
+				"moby": 0,
+				"title": "Call of Duty: Black Ops 2"
+			},
+			{
+				"moby": 0,
+				"title": "Minecraft: XBox Edition"
+			},
+			{
+				"moby": 0,
+				"title": "The Elder Scrolls IV: Oblivion"
+			},
+			{
+				"moby": 0,
+				"title": "The Elder Scrolls V: Skyrim"
+			}
+		],
+
+		"Steam": [
+			{
+				"steamdb": 0,
+				"title": "Axiom Verge"
+			},
+			{
+				"steamdb": 0,
+				"title": "Banished"
+			},
+			{
+				"steamdb": 0,
+				"title": "Bastion"
+			},
+			{
+				"steamdb": 0,
+				"title": "Bioshock 2 Remastered"
+			},
+			{
+				"steamdb": 0,
+				"title": "Bioshock Infinite"
+			},
+			{
+				"steamdb": 0,
+				"title": "Bioshock Remastered"
+			},
+			{
+				"steamdb": 0,
+				"title": "Blasphemous"
+			},
+			{
+				"steamdb": 0,
+				"title": "Castle Crashers"
+			},
+			{
+				"steamdb": 0,
+				"title": "Crusader Kings II"
+			},
+			{
+				"steamdb": 0,
+				"title": "Cyberpunk 2077"
+			},
+			{
+				"steamdb": 0,
+				"title": "Dead Cells"
+			},
+			{
+				"steamdb": 0,
+				"title": "Deus Ex: Human Revolution"
+			},
+			{
+				"steamdb": 0,
+				"title": "Dishonored"
+			},
+			{
+				"steamdb": 0,
+				"title": "Dishonored 2"
+			},
+			{
+				"steamdb": 0,
+				"title": "Distant Worlds: Universe"
+			},
+			{
+				"steamdb": 0,
+				"title": "Divinity: Original Sin - Enhanced Edition"
+			},
+			{
+				"steamdb": 0,
+				"title": "Doom"
+			},
+			{
+				"steamdb": 0,
+				"title": "Doom 64"
+			},
+			{
+				"steamdb": 0,
+				"title": "Doom Eternal"
+			},
+			{
+				"steamdb": 0,
+				"title": "Dust: An Elysian Tail"
+			},
+			{
+				"steamdb": 0,
+				"title": "Elden Ring"
+			},
+			{
+				"steamdb": 0,
+				"title": "Endless Legend"
+			},
+			{
+				"steamdb": 0,
+				"title": "Endless Space"
+			},
+			{
+				"steamdb": 0,
+				"title": "Endless Space 2"
+			},
+			{
+				"steamdb": 0,
+				"title": "Europa Universalis V"
+			},
+			{
+				"steamdb": 0,
+				"title": "Fallout"
+			},
+			{
+				"steamdb": 0,
+				"title": "Fallout 2"
+			},
+			{
+				"steamdb": 0,
+				"title": "Fallout 3"
+			},
+			{
+				"steamdb": 0,
+				"title": "Fallout 4"
+			},
+			{
+				"steamdb": 0,
+				"title": "Fallout 76"
+			},
+			{
+				"steamdb": 0,
+				"title": "Fallout: New Vegas"
+			},
+			{
+				"steamdb": 0,
+				"title": "Fell Seal: Arbiter's Mark"
+			},
+			{
+				"steamdb": 0,
+				"title": "Final Fantasy Tactics: The Ivalice Chronicles"
+			},
+			{
+				"steamdb": 0,
+				"title": "FTL: Faster Than Light"
+			},
+			{
+				"steamdb": 0,
+				"title": "Galactic Civilizations II"
+			},
+			{
+				"steamdb": 0,
+				"title": "Galactic Civilizations III"
+			},
+			{
+				"steamdb": 0,
+				"title": "Game Dev Tycoon"
+			},
+			{
+				"steamdb": 0,
+				"title": "Grand Theft Auto IV"
+			},
+			{
+				"steamdb": 0,
+				"title": "Grand Theft Auto V"
+			},
+			{
+				"steamdb": 0,
+				"title": "Grand Theft Auto: San Andreas"
+			},
+			{
+				"steamdb": 0,
+				"title": "Hades"
+			},
+			{
+				"steamdb": 0,
+				"title": "Half-Life"
+			},
+			{
+				"steamdb": 0,
+				"title": "Half-Life 2"
+			},
+			{
+				"steamdb": 0,
+				"title": "Half-Life 2: Episode One"
+			},
+			{
+				"steamdb": 0,
+				"title": "Half-Life 2: Episode Two"
+			},
+			{
+				"steamdb": 0,
+				"title": "Hyper Light Drifter"
+			},
+			{
+				"steamdb": 0,
+				"title": "Jon Shafer's At The Gates"
+			},
+			{
+				"steamdb": 0,
+				"title": "Master of Orion"
+			},
+			{
+				"steamdb": 0,
+				"title": "Metal Gear Solid V: Ground Zeroes"
+			},
+			{
+				"steamdb": 0,
+				"title": "Metal Gear Solid V: The Phantom Pain"
+			},
+			{
+				"steamdb": 0,
+				"title": "Narita Boy"
+			},
+			{
+				"steamdb": 0,
+				"title": "Palia"
+			},
+			{
+				"steamdb": 0,
+				"title": "Path of Exile"
+			},
+			{
+				"steamdb": 0,
+				"title": "Portal"
+			},
+			{
+				"steamdb": 0,
+				"title": "Portal 2"
+			},
+			{
+				"steamdb": 0,
+				"title": "Prey"
+			},
+			{
+				"steamdb": 0,
+				"title": "Resident Evil 2 (remake)"
+			},
+			{
+				"steamdb": 0,
+				"title": "Risk of Rain (original)"
+			},
+			{
+				"steamdb": 0,
+				"title": "Rogue Legacy"
+			},
+			{
+				"steamdb": 0,
+				"title": "Shadow Complex Remastered"
+			},
+			{
+				"steamdb": 0,
+				"title": "Sid Meier's Civilization IV"
+			},
+			{
+				"steamdb": 0,
+				"title": "Sid Meier's Civilization V"
+			},
+			{
+				"steamdb": 0,
+				"title": "Sid Meier's Civilization VI"
+			},
+			{
+				"steamdb": 0,
+				"title": "SimCity 3000"
+			},
+			{
+				"steamdb": 0,
+				"title": "SimCity 4 Deluxe"
+			},
+			{
+				"steamdb": 0,
+				"title": "South Park: The Fractured But Whole"
+			},
+			{
+				"steamdb": 0,
+				"title": "South Park: The Stick of Truth"
+			},
+			{
+				"steamdb": 0,
+				"title": "Spore"
+			},
+			{
+				"steamdb": 0,
+				"title": "Stardrive"
+			},
+			{
+				"steamdb": 0,
+				"title": "Stardrive 2"
+			},
+			{
+				"steamdb": 0,
+				"title": "Stellaris"
+			},
+			{
+				"steamdb": 0,
+				"title": "Super House of the Dead Ninjas"
+			},
+			{
+				"steamdb": 0,
+				"title": "Surviving Mars"
+			},
+			{
+				"steamdb": 0,
+				"title": "The Elder Scrolls V: Skyrim - Special Edition"
+			},
+			{
+				"steamdb": 0,
+				"title": "The Sims 3 Deluxe"
+			},
+			{
+				"steamdb": 0,
+				"title": "Thief (remake)"
+			},
+			{
+				"steamdb": 0,
+				"title": "Thief II: The Metal Age"
+			},
+			{
+				"steamdb": 0,
+				"title": "Thief: Deadly Shadows"
+			},
+			{
+				"steamdb": 0,
+				"title": "Thief: Gold"
+			},
+			{
+				"steamdb": 0,
+				"title": "Tom Clancy's The Division"
+			},
+			{
+				"steamdb": 0,
+				"title": "Torchlight"
+			},
+			{
+				"steamdb": 0,
+				"title": "Torchlight II"
+			},
+			{
+				"steamdb": 0,
+				"title": "Transistor"
+			},
+			{
+				"steamdb": 0,
+				"title": "Victoria 2"
+			},
+			{
+				"steamdb": 0,
+				"title": "Victoria 3"
+			},
+			{
+				"steamdb": 0,
+				"title": "Wasteland 2: Director's Cut"
+			},
+			{
+				"steamdb": 0,
+				"title": "Wasteland 3"
+			},
+			{
+				"steamdb": 0,
+				"title": "XCom 2"
+			},
+			{
+				"steamdb": 0,
+				"title": "XCom: Enemy Unknown"
+			}
+		]
+	}
+}

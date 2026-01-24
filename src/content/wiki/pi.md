@@ -1,6 +1,6 @@
 ---
-title: "Pi"
-description: "Details on my Raspberry Pi."
+title: 'Pi'
+description: 'Details on my Raspberry Pi.'
 pubDate: 2025-12-23
 tag: server
 ---

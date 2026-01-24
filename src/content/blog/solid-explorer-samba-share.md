@@ -1,9 +1,9 @@
 ---
-title: "How to use Solid Explorer app to access SMB network shares from an Android device"
-description: "There are many File Managers/File Explorers on the Google Play Store, but I wanted to easily access the Samba share on my server while on my home network. Solid Explorer is the solution I went with and it works well, so here is a quick guide to setting it up."
+title: 'How to use Solid Explorer app to access SMB network shares from an Android device'
+description: 'There are many File Managers/File Explorers on the Google Play Store, but I wanted to easily access the Samba share on my server while on my home network. Solid Explorer is the solution I went with and it works well, so here is a quick guide to setting it up.'
 pubDate: 2022-11-07
 updatedDate: 2025-12-19
-tags: ["android", "smb"]
+tags: ['android', 'smb']
 related1: xplore-android-smb-share
 related2: setup-a-samba-share-on-linux-via-command-line
 ---
@@ -51,7 +51,7 @@ On the next screen, under _Set advanced_, choose **Yes** and tap _Next_.
 
 ![Advanced settings in Network Connection Wizard.](../../img/blog/solidexplorer8.jpg 'Advanced settings in Network Connection Wizard')
 
-For _Protocol version_ choose the recommended **SMB 2**, then tap _Next_. On the next screen choose whether to use encryption (if your SMB share is encrypted) and tap _Next_. 
+For _Protocol version_ choose the recommended **SMB 2**, then tap _Next_. On the next screen choose whether to use encryption (if your SMB share is encrypted) and tap _Next_.
 
 ![SMB Protocol version in Network Connection Wizard.](../../img/blog/solidexplorer9.jpg 'SMB Protocol version in Network Connection Wizard')
 
@@ -74,10 +74,10 @@ If everything is properly configured, the button will **turn green with a checkm
 > 1. Edit the Samba configuration file at `/etc/samba/smb.conf`, under the `[global]` section add `netbios disable = yes`, then save the change.
 > 2. Stop and disable the Netbios daemon with `sudo systemctl stop nmb && sudo systemctl disable nmb`.
 > 3. Restart the Samba daemon with `sudo systemctl restart smb`.
-> 
+>
 > (Note: You may have to use `smbd` and `nmbd` depending on your Linux distro.)
 >
-> Now when you go through the steps of adding the share in Solid Explorer's storage manager, the scan will not discover your server with SMB shares, but once done you'll see *Didn't find what you're looking for?* with an **up arrow &uarr; next to it** -- click the arrow and manually add your server details, it should then connect to the SMB share. (If it does not, reboot the SMB server and try again.)
+> Now when you go through the steps of adding the share in Solid Explorer's storage manager, the scan will not discover your server with SMB shares, but once done you'll see _Didn't find what you're looking for?_ with an **up arrow &uarr; next to it** -- click the arrow and manually add your server details, it should then connect to the SMB share. (If it does not, reboot the SMB server and try again.)
 
 You'll see your server under _Storage manager_. Tap the **back arrow (<-)** to go back to the menu.
 

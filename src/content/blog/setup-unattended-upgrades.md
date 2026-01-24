@@ -1,9 +1,9 @@
 ---
-title: "Setup auto-updates in Debian and Ubuntu with Unattended-Upgrades and NeedRestart"
+title: 'Setup auto-updates in Debian and Ubuntu with Unattended-Upgrades and NeedRestart'
 description: "If you want your Linux machine to stay up-to-date on important security updates, but you don't want to SSH into it all the time to run updates and would rather set it and forget it, this is the way."
 pubDate: 2022-10-14
 updatedDate: 2025-03-03
-tags: ["debian", "linux", "command line"]
+tags: ['debian', 'linux', 'command line']
 related1: bootstrapping-fresh-install-with-ansible
 related2: setup-apt-cacher-ng-to-cache-packages-homelab
 ---

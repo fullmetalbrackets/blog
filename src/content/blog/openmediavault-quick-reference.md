@@ -1,15 +1,15 @@
 ---
-title: "OpenMediaVault Quick Reference"
+title: 'OpenMediaVault Quick Reference'
 description: "I've been using OpenMediaVault 6 for over a year now, and it's user interface can be a bit obtuse, so I wrote myself a series of quick step-by-step guides for enabling certain features within the OMV workbench UI."
 pubDate: 2023-07-30
 updatedDate: 2025-02-03
-tags: ["self-hosting", "openmediavault"]
+tags: ['self-hosting', 'openmediavault']
 related1: reverse-proxy-nginx-pihole
 related2: set-up-pihole-on-linux
 ---
 
 > [warning] Outdated Content
-> 
+>
 > This article is about OpenMediaVault 6, which reached end of life in July 2024. **OpenMediaVault 7 was released in March 2024**, and as of January 2025 the **latest version is 7.6.0**.
 >
 > The below may still apply, but don't be surprised if it does not. I have not used OMV in some time nor do I plan to use it any time soon, so I probably will not be updating this post.

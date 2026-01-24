@@ -1,9 +1,9 @@
 ---
-title: "5 ways to easily host your web site for free"
+title: '5 ways to easily host your web site for free'
 description: "So you're learning web development, building things locally and only ever seeing your site or app when you run it on your computer. But how do you get this thing online so you can make sure it works on the interwebs? How do you learn headers, content-security-policy and CORS without having a site hosted online to work with? And how to do it FOR FREE?"
 pubDate: 2021-09-06
 updatedDate: 2025-02-03
-tags: ["web development", "netlify", "cloudflare"]
+tags: ['web development', 'netlify', 'cloudflare']
 related1: using-surge-sh-to-host-static-sites
 ---
 

@@ -1,8 +1,8 @@
 ---
-title: "Merging sites and changing hosts"
-description: "Something a little different. Not a guide, just thoughts and opinions about a recent controversy over Netlify, and a decision about the site I made as a result."
+title: 'Merging sites and changing hosts'
+description: 'Something a little different. Not a guide, just thoughts and opinions about a recent controversy over Netlify, and a decision about the site I made as a result.'
 pubDate: 2024-02-28
-tags: ["meta", "netlify", "cloudflare"]
+tags: ['meta', 'netlify', 'cloudflare']
 related1: self-host-website-cloudflare-tunnel
 ---
 

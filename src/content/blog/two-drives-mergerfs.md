@@ -1,9 +1,9 @@
 ---
-title: "Using MergerFS to combine multiple hard drives into one unified media storage"
+title: 'Using MergerFS to combine multiple hard drives into one unified media storage'
 description: "My situation was simple -- my server's media storage was filling up and I wanted to add more drives, but without having to keep track of which drive specific files were for Plex. How to pool multiple hard drives together when they're all different brands, models and capacities? Enter mergerfs, an open source union filesystem that essentially merges multiple drives into one mount point."
 pubDate: 2024-03-11
 updatedDate: 2025-02-23
-tags: ["command line", "self-hosting"]
+tags: ['command line', 'self-hosting']
 related1: setup-a-samba-share-on-linux-via-command-line
 related2: mounting-hard-drives-in-linux
 ---

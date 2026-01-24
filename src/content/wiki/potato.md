@@ -1,6 +1,6 @@
 ---
-title: "Potato"
-description: "Details on Potato, my Libre Sweet Potato SBC running Pi-Hole."
+title: 'Potato'
+description: 'Details on Potato, my Libre Sweet Potato SBC running Pi-Hole.'
 pubDate: 2023-11-16
 updatedDate: 2025-12-22
 tag: server

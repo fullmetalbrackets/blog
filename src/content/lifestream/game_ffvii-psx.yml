@@ -2,8 +2,8 @@ type: game
 title: Final Fantasy VII
 developer: Square
 publisher: Square
-platform: ["PlayStation"]
-genre: ["rpg", "turn-based", "science-fantasy"]
+platform: ['PlayStation']
+genre: ['rpg', 'turn-based', 'science-fantasy']
 pubDate: 2025-12-02
 startDate: 1997-01-31
 completed: true

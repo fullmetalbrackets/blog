@@ -1,9 +1,9 @@
 ---
-title: "Using a Google TV streaming device with Tailscale to remotely stream my Plex library while on vacation"
+title: 'Using a Google TV streaming device with Tailscale to remotely stream my Plex library while on vacation'
 description: "I have a Plex Pass subscription, but unfortunately Plex's built-in remote access won't work behind CGNAT, so I use Tailscale to securely access my Plex library and entire home network when I'm not home. Aside from streaming music or video from my phone or tablet at work, I've also started taking a Google TV stick on vacation with me, and with the Tailscale and Plex apps I can stream my library of movies, TV shows and music from anywhere that has a TV and Wi-Fi."
 pubDate: 2025-10-28
 updatedDate: 2025-12-05
-tags: ["tailscale", "plex", "android"]
+tags: ['tailscale', 'plex', 'android']
 related1: setting-up-plex-in-docker
 related2: comprehensive-guide-tailscale-securely-access-home-network
 ---
@@ -12,7 +12,7 @@ related2: comprehensive-guide-tailscale-securely-access-home-network
 
 There are several Android TV, Google TV and Fire TV set-top boxes and HDMI sticks that have official Tailscale and Plex apps available for download, just like other Android-based devices. Unfortunately, there is no Tailscale app available for Roku, otherwise those would be a great option for this, so make sure you stick to Android-based streaming devices.
 
-There are different brands and form factors with specific features to choose from, but I went with a $15 *Onn* brand Google TV HDMI stick from Wal-Mart which came with the device itself, a remote control and a power cable. This particular device is limited to 1080p, which is fine for me when I do occasionally sit down to watch TV while on a trip, but you can buy a set-top box version with full 4K streaming for $20. Plex and Tailscale can both be downloaded from the Google Play Store on Android/Google TV, and from the Amazon Appstore on Amazon Fire TV.
+There are different brands and form factors with specific features to choose from, but I went with a $15 _Onn_ brand Google TV HDMI stick from Wal-Mart which came with the device itself, a remote control and a power cable. This particular device is limited to 1080p, which is fine for me when I do occasionally sit down to watch TV while on a trip, but you can buy a set-top box version with full 4K streaming for $20. Plex and Tailscale can both be downloaded from the Google Play Store on Android/Google TV, and from the Amazon Appstore on Amazon Fire TV.
 
 You probably know that Plex is a Media Server that lets you stream your own media to Plex clients available to download on most devices. (By the way this would probably work with Jellyfin as well, I just haven't done it myself.) Tailscale is a mesh VPN that facilitates creating WireGuard tunnels that securely connect devices to each other even across different networks, in many cases even through NAT, with end-to-end encryption. You will need to [create a free Tailscale account](https://login.tailscale.com/start) which also creates your Tailnet, a secure private network that each device you run Tailscale on will join -- any device on the Tailnet will create direct encrypted connections between each other. Tailscale's free tier is (at least for now) very generous with up to three users and 100 devices.
 
@@ -28,7 +28,7 @@ The easiest way to get where we're going is to run Tailscale on the same machine
 
 First, go to the [Tailscale website](https://tailscale.com) and create an account. This will create your [Tailnet](https://tailscale.com/kb/1136/tailnet) (private network for all your Tailscale-connected devices) with your newly created account as the Owner and which you'll manage through the [web-based admin console](https://login.tailscale.com/admin).
 
-On the admin console, go to the _DNS_ tab and take note of your *tailnet name*, you'll need this later. You may want to change your Tailnet name to a "fun name," which is more human readable and easy to remember, by clicking on *Rename tailnet* and then choosing from the selections available. You can keep cycling through different ones until you find one you like.
+On the admin console, go to the _DNS_ tab and take note of your _tailnet name_, you'll need this later. You may want to change your Tailnet name to a "fun name," which is more human readable and easy to remember, by clicking on _Rename tailnet_ and then choosing from the selections available. You can keep cycling through different ones until you find one you like.
 
 :::image-figure[Choosing a tailnet fun name.]
 ![A screenshot of the Tailscale web-based admin console interface](../../img/blog/tailscale-fun-name.png)
@@ -156,7 +156,7 @@ Once that's all done go to the Tailscale admin console, on the **Machines** tab,
 
 ![Enabling exit node in Tailscale admin console.](../../img/blog/tailscale-exit-node.png 'Enabling exit node in Tailscale admin console')
 
-Finally, to use the exit node on your Google TV, open the Tailscale app, connect to your Tailnet, go down to *Exit Node* and select the one you setup, then click on it to Enable. Now you can go back to the Google TV home screen and use the Plex app to stream your library securely from anywhere!
+Finally, to use the exit node on your Google TV, open the Tailscale app, connect to your Tailnet, go down to _Exit Node_ and select the one you setup, then click on it to Enable. Now you can go back to the Google TV home screen and use the Plex app to stream your library securely from anywhere!
 
 ## Configuring the Plex server
 

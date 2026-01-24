@@ -33,21 +33,69 @@ export const getStaticPaths = (async () => {
   
   return Object.entries(postsByYear).map(([year, posts]) => ({
     params: { year },
-    props: { posts }
+    props: { posts, postsByYear }
   }));
 }) satisfies GetStaticPaths;
 
 interface Props {
   posts: CollectionEntry<'blog'>[];
+  postsByYear: Record<string, CollectionEntry<'blog'>[]>;
 }
 
-const { posts } = Astro.props;
+const { posts, postsByYear } = Astro.props;
 const { year } = Astro.params;
 const postCount = posts.length
 
 const title = `Blog Posts - ${year}`;
 const desc = `A list of blog posts written in ${year}`;
 ---
+
+<!-- styles remain the same -->
+
+<BaseLayout title={title} description={desc}>
+  <section>
+    <h1>Blog Posts - {year}</h1>
+    <hr />
+    <p class="back">
+      <a href="/blog/" rel="prefetch-intent">↩ Back to Blog</a>
+      <a href="/categories/" rel="prefetch-intent">Categories ↪</a>
+    </p>
+    <nav class="years">
+      Showing <span class="total">{postCount}&nbsp;{postCount === 1 ? 'post' : 'posts'}</span> from <span class="total">{year}</span>. See more years:&nbsp;
+      <Link href="/blog/years/2026/" rel="prefetch-intent" aria-label="2026" data-umami-event="blog-2026"><button>2026 <span class="count">{postsByYear['2026']?.length || 0}</span></button></Link>
+      <Link href="/blog/years/2025/" rel="prefetch-intent" aria-label="2025" data-umami-event="blog-2025"><button>2025 <span class="count">{postsByYear['2025']?.length || 0}</span></button></Link>
+      <Link href="/blog/years/2024/" rel="prefetch-intent" aria-label="2024" data-umami-event="blog-2024"><button>2024 <span class="count">{postsByYear['2024']?.length || 0}</span></button></Link>
+      <Link href="/blog/years/2023/" rel="prefetch-intent" aria-label="2023" data-umami-event="blog-2023"><button>2023 <span class="count">{postsByYear['2023']?.length || 0}</span></button></Link>
+      <Link href="/blog/years/2022/" rel="prefetch-intent" aria-label="2022" data-umami-event="blog-2022"><button>2022 <span class="count">{postsByYear['2022']?.length || 0}</span></button></Link>
+      <Link href="/blog/years/2021/" rel="prefetch-intent" aria-label="2021" data-umami-event="blog-2021"><button>2021 <span class="count">{postsByYear['2021']?.length || 0}</span></button></Link>
+    </nav>
+    <ul>
+      {
+        posts.map((post) => (
+          <li>
+            <div>
+              <a href={`/blog/${post.id}/`} rel="prefetch-intent" data-umami-event={post.id}>
+                <span class="title">{post.data.title}</span>
+                <p class="tag">
+                  {post.data.tags.map((tag) => (
+                    <button>{tag}</button>
+                  ))}
+                </p>
+                <p class="info">
+                  <FormattedDate date={post.data.pubDate} />&nbsp;
+                  <span class="reading"><ReadingTime time={getReadingTime(post.body)} /></span>
+                </p>
+                <p class="desc">{post.data.description}</p>
+              </a>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+    <hr />
+    <BackToTop />
+  </section>
+</BaseLayout>
 
 <style scoped>
   h1 {
@@ -60,6 +108,23 @@ const desc = `A list of blog posts written in ${year}`;
     font-size: 0.95em;
     color: var(--emphasis)
   }
+  button {
+    display: inline-flex;
+    place-items: center;
+    gap: 0.25em;
+  }
+  .count {
+    display: inline-flex;
+    place-items: center;
+    justify-content: center;
+    min-width: 1.25em;
+    padding: -5px 0 0 0;
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 9999px;
+    font-family: var(--main-font);
+    font-size: 0.675em;
+  }
   ul {
     list-style-type: none;
     margin: 0 auto 2em auto;
@@ -67,6 +132,9 @@ const desc = `A list of blog posts written in ${year}`;
   }
   li {
     display: inline-block;
+    margin: 0 auto 1em auto;
+  }
+  li:last-of-type {
     margin: 0 auto;
   }
   div {
@@ -81,20 +149,16 @@ const desc = `A list of blog posts written in ${year}`;
   .years {
     margin: 1em auto 2em;
   }
-  .years a {
+  .years a button {
     font-family: var(--sub-font);
     font-weight: 700;
-    font-size: 0.9em;
     margin-right: 0.5em;
-    border-bottom: 4px dotted transparent;
   }
-  .years span.active {
+  .years span.active button {
     font-family: var(--sub-font);
-    font-weight: 900;
-    font-size: 0.9em;
-    color: var(--primary);
+    background: var(--primary);
     margin-right: 0.5em;
-    border-bottom: 4px dotted var(--primary);
+    animation: none
   }
   .back {
     display: flex;
@@ -161,6 +225,12 @@ const desc = `A list of blog posts written in ${year}`;
       outline-offset: 1px;
     }
   }
+  @media (hover: hover) {	
+    span.active a:hover button {
+      box-shadow: none;
+      transform: none;
+    }
+  }
   @media screen and (max-width: 667px) {
     section {
       line-height: 1.2;
@@ -178,47 +248,3 @@ const desc = `A list of blog posts written in ${year}`;
     }
   }
 </style>
-
-<BaseLayout title={title} description={desc}>
-  <section>
-    <h1>Blog Posts - {year}</h1>
-    <hr />
-    <p class="back">
-      <a href="/blog/" rel="prefetch-intent">↩ Back to Blog</a>
-      <a href="/categories/" rel="prefetch-intent">Categories ↪</a>
-    </p>
-    <nav class="years">
-      Showing <span class="total">{postCount}&nbsp;{postCount === 1 ? 'post' : 'posts'}</span> from <span class="total">{year}</span>. See more years:&nbsp;
-      <Link href="/blog/years/2025/" rel="prefetch-intent" aria-label="2025" data-umami-event="blog-2025">2025</Link>
-      <Link href="/blog/years/2024/" rel="prefetch-intent" aria-label="2024" data-umami-event="blog-2024">2024</Link>
-      <Link href="/blog/years/2023/" rel="prefetch-intent" aria-label="2023" data-umami-event="blog-2023">2023</Link>
-      <Link href="/blog/years/2022/" rel="prefetch-intent" aria-label="2022" data-umami-event="blog-2022">2022</Link>
-      <Link href="/blog/years/2021/" rel="prefetch-intent" aria-label="2021" data-umami-event="blog-2021">2021</Link>
-    </nav>
-    <ul>
-      {
-        posts.map((post) => (
-          <li>
-            <div>
-              <a href={`/blog/${post.id}/`} rel="prefetch-intent" data-umami-event={post.id}>
-                <span class="title">{post.data.title}</span>
-                <p class="tag">
-                  {post.data.tags.map((tag) => (
-                    <button>{tag}</button>
-                  ))}
-                </p>
-                <p class="info">
-                  <FormattedDate date={post.data.pubDate} />&nbsp;
-                  <span class="reading"><ReadingTime time={getReadingTime(post.body)} /></span>
-                </p>
-                <p class="desc">{post.data.description}</p>
-              </a>
-            </div>
-          </li>
-        ))
-      }
-    </ul>
-    <hr />
-    <BackToTop />
-  </section>
-</BaseLayout>

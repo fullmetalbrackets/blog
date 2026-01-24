@@ -1,9 +1,9 @@
 ---
-title: "Setting up a reverse proxy for HTTPS with a custom domain using Nginx Proxy Manager, AdGuard Home and Cloudflare"
+title: 'Setting up a reverse proxy for HTTPS with a custom domain using Nginx Proxy Manager, AdGuard Home and Cloudflare'
 description: "I've used a reverse proxy to access my self-hosted apps and services for years, and used Pi-Hole as my home network DNS for even longer, but recently switched to AdGuard Home. That meant redoing all my DNS records within AdGuard so I could get my reverse proxy back up and running, and I decided to write down the steps I took. When done, we'll be able to access our apps and services through a custom domain, with unique sub-domains for each app or service, with full HTTPS and accessible only locally."
 pubDate: 2025-01-28
 updatedDate: 2025-02-26
-tags: ["self-hosting", "adguard", "cloudflare"]
+tags: ['self-hosting', 'adguard', 'cloudflare']
 related1: reverse-proxy-using-nginx-pihole-cloudflare
 related2: self-host-website-cloudflare-tunnel
 ---
@@ -18,7 +18,7 @@ related2: self-host-website-cloudflare-tunnel
 
 I wrote previously about [how to set this up using Pi-Hole](/blog/reverse-proxy-using-nginx-pihole-cloudflare/), but after buying a [GL.iNet Flint 2 router](https://www.gl-inet.com/products/gl-mt6000) which has AdGuard Home built-in, so it seemed a waste not to use it. (Also for as great as Pi-Hole is, I have had to redo it multiple times over the years due to database errors or just a dead mini SD card or USB drive, etc.) So, this guide will be mostly based on my old one, with just the parts dealing with Pi-Hole replaced with AdGuard Home, since setting up Nginx Proxy Manager and Cloudflare work the same as always.
 
-This guide uses specific third-party services, namely [Cloudflare](https://cloudflare.com), [AdGuard Home](https://adguard.com/en/adguard-home/overview.html) and [Nginx Proxy Manager](https://nginxproxymanager.com) to set up a secure local-only reverse proxy. The same is possible with other tools, apps and services including [Pi-Hole](https://pi-hole.net) (which as I mentioned, I previously used for many years) or [NextDNS](https://nextdns.io) instead of *AdGuard Home*, [Caddy](https://caddyserver.com) or [Traefik](https://traefik.io) instead of *Nginx*, any other DNS provider instead of *Cloudflare*, etc. I'm only writing about my preferred tools that I've used multiple times to set everything up and keep it running for years.
+This guide uses specific third-party services, namely [Cloudflare](https://cloudflare.com), [AdGuard Home](https://adguard.com/en/adguard-home/overview.html) and [Nginx Proxy Manager](https://nginxproxymanager.com) to set up a secure local-only reverse proxy. The same is possible with other tools, apps and services including [Pi-Hole](https://pi-hole.net) (which as I mentioned, I previously used for many years) or [NextDNS](https://nextdns.io) instead of _AdGuard Home_, [Caddy](https://caddyserver.com) or [Traefik](https://traefik.io) instead of _Nginx_, any other DNS provider instead of _Cloudflare_, etc. I'm only writing about my preferred tools that I've used multiple times to set everything up and keep it running for years.
 
 This guide will require a owned custom top-level domain (TLD), such as a `.com` or `.cc` or `.xyz`, etc. Certain TLDs can be bought for super cheap on [Namecheap](https://namecheap.com) or [Porkbun](https://porkbun.com), but be aware in most cases after the first year or two, the price will see a steep jump. I again prefer [Cloudflare](https://domains.cloudflare.com) for purchasing domains, since they always price domains at cost, so you won't see any surprise price hike one year to the next. An alternative I won't be getting into is using dynamic DNS, as I've not had to use it myself, so I honestly wouldn't even know how to begin to set that up.
 
@@ -32,21 +32,21 @@ In my case, AdGuard Home already comes installed and ready to use on the GL.iNet
 
 ```yaml
 services:
-  adguardhome:
-    image: adguard/adguardhome
-    container_name: adguardhome
-    network_mode: host
-    restart: unless-stopped
-    volumes:
-      - /local/path/adguardhome/work:/opt/adguardhome/work
-      - /local/path/adguardhome/conf:/opt/adguardhome/conf
+ adguardhome:
+  image: adguard/adguardhome
+  container_name: adguardhome
+  network_mode: host
+  restart: unless-stopped
+  volumes:
+   - /local/path/adguardhome/work:/opt/adguardhome/work
+   - /local/path/adguardhome/conf:/opt/adguardhome/conf
 ```
 
 When ready, use command `docker compose up -d` to download and run the container as a daemon in the background. (If you're already running a stack of containers, you can add the above to your existing compose file.)
 
-Next you'll need to set the IP address of AdGuard Home as the _DNS server_ in your router. (If you're setting this up on the _Flint 2_, skip this part because it's automatically configured.) Each router is different, but generally you're looking for the *DNS server* setting, usually located within a router's *DHCP settings*. If your router lets you set a custom DNS server, enter the _IP address_ of the machine running **AdGuard Home** here, e.g. `192.168.0.50`.
+Next you'll need to set the IP address of AdGuard Home as the _DNS server_ in your router. (If you're setting this up on the _Flint 2_, skip this part because it's automatically configured.) Each router is different, but generally you're looking for the _DNS server_ setting, usually located within a router's _DHCP settings_. If your router lets you set a custom DNS server, enter the _IP address_ of the machine running **AdGuard Home** here, e.g. `192.168.0.50`.
 
-However, not all routers let you set a custom DNS server (this is especially common in ISP-provided routers), in which case you are out of luck -- you will have to manually set the AdGuard Home IP address as the DNS in network settings on a per-device basis. If this is undesirable or unfeasable, and if your router lets you turn off it's DHCP server, you might consider using *Pi-Hole* instead since it can act as a DHCP server for your network.
+However, not all routers let you set a custom DNS server (this is especially common in ISP-provided routers), in which case you are out of luck -- you will have to manually set the AdGuard Home IP address as the DNS in network settings on a per-device basis. If this is undesirable or unfeasable, and if your router lets you turn off it's DHCP server, you might consider using _Pi-Hole_ instead since it can act as a DHCP server for your network.
 
 Once AdGuard Home is being broadcast as the network's DNS server by the router, your devices will gradually begin querying it as they renew their DHCP leases. You can usually force a renew by restarting a device, or just reboot the router and it should propagate the changes to all devices.
 
@@ -124,17 +124,17 @@ Create a `compose.yml` file, use the below as a base. (If you are also running A
 
 ```yaml
 services:
-  nginx-proxy-manager:
-    container_name: nginx-proxy-manager
-    image: "jc21/Nginx-proxy-manager:latest"
-    ports:
-      - 81:81 # web UI port
-      - 80:80
-      - 443:443
-    volumes:
-      - /opt/docker/nginx:/data
-      - /opt/docker/letsencrypt:/etc/letsencrypt
-    restart: unless-stopped
+ nginx-proxy-manager:
+  container_name: nginx-proxy-manager
+  image: 'jc21/Nginx-proxy-manager:latest'
+  ports:
+   - 81:81 # web UI port
+   - 80:80
+   - 443:443
+  volumes:
+   - /opt/docker/nginx:/data
+   - /opt/docker/letsencrypt:/etc/letsencrypt
+  restart: unless-stopped
 ```
 
 > [warning] Important

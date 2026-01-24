@@ -1,9 +1,9 @@
 type: game
-title: "Final Fantasy Tactics: The Ivalice Chronicles"
+title: 'Final Fantasy Tactics: The Ivalice Chronicles'
 developer: Square Enix (Creative Studio 3)
 publisher: Square Enix
-platform: ["PC", "Nintendo Switch 2", "PlayStation 5"]
-genre: ["tactical rpg", "turn-based", "fantasy"]
+platform: ['PC', 'Nintendo Switch 2', 'PlayStation 5']
+genre: ['tactical rpg', 'turn-based', 'fantasy']
 pubDate: 2025-12-10
 startDate: 2025-09-30
 completed: true

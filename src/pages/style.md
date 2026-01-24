@@ -38,7 +38,6 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum exercitationem con
 
 ###### H6 - Smallest Heading
 
-
 ## Paragraphs
 
 Xerum, quo qui aut unt expliquam qui dolut labo. Aque venitatiusda cum, voluptionse latur sitiae dolessi aut parist aut dollo enim qui voluptate ma dolestendit peritin re plis aut quas inctum laceat est volestemque commosa as cus endigna tectur, offic to cor sequas etum rerum idem sintibus eiur? Quianimin porecus evelectur, cum que nis nust voloribus ratem aut omnimi, sitatur? Quiatem. Nam, omnis sum am facea corem alique molestrunt et eos evelece arcillit ut aut eos eos nus, sin conecerem erum fuga. Ri oditatquam, ad quibus unda veliamenimin cusam et facea ipsamus es exerum sitate dolores editium rerore eost, temped molorro ratiae volorro te reribus dolorer sperchicium faceata tiustia prat.
@@ -54,13 +53,13 @@ Code blocks (three backticks) look like this:
 ```html
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Example HTML5 Document</title>
-  </head>
-  <body>
-    <p>Test</p>
-  </body>
+	<head>
+		<meta charset="utf-8" />
+		<title>Example HTML5 Document</title>
+	</head>
+	<body>
+		<p>Test</p>
+	</body>
 </html>
 ```
 
@@ -82,7 +81,7 @@ To use an image in a `figure` element with a `figcaption`, [RemarkDirective](htt
 :::
 ```
 
-That markdown is rendered like this: 
+That markdown is rendered like this:
 
 :::image-figure[This is a descriptive caption.]
 ![Alt text goes here](../img/assets/social.jpg)
@@ -106,7 +105,7 @@ I also have differently styled data types for other kinds of blockquotes, which 
 
 ```markdown
 > [quote]
-> 
+>
 > This is a direct quote from a person or article.
 > --Author, Book, pg. 69, etc.
 ```
@@ -175,6 +174,7 @@ I like lists! I use them all the time in the blog and wiki becausing organizing 
   2. Camera
   3. Lens
 ```
+
 **Result**
 
 - Gear

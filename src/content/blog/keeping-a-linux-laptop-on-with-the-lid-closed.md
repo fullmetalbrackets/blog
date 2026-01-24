@@ -1,8 +1,8 @@
 ---
-title: "Keeping a Linux laptop on when the lid is closed"
-description: "I sometimes use old laptops in my home lab when I want to test anything on Linux, and I prefer to keep them closed so they take up less space. A few quick commands will keep the laptop even on with the lid closed."
+title: 'Keeping a Linux laptop on when the lid is closed'
+description: 'I sometimes use old laptops in my home lab when I want to test anything on Linux, and I prefer to keep them closed so they take up less space. A few quick commands will keep the laptop even on with the lid closed.'
 pubDate: 2022-10-04
-tags: ["linux", "command line"]
+tags: ['linux', 'command line']
 related1: basic-linux-commands
 related2: mounting-hard-drives-in-linux
 ---

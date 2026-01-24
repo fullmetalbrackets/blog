@@ -1,9 +1,9 @@
 ---
-title: "Comprehensive guide to setting up Tailscale to securely access your home network from anywhere"
+title: 'Comprehensive guide to setting up Tailscale to securely access your home network from anywhere'
 description: "Accessing self-hosted services from outside the home can be a challenge, especially when dealing with CGNAT and having to forward ports from the router. It can be complex to manage and potentially dangerous to your home network's privacy and security if not done right, but Tailscale makes it easy to set up encrypted peer-to-peer connections between devices across different networks. In this guide I will explain how I use Tailscale as a VPN for secure remote access to my home network."
 pubDate: 2024-06-25
 updatedDate: 2025-10-21
-tags: ["tailscale", "networking"]
+tags: ['tailscale', 'networking']
 related1: expose-plex-tailscale-vps
 related2: pihole-anywhere-tailscale
 ---
@@ -33,7 +33,7 @@ Once it's finished installing, use the command `tailscale up`, go to the provide
 > [warning] Important
 >
 > By default using most Tailscale commands requires superuser privileges, i.e. `sudo`. You can change that with the command `sudo tailscale set --operator=$USER`, the specified user will then be able to execute Tailscale commands without `sudo`.
-> 
+>
 > The rest of the guide will assume you did this.
 
 Now go to the Tailscale admin console and you should see the machine there. By default all machines added to your tailnet need to re-authenticate every 90 days, which is a nice security measure, but you probably want to disable it at least for those machines that you trust and want to access through Tailscale long-term.
@@ -62,7 +62,7 @@ To get a fun tailnet name, go to the Tailscale console and click the **DNS** tab
 ![A screenshot of the DNS tab in Tailscale website's admin console](../../img/blog/tailscale-fun-name.png)
 :::
 
-For future examples, we'll assume your tailnet name is `cetacean-nessie.ts.net`. Fun little tidbit, if you're wondering at the naming convention, it uses <a href="https://github.com/tailscale/tailscale/blob/main/words/tails.txt" target="_blank">things with tails</a> (e.g. `comet`, `tuna`, `gecko`) for the first word and <a href="https://github.com/tailscale/tailscale/blob/main/words/scales.txt" target="_blank">things with scales</a> (e.g. `dragon`, `musical`, `kitchen`) for the second word. 
+For future examples, we'll assume your tailnet name is `cetacean-nessie.ts.net`. Fun little tidbit, if you're wondering at the naming convention, it uses <a href="https://github.com/tailscale/tailscale/blob/main/words/tails.txt" target="_blank">things with tails</a> (e.g. `comet`, `tuna`, `gecko`) for the first word and <a href="https://github.com/tailscale/tailscale/blob/main/words/scales.txt" target="_blank">things with scales</a> (e.g. `dragon`, `musical`, `kitchen`) for the second word.
 
 ## Setting up a subnet router
 
@@ -172,10 +172,10 @@ tailscale set --exit-node=<ip or name>
 On Windows, click on the Tailscale icon in the system tray, hover over **Exit nodes** and choose your node from the menu.
 
 ## Configuring Plex for Tailscale
- 
+
 > [warning] Important
 >
->  Plex recently put remote access -- whether accessing your own content outside your network OR other users accessing your shared libraries -- behind Plex Pass. I have been told, and also have seen others report on Reddit, that Plex considers Tailscale IPs to be external and thus not allow access unless you have a <a href="https://www.plex.tv/plans/" target="_blank">Plex Pass subscription</a> or the external users have a <a href="https://support.plex.tv/articles/remote-watch-pass-overview/" target="_blank">Remote Watch Pass</a>.
+> Plex recently put remote access -- whether accessing your own content outside your network OR other users accessing your shared libraries -- behind Plex Pass. I have been told, and also have seen others report on Reddit, that Plex considers Tailscale IPs to be external and thus not allow access unless you have a <a href="https://www.plex.tv/plans/" target="_blank">Plex Pass subscription</a> or the external users have a <a href="https://support.plex.tv/articles/remote-watch-pass-overview/" target="_blank">Remote Watch Pass</a>.
 >
 > Per <a href="https://www.reddit.com/r/Tailscale/comments/1kes22h/comment/mqpp8l4/" target="_blank">this post on the Tailscale subreddit</a>, it will work if you set up the Plex server as both subnet router and exit node, and set the external device to use the Plex server as exit node. I have a lifetime Plex Pass myself and only use Tailscale to punch through CGNAT, so unfortunately I am unable to test this. (However, I can confirm that with Plex Pass, this works without advertising subnet routes or exit node.) I suggest trying first with subnet router only, as [described above](#setting-up-a-subnet-router) and see if that works -- if it does not, [advertise your server as an exit node](#setting-up-an-exit-node) and set your external device to use it.
 >
@@ -207,7 +207,7 @@ On the Plex web UI go to **Settings** -> **Network** and do the following:
 
 This is entirely optional, but I like to have access to my SMB shares on my laptop and even on my phone through Solid Explorer or X-plorer. Rarely used, but still handy. Per <a href="https://github.com/tailscale/tailscale/issues/6856#issuecomment-1485385748" target="_blank" data-umami-event="tailscale-post-smb-gh-issue">this issue on GitHub</a> we need to do a little extra config for SMB to work through Tailscale. ([See below for additional NFS config.](#nfs))
 
-First, find out your server's main interface device name with the `ip a` command and pay attention to the output: 
+First, find out your server's main interface device name with the `ip a` command and pay attention to the output:
 
 ```sh
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
@@ -261,7 +261,7 @@ Pi-Hole uses DNS servers configured within Linux as its upstream servers, where 
 >
 > You want any DNS requests from machines in your local network to stay on your local network, NOT to go through Tailscale, or they'll show up with Tailscale IPs (e.g. `100.90.80.70`) instead of your local network IPs (e.g. `192.168.0.100`). Only remote devices outside of your network should be sending DNS requests to Pi-Hole through the tailnet, and only when connected to Tailscale.
 
-Now to set the Pi-Hole as global DNS for the tailnet, go to the Tailscale admin console and make note of the Pi-Hole's Tailscale IP address in the *Machines* list. Then do the following:
+Now to set the Pi-Hole as global DNS for the tailnet, go to the Tailscale admin console and make note of the Pi-Hole's Tailscale IP address in the _Machines_ list. Then do the following:
 
 1. Go to the **DNS** tab and scroll down to _Nameservers_.
 
@@ -289,16 +289,17 @@ Now to set the Pi-Hole as global DNS for the tailnet, go to the Tailscale admin 
 ![A screenshot of the Pi-Hole web-based user interface, DNS settings](../../img/blog/pihole-interface-settings.png)
 :::
 
-7. Scroll to the bottom and click **Save* & Apply*.
+7. Scroll to the bottom and click \*_Save_ & Apply\*.
 
 Now to test it out, connect to Tailscale on your phone/tablet and visit some websites. You should not be seeing ads and should start seeing the device's Tailscale IP in Pi-Hole's logs.
+
 ## Transfer files with Taildrop
 
 Taildrop is an Alpha feature that lets you securely transfer files between devices on a tailnet. To enable it, on the admin console go to the **Settings** tab, scroll down to **Feature previews** and switch on **Send Files**.
 
 Transferring files from phones/tablets (whether iOS or Android) is super easy using the **Share** menu, just choose **Tailscale** from the options, then choose a **tailnet machine** to send the file to.
 
-On Windows and MacOS you right-click the file, choose **Share** from the menu, choose **Tailscale** from the option, and then the **tailnet machine**. 
+On Windows and MacOS you right-click the file, choose **Share** from the menu, choose **Tailscale** from the option, and then the **tailnet machine**.
 
 Files received through Taildrop appear in the device's default Downloads folder. (Except on Linux, see below.)
 

@@ -1,9 +1,9 @@
 ---
-title: "Bash script to install powerline fonts for Oh-My-Zsh"
+title: 'Bash script to install powerline fonts for Oh-My-Zsh'
 description: "A simple bash script to download Powerlevel10k's recommended fonts from their own repo and directly into the Linux fonts directory."
 pubDate: 2024-02-04
 updatedDate: 2025-
-tag:  documentation
+tag: documentation
 ---
 
 ```bash

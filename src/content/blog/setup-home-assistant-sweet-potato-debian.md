@@ -1,9 +1,9 @@
 ---
-title: "Set up Home Assistant Supervised on a Libre Computer Sweet Potato SBC"
+title: 'Set up Home Assistant Supervised on a Libre Computer Sweet Potato SBC'
 description: "Home Assistant is an open source home automation solution that gives you local control over your smart home. It can also be run on Libre Computer's boards, but I ran into some issues following the official instructions from Libre, so here's how I got it working."
 pubDate: 2024-03-03
 updatedDate: 2025-02-10
-tags: ["self-hosting", "home assistant", "sbc"]
+tags: ['self-hosting', 'home assistant', 'sbc']
 related1: setting-up-sweet-potato-debian-pihole
 related2: self-host-website-cloudflare-tunnel
 ---
@@ -15,7 +15,7 @@ This guide assumes you already have either a Le Potato or a Sweet Potato (the in
 Note that SSH is disabled in Debian by default, so you'll have to plug in a monitor at least initially until that's installed. The default username and password are `root`, though you are prompted to change the root password immediately the first time you login, and you can go ahead and create a new user account after that.
 
 > I'll be following Libre's official instructions for installing Home Assistant Supervised, however it seems the guide was made with Docker version 24.0.7, but the current version of 25.0.x has a bug that causes the setup to fail at the last step, when you first go into the Home Assistant UI.
-> 
+>
 > Some googling led me to the only solution that worked, which was downgrading to Docker version 24.0.7 -- with a fresh install, you'll have to make sure you install that specific version of Docker to avoid the issue altogether, which is part of my instructions below.
 
 ## Install required packages

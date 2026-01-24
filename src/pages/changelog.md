@@ -6,14 +6,19 @@ description: A log of major changes made to fullmetalbrackets.com
 
 A log of major changes made to my site over the years. For more granular details, [see the GitHub repo](https://github.com/fullmetalbrackets/blog/commits/main/).
 
-<h2 class="flex">2026-01-02&nbsp;<span class="latest">latest</span></h2>
+<h2 class="flex">2026-01-23&nbsp;<span class="latest">latest</span></h2>
 
-- Add [movies](/movies) page
-- Add [tvshows](/tvshows) page
+- Add [games](/games/) page
+- Add [digest](/digest/) page
+
+<h2 class="flex">2026-01-02</h2>
+
+- Add [movies](/digest/older/movies/) page
+- Add [tvshows](/digest/older/tvshows/) page
 
 ## 2025-12-30
 
-- Add [changelog](/changelog) page (this page you are reading)
+- Add [changelog](/changelog/) page (this page you are reading)
 
 ## 2025-12-29
 
@@ -25,12 +30,12 @@ A log of major changes made to my site over the years. For more granular details
 
 - Redesign the [404](/404/) page
 - Rename "featured articles" to "popular posts"
-- Add [blogroll](/blogroll) page
-- Add [colophon](/colophon) page
-- Add [uses](/uses) page
-- Add [verify](/verify) page
-- Move style guide wiki to [style](/style) page
-- Move services wiki to [self-hosted](/self-hosted) page
+- Add [blogroll](/blogroll/) page
+- Add [colophon](/colophon/) page
+- Add [uses](/uses/) page
+- Add [verify](/verify/) page
+- Move style guide wiki to [style](/style/) page
+- Move services wiki to [self-hosted](/self-hosted/) page
 
 ## 2025-12-20
 
@@ -50,7 +55,7 @@ A log of major changes made to my site over the years. For more granular details
 
 ## 2025-11-26
 
-- Add comments via [giscus](https://giscus.app) to blog posts
+- Add comments via [giscus](https://giscus.app/) to blog posts
 
 ## 2025-03-15
 
@@ -84,7 +89,7 @@ A log of major changes made to my site over the years. For more granular details
 
 ## 2023-07-24
 
-- Add [links](/links) page
+- Add [links](/links/) page
 - Add style guide
 
 ## 2022-11-11

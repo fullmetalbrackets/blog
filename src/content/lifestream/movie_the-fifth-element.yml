@@ -1,8 +1,8 @@
 type: movie
 title: The Fifth Element
-genre: ["sci-fi", "action", "comedy"]
+genre: ['sci-fi', 'action', 'comedy']
 director: Luc Besson
-stars: ["Bruce Willis", "Milla Jovovitch", "Gary Oldman"]
+stars: ['Bruce Willis', 'Milla Jovovitch', 'Gary Oldman']
 pubDate: 2025-12-14
 startDate: 1997-05-09
 description: In the 23rd century, a flying taxi driver and a mysterious woman must find a set of elemental stones which can prevent or cause the destruction of all life in the universe.

@@ -1,14 +1,14 @@
 ---
-title: "Build a minimal blog with Deno and host it on Deno Deploy"
+title: 'Build a minimal blog with Deno and host it on Deno Deploy'
 description: "I'd been meaning to play around with Deno and finally got around to doing it in the quickest, easiest (and laziest) way possible -- using a minimal blog template. I also took the opportunity to learn how Deno Deploy works. The whole thing is quick and painless, here's how to do it."
 pubDate: 2022-11-19
 updatedDate: 2025-02-03
-tags: ["deno", "web development"]
+tags: ['deno', 'web development']
 related1: 5-ways-to-host-site-free
 ---
 
 > [warning] Outdated Content
-> 
+>
 > I wrote this blog post years ago when I was trying out Deno Deploy just for fun. I have not kept up with it, did not maintain the blog I built in this post, and let the domain lapse. Safe to assume Deno has changed enough in the intervening years that this project probably no longer works. This blog post will remain for legacy purposes, but it's probably unwise to try doing anything it says at this point.
 
 <div id='install' />
@@ -62,30 +62,30 @@ To configure and customize the blog, edit the `main.tsx` file. It should look li
 ```tsx
 /** @jsx h */
 
-import blog, { ga, redirects, h } from "blog";
+import blog, { ga, redirects, h } from 'blog';
 
 blog({
-  title: "My Blog",
-  description: "This is my new blog.",
-  // header: <header>Your custom header</header>,
-  // section: <section>Your custom section</section>,
-  // footer: <footer>Your custom footer</footer>,
-  avatar: "https://deno-avatar.deno.dev/avatar/blog.svg",
-  avatarClass: "rounded-full",
-  author: "An author",
+	title: 'My Blog',
+	description: 'This is my new blog.',
+	// header: <header>Your custom header</header>,
+	// section: <section>Your custom section</section>,
+	// footer: <footer>Your custom footer</footer>,
+	avatar: 'https://deno-avatar.deno.dev/avatar/blog.svg',
+	avatarClass: 'rounded-full',
+	author: 'An author',
 
-  // middlewares: [
+	// middlewares: [
 
-  // If you want to set up Google Analytics, paste your GA key here.
-  // ga("UA-XXXXXXXX-X"),
+	// If you want to set up Google Analytics, paste your GA key here.
+	// ga("UA-XXXXXXXX-X"),
 
-  // If you want to provide some redirections, you can specify them here,
-  // pathname specified in a key will redirect to pathname in the value.
-  // redirects({
-  //  "/hello_world.html": "/hello_world",
-  // }),
+	// If you want to provide some redirections, you can specify them here,
+	// pathname specified in a key will redirect to pathname in the value.
+	// redirects({
+	//  "/hello_world.html": "/hello_world",
+	// }),
 
-  // ]
+	// ]
 });
 ```
 

@@ -1,9 +1,9 @@
 ---
-title: "Bootstrapping a fresh Linux install with Ansible"
+title: 'Bootstrapping a fresh Linux install with Ansible'
 description: "Ansible is an IT tool that enables Infrastructure as Code, letting you automate provisioning, configuration, management and deployment of services and applications. I like using it at a fraction of it's full power to bootstrap fresh installs of Linux for my homelab."
 pubDate: 2022-09-03
 updatedDate: 2025-03-03
-tags: ["linux", "ansible"]
+tags: ['linux', 'ansible']
 related1: bootstrapping-fresh-install-with-ansible
 related2: setup-apt-cacher-ng-to-cache-packages-homelab
 ---
@@ -59,43 +59,42 @@ Next we need the inventory file, which can be in either YAML or INI synxtax, but
 
 ```yaml
 # hosts.yaml
-
 ---
 all:
-  vars:
-    ansible_user: # user
-    ansible_connection: ssh
+ vars:
+  ansible_user: # user
+  ansible_connection: ssh
 
-  children:
-    servers:
-      hosts:
-        athena:
-          ansible_host: # ip address
-        korben:
-          ansible_host: # ip address
-        zima:
-          ansible_host: # ip address
+ children:
+  servers:
+   hosts:
+    athena:
+     ansible_host: # ip address
+    korben:
+     ansible_host: # ip address
+    zima:
+     ansible_host: # ip address
 
-    mini:
-      hosts:
-        potato:
-          ansible_host: # ip address
-        spud:
-          ansible_host: # ip address
+  mini:
+   hosts:
+    potato:
+     ansible_host: # ip address
+    spud:
+     ansible_host: # ip address
 
-    pc:
-      hosts:
-        apollo:
-          ansible_host: # ip address
-        loki:
-          ansible_host: # ip address
+  pc:
+   hosts:
+    apollo:
+     ansible_host: # ip address
+    loki:
+     ansible_host: # ip address
 
-    remote:
-      hosts:
-        outpost:
-          ansible_host: # ip address
-        bastion:
-          ansible_host: # ip address
+  remote:
+   hosts:
+    outpost:
+     ansible_host: # ip address
+    bastion:
+     ansible_host: # ip address
 ```
 
 This inventory is divided into different groups of hosts, and the playbook can target specific ones -- for example only `server` hosts get Cockpit installed and only `pc` hosts (a desktop and a laptop) get Google Chrome. I use the same username on all my machines, so I pass it via the `{{ ansible_user }}` variable.
@@ -109,110 +108,110 @@ The below playbook is what I use to bootstrap my Linux machines. It's pretty bas
 
 - name: Bootstrap Linux Server
   vars:
-    user: # user
+   user: # user
 
   tasks:
-    - name: Safe upgrade of all installed packages
-      apt:
-        update_cache: yes
-        upgrade: safe
-        cache_valid_time: 86400
+   - name: Safe upgrade of all installed packages
+     apt:
+      update_cache: yes
+      upgrade: safe
+      cache_valid_time: 86400
 
-    - name: Install various apt packages
-      apt:
-        update_cache: yes
-        name: # list packages to install
-          - zsh
-          - git
-          - sudo
-          - curl
-          - wget
-          - rsync
-          - net-tools
-          - smartmontools
-          - samba
-          - cifs-utils
-          - nfs-kernel-server
-        state: present
-        install_recommends: yes
+   - name: Install various apt packages
+     apt:
+      update_cache: yes
+      name: # list packages to install
+       - zsh
+       - git
+       - sudo
+       - curl
+       - wget
+       - rsync
+       - net-tools
+       - smartmontools
+       - samba
+       - cifs-utils
+       - nfs-kernel-server
+      state: present
+      install_recommends: yes
 
-    - name: Clean cache & remove unnecessary dependencies
-      apt:
-        autoclean: yes
-        autoremove: yes
+   - name: Clean cache & remove unnecessary dependencies
+     apt:
+      autoclean: yes
+      autoremove: yes
 
-    - name: Copy the Samba config file
-      copy:
-        src: files/smb
-        dest: /etc/samba/smb.conf
+   - name: Copy the Samba config file
+     copy:
+      src: files/smb
+      dest: /etc/samba/smb.conf
 
-    - name: Start the Samba daemon
-      service:
-        name: smbd
-        state: started
+   - name: Start the Samba daemon
+     service:
+      name: smbd
+      state: started
 
-    - name: Start the NetBIOs daemon
-      service:
-        name: nmbd
-        state: started
+   - name: Start the NetBIOs daemon
+     service:
+      name: nmbd
+      state: started
 
-    - name: Enable the Samba daemon
-      ansible.builtin.systemd:
-        name: smbd
-        enabled: yes
+   - name: Enable the Samba daemon
+     ansible.builtin.systemd:
+      name: smbd
+      enabled: yes
 
-    - name: Enable the NetBIOS daemon
-      ansible.builtin.systemd:
-        name: nmbd
-        enabled: yes
+   - name: Enable the NetBIOS daemon
+     ansible.builtin.systemd:
+      name: nmbd
+      enabled: yes
 
-    - name: Backup default SMB config & copy over custom SMB config
-      copy:
-        src: files/samba/smb.conf
-        dest: /etc/samba/smb.conf
+   - name: Backup default SMB config & copy over custom SMB config
+     copy:
+      src: files/samba/smb.conf
+      dest: /etc/samba/smb.conf
 
-    - name: Copy the Git config file
-      copy:
-        src: files/git/.gitconfig
-        dest: "/home/{{ ansible_user }}/.gitconfig"
+   - name: Copy the Git config file
+     copy:
+      src: files/git/.gitconfig
+      dest: '/home/{{ ansible_user }}/.gitconfig'
 
-    - name: Backup default Nano config & copy custom Nano config
-      copy:
-        src: files/nano/nanorc
-        dest: /etc/nanorc
-        mode: "0644"
-        backup: yes
+   - name: Backup default Nano config & copy custom Nano config
+     copy:
+      src: files/nano/nanorc
+      dest: /etc/nanorc
+      mode: '0644'
+      backup: yes
 
-    - name: Copy .zshrc file
-      copy:
-        src: files/zshrc
-        dest: "/home/{{ ansible_user }}/.zshrc"
-        owner: user
-        group: group
-        mode: 0644
+   - name: Copy .zshrc file
+     copy:
+      src: files/zshrc
+      dest: '/home/{{ ansible_user }}/.zshrc'
+      owner: user
+      group: group
+      mode: 0644
 
-    - name: Copy .aliases file
-      copy:
-        src: files/aliases
-        dest: "/home/{{ ansible_user }}/.aliases"
-        owner: user
-        group: group
-        mode: 0644
+   - name: Copy .aliases file
+     copy:
+      src: files/aliases
+      dest: '/home/{{ ansible_user }}/.aliases'
+      owner: user
+      group: group
+      mode: 0644
 
-    - name: Set the default shell
-      user:
-        name: "{{ ansible_user }}"
-        shell: "zsh"
+   - name: Set the default shell
+     user:
+      name: '{{ ansible_user }}'
+      shell: 'zsh'
 
-    - name: Check if reboot is required
-      stat:
-        path: /var/run/reboot-required
-      register: reboot_required_file
+   - name: Check if reboot is required
+     stat:
+      path: /var/run/reboot-required
+     register: reboot_required_file
 
-    - name: Reboot if required
-      reboot:
-        msg: Rebooting due to a kernel update
-      when: reboot_required_file.stat.exists
+   - name: Reboot if required
+     reboot:
+      msg: Rebooting due to a kernel update
+     when: reboot_required_file.stat.exists
 ```
 
 This playbook installs a selection of packages I commonly use, changes the default shell from bash to zsh, copies over dotfiles and other configs, and start/enables Samba.

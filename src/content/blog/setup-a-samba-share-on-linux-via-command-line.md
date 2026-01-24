@@ -1,9 +1,9 @@
 ---
-title: "Setup a Samba share on Linux via command line"
-description: "A quick and dirty guide on how to easily set up a Samba share on Linux that can be accessed from Windows PCs on the same network."
+title: 'Setup a Samba share on Linux via command line'
+description: 'A quick and dirty guide on how to easily set up a Samba share on Linux that can be accessed from Windows PCs on the same network.'
 pubDate: 2021-09-01
 updatedDate: 2025-02-29
-tags: ["smb", "linux", "networking"]
+tags: ['smb', 'linux', 'networking']
 related1: quick-guide-setting-up-smb
 related2: setup-nfs-shares-linux
 ---

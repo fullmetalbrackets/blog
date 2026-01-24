@@ -1,9 +1,9 @@
 ---
-title: "Bypass the Plex Pass and Remote Watch Pass requirements for Plex remote access by using Tailscale"
-description: "Beginning April 29th, 2025 the pricing for Plex Pass increased at the same time that remote access got paywalled behind it. Plex no longer allows streaming your own content outside of your home network without paying for Plex Pass, or the new Remote Watch Pass. You can bypass these paywalls, at least for now, by using Tailscale."
+title: 'Bypass the Plex Pass and Remote Watch Pass requirements for Plex remote access by using Tailscale'
+description: 'Beginning April 29th, 2025 the pricing for Plex Pass increased at the same time that remote access got paywalled behind it. Plex no longer allows streaming your own content outside of your home network without paying for Plex Pass, or the new Remote Watch Pass. You can bypass these paywalls, at least for now, by using Tailscale.'
 pubDate: 2025-05-17
 updatedDate: 2025-11-08
-tags: ["tailscale", "plex"]
+tags: ['tailscale', 'plex']
 related1: comprehensive-guide-tailscale-securely-access-home-network
 related2: expose-plex-tailscale-vps
 ---
@@ -86,7 +86,7 @@ Also, if you are running `firewalld` on your server, you should allow masqueradi
 sudo firewall-cmd --permanent --add-masquerade
 ```
 
-Now we'll advertise both the subnet routes and the exit node with this command. *Make sure to use the correct subnet for your LAN* -- if your Plex server's local IP address is something like `192.168.0.100` then subnet will be `192.168.0.0/24`, if it's instead `192.168.1.100` then your subnet is `192.168.1.0/24`, etc.
+Now we'll advertise both the subnet routes and the exit node with this command. _Make sure to use the correct subnet for your LAN_ -- if your Plex server's local IP address is something like `192.168.0.100` then subnet will be `192.168.0.0/24`, if it's instead `192.168.1.100` then your subnet is `192.168.1.0/24`, etc.
 
 ```sh
 sudo tailscale up --advertise-routes=192.168.0.0/24 --advertise-exit-node

@@ -1,5 +1,5 @@
-title: "Garage"
-description: "Self-hosted S3-compatible object store. Alternative to MinIO, which is now in maintenance mode."
+title: 'Garage'
+description: 'Self-hosted S3-compatible object store. Alternative to MinIO, which is now in maintenance mode.'
 pubDate: 2025-12-06
-url: "https://garagehq.deuxfleurs.fr/"
+url: 'https://garagehq.deuxfleurs.fr/'
 tag: self-hosted

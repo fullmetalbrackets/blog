@@ -1,0 +1,87 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const title = 'Blog posts by year'
+const desc = 'See a list of blog posts by the year they were written'
+
+// Get all posts and count by year
+const allPosts = await getCollection('blog');
+
+const postsByYear = allPosts.reduce((acc, post) => {
+  const year = post.data.pubDate.getFullYear();
+  acc[year] = (acc[year] || 0) + 1;
+  return acc;
+}, {} as Record<number, number>);
+
+// Get unique years and sort descending
+const years = Object.keys(postsByYear)
+  .map(Number)
+  .sort((a, b) => b - a);
+---
+
+<style>
+  h1 {
+    font-family: var(--sub-font);
+    font-weight: 900;
+  }
+  ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    list-style-type: none;
+    margin: 2em auto 6em auto;
+    padding: 0;
+    gap: 1em;
+  }
+  .label a {
+    color: #000
+  }
+  .count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.25em;
+    height: 1rem;
+    padding: 1px 0 0 0;
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 9999px;
+    font-family: var(--main-font);
+    font-size: 0.675em;
+  }
+  button {
+    display: flex;
+    place-items: center;
+    gap: 0.25em;
+  }
+</style>
+
+<BaseLayout title={title} description={desc}>
+  <section>
+    <h1>{title}</h1>
+    <hr />
+    <p>
+        Pick a year below to see only blog posts written that year.
+    </p>
+    <ul>
+        {years.map((year) => (
+            <li>
+                <button>
+                    <span class="label">
+                        <a href={`/blog/years/${year}/`} rel="prefetch-intent" data-umami-events={`blog-${year}`}>{year}</a>
+                    </span>
+                    <span class="count">
+                        {postsByYear[year]}
+                    </span>
+                </button>
+            </li>
+        ))}
+    </ul>
+    <hr />
+    <p class="space-between mb2">
+        <a href="/blog/" rel="prefetch-intent">↩ All posts</a>
+        <a href="/categories/" rel="prefetch-intent">Categories ↪</a>
+    </p>
+  </section>
+</BaseLayout>

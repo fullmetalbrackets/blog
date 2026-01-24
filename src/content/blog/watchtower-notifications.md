@@ -1,9 +1,9 @@
 ---
-title: "Setup Watchtower to auto-update Docker containers with notifications"
+title: 'Setup Watchtower to auto-update Docker containers with notifications'
 description: "I'm running almost 30 containers on my home server at this point, and I'm extremely lazy when it comes to updating them. Watchtower is a lightweight set-it-and-forget-it solution to auto-updating containers, and it even has built-in notifications. Here's how to set it up using either Pushover or Discord."
 pubDate: 2024-05-31
 updatedDate: 2025-12-22
-tags: ["self-hosting", "docker"]
+tags: ['self-hosting', 'docker']
 related1: setting-up-plex-in-docker
 related2: how-to-run-filebrowser-in-docker
 ---
@@ -32,16 +32,16 @@ I like to use `docker compose` for everything, or at least as much as possible, 
 
 ```yaml
 services:
-  watchtower:
-    container_name: watchtower
-    image: nickfedor/watchtower:latest
-    restart: always
-    volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock"
-    environment:
-      - WATCHTOWER_CLEANUP=true
-      - WATCHTOWER_INCLUDE_STOPPED=true
-      - WATCHTOWER_REVIVE_STOPPED=false
+ watchtower:
+  container_name: watchtower
+  image: nickfedor/watchtower:latest
+  restart: always
+  volumes:
+   - '/var/run/docker.sock:/var/run/docker.sock'
+  environment:
+   - WATCHTOWER_CLEANUP=true
+   - WATCHTOWER_INCLUDE_STOPPED=true
+   - WATCHTOWER_REVIVE_STOPPED=false
 ```
 
 > If you're already running other containers and want them all in the same stack (although Watchtower will monitor and update ALL containers regardless of stack, unless you specifically configure it otherwise), you can simply copy and paste the above into an existing compose file and re-run it to add Watchtower.
@@ -88,37 +88,37 @@ In my case, I use Pushover to notification to my phone, but that's just my prefe
 Now that Pushover is set up, we'll make Watchtower use it for notifications. Per the <a href="https://containrrr.dev/shoutrrr/v0.8/services/pushover" target="_blank" data-umami-event="watchtower-notifications-shoutrrr-docs-pushover">Shoutrrr documentation</a>, Pushover uses the syntax `pushover://:token@user`, so you want to add this to your compose file under environment:
 
 ```yaml
-  - WATCHTOWER_NOTIFICATION_URL=pushover://:<application-api-token>@<user-key>
+- WATCHTOWER_NOTIFICATION_URL=pushover://:<application-api-token>@<user-key>
 ```
 
-With that your notifications will come out to something like *"Watchtower updates on f712f789719e"* which is not very human readable. Let's add one more environmental variable to make our server's hostname show up instead:
+With that your notifications will come out to something like _"Watchtower updates on f712f789719e"_ which is not very human readable. Let's add one more environmental variable to make our server's hostname show up instead:
 
 ```yaml
-  - WATCHTOWER_NOTIFICATIONS_HOSTNAME=<hostname>
+- WATCHTOWER_NOTIFICATIONS_HOSTNAME=<hostname>
 ```
 
 Finally, let's schedule updates for a specific time when no one will be using them. This is done as a `cron` expression, but it takes 6 fields instead of the standard 5, and times are in UTC. (I suggest using <a href="https://crontab.cronhub.io" target="_blank" data-umami-event="watchtower-notifications-cronhub">this cron expression generator by Cronhub</a>.) So, for example, the below schedule updates for _0800 UTC_ which is **3:00 AM EST**:
 
 ```yaml
-  - WATCHTOWER_SCHEDULE=0 0 8 * * *
+- WATCHTOWER_SCHEDULE=0 0 8 * * *
 ```
 
 Your `compose.yaml` file should look like this:
 
 ```yaml
-  watchtower:
-    container_name: watchtower
-    image: nickfedor/watchtower:latest
-    restart: always
-    volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock"
-    environment:
-      - WATCHTOWER_CLEANUP=true
-      - WATCHTOWER_INCLUDE_STOPPED=true
-      - WATCHTOWER_REVIVE_STOPPED=false
-      - WATCHTOWER_NOTIFICATION_URL=pushover://:<application-api-token>@<user-key>
-      - WATCHTOWER_NOTIFICATIONS_HOSTNAME=<hostname>
-      - WATCHTOWER_SCHEDULE=0 0 8 * * *
+watchtower:
+ container_name: watchtower
+ image: nickfedor/watchtower:latest
+ restart: always
+ volumes:
+  - '/var/run/docker.sock:/var/run/docker.sock'
+ environment:
+  - WATCHTOWER_CLEANUP=true
+  - WATCHTOWER_INCLUDE_STOPPED=true
+  - WATCHTOWER_REVIVE_STOPPED=false
+  - WATCHTOWER_NOTIFICATION_URL=pushover://:<application-api-token>@<user-key>
+  - WATCHTOWER_NOTIFICATIONS_HOSTNAME=<hostname>
+  - WATCHTOWER_SCHEDULE=0 0 8 * * *
 ```
 
 Use `docker compose up -d` again to update the container. Once it's up and running, you should get a notification from Pushover that looks like this (with the hostname you set, in the example below it shows my server's hostname):
@@ -156,22 +156,22 @@ If you paste it somewhere, you'll see the URL is something like `https://discord
 Now for the `compose.yaml` file, it should look something should look like this:
 
 ```yaml
-  watchtower:
-    container_name: watchtower
-    image: nickfedor/watchtower:latest
-    restart: always
-    volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock"
-    environment:
-      - WATCHTOWER_NOTIFICATION_URL=discord://token@webhook-id
-      - WATCHTOWER_CLEANUP=true
-      - WATCHTOWER_INCLUDE_STOPPED=true
-      - WATCHTOWER_REVIVE_STOPPED=false
-      - WATCHTOWER_NOTIFICATIONS_HOSTNAME=<hostname>
-      - WATCHTOWER_SCHEDULE=0 0 8 * * *
+watchtower:
+ container_name: watchtower
+ image: nickfedor/watchtower:latest
+ restart: always
+ volumes:
+  - '/var/run/docker.sock:/var/run/docker.sock'
+ environment:
+  - WATCHTOWER_NOTIFICATION_URL=discord://token@webhook-id
+  - WATCHTOWER_CLEANUP=true
+  - WATCHTOWER_INCLUDE_STOPPED=true
+  - WATCHTOWER_REVIVE_STOPPED=false
+  - WATCHTOWER_NOTIFICATIONS_HOSTNAME=<hostname>
+  - WATCHTOWER_SCHEDULE=0 0 8 * * *
 ```
 
-Note that for Shoutrrr, we'll need to reverse the *token* and *webhook-id* on the URL environment variable. Make sure to use something like `discord://n_AJKSH792n_H07a45solpjag90&-yGr1@098349569125` using the example above. (These are not real webhooks and tokens.)
+Note that for Shoutrrr, we'll need to reverse the _token_ and _webhook-id_ on the URL environment variable. Make sure to use something like `discord://n_AJKSH792n_H07a45solpjag90&-yGr1@098349569125` using the example above. (These are not real webhooks and tokens.)
 
 Use `docker compose up -d` to run the container. Once it's up and running, you should get a notification from the Discord that looks like this (with the hostname you set, in the example below it shows my server's hostname):
 

@@ -1,9 +1,9 @@
 ---
-title: "How to expose Plex to share your library with others from behind CGNAT with Cloudflare Tunnel"
+title: 'How to expose Plex to share your library with others from behind CGNAT with Cloudflare Tunnel'
 description: "Exposing Plex to share your library with other users normally involves port forwarding from the router, which is very insecure and not recommended. If your home network is behind CGNAT - very common with most ISPs nowadays -- you can't even port forward if you wanted to. Here's how I did it in a fairly secure way that limits access by using Cloudflare."
 pubDate: 2024-07-15
 updatedDate: 2025-08-15
-tags: ["plex", "cloudflare"]
+tags: ['plex', 'cloudflare']
 related1: expose-plex-tailscale-vps
 related2: self-host-website-cloudflare-tunnel
 ---
@@ -21,7 +21,7 @@ There are many solutions to get across CGNAT, using Cloudflare Tunnel for Plex f
 > In addition, <a href="https://developers.cloudflare.com/support/more-dashboard-apps/cloudflare-stream/delivering-videos-with-cloudflare/" target="_blank" data-umami-event="expose-plex-cloudflare-docs">the section of the Cloudflare documentation about delivering videos with Cloudflare</a> spells this out:
 >
 > _"Over time we recognized that some of our customers wanted to stream video using our network. To accommodate them, we developed our Stream product. Stream delivers great performance at an affordable rate charged based on how much load you place on our network. Unfortunately, while most people respect these limitations and understand they exist to ensure high quality of service for all Cloudflare customers, **some users attempt to misconfigure our service to stream video in violation of our Terms of Service**."_
-> 
+>
 > Be aware that by using Cloudflare Tunnel, you are routing traffic through Cloudflare's CDN (can't have one without the other) and so using it with Plex violates their terms of services and may cause Cloudflare to limit or potentially outright ban your account. Cloudflare can see all traffic routed through their CDN and know when that traffic is video streaming. They may not care if it's just you streaming a Plex movie remotely once in a while and not using much bandwidth, but constant usage by multiple IPs will almost certainly rouse their attention and can lead to action being taken against you.
 >
 > I switched to [sharing my library via Tailscale and a free Oracle Cloud instance](/blog/expose-plex-tailscale-vps/), which has worked great for over a year, and as a result I highly recommend it. By following the below guide to share your Plex library through a Cloudflare Tunnel, **you are going against the Cloudflare terms of service and risking your Cloudflare account**, so think carefully about this warning and whether it's worth it. You've been warned!
@@ -94,12 +94,12 @@ In the Cloudflare dashboard, from your domain's _Overview_ page, click on **Acce
 
 ```yaml
 services:
-    restart: unless-stopped
-    container_name: tunnel
-    image: cloudflare/cloudflared:latest
-    command: tunnel run
-    environment:
-      - TUNNEL_TOKEN=
+ restart: unless-stopped
+ container_name: tunnel
+ image: cloudflare/cloudflared:latest
+ command: tunnel run
+ environment:
+  - TUNNEL_TOKEN=
 ```
 
 6. Add the _tunnel token_ to the `TUNNEL_TOKEN=` environmental variable, then save the file and let's run docker compose again. (It will automatically add `cloudflared` and restart the `nginx` container.)
@@ -112,15 +112,15 @@ docker compose up -d
 
 ![Connector showing status Connected.](../../img/blog/cloudflare-tunnel5.png 'Connector showing status Connected')
 
-6.  Now you'll be in the _Route Traffic_ page, under the **Public Hostnames** we have to add some things. For our purposes (hosting a site at the root of `your-domain.com`) you should leave the **Subdomain** empty. If you prefer for your site to be accessible at, say, `blog.your-domain.com` then set that subdomain here.
+6. Now you'll be in the _Route Traffic_ page, under the **Public Hostnames** we have to add some things. For our purposes (hosting a site at the root of `your-domain.com`) you should leave the **Subdomain** empty. If you prefer for your site to be accessible at, say, `blog.your-domain.com` then set that subdomain here.
 
 7. For **Domain** type in `your-domain.com`.
 
-9. Leave the **Path** empty, unless you want the URL to be something like `your-domain.com/blog`.
+8. Leave the **Path** empty, unless you want the URL to be something like `your-domain.com/blog`.
 
-10. Under _Service_, for **Type** select `HTTP` (not HTTPS) from the dropdown menu.
+9. Under _Service_, for **Type** select `HTTP` (not HTTPS) from the dropdown menu.
 
-11. For **URL**, put the full LAN (internal) IP address of the machine that will host the site, and append the port you set for the docker container -- for example `192.168.1.100:8888`. (Don't use `localhost:8888` despite what the example says, that never works for me.)
+10. For **URL**, put the full LAN (internal) IP address of the machine that will host the site, and append the port you set for the docker container -- for example `192.168.1.100:8888`. (Don't use `localhost:8888` despite what the example says, that never works for me.)
 
 ![Route traffic page.](../../img/blog/cloudflare-tunnel6.png 'Route traffic page')
 
@@ -245,9 +245,9 @@ Finally, let's disable caching to minimize CDN usage by our external users and e
 
 7. For **Value** use your domain, e.g. `plex.your-domain.com`. (Leave out the HTTPS.)
 
-6. Under _Cache eligibility_ choose _Bypass cache_.
+8. Under _Cache eligibility_ choose _Bypass cache_.
 
-7. Click on **Deploy** to finish.
+9. Click on **Deploy** to finish.
 
 ![Creating cache rule to bypass CDN caching.](../../img/blog/plex-cf4.png 'Creating cache rule to bypass CDN caching')
 

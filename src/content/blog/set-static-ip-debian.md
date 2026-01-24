@@ -1,9 +1,9 @@
 ---
-title: "Set a static IP in Debian"
+title: 'Set a static IP in Debian'
 description: "Debian's non-graphical install does not give you the option to set a static IP, here's a quick guide to doing it manually on the command line."
 pubDate: 2022-10-07
 updatedDate: 2025-02-04
-tags: ["networking", "debian"]
+tags: ['networking', 'debian']
 related1: basic-linux-commands
 related2: rsync-a-quick-guide
 ---
@@ -41,7 +41,7 @@ Edit it to look like the following:
 auto enp3s0
 iface enp3s0 inet static
 # server IP address
- address 192.168.0.125 
+ address 192.168.0.125
 # /24 subnet
  netmask 255.255.255.0
 # router IP address

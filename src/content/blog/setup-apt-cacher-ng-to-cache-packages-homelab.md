@@ -1,8 +1,8 @@
 ---
-title: "Setup Apt-Cacher NG as a caching proxy server in your homelab and configure your other Linux hosts to use it"
-description: "If your homelab has more than a few servers or VMs running Debian-based distributions, it makes sense to set up a package caching proxy on one of your servers. This guide will show how to set that up, configure your other Linux hosts, and optionally how to use Ansible to automate configuring those other hosts."
+title: 'Setup Apt-Cacher NG as a caching proxy server in your homelab and configure your other Linux hosts to use it'
+description: 'If your homelab has more than a few servers or VMs running Debian-based distributions, it makes sense to set up a package caching proxy on one of your servers. This guide will show how to set that up, configure your other Linux hosts, and optionally how to use Ansible to automate configuring those other hosts.'
 pubDate: 2025-03-03
-tags: ["self-hosting", "linux"]
+tags: ['self-hosting', 'linux']
 related1: setup-unattended-upgrades
 related2: bootstrapping-fresh-linux-install-with-ansible
 ---
@@ -120,22 +120,22 @@ Now the inventory file, `hosts.yaml`. Make sure to add all your other Linux host
 ```yaml
 ---
 all:
-  hosts:
-    server1:
-      ansible_user: chandler
-      ansible_host: 192.168.0.100
-    server2:
-      ansible_user: monica
-      ansible_host: 192.168.0.105
-    vm1:
-      ansible_user: debian
-      ansible_host: 192.168.1.20
-    vm2:
-      ansible_user: debian
-      ansible_host: 192.168.1.25
-    vm3:
-      ansible_user: ubuntu
-      ansible_host: 192.168.1.30
+ hosts:
+  server1:
+   ansible_user: chandler
+   ansible_host: 192.168.0.100
+  server2:
+   ansible_user: monica
+   ansible_host: 192.168.0.105
+  vm1:
+   ansible_user: debian
+   ansible_host: 192.168.1.20
+  vm2:
+   ansible_user: debian
+   ansible_host: 192.168.1.25
+  vm3:
+   ansible_user: ubuntu
+   ansible_host: 192.168.1.30
 ```
 
 Finally, the playbook itself, name it whatever you want. I'll call it `run.yaml`.
@@ -147,25 +147,24 @@ Finally, the playbook itself, name it whatever you want. I'll call it `run.yaml`
   become: true
 
   tasks:
+   - name: Copy the apt-cacher-ng client config
+     copy:
+      src: files/01proxy
+      dest: /etc/apt/apt.conf.d/01proxy
+      mode: '0644'
 
-    - name: Copy the apt-cacher-ng client config
-      copy:
-        src: files/01proxy
-        dest: /etc/apt/apt.conf.d/01proxy
-        mode: "0644"
+   - name: Update all installed packages
+     apt:
+      update_cache: yes
+      upgrade: safe
+      name: '*'
+      state: latest
 
-    - name: Update all installed packages
-      apt:
-        update_cache: yes
-        upgrade: safe
-        name: "*"
-        state: latest
-
-    - name: Clean cache & remove unnecessary dependencies
-      apt:
-        autoclean: yes
-        autoremove: yes
-        purge: yes
+   - name: Clean cache & remove unnecessary dependencies
+     apt:
+      autoclean: yes
+      autoremove: yes
+      purge: yes
 ```
 
 The above playbook is dead simple, all it does it copy the `01proxy` file into the `/etc/apt/apt.conf.d` directory, then check for updates. It will do this on all hosts you list in the inventory file.

@@ -1,8 +1,8 @@
 ---
-title: "Git commands cheat sheet"
-description: "When I was learning Git, in order to avoid giant articles and get right to the commands I needed reminding of, I made myself a cheat sheet that plainly and succinctly explained each Git command. Here is that quick and dirty guide of Git commands that you will likely use often as a web developer."
+title: 'Git commands cheat sheet'
+description: 'When I was learning Git, in order to avoid giant articles and get right to the commands I needed reminding of, I made myself a cheat sheet that plainly and succinctly explained each Git command. Here is that quick and dirty guide of Git commands that you will likely use often as a web developer.'
 pubDate: 2021-09-08
-tags: ["git", "command line"]
+tags: ['git', 'command line']
 related1: how-to-generate-gpg-to-sign-git-commits
 related2: git-push-error-permissions
 ---

@@ -1,9 +1,9 @@
 ---
-title: "How to run self-hosted FileBrowser in Docker"
+title: 'How to run self-hosted FileBrowser in Docker'
 description: "FileBrowser is a self-hosted file manager for a specified directory in a Linux machine that lets you upload, download, move, copy, create, delete, rename, and edit your files in a nice web interface through your browser. Here's a quick guide to setting it up in Docker."
 pubDate: 2022-11-04
 updateDate: 2025-06-24
-tags: ["self-hosting", "docker"]
+tags: ['self-hosting', 'docker']
 related1: setting-up-plex-in-docker
 related2: setting-up-jellyfin-in-docker
 ---
@@ -33,12 +33,12 @@ Now edit the `settings.json` file and copy/paste the below:
 
 ```yaml
 {
-  "port": 80,
-  "baseURL": "",
-  "address": "",
-  "log": "stdout",
-  "database": "/database/filebrowser.db",
-  "root": "/srv",
+ 'port': 80,
+ 'baseURL': '',
+ 'address': '',
+ 'log': 'stdout',
+ 'database': '/database/filebrowser.db',
+ 'root': '/srv',
 }
 ```
 
@@ -69,20 +69,20 @@ If you want to use `docker compose`, create a `compose.yaml` file, copy and past
 
 ```yaml
 services:
-  filebrowser:
-    container_name: filebrowser
-    image: filebrowser/filebrowser:latest
-    volumes:
-      - ~/:/srv
-      - ~/filebrowser/filebrowser.db:/database/filebrowser.db
-      - ~/filebrowser/settings.json:/config/settings.json
-    ports:
-      - 8080:80
-    environment:
-      - TZ=America/New_York
-      - PUID=1000
-      - PGID=1000
-    restart: unless-stopped
+ filebrowser:
+  container_name: filebrowser
+  image: filebrowser/filebrowser:latest
+  volumes:
+   - ~/:/srv
+   - ~/filebrowser/filebrowser.db:/database/filebrowser.db
+   - ~/filebrowser/settings.json:/config/settings.json
+  ports:
+   - 8080:80
+  environment:
+   - TZ=America/New_York
+   - PUID=1000
+   - PGID=1000
+  restart: unless-stopped
 ```
 
 Make sure to use your own timezone, PUID and PGID. Now go to the directory containing the `compose.yaml` and run the below command:

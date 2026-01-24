@@ -1,8 +1,8 @@
 ---
-title: "Markdown hacks"
+title: 'Markdown hacks'
 description: "Markdown can render A LOT of characters and symbols using specific 'entities', and can do other things like render tables, so I made myself a list of common or handy, but easy-to-forget markdown hacks based off the official Markdown Guide."
 pubDate: 2022-09-20
-tags: ["web development", "markdown"]
+tags: ['web development', 'markdown']
 related1: git-commands-cheat-sheet
 ---
 

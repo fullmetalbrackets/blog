@@ -1,9 +1,9 @@
 type: game
-title: "Animal Crossing: New Horizons (Nintendo Switch 2 Edition)"
+title: 'Animal Crossing: New Horizons (Nintendo Switch 2 Edition)'
 developer: Nintendo EPD
 publisher: Nintendo
-platform: ["Nintendo Switch", "Nintendo Switch 2"]
-genre: ["adventure", "social simulation"]
+platform: ['Nintendo Switch', 'Nintendo Switch 2']
+genre: ['adventure', 'social simulation']
 pubDate: 2026-01-17
 startDate: 2026-01-15
 completed: false

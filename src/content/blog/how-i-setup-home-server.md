@@ -1,9 +1,9 @@
 ---
-title: "How I set up a home server for self-hosting and as a NAS with secure remote access via Tailscale"
-description: "I turned my old Dell PC into an all-in-one home server and network attached storage to self-host all my data, my photos, and my media library, running Home Assistant, Plex and other services, all securely accessible from outside my home with Tailscale."
+title: 'How I set up a home server for self-hosting and as a NAS with secure remote access via Tailscale'
+description: 'I turned my old Dell PC into an all-in-one home server and network attached storage to self-host all my data, my photos, and my media library, running Home Assistant, Plex and other services, all securely accessible from outside my home with Tailscale.'
 pubDate: 2025-01-31
 updatedDate: 2025-11-30
-tags: ["self-hosting", "debian", "tailscale"]
+tags: ['self-hosting', 'debian', 'tailscale']
 related1: expose-plex-tailscale-vps
 related2: pihole-anywhere-tailscale
 ---
@@ -42,15 +42,16 @@ I'll devote a section to each docker container I run and include a `compose.yaml
 <a href="https://dozzle.dev" target="_blank" data-umami-event="home-server-dozzle">Dozzle</a> is a container log viewer. Portainer shows logs as well, and while it's useful for "live" logging I find Dozzle's UX much better for deep analysis of past logs.
 
 ```yaml
-   dozzle:
-      restart: unless-stopped
-      container_name: dozzle
-      image: amir20/dozzle:latest
-      volumes:
-         - /var/run/docker.sock:/var/run/docker.sock
-      ports:
-         - 20080:8080
+dozzle:
+ restart: unless-stopped
+ container_name: dozzle
+ image: amir20/dozzle:latest
+ volumes:
+  - /var/run/docker.sock:/var/run/docker.sock
+ ports:
+  - 20080:8080
 ```
+
 <br>
 
 ### FileBrowser Quantum
@@ -58,57 +59,59 @@ I'll devote a section to each docker container I run and include a `compose.yaml
 <a href="https://github.com/gtsteffaniak/filebrowser" target="_blank" data-umami-event="home-server-filebrowser">FileBrowser Quantum</a> is a slick web-based graphical file explorer accessed via browser. I rarely use it, but I have it setup to serve my `/home` directory in case I ever need to access it from another device.
 
 ```yaml
-   filebrowser:
-      image: gtstef/filebrowser
-      container_name: filebrowser
-      environment:
-         - PUID=1000
-         - PGID=1000
-      volumes:
-         - /home/ariel:/srv
-         - /opt/docker/filebrowser/filebrowser.db:/database/filebrowser.db
-         - /opt/docker/filebrowser/settings.json:/config/settings.json
-      ports:
-         - 18888:80
-      restart: unless-stopped
+filebrowser:
+ image: gtstef/filebrowser
+ container_name: filebrowser
+ environment:
+  - PUID=1000
+  - PGID=1000
+ volumes:
+  - /home/ariel:/srv
+  - /opt/docker/filebrowser/filebrowser.db:/database/filebrowser.db
+  - /opt/docker/filebrowser/settings.json:/config/settings.json
+ ports:
+  - 18888:80
+ restart: unless-stopped
 ```
+
 <br>
 
 ### Gluetun
 
-<a href="https://github.com/qdm12/gluetun" target="_blank" data-umami-event="home-server-gluetun">Gluetun</a> is a VPN client inside a docker container, it can connect to almost any VPN provider, using either OpenVPN or WireGuard protocols. By hooking up another container's networking to Gluetun, that other container will connect through the VPN. I use *qBittorrent* with Gluetun for private torrent downloads, that way I don't expose my IP address and avoid angry letters from my ISP.
+<a href="https://github.com/qdm12/gluetun" target="_blank" data-umami-event="home-server-gluetun">Gluetun</a> is a VPN client inside a docker container, it can connect to almost any VPN provider, using either OpenVPN or WireGuard protocols. By hooking up another container's networking to Gluetun, that other container will connect through the VPN. I use _qBittorrent_ with Gluetun for private torrent downloads, that way I don't expose my IP address and avoid angry letters from my ISP.
 
 ```yaml
-   gluetun:
-      image: qmcgaw/gluetun
-      container_name: gluetun
-      network_mode: bridge
-      cap_add:
-         - NET_ADMIN
-      devices:
-         - /dev/net/tun:/dev/net/tun
-      ports:
-         - 8080:8080/tcp # qBittorrent
-         - 8888:8888/tcp # HTTP proxy
-         - 8388:8388/tcp # Shadowsocks
-         - 8388:8388/udp # Shadowsocks
-         - 58279:58279/tcp # Virtual port forwarding
-         - 58279:58279/udp # Virtual port forwarding
-      volumes:
-         - /opt/docker/gluetun:/gluetun
-      restart: unless-stopped
-      environment:
-         - TZ=America/New_York
-         - UPDATER_PERIOD=24h
-         - SERVER_COUNTRIES="United States"
-         - SERVER_CITIES=Miami,Atlanta Georgia,Chicago Illinois,Dallas Texas,Denver Colorado,New York City
-         - VPN_TYPE=wireguard
-         - VPN_SERVICE_PROVIDER=airvpn
-         - FIREWALL_VPN_INPUT_PORTS=58279
-         - WIREGUARD_PRIVATE_KEY=
-         - WIREGUARD_PRESHARED_KEY=
-         - WIREGUARD_ADDRESSES=
+gluetun:
+ image: qmcgaw/gluetun
+ container_name: gluetun
+ network_mode: bridge
+ cap_add:
+  - NET_ADMIN
+ devices:
+  - /dev/net/tun:/dev/net/tun
+ ports:
+  - 8080:8080/tcp # qBittorrent
+  - 8888:8888/tcp # HTTP proxy
+  - 8388:8388/tcp # Shadowsocks
+  - 8388:8388/udp # Shadowsocks
+  - 58279:58279/tcp # Virtual port forwarding
+  - 58279:58279/udp # Virtual port forwarding
+ volumes:
+  - /opt/docker/gluetun:/gluetun
+ restart: unless-stopped
+ environment:
+  - TZ=America/New_York
+  - UPDATER_PERIOD=24h
+  - SERVER_COUNTRIES="United States"
+  - SERVER_CITIES=Miami,Atlanta Georgia,Chicago Illinois,Dallas Texas,Denver Colorado,New York City
+  - VPN_TYPE=wireguard
+  - VPN_SERVICE_PROVIDER=airvpn
+  - FIREWALL_VPN_INPUT_PORTS=58279
+  - WIREGUARD_PRIVATE_KEY=
+  - WIREGUARD_PRESHARED_KEY=
+  - WIREGUARD_ADDRESSES=
 ```
+
 <br>
 
 ### Home Assistant
@@ -120,20 +123,21 @@ I'll devote a section to each docker container I run and include a `compose.yaml
 :::
 
 ```yaml
-   homeassistant:
-      container_name: homeassistant
-      image: ghcr.io/home-assistant/home-assistant:stable
-      volumes:
-      - /opt/docker/homeassistant:/config
-      - /srv/media:/media
-      - /srv/data:/data
-      - /etc/localtime:/etc/localtime:ro
-      - /run/dbus:/run/dbus:ro
-      - /var/run/docker.sock:/var/run/docker.sock
-      restart: unless-stopped
-      privileged: true
-      network_mode: host
+homeassistant:
+ container_name: homeassistant
+ image: ghcr.io/home-assistant/home-assistant:stable
+ volumes:
+  - /opt/docker/homeassistant:/config
+  - /srv/media:/media
+  - /srv/data:/data
+  - /etc/localtime:/etc/localtime:ro
+  - /run/dbus:/run/dbus:ro
+  - /var/run/docker.sock:/var/run/docker.sock
+ restart: unless-stopped
+ privileged: true
+ network_mode: host
 ```
+
 <br>
 
 ### Kavita
@@ -141,19 +145,20 @@ I'll devote a section to each docker container I run and include a `compose.yaml
 <a href="https://kavitareader.com" target="_blank" data-umami-event="home-server-kavita">Kavita</a> is a simple user friendly ebook manager and reader, which I've been using to read my last few books on either my phone or tablet. It has a really nice and user friendly web GUI.
 
 ```yaml
-   kavita:
-      restart: unless-stopped
-      image: jvmilazz0/kavita:latest
-      container_name: kavita
-      ports:
-         - 5000:5000
-      volumes:
-         - /srv/data/ebooks/comics:/comics
-         - /srv/data/ebooks/books:/books
-         - /opt/docker/kavita:/kavita/config
-      environment:
-         - TZ=America/New_York
+kavita:
+ restart: unless-stopped
+ image: jvmilazz0/kavita:latest
+ container_name: kavita
+ ports:
+  - 5000:5000
+ volumes:
+  - /srv/data/ebooks/comics:/comics
+  - /srv/data/ebooks/books:/books
+  - /opt/docker/kavita:/kavita/config
+ environment:
+  - TZ=America/New_York
 ```
+
 <br>
 
 ### Nginx Proxy Manager
@@ -168,19 +173,20 @@ For details see [this blog post](/blog/reverse-proxy-using-nginx-adguardhome-clo
 <a href="https://opengist.io" target="_blank" data-umami-event="home-server-opengist">OpenGist</a> is a self-hosted open source alternative to GitHub Gists. This is only accessible to me and I use it to save like API keys or tokens, configuration files, and code snippets so I can quickly copy & paste these things when I need to.
 
 ```yaml
-   opengist:
-      image: ghcr.io/thomiceli/opengist:1
-      container_name: opengist
-      restart: unless-stopped
-      environment:
-         UID: 1000
-         GID: 1000
-      ports:
-         - 6157:6157
-         - 2222:2222
-      volumes:
-         - /opt/docker/opengist:/opengist
+opengist:
+ image: ghcr.io/thomiceli/opengist:1
+ container_name: opengist
+ restart: unless-stopped
+ environment:
+  UID: 1000
+  GID: 1000
+ ports:
+  - 6157:6157
+  - 2222:2222
+ volumes:
+  - /opt/docker/opengist:/opengist
 ```
+
 <br>
 
 ### Paperless-ngx
@@ -193,45 +199,46 @@ Paperless runs as three containers, so I put them all in a stack.
 
 ```yaml
 services:
-   broker:
-      container_name: paperless-broker
-      image: docker.io/library/redis:8
-      restart: unless-stopped
-      volumes:
-         - /home/ariel/docker/paperless/redis:/data
+ broker:
+  container_name: paperless-broker
+  image: docker.io/library/redis:8
+  restart: unless-stopped
+  volumes:
+   - /home/ariel/docker/paperless/redis:/data
 
-   db:
-      container_name: paperless-db
-      image: docker.io/library/postgres:18
-      restart: unless-stopped
-      volumes:
-         - /home/ariel/docker/paperless/postgresql:/var/lib/postgresql
-      environment:
-         POSTGRES_DB: paperless
-         POSTGRES_USER: paperless
-         POSTGRES_PASSWORD: paperless
+ db:
+  container_name: paperless-db
+  image: docker.io/library/postgres:18
+  restart: unless-stopped
+  volumes:
+   - /home/ariel/docker/paperless/postgresql:/var/lib/postgresql
+  environment:
+   POSTGRES_DB: paperless
+   POSTGRES_USER: paperless
+   POSTGRES_PASSWORD: paperless
 
-   webserver:
-      container_name: paperless-web
-      image: ghcr.io/paperless-ngx/paperless-ngx:latest
-      restart: unless-stopped
-      depends_on:
-         - db
-         - broker
-      ports:
-         - 8008:8000
-      volumes:
-         - /opt/docker/paperless/data:/usr/src/paperless/data
-         - /opt/docker/paperless/media:/usr/src/paperless/media
-         - /srv/data/documents:/usr/src/paperless/export
-         - /srv/data/paperless:/usr/src/paperless/consume
-      environment:
-         USERMAP_UID: 1000
-         USERMAP_GID: 1000
-         PAPERLESS_REDIS: redis://broker:6379
-         PAPERLESS_DBHOST: db
-         PAPERLESS_TIME_ZONE: America/New_York
+ webserver:
+  container_name: paperless-web
+  image: ghcr.io/paperless-ngx/paperless-ngx:latest
+  restart: unless-stopped
+  depends_on:
+   - db
+   - broker
+  ports:
+   - 8008:8000
+  volumes:
+   - /opt/docker/paperless/data:/usr/src/paperless/data
+   - /opt/docker/paperless/media:/usr/src/paperless/media
+   - /srv/data/documents:/usr/src/paperless/export
+   - /srv/data/paperless:/usr/src/paperless/consume
+  environment:
+   USERMAP_UID: 1000
+   USERMAP_GID: 1000
+   PAPERLESS_REDIS: redis://broker:6379
+   PAPERLESS_DBHOST: db
+   PAPERLESS_TIME_ZONE: America/New_York
 ```
+
 <br>
 
 ### Plex
@@ -241,24 +248,25 @@ services:
 I have written blog posts about [how to self-host Plex as a Docker container](/blog/setting-up-plex-in-docker/) and [how to use Tailscale and an Oracle free tier VM to share your Plex library to other users](/blog/expose-plex-tailscale-vps/).
 
 ```yaml
-   plex:
-      restart: unless-stopped
-      container_name: plex
-      image: linuxserver/plex:latest
-      network_mode: host
-      environment:
-         - TZ=America/New_York
-         - PLEX_UID=1000
-         - PLEX_GID=1000
-      volumes:
-         - /opt/docker/plex:/config
-         - /srv/media/movies:/movies
-         - /srv/media/tvshows:/tvshows
-         - /srv/media/transcode:/transcode
-         - /srv/media/music:/music
-      devices:
-         - /dev/dri:/dev/dri
+plex:
+ restart: unless-stopped
+ container_name: plex
+ image: linuxserver/plex:latest
+ network_mode: host
+ environment:
+  - TZ=America/New_York
+  - PLEX_UID=1000
+  - PLEX_GID=1000
+ volumes:
+  - /opt/docker/plex:/config
+  - /srv/media/movies:/movies
+  - /srv/media/tvshows:/tvshows
+  - /srv/media/transcode:/transcode
+  - /srv/media/music:/music
+ devices:
+  - /dev/dri:/dev/dri
 ```
+
 <br>
 
 ### Portainer
@@ -284,33 +292,33 @@ docker run -d -p 8000:8000 -p 9000:9000 -p 9443:9443 --name portainer --restart=
 
 ### qBittorrent
 
-<a href="https://docs.linuxserver.io/images/docker-qbittorrent" target="_blank" data-umami-event="home-server-qbittorrent">qBittorrent</a> is my preferred torrent downloader, this containerized version makes the GUI accessible from any machine via browser, and it connects to *Gluetun* so that so all my downloads are routed through my VPN provider. Rather than using the *arr suite for automated downloads, because I just don't download often enough to bother setting it up, I will manually grab a magnet link from my preferred torrent sites and put it into qBittorrent. I have storage paths configured by categories so that I can just choose "Movies", "TV Shows" or "Music" categories for each download, and it will be stored in the corresponding path where it is streamable from Plex. I also use the <a href="https://github.com/VueTorrent/VueTorrent" target="_blank">VueTorrent mod</a> for an improved UI.
+<a href="https://docs.linuxserver.io/images/docker-qbittorrent" target="_blank" data-umami-event="home-server-qbittorrent">qBittorrent</a> is my preferred torrent downloader, this containerized version makes the GUI accessible from any machine via browser, and it connects to _Gluetun_ so that so all my downloads are routed through my VPN provider. Rather than using the \*arr suite for automated downloads, because I just don't download often enough to bother setting it up, I will manually grab a magnet link from my preferred torrent sites and put it into qBittorrent. I have storage paths configured by categories so that I can just choose "Movies", "TV Shows" or "Music" categories for each download, and it will be stored in the corresponding path where it is streamable from Plex. I also use the <a href="https://github.com/VueTorrent/VueTorrent" target="_blank">VueTorrent mod</a> for an improved UI.
 
 :::image-figure[qBittorrent dashboard with VueTorrent UI mod.]
 ![A screenshot of the qBittorrent web-based user interface with the VueTorrent mod](../../img/blog/qbittorrent.png)
 :::
 
 ```yaml
-   qbittorrent:
-      image: lscr.io/linuxserver/qbittorrent:latest
-      container_name: qbittorrent
-      environment:
-         - PUID=1000
-         - PGID=1000
-         - TZ=America/New_York
-         - WEBUI_PORT=8080
-         - DOCKER_MODS=ghcr.io/vuetorrent/vuetorrent-lsio-mod:latest
-      volumes:
-         - /opt/docker/qbittorrent:/config
-         - /srv/media/downloads:/downloads
-         - /srv/media/movies:/movies
-         - /srv/media/tvshows:/tvshows
-         - /srv/media/music:/music
-      network_mode: "service:gluetun"
-      restart: unless-stopped
-      depends_on:
-         gluetun:
-         condition: service_healthy
+qbittorrent:
+ image: lscr.io/linuxserver/qbittorrent:latest
+ container_name: qbittorrent
+ environment:
+  - PUID=1000
+  - PGID=1000
+  - TZ=America/New_York
+  - WEBUI_PORT=8080
+  - DOCKER_MODS=ghcr.io/vuetorrent/vuetorrent-lsio-mod:latest
+ volumes:
+  - /opt/docker/qbittorrent:/config
+  - /srv/media/downloads:/downloads
+  - /srv/media/movies:/movies
+  - /srv/media/tvshows:/tvshows
+  - /srv/media/music:/music
+ network_mode: 'service:gluetun'
+ restart: unless-stopped
+ depends_on:
+  gluetun:
+  condition: service_healthy
 ```
 
 <br>
@@ -330,25 +338,26 @@ docker run -d -p 8000:8000 -p 9000:9000 -p 9443:9443 --name portainer --restart=
 :::
 
 ```yaml
-   scrutiny:
-      container_name: scrutiny
-      image: ghcr.io/analogj/scrutiny:master-omnibus
-      restart: unless-stopped
-      cap_add:
-         - SYS_RAWIO
-         - SYS_ADMIN
-      ports:
-         - "8880:8080" # webapp
-         - "8086:8086" # influxDB admin
-      volumes:
-         - /run/udev:/run/udev:ro
-         - /home/ariel/docker/scrutiny:/opt/scrutiny/config
-         - /home/ariel/docker/scrutiny/influxdb:/opt/scrutiny/influxdb
-      environment:
-        SCRUTINY_NOTIFY_URLS: "pushover://shoutrrr:...@.../"
-      devices:
-         - "/dev"
+scrutiny:
+ container_name: scrutiny
+ image: ghcr.io/analogj/scrutiny:master-omnibus
+ restart: unless-stopped
+ cap_add:
+  - SYS_RAWIO
+  - SYS_ADMIN
+ ports:
+  - '8880:8080' # webapp
+  - '8086:8086' # influxDB admin
+ volumes:
+  - /run/udev:/run/udev:ro
+  - /home/ariel/docker/scrutiny:/opt/scrutiny/config
+  - /home/ariel/docker/scrutiny/influxdb:/opt/scrutiny/influxdb
+ environment:
+  SCRUTINY_NOTIFY_URLS: 'pushover://shoutrrr:...@.../'
+ devices:
+  - '/dev'
 ```
+
 <br>
 
 ### Speedtest Tracker
@@ -363,26 +372,27 @@ docker run -d -p 8000:8000 -p 9000:9000 -p 9443:9443 --name portainer --restart=
 :::
 
 ```yaml
-   speedtest-tracker:
-      image: lscr.io/linuxserver/speedtest-tracker:latest
-      container_name: speedtest-tracker
-      environment:
-         - PUID=1000
-         - PGID=1000
-         - TZ=America/New_York
-         - DB_CONNECTION=sqlite
-         - APP_KEY=
-         - DISPLAY_TIMEZONE=America/New_York
-         - SPEEDTEST_SCHEDULE=0 * * * *
-         - PRUNE_RESULTS_OLDER_THAN=30
-         - CHART_DATETIME_FORMAT=j M Y, g:i:s
-         - APP_URL=
-      volumes:
-         - /opt/docker/speedtest:/config
-      ports:
-         - 8800:80
-      restart: unless-stopped
+speedtest-tracker:
+ image: lscr.io/linuxserver/speedtest-tracker:latest
+ container_name: speedtest-tracker
+ environment:
+  - PUID=1000
+  - PGID=1000
+  - TZ=America/New_York
+  - DB_CONNECTION=sqlite
+  - APP_KEY=
+  - DISPLAY_TIMEZONE=America/New_York
+  - SPEEDTEST_SCHEDULE=0 * * * *
+  - PRUNE_RESULTS_OLDER_THAN=30
+  - CHART_DATETIME_FORMAT=j M Y, g:i:s
+  - APP_URL=
+ volumes:
+  - /opt/docker/speedtest:/config
+ ports:
+  - 8800:80
+ restart: unless-stopped
 ```
+
 <br>
 
 ### Syncthing
@@ -390,24 +400,24 @@ docker run -d -p 8000:8000 -p 9000:9000 -p 9443:9443 --name portainer --restart=
 <a href="https://docs.linuxserver.io/images/docker-syncthing" target="_blank" data-umami-event="home-server-syncthing">Syncthing</a> is used for only one thing, keeping my Obsidian notes synced across PC, phone and tablet. Unfortunately, I'll have to switch to an alternative eventually since <a href="https://forum.syncthing.net/t/discontinuing-syncthing-android/23002" target="_blank">Syncthing for Android has been discontinued</a>. For now I continue using it and it still works. (There's also <a href="https://github.com/Catfriend1/syncthing-android" target="_blank" data-umami-event="home-server-syncthingfork">Syncthing-Fork</a> as a drop-in replacement for the Android Syncthing app.)
 
 ```yaml
-   syncthing:
-      image: syncthing/syncthing
-      container_name: syncthing
-      environment:
-         - PUID=1000
-         - PGID=1000
-      volumes:
-         - /home/ariel/docker/syncthing:/var/syncthing
-         - /srv/data:/data
-      network_mode: host
-      restart: unless-stopped
+syncthing:
+ image: syncthing/syncthing
+ container_name: syncthing
+ environment:
+  - PUID=1000
+  - PGID=1000
+ volumes:
+  - /home/ariel/docker/syncthing:/var/syncthing
+  - /srv/data:/data
+ network_mode: host
+ restart: unless-stopped
 ```
+
 <br>
 
 ### Tautulli
 
 <a href="https://tautulli.com" target="_blank" data-umami-event="home-server-tautulli">Tautulli</a> runs alongside Plex to provide monitoring and statistics tracking, so I can see a history of what media my users and I consumed, details on when and what device, whether it was direct play or transcode, etc. It also has programmatic notifications with a lot different triggers. Aside from just keeping a comprehensive history of played media, I use Pushover to send push notifications to my phone when other users are playing something on Plex and if they have any stream errors.
-
 
 :::image-figure[Plex Media Server streaming history in Tautulli]
 ![A screenshot of Tautulli web-based interface](../../img/blog/tautulli.png)
@@ -417,21 +427,22 @@ docker run -d -p 8000:8000 -p 9000:9000 -p 9443:9443 --name portainer --restart=
 :::
 
 ```yaml
-   tautulli:
-      restart: unless-stopped
-      image: lscr.io/linuxserver/tautulli:latest
-      container_name: tautulli
-      ports:
-         - 8181:8181
-      environment:
-         - PUID=1000
-         - PGID=1000
-         - TZ=America/New_York
-      volumes:
-         - /opt/docker/tautulli:/config
-      depends_on:
-         - plex
+tautulli:
+ restart: unless-stopped
+ image: lscr.io/linuxserver/tautulli:latest
+ container_name: tautulli
+ ports:
+  - 8181:8181
+ environment:
+  - PUID=1000
+  - PGID=1000
+  - TZ=America/New_York
+ volumes:
+  - /opt/docker/tautulli:/config
+ depends_on:
+  - plex
 ```
+
 <br>
 
 ### Uptime Kuma
@@ -446,19 +457,20 @@ docker run -d -p 8000:8000 -p 9000:9000 -p 9443:9443 --name portainer --restart=
 :::
 
 ```yaml
-   uptime-kuma:
-      image: louislam/uptime-kuma:beta
-      container_name: uptime-kuma
-      volumes:
-         - /opt/docker/uptime:/app/data
-         - /var/run/docker.sock:/var/run/docker.sock
-      ports:
-         - 3001:3001
-      dns:
-         - 1.1.1.1
-         - 8.8.8.8
-      restart: unless-stopped
+uptime-kuma:
+ image: louislam/uptime-kuma:beta
+ container_name: uptime-kuma
+ volumes:
+  - /opt/docker/uptime:/app/data
+  - /var/run/docker.sock:/var/run/docker.sock
+ ports:
+  - 3001:3001
+ dns:
+  - 1.1.1.1
+  - 8.8.8.8
+ restart: unless-stopped
 ```
+
 <br>
 
 ### Watchtower
@@ -470,19 +482,19 @@ docker run -d -p 8000:8000 -p 9000:9000 -p 9443:9443 --name portainer --restart=
 :::
 
 ```yaml
-   watchtower:
-      container_name: watchtower
-      image: containrrr/watchtower
-      restart: unless-stopped
-      environment:
-         - WATCHTOWER_NOTIFICATION_URL=pushover://:...@...
-         - WATCHTOWER_NOTIFICATIONS_HOSTNAME=
-         - WATCHTOWER_CLEANUP=true
-         - WATCHTOWER_INCLUDE_STOPPED=true
-         - WATCHTOWER_REVIVE_STOPPED=false
-         - WATCHTOWER_SCHEDULE=0 0 8 * * *
-      volumes:
-         - "/var/run/docker.sock:/var/run/docker.sock"
+watchtower:
+ container_name: watchtower
+ image: containrrr/watchtower
+ restart: unless-stopped
+ environment:
+  - WATCHTOWER_NOTIFICATION_URL=pushover://:...@...
+  - WATCHTOWER_NOTIFICATIONS_HOSTNAME=
+  - WATCHTOWER_CLEANUP=true
+  - WATCHTOWER_INCLUDE_STOPPED=true
+  - WATCHTOWER_REVIVE_STOPPED=false
+  - WATCHTOWER_SCHEDULE=0 0 8 * * *
+ volumes:
+  - '/var/run/docker.sock:/var/run/docker.sock'
 ```
 
 > It's important to note that Watchtower has not been updated in over 2 years and is basically unmaintained at this point. There's some maintained alternatives, in some cases with even more features, but I personally I have really had a reason to migrate as of yet. If you're starting out new, I suggest instead checking out <a href="https://github.com/fmartinou/whats-up-docker" target="_blank" data-umami-event="home-server-whatsupdocker">What's Up Docker</a> or <a href="https://github.com/crazy-max/diun" target="_blank" data-umami-event="home-server-diun">Diun</a>
@@ -496,7 +508,7 @@ The following storage is installed in the server:
 - 3 x 2 TB Internal HDDs
 - 3 x 1 TB External HDDs
 
-The 256 GB NVMe SSD is the boot drive where Debian is installed. The 4 TB and 2 TB HDDs are used exclusively for movies and TV shows, and 1 TBs are storage for everything else. (Photos, music, documents, etc.) 
+The 256 GB NVMe SSD is the boot drive where Debian is installed. The 4 TB and 2 TB HDDs are used exclusively for movies and TV shows, and 1 TBs are storage for everything else. (Photos, music, documents, etc.)
 
 I don't bother `zfs` or RAID. This is kind of a cardinal sin in self-hosting, but I just don't care enough if one of my drives die and I lose a bunch of movies and TV shows -- I can re-acquire any that I want, and ignore any that I don't care about anymore. (As it is I'm already very bad at removing media I already watched and don't intend to watch again.) The photos, music and documents are backed up on cloud storage, other machines and an additional dedicated 1 TB backup drive, not listed above. That's my 3-2-1.
 
@@ -628,13 +640,13 @@ curl -fsSL https://tailscale.com/install.sh | sh
 
 > By default using most Tailscale commands requires superuser privileges, i.e. `sudo`. By using the command `sudo tailscale set --operator=$USER`, the specified user will then be able to execute Tailscale commands without `sudo`.
 
-Once installed, Tailscale is run with the following command: 
+Once installed, Tailscale is run with the following command:
 
 ```bash
 tailscale up
 ```
 
-I have both my home server and the separate machine running Pi-Hole as nodes in my Tailnet, along with my phone, tablet and a laptop. The server acts as *subnet router* so that I can access the entire network via Tailscale, not just the nodes with Tailscale installed. As per the <a href="https://tailscale.com/kb/1019/subnets" target="_blank" data-umami-event="home-server-tailscale-docs-subnets">Tailscale documentation on subnets</a>, this is done with the following commands.
+I have both my home server and the separate machine running Pi-Hole as nodes in my Tailnet, along with my phone, tablet and a laptop. The server acts as _subnet router_ so that I can access the entire network via Tailscale, not just the nodes with Tailscale installed. As per the <a href="https://tailscale.com/kb/1019/subnets" target="_blank" data-umami-event="home-server-tailscale-docs-subnets">Tailscale documentation on subnets</a>, this is done with the following commands.
 
 First, to enable IP forwarding:
 

@@ -1,8 +1,8 @@
 ---
-title: "Transferring files between hosts with SCP"
+title: 'Transferring files between hosts with SCP'
 description: "Using the Secure Copy (SCP) utility in Linux lets you securely copy files to and from remote hosts, and it's very easy to use."
 pubDate: 2022-09-26
-tags: ["linux", "command line"]
+tags: ['linux', 'command line']
 related1: copy-ssh-keys-between-hosts
 ---
 
