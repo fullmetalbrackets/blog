@@ -1,44 +1,43 @@
 {
-  "type": "module",
-  "homepage": "https://fullmetalbrackets.com",
-  "description": "A blog about self-hosting, Linux, Docker, and other tech things.",
-  "author": "Ariel Diaz",
-  "license": "MIT",
-  "private": true,
-  "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build && npx -y pagefind --site dist",
-    "preview": "astro preview",
-    "astro": "astro",
-    "check": "astro check",
-    "fetch-plex": "node fetch-plex-data.js",
-    "update-plex": "yarn fetch-plex && git add src/data/recently-played.json && git diff --cached --quiet || git commit -m 'Update Plex recently played data'",
-    "deploy": "yarn fetch-plex && yarn build"
-  },
-  "dependencies": {
-    "@astrojs/check": "^0.9.6",
-    "@astrojs/markdown-remark": "^6.3.8",
-    "@astrojs/mdx": "^4.3.13",
-    "@astrojs/rss": "^4.0.15",
-    "@astrojs/sitemap": "^3.7.0",
-    "@playform/compress": "^0.2.1",
-    "@types/imagesloaded": "^4.1.7",
-    "@yeskunall/astro-umami": "^0.0.7",
-    "astro": "^5.16.14",
-    "astro-embed": "^0.12.0",
-    "astro-social-share": "^2.2.0",
-    "imagesloaded": "^5.0.0",
-    "isotope-layout": "^3.0.6",
-    "mdast-util-to-string": "^4.0.0",
-    "reading-time": "^1.5.0",
-    "rehype-external-links": "^3.0.0",
-    "remark-directive": "^4.0.0",
-    "remark-directive-sugar": "^2.0.0",
-    "typescript": "^5.9.3"
-  },
-  "packageManager": "yarn@4.12.0",
-  "devDependencies": {
-    "@types/isotope-layout": "^3"
-  }
+	"type": "module",
+	"homepage": "https://fullmetalbrackets.com",
+	"description": "A blog about self-hosting, Linux, Docker, and other tech things.",
+	"author": "Ariel Diaz",
+	"license": "MIT",
+	"private": true,
+	"scripts": {
+		"dev": "astro dev",
+		"start": "astro dev",
+		"build": "astro build && npx -y pagefind --site dist",
+		"preview": "astro preview",
+		"astro": "astro",
+		"check": "astro check",
+		"format": "prettier --write ."
+	},
+	"dependencies": {
+		"@astrojs/check": "^0.9.6",
+		"@astrojs/markdown-remark": "^6.3.8",
+		"@astrojs/mdx": "^4.3.13",
+		"@astrojs/rss": "^4.0.15",
+		"@astrojs/sitemap": "^3.7.0",
+		"@playform/compress": "^0.2.1",
+		"@types/imagesloaded": "^4.1.7",
+		"@yeskunall/astro-umami": "^0.0.7",
+		"astro": "^5.16.14",
+		"astro-embed": "^0.12.0",
+		"astro-social-share": "^2.2.0",
+		"imagesloaded": "^5.0.0",
+		"isotope-layout": "^3.0.6",
+		"mdast-util-to-string": "^4.0.0",
+		"reading-time": "^1.5.0",
+		"rehype-external-links": "^3.0.0",
+		"remark-directive": "^4.0.0",
+		"remark-directive-sugar": "^2.0.0",
+		"typescript": "^5.9.3"
+	},
+	"packageManager": "yarn@4.12.0",
+	"devDependencies": {
+		"@types/isotope-layout": "^3",
+		"prettier": "^3.8.1"
+	}
 }
