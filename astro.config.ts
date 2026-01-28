@@ -67,7 +67,7 @@ export default defineConfig({
 		'/umami/': {
 			status: 302,
 			destination:
-				'https://cloud.umami.is/share/5MdOgBcRzVP6FU0x/fullmetalbrackets.com',
+				'https://u.adiaz.fyi/share/TtTytHU8rJy0oEzN',
 		},
 		'/blog/tailscale/': {
 			status: 302,
@@ -110,6 +110,18 @@ export default defineConfig({
 		'/reverse-proxy/': {
 			status: 302,
 			destination: '/blog/reverse-proxy-using-nginx-pihole-cloudflare/',
+		},
+		'/shelf/': {
+			status: 301,
+			destination: '/digest/',
+		},
+		'/shelf/movies': {
+			status: 301,
+			destination: '/digest/movies/',
+		},
+		'/shelf/tvshows/': {
+			status: 301,
+			destination: '/digest/tvshows/',
 		},
 	},
 	experimental: {
