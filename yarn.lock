@@ -1926,9 +1926,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"astro@npm:^5.16.14":
-  version: 5.16.14
-  resolution: "astro@npm:5.16.14"
+"astro@npm:^5.16.16":
+  version: 5.16.16
+  resolution: "astro@npm:5.16.16"
   dependencies:
     "@astrojs/compiler": "npm:^2.13.0"
     "@astrojs/internal-helpers": "npm:0.7.5"
@@ -1999,7 +1999,7 @@ __metadata:
       optional: true
   bin:
     astro: astro.js
-  checksum: 10c0/ace3dc84fd12158e650a0c9c5cae3d8c7365ec416503c6fa61850c96b44af15ddc969094437cb9b35d6b5f3248255d4cb382b8548423d7f5445aa52d048031e0
+  checksum: 10c0/3b6a90b461b5a4d87591f749ca4b0b695213c7c749cd621c821fa02c57de1771877ba8c44c4c176eb7b9bf1b704198ae0c5e53245ebcf681cf37a0d739b66050
   languageName: node
   linkType: hard
 
@@ -5424,7 +5424,7 @@ __metadata:
     "@types/imagesloaded": "npm:^4.1.7"
     "@types/isotope-layout": "npm:^3"
     "@yeskunall/astro-umami": "npm:^0.0.7"
-    astro: "npm:^5.16.14"
+    astro: "npm:^5.16.16"
     astro-embed: "npm:^0.12.0"
     astro-social-share: "npm:^2.2.0"
     imagesloaded: "npm:^5.0.0"
