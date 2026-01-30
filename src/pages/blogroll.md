@@ -21,6 +21,9 @@ Last updated on <span class="important">December 23, 2025</span>
     <a href="https://henry.codes/" target="_blank" rel="noopener noreferrer" data-umami-event="blogroll-henrycodes">
         <button>Henry From Online</button>
     </a>
+    <a href="https://joshcollinsworth.com/" target="_blank" rel="noopener noreferrer" data-umami-event="blogroll-collinsworth">
+        <button>Josh Collinsworth</button>
+    </a>
     <a href="https://www.joshwcomeau.com/" target="_blank" rel="noopener noreferrer" data-umami-event="blogroll-jwcomeau">
         <button>Josh W. Comeau</button>
     </a>
