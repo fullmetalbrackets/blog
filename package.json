@@ -23,7 +23,7 @@
 		"@playform/compress": "^0.2.1",
 		"@types/imagesloaded": "^4.1.7",
 		"@yeskunall/astro-umami": "^0.0.7",
-		"astro": "^5.16.14",
+		"astro": "^5.17.1",
 		"astro-embed": "^0.12.0",
 		"astro-social-share": "^2.2.0",
 		"imagesloaded": "^5.0.0",
