@@ -1,0 +1,133 @@
+---
+import FormattedDate from "./FormattedDate.astro";
+import { getCollection } from "astro:content";
+import More from '@icons/arrow-right.svg';
+
+interface Props {
+  limit?: number;
+}
+
+const { limit = 4 } = Astro.props;
+const allLifestream = await getCollection('lifestream');
+const recentNotes = allLifestream
+  .filter((entry) => entry.data.type === 'note')
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+  .slice(0, limit);
+---
+
+<style scoped>
+  section {
+    margin: 0 auto;
+    padding: 0;
+  }
+  h2 {
+    margin-bottom: 0.3em;
+    font-family: var(--sub-font);
+    font-weight: 900;
+  }
+  p {
+    margin: 0;
+  }
+  .info {
+    display: flex;
+    place-items: center;
+    margin: 0;
+    padding: 0;
+    gap: 0.25em;
+  }
+  .info button {
+    margin: 0 0.5em 0 0;
+    background: var(--info);
+    cursor: pointer;
+    font-size: 0.625em;
+  }
+  .container {
+    background-color: var(--blockquote);
+    border-radius: 0.5em;
+    margin: 0.5em auto 0 auto;
+    padding: 1.5em 1.5em 0.5em 1.5em;
+  }
+  .list {
+    display: inline-flex;
+    flex-direction: column;
+    margin: 0 auto 0.25em auto;
+    padding-bottom: 0.5em;
+    line-height: 1.3;
+  }
+  .list:hover {
+    padding-bottom: 0.5em;
+    transition: all .5s ease-out;
+  }
+  .list:hover .note-title {
+    color: var(--hover);    
+    transition: all .25s ease-out;
+  }
+  .note-title {
+    display: inline-flex;
+    flex-direction: row;
+    margin: 0 auto;
+    font-weight: bold;
+    line-height: 1.2;
+    color: var(--emphasis);
+  }
+  .more {
+    display: flex;
+    font-family: var(--sub-font);
+    font-weight: 900;
+    justify-content: end;
+    margin: -0.6em -1.25em -0.5em 0;
+    padding: 0.25em;
+  }
+  .more svg {
+    display: inline-flex;
+    place-content: center;
+    margin: 4px 0 -3px 0;
+    padding: 0;
+    filter: var(--svg2);
+  }
+  .more a {
+    color: var(--secondary);
+  }
+  .more a:hover {
+    color: var(--foot-link);
+    transform: 0.2;
+  }
+  .more a:hover svg {
+    transition: all .1s ease-out;
+    transform: translateX(4px);
+  }
+
+  @media screen and (max-width: 1245px) {
+    .more {
+      margin: -0.25em -1.25em -0.5em 0;
+    }
+  }
+
+  @media screen and (max-width: 667px) {
+    .info {
+      margin: 0.25em 0;
+    }
+    .info button {
+      margin: 0.1em 0.25em 0.1em 0;
+    }
+  }
+</style>
+
+<section>
+  <h2>Recent Notes</h2>
+  <div class="container">
+      {recentNotes.map((note) => (
+        <div class="list">
+          <a href={note.data.url || '/notes/'}>
+            <span class="note-title">{note.data.title}</span>
+            <p class="info">
+              <button>{note.data.tag}</button>
+              <FormattedDate date={note.data.pubDate} monthFormat="short" />
+            </p>
+          </a>
+        </div>
+      ))}
+    <span class="more">
+      <a href="/notes/" rel="prefetch-intent">MORE <More height={24} width={24} /></a>
+    </span>
+</section>

@@ -5,6 +5,7 @@ import PostsColumns from "@components/PostsColumns.astro";
 import Popular from "@components/Popular.astro";
 import Categories from "@components/Categories.astro";
 import RecentPosts from "@components/RecentPosts.astro";
+import RecentNotes from "@components/RecentNotes.astro";
 import RecentLinks from "@components/RecentLinks.astro";
 import Explore from "@components/Explore.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "@consts";
@@ -90,9 +91,13 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "@consts";
       <PostsColumns>
         <RecentLinks />
       </PostsColumns>
+      <PostsColumns>
+        <Explore />
+      </PostsColumns>
+      <PostsColumns>
+        <RecentNotes />
+      </PostsColumns>
     </div>
-    <div class="explore">
-      <Explore />
-    </div>
+    <br>
   </section>
 </BaseLayout>
