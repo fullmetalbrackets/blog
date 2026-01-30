@@ -91,7 +91,7 @@ const recentPosts = await Promise.all(
     font-family: var(--sub-font);
     font-weight: 900;
     justify-content: end;
-    margin: 0.875em -1.25em -0.5em 0;
+    margin: 0.85em -1.25em -0.5em 0;
     padding: 0.25em;
   }
   .more svg {
@@ -131,8 +131,14 @@ const recentPosts = await Promise.all(
     .tag button {
       margin: 0.1em 0.25em 0.1em 0;
     }
+    .list {
+      transition: none;
+      border-bottom: 0;
+      margin: 0 0 0.5em 0;
+    }
     .list:hover, .list:hover .posts-title {
-      transition: none !important;
+      transition: none;
+      border-bottom: 0;
     }
   }
 </style>
@@ -151,7 +157,7 @@ const recentPosts = await Promise.all(
               ))}
             </span>
             <p class="info">
-              <FormattedDate date={post.data.pubDate} />&nbsp;
+              <FormattedDate date={post.data.pubDate} monthFormat="short" />&nbsp;
               <span class="reading"><ReadingTime time={post.readingTime} /></span>
             </p>
           </a>
