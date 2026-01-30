@@ -85,3 +85,15 @@ description: My computer and server hardware, and also smart home things.
 - [Google Nest Mini Speakers](https://store.google.com/product/google_nest_mini?hl=en-US)
 - [Carro Espear 60" Smart Ceiling Fan](https://carrousa.com/products/espear-60-inch-5-blade-smart-ceiling-fan-with-led-light-kit-remote-white-white?variant=42178767618182)
 - [Home Decorators Collection Triplex 60" Smart Ceiling Fan](https://www.homedepot.com/p/Home-Decorators-Collection-Triplex-60-in-LED-Brushed-Bronze-Ceiling-Fan-with-Light-YG749-BRB/307266742)
+
+## Video Game Consoles
+
+- Nintendo DS
+- Nintendo 3DS
+- Nintendo GameCube
+- Nintendo Switch 
+- Nintendo Switch 2
+- Nintendo Wii
+- PlayStation 3
+- PlayStation 5
+- XBox 360
