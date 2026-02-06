@@ -16,7 +16,7 @@ only cost I incur for this website; it was around $18/year through
 Namecheap, but transferring to Cloudflare dropped the cost to just
 under $10/year.
 
-And thanks to a few readers that [Bought Me A Coffee](https://buymeacoffee.com/arieldiaz)the bill for 2025 was covered and I have a few bucks leftover towards 2026's renewal, so thanks!
+And thanks to a few readers that [Bought Me A Coffee](https://buymeacoffee.com/arieldiaz) the bill for 2025 was covered and I have a few bucks leftover towards 2026's renewal, so thanks!
 
 ## Astro, Integrations and Packages
 

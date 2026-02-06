@@ -30,10 +30,14 @@ const links = (await getCollection("links")).sort(
     margin: 0;
     padding: 0;
   }
+  .info button {
+    margin-right: 0.85em;
+    font-size: 0.625em;
+  }
   .list {
     display: flex;
     flex-direction: column;
-    margin: 0 auto;
+    margin: 0 auto 0.25em auto;
     padding-bottom: 0.5em;
   }
   .title-link {
@@ -61,7 +65,7 @@ const links = (await getCollection("links")).sort(
     font-family: var(--sub-font);
     font-weight: 900;
     justify-content: end;
-    margin: -0.85em -1.25em -0.5em 0;
+    margin: -0.1em -1.25em -0.5em 0;
     padding: 0.25em;
   }
   .more svg {
@@ -107,15 +111,13 @@ const links = (await getCollection("links")).sort(
     {
       links.slice(0, 5).map((link) => (
         <div class="list">
+          <a href={link.data.url} target="_blank" class="title-link" data-umami-event={`recent-link-${link.data.title}`}>
           <span>
-            <a href={link.data.url} target="_blank" class="title-link" data-umami-event={`recent-link-${link.data.title}`}>
-              {link.data.title}
-            </a>
+            {link.data.title}
           </span>
-          <span class="info"><FormattedDate date={link.data.pubDate} />&nbsp;
-            <span class="link-tag">{link.data.tag}</span>
+            <span class="info"><button>{link.data.tag}</button><FormattedDate date={link.data.pubDate} monthFormat="short" />&nbsp;
           </span>
-          {/* <span class="tag"></span> */}
+          </a>
         </div>
       ))
     }

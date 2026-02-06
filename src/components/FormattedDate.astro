@@ -3,10 +3,24 @@ import Date from "@icons/calendar.svg";
 
 interface Props {
   date: Date;
+  monthFormat?: 'long' | 'short' | 'numeric' | '2-digit';
 }
 
-const { date } = Astro.props;
+const { date, monthFormat = 'long' } = Astro.props;
 ---
+
+<time datetime={date?.toISOString()}>
+  <Date width={24} height={24} />
+  <span>
+    {
+      date?.toLocaleDateString("en-us", {
+        year: "numeric",
+        month: monthFormat,
+        day: "numeric",
+      })
+    }
+  </span>
+</time>
 
 <style scoped>
   time {
@@ -31,17 +45,3 @@ const { date } = Astro.props;
     }
   }
 </style>
-
-
-<time datetime={date?.toISOString()}>
-  <Date width={24} height={24} />
-  <span>
-    {
-      date?.toLocaleDateString("en-us", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      })
-    }
-  </span>
-</time>

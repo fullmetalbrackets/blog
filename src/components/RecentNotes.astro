@@ -1,21 +1,18 @@
 ---
 import FormattedDate from "./FormattedDate.astro";
-import ReadingTime from "./ReadingTime.astro";
-import { getCollection, render } from "astro:content";
+import { getCollection } from "astro:content";
 import More from '@icons/arrow-right.svg';
 
-const posts = (await getCollection("blog")).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
-const recentPosts = await Promise.all(
-  posts.slice(0, 5).map(async (post) => {
-    const { remarkPluginFrontmatter } = await render(post);
-    return {
-      ...post,
-      readingTime: remarkPluginFrontmatter.readingTime
-    };
-  })
-);
+interface Props {
+  limit?: number;
+}
+
+const { limit = 4 } = Astro.props;
+const allLifestream = await getCollection('lifestream');
+const recentNotes = allLifestream
+  .filter((entry) => entry.data.type === 'note')
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+  .slice(0, limit);
 ---
 
 <style scoped>
@@ -38,22 +35,11 @@ const recentPosts = await Promise.all(
     padding: 0;
     gap: 0.25em;
   }
-  .reading {
-    margin: 0;
-  }
-  .tag {
-    display: flex;
-    place-items: center;
-    margin: 0.25em 0;
-    gap: 0.25em;
-  }
-  .tag button {
-    margin: 0;
+  .info button {
+    margin: 0 0.5em 0 0;
     background: var(--info);
     cursor: pointer;
-  }
-  .desc {
-    line-height: 1.3;
+    font-size: 0.625em;
   }
   .container {
     background-color: var(--blockquote);
@@ -64,21 +50,19 @@ const recentPosts = await Promise.all(
   .list {
     display: inline-flex;
     flex-direction: column;
-    margin: 0 auto 1em auto;
+    margin: 0 auto 0.25em auto;
     padding-bottom: 0.5em;
     line-height: 1.3;
-    border-bottom: 4px dotted transparent;
   }
   .list:hover {
     padding-bottom: 0.5em;
-    border-bottom: 4px dotted var(--hover);
     transition: all .5s ease-out;
   }
-  .list:hover .posts-title {
+  .list:hover .note-title {
     color: var(--hover);    
     transition: all .25s ease-out;
   }
-  .posts-title {
+  .note-title {
     display: inline-flex;
     flex-direction: row;
     margin: 0 auto;
@@ -91,7 +75,7 @@ const recentPosts = await Promise.all(
     font-family: var(--sub-font);
     font-weight: 900;
     justify-content: end;
-    margin: 0.85em -1.25em -0.5em 0;
+    margin: -0.6em -1.25em -0.5em 0;
     padding: 0.25em;
   }
   .more svg {
@@ -121,51 +105,29 @@ const recentPosts = await Promise.all(
 
   @media screen and (max-width: 667px) {
     .info {
-      display: block;
-      margin: 0.5em 0 0.25em 0;
+      margin: 0.25em 0;
     }
-    .tag {
-      display: block;
-      margin: 0.25em 0 0 0;
-    }
-    .tag button {
+    .info button {
       margin: 0.1em 0.25em 0.1em 0;
-    }
-    .list {
-      transition: none;
-      border-bottom: 0;
-      margin: 0 0 0.5em 0;
-    }
-    .list:hover, .list:hover .posts-title {
-      transition: none;
-      border-bottom: 0;
     }
   }
 </style>
 
 <section>
-  <h2>Recent Posts</h2>
+  <h2>Recent Notes</h2>
   <div class="container">
-    {
-      recentPosts.map((post) => (
+      {recentNotes.map((note) => (
         <div class="list">
-          <a href={`/blog/${post.id}/`} rel="prefetch-intent" data-umami-event={`recent-post-${post.id}`}>
-            <p class="posts-title">{post.data.title}</p>
-            <span class="tag">
-              {post.data.tags.map((tag) => (
-                <button>{tag}</button>
-              ))}
-            </span>
+          <a href={note.data.url || '/notes/'} data-umami-event={`recent-notes-${note.data.title}`} target="_blank" rel="noopener noreferrer">
+            <span class="note-title">{note.data.title}</span>
             <p class="info">
-              <FormattedDate date={post.data.pubDate} monthFormat="short" />&nbsp;
-              <span class="reading"><ReadingTime time={post.readingTime} /></span>
+              <button>{note.data.tag}</button>
+              <FormattedDate date={note.data.pubDate} monthFormat="short" />
             </p>
           </a>
         </div>
-      ))
-    }
+      ))}
     <span class="more">
-      <a href="/blog/" rel="prefetch-intent">MORE <More height={24} width={24} /></a>
+      <a href="/notes/" rel="prefetch-intent">MORE <More height={24} width={24} /></a>
     </span>
-  </div>
 </section>

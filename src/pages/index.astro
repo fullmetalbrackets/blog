@@ -5,6 +5,7 @@ import PostsColumns from "@components/PostsColumns.astro";
 import Popular from "@components/Popular.astro";
 import Categories from "@components/Categories.astro";
 import RecentPosts from "@components/RecentPosts.astro";
+import RecentNotes from "@components/RecentNotes.astro";
 import RecentLinks from "@components/RecentLinks.astro";
 import Explore from "@components/Explore.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "@consts";
@@ -21,7 +22,11 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "@consts";
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1em;
-    margin-top: 1rem;
+    margin: 2em auto 0 auto;
+  }
+  .explore {
+    margin: -3em auto 4em auto;
+    padding: 0;
   }
   .about {
     text-shadow: 2px 3px 2px var(--accent);
@@ -73,7 +78,6 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "@consts";
       I'm Ariel, a tech enthusiast and hobbyist coder. Welcome to my site. The main attraction is the blog, where I write about self-hosting and related topics that I've learned over many years of tinkering. There's some other stuff around here that might not be as interesting, but feel free to check them out below. Thanks for visiting!
     </p>
     <SocialLinks />
-    <Explore />
     <div class="column-item">
       <PostsColumns>
         <Popular />
@@ -87,6 +91,13 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "@consts";
       <PostsColumns>
         <RecentLinks />
       </PostsColumns>
+      <PostsColumns>
+        <Explore />
+      </PostsColumns>
+      <PostsColumns>
+        <RecentNotes />
+      </PostsColumns>
     </div>
+    <br>
   </section>
 </BaseLayout>
