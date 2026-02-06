@@ -4,6 +4,7 @@ import Explore from "@components/Explore.astro";
 import Popular from "@components/Popular.astro";
 import { Image } from 'astro:assets';
 import Lost from "@assets/404.png";
+import BackToTop from "@components/BackToTop.astro";
 
 const title = "Page not found";
 const desc = "This page does not seem to exist.";
@@ -55,8 +56,5 @@ const desc = "This page does not seem to exist.";
     <Popular />
   </section>
   <hr class="endline" />
-  <aside class="lost-aside">
-    <a href="/" rel="prefetch-intent"><button>Home</button></a>
-    <a href="#top"><button>Top ↑</button></a>
-  </aside>
+<BackToTop/>
 </BaseLayout>
