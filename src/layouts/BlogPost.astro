@@ -8,7 +8,7 @@ import BlogPosting from "@components/BlogPosting.astro";
 import ScrollProgress from "@components/ScrollProgress.astro";
 import ReadingTime from "@components/ReadingTime.astro";
 import WebMentions from "@components/WebMentions.astro";
-import { Image } from 'astro:assets';
+import { Image, getImage, inferRemoteSize } from 'astro:assets';
 import type { MarkdownHeading } from 'astro';
 import {
   BlueskyShareButton,
@@ -26,6 +26,8 @@ type Props = CollectionEntry<"blog">['data'] & { headings: MarkdownHeading[]; re
 const BUTTONS = [BlueskyShareButton, ThreadsShareButton, TwitterShareButton, RedditShareButton, HackerNewsShareButton]
 const { title, description, pubDate, updatedDate, tags, headings, related1, related2, readingTime } = Astro.props;
 const { slug } = Astro.params;
+const coffeeBtn = 'https://img.buymeacoffee.com/button-api/?slug=arieldiaz&font_family=Inter&coffee_colour=6F4E37';
+const { width, height } = await inferRemoteSize(coffeeBtn);
 const allPosts = await getCollection("blog");
 const relatedPosts = [ related1, related2 ];
 const selectedPosts = allPosts.filter(post => 
@@ -542,13 +544,14 @@ const selectedPosts = allPosts.filter(post =>
       <span>Was this article helpful?</span>
         <a href="https://www.buymeacoffee.com/arieldiaz">
           <Image
-            src="https://img.buymeacoffee.com/button-api/?slug=arieldiaz&font_family=Inter&coffee_colour=6F4E37"
+            src={coffeeBtn}
+            width={width}
+            height={height}
             class="coffee-btn"
             alt="Buy Me A Coffee"
             title="Buy Me A Coffee"
             loading="lazy"
             decoding="async"
-            inferSize={true}
           />
         </a>
     </div>
