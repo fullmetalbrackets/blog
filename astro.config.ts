@@ -42,6 +42,7 @@ export default defineConfig({
 	compressHTML: true,
 	image: {
 		service: passthroughImageService(),
+		domains: ['img.buymeacoffee.com'],
 	},
 	redirects: {
 		'/feed/': {
