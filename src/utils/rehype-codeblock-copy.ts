@@ -2,7 +2,7 @@ import { visit } from 'unist-util-visit';
 import { h } from 'hastscript';
 
 export default function rehypeCopyButton() {
-	return (tree) => {
+	return (tree: any) => {
 		visit(tree, 'element', (node, index, parent) => {
 			if (
 				node.tagName === 'pre' &&
