@@ -26,8 +26,6 @@ type Props = CollectionEntry<"blog">['data'] & { headings: MarkdownHeading[]; re
 const BUTTONS = [BlueskyShareButton, ThreadsShareButton, TwitterShareButton, RedditShareButton, HackerNewsShareButton]
 const { title, description, pubDate, updatedDate, tags, headings, related1, related2, readingTime } = Astro.props;
 const { slug } = Astro.params;
-const coffeeBtn = 'https://img.buymeacoffee.com/button-api/?slug=arieldiaz&font_family=Inter&coffee_colour=6F4E37';
-const { width, height } = await inferRemoteSize(coffeeBtn);
 const allPosts = await getCollection("blog");
 const relatedPosts = [ related1, related2 ];
 const selectedPosts = allPosts.filter(post => 
@@ -543,10 +541,8 @@ const selectedPosts = allPosts.filter(post =>
     <div class="coffee">
       <span>Was this article helpful?</span>
         <a href="https://www.buymeacoffee.com/arieldiaz">
-          <Image
-            src={coffeeBtn}
-            width={width}
-            height={height}
+          <img
+            src="https://img.buymeacoffee.com/button-api/?slug=arieldiaz&font_family=Inter&coffee_colour=6F4E37"
             class="coffee-btn"
             alt="Buy Me A Coffee"
             title="Buy Me A Coffee"
