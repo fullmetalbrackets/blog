@@ -1,0 +1,13 @@
+type: game
+title: Balatro
+developer: LocalThunk
+publisher: Playstack
+platform: ['PC', 'PlayStation 5', 'Nintendo Switch', 'Android', 'iOS']
+genre: ['roguelike', 'deck-building']
+pubDate: 2026-02-25
+startDate: 2024-02-20
+completed: false
+image: ./_images/balatro.jpg
+note: I like the occasional roguelike, but the only deck-building game I've ever liked is Pokemon Trading Card game on the original GameBoy... until now. Balatro has consumed my soul and I've played it on my phone literally every day for the last week. And I still haven't been able to complete a run. 
+dbid: 217980
+steamdb: 2379780
