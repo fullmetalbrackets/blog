@@ -6,6 +6,10 @@
 				"title": "Animal Crossing: New Horizons"
 			},
 			{
+				"moby": 84194,
+				"title": "Hollow Knight"
+			},
+			{
 				"moby": 76855,
 				"title": "Hollow Knight: Silksong"
 			},
@@ -23,10 +27,6 @@
 			}
 		],
 		"Nintendo Switch": [
-			{
-				"moby": 0,
-				"title": "Animal Crossing: New Horizons"
-			},
 			{
 				"moby": 0,
 				"title": "Bloodstained: Ritual of the Moon"
@@ -66,10 +66,6 @@
 			{
 				"moby": 0,
 				"title": "Final Fantasy VI"
-			},
-			{
-				"moby": 84194,
-				"title": "Hollow Knight"
 			},
 			{
 				"moby": 0,
@@ -130,6 +126,10 @@
 			{
 				"moby": 42320,
 				"title": "Super Mario Odyssey"
+			},
+			{
+				"moby": 0,
+				"title": "Super Mario Wonder"
 			},
 			{
 				"moby": 0,
@@ -261,10 +261,6 @@
 			}
 		],
 		"Nintendo 3DS": [
-			{
-				"moby": 0,
-				"title": "The"
-			},
 			{
 				"moby": 12733,
 				"title": "Mario Kart 7"
@@ -553,6 +549,14 @@
 			{
 				"steamdb": 0,
 				"title": "Cyberpunk 2077"
+			},
+			{
+				"steamdb": 0,
+				"title": "Dark Souls: Prepare to Die Edition"
+			},
+			{
+				"steamdb": 0,
+				"title": "Dark Souls 2: Scholar of the First Sin"
 			},
 			{
 				"steamdb": 0,
