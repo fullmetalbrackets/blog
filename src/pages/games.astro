@@ -68,6 +68,7 @@ const desc = "List of all video games I own by platform.";
           <span class="count">{typedGames.length}</span>
         </summary>
         {platform === 'Steam' && <p class="platform-note">This is only games <b>I've actually played</b> since I have many games on Steam I've never even installed...</p>}
+        {platform === 'Nintendo Switch 2' && <p class="platform-note">With the exception of <b>Mario Kart World</b>, these are all <em>Nintendo Switch 2 Edition</em> upgrades of Switch games I already owned.</p>}
         <ul>
           {typedGames.map(game => (
             <li>
