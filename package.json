@@ -15,7 +15,10 @@
 		"preview": "astro preview",
 		"astro": "astro",
 		"check": "astro check",
-		"format": "prettier --write ."
+		"format": "prettier --write .",
+		"post": "node scripts/post.mjs",
+		"life": "node scripts/life.mjs",
+		"note": "node scripts/note.mjs"
 	},
 	"dependencies": {
 		"@astrojs/check": "^0.9.6",
