@@ -10,7 +10,7 @@ Below is a list of my verified identities across the internet. If it's not liste
 
 - Reddit: [FullmetalBrackets](https://www.reddit.com/user/FullmetalBrackets/)
 - Bluesky: [fullmetalbrackets](https://bsky.app/profile/fullmetalbrackets.com)
-- Mastodon: [@adiaz@social.lol](https://social.lol/@adiaz)
+- Mastodon: [@adiaz@social.lol](https://social.lol/@adiaz) & [@fullmetalbrackets@indieweb.social](https://indieweb.social/@fullmetalbrackets)
 - Threads: [fullmetal.brackets](https://www.threads.com/@fullmetal.brackets)
 
 ## Other
