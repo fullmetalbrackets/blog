@@ -8,9 +8,9 @@ const allPosts = (await getCollection("blog")).sort(
 const popularPosts = [
   'plex-remote-access-tailscale', 
   'upgrade-debian-12-bookworm-debian-13-trixie',
-  'comprehensive-guide-tailscale-securely-access-home-network',
   'reverse-proxy-using-nginx-adguardhome-cloudflare',
   'how-i-setup-home-server',
+  'solid-explorer-samba-share'
 ];
 
 const filteredPosts = allPosts.filter(post => 
