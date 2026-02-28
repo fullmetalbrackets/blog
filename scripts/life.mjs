@@ -107,7 +107,7 @@ const typeFlag = args.find(a => a.startsWith('--'));
 const type = typeFlag ? typeFlag.slice(2) : null;
 
 if (!title) {
-  console.error(`Usage: yarn post "My Post Title" [${Object.keys(templates).filter(t => t !== 'default').map(t => `--${t}`).join('|')}]`);
+  console.error(`Usage: yarn life "My Title" [${Object.keys(templates).filter(t => t !== 'default').map(t => `--${t}`).join('|')}]`);
   process.exit(1);
 }
 

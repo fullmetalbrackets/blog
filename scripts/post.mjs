@@ -22,9 +22,8 @@ const file = path.join('src/content/blog', `${slug}.md`);
 
 const content = `---
 title: "${title}"
+pubDate: ${today()}
 description: 
-tags: []
-date: ${today()}
 tags: []
 related1: 
 related2: 
