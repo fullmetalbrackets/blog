@@ -18,7 +18,8 @@
 		"format": "prettier --write .",
 		"post": "node scripts/post.mjs",
 		"life": "node scripts/life.mjs",
-		"note": "node scripts/note.mjs"
+		"note": "node scripts/note.mjs",
+		"links": "node scripts/link.mjs"
 	},
 	"dependencies": {
 		"@astrojs/check": "^0.9.6",
