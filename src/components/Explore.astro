@@ -1,4 +1,5 @@
 ---
+const { class: className } = Astro.props;
 ---
 
 <style scoped>
@@ -14,14 +15,23 @@
     margin: 0;
   }
   ul {
+    list-style-type: none;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     place-items: center;
     background-color: var(--blockquote);
+    font-weight: bold;
     border-radius: 0.5em;
     margin: 0.5em auto 0 auto;
-    padding: 1.5em;
-    min-height: 19.25em;
+    padding-top: 1.5em;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+  }
+  .ul-index {
+    padding-bottom: 2.95em;
+  }
+  .ul-404 {
+    padding-bottom: 1.5em;
   }
   li {
     margin: 0.25em auto;
@@ -49,7 +59,7 @@
 <section>
     <h2>Explore Site</h2>
     <nav>
-        <ul class="no-list b">
+        <ul class={className}>
             <li>
                 <a href="/blog/" data-umami-event="explore-blog">Blog</a>
             </li>
