@@ -939,6 +939,7 @@ blockquote[data-type='warning'] a:hover {
 	font-style: italic;
 	font-weight: 100;
 	color: var(--secondary);
+	margin-top: 0.15em;
 }
 
 .ext {
