@@ -54,6 +54,7 @@ export interface Props {
 }
 
 const { tag, posts } = Astro.props;
+const tagTitle = tag.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
 ---
 
 
@@ -165,9 +166,9 @@ const { tag, posts } = Astro.props;
   }
 </style>
 
-<BaseLayout title={`${tag}`}>
+<BaseLayout title={`Posts about ${tagTitle}`}>
   <section>
-    <h1>Posts about <span class="tag">{`${tag}`}</span></h1>
+    <h1>Posts about <span class="tag">{`${tagTitle}`}</span></h1>
     <hr />
     <p class="back">
       <a href="/categories/" rel="prefetch-intent">↩ Categories</a>

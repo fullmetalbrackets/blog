@@ -1,5 +1,4 @@
 ---
-import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import FormattedDate from "@components/FormattedDate.astro";
@@ -8,7 +7,7 @@ import BlogPosting from "@components/BlogPosting.astro";
 import ScrollProgress from "@components/ScrollProgress.astro";
 import ReadingTime from "@components/ReadingTime.astro";
 import WebMentions from "@components/WebMentions.astro";
-import { Image, inferRemoteSize } from 'astro:assets';
+import type { BlogPostProps } from '../types';
 import type { MarkdownHeading } from 'astro';
 import {
   BlueskyShareButton,
@@ -21,7 +20,7 @@ import {
 import Related from '@icons/related.svg';
 import Comments from "@components/Comments.astro";
 
-type Props = CollectionEntry<"blog">['data'] & { headings: MarkdownHeading[]; readingTime: string };
+type Props = BlogPostProps & { headings: MarkdownHeading[]; readingTime: string };
 
 const BUTTONS = [BlueskyShareButton, ThreadsShareButton, TwitterShareButton, RedditShareButton, HackerNewsShareButton]
 const { title, description, pubDate, updatedDate, tags, headings, related1, related2, readingTime } = Astro.props;

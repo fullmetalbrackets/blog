@@ -2,8 +2,8 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 
-const title = 'Blog posts by year'
-const desc = 'See a list of blog posts by the year they were written'
+const title = "Blog posts by year";
+const desc = 'List blog posts by year.'
 
 // Get all posts and count by year
 const allPosts = await getCollection('blog');

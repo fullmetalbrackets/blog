@@ -1,16 +1,11 @@
 ---
 import "@styles/global.css";
-import type { ImageMetadata } from 'astro';
 import FallbackImage from '../img/assets/preview.png'
 import { SITE_TITLE } from '../consts';
 import { Font } from 'astro:assets';
+import type { BaseHeadProps } from '../types';
 
-interface Props {
-  title: string;
-  description: string;
-	image?: ImageMetadata;
-  ogType?: string;
-}
+type Props = BaseHeadProps;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
