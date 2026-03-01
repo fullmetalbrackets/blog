@@ -1,10 +1,11 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
-import { getCollection, render, type CollectionEntry, type InferEntrySchema, type RenderedContent } from "astro:content";
+import { getCollection, render } from "astro:content";
 import FormattedDate from "@components/FormattedDate.astro";
 import ReadingTime from "@components/ReadingTime.astro";
 import BackToTop from "@components/BackToTop.astro";
-import type { Page } from "astro";
+import { SITE_TITLE } from "@consts";
+import type { BlogPageProps } from '../../types';
 
 export async function getStaticPaths({ paginate }) {
   const posts = (await getCollection("blog")).sort(
@@ -14,9 +15,9 @@ export async function getStaticPaths({ paginate }) {
   const pages = paginate(posts, { pageSize: 5 });
   
   return await Promise.all(
-    pages.map(async (page: { props: { page: { data: any[]; }; }; }) => {
+    pages.map(async (page) => {
       const postsWithReadingTime = await Promise.all(
-        page.props.page.data.map(async (post: { id: string; body?: string; collection: "blog"; data: InferEntrySchema<"blog">; rendered?: RenderedContent; filePath?: string; }) => {
+        page.props.page.data.map(async (post) => {
           const { remarkPluginFrontmatter } = await render(post);
           return {
             ...post,
@@ -38,14 +39,10 @@ export async function getStaticPaths({ paginate }) {
   );
 }
 
-interface Props {
-  page: Page<CollectionEntry<'blog'> & { readingTime: string }>;
-}
-
+type Props = BlogPageProps;
 const { page } = Astro.props;
-
-const title = `Blog Posts - Page ${page.currentPage} of ${page.lastPage}`;
-const desc = "List of all blog posts";
+const title = `Blog - Page ${page.currentPage} | ${SITE_TITLE}`;
+const desc = "Archive of blog posts.";
 ---
 
 <style scoped>

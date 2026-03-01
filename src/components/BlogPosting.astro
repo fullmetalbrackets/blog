@@ -1,7 +1,7 @@
 ---
-import type { CollectionEntry } from 'astro:content';
+import type { BlogData } from '../types';
+type Props = BlogData;
 
-type Props = CollectionEntry<'blog'>['data'];
 const { title, description, pubDate, updatedDate, tags } = Astro.props;
 
 const schema = {

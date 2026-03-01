@@ -1,6 +1,7 @@
 ---
-import { type CollectionEntry, getCollection, render } from "astro:content";
 import BlogPost from "@layouts/BlogPost.astro";
+import { getCollection, render } from "astro:content";
+import type { BlogSlugProps } from '../../types';
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
@@ -11,9 +12,7 @@ export async function getStaticPaths() {
   }));
 }
 
-type Props = {
-  post: CollectionEntry<'blog'>;
-};
+type Props = BlogSlugProps;
 
 const { post } = Astro.props;
 const { Content, headings, remarkPluginFrontmatter } = await render(post);
