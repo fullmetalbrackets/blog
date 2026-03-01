@@ -34,10 +34,9 @@ const selectedPosts = allPosts.filter(post =>
 ---
 <ScrollProgress />
 
-<BaseLayout title={title} description={description}>  
+<BaseLayout title={title} description={description} ogType="article">  
   <head>
     <link rel="stylesheet" href="/prism.css" />
-    <meta property="og:type" content="article" />
   </head>
   <style scoped>
     h1 {

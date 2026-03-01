@@ -3,12 +3,13 @@ import BaseHead from '@components/BaseHead.astro';
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
 
-const { title } = Astro.props.frontmatter || Astro.props;
-const { description } = Astro.props.frontmatter || Astro.props;
+const { title, description, ogType } = Astro.props.frontmatter || Astro.props;
 ---
 
 <html lang="en">
 	<head>
+		<meta charset="utf-8" />
+
 		<script is:inline>
 			const savedTheme = localStorage.getItem('theme');
 			const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -22,8 +23,9 @@ const { description } = Astro.props.frontmatter || Astro.props;
 			}
 		</script>
 		
-		<BaseHead title={title} description={description} />
-
+		<BaseHead title={title} description={description} ogType={ogType} />
+		<slot name="head" />
+		
 		<style>
 			main {
 				margin: 0 auto;
@@ -48,5 +50,18 @@ const { description } = Astro.props.frontmatter || Astro.props;
 			</slot>
 		</main>
 		<Footer />
+
+		<!-- Track outbound links w/ Umami -->
+		<script is:inline type="text/javascript">
+			(() => {
+				const name = 'outbound-link-click';
+				document.querySelectorAll('a').forEach(a => {
+				if (a.host !== window.location.host && !a.getAttribute('data-umami-event')) {
+					a.setAttribute('data-umami-event', name);
+					a.setAttribute('data-umami-event-url', a.href);
+				}
+				});
+			})();
+		</script>
 	</body>
 </html>

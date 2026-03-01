@@ -9,15 +9,15 @@ interface Props {
   title: string;
   description: string;
 	image?: ImageMetadata;
+  ogType?: string;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = FallbackImage } = Astro.props;
+const { title, description, image = FallbackImage, ogType = "website" } = Astro.props;
 ---
 
 <!-- Global Metadata -->
-<meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="icon" type="image/png" href="/favicon-192x192.png" sizes="192x192" />
@@ -49,7 +49,7 @@ const { title, description, image = FallbackImage } = Astro.props;
 <meta itemprop="image" content={new URL(image.src, Astro.url)} />
 
 <!-- Open Graph / Facebook -->
-<meta property="og:type" content="website" />
+<meta property="og:type" content={ogType} />
 <meta property="og:url" content={Astro.url} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
@@ -77,16 +77,3 @@ const { title, description, image = FallbackImage } = Astro.props;
 <link rel="me" href="https://bsky.app/profile/fullmetalbrackets.bsky.social" />
 <link rel="me" href="https://social.lol/@adiaz" />
 <meta name="fediverse:creator" content="@adiaz@social.lol">
-
-<!-- Track outbound links w/ Umami -->
-<script is:inline type="text/javascript">
-  (() => {
-    const name = 'outbound-link-click';
-    document.querySelectorAll('a').forEach(a => {
-      if (a.host !== window.location.host && !a.getAttribute('data-umami-event')) {
-        a.setAttribute('data-umami-event', name);
-        a.setAttribute('data-umami-event-url', a.href);
-      }
-    });
-  })();
-</script>
