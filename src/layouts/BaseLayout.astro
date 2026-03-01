@@ -2,8 +2,10 @@
 import BaseHead from '@components/BaseHead.astro';
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
+import { SITE_TITLE } from '@consts';
 
 const { title, description, ogType } = Astro.props.frontmatter || Astro.props;
+const pageTitle = title === SITE_TITLE ? SITE_TITLE : `${title} | ${SITE_TITLE}`;
 ---
 
 <html lang="en">
@@ -23,7 +25,7 @@ const { title, description, ogType } = Astro.props.frontmatter || Astro.props;
 			}
 		</script>
 		
-		<BaseHead title={title} description={description} ogType={ogType} />
+		<BaseHead title={pageTitle} description={description} ogType={ogType} />
 		<slot name="head" />
 		
 		<style>
