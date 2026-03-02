@@ -694,4 +694,26 @@ const selectedPosts = await getRelatedPosts(related ?? []);
       copyToClipboard(copyBtn, code.innerText);
     });
   </script>
+  <script is:inline>
+    if (window.matchMedia('(min-width: 2108px)').matches) {
+      const toc = document.querySelector('.toc-container');
+      const articleEl = document.querySelector('article');
+
+      if (toc && articleEl) {
+        const headings = articleEl.querySelectorAll('h2');
+        const lastHeading = headings[headings.length - 1];
+
+        if (lastHeading) {
+          const observer = new IntersectionObserver(([entry]) => {
+            const isVisible = entry.isIntersecting || entry.boundingClientRect.top > 0;
+            toc.style.opacity = isVisible ? '1' : '0';
+            toc.style.pointerEvents = isVisible ? 'auto' : 'none';
+            toc.style.transition = 'opacity 0.3s ease';
+          });
+
+          observer.observe(lastHeading);
+        }
+      }
+    }
+  </script>
 </BaseLayout>
