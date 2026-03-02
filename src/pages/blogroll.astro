@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
+import FormattedDate from "@components/FormattedDate.astro";
 
 const title = "Blogroll";
 const desc = "A list of blogs that I follow and regularly read.";
@@ -27,7 +28,7 @@ const blogs = [
 const getFavicon = (url: string) =>
   `https://www.google.com/s2/favicons?domain=${new URL(url).hostname}&sz=32`;
 
-const lastUpdated = "March 1, 2026";
+const lastUpdated = new Date('2026-03-01T00:00');
 ---
 
 <style scoped>
@@ -144,6 +145,9 @@ const lastUpdated = "March 1, 2026";
     animation: none;
   }
   @media screen and (max-width: 667px) {
+    p.flex {
+      font-size: 0.875em;
+    }
     ul {
       margin: 1.5em 0.5em 3em 0.5em;
     }
@@ -158,7 +162,7 @@ const lastUpdated = "March 1, 2026";
     <h1>{title}</h1>
     <hr />
     <p>A list of blogs that I follow and regularly read. <em>(Links in alphabetical order.)</em></p>
-    <p>Last updated on <span class="important">{lastUpdated}</span></p>
+    <p class="flex">Last updated &nbsp;<FormattedDate date={lastUpdated} monthFormat="long" /></p>
     <ul>
       {blogs.map(blog => (
         <li>
