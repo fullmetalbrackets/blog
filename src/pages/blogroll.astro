@@ -1,0 +1,208 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+
+const title = "Blogroll";
+const desc = "A list of blogs that I follow and regularly read.";
+
+const blogs = [
+  { name: "Anthony Fu", url: "https://antfu.me/", id: "antfu", feed: "https://antfu.me/feed.xml" },
+  { name: "Chris Coyier", url: "https://chriscoyier.net/", id: "chriscoyier", feed: "https://chriscoyier.net/feed/" },
+  { name: "Chris Lu", url: "https://chris.lu/", id: "chrislu", feed: "#" },
+  { name: "Henry From Online", url: "https://henry.codes/", id: "henrycodes", feed: "https://henry.codes/rss/" },
+  { name: "Josh Collinsworth", url: "https://joshcollinsworth.com/", id: "collinsworth", feed: "https://joshcollinsworth.com/api/rss.xml" },
+  { name: "Josh W. Comeau", url: "https://www.joshwcomeau.com/", id: "jwcomeau", feed: "https://www.joshwcomeau.com/feed.xml" },
+  { name: "Kevin Kipp", url: "https://kevinkipp.com/", id: "kkipp", feed: "https://kevinkipp.com/blog/feed.xml" },
+  { name: "Localghost", url: "https://localghost.dev/", id: "localghost", feed: "https://localghost.dev/rss-feeds/" },
+  { name: "Robb Knight", url: "https://rknight.me/", id: "rknight", feed: "https://rknight.me/subscribe/" },
+  { name: "TechnoTim", url: "https://technotim.live/", id: "technotim", feed: "https://technotim.live/feed.xml" },
+  { name: "Tempertemper", url: "https://tempertemper.net/", id: "tempertemper", feed: "https://tempertemper.net/feeds/main.xml" },
+  { name: "Whitep4nth3r", url: "https://whitep4nth3r.com/", id: "whitep4nth3r", feed: "https://whitep4nth3r.com/feed.xml" },
+];
+
+const getFavicon = (url: string) =>
+  `https://www.google.com/s2/favicons?domain=${new URL(url).hostname}&sz=32`;
+
+const lastUpdated = "March 1, 2026";
+---
+
+<style scoped>
+  svg {
+    margin: 0;
+    padding: 0;
+  }
+  h1 {
+    font-family: var(--sub-font);
+    font-weight: 900;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 1.5em 1.5em 3em 1.5em;
+  }
+  li {
+    border-bottom: 2px dotted var(--border);
+    padding: 0.625em 0;
+  }
+  li:first-child {
+    border-top: 2px dotted var(--border);
+  }
+  .blog-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1em;
+  }
+  .left {
+    display: flex;
+    align-items: center;
+    gap: 0.625em;
+    line-height: 1
+  }
+  .favicon {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    display: block;
+    font-size: 0;
+  }
+  .name {
+    font-weight: 700;
+    color: var(--emphasis);
+  }
+  .right {
+    display: flex;
+    align-items: center;
+    gap: 0.75em;
+    flex-shrink: 0;
+    line-height: 1
+  }
+  .url {
+    font-family: var(--code-font);
+    font-size: 0.75em;
+    color: var(--link);
+  }
+  .rss {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+  .rss svg {
+    width: 32px;
+    height: 32px;
+  }
+  li:hover .name {
+    color: var(--primary);
+    transition: all .2s ease-out;
+  }
+  li:hover .url {
+    color: var(--hover);
+    transition: all .2s ease-out;
+  }
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-5deg); }
+    75% { transform: rotate(5deg); }
+  }
+  .rss svg:hover {
+    animation: wiggle 0.5s ease-in-out infinite;
+  }
+  .rss svg:not(:hover) {
+    animation: none;
+  }
+  .no-feed {
+    position: relative;
+    cursor: default;
+    display: flex;
+    align-items: center;
+  }
+  .no-feed .tooltip {
+    position: absolute;
+    right: 0;
+    bottom: calc(100% + 6px);
+    background: var(--blockquote);
+    border: 1px solid var(--border);
+    border-radius: 0.5em;
+    padding: 0.25em 0.625em;
+    font-size: 0.75em;
+    font-family: var(--sub-font);
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s, visibility 0.2s;
+    pointer-events: none;
+  }
+  .no-feed:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+  }
+  .no-feed svg:hover {
+    animation: none;
+  }
+  @media screen and (max-width: 667px) {
+    ul {
+      margin: 1.5em 0.5em 3em 0.5em;
+    }
+    .url {
+      display: none;
+    }
+  }
+</style>
+
+<BaseLayout title={title} description={desc}>
+  <section data-pagefind-body>
+    <h1>{title}</h1>
+    <hr />
+    <p>A list of blogs that I follow and regularly read. <em>(Links in alphabetical order.)</em></p>
+    <p>Last updated on <span class="important">{lastUpdated}</span></p>
+    <ul>
+      {blogs.map(blog => (
+        <li>
+          <div class="blog-link">
+            <a href={blog.url} target="_blank" rel="noopener noreferrer"
+              data-umami-event={`blogroll-${blog.id}`} class="left">
+              <img
+                src={getFavicon(blog.url)}
+                alt={`${blog.name} favicon`}
+                class="favicon"
+                width="20"
+                height="20"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="name">{blog.name}</span>
+            </a>
+            <div class="right">
+              <span class="url"><a href={blog.url}>{blog.url.replace('https://', '').replace(/\/$/, '')}</a></span>
+              {blog.feed === '#' ? (
+                <span class="rss no-feed" title="No RSS feed available" aria-label="No RSS feed">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+                    <rect width="256" height="256" rx="55" ry="55" fill="#888"/>
+                    <rect width="246" height="246" rx="50" ry="50" x="5" y="5" fill="#aaa"/>
+                    <rect width="236" height="236" rx="47" ry="47" x="10" y="10" fill="#999"/>
+                    <circle cx="68" cy="189" r="24" fill="#FFF"/>
+                    <path d="M160 213h-34a82 82 0 0 0 -82 -82v-34a116 116 0 0 1 116 116z" fill="#FFF"/>
+                    <path d="M184 213A140 140 0 0 0 44 73 V 38a175 175 0 0 1 175 175z" fill="#FFF"/>
+                  </svg>
+                  <span class="tooltip">No feed &#9785;</span>
+                </span>
+              ) : (
+                <a href={blog.feed} target="_blank" rel="noopener noreferrer"
+                  class="rss" aria-label={`${blog.name} RSS feed`}
+                  data-umami-event={`blogroll-rss-${blog.id}`}>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+                    <rect width="256" height="256" rx="55" ry="55" fill="#CC5D15"/>
+                    <rect width="246" height="246" rx="50" ry="50" x="5" y="5" fill="#F49C52"/>
+                    <rect width="236" height="236" rx="47" ry="47" x="10" y="10" fill="#E3702D"/>
+                    <circle cx="68" cy="189" r="24" fill="#FFF"/>
+                    <path d="M160 213h-34a82 82 0 0 0 -82 -82v-34a116 116 0 0 1 116 116z" fill="#FFF"/>
+                    <path d="M184 213A140 140 0 0 0 44 73 V 38a175 175 0 0 1 175 175z" fill="#FFF"/>
+                  </svg>
+                </a>
+              )}
+            </div>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </section>
+</BaseLayout>
