@@ -1,57 +1,30 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
-import type { CollectionEntry } from "astro:content";
-import { getCollection, render } from "astro:content";
+import { getPostsWithReadingTime } from '@utils/collections';
 import FormattedDate from "@components/FormattedDate.astro";
 import ReadingTime from "@components/ReadingTime.astro";
 import BackToTop from "@components/BackToTop.astro";
+import type { BlogTagProps } from '../../types';
 
 export async function getStaticPaths() {
-	const allPosts = await getCollection("blog").then((collection) => {
-		return collection.sort(
-			(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-		);
-	});
+	const allPosts = await getPostsWithReadingTime();
 
-	const tags: string[] = [];
+	const tags = [...new Set(allPosts.flatMap(post =>
+		post.data.tags.map(tag => tag.toLowerCase())
+	))];
 
-	allPosts.forEach((post) => {
-		post.data.tags.forEach((tag) => {
-			tags.push(tag.toLowerCase());
-		});
-	});
-
-	return await Promise.all(
-		Array.from(new Set(tags)).map(async (tag) => {
-			const filteredPosts = allPosts.filter((post) =>
-				post.data.tags.map((tag) => tag.toLowerCase()).includes(tag),
-			);
-
-			const postsWithReadingTime = await Promise.all(
-				filteredPosts.map(async (post) => {
-					const { remarkPluginFrontmatter } = await render(post);
-					return {
-						...post,
-						readingTime: remarkPluginFrontmatter.readingTime
-					};
-				})
-			);
-
-			return {
-				params: { tag },
-				props: {
-					tag,
-					posts: postsWithReadingTime,
-				},
-			};
-		})
-	);
+	return tags.map((tag) => ({
+		params: { tag },
+		props: {
+			tag,
+			posts: allPosts.filter(post =>
+				post.data.tags.map(t => t.toLowerCase()).includes(tag)
+			),
+		},
+	}));
 }
 
-export interface Props {
-	tag: string;
-	posts: (CollectionEntry<"blog"> & { readingTime: string })[];
-}
+type Props = BlogTagProps;
 
 const { tag, posts } = Astro.props;
 const tagTitle = tag.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');

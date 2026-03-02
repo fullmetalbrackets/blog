@@ -1,21 +1,10 @@
 ---
 import FormattedDate from "./FormattedDate.astro";
 import ReadingTime from "./ReadingTime.astro";
-import { getCollection, render } from "astro:content";
+import { getPostsWithReadingTime } from '@utils/collections';
 import More from '@icons/arrow-right.svg';
 
-const posts = (await getCollection("blog")).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
-const recentPosts = await Promise.all(
-  posts.slice(0, 5).map(async (post) => {
-    const { remarkPluginFrontmatter } = await render(post);
-    return {
-      ...post,
-      readingTime: remarkPluginFrontmatter.readingTime
-    };
-  })
-);
+const recentPosts = (await getPostsWithReadingTime()).slice(0, 5);
 ---
 
 <style scoped>

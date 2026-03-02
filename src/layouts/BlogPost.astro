@@ -1,5 +1,4 @@
 ---
-import { getCollection } from "astro:content";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import FormattedDate from "@components/FormattedDate.astro";
 import TableOfContents from '@components/TableOfContents.astro';
@@ -19,17 +18,14 @@ import {
 } from "astro-social-share";
 import Related from '@icons/related.svg';
 import Comments from "@components/Comments.astro";
+import { getRelatedPosts } from '@utils/collections';
 
 type Props = BlogPostProps & { headings: MarkdownHeading[]; readingTime: string };
 
 const BUTTONS = [BlueskyShareButton, ThreadsShareButton, TwitterShareButton, RedditShareButton, HackerNewsShareButton]
 const { title, description, pubDate, updatedDate, tags, headings, related1, related2, readingTime } = Astro.props;
 const { slug } = Astro.params;
-const allPosts = await getCollection("blog");
-const relatedPosts = [ related1, related2 ];
-const selectedPosts = allPosts.filter(post => 
-  relatedPosts.includes(post.id)
-);
+const selectedPosts = await getRelatedPosts([related1, related2]);
 ---
 <ScrollProgress />
 

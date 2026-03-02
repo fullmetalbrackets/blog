@@ -91,7 +91,7 @@ description: My computer and server hardware, and also smart home things.
 - Nintendo DS
 - Nintendo 3DS
 - Nintendo GameCube
-- Nintendo Switch 
+- Nintendo Switch
 - Nintendo Switch 2
 - Nintendo Wii
 - PlayStation 3

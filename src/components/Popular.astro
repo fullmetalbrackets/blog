@@ -1,10 +1,8 @@
 ---
 import FormattedDate from "./FormattedDate.astro";
 import ReadingTime from "@components/ReadingTime.astro";
-import { getCollection, render } from 'astro:content';
+import { getPostsWithReadingTime } from '@utils/collections';
 
-const allPosts = (await getCollection("blog")).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 const popularPosts = [
   'plex-remote-access-tailscale', 
   'upgrade-debian-12-bookworm-debian-13-trixie',
@@ -13,19 +11,8 @@ const popularPosts = [
   'solid-explorer-samba-share'
 ];
 
-const filteredPosts = allPosts.filter(post => 
-  popularPosts.includes(post.id)
-);
-
-const selectedPosts = await Promise.all(
-  filteredPosts.map(async (post) => {
-    const { remarkPluginFrontmatter } = await render(post);
-    return {
-      ...post,
-      readingTime: remarkPluginFrontmatter.readingTime
-    };
-  })
-);
+const allPosts = await getPostsWithReadingTime();
+const selectedPosts = allPosts.filter(post => popularPosts.includes(post.id));
 ---
 
 <style scoped>

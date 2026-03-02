@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
-import { getCollection, render } from "astro:content";
+import { getSortedPosts, getPostsWithReadingTime } from '@utils/collections';
 import FormattedDate from "@components/FormattedDate.astro";
 import ReadingTime from "@components/ReadingTime.astro";
 import BackToTop from "@components/BackToTop.astro";
@@ -8,35 +8,8 @@ import { SITE_TITLE } from "@consts";
 import type { BlogPageProps } from '../../types';
 
 export async function getStaticPaths({ paginate }) {
-  const posts = (await getCollection("blog")).sort(
-    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-  );
-  
-  const pages = paginate(posts, { pageSize: 5 });
-  
-  return await Promise.all(
-    pages.map(async (page) => {
-      const postsWithReadingTime = await Promise.all(
-        page.props.page.data.map(async (post) => {
-          const { remarkPluginFrontmatter } = await render(post);
-          return {
-            ...post,
-            readingTime: remarkPluginFrontmatter.readingTime
-          };
-        })
-      );
-      
-      return {
-        ...page,
-        props: {
-          page: {
-            ...page.props.page,
-            data: postsWithReadingTime
-          }
-        }
-      };
-    })
-  );
+  const posts = await getPostsWithReadingTime();
+  return paginate(posts, { pageSize: 5 });
 }
 
 type Props = BlogPageProps;
@@ -204,7 +177,6 @@ const desc = "Archive of blog posts.";
   .blurb svg:hover {
     animation: wiggle 0.5s ease-in-out infinite;
   }
-
   .blurb svg:not(:hover) {
     animation: none;
   }
