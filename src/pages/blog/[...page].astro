@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
-import { getSortedPosts, getPostsWithReadingTime } from '@utils/collections';
+import { getPostsWithReadingTime } from '@utils/collections';
 import FormattedDate from "@components/FormattedDate.astro";
 import ReadingTime from "@components/ReadingTime.astro";
 import BackToTop from "@components/BackToTop.astro";
@@ -214,16 +214,16 @@ const desc = "Archive of blog posts.";
     <hr />
     <p class="blurb">
       <span>
-        List of all <span class="total">{page.total}</span> blog posts. Alternatively, <a href="/categories/" rel="prefetch-intent" data-umami-event="blog-category">see posts by category</a> or <a href="/search/" rel="prefetch-intent" data-umami-event="blog-search">search the blog</a>.
+        List of all <span class="total">{page.total}</span> blog posts. Alternately, see posts <a href="updated/" rel="prefetch-intent" data-umami-event="blog-updated">by most recently updated</a>, <a href="/categories/" rel="prefetch-intent" data-umami-event="blog-category">by category</a> or <a href="/search/" rel="prefetch-intent" data-umami-event="blog-search">search the blog</a>.
       </span>
       <p class="years">
         See posts by year:&nbsp;
-        <a href="/blog/years/2026/" data-umami-event="blog-2026">2026</a>&nbsp;
-        <a href="/blog/years/2025/" data-umami-event="blog-2025">2025</a>&nbsp;
-        <a href="/blog/years/2024/" data-umami-event="blog-2024">2024</a>&nbsp;
-        <a href="/blog/years/2023/" data-umami-event="blog-2023">2023</a>&nbsp;
-        <a href="/blog/years/2022/" data-umami-event="blog-2022">2022</a>&nbsp;
-        <a href="/blog/years/2021/" data-umami-event="blog-2021">2021</a>
+        <a href="years/2026/" data-umami-event="blog-2026">2026</a>&nbsp;
+        <a href="years/2025/" data-umami-event="blog-2025">2025</a>&nbsp;
+        <a href="years/2024/" data-umami-event="blog-2024">2024</a>&nbsp;
+        <a href="years/2023/" data-umami-event="blog-2023">2023</a>&nbsp;
+        <a href="years/2022/" data-umami-event="blog-2022">2022</a>&nbsp;
+        <a href="years/2021/" data-umami-event="blog-2021">2021</a>
       </p>
       <span class="rss">RSS Feed: 
         <a href="/rss.xml" rel="prefetch-intent">
