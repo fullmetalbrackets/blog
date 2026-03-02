@@ -4,8 +4,7 @@ description: "I've used a reverse proxy to access my self-hosted apps and servic
 pubDate: 2024-10-17
 updatedDate: 2025-02-26
 tags: ['self-hosting', 'pi-hole', 'nginx proxy manager']
-related1: set-up-pihole-on-linux
-related2: self-host-website-cloudflare-tunnel
+related: ['set-up-pihole-on-linux', 'self-host-website-cloudflare-tunnel']
 ---
 
 > [warning] Important

@@ -23,9 +23,9 @@ import { getRelatedPosts } from '@utils/collections';
 type Props = BlogPostProps & { headings: MarkdownHeading[]; readingTime: string };
 
 const BUTTONS = [BlueskyShareButton, ThreadsShareButton, TwitterShareButton, RedditShareButton, HackerNewsShareButton]
-const { title, description, pubDate, updatedDate, tags, headings, related1, related2, readingTime } = Astro.props;
+const { title, description, pubDate, updatedDate, tags, headings, related, readingTime } = Astro.props;
 const { slug } = Astro.params;
-const selectedPosts = await getRelatedPosts([related1, related2]);
+const selectedPosts = await getRelatedPosts(related ?? []);
 ---
 <ScrollProgress />
 
@@ -445,7 +445,8 @@ const selectedPosts = await getRelatedPosts([related1, related2]);
 
   <BlogPosting slot="head" {...Astro.props} />
 
-  <article data-pagefind-body>
+  <article data-pagefind-body data-pub-date={pubDate.toISOString()}
+  data-updated-date={updatedDate ? updatedDate.toISOString() : ''}>
     <h1>{title}</h1>
     <div class="blog-tags">
       <span class="tag" data-pagefind-ignore>
@@ -483,11 +484,12 @@ const selectedPosts = await getRelatedPosts([related1, related2]);
       </p>
     </slot>
 
-    <div class="related" data-pagefind-ignore>
-      <h3><Related width={36} height={36}/> Related Posts</h3>
-      <ul>
-        {selectedPosts.map(post => (
-          <a href={`/blog/${post.id}/`} rel="prefetch-intent" data-umami-event={`featured-${post.id}`}>
+    {selectedPosts.length > 0 && (
+      <div class="related" data-pagefind-ignore>
+        <h3><Related width={36} height={36}/> Related Posts</h3>
+        <ul>
+          {selectedPosts.map(post => (
+            <a href={`/blog/${post.id}/`} rel="prefetch-intent" data-umami-event={`featured-${post.id}`}>
             <li>
               <span>{post.data.title}</span>
               <div>
@@ -500,9 +502,10 @@ const selectedPosts = await getRelatedPosts([related1, related2]);
               <p>{post.data.description}</p>
             </li>
           </a>
-        ))}
-      </ul>
-    </div>
+          ))}
+        </ul>
+      </div>
+    )}
 
   </article>
   <hr class="midline">
@@ -634,6 +637,36 @@ const selectedPosts = await getRelatedPosts([related1, related2]);
             hr.parentNode.insertBefore(firstContentElement, hr.nextSibling);
           }
         }
+      }
+    }
+  </script>
+  <script is:inline>
+    const articleEl = document.querySelector('article');
+    if (articleEl) {
+      const pubDate = articleEl.dataset.pubDate;
+      const updatedDate = articleEl.dataset.updatedDate;
+      
+      const relevantDate = updatedDate ? new Date(updatedDate) : new Date(pubDate);
+      const now = new Date();
+      const monthsDiff = (now.getFullYear() - relevantDate.getFullYear()) * 12 
+        + (now.getMonth() - relevantDate.getMonth());
+
+      const banner = document.createElement('blockquote');
+
+      if (monthsDiff >= 24) {
+        const years = Math.floor(monthsDiff / 12);
+        const months = monthsDiff % 12;
+        const timeString = months > 0 ? `${years} years, ${months} months` : `${years} years`;
+        banner.setAttribute('data-type', 'warning');
+        banner.innerHTML = `<p><strong>Heads up!</strong></p><p>This post hasn't been updated in <b>${timeString}</b> so please consider everything out of date!</p>`;
+      } else if (monthsDiff >= 18) {
+        banner.setAttribute('data-type', 'warning');
+        banner.innerHTML = `<p><strong>Heads up!</strong></p><p>This post hasn't been updated in <i>over 18 months</i> and some information may be outdated.</p>`;
+      }
+
+      if (banner.hasAttribute('data-type')) {
+        const hr = articleEl.querySelector('hr');
+        if (hr) hr.insertAdjacentElement('afterend', banner);
       }
     }
   </script>

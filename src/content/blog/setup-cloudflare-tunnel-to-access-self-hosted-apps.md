@@ -4,8 +4,7 @@ description: "Cloudflare Tunnels have been around for a few years and are well r
 pubDate: 2023-07-20
 updatedDate: 2025-02-03
 tags: ['self-hosting', 'cloudflare']
-related1: self-host-website-cloudflare-tunnel
-related2: expose-plex-with-cloudflare
+related: ['self-host-website-cloudflare-tunnel', 'expose-plex-with-cloudflare']
 ---
 
 ## Pre-Requisites

@@ -4,8 +4,7 @@ description: "I've been getting more and more comfortable working on the command
 pubDate: 2021-12-04
 updatedDate: 2025-02-03
 tags: ['zsh', 'command line', 'linux']
-related1: basic-linux-commands
-related2: windows-terminal-with-ohmyposh
+related: ['basic-linux-commands', 'windows-terminal-with-ohmyposh']
 ---
 
 ![Oh-My-Zsh](../../img/blog/oh-my-zsh.png 'Oh-My-Zsh')

@@ -4,8 +4,7 @@ description: "Accessing self-hosted services from outside the home can be a chal
 pubDate: 2024-06-25
 updatedDate: 2025-10-21
 tags: ['tailscale', 'networking']
-related1: expose-plex-tailscale-vps
-related2: pihole-anywhere-tailscale
+related: ['expose-plex-tailscale-vps', 'pihole-anywhere-tailscale']
 ---
 
 ## About Tailscale

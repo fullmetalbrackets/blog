@@ -4,8 +4,7 @@ description: 'Beginning April 29th, 2025 the pricing for Plex Pass increased at 
 pubDate: 2025-05-17
 updatedDate: 2025-11-08
 tags: ['tailscale', 'plex']
-related1: comprehensive-guide-tailscale-securely-access-home-network
-related2: expose-plex-tailscale-vps
+related: ['comprehensive-guide-tailscale-securely-access-home-network', 'expose-plex-tailscale-vps']
 ---
 
 > [warning] Important

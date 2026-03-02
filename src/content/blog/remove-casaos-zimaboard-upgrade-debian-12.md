@@ -4,8 +4,7 @@ description: "ZimaBoard is an x86 single board server that comes running Debian 
 pubDate: 2025-02-10
 updatedDate: 2025-11-06
 tags: ['zimaboard', 'debian', 'command line']
-related1: factory-restore-zimaboard
-related2: upgrade-debian-12-bookworm-debian-13-trixie
+related: ['factory-restore-zimaboard', 'upgrade-debian-12-bookworm-debian-13-trixie']
 ---
 
 ## About the ZimaBoard

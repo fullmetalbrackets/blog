@@ -4,8 +4,7 @@ description: "My scenario was simple: I wanted to access the web GUIs of OpenMed
 pubDate: 2023-07-15
 updatedDate: 2025-12-21
 tags: ['self-hosting', 'openmediavault', 'nginx proxy manager']
-related1: reverse-proxy-using-nginx-pihole-cloudflare
-related2: openmediavault-quick-reference
+related: ['reverse-proxy-using-nginx-pihole-cloudflare', 'openmediavault-quick-reference']
 ---
 
 > [warning] Important

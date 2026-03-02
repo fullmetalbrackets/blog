@@ -2,10 +2,8 @@
 title: Breaking down the free tier of Oracle Cloud Infrastructure
 description: Oracle Cloud Infrastructure, or OCI for short, has a very generous free tier, but I see a lot of people on the oraclecloud and selfhosted subreddits being confused about exactly what's included, so here is a straightforward breakdown of every service and allotment in the free tier.
 pubDate: 2026-01-06
-tags:
- - oracle cloud
- - self-hosting
-related1: expose-plex-tailscale-vps
+tags: ['oracle cloud', 'self-hosting']
+related: ['expose-plex-tailscale-vps']
 ---
 
 ## Free what now?

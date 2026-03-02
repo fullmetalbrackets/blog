@@ -4,8 +4,7 @@ description: "Ansible is an IT tool that enables Infrastructure as Code, letting
 pubDate: 2022-09-03
 updatedDate: 2025-03-03
 tags: ['linux', 'ansible']
-related1: bootstrapping-fresh-install-with-ansible
-related2: setup-apt-cacher-ng-to-cache-packages-homelab
+related: ['bootstrapping-fresh-install-with-ansible', 'setup-apt-cacher-ng-to-cache-packages-homelab']
 ---
 
 > This is not a comprehensive tutorial for Ansible, but simply a terse quick guide of my personal use case for Ansible in my home lab. For a deeper dive on Ansible, I strongly suggest <a href="https://www.learnlinux.tv/getting-started-with-ansible/" target="_blank">Learn Linux TV series of Ansible tutorials</a> which is how I first learned to use it myself.

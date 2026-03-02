@@ -3,8 +3,7 @@ title: 'Set up Plex remote access with a GL.iNet Flint 2 router'
 description: 'Plex has built-in remote access that mostly just works, but you still have to configure your router to use it properly. Here is a quick guide on configuring a GL.iNet Flint 2 router, which probably also works with other GL.iNet routers using the same GUI.'
 pubDate: 2025-12-23
 tags: ['plex', 'gl-inet', 'networking']
-related1: plex-remote-access-tailscale
-related2: expose-plex-tailscale-vps
+related: ['plex-remote-access-tailscale', 'expose-plex-tailscale-vps']
 ---
 
 ## About Plex and Remote Access

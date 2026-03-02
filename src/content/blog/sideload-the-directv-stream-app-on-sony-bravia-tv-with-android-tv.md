@@ -4,12 +4,8 @@ description: "I have a Sony Bravia 4K TV and it is awesome. It has built-in Andr
 pubDate: 2021-08-31
 updatedDate: 2022-09-18
 tags: ['android']
-related1: rsync-a-quick-guide
+related: ['rsync-a-quick-guide']
 ---
-
-> [warning] Outdated Content
->
-> I haven't had AT&T as a cable provider (nor have I had cable at all) in years, and enough time has passed that it's almost certain the information in this blog post is no longer relevant. It will remain for legacy purposes, but it's probably unwise to try doing anything it says at this point.
 
 ## About the fix
 

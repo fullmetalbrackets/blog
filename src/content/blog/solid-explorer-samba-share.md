@@ -4,8 +4,7 @@ description: 'There are many File Managers/File Explorers on the Google Play Sto
 pubDate: 2022-11-07
 updatedDate: 2026-02-27
 tags: ['android', 'smb']
-related1: xplore-android-smb-share
-related2: setup-a-samba-share-on-linux-via-command-line
+related: ['xplore-android-smb-share', 'setup-a-samba-share-on-linux-via-command-line']
 ---
 
 > If you're here in 2026 because accessing SMB shares through Solid Explorer broke at some point, I've added [a fix for this issue here](#smb-fix).

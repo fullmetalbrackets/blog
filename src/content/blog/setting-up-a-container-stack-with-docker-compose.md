@@ -4,8 +4,7 @@ description: "I've been running a bunch of services on my home server in docker 
 pubDate: 2022-09-29
 updatedDate: 2024-11-04
 tags: ['self-hosting', 'docker']
-related1: watchtower-notifications
-related2: setup-prometheus-cadvisor-grafana
+related: ['watchtower-notifications', 'setup-prometheus-cadvisor-grafana']
 ---
 
 > This will not be an exhaustive Docker tutorial, for that I always suggest <a href="https://docs.docker.com" target="_blank" data-umami-event="container-stack-compose-docs-docker">the official Docker documentation</a>. The purpose of this guide is limited to explaining how to install Docker and set up various Docker containers quickly and easily via Docker Compose.

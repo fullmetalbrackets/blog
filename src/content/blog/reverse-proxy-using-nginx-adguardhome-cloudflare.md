@@ -4,8 +4,7 @@ description: "I've used a reverse proxy to access my self-hosted apps and servic
 pubDate: 2025-01-28
 updatedDate: 2025-02-26
 tags: ['self-hosting', 'adguard', 'cloudflare']
-related1: reverse-proxy-using-nginx-pihole-cloudflare
-related2: self-host-website-cloudflare-tunnel
+related: ['reverse-proxy-using-nginx-pihole-cloudflare', 'self-host-website-cloudflare-tunnel']
 ---
 
 > [warning] Important

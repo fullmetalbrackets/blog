@@ -4,8 +4,7 @@ description: "Exposing Plex to share your library with other users normally invo
 pubDate: 2024-07-15
 updatedDate: 2025-08-15
 tags: ['plex', 'cloudflare']
-related1: expose-plex-tailscale-vps
-related2: self-host-website-cloudflare-tunnel
+related: ['expose-plex-tailscale-vps', 'self-host-website-cloudflare-tunnel']
 ---
 
 ## What and Why
