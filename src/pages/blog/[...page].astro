@@ -168,16 +168,15 @@ const desc = "Archive of blog posts.";
     grid-column: 3;
     justify-content: end;
   }
-
   @keyframes wiggle {
     0%, 100% { transform: rotate(0deg); }
     25% { transform: rotate(-5deg); }
     75% { transform: rotate(5deg); }
   }
-  .blurb svg:hover {
+  .rss svg:hover {
     animation: wiggle 0.5s ease-in-out infinite;
   }
-  .blurb svg:not(:hover) {
+  .rss svg:not(:hover) {
     animation: none;
   }
   @media screen and (max-width: 667px) {
