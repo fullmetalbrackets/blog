@@ -3,15 +3,22 @@ import path from 'path';
 import { execSync } from 'child_process';
 
 const today = () => {
-  const now = new Date();
-  return now.toISOString().replace('T', ' ').replace(/\.\d{3}Z$/, '');
+	const now = new Date();
+	return now
+		.toISOString()
+		.replace('T', ' ')
+		.replace(/\.\d{3}Z$/, '');
 };
 
 const slugify = (str) =>
-  str.toLowerCase().trim().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
+	str
+		.toLowerCase()
+		.trim()
+		.replace(/\s+/g, '-')
+		.replace(/[^\w-]/g, '');
 
 const templates = {
-  game: (title) => `---
+	game: (title) => `---
 title: "${title}"
 pubDate: ${today()}
 type: game
@@ -28,7 +35,7 @@ steamdb:
 ---
 
 `,
-  movie: (title) => `---
+	movie: (title) => `---
 title: "${title}"
 pubDate: ${today()}
 type: movie
@@ -43,7 +50,7 @@ dbid: # tmdb
 ---
 
 `,
-  tvshow: (title) => `---
+	tvshow: (title) => `---
 title: "${title}"
 pubDate: ${today()}
 type: tvshow
@@ -57,7 +64,7 @@ dbid: # tmdb
 ---
 
 `,
-  book: (title) => `---
+	book: (title) => `---
 title: "${title}"
 pubDate: ${today()}
 type: book
@@ -72,7 +79,7 @@ note:
 ---
 
 `,
-  quote: (title) => `---
+	quote: (title) => `---
 title: "${title}"
 pubDate: ${today()}
 type: quote
@@ -81,7 +88,7 @@ attribution:
 ---
 
 `,
-  image: (title) => `---
+	image: (title) => `---
 title: "${title}"
 pubDate: ${today()}
 type: image
@@ -90,7 +97,7 @@ image: ./_images/
 ---
 
 `,
-  youtube: (title) => `---
+	youtube: (title) => `---
 title: "${title}"
 pubDate: ${today()}
 type: youtube
@@ -102,18 +109,27 @@ note:
 };
 
 const args = process.argv.slice(2);
-const title = args.find(a => !a.startsWith('--'));
-const typeFlag = args.find(a => a.startsWith('--'));
+const title = args.find((a) => !a.startsWith('--'));
+const typeFlag = args.find((a) => a.startsWith('--'));
 const type = typeFlag ? typeFlag.slice(2) : null;
 
 if (!title) {
-  console.error(`Usage: yarn life "My Title" [${Object.keys(templates).filter(t => t !== 'default').map(t => `--${t}`).join('|')}]`);
-  process.exit(1);
+	console.error(
+		`Usage: yarn life "My Title" [${Object.keys(templates)
+			.filter((t) => t !== 'default')
+			.map((t) => `--${t}`)
+			.join('|')}]`
+	);
+	process.exit(1);
 }
 
 if (type && !templates[type]) {
-  console.error(`❌ Unknown type "${type}". Valid types: ${Object.keys(templates).filter(t => t !== 'default').join(', ')}`);
-  process.exit(1);
+	console.error(
+		`❌ Unknown type "${type}". Valid types: ${Object.keys(templates)
+			.filter((t) => t !== 'default')
+			.join(', ')}`
+	);
+	process.exit(1);
 }
 
 const slug = slugify(title);
@@ -122,8 +138,8 @@ const dir = 'src/content/lifestream';
 const file = path.join(dir, filename);
 
 if (fs.existsSync(file)) {
-  console.error(`❌ Already exists: ${file}`);
-  process.exit(1);
+	console.error(`❌ Already exists: ${file}`);
+	process.exit(1);
 }
 
 const template = templates[type] ?? templates.default;

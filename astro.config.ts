@@ -66,8 +66,7 @@ export default defineConfig({
 		},
 		'/umami/': {
 			status: 302,
-			destination:
-				'https://u.adiaz.fyi/share/TtTytHU8rJy0oEzN',
+			destination: 'https://u.adiaz.fyi/share/TtTytHU8rJy0oEzN',
 		},
 		'/blog/tailscale/': {
 			status: 302,
