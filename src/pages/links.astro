@@ -2,12 +2,9 @@
 import BackToTop from "@components/BackToTop.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import FormattedDate from "@components/FormattedDate.astro";
-import { getCollection } from "astro:content";
+import { getSortedLinks } from "@utils/collections";
 
-const links = (await getCollection("links")).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
-
+const links = await getSortedLinks();
 const title = "Links";
 const desc = "Links to websites, self-hosted apps and other cool online things that I use.";
 ---
