@@ -59,6 +59,10 @@ const years = Object.keys(postsByYear)
   <section>
     <h1>{title}</h1>
     <hr />
+    <p class="space-between">
+        <a href="/blog/" rel="prefetch-intent">↩ All posts</a>
+        <a href="/categories/" rel="prefetch-intent">Categories ↪</a>
+    </p>
     <p>
         Pick a year below to see only blog posts written that year.
     </p>
@@ -76,10 +80,5 @@ const years = Object.keys(postsByYear)
             </li>
         ))}
     </ul>
-    <hr />
-    <p class="space-between mb2">
-        <a href="/blog/" rel="prefetch-intent">↩ All posts</a>
-        <a href="/categories/" rel="prefetch-intent">Categories ↪</a>
-    </p>
   </section>
 </BaseLayout>
