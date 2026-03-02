@@ -1,47 +1,29 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
-import { getCollection, type CollectionEntry } from "astro:content";
 import FormattedDate from "@components/FormattedDate.astro";
 import ReadingTime from "@components/ReadingTime.astro";
 import Link from "@components/Link.astro";
 import BackToTop from "@components/BackToTop.astro";
-import type { GetStaticPaths } from "astro";
+import { getSortedPosts } from "@utils/collections";
+import type { BlogYearProps } from '../../../types';
 
-function getReadingTime(content: string | undefined): string {
-  if (!content) return '0 min read';
-  const wordsPerMinute = 200;
-  const words = content.trim().split(/\s+/).length;
-  const minutes = Math.ceil(words / wordsPerMinute);
-  return `${minutes} min read`;
-}
+export async function getStaticPaths() {
+  const allPosts = await getSortedPosts();
 
-export const getStaticPaths = (async () => {
-  const allPosts = await getCollection('blog');
-  
-  const sortedPosts = allPosts.sort((a, b) => 
-    new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
-  );
-  
-  const postsByYear = sortedPosts.reduce((acc, post) => {
-    const year = new Date(post.data.pubDate).getFullYear().toString();
-    if (!acc[year]) {
-      acc[year] = [];
-    }
+  const postsByYear = allPosts.reduce((acc, post) => {
+    const year = post.data.pubDate.getFullYear().toString();
+    if (!acc[year]) acc[year] = [];
     acc[year].push(post);
     return acc;
   }, {} as Record<string, typeof allPosts>);
-  
+
   return Object.entries(postsByYear).map(([year, posts]) => ({
     params: { year },
     props: { posts, postsByYear }
   }));
-}) satisfies GetStaticPaths;
-
-interface Props {
-  posts: CollectionEntry<'blog'>[];
-  postsByYear: Record<string, CollectionEntry<'blog'>[]>;
 }
 
+type Props = BlogYearProps;
 const { posts, postsByYear } = Astro.props;
 const { year } = Astro.params;
 const postCount = posts.length
@@ -54,7 +36,7 @@ const desc = `Blog posts written in ${year}.`;
 
 <BaseLayout title={title} description={desc}>
   <section>
-    <h1>Blog Posts - {year}</h1>
+    <h1>{title}</h1>
     <hr />
     <p class="back">
       <a href="/blog/" rel="prefetch-intent">↩ Back to Blog</a>
@@ -83,7 +65,7 @@ const desc = `Blog posts written in ${year}.`;
                 </p>
                 <p class="info">
                   <FormattedDate date={post.data.pubDate} />&nbsp;
-                  <span class="reading"><ReadingTime time={getReadingTime(post.body)} /></span>
+                  <span class="reading"><ReadingTime time={post.data.readingTime} /></span>
                 </p>
                 <p class="desc">{post.data.description}</p>
               </a>

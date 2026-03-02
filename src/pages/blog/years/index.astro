@@ -1,12 +1,11 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
-import { getCollection } from "astro:content";
+import { getSortedPosts } from "@utils/collections";
 
 const title = "Blog posts by year";
 const desc = 'List blog posts by year.'
 
-// Get all posts and count by year
-const allPosts = await getCollection('blog');
+const allPosts = await getSortedPosts();
 
 const postsByYear = allPosts.reduce((acc, post) => {
   const year = post.data.pubDate.getFullYear();
@@ -14,7 +13,6 @@ const postsByYear = allPosts.reduce((acc, post) => {
   return acc;
 }, {} as Record<number, number>);
 
-// Get unique years and sort descending
 const years = Object.keys(postsByYear)
   .map(Number)
   .sort((a, b) => b - a);

@@ -1,11 +1,9 @@
 ---
-import { getCollection } from "astro:content";
+import { getSortedLinks } from "@utils/collections";
 import FormattedDate from "@components/FormattedDate.astro";
 import More from '@icons/arrow-right.svg';
 
-const links = (await getCollection("links")).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
+const links = await getSortedLinks();
 ---
 
 <style scoped>

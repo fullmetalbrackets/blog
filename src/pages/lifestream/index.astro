@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import { getLifestream } from '@utils/collections';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import Book from '@components/Book.astro';
 import Game from '@components/Game.astro';
@@ -11,10 +11,8 @@ import TVShow from '@components/TVShow.astro';
 import YouTube from '@components/YouTube.astro';
 import BackToTop from '@components/BackToTop.astro';
 
-const items = await getCollection('lifestream');
-const sortedItems = items.sort((a, b) => 
-  new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
-);
+const sortedItems = await getLifestream();
+const items = sortedItems;
 
 const allTypes = ['book', 'game', 'image', 'movie', 'note', 'quote', 'tvshow', 'youtube'] as const;
 type LifestreamType = typeof allTypes[number];

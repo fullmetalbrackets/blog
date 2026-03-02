@@ -1,18 +1,14 @@
 ---
 import FormattedDate from "./FormattedDate.astro";
-import { getCollection } from "astro:content";
 import More from '@icons/arrow-right.svg';
+import { getNotes } from '@utils/collections';
 
 interface Props {
   limit?: number;
 }
 
 const { limit = 4 } = Astro.props;
-const allLifestream = await getCollection('lifestream');
-const recentNotes = allLifestream
-  .filter((entry) => entry.data.type === 'note')
-  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
-  .slice(0, limit);
+const recentNotes = (await getNotes()).slice(0, limit);
 ---
 
 <style scoped>
