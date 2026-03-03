@@ -3,20 +3,21 @@ layout: ../layouts/Page.astro
 title: Verify
 description: A list of my verified identities across the internet.
 ---
+import { GITHUB, BLUESKY, DONATE, SITE_URL } from '@consts';
 
 Below is a list of my verified identities across the internet. If it's not listed here, it's not me.
 
 ## Social Media
 
 - Reddit: [FullmetalBrackets](https://www.reddit.com/user/FullmetalBrackets/)
-- Bluesky: [fullmetalbrackets](https://bsky.app/profile/fullmetalbrackets.com)
-- Mastodon: [@adiaz@social.lol](https://social.lol/@adiaz) & [@fullmetalbrackets@indieweb.social](https://indieweb.social/@fullmetalbrackets)
+- Bluesky: <a href={BLUESKY} target="_blank" rel="noopener noreferrer">fullmetalbrackets</a>
+- Mastodon: [@adiaz@social.lol](https://social.lol/@adiaz)
 - Threads: [fullmetal.brackets](https://www.threads.com/@fullmetal.brackets)
 
 ## Other
 
-- Buy Me A Coffee: [arieldiaz](https://buymeacoffee.com/arieldiaz)
-- GitHub: [fullmetalbrackets](https://github.com/fullmetalbrackets)
+- Buy Me A Coffee: <a href={DONATE} target="_blank" rel="noopener noreferrer">arieldiaz</a>
+- GitHub: <a href={GITHUB} target="_blank" rel="noopener noreferrer">fullmetalbrackets</a>
 - HackerNews: [fullmetalbracks](https://news.ycombinator.com/user?id=fullmetalbracks)
 - Discord: `fullmetalbrackets`
 
@@ -25,7 +26,7 @@ Below is a list of my verified identities across the internet. If it's not liste
 - [contact@fullmetalbrackets.com](mailto:contact@fullmetalbrackets.com)
 - All emails will be from `@fullmetalbrackets.com` domain.
 
-<br>
+<br/>
 <span class="xl b em">Any sites, services or apps not listed here, I am not active in.</span>
 
 ## WTF is a Verify slashpage?
