@@ -29,10 +29,10 @@ export type BlogSlugProps = {
 	post: CollectionEntry<'blog'>;
 };
 
-// blog/years/[year].astro
+// src/pages/blog/years/[year].astro
 export type BlogYearProps = {
-	posts: CollectionEntry<'blog'>[];
-	postsByYear: Record<string, CollectionEntry<'blog'>[]>;
+  posts: (CollectionEntry<'blog'> & { readingTime: string })[];
+  postsByYear: Record<string, (CollectionEntry<'blog'> & { readingTime: string })[]>;
 };
 
 // categories/[tag].astro

@@ -9,6 +9,7 @@ import GitHub from '@icons/gh.svg';
 import BuyMeCoffee from '@icons/bmc.svg';
 import Top from '@icons/arrow-up.svg';
 import Proven from '@icons/proven.svg';
+import { GITHUB, MASTODON, BLUESKY, DONATE } from '@consts';
 ---
 
 <style>
@@ -146,16 +147,16 @@ import Proven from '@icons/proven.svg';
     <a href="mailto:contact@fullmetalbrackets.com" target="_blank" data-umami-event="footer-mail">
       <Email height={28} width={28} class="email" />
     </a>
-    <a href="https://social.lol/@adiaz" target="_blank" data-umami-event="footer-social">
+    <a href={MASTODON} target="_blank" data-umami-event="footer-social">
       <Mastodon height={25} width={25} />
     </a>
-    <a href="https://bsky.app/profile/fullmetalbrackets.com" rel="me atproto" target="_blank" data-umami-event="footer-bsky">
+    <a href={BLUESKY} rel="me atproto" target="_blank" data-umami-event="footer-bsky">
       <Bluesky height={25} width={25} />
     </a>
-    <a href="https://github.com/fullmetalbrackets" target="_blank" data-umami-event="footer-github">
+    <a href={GITHUB} target="_blank" data-umami-event="footer-github">
       <GitHub height={25} width={25} />
     </a>
-    <a href="https://buymeacoffee.com/arieldiaz" target="_blank" data-umami-event="footer-coffee">
+    <a href={DONATE} target="_blank" data-umami-event="footer-coffee">
       <BuyMeCoffee height={25} width={25} />
     </a>
   </div>
