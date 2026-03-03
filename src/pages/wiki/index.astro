@@ -3,6 +3,8 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 import FormattedDate from "@components/FormattedDate.astro";
 import BackToTop from "@components/BackToTop.astro";
+import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
+import { SITE_URL } from "@consts";
 
 const posts = (await getCollection("wiki")).sort((a, b) => {
   const dateA = a.data.updatedDate || a.data.pubDate;
@@ -76,6 +78,10 @@ const desc = "Archive of wiki articles.";
 </style>
 
 <BaseLayout title={title} description={desc}>
+  <BreadcrumbSchema slot="head" crumbs={[
+    { name: "Home", url: `${SITE_URL}/` },
+    { name: "Wiki", url: `${SITE_URL}/wiki/` }
+  ]} />
   <section>
     <h1>{title}</h1>
     <hr />

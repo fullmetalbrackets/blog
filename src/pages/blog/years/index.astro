@@ -1,6 +1,8 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 import { getSortedPosts } from "@utils/collections";
+import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
+import { SITE_URL } from "@consts";
 
 const title = "Blog posts by year";
 const desc = 'List blog posts by year.'
@@ -56,6 +58,11 @@ const years = Object.keys(postsByYear)
 </style>
 
 <BaseLayout title={title} description={desc}>
+  <BreadcrumbSchema slot="head" crumbs={[
+    { name: "Home", url: `${SITE_URL}/` },
+    { name: "Blog", url: `${SITE_URL}/blog/` },
+    { name: "Posts by Year", url: `${SITE_URL}/blog/years/` }
+  ]} />
   <section>
     <h1>{title}</h1>
     <hr />

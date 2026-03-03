@@ -1,9 +1,14 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 import FormattedDate from "@components/FormattedDate.astro";
+import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
+import { SITE_URL } from "@consts";
 
 const title = "Blogroll";
 const desc = "A list of blogs that I follow and regularly read.";
+
+const getFavicon = (url: string) =>
+  `https://www.google.com/s2/favicons?domain=${new URL(url).hostname}&sz=32`;
 
 const blogs = [
   { name: "Anthony Fu", url: "https://antfu.me/", id: "antfu", feed: "https://antfu.me/feed.xml" },
@@ -24,9 +29,6 @@ const blogs = [
   { name: "Troy V", url: "https://troyv.dev/", id: "troyv", feed: "https://troyv.dev/feed.xml" },
   { name: "Whitep4nth3r", url: "https://whitep4nth3r.com/", id: "whitep4nth3r", feed: "https://whitep4nth3r.com/feed.xml" },
 ];
-
-const getFavicon = (url: string) =>
-  `https://www.google.com/s2/favicons?domain=${new URL(url).hostname}&sz=32`;
 
 const lastUpdated = new Date('2026-03-01T00:00');
 ---
@@ -158,6 +160,10 @@ const lastUpdated = new Date('2026-03-01T00:00');
 </style>
 
 <BaseLayout title={title} description={desc}>
+  <BreadcrumbSchema slot="head" crumbs={[
+    { name: "Home", url: `${SITE_URL}/` },
+    { name: "Blogroll", url: `${SITE_URL}/blogroll/` }
+  ]} />
   <section data-pagefind-body>
     <h1>{title}</h1>
     <hr />

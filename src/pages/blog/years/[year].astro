@@ -4,11 +4,13 @@ import FormattedDate from "@components/FormattedDate.astro";
 import ReadingTime from "@components/ReadingTime.astro";
 import Link from "@components/Link.astro";
 import BackToTop from "@components/BackToTop.astro";
-import { getSortedPosts } from "@utils/collections";
+import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
+import { getPostsWithReadingTime } from "@utils/collections";
 import type { BlogYearProps } from '../../../types';
+import { SITE_URL } from "@consts";
 
 export async function getStaticPaths() {
-  const allPosts = await getSortedPosts();
+  const allPosts = await getPostsWithReadingTime();
 
   const postsByYear = allPosts.reduce((acc, post) => {
     const year = post.data.pubDate.getFullYear().toString();
@@ -27,14 +29,16 @@ type Props = BlogYearProps;
 const { posts, postsByYear } = Astro.props;
 const { year } = Astro.params;
 const postCount = posts.length
-
 const title = `Blog - ${year}`;
 const desc = `Blog posts written in ${year}.`;
 ---
 
-<!-- styles remain the same -->
-
 <BaseLayout title={title} description={desc}>
+  <BreadcrumbSchema slot="head" crumbs={[
+    { name: "Home", url: `${SITE_URL}/` },
+    { name: "Blog", url: `${SITE_URL}/blog/` },
+    { name: year, url: `${SITE_URL}/blog/years/${year}/` }
+  ]} />
   <section>
     <h1>{title}</h1>
     <hr />
@@ -65,7 +69,9 @@ const desc = `Blog posts written in ${year}.`;
                 </p>
                 <p class="info">
                   <FormattedDate date={post.data.pubDate} />&nbsp;
-                  <span class="reading"><ReadingTime time={post.data.readingTime} /></span>
+                  <span class="reading">
+                    <ReadingTime time={post.readingTime} />
+                  </span>
                 </p>
                 <p class="desc">{post.data.description}</p>
               </a>

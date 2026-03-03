@@ -4,8 +4,10 @@ import { getPostsWithReadingTime } from "@utils/collections";
 import FormattedDate from "@components/FormattedDate.astro";
 import ReadingTime from "@components/ReadingTime.astro";
 import BackToTop from "@components/BackToTop.astro";
+import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
 import type { Page } from "astro";
 import type { CollectionEntry } from "astro:content";
+import { SITE_URL } from "@consts";
 
 export async function getStaticPaths({ paginate }) {
   const posts = (await getPostsWithReadingTime())
@@ -186,6 +188,11 @@ const desc = "Blog posts sorted by most recently updated.";
 </style>
 
 <BaseLayout title={title} description={desc}>
+  <BreadcrumbSchema slot="head" crumbs={[
+    { name: "Home", url: `${SITE_URL}/` },
+    { name: "Blog", url: `${SITE_URL}/blog/` },
+    { name: "Recently Updated", url: `${SITE_URL}/blog/updated/` }
+  ]} />
   <section>
     <h1>Recently Updated</h1>
     <hr />

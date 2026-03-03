@@ -1,0 +1,29 @@
+---
+import { SITE_URL } from "@consts";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": title,
+  "description": description,
+  "author": {
+    "@type": "Person",
+    "name": "Ariel Diaz",
+    "url": { SITE_URL }
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Ariel Diaz",
+    "url": { SITE_URL }
+  },
+  "url": { SITE_URL }
+};
+---
+
+<Fragment set:html={`<script type="application/ld+json">${JSON.stringify(schema)}</script>`} />

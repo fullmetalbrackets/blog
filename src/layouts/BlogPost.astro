@@ -6,6 +6,7 @@ import BlogPosting from "@components/BlogPosting.astro";
 import ScrollProgress from "@components/ScrollProgress.astro";
 import ReadingTime from "@components/ReadingTime.astro";
 import WebMentions from "@components/WebMentions.astro";
+import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
 import type { BlogPostProps } from '../types';
 import type { MarkdownHeading } from 'astro';
 import {
@@ -19,6 +20,7 @@ import {
 import Related from '@icons/related.svg';
 import Comments from "@components/Comments.astro";
 import { getRelatedPosts } from '@utils/collections';
+import { GITHUB, DONATE, SITE_URL } from "@consts";
 
 type Props = BlogPostProps & { headings: MarkdownHeading[]; readingTime: string };
 
@@ -444,6 +446,11 @@ const selectedPosts = await getRelatedPosts(related ?? []);
   </slot>
 
   <BlogPosting slot="head" {...Astro.props} />
+  <BreadcrumbSchema slot="head" crumbs={[
+    { name: "Home", url: `${ SITE_URL }/` },
+    { name: "Blog", url: `${ SITE_URL }/blog/` },
+    { name: title, url: `${ SITE_URL }/blog/${slug}/` }
+  ]} />
 
   <article data-pagefind-body data-pub-date={pubDate.toISOString()}
   data-updated-date={updatedDate ? updatedDate.toISOString() : ''}>
@@ -522,7 +529,7 @@ const selectedPosts = await getRelatedPosts(related ?? []);
       <span class="edit-button">
         <button class="edit">
           <a 
-          href={`https://github.com/fullmetalbrackets/blog/blob/main/src/content/blog/${slug}.md/`}
+          href={`${GITHUB}/blog/blob/main/src/content/blog/${slug}.md/`}
           target="_blank" data-umami-event={`edit-gh-${slug}`}>
             <img src="/assets/gh.svg"
               class="gh"
@@ -538,7 +545,7 @@ const selectedPosts = await getRelatedPosts(related ?? []);
   <aside class="mid-end">
     <div class="coffee">
       <span>Was this article helpful?</span>
-        <a href="https://www.buymeacoffee.com/arieldiaz">
+        <a href={DONATE}>
           <img
             src="https://img.buymeacoffee.com/button-api/?slug=arieldiaz&font_family=Inter&coffee_colour=6F4E37"
             class="coffee-btn"

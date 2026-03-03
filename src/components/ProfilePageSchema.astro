@@ -1,0 +1,23 @@
+---
+import { SITE_URL, GITHUB, BLUESKY, MASTODON } from "@consts";
+
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "name": "Ariel Diaz",
+  "url": { SITE_URL },
+  "mainEntity": {
+    "@type": "Person",
+    "name": "Ariel Diaz",
+    "url": { SITE_URL },
+    "sameAs": [
+      { GITHUB },
+      { BLUESKY },
+      { MASTODON }
+    ]
+  }
+};
+---
+
+<Fragment set:html={`<script type="application/ld+json">${JSON.stringify(schema)}</script>`} />

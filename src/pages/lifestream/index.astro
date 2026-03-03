@@ -10,6 +10,8 @@ import Quote from '@components/Quote.astro';
 import TVShow from '@components/TVShow.astro';
 import YouTube from '@components/YouTube.astro';
 import BackToTop from '@components/BackToTop.astro';
+import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
+import { SITE_URL } from "@consts";
 
 const sortedItems = await getLifestream();
 const items = sortedItems;
@@ -40,6 +42,10 @@ const desc = "A chronicle of things I've experienced, enjoyed or learned from"
 ---
 
 <BaseLayout title={title} description={desc}>
+  <BreadcrumbSchema slot="head" crumbs={[
+    { name: "Home", url: `${SITE_URL}/` },
+    { name: "Lifestream", url: `${SITE_URL}/lifestream/` }
+  ]} />
   <section>
     <div class="title-with-info">
       <h1>{title}</h1>
