@@ -1,15 +1,20 @@
 ---
-import { SITE_TITLE, SITE_URL } from "@consts";
+import { SITE_TITLE, SITE_URL, GITHUB, BLUESKY, MASTODON } from "@consts";
 
 const schema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "name": { SITE_TITLE },
-  "url": { SITE_URL },
+  "name": SITE_TITLE,
+  "url": SITE_URL,
   "author": {
     "@type": "Person",
     "name": "Ariel Diaz",
-    "url": { SITE_URL }
+    "url": SITE_URL,
+    "sameAs": [
+      GITHUB,
+      BLUESKY,
+      MASTODON
+    ]
   },
   "potentialAction": {
     "@type": "SearchAction",

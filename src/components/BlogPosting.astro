@@ -14,7 +14,7 @@ const schema = {
   "author": {
     "@type": "Person",
     "name": "Ariel Diaz",
-    "url": {SITE_URL}
+    "url": SITE_URL
   },
   "datePublished": pubDate.toISOString().substring(0, 10),
   ...(updatedDate && { "dateModified": updatedDate.toISOString().substring(0, 10) }),
