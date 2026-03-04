@@ -89,6 +89,7 @@ const recentNotes = (await getNotes()).slice(0, limit);
     transform: 0.2;
   }
   .more a:hover svg {
+    filter: var(--foot-svg);
     transition: all .1s ease-out;
     transform: translateX(4px);
   }
@@ -124,6 +125,6 @@ const recentNotes = (await getNotes()).slice(0, limit);
         </div>
       ))}
     <span class="more">
-      <a href="/notes/" rel="prefetch-intent">MORE <More height={24} width={24} /></a>
+      <a href="/notes/" rel="prefetch-intent">All Notes <More height={24} width={24} /></a>
     </span>
 </section>

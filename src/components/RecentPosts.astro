@@ -98,6 +98,7 @@ const recentPosts = (await getPostsWithReadingTime()).slice(0, 5);
     transform: 0.2;
   }
   .more a:hover svg {
+    filter: var(--foot-svg);
     transition: all .1s ease-out;
     transform: translateX(4px);
   }
@@ -154,7 +155,7 @@ const recentPosts = (await getPostsWithReadingTime()).slice(0, 5);
       ))
     }
     <span class="more">
-      <a href="/blog/" rel="prefetch-intent">MORE <More height={24} width={24} /></a>
+      <a href="/blog/" rel="prefetch-intent">All Posts <More height={24} width={24} /></a>
     </span>
   </div>
 </section>

@@ -81,6 +81,7 @@ const links = await getSortedLinks();
     transform: 0.2;
   }
   .more a:hover svg {
+    filter: var(--foot-svg);
     transition: all .1s ease-out;
     transform: translateX(4px);
   }
@@ -120,7 +121,7 @@ const links = await getSortedLinks();
       ))
     }
     <span class="more">
-      <a href="/links/" rel="prefetch-intent">MORE <More height={24} width={24} /></a>
+      <a href="/links/" rel="prefetch-intent">All Links <More height={24} width={24} /></a>
     </span>
   </div>
 </section>
