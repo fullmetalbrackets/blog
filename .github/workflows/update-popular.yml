@@ -1,0 +1,36 @@
+name: Update Popular Posts
+
+on:
+  schedule:
+    - cron: '0 0 1 * *'
+  workflow_dispatch: 
+jobs:
+  update-popular:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Fetch popular posts from Umami
+        env:
+          UMAMI_USERNAME: ${{ secrets.UMAMI_USERNAME }}
+          UMAMI_PASSWORD: ${{ secrets.UMAMI_PASSWORD }}
+        run: |
+          TOKEN=$(curl -s -X POST "https://u.adiaz.fyi/api/auth/login" \
+            -H "Content-Type: application/json" \
+            -d "{\"username\":\"$UMAMI_USERNAME\",\"password\":\"$UMAMI_PASSWORD\"}" \
+            | jq -r '.token')
+
+          END=$(date +%s000)
+          START=$(date -d '30 days ago' +%s000)
+
+          METRICS=$(curl -s "https://u.adiaz.fyi/api/websites/d9921361-56b2-4c33-8377-4c73cb1add2d/metrics?type=url&startAt=$START&endAt=$END&limit=20" \
+            -H "Authorization: Bearer $TOKEN")
+
+          echo $METRICS | jq '[
+            .[] |
+            select(.x | startswith("/blog/")) |
+            select(.x | endswith("/")) |
+            select(.x | split("/") | length == 4) |
+            .x | split("/")[2]
+          ] | .[0:5]' > src/data/popular.json
