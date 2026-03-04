@@ -3,6 +3,8 @@ import BackToTop from "@components/BackToTop.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import FormattedDate from "@components/FormattedDate.astro";
 import { getSortedLinks } from "@utils/collections";
+import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
+import { SITE_URL } from "@consts";
 
 const links = await getSortedLinks();
 const title = "Links";
@@ -119,6 +121,10 @@ const desc = "Links to websites, self-hosted apps and other cool online things t
   }
 </style>
 <BaseLayout title={title} description={desc}>
+  <BreadcrumbSchema slot="head" crumbs={[
+    { name: "Home", url: `${SITE_URL}/` },
+    { name: "Links", url: `${SITE_URL}/links/` }
+  ]} />
   <section data-pagefind-body>
     <h1>Links</h1>
     <hr />

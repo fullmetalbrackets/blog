@@ -1,6 +1,8 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 import { getSortedTags } from '@utils/collections';
+import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
+import { SITE_URL } from "@consts";
 
 const tags = await getSortedTags();
 const title = "Categories";
@@ -60,6 +62,10 @@ const desc = "Blog posts by category.";
 </style>
 
 <BaseLayout title={title} description={desc}>
+  <BreadcrumbSchema slot="head" crumbs={[
+    { name: "Home", url: `${SITE_URL}/` },
+    { name: "Categories", url: `${SITE_URL}/categories/` }
+  ]} />
   <section>
     <h1>{title}</h1>
     <hr />

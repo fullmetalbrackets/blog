@@ -1,4 +1,5 @@
 ---
+import { SITE_URL } from "@consts"
 ---
 
 <style scoped>
@@ -15,9 +16,11 @@
 
 <aside>
     <script>
+import { SITE_URL } from "@consts";
+
         const script = document.createElement('script');
         script.src = 'https://giscus.app/client.js';
-        script.setAttribute('data-theme', 'https://fullmetalbrackets.com/giscus.css');
+        script.setAttribute('data-theme', `${SITE_URL}/giscus.css`);
         script.setAttribute('data-repo', 'fullmetalbrackets/blog');
         script.setAttribute('data-repo-id', 'R_kgDOIBwrhQ');
         script.setAttribute('data-category', 'Comments');

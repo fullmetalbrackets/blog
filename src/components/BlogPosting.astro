@@ -1,4 +1,5 @@
 ---
+import { SITE_URL } from '@consts';
 import type { BlogData } from '../types';
 type Props = BlogData;
 
@@ -13,7 +14,7 @@ const schema = {
   "author": {
     "@type": "Person",
     "name": "Ariel Diaz",
-    "url": "https://fullmetalbrackets.com"
+    "url": SITE_URL
   },
   "datePublished": pubDate.toISOString().substring(0, 10),
   ...(updatedDate && { "dateModified": updatedDate.toISOString().substring(0, 10) }),

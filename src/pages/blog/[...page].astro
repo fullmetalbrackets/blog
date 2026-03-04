@@ -4,7 +4,8 @@ import { getPostsWithReadingTime } from '@utils/collections';
 import FormattedDate from "@components/FormattedDate.astro";
 import ReadingTime from "@components/ReadingTime.astro";
 import BackToTop from "@components/BackToTop.astro";
-import { SITE_TITLE } from "@consts";
+import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
+import { SITE_TITLE, SITE_URL } from "@consts";
 import type { BlogPageProps } from '../../types';
 
 export async function getStaticPaths({ paginate }) {
@@ -208,6 +209,10 @@ const desc = "Archive of blog posts.";
 </style>
 
 <BaseLayout title={title} description={desc}>
+  <BreadcrumbSchema slot="head" crumbs={[
+    { name: "Home", url: `${SITE_URL}/` },
+    { name: "Blog", url: `${SITE_URL}/blog/` }
+  ]} />
   <section>
     <h1>Blog</h1>
     <hr />
