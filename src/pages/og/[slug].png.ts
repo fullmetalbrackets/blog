@@ -27,6 +27,9 @@ export const GET: APIRoute = async ({ params }) => {
   const subFontRegular = readFileSync(resolve('./public/fonts/MPLUSRounded1c-Regular.ttf'));
   const subFontBold = readFileSync(resolve('./public/fonts/MPLUSRounded1c-Bold.ttf'));
 
+  const logoData = readFileSync(resolve('./public/favicon-96x96.png'));
+  const logoBase64 = `data:image/png;base64,${logoData.toString('base64')}`;
+
   const svg = await satori(
     {
       type: 'div',
@@ -42,6 +45,7 @@ export const GET: APIRoute = async ({ params }) => {
           fontFamily: 'Atkinson',
         },
         children: [
+          // Top bar
           {
             type: 'div',
             props: {
@@ -52,14 +56,11 @@ export const GET: APIRoute = async ({ params }) => {
               },
               children: [
                 {
-                  type: 'div',
+                  type: 'img',
                   props: {
-                    style: {
-                      width: '8px',
-                      height: '40px',
-                      backgroundColor: 'rgb(90, 194, 175)',
-                      borderRadius: '4px',
-                    },
+                    src: logoBase64,
+                    width: 48,
+                    height: 48,
                   },
                 },
                 {
@@ -78,6 +79,7 @@ export const GET: APIRoute = async ({ params }) => {
               ],
             },
           },
+          // Title
           {
             type: 'div',
             props: {
@@ -91,6 +93,7 @@ export const GET: APIRoute = async ({ params }) => {
               children: title,
             },
           },
+          // Bottom row — description + tags
           {
             type: 'div',
             props: {
@@ -109,7 +112,7 @@ export const GET: APIRoute = async ({ params }) => {
                       lineHeight: 1.3,
                       maxWidth: '1000px',
                     },
-                    children: description.length > 120 ? description.slice(0, 117) + '...' : description,
+                    children: description,
                   },
                 },
                 {
