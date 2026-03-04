@@ -22,7 +22,7 @@ jobs:
           curl -s \
             -F "token=${{ secrets.PUSHOVER_TOKEN }}" \
             -F "user=${{ secrets.PUSHOVER_USER }}" \
-            -F "message=Cloudflare Pages build on ${{ github.ref_name }} was successful!" \
+            -F "message=✅ Cloudflare Pages build on [${{ github.ref_name }}] was successful!" \
             -F "title=Build Success" \
             https://api.pushover.net/1/messages.json
 
@@ -32,7 +32,7 @@ jobs:
           curl -s \
             -F "token=${{ secrets.PUSHOVER_TOKEN }}" \
             -F "user=${{ secrets.PUSHOVER_USER }}" \
-            -F "message=Cloudflare Pages build on ${{ github.ref_name }} FAILED!" \
+            -F "message=❌ Cloudflare Pages build on [${{ github.ref_name }}] FAILED!" \
             -F "title=Build Failed" \
             -F "priority=1" \
             https://api.pushover.net/1/messages.json
