@@ -2,17 +2,10 @@
 import FormattedDate from "./FormattedDate.astro";
 import ReadingTime from "@components/ReadingTime.astro";
 import { getPostsWithReadingTime } from '@utils/collections';
-
-const popularPosts = [
-  'plex-remote-access-tailscale', 
-  'upgrade-debian-12-bookworm-debian-13-trixie',
-  'reverse-proxy-using-nginx-adguardhome-cloudflare',
-  'how-i-setup-home-server',
-  'solid-explorer-samba-share'
-];
+import popularSlugs from '@data/popular.json';
 
 const allPosts = await getPostsWithReadingTime();
-const selectedPosts = allPosts.filter(post => popularPosts.includes(post.id));
+const selectedPosts = allPosts.filter(post => popularSlugs.includes(post.id));
 ---
 
 <style scoped>
