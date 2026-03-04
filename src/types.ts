@@ -8,6 +8,7 @@ export interface BaseHeadProps {
 	description: string;
 	image?: ImageMetadata;
 	ogType?: string;
+	ogImage?: string;
 }
 
 // components/BlogPosting.astro & components/BlogPost.astro

@@ -1,3 +1,4 @@
+/og/*.png/ /og/:splat 301
 /categories/samba/    /categories/smb/   301
 /categories/surge/   /categories/web%20development/  301
 /categories/vercel/ /categories/web%20development/  301

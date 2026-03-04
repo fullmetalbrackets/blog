@@ -31,7 +31,7 @@ const selectedPosts = await getRelatedPosts(related ?? []);
 ---
 <ScrollProgress />
 
-<BaseLayout title={title} description={description} ogType="article">  
+<BaseLayout title={title} description={description} ogType="article" ogImage={`${SITE_URL}/og/${slug}.png`}>
   <head>
     <link rel="stylesheet" href="/prism.css" />
   </head>
