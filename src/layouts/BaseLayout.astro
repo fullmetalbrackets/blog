@@ -5,7 +5,7 @@ import Footer from '@components/Footer.astro';
 import WebsiteSchema from '@components/WebsiteSchema.astro';
 import { SITE_TITLE } from '@consts';
 
-const { title, description, ogType } = Astro.props.frontmatter || Astro.props;
+const { title, description, ogType, ogImage } = Astro.props.frontmatter || Astro.props;
 const pageTitle = title === SITE_TITLE ? SITE_TITLE : `${title} | ${SITE_TITLE}`;
 ---
 
@@ -26,7 +26,7 @@ const pageTitle = title === SITE_TITLE ? SITE_TITLE : `${title} | ${SITE_TITLE}`
 			}
 		</script>
 		
-		<BaseHead title={pageTitle} description={description} ogType={ogType} />
+		<BaseHead title={pageTitle} description={description} ogType={ogType} ogImage={ogImage} />
 		<WebsiteSchema />
 		<slot name="head" />
 		
