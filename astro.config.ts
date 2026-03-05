@@ -11,6 +11,8 @@ import remarkDirective from 'remark-directive';
 import remarkDirectiveSugar from 'remark-directive-sugar';
 import yeskunallumami from '@yeskunall/astro-umami';
 import rehypeCodeblockCopy from './src/utils/rehype-codeblock-copy.ts';
+import rehypeSlug from 'rehype-slug';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 
 export default defineConfig({
 	site: 'https://fullmetalbrackets.com',
@@ -25,8 +27,25 @@ export default defineConfig({
 		}),
 	],
 	prefetch: true,
-	markdown: {
+markdown: {
 		rehypePlugins: [
+			rehypeSlug,
+			[
+				rehypeAutolinkHeadings,
+				{
+					behavior: 'prepend',
+					properties: {
+						class: 'heading-link',
+						ariaLabel: 'Link to this section',
+					},
+					content: {
+						type: 'element',
+						tagName: 'span',
+						properties: { className: ['link-icon'] },
+						children: [{ type: 'text', value: '#' }],
+					},
+				},
+			],
 			[
 				rehypeExternalLinks,
 				{

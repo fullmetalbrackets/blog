@@ -32,6 +32,8 @@ I use several packages to help with building the site and writing posts.
 - [reading-time](https://github.com/ngryman/reading-time) + [mdast-util-to-string](https://github.com/syntax-tree/mdast-util-to-string): Used to calculate and display how many minutes it takes to read individual blog posts.
 - [remark-directive](https://github.com/remarkjs/remark-directive) + [remark-directive-sugar](https://github.com/lin-stephanie/remark-directive-sugar): Used to add new Markdown syntax for images, video embeds, etc.
 - [rehype-external-links](https://docs.astro.build/en/recipes/external-links/): Used to automatically add the little arrow next to external links throughout the site.
+- [rehype-slug](https://github.com/rehypejs/rehype-slug) + [rehype-autolinks-headings](https://github.com/rehypejs/rehype-autolink-headings): Used to add links to each blog post heading that copies to clipboard the URL to that section.
+- [satori](https://github.com/vercel/satori) + [resvg](https://github.com/linebender/resvg): Used to dynamically generate opengraph images for each blog post.
 - [astro-embed](https://astro-embed.netlify.app/) for embedding YouTube videos, Bluesky posts, etc.
 - [isotope.js](https://isotope.metafizzy.co/layout) for grid layout in [Lifestream](/lifestream/).
 
