@@ -61,7 +61,6 @@ import Search from '@icons/search.svg';
   }
   nav a.active {
     color: var(--link);
-    background-color: rgb(from var(--primary, var(--primary)) r g b / 0.1);
   }
   .blog-link {
     margin-right: 3px;
@@ -139,6 +138,8 @@ import Search from '@icons/search.svg';
   }
   .dropdown-toggle:hover {
     color: var(--hover);
+    transform: none;
+    box-shadow: none;
   }
   .dropdown-toggle:focus-visible {
     outline: 2px solid var(--primary);
@@ -193,6 +194,9 @@ import Search from '@icons/search.svg';
   .dropdown.open .dropdown-toggle {
     color: var(--link);
   }
+  .dropdown.open a.active {
+    background-color: rgb(from var(--primary, var(--primary)) r g b / 0.1);
+  }
   .chevron {
     display: inline-block;
     vertical-align: middle;
@@ -230,13 +234,13 @@ import Search from '@icons/search.svg';
       <HeaderLink href="/blog/" rel="prefetch-intent" aria-label="Blog" class="nav-link blog-link" data-umami-event="nav-blog">Blog</HeaderLink>
       <HeaderLink href="/categories/" rel="prefetch-intent" aria-label="Categories" class="nav-link categories-link" data-umami-event="nav-links">Categories</HeaderLink>
     <div class="dropdown">
-      <span class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+      <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">
         More
         <svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <polyline points="6 9 12 15 18 9"></polyline>
         </svg>
-      </span>
-      <div class="dropdown-content">
+      </button>
+      <div class="dropdown-content" role="menu">
         <HeaderLink href="/wiki/" rel="prefetch-intent" aria-label="Wiki" data-umami-event="nav-wiki">Wiki</HeaderLink>
         <HeaderLink href="/changelog/" rel="prefetch-intent" aria-label="Changelog" data-umami-event="nav-changelog">Changelog</HeaderLink>
         <HeaderLink href="/colophon/" rel="prefetch-intent" aria-label="Colophon" data-umami-event="nav-colophon">Colophon</HeaderLink>
