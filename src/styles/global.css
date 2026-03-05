@@ -539,6 +539,18 @@ article h2 {
 	border-bottom: thick dotted var(--border);
 }
 
+article .link-icon {
+	display: inline-flex;
+	place-items: center;
+	color: var(--secondary);
+	margin: 0 0.25em 0 0;
+	font-family: var(--code-font);
+}
+
+article .link-icon:hover {
+	color: var(--hover);
+}
+
 article h3 {
 	margin-top: 1em;
 }
