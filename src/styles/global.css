@@ -10,68 +10,57 @@
 html {
 	--main: rgb(255, 255, 255);
 	--text: rgb(32, 33, 36);
-	--primary: rgb(44 156 195);
-	--secondary: rgb(0, 150, 150);
-	--tertiary: rgb(233, 245, 249);
-	--dropdown: rgb(from var(--tertiary, var(--tertiary)) r g b / 0.1);
-	--other: rgb(200, 0, 0);
-	--accent: rgb(143, 156, 174);
+	--primary: rgb(0, 130, 145);
+	--secondary: rgb(50, 140, 180);
+	--tertiary: rgb(245, 250, 252);
+	--dropdown: rgb(from var(--tertiary, var(--tertiary)) r g b / 0.75);
+	--other: rgb(180, 40, 120);
+	--accent: rgb(182, 193, 210);
 	--border: rgba(182, 193, 210, 0.25);
-	--border2: rgba(44, 156, 195, 0.25);
-	--link: rgb(250, 85, 0);
-	--bq-link: rgb(195, 65, 0);
-	--hover: rgb(200, 0, 0);
-	--tags: rgb(44 156 195);
+	--border2: rgba(0, 130, 145, 0.25);
+	--link: rgb(188, 122, 0);
+	--bq-link: rgb(255, 75, 0);
+	--hover: rgb(220, 90, 20);
+	--tags: rgb(0, 130, 145);
 	--emphasis: rgb(0, 0, 0);
-	--name: rgb(44 156 195);
-	--date: rgb(40, 108, 96);
+	--name: rgb(0, 130, 145);
+	--date: rgb(0, 130, 145);
 	--form: rgb(32, 33, 36);
-	--blockquote: rgb(250, 240, 230);
-	--info: rgb(255, 221, 0);
-	--info-text: rgb(130, 114, 40);
-	--info-bg: rgb(from var(--info, var(--info)) r g b / 0.175);
+	--blockquote: rgb(250, 248, 245);
+	--info: rgb(200, 140, 0);
+	--info-text: rgb(100, 70, 0);
+	--info-bg: rgb(from var(--info, var(--info)) r g b / 0.1);
 	--inactive: rgb(164, 174, 188);
 	--warning: rgb(255, 45, 50);
-	--warning-text: rgb(206, 0, 0);
-	--warning-bg: rgb(from var(--warning, var(--warning)) r g b / 0.11);
-	--warning-link: rgb(0, 110, 150);
-	--warning-hover: rgb(0, 150, 150);
-	--code-bg: rgb(230, 230, 230);
-	--code-bg-bq: rgb(230, 230, 230);
+	--warning-text: rgb(180, 0, 0);
+	--warning-bg: rgb(from var(--warning, var(--warning)) r g b / 0.08);
+	--warning-link: rgb(0, 110, 130);
+	--warning-hover: rgb(220, 90, 20);
+	--code-bg: rgb(240, 242, 245);
+	--code-bg-bq: rgb(235, 237, 240);
 	--code-text: hsl(220, 13%, 18%);
-	--svg: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%)
-		contrast(98%);
-	--svg2: brightness(0) saturate(100%) invert(39%) sepia(70%) saturate(4875%)
-		hue-rotate(160deg) brightness(97%) contrast(101%);
-	--svg-hover: brightness(0) saturate(100%) invert(9%) sepia(94%) saturate(6019%)
-		hue-rotate(360deg) brightness(92%) contrast(110%);
-	--toc: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%)
-		contrast(98%);
-	--ext: brightness(0) saturate(100%) invert(11%) sepia(80%) saturate(5816%)
-		hue-rotate(358deg) brightness(94%) contrast(113%);
-	--search: invert(57%) sepia(86%) saturate(3921%) hue-rotate(13deg)
-		brightness(99%) contrast(100%);
+	--foot-link: rgb(0, 130, 145);
+	--foot-hover: rgb(220, 90, 20);
+	/* SVG FILTERS */
+	--svg: brightness(0) saturate(100%) invert(29%) sepia(33%) saturate(6621%) hue-rotate(168deg) brightness(91%) contrast(103%);
+	--svg2: brightness(0) saturate(100%) invert(50%) sepia(21%) saturate(1315%) hue-rotate(153deg) brightness(93%) contrast(91%);
+	--svg-hover: brightness(0) saturate(100%) invert(43%) sepia(96%) saturate(2262%) hue-rotate(354deg) brightness(89%) contrast(93%);
+	--toc: brightness(0) saturate(100%) invert(29%) sepia(33%) saturate(6621%) hue-rotate(168deg) brightness(91%) contrast(103%);
+	--ext: brightness(0) saturate(100%) invert(43%) sepia(96%) saturate(2262%) hue-rotate(354deg) brightness(89%) contrast(93%);
+	--search: brightness(0) saturate(100%) invert(29%) sepia(33%) saturate(6621%) hue-rotate(168deg) brightness(91%) contrast(103%);
 	--info-svg: brightness(0) saturate(100%) invert(77%) sepia(98%) saturate(1742%)
 		hue-rotate(350deg) brightness(96%) contrast(95%);
 	--share: brightness(0) saturate(100%) invert(74%) sepia(77%) saturate(474%)
 		hue-rotate(356deg) brightness(104%) contrast(90%);
 	--coffee-hover: brightness(0) saturate(100%) invert(45%) sepia(98%)
 		saturate(1756%) hue-rotate(7deg) brightness(89%) contrast(92%);
-	--time-svg: brightness(0) saturate(100%) invert(35%) sepia(53%) saturate(496%)
-		hue-rotate(120deg) brightness(87%) contrast(84%);
-	--clock-svg: brightness(0) saturate(100%) invert(10%) sepia(11%) saturate(791%)
-		hue-rotate(169deg) brightness(94%) contrast(89%);
-	--lifestream: brightness(0) saturate(100%) invert(39%) sepia(15%)
-		saturate(1395%) hue-rotate(120deg) brightness(89%) contrast(95%);
+	--time-svg: brightness(0) saturate(100%) invert(29%) sepia(33%) saturate(6621%) hue-rotate(168deg) brightness(91%) contrast(103%);
+	--clock-svg: brightness(0) saturate(100%) invert(50%) sepia(21%) saturate(1315%) hue-rotate(153deg) brightness(93%) contrast(91%);
+	--lifestream: brightness(0) saturate(100%) invert(29%) sepia(33%) saturate(6621%) hue-rotate(168deg) brightness(91%) contrast(103%);
 	--controller: brightness(0) saturate(100%) invert(46%) sepia(12%)
 		saturate(386%) hue-rotate(169deg) brightness(93%) contrast(92%);
-	--foot-svg: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg)
-		brightness(93%) contrast(98%);
-	--foot-ext: brightness(0) saturate(100%) invert(11%) sepia(80%) saturate(5816%)
-		hue-rotate(358deg) brightness(94%) contrast(113%);
-	--foot-link: rgb(44 156 195);
-	--foot-hover: rgb(200, 0, 0);
-	--foot-active: rgb(255, 255, 255);
+	--foot-svg: brightness(0) saturate(100%) invert(29%) sepia(33%) saturate(6621%) hue-rotate(168deg) brightness(91%) contrast(103%);
+	--foot-ext: brightness(0) saturate(100%) invert(43%) sepia(96%) saturate(2262%) hue-rotate(354deg) brightness(89%) contrast(93%);
 	--game-platform: brightness(0) saturate(100%);
 	scroll-behavior: smooth;
 }
@@ -116,6 +105,7 @@ pre[class*='language-'] {
 		--code-text: rgb(255, 255, 255);
 		--pagefind-ui-text: rgb(164, 174, 188);
 		--pagefind-ui-background: rgb(51, 65, 85);
+		/* SVG FILTERS */
 		--svg: invert(93%) sepia(78%) saturate(2834%) hue-rotate(213deg)
 			brightness(148%) contrast(96%);
 		--svg2: brightness(0) saturate(100%) invert(72%) sepia(10%) saturate(3204%)
@@ -150,7 +140,6 @@ pre[class*='language-'] {
 			brightness(148%) contrast(96%);
 		--foot-link: rgb(255, 255, 255);
 		--foot-hover: rgb(90, 194, 175);
-		--foot-active: rgb(0, 0, 0);
 	}
 
 	code[class*='language-'],
@@ -158,73 +147,61 @@ pre[class*='language-'] {
 		color-scheme: dark;
 	}
 }
-
 html.light {
 	--main: rgb(255, 255, 255);
 	--text: rgb(32, 33, 36);
-	--primary: rgb(44 156 195);
-	--secondary: rgb(0, 150, 150);
-	--tertiary: rgb(233, 245, 249);
+	--primary: rgb(0, 130, 145);
+	--secondary: rgb(50, 140, 180);
+	--tertiary: rgb(245, 250, 252);
 	--dropdown: rgb(from var(--tertiary, var(--tertiary)) r g b / 0.75);
-	--other: rgb(200, 0, 0);
+	--other: rgb(180, 40, 120);
 	--accent: rgb(182, 193, 210);
 	--border: rgba(182, 193, 210, 0.25);
-	--border2: rgba(44, 156, 195, 0.25);
-	--link: rgb(250, 85, 0);
-	--bq-link: rgb(195, 65, 0);
-	--hover: rgb(200, 0, 0);
-	--tags: rgb(44 156 195);
+	--border2: rgba(0, 130, 145, 0.25);
+	--link: rgb(188, 122, 0);
+	--bq-link: rgb(255, 75, 0);
+	--hover: rgb(220, 90, 20);
+	--tags: rgb(0, 130, 145);
 	--emphasis: rgb(0, 0, 0);
-	--name: rgb(44 156 195);
-	--date: rgb(40, 108, 96);
+	--name: rgb(0, 130, 145);
+	--date: rgb(0, 130, 145);
 	--form: rgb(32, 33, 36);
-	--blockquote: rgb(250, 240, 230);
-	--info: rgb(255, 221, 0);
-	--info-text: rgb(130, 114, 40);
-	--info-bg: rgb(from var(--info, var(--info)) r g b / 0.175);
+	--blockquote: rgb(250, 248, 245);
+	--info: rgb(200, 140, 0);
+	--info-text: rgb(100, 70, 0);
+	--info-bg: rgb(from var(--info, var(--info)) r g b / 0.1);
 	--inactive: rgb(164, 174, 188);
 	--warning: rgb(255, 45, 50);
-	--warning-text: rgb(206, 0, 0);
-	--warning-bg: rgb(from var(--warning, var(--warning)) r g b / 0.11);
-	--warning-link: rgb(0, 110, 150);
-	--warning-hover: rgb(0, 150, 150);
-	--code-bg: rgb(230, 230, 230);
-	--code-bg-bq: rgb(230, 230, 230);
+	--warning-text: rgb(180, 0, 0);
+	--warning-bg: rgb(from var(--warning, var(--warning)) r g b / 0.08);
+	--warning-link: rgb(0, 110, 130);      /* dark cyan */
+	--warning-hover: rgb(220, 90, 20);     /* orange */
+	--code-bg: rgb(240, 242, 245);
+	--code-bg-bq: rgb(235, 237, 240);
 	--code-text: hsl(220, 13%, 18%);
-	--svg: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%)
-		contrast(98%);
-	--svg2: brightness(0) saturate(100%) invert(39%) sepia(70%) saturate(4875%)
-		hue-rotate(160deg) brightness(97%) contrast(101%);
-	--svg-hover: brightness(0) saturate(100%) invert(9%) sepia(94%) saturate(6019%)
-		hue-rotate(360deg) brightness(92%) contrast(110%);
-	--toc: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg) brightness(93%)
-		contrast(98%);
-	--ext: brightness(0) saturate(100%) invert(11%) sepia(80%) saturate(5816%)
-		hue-rotate(358deg) brightness(94%) contrast(113%);
-	--search: invert(57%) sepia(86%) saturate(3921%) hue-rotate(13deg)
-		brightness(99%) contrast(100%);
+	--foot-link: rgb(0, 130, 145);
+	--foot-hover: rgb(220, 90, 20);
+	/* SVG FILTERS */
+	--svg: brightness(0) saturate(100%) invert(29%) sepia(33%) saturate(6621%) hue-rotate(168deg) brightness(91%) contrast(103%);
+	--svg2: brightness(0) saturate(100%) invert(50%) sepia(21%) saturate(1315%) hue-rotate(153deg) brightness(93%) contrast(91%);
+	--svg-hover: brightness(0) saturate(100%) invert(43%) sepia(96%) saturate(2262%) hue-rotate(354deg) brightness(89%) contrast(93%);
+	--toc: brightness(0) saturate(100%) invert(29%) sepia(33%) saturate(6621%) hue-rotate(168deg) brightness(91%) contrast(103%);
+	--ext: brightness(0) saturate(100%) invert(43%) sepia(96%) saturate(2262%) hue-rotate(354deg) brightness(89%) contrast(93%);
+	--search: brightness(0) saturate(100%) invert(29%) sepia(33%) saturate(6621%) hue-rotate(168deg) brightness(91%) contrast(103%);
 	--info-svg: brightness(0) saturate(100%) invert(77%) sepia(98%) saturate(1742%)
 		hue-rotate(350deg) brightness(96%) contrast(95%);
 	--share: brightness(0) saturate(100%) invert(74%) sepia(77%) saturate(474%)
 		hue-rotate(356deg) brightness(104%) contrast(90%);
 	--coffee-hover: brightness(0) saturate(100%) invert(45%) sepia(98%)
 		saturate(1756%) hue-rotate(7deg) brightness(89%) contrast(92%);
-	--time-svg: brightness(0) saturate(100%) invert(35%) sepia(53%) saturate(496%)
-		hue-rotate(120deg) brightness(87%) contrast(84%);
-	--clock-svg: brightness(0) saturate(100%) invert(10%) sepia(11%) saturate(791%)
-		hue-rotate(169deg) brightness(94%) contrast(89%);
-	--lifestream: brightness(0) saturate(100%) invert(39%) sepia(15%)
-		saturate(1395%) hue-rotate(120deg) brightness(89%) contrast(95%);
+	--time-svg: brightness(0) saturate(100%) invert(29%) sepia(33%) saturate(6621%) hue-rotate(168deg) brightness(91%) contrast(103%);
+	--clock-svg: brightness(0) saturate(100%) invert(50%) sepia(21%) saturate(1315%) hue-rotate(153deg) brightness(93%) contrast(91%);
+	--lifestream: brightness(0) saturate(100%) invert(29%) sepia(33%) saturate(6621%) hue-rotate(168deg) brightness(91%) contrast(103%);
 	--controller: brightness(0) saturate(100%) invert(46%) sepia(12%)
 		saturate(386%) hue-rotate(169deg) brightness(93%) contrast(92%);
-	--foot-svg: invert(46%) sepia(86%) saturate(389%) hue-rotate(150deg)
-		brightness(93%) contrast(98%);
-	--foot-ext: brightness(0) saturate(100%) invert(11%) sepia(80%) saturate(5816%)
-		hue-rotate(358deg) brightness(94%) contrast(113%);
+	--foot-svg: brightness(0) saturate(100%) invert(29%) sepia(33%) saturate(6621%) hue-rotate(168deg) brightness(91%) contrast(103%);
+	--foot-ext: brightness(0) saturate(100%) invert(43%) sepia(96%) saturate(2262%) hue-rotate(354deg) brightness(89%) contrast(93%);
 	--game-platform: brightness(0) saturate(100%);
-	--foot-link: rgb(44 156 195);
-	--foot-hover: rgb(200, 0, 0);
-	--foot-active: rgb(255, 255, 255);
 }
 
 html.light code[class*='language-'],
@@ -300,7 +277,6 @@ html.dark {
 		brightness(148%) contrast(96%);
 	--foot-link: rgb(255, 255, 255);
 	--foot-hover: rgb(90, 194, 175);
-	--foot-active: rgb(0, 0, 0);
 }
 
 html.dark code[class*='language-'],
@@ -730,6 +706,7 @@ blockquote a:active,
 blockquote a:visited {
 	color: var(--bq-link);
 	text-decoration: none;
+	font-weight: 600;
 }
 
 blockquote a:hover,
