@@ -5,6 +5,7 @@ pubDate: 2021-08-31
 updatedDate: 2022-09-18
 tags: ['android']
 related: ['rsync-a-quick-guide']
+howto: true
 ---
 
 ## About the fix

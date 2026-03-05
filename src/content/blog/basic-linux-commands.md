@@ -5,6 +5,7 @@ pubDate: 2022-09-18
 updatedDate: 2025-02-17
 tags: ['linux', 'command line']
 related: ['formatting-on-linux', 'mounting-hard-drives-in-linux']
+howto: true
 ---
 
 ## Common Commands
