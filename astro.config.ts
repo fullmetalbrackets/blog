@@ -17,6 +17,9 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 export default defineConfig({
 	site: 'https://fullmetalbrackets.com',
 	trailingSlash: 'always',
+	build: {
+		inlineStylesheets: 'auto',
+	},
 	integrations: [
 		mdx(),
 		sitemap(),
@@ -27,7 +30,7 @@ export default defineConfig({
 		}),
 	],
 	prefetch: true,
-markdown: {
+	markdown: {
 		rehypePlugins: [
 			rehypeSlug,
 			[
