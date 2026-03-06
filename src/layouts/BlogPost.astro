@@ -277,6 +277,10 @@ const selectedPosts = await getRelatedPosts(related ?? []);
     .blog-aside button {
       background: var(--primary);
     }
+    	a:hover .blog-aside button:not(.theme-toggle, .dropdown-toggle),
+      .blog-aside button:not(.theme-toggle, .dropdown-toggle):hover {
+        background-color: var(--secondary);
+      }
     .related {
       display: inline;
     }

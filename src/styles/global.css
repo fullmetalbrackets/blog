@@ -245,7 +245,7 @@ article .link-icon:hover {
 }
 
 .link-icon::before {
-  content: '#';
+	content: '#';
 }
 
 article h3 {
@@ -862,9 +862,13 @@ button {
 }
 
 @media (hover: none) {
-	a:hover button:not(.theme-toggle),
-	button:not(.theme-toggle):hover {
+	a:hover button:not(.theme-toggle, .dropdown-toggle),
+	button:not(.theme-toggle, .dropdown-toggle):hover {
 		background-color: var(--hover);
+	}
+	a:hover aside button:not(.theme-toggle, .dropdown-toggle),
+	aside button:not(.theme-toggle, .dropdown-toggle):hover {
+		background-color: var(--secondary);
 	}
 }
 
