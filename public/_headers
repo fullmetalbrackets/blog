@@ -1,0 +1,23 @@
+/_astro/*.js
+  Cache-Control: public, max-age=31536000, immutable
+
+/_astro/*.css
+  Cache-Control: public, max-age=31536000, immutable
+
+/_astro/*.woff2
+  Cache-Control: public, max-age=31536000, immutable
+
+/_astro/*.avif
+  Cache-Control: public, max-age=31536000, immutable
+
+/_astro/*.webp
+  Cache-Control: public, max-age=31536000, immutable
+
+/img/*
+  Cache-Control: public, max-age=31536000
+
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/*
+  Cache-Control: public, max-age=3600
