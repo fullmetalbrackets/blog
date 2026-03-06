@@ -11,3 +11,5 @@ node_modules
 *.svg
 *.webp
 *.avif
+*.md
+*.yml
