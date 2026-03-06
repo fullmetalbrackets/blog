@@ -2,7 +2,7 @@
 interface Heading {
   depth: number;
   text: string;
-  slug: string;
+  slug?: string;
 }
 
 interface HowToConfig {
@@ -94,7 +94,7 @@ function readingTimeToISO8601(readingTimeText?: string): string | undefined {
 const totalTime = config.totalTime || readingTimeToISO8601(readingTime);
 
 const baseUrl = Astro.site?.toString() || 'https://fullmetalbrackets.com';
-const postUrl = `${baseUrl}/blog/${slug}`;
+const postUrl = slug ? `${baseUrl}/blog/${slug}` : baseUrl;
 
 // Filter out h1 (title) and only get h2 headings as steps
 // Skip common non-step headings like "About", "Prerequisites", "References"

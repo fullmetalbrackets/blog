@@ -458,6 +458,7 @@ const selectedPosts = await getRelatedPosts(related ?? []);
     slug={slug!}
     tags={tags}
     headings={headings}
+    readingTime={readingTime}
   />
   <article data-pagefind-body data-pub-date={pubDate.toISOString()}
   data-updated-date={updatedDate ? updatedDate.toISOString() : ''}>

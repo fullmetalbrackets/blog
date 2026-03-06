@@ -244,6 +244,10 @@ article .link-icon:hover {
 	color: var(--hover);
 }
 
+.link-icon::before {
+  content: '#';
+}
+
 article h3 {
 	margin-top: 1em;
 }

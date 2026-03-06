@@ -47,10 +47,9 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
   <ol>
     {
       filteredHeadings.map((heading) => {
-        const cleanText = heading.text.replace(/^#/, '');
         return (
           <li>
-            <a href={`#${heading.slug}`}>{cleanText}</a>
+            <a href={`#${heading.slug}`}>{heading.text}</a>
           </li>
         );
       })
