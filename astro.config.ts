@@ -44,7 +44,7 @@ export default defineConfig({
 					content: {
 						type: 'element',
 						tagName: 'span',
-						properties: { className: ['link-icon'] }
+						properties: { className: ['link-icon'] },
 					},
 				},
 			],

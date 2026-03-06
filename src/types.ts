@@ -32,8 +32,11 @@ export type BlogSlugProps = {
 
 // src/pages/blog/years/[year].astro
 export type BlogYearProps = {
-  posts: (CollectionEntry<'blog'> & { readingTime: string })[];
-  postsByYear: Record<string, (CollectionEntry<'blog'> & { readingTime: string })[]>;
+	posts: (CollectionEntry<'blog'> & { readingTime: string })[];
+	postsByYear: Record<
+		string,
+		(CollectionEntry<'blog'> & { readingTime: string })[]
+	>;
 };
 
 // categories/[tag].astro

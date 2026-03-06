@@ -9,4 +9,4 @@ export const SITE_DESCRIPTION =
 export const GITHUB = 'https://github.com/fullmetalbrackets';
 export const BLUESKY = 'https://bsky.app/profile/fullmetalbrackets.bsky.social';
 export const MASTODON = 'https://social.lol/@adiaz';
-export const DONATE = 'https://buymeacoffee.com/arieldiaz'
+export const DONATE = 'https://buymeacoffee.com/arieldiaz';
