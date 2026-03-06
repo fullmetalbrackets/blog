@@ -7,6 +7,7 @@ import ScrollProgress from "@components/ScrollProgress.astro";
 import ReadingTime from "@components/ReadingTime.astro";
 import WebMentions from "@components/WebMentions.astro";
 import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
+import HowToSchema from "@components/HowToSchema.astro";
 import type { BlogPostProps } from '../types';
 import type { MarkdownHeading } from 'astro';
 import {
@@ -451,7 +452,14 @@ const selectedPosts = await getRelatedPosts(related ?? []);
     { name: "Blog", url: `${ SITE_URL }/blog/` },
     { name: title, url: `${ SITE_URL }/blog/${slug}/` }
   ]} />
-
+  <HowToSchema 
+    title={title}
+    description={description}
+    slug={slug!}
+    tags={tags}
+    headings={headings}
+    readingTime={readingTime}
+  />
   <article data-pagefind-body data-pub-date={pubDate.toISOString()}
   data-updated-date={updatedDate ? updatedDate.toISOString() : ''}>
     <h1>{title}</h1>

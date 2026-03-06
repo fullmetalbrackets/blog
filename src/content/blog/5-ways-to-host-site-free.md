@@ -5,6 +5,7 @@ pubDate: 2021-09-06
 updatedDate: 2025-02-03
 tags: ['web development', 'netlify', 'cloudflare']
 related: ['using-surge-sh-to-host-static-sites']
+howto: true
 ---
 
 ## Netlify

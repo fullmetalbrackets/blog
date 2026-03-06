@@ -1,0 +1,157 @@
+---
+interface Heading {
+  depth: number;
+  text: string;
+  slug?: string;
+}
+
+interface HowToConfig {
+  totalTime?: string;
+  tools?: string[];
+  supplies?: string[];
+}
+
+interface Props {
+  title: string;
+  description: string;
+  slug: string;
+  image?: string;
+  tags?: string[];
+  howto?: boolean | HowToConfig;
+  headings?: Heading[];
+  readingTime?: string;
+}
+
+const { 
+  title,
+  description, 
+  slug,
+  image,
+  tags = [],
+  howto,
+  headings = [],
+  readingTime
+} = Astro.props;
+
+// Auto-detect if post should use schema via keywords in title
+const titleIndicators = [
+  'how',
+  'guide',
+  'set',
+  'setup',
+  'setting',
+  'install',
+  'installing',
+  'configure',
+  'configuring',
+  'create',
+  'creating',
+  'build',
+  'building',
+  'use',
+  'using',
+  'customizing',
+  'bootstrapping',
+  'reference',
+  'hacks',
+  'breaking down',
+  'breakdown',
+  'turn',
+  'turning',
+  'cheat'
+];
+
+
+const hasHowToTitle = titleIndicators.some(indicator =>
+  title.toLowerCase().startsWith(indicator)
+);
+
+const isManuallyEnabled = howto === true || (typeof howto === 'object');
+const isHowTo = isManuallyEnabled || hasHowToTitle;
+
+// Skip if not a how-to or no headings
+if (!isHowTo || headings.length === 0) {
+  return null;
+}
+
+// Get config if manually provided
+const config = typeof howto === 'object' ? howto : {};
+
+// Convert reading time to ISO 8601 duration format
+// "5 min read" -> "PT5M", "15 min read" -> "PT15M"
+function readingTimeToISO8601(readingTimeText?: string): string | undefined {
+  if (!readingTimeText) return undefined;
+  
+  // Extract number from "X min read" format
+  const match = readingTimeText.match(/(\d+)/);
+  if (!match) return undefined;
+  
+  const minutes = parseInt(match[1], 10);
+  return `PT${minutes}M`;
+}
+
+// Use manual totalTime if provided, otherwise convert from readingTime
+const totalTime = config.totalTime || readingTimeToISO8601(readingTime);
+
+const baseUrl = Astro.site?.toString() || 'https://fullmetalbrackets.com';
+const postUrl = slug ? `${baseUrl}/blog/${slug}` : baseUrl;
+
+// Filter out h1 (title) and only get h2 headings as steps
+// Skip common non-step headings like "About", "Prerequisites", "References"
+const skipHeadings = [
+  'about',
+  'prerequisites',
+  'pre-requisites', 
+  'references',
+  'conclusion',
+  'summary',
+  'introduction',
+  'overview',
+  'background',
+  'workaround'
+];
+
+const stepHeadings = headings.filter(h => {
+  const isH2 = h.depth === 2;
+  const notSkipped = !skipHeadings.some(skip => 
+    h.text.toLowerCase().includes(skip)
+  );
+  return isH2 && notSkipped;
+});
+
+// Build the schema
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": title,
+  "description": description,
+  "url": postUrl,
+  "image": image ? `${baseUrl}${image}` : undefined,
+  "totalTime": totalTime,
+  "estimatedCost": {
+    "@type": "MonetaryAmount",
+    "currency": "USD",
+    "value": "0"
+  },
+  "tool": config.tools?.map(tool => ({
+    "@type": "HowToTool",
+    "name": tool
+  })),
+  "supply": config.supplies?.map(supply => ({
+    "@type": "HowToSupply",
+    "name": supply
+  })),
+  "step": stepHeadings.map((heading, index) => ({
+    "@type": "HowToStep",
+    "position": index + 1,
+    "name": heading.text,
+    "url": `${postUrl}#${heading.slug}`,
+    "text": heading.text
+  }))
+};
+
+// Remove undefined values for cleaner JSON
+const cleanSchema = JSON.parse(JSON.stringify(schema));
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(cleanSchema)} />
