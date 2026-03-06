@@ -6048,7 +6048,7 @@ __metadata:
     rehype-slug: "npm:^6.0.0"
     remark-directive: "npm:^4.0.0"
     remark-directive-sugar: "npm:^2.0.0"
-    satori: "npm:^0.24.1"
+    satori: "npm:^0.25.0"
     typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
@@ -6069,9 +6069,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"satori@npm:^0.24.1":
-  version: 0.24.1
-  resolution: "satori@npm:0.24.1"
+"satori@npm:^0.25.0":
+  version: 0.25.0
+  resolution: "satori@npm:0.25.0"
   dependencies:
     "@shuding/opentype.js": "npm:1.4.0-beta.0"
     css-background-parser: "npm:^0.1.0"
@@ -6084,7 +6084,7 @@ __metadata:
     parse-css-color: "npm:^0.2.1"
     postcss-value-parser: "npm:^4.2.0"
     yoga-layout: "npm:^3.2.1"
-  checksum: 10c0/376ddc8056a73dc7f7f3d90a9d4228f222564e9e6c6ffd99d0254dc414dbec285315f8d673f083cf6227095ce7842fc52e180d42e3c48adbdc5ceda626e43475
+  checksum: 10c0/f6930f0f1219d7ac04fe2eb4b7a64216a9c984b6a8e6cbde64265da0547615bbb1723624e1fd041943938b4feb6340cdf42990cc2bd58a41427f100f091a25ac
   languageName: node
   linkType: hard
 
