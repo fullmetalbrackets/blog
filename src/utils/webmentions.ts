@@ -68,6 +68,7 @@ export async function loadWebmentions(): Promise<void> {
 		// Display likes with author info
 		if (grouped.likes.length > 0) {
 			html += '<div class="webmention-section">';
+			html += `<h4>Likes</h4>`;
 			html += '<div class="webmention-faces">';
 			grouped.likes.forEach((mention) => {
 				const author = mention.author || {};
@@ -83,7 +84,7 @@ export async function loadWebmentions(): Promise<void> {
 		// Display reposts with author info
 		if (grouped.reposts.length > 0) {
 			html += '<div class="webmention-section">';
-			html += `<h4>🔄 Reposts (${grouped.reposts.length})</h4>`;
+			html += `<h4>Reposts</h4>`;
 			html += '<div class="webmention-faces">';
 			grouped.reposts.forEach((mention) => {
 				const author = mention.author || {};

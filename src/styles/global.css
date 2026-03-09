@@ -285,6 +285,14 @@ aside > a:focus {
 	margin-right: 0.125em;
 }
 
+.webmention-section h4 {
+	font-family: var(--sub-font);
+}
+.webmention-section h4 span {
+	color: var(--secondary);
+	font-weight: 900;
+}
+
 /* codeblocks */
 code {
 	padding: 0 4.5px 1px 4.5px;
