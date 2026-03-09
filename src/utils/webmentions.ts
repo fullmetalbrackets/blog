@@ -65,17 +65,41 @@ export async function loadWebmentions(): Promise<void> {
 
 		let html = '';
 
-		if (grouped.likes.length || grouped.reposts.length) {
-			html += '<div class="webmention-stats">';
-			if (grouped.likes.length) {
-				html += `<span>👍 ${grouped.likes.length} like${grouped.likes.length !== 1 ? 's' : ''}</span>`;
-			}
-			if (grouped.reposts.length) {
-				html += `<span>🔄 ${grouped.reposts.length} repost${grouped.reposts.length !== 1 ? 's' : ''}</span>`;
-			}
-			html += '</div>';
+		// Display likes with author info
+		if (grouped.likes.length > 0) {
+			html += '<div class="webmention-section">';
+			html += `<h4>👍 Likes (${grouped.likes.length})</h4>`;
+			html += '<div class="webmention-faces">';
+			grouped.likes.forEach((mention) => {
+				const author = mention.author || {};
+				html += `
+					<div class="webmention-face">
+						${author.photo ? `<a href="${mention.url}" target="_blank" rel="noopener noreferrer"><img src="${author.photo}" alt="${author.name || 'Anonymous'}" class="webmention-avatar-small"></a>` : ''}
+						<a href="${mention.url}" target="_blank" rel="noopener noreferrer" class="webmention-author-name">${author.name || 'Anonymous'}</a>
+					</div>
+				`;
+			});
+			html += '</div></div>';
 		}
 
+		// Display reposts with author info
+		if (grouped.reposts.length > 0) {
+			html += '<div class="webmention-section">';
+			html += `<h4>🔄 Reposts (${grouped.reposts.length})</h4>`;
+			html += '<div class="webmention-faces">';
+			grouped.reposts.forEach((mention) => {
+				const author = mention.author || {};
+				html += `
+					<div class="webmention-face">
+						${author.photo ? `<a href="${mention.url}" target="_blank" rel="noopener noreferrer"><img src="${author.photo}" alt="${author.name || 'Anonymous'}" class="webmention-avatar-small"></a>` : ''}
+						<a href="${mention.url}" target="_blank" rel="noopener noreferrer" class="webmention-author-name">${author.name || 'Anonymous'}</a>
+					</div>
+				`;
+			});
+			html += '</div></div>';
+		}
+
+		// Display replies and mentions
 		const displayMentions = [...grouped.replies, ...grouped.mentions];
 
 		if (displayMentions.length > 0) {
