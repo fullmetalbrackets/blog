@@ -49,7 +49,7 @@ const desc = "Links to websites, self-hosted apps and other cool online things t
     border-radius: 0.25em;
     padding: 4px 8px;
     font-weight: 600;
-    font-size: 0.75em;
+    font-size: 0.65em;
     display: inline-block;
     transition: all 0.2s ease;
   }
@@ -125,8 +125,9 @@ const desc = "Links to websites, self-hosted apps and other cool online things t
     { name: "Home", url: `${SITE_URL}/` },
     { name: "Links", url: `${SITE_URL}/links/` }
   ]} />
-  <section data-pagefind-body>
-    <h1>Links</h1>
+  <section class="h-feed" data-pagefind-body>
+    <h1 class="p-name">Links</h1>
+    <a class="u-url" href={`${SITE_URL}/links/`} hidden>Permalink</a>
     <hr />
     <p>
       {desc} I'm constantly adding to this as I find new things I consider worth sharing!
@@ -134,14 +135,14 @@ const desc = "Links to websites, self-hosted apps and other cool online things t
     <ul>
       {
         links.map((link) => (
-          <li>
+          <li class="h-entry">
             <span>
-              <a href={link.data.url} target="_blank" class="title-link" data-umami-event={`links-${link.data.title}`}>
-                {link.data.title}
+              <a href={link.data.url} target="_blank" class="u-bookmark-of title-link" data-umami-event={`links-${link.data.title}`}>
+                <span class="p-name">{link.data.title}</span>
               </a>
             </span>
-            <span class="info"><FormattedDate date={link.data.pubDate} />&nbsp;<span class="link-tag">{link.data.tag}</span></span>
-            <span class="desc">{link.data.description}</span>
+            <span class="info"><FormattedDate class="dt-published" date={link.data.pubDate} />&nbsp;<span class="link-tag">{link.data.tag}</span></span>
+            <span class="p-summary desc">{link.data.description}</span>
           </li>
         ))
       }

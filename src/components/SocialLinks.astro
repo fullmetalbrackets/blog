@@ -8,6 +8,9 @@ import { SITE_URL, GITHUB, BLUESKY, MASTODON, DONATE } from '@consts';
 ---
 
 <style scoped>
+    .u-photo {
+        display: none;
+    }
     .personal-links {
         display: flex;
         align-items: center;
@@ -51,20 +54,26 @@ import { SITE_URL, GITHUB, BLUESKY, MASTODON, DONATE } from '@consts';
     }
 </style>
 
-<div class="personal-links">
-    <a href="mailto:contact@fullmetalbrackets.com" target="_blank" data-umami-event="front-page-mail">
-        <Email />
-    </a>
-    <a href={MASTODON} target="_blank" data-umami-event="front-page-social">
-        <Mastodon />
-    </a>
-    <a href={BLUESKY} rel="me atproto" target="_blank" data-umami-event="front-page-bsky">
-        <Bluesky />
-    </a>
-    <a href={GITHUB} target="_blank" data-umami-event="front-page-github">
-        <GitHub />
-    </a>
-    <a href={DONATE} target="_blank" data-umami-event="front-page-coffee">
-        <BuyMeCoffee />
-    </a>
+<div class="h-card">
+    <img class="u-photo" src="/avatar.png" alt="Ariel Diaz" />
+    <h2><a class="p-name u-url u-uid" href={SITE_URL} hidden>Ariel Diaz</a></h2>
+    <p class="p-note" hidden>Blogger that writes about self-hosting, web development, Linux, and more.</p>
+    <span class="p-country-name" hidden>United States of America</span>
+    <div class="personal-links">
+        <a class="u-email" href="mailto:contact@fullmetalbrackets.com" target="_blank" data-umami-event="front-page-mail">
+            <Email />
+        </a>
+        <a rel="me" href={MASTODON} target="_blank" data-umami-event="front-page-social">
+            <Mastodon />
+        </a>
+        <a rel="me atproto" href={BLUESKY} target="_blank" data-umami-event="front-page-bsky">
+            <Bluesky />
+        </a>
+        <a rel="me" href={GITHUB} target="_blank" data-umami-event="front-page-github">
+            <GitHub />
+        </a>
+        <a rel="me" href={DONATE} target="_blank" data-umami-event="front-page-coffee">
+            <BuyMeCoffee />
+        </a>
+    </div>
 </div>

@@ -133,21 +133,21 @@ const recentPosts = (await getPostsWithReadingTime()).slice(0, 5);
   }
 </style>
 
-<section>
-  <h2>Recent Posts</h2>
+<section class="h-feed">
+  <h2 class="p-name">Recent Posts</h2>
   <div class="container">
     {
       recentPosts.map((post) => (
-        <div class="list">
-          <a href={`/blog/${post.id}/`} rel="prefetch-intent" data-umami-event={`recent-post-${post.id}`}>
-            <p class="posts-title">{post.data.title}</p>
+        <div class="h-entry list">
+          <a class="u-url" href={`/blog/${post.id}/`} rel="prefetch-intent" data-umami-event={`recent-post-${post.id}`}>
+            <p class="p-name posts-title">{post.data.title}</p>
             <span class="tag">
               {post.data.tags.map((tag) => (
                 <button>{tag}</button>
               ))}
             </span>
             <p class="info">
-              <FormattedDate date={post.data.pubDate} monthFormat="short" />&nbsp;
+              <FormattedDate class="dt-published" date={post.data.pubDate} monthFormat="short" />&nbsp;
               <span class="reading"><ReadingTime time={post.readingTime} /></span>
             </p>
           </a>
@@ -155,7 +155,7 @@ const recentPosts = (await getPostsWithReadingTime()).slice(0, 5);
       ))
     }
     <span class="more">
-      <a href="/blog/" rel="prefetch-intent">All Posts <More height={24} width={24} /></a>
+      <a href="/blog/" rel="prefetch-intent archives">All Posts <More height={24} width={24} /></a>
     </span>
   </div>
 </section>

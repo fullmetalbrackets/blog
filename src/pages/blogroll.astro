@@ -164,17 +164,18 @@ const lastUpdated = new Date('2026-03-01T00:00');
     { name: "Home", url: `${SITE_URL}/` },
     { name: "Blogroll", url: `${SITE_URL}/blogroll/` }
   ]} />
-  <section data-pagefind-body>
-    <h1>{title}</h1>
+  <section class="h-feed" data-pagefind-body>
+    <h1 class="p-name">{title}</h1>
+    <a class="u-url" href={`${SITE_URL}/blogroll/`} hidden>Permalink</a>
     <hr />
     <p>A list of blogs that I follow and regularly read. <em>(Links in alphabetical order.)</em></p>
     <p class="flex">Last updated &nbsp;<FormattedDate date={lastUpdated} monthFormat="long" /></p>
     <ul>
       {blogs.map(blog => (
-        <li>
+        <li class="h-entry">
           <div class="blog-link">
             <a href={blog.url} target="_blank" rel="noopener noreferrer"
-              data-umami-event={`blogroll-${blog.id}`} class="left">
+              data-umami-event={`blogroll-${blog.id}`} class="u-bookmark-of left">
               <img
                 src={getFavicon(blog.url)}
                 alt={`${blog.name} favicon`}
@@ -184,7 +185,7 @@ const lastUpdated = new Date('2026-03-01T00:00');
                 loading="lazy"
                 decoding="async"
               />
-              <span class="name">{blog.name}</span>
+              <span class="p-name name">{blog.name}</span>
             </a>
             <div class="right">
               <span class="url"><a href={blog.url}>{blog.url.replace('https://', '').replace(/\/$/, '')}</a></span>
@@ -201,7 +202,7 @@ const lastUpdated = new Date('2026-03-01T00:00');
                   <span class="tooltip">No feed &#9785;</span>
                 </span>
               ) : (
-                <a href={blog.feed} target="_blank" rel="noopener noreferrer"
+                <a href={blog.feed} target="_blank" rel="alternate noopener noreferrer"
                   class="rss" aria-label={`${blog.name} RSS feed`}
                   data-umami-event={`blogroll-rss-${blog.id}`}>
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">

@@ -8,6 +8,7 @@ import ReadingTime from "@components/ReadingTime.astro";
 import WebMentions from "@components/WebMentions.astro";
 import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
 import HowToSchema from "@components/HowToSchema.astro";
+import HCard from "@components/H-Card.astro";
 import type { BlogPostProps } from '../types';
 import type { MarkdownHeading } from 'astro';
 import {
@@ -77,6 +78,10 @@ const selectedPosts = await getRelatedPosts(related ?? []);
       font-size: 0.875em;
       font-weight: 500;
       margin-right: 0.25em;
+    }
+    .slot-content {
+      margin: 0;
+      padding: 0;
     }
     .midline {
       margin-bottom: 1.5em;
@@ -464,20 +469,21 @@ const selectedPosts = await getRelatedPosts(related ?? []);
     headings={headings}
     readingTime={readingTime}
   />
-  <article data-pagefind-body data-pub-date={pubDate.toISOString()}
+  <article class="h-entry" data-pagefind-body data-pub-date={pubDate.toISOString()}
   data-updated-date={updatedDate ? updatedDate.toISOString() : ''}>
-    <h1>{title}</h1>
+    <h1 class="p-name">{title}</h1>
+    <a class="u-url" href={`https://fullmetalbrackets.com/blog/${slug}/`} hidden>Permalink</a>
     <div class="blog-tags">
       <span class="tag" data-pagefind-ignore>
         {tags.map((tag) => (
-          <a href={`/categories/${tag}/`} rel="prefetch-intent" data-umami-event="category-from-article">
+          <a href={`/categories/${tag}/`} rel="prefetch-intent tag" data-umami-event="category-from-article">
             <button>{tag}</button>
           </a>
         ))}
       </span>
     </div>
     <div class="info">
-      <span><FormattedDate date={pubDate} /></span>
+      <span><FormattedDate class="dt-published" date={pubDate} /></span>
       <span class="readingtime"><ReadingTime time={readingTime} data-pagefind-ignore /></span>
     </div>
     <p class="updated">
@@ -486,23 +492,24 @@ const selectedPosts = await getRelatedPosts(related ?? []);
           <span class="last-updated-on">
             Updated&nbsp;
           </span>
-            <FormattedDate date={updatedDate} />
+            <FormattedDate class="dt-updated" date={updatedDate} />
         )
       }
     </p>
     <hr />
-    <p class="description">
+    <p class="p-summary description">
       {description}
     </p>
     <TableOfContents headings={headings} />
-    <slot>
-      <p>
-        If you're seeing this, something went wrong! Please try <em
-          >reloading the page</em
-        >.
-      </p>
-    </slot>
-
+    <div class="e-content slot-content">
+      <slot>
+        <p>
+          If you're seeing this, something went wrong! Please try <em
+            >reloading the page</em
+          >.
+        </p>
+      </slot>
+    </div>
     {selectedPosts.length > 0 && (
       <div class="related" data-pagefind-ignore>
         <h3><Related width={36} height={36}/> Related Posts</h3>
@@ -527,6 +534,7 @@ const selectedPosts = await getRelatedPosts(related ?? []);
     )}
 
   </article>
+  <HCard />
   <hr class="midline">
   
   <WebMentions />

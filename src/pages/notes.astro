@@ -4,7 +4,7 @@ import Note from '@components/Note.astro';
 import BackToTop from "@components/BackToTop.astro";
 import { getNotes } from '@utils/collections';
 import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
-import { SITE_URL } from "@consts";
+import { SITE_URL, MASTODON } from "@consts";
 
 const notes = await getNotes();
 const title = "Notes";
@@ -39,11 +39,12 @@ const desc = "List of all short-form notes posted as part of my lifestream.";
     { name: "Home", url: `${SITE_URL}/` },
     { name: "Notes", url: `${SITE_URL}/notes/` }
   ]} />
-  <section>
-    <h1>{title}</h1>
+  <section class="h-feed">
+    <h1 class="p-name">{title}</h1>
+    <a class="u-url" href={`${SITE_URL}/notes/`} hidden>Permalink</a>
     <hr />
     <p>
-      List of all short-form notes that posted as part of my <a href="/lifestream/">Lifestream</a>.
+      List of all short-form notes posted as part of my <a href="/lifestream/">Lifestream</a>. These usually also get cross-posted to <a href={MASTODON} target="_blank" rel="me noreferrer noopener">Mastodon</a>, but only if I feel like it.
     </p>
     <ul>
         {notes.map((note) => (<li>

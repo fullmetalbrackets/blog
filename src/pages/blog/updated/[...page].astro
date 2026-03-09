@@ -86,7 +86,7 @@ const desc = "Blog posts sorted by most recently updated.";
     font-family: var(--sub-font);
     font-size: 0.875em;
     font-weight: 500;
-    color: var(--emphasis);
+    color: var(--primary);
   }
   .desc {
     margin-top: -0.25em;
@@ -195,8 +195,9 @@ const desc = "Blog posts sorted by most recently updated.";
     { name: "Blog", url: `${SITE_URL}/blog/` },
     { name: "Recently Updated", url: `${SITE_URL}/blog/updated/` }
   ]} />
-  <section>
-    <h1>Recently Updated</h1>
+  <section class="h-feed">
+    <h1 class="p-name">Recently Updated</h1>
+    <a class="u-url" href={`${SITE_URL}/blog/updated/`} hidden>Permalink</a>
     <hr />
     <p>
       <span>
@@ -222,22 +223,23 @@ const desc = "Blog posts sorted by most recently updated.";
     </nav>
     <ul>
       {page.data.map((post) => (
-        <li>
+        <li class="h-entry">
           <div>
-            <a href={`/blog/${post.id}/`} rel="prefetch-intent" data-umami-event={post.id}>
-              <span class="title">{post.data.title}</span>
+            <a class="u-url" href={`/blog/${post.id}/`} rel="prefetch-intent" data-umami-event={post.id}>
+              <span class="p-name title">{post.data.title}</span>
               <p class="tag">
                 {post.data.tags.map((tag) => (
                   <button>{tag}</button>
                 ))}
               </p>
               <p class="info">
+                <span hidden><FormattedDate class="dt-published" date={post.data.pubDate} /></span>
                 <span class="updated-on">Updated&nbsp;</span>
-                <FormattedDate date={post.data.updatedDate!} />
+                <FormattedDate class="dt-updated" date={post.data.updatedDate!} />
                 &nbsp;
                 <span class="reading"><ReadingTime time={post.readingTime} /></span>
               </p>
-              <p class="desc">{post.data.description}</p>
+              <p class="p-summary desc">{post.data.description}</p>
             </a>
           </div>
         </li>

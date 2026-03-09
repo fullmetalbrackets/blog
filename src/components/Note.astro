@@ -16,9 +16,9 @@ const {
 } = Astro.props;
 ---
 
-<div class="note-card">
-  {title && <h3 class="note-title">{title}</h3>}
-  <p class="note">{note}</p>
+<div class="h-entry note-card">
+  {title && <h3 class="p-name note-title">{title}</h3>}
+  <p class="e-content note">{note}</p>
   <div class="note-info">
     <span class="tag">{tag}</span>
     <span class="external-link">
@@ -30,7 +30,7 @@ const {
     </span>
   </div>
 </div>
-<span class="info"><FormattedDate date={pubDate} /><Icon width={32} height={32} /></span>
+<span class="info"><FormattedDate class="dt-published" date={pubDate} /><Icon width={32} height={32} /></span>
 
 <style>  
   .external-link {

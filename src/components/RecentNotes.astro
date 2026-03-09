@@ -110,21 +110,21 @@ const recentNotes = (await getNotes()).slice(0, limit);
   }
 </style>
 
-<section>
-  <h2>Recent Notes</h2>
+<section class="h-feed">
+  <h2 class="p-name">Recent Notes</h2>
   <div class="container">
       {recentNotes.map((note) => (
-        <div class="list">
-          <a href={note.data.url || '/notes/'} data-umami-event={`recent-notes-${note.data.title}`} target="_blank" rel="noopener noreferrer">
-            <span class="note-title">{note.data.title}</span>
+        <div class="h-entry list">
+          <a class="u-bookmark-of" href={note.data.url || '/notes/'} data-umami-event={`recent-notes-${note.data.title}`} target="_blank" rel="noopener noreferrer">
+            <span class="p-name note-title">{note.data.title}</span>
             <p class="info">
               <button>{note.data.tag}</button>
-              <FormattedDate date={note.data.pubDate} monthFormat="short" />
+              <FormattedDate class="dt-published" date={note.data.pubDate} monthFormat="short" />
             </p>
           </a>
         </div>
       ))}
     <span class="more">
-      <a href="/notes/" rel="prefetch-intent">All Notes <More height={24} width={24} /></a>
+      <a href="/notes/" rel="prefetch-intent archives">All Notes <More height={24} width={24} /></a>
     </span>
 </section>

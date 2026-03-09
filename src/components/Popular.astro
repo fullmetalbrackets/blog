@@ -131,21 +131,21 @@ const selectedPosts = allPosts.filter(post => popularSlugs.includes(post.id));
   }
 </style>
 
-<section>
+<section class="h-feed">
 <div id="popular" />
-  <h2>Popular Posts</h2>
+  <h2 class="p-name">Popular Posts</h2>
   <div class="container">
     {selectedPosts.map(post => (
-        <div class="list">
-          <a href={`/blog/${post.id}/`} rel="prefetch-intent" data-umami-event={`popular-${post.id}`}>
-            <p class="posts-title">{post.data.title}</p>
+        <div class="h-entry list">
+          <a class="u-url" href={`/blog/${post.id}/`} rel="prefetch-intent" data-umami-event={`popular-${post.id}`}>
+            <p class="p-name posts-title">{post.data.title}</p>
             <span class="tag">
               {post.data.tags.map((tag) => (
                 <button>{tag}</button>
               ))}
             </span>
             <p class="info">
-              <FormattedDate date={post.data.pubDate} monthFormat="short" />&nbsp;
+              <FormattedDate class="dt-published" date={post.data.pubDate} monthFormat="short" />&nbsp;
               <span class="reading"><ReadingTime time={post.readingTime} /></span>
             </p>
           </a>
