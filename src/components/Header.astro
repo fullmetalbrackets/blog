@@ -233,12 +233,12 @@ import Search from '@icons/search.svg';
 
 <header>
   <nav aria-label="Main navigation">
-    <a href="/" class="logo" aria-label="Fullmetalbrackets home">
+    <a href="/" rel="home" class="logo" aria-label="Fullmetalbrackets home">
       <Picture src={Logo} formats={['avif', 'webp']} alt="" width={50} height={47} loading="eager" decoding="async" />
       <span class="name" aria-hidden="true"></span>
     </a>
     <div class="nav-links">
-      <HeaderLink href="/blog/" rel="prefetch-intent" aria-label="Blog" class="nav-link blog-link" data-umami-event="nav-blog">Blog</HeaderLink>
+      <HeaderLink href="/blog/" rel="prefetch-intent archives" aria-label="Blog" class="nav-link blog-link" data-umami-event="nav-blog">Blog</HeaderLink>
       <HeaderLink href="/categories/" rel="prefetch-intent" aria-label="Categories" class="nav-link categories-link" data-umami-event="nav-links">Categories</HeaderLink>
       <div class="dropdown">
         <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">
@@ -264,7 +264,7 @@ import Search from '@icons/search.svg';
           <HeaderLink href="/verify/" rel="prefetch-intent" aria-label="Verify" data-umami-event="nav-verify">Verify</HeaderLink>
         </div>
       </div>
-      <HeaderLink href="/search/" rel="prefetch-intent" class="search-link" data-umami-event="search" aria-label="Search">
+      <HeaderLink href="/search/" rel="prefetch-intent search" class="search-link" data-umami-event="search" aria-label="Search">
         <Search aria-hidden="true" width="26px" height="26px" />
         <span class="sr-only">Search</span>
       </HeaderLink>

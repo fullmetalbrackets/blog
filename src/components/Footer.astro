@@ -141,16 +141,16 @@ import { GITHUB, MASTODON, BLUESKY, DONATE } from '@consts';
     <a href="mailto:contact@fullmetalbrackets.com" target="_blank" data-umami-event="footer-mail">
       <Email height={28} width={28} class="email" />
     </a>
-    <a href={MASTODON} target="_blank" data-umami-event="footer-social">
+    <a href={MASTODON} rel="me" target="_blank" data-umami-event="footer-social">
       <Mastodon height={25} width={25} />
     </a>
     <a href={BLUESKY} rel="me atproto" target="_blank" data-umami-event="footer-bsky">
       <Bluesky height={25} width={25} />
     </a>
-    <a href={GITHUB} target="_blank" data-umami-event="footer-github">
+    <a href={GITHUB} rel="me" target="_blank" data-umami-event="footer-github">
       <GitHub height={25} width={25} />
     </a>
-    <a href={DONATE} target="_blank" data-umami-event="footer-coffee">
+    <a href={DONATE} rel="me" target="_blank" data-umami-event="footer-coffee">
       <BuyMeCoffee height={25} width={25} />
     </a>
   </div>
@@ -202,7 +202,7 @@ import { GITHUB, MASTODON, BLUESKY, DONATE } from '@consts';
   </nav>
   <div class="legal">
     <span>
-      Content: <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" data-umami-event="footer-cc-by-nc-sa-4.0">CC BY-NC-SA 4.0</a>
+      Content: <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" data-umami-event="footer-cc-by-nc-sa-4.0">CC BY-NC-SA 4.0</a>
     </span>
     <span>
       Code: <a href="https://mit-license.org" target="_blank" data-umami-event="footer-mit-license">MIT</a>
