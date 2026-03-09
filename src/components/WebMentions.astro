@@ -75,44 +75,41 @@
   }
 
   .webmention-section {
-    margin: 1.5em 0;
-  }
-
-  .webmention-section h4 {
-    font-family: var(--sub-font);
-    margin: 0 0 0.75em 0;
-    font-size: 1em;
-    font-weight: 600;
+    margin: 0;
+    padding: 0;
   }
 
   .webmention-faces {
     display: flex;
     flex-wrap: wrap;
-    gap: 1em;
+    gap: 0;
+    margin: 0;
+    padding: 0;
   }
 
   .webmention-face {
     display: flex;
     align-items: center;
+    justify-content: start;
     gap: 0.5em;
+    margin: 0 0.25em;
+    padding: 0;
   }
 
   .webmention-avatar-small {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    border-radius: 0.5em;
   }
 
-  .webmention-author-name {
-    color: var(--link);
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.9em;
+  .webmention-avatar-small a {
+    border: 1px solid transparent;
   }
 
-  .webmention-author-name:hover {
-    text-decoration: underline;
+  .webmention-avatar-small a:hover {
+    border: 1px solid var(--primary);
   }
+  
 </style>
 
 <script>

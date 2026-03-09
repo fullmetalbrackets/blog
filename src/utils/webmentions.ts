@@ -68,14 +68,12 @@ export async function loadWebmentions(): Promise<void> {
 		// Display likes with author info
 		if (grouped.likes.length > 0) {
 			html += '<div class="webmention-section">';
-			html += `<h4>👍 Likes (${grouped.likes.length})</h4>`;
 			html += '<div class="webmention-faces">';
 			grouped.likes.forEach((mention) => {
 				const author = mention.author || {};
 				html += `
 					<div class="webmention-face">
 						${author.photo ? `<a href="${mention.url}" target="_blank" rel="noopener noreferrer"><img src="${author.photo}" alt="${author.name || 'Anonymous'}" class="webmention-avatar-small"></a>` : ''}
-						<a href="${mention.url}" target="_blank" rel="noopener noreferrer" class="webmention-author-name">${author.name || 'Anonymous'}</a>
 					</div>
 				`;
 			});
