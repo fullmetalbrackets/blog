@@ -27,7 +27,10 @@ export async function loadWebmentions(): Promise<void> {
 	const container = document.getElementById('webmentions-container');
 	if (!container) return;
 
-	const currentUrl = window.location.href;
+	let currentUrl = window.location.href.split('#')[0];
+	if (!currentUrl.endsWith('/')) {
+		currentUrl = currentUrl + '/';
+	}
 
 	try {
 		const response = await fetch(
