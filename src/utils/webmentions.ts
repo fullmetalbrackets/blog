@@ -25,8 +25,15 @@ interface WebmentionResponse {
 }
 
 export async function loadWebmentions(): Promise<void> {
+	console.log('loadWebmentions() called!');
+
 	const container = document.getElementById('webmentions-container');
-	if (!container) return;
+	if (!container) {
+		console.log('No webmentions container found!');
+		return;
+	}
+
+	console.log('Container found, proceeding...');
 
 	// Get the full current URL (including any hash)
 	const fullUrl = window.location.href;
