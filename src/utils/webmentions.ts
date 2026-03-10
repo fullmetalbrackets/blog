@@ -36,7 +36,7 @@ export async function loadWebmentions(): Promise<void> {
 
 	try {
 		const response = await fetch(
-			`https://webmention.io${encodeURIComponent(currentUrl)}&per-page=50`
+			`https://webmention.io/${encodeURIComponent(currentUrl)}&per-page=50`
 		);
 
 		if (!response.ok) {
