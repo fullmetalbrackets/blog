@@ -41,7 +41,7 @@ export async function loadWebmentions(): Promise<void> {
 		const mentions: Webmention[] = [];
 		const seenIds = new Set<string>();
 
-		// First fetch JF2 for rich data like author photos, use base URL without hash
+		// First: Fetch JF2 for rich data like author photos
 		try {
 			const jf2Response = await fetch(
 				`https://webmention.io/api/mentions.jf2?target=${encodeURIComponent(baseUrl)}&per-page=50`
@@ -68,10 +68,10 @@ export async function loadWebmentions(): Promise<void> {
 			console.warn('JF2 fetch failed:', jf2Error);
 		}
 
-		// Fetch Atom feed with base URL, without hash
+		// Second: Fetch Atom feed via our proxy (no CORS issues)
 		try {
 			const atomResponse = await fetch(
-				`https://webmention.io/api/mentions.atom?target=${encodeURIComponent(baseUrl)}&per-page=50`
+				`/api/webmentions?target=${encodeURIComponent(baseUrl)}`
 			);
 
 			if (atomResponse.ok) {
@@ -119,12 +119,11 @@ export async function loadWebmentions(): Promise<void> {
 			console.warn('Atom fetch failed:', atomError);
 		}
 
-		// Also check for mentions to URL with hash fragment (if there is one)
-		// Catches where someone linked to a specific section of post
+		// Third: If URL has hash, also check for mentions to that specific hash URL
 		if (fullUrl.includes('#')) {
 			try {
 				const atomHashResponse = await fetch(
-					`https://webmention.io/api/mentions.atom?target=${encodeURIComponent(fullUrl)}&per-page=50`
+					`/api/webmentions?target=${encodeURIComponent(fullUrl)}`
 				);
 
 				if (atomHashResponse.ok) {
@@ -194,7 +193,6 @@ export async function loadWebmentions(): Promise<void> {
 
 		let html = '';
 
-		// Display likes with author info
 		if (grouped.likes.length > 0) {
 			html += '<div class="webmention-section">';
 			html += `<h4>Likes</h4>`;
@@ -210,7 +208,6 @@ export async function loadWebmentions(): Promise<void> {
 			html += '</div></div>';
 		}
 
-		// Display reposts with author info
 		if (grouped.reposts.length > 0) {
 			html += '<div class="webmention-section">';
 			html += `<h4>Reposts</h4>`;
@@ -227,7 +224,6 @@ export async function loadWebmentions(): Promise<void> {
 			html += '</div></div>';
 		}
 
-		// Display replies and mentions
 		const displayMentions = [...grouped.replies, ...grouped.mentions];
 
 		if (displayMentions.length > 0) {
