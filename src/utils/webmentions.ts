@@ -28,21 +28,23 @@ export async function loadWebmentions(): Promise<void> {
 	const container = document.getElementById('webmentions-container');
 	if (!container) return;
 
-	// Strip hash fragments
-	let currentUrl = window.location.href.split('#')[0];
+	// Get the full current URL (including any hash)
+	const fullUrl = window.location.href;
 
-	if (!currentUrl.endsWith('/')) {
-		currentUrl = currentUrl + '/';
+	// Also get URL without hash for JF2 query
+	let baseUrl = fullUrl.split('#')[0];
+	if (!baseUrl.endsWith('/')) {
+		baseUrl = baseUrl + '/';
 	}
 
 	try {
 		const mentions: Webmention[] = [];
 		const seenIds = new Set<string>();
 
-		// Fetch JF2 first for rich data like author photos
+		// First fetch JF2 for rich data like author photos, use base URL without hash
 		try {
 			const jf2Response = await fetch(
-				`https://webmention.io/api/mentions.jf2?target=${encodeURIComponent(currentUrl)}&per-page=50`
+				`https://webmention.io/api/mentions.jf2?target=${encodeURIComponent(baseUrl)}&per-page=50`
 			);
 
 			if (jf2Response.ok) {
@@ -66,10 +68,10 @@ export async function loadWebmentions(): Promise<void> {
 			console.warn('JF2 fetch failed:', jf2Error);
 		}
 
-		// Fetch Atom feed after JF2 to catch hash fragment mentions
+		// Fetch Atom feed with base URL, without hash
 		try {
 			const atomResponse = await fetch(
-				`https://webmention.io/api/mentions.atom?target=${encodeURIComponent(currentUrl)}&per-page=50`
+				`https://webmention.io/api/mentions.atom?target=${encodeURIComponent(baseUrl)}&per-page=50`
 			);
 
 			if (atomResponse.ok) {
@@ -84,24 +86,20 @@ export async function loadWebmentions(): Promise<void> {
 					const contentDiv = entry.querySelector('content div');
 					const links = contentDiv?.querySelectorAll('a') || [];
 
-					// First link is the source, second is the target
 					const sourceUrl = links[0]?.getAttribute('href') || '';
 					const updated = entry.querySelector('updated')?.textContent || '';
 
-					// Determine type from summary text
 					let wmProperty = 'mention-of';
 					if (summary.includes('liked')) wmProperty = 'like-of';
 					if (summary.includes('reposted')) wmProperty = 'repost-of';
 					if (summary.includes('replied')) wmProperty = 'in-reply-to';
 
-					// Extract author name from title
 					const title = entry.querySelector('title')?.textContent || '';
 					const authorMatch = title.match(
 						/^(.+?)\s+(liked|mentioned|reposted|replied)/
 					);
 					const authorName = authorMatch ? authorMatch[1] : 'Anonymous';
 
-					// Only add if mention not already grabbed from JF2
 					const atomId = entryId || sourceUrl;
 					if (!seenIds.has(atomId) && !seenIds.has(sourceUrl)) {
 						seenIds.add(atomId);
@@ -119,6 +117,63 @@ export async function loadWebmentions(): Promise<void> {
 			}
 		} catch (atomError) {
 			console.warn('Atom fetch failed:', atomError);
+		}
+
+		// Also check for mentions to URL with hash fragment (if there is one)
+		// Catches where someone linked to a specific section of post
+		if (fullUrl.includes('#')) {
+			try {
+				// For hash fragment URLs, we need to manually encode the # as %23
+				const encodedFullUrl = fullUrl.replace(/#/g, '%23');
+
+				const atomHashResponse = await fetch(
+					`https://webmention.io/api/mentions.atom?target=${encodedFullUrl}&per-page=50`
+				);
+
+				if (atomHashResponse.ok) {
+					const atomText = await atomHashResponse.text();
+					const parser = new DOMParser();
+					const xmlDoc = parser.parseFromString(atomText, 'text/xml');
+					const entries = xmlDoc.querySelectorAll('entry');
+
+					entries.forEach((entry) => {
+						const entryId = entry.querySelector('id')?.textContent || '';
+						const summary = entry.querySelector('summary')?.textContent || '';
+						const contentDiv = entry.querySelector('content div');
+						const links = contentDiv?.querySelectorAll('a') || [];
+
+						const sourceUrl = links[0]?.getAttribute('href') || '';
+						const updated = entry.querySelector('updated')?.textContent || '';
+
+						let wmProperty = 'mention-of';
+						if (summary.includes('liked')) wmProperty = 'like-of';
+						if (summary.includes('reposted')) wmProperty = 'repost-of';
+						if (summary.includes('replied')) wmProperty = 'in-reply-to';
+
+						const title = entry.querySelector('title')?.textContent || '';
+						const authorMatch = title.match(
+							/^(.+?)\s+(liked|mentioned|reposted|replied)/
+						);
+						const authorName = authorMatch ? authorMatch[1] : 'Anonymous';
+
+						const atomId = entryId || sourceUrl;
+						if (!seenIds.has(atomId) && !seenIds.has(sourceUrl)) {
+							seenIds.add(atomId);
+							seenIds.add(sourceUrl);
+							mentions.push({
+								'wm-property': wmProperty,
+								url: sourceUrl,
+								published: updated,
+								author: { name: authorName },
+								content: { text: '' },
+								id: atomId,
+							});
+						}
+					});
+				}
+			} catch (atomHashError) {
+				console.warn('Atom hash fetch failed:', atomHashError);
+			}
 		}
 
 		if (mentions.length === 0) {
