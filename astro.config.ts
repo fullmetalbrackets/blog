@@ -13,13 +13,16 @@ import yeskunallumami from '@yeskunall/astro-umami';
 import rehypeCodeblockCopy from './src/utils/rehype-codeblock-copy.ts';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import cloudflare from '@astrojs/cloudflare';
 
 export default defineConfig({
 	site: 'https://fullmetalbrackets.com',
 	trailingSlash: 'always',
+
 	build: {
 		inlineStylesheets: 'always',
 	},
+
 	integrations: [
 		mdx(),
 		sitemap(),
@@ -29,7 +32,9 @@ export default defineConfig({
 			hostUrl: 'https://u.adiaz.fyi',
 		}),
 	],
+
 	prefetch: true,
+
 	markdown: {
 		rehypePlugins: [
 			rehypeSlug,
@@ -60,10 +65,13 @@ export default defineConfig({
 		syntaxHighlight: 'prism',
 		remarkPlugins: [remarkReadingTime, remarkDirective, remarkDirectiveSugar],
 	},
+
 	compressHTML: true,
+
 	image: {
 		service: passthroughImageService(),
 	},
+
 	redirects: {
 		'/feed/': {
 			status: 302,
@@ -144,6 +152,7 @@ export default defineConfig({
 			destination: '/digest/tvshows/',
 		},
 	},
+
 	experimental: {
 		fonts: [
 			{
@@ -172,5 +181,13 @@ export default defineConfig({
 			},
 		],
 		svgo: true,
+	},
+
+	output: 'server',
+	adapter: cloudflare(),
+	vite: {
+		ssr: {
+			external: ['@resvg/resvg-js', 'fs', 'path', 'child_process'],
+		},
 	},
 });

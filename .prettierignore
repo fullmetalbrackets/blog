@@ -13,3 +13,4 @@ node_modules
 *.avif
 *.md
 *.yml
+wrangler.jsonc
