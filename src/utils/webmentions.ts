@@ -68,14 +68,14 @@ export async function loadWebmentions(): Promise<void> {
 			console.warn('JF2 fetch failed:', jf2Error);
 		}
 
-		// Second: Fetch Atom feed via our proxy (no CORS issues)
+		// Second: Fetch Atom feed via our proxy for base URL
 		try {
-			const atomHashResponse = await fetch(
-				`/api/webmentions/?target=${encodeURIComponent(fullUrl)}`
+			const atomResponse = await fetch(
+				`/api/webmentions/?target=${encodeURIComponent(baseUrl)}`
 			);
 
-			if (atomHashResponse.ok) {
-				const atomText = await atomHashResponse.text();
+			if (atomResponse.ok) {
+				const atomText = await atomResponse.text();
 				const parser = new DOMParser();
 				const xmlDoc = parser.parseFromString(atomText, 'text/xml');
 				const entries = xmlDoc.querySelectorAll('entry');
@@ -119,11 +119,19 @@ export async function loadWebmentions(): Promise<void> {
 			console.warn('Atom fetch failed:', atomError);
 		}
 
-		// Third: If URL has hash, also check for mentions to that specific hash URL
-		if (fullUrl.includes('#')) {
+		// Third: Extract all heading IDs from the page and check for hash fragment mentions
+		const headings = document.querySelectorAll(
+			'h2[id], h3[id], h4[id], h5[id], h6[id]'
+		);
+		const hashesToCheck = Array.from(headings)
+			.map((h) => h.id)
+			.filter((id) => id); // Remove any empty IDs
+
+		for (const hashId of hashesToCheck) {
 			try {
+				const urlWithHash = baseUrl.slice(0, -1) + '#' + hashId;
 				const atomHashResponse = await fetch(
-					`/api/webmentions?target=${encodeURIComponent(fullUrl)}`
+					`/api/webmentions/?target=${encodeURIComponent(urlWithHash)}`
 				);
 
 				if (atomHashResponse.ok) {
@@ -167,8 +175,8 @@ export async function loadWebmentions(): Promise<void> {
 						}
 					});
 				}
-			} catch (atomHashError) {
-				console.warn('Atom hash fetch failed:', atomHashError);
+			} catch (hashError) {
+				console.warn(`Failed to fetch mentions for #${hashId}:`, hashError);
 			}
 		}
 
