@@ -34,7 +34,7 @@ export async function loadWebmentions(): Promise<void> {
 	try {
 		// Fetch all webmentions for the domain
 		const response = await fetch(
-			`https://webmention.io/api/mentions.jf2?domain=fullmetalbrackets.com&per-page=1000`
+			`https://webmention.io/api/mentions.jf2?domain=https://fullmetalbrackets.com&per-page=1000`
 		);
 
 		if (!response.ok) {
