@@ -70,12 +70,12 @@ export async function loadWebmentions(): Promise<void> {
 
 		// Second: Fetch Atom feed via our proxy (no CORS issues)
 		try {
-			const atomResponse = await fetch(
-				`/api/webmentions?target=${encodeURIComponent(baseUrl)}`
+			const atomHashResponse = await fetch(
+				`/api/webmentions/?target=${encodeURIComponent(fullUrl)}`
 			);
 
-			if (atomResponse.ok) {
-				const atomText = await atomResponse.text();
+			if (atomHashResponse.ok) {
+				const atomText = await atomHashResponse.text();
 				const parser = new DOMParser();
 				const xmlDoc = parser.parseFromString(atomText, 'text/xml');
 				const entries = xmlDoc.querySelectorAll('entry');
