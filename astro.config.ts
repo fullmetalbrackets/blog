@@ -13,7 +13,6 @@ import yeskunallumami from '@yeskunall/astro-umami';
 import rehypeCodeblockCopy from './src/utils/rehype-codeblock-copy.ts';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
-
 import cloudflare from '@astrojs/cloudflare';
 
 export default defineConfig({
@@ -186,4 +185,9 @@ export default defineConfig({
 
 	output: 'server',
 	adapter: cloudflare(),
+	vite: {
+		ssr: {
+			external: ['@resvg/resvg-js', 'fs', 'path', 'child_process'],
+		},
+	},
 });
