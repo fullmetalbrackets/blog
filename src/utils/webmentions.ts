@@ -123,11 +123,8 @@ export async function loadWebmentions(): Promise<void> {
 		// Catches where someone linked to a specific section of post
 		if (fullUrl.includes('#')) {
 			try {
-				// For hash fragment URLs, we need to manually encode the # as %23
-				const encodedFullUrl = fullUrl.replace(/#/g, '%23');
-
 				const atomHashResponse = await fetch(
-					`https://webmention.io/api/mentions.atom?target=${encodedFullUrl}&per-page=50`
+					`https://webmention.io/api/mentions.atom?target=${encodeURIComponent(fullUrl)}&per-page=50`
 				);
 
 				if (atomHashResponse.ok) {
