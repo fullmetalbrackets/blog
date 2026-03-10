@@ -184,6 +184,5 @@ export default defineConfig({
 		svgo: true,
 	},
 
-	output: 'static',
 	adapter: cloudflare(),
 });
