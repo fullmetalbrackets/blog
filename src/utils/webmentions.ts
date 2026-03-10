@@ -10,6 +10,7 @@ interface Webmention {
 	};
 	published?: string;
 	url?: string;
+	id?: string;
 }
 
 interface WebmentionGroup {
@@ -35,16 +36,90 @@ export async function loadWebmentions(): Promise<void> {
 	}
 
 	try {
-		const response = await fetch(
-			`https://webmention.io/api/mentions.jf2?target=${encodeURIComponent(currentUrl)}&per-page=50`
-		);
+		const mentions: Webmention[] = [];
+		const seenIds = new Set<string>();
 
-		if (!response.ok) {
-			throw new Error('Failed to fetch webmentions');
+		// Fetch JF2 first for rich data like author photos
+		try {
+			const jf2Response = await fetch(
+				`https://webmention.io/api/mentions.jf2?target=${encodeURIComponent(currentUrl)}&per-page=50`
+			);
+
+			if (jf2Response.ok) {
+				const jf2Data: WebmentionResponse = await jf2Response.json();
+				(jf2Data.children || []).forEach((mention: any) => {
+					const id = mention['wm-id'] || mention.url;
+					if (id && !seenIds.has(id)) {
+						seenIds.add(id);
+						mentions.push({
+							'wm-property': mention['wm-property'],
+							author: mention.author,
+							content: mention.content,
+							published: mention.published,
+							url: mention.url,
+							id: id,
+						});
+					}
+				});
+			}
+		} catch (jf2Error) {
+			console.warn('JF2 fetch failed:', jf2Error);
 		}
 
-		const data: WebmentionResponse = await response.json();
-		const mentions: Webmention[] = data.children || [];
+		// Fetch Atom feed after JF2 to catch hash fragment mentions
+		try {
+			const atomResponse = await fetch(
+				`https://webmention.io/api/mentions.atom?target=${encodeURIComponent(currentUrl)}&per-page=50`
+			);
+
+			if (atomResponse.ok) {
+				const atomText = await atomResponse.text();
+				const parser = new DOMParser();
+				const xmlDoc = parser.parseFromString(atomText, 'text/xml');
+				const entries = xmlDoc.querySelectorAll('entry');
+
+				entries.forEach((entry) => {
+					const entryId = entry.querySelector('id')?.textContent || '';
+					const summary = entry.querySelector('summary')?.textContent || '';
+					const contentDiv = entry.querySelector('content div');
+					const links = contentDiv?.querySelectorAll('a') || [];
+
+					// First link is the source, second is the target
+					const sourceUrl = links[0]?.getAttribute('href') || '';
+					const updated = entry.querySelector('updated')?.textContent || '';
+
+					// Determine type from summary text
+					let wmProperty = 'mention-of';
+					if (summary.includes('liked')) wmProperty = 'like-of';
+					if (summary.includes('reposted')) wmProperty = 'repost-of';
+					if (summary.includes('replied')) wmProperty = 'in-reply-to';
+
+					// Extract author name from title
+					const title = entry.querySelector('title')?.textContent || '';
+					const authorMatch = title.match(
+						/^(.+?)\s+(liked|mentioned|reposted|replied)/
+					);
+					const authorName = authorMatch ? authorMatch[1] : 'Anonymous';
+
+					// Only add if mention not already grabbed from JF2
+					const atomId = entryId || sourceUrl;
+					if (!seenIds.has(atomId) && !seenIds.has(sourceUrl)) {
+						seenIds.add(atomId);
+						seenIds.add(sourceUrl);
+						mentions.push({
+							'wm-property': wmProperty,
+							url: sourceUrl,
+							published: updated,
+							author: { name: authorName },
+							content: { text: '' },
+							id: atomId,
+						});
+					}
+				});
+			}
+		} catch (atomError) {
+			console.warn('Atom fetch failed:', atomError);
+		}
 
 		if (mentions.length === 0) {
 			container.innerHTML =
