@@ -4,8 +4,7 @@ description: 'When using Pi-Hole as a network-wide ad blocker, your DNS requests
 pubDate: 2023-07-13
 updatedDate: 2025-03-02
 tags: ['pi-hole', 'networking']
-related1: pi-hole-quad9-dls-over-tls
-related2: set-up-pihole-on-linux
+related: ['pi-hole-quad9-dls-over-tls', 'set-up-pihole-on-linux']
 ---
 
 ## What and Why

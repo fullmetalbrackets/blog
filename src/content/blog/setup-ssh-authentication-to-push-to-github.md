@@ -4,8 +4,7 @@ description: "Setting up SSH keys and pushing to GitHub without needing to enter
 pubDate: 2021-09-21
 updatedDate: 2025-02-17
 tags: ['ssh', 'command line', 'github']
-related1: generating-an-ssh-key-pair
-related2: copy-ssh-keys-between-hosts
+related: ['generating-an-ssh-key-pair', 'copy-ssh-keys-between-hosts']
 ---
 
 ## Add the key in GitHub

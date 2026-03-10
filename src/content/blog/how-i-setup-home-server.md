@@ -4,8 +4,7 @@ description: 'I turned my old Dell PC into an all-in-one home server and network
 pubDate: 2025-01-31
 updatedDate: 2025-11-30
 tags: ['self-hosting', 'debian', 'tailscale']
-related1: expose-plex-tailscale-vps
-related2: pihole-anywhere-tailscale
+related: ['expose-plex-tailscale-vps', 'pihole-anywhere-tailscale']
 ---
 
 ## Server hardware and software

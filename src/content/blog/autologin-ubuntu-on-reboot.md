@@ -1,10 +1,10 @@
 ---
-title: 'Autologin on Ubuntu and go straight to terminal'
+title: 'How to autologin on Ubuntu and go straight to terminal'
 description: 'Configure an Ubuntu machine to autologin and go straight into the terminal on boot.'
 pubDate: 2022-11-25
 tags: ['linux', 'command line']
-related1: formatting-on-linux
-related2: mounting-hard-drives-in-linux
+related: ['formatting-on-linux', 'mounting-hard-drives-in-linux']
+howto: true
 ---
 
 > Works on <em>Ubuntu 20.04</em> but untested in 22.04 or other distros.

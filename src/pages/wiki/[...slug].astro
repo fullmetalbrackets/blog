@@ -1,6 +1,10 @@
 ---
+export const prerender = true
+
 import { type CollectionEntry, getCollection, render } from "astro:content";
 import Wiki from "@layouts/Wiki.astro";
+import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
+import { SITE_URL } from "@consts";
 
 export async function getStaticPaths() {
   const posts = await getCollection("wiki");
@@ -16,5 +20,10 @@ const { Content } = await render(post);
 ---
 
 <Wiki {...post.data}>
+  <BreadcrumbSchema slot="head" crumbs={[
+    { name: "Home", url: `${SITE_URL}/` },
+    { name: "Wiki", url: `${SITE_URL}/wiki/` },
+    { name: post.data.title, url: `${SITE_URL}/wiki/${post.id}/` }
+  ]} />
   <Content />
 </Wiki>

@@ -4,8 +4,7 @@ description: "I've been wanting to get a Raspberry Pi for ages, but they were ou
 pubDate: 2023-11-02
 updatedDate: 2025-05-22
 tags: ['self-hosting', 'pi-hole', 'sbc']
-related1: setup-home-assistant-sweet-potato-debian
-related2: self-host-website-cloudflare-tunnel
+related: ['setup-home-assistant-sweet-potato-debian', 'self-host-website-cloudflare-tunnel']
 ---
 
 ![Libre Computer Sweet Potato.](../../img/blog/sweet-potato.jpg 'Libre Computer Sweet Potato')

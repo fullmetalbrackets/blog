@@ -2,15 +2,16 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import FormattedDate from "@components/FormattedDate.astro";
 import ScrollProgress from "@components/ScrollProgress.astro";
+import WikiArticle from "@components/WikiArticle.astro";
 
 const { title, description, tag, pubDate, updatedDate } = Astro.props;
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} ogType="article">
   <head>
     <link rel="stylesheet" href="/prism.css" />
   </head>
-
+  <WikiArticle slot="head" title={title} description={description} />
   <style>
     h1 {
       margin: 1.1em 0 0 0;
@@ -69,6 +70,7 @@ const { title, description, tag, pubDate, updatedDate } = Astro.props;
   </style>
 
   <ScrollProgress />
+  
   <article data-pagefind-body>
     <h1 class="title">{title}</h1>
     <p class="tag" data-pagefind-ignore>

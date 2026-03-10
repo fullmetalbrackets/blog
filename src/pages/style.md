@@ -68,23 +68,23 @@ Code blocks (three backticks) look like this:
 Here is a simple image using Markdown. (Images embedded using markdown syntax and stored in `/src/img` will be processed and optimized by Astro Image.)
 
 ```markdown
-![Alt text goes here](../img/assets/social.jpg 'This text appears as tooltip when hovering cursor over image')
+![Alt text goes here](../img/assets/preview.png 'This text appears as tooltip when hovering cursor over image')
 ```
 
-![Alt text goes here](../img/assets/social.jpg 'This text appears as tooltip when hovering cursor over image')
+![Alt text goes here](../img/assets/preview.png 'This text appears as tooltip when hovering cursor over image')
 
 To use an image in a `figure` element with a `figcaption`, [RemarkDirective](https://github.com/remarkjs/remark-directive) and [RemarkDirectiveSugar](https://github.com/lin-stephanie/remark-directive-sugar) allows using custom markdown syntax.
 
 ```markdown
 :::image-figure[This is a descriptive caption.]
-![Alt text goes here](../img/assets/social.jpg)
+![Alt text goes here](../img/assets/preview.png)
 :::
 ```
 
 That markdown is rendered like this:
 
 :::image-figure[This is a descriptive caption.]
-![Alt text goes here](../img/assets/social.jpg)
+![Alt text goes here](../img/assets/preview.png)
 :::
 
 ## Blockquotes

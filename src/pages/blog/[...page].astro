@@ -1,51 +1,24 @@
 ---
+export const prerender = true;
+
 import BaseLayout from "@layouts/BaseLayout.astro";
-import { getCollection, render, type CollectionEntry, type InferEntrySchema, type RenderedContent } from "astro:content";
+import { getPostsWithReadingTime } from '@utils/collections';
 import FormattedDate from "@components/FormattedDate.astro";
 import ReadingTime from "@components/ReadingTime.astro";
 import BackToTop from "@components/BackToTop.astro";
-import type { Page } from "astro";
+import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
+import { SITE_TITLE, SITE_URL } from "@consts";
+import type { BlogPageProps } from '../../types';
 
 export async function getStaticPaths({ paginate }) {
-  const posts = (await getCollection("blog")).sort(
-    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-  );
-  
-  const pages = paginate(posts, { pageSize: 5 });
-  
-  return await Promise.all(
-    pages.map(async (page: { props: { page: { data: any[]; }; }; }) => {
-      const postsWithReadingTime = await Promise.all(
-        page.props.page.data.map(async (post: { id: string; body?: string; collection: "blog"; data: InferEntrySchema<"blog">; rendered?: RenderedContent; filePath?: string; }) => {
-          const { remarkPluginFrontmatter } = await render(post);
-          return {
-            ...post,
-            readingTime: remarkPluginFrontmatter.readingTime
-          };
-        })
-      );
-      
-      return {
-        ...page,
-        props: {
-          page: {
-            ...page.props.page,
-            data: postsWithReadingTime
-          }
-        }
-      };
-    })
-  );
+  const posts = await getPostsWithReadingTime();
+  return paginate(posts, { pageSize: 5 });
 }
 
-interface Props {
-  page: Page<CollectionEntry<'blog'> & { readingTime: string }>;
-}
-
+type Props = BlogPageProps;
 const { page } = Astro.props;
-
-const title = `Blog Posts - Page ${page.currentPage} of ${page.lastPage}`;
-const desc = "List of all blog posts";
+const title = `Blog - Page ${page.currentPage} | ${SITE_TITLE}`;
+const desc = "Archive of blog posts.";
 ---
 
 <style scoped>
@@ -198,17 +171,15 @@ const desc = "List of all blog posts";
     grid-column: 3;
     justify-content: end;
   }
-
   @keyframes wiggle {
     0%, 100% { transform: rotate(0deg); }
     25% { transform: rotate(-5deg); }
     75% { transform: rotate(5deg); }
   }
-  .blurb svg:hover {
+  .rss svg:hover {
     animation: wiggle 0.5s ease-in-out infinite;
   }
-
-  .blurb svg:not(:hover) {
+  .rss svg:not(:hover) {
     animation: none;
   }
   @media screen and (max-width: 667px) {
@@ -240,21 +211,26 @@ const desc = "List of all blog posts";
 </style>
 
 <BaseLayout title={title} description={desc}>
-  <section>
-    <h1>Blog</h1>
+  <BreadcrumbSchema slot="head" crumbs={[
+    { name: "Home", url: `${SITE_URL}/` },
+    { name: "Blog", url: `${SITE_URL}/blog/` }
+  ]} />
+  <section class="h-feed">
+    <h1 class="p-name">Blog</h1>
+    <a class="u-url" href={`${SITE_URL}/blog/`} hidden>Permalink</a>
     <hr />
     <p class="blurb">
       <span>
-        List of all <span class="total">{page.total}</span> blog posts. Alternatively, <a href="/categories/" rel="prefetch-intent" data-umami-event="blog-category">see posts by category</a> or <a href="/search/" rel="prefetch-intent" data-umami-event="blog-search">search the blog</a>.
+        List of all <span class="total">{page.total}</span> blog posts. Alternately, see posts <a href="/blog/updated/" rel="prefetch-intent" data-umami-event="blog-updated">by most recently updated</a>, <a href="/categories/" rel="prefetch-intent" data-umami-event="blog-category">by category</a> or <a href="/search/" rel="prefetch-intent" data-umami-event="blog-search">search the blog</a>.
       </span>
       <p class="years">
         See posts by year:&nbsp;
-        <a href="/blog/years/2026/" data-umami-event="blog-2026">2026</a>&nbsp;
-        <a href="/blog/years/2025/" data-umami-event="blog-2025">2025</a>&nbsp;
-        <a href="/blog/years/2024/" data-umami-event="blog-2024">2024</a>&nbsp;
-        <a href="/blog/years/2023/" data-umami-event="blog-2023">2023</a>&nbsp;
-        <a href="/blog/years/2022/" data-umami-event="blog-2022">2022</a>&nbsp;
-        <a href="/blog/years/2021/" data-umami-event="blog-2021">2021</a>
+        <a href="years/2026/" data-umami-event="blog-2026">2026</a>&nbsp;
+        <a href="years/2025/" data-umami-event="blog-2025">2025</a>&nbsp;
+        <a href="years/2024/" data-umami-event="blog-2024">2024</a>&nbsp;
+        <a href="years/2023/" data-umami-event="blog-2023">2023</a>&nbsp;
+        <a href="years/2022/" data-umami-event="blog-2022">2022</a>&nbsp;
+        <a href="years/2021/" data-umami-event="blog-2021">2021</a>
       </p>
       <span class="rss">RSS Feed: 
         <a href="/rss.xml" rel="prefetch-intent">
@@ -298,17 +274,17 @@ const desc = "List of all blog posts";
     <ul>
       {
         page.data.map((post) => (
-          <li>
+          <li class="h-entry">
             <div>
-              <a href={`/blog/${post.id}/`} rel="prefetch-intent" data-umami-event={post.id}>
-                <span class="title">{post.data.title}</span>
+              <a class="u-url" href={`/blog/${post.id}/`} rel="prefetch-intent" data-umami-event={post.id}>
+                <span class="p-name title">{post.data.title}</span>
                 <p class="tag">
                   {post.data.tags.map((tag) => (
                     <button>{tag}</button>
                   ))}
                 </p>
                 <p class="info">
-                  <FormattedDate date={post.data.pubDate} />&nbsp;
+                  <FormattedDate class="dt-published" date={post.data.pubDate} />&nbsp;
                   <span class="reading"><ReadingTime time={post.readingTime} /></span>
                 </p>
                 <p class="desc">{post.data.description}</p>

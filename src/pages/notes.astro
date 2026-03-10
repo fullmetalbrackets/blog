@@ -1,20 +1,12 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
-import { getCollection } from "astro:content";
-import type { CollectionEntry } from 'astro:content';
 import Note from '@components/Note.astro';
 import BackToTop from "@components/BackToTop.astro";
+import { getNotes } from '@utils/collections';
+import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
+import { SITE_URL, MASTODON } from "@consts";
 
-const dataTypes = ['note'] as const;
-
-const lifestream = await getCollection('lifestream');
-
-const notes = lifestream
-  .filter((entry): entry is CollectionEntry<'lifestream'> & { data: { type: typeof dataTypes[number] } } => 
-    dataTypes.includes(entry.data.type as any)
-  )
-  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
-
+const notes = await getNotes();
 const title = "Notes";
 const desc = "List of all short-form notes posted as part of my lifestream.";
 ---
@@ -43,11 +35,16 @@ const desc = "List of all short-form notes posted as part of my lifestream.";
 </style>
 
 <BaseLayout title={title} description={desc}>
-  <section>
-    <h1>{title}</h1>
+  <BreadcrumbSchema slot="head" crumbs={[
+    { name: "Home", url: `${SITE_URL}/` },
+    { name: "Notes", url: `${SITE_URL}/notes/` }
+  ]} />
+  <section class="h-feed">
+    <h1 class="p-name">{title}</h1>
+    <a class="u-url" href={`${SITE_URL}/notes/`} hidden>Permalink</a>
     <hr />
     <p>
-      List of all short-form notes that posted as part of my <a href="/lifestream/">Lifestream</a>.
+      List of all short-form notes posted as part of my <a href="/lifestream/">Lifestream</a>. These usually also get cross-posted to <a href={MASTODON} target="_blank" rel="me noreferrer noopener">Mastodon</a>, but only if I feel like it.
     </p>
     <ul>
         {notes.map((note) => (<li>

@@ -12,6 +12,7 @@ Information about the apps and services that I self-host.
 
 - AdGuard Home
 - Cadvisor
+- Calibre
 - Cockpit
 - Deunhealth
 - File Browser
@@ -30,6 +31,7 @@ Information about the apps and services that I self-host.
 - Omni Tools
 - Opengist
 - Paperless-ngx
+- Pi-Hole
 - Plex Media Server
 - Portainer
 - qBittorrent

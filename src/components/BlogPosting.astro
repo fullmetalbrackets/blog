@@ -1,7 +1,8 @@
 ---
-import type { CollectionEntry } from 'astro:content';
+import { SITE_URL } from '@consts';
+import type { BlogData } from '../types';
+type Props = BlogData;
 
-type Props = CollectionEntry<'blog'>['data'];
 const { title, description, pubDate, updatedDate, tags } = Astro.props;
 
 const schema = {
@@ -10,14 +11,15 @@ const schema = {
   "headline": title,
   "description": description,
   "keywords": tags,
+  "image": `${SITE_URL}/preview.png`,
   "author": {
     "@type": "Person",
     "name": "Ariel Diaz",
-    "url": "https://fullmetalbrackets.com"
+    "url": SITE_URL
   },
-  "datePublished": pubDate.toISOString().substring(0, 10),
-  ...(updatedDate && { "dateModified": updatedDate.toISOString().substring(0, 10) }),
+  "datePublished": pubDate.toISOString(),
+  ...(updatedDate && { "dateModified": updatedDate.toISOString() }),
 };
 ---
 
-<script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
+<Fragment set:html={`<script type="application/ld+json">${JSON.stringify(schema)}</script>`} />

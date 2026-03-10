@@ -1,18 +1,14 @@
 ---
 import FormattedDate from "./FormattedDate.astro";
-import { getCollection } from "astro:content";
 import More from '@icons/arrow-right.svg';
+import { getNotes } from '@utils/collections';
 
 interface Props {
   limit?: number;
 }
 
 const { limit = 4 } = Astro.props;
-const allLifestream = await getCollection('lifestream');
-const recentNotes = allLifestream
-  .filter((entry) => entry.data.type === 'note')
-  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
-  .slice(0, limit);
+const recentNotes = (await getNotes()).slice(0, limit);
 ---
 
 <style scoped>
@@ -93,6 +89,7 @@ const recentNotes = allLifestream
     transform: 0.2;
   }
   .more a:hover svg {
+    filter: var(--foot-svg);
     transition: all .1s ease-out;
     transform: translateX(4px);
   }
@@ -113,21 +110,21 @@ const recentNotes = allLifestream
   }
 </style>
 
-<section>
-  <h2>Recent Notes</h2>
+<section class="h-feed">
+  <h2 class="p-name">Recent Notes</h2>
   <div class="container">
       {recentNotes.map((note) => (
-        <div class="list">
-          <a href={note.data.url || '/notes/'} data-umami-event={`recent-notes-${note.data.title}`} target="_blank" rel="noopener noreferrer">
-            <span class="note-title">{note.data.title}</span>
+        <div class="h-entry list">
+          <a class="u-bookmark-of" href={note.data.url || '/notes/'} data-umami-event={`recent-notes-${note.data.title}`} target="_blank" rel="noopener noreferrer">
+            <span class="p-name note-title">{note.data.title}</span>
             <p class="info">
               <button>{note.data.tag}</button>
-              <FormattedDate date={note.data.pubDate} monthFormat="short" />
+              <FormattedDate class="dt-published" date={note.data.pubDate} monthFormat="short" />
             </p>
           </a>
         </div>
       ))}
     <span class="more">
-      <a href="/notes/" rel="prefetch-intent">MORE <More height={24} width={24} /></a>
+      <a href="/notes/" rel="prefetch-intent archives">All Notes <More height={24} width={24} /></a>
     </span>
 </section>

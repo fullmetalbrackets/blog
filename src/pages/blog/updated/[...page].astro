@@ -1,0 +1,270 @@
+---
+export const prerender = true;
+
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { getPostsWithReadingTime } from "@utils/collections";
+import FormattedDate from "@components/FormattedDate.astro";
+import ReadingTime from "@components/ReadingTime.astro";
+import BackToTop from "@components/BackToTop.astro";
+import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
+import type { Page } from "astro";
+import type { CollectionEntry } from "astro:content";
+import { SITE_URL } from "@consts";
+
+export async function getStaticPaths({ paginate }) {
+  const posts = (await getPostsWithReadingTime())
+    .filter(post => post.data.updatedDate)
+    .sort((a, b) => b.data.updatedDate!.valueOf() - a.data.updatedDate!.valueOf());
+
+  return paginate(posts, { pageSize: 5 });
+}
+
+type Props = {
+  page: Page<CollectionEntry<'blog'> & { readingTime: string }>;
+};
+
+const { page } = Astro.props;
+const title = `Recently Updated - Page ${page.currentPage}`;
+const desc = "Blog posts sorted by most recently updated.";
+---
+
+<style scoped>
+  h1 {
+    font-family: var(--sub-font);
+    font-weight: 900;
+  }
+  .total {
+    font-family: var(--sub-font);
+    font-weight: 900;
+    font-size: 0.95em;
+    color: var(--emphasis)
+  }
+  ul {
+    list-style-type: none;
+    margin: 0 auto;
+    padding: 0;
+  }
+  li {
+    display: inline-block;
+    margin: 0 auto 1em auto;
+  }
+  li:last-of-type {
+    margin: 0 auto;
+  }
+  div {
+    display: block;
+    padding-bottom: 0.25em;
+    border-bottom: 4px dotted transparent;
+  }
+  p {
+    margin: 0 auto;
+    padding: 0 auto;
+  }
+  button {
+    margin: 0 0.175em;
+    background: var(--info);
+    cursor: pointer;
+  }
+  button:first-of-type {
+    margin-left: 0;
+  }
+  .info {
+    place-items: center;
+    margin-top: 0.1em;
+    display: inline-flex;
+    gap: 0.25em;
+  }
+  .tag {
+    margin: 0.125em 0 0 0;
+    padding: 0;
+  }
+  .title {
+    display: block;
+    font-weight: bold;
+    line-height: 1.2;
+    color: var(--emphasis);
+  }
+  .updated-on {
+    font-family: var(--sub-font);
+    font-size: 0.875em;
+    font-weight: 500;
+    color: var(--primary);
+  }
+  .desc {
+    margin-top: -0.25em;
+  }
+  li:hover div {
+    border-bottom: 4px dotted var(--hover);
+    cursor: pointer;
+    transition: all .25s ease-out;
+  }
+  li:hover .title {
+    color: var(--hover);
+    transition: all .25s ease-out;
+  }
+  @media (hover: hover) {
+    li:hover button {
+      box-shadow: -4px -4px 0 #000;
+      transform: translate(4px, 4px);
+    }
+    button {
+      text-overflow: ellipsis;
+      transition: all .10s ease-out;
+      cursor: pointer;
+    }
+    button:hover {
+      box-shadow: -4px -4px 0 #000;
+      transform: translate(4px, 4px);
+      cursor: pointer;
+    }
+    button:focus-visible {
+      outline-offset: 1px;
+    }
+  }
+  .page-info-top {
+    display: flex;
+    font-weight: 900;
+    margin: 1em auto -1.75em auto;
+    justify-content: space-around;
+    place-items: center;
+    font-family: var(--sub-font);
+    color: var(--primary);
+  }
+  .page-info {
+    display: flex;
+    font-weight: 500;
+    margin: 1em auto -1.75em auto;
+    justify-content: space-around;
+    place-items: center;
+    font-family: var(--sub-font);
+    font-weight: 900;
+    color: var(--primary);
+  }
+  .pagination {
+    display: grid;
+    justify-content: space-between;
+    font-family: var(--sub-font);
+    font-weight: 500;
+    margin: 0 0 1em 0;
+  }
+  .pagination a {
+    border-bottom: 4px dotted transparent;
+  }
+  .pagination a:hover {
+    border-bottom: 4px dotted var(--hover);
+  }
+  .prev {
+    grid-column: 1;
+    justify-content: start;
+  }
+  .next {
+    grid-column: 3;
+    justify-content: end;
+  }
+  @media screen and (max-width: 667px) {
+    section {
+      line-height: 1.2;
+    }
+    .updated-on {
+      display: none;
+    }
+    .info {
+      margin-top: 0.1em;
+      margin-bottom: 0.25em;
+    }
+    .tag button {
+      margin: 0 0.25em 0.25em 0;
+    }
+    .page-info-top {
+      font-size: 0.875em;
+      margin: 1.5em 0 -1.3em 0;
+      padding: 0;
+    }
+    .page-info {
+      font-size: 0.875em;
+      margin: 1.5em 0 -1.25em 0;
+      padding: 0.1em 0 0 0;
+    }
+    .pagination {
+      font-size: 0.875em;
+    }
+  }
+</style>
+
+<BaseLayout title={title} description={desc}>
+  <BreadcrumbSchema slot="head" crumbs={[
+    { name: "Home", url: `${SITE_URL}/` },
+    { name: "Blog", url: `${SITE_URL}/blog/` },
+    { name: "Recently Updated", url: `${SITE_URL}/blog/updated/` }
+  ]} />
+  <section class="h-feed">
+    <h1 class="p-name">Recently Updated</h1>
+    <a class="u-url" href={`${SITE_URL}/blog/updated/`} hidden>Permalink</a>
+    <hr />
+    <p>
+      <span>
+        <span class="total">{page.total}</span> posts sorted by most recently updated. Alternately, see posts <a href="/categories/" rel="prefetch-intent" data-umami-event="blog-category">by category</a>, <a href="../years/" rel="prefetch-intent">by year</a>, or <a href="/blog/" rel="prefetch-intent">all posts</a>.
+      </span>
+    </p>
+    <div class="page-info-top">Page {page.currentPage} of {page.lastPage}</div>
+    <nav class="pagination" aria-label="Updated posts pagination">
+      <span class="prev">
+        {page.url.prev ? (
+          <a href={page.url.prev} rel="prefetch-intent prev">↖ Newer</a>
+        ) : (
+          <span></span>
+        )}
+      </span>
+      <span class="next">
+        {page.url.next ? (
+          <a href={page.url.next} rel="prefetch-intent next">Older ↘</a>
+        ) : (
+          <span></span>
+        )}
+      </span>
+    </nav>
+    <ul>
+      {page.data.map((post) => (
+        <li class="h-entry">
+          <div>
+            <a class="u-url" href={`/blog/${post.id}/`} rel="prefetch-intent" data-umami-event={post.id}>
+              <span class="p-name title">{post.data.title}</span>
+              <p class="tag">
+                {post.data.tags.map((tag) => (
+                  <button>{tag}</button>
+                ))}
+              </p>
+              <p class="info">
+                <span hidden><FormattedDate class="dt-published" date={post.data.pubDate} /></span>
+                <span class="updated-on">Updated&nbsp;</span>
+                <FormattedDate class="dt-updated" date={post.data.updatedDate!} />
+                &nbsp;
+                <span class="reading"><ReadingTime time={post.readingTime} /></span>
+              </p>
+              <p class="p-summary desc">{post.data.description}</p>
+            </a>
+          </div>
+        </li>
+      ))}
+    </ul>
+    <div class="page-info">Page {page.currentPage} of {page.lastPage}</div>
+    <nav class="pagination" aria-label="Updated posts pagination">
+      <span class="prev">
+        {page.url.prev ? (
+          <a href={page.url.prev} rel="prefetch-intent prev">↖ Newer</a>
+        ) : (
+          <span></span>
+        )}
+      </span>
+      <span class="next">
+        {page.url.next ? (
+          <a href={page.url.next} rel="prefetch-intent next">Older ↘</a>
+        ) : (
+          <span></span>
+        )}
+      </span>
+    </nav>
+    <hr />
+    <BackToTop />
+  </section>
+</BaseLayout>

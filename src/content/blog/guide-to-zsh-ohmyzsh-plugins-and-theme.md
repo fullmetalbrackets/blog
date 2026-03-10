@@ -2,10 +2,9 @@
 title: 'Quick guide to set up Zsh and Oh-My-Zsh with essential plugins and a theme'
 description: "I've been getting more and more comfortable working on the command line in Linux, and looked into ways to pretty it up and make it more user friendly. Enter Zsh, an alternative to Bash shell, and the Oh-My-Zsh framework used to customize the terminal experience to your heart's content. Here's my basic set up."
 pubDate: 2021-12-04
-updatedDate: 2025-02-03
+updatedDate: 2025-03-05
 tags: ['zsh', 'command line', 'linux']
-related1: basic-linux-commands
-related2: windows-terminal-with-ohmyposh
+related: ['basic-linux-commands', 'windows-terminal-with-ohmyposh']
 ---
 
 ![Oh-My-Zsh](../../img/blog/oh-my-zsh.png 'Oh-My-Zsh')
@@ -98,7 +97,7 @@ wget -O /usr/share/fonts/MesloLGS%20NF%20Italic.ttf https://github.com/romkatv/p
 wget -O /usr/share/fonts/MesloLGS%20NF%20Bold%20Italic.ttf https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf
 ```
 
-Alternately you can just use a simple script I made for myself to automate this, because why not just automate it?? (Seriously, why isn't this just included in powerlevel10k's own great install script?)
+Alternately you can just use [this script I made for myself to automate this](https://gist.github.com/fullmetalbrackets/5a094e7daef47dd63074259143466442), because why not automate it? (Seriously, why isn't something like this included in powerlevel10k's own great install script?)
 
 Just use curl like so: (You will need to use `sudo` since the script will be copying files into the `/usr` directory.)
 

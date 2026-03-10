@@ -1,0 +1,38 @@
+name: Notify Pushover on Build Success
+on:
+  push:
+    branches:
+      - '*'
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Wait for Cloudflare Pages Build
+        uses: WalshyDev/cf-pages-await@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          project: "blog"
+
+      - name: Send Pushover Notification
+        run: |
+          curl -s \
+            -F "token=${{ secrets.PUSHOVER_TOKEN }}" \
+            -F "user=${{ secrets.PUSHOVER_USER }}" \
+            -F "message=✅ Cloudflare Pages build on [${{ github.ref_name }}] was successful!" \
+            -F "title=Build Success" \
+            https://api.pushover.net/1/messages.json
+
+      - name: Send Pushover Failure Notification
+        if: failure()
+        run: |
+          curl -s \
+            -F "token=${{ secrets.PUSHOVER_TOKEN }}" \
+            -F "user=${{ secrets.PUSHOVER_USER }}" \
+            -F "message=❌ Cloudflare Pages build on [${{ github.ref_name }}] FAILED!" \
+            -F "title=Build Failed" \
+            -F "priority=1" \
+            https://api.pushover.net/1/messages.json

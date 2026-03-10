@@ -8,7 +8,7 @@ import RecentPosts from "@components/RecentPosts.astro";
 import RecentNotes from "@components/RecentNotes.astro";
 import RecentLinks from "@components/RecentLinks.astro";
 import Explore from "@components/Explore.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "@consts";
+import { SITE_TITLE, SITE_DESCRIPTION, GITHUB, MASTODON, BLUESKY } from "@consts";
 ---
 
 <style scoped>
@@ -95,7 +95,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "@consts";
         <RecentNotes />
       </PostsColumns>
       <PostsColumns>
-        <Explore />
+        <Explore class="ul-index" />
       </PostsColumns>
     </div>
     <br>

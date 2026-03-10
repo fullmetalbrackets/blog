@@ -4,8 +4,7 @@ description: "Tailscale is my new homelab toy. I've been using it to access my m
 pubDate: 2024-09-25
 updatedDate: 2025-02-03
 tags: ['tailscale', 'pi-hole']
-related1: set-up-pihole-on-linux
-related2: comprehensive-guide-tailscale-securely-access-home-network
+related: ['set-up-pihole-on-linux', 'comprehensive-guide-tailscale-securely-access-home-network']
 ---
 
 ## About Tailscale

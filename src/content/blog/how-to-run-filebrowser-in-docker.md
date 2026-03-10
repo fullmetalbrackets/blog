@@ -4,8 +4,7 @@ description: "FileBrowser is a self-hosted file manager for a specified director
 pubDate: 2022-11-04
 updateDate: 2025-06-24
 tags: ['self-hosting', 'docker']
-related1: setting-up-plex-in-docker
-related2: setting-up-jellyfin-in-docker
+related: ['setting-up-plex-in-docker', 'setting-up-jellyfin-in-docker']
 ---
 
 ## Pre-Requisites

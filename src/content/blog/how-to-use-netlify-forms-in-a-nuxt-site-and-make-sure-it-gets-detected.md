@@ -5,10 +5,6 @@ pubDate: 2021-10-11
 tags: ['netlify', 'web development']
 ---
 
-> [warning] Outdated Content
->
-> This was one of my earliest blog posts when I was still hosting my site on Netlify. Netlify Forms is still a thing in 2025, but have not used it in over 3 years at this point, so it is very likely that none of the below is relevant by the time anymore. The content remains for legacy purposes only.
-
 Netlify has many awesome built-in features, and one of them is Netlify Forms, which essentially handles the "back-end" of your forms in most cases. But when hosting your Nuxt site on Netlify, it may not detect it even after you follow the instructions in their documentation, usually because there's one key "trick" missing that just makes it work. So let's discuss that trick and make sure Netlify Forms does what it's supposed to.
 
 I was breaking my head against this one for a while until I found [this post on Medium](https://medium.com/@kimbjrkman/adding-netlify-forms-on-your-nuxt-website-20ffba3e5ba8) that finally gave me the answer, although they are over-engineering a bit, in my opinion. The issue is that Netlify's crawler will only detect HTML forms, and even though you're using HTML to create the form Nuxt will spit it out as JavaScript after build time. Netlify won't detect it. But as that post explains, there is a way, you just have to "fool" Netlify's bots a little bit. Here is a quick guide on how.

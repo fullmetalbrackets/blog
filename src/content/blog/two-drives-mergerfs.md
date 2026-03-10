@@ -4,8 +4,7 @@ description: "My situation was simple -- my server's media storage was filling u
 pubDate: 2024-03-11
 updatedDate: 2025-02-23
 tags: ['command line', 'self-hosting']
-related1: setup-a-samba-share-on-linux-via-command-line
-related2: mounting-hard-drives-in-linux
+related: ['setup-a-samba-share-on-linux-via-command-line', 'mounting-hard-drives-in-linux']
 ---
 
 ## What and Why

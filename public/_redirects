@@ -15,3 +15,4 @@
 /blog/formatting-on-linux/  /blog/how-to-format-partition-linux/    301
 /blog/sync-bare-metal-pihole-with-container/   /    302
 /blog/install-and-use-sudo-debian/  /   302
+/og/*.png/ /og/:splat 301

@@ -3,12 +3,13 @@ title: 'Commands to turn off display in the Linux terminal'
 description: 'Sometimes I use laptops in the home lab, and to save myself on a few watts of power usage I use these terminal commands to turn off the display, then just SSH into it from my PC.'
 pubDate: 2022-12-03
 tags: ['linux', 'command line']
-related1: sudo-without-password
+related: ['sudo-without-password']
+howto: true
 ---
 
 > Reference: <a href="https://askubuntu.com/questions/62858/turn-off-monitor-using-command-line" target="_blank">Several answers to this post on AskUbuntu</a>
 
-## With VBETool
+## Control display with VBETool
 
 _Source:_ https://askubuntu.com/a/62861
 
@@ -30,7 +31,7 @@ To regain control of the console on pressing Enter key:
 sudo sh -c 'vbetool dpms off; read ans; vbetool dpms on'
 ```
 
-## With XServer
+## Control display with XServer
 
 _Source:_ https://askubuntu.com/a/116806
 
@@ -52,7 +53,7 @@ If your display turns off and then immediately back on then try the following wh
 sleep 1 && xset -display :0.0 dpms force off
 ```
 
-## With setterm
+## Control display with setterm
 
 _Source:_ https://askubuntu.com/a/1076734 & https://askubuntu.com/a/1194293
 

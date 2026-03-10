@@ -1,60 +1,48 @@
 ---
+export const prerender = true
+
 import BaseLayout from "@layouts/BaseLayout.astro";
-import { getCollection, type CollectionEntry } from "astro:content";
 import FormattedDate from "@components/FormattedDate.astro";
 import ReadingTime from "@components/ReadingTime.astro";
 import Link from "@components/Link.astro";
 import BackToTop from "@components/BackToTop.astro";
-import type { GetStaticPaths } from "astro";
+import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
+import { getPostsWithReadingTime } from "@utils/collections";
+import type { BlogYearProps } from '../../../types';
+import { SITE_URL } from "@consts";
 
-function getReadingTime(content: string | undefined): string {
-  if (!content) return '0 min read';
-  const wordsPerMinute = 200;
-  const words = content.trim().split(/\s+/).length;
-  const minutes = Math.ceil(words / wordsPerMinute);
-  return `${minutes} min read`;
-}
+export async function getStaticPaths() {
+  const allPosts = await getPostsWithReadingTime();
 
-export const getStaticPaths = (async () => {
-  const allPosts = await getCollection('blog');
-  
-  const sortedPosts = allPosts.sort((a, b) => 
-    new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
-  );
-  
-  const postsByYear = sortedPosts.reduce((acc, post) => {
-    const year = new Date(post.data.pubDate).getFullYear().toString();
-    if (!acc[year]) {
-      acc[year] = [];
-    }
+  const postsByYear = allPosts.reduce((acc, post) => {
+    const year = post.data.pubDate.getFullYear().toString();
+    if (!acc[year]) acc[year] = [];
     acc[year].push(post);
     return acc;
   }, {} as Record<string, typeof allPosts>);
-  
+
   return Object.entries(postsByYear).map(([year, posts]) => ({
     params: { year },
     props: { posts, postsByYear }
   }));
-}) satisfies GetStaticPaths;
-
-interface Props {
-  posts: CollectionEntry<'blog'>[];
-  postsByYear: Record<string, CollectionEntry<'blog'>[]>;
 }
 
+type Props = BlogYearProps;
 const { posts, postsByYear } = Astro.props;
 const { year } = Astro.params;
 const postCount = posts.length
-
-const title = `Blog Posts - ${year}`;
-const desc = `A list of blog posts written in ${year}`;
+const title = `Blog - ${year}`;
+const desc = `Blog posts written in ${year}.`;
 ---
 
-<!-- styles remain the same -->
-
 <BaseLayout title={title} description={desc}>
-  <section>
-    <h1>Blog Posts - {year}</h1>
+  <BreadcrumbSchema slot="head" crumbs={[
+    { name: "Home", url: `${SITE_URL}/` },
+    { name: "Blog", url: `${SITE_URL}/blog/` },
+    { name: year, url: `${SITE_URL}/blog/years/${year}/` }
+  ]} />
+  <section class="h-feed">
+    <h1 class="p-name">{title}</h1>
     <hr />
     <p class="back">
       <a href="/blog/" rel="prefetch-intent">↩ Back to Blog</a>
@@ -72,20 +60,22 @@ const desc = `A list of blog posts written in ${year}`;
     <ul>
       {
         posts.map((post) => (
-          <li>
+          <li class="h-entry">
             <div>
-              <a href={`/blog/${post.id}/`} rel="prefetch-intent" data-umami-event={post.id}>
-                <span class="title">{post.data.title}</span>
+              <a class="u-url" href={`/blog/${post.id}/`} rel="prefetch-intent" data-umami-event={post.id}>
+                <span class="p-name title">{post.data.title}</span>
                 <p class="tag">
                   {post.data.tags.map((tag) => (
                     <button>{tag}</button>
                   ))}
                 </p>
                 <p class="info">
-                  <FormattedDate date={post.data.pubDate} />&nbsp;
-                  <span class="reading"><ReadingTime time={getReadingTime(post.body)} /></span>
+                  <FormattedDate class="dt-published" date={post.data.pubDate} />&nbsp;
+                  <span class="reading">
+                    <ReadingTime time={post.readingTime} />
+                  </span>
                 </p>
-                <p class="desc">{post.data.description}</p>
+                <p class="p-summary desc">{post.data.description}</p>
               </a>
             </div>
           </li>

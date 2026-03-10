@@ -4,8 +4,7 @@ description: "Debian's non-graphical install does not give you the option to set
 pubDate: 2022-10-07
 updatedDate: 2025-02-04
 tags: ['networking', 'debian']
-related1: basic-linux-commands
-related2: rsync-a-quick-guide
+related: ['basic-linux-commands', 'rsync-a-quick-guide']
 ---
 
 ## Setting a static IP

@@ -4,8 +4,7 @@ description: 'Rsync is a very handy tool for doing high-speed file transfers bet
 pubDate: 2021-09-15
 updatedDate: 2023-07-24
 tags: ['linux', 'command line']
-related1: basic-linux-commands
-related2: mounting-hard-drives-in-linux
+related: ['basic-linux-commands', 'mounting-hard-drives-in-linux']
 ---
 
 # Rsync Basics

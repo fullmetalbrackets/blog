@@ -9,6 +9,7 @@ import GitHub from '@icons/gh.svg';
 import BuyMeCoffee from '@icons/bmc.svg';
 import Top from '@icons/arrow-up.svg';
 import Proven from '@icons/proven.svg';
+import { GITHUB, MASTODON, BLUESKY, DONATE } from '@consts';
 ---
 
 <style>
@@ -58,12 +59,6 @@ import Proven from '@icons/proven.svg';
   }
   nav a {
     color: #000;
-  }
-  nav button:hover a {
-    color: var(--foot-active);
-  }
-  nav a:active {
-    color: var(--foot-active);
   }
   .nav-row-1 {
     gap: 20em;
@@ -146,16 +141,16 @@ import Proven from '@icons/proven.svg';
     <a href="mailto:contact@fullmetalbrackets.com" target="_blank" data-umami-event="footer-mail">
       <Email height={28} width={28} class="email" />
     </a>
-    <a href="https://social.lol/@adiaz" target="_blank" data-umami-event="footer-social">
+    <a href={MASTODON} rel="me" target="_blank" data-umami-event="footer-social">
       <Mastodon height={25} width={25} />
     </a>
-    <a href="https://bsky.app/profile/fullmetalbrackets.com" rel="me atproto" target="_blank" data-umami-event="footer-bsky">
+    <a href={BLUESKY} rel="me atproto" target="_blank" data-umami-event="footer-bsky">
       <Bluesky height={25} width={25} />
     </a>
-    <a href="https://github.com/fullmetalbrackets" target="_blank" data-umami-event="footer-github">
+    <a href={GITHUB} rel="me" target="_blank" data-umami-event="footer-github">
       <GitHub height={25} width={25} />
     </a>
-    <a href="https://buymeacoffee.com/arieldiaz" target="_blank" data-umami-event="footer-coffee">
+    <a href={DONATE} rel="me" target="_blank" data-umami-event="footer-coffee">
       <BuyMeCoffee height={25} width={25} />
     </a>
   </div>
@@ -207,7 +202,7 @@ import Proven from '@icons/proven.svg';
   </nav>
   <div class="legal">
     <span>
-      Content: <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" data-umami-event="footer-cc-by-nc-sa-4.0">CC BY-NC-SA 4.0</a>
+      Content: <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" data-umami-event="footer-cc-by-nc-sa-4.0">CC BY-NC-SA 4.0</a>
     </span>
     <span>
       Code: <a href="https://mit-license.org" target="_blank" data-umami-event="footer-mit-license">MIT</a>
@@ -224,7 +219,7 @@ import Proven from '@icons/proven.svg';
       <picture>
         <source srcset="/assets/Written-By-a-Human-Not-By-AI-Badge-white.png" media="(prefers-color-scheme: light)">
         <source srcset="/assets/Written-By-a-Human-Not-By-AI-Badge-black.png" media="(prefers-color-scheme: dark)">
-        <img src="/assets/Written-By-a-Human-Not-By-AI-Badge-white.png" alt="Written by a human, not AI" class="sq-img notbyai" loading="lazy" decoding="async">
+        <img src="/assets/Written-By-a-Human-Not-By-AI-Badge-white.png" alt="Written by a human, not AI" class="sq-img notbyai" loading="lazy" decoding="async" width="131" height="82">
       </picture>
     </a>
     <a href="https://astro.build/" target="_blank" data-umami-event="astro">

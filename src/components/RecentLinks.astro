@@ -1,11 +1,9 @@
 ---
-import { getCollection } from "astro:content";
+import { getSortedLinks } from "@utils/collections";
 import FormattedDate from "@components/FormattedDate.astro";
 import More from '@icons/arrow-right.svg';
 
-const links = (await getCollection("links")).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
+const links = await getSortedLinks();
 ---
 
 <style scoped>
@@ -83,6 +81,7 @@ const links = (await getCollection("links")).sort(
     transform: 0.2;
   }
   .more a:hover svg {
+    filter: var(--foot-svg);
     transition: all .1s ease-out;
     transform: translateX(4px);
   }
@@ -105,24 +104,24 @@ const links = (await getCollection("links")).sort(
   }
 </style>
 
-<section>
-  <h2>Recent Links</h2>
+<section class="h-feed">
+  <h2 class="p-name">Recent Links</h2>
   <div class="container">
     {
       links.slice(0, 5).map((link) => (
-        <div class="list">
-          <a href={link.data.url} target="_blank" class="title-link" data-umami-event={`recent-link-${link.data.title}`}>
-          <span>
+        <div class="h-entry list">
+          <a href={link.data.url} target="_blank" class="u-bookmark-of title-link" data-umami-event={`recent-link-${link.data.title}`}>
+          <span class="p-name">
             {link.data.title}
           </span>
-            <span class="info"><button>{link.data.tag}</button><FormattedDate date={link.data.pubDate} monthFormat="short" />&nbsp;
+            <span class="info"><button>{link.data.tag}</button><FormattedDate class="dt-published" date={link.data.pubDate} monthFormat="short" />&nbsp;
           </span>
           </a>
         </div>
       ))
     }
     <span class="more">
-      <a href="/links/" rel="prefetch-intent">MORE <More height={24} width={24} /></a>
+      <a href="/links/" rel="prefetch-intent archives">All Links <More height={24} width={24} /></a>
     </span>
   </div>
 </section>

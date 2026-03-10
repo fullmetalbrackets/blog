@@ -4,8 +4,7 @@ description: "When running a headless home server, you may want to set up a moni
 pubDate: 2022-10-20
 updatedDate: 2025-02-03
 tags: ['docker', 'self-hosting']
-related1: setting-up-plex-in-docker
-related2: how-to-run-filebrowser-in-docker
+related: ['setting-up-plex-in-docker', 'how-to-run-filebrowser-in-docker']
 ---
 
 ## Prepping the Compose file and Prometheus config files

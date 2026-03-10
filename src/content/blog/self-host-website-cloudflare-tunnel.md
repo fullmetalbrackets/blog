@@ -4,8 +4,7 @@ description: 'Self-hosting a static web blog has never been easier thanks to Clo
 pubDate: 2023-12-29
 updatedDate: 2025-02-10
 tags: ['self-hosting', 'cloudflare']
-related1: setup-cloudflare-tunnel-to-access-self-hosted-apps
-related2: expose-plex-with-cloudflare
+related: ['setup-cloudflare-tunnel-to-access-self-hosted-apps', 'expose-plex-with-cloudflare']
 ---
 
 ## What and How

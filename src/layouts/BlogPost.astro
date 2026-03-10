@@ -1,6 +1,4 @@
 ---
-import type { CollectionEntry } from "astro:content";
-import { getCollection } from "astro:content";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import FormattedDate from "@components/FormattedDate.astro";
 import TableOfContents from '@components/TableOfContents.astro';
@@ -8,7 +6,10 @@ import BlogPosting from "@components/BlogPosting.astro";
 import ScrollProgress from "@components/ScrollProgress.astro";
 import ReadingTime from "@components/ReadingTime.astro";
 import WebMentions from "@components/WebMentions.astro";
-import { Image, inferRemoteSize } from 'astro:assets';
+import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
+import HowToSchema from "@components/HowToSchema.astro";
+import HCard from "@components/H-Card.astro";
+import type { BlogPostProps } from '../types';
 import type { MarkdownHeading } from 'astro';
 import {
   BlueskyShareButton,
@@ -20,23 +21,19 @@ import {
 } from "astro-social-share";
 import Related from '@icons/related.svg';
 import Comments from "@components/Comments.astro";
+import { getRelatedPosts } from '@utils/collections';
+import { GITHUB, DONATE, SITE_URL } from "@consts";
 
-type Props = CollectionEntry<"blog">['data'] & { headings: MarkdownHeading[]; readingTime: string };
+type Props = BlogPostProps & { headings: MarkdownHeading[]; readingTime: string };
 
 const BUTTONS = [BlueskyShareButton, ThreadsShareButton, TwitterShareButton, RedditShareButton, HackerNewsShareButton]
-const { title, description, pubDate, updatedDate, tags, headings, related1, related2, readingTime } = Astro.props;
+const { title, description, pubDate, updatedDate, tags, headings, related, readingTime } = Astro.props;
 const { slug } = Astro.params;
-const coffeeBtn = 'https://img.buymeacoffee.com/button-api/?slug=arieldiaz&font_family=Inter&coffee_colour=6F4E37';
-const { width, height } = await inferRemoteSize(coffeeBtn);
-const allPosts = await getCollection("blog");
-const relatedPosts = [ related1, related2 ];
-const selectedPosts = allPosts.filter(post => 
-  relatedPosts.includes(post.id)
-);
+const selectedPosts = await getRelatedPosts(related ?? []);
 ---
 <ScrollProgress />
 
-<BaseLayout title={title} description={description}>  
+<BaseLayout title={title} description={description} ogType="article" ogImage={`${SITE_URL}/og/${slug}.png`}>
   <head>
     <link rel="stylesheet" href="/prism.css" />
   </head>
@@ -81,6 +78,10 @@ const selectedPosts = allPosts.filter(post =>
       font-size: 0.875em;
       font-weight: 500;
       margin-right: 0.25em;
+    }
+    .slot-content {
+      margin: 0;
+      padding: 0;
     }
     .midline {
       margin-bottom: 1.5em;
@@ -281,6 +282,10 @@ const selectedPosts = allPosts.filter(post =>
     .blog-aside button {
       background: var(--primary);
     }
+    	a:hover .blog-aside button:not(.theme-toggle, .dropdown-toggle),
+      .blog-aside button:not(.theme-toggle, .dropdown-toggle):hover {
+        background-color: var(--secondary);
+      }
     .related {
       display: inline;
     }
@@ -451,20 +456,34 @@ const selectedPosts = allPosts.filter(post =>
   </slot>
 
   <BlogPosting slot="head" {...Astro.props} />
-
-  <article data-pagefind-body>
-    <h1>{title}</h1>
+  <BreadcrumbSchema slot="head" crumbs={[
+    { name: "Home", url: `${ SITE_URL }/` },
+    { name: "Blog", url: `${ SITE_URL }/blog/` },
+    { name: title, url: `${ SITE_URL }/blog/${slug}/` }
+  ]} />
+  <HowToSchema 
+    title={title}
+    description={description}
+    slug={slug!}
+    tags={tags}
+    headings={headings}
+    readingTime={readingTime}
+  />
+  <article class="h-entry" data-pagefind-body data-pub-date={pubDate.toISOString()}
+  data-updated-date={updatedDate ? updatedDate.toISOString() : ''}>
+    <h1 class="p-name">{title}</h1>
+    <a class="u-url" href={`https://fullmetalbrackets.com/blog/${slug}/`} hidden>Permalink</a>
     <div class="blog-tags">
       <span class="tag" data-pagefind-ignore>
         {tags.map((tag) => (
-          <a href={`/categories/${tag}/`} rel="prefetch-intent" data-umami-event="category-from-article">
+          <a href={`/categories/${tag}/`} rel="prefetch-intent tag" data-umami-event="category-from-article">
             <button>{tag}</button>
           </a>
         ))}
       </span>
     </div>
     <div class="info">
-      <span><FormattedDate date={pubDate} /></span>
+      <span><FormattedDate class="dt-published" date={pubDate} /></span>
       <span class="readingtime"><ReadingTime time={readingTime} data-pagefind-ignore /></span>
     </div>
     <p class="updated">
@@ -473,28 +492,30 @@ const selectedPosts = allPosts.filter(post =>
           <span class="last-updated-on">
             Updated&nbsp;
           </span>
-            <FormattedDate date={updatedDate} />
+            <FormattedDate class="dt-updated" date={updatedDate} />
         )
       }
     </p>
     <hr />
-    <p class="description">
+    <p class="p-summary description">
       {description}
     </p>
     <TableOfContents headings={headings} />
-    <slot>
-      <p>
-        If you're seeing this, something went wrong! Please try <em
-          >reloading the page</em
-        >.
-      </p>
-    </slot>
-
-    <div class="related" data-pagefind-ignore>
-      <h3><Related width={36} height={36}/> Related Posts</h3>
-      <ul>
-        {selectedPosts.map(post => (
-          <a href={`/blog/${post.id}/`} rel="prefetch-intent" data-umami-event={`featured-${post.id}`}>
+    <div class="e-content slot-content">
+      <slot>
+        <p>
+          If you're seeing this, something went wrong! Please try <em
+            >reloading the page</em
+          >.
+        </p>
+      </slot>
+    </div>
+    {selectedPosts.length > 0 && (
+      <div class="related" data-pagefind-ignore>
+        <h3><Related width={36} height={36}/> Related Posts</h3>
+        <ul>
+          {selectedPosts.map(post => (
+            <a href={`/blog/${post.id}/`} rel="prefetch-intent" data-umami-event={`featured-${post.id}`}>
             <li>
               <span>{post.data.title}</span>
               <div>
@@ -507,11 +528,13 @@ const selectedPosts = allPosts.filter(post =>
               <p>{post.data.description}</p>
             </li>
           </a>
-        ))}
-      </ul>
-    </div>
+          ))}
+        </ul>
+      </div>
+    )}
 
   </article>
+  <HCard />
   <hr class="midline">
   
   <WebMentions />
@@ -526,7 +549,7 @@ const selectedPosts = allPosts.filter(post =>
       <span class="edit-button">
         <button class="edit">
           <a 
-          href={`https://github.com/fullmetalbrackets/blog/blob/main/src/content/blog/${slug}.md/`}
+          href={`${GITHUB}/blog/blob/main/src/content/blog/${slug}.md/`}
           target="_blank" data-umami-event={`edit-gh-${slug}`}>
             <img src="/assets/gh.svg"
               class="gh"
@@ -542,11 +565,9 @@ const selectedPosts = allPosts.filter(post =>
   <aside class="mid-end">
     <div class="coffee">
       <span>Was this article helpful?</span>
-        <a href="https://www.buymeacoffee.com/arieldiaz">
-          <Image
-            src={coffeeBtn}
-            width={width}
-            height={height}
+        <a href={DONATE}>
+          <img
+            src="https://img.buymeacoffee.com/button-api/?slug=arieldiaz&font_family=Inter&coffee_colour=6F4E37"
             class="coffee-btn"
             alt="Buy Me A Coffee"
             title="Buy Me A Coffee"
@@ -647,6 +668,36 @@ const selectedPosts = allPosts.filter(post =>
     }
   </script>
   <script is:inline>
+    const articleEl = document.querySelector('article');
+    if (articleEl) {
+      const pubDate = articleEl.dataset.pubDate;
+      const updatedDate = articleEl.dataset.updatedDate;
+      
+      const relevantDate = updatedDate ? new Date(updatedDate) : new Date(pubDate);
+      const now = new Date();
+      const monthsDiff = (now.getFullYear() - relevantDate.getFullYear()) * 12 
+        + (now.getMonth() - relevantDate.getMonth());
+
+      const banner = document.createElement('blockquote');
+
+      if (monthsDiff >= 24) {
+        const years = Math.floor(monthsDiff / 12);
+        const months = monthsDiff % 12;
+        const timeString = months > 0 ? `${years} years, ${months} months` : `${years} years`;
+        banner.setAttribute('data-type', 'warning');
+        banner.innerHTML = `<p><strong>Heads up!</strong></p><p>This post hasn't been updated in <b>${timeString}</b> so please consider everything out of date!</p>`;
+      } else if (monthsDiff >= 18) {
+        banner.setAttribute('data-type', 'warning');
+        banner.innerHTML = `<p><strong>Heads up!</strong></p><p>This post hasn't been updated in <i>over 18 months</i> and some information may be outdated.</p>`;
+      }
+
+      if (banner.hasAttribute('data-type')) {
+        const hr = articleEl.querySelector('hr');
+        if (hr) hr.insertAdjacentElement('afterend', banner);
+      }
+    }
+  </script>
+  <script is:inline>
     function copyToClipboard(copyBtn, text) {
       navigator.clipboard.writeText(text).then(() => {
         copyBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -668,6 +719,71 @@ const selectedPosts = allPosts.filter(post =>
       const wrapper = copyBtn.closest(".code-wrapper");
       const code = wrapper.querySelector("pre code");
       copyToClipboard(copyBtn, code.innerText);
+    });
+  </script>
+  <script is:inline>
+    if (window.matchMedia('(min-width: 2108px)').matches) {
+      const toc = document.querySelector('.toc-container');
+      const articleEl = document.querySelector('article');
+
+      if (toc && articleEl) {
+        const headings = articleEl.querySelectorAll('h2');
+        const lastHeading = headings[headings.length - 1];
+
+        if (lastHeading) {
+          const observer = new IntersectionObserver(([entry]) => {
+            const isVisible = entry.isIntersecting || entry.boundingClientRect.top > 0;
+            toc.style.opacity = isVisible ? '1' : '0';
+            toc.style.pointerEvents = isVisible ? 'auto' : 'none';
+            toc.style.transition = 'opacity 0.3s ease';
+          });
+
+          observer.observe(lastHeading);
+        }
+      }
+    }
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.heading-link').forEach((link) => {
+        link.addEventListener('click', async (e) => {
+          if (window.innerWidth > 768) {
+            e.preventDefault();
+          }
+          const url = window.location.origin + window.location.pathname + link.getAttribute('href');
+          try {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              await navigator.clipboard.writeText(url);
+            } else {
+              const textArea = document.createElement('textarea');
+              textArea.value = url;
+              textArea.style.position = 'fixed';
+              textArea.style.left = '-999999px';
+              document.body.appendChild(textArea);
+              textArea.select();
+              document.execCommand('copy');
+              document.body.removeChild(textArea);
+            }            
+            const tooltip = document.createElement('span');
+            tooltip.textContent = 'Copied!';
+            tooltip.style.cssText = `
+              position: absolute;
+              background: var(--dropdown);
+              color: var(--text);
+              padding: 4px 8px;
+              border-radius: 4px;
+              font-size: 0.5em;
+              white-space: nowrap;
+              z-index: 1000;
+              left: 30em;
+            `;
+            link.appendChild(tooltip);
+            setTimeout(() => tooltip.remove(), 2000);
+          } catch (err) {
+            console.log('Copy failed:', err);
+          }
+        });
+      });
     });
   </script>
 </BaseLayout>

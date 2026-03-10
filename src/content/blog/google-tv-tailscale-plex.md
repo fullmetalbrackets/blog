@@ -4,8 +4,7 @@ description: "I have a Plex Pass subscription, but unfortunately Plex's built-in
 pubDate: 2025-10-28
 updatedDate: 2025-12-05
 tags: ['tailscale', 'plex', 'android']
-related1: setting-up-plex-in-docker
-related2: comprehensive-guide-tailscale-securely-access-home-network
+related: ['setting-up-plex-in-docker', 'comprehensive-guide-tailscale-securely-access-home-network']
 ---
 
 ## What and How

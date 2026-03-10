@@ -1,21 +1,10 @@
 ---
 import FormattedDate from "./FormattedDate.astro";
 import ReadingTime from "./ReadingTime.astro";
-import { getCollection, render } from "astro:content";
+import { getPostsWithReadingTime } from '@utils/collections';
 import More from '@icons/arrow-right.svg';
 
-const posts = (await getCollection("blog")).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
-const recentPosts = await Promise.all(
-  posts.slice(0, 5).map(async (post) => {
-    const { remarkPluginFrontmatter } = await render(post);
-    return {
-      ...post,
-      readingTime: remarkPluginFrontmatter.readingTime
-    };
-  })
-);
+const recentPosts = (await getPostsWithReadingTime()).slice(0, 5);
 ---
 
 <style scoped>
@@ -109,6 +98,7 @@ const recentPosts = await Promise.all(
     transform: 0.2;
   }
   .more a:hover svg {
+    filter: var(--foot-svg);
     transition: all .1s ease-out;
     transform: translateX(4px);
   }
@@ -143,21 +133,21 @@ const recentPosts = await Promise.all(
   }
 </style>
 
-<section>
-  <h2>Recent Posts</h2>
+<section class="h-feed">
+  <h2 class="p-name">Recent Posts</h2>
   <div class="container">
     {
       recentPosts.map((post) => (
-        <div class="list">
-          <a href={`/blog/${post.id}/`} rel="prefetch-intent" data-umami-event={`recent-post-${post.id}`}>
-            <p class="posts-title">{post.data.title}</p>
+        <div class="h-entry list">
+          <a class="u-url" href={`/blog/${post.id}/`} rel="prefetch-intent" data-umami-event={`recent-post-${post.id}`}>
+            <p class="p-name posts-title">{post.data.title}</p>
             <span class="tag">
               {post.data.tags.map((tag) => (
                 <button>{tag}</button>
               ))}
             </span>
             <p class="info">
-              <FormattedDate date={post.data.pubDate} monthFormat="short" />&nbsp;
+              <FormattedDate class="dt-published" date={post.data.pubDate} monthFormat="short" />&nbsp;
               <span class="reading"><ReadingTime time={post.readingTime} /></span>
             </p>
           </a>
@@ -165,7 +155,7 @@ const recentPosts = await Promise.all(
       ))
     }
     <span class="more">
-      <a href="/blog/" rel="prefetch-intent">MORE <More height={24} width={24} /></a>
+      <a href="/blog/" rel="prefetch-intent archives">All Posts <More height={24} width={24} /></a>
     </span>
   </div>
 </section>

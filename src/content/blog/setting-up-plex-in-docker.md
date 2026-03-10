@@ -4,8 +4,7 @@ description: "Plex Media Server is one of the most popular services to self-host
 pubDate: 2022-10-17
 updatedDate: 2025-11-03
 tags: ['self-hosting', 'plex', 'docker']
-related1: expose-plex-tailscale-vps
-related2: setting-up-jellyfin-in-docker
+related: ['expose-plex-tailscale-vps', 'setting-up-jellyfin-in-docker']
 ---
 
 ## Installing Plex as a Docker container

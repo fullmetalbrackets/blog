@@ -4,7 +4,7 @@ description: 'Frameworks and libraries are great and all, but sometimes you just
 pubDate: 2022-01-07
 updatedDate: 2026-01-17
 tags: ['web development']
-related1: styling-the-kbd-element
+related: ['styling-the-kbd-element']
 ---
 
 > **TL;DR**

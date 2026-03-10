@@ -4,8 +4,7 @@ description: "I'm running almost 30 containers on my home server at this point, 
 pubDate: 2024-05-31
 updatedDate: 2025-12-22
 tags: ['self-hosting', 'docker']
-related1: setting-up-plex-in-docker
-related2: how-to-run-filebrowser-in-docker
+related: ['setting-up-plex-in-docker', 'how-to-run-filebrowser-in-docker']
 ---
 
 > [warning] Urgent!

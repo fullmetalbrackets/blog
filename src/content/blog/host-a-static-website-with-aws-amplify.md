@@ -1,13 +1,9 @@
 ---
-title: Host a static website with AWS Amplify
+title: How to host a static website with AWS Amplify
 description: Getting started learning Amazon Web Services can be a bit intimidating. Once you've created your free account there's so many services on the AWS console that it can be overwhelming and confusing to figure out where to get started. So let's ease our way and start by just hosting a simple static website with AWS Amplify, it only takes a few minutes!
 pubDate: 2021-09-29
 tags: ['web development']
 ---
-
-> [warning] Outdated Content
->
-> This was one of my earliest blog posts when I was trying out as many different free static web hosts as I could. It is very likely that none of the below is relevant by the time you are reading this. The content remains for legacy purposes only.
 
 Getting started learning Amazon Web Services can be a bit intimidating. Once you've created your free account there's so many services on the AWS console that it can be overwhelming and confusing to figure out where to get started. So let's ease our way and start by just hosting a simple static website with AWS Amplify, it only takes a few minutes!
 

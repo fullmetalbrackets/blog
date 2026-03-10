@@ -3,8 +3,7 @@ title: 'How to format and/or partition disks in Linux'
 description: 'Just a quick guide to format and partition hard drives in Linux command line that I wrote for myself a long time ago, and recently had to reference again.'
 pubDate: 2022-10-08
 tags: ['linux', 'command line']
-related1: basic-linux-commands
-related2: mounting-hard-drives-in-linux
+related: ['basic-linux-commands', 'mounting-hard-drives-in-linux']
 ---
 
 > Be aware that using these instructions to format a disk or delete partitions will lead to the loss of any data contained therein.

@@ -4,9 +4,13 @@ import Mastodon from '@icons/mastodon.svg';
 import Bluesky from '@icons/bsky.svg';
 import GitHub from '@icons/gh.svg';
 import BuyMeCoffee from '@icons/bmc.svg';
+import { SITE_URL, GITHUB, BLUESKY, MASTODON, DONATE } from '@consts';
 ---
 
 <style scoped>
+    .u-photo, .u-logo {
+        display: none;
+    }
     .personal-links {
         display: flex;
         align-items: center;
@@ -50,20 +54,27 @@ import BuyMeCoffee from '@icons/bmc.svg';
     }
 </style>
 
-<div class="personal-links">
-    <a href="mailto:contact@fullmetalbrackets.com" target="_blank" data-umami-event="front-page-mail">
-        <Email />
-    </a>
-    <a href="https://social.lol/@adiaz" target="_blank" data-umami-event="front-page-social">
-        <Mastodon />
-    </a>
-    <a href="https://bsky.app/profile/fullmetalbrackets.com" rel="me atproto" target="_blank" data-umami-event="front-page-bsky">
-        <Bluesky />
-    </a>
-    <a href="https://github.com/fullmetalbrackets" target="_blank" data-umami-event="front-page-github">
-        <GitHub />
-    </a>
-    <a href="https://buymeacoffee.com/arieldiaz" target="_blank" data-umami-event="front-page-coffee">
-        <BuyMeCoffee />
-    </a>
+<div class="h-card">
+    <img class="u-photo" src="/avatar.png" alt="Avatar of fullmetalbrackets" />
+    <img class="u-logo" src="/favicon.svg" alt="Logo of fullmetalbrackets.com" />
+    <h2><a class="p-name u-url u-uid" href={SITE_URL} hidden>Ariel Diaz</a></h2>
+    <p class="p-note" hidden>Blogger that writes about self-hosting, web development, Linux, and more.</p>
+    <span class="p-country-name" hidden>United States of America</span>
+    <div class="personal-links">
+        <a class="u-email" href="mailto:contact@fullmetalbrackets.com" target="_blank" data-umami-event="front-page-mail">
+            <Email />
+        </a>
+        <a rel="me" href={MASTODON} target="_blank" data-umami-event="front-page-social">
+            <Mastodon />
+        </a>
+        <a rel="me atproto" href={BLUESKY} target="_blank" data-umami-event="front-page-bsky">
+            <Bluesky />
+        </a>
+        <a rel="me" href={GITHUB} target="_blank" data-umami-event="front-page-github">
+            <GitHub />
+        </a>
+        <a rel="me" href={DONATE} target="_blank" data-umami-event="front-page-coffee">
+            <BuyMeCoffee />
+        </a>
+    </div>
 </div>

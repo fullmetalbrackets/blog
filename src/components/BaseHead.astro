@@ -1,30 +1,32 @@
 ---
 import "@styles/global.css";
+import FallbackImage from '../img/assets/preview.png'
+import { SITE_TITLE, GITHUB, MASTODON } from '../consts';
 import { Font } from 'astro:assets';
+import type { BaseHeadProps } from '../types';
 
-interface Props {
-  title: string;
-  description: string;
-  image?: string;
-}
+type Props = BaseHeadProps;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = "/social.jpg" } = Astro.props;
+const { title, description, image = FallbackImage, ogType = "website", ogImage } = Astro.props;
 ---
 
 <!-- Global Metadata -->
-<meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="icon" type="image/png" href="/favicon-192x192.png" sizes="192x192" />
-<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
 <link rel="icon" href="/favicon.ico" sizes="any" />
-<link rel="shortcut icon" href="/favicon.ico" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-<meta name="apple-mobile-web-app-title" content="fullmetalbrackets" />
+<link rel="sitemap" href="/sitemap-index.xml" />
+<link
+	rel="alternate"
+	type="application/rss+xml"
+	title={SITE_TITLE}
+	href={new URL('rss.xml', Astro.site)}
+/>
+<meta name="apple-mobile-web-app-title" content="Fullmetal" />
 <meta name="generator" content={Astro.generator} />
+<meta name="theme-color" content="#008291" />
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
@@ -34,48 +36,31 @@ const { title, description, image = "/social.jpg" } = Astro.props;
 <meta name="title" content={title} />
 <meta name="description" content={description} />
 
-<!-- Google / Search Engine Tags -->
-<meta itemprop="name" content={title} />
-<meta itemprop="description" content={description} />
-<meta itemprop="image" content={new URL(image, Astro.url)} />
-
 <!-- Open Graph / Facebook -->
-<meta property="og:type" content="website" />
+<meta property="og:type" content={ogType} />
 <meta property="og:url" content={Astro.url} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={new URL(image, Astro.url)} />
+<meta property="og:image" content={ogImage ?? new URL(image.src, Astro.url)} />
+<meta property="og:image:width" content={String(image.width)} />
+<meta property="og:image:height" content={String(image.height)} />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={Astro.url} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={new URL(image, Astro.url)} />
+<meta property="twitter:image" content={ogImage ?? new URL(image.src, Astro.url)} />
 
-<!-- Atkinson Hyperlegible Next -->
-<Font cssVariable="--main-font" preload />
-
-<!-- Atkinson Hyperlegible Mono -->
-<Font cssVariable="--code-font" preload />
-
-<!-- M PLUS Rounded 1c -->
+<!-- Fonts -->
 <Font cssVariable="--sub-font" preload />
+<Font cssVariable="--main-font" preload />
+<Font cssVariable="--code-font" />
 
 <!-- Etc. -->
-<link rel="webmention" href="https://webmention.io/fullmetalbrackets.com/webmention" />
-<link rel="me" href="https://bsky.app/profile/fullmetalbrackets.bsky.social" />
+<link rel="webmention" href={`https://webmention.io/fullmetalbrackets.com/webmention`} />
+<link rel="pingback" href={`https://webmention.io/fullmetalbrackets.com/xmlrpc`} />
+<link rel="me" href={ GITHUB } />
+<link rel="me" href={ MASTODON } />
 <meta name="fediverse:creator" content="@adiaz@social.lol">
-
-<!-- Track outbound links w/ Umami -->
-<script is:inline type="text/javascript">
-  (() => {
-    const name = 'outbound-link-click';
-    document.querySelectorAll('a').forEach(a => {
-      if (a.host !== window.location.host && !a.getAttribute('data-umami-event')) {
-        a.setAttribute('data-umami-event', name);
-        a.setAttribute('data-umami-event-url', a.href);
-      }
-    });
-  })();
-</script>
+<link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="Search fullmetalbrackets.com" />

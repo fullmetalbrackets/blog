@@ -4,8 +4,7 @@ description: 'A quick and dirty guide on how to easily set up a Samba share on L
 pubDate: 2021-09-01
 updatedDate: 2025-02-29
 tags: ['smb', 'linux', 'networking']
-related1: quick-guide-setting-up-smb
-related2: setup-nfs-shares-linux
+related: ['quick-guide-setting-up-smb', 'setup-nfs-shares-linux']
 ---
 
 ## Installing Samba

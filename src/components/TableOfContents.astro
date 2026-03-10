@@ -42,15 +42,17 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
   }
 </style>
 
-<div>
+<div class="toc-container">
   <h2><TOC width={36} height={36}/>Table of Contents</h2>
   <ol>
     {
-      filteredHeadings.map((heading) => (
-        <li>
-          <a href={`#${heading.slug}`}>{heading.text}</a>
-        </li>
-      ))
+      filteredHeadings.map((heading) => {
+        return (
+          <li>
+            <a href={`#${heading.slug}`}>{heading.text}</a>
+          </li>
+        );
+      })
     }
   </ol>
 </div>

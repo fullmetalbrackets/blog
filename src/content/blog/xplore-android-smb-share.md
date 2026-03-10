@@ -4,8 +4,7 @@ description: "I've wrote before about file managers for Android before, recently
 pubDate: 2024-03-26
 updatedDate: 2025-02-22
 tags: ['android', 'smb']
-related1: solid-explorer-samba-share
-related2: setup-a-samba-share-on-linux-via-command-line
+related: ['solid-explorer-samba-share', 'setup-a-samba-share-on-linux-via-command-line']
 ---
 
 > Although I'm doing this on a OnePlus phone running **OxygenOS 14**, it is just a customized version of **Android 14** -- everything below should work on any version of Android 14 and probably older versions as well.

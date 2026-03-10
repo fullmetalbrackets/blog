@@ -1,14 +1,13 @@
 ---
-title: 'Transferring files between hosts with SCP'
-description: "Using the Secure Copy (SCP) utility in Linux lets you securely copy files to and from remote hosts, and it's very easy to use."
+title: 'How to transfer files between hosts with Secure Copy utility (SCP)'
+description: "Using the Secure Copy utility in Linux lets you securely transfer files to and from remote hosts via the SSH protocol, it comes with every Linux distribution, and it's very easy to use."
 pubDate: 2022-09-26
+updatedDate: 2025-03-05
 tags: ['linux', 'command line']
-related1: copy-ssh-keys-between-hosts
+related: ['copy-ssh-keys-between-hosts']
 ---
 
-## Introduction
-
-Secure Copy is a command line utility that transfers files between the local host and a remote host via the SSH protocol. You will be prompted for the remote user's password, or you can use an <a href="/blog/generating-an-ssh-key-pair/" target="_blank" data-umami-event="transfer-scp-to-generating-ssh-key-pair">authorized SSH key</a>.
+When using it, you will be prompted for the remote user's password, or you can use an <a href="/blog/generating-an-ssh-key-pair/" target="_blank" data-umami-event="transfer-scp-to-generating-ssh-key-pair">authorized SSH key</a> if you have previously authorized it.
 
 ## SCP Command Syntax
 
@@ -16,14 +15,14 @@ Secure Copy is a command line utility that transfers files between the local hos
 scp -OPTION user@SourceIP:file.txt user@DestinationIP:file.txt
 ```
 
-## SCP Options
+When go through the options/flags that you can pass with the command:
 
 - `-r`: Recursively copy entire directories, also follows symbolic links
-- `-P`: Specifies an SSH port on destination host, use if destination uses SSH port other than 22
+- `-P`: Specifies an SSH port on destination host, use if destination uses any SSH port other than 22
 - `-p`: Copied files keep modification times, access times, permissions and modes
 - `-v`: Verbose mode; prints additional debugging messages about transfer progress
 - `-q`: Quiet mode; disables the progress bar and warning/diagnostic messages
-- `-C`: Compresses sent data for faster transfer speeds
+- `-C`: Compresses sent data for faster transfer speeds (useful for large files)
 
 ## Copying files and directories to a remote host
 
@@ -73,6 +72,10 @@ With **SCP** its even possible to transfer between two other systems, as long as
 ```bash
 scp user@192.168.0.10:/directory/file.txt user@192.168.0.12:/directory/file.txt
 ```
+
+## Alternatively, use Rsync for large transfers
+
+SCP is great for single files, or several small files, but when you're dealing with many files or especially multiple directories with multiple sub-directories and files, a better option is [Rsync](/blog/rsync-a-quick-guide/).
 
 ## References
 

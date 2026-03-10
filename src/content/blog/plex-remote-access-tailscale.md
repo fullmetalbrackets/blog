@@ -1,11 +1,10 @@
 ---
-title: 'Bypass the Plex Pass and Remote Watch Pass requirements for Plex remote access by using Tailscale'
+title: 'How to bypass the Plex Pass and Remote Watch Pass requirements for Plex remote access by using Tailscale'
 description: 'Beginning April 29th, 2025 the pricing for Plex Pass increased at the same time that remote access got paywalled behind it. Plex no longer allows streaming your own content outside of your home network without paying for Plex Pass, or the new Remote Watch Pass. You can bypass these paywalls, at least for now, by using Tailscale.'
 pubDate: 2025-05-17
 updatedDate: 2025-11-08
 tags: ['tailscale', 'plex']
-related1: comprehensive-guide-tailscale-securely-access-home-network
-related2: expose-plex-tailscale-vps
+related: ['comprehensive-guide-tailscale-securely-access-home-network', 'expose-plex-tailscale-vps']
 ---
 
 > [warning] Important

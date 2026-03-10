@@ -11,11 +11,19 @@ import remarkDirective from 'remark-directive';
 import remarkDirectiveSugar from 'remark-directive-sugar';
 import yeskunallumami from '@yeskunall/astro-umami';
 import rehypeCodeblockCopy from './src/utils/rehype-codeblock-copy.ts';
+import rehypeSlug from 'rehype-slug';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import cloudflare from '@astrojs/cloudflare';
 import astroCompress from 'gab-astro-compress';
 
 export default defineConfig({
 	site: 'https://fullmetalbrackets.com',
 	trailingSlash: 'always',
+
+	build: {
+		inlineStylesheets: 'always',
+	},
+
 	integrations: [
 		mdx(),
 		sitemap(),
@@ -25,9 +33,27 @@ export default defineConfig({
 			hostUrl: 'https://u.adiaz.fyi',
 		}),
 	],
+
 	prefetch: true,
+
 	markdown: {
 		rehypePlugins: [
+			rehypeSlug,
+			[
+				rehypeAutolinkHeadings,
+				{
+					behavior: 'prepend',
+					properties: {
+						class: 'heading-link',
+						ariaLabel: 'Link to this section',
+					},
+					content: {
+						type: 'element',
+						tagName: 'span',
+						properties: { className: ['link-icon'] },
+					},
+				},
+			],
 			[
 				rehypeExternalLinks,
 				{
@@ -40,11 +66,13 @@ export default defineConfig({
 		syntaxHighlight: 'prism',
 		remarkPlugins: [remarkReadingTime, remarkDirective, remarkDirectiveSugar],
 	},
+
 	compressHTML: true,
+
 	image: {
 		service: passthroughImageService(),
-		domains: ['img.buymeacoffee.com'],
 	},
+
 	redirects: {
 		'/feed/': {
 			status: 302,
@@ -68,8 +96,7 @@ export default defineConfig({
 		},
 		'/umami/': {
 			status: 302,
-			destination:
-				'https://u.adiaz.fyi/share/TtTytHU8rJy0oEzN',
+			destination: 'https://u.adiaz.fyi/share/TtTytHU8rJy0oEzN',
 		},
 		'/blog/tailscale/': {
 			status: 302,
@@ -126,6 +153,7 @@ export default defineConfig({
 			destination: '/digest/tvshows/',
 		},
 	},
+
 	experimental: {
 		fonts: [
 			{
@@ -154,5 +182,13 @@ export default defineConfig({
 			},
 		],
 		svgo: true,
+	},
+
+	output: 'server',
+	adapter: cloudflare(),
+	vite: {
+		ssr: {
+			external: ['@resvg/resvg-js', 'fs', 'path', 'child_process'],
+		},
 	},
 });

@@ -4,8 +4,8 @@ description: "Just a quick cheat sheet of basic and slightly less basic Linux co
 pubDate: 2022-09-18
 updatedDate: 2025-02-17
 tags: ['linux', 'command line']
-related1: formatting-on-linux
-related2: mounting-hard-drives-in-linux
+related: ['formatting-on-linux', 'mounting-hard-drives-in-linux']
+howto: true
 ---
 
 ## Common Commands

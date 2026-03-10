@@ -4,8 +4,7 @@ description: "Besides just using a browser extension for ad blocking, I've been 
 pubDate: 2022-10-08
 updatedDate: 2025-03-15
 tags: ['self-hosting', 'pi-hole']
-related1: pihole-anywhere-tailscale
-related2: reverse-proxy-using-nginx-pihole-cloudflare
+related: ['pihole-anywhere-tailscale', 'reverse-proxy-using-nginx-pihole-cloudflare']
 ---
 
 ## Pre-Requisites and Caveats

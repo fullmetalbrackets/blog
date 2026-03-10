@@ -1,11 +1,10 @@
 ---
-title: 'Generating an SSH key pair'
+title: 'How to generate an SSH key pair'
 description: "Secure Shell is a protocol for securely connecting from one computer to another. As a web developer, you will probably end up using SSH a lot, and even if you don't it's a handy skill to have. Here's a quick guide on how to generate SSH keys and copy them to other machines."
 pubDate: 2021-09-12
 updatedDate: 2022-09-23
 tags: ['ssh', 'command line']
-related1: copy-ssh-keys-between-hosts
-related2: setup-ssh-authentication-to-push-to-github
+related: ['copy-ssh-keys-between-hosts', 'setup-ssh-authentication-to-push-to-github']
 ---
 
 Usually when to a computer or server via SSH, you are prompted for a username and password, but you can skip this and make your SSH sessions even more secure by using key pairs. Basically you will generate two encrypted keys that are associated with each other -- a private key and a public key. These are used to verify your identity.

@@ -1,19 +1,12 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
-import { getCollection } from 'astro:content';
+import { getSortedTags } from '@utils/collections';
+import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
+import { SITE_URL } from "@consts";
 
-const allPosts = await getCollection('blog');
-const tagCounts = {};
-allPosts.forEach(post => {
-  post.data.tags?.forEach(tag => {
-    tagCounts[tag] = (tagCounts[tag] || 0) + 1;
-  });
-});
-const tags = Object.entries(tagCounts)
-  .map(([tag, count]) => ({ tag, count }))
-  .sort((a, b) => a.tag.localeCompare(b.tag));
+const tags = await getSortedTags();
 const title = "Categories";
-const desc = "Blog posts by category";
+const desc = "Blog posts by category.";
 ---
 
 <style scoped>
@@ -69,22 +62,27 @@ const desc = "Blog posts by category";
 </style>
 
 <BaseLayout title={title} description={desc}>
+  <BreadcrumbSchema slot="head" crumbs={[
+    { name: "Home", url: `${SITE_URL}/` },
+    { name: "Categories", url: `${SITE_URL}/categories/` }
+  ]} />
   <section>
     <h1>{title}</h1>
+    <a class="u-url" href={`${SITE_URL}/categories/`} hidden>Permalink</a>
     <hr />
     <p class="back">
       <a href="/blog/" rel="prefetch-intent">↩ All posts</a>
       <a href="/blog/years/" rel="prefetch-intent" data-umami-event="blog-years">Posts by year ↪</a>
     </p>
     <p>
-      Click on categories below to see blog posts about that subject. Alternately, see <a href="/blog/">all posts</a> or <a href="/search/">search</a>.
+      Click on categories below to see blog posts about that subject. Alternately, see <a href="/blog/" rel="archives">all posts</a> or <a href="/search/">search</a>.
     </p>
     <ul>
       {tags.map(({ tag, count }) => (
         <li>
           <button>
             <span class="label">
-              <a href={`/categories/${tag}/`} rel="prefetch-intent" data-umami-event={`categories-${tag}`}>{tag}</a>
+              <a href={`/categories/${tag}/`} rel="prefetch-intent tag" data-umami-event={`categories-${tag}`}>{tag}</a>
               </span>
             <span class="count">
               {count}

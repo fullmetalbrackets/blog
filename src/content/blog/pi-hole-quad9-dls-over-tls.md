@@ -4,8 +4,7 @@ description: 'A quick guide on configuring Pi-Hole to use either Cloudflared or 
 pubDate: 2023-07-27
 updatedDate: 2025-03-02
 tags: ['pi-hole', 'networking']
-related1: using-dns-over-https-with-pihole
-related2: set-up-pihole-on-linux
+related: ['using-dns-over-https-with-pihole', 'set-up-pihole-on-linux']
 ---
 
 ## What and Why

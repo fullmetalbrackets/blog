@@ -3,12 +3,8 @@ title: 'Using Surge.sh to quickly and easily host static sites'
 description: 'Although I love using Netlify to host my site, for testing out sites and simple apps I have fallen in love with Surge.sh, a ridiculously simple web hosting solution that works entirely from the command line.'
 pubDate: 2022-10-05
 tags: ['web development']
-related1: 5-ways-to-host-site-free
+related: ['5-ways-to-host-site-free']
 ---
-
-> [warning] Outdated Content
->
-> The information in this blog post may be out of date, as I haven't used Surge.sh in over two years and for all I know it works totally different now. Or maybe it works the same. That will be for you to find out.
 
 ## Getting started
 

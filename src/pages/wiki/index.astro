@@ -3,6 +3,8 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 import FormattedDate from "@components/FormattedDate.astro";
 import BackToTop from "@components/BackToTop.astro";
+import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
+import { SITE_URL } from "@consts";
 
 const posts = (await getCollection("wiki")).sort((a, b) => {
   const dateA = a.data.updatedDate || a.data.pubDate;
@@ -11,7 +13,7 @@ const posts = (await getCollection("wiki")).sort((a, b) => {
 });
 
 const title = "Wiki";
-const desc = "List of all wikis";
+const desc = "Archive of wiki articles.";
 ---
 
 <style scoped>
@@ -65,7 +67,7 @@ const desc = "List of all wikis";
   }
   @media (hover: none) {
     li:hover button {
-      background-color: var(--menu);
+      background-color: var(--hover);
     }
   }
   @media screen and (min-width: 200px) and (max-width: 667px) {
@@ -76,6 +78,10 @@ const desc = "List of all wikis";
 </style>
 
 <BaseLayout title={title} description={desc}>
+  <BreadcrumbSchema slot="head" crumbs={[
+    { name: "Home", url: `${SITE_URL}/` },
+    { name: "Wiki", url: `${SITE_URL}/wiki/` }
+  ]} />
   <section>
     <h1>{title}</h1>
     <hr />

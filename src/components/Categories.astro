@@ -1,16 +1,7 @@
 ---
-import { getCollection } from 'astro:content';
+import { getSortedTags } from '@utils/collections';
 
-const allPosts = await getCollection('blog');
-const tagCounts = {};
-allPosts.forEach(post => {
-  post.data.tags?.forEach(tag => {
-    tagCounts[tag] = (tagCounts[tag] || 0) + 1;
-  });
-});
-const tags = Object.entries(tagCounts)
-  .map(([tag, count]) => ({ tag, count }))
-  .sort((a, b) => a.tag.localeCompare(b.tag));
+const tags = await getSortedTags();
 ---
 
 <style scoped>
@@ -73,7 +64,7 @@ const tags = Object.entries(tagCounts)
         <li>
           <button>
             <span class="label">
-              <a href={`/categories/${tag}/`} rel="prefetch-intent" data-umami-event={`categories-${tag}`}>{tag}</a>
+              <a href={`/categories/${tag}/`} rel="prefetch-intent tag" data-umami-event={`categories-${tag}`}>{tag}</a>
               </span>
             <span class="count">
               {count}

@@ -1,12 +1,22 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 import BackToTop from "@components/BackToTop.astro";
+import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
+import { SITE_URL } from "@consts";
 
 const { frontmatter } = Astro.props;
 const showTop = frontmatter.showTop !== false;
+
+const currentPath = Astro.url.pathname;
+
+const crumbs = [
+  { name: "Home", url: `${SITE_URL}/` },
+  { name: frontmatter.title, url: `${SITE_URL}${currentPath}` }
+];
 ---
 
 <BaseLayout title={frontmatter.title} description={frontmatter.description}>
+  <BreadcrumbSchema slot="head" crumbs={crumbs} />
   <head>
     <link rel="stylesheet" href="/prism.css" />
   </head>

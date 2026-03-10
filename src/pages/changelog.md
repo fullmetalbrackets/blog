@@ -6,7 +6,11 @@ description: A log of major changes made to fullmetalbrackets.com
 
 A log of major changes made to my site over the years. For more granular details, [see the GitHub repo](https://github.com/fullmetalbrackets/blog/commits/main/).
 
-<h2 class="flex">2026-01-23&nbsp;<span class="latest">latest</span></h2>
+<h2 class="flex">2026-03-03&nbsp;<span class="latest">latest</span></h2>
+
+- Add dynamically generated opengraph cards for blog posts via [Satori](https://github.com/vercel/satori).
+
+<h2 class="flex">2026-01-23</h2>
 
 - Add [games](/games/) page
 - Add [digest](/digest/) page

@@ -4,8 +4,7 @@ description: "If you want your Linux machine to stay up-to-date on important sec
 pubDate: 2022-10-14
 updatedDate: 2025-03-03
 tags: ['debian', 'linux', 'command line']
-related1: bootstrapping-fresh-install-with-ansible
-related2: setup-apt-cacher-ng-to-cache-packages-homelab
+related: ['bootstrapping-fresh-install-with-ansible', 'setup-apt-cacher-ng-to-cache-packages-homelab']
 ---
 
 ## Caveats

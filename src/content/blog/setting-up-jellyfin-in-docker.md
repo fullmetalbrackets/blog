@@ -4,8 +4,7 @@ description: "Plex is a popular media server for self-hosting, but it's not open
 pubDate: 2022-10-18
 updatedDate: 2025-11-03
 tags: ['self-hosting', 'docker']
-related1: setting-up-plex-in-docker
-related2: how-to-run-filebrowser-in-docker
+related: ['setting-up-plex-in-docker', 'how-to-run-filebrowser-in-docker']
 ---
 
 ## Installing Jellyfin as a Docker container

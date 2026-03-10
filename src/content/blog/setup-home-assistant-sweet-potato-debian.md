@@ -4,8 +4,7 @@ description: "Home Assistant is an open source home automation solution that giv
 pubDate: 2024-03-03
 updatedDate: 2025-02-10
 tags: ['self-hosting', 'home assistant', 'sbc']
-related1: setting-up-sweet-potato-debian-pihole
-related2: self-host-website-cloudflare-tunnel
+related: ['setting-up-sweet-potato-debian-pihole', 'self-host-website-cloudflare-tunnel']
 ---
 
 ## Pre-Requisites

@@ -1,22 +1,15 @@
 User-agent: *
 Allow: /
-Disallow: /404
-Disallow: /feedback
-Disallow: /thanks
-Disallow: /bsky
-Disallow: /social
-Disallow: /feed
-Disallow: /umami
-Disallow: /github
-Disallow: /donate
+
+Disallow: /404/
+Disallow: /feedback/
+Disallow: /thanks/
 Disallow: /bsky/
 Disallow: /social/
 Disallow: /feed/
 Disallow: /umami/
 Disallow: /github/
 Disallow: /donate/
-Disallow: /cdn-cgi/l/email-protection
-
-Host: https://fullmetalbrackets.com
+Disallow: /cdn-cgi/
 
 Sitemap: https://fullmetalbrackets.com/sitemap-index.xml

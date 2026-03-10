@@ -1,59 +1,36 @@
 ---
+export const prerender = true
+
 import BaseLayout from "@layouts/BaseLayout.astro";
-import type { CollectionEntry } from "astro:content";
-import { getCollection, render } from "astro:content";
+import { getPostsWithReadingTime } from '@utils/collections';
 import FormattedDate from "@components/FormattedDate.astro";
 import ReadingTime from "@components/ReadingTime.astro";
 import BackToTop from "@components/BackToTop.astro";
+import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
+import { SITE_URL } from "@consts";
+import type { BlogTagProps } from '../../types';
 
 export async function getStaticPaths() {
-	const allPosts = await getCollection("blog").then((collection) => {
-		return collection.sort(
-			(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-		);
-	});
+	const allPosts = await getPostsWithReadingTime();
 
-	const tags: string[] = [];
+	const tags = [...new Set(allPosts.flatMap(post =>
+		post.data.tags.map(tag => tag.toLowerCase())
+	))];
 
-	allPosts.forEach((post) => {
-		post.data.tags.forEach((tag) => {
-			tags.push(tag.toLowerCase());
-		});
-	});
-
-	return await Promise.all(
-		Array.from(new Set(tags)).map(async (tag) => {
-			const filteredPosts = allPosts.filter((post) =>
-				post.data.tags.map((tag) => tag.toLowerCase()).includes(tag),
-			);
-
-			const postsWithReadingTime = await Promise.all(
-				filteredPosts.map(async (post) => {
-					const { remarkPluginFrontmatter } = await render(post);
-					return {
-						...post,
-						readingTime: remarkPluginFrontmatter.readingTime
-					};
-				})
-			);
-
-			return {
-				params: { tag },
-				props: {
-					tag,
-					posts: postsWithReadingTime,
-				},
-			};
-		})
-	);
+	return tags.map((tag) => ({
+		params: { tag },
+		props: {
+			tag,
+			posts: allPosts.filter(post =>
+				post.data.tags.map(t => t.toLowerCase()).includes(tag)
+			),
+		},
+	}));
 }
 
-export interface Props {
-	tag: string;
-	posts: (CollectionEntry<"blog"> & { readingTime: string })[];
-}
-
+type Props = BlogTagProps;
 const { tag, posts } = Astro.props;
+const tagTitle = tag.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
 ---
 
 
@@ -165,9 +142,15 @@ const { tag, posts } = Astro.props;
   }
 </style>
 
-<BaseLayout title={`${tag}`}>
-  <section>
-    <h1>Posts about <span class="tag">{`${tag}`}</span></h1>
+<BaseLayout title={`Posts about ${tagTitle}`}>
+  <BreadcrumbSchema slot="head" crumbs={[
+    { name: "Home", url: `${SITE_URL}/` },
+    { name: "Categories", url: `${SITE_URL}/categories/` },
+    { name: tagTitle, url: `${SITE_URL}/categories/${tag}/` }
+  ]} />
+  <section class="h-feed">
+    <h1 class="p-name">Posts about <span class="tag">{`${tagTitle}`}</span></h1>
+    <a class="u-url" href={`${SITE_URL}/categories/${tagTitle}`} hidden>Permalink</a>
     <hr />
     <p class="back">
       <a href="/categories/" rel="prefetch-intent">↩ Categories</a>
@@ -184,20 +167,20 @@ const { tag, posts } = Astro.props;
     <ul>
       {
         posts.map((post) => (
-          <li>
+          <li class="h-entry">
             <a href={`/blog/${post.id}/`} rel="prefetch-intent" data-umami-event={`${tag}-${post.id}`}>
               <div>
-                <span class="title">{post.data.title}</span>
+                <span class="p-name title">{post.data.title}</span>
                 <p class="tag">
                   {post.data.tags.map((tag) => (
                     <button>{tag}</button>
                   ))}
                 </p>
                 <p class="info">
-                  <FormattedDate date={post.data.pubDate} />&nbsp;
+                  <FormattedDate class="dt-published" date={post.data.pubDate} />&nbsp;
                   <span class="reading"><ReadingTime time={post.readingTime} /></span>
                 </p>
-                <p class="desc">{post.data.description}</p>
+                <p class="p-summary desc">{post.data.description}</p>
               </div>
             </a>
           </li>

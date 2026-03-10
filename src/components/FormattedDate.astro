@@ -4,12 +4,13 @@ import Date from "@icons/calendar.svg";
 interface Props {
   date: Date;
   monthFormat?: 'long' | 'short' | 'numeric' | '2-digit';
+  class?: string;
 }
 
-const { date, monthFormat = 'long' } = Astro.props;
+const { date, monthFormat = 'long', class: className } = Astro.props;
 ---
 
-<time datetime={date?.toISOString()}>
+<time datetime={date?.toISOString()} class={className}>
   <Date width={24} height={24} />
   <span>
     {
