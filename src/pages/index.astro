@@ -30,7 +30,6 @@ import { SITE_TITLE, SITE_DESCRIPTION, GITHUB, MASTODON, BLUESKY } from "@consts
   }
   .about {
     text-shadow: 2px 3px 2px var(--accent);
-    color: var(--emphasis);
     font-size: 3.25em;
     font-weight: 800;
     text-align: center;
@@ -71,7 +70,7 @@ import { SITE_TITLE, SITE_DESCRIPTION, GITHUB, MASTODON, BLUESKY } from "@consts
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
   <section>
     <div>
-      <span class="about">
+      <h1 class="about">
         A blog about self-hosting, web development, Linux, and more.
       </span>
     </div>
@@ -99,6 +98,6 @@ import { SITE_TITLE, SITE_DESCRIPTION, GITHUB, MASTODON, BLUESKY } from "@consts
         <Explore class="ul-index" />
       </PostsColumns>
     </div>
-    <br/>
+    <br>
   </section>
 </BaseLayout>
