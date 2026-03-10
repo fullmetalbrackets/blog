@@ -183,7 +183,6 @@ export default defineConfig({
 		svgo: true,
 	},
 
-	output: 'server',
 	adapter: cloudflare(),
 	vite: {
 		ssr: {
