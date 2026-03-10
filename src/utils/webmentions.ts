@@ -1,5 +1,6 @@
 interface Webmention {
 	'wm-property': string;
+	'wm-target'?: string;
 	author?: {
 		name?: string;
 		photo?: string;
@@ -27,14 +28,13 @@ export async function loadWebmentions(): Promise<void> {
 	const container = document.getElementById('webmentions-container');
 	if (!container) return;
 
-	let currentUrl = window.location.href.split('#')[0];
-	if (!currentUrl.endsWith('/')) {
-		currentUrl = currentUrl + '/';
-	}
+	// Get the current page path (without hash or query params)
+	const currentPath = window.location.pathname;
 
 	try {
+		// Fetch all webmentions for the domain
 		const response = await fetch(
-			`https://webmention.io/api/mentions.jf2?target=${encodeURIComponent(currentUrl)}&per-page=50`
+			`https://webmention.io/api/mentions.jf2?domain=fullmetalbrackets.com&per-page=1000`
 		);
 
 		if (!response.ok) {
@@ -42,7 +42,19 @@ export async function loadWebmentions(): Promise<void> {
 		}
 
 		const data: WebmentionResponse = await response.json();
-		const mentions: Webmention[] = data.children || [];
+
+		// Filter to only mentions for this specific page (ignoring hash fragments)
+		const mentions: Webmention[] = (data.children || []).filter(
+			(mention: Webmention) => {
+				if (!mention['wm-target']) return false;
+				try {
+					const targetPath = new URL(mention['wm-target']).pathname;
+					return targetPath === currentPath;
+				} catch {
+					return false;
+				}
+			}
+		);
 
 		if (mentions.length === 0) {
 			container.innerHTML =
