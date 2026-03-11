@@ -24,7 +24,7 @@ Blog posts and Wiki articles are all written in [Markdown](https://www.markdowng
 
 I use several packages to help with building the site and writing posts.
 
-- [astrojs/rss](hhttps://docs.astro.build/en/recipes/rss/): Astro integration to add an RSS feed, in my case the feed is blog posts only.
+- [astrojs/rss](https://docs.astro.build/en/recipes/rss/): Astro integration to add an RSS feed, in my case the feed is blog posts only.
 - [astrojs/sitemap](https://docs.astro.build/en/guides/integrations-guide/sitemap/): Astro integration that automatically generates a `sitemap.xml`.
 - [playform/compress](https://github.com/PlayForm/Compress): Astro integration that compresses and optimizes files (HTML, CSS, images, etc.) at build time.
 - [astro-social-share](https://github.com/silent1mezzo/astro-social-sharE): Used for the "share on social" buttons at
@@ -37,11 +37,16 @@ I use several packages to help with building the site and writing posts.
 - [astro-embed](https://astro-embed.netlify.app/) for embedding YouTube videos, Bluesky posts, etc.
 - [isotope.js](https://isotope.metafizzy.co/layout) for grid layout in [Lifestream](/lifestream/).
 
+## IndieWeb Things
+
+- [Webmention.io](https://webmention.io/) is free service for receiving Webmentions, a protocol used by IndieWeb sites to be notified when they link to each other.
+- [Webmention.app](https://webmention.app/) is a free service to automate outgoing webmentions with a simple API, and I use a scheduled GitHub Action to use it. 
+- [Bridgy](https://brid.gy/) is a free service that connects IndieWeb sites to your Mastodon and Bluesky accounts for [backfeeds and POSSE](https://indieweb.org/backfeed), though I have not really set it up for that yet.
+
 ## Third-Party Services
 
 - [Pagefind](https://pagefind.app/): Dead simple fully static search library for static websites, used here to search blog posts. Doesn't even require adding it to your dependencies.
 - [Giscus](https://giscus.app): Alternative to Discus for comments in blog posts using GitHub Discussions, rather than Issues, as the backend.
-- [Webmention.io](https://webmention.io) + [Webmention.app](https://webmention.app): Webmention is an open protocol used by websites to be notified when they link to each other. Webmention.app is a free service to automate outgoing webmentions with a simple API. (Might switch to [Bridgy](https://brid.gy/about) though.)
 - [Umami](http://umami.is): GDPR-compliant and privacy friendly Google Analytics alternative, self-hosted on a VPS. ([See website stats here.](https://u.adiaz.fyi/share/TtTytHU8rJy0oEzN))
 
 ## WTF is a Colophon anyway?
