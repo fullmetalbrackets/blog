@@ -1,20 +1,11 @@
-export const prerender = true;
+export const prerender = false;
 
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 import satori from 'satori';
 import { Resvg } from '@resvg/resvg-js';
-import { readFileSync } from 'fs';
-import { resolve } from 'path';
 
-export async function getStaticPaths() {
-	const posts = await getCollection('blog');
-	return posts.map((post) => ({
-		params: { slug: post.id.replace(/\.mdx?$/, '') },
-	}));
-}
-
-export const GET: APIRoute = async ({ params }) => {
+export const GET: APIRoute = async ({ params, request }) => {
 	const posts = await getCollection('blog');
 	const post = posts.find((p) => p.id.replace(/\.mdx?$/, '') === params.slug);
 
@@ -23,22 +14,26 @@ export const GET: APIRoute = async ({ params }) => {
 	}
 
 	const { title, description, tags } = post.data;
+	const origin = new URL(request.url).origin;
 
-	const mainFontRegular = readFileSync(
-		resolve('./public/fonts/AtkinsonHyperlegibleNext-Regular.ttf')
-	);
-	const mainFontBold = readFileSync(
-		resolve('./public/fonts/AtkinsonHyperlegibleNext-ExtraBold.ttf')
-	);
-	const subFontRegular = readFileSync(
-		resolve('./public/fonts/MPLUSRounded1c-Regular.ttf')
-	);
-	const subFontBold = readFileSync(
-		resolve('./public/fonts/MPLUSRounded1c-Bold.ttf')
-	);
+	const [mainFontRegular, mainFontBold, subFontRegular, subFontBold, logoData] =
+		await Promise.all([
+			fetch(`${origin}/fonts/AtkinsonHyperlegibleNext-Regular.ttf`).then((r) =>
+				r.arrayBuffer()
+			),
+			fetch(`${origin}/fonts/AtkinsonHyperlegibleNext-ExtraBold.ttf`).then((r) =>
+				r.arrayBuffer()
+			),
+			fetch(`${origin}/fonts/MPLUSRounded1c-Regular.ttf`).then((r) =>
+				r.arrayBuffer()
+			),
+			fetch(`${origin}/fonts/MPLUSRounded1c-Bold.ttf`).then((r) =>
+				r.arrayBuffer()
+			),
+			fetch(`${origin}/favicon-96x96.png`).then((r) => r.arrayBuffer()),
+		]);
 
-	const logoData = readFileSync(resolve('./public/favicon-96x96.png'));
-	const logoBase64 = `data:image/png;base64,${logoData.toString('base64')}`;
+	const logoBase64 = `data:image/png;base64,${Buffer.from(logoData).toString('base64')}`;
 
 	const svg = await satori(
 		{
@@ -55,24 +50,12 @@ export const GET: APIRoute = async ({ params }) => {
 					fontFamily: 'Atkinson',
 				},
 				children: [
-					// Top bar
 					{
 						type: 'div',
 						props: {
-							style: {
-								display: 'flex',
-								alignItems: 'center',
-								gap: '16px',
-							},
+							style: { display: 'flex', alignItems: 'center', gap: '16px' },
 							children: [
-								{
-									type: 'img',
-									props: {
-										src: logoBase64,
-										width: 48,
-										height: 48,
-									},
-								},
+								{ type: 'img', props: { src: logoBase64, width: 48, height: 48 } },
 								{
 									type: 'div',
 									props: {
@@ -89,7 +72,6 @@ export const GET: APIRoute = async ({ params }) => {
 							],
 						},
 					},
-					// Title
 					{
 						type: 'div',
 						props: {
@@ -103,15 +85,10 @@ export const GET: APIRoute = async ({ params }) => {
 							children: title,
 						},
 					},
-					// Bottom row — description + tags
 					{
 						type: 'div',
 						props: {
-							style: {
-								display: 'flex',
-								flexDirection: 'column',
-								gap: '16px',
-							},
+							style: { display: 'flex', flexDirection: 'column', gap: '16px' },
 							children: [
 								{
 									type: 'div',
@@ -128,11 +105,7 @@ export const GET: APIRoute = async ({ params }) => {
 								{
 									type: 'div',
 									props: {
-										style: {
-											display: 'flex',
-											gap: '10px',
-											flexWrap: 'wrap',
-										},
+										style: { display: 'flex', gap: '10px', flexWrap: 'wrap' },
 										children: tags.slice(0, 4).map((tag: string) => ({
 											type: 'div',
 											props: {

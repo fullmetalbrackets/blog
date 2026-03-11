@@ -152,41 +152,64 @@ export default defineConfig({
 			destination: '/digest/tvshows/',
 		},
 	},
-
+	fonts: [
+		{
+			name: 'Atkinson Hyperlegible Next',
+			cssVariable: '--main-font',
+			provider: fontProviders.fontsource(),
+			weights: [200, 300, 400, 500, 600, 700, 800],
+			styles: ['normal', 'italic'],
+			subsets: ['latin'],
+		},
+		{
+			name: 'Atkinson Hyperlegible Mono',
+			cssVariable: '--code-font',
+			provider: fontProviders.fontsource(),
+			weights: [200, 300, 400, 500, 600, 700, 800],
+			styles: ['normal', 'italic'],
+			subsets: ['latin'],
+		},
+		{
+			name: 'M PLUS Rounded 1c',
+			cssVariable: '--sub-font',
+			provider: fontProviders.fontsource(),
+			weights: [100, 300, 400, 500, 700, 800, 900],
+			styles: ['normal'],
+			subsets: ['latin'],
+		},
+	],
 	experimental: {
-		fonts: [
-			{
-				name: 'Atkinson Hyperlegible Next',
-				cssVariable: '--main-font',
-				provider: fontProviders.fontsource(),
-				weights: [200, 300, 400, 500, 600, 700, 800],
-				styles: ['normal', 'italic'],
-				subsets: ['latin'],
-			},
-			{
-				name: 'Atkinson Hyperlegible Mono',
-				cssVariable: '--code-font',
-				provider: fontProviders.fontsource(),
-				weights: [200, 300, 400, 500, 600, 700, 800],
-				styles: ['normal', 'italic'],
-				subsets: ['latin'],
-			},
-			{
-				name: 'M PLUS Rounded 1c',
-				cssVariable: '--sub-font',
-				provider: fontProviders.fontsource(),
-				weights: [100, 300, 400, 500, 700, 800, 900],
-				styles: ['normal'],
-				subsets: ['latin'],
-			},
-		],
 		svgo: true,
 	},
 	output: 'server',
-	adapter: cloudflare(),
+	adapter: cloudflare({
+		imageService: 'passthrough',
+	}),
 	vite: {
-		ssr: {
-			external: ['@resvg/resvg-js', 'fs', 'path', 'child_process'],
+		optimizeDeps: {
+			exclude: ['@resvg/resvg-js'],
 		},
+		ssr: {
+			external: ['@resvg/resvg-js'],
+		},
+		build: {
+			rollupOptions: {
+				external: (id) => id.endsWith('.node'),
+			},
+		},
+		plugins: [
+			{
+				name: 'handle-native-modules',
+				load(id) {
+					if (id.endsWith('.node')) {
+						return `
+              import { createRequire } from 'module';
+              const require = createRequire(import.meta.url);
+              export default require(${JSON.stringify(id)});
+            `;
+					}
+				},
+			},
+		],
 	},
 });

@@ -1,8 +1,11 @@
 {
-	"name": "fullmetalbrackets",
-	"compatibility_flags": [
-	    "nodejs_compat"
-	],
-	"compatibility_date": "2026-03-10",
-	"pages_build_output_dir": "./dist"
+    "name": "fullmetalbrackets",
+    "compatibility_flags": [
+        "nodejs_compat"
+    ],
+    "compatibility_date": "2026-03-10",
+    "pages_build_output_dir": "./dist",
+    "assets": {
+        "binding": "STATIC_ASSETS"
+    }
 }
