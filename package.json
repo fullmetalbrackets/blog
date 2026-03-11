@@ -32,7 +32,7 @@
 		"@resvg/resvg-js": "^2.6.2",
 		"@types/imagesloaded": "^4.1.7",
 		"@yeskunall/astro-umami": "^0.0.7",
-		"astro": "^5.18.0",
+		"astro": "^6.0.3",
 		"astro-embed": "^0.12.0",
 		"astro-social-share": "^2.2.0",
 		"imagesloaded": "^5.0.0",
@@ -53,6 +53,6 @@
 		"prettier": "^3.8.1"
 	},
 	"resolutions": {
-		"astro": "5.18.0"
+		"astro": "6.0.3"
 	}
 }
