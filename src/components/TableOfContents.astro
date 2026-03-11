@@ -1,5 +1,5 @@
 ---
-import type { MarkdownHeading } from 'astro';
+import type { MarkdownHeading } from '@astrojs/markdown-remark';
 import TOC from '@icons/toc.svg';
 
 interface Props {
@@ -22,7 +22,26 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
     margin-left: -0.1em;
     margin-right: 0.1em;
   }
+  li a {
+    color: var(--emphasis);
+  }
+  @media screen and (max-width: 2107px) {
+    .toc-indicator {
+      display: none;
+    }
+  }
   @media screen and (min-width: 2108px) {
+    .toc-indicator {
+      position: absolute;
+      left: 0;
+      background: var(--border2);
+      border-left: 3px solid var(--primary);
+      border-radius: 0.25em;
+      min-width: 100%;
+      transition: top 0.2s ease, height 0.2s ease, opacity 0.2s ease;
+      opacity: 0;
+      z-index: 0;
+    }
     div {
       position: fixed;
       top: 2.75em;
@@ -44,15 +63,59 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
 
 <div class="toc-container">
   <h2><TOC width={36} height={36}/>Table of Contents</h2>
-  <ol>
+  <ol id="toc-list">
+    <div class="toc-indicator" id="toc-indicator"></div>
     {
-      filteredHeadings.map((heading) => {
-        return (
-          <li>
-            <a href={`#${heading.slug}`}>{heading.text}</a>
-          </li>
-        );
-      })
+      filteredHeadings.map((heading) => (
+        <li>
+          <a href={`#${heading.slug}`} data-heading={heading.slug}>
+            {heading.text}
+          </a>
+        </li>
+      ))
     }
   </ol>
 </div>
+
+<script>
+  function initTOC() {
+    const links = document.querySelectorAll<HTMLAnchorElement>('#toc-list a[data-heading]');
+    const indicator = document.getElementById('toc-indicator');
+    if (!links.length || !indicator) return;
+
+    function moveIndicator(link: HTMLAnchorElement) {
+      const li = link.parentElement!;
+      indicator!.style.top = `${li.offsetTop}px`;
+      indicator!.style.height = `${li.offsetHeight}px`;
+      indicator!.style.opacity = '1';
+    }
+
+    const headingEls = Array.from(links).map(link =>
+      document.getElementById(link.dataset.heading!)
+    ).filter(Boolean) as HTMLElement[];
+
+    const observer = new IntersectionObserver(
+      () => {
+        const passed = headingEls.filter(el => {
+          return el.getBoundingClientRect().top < window.innerHeight * 0.5;
+        });
+
+        const active = passed[passed.length - 1];
+        if (!active) return;
+
+        const activeLink = document.querySelector<HTMLAnchorElement>(
+          `#toc-list a[data-heading="${active.id}"]`
+        );
+        if (!activeLink) return;
+
+        moveIndicator(activeLink);
+      },
+      { rootMargin: '-10% 0px -50% 0px', threshold: 0 }
+    );
+
+    headingEls.forEach(el => observer.observe(el));
+  }
+
+  document.addEventListener('DOMContentLoaded', initTOC);
+  document.addEventListener('astro:page-load', initTOC);
+</script>
