@@ -154,6 +154,7 @@ import Search from '@icons/search.svg';
     z-index: 1000;
     border-radius: 0 0 0.5em 0.5em;
     padding: 0;
+    margin-top: 3px;
     backdrop-filter: blur(0.2em);
     -webkit-backdrop-filter: blur(0.2em);
     opacity: 0;
@@ -179,7 +180,7 @@ import Search from '@icons/search.svg';
     transition: none;
   }
   .dropdown-content a:hover:first-of-type {
-    border-radius: 0.5em 0.5em 0 0;
+    border-radius: 0;
   }
   .dropdown-content a:hover:last-of-type {
     border-radius: 0 0 0.5em 0.5em;
@@ -248,18 +249,18 @@ import Search from '@icons/search.svg';
           </svg>
         </button>
         <div class="dropdown-content" role="menu">
-          <HeaderLink href="/wiki/" rel="prefetch-intent" aria-label="Wiki" data-umami-event="nav-wiki">Wiki</HeaderLink>
-          <HeaderLink href="/changelog/" rel="prefetch-intent" aria-label="Changelog" data-umami-event="nav-changelog">Changelog</HeaderLink>
-          <HeaderLink href="/colophon/" rel="prefetch-intent" aria-label="Colophon" data-umami-event="nav-colophon">Colophon</HeaderLink>
-          <HeaderLink href="/blogroll/" rel="prefetch-intent" aria-label="Blogroll" data-umami-event="nav-blogroll">Blogroll</HeaderLink>
-          <HeaderLink href="/digest/" rel="prefetch-intent" aria-label="Digest" data-umami-event="nav-digest">Digest</HeaderLink>
-          <HeaderLink href="/games/" rel="prefetch-intent" aria-label="Games" data-umami-event="nav-games">Games</HeaderLink>
-          <HeaderLink href="/lifestream/" rel="prefetch-intent" aria-label="Lifestream" data-umami-event="nav-lifestream">Lifestream</HeaderLink>
-          <HeaderLink href="/links/" rel="prefetch-intent" aria-label="Links" data-umami-event="nav-links">Links</HeaderLink>
           <HeaderLink href="/notes/" rel="prefetch-intent" aria-label="Notes" data-umami-event="nav-notes">Notes</HeaderLink>
-          <HeaderLink href="/privacy/" rel="prefetch-intent" aria-label="Privacy" data-umami-event="nav-privacy">Privacy</HeaderLink>
+          <HeaderLink href="/links/" rel="prefetch-intent" aria-label="Links" data-umami-event="nav-links">Links</HeaderLink>
+          <HeaderLink href="/lifestream/" rel="prefetch-intent" aria-label="Lifestream" data-umami-event="nav-lifestream">Lifestream</HeaderLink>
+          <HeaderLink href="/blogroll/" rel="prefetch-intent" aria-label="Blogroll" data-umami-event="nav-blogroll">Blogroll</HeaderLink>
           <HeaderLink href="/self-hosted/" rel="prefetch-intent" aria-label="Self-hosted" data-umami-event="nav-self-hosted">Self-hosted</HeaderLink>
           <HeaderLink href="/uses/" rel="prefetch-intent" aria-label="Uses" data-umami-event="nav-uses">Uses</HeaderLink>
+          <HeaderLink href="/wiki/" rel="prefetch-intent" aria-label="Wiki" data-umami-event="nav-wiki">Wiki</HeaderLink>
+          <HeaderLink href="/games/" rel="prefetch-intent" aria-label="Games" data-umami-event="nav-games">Games</HeaderLink>
+          <HeaderLink href="/digest/" rel="prefetch-intent" aria-label="Digest" data-umami-event="nav-digest">Digest</HeaderLink>
+          <HeaderLink href="/changelog/" rel="prefetch-intent" aria-label="Changelog" data-umami-event="nav-changelog">Changelog</HeaderLink>
+          <HeaderLink href="/colophon/" rel="prefetch-intent" aria-label="Colophon" data-umami-event="nav-colophon">Colophon</HeaderLink>
+          <HeaderLink href="/privacy/" rel="prefetch-intent" aria-label="Privacy" data-umami-event="nav-privacy">Privacy</HeaderLink>
           <HeaderLink href="/style/" rel="prefetch-intent" aria-label="Style" data-umami-event="nav-style">Style</HeaderLink>
           <HeaderLink href="/verify/" rel="prefetch-intent" aria-label="Verify" data-umami-event="nav-verify">Verify</HeaderLink>
         </div>
