@@ -31,7 +31,6 @@ const { title, description, pubDate, updatedDate, tags, headings, related, readi
 const { slug } = Astro.params;
 const selectedPosts = await getRelatedPosts(related ?? []);
 ---
-<ScrollProgress />
 
 <BaseLayout title={title} description={description} ogType="article" ogImage={`${SITE_URL}/og/${slug}.png`}>
   <head>
@@ -454,7 +453,7 @@ const selectedPosts = await getRelatedPosts(related ?? []);
       }
     </style>
   </slot>
-
+  <ScrollProgress />
   <BlogPosting slot="head" {...Astro.props} />
   <BreadcrumbSchema slot="head" crumbs={[
     { name: "Home", url: `${ SITE_URL }/` },
