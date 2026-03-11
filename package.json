@@ -11,7 +11,7 @@
 	"scripts": {
 		"dev": "astro dev",
 		"start": "astro dev",
-		"build": "astro build && npx -y pagefind --site dist",
+		"build": "astro build && pagefind --site dist",
 		"preview": "astro preview",
 		"astro": "astro",
 		"check": "astro check",
@@ -50,6 +50,7 @@
 	"packageManager": "yarn@4.12.0",
 	"devDependencies": {
 		"@types/isotope-layout": "^3",
+		"pagefind": "^1.4.0",
 		"prettier": "^3.8.1"
 	}
 }
