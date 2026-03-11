@@ -122,9 +122,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@astrojs/cloudflare@npm:^13.0.2":
-  version: 13.0.2
-  resolution: "@astrojs/cloudflare@npm:13.0.2"
+"@astrojs/cloudflare@npm:^13.1.0":
+  version: 13.1.0
+  resolution: "@astrojs/cloudflare@npm:13.1.0"
   dependencies:
     "@astrojs/internal-helpers": "npm:0.8.0"
     "@astrojs/underscore-redirects": "npm:1.0.1"
@@ -135,7 +135,7 @@ __metadata:
   peerDependencies:
     astro: ^6.0.0-alpha.0
     wrangler: ^4.61.1
-  checksum: 10c0/374db001af14f798849d200204a1201924dd43b55ef0f45e5c5fc82331882c766673f7aadd00557ac3da02b36cd9436918a0624bf4a3798f1482cb9f4154a079
+  checksum: 10c0/d0d382431762bd0c1908eed05b086154294c1ccb45ca5524aeb7623eecf1893d398e9e6e3dcba17c6f59b3a12226908570eea021ff25b24c0889b2e154ca9b32
   languageName: node
   linkType: hard
 
@@ -6560,7 +6560,7 @@ __metadata:
   resolution: "root-workspace-0b6124@workspace:."
   dependencies:
     "@astrojs/check": "npm:^0.9.7"
-    "@astrojs/cloudflare": "npm:^13.0.2"
+    "@astrojs/cloudflare": "npm:^13.1.0"
     "@astrojs/markdown-remark": "npm:^7.0.0"
     "@astrojs/mdx": "npm:^5.0.0"
     "@astrojs/rss": "npm:^4.0.17"
