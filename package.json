@@ -22,12 +22,12 @@
 		"links": "node scripts/link.mjs"
 	},
 	"dependencies": {
-		"@astrojs/check": "^0.9.6",
+		"@astrojs/check": "^0.9.7",
 		"@astrojs/cloudflare": "^12.6.13",
-		"@astrojs/markdown-remark": "^6.3.8",
-		"@astrojs/mdx": "^4.3.13",
-		"@astrojs/rss": "^4.0.15",
-		"@astrojs/sitemap": "^3.7.0",
+		"@astrojs/markdown-remark": "^7.0.0",
+		"@astrojs/mdx": "^5.0.0",
+		"@astrojs/rss": "^4.0.17",
+		"@astrojs/sitemap": "^3.7.1",
 		"@playform/compress": "^0.2.1",
 		"@resvg/resvg-js": "^2.6.2",
 		"@types/imagesloaded": "^4.1.7",
