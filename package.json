@@ -25,7 +25,7 @@
 		"@astrojs/check": "^0.9.7",
 		"@astrojs/cloudflare": "^12.6.13",
 		"@astrojs/markdown-remark": "^7.0.0",
-		"@astrojs/mdx": "^4.3.13",
+		"@astrojs/mdx": "^5.0.0",
 		"@astrojs/rss": "^4.0.15",
 		"@astrojs/sitemap": "^3.7.0",
 		"@playform/compress": "^0.2.1",
