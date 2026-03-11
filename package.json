@@ -11,7 +11,7 @@
 	"scripts": {
 		"dev": "astro dev",
 		"start": "astro dev",
-		"build": "astro build && node scripts/fix-wrangler.mjs && pagefind --site dist",
+		"build": "astro build && node scripts/post-build.mjs && pagefind --site dist",
 		"preview": "astro preview",
 		"astro": "astro",
 		"check": "astro check",
