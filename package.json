@@ -51,5 +51,8 @@
 	"devDependencies": {
 		"@types/isotope-layout": "^3",
 		"prettier": "^3.8.1"
+	},
+	"resolutions": {
+		"astro": "5.18.0"
 	}
 }
