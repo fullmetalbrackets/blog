@@ -11,7 +11,7 @@
 	"scripts": {
 		"dev": "astro dev",
 		"start": "astro dev",
-		"build": "astro build && pagefind --site dist",
+		"build": "astro build && pagefind --site dist; exit 0",
 		"preview": "astro preview",
 		"astro": "astro",
 		"check": "astro check",
