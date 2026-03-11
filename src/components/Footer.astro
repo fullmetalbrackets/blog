@@ -8,6 +8,8 @@ import Bluesky from '@icons/bsky.svg';
 import GitHub from '@icons/gh.svg';
 import BuyMeCoffee from '@icons/bmc.svg';
 import Top from '@icons/arrow-up.svg';
+import LeftArrow from '@icons/arrow-left.svg';
+import RightArrow from '@icons/arrow-right.svg';
 import Proven from '@icons/proven.svg';
 import { GITHUB, MASTODON, BLUESKY, DONATE } from '@consts';
 ---
@@ -115,6 +117,30 @@ import { GITHUB, MASTODON, BLUESKY, DONATE } from '@consts';
   .proof:not(:hover) {
     animation: none;
   }
+  .webring {
+    display: flex;
+    place-items: center;
+    justify-content: space-around;
+    margin: 1em auto 0 auto;
+    font-family: var(--sub-font);
+    font-size: 0.75em;
+    font-weight: 800;
+  }
+  .webring .ring-link {
+    margin-right: 0.5em;
+    margin-left: 0.5em;
+    color: var(--other2);
+  }
+  .ring-link:hover, .ring-link:active {
+    color: var(--hover);
+  }
+  .ring-arrow {
+    filter: var(--foot-svg);
+  }
+  .ring-arrow:hover {
+    filter: var(--foot-ext);
+    transition: all .2s ease-out;
+  }
   @media screen and (max-width: 667px) {
     .badges {
       gap: 0;
@@ -126,6 +152,14 @@ import { GITHUB, MASTODON, BLUESKY, DONATE } from '@consts';
     .nav-row-1 {
       gap: 1.35em;
       margin-top: 0.5em;
+    }
+    .webring {
+      font-size: 0.5em;
+      text-align: center;
+    }
+    .webring .ring-link {
+      margin-right: 0;
+      margin-left: 0;
     }
   }
 </style>
@@ -222,9 +256,15 @@ import { GITHUB, MASTODON, BLUESKY, DONATE } from '@consts';
         <img src="/assets/Written-By-a-Human-Not-By-AI-Badge-white.png" alt="Written by a human, not AI" class="sq-img notbyai" loading="lazy" decoding="async" width="131" height="82">
       </picture>
     </a>
+    <div class="webring">
+      <a href="https://xn--sr8hvo.ws/previous"><LeftArrow height={24} width={24} class="ring-arrow" /></a>
+      <a href="https://xn--sr8hvo.ws" target="_blank" rel="noopener noreferrer" class="ring-link">IndieWeb Webring</a>
+      <a href="https://xn--sr8hvo.ws/next"><RightArrow height={24} width={24} class="ring-arrow" /></a>
+    </div>
     <a href="https://astro.build/" target="_blank" data-umami-event="astro">
       <img src="/assets/built-with-astro.svg" alt="Built with Astro" width="192" height="32" class="sq-img astro" loading="lazy" decoding="async">
     </a>
     <a href="#top"><Top height={32} width={32} class="top" /></a>
   </div>
+
 </footer>
