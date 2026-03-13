@@ -140,6 +140,14 @@ const tagTitle = tag.split(' ').map(word => word.charAt(0).toUpperCase() + word.
       outline-offset: 1px;
     }
   }
+  @media screen and (max-width: 667px) {
+    .back a {
+      font-size: 0.85em;
+    }
+    .tag {
+      margin-bottom: 0.25em;
+    }
+  }
 </style>
 
 <BaseLayout title={`Posts about ${tagTitle}`}>

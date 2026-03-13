@@ -15,32 +15,42 @@ const crumbs = [
 ];
 ---
 
+<style scoped>
+  h1 {
+    font-family: var(--sub-font);
+    font-weight: 900;
+    margin: 1.175em 0 0 0;
+    line-height: 1.1;
+  }
+  hr {
+    margin-top: 0.75em;
+  }
+  article {
+    margin-top: 2em;
+  }
+  .bottom-line {
+    margin: 2em auto 1.5em auto;
+  }
+  .years {
+    margin: 1em auto;
+  }
+  @media screen and (max-width: 667px) {
+    article {
+      margin-top: 1em;
+      margin-right: 0.5em;
+      margin-left: 0.5em;
+    }
+    h1 {
+      margin: 0;
+    }
+  }
+</style>
+
 <BaseLayout title={frontmatter.title} description={frontmatter.description}>
   <BreadcrumbSchema slot="head" crumbs={crumbs} />
   <head>
     <link rel="stylesheet" href="/prism.css" />
   </head>
-
-  <style scoped>
-    h1 {
-      font-family: var(--sub-font);
-      font-weight: 900;
-      margin: 1.175em 0 0 0;
-      line-height: 1.1;
-    }
-    hr {
-      margin-top: 0.75em;
-    }
-    article {
-      margin-top: 2em;
-    }
-    .bottom-line {
-      margin: 2em auto 1.5em auto;
-    }
-    .years {
-      margin: 1em auto;
-    }
-  </style>
 
   <article data-pagefind-body>
     <h1>{frontmatter.title}</h1>

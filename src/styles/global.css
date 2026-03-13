@@ -25,7 +25,7 @@ main {
 }
 
 section {
-	margin-top: 2em;
+	margin: 2em 0.5em 0 0.5em;
 }
 
 hr {
@@ -366,14 +366,6 @@ figcaption {
 	line-height: 1;
 	margin: -1.5em 0 1.5em 0;
 	max-width: 90%;
-}
-
-@media screen and (max-width: 667px) {
-	figcaption {
-		font-size: 0.75em;
-		max-width: 95%;
-		padding: 0 0.5em;
-	}
 }
 
 /* default info style */
@@ -941,6 +933,14 @@ article a[target='_blank'][href^='#']::after {
 		font-size: 1.25em;
 	}
 
+	main {
+		max-width: 50ch;
+	}
+
+	section {
+		margin: 1em 0.5em 0 0.5em;
+	}
+
 	article p {
 		line-height: 1.4;
 	}
@@ -956,20 +956,25 @@ article a[target='_blank'][href^='#']::after {
 		justify-content: space-around;
 		margin: 0 auto;
 	}
-
+	figcaption {
+		font-size: 0.75em;
+		max-width: 95%;
+		padding: 0 0.5em;
+	}
+	section p,
+	article p {
+		font-size: 0.75em;
+	}
 	input {
 		width: 75%;
 	}
-
 	article ul,
 	article ol {
 		padding-left: 1em;
 	}
-
 	*:hover {
 		transition: none;
 	}
-
 	.grid-col {
 		display: grid;
 		grid-template-columns: 1fr;
@@ -979,7 +984,6 @@ article a[target='_blank'][href^='#']::after {
 		justify-content: space-between;
 		place-items: center;
 	}
-
 	blockquote[data-type='quote'],
 	blockquote.blockquote-quote {
 		width: 94%;

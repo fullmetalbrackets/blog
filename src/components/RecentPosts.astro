@@ -110,6 +110,16 @@ const recentPosts = (await getPostsWithReadingTime()).slice(0, 5);
   }
 
   @media screen and (max-width: 667px) {
+    .container {
+      padding: 0.75em 1em;
+    }
+    .posts-title {
+      font-size: 0.875em;
+    }
+    .more {
+      margin: 0;
+      padding: 0;
+    }
     .info {
       display: block;
       margin: 0.5em 0 0.25em 0;

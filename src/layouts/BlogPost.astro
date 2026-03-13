@@ -358,11 +358,10 @@ const selectedPosts = await getRelatedPosts(related ?? []);
         font-size: 1.35em;
       }
       article {
-        margin-bottom: 3em;
+        margin: 1em 0.5em;
       }
       .tag button {
         margin: 0 0 0.25em 0;
-        padding: 8px 12px;
       }
       .last-updated-on {
         font-size: 18px;
@@ -454,6 +453,7 @@ const selectedPosts = await getRelatedPosts(related ?? []);
       }
     </style>
   </slot>
+
   <ScrollProgress />
   <BlogPosting slot="head" {...Astro.props} />
   <BreadcrumbSchema slot="head" crumbs={[
@@ -469,6 +469,7 @@ const selectedPosts = await getRelatedPosts(related ?? []);
     headings={headings}
     readingTime={readingTime}
   />
+  
   <article class="h-entry" data-pagefind-body data-pub-date={pubDate.toISOString()}
   data-updated-date={updatedDate ? updatedDate.toISOString() : ''}>
     <h1 class="p-name">{title}</h1>

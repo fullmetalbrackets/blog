@@ -24,6 +24,7 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
   }
   li a {
     color: var(--emphasis);
+    margin: 0;
   }
   @media screen and (max-width: 2107px) {
     .toc-indicator {
@@ -59,6 +60,12 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
       position: sticky;
     }
   }
+    @media screen and (max-width: 667px) {
+      ol {
+        font-size: 0.75em;
+      }
+    }
+
 </style>
 
 <div class="toc-container">

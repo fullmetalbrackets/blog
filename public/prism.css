@@ -418,3 +418,10 @@ pre > code.diff-highlight .token.token.inserted:not(.prefix) *::selection {
 .prism-previewer-easing.prism-previewer-easing circle {
 	fill: transparent;
 }
+
+@media screen and (max-width: 667px) {
+	code[class*='language-'],
+	pre[class*='language-'] {
+		font-size: 18px;
+	}
+}

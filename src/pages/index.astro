@@ -47,6 +47,7 @@ import { SITE_TITLE, SITE_DESCRIPTION, GITHUB, MASTODON, BLUESKY } from "@consts
     word-break: all;
   }
   .blurb {
+    font-size: 0.85em;
     margin-top: 1.5em;
     text-align: justify;
   }
@@ -55,15 +56,20 @@ import { SITE_TITLE, SITE_DESCRIPTION, GITHUB, MASTODON, BLUESKY } from "@consts
       grid-template-columns: auto;
     }
   }
+  @media screen and (max-width: 720px) {
+    .about {
+      font-size: 1.725em;
+    }
+  }
   @media screen and (max-width: 667px) {
-      section {
+      /* section {
       font-size: 0.925em;
       margin-bottom: 1em;
       line-height: 1.2;
     }
     .about {
       font-size: 2em;
-    }
+    } */
   }
 </style>
 
@@ -75,7 +81,7 @@ import { SITE_TITLE, SITE_DESCRIPTION, GITHUB, MASTODON, BLUESKY } from "@consts
       </span>
     </div>
     <p class="blurb">
-      I'm Ariel, a tech enthusiast and hobbyist coder. Welcome to my site. The main attraction is the blog, where I write about self-hosting and related topics that I've learned over many years of tinkering. There's some other stuff around here that might not be as interesting, but feel free to check them out below. Thanks for visiting!
+      Welcome! I'm Ariel, a hobbyist and tech enthusiast that writes about self-hosting and related topics that I've learned over years of tinkering. There's some other personal stuff around here that might not be as useful, but feel free to explore. Be well.
     </p>
     <SocialLinks />
     <div class="column-item">
