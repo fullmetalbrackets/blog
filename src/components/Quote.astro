@@ -19,12 +19,12 @@ const {
   <blockquote data-type="quote" class=".blockquote-quote">
     <p>{quote}</p>
     {attribution && (
-      <span class="quote-attribution">
-        — {attribution} {url && (
+      <footer class="quote-attribution">
+        — <cite>{attribution}</cite> {url && (
           <a href={url} class="external-link" target="_blank" rel="noopener noreferrer" aria-label="external link">
           </a>
         )}
-      </span>
+      </footer>
     )}
   </blockquote>
 </div>
@@ -72,7 +72,7 @@ const {
   }
 
   .quote-attribution a {
-    font-size: 1.25em;
+    font-size: 1em;
     margin: 0;
     padding: 0;
   }
