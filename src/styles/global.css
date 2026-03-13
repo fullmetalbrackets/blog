@@ -204,6 +204,12 @@ th {
 	vertical-align: top;
 }
 
+sub,
+sup {
+	font-size: 0.675em;
+	font-style: italic;
+}
+
 mark {
 	background: var(--info);
 }

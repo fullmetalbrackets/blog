@@ -4,9 +4,16 @@ title: Changelog
 description: A log of major changes made to fullmetalbrackets.com
 ---
 
-A log of major changes made to my site over the years. For more granular details, [see the GitHub repo](https://github.com/fullmetalbrackets/blog/commits/main/).
+A log of major changes made to my site over the years. <sup>(Or at least the ones I remember since starting to keep track...)</sup>
 
-<h2 class="flex">2026-03-03&nbsp;<span class="latest">latest</span></h2>
+For more granular details, [see the GitHub repo](https://github.com/fullmetalbrackets/blog/commits/main/).
+
+<h2 class="flex">2026-03-10&nbsp;<span class="latest">latest</span></h2>
+
+- Upgrade site to [Astro 6](https://astro.build/blog/astro-6/).
+- Change Astro output from `static` to `server` for better performance at Cloudflare's edge.
+
+<h2 class="flex">2026-03-03</h2>
 
 - Add dynamically generated opengraph cards for blog posts via [Satori](https://github.com/vercel/satori).
 
