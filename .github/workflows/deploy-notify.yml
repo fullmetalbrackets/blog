@@ -11,11 +11,19 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Wait for Cloudflare Pages Build
-        uses: WalshyDev/cf-pages-await@v1
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          project: "blog"
+        run: |
+          for i in $(seq 1 20); do
+            STATUS=$(curl -s -X GET \
+              "https://api.cloudflare.com/client/v4/accounts/${{ secrets.CLOUDFLARE_ACCOUNT_ID }}/pages/projects/blog/deployments" \
+              -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \
+              | jq -r '.result[0].latest_stage.status')
+            echo "Attempt $i/20 - Status: $STATUS"
+            if [ "$STATUS" = "success" ]; then exit 0; fi
+            if [ "$STATUS" = "failure" ]; then exit 1; fi
+            sleep 30
+          done
+          echo "Timed out waiting for deployment"
+          exit 1
 
       - name: Send Pushover Notification
         run: |
