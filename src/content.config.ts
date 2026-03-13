@@ -1,5 +1,6 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
+import { z } from 'astro/zod';
 
 const blog = defineCollection({
 	loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: './src/content/blog' }),
@@ -21,7 +22,7 @@ const links = defineCollection({
 	schema: z.object({
 		title: z.string(),
 		description: z.string(),
-		url: z.string().url(),
+		url: z.url(),
 		tag: z.string(),
 		pubDate: z.coerce.date(),
 	}),
@@ -59,7 +60,7 @@ const lifestream = defineCollection({
 			pubDate: z.coerce.date(),
 			// common fields
 			description: z.string().optional(),
-			url: z.string().url().optional(),
+			url: z.url().optional(),
 			note: z.string().optional(),
 			startDate: z.date().optional(),
 			endDate: z.date().optional(),
