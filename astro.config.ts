@@ -1,8 +1,4 @@
-import {
-	defineConfig,
-	fontProviders,
-	passthroughImageService,
-} from 'astro/config';
+import { defineConfig, fontProviders } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import { remarkReadingTime } from './src/utils/remark-reading-time.ts';
@@ -67,10 +63,6 @@ export default defineConfig({
 	},
 
 	compressHTML: true,
-
-	image: {
-		service: passthroughImageService(),
-	},
 
 	redirects: {
 		'/feed/': {
@@ -184,9 +176,4 @@ export default defineConfig({
 	},
 	output: 'server',
 	adapter: cloudflare(),
-	vite: {
-		ssr: {
-			external: ['@resvg/resvg-js', 'fs', 'path', 'child_process', 'sharp'],
-		},
-	},
 });
