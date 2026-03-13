@@ -3,9 +3,13 @@ export const prerender = true;
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 import satori from 'satori';
-import { Resvg } from '@resvg/resvg-js';
+import { Resvg, initWasm } from '@resvg/resvg-wasm';
+// @ts-expect-error: TypeScript does not understand importing WASM
+const resvgWasm = (await import('@resvg/resvg-wasm/index_bg.wasm')).default as ArrayBuffer;
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
+
+await initWasm(resvgWasm);
 
 export async function getStaticPaths() {
 	const posts = await getCollection('blog');

@@ -29,7 +29,7 @@
 		"@astrojs/rss": "^4.0.17",
 		"@astrojs/sitemap": "^3.7.1",
 		"@playform/compress": "^0.2.1",
-		"@resvg/resvg-js": "^2.6.2",
+		"@resvg/resvg-wasm": "^2.6.2",
 		"@types/imagesloaded": "^4.1.7",
 		"@yeskunall/astro-umami": "^0.0.7",
 		"astro": "^6.0.3",
