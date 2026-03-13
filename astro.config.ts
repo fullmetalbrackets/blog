@@ -170,7 +170,11 @@ export default defineConfig({
 			subsets: ['latin'],
 		},
 	],
-
+	vite: {
+		ssr: {
+			external: ['@resvg/resvg-wasm'],
+		},
+	},
 	experimental: {
 		svgo: true,
 	},
