@@ -1,15 +1,14 @@
 version: 2
 updates:
-# Fetch and update latest `npm` packages
-- package-ecosystem: npm
-  directory: '/'
-  schedule:
-    interval: daily
-    time: '00:00'
-  open-pull-requests-limit: 10
-  assignees:
-    - fullmetalbrackets
-  commit-message:
-    prefix: fix
-    prefix-development: chore
-    include: scope
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    groups:
+      astro:
+        patterns:
+          - "astro"
+          - "@astrojs/*"
+    ignore:
+      - dependency-name: "@astrojs/cloudflare"
+        update-types: ["version-update:semver-major"]
