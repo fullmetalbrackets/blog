@@ -14,11 +14,19 @@ import cloudflare from '@astrojs/cloudflare';
 export default defineConfig({
 	site: 'https://fullmetalbrackets.com',
 	trailingSlash: 'always',
-
+	output: 'server',
+	adapter: cloudflare({
+		imageService: 'compile',
+	}),
+	prefetch: true,
 	build: {
 		inlineStylesheets: 'always',
 	},
-
+	vite: {
+		ssr: {
+			external: ['sharp'],
+		},
+	},
 	integrations: [
 		mdx(),
 		sitemap(),
@@ -28,9 +36,6 @@ export default defineConfig({
 			hostUrl: 'https://u.adiaz.fyi',
 		}),
 	],
-
-	prefetch: true,
-
 	markdown: {
 		rehypePlugins: [
 			rehypeSlug,
@@ -61,9 +66,6 @@ export default defineConfig({
 		syntaxHighlight: 'prism',
 		remarkPlugins: [remarkReadingTime, remarkDirective, remarkDirectiveSugar],
 	},
-
-	compressHTML: true,
-
 	redirects: {
 		'/feed/': {
 			status: 302,
@@ -170,14 +172,7 @@ export default defineConfig({
 			subsets: ['latin'],
 		},
 	],
-	vite: {
-		ssr: {
-			external: ['@resvg/resvg-wasm'],
-		},
-	},
 	experimental: {
 		svgo: true,
 	},
-	output: 'server',
-	adapter: cloudflare(),
 });

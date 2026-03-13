@@ -1,21 +1,16 @@
-export const prerender = true;
-
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 import satori from 'satori';
 import { Resvg, initWasm } from '@resvg/resvg-wasm';
-// @ts-expect-error: TypeScript does not understand importing WASM
-const resvgWasm = (await import('@resvg/resvg-wasm/index_bg.wasm')).default as ArrayBuffer;
-import { readFileSync } from 'fs';
-import { resolve } from 'path';
+import { SITE_URL } from '@consts';
 
-await initWasm(resvgWasm);
+let wasmInitialized = false;
 
-export async function getStaticPaths() {
-	const posts = await getCollection('blog');
-	return posts.map((post) => ({
-		params: { slug: post.id.replace(/\.mdx?$/, '') },
-	}));
+async function ensureWasm() {
+	if (!wasmInitialized) {
+		await initWasm(fetch('https://unpkg.com/@resvg/resvg-wasm/index_bg.wasm'));
+		wasmInitialized = true;
+	}
 }
 
 export const GET: APIRoute = async ({ params }) => {
@@ -28,21 +23,25 @@ export const GET: APIRoute = async ({ params }) => {
 
 	const { title, description, tags } = post.data;
 
-	const mainFontRegular = readFileSync(
-		resolve('./public/fonts/AtkinsonHyperlegibleNext-Regular.ttf')
-	);
-	const mainFontBold = readFileSync(
-		resolve('./public/fonts/AtkinsonHyperlegibleNext-ExtraBold.ttf')
-	);
-	const subFontRegular = readFileSync(
-		resolve('./public/fonts/MPLUSRounded1c-Regular.ttf')
-	);
-	const subFontBold = readFileSync(
-		resolve('./public/fonts/MPLUSRounded1c-Bold.ttf')
-	);
+	const [fontRegular, fontBold, subFontRegular, subFontBold, logoData] =
+		await Promise.all([
+			fetch(`${SITE_URL}/fonts/AtkinsonHyperlegibleNext-Regular.ttf`).then((r) =>
+				r.arrayBuffer()
+			),
+			fetch(`${SITE_URL}/fonts/AtkinsonHyperlegibleNext-ExtraBold.ttf`).then((r) =>
+				r.arrayBuffer()
+			),
+			fetch(`${SITE_URL}/fonts/MPLUSRounded1c-Regular.ttf`).then((r) =>
+				r.arrayBuffer()
+			),
+			fetch(`${SITE_URL}/fonts/MPLUSRounded1c-Bold.ttf`).then((r) =>
+				r.arrayBuffer()
+			),
+			fetch(`${SITE_URL}/favicon-96x96.png`).then((r) => r.arrayBuffer()),
+			ensureWasm(),
+		]);
 
-	const logoData = readFileSync(resolve('./public/favicon-96x96.png'));
-	const logoBase64 = `data:image/png;base64,${logoData.toString('base64')}`;
+	const logoBase64 = `data:image/png;base64,${Buffer.from(logoData).toString('base64')}`;
 
 	const svg = await satori(
 		{
@@ -164,8 +163,8 @@ export const GET: APIRoute = async ({ params }) => {
 			width: 1200,
 			height: 630,
 			fonts: [
-				{ name: 'Atkinson', data: mainFontRegular, weight: 400, style: 'normal' },
-				{ name: 'Atkinson', data: mainFontBold, weight: 800, style: 'normal' },
+				{ name: 'Atkinson', data: fontRegular, weight: 400, style: 'normal' },
+				{ name: 'Atkinson', data: fontBold, weight: 800, style: 'normal' },
 				{
 					name: 'M PLUS Rounded 1c',
 					data: subFontRegular,
