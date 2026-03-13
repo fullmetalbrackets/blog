@@ -18,92 +18,76 @@ const slugify = (str) =>
 		.replace(/[^\w-]/g, '');
 
 const templates = {
-	game: (title) => `---
+	game: (title) => `type: game
 title: "${title}"
 pubDate: ${today()}
-type: game
 developer: 
 publisher: 
 platform: []
 genre: []
-startDate: # release date of the game
+startDate: 2026-01-01 # release date of the game
 completed: false # default is true
 image: ./_images/
 note: 
 dbid: 
 steamdb: 
----
 
 `,
-	movie: (title) => `---
+	movie: (title) => `type: movie
 title: "${title}"
 pubDate: ${today()}
-type: movie
 director: 
 stars: []
 genre: []
-startDate: # release date of the movie
-description: 
+startDate: 2026-01-01 # release date of the movie
 note: 
 image: ./_images/
 dbid: # tmdb
----
 
 `,
-	tvshow: (title) => `---
+	tvshow: (title) => `type: tvshow
 title: "${title}"
 pubDate: ${today()}
-type: tvshow
 genre: []
 seasons: 
-startDate: # date of series premiere
+startDate: 2026-01-01 # date of series premiere
 endDate: # date of series finale if applicable
 note: 
 image: ./_images/
 dbid: # tmdb
----
 
 `,
-	book: (title) => `---
+	book: (title) => `type: book
 title: "${title}"
 pubDate: ${today()}
-type: book
 author: 
 genre: []
-description: 
-startDate: # release date of the book
+startDate: 2026-01-01 # release date of the book
 image: ./_images/
 isbn: 
 url: 
 note: 
----
 
 `,
-	quote: (title) => `---
+	quote: (title) => `type: quote
 title: "${title}"
 pubDate: ${today()}
-type: quote
 quote: 
 attribution: 
----
 
 `,
-	image: (title) => `---
+	image: (title) => `type: image
 title: "${title}"
 pubDate: ${today()}
-type: image
 tag: 
 image: ./_images/
----
 
 `,
-	youtube: (title) => `---
+	youtube: (title) => `type: youtube
 title: "${title}"
 pubDate: ${today()}
-type: youtube
 videoId: 
 note: 
----
 
 `,
 };
