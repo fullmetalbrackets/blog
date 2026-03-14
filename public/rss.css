@@ -214,6 +214,10 @@ em {
 	justify-content: space-around;
 }
 
+.title {
+	margin-left: 0.25em;
+}
+
 .about {
 	display: flex;
 	justify-content: center;
@@ -299,5 +303,9 @@ aside {
 	}
 	.markdown-body h3 {
 		font-size: 20px;
+	}
+	.desc,
+	.date {
+		font-size: 0.75em;
 	}
 }
