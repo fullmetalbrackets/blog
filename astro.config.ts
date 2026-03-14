@@ -17,7 +17,6 @@ import cloudflare from '@astrojs/cloudflare';
 
 export default defineConfig({
 	site: 'https://fullmetalbrackets.com',
-	trailingSlash: 'always',
 
 	build: {
 		inlineStylesheets: 'always',
