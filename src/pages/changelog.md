@@ -4,11 +4,47 @@ title: Changelog
 description: A log of major changes made to fullmetalbrackets.com
 ---
 
+<style>
+    sup {
+        font-size: 0.667em;
+        font-style: italic;
+    }
+</style>
+
 A log of major changes made to my site over the years. For more granular details, [see the GitHub repo](https://github.com/fullmetalbrackets/blog/commits/main/).
 
-<h2 class="flex">2026-03-03&nbsp;<span class="latest">latest</span></h2>
+<h2 class="flex">2026-03-14&nbsp;<span class="latest">latest</span></h2>
+
+- Add [now](/now) page
+
+<h2 class="flex">2026-03-11</h2>
+
+- Migrate site to [Astro 6](https://astro.build/blog/astro-6/)
+- Switch from `static` to `server` build for better performance at Cloudflare's edge
+
+<h2 class="flex">2026-03-09</h2>
+
+- Add [opensearch.xml](/opensearch.xml) <sup>(I'm the only one who will ever use this...)</sup>
+- Add [microformats](https://microformats.org/) to:
+    - Blog posts
+    - Categories
+    - Wiki articles
+    - Blogroll
+    - Notes
+    - Links
+
+<h2 class="flex">2026-03-05</h2>
+
+- Add anchor/copy links to blog post headings
+
+<h2 class="flex">2026-03-03</h2>
 
 - Add dynamically generated opengraph cards for blog posts via [Satori](https://github.com/vercel/satori).
+- Add JSON-LD structured data throughout the site
+
+<h2 class="flex">2026-03-02</h2>
+
+- Add [updated](/blog/updated) page (list blog posts by last time updated)
 
 <h2 class="flex">2026-01-23</h2>
 
