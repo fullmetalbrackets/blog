@@ -73,13 +73,13 @@
                 <path d="M184 213A140 140 0 0 0 44 73 V 38a175 175 0 0 1 175 175z" fill="#FFF"/>
               </svg>
 
-              <span>RSS Feed</span>
+              <span class="title">RSS Feed</span>
             </h1>
             <nav class="container-md py-2 mt-md-2 markdown-body">
-                <p class="bg-yellow-light ml-n1 p-3 mb-1 f3">
+                <p class="bg-yellow-light ml-n1 p-3 mb-0 f3">
                     <strong>This is the RSS feed for blog posts at <a href="/" class=".link">fullmetalbrackets.com</a></strong>.
                     <br/>
-                    Subscribe by copying the URL of this page into your newsreader.
+                    To subscribe, copy the URL of this page into your newsreader.
                     <button id="copyBtn" onclick="copyURL(this)" style="font-family: var(--sub-font); background-color: var(--info); color: #000; border: 0; border-radius: 0.25em; padding: 4px 8px 3px 8px; font-weight: 700; font-size: 0.75em; margin: -2em 0 2em 0;">Copy URL</button>
                 </p>
                 <p class="text-gray f4 text-italic about">

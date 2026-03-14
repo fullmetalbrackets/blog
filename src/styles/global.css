@@ -42,6 +42,7 @@ h1 {
 	color: var(--code-text);
 	margin: 0;
 	padding: 0;
+	text-wrap: balanced;
 }
 
 h2,
@@ -52,22 +53,26 @@ h6 {
 	font-family: var(--main-font);
 	margin: 0;
 	padding: 0;
+	text-wrap: balanced;
 }
 
 h2,
 h4,
 h6 {
 	color: var(--primary);
+	text-wrap: balanced;
 }
 
 h3,
 h5 {
 	color: var(--emphasis);
+	text-wrap: balanced;
 }
 
 p {
 	overflow-wrap: break-word;
 	hyphens: auto;
+	text-wrap: pretty;
 }
 
 main .title {
@@ -79,6 +84,7 @@ article ol,
 article p li,
 #ref {
 	line-height: 1.6;
+	text-wrap: pretty;
 }
 
 img,

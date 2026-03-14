@@ -135,4 +135,21 @@ const games = defineCollection({
 		}),
 });
 
-export const collections = { blog, links, wiki, lifestream, digest, games };
+const now = defineCollection({
+	loader: glob({ pattern: '**/*.md', base: './src/content/now' }),
+	schema: ({ image }) =>
+		z.object({
+			pubDate: z.coerce.date(),
+			image: image().optional(),
+		}),
+});
+
+export const collections = {
+	blog,
+	links,
+	wiki,
+	lifestream,
+	digest,
+	games,
+	now,
+};

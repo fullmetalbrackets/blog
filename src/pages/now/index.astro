@@ -1,0 +1,105 @@
+---
+export const prerender = true;
+
+import { getCollection, render } from 'astro:content';
+import { Image } from 'astro:assets';
+import { SITE_URL } from '@consts';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import BreadcrumbSchema from '@components/BreadcrumbSchema.astro';
+import FormattedDate from '@components/FormattedDate.astro';
+import BackToTop from '@components/BackToTop.astro';
+
+const entries = await getCollection('now');
+const sorted = entries.sort((a, b) =>
+  b.data.pubDate.getTime() - a.data.pubDate.getTime()
+);
+
+const [latest, ...previous] = sorted;
+const { Content } = await render(latest);
+const title = "Now";
+const desc = "What I've been up to lately and what's on my mind. Updated monthly-ish.";
+---
+
+<BaseLayout title={title} description={desc} entry={latest}>
+  <link slot="head" rel="canonical" href={new URL('/now', Astro.site).toString()} />
+  <BreadcrumbSchema slot="head" crumbs={[
+    { name: "Home", url: `${SITE_URL}/` },
+    { name: "Now", url: `${SITE_URL}/now/` }
+  ]} />
+  <section data-pagefind-ignore>
+    <h1>{title}</h1>
+    <hr />
+    <p class="desc">
+      {desc} I'm constantly adding to this as I find new things I consider worth sharing!
+    </p>
+    <span class="date">
+      <span class="updated">Updated</span> <FormattedDate date={latest.data.pubDate} noDay />
+    </span>
+    <hr class="separator" />
+    <p>
+      {latest.data.image && (
+        <Image src={latest.data.image} alt="" />
+      )}
+    </p>
+    <Content />
+      {previous.length > 0 && (
+        <h2>Previous Entries</h2>
+        <ul>
+          {previous.map(prevEntry => (
+            <li>
+              <a href={`/now/${prevEntry.id}/`}>
+                {prevEntry.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
+    <hr/>
+    <BackToTop />
+  </section>
+</BaseLayout>
+
+<style scoped>
+  section {
+    min-height: calc(100vh - 300px);
+  }
+  h1 {
+    font-family: var(--sub-font);
+    font-weight: 900;
+  }
+  .date {
+    display: flex;
+    place-items: center;
+  }
+  .updated {
+    color: var(--emphasis);
+    font-family: var(--sub-font);
+    font-size: 0.875em;
+    font-weight: 500;
+    margin-right: 0.5em;
+  }
+  .desc {
+    margin-bottom: 1em;
+  }
+  .separator {
+    display: grid;
+    border-width: 4px;
+    border-color: var(--border);
+  }
+  h2 {
+    margin-top: 1em;
+  }
+  ul {
+    margin-bottom: 2em;
+  }
+  li a {
+    font-family: var(--sub-font);
+    font-size: 0.875em;
+    font-weight: 500;
+  }
+  @media screen and (max-width: 667px) {
+    .desc {
+      font-size: 0.75em;
+    }
+  }
+</style>

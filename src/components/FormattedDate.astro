@@ -4,21 +4,24 @@ import Date from "@icons/calendar.svg";
 interface Props {
   date: Date;
   monthFormat?: 'long' | 'short' | 'numeric' | '2-digit';
+  noDay?: boolean;
   class?: string;
 }
 
-const { date, monthFormat = 'long', class: className } = Astro.props;
+const { date, monthFormat = 'long', noDay = false, class: className } = Astro.props;
 ---
 
 <time datetime={date?.toISOString()} class={className}>
   <Date width={24} height={24} />
   <span>
     {
-      date?.toLocaleDateString("en-us", {
-        year: "numeric",
-        month: monthFormat,
-        day: "numeric",
-      })
+      noDay
+        ? date?.toLocaleDateString("en-us", { year: "numeric", month: monthFormat })
+        : date?.toLocaleDateString("en-us", {
+            year: "numeric",
+            month: monthFormat,
+            day: "numeric",
+          })
     }
   </span>
 </time>
