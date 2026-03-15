@@ -689,6 +689,10 @@ blockquote[data-type='warning'] a:hover {
 	place-items: center;
 }
 
+.center {
+	place-items: center;
+}
+
 .space-between {
 	display: flex;
 	justify-content: space-between;
