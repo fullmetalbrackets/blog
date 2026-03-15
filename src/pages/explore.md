@@ -13,6 +13,11 @@ Explore all of the [slashpages](https://slashpages.net/) on this site below.
             <hr>
             <p>Long-form posts like tutorials and guides.</p>
         </li>
+                <li>
+            <a href="/blank/" data-umami-event="explore-blank">Blank</a>
+            <hr>
+            <p>This page is intentionally left blank.</p>
+        </li>
         <li>
             <a href="/blogroll/" data-umami-event="explore-blogroll">Blogroll</a>
             <hr>
@@ -56,6 +61,11 @@ Explore all of the [slashpages](https://slashpages.net/) on this site below.
             <a href="/notes/" data-umami-event="explore-notes">Notes</a>
             <hr>
             <p>Short-form content like bookmarks, random thoughts or memes that I post as part of my Lifestream.</p>
+        </li>
+        <li>
+            <a href="/now/" data-umami-event="explore-now">Now</a>
+            <hr>
+            <p>What I've been up to lately and what's on my mind. Updated monthly-ish.</p>
         </li>
         <li>
             <a href="/privacy/" data-umami-event="explore-privacy">Privacy</a>
