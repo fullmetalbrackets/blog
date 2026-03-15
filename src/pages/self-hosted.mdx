@@ -6,15 +6,43 @@ description: Information about the apps and services that I self-host.
 
 Information about the apps and services that I self-host.
 
+import FormattedDate from '@components/FormattedDate.astro';
+
+<style>{`
+  div.date {
+    display: flex;
+    place-items: center;
+    margin: 0;
+    padding: 0;
+    font-family: var(--sub-font);
+    font-weight: 500;
+  }
+  span.updated {
+    display: inherit;
+    place-items: center;
+    color: var(--emphasis);
+    font-size: 0.875em;
+    margin: 0 0.5em 0 0;
+    padding: 0;
+  }
+`}</style>
+
+<div class="date">
+	<span class="updated">Updated</span>
+	<FormattedDate date={new Date('2026-03-15T12:00:00')} />
+</div>
+
 > See [this blog post](/blog/how-i-setup-home-server) for more details.
 
 ## Software
 
 - AdGuard Home
+- BentoPDF
 - Cadvisor
 - Calibre
 - Cockpit
 - Deunhealth
+- Dozzle
 - File Browser
 - Gitea
 - Glances
@@ -37,7 +65,6 @@ Information about the apps and services that I self-host.
 - qBittorrent
 - Scrutiny
 - Speedtest Tracker
-- Stirling PDF
 - Syncthing
 - Tautulli
 - Uptime Kuma
