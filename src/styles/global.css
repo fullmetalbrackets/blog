@@ -230,6 +230,10 @@ article a:hover {
 	text-decoration-color: var(--link);
 }
 
+article h1 {
+	line-height: 1.1;
+}
+
 article h2 {
 	margin-top: 1.5em;
 	border-top: transparent;
