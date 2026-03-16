@@ -27,7 +27,7 @@ const recentNotes = (await getNotes()).slice(0, limit);
   .info {
     display: flex;
     place-items: center;
-    margin: 0;
+    margin: 0.2em 0 0 0;
     padding: 0;
     gap: 0.25em;
   }
@@ -35,7 +35,7 @@ const recentNotes = (await getNotes()).slice(0, limit);
     margin: 0 0.5em 0 0;
     background: var(--info);
     cursor: pointer;
-    font-size: 0.625em;
+    font-size: 0.75em;
   }
   .container {
     background-color: var(--blockquote);
@@ -63,7 +63,7 @@ const recentNotes = (await getNotes()).slice(0, limit);
     flex-direction: row;
     margin: 0 auto;
     font-weight: bold;
-    line-height: 1.2;
+    line-height: 1.1;
     color: var(--emphasis);
   }
   .more {
@@ -106,6 +106,7 @@ const recentNotes = (await getNotes()).slice(0, limit);
     }
     .info button {
       margin: 0.1em 0.25em 0.1em 0;
+      font-size: 14px;
     }
     .container {
       padding: 0.75em 1em;

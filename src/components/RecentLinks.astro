@@ -25,12 +25,12 @@ const links = await getSortedLinks();
   .info {
     display: flex;
     place-items: center;
-    margin: 0;
+    margin: 0.1em 0 0 0;
     padding: 0;
   }
   .info button {
     margin-right: 0.85em;
-    font-size: 0.625em;
+    font-size: 0.75em;
   }
   .list {
     display: flex;
@@ -38,12 +38,12 @@ const links = await getSortedLinks();
     margin: 0 auto 0.25em auto;
     padding-bottom: 0.5em;
   }
-  .title-link {
+  .link-url {
     color: var(--emphasis);
     font-weight: bold;
     line-height: 1.2;
   }
-  .title-link:hover {
+  .link-url:hover {
     color: var(--hover);
   }
   .link-tag {
@@ -87,7 +87,7 @@ const links = await getSortedLinks();
   }
   
   @media (hover: hover) {
-    .list:has(.title-link:hover) .link-tag {
+    .list:has(.link-url:hover) .link-tag {
       box-shadow: -4px -4px 0 #000;
       transform: translate(4px, 4px);
       outline-offset: 1px;
@@ -101,12 +101,15 @@ const links = await getSortedLinks();
     .container {
       padding: 0.75em 1em;
     }
-    .title-link {
+    .link-url {
       font-size: 0.875em;
     }
     .more {
       margin: 0;
       padding: 0;
+    }
+    .info button {
+      font-size: 14px;
     }
   }
 </style>
@@ -117,11 +120,11 @@ const links = await getSortedLinks();
     {
       links.slice(0, 5).map((link) => (
         <div class="h-entry list">
-          <a href={link.data.url} target="_blank" class="u-bookmark-of title-link" data-umami-event={`recent-link-${link.data.title}`}>
+          <a href={link.data.url} target="_blank" class="u-bookmark-of link-url" data-umami-event={`recent-link-${link.data.title}`}>
           <span class="p-name">
             {link.data.title}
           </span>
-            <span class="info"><button>{link.data.tag}</button><FormattedDate class="dt-published" date={link.data.pubDate} monthFormat="short" />&nbsp;
+            <span class="info"><button>{link.data.tag}</button><FormattedDate class="dt-published" date={link.data.pubDate} />&nbsp;
           </span>
           </a>
         </div>
