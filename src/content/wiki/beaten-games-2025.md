@@ -8,12 +8,13 @@ tag: information
 Total: <span class="sub-font b em">8</span>
 
 - Donkey Kong Country Returns HD
-- Elden Ring (and Shadow of the Erdtree... except the final boss who I gave up on)
+- Elden Ring *(and Shadow of the Erdtree... except the final boss who I gave up on)*
 - Final Fantasy Tactics: The Ivalice Chronicles
-- Hollow Knight: Silksong (only Act 2 ending)
-- Metroid Prime 4: Beyond (Nintendo Switch 2 Edition)
-- The Legend of Zelda: Breath of the Wild (Nintendo Switch 2 Edition)
-- The Legend of Zelda: Tears of the Kingdom (Nintendo Switch 2 Edition)
+- Final Fantasy XIV Online *(playing on and off since ~2019)*
+- Hollow Knight: Silksong *(only Act 2 ending)*
+- Metroid Prime 4: Beyond - Nintendo Switch 2 Edition
+- The Legend of Zelda: Breath of the Wild - Nintendo Switch 2 Edition
+- The Legend of Zelda: Tears of the Kingdom - Nintendo Switch 2 Edition
 - Victoria 3
 
-Notes: _Way down from last year, but the two Zelda games did take up a lot of my overall playtime._
+Notes: _Way down from 2024, but I did play Final Fantasy XIV Online a whole lot this year..._
