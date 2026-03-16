@@ -7,25 +7,7 @@ description: Information about the apps and services that I self-host.
 Information about the apps and services that I self-host.
 
 import FormattedDate from '@components/FormattedDate.astro';
-
-<style>{`
-  div.date {
-    display: flex;
-    place-items: center;
-    margin: 0;
-    padding: 0;
-    font-family: var(--sub-font);
-    font-weight: 500;
-  }
-  span.updated {
-    display: inherit;
-    place-items: center;
-    color: var(--emphasis);
-    font-size: 0.875em;
-    margin: 0 0.5em 0 0;
-    padding: 0;
-  }
-`}</style>
+import '@styles/selfhosted.css';
 
 <div class="date">
 	<span class="updated">Updated</span>
@@ -76,3 +58,8 @@ import FormattedDate from '@components/FormattedDate.astro';
 - Dell Optiplex 3020 Micro (backup server - [details](/wiki/korben/))
 - Raspberry Pi (DNS for my Tailnet - [details](/wiki/pi/))
 - Libre Sweet Potato (x2)
+
+## Updates
+
+- **2026-03-15:** Added _BentoPDF_, removed _Stirling PDF_
+- **2026-02-27:** Added _Calibre_
