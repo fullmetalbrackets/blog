@@ -2,6 +2,7 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import BackToTop from "@components/BackToTop.astro";
 import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
+import CodeblockCopy from "@components/CodeblockCopy.astro";
 import { SITE_URL } from "@consts";
 
 const { frontmatter } = Astro.props;
@@ -51,7 +52,7 @@ const crumbs = [
   <head>
     <link rel="stylesheet" href="/prism.css" />
   </head>
-
+  <CodeblockCopy />
   <article data-pagefind-body>
     <h1>{frontmatter.title}</h1>
     <hr />

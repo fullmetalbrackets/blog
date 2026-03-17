@@ -3,6 +3,7 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import FormattedDate from "@components/FormattedDate.astro";
 import ScrollProgress from "@components/ScrollProgress.astro";
 import WikiArticle from "@components/WikiArticle.astro";
+import CodeblockCopy from "@components/CodeblockCopy.astro";
 
 const { title, description, tag, pubDate, updatedDate } = Astro.props;
 ---
@@ -79,7 +80,7 @@ const { title, description, tag, pubDate, updatedDate } = Astro.props;
   <WikiArticle slot="head" title={title} description={description} />
 
   <ScrollProgress />
-  
+  <CodeblockCopy />
   <article data-pagefind-body>
     <h1 class="title">{title}</h1>
     <p class="tag" data-pagefind-ignore>

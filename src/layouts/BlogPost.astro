@@ -8,6 +8,7 @@ import ReadingTime from "@components/ReadingTime.astro";
 import WebMentions from "@components/WebMentions.astro";
 import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
 import HowToSchema from "@components/HowToSchema.astro";
+import CodeblockCopy from "@components/CodeblockCopy.astro";
 import HCard from "@components/H-Card.astro";
 import type { BlogPostProps } from '../types';
 import type { MarkdownHeading } from '@astrojs/markdown-remark';
@@ -457,7 +458,6 @@ const selectedPosts = await getRelatedPosts(related ?? []);
       }
     </style>
   </slot>
-
   <ScrollProgress />
   <BlogPosting slot="head" {...Astro.props} />
   <BreadcrumbSchema slot="head" crumbs={[
@@ -473,7 +473,7 @@ const selectedPosts = await getRelatedPosts(related ?? []);
     headings={headings}
     readingTime={readingTime}
   />
-  
+  <CodeblockCopy />
   <article class="h-entry" data-pagefind-body data-pub-date={pubDate.toISOString()}
   data-updated-date={updatedDate ? updatedDate.toISOString() : ''}>
     <h1 class="p-name">{title}</h1>
@@ -702,30 +702,7 @@ const selectedPosts = await getRelatedPosts(related ?? []);
       }
     }
   </script>
-  <script is:inline>
-    function copyToClipboard(copyBtn, text) {
-      navigator.clipboard.writeText(text).then(() => {
-        copyBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <polyline points="20 6 9 17 4 12"></polyline>
-        </svg>`;
-        copyBtn.style.backgroundColor = "var(--hover)";
-        setTimeout(() => {
-          copyBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-          </svg>`;
-          copyBtn.style.backgroundColor = "var(--info)";
-        }, 2000);
-      });
-    }
-    document.addEventListener("click", (e) => {
-      if (!e.target.closest(".copy-btn")) return;
-      const copyBtn = e.target.closest(".copy-btn");
-      const wrapper = copyBtn.closest(".code-wrapper");
-      const code = wrapper.querySelector("pre code");
-      copyToClipboard(copyBtn, code.innerText);
-    });
-  </script>
+
   <script is:inline>
     if (window.matchMedia('(min-width: 2108px)').matches) {
       const toc = document.querySelector('.toc-container');
