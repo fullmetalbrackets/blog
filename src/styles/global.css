@@ -307,6 +307,7 @@ aside > a:focus {
 code {
 	padding: 0 4.5px 1px 4.5px;
 	font-family: var(--code-font);
+	font-size: 0.85625em;
 	background-color: var(--code-bg);
 	color: var(--code-text);
 	border-radius: 0.25em;
@@ -466,6 +467,7 @@ blockquote pre[class*='language-'] {
 }
 
 blockquote code {
+	font-size: 1em;
 	background: var(--code-bg-bq);
 }
 
@@ -494,6 +496,7 @@ blockquote.blockquote-quote p {
 
 blockquote[data-type='quote'] p code,
 blockquote.blockquote-quote p code {
+	font-size: 1em;
 	font-weight: 100;
 }
 
