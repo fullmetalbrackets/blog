@@ -4,17 +4,31 @@ title: Privacy Policy
 description: Privacy policy of fullmetalbrackets.com
 ---
 
-Last updated on <span class="important">January 3, 2026</span>
+import FormattedDate from '@components/FormattedDate.astro';
+import '@styles/page.css';
+
+<div class="date">
+	<span class="updated">Last updated on</span>
+	<FormattedDate date={new Date('2026-03-17T12:00:00')} />
+</div>
 
 This privacy policy will advise of what information, if any, is collected when you use this website and for what purpose. The policy may change in the future, at which time this page will be updated. Check back from time to time and note that date the Privacy Policy was last updated.
 
 ## Data collection
 
-**No data is collected by this website.**
+This website only collects two pieces of data, and only under specific circumstances:
 
-There are no tracking cookies, no login, no newsletter to sign up for, no way for a user to submit information, or for any user-submitted information to even be stored. Any external links to other websites, or embedded content like YouTube videos or SoundCloud music, are subject to the privacy policies of those external websites or services.
+1. When you use the theme toggle on the top-right to change between light/dark theme, a text string with the choice (`light` or `dark`) is saved in your browser's local storage. This allows the choice of theme to persist across browser sessions.
 
-I will never sell, distribute or lease your personal information to anyone even if I were to collect any data via this website in the future.
+2. At the bottom of all blog posts is a Giscus comment component. When you login to Github through this component to comment on a blog post, a session token is saved in your browser's local storage. This allows you to remain logged in across browser sessions.
+
+**Besides what is noted above, no other data is collected by this website.**
+
+There are no tracking cookies, no newsletter to sign up for, no way for a user to submit information, or for any user-submitted information to even be stored, and no login except for GitHub. (And you are logging in to _GitHub_, not to this site.)
+
+Any external links to other websites, or embedded content like YouTube videos or SoundCloud music, are subject to the privacy policies of those external websites or services.
+
+yI will never sell, distribute or lease your personal information to anyone even if I were to collect any data via this website in the future.
 
 ## Analytics
 
