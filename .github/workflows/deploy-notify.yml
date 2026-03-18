@@ -12,12 +12,12 @@ jobs:
 
       - name: Wait for Cloudflare Pages Build
         run: |
-          for i in $(seq 1 20); do
+          for i in $(seq 1 10); do
             STATUS=$(curl -s -X GET \
               "https://api.cloudflare.com/client/v4/accounts/${{ secrets.CLOUDFLARE_ACCOUNT_ID }}/pages/projects/blog/deployments" \
               -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \
               | jq -r '.result[0].latest_stage.status')
-            echo "Attempt $i/20 - Status: $STATUS"
+            echo "Attempt $i/10 - Status: $STATUS"
             if [ "$STATUS" = "success" ]; then exit 0; fi
             if [ "$STATUS" = "failure" ]; then exit 1; fi
             sleep 30
