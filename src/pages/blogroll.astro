@@ -13,6 +13,7 @@ const getFavicon = (url: string) =>
 const blogs = [
   { name: "Anthony Fu", url: "https://antfu.me/", id: "antfu", feed: "https://antfu.me/feed.xml" },
   { name: "Aaron Parecki", url: "https://aaronparecki.com/", id: "aaronparecki", feed: "https://aaronparecki.com/feed.xml" },
+  { name: "BusyBee", url: "https://beesbuzz.biz/", id: "aaronparecki", feed: "https://beesbuzz.biz/feed" },
   { name: "Chris Coyier", url: "https://chriscoyier.net/", id: "chriscoyier", feed: "https://chriscoyier.net/feed/" },
   { name: "Chris Lu", url: "https://chris.lu/", id: "chrislu", feed: "#" },
   { name: "Chris Smith", url: "https://chameth.com/", id: "chameth", feed: "https://chameth.com/index.xml" },
@@ -32,7 +33,7 @@ const blogs = [
   { name: "Whitep4nth3r", url: "https://whitep4nth3r.com/", id: "whitep4nth3r", feed: "https://whitep4nth3r.com/feed.xml" },
 ];
 
-const lastUpdated = new Date('2026-03-10T21:00');
+const lastUpdated = new Date('2026-03-17T12:00');
 ---
 
 <style scoped>
@@ -43,6 +44,14 @@ const lastUpdated = new Date('2026-03-10T21:00');
   h1 {
     font-family: var(--sub-font);
     font-weight: 900;
+  }
+  .updated {
+    display: flex;
+    font-family: var(--sub-font);
+    font-size: 0.875em;
+    color: var(--emphasis);
+    place-items: center;
+    margin-right: 0.5em;
   }
   ul {
     list-style: none;
@@ -170,8 +179,13 @@ const lastUpdated = new Date('2026-03-10T21:00');
     <h1 class="p-name">{title}</h1>
     <a class="u-url" href={`${SITE_URL}/blogroll/`} hidden>Permalink</a>
     <hr />
-    <p>A list of blogs that I follow and regularly read. <em>(Links in alphabetical order.)</em></p>
-    <p class="flex">Last updated &nbsp;<FormattedDate date={lastUpdated} monthFormat="long" /></p>
+    <p>A list of blogs that I follow and regularly read. All links are in alphabetical order.</p>
+    <p class="flex">
+      <span class="updated">
+        Last updated
+      </span>
+      <FormattedDate date={lastUpdated} monthFormat="long" />
+    </p>
     <ul>
       {blogs.map(blog => (
         <li class="h-entry">
