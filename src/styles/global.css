@@ -262,6 +262,10 @@ article h3 {
 	margin-top: 1em;
 }
 
+.related h3 {
+	font-size: 1.25em;
+}
+
 li::marker {
 	font-family: var(--sub-font);
 	font-size: 0.875em;
@@ -850,6 +854,13 @@ button {
 	padding: 4px 8px;
 	font-weight: 700;
 	font-size: 0.75em;
+}
+
+button a,
+button a:active,
+button a:visited,
+button a:hover {
+	color: #000;
 }
 
 @media (hover: hover) {

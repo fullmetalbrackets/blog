@@ -42,7 +42,7 @@ const tags = await getSortedTags();
     font-family: var(--main-font);
     font-size: 0.675em;
   }
-  button {
+  button a {
     display: flex;
     place-items: center;
     gap: 0.25em;
@@ -63,12 +63,14 @@ const tags = await getSortedTags();
       {tags.map(({ tag, count }) => (
         <li>
           <button>
-            <span class="label">
-              <a href={`/categories/${tag}/`} rel="prefetch-intent tag" data-umami-event={`categories-${tag}`}>{tag}</a>
+            <a href={`/categories/${tag}/`} rel="prefetch-intent tag" data-umami-event={`categories-${tag}`}>
+              <span class="label">
+                {tag}
               </span>
-            <span class="count">
-              {count}
-            </span>
+              <span class="count">
+                {count}
+              </span>
+            </a>
           </button>
         </li>
       ))}
