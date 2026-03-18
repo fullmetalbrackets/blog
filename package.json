@@ -19,7 +19,8 @@
 		"post": "node scripts/post.mjs",
 		"life": "node scripts/life.mjs",
 		"note": "node scripts/note.mjs",
-		"links": "node scripts/link.mjs"
+		"links": "node scripts/link.mjs",
+		"wiki": "node scripts/wiki.mjs"
 	},
 	"dependencies": {
 		"@astrojs/check": "^0.9.7",
