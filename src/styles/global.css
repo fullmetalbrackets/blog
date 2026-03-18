@@ -1000,6 +1000,12 @@ article a[target='_blank'][href^='#']::after {
 	article ol {
 		padding-left: 1em;
 	}
+	article ul li:first-of-type,
+	article ol li:first-of-type,
+	article ul li p,
+	article ol li p {
+		font-size: 18px;
+	}
 	*:hover {
 		transition: none;
 	}
