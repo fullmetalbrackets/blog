@@ -2,7 +2,8 @@
 title: 'Ansible playbook and files for bootstrapping a Linux install'
 description: 'Contents of Ansible playbook and other files for use in bootstrapping a Linux install with base apps, services, etc.'
 pubDate: 2024-02-04
-tag: documentation
+tag: technical notes
+related: ['bootstrapping-fresh-install-with-ansible', 'guide-to-zsh-ohmyzsh-plugins-and-theme']
 ---
 
 ![Ansible Branding](../../img/wiki/ansible.svg)

@@ -3,7 +3,8 @@ title: 'Potato'
 description: 'Details on Potato, my Libre Sweet Potato SBC running Pi-Hole.'
 pubDate: 2023-11-16
 updatedDate: 2025-12-22
-tag: server
+tag: documentation
+related: ['setting-up-sweet-potato-debian-pihole', 'setup-home-assistant-sweet-potato-debian']
 ---
 
 ![Libre Sweet Potato](../../img/blog/sweet-potato.jpg)

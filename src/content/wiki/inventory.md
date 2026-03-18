@@ -4,6 +4,7 @@ description: 'A list of computers, laptops, server and network devices in my hom
 pubDate: 2023-10-01
 updatedDate: 2025-02-13
 tag: documentation
+related: ['how-i-setup-home-server']
 ---
 
 ## Inventory

@@ -2,7 +2,8 @@
 title: 'Docker Compose for Umami, Cloudflare Tunnel and Watchtower'
 description: 'Working compose file for self-hosting Umami Analytics, exposing it publically via Cloudflare Tunnel and auto-updating with Watchtower.'
 pubDate: 2026-03-15
-tag: documentation
+tag: technical notes
+related: ['self-host-website-cloudflare-tunnel', 'setup-cloudflare-tunnel-to-access-self-hosted-apps']
 ---
 
 ```yaml

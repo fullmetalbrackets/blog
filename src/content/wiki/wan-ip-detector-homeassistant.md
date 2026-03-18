@@ -3,7 +3,8 @@ title: WAN IP Detector for Home Assistant
 description: "Add this to Home Assistant configuration.yaml to 
 create a sensor that detects your current WAN IP address."
 pubDate: 2026-01-06
-tag: snippet
+tag: technical notes
+related: ['setup-home-assistant-sweet-potato-debian']
 ---
 
 ```yaml

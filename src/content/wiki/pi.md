@@ -2,7 +2,8 @@
 title: 'Pi'
 description: 'Details on my Raspberry Pi.'
 pubDate: 2025-12-23
-tag: server
+tag: documentation
+related: ['set-up-pihole-on-linux', 'pihole-anywhere-tailscale']
 ---
 
 ![Raspberry Pi 5 Model B](../../img/wiki/raspberrypi.webp)

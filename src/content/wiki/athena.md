@@ -3,7 +3,8 @@ title: 'Athena'
 description: 'Details on my home server, a Dell XPS 8920.'
 pubDate: 2024-06-15
 updatedDate: 2025-11-28
-tag: server
+tag: documentation
+related: ['how-i-setup-home-server', 'comprehensive-guide-tailscale-securely-access-home-network']
 ---
 
 > See [this blog post](/blog/how-i-setup-home-server) for more details.

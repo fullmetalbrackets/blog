@@ -38,6 +38,7 @@ const wiki = defineCollection({
 			updatedDate: z.coerce.date().optional(),
 			tag: z.string(),
 			image: image().optional(),
+			related: z.array(z.string()).optional(),
 		}),
 });
 

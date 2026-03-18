@@ -3,7 +3,8 @@ title: 'Zsh and Oh-My-Zsh configuration files'
 description: 'Working copies of Zsh config files used on my Linux desktop and servers.'
 pubDate: 2024-02-04
 updatedDate: 2026-03-15
-tag: documentation
+tag: technical notes
+related: ['guide-to-zsh-ohmyzsh-plugins-and-theme']
 ---
 
 ![Oh My Zsh](../../img/blog/oh-my-zsh.png)
