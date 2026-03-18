@@ -7,13 +7,14 @@ tags: ['qbittorrent', 'arr', 'self-hosting']
 # related2: 
 ---
 
-This worked for me running qBittorrent as a Docker container using the [Linuxserver image](https://hub.docker.com/r/linuxserver/qbittorrent). Safe to assume it also works if running qBitorrent bare metal, but I can't be absolutely sure.
-
 ## Add default search engine plugins
+
+> This worked for me running qBittorrent as a Docker container using the [Linuxserver image](https://hub.docker.com/r/linuxserver/qbittorrent). Safe to assume it also works if running qBitorrent bare metal, but I can't be absolutely sure.
+> 
+> Also, if you are running a custom web UI like VueTorrent, disable it temporarily and use the default qBittorrent web UI to do this.
 
 First things first, you should add the default plugins that qBittorrent comes with (which are not enabled until you do it manually) to setup the search engine. After that you can add additional search engine plugins.
 
-> If you are running a custom web UI like VueTorrent, disable it temporarily and use the default qBittorrent web UI to do this.
 
 1. In the qBittorrent *default* web UI, click on the **Search** button at the top right. You should see the below page. (Note that I am using dark mode.)
 
