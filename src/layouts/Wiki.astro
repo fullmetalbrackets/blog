@@ -4,8 +4,11 @@ import FormattedDate from "@components/FormattedDate.astro";
 import ScrollProgress from "@components/ScrollProgress.astro";
 import WikiArticle from "@components/WikiArticle.astro";
 import CodeblockCopy from "@components/CodeblockCopy.astro";
+import Related from '@icons/related.svg';
+import { getRelatedPosts } from '@utils/collections';
 
-const { title, description, tag, pubDate, updatedDate } = Astro.props;
+const { title, description, tag, pubDate, updatedDate, related } = Astro.props;
+const selectedPosts = await getRelatedPosts(related ?? []);
 ---
 
 <style>
@@ -57,6 +60,74 @@ const { title, description, tag, pubDate, updatedDate } = Astro.props;
   .wiki-aside button {
     background: var(--primary);
   }
+      .related {
+      display: inline;
+    }
+    .related h3 {
+      display: flex;
+      place-items: center;
+      font-size: 1.25em;
+      color: var(--primary);
+      margin: 1em 0 1em 0;
+      border-top: transparent;
+      border-left: transparent;
+      border-right: transparent;
+      border-bottom: thick dotted var(--border);
+    }
+    .related svg {
+      filter: var(--toc);
+      margin-left: -0.135em;
+      margin-right: 0.1em;
+    }
+    .related ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    .related li {
+      border: 2px solid transparent;
+      background-color: var(--blockquote);
+      color: var(--emphasis);
+      padding: 0.75em 1em 0.85em 1em;
+      margin: 1em;
+      border-radius: 0.5em;
+    }
+    .related li span {
+      font-size: 1em;
+      font-weight: 700;
+      margin-bottom: 0;
+      line-height: 1.2;
+    }
+    .related li p {
+      color: var(--text);
+      font-size: 0.875em;
+      margin-top: 0.25em;
+      margin-bottom: 0;
+      line-height: 1.2;
+    }
+    .related li button {
+      margin: 0 0.5em 0.25em 0;
+    }
+    .related li:hover {
+      color: var(--hover);
+      border: 2px solid var(--emphasis);
+    }
+    @media screen and (min-width: 2108px) {
+      .blog-tags, .info, .updated {
+        position: absolute;
+        left: 2em;
+        width: 35%;
+        max-width: 35%;
+      }
+      .blog-tags {
+        top: 4.55em;
+      }
+      .info {
+        top: 6em;
+      }
+      .updated {
+        top: 7.55em;
+      }
+    }
   @media screen and (max-width: 667px) {
     article {
       margin: 1em 0.5em 1em 0.5em;
@@ -69,6 +140,21 @@ const { title, description, tag, pubDate, updatedDate } = Astro.props;
     }
     .tag span {
       font-size: 14px;
+    }
+    .related li {
+      font-size: 1em;
+      line-height: 1.2;
+      padding: 1em 1em 0.85em 1em;
+      margin: 1em auto;
+    }
+    .related li p {
+      margin-top: 0;
+    }
+    .related li button {
+      margin: 0 0.25em 0.25em 0;
+    }
+    .hide {
+      display: none;
     }
   }
 </style>
@@ -107,6 +193,26 @@ const { title, description, tag, pubDate, updatedDate } = Astro.props;
         >.
       </p>
     </slot>
+      {selectedPosts.length > 0 && (
+      <div class="related" data-pagefind-ignore>
+        <h3><Related width={36} height={36}/> Related Blog Posts</h3>
+        <ul>
+          {selectedPosts.map(post => (
+            <a href={`/blog/${post.id}/`} rel="prefetch-intent" data-umami-event={`wiki-related-${post.id}`}>
+            <li>
+              <span>{post.data.title}</span>
+              <div>
+                <span class="tag">
+                  <button>{tag}</button>
+                </span>
+              </div>
+              <p>{post.data.description}</p>
+            </li>
+          </a>
+          ))}
+        </ul>
+      </div>
+      )}
   </article>
   <hr class="bottom-line" />
 
