@@ -182,7 +182,10 @@ export default defineConfig({
 		svgo: true,
 	},
 	output: 'server',
-	adapter: cloudflare(),
+	adapter: cloudflare({
+		imageService: 'compile',
+		prerenderEnvironment: 'node',
+	}),
 	vite: {
 		ssr: {
 			external: ['@resvg/resvg-js', 'fs', 'path', 'child_process', 'sharp'],
