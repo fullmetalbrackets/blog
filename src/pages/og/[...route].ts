@@ -19,7 +19,7 @@ export const { getStaticPaths, GET } = await OGImageRoute({
 		title: page.title,
 		description: page.description,
 		logo: {
-			path: resolve(process.cwd(), 'img/long-logo.png'),
+			path: resolve(process.cwd(), 'src/img/long-logo.png'),
 		},
 		font: {
 			title: {
@@ -39,8 +39,11 @@ export const { getStaticPaths, GET } = await OGImageRoute({
 		},
 		bgGradient: [[32, 33, 36]],
 		fonts: [
-			resolve(process.cwd(), 'fonts/AtkinsonHyperlegibleNext-Regular.ttf'),
-			resolve(process.cwd(), 'fonts/AtkinsonHyperlegibleNext-ExtraBold.ttf'),
+			resolve(process.cwd(), 'public/fonts/AtkinsonHyperlegibleNext-Regular.ttf'),
+			resolve(
+				process.cwd(),
+				'public/fonts/AtkinsonHyperlegibleNext-ExtraBold.ttf'
+			),
 		],
 	}),
 });
