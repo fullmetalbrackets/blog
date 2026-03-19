@@ -25,6 +25,3 @@
 
 /
   Cache-Control: public, max-age=3600
-
-/*
-  Content-Security-Policy: default-src 'self'; script-src 'self' static.cloudflareinsights.com; connect-src 'self' cloudflareinsights.com;
