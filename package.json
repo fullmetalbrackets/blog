@@ -20,7 +20,8 @@
 		"life": "node scripts/life.mjs",
 		"note": "node scripts/note.mjs",
 		"links": "node scripts/link.mjs",
-		"wiki": "node scripts/wiki.mjs"
+		"wiki": "node scripts/wiki.mjs",
+		"postbuild": "rm -f dist/server/wrangler.json"
 	},
 	"dependencies": {
 		"@astrojs/check": "0.9.8",
