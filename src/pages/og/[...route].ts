@@ -19,7 +19,7 @@ export const { getStaticPaths, GET } = await OGImageRoute({
 		title: page.title,
 		description: page.description,
 		logo: {
-			path: resolve(process.cwd(), 'src/img/long-logo.png'),
+			path: resolve(process.cwd(), 'src/img/assets/long-logo.png'),
 		},
 		font: {
 			title: {
