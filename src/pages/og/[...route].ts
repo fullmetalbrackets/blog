@@ -39,11 +39,11 @@ export const { getStaticPaths, GET } = await OGImageRoute({
 		bgGradient: [[32, 33, 36]],
 		fonts: [
 			new URL(
-				'../../../public/fonts/AtkinsonHyperlegibleNext-Regular.ttf',
+				'../../../fonts/AtkinsonHyperlegibleNext-Regular.ttf',
 				import.meta.url
 			).pathname,
 			new URL(
-				'../../../public/fonts/AtkinsonHyperlegibleNext-ExtraBold.ttf',
+				'../../../fonts/AtkinsonHyperlegibleNext-ExtraBold.ttf',
 				import.meta.url
 			).pathname,
 		],
