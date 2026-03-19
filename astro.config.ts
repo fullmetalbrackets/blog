@@ -183,9 +183,9 @@ export default defineConfig({
 	},
 	output: 'server',
 	adapter: cloudflare(),
-	vite: {
-		ssr: {
-			external: ['@resvg/resvg-js', 'fs', 'path', 'child_process', 'sharp'],
-		},
-	},
+	// vite: {
+	// 	ssr: {
+	// 		external: ['@resvg/resvg-js', 'fs', 'path', 'child_process', 'sharp'],
+	// 	},
+	// },
 });
