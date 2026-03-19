@@ -1,5 +1,6 @@
 export const prerender = true;
 
+import { resolve } from 'node:path';
 import { getCollection } from 'astro:content';
 import { OGImageRoute } from 'astro-og-canvas';
 
@@ -18,7 +19,7 @@ export const { getStaticPaths, GET } = await OGImageRoute({
 		title: page.title,
 		description: page.description,
 		logo: {
-			path: new URL('../../img/assets/long-logo.png', import.meta.url).pathname,
+			path: resolve(process.cwd(), 'img/long-logo.png'),
 		},
 		font: {
 			title: {
@@ -38,14 +39,8 @@ export const { getStaticPaths, GET } = await OGImageRoute({
 		},
 		bgGradient: [[32, 33, 36]],
 		fonts: [
-			new URL(
-				'../../../fonts/AtkinsonHyperlegibleNext-Regular.ttf',
-				import.meta.url
-			).pathname,
-			new URL(
-				'../../../fonts/AtkinsonHyperlegibleNext-ExtraBold.ttf',
-				import.meta.url
-			).pathname,
+			resolve(process.cwd(), 'fonts/AtkinsonHyperlegibleNext-Regular.ttf'),
+			resolve(process.cwd(), 'fonts/AtkinsonHyperlegibleNext-ExtraBold.ttf'),
 		],
 	}),
 });
