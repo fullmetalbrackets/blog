@@ -1,0 +1,56 @@
+---
+---
+<script>
+  function showTooltip(link: Element) {
+    const rect = link.getBoundingClientRect();
+    const tooltip = document.createElement('span');
+    tooltip.textContent = 'Copied!';
+    tooltip.style.cssText = `
+      position: fixed;
+      top: ${rect.top - 24}px;
+      left: ${rect.left + rect.width / 2}px;
+      transform: translateX(-50%);
+      background: var(--dropdown);
+      color: var(--text);
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      white-space: nowrap;
+      z-index: 1000;
+    `;
+    document.body.appendChild(tooltip);
+    setTimeout(() => tooltip.remove(), 1000);
+  }
+
+  async function copyToClipboard(text: string) {
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(text);
+    } else {
+      const textArea = document.createElement('textarea');
+      textArea.value = text;
+      textArea.style.cssText = 'position:fixed;left:-999999px';
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('h2 .heading-link').forEach((link) => {
+      link.addEventListener('click', async (e) => {
+        if (window.innerWidth > 768) e.preventDefault();
+
+        const href = link.getAttribute('href') ?? '';
+        const url = `${window.location.origin}${window.location.pathname}${href}`;
+
+        try {
+          await copyToClipboard(url);
+          showTooltip(link);
+        } catch (err) {
+          console.error('Copy failed:', err);
+        }
+      });
+    });
+  });
+</script>

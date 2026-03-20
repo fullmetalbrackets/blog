@@ -41,8 +41,9 @@ export default defineConfig({
 				rehypeAutolinkHeadings,
 				{
 					behavior: 'prepend',
+					test: 'h2',
 					properties: {
-						class: 'heading-link',
+						class: 'h2 heading-link',
 						ariaLabel: 'Link to this section',
 					},
 					content: {
@@ -66,10 +67,6 @@ export default defineConfig({
 	},
 
 	compressHTML: true,
-
-	// image: {
-	// 	service: passthroughImageService(),
-	// },
 
 	redirects: {
 		'/feed/': {

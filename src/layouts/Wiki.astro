@@ -4,6 +4,7 @@ import FormattedDate from "@components/FormattedDate.astro";
 import ScrollProgress from "@components/ScrollProgress.astro";
 import WikiArticle from "@components/WikiArticle.astro";
 import CodeblockCopy from "@components/CodeblockCopy.astro";
+import HeadingCopy from "@components/HeadingCopy.astro";
 import Related from '@icons/related.svg';
 import { getRelatedPosts } from '@utils/collections';
 
@@ -32,6 +33,9 @@ const selectedPosts = await getRelatedPosts(related ?? []);
     display: inline-flex;
     place-items: center;
     color: var(--emphasis);
+  }
+  .last-updated-on span {
+    margin-right: 0.5em;
   }
   .tag {
     margin: -0.2em auto 0.3em auto;
@@ -167,6 +171,7 @@ const selectedPosts = await getRelatedPosts(related ?? []);
 
   <ScrollProgress />
   <CodeblockCopy />
+  <HeadingCopy />
   <article data-pagefind-body>
     <h1 class="title">{title}</h1>
     <p class="tag" data-pagefind-ignore>
@@ -177,7 +182,7 @@ const selectedPosts = await getRelatedPosts(related ?? []);
       {
         updatedDate && (
           <div class="last-updated-on">
-            Updated&nbsp;<FormattedDate date={updatedDate} />
+            <span>Updated</span><FormattedDate date={updatedDate} />
           </div>
         )
       }
@@ -201,11 +206,6 @@ const selectedPosts = await getRelatedPosts(related ?? []);
             <a href={`/blog/${post.id}/`} rel="prefetch-intent" data-umami-event={`wiki-related-${post.id}`}>
             <li>
               <span>{post.data.title}</span>
-              <div>
-                <span class="tag">
-                  <button>{tag}</button>
-                </span>
-              </div>
               <p>{post.data.description}</p>
             </li>
           </a>

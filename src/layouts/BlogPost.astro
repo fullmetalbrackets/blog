@@ -9,6 +9,7 @@ import WebMentions from "@components/WebMentions.astro";
 import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
 import HowToSchema from "@components/HowToSchema.astro";
 import CodeblockCopy from "@components/CodeblockCopy.astro";
+import HeadingCopy from "@components/HeadingCopy.astro";
 import HCard from "@components/H-Card.astro";
 import type { BlogPostProps } from '../types';
 import type { MarkdownHeading } from '@astrojs/markdown-remark';
@@ -475,6 +476,7 @@ const selectedPosts = await getRelatedPosts(related ?? []);
     readingTime={readingTime}
   />
   <CodeblockCopy />
+  <HeadingCopy />
   <article class="h-entry" data-pagefind-body data-pub-date={pubDate.toISOString()}
   data-updated-date={updatedDate ? updatedDate.toISOString() : ''}>
     <h1 class="p-name">{title}</h1>
@@ -725,48 +727,5 @@ const selectedPosts = await getRelatedPosts(related ?? []);
         }
       }
     }
-  </script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('.heading-link').forEach((link) => {
-        link.addEventListener('click', async (e) => {
-          if (window.innerWidth > 768) {
-            e.preventDefault();
-          }
-          const url = window.location.origin + window.location.pathname + link.getAttribute('href');
-          try {
-            if (navigator.clipboard && navigator.clipboard.writeText) {
-              await navigator.clipboard.writeText(url);
-            } else {
-              const textArea = document.createElement('textarea');
-              textArea.value = url;
-              textArea.style.position = 'fixed';
-              textArea.style.left = '-999999px';
-              document.body.appendChild(textArea);
-              textArea.select();
-              document.execCommand('copy');
-              document.body.removeChild(textArea);
-            }            
-            const tooltip = document.createElement('span');
-            tooltip.textContent = 'Copied!';
-            tooltip.style.cssText = `
-              position: absolute;
-              background: var(--dropdown);
-              color: var(--text);
-              padding: 4px 8px;
-              border-radius: 4px;
-              font-size: 0.5em;
-              white-space: nowrap;
-              z-index: 1000;
-              left: 30em;
-            `;
-            link.appendChild(tooltip);
-            setTimeout(() => tooltip.remove(), 2000);
-          } catch (err) {
-            console.log('Copy failed:', err);
-          }
-        });
-      });
-    });
   </script>
 </BaseLayout>
