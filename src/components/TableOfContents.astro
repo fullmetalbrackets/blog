@@ -22,6 +22,17 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
     margin-left: -0.1em;
     margin-right: 0.1em;
   }
+  h2 a {
+    display: flex;
+    place-items: center;
+    color: var(--primary);
+  }
+  h2 a:hover {
+    color: var(--secondary);
+  }
+  h2 a:hover svg {
+    filter: var(--svg2);
+  }
   li a {
     color: var(--emphasis);
     margin: 0;
@@ -69,7 +80,11 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
 </style>
 
 <div class="toc-container">
-  <h2><TOC width={36} height={36}/>Table of Contents</h2>
+  <h2>
+    <a href="#top">
+      <TOC width={36} height={36}/>Table of Contents
+    </a>
+  </h2>
   <ol id="toc-list">
     <div class="toc-indicator" id="toc-indicator"></div>
     {
@@ -104,7 +119,7 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
     const observer = new IntersectionObserver(
       () => {
         const passed = headingEls.filter(el => {
-          return el.getBoundingClientRect().top < window.innerHeight * 0.5;
+          return el.getBoundingClientRect().top < window.innerHeight * 0.75;
         });
 
         const active = passed[passed.length - 1];
@@ -117,7 +132,7 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
 
         moveIndicator(activeLink);
       },
-      { rootMargin: '-10% 0px -50% 0px', threshold: 0 }
+      { rootMargin: '-10% 0px -20% 0px', threshold: 0 }
     );
 
     headingEls.forEach(el => observer.observe(el));
