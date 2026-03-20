@@ -47,12 +47,18 @@ const { class: className } = Astro.props;
     ul {
         grid-template-columns: auto auto;
         min-height: auto;
+        padding-top: 0.75em;
+        padding-right: 0.75em;
+        padding-left: 0.75em;
     }
     .ul-index {
-        padding-bottom: 1em;
+        padding-bottom: 0.75em;
     }
     li {
         margin: 0 auto 0.25em auto;
+    }
+    li a {
+        font-size: 0.925em;
     }
     li:hover, a {
       transition: none !important;
