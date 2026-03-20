@@ -8,7 +8,7 @@ tag: documentation
 
 ![Dell Optiplex 3020 Micro](../../img/wiki/optiplex3020micro.jpg)
 
-# Dell Optiplex 3020 Micro
+## Dell Optiplex 3020 Micro
 
 - **IP**: 192.168.0.225
 - Intel Pentium G3250T CPU @ 2.8 GHz

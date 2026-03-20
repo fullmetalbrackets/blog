@@ -8,7 +8,7 @@ related: ['set-up-pihole-on-linux', 'pihole-anywhere-tailscale']
 
 ![Raspberry Pi 5 Model B](../../img/wiki/raspberrypi.webp)
 
-# Raspberry Pi 5 Model B
+## Raspberry Pi 5 Model B
 
 - **IP**: 192.168.0.105
 - 2.4 GHz CPU

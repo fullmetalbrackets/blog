@@ -9,7 +9,7 @@ related: ['guide-to-zsh-ohmyzsh-plugins-and-theme']
 
 ![Oh My Zsh](../../img/blog/oh-my-zsh.png)
 
-# Zsh configuration file
+## Zsh configuration file
 
 ```bash
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
@@ -85,7 +85,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 ```
 
-# Aliases file
+## Aliases file
 
 ```bash
 alias l='ls -laF --color'

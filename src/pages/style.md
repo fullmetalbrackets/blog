@@ -16,11 +16,11 @@ Markdown style guide for this website.
 
 The following HTML `<h1>`—`<h6>` elements represent six levels of section headings. `<h1>` is the highest section level while `<h6>` is the lowest. (**Note:** The `<h2>` element has extra spacing at the top margin for design reasons.)
 
-# H1 - Page Title
+# H1 - Page/Post Title
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum exercitationem consequuntur quia placeat illum ex enim rerum quis aliquam. Accusamus.
 
-## H2 - Primary Heading
+## H2 - Primary/Section Heading
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum exercitationem consequuntur quia placeat illum ex enim rerum quis aliquam. Accusamus.
 
@@ -31,12 +31,6 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum exercitationem con
 #### H4 - Small Heading
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum exercitationem consequuntur quia placeat illum ex enim rerum quis aliquam. Accusamus.
-
-##### H5 - Smaller Heading
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum exercitationem consequuntur quia placeat illum ex enim rerum quis aliquam. Accusamus.
-
-###### H6 - Smallest Heading
 
 ## Paragraphs
 

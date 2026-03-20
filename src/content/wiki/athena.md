@@ -11,7 +11,7 @@ related: ['how-i-setup-home-server', 'comprehensive-guide-tailscale-securely-acc
 
 ![Dell XPS 8920](../../img/wiki/xps8920.jpg)
 
-# Dell XPS 8920
+## Dell XPS 8920
 
 - **Intel i7-7700K** @ 4.20 GHz
 - **24 GB RAM** (4 x 6 GB DDR4)

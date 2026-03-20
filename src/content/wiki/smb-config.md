@@ -7,7 +7,7 @@ tag: technical notes
 related: ['setup-a-samba-share-on-linux-via-command-line', 'quick-guide-setting-up-smb']
 ---
 
-# SMB configuration file
+## SMB configuration file
 
 This is the current working Samba configuration file for <a href="/wiki/athena/" target="_blank" data-umami-event="wiki-smb-config-to-athena">this blog post</a> with shares for each hard drive, except the boot drive. The file is located at `/etc/samba/smb.conf`
 

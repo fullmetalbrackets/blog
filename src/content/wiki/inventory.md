@@ -146,8 +146,6 @@ related: ['how-i-setup-home-server']
 
 ## Mothballed
 
-<br>
-
 <h3 class="mothball">HP Pavilion g7</h3>
 <h4 class="inv">Old laptop that was my first Plex server</h4>
 

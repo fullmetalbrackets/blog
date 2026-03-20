@@ -8,7 +8,7 @@ related: ['bootstrapping-fresh-install-with-ansible', 'guide-to-zsh-ohmyzsh-plug
 
 ![Ansible Branding](../../img/wiki/ansible.svg)
 
-# Ansible files
+## Ansible files
 
 ```yaml
 # hosts.yaml

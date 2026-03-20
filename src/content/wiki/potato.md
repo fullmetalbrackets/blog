@@ -9,7 +9,7 @@ related: ['setting-up-sweet-potato-debian-pihole', 'setup-home-assistant-sweet-p
 
 ![Libre Sweet Potato](../../img/blog/sweet-potato.jpg)
 
-# Libre Sweet Potato
+## Libre Sweet Potato
 
 - 1.4 GHz CPU
 - 2 GB RAM
