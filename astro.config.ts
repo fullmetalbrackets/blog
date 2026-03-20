@@ -67,9 +67,9 @@ export default defineConfig({
 
 	compressHTML: true,
 
-	image: {
-		service: passthroughImageService(),
-	},
+	// image: {
+	// 	service: passthroughImageService(),
+	// },
 
 	redirects: {
 		'/feed/': {
@@ -182,10 +182,12 @@ export default defineConfig({
 		svgo: true,
 	},
 	output: 'server',
-	adapter: cloudflare(),
+	adapter: cloudflare({
+		imageService: 'compile',
+	}),
 	vite: {
 		ssr: {
-			external: ['@resvg/resvg-js', 'fs', 'path', 'child_process', 'sharp'],
+			external: ['sharp'],
 		},
 	},
 });
