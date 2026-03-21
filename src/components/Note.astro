@@ -32,9 +32,12 @@ const {
 </div>
 <span class="info"><FormattedDate class="dt-published" date={pubDate} /><Icon width={32} height={32} /></span>
 
-<style>  
+<style>
   .external-link {
-    font-size: 0.875rem;
+    margin: 0.5em 0 -0.5em 0;
+  }
+  .external-link a {
+    font-size: 1.25em;
     font-family: var(--sub-font);
     font-weight: 500;
   }
@@ -105,6 +108,26 @@ const {
     border-radius: 0.25em;
     padding: 5px 8px 4px 8px;
     font-weight: 700;
-    font-size: 0.75em;
+    font-size: 1em;
+  }
+
+  a[target='_blank']::after {
+    content: '';
+    display: inline-block;
+    width: 0.65em;
+    height: 0.65em;
+    margin-left: 0.2em;
+    margin-bottom: 0;
+    background-color: currentColor;
+    mask-image: url('/assets/external.svg');
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+    vertical-align: middle;
+  }
+
+  a[target='_blank'][href^='/']::after,
+  a[target='_blank'][href^='#']::after {
+    content: none;
   }
 </style>
