@@ -1,8 +1,4 @@
-import {
-	defineConfig,
-	fontProviders,
-	passthroughImageService,
-} from 'astro/config';
+import { defineConfig, fontProviders } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import { remarkReadingTime } from './src/utils/remark-reading-time.ts';
@@ -14,6 +10,7 @@ import rehypeCodeblockCopy from './src/utils/rehype-codeblock-copy.ts';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import cloudflare from '@astrojs/cloudflare';
+import astroCompress from 'gab-astro-compress';
 
 export default defineConfig({
 	site: 'https://fullmetalbrackets.com',
@@ -25,7 +22,7 @@ export default defineConfig({
 	integrations: [
 		mdx(),
 		sitemap(),
-		(await import('@playform/compress')).default(),
+		astroCompress(),
 		yeskunallumami({
 			id: 'd9921361-56b2-4c33-8377-4c73cb1add2d',
 			hostUrl: 'https://u.adiaz.fyi',
