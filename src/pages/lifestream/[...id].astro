@@ -78,13 +78,13 @@ const typeName: Record<string, string> = {
           <dd>
             <FormattedDate
               date={data.updatedDate ?? data.pubDate}
-              monthFormat="long"
+              monthFormat="short"
             />
           </dd>
           {data.platform && (
             <>
-              <dt>Platform</dt>
-              <dd>{data.platform}</dd>
+              <dt>Played on</dt>
+              <dd class="platform">{data.platform}</dd>
             </>
           )}
         </dl>
@@ -250,10 +250,15 @@ const typeName: Record<string, string> = {
   }
 
   dd {
-    margin: 0;
+    margin: 0 0 0 1em;
     color: var(--secondary);
     display: flex;
     align-items: center;
+  }
+  
+  dd.platform {
+    margin-top: 1px;
+    font-weight: 500;
   }
 
   /* FormattedDate inside dd */
@@ -261,6 +266,7 @@ const typeName: Record<string, string> = {
     font-size: 1em;
     color: var(--date);
   }
+
 
   /* note / markdown body */
   .note {
