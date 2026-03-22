@@ -1915,29 +1915,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/imagesloaded@npm:^4.1.7":
-  version: 4.1.7
-  resolution: "@types/imagesloaded@npm:4.1.7"
-  dependencies:
-    "@types/jquery": "npm:*"
-  checksum: 10c0/fe38951b97c6f5894bffb69fcbca2074826814a62026f642d5b14a7cf241a84eec2e557f74781dec4dea3fab0d3aa9d3e89d04d16cde51f9ad91522a21f5957b
-  languageName: node
-  linkType: hard
-
-"@types/isotope-layout@npm:^3":
-  version: 3.0.15
-  resolution: "@types/isotope-layout@npm:3.0.15"
-  checksum: 10c0/2460de6db1db4d601f4e013ec3520a434dfeb32311bbf820aa872e92d21bcd9e25b0f890abb31b5d981dae5517a00db6109e48a2c0b1cce9d71738ffc73774a1
-  languageName: node
-  linkType: hard
-
-"@types/jquery@npm:*":
-  version: 4.0.0
-  resolution: "@types/jquery@npm:4.0.0"
-  checksum: 10c0/3e453accf2786e6ea5a5fb4b7f8c2298f42d3bc22253cc5a14f4d4a1a5ccc461db7af5a5df92a0b0c03c75a1968d2deda06597b63f8118613f88f27452911275
-  languageName: node
-  linkType: hard
-
 "@types/mdast@npm:^4.0.0, @types/mdast@npm:^4.0.4":
   version: 4.0.4
   resolution: "@types/mdast@npm:4.0.4"
@@ -2756,13 +2733,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"desandro-matches-selector@npm:^2.0.0":
-  version: 2.0.2
-  resolution: "desandro-matches-selector@npm:2.0.2"
-  checksum: 10c0/f4b1f42e6ccd6c97e93e3f99a64461eef2722075b03d8a9e349e31766436f8b385d1fd50802b024dae951dc69399f13de20a139c1187000fd5e2fcf11cb5eb00
-  languageName: node
-  linkType: hard
-
 "destr@npm:^2.0.5":
   version: 2.0.5
   resolution: "destr@npm:2.0.5"
@@ -3310,20 +3280,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ev-emitter@npm:^1.0.0":
-  version: 1.1.1
-  resolution: "ev-emitter@npm:1.1.1"
-  checksum: 10c0/332dcb444de2b1d81035fb22a10dd33926311baa7ea6fc24f1de7b60c6eff5b7e133611000fce740471f0c8f95259d3914d49b4201af2d85a51f0aeb8cb1ceda
-  languageName: node
-  linkType: hard
-
-"ev-emitter@npm:^2.1.2":
-  version: 2.1.2
-  resolution: "ev-emitter@npm:2.1.2"
-  checksum: 10c0/3c7a7983d1b964ca58e4ed025aeb1f4201b1a76ffd1c1f59677518f4d4a3bd82cd4d94fa1f1646b29949744c30725e4607505c75a1fb81832846537d65ac026f
-  languageName: node
-  linkType: hard
-
 "eventemitter3@npm:^5.0.1":
   version: 5.0.4
   resolution: "eventemitter3@npm:5.0.4"
@@ -3389,15 +3345,6 @@ __metadata:
     picomatch:
       optional: true
   checksum: 10c0/e345083c4306b3aed6cb8ec551e26c36bab5c511e99ea4576a16750ddc8d3240e63826cc624f5ae17ad4dc82e68a253213b60d556c11bfad064b7607847ed07f
-  languageName: node
-  linkType: hard
-
-"fizzy-ui-utils@npm:^2.0.0, fizzy-ui-utils@npm:^2.0.4":
-  version: 2.0.7
-  resolution: "fizzy-ui-utils@npm:2.0.7"
-  dependencies:
-    desandro-matches-selector: "npm:^2.0.0"
-  checksum: 10c0/4c36d45db4e2e0cf1507aa9633af6710a12bdc047146fa89505e10aedc5bfb16cbfb0da686d5dfd89a37e1da4bce86bbee365e22be88705ab4ffccd530b4902a
   languageName: node
   linkType: hard
 
@@ -3472,13 +3419,6 @@ __metadata:
   version: 2.0.5
   resolution: "get-caller-file@npm:2.0.5"
   checksum: 10c0/c6c7b60271931fa752aeb92f2b47e355eac1af3a2673f47c9589e8f8a41adc74d45551c1bc57b5e66a80609f10ffb72b6f575e4370d61cc3f7f3aaff01757cde
-  languageName: node
-  linkType: hard
-
-"get-size@npm:^2.0.0, get-size@npm:^2.0.2":
-  version: 2.0.3
-  resolution: "get-size@npm:2.0.3"
-  checksum: 10c0/c9703caa61b4d38385eab34aa5068f3a25ab40f6d9cda6dac3f0dc4dcd8da38f7b0283035e71c9f52a47b670b9315372cae46f58d66ad709a4939e57c1fdc6cc
   languageName: node
   linkType: hard
 
@@ -3793,15 +3733,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"imagesloaded@npm:^5.0.0":
-  version: 5.0.0
-  resolution: "imagesloaded@npm:5.0.0"
-  dependencies:
-    ev-emitter: "npm:^2.1.2"
-  checksum: 10c0/7eae70f19d298f411e2359e8f4be532f7e6842481147ac9234ff42d49f02be0f3b2c3c562466feaae699eb9b126d7ef2bec5f58878ab3efe486275997b87512b
-  languageName: node
-  linkType: hard
-
 "imurmurhash@npm:^0.1.4":
   version: 0.1.4
   resolution: "imurmurhash@npm:0.1.4"
@@ -3922,19 +3853,6 @@ __metadata:
   version: 2.2.2
   resolution: "iso-datestring-validator@npm:2.2.2"
   checksum: 10c0/34f05a6ac62f311feda19328c033d94a2a52789d07b9863fec304ed11f69f8bba7922dc6fef5b88a53bd722ddfd9446a2433cb29459885549f69af16672b6f74
-  languageName: node
-  linkType: hard
-
-"isotope-layout@npm:^3.0.6":
-  version: 3.0.6
-  resolution: "isotope-layout@npm:3.0.6"
-  dependencies:
-    desandro-matches-selector: "npm:^2.0.0"
-    fizzy-ui-utils: "npm:^2.0.4"
-    get-size: "npm:^2.0.0"
-    masonry-layout: "npm:^4.1.0"
-    outlayer: "npm:^2.1.0"
-  checksum: 10c0/ffd3d9848f35c94efded5ecdfc14ae09c8ea4cd741ed62fe7d727ffe272896ba496e14c98726ff4d5886fd8a7fa817ecc9996da33b416c52290521b2f48763d4
   languageName: node
   linkType: hard
 
@@ -4064,16 +3982,6 @@ __metadata:
   version: 3.0.4
   resolution: "markdown-table@npm:3.0.4"
   checksum: 10c0/1257b31827629a54c24a5030a3dac952256c559174c95ce3ef89bebd6bff0cb1444b1fd667b1a1bb53307f83278111505b3e26f0c4e7b731e0060d435d2d930b
-  languageName: node
-  linkType: hard
-
-"masonry-layout@npm:^4.1.0":
-  version: 4.2.2
-  resolution: "masonry-layout@npm:4.2.2"
-  dependencies:
-    get-size: "npm:^2.0.2"
-    outlayer: "npm:^2.1.0"
-  checksum: 10c0/991044cf7c22acbbb1135690314d68f9f237ef17315494c9dd25ed00fa0c526a8eb27d6bcf99a141a9d049bd62c5c251f66f9c8a4c201ca9c0944d8e44c0f09f
   languageName: node
   linkType: hard
 
@@ -5077,17 +4985,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"outlayer@npm:^2.1.0":
-  version: 2.1.1
-  resolution: "outlayer@npm:2.1.1"
-  dependencies:
-    ev-emitter: "npm:^1.0.0"
-    fizzy-ui-utils: "npm:^2.0.0"
-    get-size: "npm:^2.0.2"
-  checksum: 10c0/863f5568e16833d11d048a760ddd92395a9e1e49b51b669d863ff4ffda4cf8f6d91ebb2c4c20e26ca30175cb295f8f436075772a56c7e17ae40d3f095d449a53
-  languageName: node
-  linkType: hard
-
 "p-limit@npm:^7.3.0":
   version: 7.3.0
   resolution: "p-limit@npm:7.3.0"
@@ -5789,16 +5686,12 @@ __metadata:
     "@astrojs/mdx": "npm:^5.0.0"
     "@astrojs/rss": "npm:^4.0.17"
     "@astrojs/sitemap": "npm:^3.7.1"
-    "@types/imagesloaded": "npm:^4.1.7"
-    "@types/isotope-layout": "npm:^3"
     "@yeskunall/astro-umami": "npm:^0.0.7"
     astro: "npm:^6.0.6"
     astro-embed: "npm:^0.12.0"
     astro-og-canvas: "npm:^0.10.1"
     astro-social-share: "npm:^2.2.0"
     gab-astro-compress: "npm:^0.1.2"
-    imagesloaded: "npm:^5.0.0"
-    isotope-layout: "npm:^3.0.6"
     mdast-util-to-string: "npm:^4.0.0"
     prettier: "npm:^3.8.1"
     reading-time: "npm:^1.5.0"

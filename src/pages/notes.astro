@@ -1,10 +1,11 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
-import Note from '@components/Note.astro';
 import BackToTop from "@components/BackToTop.astro";
 import { getNotes } from '@utils/collections';
 import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
 import { SITE_URL, MASTODON } from "@consts";
+import { Picture } from 'astro:assets';
+import WIP from '@img/assets/under-construction.gif';
 
 const notes = await getNotes();
 const title = "Notes";
@@ -44,13 +45,11 @@ const desc = "List of all short-form notes posted as part of my lifestream.";
     <a class="u-url" href={`${SITE_URL}/notes/`} hidden>Permalink</a>
     <hr />
     <p>
-      List of all short-form notes posted as part of my <a href="/lifestream/">Lifestream</a>. These usually also get cross-posted to <a href={MASTODON} target="_blank" rel="me noreferrer noopener">Mastodon</a>, but only if I feel like it.
+      Microblog-style short-form notes, sometimes cross-posted to <a href={MASTODON} target="_blank" rel="me noreferrer noopener">Mastodon</a> if I feel like it. <sup>(Under construction.)</sup>
     </p>
-    <ul>
-        {notes.map((note) => (<li>
-            {note.data.type === 'note' && <Note {...note.data as any} />}
-        </li>))}
-    </ul>
+    <p>
+      <img src={WIP.src} width={WIP.width} height={WIP.height} alt="Under construction animated gif straight out of the 90's." />
+    </p>
     <hr />
     <BackToTop />
   </section>

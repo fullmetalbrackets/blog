@@ -1,0 +1,279 @@
+---
+export const prerender = true;
+
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+import { Image } from 'astro:assets';
+import FormattedDate from '@components/FormattedDate.astro';
+import GameIcon   from '@icons/game.svg';
+import BookIcon   from '@icons/book.svg';
+import MovieIcon  from '@icons/movie.svg';
+import TVShowIcon from '@icons/tvshow.svg';
+import LeftArrow from '@icons/arrow-left.svg';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('lifestream');
+  return entries.map(entry => ({
+    params: { id: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const { data } = entry;
+
+const vibes = {
+  hated:       { label: 'Hated',       emoji: '💩', color: '#e05252' },
+  disliked:    { label: 'Disliked',    emoji: '😕', color: '#e09552' },
+  liked:       { label: 'Liked',       emoji: '👍🏼', color: '#8fb8e0' },
+  loved:       { label: 'Loved',       emoji: '❤️', color: '#7ecb85' },
+  masterpiece: { label: 'Masterpiece', emoji: '🌟', color: '#ffd700' },
+} as const;
+
+const vibe = vibes[data.rating];
+
+const typeName: Record<string, string> = {
+  game:   'Game',
+  book:   'Book',
+  movie:  'Movie',
+  tvshow: 'TV Show',
+};
+---
+
+<BaseLayout title={data.title} description={`${typeName[data.type]} — ${vibe.label}`}>
+  <div class="entry-page">
+
+    <a class="back" href="/lifestream"><LeftArrow height={24} width={24} class="ring-arrow" />Back to Lifestream</a>
+
+    <div class="entry">
+
+      <div class="cover-col">
+        <div class="cover-wrap">
+          <Image
+            src={data.image}
+            alt={data.title}
+            widths={[280, 560]}
+            sizes="(max-width: 600px) 160px, 280px"
+          />
+        </div>
+        <span class="type-label">
+          {data.type === 'game'   && <GameIcon   width={24} height={24} />}
+          {data.type === 'book'   && <BookIcon   width={24} height={24} />}
+          {data.type === 'movie'  && <MovieIcon  width={24} height={24} />}
+          {data.type === 'tvshow' && <TVShowIcon width={24} height={24} />}
+          {typeName[data.type]}
+        </span>
+      </div>
+
+      <div class="info-col">
+        <h1>{data.title}</h1>
+
+        <p class="vibe" style={`color: ${vibe.color}`}>
+          {vibe.emoji} {vibe.label}
+        </p>
+
+        <dl class="meta">
+          <dt>Posted</dt>
+          <dd>
+            <FormattedDate
+              date={data.updatedDate ?? data.pubDate}
+              monthFormat="long"
+            />
+          </dd>
+          {data.platform && (
+            <>
+              <dt>Platform</dt>
+              <dd>{data.platform}</dd>
+            </>
+          )}
+        </dl>
+
+        {/* markdown body — personal note */}
+        <div class="note">
+          <Content />
+        </div>
+      </div>
+
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .entry-page {
+    padding: 2.35rem 0 3rem 0;
+  }
+
+  .back {
+    display: inline-flex;
+    place-items: center;
+    font-family: var(--sub-font);
+    font-size: 0.875em;
+    font-weight: 700;
+    text-decoration: none;
+    margin: 1em auto;
+    transition: none;
+  }
+
+  .back svg {
+    fill: var(--link);
+    margin-right: 0.25em;
+  }
+
+  .back:hover svg {
+    fill: var(--hover);
+  }
+
+  /* two-col layout */
+  .entry {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  @media (max-width: 600px) {
+    .entry-page {
+      padding-top: 0;
+      margin-right: 0.5em;
+      margin-left: 0.5em;      
+    }
+
+    .entry {
+      grid-template-columns: 1fr;
+    }
+
+    .cover-wrap {
+      width: 100%;
+    }
+
+    .cover-col {
+      flex-direction: column;
+      margin-bottom: -0.5em;
+    }
+
+    .note {
+      font-size: 18px;
+    }
+  }
+
+  /* cover */
+  .cover-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .cover-wrap {
+    border-radius: 0.25em;
+    overflow: hidden;
+    aspect-ratio: 2 / 3;
+    background: var(--accent);
+  }
+
+  .cover-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    /* reset global.css img margin */
+    margin: 0;
+    max-width: 100%;
+  }
+
+  .type-label {
+    display: inline-flex;
+    place-items: center;
+    align-items: center;
+    gap: 0.3em;
+    font-family: var(--sub-font);
+    font-size: 0.85em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--primary);
+  }
+
+  .type-label :global(svg) {
+    filter: var(--controller);
+    flex-shrink: 0;
+    filter: var(--lifestream);
+  }
+
+  /* info column */
+  .info-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .info-col h1 {
+    font-size: 1.5em;
+    line-height: 1.15;
+    color: var(--emphasis);
+    margin: 0;
+  }
+
+  .vibe {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35em;
+    font-family: var(--sub-font);
+    font-size: 0.75em;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  /* metadata */
+  .meta {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.3em 1em;
+    margin: 0;
+    padding: 0;
+    font-size: 0.75em;
+    border-top: 1px dotted var(--border);
+    border-bottom: 1px dotted var(--border);
+    padding: 0.6em 0;
+  }
+
+  dt {
+    font-family: var(--sub-font);
+    font-weight: 700;
+    color: var(--emphasis);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.9em;
+    display: flex;
+    align-items: center;
+    margin-right: -0.5em;
+  }
+
+  dd {
+    margin: 0;
+    color: var(--secondary);
+    display: flex;
+    align-items: center;
+  }
+
+  /* FormattedDate inside dd */
+  dd :global(time) {
+    font-size: 1em;
+    color: var(--date);
+  }
+
+  /* note / markdown body */
+  .note {
+    line-height: 1.7;
+    color: var(--text);
+    padding-top: 0.5rem;
+  }
+
+  .note :global(p) {
+    margin: 0 0 0.75em;
+  }
+
+  .note :global(p:last-child) {
+    margin-bottom: 0;
+  }
+</style>

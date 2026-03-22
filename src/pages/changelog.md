@@ -4,16 +4,14 @@ title: Changelog
 description: A log of major changes made to fullmetalbrackets.com
 ---
 
-<style>
-    sup {
-        font-size: 0.667em;
-        font-style: italic;
-    }
-</style>
-
 A log of major changes made to my site over the years. For more granular details, [see the GitHub repo](https://github.com/fullmetalbrackets/blog/commits/main/).
 
-<h2 class="flex">2026-03-14&nbsp;<span class="latest">latest</span></h2>
+<h2 class="flex">2026-03-22&nbsp;<span class="latest">latest</span></h2>
+
+- Redesign [lifestream](/lifestream/) page to be my media digest/catalogue/record thing
+- Remove `/digest` page (which was "under construction" this whole time anyway)
+
+<h2 class="flex">2026-03-14</h2>
 
 - Add [now](/now) page
 

@@ -2,14 +2,6 @@ import fs from 'fs';
 import path from 'path';
 import { execSync } from 'child_process';
 
-const today = () => {
-	const now = new Date();
-	return now
-		.toISOString()
-		.replace('T', ' ')
-		.replace(/\.\d{3}Z$/, '');
-};
-
 const slugify = (str) =>
 	str
 		.toLowerCase()
@@ -17,78 +9,44 @@ const slugify = (str) =>
 		.replace(/\s+/g, '-')
 		.replace(/[^\w-]/g, '');
 
+const now = new Date();
+const pubDate = now
+	.toISOString()
+	.replace('T', ' ')
+	.replace(/\.\d{3}Z$/, '');
+
 const templates = {
 	game: (title) => `type: game
-title: "${title}"
-pubDate: ${today()}
-developer: 
-publisher: 
-platform: []
-genre: []
-startDate: 2026-01-01 # release date of the game
-completed: false # default is true
+title: 
+pubDate: ${pubDate}
+platform: 
 image: ./_images/
-note: 
-dbid: 
-steamdb: 
-
+rating: 
+---
 `,
-	movie: (title) => `type: movie
-title: "${title}"
-pubDate: ${today()}
-director: 
-stars: []
-genre: []
-startDate: 2026-01-01 # release date of the movie
-note: 
+	movie: (title) => `---
+type: movie
+title: 
+pubDate: ${pubDate}
 image: ./_images/
-dbid: # tmdb
-
+rating: 
+---
 `,
-	tvshow: (title) => `type: tvshow
-title: "${title}"
-pubDate: ${today()}
-genre: []
-seasons: 
-startDate: 2026-01-01 # date of series premiere
-endDate: # date of series finale if applicable
-note: 
+	tvshow: (title) => `---
+type: tvshow
+title: 
+pubDate: ${pubDate}
 image: ./_images/
-dbid: # tmdb
-
+rating: 
+---
 `,
-	book: (title) => `type: book
-title: "${title}"
-pubDate: ${today()}
-author: 
-genre: []
-startDate: 2026-01-01 # release date of the book
+	book: (title) => `---
+type: book
+title: 
+pubDate: ${pubDate}
 image: ./_images/
-isbn: 
-url: 
-note: 
-
-`,
-	quote: (title) => `type: quote
-title: "${title}"
-pubDate: ${today()}
-quote: 
-attribution: 
-
-`,
-	image: (title) => `type: image
-title: "${title}"
-pubDate: ${today()}
-tag: 
-image: ./_images/
-
-`,
-	youtube: (title) => `type: youtube
-title: "${title}"
-pubDate: ${today()}
-videoId: 
-note: 
-
+rating: 
+---
 `,
 };
 
@@ -99,7 +57,7 @@ const type = typeFlag ? typeFlag.slice(2) : null;
 
 if (!title) {
 	console.error(
-		`Usage: yarn life "My Title" [${Object.keys(templates)
+		`Usage: yarn life title [${Object.keys(templates)
 			.filter((t) => t !== 'default')
 			.map((t) => `--${t}`)
 			.join('|')}]`
@@ -117,7 +75,7 @@ if (type && !templates[type]) {
 }
 
 const slug = slugify(title);
-const filename = type ? `${type}_${slug}.yml` : `${slug}.yml`;
+const filename = type ? `${type}_${slug}.md` : `${slug}.md`;
 const dir = 'src/content/lifestream';
 const file = path.join(dir, filename);
 

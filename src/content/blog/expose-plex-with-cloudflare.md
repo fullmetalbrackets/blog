@@ -75,11 +75,11 @@ In the Cloudflare dashboard, from your domain's _Overview_ page, click on **Acce
 
 1. On the sidebar, go to **Network** and choose **Tunnels** from the dropdown.
 
-![Creating a Cloudflare Tunnel.](../../img/blog/cloudflare-tunnel1.png 'Creating a Cloudflare Tunnel)
+![Creating a Cloudflare Tunnel.](../../img/blog/cloudflare-tunnel1.png 'Creating a Cloudflare Tunnel')
 
 2. Click on **Add a tunnel**, then on the next page choose **Select Cloudflared**.
 
-![Selecting a connector type.](../../img/blog/cloudflare-tunnel2.png 'Selecting a connector type)
+![Selecting a connector type.](../../img/blog/cloudflare-tunnel2.png 'Selecting a connector type')
 
 3. On the following page name your tunnel, then click **Save tunnel**.
 

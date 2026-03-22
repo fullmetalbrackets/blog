@@ -22,14 +22,14 @@ const { class: className } = Astro.props;
     background-color: var(--blockquote);
     font-weight: bold;
     border-radius: 0.5em;
-    margin: 0.5em auto 0 auto;
+    margin: 0.65em auto 0 auto;
     padding-top: 1.5em;
     padding-left: 1.5em;
     padding-right: 1.5em;
   }
   .ul-index {
-    min-height: 21.82em;
-    padding-bottom: 2em;
+    /* min-height: 21.82em; */
+    padding-bottom: 1.2em;
   }
   .ul-404 {
     padding-bottom: 1.5em;
@@ -47,7 +47,7 @@ const { class: className } = Astro.props;
     ul {
         grid-template-columns: auto auto;
         min-height: auto;
-        padding-top: 0.75em;
+        padding-top: 1.25em;
         padding-right: 0.75em;
         padding-left: 0.75em;
     }
@@ -84,9 +84,6 @@ const { class: className } = Astro.props;
             </li>
             <li>
                 <a href="/colophon/" data-umami-event="explore-colophon">Colophon</a>
-            </li>
-            <li>
-                <a href="/digest/" data-umami-event="explore-digest">Digest</a>
             </li>
             <li>
                 <a href="/games/" data-umami-event="explore-games">Games</a>

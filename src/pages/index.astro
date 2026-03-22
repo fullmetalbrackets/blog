@@ -52,6 +52,9 @@ import { SITE_TITLE, SITE_DESCRIPTION, GITHUB, MASTODON, BLUESKY } from "@consts
     text-align: justify;
     text-wrap: balanced;
   }
+  .exp {
+    margin-top: -2.25em;
+  }
   @media screen and (max-width: 992px) {
     .column-item {
       grid-template-columns: auto;
@@ -63,14 +66,9 @@ import { SITE_TITLE, SITE_DESCRIPTION, GITHUB, MASTODON, BLUESKY } from "@consts
     }
   }
   @media screen and (max-width: 667px) {
-      /* section {
-      font-size: 0.925em;
-      margin-bottom: 1em;
-      line-height: 1.2;
+    .exp {
+      margin-top: 0.5em;
     }
-    .about {
-      font-size: 2em;
-    } */
   }
 </style>
 
@@ -92,16 +90,18 @@ import { SITE_TITLE, SITE_DESCRIPTION, GITHUB, MASTODON, BLUESKY } from "@consts
       <PostsColumns>
         <Popular />
       </PostsColumns>
-        <RecentNotes />
       <PostsColumns>
         <RecentLinks />
       </PostsColumns>
       <PostsColumns>
         <Categories />
       </PostsColumns>
-      <PostsColumns>
+      <!-- <PostsColumns>
         <Explore class="ul-index" />
-      </PostsColumns>
+      </PostsColumns> -->
+    </div>
+    <div class="exp">
+      <Explore class="ul-index" />
     </div>
     <br>
   </section>
