@@ -313,6 +313,20 @@ aside > a:focus {
 	font-weight: 900;
 }
 
+span.prior {
+	font-size: 1.25em;
+	font-family: var(--sub-font);
+	font-weight: 700;
+	color: var(--primary);
+	margin: 0 0 -2em 0;
+	padding: 0 0 -2em 0;
+}
+
+.prior * {
+	margin: -2em 0 0 0;
+	padding: 0;
+}
+
 /* codeblocks */
 code {
 	padding: 0 4.5px 1px 4.5px;

@@ -41,7 +41,7 @@ const typeName: Record<string, string> = {
 };
 ---
 
-<BaseLayout title={data.title} description={`${typeName[data.type]} — ${vibe.label}`}>
+<BaseLayout title={data.title} description={`${typeName[data.type]} — ${vibe.label}`} disableHeadingLinks={true}>
   <div class="entry-page">
 
     <a class="back" href="/lifestream"><LeftArrow height={24} width={24} class="ring-arrow" />Back to Lifestream</a>
@@ -54,7 +54,7 @@ const typeName: Record<string, string> = {
             src={data.image}
             alt={data.title}
             widths={[280, 560]}
-            sizes="(max-width: 600px) 160px, 280px"
+            sizes="(max-width: 667px) 160px, 280px"
           />
         </div>
         <span class="type-label">
@@ -78,13 +78,13 @@ const typeName: Record<string, string> = {
           <dd>
             <FormattedDate
               date={data.updatedDate ?? data.pubDate}
-              monthFormat="short"
+              monthFormat="numeric"
             />
           </dd>
           {data.platform && (
             <>
-              <dt>Played on</dt>
-              <dd class="platform">{data.platform}</dd>
+              <dt>Platform</dt>
+              <dd>{data.platform}</dd>
             </>
           )}
         </dl>
@@ -99,6 +99,26 @@ const typeName: Record<string, string> = {
   </div>
 </BaseLayout>
 
+
+<style is:global slot="head">
+  .heading-link { display: none; }
+  .note ul {
+    font-size: 0.75em;
+    font-family: var(--sub-font);
+    font-weight: 500;
+    color: var(--emphasis);
+    margin: 0 0 0 1em;
+    padding: 0;
+  }
+  @media (max-width: 667px) {
+    .note h2 {
+      font-size: 24px;
+    }
+    .note ul {
+      font-size: 18px;
+    }
+  }
+</style>
 <style>
   .entry-page {
     padding: 2.35rem 0 3rem 0;
@@ -132,7 +152,7 @@ const typeName: Record<string, string> = {
     align-items: start;
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 667px) {
     .entry-page {
       padding-top: 0;
       margin-right: 0.5em;
@@ -250,15 +270,10 @@ const typeName: Record<string, string> = {
   }
 
   dd {
-    margin: 0 0 0 1em;
+    margin: 0;
     color: var(--secondary);
     display: flex;
     align-items: center;
-  }
-  
-  dd.platform {
-    margin-top: 1px;
-    font-weight: 500;
   }
 
   /* FormattedDate inside dd */
@@ -266,7 +281,6 @@ const typeName: Record<string, string> = {
     font-size: 1em;
     color: var(--date);
   }
-
 
   /* note / markdown body */
   .note {

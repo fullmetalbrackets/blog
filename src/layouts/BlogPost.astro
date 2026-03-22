@@ -35,9 +35,7 @@ const selectedPosts = await getRelatedPosts(related ?? []);
 ---
 
 <BaseLayout title={title} description={description} ogType="article" ogImage={`${SITE_URL}/og/${slug}.png`}>
-  <head>
-    <link rel="stylesheet" href="/prism.css" />
-  </head>
+  <link rel="stylesheet" href="/prism.css" slot="head" />
   <style scoped>
     h1 {
       margin-bottom: 0.125em;
