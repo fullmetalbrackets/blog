@@ -9,4 +9,4 @@ rating: masterpiece
 One of my favorite movies of all time. Who knows what number of rewatch this is when I've been rewatching it every few years since the 90's.
 
 ## Prior Viewings
-- 2024-10-08
+- 10/8/2024
