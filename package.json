@@ -29,15 +29,12 @@
 		"@astrojs/mdx": "^5.0.0",
 		"@astrojs/rss": "^4.0.17",
 		"@astrojs/sitemap": "^3.7.1",
-		"@types/imagesloaded": "^4.1.7",
 		"@yeskunall/astro-umami": "^0.0.7",
 		"astro": "^6.0.6",
 		"astro-embed": "^0.12.0",
 		"astro-og-canvas": "^0.10.1",
 		"astro-social-share": "^2.2.0",
 		"gab-astro-compress": "^0.1.2",
-		"imagesloaded": "^5.0.0",
-		"isotope-layout": "^3.0.6",
 		"mdast-util-to-string": "^4.0.0",
 		"reading-time": "^1.5.0",
 		"rehype-autolink-headings": "^7.1.0",
@@ -49,7 +46,6 @@
 	},
 	"packageManager": "yarn@4.12.0",
 	"devDependencies": {
-		"@types/isotope-layout": "^3",
 		"prettier": "^3.8.1"
 	},
 	"resolutions": {
