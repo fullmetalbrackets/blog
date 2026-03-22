@@ -16,7 +16,8 @@ const pubDate = now
 	.replace(/\.\d{3}Z$/, '');
 
 const templates = {
-	game: (title) => `type: game
+	game: (title) => `---
+type: game
 title: 
 pubDate: ${pubDate}
 platform: 
