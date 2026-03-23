@@ -3,12 +3,15 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import FormattedDate from "@components/FormattedDate.astro";
 import ScrollProgress from "@components/ScrollProgress.astro";
 import WikiArticle from "@components/WikiArticle.astro";
+import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
 import CodeblockCopy from "@components/CodeblockCopy.astro";
 import HeadingCopy from "@components/HeadingCopy.astro";
 import Related from '@icons/related.svg';
 import { getRelatedPosts } from '@utils/collections';
+import { SITE_URL } from "@consts";
 
 const { title, description, tag, pubDate, updatedDate, related } = Astro.props;
+const { slug } = Astro.params;
 const selectedPosts = await getRelatedPosts(related ?? []);
 ---
 
@@ -165,8 +168,12 @@ const selectedPosts = await getRelatedPosts(related ?? []);
 
 <BaseLayout title={title} description={description} ogType="article">
   <link rel="stylesheet" href="/prism.css" slot="head" />
+  <BreadcrumbSchema slot="head" crumbs={[
+    { name: "Home", url: `${ SITE_URL }/` },
+    { name: "Wiki", url: `${ SITE_URL }/wiki/` },
+    { name: title, url: `${ SITE_URL }/wiki/${slug}/` }
+  ]} />
   <WikiArticle slot="head" title={title} description={description} />
-
   <ScrollProgress />
   <CodeblockCopy />
   <HeadingCopy />
