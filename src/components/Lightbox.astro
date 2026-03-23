@@ -1,0 +1,18 @@
+---
+---
+
+<script>
+  import GLightbox from 'glightbox';
+  import 'glightbox/dist/css/glightbox.css';
+
+  // Wrap each markdown image in a glightbox anchor
+  document.querySelectorAll<HTMLImageElement>('.e-content img').forEach((img) => {
+    const a = document.createElement('a');
+    a.href = img.src;
+    a.classList.add('glightbox');
+    img.parentNode!.insertBefore(a, img);
+    a.appendChild(img);
+  });
+
+  GLightbox({ selector: '.glightbox' });
+</script>

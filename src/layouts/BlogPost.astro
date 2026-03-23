@@ -11,6 +11,7 @@ import HowToSchema from "@components/HowToSchema.astro";
 import CodeblockCopy from "@components/CodeblockCopy.astro";
 import HeadingCopy from "@components/HeadingCopy.astro";
 import HCard from "@components/H-Card.astro";
+import Lightbox from "@components/Lightbox.astro";
 import type { BlogPostProps } from '../types';
 import type { MarkdownHeading } from '@astrojs/markdown-remark';
 import {
@@ -473,6 +474,7 @@ const selectedPosts = await getRelatedPosts(related ?? []);
     headings={headings}
     readingTime={readingTime}
   />
+  <Lightbox />
   <CodeblockCopy />
   <HeadingCopy />
   <article class="h-entry" data-pagefind-body data-pub-date={pubDate.toISOString()}

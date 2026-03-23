@@ -3429,6 +3429,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"glightbox@npm:^3.3.1":
+  version: 3.3.1
+  resolution: "glightbox@npm:3.3.1"
+  checksum: 10c0/02aa97dbafece20027032a6dad19d3827ee18ac002b07e4e3c38e541a6efb0d67971b9d25fb019ac61e6a1a90dd08b3f1b2c69f759003706b22a1d3260bf1a89
+  languageName: node
+  linkType: hard
+
 "glob@npm:^13.0.0":
   version: 13.0.6
   resolution: "glob@npm:13.0.6"
@@ -5692,6 +5699,7 @@ __metadata:
     astro-og-canvas: "npm:^0.10.1"
     astro-social-share: "npm:^2.2.0"
     gab-astro-compress: "npm:^0.1.2"
+    glightbox: "npm:^3.3.1"
     mdast-util-to-string: "npm:^4.0.0"
     prettier: "npm:^3.8.1"
     reading-time: "npm:^1.5.0"
