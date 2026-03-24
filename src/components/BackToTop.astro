@@ -9,9 +9,27 @@
         margin: 1em 0 1.5em 0;
     }
     button {
+        display: flex;
+        place-items: center;
         background: var(--primary);
         font-size: 1em;
         margin: 0 auto;
+    }
+    button svg {
+        display: flex;
+        place-items: center;
+        fill: currentColor;
+        width: 20px;
+        height: 20px;
+        margin: 0 0.25em 0 0;
+        padding: 0;
+    }
+    .back svg {
+        stroke: black;
+        stroke-width: 1.25;
+        width: 16px;
+        height: 16px;
+        margin: 0 0 0 0.25em;
     }
     @media screen and (max-width: 1190px) {
         button {
@@ -21,6 +39,6 @@
 </style>
 
 <aside>
-    <a href="/"><button>⟰ Home</button></a>
-    <a href="#top"><button>Back to Top &uarr;</button></a>
+    <a href="/"><button><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>home</title><path d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z" /></svg> Home</button></a>
+    <a href="#top"><button class="back">Back to Top <svg class="c_c c_d c_e c_f c_cd" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M7.5 14V3.439l-4.387 4.29-.699-.714L8 1.55l5.586 5.465-.7.714L8.5 3.44V14h-1z"></path></svg></button></a>
 </aside>

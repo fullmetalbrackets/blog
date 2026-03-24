@@ -56,85 +56,118 @@ const selectedPosts = await getRelatedPosts(related ?? []);
   .bottom-line {
     margin: 2em auto 1.5em auto;
   }
-  .wiki-aside {
-    display: inline-flex;
+  .wiki-nav {
+    display: flex;
     justify-content: space-between;
-    font-size: 1.5em;
+    font-size: 1em;
     margin: 0 auto 1em auto;
     padding: 0 auto;
     width: 100%;
   }
-  .wiki-aside button {
+  .wiki-nav button {
+    display: flex;
+    place-items: center;
     background: var(--primary);
   }
-      .related {
-      display: inline;
+  .related {
+    display: inline;
+  }
+  .related h3 {
+    display: flex;
+    place-items: center;
+    font-size: 1.25em;
+    color: var(--primary);
+    margin: 1em 0 1em 0;
+    border-top: transparent;
+    border-left: transparent;
+    border-right: transparent;
+    border-bottom: thick dotted var(--border);
+  }
+  .related svg {
+    filter: var(--toc);
+    margin-left: -0.135em;
+    margin-right: 0.1em;
+  }
+  .related ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  .related li {
+    border: 2px solid transparent;
+    background-color: var(--blockquote);
+    color: var(--emphasis);
+    padding: 0.75em 1em 0.85em 1em;
+    margin: 1em;
+    border-radius: 0.5em;
+  }
+  .related li span {
+    font-size: 1em;
+    font-weight: 700;
+    margin-bottom: 0;
+    line-height: 1.2;
+  }
+  .related li p {
+    color: var(--text);
+    font-size: 0.875em;
+    margin-top: 0.25em;
+    margin-bottom: 0;
+    line-height: 1.2;
+  }
+  .related li button {
+    margin: 0 0.5em 0.25em 0;
+  }
+  .related li:hover {
+    color: var(--hover);
+    border: 2px solid var(--emphasis);
+  }
+  .home button svg {
+    display: flex;
+    place-items: center;
+    fill: currentColor;
+    width: 20px;
+    height: 20px;
+    margin: 0 0.25em 0 0;
+    padding: 0;
+  }
+  .back button svg {
+    display: flex;
+    place-items: center;
+    fill: currentColor;
+    width: 16px;
+    height: 16px;
+    margin: 0 0.25em 0 0;
+    padding: 0;
+    stroke: black;
+    stroke-width: 1.25;
+  }
+  .go-top button svg {
+    display: flex;
+    place-items: center;
+    fill: currentColor;
+    width: 16px;
+    height: 16px;
+    margin: 0 0 0 0.25em;
+    padding: 0;
+    stroke: black;
+    stroke-width: 1.25;
+  }
+  @media screen and (min-width: 2108px) {
+    .blog-tags, .info, .updated {
+      position: absolute;
+      left: 2em;
+      width: 35%;
+      max-width: 35%;
     }
-    .related h3 {
-      display: flex;
-      place-items: center;
-      font-size: 1.25em;
-      color: var(--primary);
-      margin: 1em 0 1em 0;
-      border-top: transparent;
-      border-left: transparent;
-      border-right: transparent;
-      border-bottom: thick dotted var(--border);
+    .blog-tags {
+      top: 4.55em;
     }
-    .related svg {
-      filter: var(--toc);
-      margin-left: -0.135em;
-      margin-right: 0.1em;
+    .info {
+      top: 6em;
     }
-    .related ul {
-      list-style-type: none;
-      padding: 0;
+    .updated {
+      top: 7.55em;
     }
-    .related li {
-      border: 2px solid transparent;
-      background-color: var(--blockquote);
-      color: var(--emphasis);
-      padding: 0.75em 1em 0.85em 1em;
-      margin: 1em;
-      border-radius: 0.5em;
-    }
-    .related li span {
-      font-size: 1em;
-      font-weight: 700;
-      margin-bottom: 0;
-      line-height: 1.2;
-    }
-    .related li p {
-      color: var(--text);
-      font-size: 0.875em;
-      margin-top: 0.25em;
-      margin-bottom: 0;
-      line-height: 1.2;
-    }
-    .related li button {
-      margin: 0 0.5em 0.25em 0;
-    }
-    .related li:hover {
-      color: var(--hover);
-      border: 2px solid var(--emphasis);
-    }
-    @media screen and (min-width: 2108px) {
-      .blog-tags, .info, .updated {
-        position: absolute;
-        left: 2em;
-        width: 35%;
-        max-width: 35%;
-      }
-      .blog-tags {
-        top: 4.55em;
-      }
-      .info {
-        top: 6em;
-      }
-      .updated {
-        top: 7.55em;
-      }
-    }
+  }
   @media screen and (max-width: 667px) {
     article {
       margin: 1em 0.5em 1em 0.5em;
@@ -221,11 +254,11 @@ const selectedPosts = await getRelatedPosts(related ?? []);
   </article>
   <hr class="bottom-line" />
 
-  <aside class="wiki-aside">
-    <a href="/wiki/" rel="prefetch-intent" class="top blog-tag"><button>↩ Wiki</button></a>
-    <a href="/" rel="prefetch-intent" class="top blog-tag home"><button>⟰ Home</button></a>
-    <a href="#top" class="top blog-tag"><button>Top ↑</button></a>
-  </aside>
+  <nav class="wiki-nav">
+    <a href="/wiki/" rel="prefetch-intent" class="top blog-tag back"><button><svg class="c_c c_d c_e c_f c_cd" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M14 7.5H3.439l4.29-4.387-.714-.699L1.55 8l5.465 5.586.714-.7L3.44 8.5h10.56v-1z"></path></svg> Wiki</button></a>
+    <a href="/" rel="prefetch-intent" class="top blog-tag home"><button><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>home</title><path d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z" /></svg> Home</button></a>
+    <a href="#top" class="top blog-tag go-top"><button>Top <svg class="c_c c_d c_e c_f c_cd" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M7.5 14V3.439l-4.387 4.29-.699-.714L8 1.55l5.586 5.465-.7.714L8.5 3.44V14h-1z"></path></svg></button></a>
+  </nav>
 
   <script is:inline>
     document.querySelectorAll('blockquote').forEach((blockquote) => {

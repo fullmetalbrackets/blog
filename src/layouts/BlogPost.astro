@@ -271,7 +271,7 @@ const selectedPosts = await getRelatedPosts(related ?? []);
       margin-top: 0.5em;
       margin-bottom: 1.5em;
     }
-    .blog-aside {
+    .blog-nav {
       display: inline-flex;
       justify-content: space-between;
       font-size: 1.5em;
@@ -279,13 +279,47 @@ const selectedPosts = await getRelatedPosts(related ?? []);
       padding: 0 auto;
       width: 100%;
     }
-    .blog-aside button {
+    .blog-nav button {
       background: var(--primary);
+      display: flex;
+      place-items: center;
+      font-size: 0.5em;
     }
-    	a:hover .blog-aside button:not(.theme-toggle, .dropdown-toggle),
-      .blog-aside button:not(.theme-toggle, .dropdown-toggle):hover {
-        background-color: var(--secondary);
-      }
+    .home button svg {
+      display: flex;
+      place-items: center;
+      fill: currentColor;
+      width: 20px;
+      height: 20px;
+      margin: 0 0.25em 0 0;
+      padding: 0;
+    }
+    .back button svg {
+      display: flex;
+      place-items: center;
+      fill: currentColor;
+      width: 16px;
+      height: 16px;
+      margin: 0 0.25em 0 0;
+      padding: 0;
+      stroke: black;
+      stroke-width: 1.25;
+    }
+    .go-top button svg {
+      display: flex;
+      place-items: center;
+      fill: currentColor;
+      width: 16px;
+      height: 16px;
+      margin: 0 0 0 0.25em;
+      padding: 0;
+      stroke: black;
+      stroke-width: 1.25;
+    }
+    a:hover .blog-nav button:not(.theme-toggle, .dropdown-toggle),
+    .blog-nav button:not(.theme-toggle, .dropdown-toggle):hover {
+      background-color: var(--secondary);
+    }
     .related {
       display: inline;
     }
@@ -549,7 +583,7 @@ const selectedPosts = await getRelatedPosts(related ?? []);
   
   <Comments />
 
-  <aside class="edit-post">
+  <nav class="edit-post">
     <div>
       <span>
         Error in this article?
@@ -568,9 +602,9 @@ const selectedPosts = await getRelatedPosts(related ?? []);
         </button>
       </span>
     </div>
-  </aside>
+  </nav>
 
-  <aside class="mid-end">
+  <nav class="mid-end">
     <div class="coffee">
       <span>Was this article helpful?</span>
         <a href={DONATE}>
@@ -592,9 +626,9 @@ const selectedPosts = await getRelatedPosts(related ?? []);
         title={title}
       />
     </div>
-  </aside>
+  </nav>
 
-  <aside class="post-end">
+  <nav class="post-end">
     <div class="umami">
       <span>
         Want to see article stats?
@@ -626,14 +660,14 @@ const selectedPosts = await getRelatedPosts(related ?? []);
           </a>
         </button>
     </div>
-  </aside>
+  </nav>
 
   <hr class="endline" />
-  <aside class="blog-aside">
-    <a href="/blog/" rel="prefetch-intent" class="top blog-tag"><button>↩ Blog</button></a>
-    <a href="/" rel="prefetch-intent" class="top blog-tag home"><button>⟰ Home</button></a>
-    <a href="#top" class="top blog-tag"><button>Top ↑</button></a>
-  </aside>
+  <nav class="blog-nav">
+    <a href="/blog/" rel="prefetch-intent" class="top blog-tag back"><button><svg class="c_c c_d c_e c_f c_cd" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M14 7.5H3.439l4.29-4.387-.714-.699L1.55 8l5.465 5.586.714-.7L3.44 8.5h10.56v-1z"></path></svg> Blog</button></a>
+    <a href="/" rel="prefetch-intent" class="top blog-tag home"><button><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>home</title><path d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z" /></svg> Home</button></a>
+    <a href="#top" class="top blog-tag go-top"><button>Top <svg class="c_c c_d c_e c_f c_cd" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M7.5 14V3.439l-4.387 4.29-.699-.714L8 1.55l5.586 5.465-.7.714L8.5 3.44V14h-1z"></path></svg></button></a>
+  </nav>
 
   <script is:inline>
     document.querySelectorAll('blockquote').forEach((blockquote) => {
