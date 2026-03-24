@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
+import BackToTop from "@components/BackToTop.astro";
 import { getEntry } from 'astro:content';
-import { Image } from 'astro:assets';
 import Switch2 from '@img/games/switch2.svg';
 import Switch from '@img/games/switch.svg';
 import Wii from '@img/games/wii.svg';
@@ -80,6 +80,8 @@ const desc = "List of all video games I own by platform.";
     );
   })}
 </section>
+<hr>
+<BackToTop />
 
 <style>
   section {
