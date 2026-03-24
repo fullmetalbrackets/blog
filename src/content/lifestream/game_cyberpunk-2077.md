@@ -11,5 +11,5 @@ I got the game at release and beat it within a month. (I encountered very few bu
 
 Second playthrough of the game, after many game-changing patches. I like the changes. No DLC, I'll get it on a good sale and come back for round 3.
 
-Previously Played
+## Previously Played
 - 12/8/2020
