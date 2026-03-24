@@ -4,15 +4,6 @@
 		"data": {
 			"data": [
 				{
-					"title": "Aliens",
-					"grandparent_title": "",
-					"parent_title": "",
-					"media_type": "movie",
-					"stopped": 1767317100,
-					"poster": "../../data/_images/22060.jpg",
-					"rating_key": 22060
-				},
-				{
 					"title": "The Twilight Saga: Breaking Dawn - Part 2",
 					"year": 2012,
 					"media_type": "movie",

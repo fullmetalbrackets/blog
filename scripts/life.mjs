@@ -21,7 +21,7 @@ type: game
 title: 
 pubDate: ${pubDate}
 platform: 
-image: ./_images/
+image: ./_images/${title}.
 rating: 
 ---
 `,
@@ -29,7 +29,7 @@ rating:
 type: movie
 title: 
 pubDate: ${pubDate}
-image: ./_images/
+image: ./_images/${title}.
 rating: 
 ---
 `,
@@ -37,15 +37,17 @@ rating:
 type: tvshow
 title: 
 pubDate: ${pubDate}
-image: ./_images/
+image: ./_images/${title}.
+season: 
 rating: 
 ---
 `,
 	book: (title) => `---
 type: book
 title: 
+author: 
 pubDate: ${pubDate}
-image: ./_images/
+image: ./_images/${title}.
 rating: 
 ---
 `,
