@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 import FormattedDate from "@components/FormattedDate.astro";
+import BackToTop from "@components/BackToTop.astro";
 import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
 import { SITE_URL } from "@consts";
 
@@ -37,6 +38,77 @@ const blogs = [
 
 const lastUpdated = new Date('2026-03-20T12:00');
 ---
+
+<BaseLayout title={title} description={desc}>
+  <BreadcrumbSchema slot="head" crumbs={[
+    { name: "Home", url: `${SITE_URL}/` },
+    { name: "Blogroll", url: `${SITE_URL}/blogroll/` }
+  ]} />
+  <section class="h-feed" data-pagefind-body>
+    <h1 class="p-name">{title}</h1>
+    <a class="u-url" href={`${SITE_URL}/blogroll/`} hidden>Permalink</a>
+    <hr />
+    <p>A list of blogs that I follow and regularly read. All links are in alphabetical order.</p>
+    <p class="flex">
+      <span class="updated">
+        Last updated
+      </span>
+      <FormattedDate date={lastUpdated} monthFormat="long" />
+    </p>
+    <ul>
+      {blogs.map(blog => (
+        <li class="h-entry">
+          <div class="blog-link">
+            <a href={blog.url} target="_blank" rel="noopener noreferrer"
+              data-umami-event={`blogroll-${blog.id}`} class="u-bookmark-of left">
+              <img
+                src={getFavicon(blog.url)}
+                alt={`${blog.name} favicon`}
+                class="favicon"
+                width="20"
+                height="20"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="p-name name">{blog.name}</span>
+            </a>
+            <div class="right">
+              <span class="url"><a href={blog.url}>{blog.url.replace('https://', '').replace(/\/$/, '')}</a></span>
+              {blog.feed === '#' ? (
+                <span class="rss no-feed" title="No RSS feed available" aria-label="No RSS feed">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+                    <rect width="256" height="256" rx="55" ry="55" fill="#888"/>
+                    <rect width="246" height="246" rx="50" ry="50" x="5" y="5" fill="#aaa"/>
+                    <rect width="236" height="236" rx="47" ry="47" x="10" y="10" fill="#999"/>
+                    <circle cx="68" cy="189" r="24" fill="#FFF"/>
+                    <path d="M160 213h-34a82 82 0 0 0 -82 -82v-34a116 116 0 0 1 116 116z" fill="#FFF"/>
+                    <path d="M184 213A140 140 0 0 0 44 73 V 38a175 175 0 0 1 175 175z" fill="#FFF"/>
+                  </svg>
+                  <span class="tooltip">No feed &#9785;</span>
+                </span>
+              ) : (
+                <a href={blog.feed} target="_blank" rel="alternate noopener noreferrer"
+                  class="rss" aria-label={`${blog.name} RSS feed`}
+                  data-umami-event={`blogroll-rss-${blog.id}`}>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+                    <rect width="256" height="256" rx="55" ry="55" fill="#CC5D15"/>
+                    <rect width="246" height="246" rx="50" ry="50" x="5" y="5" fill="#F49C52"/>
+                    <rect width="236" height="236" rx="47" ry="47" x="10" y="10" fill="#E3702D"/>
+                    <circle cx="68" cy="189" r="24" fill="#FFF"/>
+                    <path d="M160 213h-34a82 82 0 0 0 -82 -82v-34a116 116 0 0 1 116 116z" fill="#FFF"/>
+                    <path d="M184 213A140 140 0 0 0 44 73 V 38a175 175 0 0 1 175 175z" fill="#FFF"/>
+                  </svg>
+                </a>
+              )}
+            </div>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </section>
+  <hr>
+  <BackToTop />
+</BaseLayout>
 
 <style scoped>
   svg {
@@ -171,72 +243,3 @@ const lastUpdated = new Date('2026-03-20T12:00');
     }
   }
 </style>
-
-<BaseLayout title={title} description={desc}>
-  <BreadcrumbSchema slot="head" crumbs={[
-    { name: "Home", url: `${SITE_URL}/` },
-    { name: "Blogroll", url: `${SITE_URL}/blogroll/` }
-  ]} />
-  <section class="h-feed" data-pagefind-body>
-    <h1 class="p-name">{title}</h1>
-    <a class="u-url" href={`${SITE_URL}/blogroll/`} hidden>Permalink</a>
-    <hr />
-    <p>A list of blogs that I follow and regularly read. All links are in alphabetical order.</p>
-    <p class="flex">
-      <span class="updated">
-        Last updated
-      </span>
-      <FormattedDate date={lastUpdated} monthFormat="long" />
-    </p>
-    <ul>
-      {blogs.map(blog => (
-        <li class="h-entry">
-          <div class="blog-link">
-            <a href={blog.url} target="_blank" rel="noopener noreferrer"
-              data-umami-event={`blogroll-${blog.id}`} class="u-bookmark-of left">
-              <img
-                src={getFavicon(blog.url)}
-                alt={`${blog.name} favicon`}
-                class="favicon"
-                width="20"
-                height="20"
-                loading="lazy"
-                decoding="async"
-              />
-              <span class="p-name name">{blog.name}</span>
-            </a>
-            <div class="right">
-              <span class="url"><a href={blog.url}>{blog.url.replace('https://', '').replace(/\/$/, '')}</a></span>
-              {blog.feed === '#' ? (
-                <span class="rss no-feed" title="No RSS feed available" aria-label="No RSS feed">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-                    <rect width="256" height="256" rx="55" ry="55" fill="#888"/>
-                    <rect width="246" height="246" rx="50" ry="50" x="5" y="5" fill="#aaa"/>
-                    <rect width="236" height="236" rx="47" ry="47" x="10" y="10" fill="#999"/>
-                    <circle cx="68" cy="189" r="24" fill="#FFF"/>
-                    <path d="M160 213h-34a82 82 0 0 0 -82 -82v-34a116 116 0 0 1 116 116z" fill="#FFF"/>
-                    <path d="M184 213A140 140 0 0 0 44 73 V 38a175 175 0 0 1 175 175z" fill="#FFF"/>
-                  </svg>
-                  <span class="tooltip">No feed &#9785;</span>
-                </span>
-              ) : (
-                <a href={blog.feed} target="_blank" rel="alternate noopener noreferrer"
-                  class="rss" aria-label={`${blog.name} RSS feed`}
-                  data-umami-event={`blogroll-rss-${blog.id}`}>
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-                    <rect width="256" height="256" rx="55" ry="55" fill="#CC5D15"/>
-                    <rect width="246" height="246" rx="50" ry="50" x="5" y="5" fill="#F49C52"/>
-                    <rect width="236" height="236" rx="47" ry="47" x="10" y="10" fill="#E3702D"/>
-                    <circle cx="68" cy="189" r="24" fill="#FFF"/>
-                    <path d="M160 213h-34a82 82 0 0 0 -82 -82v-34a116 116 0 0 1 116 116z" fill="#FFF"/>
-                    <path d="M184 213A140 140 0 0 0 44 73 V 38a175 175 0 0 1 175 175z" fill="#FFF"/>
-                  </svg>
-                </a>
-              )}
-            </div>
-          </div>
-        </li>
-      ))}
-    </ul>
-  </section>
-</BaseLayout>
