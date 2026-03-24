@@ -1,7 +1,7 @@
 ---
 type: movie
 title: The Fifth Element
-pubDate: 2025-12-14
+pubDate: 2025-11-09 12:00:00
 image: ./_images/the-fifth-element.webp
 rating: masterpiece
 ---
