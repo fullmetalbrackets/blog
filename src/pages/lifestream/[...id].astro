@@ -116,7 +116,11 @@ const typeName: Record<string, string> = {
     margin: 0 0 0 1em;
     padding: 0;
   }
-
+  @media (max-width: 667px) {
+    .note ul {
+      font-size: 18px;
+    }
+  }
 </style>
 <style>
   .entry-page {
@@ -153,7 +157,7 @@ const typeName: Record<string, string> = {
 
   @media (max-width: 667px) {
     .entry-page {
-      padding-top: 0;
+      padding-top: 0.3rem;
       margin-right: 0.5em;
       margin-left: 0.5em;      
     }
