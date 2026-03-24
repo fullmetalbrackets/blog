@@ -13,13 +13,24 @@ import LeftArrow from '@icons/arrow-left.svg';
 
 export async function getStaticPaths() {
   const entries = await getCollection('lifestream');
-  return entries.map(entry => ({
+
+  const sorted = entries.sort((a, b) => {
+    const aDate = a.data.updatedDate ?? a.data.pubDate;
+    const bDate = b.data.updatedDate ?? b.data.pubDate;
+    return bDate.valueOf() - aDate.valueOf();
+  });
+
+  return sorted.map((entry, i) => ({
     params: { id: entry.id },
-    props: { entry },
+    props: {
+      entry,
+      prev: sorted[i + 1] ?? null,  // older
+      next: sorted[i - 1] ?? null,  // newer
+    },
   }));
 }
 
-const { entry } = Astro.props;
+const { entry, prev, next } = Astro.props;
 const { Content } = await render(entry);
 const { data } = entry;
 
@@ -102,6 +113,20 @@ const typeName: Record<string, string> = {
       </div>
 
     </div>
+    <nav class="entry-nav">
+      {prev ? (
+        <a href={`/lifestream/${prev.id}`} class="entry-nav-link prev">
+          <span class="nav-label"><svg class="c_c c_d c_e c_f c_cd" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M14 7.5H3.439l4.29-4.387-.714-.699L1.55 8l5.465 5.586.714-.7L3.44 8.5h10.56v-1z"></path></svg> Older</span>
+          <span class="nav-title">{prev.data.title}</span>
+        </a>
+      ) : <span />}
+      {next && (
+        <a href={`/lifestream/${next.id}`} class="entry-nav-link next">
+          <span class="nav-label newer">Newer <svg class="c_c c_d c_e c_f c_cd" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M14 7.5H3.439l4.29-4.387-.714-.699L1.55 8l5.465 5.586.714-.7L3.44 8.5h10.56v-1z"></path></svg></span>
+          <span class="nav-title">{next.data.title}</span>
+        </a>
+      )}
+    </nav>
   </div>
 </BaseLayout>
 
@@ -153,6 +178,77 @@ const typeName: Record<string, string> = {
     grid-template-columns: 280px 1fr;
     gap: 2rem;
     align-items: start;
+  }
+
+  .entry-nav {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 2.5rem;
+    padding-top: 1rem;
+    border-top: 1px dotted var(--border);
+  }
+
+  .entry-nav-link {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2em;
+    text-decoration: none;
+    max-width: 45%;
+  }
+
+  .entry-nav-link.next {
+    text-align: right;
+    margin-left: auto;
+  }
+
+  .nav-label {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--sub-font);
+    font-size: 0.55em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--emphasis);
+  }
+
+  .newer {
+    justify-content: end;
+  }
+
+  .entry-nav-link:hover .nav-label {
+    color: var(--hover);
+  }
+
+  .nav-title {
+    font-family: var(--sub-font);
+    font-size: 0.65em;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1.2;
+  }
+
+  .entry-nav-link:hover .nav-title {
+    color: var(--hover);
+  }
+
+  /* nav arrows only — scoped tightly so they don't affect back link or type-label */
+  .nav-label svg {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+    flex-shrink: 0;
+  }
+
+  .prev .nav-label svg {
+    margin-right: 0.3em;
+  }
+
+  .next .nav-label svg {
+    margin-left: 0.3em;
+    transform: rotate(180deg);
   }
 
   @media (max-width: 667px) {
