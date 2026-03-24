@@ -64,6 +64,9 @@ function formatDate(timestamp) {
     year: 'numeric'
   });
 }
+
+const items2025 = itemsWithImages.filter(item => new Date(item.stopped * 1000).getFullYear() === 2025);
+const items2024 = itemsWithImages.filter(item => new Date(item.stopped * 1000).getFullYear() === 2024);
 ---
 
 <BaseLayout title={title} description={desc}>
@@ -77,8 +80,8 @@ function formatDate(timestamp) {
       See <a href="/lifestream/older/tvshows/">TV shows seen during this time period</a>, or see <a href="/lifestream/">Lifestream</a> for the latest media (including <i>books</i> and <i>video games</i>) that I have consumed.
     </p>
     <p>
-      <span class="primary b sub-font">78</span> shows watched in <span class="primary b sub-font">2025</span><br>
-      <span class="primary b sub-font">19</span> shows watched in <span class="primary b sub-font">2024</span>
+      <span class="primary b sub-font">78</span> shows watched in <a href="#2025"><span class="primary b sub-font year">2025</span></a><br>
+      <span class="primary b sub-font">19</span> shows watched in <a href="#2024"><span class="primary b sub-font year">2024</span></a>
     </p>
     <div class="plex-header">
       {lastUpdated && (
@@ -97,30 +100,65 @@ function formatDate(timestamp) {
         <p>{error}</p>
       </div>
     ) : (
-      <div class="poster-grid">
-        {itemsWithImages.map((item, i) => (
-          <div class="poster-card">
-            {item.imageModule ? (
-              <Image
-                src={item.imageModule.default}
-                alt={item.title}
-                width={300}
-                height={450}
-                loading={i < 8 ? 'eager' : 'lazy'}
-                decoding={i < 8 ? 'sync' : 'async'}
-                quality={80}
-              />
-            ) : (
-              <div class="poster-placeholder">🎬</div>
-            )}
-            <div class="watch-date">
-              <Calendar width={16} height={16} />
-              {formatDate(item.stopped)}
+      <>
+        <span id="2025" />
+        <h2 class="page-heading">2025</h2>
+        <div class="poster-grid">
+          {items2025.map((item, i) => (
+            <div class="poster-card">
+              {item.imageModule ? (
+                <Image
+                  src={item.imageModule.default}
+                  alt={item.title}
+                  width={300}
+                  height={450}
+                  loading={i < 8 ? 'eager' : 'lazy'}
+                  decoding={i < 8 ? 'sync' : 'async'}
+                  quality={80}
+                />
+              ) : (
+                <div class="poster-placeholder">🎬</div>
+              )}
+              <div class="watch-date">
+                <Calendar width={16} height={16} />
+                {formatDate(item.stopped)}
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+
+        <span id="2024" />
+        <h2 class="page-heading">2024</h2>
+        <div class="poster-grid">
+          {items2024.map((item, i) => (
+            <div class="poster-card">
+              {item.imageModule ? (
+                <Image
+                  src={item.imageModule.default}
+                  alt={item.title}
+                  width={300}
+                  height={450}
+                  loading={i < 8 ? 'eager' : 'lazy'}
+                  decoding={i < 8 ? 'sync' : 'async'}
+                  quality={80}
+                />
+              ) : (
+                <div class="poster-placeholder">🎬</div>
+              )}
+              <div class="watch-date">
+                <Calendar width={16} height={16} />
+                {formatDate(item.stopped)}
+              </div>
+            </div>
+          ))}
+        </div>
+      </>
     )}
+    <p class="sources">
+      <span>
+        Posters are sourced from Plex's built-in metadata agent
+      </span>
+    </p>
   </section>
   <hr>
   <BackToTop />
@@ -144,6 +182,27 @@ function formatDate(timestamp) {
     font-weight: 900;
     margin: 0;
     padding: 0;
+  }
+
+  h2.page-heading {
+    margin-bottom: 0.35em;
+    font-family: var(--sub-font);
+  }
+
+  a .year {
+    text-decoration-line: underline;
+    text-decoration-color: var(--link);
+  }
+
+  a .year:hover {
+    color: var(--hover);
+    text-decoration-color: var(--hover);
+  }
+
+  .sources {
+    font-size: 0.75em;
+    display: grid;
+    margin: 1.5em 0 -1.5em 0;
   }
 
   .plex-header {

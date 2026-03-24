@@ -111,7 +111,17 @@ const desc = "All the media I've played, read, and watched. And what I thought o
         </a>
       ))}
     </div>
-
+    <p class="sources">
+      <span>
+        Movie and TV Show posters are sourced from <a href="https://www.themoviedb.org/">TMDB</a>
+      </span>
+      <span>
+        Game covers are sourced from <a href="https://www.igdb.com/">IGDB</a> and <a href="https://mobygames.com/">MobyGames</a>
+      </span>
+      <span>
+        Book covers are sourced from <a href="https://www.goodreads.com/">Goodreads</a>
+      </span>
+    </p>
   </section>
   <hr>
   <BackToTop />
@@ -131,12 +141,23 @@ const desc = "All the media I've played, read, and watched. And what I thought o
     margin-bottom: 1.25em;
   }
 
+  hr.divider {
+    color: var(--border);
+    margin: 1em auto;
+  }
+
   .desc {
     font-size: 1em;
   }
 
   p {
     margin: 0 0 1em 0;
+  }
+
+  .sources {
+    font-size: 0.75em;
+    display: grid;
+    margin: 1.5em 0 -1.5em 0;
   }
 
   /* filters */

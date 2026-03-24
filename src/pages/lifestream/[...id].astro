@@ -87,6 +87,12 @@ const typeName: Record<string, string> = {
               <dd>{data.platform}</dd>
             </>
           )}
+          {data.season && (
+            <>
+              <dt>Season</dt>
+              <dd>{data.season}</dd>
+            </>
+          )}
         </dl>
 
         {/* markdown body — personal note */}
@@ -110,14 +116,7 @@ const typeName: Record<string, string> = {
     margin: 0 0 0 1em;
     padding: 0;
   }
-  @media (max-width: 667px) {
-    .note h2 {
-      font-size: 24px;
-    }
-    .note ul {
-      font-size: 18px;
-    }
-  }
+
 </style>
 <style>
   .entry-page {
@@ -174,6 +173,18 @@ const typeName: Record<string, string> = {
 
     .note {
       font-size: 18px;
+    }
+
+    .note h2 {
+      font-size: 24px;
+    }
+
+    .note ul {
+      font-size: 18px;
+    }
+
+    dt {
+      margin-right: 0;
     }
   }
 
@@ -248,6 +259,7 @@ const typeName: Record<string, string> = {
   .meta {
     display: grid;
     grid-template-columns: auto 1fr;
+    place-items: start;
     gap: 0.3em 1em;
     margin: 0;
     padding: 0;
@@ -266,7 +278,7 @@ const typeName: Record<string, string> = {
     font-size: 0.9em;
     display: flex;
     align-items: center;
-    margin-right: -0.5em;
+    margin-right: 2em;
   }
 
   dd {
@@ -274,6 +286,7 @@ const typeName: Record<string, string> = {
     color: var(--secondary);
     display: flex;
     align-items: center;
+    font-weight: 500;
   }
 
   /* FormattedDate inside dd */
