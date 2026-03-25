@@ -1,7 +1,7 @@
 ---
 type: tvshow
 title: Bridgerton
-pubDate: 2026-03-13T17:30
+pubDate: 2026-02-27 12:00:00
 image: ./_images/bridgerton-s4.webp
 rating: loved
 ---
