@@ -12,38 +12,40 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
 ---
 
 <style>
-  h2 {
+  .toc-heading {
     display: flex;
     place-items: center;
     border-color: var(--border2);
   }
-  h2 svg {
+  .toc-heading svg {
     filter: var(--toc);
     margin-left: -0.1em;
     margin-right: 0.1em;
   }
-  h2 a {
+  .toc-heading a {
     display: flex;
     place-items: center;
     color: var(--primary);
   }
-  h2 a:hover {
+  .toc-heading a:hover {
     color: var(--secondary);
   }
-  h2 a:hover svg {
+  .toc-heading a:hover svg {
     filter: var(--svg2);
   }
-  li a {
+  .toc-list {
+    position: relative;
+  }
+  .toc-list li a {
     color: var(--emphasis);
     margin: 0;
   }
-  @media screen and (max-width: 2107px) {
-    .toc-indicator {
-      display: none;
-    }
+  .toc-indicator {
+    display: none;
   }
   @media screen and (min-width: 2108px) {
     .toc-indicator {
+      display: block;
       position: absolute;
       left: 0;
       background: var(--border2);
@@ -54,7 +56,7 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
       opacity: 0;
       z-index: 0;
     }
-    div {
+    .toc-container {
       position: fixed;
       top: 2.75em;
       right: 2em;
@@ -62,42 +64,34 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
       max-width: 20%;
       font-size: 0.85em;
     }
-    span {
-      position: absolute;
-      bottom: 0;
-      right: 0;
-    }
-    .top-btn {
+    .toc-top-btn {
       position: sticky;
     }
   }
-    @media screen and (max-width: 667px) {
-      ol {
-        font-size: 0.75em;
-      }
+  @media screen and (max-width: 667px) {
+    .toc-list {
+      font-size: 0.75em;
     }
-
+  }
 </style>
 
-<div class="toc-container">
-  <h2>
+<nav class="toc-container" aria-label="Table of contents">
+  <h2 class="toc-heading">
     <a href="#top">
-      <TOC width={36} height={36}/>Table of Contents
+      <TOC width={36} height={36} />Table of Contents
     </a>
   </h2>
-  <ol id="toc-list">
-    <div class="toc-indicator" id="toc-indicator"></div>
-    {
-      filteredHeadings.map((heading) => (
-        <li>
-          <a href={`#${heading.slug}`} data-heading={heading.slug}>
-            {heading.text}
-          </a>
-        </li>
-      ))
-    }
+  <ol class="toc-list" id="toc-list">
+    <div class="toc-indicator" id="toc-indicator" aria-hidden="true"></div>
+    {filteredHeadings.map((heading) => (
+      <li>
+        <a href={`#${heading.slug}`} data-heading={heading.slug}>
+          {heading.text}
+        </a>
+      </li>
+    ))}
   </ol>
-</div>
+</nav>
 
 <script>
   function initTOC() {
@@ -117,20 +111,25 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
     ).filter(Boolean) as HTMLElement[];
 
     const observer = new IntersectionObserver(
-      () => {
-        const passed = headingEls.filter(el => {
-          return el.getBoundingClientRect().top < window.innerHeight * 0.75;
-        });
+  () => {
+    const scrollY = window.scrollY;
 
-        const active = passed[passed.length - 1];
-        if (!active) return;
+    const active = headingEls.reduce<HTMLElement | null>((closest, el) => {
+      const top = el.getBoundingClientRect().top + scrollY;
+      if (top <= scrollY + 80) {
+        return !closest || top > (closest.getBoundingClientRect().top + scrollY)
+          ? el
+          : closest;
+      }
+      return closest;
+    }, null);
 
-        const activeLink = document.querySelector<HTMLAnchorElement>(
-          `#toc-list a[data-heading="${active.id}"]`
-        );
-        if (!activeLink) return;
+    if (!active) return;
 
-        moveIndicator(activeLink);
+    const activeLink = document.querySelector<HTMLAnchorElement>(
+      `#toc-list a[data-heading="${active.id}"]`
+      );
+      if (activeLink) moveIndicator(activeLink);
       },
       { rootMargin: '-10% 0px -20% 0px', threshold: 0 }
     );
