@@ -167,7 +167,7 @@ const selectedPosts = await getRelatedPosts(related ?? []);
       grid-template-columns: auto;
       grid-template-rows: auto auto;
       cursor: pointer;
-        margin-top: 0.5em;
+      margin-top: 0.25em;
       padding: 0;
     }
     .coffee-btn:hover {
@@ -177,6 +177,9 @@ const selectedPosts = await getRelatedPosts(related ?? []);
     .share {
       color: var(--primary);
       cursor: default;
+    }
+    .share span {
+      margin-bottom: -0.25em;
     }
     .umami {
       color: var(--primary);
