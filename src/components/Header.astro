@@ -62,9 +62,6 @@ import Search from '@icons/search.svg';
   nav a.active {
     color: var(--link);
   }
-  .blog-link {
-    margin-right: 3px;
-  }
   .logo {
     display: flex;
     align-items: center;
@@ -83,42 +80,46 @@ import Search from '@icons/search.svg';
   .logo:hover {
     background-position: left;
   }
-  img {
-    margin: 0;
+  .logo img {
+    margin: 0 0.25em 0 0;
     padding: 0;
     border: 0;
   }
   .name {
     margin: 0;
     padding: 0;
-    font-size: 32px;
+    font-size: 1.25em;
     color: var(--primary);
     border: 0;
   }
   .name::before {
-    content: "Fullmetalbrackets"
-  }
-  .logo {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    height: auto;
-    width: auto;
+    content: "Fullmetalbrackets";
   }
   .logo:hover .name {
     color: var(--hover);
     border: 0;
     transition: all .175s ease-out;
   }
-  .nav-links {
+
+  /* Desktop nav links */
+
+  .nav-end {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.5em;
+  }
+  .desktop-links {
+    display: flex;
     align-items: center;
     gap: 0.5em;
   }
   .search {
-    filter: var(--search);
+    fill: var(--tertiary);
   }
+
+  /* Dropdown (desktop More menu) */
+
   .dropdown {
     position: relative;
     display: inline-block;
@@ -201,31 +202,126 @@ import Search from '@icons/search.svg';
   .chevron {
     display: inline-block;
     vertical-align: middle;
-    filter: var(--chevron-filter, none);
   }
+
+  /* Mobile hamburger button */
+
+  .hamburger {
+    display: none;
+    background: none;
+    border: none;
+    padding: 4px;
+    cursor: pointer;
+    color: var(--primary);
+  }
+  .hamburger:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  .hamburger:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /* Mobile nav panel */
+
+  .mobile-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 50%;
+    background: var(--dropdown);
+    backdrop-filter: blur(0.2em);
+    -webkit-backdrop-filter: blur(0.2em);
+    border-bottom-right-radius: 0.5em;
+    z-index: 49;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0s 0.25s;
+    pointer-events: none;
+    visibility: hidden;
+    padding: 1em 1.25em 1.25em 1.25em;
+  }
+  .mobile-nav.open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    visibility: visible;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+  .mobile-nav-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    font-family: var(--sub-font);
+    font-size: 0.75em;
+  }
+  .mobile-nav-col h4 {
+    font-size: 0.65em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--emphasis);
+    margin: 0 0 0.5em 0;
+    padding-bottom: 0.3em;
+    border-bottom: 1px solid var(--border);
+  }
+  .mobile-nav-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1em;
+  }
+  .mobile-nav-col a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .mobile-nav-col a:hover {
+    color: var(--hover);
+  }
+  .mobile-nav-col a.active {
+    color: var(--link);
+  }
+
   @media (hover: none) {
-    .nav-link a:hover, .nav-link a:active {
+    .logo {
+      transition: none;
+      transform: none;
+    }
+    .nav-link a:hover,
+    .nav-link a:active {
       color: var(--hover);
       transition: none;
       transform: none;
     }
   }
+
+  /* Responsive */
+
   @media screen and (max-width: 768px) {
-    header {
+    nav {
       display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
     }
-    .name::before {
-      content: "";
-      margin: 0;
+    .logo {
+      justify-self: center;
     }
-    .nav-links {
-      gap: 0.25em;
+    .name {
+      font-size: 0.875em;
     }
-    .nav-link, .dropdown {
-      font-size: 0.825em;
+    .desktop-links {
+      display: none;
     }
-    .dropdown-content {
-      min-width: 125px;
+    .hamburger {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .mobile-nav {
+      display: block;
     }
   }
 </style>
@@ -234,74 +330,211 @@ import Search from '@icons/search.svg';
 
 <header>
   <nav aria-label="Main navigation">
+
+    <!-- Mobile hamburger (left) -->
+    <button class="hamburger" id="hamburger" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open navigation menu">
+      <svg id="hamburger-svg" viewBox="0 0 44 44" width="32" height="32" fill="none">
+        <path id="h1" style="stroke:currentColor;stroke-width:2.5;stroke-linecap:round" d="M 6 14 L 38 14"/>
+        <path id="h2" style="stroke:currentColor;stroke-width:2.5;stroke-linecap:round" d="M 6 14 L 38 14"/>
+        <path id="h3" style="stroke:currentColor;stroke-width:2.5;stroke-linecap:round" d="M 6 22 L 38 22"/>
+        <path id="h4" style="stroke:currentColor;stroke-width:2.5;stroke-linecap:round" d="M 6 22 L 38 22"/>
+        <path id="h5" style="stroke:currentColor;stroke-width:2.5;stroke-linecap:round" d="M 6 30 L 38 30"/>
+        <path id="h6" style="stroke:currentColor;stroke-width:2.5;stroke-linecap:round" d="M 6 30 L 38 30"/>
+      </svg>
+    </button>
+
+    <!-- Logo + name -->
     <a href="/" rel="home" class="logo" aria-label="Fullmetalbrackets home">
-      <Picture src={Logo} formats={['avif', 'webp']} alt="" width={50} height={47} loading="eager" decoding="async" />
+      <Picture src={Logo} formats={['avif', 'webp']} alt="" width={30} height={27} loading="eager" decoding="async" />
       <span class="name" aria-hidden="true"></span>
     </a>
-    <div class="nav-links">
-      <HeaderLink href="/blog/" rel="prefetch-intent archives" aria-label="Blog" class="nav-link blog-link" data-umami-event="nav-blog">Blog</HeaderLink>
-      <HeaderLink href="/categories/" rel="prefetch-intent" aria-label="Categories" class="nav-link categories-link" data-umami-event="nav-links">Categories</HeaderLink>
-      <div class="dropdown">
-        <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">
-          More
-          <svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <polyline points="6 9 12 15 18 9"></polyline>
-          </svg>
-        </button>
-        <div class="dropdown-content" role="menu">
-          <HeaderLink href="/notes/" rel="prefetch-intent" aria-label="Notes" data-umami-event="nav-notes">Notes</HeaderLink>
-          <HeaderLink href="/links/" rel="prefetch-intent" aria-label="Links" data-umami-event="nav-links">Links</HeaderLink>
-          <HeaderLink href="/now/" rel="prefetch-intent" aria-label="Now" data-umami-event="nav-now">Now</HeaderLink>
-          <HeaderLink href="/lifestream/" rel="prefetch-intent" aria-label="Lifestream" data-umami-event="nav-lifestream">Lifestream</HeaderLink>
-          <HeaderLink href="/blogroll/" rel="prefetch-intent" aria-label="Blogroll" data-umami-event="nav-blogroll">Blogroll</HeaderLink>
-          <HeaderLink href="/self-hosted/" rel="prefetch-intent" aria-label="Self-hosted" data-umami-event="nav-self-hosted">Self-hosted</HeaderLink>
-          <HeaderLink href="/uses/" rel="prefetch-intent" aria-label="Uses" data-umami-event="nav-uses">Uses</HeaderLink>
-          <HeaderLink href="/wiki/" rel="prefetch-intent" aria-label="Wiki" data-umami-event="nav-wiki">Wiki</HeaderLink>
-          <HeaderLink href="/games/" rel="prefetch-intent" aria-label="Games" data-umami-event="nav-games">Games</HeaderLink>
-          <HeaderLink href="/changelog/" rel="prefetch-intent" aria-label="Changelog" data-umami-event="nav-changelog">Changelog</HeaderLink>
-          <HeaderLink href="/colophon/" rel="prefetch-intent" aria-label="Colophon" data-umami-event="nav-colophon">Colophon</HeaderLink>
-          <HeaderLink href="/style/" rel="prefetch-intent" aria-label="Style" data-umami-event="nav-style">Style</HeaderLink>
-          <HeaderLink href="/verify/" rel="prefetch-intent" aria-label="Verify" data-umami-event="nav-verify">Verify</HeaderLink>
-          <HeaderLink href="/explore/" rel="prefetch-intent" aria-label="Explore" data-umami-event="nav-explore">Explore</HeaderLink>
-          <HeaderLink href="/privacy/" rel="prefetch-intent" aria-label="Privacy" data-umami-event="nav-privacy">Privacy</HeaderLink>
+
+    <!-- Right side -->
+    <div class="nav-end">
+
+      <!-- Desktop links -->
+      <div class="desktop-links">
+        <HeaderLink href="/blog/" rel="prefetch-intent archives" aria-label="Blog" class="nav-link blog-link" data-umami-event="nav-blog">Blog</HeaderLink>
+        <HeaderLink href="/categories/" rel="prefetch-intent" aria-label="Categories" class="nav-link" data-umami-event="nav-categories">Categories</HeaderLink>
+        <div class="dropdown">
+          <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+            More
+            <svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="dropdown-content">
+            <HeaderLink href="/notes/" rel="prefetch-intent" data-umami-event="nav-notes">Notes</HeaderLink>
+            <HeaderLink href="/links/" rel="prefetch-intent" data-umami-event="nav-links">Links</HeaderLink>
+            <HeaderLink href="/now/" rel="prefetch-intent" data-umami-event="nav-now">Now</HeaderLink>
+            <HeaderLink href="/lifestream/" rel="prefetch-intent" data-umami-event="nav-lifestream">Lifestream</HeaderLink>
+            <HeaderLink href="/blogroll/" rel="prefetch-intent" data-umami-event="nav-blogroll">Blogroll</HeaderLink>
+            <HeaderLink href="/self-hosted/" rel="prefetch-intent" data-umami-event="nav-self-hosted">Self-hosted</HeaderLink>
+            <HeaderLink href="/uses/" rel="prefetch-intent" data-umami-event="nav-uses">Uses</HeaderLink>
+            <HeaderLink href="/wiki/" rel="prefetch-intent" data-umami-event="nav-wiki">Wiki</HeaderLink>
+            <HeaderLink href="/games/" rel="prefetch-intent" data-umami-event="nav-games">Games</HeaderLink>
+            <HeaderLink href="/changelog/" rel="prefetch-intent" data-umami-event="nav-changelog">Changelog</HeaderLink>
+            <HeaderLink href="/colophon/" rel="prefetch-intent" data-umami-event="nav-colophon">Colophon</HeaderLink>
+            <HeaderLink href="/style/" rel="prefetch-intent" data-umami-event="nav-style">Style</HeaderLink>
+            <HeaderLink href="/verify/" rel="prefetch-intent" data-umami-event="nav-verify">Verify</HeaderLink>
+            <HeaderLink href="/explore/" rel="prefetch-intent" data-umami-event="nav-explore">Explore</HeaderLink>
+            <HeaderLink href="/privacy/" rel="prefetch-intent" data-umami-event="nav-privacy">Privacy</HeaderLink>
+          </div>
         </div>
       </div>
+
       <HeaderLink href="/search/" rel="prefetch-intent search" class="search-link" data-umami-event="search" aria-label="Search">
-        <Search aria-hidden="true" width="26px" height="26px" />
+        <Search aria-hidden="true" width="26px" height="26px" class="search" />
         <span class="sr-only">Search</span>
       </HeaderLink>
       <ThemeToggle />
     </div>
   </nav>
+
+  <!-- Mobile nav panel -->
+  <div class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+    <div class="mobile-nav-grid">
+      <div class="mobile-nav-col">
+        <h4>Content</h4>
+        <HeaderLink href="/blog/" rel="prefetch-intent" data-umami-event="mnav-blog">Blog</HeaderLink>
+        <HeaderLink href="/categories/" rel="prefetch-intent" data-umami-event="mnav-categories">Categories</HeaderLink>
+        <HeaderLink href="/notes/" rel="prefetch-intent" data-umami-event="mnav-notes">Notes</HeaderLink>
+        <HeaderLink href="/links/" rel="prefetch-intent" data-umami-event="mnav-links">Links</HeaderLink>
+        <HeaderLink href="/blogroll/" rel="prefetch-intent" data-umami-event="mnav-blogroll">Blogroll</HeaderLink>
+        <HeaderLink href="/wiki/" rel="prefetch-intent" data-umami-event="mnav-wiki">Wiki</HeaderLink>
+      </div>
+      <div class="mobile-nav-col">
+        <h4>Personal</h4>
+        <HeaderLink href="/self-hosted/" rel="prefetch-intent" data-umami-event="mnav-selfhosted">Self-hosted</HeaderLink>
+        <HeaderLink href="/lifestream/" rel="prefetch-intent" data-umami-event="mnav-lifestream">Lifestream</HeaderLink>
+        <HeaderLink href="/games/" rel="prefetch-intent" data-umami-event="mnav-games">Games</HeaderLink>
+        <HeaderLink href="/uses/" rel="prefetch-intent" data-umami-event="mnav-uses">Uses</HeaderLink>
+        <HeaderLink href="/now/" rel="prefetch-intent" data-umami-event="mnav-now">Now</HeaderLink>
+        <HeaderLink href="/verify/" rel="prefetch-intent" data-umami-event="mnav-verify">Verify</HeaderLink>
+      </div>
+      <div class="mobile-nav-col">
+        <h4>Meta</h4>
+        <HeaderLink href="/changelog/" rel="prefetch-intent" data-umami-event="mnav-changelog">Changelog</HeaderLink>
+        <HeaderLink href="/colophon/" rel="prefetch-intent" data-umami-event="mnav-colophon">Colophon</HeaderLink>
+        <HeaderLink href="/style/" rel="prefetch-intent" data-umami-event="mnav-style">Style</HeaderLink>
+        <HeaderLink href="/privacy/" rel="prefetch-intent" data-umami-event="mnav-privacy">Privacy</HeaderLink>
+        <HeaderLink href="/explore/" rel="prefetch-intent" data-umami-event="mnav-explore">Explore</HeaderLink>
+      </div>
+    </div>
+  </div>
 </header>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
+  const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
+  const ease = (t: number) => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+
+  function parsePath(el: Element) {
+    const n = el.getAttribute('d')!.match(/[-\d.]+/g)!.map(Number);
+    return [[n[0], n[1]], [n[2], n[3]]] as [[number,number],[number,number]];
+  }
+
+  function animateTo(
+    ids: string[],
+    targets: [[number,number],[number,number]][],
+    ms: number
+  ) {
+    const els = ids.map(id => document.getElementById(id)!);
+    const from = els.map(parsePath);
+    const t0 = performance.now();
+    (function frame(now: number) {
+      const e = ease(Math.min((now - t0) / ms, 1));
+      els.forEach((el, i) => {
+        el.setAttribute('d',
+          `M ${lerp(from[i][0][0], targets[i][0][0], e)} ${lerp(from[i][0][1], targets[i][0][1], e)} ` +
+          `L ${lerp(from[i][1][0], targets[i][1][0], e)} ${lerp(from[i][1][1], targets[i][1][1], e)}`
+        );
+      });
+      if (e < 1) requestAnimationFrame(frame);
+    })(t0);
+  }
+
+  const REST: [[number,number],[number,number]][] = [
+    [[6,14],[38,14]], [[6,14],[38,14]],
+    [[6,22],[38,22]], [[6,22],[38,22]],
+    [[6,30],[38,30]], [[6,30],[38,30]],
+  ];
+
+  const BRACKETS: [[number,number],[number,number]][] = [
+    [[9,14],[15,14]],  // top of [
+    [[29,14],[35,14]], // top of ]
+    [[9,14],[9,30]],   // side of [
+    [[35,14],[35,30]], // side of ]
+    [[9,30],[15,30]],  // bottom of [
+    [[29,30],[35,30]], // bottom of ]
+  ];
+
+  const IDS = ['h1','h2','h3','h4','h5','h6'];
+
+  function initHeader() {
+    const hamburger = document.getElementById('hamburger') as HTMLButtonElement | null;
+    const mobileNav = document.getElementById('mobile-nav');
     const dropdown = document.querySelector('.dropdown');
-    const toggle = document.querySelector('.dropdown-toggle') as HTMLButtonElement | null;
-    
-    if (dropdown && toggle) {
-      toggle.addEventListener('click', (e) => {
+    const dropdownToggle = document.querySelector('.dropdown-toggle') as HTMLButtonElement | null;
+
+    let menuOpen = false;
+
+    if (hamburger && mobileNav) {
+      hamburger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        menuOpen = !menuOpen;
+        animateTo(IDS, menuOpen ? BRACKETS : REST, 380);
+        mobileNav.classList.toggle('open', menuOpen);
+        hamburger.setAttribute('aria-expanded', menuOpen.toString());
+        hamburger.setAttribute('aria-label', menuOpen ? 'Close navigation menu' : 'Open navigation menu');
+      });
+
+      document.addEventListener('click', (e) => {
+        if (menuOpen && !hamburger.contains(e.target as Node) && !mobileNav.contains(e.target as Node)) {
+          menuOpen = false;
+          animateTo(IDS, REST, 380);
+          mobileNav.classList.remove('open');
+          hamburger.setAttribute('aria-expanded', 'false');
+          hamburger.setAttribute('aria-label', 'Open navigation menu');
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && menuOpen) {
+          menuOpen = false;
+          animateTo(IDS, REST, 380);
+          mobileNav.classList.remove('open');
+          hamburger.setAttribute('aria-expanded', 'false');
+          hamburger.setAttribute('aria-label', 'Open navigation menu');
+          hamburger.focus();
+        }
+      });
+    }
+
+    if (dropdown && dropdownToggle) {
+      dropdownToggle.addEventListener('click', (e) => {
         e.stopPropagation();
         dropdown.classList.toggle('open');
         const isOpen = dropdown.classList.contains('open');
-        toggle.setAttribute('aria-expanded', isOpen.toString());
+        dropdownToggle.setAttribute('aria-expanded', isOpen.toString());
       });
 
       document.addEventListener('click', (e) => {
         if (!dropdown.contains(e.target as Node)) {
           dropdown.classList.remove('open');
-          toggle.setAttribute('aria-expanded', 'false');
+          dropdownToggle.setAttribute('aria-expanded', 'false');
         }
       });
 
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && dropdown.classList.contains('open')) {
           dropdown.classList.remove('open');
-          toggle.setAttribute('aria-expanded', 'false');
-          toggle.focus();
+          dropdownToggle.setAttribute('aria-expanded', 'false');
+          dropdownToggle.focus();
         }
       });
     }
-  });
+  }
+
+  document.addEventListener('DOMContentLoaded', initHeader);
+  document.addEventListener('astro:page-load', initHeader);
 </script>
