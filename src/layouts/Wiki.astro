@@ -16,29 +16,28 @@ const selectedPosts = await getRelatedPosts(related ?? []);
 ---
 
 <style>
-  h1 {
-    margin: 1.1em 0 0.2em 0;
+  .wiki-title {
+    margin: 1.265em 0 0.2em 0;
     font-weight: 800;
   }
-  hr {
+  .wiki-hr {
     margin-top: 1em;
   }
-  article {
+  .wiki-article {
     margin-top: 2em;
   }
   .date {
     margin-top: 0.5em;
-    display: grid;
-    grid-template-columns: 3;
-    grid-template-rows: 2;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    align-items: center;
   }
   .last-updated-on {
     display: inline-flex;
     place-items: center;
     color: var(--emphasis);
-  }
-  .last-updated-on span {
-    margin-right: 0.5em;
+    gap: 0.5em;
   }
   .tag {
     margin: -0.2em auto 0.3em auto;
@@ -56,19 +55,9 @@ const selectedPosts = await getRelatedPosts(related ?? []);
   .bottom-line {
     margin: 2em auto 1.5em auto;
   }
-  .wiki-nav {
-    display: flex;
-    justify-content: space-between;
-    font-size: 1em;
-    margin: 0 auto 1em auto;
-    padding: 0 auto;
-    width: 100%;
-  }
-  .wiki-nav button {
-    display: flex;
-    place-items: center;
-    background: var(--primary);
-  }
+
+  /* related posts  */
+
   .related {
     display: inline;
   }
@@ -113,44 +102,67 @@ const selectedPosts = await getRelatedPosts(related ?? []);
     margin-bottom: 0;
     line-height: 1.2;
   }
-  .related li button {
-    margin: 0 0.5em 0.25em 0;
-  }
   .related li:hover {
     color: var(--hover);
     border: 2px solid var(--emphasis);
   }
-  .home button svg {
-    display: flex;
+
+  /*  wiki nav */
+
+  a .nav-btn {
     place-items: center;
+  }
+  .wiki-nav {
+    display: inline-flex;
+    justify-content: space-between;
+    font-size: 1.5em;
+    margin: 0 auto 1em auto;
+    padding: 0;
+    width: 100%;
+  }
+  .nav-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25em;
+    background: var(--primary);
+    color: #000;
+    border-radius: 0.375em;
+    font-size: 0.5em;
+    font-weight: 700;
+    padding: 0.4em 0.75em;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color .15s ease-out;
+  }
+  .nav-btn:hover {
+    background-color: var(--secondary);
+    color: #000;
+    transform: none;
+    box-shadow: none;
+  }
+  .nav-btn svg {
     fill: currentColor;
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+  }
+  .nav-btn.back svg,
+  .nav-btn.go-top svg {
+    stroke: currentColor;
+    stroke-width: 1.25;
+  }
+  .nav-btn.home svg {
+    place-items: center;
     width: 20px;
     height: 20px;
-    margin: 0 0.25em 0 0;
-    padding: 0;
   }
-  .back button svg {
-    display: flex;
+  .nav-btn span {
     place-items: center;
-    fill: currentColor;
-    width: 16px;
-    height: 16px;
-    margin: 0 0.25em 0 0;
-    padding: 0;
-    stroke: black;
-    stroke-width: 1.25;
+    padding-top: 2.5px;
   }
-  .go-top button svg {
-    display: flex;
-    place-items: center;
-    fill: currentColor;
-    width: 16px;
-    height: 16px;
-    margin: 0 0 0 0.25em;
-    padding: 0;
-    stroke: black;
-    stroke-width: 1.25;
-  }
+
+
+  /* wide-screen info & toc */
   @media screen and (min-width: 2108px) {
     .blog-tags, .info, .updated {
       position: absolute;
@@ -158,21 +170,17 @@ const selectedPosts = await getRelatedPosts(related ?? []);
       width: 35%;
       max-width: 35%;
     }
-    .blog-tags {
-      top: 4.55em;
-    }
-    .info {
-      top: 6em;
-    }
-    .updated {
-      top: 7.55em;
-    }
+    .blog-tags { top: 4.55em; }
+    .info { top: 6em; }
+    .updated { top: 7.55em; }
   }
+
+  /* mobile info & toc */
   @media screen and (max-width: 667px) {
-    article {
-      margin: 1em 0.5em 1em 0.5em;
+    .wiki-article {
+      margin: 1em 0.5em;
     }
-    h1 {
+    .wiki-title {
       margin: 0;
     }
     .tag {
@@ -190,11 +198,22 @@ const selectedPosts = await getRelatedPosts(related ?? []);
     .related li p {
       margin-top: 0;
     }
-    .related li button {
-      margin: 0 0.25em 0.25em 0;
-    }
     .hide {
       display: none;
+    }
+  }
+
+  /* hover effects */
+  @media (hover: hover) {
+    .wiki-nav a:hover {
+      box-shadow: -4px -4px 0 #000;
+      transform: translate(4px, 4px);
+      outline-offset: 1px;
+    }
+    .wiki-nav a {
+      text-overflow: ellipsis;
+      transition: all 0.1s ease-out;
+      cursor: pointer;
     }
   }
 </style>
@@ -210,73 +229,81 @@ const selectedPosts = await getRelatedPosts(related ?? []);
   <ScrollProgress />
   <CodeblockCopy />
   <HeadingCopy />
-  <article data-pagefind-body>
-    <h1 class="title">{title}</h1>
+
+  <article class="wiki-article" data-pagefind-body>
+    <h1 class="wiki-title">{title}</h1>
     <p class="tag" data-pagefind-ignore>
       <span>{tag}</span>
     </p>
     <div class="date">
       <FormattedDate date={pubDate} />
-      {
-        updatedDate && (
-          <div class="last-updated-on">
-            <span>Updated</span><FormattedDate date={updatedDate} />
-          </div>
-        )
-      }
+      {updatedDate && (
+        <div class="last-updated-on">
+          <span>Updated</span><FormattedDate date={updatedDate} />
+        </div>
+      )}
     </div>
-    <hr />
-    <p>
-      {description}
-    </p>
+    <hr class="wiki-hr" />
+    <p>{description}</p>
     <slot>
       <p>
-        If you're seeing this, something went wrong! Please try <em
-          >reloading the page</em
-        >.
+        If you're seeing this, something went wrong! Please try <em>reloading the page</em>.
       </p>
     </slot>
-      {selectedPosts.length > 0 && (
+    {selectedPosts.length > 0 && (
       <div class="related" data-pagefind-ignore>
-        <h3><Related width={36} height={36}/> Related Blog Posts</h3>
+        <h3><Related width={36} height={36} /> Related Blog Posts</h3>
         <ul>
           {selectedPosts.map(post => (
             <a href={`/blog/${post.id}/`} rel="prefetch-intent" data-umami-event={`wiki-related-${post.id}`}>
-            <li>
-              <span>{post.data.title}</span>
-              <p>{post.data.description}</p>
-            </li>
-          </a>
+              <li>
+                <span>{post.data.title}</span>
+                <p>{post.data.description}</p>
+              </li>
+            </a>
           ))}
         </ul>
       </div>
-      )}
+    )}
   </article>
+
   <hr class="bottom-line" />
 
-  <nav class="wiki-nav">
-    <a href="/wiki/" rel="prefetch-intent" class="top blog-tag back"><button><svg class="c_c c_d c_e c_f c_cd" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M14 7.5H3.439l4.29-4.387-.714-.699L1.55 8l5.465 5.586.714-.7L3.44 8.5h10.56v-1z"></path></svg> Wiki</button></a>
-    <a href="/" rel="prefetch-intent" class="top blog-tag home"><button><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>home</title><path d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z" /></svg> Home</button></a>
-    <a href="#top" class="top blog-tag go-top"><button>Top <svg class="c_c c_d c_e c_f c_cd" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M7.5 14V3.439l-4.387 4.29-.699-.714L8 1.55l5.586 5.465-.7.714L8.5 3.44V14h-1z"></path></svg></button></a>
+  <nav class="wiki-nav" aria-label="Post navigation">
+    <a href="/wiki/" rel="prefetch-intent" class="nav-btn back" aria-label="Back to Wiki">
+      <svg role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+        <path d="M14 7.5H3.439l4.29-4.387-.714-.699L1.55 8l5.465 5.586.714-.7L3.44 8.5h10.56v-1z" />
+      </svg>
+      <span>Wiki</span>
+    </a>
+    <a href="/" rel="prefetch-intent" class="nav-btn home" aria-label="Go to Home">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z" />
+      </svg>
+      <span>Home</span>
+    </a>
+    <a href="#top" class="nav-btn go-top" aria-label="Back to top">
+      <span>Top</span>
+      <svg role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+        <path d="M7.5 14V3.439l-4.387 4.29-.699-.714L8 1.55l5.586 5.465-.7.714L8.5 3.44V14h-1z" />
+      </svg>
+    </a>
   </nav>
 
   <script is:inline>
     document.querySelectorAll('blockquote').forEach((blockquote) => {
       const firstPara = blockquote.querySelector('p');
-      if (firstPara) {
-        const text = firstPara.textContent || '';
-        const match = text.match(/^\[(\w+)\]\s*/);
-        
-        if (match) {
-          const type = match[1];
-          blockquote.setAttribute('data-type', type);
-          blockquote.classList.add(`blockquote-${type}`);
-          
-          const textNode = firstPara.firstChild;
-          if (textNode && textNode.nodeType === Node.TEXT_NODE && textNode.textContent) {
-            textNode.textContent = textNode.textContent.replace(/^\[(\w+)\]\s*/, '');
-          }
-        }
+      if (!firstPara) return;
+
+      const match = (firstPara.textContent ?? '').match(/^\[(\w+)\]\s*/);
+      if (!match) return;
+
+      blockquote.setAttribute('data-type', match[1]);
+      blockquote.classList.add(`blockquote-${match[1]}`);
+
+      const textNode = firstPara.firstChild;
+      if (textNode?.nodeType === Node.TEXT_NODE && textNode.textContent) {
+        textNode.textContent = textNode.textContent.replace(/^\[(\w+)\]\s*/, '');
       }
     });
   </script>

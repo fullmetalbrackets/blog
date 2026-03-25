@@ -29,7 +29,7 @@ import { GITHUB, DONATE, SITE_URL } from "@consts";
 
 type Props = BlogPostProps & { headings: MarkdownHeading[]; readingTime: string };
 
-const BUTTONS = [BlueskyShareButton, ThreadsShareButton, TwitterShareButton, RedditShareButton, HackerNewsShareButton]
+const BUTTONS = [BlueskyShareButton, ThreadsShareButton, TwitterShareButton, RedditShareButton, HackerNewsShareButton];
 const { title, description, pubDate, updatedDate, tags, headings, related, readingTime } = Astro.props;
 const { slug } = Astro.params;
 const selectedPosts = await getRelatedPosts(related ?? []);
@@ -39,6 +39,7 @@ const selectedPosts = await getRelatedPosts(related ?? []);
   <link rel="stylesheet" href="/prism.css" slot="head" />
   <style scoped>
     h1 {
+      margin-top: -0.1em;
       margin-bottom: 0.125em;
       line-height: 1.1;
       font-weight: 800;
@@ -86,13 +87,15 @@ const selectedPosts = await getRelatedPosts(related ?? []);
     .midline {
       margin-bottom: 1.5em;
     }
+
+    /* post footer */
     .edit-post {
       display: flex;
       justify-content: space-around;
       color: var(--primary);
       font-family: var(--sub-font);
       font-weight: 700;
-      margin: 1em auto 2em auto;
+      margin: 0 auto 1.5em auto;
     }
     .edit-post span {
       margin: 0 auto;
@@ -104,222 +107,206 @@ const selectedPosts = await getRelatedPosts(related ?? []);
       padding: 0;
     }
     .edit {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375em;
       background-color: var(--info);
       color: #000;
-      border-radius: 0.5em;
+      border-radius: 0.25em;
       cursor: pointer;
       font-weight: 700;
       margin: 0 auto;
-      padding: 6px 10px 4px 10px;
+      padding: 6px 10px;
       text-decoration: none;
       font-size: 0.85em;
       font-family: var(--sub-font);
       line-height: 1.5;
+    }
+    .edit:hover {
+      background: var(--hover);
+      color: #000;
+      transition: all .15s ease-out;
+      transform: none;
+      box-shadow: none;
     }
     .edit img {
       display: inline;
       filter: brightness(0) saturate(100%);
       height: 24px;
       width: auto;
-      padding: 0 auto;
-      margin: 2px 0 -5px 0;
+      margin: 0;
       border-radius: 0;
-      cursor: pointer;
     }
-    .post-end {
+    .footer-grid {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
       font-family: var(--sub-font);
       font-weight: 700;
-      margin: 0 auto;
-      justify-content: space-around;
+      margin: 0 auto 1.5em auto;
     }
-    .mid-end {
-      display: grid;
-      place-items: center;
-      grid-template-columns: auto auto;
-      font-family: var(--sub-font);
-      font-weight: 700;
-      margin: 0 auto;
-      justify-content: space-around;
+    .footer-grid > div {
+      flex: 0 0 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75em;
+      padding: 0.75em 0;
     }
     .coffee {
-      display: grid;
       color: var(--primary);
-      grid-template-columns: auto;
-      grid-template-rows: auto auto;
-      place-items: center;
-      gap: 0;
-      margin: 0 auto;
-      padding: 0 auto;
       cursor: default;
-      height: 115px;
     }
     .coffee-btn {
       display: grid;
       background-color: var(--info);
-      border-radius: 0.325em;
+      border-radius: 0.25em;
       font-family: var(--sub-font);
       color: var(--primary);
       grid-template-columns: auto;
       grid-template-rows: auto auto;
       cursor: pointer;
+        margin-top: 0.5em;
       padding: 0;
-      margin-top: 1em;
     }
     .coffee-btn:hover {
       background: var(--hover);
       transition: all .15s ease-out;
     }
     .share {
-      display: grid;
       color: var(--primary);
-      grid-template-columns: auto;
-      grid-template-rows: auto auto;
-      place-items: center;
-      gap: 0;
       cursor: default;
-      width: 325px;
-      height: 130px;
     }
     .umami {
-      display: grid;
       color: var(--primary);
-      grid-template-columns: auto;
-      grid-template-rows: auto auto;
-      padding-top: 1em;
       cursor: default;
-      width: 325px;
-      height: 115px;
-      margin-bottom: 1em;
-      font-weight: 700;
     }
     .stats {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375em;
       background-color: var(--info);
       color: #000;
-      border-radius: 0.5em;
+      border-radius: 0.25em;
       cursor: pointer;
       font-weight: 700;
-      margin: 0 auto;
-      padding: 1px 10px 0 10px;
+      padding: 4px 10px;
       text-decoration: none;
       font-family: var(--sub-font);
+      line-height: 1.5;
     }
-    .umami img {
-      display: inline;
+    .stats:hover {
+      background: var(--hover);
+      color: #000;
+      transition: all .15s ease-out;
+      transform: none;
+      box-shadow: none;
+    }
+    .stats-icon {
+      display: inline-flex;
+      place-items: center;
       filter: brightness(0) saturate(100%);
       height: 24px;
       width: auto;
-      padding: 0;
-      margin: 0 0 -0.3em 0;
+      margin: 0;
       border-radius: 0;
-      cursor: pointer;
-    }
-    .edit-post a, .stats a, .email a {
-      color: #000;
-    }
-    .email:hover a, .email:focus a {
-      color: #000;
-      transform: none;
-      box-shadow: 0 0 0 0;
-    }
-    .edit-post a:hover, .stats:hover a {
-      color: #000;
-      transform: none;
-      box-shadow: 0 0 0 0;
-    }
-    .edit-post button:hover, .mid-end button:hover, .post-end button:hover {
-      background: var(--hover);
-      transform: none;
-      box-shadow: 0 0 0 0;
     }
     .questions {
-      display: grid;
-      place-items: center;
-      grid-template-columns: auto;
-      grid-template-rows: auto;
-      width: 325px;
-      margin-top: 0.75em;
+      color: var(--primary);
     }
-    .questions span {
+    .questions > span {
       font-family: var(--sub-font);
       font-weight: 700;
       color: var(--primary);
-      margin-bottom: 0.65em;
     }
     .email {
       display: inline-flex;
       align-items: center;
+      gap: 0.375em;
       text-align: center;
-      border-radius: 0.5em;
+      background-color: var(--info);
+      border-radius: 0.25em;
       cursor: pointer;
       font-weight: 700;
-      margin: 0 auto;
       text-decoration: none;
       font-family: var(--sub-font);
       line-height: 1.5;
-      padding-top: 4px;
-      padding-bottom: 6px;
-      margin-bottom: 1em;
+      padding: 4px 10px 6px 10px;
+      color: #000;
     }
-    .email img {
-      margin: 1px auto -12px auto;
+    .email:hover {
+      background: var(--hover);
+      transition: all .15s ease-out;
+      transform: none;
+      box-shadow: none;
+    }
+    .email-icon {
       width: 25px;
       height: auto;
+      margin: 0.1em 0 0 0;
+    }
+    .topic {
+      font-size: 0.875em;
     }
     .endline {
       margin-top: 0.5em;
       margin-bottom: 1.5em;
+    }
+
+    /* blog nav */
+    a .nav-btn {
+      place-items: center;
     }
     .blog-nav {
       display: inline-flex;
       justify-content: space-between;
       font-size: 1.5em;
       margin: 0 auto 1em auto;
-      padding: 0 auto;
+      padding: 0;
       width: 100%;
     }
-    .blog-nav button {
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25em;
       background: var(--primary);
-      display: flex;
-      place-items: center;
+      color: #000;
+      border-radius: 0.375em;
       font-size: 0.5em;
+      font-weight: 700;
+      padding: 0.4em 0.75em;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color .15s ease-out;
     }
-    .home button svg {
-      display: flex;
-      place-items: center;
+    .nav-btn:hover {
+      background-color: var(--secondary);
+      color: #000;
+      transform: none;
+      box-shadow: none;
+    }
+    .nav-btn svg {
       fill: currentColor;
+      flex-shrink: 0;
+      width: 16px;
+      height: 16px;
+    }
+    .nav-btn.back svg,
+    .nav-btn.go-top svg {
+      stroke: currentColor;
+      stroke-width: 1.25;
+    }
+    .nav-btn.home svg {
+      place-items: center;
       width: 20px;
       height: 20px;
-      margin: 0 0.25em 0 0;
-      padding: 0;
     }
-    .back button svg {
-      display: flex;
+    .nav-btn span {
       place-items: center;
-      fill: currentColor;
-      width: 16px;
-      height: 16px;
-      margin: 0 0.25em 0 0;
-      padding: 0;
-      stroke: black;
-      stroke-width: 1.25;
+      padding-top: 2.5px;
     }
-    .go-top button svg {
-      display: flex;
-      place-items: center;
-      fill: currentColor;
-      width: 16px;
-      height: 16px;
-      margin: 0 0 0 0.25em;
-      padding: 0;
-      stroke: black;
-      stroke-width: 1.25;
-    }
-    a:hover .blog-nav button:not(.theme-toggle, .dropdown-toggle),
-    .blog-nav button:not(.theme-toggle, .dropdown-toggle):hover {
-      background-color: var(--secondary);
-    }
+
+    /* related posts */
     .related {
       display: inline;
     }
@@ -349,7 +336,7 @@ const selectedPosts = await getRelatedPosts(related ?? []);
       color: var(--emphasis);
       padding: 0.75em 1em 0.85em 1em;
       margin: 1em;
-      border-radius: 0.5em;
+      border-radius: 0.25em;
     }
     .related li span {
       font-size: 1em;
@@ -371,6 +358,8 @@ const selectedPosts = await getRelatedPosts(related ?? []);
       color: var(--hover);
       border: 2px solid var(--emphasis);
     }
+
+    /* wide-screen sidebar */
     @media screen and (min-width: 2108px) {
       .blog-tags, .info, .updated {
         position: absolute;
@@ -388,6 +377,8 @@ const selectedPosts = await getRelatedPosts(related ?? []);
         top: 7.55em;
       }
     }
+
+    /* mobile */
     @media screen and (max-width: 667px) {
       h1 {
         font-size: 1.35em;
@@ -422,7 +413,7 @@ const selectedPosts = await getRelatedPosts(related ?? []);
       .related li button {
         margin: 0 0.25em 0.25em 0;
       }
-      .edit-post {        
+      .edit-post {
         justify-content: space-around;
         align-content: center;
       }
@@ -434,42 +425,25 @@ const selectedPosts = await getRelatedPosts(related ?? []);
         margin-top: 0.65em;
         margin-left: 1.25em;
       }
-      .post-end, .mid-end {
-        display: grid;
-        grid-template-columns: auto;
-        justify-content: center;
-        place-items: center;
-        margin: 0 auto -0.75em auto;
-        gap: 0 0;
+      .footer-grid {
+        margin-bottom: 0.5em;
       }
-      .coffee {
-        grid-row: 1;
-        grid-column: 1;
-        margin: 0.25em auto -0.25em auto;
-        width: auto;
+      .footer-grid > div {
+        flex: 0 0 100%;
       }
-      .coffee span {
-        margin-bottom: -0.5em;
+    }
+
+    /* hover effects */
+    @media (hover: hover) {
+      .blog-nav a:hover {
+        box-shadow: -4px -4px 0 #000;
+        transform: translate(4px, 4px);
+        outline-offset: 1px;
       }
-      .share {
-        grid-row: 2;
-        grid-column: 1;
-        margin: 0 auto -0.675em auto;
-        width: auto;
-      }
-      .umami {
-        width: auto;
-        margin: 0 auto 0.15em auto;
-      }
-      .questions {
-        width: auto;
-        margin: 0 auto 0.75em auto;
-      }
-      .questions span {
-        margin: 1em auto 0 auto;
-      }
-      .email {
-        margin: 1em auto;
+      .blog-nav a {
+        text-overflow: ellipsis;
+        transition: all 0.1s ease-out;
+        cursor: pointer;
       }
     }
   </style>
@@ -493,6 +467,7 @@ const selectedPosts = await getRelatedPosts(related ?? []);
       }
     </style>
   </slot>
+
   <ScrollProgress />
   <BlogPosting slot="head" {...Astro.props} />
   <BreadcrumbSchema slot="head" crumbs={[
@@ -511,8 +486,9 @@ const selectedPosts = await getRelatedPosts(related ?? []);
   <Lightbox />
   <CodeblockCopy />
   <HeadingCopy />
+
   <article class="h-entry" data-pagefind-body data-pub-date={pubDate.toISOString()}
-  data-updated-date={updatedDate ? updatedDate.toISOString() : ''}>
+    data-updated-date={updatedDate ? updatedDate.toISOString() : ''}>
     <h1 class="p-name">{title}</h1>
     <a class="u-url" href={`https://fullmetalbrackets.com/blog/${slug}/`} hidden>Permalink</a>
     <div class="blog-tags">
@@ -529,26 +505,18 @@ const selectedPosts = await getRelatedPosts(related ?? []);
       <span class="readingtime"><ReadingTime time={readingTime} data-pagefind-ignore /></span>
     </div>
     <p class="updated">
-      {
-        updatedDate && (
-          <span class="last-updated-on">
-            Updated&nbsp;
-          </span>
-            <FormattedDate class="dt-updated" date={updatedDate} />
-        )
-      }
+      {updatedDate && (
+        <span class="last-updated-on">Updated&nbsp;</span>
+        <FormattedDate class="dt-updated" date={updatedDate} />
+      )}
     </p>
     <hr />
-    <p class="p-summary description">
-      {description}
-    </p>
+    <p class="p-summary description">{description}</p>
     <TableOfContents headings={headings} />
     <div class="e-content slot-content">
       <slot>
         <p>
-          If you're seeing this, something went wrong! Please try <em
-            >reloading the page</em
-          >.
+          If you're seeing this, something went wrong! Please try <em>reloading the page</em>.
         </p>
       </slot>
     </div>
@@ -558,65 +526,71 @@ const selectedPosts = await getRelatedPosts(related ?? []);
         <ul>
           {selectedPosts.map(post => (
             <a href={`/blog/${post.id}/`} rel="prefetch-intent" data-umami-event={`related-${post.id}`}>
-            <li>
-              <span>{post.data.title}</span>
-              <div>
-                <span class="tag">
-                  {post.data.tags.map((tag) => (
-                    <button>{tag}</button>
-                  ))}
-                </span>
-              </div>
-              <p>{post.data.description}</p>
-            </li>
-          </a>
+              <li>
+                <span>{post.data.title}</span>
+                <div>
+                  <span class="tag">
+                    {post.data.tags.map((tag) => (
+                      <button>{tag}</button>
+                    ))}
+                  </span>
+                </div>
+                <p>{post.data.description}</p>
+              </li>
+            </a>
           ))}
         </ul>
       </div>
     )}
-
   </article>
+
   <HCard />
-  <hr class="midline">
-  
+  <hr class="midline" />
+
   <WebMentions />
-  
+
   <Comments />
 
-  <nav class="edit-post">
+  <!-- Error / edit link -->
+  <nav class="edit-post" aria-label="Edit post">
     <div>
-      <span>
-        Error in this article?
-      </span>
+      <span>Error in this article?</span>
       <span class="edit-button">
-        <button class="edit">
-          <a 
+        <a
+          class="edit"
           href={`${GITHUB}/blog/blob/main/src/content/blog/${slug}.md/`}
-          target="_blank" data-umami-event={`edit-gh-${slug}`}>
-            <img src="/assets/gh.svg"
-              class="gh"
-              loading="lazy"
-              decoding="async"
-              alt="Edit this page on GitHub"> <span>Edit on GitHub</span>
-          </a>
-        </button>
+          target="_blank"
+          rel="noopener noreferrer"
+          data-umami-event={`edit-gh-${slug}`}
+        >
+          <img
+            src="/assets/gh.svg"
+            class="gh"
+            loading="lazy"
+            decoding="async"
+            alt=""
+            aria-hidden="true"
+          />
+          <span>Edit on GitHub</span>
+        </a>
       </span>
     </div>
   </nav>
 
-  <nav class="mid-end">
+  <!-- Coffee / Share / Stats / Contact -->
+  <nav class="footer-grid" aria-label="Support, share, and contact">
     <div class="coffee">
       <span>Was this article helpful?</span>
-        <a href={DONATE}>
-          <img
-            src="https://img.buymeacoffee.com/button-api/?slug=arieldiaz&font_family=Inter&coffee_colour=6F4E37"
-            class="coffee-btn"
-            alt="Buy Me A Coffee"
-            title="Buy Me A Coffee"
-            loading="lazy"
-            decoding="async"
-          />
-        </a>
+      <a href={DONATE} rel="noopener noreferrer">
+        <img
+          src="https://img.buymeacoffee.com/button-api/?slug=arieldiaz&font_family=Inter&coffee_colour=6F4E37"
+          class="coffee-btn"
+          alt="Buy Me A Coffee"
+          title="Buy Me A Coffee"
+          loading="lazy"
+          decoding="async"
+        />
+      </a>
     </div>
     <div class="share">
       <span>Want to share this article?</span>
@@ -626,66 +600,82 @@ const selectedPosts = await getRelatedPosts(related ?? []);
         title={title}
       />
     </div>
-  </nav>
-
-  <nav class="post-end">
     <div class="umami">
-      <span>
-        Want to see article stats?
-      </span>
-      <button class="stats">
-        <span>
-          <a 
-            href={`https://u.adiaz.fyi/share/TtTytHU8rJy0oEzN/?path=eq./blog/${slug}/`}
-            target="_blank" data-umami-event={`umami-stats-${slug}`}>
-              <img src="/assets/umami.svg"
-                class="umami"
-                loading="lazy"
-                decoding="async"
-                alt="Umami Analytics"> Umami
-          </a>
-        </span>
-      </button>
+      <span>Want to see article stats?</span>
+      <a
+        class="stats"
+        href={`https://u.adiaz.fyi/share/TtTytHU8rJy0oEzN/?path=eq./blog/${slug}/`}
+        target="_blank"
+        rel="noopener noreferrer"
+        data-umami-event={`umami-stats-${slug}`}
+      >
+        <img
+          src="/assets/umami.svg"
+          class="stats-icon"
+          loading="lazy"
+          decoding="async"
+          alt=""
+          aria-hidden="true"
+        />
+        <span class="topic">Umami</span>
+      </a>
     </div>
     <div class="questions">
       <span>Have any questions?</span>
-        <button class="email">
-          <a 
-            href={`mailto:contact@fullmetalbrackets.com?subject=RE: ${title}`}>
-              <img src="/assets/email.svg"
-                class="email"
-                loading="lazy"
-                decoding="async"
-                alt="Email"> Email Me
-          </a>
-        </button>
+      <a
+        class="email"
+        href={`mailto:contact@fullmetalbrackets.com?subject=RE: ${title}`}
+      >
+        <img
+          src="/assets/email.svg"
+          class="email-icon"
+          loading="lazy"
+          decoding="async"
+          alt=""
+          aria-hidden="true"
+        />
+        <span class="topic">Email Me</span>
+      </a>
     </div>
   </nav>
 
   <hr class="endline" />
-  <nav class="blog-nav">
-    <a href="/blog/" rel="prefetch-intent" class="top blog-tag back"><button><svg class="c_c c_d c_e c_f c_cd" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M14 7.5H3.439l4.29-4.387-.714-.699L1.55 8l5.465 5.586.714-.7L3.44 8.5h10.56v-1z"></path></svg> Blog</button></a>
-    <a href="/" rel="prefetch-intent" class="top blog-tag home"><button><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>home</title><path d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z" /></svg> Home</button></a>
-    <a href="#top" class="top blog-tag go-top"><button>Top <svg class="c_c c_d c_e c_f c_cd" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M7.5 14V3.439l-4.387 4.29-.699-.714L8 1.55l5.586 5.465-.7.714L8.5 3.44V14h-1z"></path></svg></button></a>
+
+  <nav class="blog-nav" aria-label="Post navigation">
+    <a href="/blog/" rel="prefetch-intent" class="nav-btn back" aria-label="Back to Blog">
+      <svg role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+        <path d="M14 7.5H3.439l4.29-4.387-.714-.699L1.55 8l5.465 5.586.714-.7L3.44 8.5h10.56v-1z" />
+      </svg>
+      <span>Blog</span>
+    </a>
+    <a href="/" rel="prefetch-intent" class="nav-btn home" aria-label="Go to Home">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z" />
+      </svg>
+      <span>Home</span>
+    </a>
+    <a href="#top" class="nav-btn go-top" aria-label="Back to top">
+      <span>Top</span>
+      <svg role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+        <path d="M7.5 14V3.439l-4.387 4.29-.699-.714L8 1.55l5.586 5.465-.7.714L8.5 3.44V14h-1z" />
+      </svg>
+    </a>
   </nav>
 
   <script is:inline>
     document.querySelectorAll('blockquote').forEach((blockquote) => {
       const firstPara = blockquote.querySelector('p');
-      if (firstPara) {
-        const text = firstPara.textContent || '';
-        const match = text.match(/^\[(\w+)\]\s*/);
-        
-        if (match) {
-          const type = match[1];
-          blockquote.setAttribute('data-type', type);
-          blockquote.classList.add(`blockquote-${type}`);
-          
-          const textNode = firstPara.firstChild;
-          if (textNode && textNode.nodeType === Node.TEXT_NODE && textNode.textContent) {
-            textNode.textContent = textNode.textContent.replace(/^\[(\w+)\]\s*/, '');
-          }
-        }
+      if (!firstPara) return;
+
+      const match = (firstPara.textContent ?? '').match(/^\[(\w+)\]\s*/);
+      if (!match) return;
+
+      blockquote.setAttribute('data-type', match[1]);
+      blockquote.classList.add(`blockquote-${match[1]}`);
+
+      const textNode = firstPara.firstChild;
+      if (textNode?.nodeType === Node.TEXT_NODE && textNode.textContent) {
+        textNode.textContent = textNode.textContent.replace(/^\[(\w+)\]\s*/, '');
       }
     });
 
@@ -693,49 +683,41 @@ const selectedPosts = await getRelatedPosts(related ?? []);
     if (article) {
       const hr = article.querySelector('hr');
       const description = article.querySelector('.description');
-      
-      if (hr && description) {
-        let tocElement = description.nextElementSibling;
+      const tocElement = description?.nextElementSibling;
+      const firstContentElement = tocElement?.nextElementSibling;
 
-        if (tocElement) {
-          const firstContentElement = tocElement.nextElementSibling;
-
-          if (firstContentElement && 
-              firstContentElement.tagName === 'BLOCKQUOTE' &&
-              firstContentElement.getAttribute('data-type') === 'warning') {
-            hr.parentNode.insertBefore(firstContentElement, hr.nextSibling);
-          }
-        }
+      if (hr && firstContentElement?.tagName === 'BLOCKQUOTE' &&
+          firstContentElement.getAttribute('data-type') === 'warning') {
+        hr.parentNode.insertBefore(firstContentElement, hr.nextSibling);
       }
     }
   </script>
+
   <script is:inline>
     const articleEl = document.querySelector('article');
     if (articleEl) {
       const pubDate = articleEl.dataset.pubDate;
       const updatedDate = articleEl.dataset.updatedDate;
-      
       const relevantDate = updatedDate ? new Date(updatedDate) : new Date(pubDate);
       const now = new Date();
-      const monthsDiff = (now.getFullYear() - relevantDate.getFullYear()) * 12 
-        + (now.getMonth() - relevantDate.getMonth());
+      const monthsDiff =
+        (now.getFullYear() - relevantDate.getFullYear()) * 12 +
+        (now.getMonth() - relevantDate.getMonth());
 
-      const banner = document.createElement('blockquote');
-
-      if (monthsDiff >= 24) {
-        const years = Math.floor(monthsDiff / 12);
-        const months = monthsDiff % 12;
-        const timeString = months > 0 ? `${years} years, ${months} months` : `${years} years`;
+      if (monthsDiff >= 18) {
+        const banner = document.createElement('blockquote');
         banner.setAttribute('data-type', 'warning');
-        banner.innerHTML = `<p><strong>Heads up!</strong></p><p>This post hasn't been updated in <b>${timeString}</b> so please consider everything out of date!</p>`;
-      } else if (monthsDiff >= 18) {
-        banner.setAttribute('data-type', 'warning');
-        banner.innerHTML = `<p><strong>Heads up!</strong></p><p>This post hasn't been updated in <i>over 18 months</i> and some information may be outdated.</p>`;
-      }
 
-      if (banner.hasAttribute('data-type')) {
-        const hr = articleEl.querySelector('hr');
-        if (hr) hr.insertAdjacentElement('afterend', banner);
+        if (monthsDiff >= 24) {
+          const years = Math.floor(monthsDiff / 12);
+          const months = monthsDiff % 12;
+          const timeString = months > 0 ? `${years} years, ${months} months` : `${years} years`;
+          banner.innerHTML = `<p><strong>Heads up!</strong></p><p>This post hasn't been updated in <b>${timeString}</b> so please consider everything out of date!</p>`;
+        } else {
+          banner.innerHTML = `<p><strong>Heads up!</strong></p><p>This post hasn't been updated in <i>over 18 months</i> and some information may be outdated.</p>`;
+        }
+
+        articleEl.querySelector('hr')?.insertAdjacentElement('afterend', banner);
       }
     }
   </script>
@@ -756,7 +738,6 @@ const selectedPosts = await getRelatedPosts(related ?? []);
             toc.style.pointerEvents = isVisible ? 'auto' : 'none';
             toc.style.transition = 'opacity 0.3s ease';
           });
-
           observer.observe(lastHeading);
         }
       }
