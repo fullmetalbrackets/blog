@@ -3,7 +3,7 @@ import HeaderLink from "./HeaderLink.astro";
 import ThemeToggle from "./ThemeToggle.astro";
 import { Picture } from 'astro:assets';
 import Logo from '@img/assets/logo.avif';
-import Search from '@icons/search.svg';
+import SearchOverlay from "./SearchOverlay.astro";
 ---
 
 <style scoped>
@@ -383,10 +383,7 @@ import Search from '@icons/search.svg';
         </div>
       </div>
 
-      <HeaderLink href="/search/" rel="prefetch-intent search" class="search-link" data-umami-event="search" aria-label="Search">
-        <Search aria-hidden="true" width="26px" height="26px" class="search" />
-        <span class="sr-only">Search</span>
-      </HeaderLink>
+      <SearchOverlay />
       <ThemeToggle />
     </div>
   </nav>
