@@ -48,7 +48,7 @@ import Search from '@icons/search.svg';
   </div>
 </div>
 
-<style scoped>
+<style>
   /* Trigger button */
   .search-trigger {
     display: flex;
@@ -178,62 +178,61 @@ import Search from '@icons/search.svg';
     display: block;
   }
 
-  a span.search-result-link {
+  /* Each result: title on top, tags below */
+  .search-result-link {
     display: flex;
-    align-items: baseline;
-    gap: 0.6em;
-    padding: 0.45em 0.5em;
+    flex-direction: column;
+    gap: 0.3em;
+    padding: 0.5em 0.5em;
     text-decoration: none;
     color: var(--primary);
     border-radius: 0.25em;
     transition: background 0.1s ease;
   }
 
-  a span.search-result-link:hover,
-  a span.search-result-link:focus {
+  .search-result-link:hover,
+  .search-result-link:focus {
     background: color-mix(in srgb, var(--primary) 8%, transparent);
-    color: var(--hover);
     transform: none;
     box-shadow: none;
     outline: none;
   }
 
-  a span.search-result-title {
-    font-family: var(--sub-font);
-    font-size: 0.875em;
+  /* Title styled like post headings — main-font, emphasis color */
+  .search-result-title {
+    font-family: var(--main-font);
+    font-size: 0.925em;
     font-weight: 700;
-    color: inherit;
-    flex-shrink: 0;
+    color: var(--emphasis);
+    line-height: 1.2;
   }
 
-  a span.search-result-tags {
+  .search-result-link:hover .search-result-title,
+  .search-result-link:focus .search-result-title {
+    color: var(--hover);
+  }
+
+  /* Tag row */
+  .search-result-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.25em;
-    flex: 1;
+    gap: 0.2em;
   }
 
-  a span.search-result-tag {
+  /* Tags styled exactly like .tag button in global.css */
+  .search-result-tag {
     font-family: var(--sub-font);
-    font-size: 0.65em;
+    font-size: 0.75em;
     font-weight: 700;
-    background: var(--info);
+    background-color: var(--info);
     color: #000;
     border-radius: 0.25em;
-    padding: 1px 5px;
+    padding: 4px 8px;
     white-space: nowrap;
+    line-height: 1;
   }
 
-  a span.search-result-url {
-    font-family: var(--sub-font);
-    font-size: 0.7em;
-    opacity: 0.35;
-    margin-left: auto;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-
-  a span.search-status {
+  .search-status {
     font-family: var(--sub-font);
     font-size: 0.8em;
     color: var(--text);
@@ -306,13 +305,10 @@ import Search from '@icons/search.svg';
             '</div>'
           : '';
 
-        var urlLabel = url.replace(/^\/|\/$/g, '').replace(/\//g, ' › ');
-
         return '<li class="search-result-item" role="option" id="sr-' + i + '">' +
           '<a href="' + url + '" class="search-result-link" tabindex="-1">' +
           '<span class="search-result-title">' + title + '</span>' +
           tagHtml +
-          '<span class="search-result-url">' + urlLabel + '</span>' +
           '</a></li>';
       }).join('');
     }
@@ -341,11 +337,11 @@ import Search from '@icons/search.svg';
       var active = document.activeElement;
       var idx = links.indexOf(active);
       if (direction === 'down') {
-        if (idx === -1 || idx === links.length - 1) links[0] && links[0].focus();
-        else links[idx + 1] && links[idx + 1].focus();
+        if (idx === -1 || idx === links.length - 1) { if (links[0]) links[0].focus(); }
+        else { if (links[idx + 1]) links[idx + 1].focus(); }
       } else {
         if (idx <= 0) { if (input) input.focus(); }
-        else links[idx - 1] && links[idx - 1].focus();
+        else { if (links[idx - 1]) links[idx - 1].focus(); }
       }
     }
 
@@ -355,7 +351,6 @@ import Search from '@icons/search.svg';
       var input = document.getElementById('search-input');
       if (!trigger || !overlay || !input) return;
 
-      // prevent double-binding on astro:page-load
       if (trigger.dataset.searchInit) return;
       trigger.dataset.searchInit = 'true';
 
