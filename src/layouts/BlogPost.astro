@@ -98,6 +98,7 @@ const selectedPosts = await getRelatedPosts(related ?? []);
       margin: 0 auto 1.5em auto;
     }
     .edit-post span {
+      display: flex;
       margin: 0 auto;
     }
     .gh {
@@ -115,7 +116,7 @@ const selectedPosts = await getRelatedPosts(related ?? []);
       border-radius: 0.25em;
       cursor: pointer;
       font-weight: 700;
-      margin: 0 auto;
+      margin: 1em auto 0 auto;
       padding: 6px 10px;
       text-decoration: none;
       font-size: 0.85em;
@@ -422,7 +423,6 @@ const selectedPosts = await getRelatedPosts(related ?? []);
         white-space: pre;
       }
       .edit {
-        margin-top: 0.65em;
         margin-left: 1.25em;
       }
       .footer-grid {
