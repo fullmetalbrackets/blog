@@ -1,8 +1,14 @@
+const BLOCKED_AUTHORS = new Set([
+	'did:plc:3smd6p3dwdqpsqpmchafyydd',
+	'beep.town/@echofeedamplify',
+]);
+
 interface Webmention {
 	'wm-property': string;
 	author?: {
 		name?: string;
 		photo?: string;
+		url?: string;
 	};
 	content?: {
 		text?: string;
@@ -12,120 +18,143 @@ interface Webmention {
 	url?: string;
 }
 
-interface WebmentionGroup {
-	likes: Webmention[];
-	reposts: Webmention[];
-	replies: Webmention[];
-	mentions: Webmention[];
-}
-
 interface WebmentionResponse {
 	children: Webmention[];
+}
+
+function esc(s: string): string {
+	return s
+		.replace(/&/g, '&amp;')
+		.replace(/</g, '&lt;')
+		.replace(/>/g, '&gt;')
+		.replace(/"/g, '&quot;');
+}
+
+function formatDate(iso: string): string {
+	try {
+		return new Date(iso).toLocaleDateString('en-US', {
+			year: 'numeric',
+			month: 'short',
+			day: 'numeric',
+		});
+	} catch {
+		return '';
+	}
+}
+
+function avatarLink(m: Webmention, size: 'sm' | 'md' = 'sm'): string {
+	const src = m.author?.photo ?? '';
+	const name = esc(m.author?.name ?? 'Anonymous');
+	const href = esc(m.url ?? m.author?.url ?? '#');
+	if (!src) return '';
+	return `
+    <a href="${href}" target="_blank" rel="noopener noreferrer"
+       title="${name}" class="wm-avatar wm-avatar--${size}">
+      <img src="${esc(src)}" alt="${name}" loading="lazy"
+           onerror="this.closest('a').style.display='none'">
+    </a>`;
+}
+
+function buildFacepile(
+	mentions: Webmention[],
+	icon: string,
+	label: string
+): string {
+	if (!mentions.length) return '';
+	const count = mentions.length;
+	const noun = count === 1 ? label : `${label}s`;
+
+	return `
+    <div class="wm-section">
+      <h4 class="wm-section-label">
+        <span class="wm-icon" aria-hidden="true">${icon}</span>
+        ${count} ${noun}
+      </h4>
+      <div class="wm-facepile" role="list" aria-label="${esc(noun)}">
+        ${mentions.map((m) => avatarLink(m, 'sm')).join('')}
+      </div>
+    </div>`;
+}
+
+function buildReplies(mentions: Webmention[]): string {
+	if (!mentions.length) return '';
+	const count = mentions.length;
+	const noun = count === 1 ? 'reply' : 'replies';
+
+	const items = mentions
+		.map((m) => {
+			const rawText = m.content?.text ?? '';
+			const text =
+				rawText.length > 400 ? esc(rawText.slice(0, 400)) + '…' : esc(rawText);
+			const date = m.published ? formatDate(m.published) : '';
+			const href = esc(m.url ?? '#');
+
+			return `
+        <div class="wm-reply" role="listitem">
+          ${avatarLink(m, 'md')}
+          <div class="wm-reply-body">
+            ${text ? `<p class="wm-reply-text">${text}</p>` : ''}
+            <a href="${href}" class="wm-reply-meta"
+               target="_blank" rel="noopener noreferrer">
+              ${date || 'view source'}
+            </a>
+          </div>
+        </div>`;
+		})
+		.join('');
+
+	return `
+    <div class="wm-section">
+      <h4 class="wm-section-label">
+        <span class="wm-icon" aria-hidden="true">💬</span>
+        ${count} ${noun}
+      </h4>
+      <div class="wm-replies" role="list" aria-label="Replies">
+        ${items}
+      </div>
+    </div>`;
 }
 
 export async function loadWebmentions(): Promise<void> {
 	const container = document.getElementById('webmentions-container');
 	if (!container) return;
 
-	let currentUrl = window.location.href.split('#')[0];
-	if (!currentUrl.endsWith('/')) {
-		currentUrl = currentUrl + '/';
-	}
+	const devUrl = (container as HTMLElement).dataset.targetUrl ?? '';
+	let targetUrl = devUrl.trim() || window.location.href.split('#')[0];
+	if (!targetUrl.endsWith('/')) targetUrl += '/';
 
 	try {
-		const response = await fetch(
-			`https://webmention.io/api/mentions.jf2?target=${encodeURIComponent(currentUrl)}&per-page=50`
+		const res = await fetch(
+			`https://webmention.io/api/mentions.jf2?target=${encodeURIComponent(targetUrl)}&per-page=200&sort-dir=up`
 		);
+		if (!res.ok) throw new Error(res.statusText);
 
-		if (!response.ok) {
-			throw new Error('Failed to fetch webmentions');
-		}
+		const data: WebmentionResponse = await res.json();
+		const mentions: Webmention[] = (data.children ?? []).filter((m) => {
+			const authorUrl = m.author?.url ?? '';
+			const postUrl = m.url ?? '';
+			return !Array.from(BLOCKED_AUTHORS).some(
+				(b) => authorUrl.includes(b) || postUrl.includes(b)
+			);
+		});
 
-		const data: WebmentionResponse = await response.json();
-		const mentions: Webmention[] = data.children || [];
-
-		if (mentions.length === 0) {
-			container.innerHTML =
-				'<p class="no-mentions">No mentions yet. Be the first to mention this post!</p>';
+		if (!mentions.length) {
+			container.innerHTML = `<p class="wm-empty">No mentions yet — be the first!</p>`;
 			return;
 		}
 
-		const grouped: WebmentionGroup = {
-			likes: mentions.filter((m: Webmention) => m['wm-property'] === 'like-of'),
-			reposts: mentions.filter(
-				(m: Webmention) => m['wm-property'] === 'repost-of'
-			),
-			replies: mentions.filter(
-				(m: Webmention) => m['wm-property'] === 'in-reply-to'
-			),
-			mentions: mentions.filter(
-				(m: Webmention) => m['wm-property'] === 'mention-of'
-			),
-		};
+		const likes = mentions.filter((m) => m['wm-property'] === 'like-of');
+		const reposts = mentions.filter((m) => m['wm-property'] === 'repost-of');
+		const replies = mentions.filter((m) =>
+			['in-reply-to', 'mention-of'].includes(m['wm-property'])
+		);
 
-		let html = '';
-
-		if (grouped.likes.length > 0) {
-			html += '<div class="webmention-section">';
-			html += `<h4>Likes</h4>`;
-			html += '<div class="webmention-faces">';
-			grouped.likes.forEach((mention) => {
-				const author = mention.author || {};
-				html += `
-					<div class="webmention-face">
-						${author.photo ? `<a href="${mention.url}" target="_blank" rel="noopener noreferrer"><img src="${author.photo}" alt="${author.name || 'Anonymous'}" class="webmention-avatar-small"></a>` : ''}
-					</div>
-				`;
-			});
-			html += '</div></div>';
-		}
-
-		if (grouped.reposts.length > 0) {
-			html += '<div class="webmention-section">';
-			html += `<h4>Reposts</h4>`;
-			html += '<div class="webmention-faces">';
-			grouped.reposts.forEach((mention) => {
-				const author = mention.author || {};
-				html += `
-					<div class="webmention-face">
-						${author.photo ? `<a href="${mention.url}" target="_blank" rel="noopener noreferrer"><img src="${author.photo}" alt="${author.name || 'Anonymous'}" class="webmention-avatar-small"></a>` : ''}
-						<a href="${mention.url}" target="_blank" rel="noopener noreferrer" class="webmention-author-name">${author.name || 'Anonymous'}</a>
-					</div>
-				`;
-			});
-			html += '</div></div>';
-		}
-
-		const displayMentions = [...grouped.replies, ...grouped.mentions];
-
-		if (displayMentions.length > 0) {
-			displayMentions.forEach((mention) => {
-				const author = mention.author || {};
-				const content = mention.content?.text || mention.content?.html || '';
-				const published = mention.published
-					? new Date(mention.published).toLocaleDateString()
-					: '';
-
-				html += `
-          <div class="webmention">
-            <div class="webmention-author">
-              ${author.photo ? `<img src="${author.photo}" alt="${author.name || 'Anonymous'}" class="webmention-avatar">` : ''}
-              <span>${author.name || 'Anonymous'}</span>
-            </div>
-            ${content ? `<div class="webmention-content">${content}</div>` : ''}
-            <div class="webmention-meta">
-              ${published ? `<time>${published}</time> · ` : ''}
-              <a href="${mention.url}" target="_blank" rel="noopener noreferrer">View original</a>
-            </div>
-          </div>
-        `;
-			});
-		}
-
-		container.innerHTML = html;
-	} catch (error) {
-		console.error('Error fetching webmentions:', error);
 		container.innerHTML =
-			'<p class="no-mentions">Unable to load mentions at this time.</p>';
+			buildFacepile(likes, '♥', 'like') +
+			buildFacepile(reposts, '↻', 'boost') +
+			buildReplies(replies);
+	} catch (err) {
+		console.error('[webmentions]', err);
+		container.innerHTML = `<p class="wm-error">Could not load mentions.</p>`;
 	}
 }

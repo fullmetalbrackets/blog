@@ -45,27 +45,26 @@ h1 {
 	text-wrap: balanced;
 }
 
-h2,
-h3,
-h4,
-h5,
-h6 {
+main h2,
+main h4,
+main h6,
+article h2,
+article h4,
+article h6 {
 	font-family: var(--main-font);
+	color: var(--primary);
 	margin: 0;
 	padding: 0;
 	text-wrap: balanced;
 }
-
-h2,
-h4,
-h6 {
-	color: var(--primary);
-	text-wrap: balanced;
-}
-
-h3,
-h5 {
+main h3,
+main h5,
+article h3,
+article h5 {
+	font-family: var(--main-font);
 	color: var(--emphasis);
+	margin: 0;
+	padding: 0;
 	text-wrap: balanced;
 }
 
@@ -111,15 +110,16 @@ select {
 input {
 	font-size: 20px;
 	border-style: none;
-	margin: 0 auto;
-	margin-right: 0.25em;
+	margin: 0;
 	padding: 4px 8px 2px 8px;
 	border-radius: 0.25em;
 	background: var(--accent);
 	color: var(--form);
 	box-sizing: border-box;
 	outline: none;
-	width: 90%;
+	width: 100%;
+	min-width: 0;
+	flex: 1;
 }
 
 input:focus,
@@ -220,9 +220,8 @@ sub {
 	font-style: italic;
 }
 
-img {
+article img {
 	max-width: 80%;
-	height: auto;
 	margin: 1.5em auto;
 }
 
@@ -304,14 +303,6 @@ aside > a:focus {
 
 .tag button {
 	margin-right: 0.125em;
-}
-
-.webmention-section h4 {
-	font-family: var(--sub-font);
-}
-.webmention-section h4 span {
-	color: var(--secondary);
-	font-weight: 900;
 }
 
 span.prior {
@@ -695,14 +686,6 @@ blockquote[data-type='warning'] a:hover {
 	margin: -0.5em 0 -2em 0;
 }
 
-.coffee a {
-	color: #000;
-}
-
-.coffee a:hover {
-	color: #000;
-}
-
 .main-font {
 	font-family: var(--main-font);
 }
@@ -912,27 +895,6 @@ button a:hover {
 		transform: none;
 		cursor: default;
 	}
-	.wiki-nav a:hover {
-		box-shadow: -4px -4px 0 #000;
-		transform: translate(4px, 4px);
-		outline-offset: 1px;
-	}
-	.wiki-nav a {
-		text-overflow: ellipsis;
-		transition: all 0.1s ease-out;
-		cursor: pointer;
-	}
-}
-
-@media (hover: none) {
-	a:hover button:not(.theme-toggle, .dropdown-toggle),
-	button:not(.theme-toggle, .dropdown-toggle):hover {
-		background-color: var(--hover);
-	}
-	a:hover aside button:not(.theme-toggle, .dropdown-toggle),
-	aside button:not(.theme-toggle, .dropdown-toggle):hover {
-		background-color: var(--secondary);
-	}
 }
 
 /* pagefind styling */
@@ -1014,11 +976,6 @@ article a[target='_blank'][href^='#']::after {
 }
 
 @media screen and (max-width: 667px) {
-	.top {
-		display: grid;
-		justify-content: space-around;
-		margin: 0 auto;
-	}
 	figcaption {
 		font-size: 0.75em;
 		max-width: 95%;

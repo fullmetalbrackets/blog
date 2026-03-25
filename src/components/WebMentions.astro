@@ -1,116 +1,288 @@
-<h3>Webmentions</h3>
-<section class="webmentions">
-  <div id="webmentions-container">
-    <p class="loading">Loading mentions...</p>
+---
+const targetUrl = import.meta.env.DEV
+  ? new URL(Astro.url.pathname, Astro.site).href
+  : Astro.url.href;
+---
+
+<section class="webmentions" aria-label="Webmentions">
+  <h3 class="wm-heading">Webmentions</h3>
+  <div id="webmentions-container" data-target-url={targetUrl}>
+    <p class="wm-loading">Loading mentions…</p>
   </div>
 </section>
 
-<style>
-  h3 {
-    display: flex;
-    font-family: var(--sub-font);
-    justify-content: center;
-    margin: 0;
-    padding: 0;
-  }
+<style is:global>
   .webmentions {
-    margin: 0 0 2em 0;
-    padding: 1em;
-    background-color: var(--blockquote);
-    border-radius: 0.5em;
-    font-size: 0.875em;
+    margin-top: 0;
   }
-    
-  .loading, .no-mentions {
+  .wm-heading {
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 1em;
+  }
+
+  /* states */
+  .wm-loading,
+  .wm-empty,
+  .wm-error {
     font-family: var(--sub-font);
-    color: var(--text);
     font-style: italic;
-    margin: 1em 0;
+    color: var(--text);
+    opacity: 0.55;
+    margin: 0;
+    padding: 0.25em 0;
   }
-  
-  .webmention {
-    border-bottom: 1px solid var(--primary);
-    padding: 1em 0;
+
+  /* likes, boosts, replies)  */
+  .wm-section {
+    margin-bottom: 1em;
   }
-  
-  .webmention:last-child {
-    border-bottom: none;
+
+  .wm-section:last-child {
+    margin-bottom: 0;
   }
-  
-  .webmention-author {
+
+  .wm-section-label {
     display: flex;
     align-items: center;
-    gap: 0.5em;
-    margin-bottom: 0.5em;
-    font-weight: 700;
-  }
-  
-  .webmention-avatar {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-  }
-  
-  .webmention-content {
-    margin: 0.5em 0;
-    line-height: 1.5;
-  }
-  
-  .webmention-meta {
-    font-size: 0.875em;
-    color: var(--text);
+    gap: 0.35em;
     font-family: var(--sub-font);
-  }
-  
-  .webmention-meta a {
-    color: var(--link);
-  }
-  
-  .webmention-stats {
-    display: flex;
-    gap: 1em;
-    margin: 1em 0;
-    font-family: var(--sub-font);
-    font-weight: 500;
-  }
-
-  .webmention-section {
-    margin: 0;
+    font-size: 0.8em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--emphasis);
+    opacity: 0.85;
+    margin: 0 0 0.65em;
     padding: 0;
   }
 
-  .webmention-faces {
+  .wm-icon {
+    font-style: normal;
+    line-height: 1;
+  }
+
+  .wm-facepile {
     display: flex;
     flex-wrap: wrap;
-    gap: 0;
-    margin: 0;
-    padding: 0;
+    padding: 2px 0;
   }
 
-  .webmention-face {
+  /* avatar  */
+  .wm-avatar {
+    flex-shrink: 0;
+    border-radius: 50%;
+    border: 2px solid var(--blockquote);
+    overflow: hidden;
+    margin-left: -6px;
+    transition: transform 0.15s ease;
+    position: relative;
+    z-index: 0;
+    display: inline-block;
+    line-height: 0;
+  }
+
+  .wm-avatar:first-child {
+    margin-left: 0;
+  }
+
+  .wm-avatar:hover {
+    transform: scale(1.2) translateY(-2px);
+    z-index: 10;
+  }
+
+  .wm-avatar--sm {
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
+    min-height: 60px;
+  }
+
+  .wm-avatar--md {
+    width: 72px;
+    height: 72px;
+    min-width: 72px;
+    min-height: 72px;
+  }
+
+  .wm-avatar--sm img,
+  .wm-avatar--md img {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 0;
+    margin: 0;
+  }
+
+  /* Replies  */
+  .wm-replies {
     display: flex;
-    align-items: center;
-    justify-content: start;
-    gap: 0;
-    margin: 0;
-    padding: 0;
+    flex-direction: column;
+    gap: 0.75em;
   }
 
-  .webmention-avatar-small a img {
-    width: 24px;
-    height: 24px;
-    border-radius: 0.5em;
-    margin: 0;
-    border: 1px solid transparent;
+  .wm-reply {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75em;
   }
 
-  .webmention-avatar-small a img:hover {
-    border: 1px solid var(--primary);
+  .wm-reply .wm-avatar {
+    margin-left: 0;
+    border-color: transparent;
+    flex-shrink: 0;
   }
-  
+
+  .wm-reply-body {
+    flex: 1;
+    background: color-mix(in srgb, var(--primary) 8%, transparent);
+    border: 1px solid color-mix(in srgb, var(--primary) 15%, transparent);
+    border-radius: 0 0.5em 0.5em 0.5em;
+    padding: 0.5em 0.75em;
+    min-width: 0;
+  }
+
+  .wm-reply-text {
+    margin: 0 0 0.35em;
+    line-height: 1.5;
+    color: var(--text);
+    word-break: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .wm-reply-meta {
+    font-family: var(--sub-font);
+    font-size: 0.8em;
+    color: var(--link);
+    opacity: 0.7;
+    text-decoration: none;
+    transition: opacity 0.15s ease;
+  }
+
+  .wm-reply-meta:hover {
+    opacity: 1;
+  }
+
+  /* submission form  */
+  .wm-submit {
+    margin: 1em 0.5em;
+    padding-top: 1em;
+    padding-bottom: 0.5em;
+    border-bottom: 4px dotted var(--border);
+  }
+
+  .wm-form-label {
+    display: block;
+    font-family: var(--sub-font);
+    font-size: 0.8em;
+    font-weight: 600;
+    color: var(--emphasis);
+    margin-bottom: 0.5em;
+  }
+
+  .wm-form-row {
+    display: flex;
+    gap: 0.5em;
+  }
+
+  .wm-input {
+    flex: 1;
+    font-family: var(--sub-font);
+    font-size: 0.85em;
+    background: var(--accent);
+    color: var(--form);
+    border-radius: 0.25em;
+    padding: 4px 8px;
+    width: auto;
+    margin: 0;
+    box-shadow: none;
+  }
+
+  .wm-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.2rem var(--primary);
+  }
+
+  .wm-submit-btn {
+    font-family: var(--sub-font);
+    font-size: 0.85em;
+    font-weight: 700;
+    background: var(--info);
+    color: #000;
+    border: none;
+    border-radius: 0.25em;
+    padding: 4px 12px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.15s ease;
+  }
+
+  .wm-submit-btn:hover {
+    background: var(--hover);
+  }
+
+  .wm-form-status {
+    font-family: var(--sub-font);
+    font-size: 0.8em;
+    margin: 0.5em 0 0;
+    min-height: 1.2em;
+    opacity: 0.75;
+  }
 </style>
+
+<div class="wm-submit">
+  <form class="wm-form" id="wm-form">
+    <label for="wm-source" class="wm-form-label">If you write a <a href="https://indieweb.org/responses" target="_blank" rel="noopener noreferrer">response</a> to this, let me know!</label>
+    <div class="wm-form-row">
+      <input
+        type="url"
+        id="wm-source"
+        name="source"
+        placeholder="https://your-site.com/your-post/"
+        required
+        class="wm-input"
+      />
+      <button type="submit" class="wm-submit-btn">Send</button>
+    </div>
+    <p class="wm-form-status" id="wm-status" aria-live="polite"></p>
+  </form>
+</div>
 
 <script>
   import { loadWebmentions } from '@utils/webmentions';
   loadWebmentions();
+
+  const form = document.getElementById('wm-form') as HTMLFormElement;
+  const status = document.getElementById('wm-status') as HTMLParagraphElement;
+  const targetUrl = (document.getElementById('webmentions-container') as HTMLElement)
+    ?.dataset.targetUrl ?? window.location.href;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const source = (document.getElementById('wm-source') as HTMLInputElement).value.trim();
+    if (!source) return;
+
+    status.textContent = 'Sending…';
+
+    try {
+      const res = await fetch('https://webmention.io/fullmetalbrackets.com/webmention', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({ source, target: targetUrl }),
+      });
+
+      if (res.ok) {
+        status.textContent = '✓ Webmention submitted — thanks!';
+        (form as HTMLFormElement).reset();
+      } else {
+        status.textContent = `Something went wrong (${res.status}). Check your URL and try again.`;
+      }
+    } catch {
+      status.textContent = 'Could not submit — check your connection and try again.';
+    }
+  });
 </script>
