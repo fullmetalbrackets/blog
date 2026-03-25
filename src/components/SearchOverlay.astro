@@ -178,7 +178,7 @@ import Search from '@icons/search.svg';
     display: block;
   }
 
-  .search-result-link {
+  a .search-result-link {
     display: flex;
     align-items: baseline;
     gap: 0.6em;
@@ -189,8 +189,8 @@ import Search from '@icons/search.svg';
     transition: background 0.1s ease;
   }
 
-  .search-result-link:hover,
-  .search-result-link:focus {
+  a span.search-result-link:hover,
+  a span.search-result-link:focus {
     background: color-mix(in srgb, var(--primary) 8%, transparent);
     color: var(--hover);
     transform: none;
@@ -198,7 +198,7 @@ import Search from '@icons/search.svg';
     outline: none;
   }
 
-  .search-result-title {
+  a span.search-result-title {
     font-family: var(--sub-font);
     font-size: 0.875em;
     font-weight: 700;
@@ -206,14 +206,14 @@ import Search from '@icons/search.svg';
     flex-shrink: 0;
   }
 
-  .search-result-tags {
+  a span.search-result-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 0.25em;
     flex: 1;
   }
 
-  .search-result-tag {
+  a span.search-result-tag {
     font-family: var(--sub-font);
     font-size: 0.65em;
     font-weight: 700;
@@ -222,15 +222,6 @@ import Search from '@icons/search.svg';
     border-radius: 0.25em;
     padding: 1px 5px;
     white-space: nowrap;
-  }
-
-  .search-result-url {
-    font-family: var(--sub-font);
-    font-size: 0.7em;
-    opacity: 0.35;
-    margin-left: auto;
-    white-space: nowrap;
-    flex-shrink: 0;
   }
 
   .search-status {
@@ -295,7 +286,6 @@ import Search from '@icons/search.svg';
 
       list.innerHTML = items.map(function (item, i) {
         var title = (item.meta && item.meta.title) ? item.meta.title : 'Untitled';
-        var url = item.url || '#';
         var tags = (item.filters && item.filters.tag) ? item.filters.tag : [];
 
         var tagHtml = tags.length
@@ -306,14 +296,10 @@ import Search from '@icons/search.svg';
             '</div>'
           : '';
 
-        var urlLabel = url.replace(/^\/|\/$/g, '').replace(/\//g, ' › ');
-
         return '<li class="search-result-item" role="option" id="sr-' + i + '">' +
           '<a href="' + url + '" class="search-result-link" tabindex="-1">' +
           '<span class="search-result-title">' + title + '</span>' +
-          tagHtml +
-          '<span class="search-result-url">' + urlLabel + '</span>' +
-          '</a></li>';
+          tag + '</a></li>';
       }).join('');
     }
 
