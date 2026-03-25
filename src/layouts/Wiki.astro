@@ -233,7 +233,7 @@ const selectedPosts = await getRelatedPosts(related ?? []);
   <article class="wiki-article" data-pagefind-body>
     <h1 class="wiki-title">{title}</h1>
     <p class="tag" data-pagefind-ignore>
-      <span>{tag}</span>
+      <span data-pagefind-filter="tag">{tag}</span>
     </p>
     <div class="date">
       <FormattedDate date={pubDate} />

@@ -498,7 +498,7 @@ const selectedPosts = await getRelatedPosts(related ?? []);
       <span class="tag" data-pagefind-ignore>
         {tags.map((tag) => (
           <a href={`/categories/${tag}/`} rel="prefetch-intent tag" data-umami-event="category-from-article">
-            <button>{tag}</button>
+            <button data-pagefind-filter="tag">{tag}</button>
           </a>
         ))}
       </span>
