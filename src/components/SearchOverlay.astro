@@ -49,7 +49,7 @@ import Search from '@icons/search.svg';
 </div>
 
 <style scoped>
-  /* ── Trigger button ─────────────────────────────────────────────── */
+  /* Trigger button */
   .search-trigger {
     display: flex;
     align-items: center;
@@ -77,7 +77,7 @@ import Search from '@icons/search.svg';
     fill: var(--tertiary);
   }
 
-  /* ── Overlay panel ──────────────────────────────────────────────── */
+  /* Overlay panel */
   .search-overlay {
     position: absolute;
     top: 100%;
@@ -102,7 +102,7 @@ import Search from '@icons/search.svg';
     padding: 0.6em 0 0.25em;
   }
 
-  /* ── Input row ──────────────────────────────────────────────────── */
+  /* Input row */
   .search-input-row {
     display: flex;
     align-items: center;
@@ -161,7 +161,7 @@ import Search from '@icons/search.svg';
     top: 0;
   }
 
-  /* ── Results list ───────────────────────────────────────────────── */
+  /* Results list */
   .search-results {
     list-style: none;
     margin: 0;
@@ -178,7 +178,7 @@ import Search from '@icons/search.svg';
     display: block;
   }
 
-  a .search-result-link {
+  a span.search-result-link {
     display: flex;
     align-items: baseline;
     gap: 0.6em;
@@ -224,7 +224,16 @@ import Search from '@icons/search.svg';
     white-space: nowrap;
   }
 
-  .search-status {
+  a span.search-result-url {
+    font-family: var(--sub-font);
+    font-size: 0.7em;
+    opacity: 0.35;
+    margin-left: auto;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  a span.search-status {
     font-family: var(--sub-font);
     font-size: 0.8em;
     color: var(--text);
@@ -286,6 +295,7 @@ import Search from '@icons/search.svg';
 
       list.innerHTML = items.map(function (item, i) {
         var title = (item.meta && item.meta.title) ? item.meta.title : 'Untitled';
+        var url = item.url || '#';
         var tags = (item.filters && item.filters.tag) ? item.filters.tag : [];
 
         var tagHtml = tags.length
@@ -296,10 +306,14 @@ import Search from '@icons/search.svg';
             '</div>'
           : '';
 
+        var urlLabel = url.replace(/^\/|\/$/g, '').replace(/\//g, ' › ');
+
         return '<li class="search-result-item" role="option" id="sr-' + i + '">' +
           '<a href="' + url + '" class="search-result-link" tabindex="-1">' +
           '<span class="search-result-title">' + title + '</span>' +
-          tag + '</a></li>';
+          tag +
+          '<span class="search-result-url">' + urlLabel + '</span>' +
+          '</a></li>';
       }).join('');
     }
 
