@@ -311,7 +311,7 @@ import Search from '@icons/search.svg';
         return '<li class="search-result-item" role="option" id="sr-' + i + '">' +
           '<a href="' + url + '" class="search-result-link" tabindex="-1">' +
           '<span class="search-result-title">' + title + '</span>' +
-          tag +
+          tagHtml +
           '<span class="search-result-url">' + urlLabel + '</span>' +
           '</a></li>';
       }).join('');
