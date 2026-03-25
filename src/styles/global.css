@@ -328,6 +328,10 @@ span.prior {
 	padding: 0;
 }
 
+:target {
+	scroll-margin-top: 1.25em;
+}
+
 /* codeblocks */
 code {
 	padding: 0 4.5px 1px 4.5px;
@@ -907,6 +911,16 @@ button a:hover {
 		box-shadow: none;
 		transform: none;
 		cursor: default;
+	}
+	.wiki-nav a:hover {
+		box-shadow: -4px -4px 0 #000;
+		transform: translate(4px, 4px);
+		outline-offset: 1px;
+	}
+	.wiki-nav a {
+		text-overflow: ellipsis;
+		transition: all 0.1s ease-out;
+		cursor: pointer;
 	}
 }
 
