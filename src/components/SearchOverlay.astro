@@ -1,5 +1,4 @@
 ---
-import Search from '@icons/search.svg';
 ---
 
 <button
@@ -10,7 +9,10 @@ import Search from '@icons/search.svg';
   aria-controls="search-overlay"
   data-umami-event="search-open"
 >
-  <Search aria-hidden="true" width="26px" height="26px" class="search" />
+  <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <circle cx="11" cy="11" r="8"/>
+    <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+  </svg>
   <span class="sr-only">Search (⌘K)</span>
 </button>
 
@@ -39,6 +41,7 @@ import Search from '@icons/search.svg';
       />
       <span class="search-esc-hint" aria-hidden="true"><kbd>Esc</kbd></span>
     </div>
+    <p id="search-count" class="search-count" aria-live="polite"></p>
     <ul
       id="search-results"
       class="search-results"
@@ -58,27 +61,23 @@ import Search from '@icons/search.svg';
     padding: 0;
     cursor: pointer;
     color: var(--primary);
+    transition: color 0.15s ease;
   }
 
   .search-trigger:hover {
     color: var(--hover);
     transform: none;
     box-shadow: none;
-    transition: color 0.15s ease;
+  }
+
+  .search-trigger[aria-expanded="true"] {
+    color: var(--link);
   }
 
   .search-trigger:focus-visible {
     outline: 2px solid var(--hover);
     outline-offset: 2px;
     border-radius: 2px;
-  }
-
-  .search-trigger.active {
-    color: var(--link);
-  }
-
-  .search-trigger :global(.search) {
-    fill: var(--tertiary);
   }
 
   /* Overlay panel */
@@ -149,6 +148,16 @@ import Search from '@icons/search.svg';
 
   .search-input::-webkit-search-cancel-button {
     display: none;
+  }
+
+  .search-count {
+    font-family: var(--sub-font);
+    font-size: 0.75em;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 0.35em 0 0;
+    padding: 0 0.5em;
+    min-height: 1em;
   }
 
   .search-esc-hint {
@@ -282,22 +291,27 @@ import Search from '@icons/search.svg';
       var trigger = document.getElementById('search-trigger');
       var input = document.getElementById('search-input');
       var results = document.getElementById('search-results');
+      var count = document.getElementById('search-count');
       if (!overlay || !trigger) return;
       overlay.setAttribute('hidden', '');
       trigger.setAttribute('aria-expanded', 'false');
       if (input) input.value = '';
       if (results) results.innerHTML = '';
+      if (count) count.textContent = '';
     }
 
     function renderResults(items) {
       var list = document.getElementById('search-results');
+      var count = document.getElementById('search-count');
       if (!list) return;
 
       if (!items.length) {
         list.innerHTML = '<li class="search-status">No results found.</li>';
+        if (count) count.textContent = '';
         return;
       }
-
+      if (count) count.textContent = items.length + ' result' + (items.length !== 1 ? 's' : '');
+      
       list.innerHTML = items.map(function (item, i) {
         var title = (item.meta && item.meta.title) ? item.meta.title : 'Untitled';
         var url = item.url || '#';
@@ -322,8 +336,10 @@ import Search from '@icons/search.svg';
     function doSearch(query) {
       if (!pagefind) return;
       var list = document.getElementById('search-results');
+      var count = document.getElementById('search-count');
       if (!query.trim()) {
         if (list) list.innerHTML = '';
+        if (count) count.textContent = '';
         return;
       }
       pagefind.search(query).then(function (search) {
