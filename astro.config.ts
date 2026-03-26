@@ -67,7 +67,7 @@ export default defineConfig({
 
 	redirects: {
 		'/blog/tailscale/': {
-			status: 302,
+			status: 301,
 			destination:
 				'/blog/comprehensive-guide-tailscale-securely-access-home-network/',
 		},
@@ -94,6 +94,10 @@ export default defineConfig({
 		'/digest/tvshows/': {
 			status: 301,
 			destination: '/lifestream/older/tvshows/',
+		},
+		'/search': {
+			status: 301,
+			destination: '/',
 		},
 	},
 	fonts: [
