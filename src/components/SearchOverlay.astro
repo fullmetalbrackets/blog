@@ -30,7 +30,7 @@ import Search from '@icons/search.svg';
         id="search-input"
         type="search"
         class="search-input"
-        placeholder="Search posts, notes, wiki…"
+        placeholder="Search blog and wiki"
         autocomplete="off"
         spellcheck="false"
         aria-label="Search"
@@ -49,6 +49,15 @@ import Search from '@icons/search.svg';
 </div>
 
 <style is:global>
+  ::selection {
+    color: #000;
+    background: var(--primary);
+  }
+
+  ::-moz-selection {
+    color: #000;
+    background: var(--primary);
+  }
   /* Trigger button */
   .search-trigger {
     display: flex;
