@@ -182,9 +182,23 @@
     max-height: 65vh;
     overflow-y: auto;
     scrollbar-width: thin;
-    scrollbar-color: hsla(var(--primary) / 35%) transparent;
+    scrollbar-color: var(--border2) transparent;
+    max-height: 70vh;
+    overflow-y: auto;
+    overflow: hidden;
+    overscroll-behavior: contain;
   }
-
+  .search-results::-webkit-scrollbar {
+    width: 8px;
+  }
+  .search-results::-webkit-scrollbar-thumb {
+    background: var(--border2);
+    border-radius: 0.5em;
+  }
+  .search-results::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
   .search-results:empty {
     display: none;
   }
