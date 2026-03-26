@@ -179,14 +179,11 @@
     list-style: none;
     margin: 0;
     padding: 0.25em 0;
-    max-height: 65vh;
-    overflow-y: auto;
-    scrollbar-width: thin;
-    scrollbar-color: var(--border2) transparent;
     max-height: 70vh;
     overflow-y: auto;
-    overflow: hidden;
     overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border2) transparent;
   }
   .search-results::-webkit-scrollbar {
     width: 8px;
@@ -265,6 +262,12 @@
     padding: 0.5em 0.5em 0.75em;
     font-style: italic;
     list-style: none;
+  }
+
+  @media screen and (max-width: 667px) {
+    .search-input {
+      font-size: 0.8em;
+    }
   }
 </style>
 
