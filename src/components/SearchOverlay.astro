@@ -13,7 +13,7 @@
     <circle cx="11" cy="11" r="8"/>
     <line x1="21" y1="21" x2="16.65" y2="16.65"/>
   </svg>
-  <span class="sr-only">Search (⌘K)</span>
+  <span class="sr-only">Search</span>
 </button>
 
 <div
@@ -207,7 +207,6 @@
     display: block;
   }
 
-  /* Each result: title on top, tags below */
   .search-result-link {
     display: flex;
     flex-direction: column;
@@ -227,7 +226,6 @@
     outline: none;
   }
 
-  /* Title styled like post headings — main-font, emphasis color */
   .search-result-title {
     font-family: var(--main-font);
     font-size: 0.925em;
@@ -241,14 +239,12 @@
     color: var(--hover);
   }
 
-  /* Tag row */
   .search-result-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 0.2em;
   }
 
-  /* Tags styled exactly like .tag button in global.css */
   .search-result-tag {
     font-family: var(--sub-font);
     font-size: 0.75em;
