@@ -1,0 +1,438 @@
+---
+---
+
+<button
+  id="search-trigger"
+  class="search-trigger"
+  aria-label="Search"
+  aria-expanded="false"
+  aria-controls="search-overlay"
+  data-umami-event="search-open"
+>
+  <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <circle cx="11" cy="11" r="8"/>
+    <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+  </svg>
+  <span class="sr-only">Search</span>
+</button>
+
+<div
+  id="search-overlay"
+  class="search-overlay"
+  role="search"
+  aria-label="Site search"
+  hidden
+>
+  <div class="search-inner">
+    <div class="search-input-row">
+      <svg class="search-icon-sm" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+      <input
+        id="search-input"
+        type="search"
+        class="search-input"
+        placeholder="Search blog and wiki"
+        autocomplete="off"
+        spellcheck="false"
+        aria-label="Search"
+        aria-autocomplete="list"
+        aria-controls="search-results"
+      />
+      <span class="search-esc-hint" aria-hidden="true"><kbd>Esc</kbd></span>
+    </div>
+    <p id="search-count" class="search-count" aria-live="polite"></p>
+    <ul
+      id="search-results"
+      class="search-results"
+      role="listbox"
+      aria-label="Search results"
+    ></ul>
+  </div>
+</div>
+
+<style is:global>
+  /* Trigger button */
+  .search-trigger {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    color: var(--primary);
+    transition: color 0.15s ease;
+  }
+
+  .search-trigger:hover {
+    color: var(--hover);
+    transform: none;
+    box-shadow: none;
+  }
+
+  .search-trigger[aria-expanded="true"] {
+    color: var(--link);
+  }
+
+  .search-trigger:focus-visible {
+    outline: 2px solid var(--hover);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /* Overlay panel */
+  .search-overlay {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--dropdown);
+    backdrop-filter: blur(0.5em);
+    -webkit-backdrop-filter: blur(0.5em);
+    border-bottom-left-radius: 0.5em;
+    border-bottom-right-radius: 0.5em;
+    box-shadow: 0 8px 24px rgb(0 0 0 / 0.12);
+    z-index: 48;
+  }
+
+  .search-overlay[hidden] {
+    display: none;
+  }
+
+  .search-inner {
+    max-width: 77.1ch;
+    margin: 0 auto;
+    padding: 0.6em 0 0.25em;
+  }
+
+  /* Input row */
+  .search-input-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    padding: 0 0.25em 0.5em;
+    border-bottom: 1px solid color-mix(in srgb, var(--primary) 12%, transparent);
+  }
+
+  .search-icon-sm {
+    flex-shrink: 0;
+    color: var(--text);
+    opacity: 0.35;
+  }
+
+  .search-input {
+    flex: 1 1 0;
+    min-width: 0;
+    width: auto !important;
+    margin: 0 !important;
+    background: none !important;
+    border: none;
+    outline: none;
+    box-shadow: none !important;
+    font-family: var(--sub-font);
+    font-size: 0.95em;
+    color: var(--text);
+    padding: 0.2em 0;
+  }
+
+  .search-input:focus {
+    background: none !important;
+    box-shadow: none !important;
+    outline: none;
+  }
+
+  .search-input::placeholder {
+    color: var(--text);
+    opacity: 0.35;
+  }
+
+  .search-input::-webkit-search-cancel-button {
+    display: none;
+  }
+
+  .search-count {
+    font-family: var(--sub-font);
+    font-size: 0.75em;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 0.35em 0 0;
+    padding: 0 0.5em;
+    min-height: 1em;
+  }
+
+  .search-esc-hint {
+    flex-shrink: 0;
+    opacity: 0.4;
+  }
+
+  .search-esc-hint kbd {
+    background: var(--accent);
+    color: var(--text);
+    border: 1px solid color-mix(in srgb, var(--primary) 20%, transparent);
+    box-shadow: none;
+    font-size: 0.75em;
+    top: 0;
+  }
+
+  /* Results list */
+  .search-results {
+    list-style: none;
+    margin: 0;
+    padding: 0.25em 0;
+    max-height: 70vh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border2) transparent;
+  }
+  .search-results::-webkit-scrollbar {
+    width: 8px;
+  }
+  .search-results::-webkit-scrollbar-thumb {
+    background: var(--border2);
+    border-radius: 0.5em;
+  }
+  .search-results::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .search-results:empty {
+    display: none;
+  }
+
+  .search-result-item {
+    display: block;
+  }
+
+  .search-result-link {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3em;
+    padding: 0.5em 0.5em;
+    text-decoration: none;
+    color: var(--primary);
+    border-radius: 0.25em;
+    transition: background 0.1s ease;
+  }
+
+  .search-result-link:hover,
+  .search-result-link:focus {
+    background: color-mix(in srgb, var(--primary) 8%, transparent);
+    transform: none;
+    box-shadow: none;
+    outline: none;
+  }
+
+  .search-result-title {
+    font-family: var(--main-font);
+    font-size: 0.925em;
+    font-weight: 700;
+    color: var(--emphasis);
+    line-height: 1.2;
+  }
+
+  .search-result-link:hover .search-result-title,
+  .search-result-link:focus .search-result-title {
+    color: var(--hover);
+  }
+
+  .search-result-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2em;
+  }
+
+  .search-result-tag {
+    font-family: var(--sub-font);
+    font-size: 0.75em;
+    font-weight: 700;
+    background-color: var(--info);
+    color: #000;
+    border-radius: 0.25em;
+    padding: 4px 8px;
+    white-space: nowrap;
+    line-height: 1;
+  }
+
+  .search-status {
+    font-family: var(--sub-font);
+    font-size: 0.8em;
+    color: var(--text);
+    opacity: 0.45;
+    padding: 0.5em 0.5em 0.75em;
+    font-style: italic;
+    list-style: none;
+  }
+
+  @media screen and (max-width: 667px) {
+    .search-input {
+      font-size: 0.8em;
+    }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var pagefind = null;
+    var debounceTimer;
+
+    function initPagefind() {
+      if (pagefind) return Promise.resolve();
+      return import('/pagefind/pagefind.js')
+        .then(function (pf) {
+          pagefind = pf;
+          return pagefind.init();
+        })
+        .catch(function (e) {
+          console.warn('[search] Pagefind not available — run a build first.', e);
+        });
+    }
+
+    function openSearch() {
+      var overlay = document.getElementById('search-overlay');
+      var trigger = document.getElementById('search-trigger');
+      var input = document.getElementById('search-input');
+      if (!overlay || !trigger) return;
+      overlay.removeAttribute('hidden');
+      trigger.setAttribute('aria-expanded', 'true');
+      initPagefind();
+      requestAnimationFrame(function () { if (input) input.focus(); });
+    }
+
+    function closeSearch() {
+      var overlay = document.getElementById('search-overlay');
+      var trigger = document.getElementById('search-trigger');
+      var input = document.getElementById('search-input');
+      var results = document.getElementById('search-results');
+      var count = document.getElementById('search-count');
+      if (!overlay || !trigger) return;
+      overlay.setAttribute('hidden', '');
+      trigger.setAttribute('aria-expanded', 'false');
+      if (input) input.value = '';
+      if (results) results.innerHTML = '';
+      if (count) count.textContent = '';
+    }
+
+    function renderResults(items) {
+      var list = document.getElementById('search-results');
+      var count = document.getElementById('search-count');
+      if (!list) return;
+
+      if (!items.length) {
+        list.innerHTML = '<li class="search-status">No results found.</li>';
+        if (count) count.textContent = '';
+        return;
+      }
+      if (count) count.textContent = items.length + ' result' + (items.length !== 1 ? 's' : '');
+      
+      list.innerHTML = items.map(function (item, i) {
+        var title = (item.meta && item.meta.title) ? item.meta.title : 'Untitled';
+        var url = item.url || '#';
+        var tags = (item.filters && item.filters.tag) ? item.filters.tag : [];
+
+        var tagHtml = tags.length
+          ? '<div class="search-result-tags">' +
+            tags.map(function (t) {
+              return '<span class="search-result-tag">' + t + '</span>';
+            }).join('') +
+            '</div>'
+          : '';
+
+        return '<li class="search-result-item" role="option" id="sr-' + i + '">' +
+          '<a href="' + url + '" class="search-result-link" tabindex="-1">' +
+          '<span class="search-result-title">' + title + '</span>' +
+          tagHtml +
+          '</a></li>';
+      }).join('');
+    }
+
+    function doSearch(query) {
+      if (!pagefind) return;
+      var list = document.getElementById('search-results');
+      var count = document.getElementById('search-count');
+      if (!query.trim()) {
+        if (list) list.innerHTML = '';
+        if (count) count.textContent = '';
+        return;
+      }
+      pagefind.search(query).then(function (search) {
+        var top = search.results.slice(0, 8);
+        return Promise.all(top.map(function (r) { return r.data(); }));
+      }).then(function (data) {
+        renderResults(data);
+      });
+    }
+
+    function focusResult(direction) {
+      var overlay = document.getElementById('search-overlay');
+      var input = document.getElementById('search-input');
+      if (!overlay) return;
+      var links = Array.from(overlay.querySelectorAll('.search-result-link'));
+      if (!links.length) return;
+      var active = document.activeElement;
+      var idx = links.indexOf(active);
+      if (direction === 'down') {
+        if (idx === -1 || idx === links.length - 1) { if (links[0]) links[0].focus(); }
+        else { if (links[idx + 1]) links[idx + 1].focus(); }
+      } else {
+        if (idx <= 0) { if (input) input.focus(); }
+        else { if (links[idx - 1]) links[idx - 1].focus(); }
+      }
+    }
+
+    function initSearch() {
+      var trigger = document.getElementById('search-trigger');
+      var overlay = document.getElementById('search-overlay');
+      var input = document.getElementById('search-input');
+      if (!trigger || !overlay || !input) return;
+
+      if (trigger.dataset.searchInit) return;
+      trigger.dataset.searchInit = 'true';
+
+      trigger.addEventListener('click', function () {
+        overlay.hasAttribute('hidden') ? openSearch() : closeSearch();
+      });
+
+      input.addEventListener('input', function () {
+        clearTimeout(debounceTimer);
+        var list = document.getElementById('search-results');
+        if (list && input.value.trim()) {
+          list.innerHTML = '<li class="search-status">Searching...</li>';
+        }
+        debounceTimer = setTimeout(function () { doSearch(input.value); }, 220);
+      });
+
+      document.addEventListener('keydown', function (e) {
+        var isOpen = !overlay.hasAttribute('hidden');
+
+        if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+          e.preventDefault();
+          isOpen ? closeSearch() : openSearch();
+          return;
+        }
+
+        if (!isOpen) return;
+
+        if (e.key === 'Escape') {
+          closeSearch();
+          trigger.focus();
+          return;
+        }
+
+        if (e.key === 'ArrowDown') { e.preventDefault(); focusResult('down'); }
+        if (e.key === 'ArrowUp')   { e.preventDefault(); focusResult('up');   }
+      });
+
+      document.addEventListener('click', function (e) {
+        if (overlay.hasAttribute('hidden')) return;
+        var header = overlay.closest('header');
+        if (header && !header.contains(e.target)) closeSearch();
+      });
+
+      document.addEventListener('astro:before-swap', closeSearch);
+    }
+
+    document.addEventListener('DOMContentLoaded', initSearch);
+    document.addEventListener('astro:page-load', initSearch);
+  })();
+</script>

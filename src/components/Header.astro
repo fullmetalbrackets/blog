@@ -3,7 +3,7 @@ import HeaderLink from "./HeaderLink.astro";
 import ThemeToggle from "./ThemeToggle.astro";
 import { Picture } from 'astro:assets';
 import Logo from '@img/assets/logo.avif';
-import Search from '@icons/search.svg';
+import SearchOverlay from "./SearchOverlay.astro";
 ---
 
 <style scoped>
@@ -102,7 +102,6 @@ import Search from '@icons/search.svg';
   }
 
   /* Desktop nav links */
-
   .nav-end {
     display: flex;
     justify-content: flex-end;
@@ -119,7 +118,6 @@ import Search from '@icons/search.svg';
   }
 
   /* Dropdown (desktop More menu) */
-
   .dropdown {
     position: relative;
     display: inline-block;
@@ -205,7 +203,6 @@ import Search from '@icons/search.svg';
   }
 
   /* Mobile hamburger button */
-
   .hamburger {
     display: none;
     background: none;
@@ -223,9 +220,11 @@ import Search from '@icons/search.svg';
     outline-offset: 2px;
     border-radius: 2px;
   }
+  .hamburger[aria-expanded="true"] {
+    color: var(--link);
+  }
 
   /* Mobile nav panel */
-
   .mobile-nav {
     display: none;
     position: absolute;
@@ -242,7 +241,23 @@ import Search from '@icons/search.svg';
     transition: opacity 0.25s ease, transform 0.25s ease, visibility 0s 0.25s;
     pointer-events: none;
     visibility: hidden;
-    padding: 1em 1.25em 1.25em 1.25em;
+    padding: 0;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border2) transparent;
+    max-height: 70vh;
+    overflow-y: auto;
+    overflow: hidden;
+    overscroll-behavior: contain;
+  }
+  .mobile-nav::-webkit-scrollbar {
+    width: 4px;
+  }
+  .mobile-nav::-webkit-scrollbar-thumb {
+    background: var(--border2);
+    border-radius: 2px;
+  }
+  .mobile-nav::-webkit-scrollbar-track {
+    background: transparent;
   }
   .mobile-nav.open {
     opacity: 1;
@@ -257,6 +272,25 @@ import Search from '@icons/search.svg';
     gap: 1em;
     font-family: var(--sub-font);
     font-size: 0.75em;
+    max-height: 70vh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border2) transparent;
+    padding: 1em 1.25em 1.25em 1.25em;
+  }
+  .mobile-nav-grid::-webkit-scrollbar {
+    width: 4px;
+  }
+  .mobile-nav-grid::-webkit-scrollbar-thumb {
+    background: var(--border2);
+    border-radius: 2px;
+  }
+  .mobile-nav-grid::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .mobile-nav-grid.is-scrollable {
+    overflow-y: scroll;
   }
   .mobile-nav-col h4 {
     font-size: 0.65em;
@@ -281,9 +315,6 @@ import Search from '@icons/search.svg';
   .mobile-nav-col a:hover {
     color: var(--hover);
   }
-  .mobile-nav-col a.active {
-    color: var(--link);
-  }
 
   @media (hover: none) {
     .logo {
@@ -299,7 +330,6 @@ import Search from '@icons/search.svg';
   }
 
   /* Responsive */
-
   @media screen and (max-width: 768px) {
     nav {
       display: grid;
@@ -383,10 +413,7 @@ import Search from '@icons/search.svg';
         </div>
       </div>
 
-      <HeaderLink href="/search/" rel="prefetch-intent search" class="search-link" data-umami-event="search" aria-label="Search">
-        <Search aria-hidden="true" width="26px" height="26px" class="search" />
-        <span class="sr-only">Search</span>
-      </HeaderLink>
+      <SearchOverlay />
       <ThemeToggle />
     </div>
   </nav>
@@ -478,12 +505,24 @@ import Search from '@icons/search.svg';
 
     let menuOpen = false;
 
+    document.addEventListener('keydown', (e) => {
+      if (e.ctrlKey && e.key === 'b') {
+        e.preventDefault();
+        window.location.href = '/blog/';
+      }
+      if (e.ctrlKey && e.key === 'h') {
+        e.preventDefault();
+        window.location.href = '/';
+      }
+    });
+
     if (hamburger && mobileNav) {
       hamburger.addEventListener('click', (e) => {
         e.stopPropagation();
         menuOpen = !menuOpen;
         animateTo(IDS, menuOpen ? BRACKETS : REST, 380);
         mobileNav.classList.toggle('open', menuOpen);
+        if (menuOpen) updateScrollHint();
         hamburger.setAttribute('aria-expanded', menuOpen.toString());
         hamburger.setAttribute('aria-label', menuOpen ? 'Close navigation menu' : 'Open navigation menu');
       });
@@ -508,6 +547,16 @@ import Search from '@icons/search.svg';
           hamburger.focus();
         }
       });
+
+      function updateScrollHint() {
+        const grid = mobileNav?.querySelector('.mobile-nav-grid') as HTMLElement | null;
+        if (!grid) return;
+        if (grid.scrollHeight > grid.clientHeight) {
+          grid.classList.add('is-scrollable');
+        } else {
+          grid.classList.remove('is-scrollable');
+        }
+      }
     }
 
     if (dropdown && dropdownToggle) {
@@ -530,6 +579,16 @@ import Search from '@icons/search.svg';
           dropdown.classList.remove('open');
           dropdownToggle.setAttribute('aria-expanded', 'false');
           dropdownToggle.focus();
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.ctrlKey && e.key === 'm') {
+          e.preventDefault();
+          dropdown.classList.toggle('open');
+          const isOpen = dropdown.classList.contains('open');
+          dropdownToggle.setAttribute('aria-expanded', isOpen.toString());
+          if (isOpen) dropdownToggle.focus();
         }
       });
     }
