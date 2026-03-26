@@ -49,15 +49,6 @@ import Search from '@icons/search.svg';
 </div>
 
 <style is:global>
-  ::selection {
-    color: #000;
-    background: var(--primary);
-  }
-
-  ::-moz-selection {
-    color: #000;
-    background: var(--primary);
-  }
   /* Trigger button */
   .search-trigger {
     display: flex;
@@ -177,6 +168,8 @@ import Search from '@icons/search.svg';
     padding: 0.25em 0;
     max-height: 65vh;
     overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: hsla(var(--primary) / 35%) transparent;
   }
 
   .search-results:empty {
@@ -371,7 +364,7 @@ import Search from '@icons/search.svg';
         clearTimeout(debounceTimer);
         var list = document.getElementById('search-results');
         if (list && input.value.trim()) {
-          list.innerHTML = '<li class="search-status">Searching…</li>';
+          list.innerHTML = '<li class="search-status">Searching...</li>';
         }
         debounceTimer = setTimeout(function () { doSearch(input.value); }, 220);
       });
