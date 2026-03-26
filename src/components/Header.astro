@@ -514,6 +514,17 @@ import SearchOverlay from "./SearchOverlay.astro";
 
     let menuOpen = false;
 
+    document.addEventListener('keydown', (e) => {
+      if (e.ctrlKey && e.key === 'b') {
+        e.preventDefault();
+        window.location.href = '/blog/';
+      }
+      if (e.ctrlKey && e.key === 'h') {
+        e.preventDefault();
+        window.location.href = '/';
+      }
+    });
+
     if (hamburger && mobileNav) {
       hamburger.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -545,6 +556,7 @@ import SearchOverlay from "./SearchOverlay.astro";
           hamburger.focus();
         }
       });
+
       function updateScrollHint() {
         const grid = mobileNav?.querySelector('.mobile-nav-grid') as HTMLElement | null;
         if (!grid) return;
@@ -576,6 +588,16 @@ import SearchOverlay from "./SearchOverlay.astro";
           dropdown.classList.remove('open');
           dropdownToggle.setAttribute('aria-expanded', 'false');
           dropdownToggle.focus();
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.ctrlKey && e.key === 'm') {
+          e.preventDefault();
+          dropdown.classList.toggle('open');
+          const isOpen = dropdown.classList.contains('open');
+          dropdownToggle.setAttribute('aria-expanded', isOpen.toString());
+          if (isOpen) dropdownToggle.focus();
         }
       });
     }
