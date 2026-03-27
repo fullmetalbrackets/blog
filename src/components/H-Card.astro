@@ -1,16 +1,90 @@
 ---
+interface Props {
+  visible?: boolean;
+}
+const { visible = false } = Astro.props;
 ---
-<p class="p-author h-card" hidden>
-  <img class="u-photo" src="/avatar.png" alt="Avatar of fullmetalbrackets" />
-  <img class="u-logo" src="/favicon.svg" alt="Logo of fullmetalbrackets.com" />
-  <a class="p-name u-url u-uid" href="https://fullmetalbrackets.com">Ariel Diaz</a>
-  <a class="u-email" href="mailto:hello@fullmetalbrackets.com">hello@fullmetalbrackets.com</a>
-  <span class="p-country-name">United States of America</span>
-</p>
+
+<div class:list={['h-card', { 'h-card--visible': visible }]}>
+  <img class="u-photo" src="/avatar.png" alt="Ariel Diaz" />
+  <div class="h-card-body">
+    <a class="p-name u-url u-uid">Ariel Diaz</a>
+    <p class="p-note">
+      Greetings, program! I'm Ariel, a hobbyist and tech enthusiast that writes about self-hosting, web development, Linux, and related topics.
+    </p>
+    <a class="u-email">hello@fullmetalbrackets.com</a>
+    <span class="p-country-name">United States of America</span>
+  </div>
+  <img class="u-logo" src="/favicon.svg" alt="fullmetalbrackets.com logo" />
+</div>
 
 <style scoped>
-    p {
-        margin: 0;
-        padding: 0;
+  .h-card {
+    display: none;
+  }
+  .h-card--visible {
+    display: flex;
+    align-items: center;
+    gap: 1.25em;
+    background-color: var(--blockquote);
+    border-radius: 0.5em;
+    padding: 1em 1.25em;
+    margin: 1em 0 1.5em 0;
+    font-family: var(--sub-font);
+  }
+  .u-photo {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin: 0.1em 0 0 0;
+  }
+  .h-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25em;
+    flex: 1;
+    min-width: 0;
+  }
+  .u-logo,
+  .p-name,
+  .u-email,
+  .u-url,
+  .p-country-name {
+    display: none;
+  }
+  .p-note {
+    font-size: 0.8em;
+    color: var(--text);
+    margin: 0;
+    line-height: 1.4;
+    text-wrap: pretty;
+    overflow-wrap: break-word;
+    word-break: keep-all;
+    hyphens: none;
+  }
+  @media screen and (max-width: 667px) {
+    .h-card--visible {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      grid-template-rows: auto auto;
+      grid-template-areas:
+        "avatar body"
+        "logo   body";
+      gap: 0.5em 0.75em;
+      padding: 0.875em 1em;
     }
+    .u-photo {
+      grid-area: avatar;
+      width: 48px;
+      height: 48px;
+    }
+    .h-card-body {
+      grid-area: body;
+      align-self: center;
+    }
+    .p-note {
+      font-size: 18px;
+    }
+  }
 </style>
