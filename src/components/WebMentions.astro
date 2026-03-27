@@ -71,7 +71,6 @@ const targetUrl = import.meta.env.DEV
   .wm-avatar {
     flex-shrink: 0;
     border-radius: 50%;
-    border: 2px solid var(--blockquote);
     overflow: hidden;
     margin-left: -6px;
     transition: transform 0.15s ease;
@@ -178,8 +177,8 @@ const targetUrl = import.meta.env.DEV
   .wm-form-label {
     display: block;
     font-family: var(--sub-font);
-    font-size: 0.8em;
-    font-weight: 600;
+    font-size: 0.75em;
+    /* font-weight: 600; */
     color: var(--emphasis);
     margin-bottom: 0.5em;
   }
@@ -236,7 +235,7 @@ const targetUrl = import.meta.env.DEV
 
 <div class="wm-submit">
   <form class="wm-form" id="wm-form">
-    <label for="wm-source" class="wm-form-label">If you write a <a href="https://indieweb.org/responses" target="_blank" rel="noopener noreferrer">response</a> to this, let me know!</label>
+    <label for="wm-source" class="wm-form-label">If you write a <a href="https://indieweb.org/responses" target="_blank" rel="noopener noreferrer">response</a> to this post, submit your URL to let me know!</label>
     <div class="wm-form-row">
       <input
         type="url"
@@ -266,7 +265,7 @@ const targetUrl = import.meta.env.DEV
     const source = (document.getElementById('wm-source') as HTMLInputElement).value.trim();
     if (!source) return;
 
-    status.textContent = 'Sending…';
+    status.textContent = 'Sending...';
 
     try {
       const res = await fetch('https://webmention.io/fullmetalbrackets.com/webmention', {
