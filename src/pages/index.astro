@@ -5,37 +5,20 @@ import PostsColumns from "@components/PostsColumns.astro";
 import Popular from "@components/Popular.astro";
 import Categories from "@components/Categories.astro";
 import RecentPosts from "@components/RecentPosts.astro";
+import HCard from "@components/H-Card.astro";
 // import RecentNotes from "@components/RecentNotes.astro";
 import RecentLinks from "@components/RecentLinks.astro";
-import { SITE_TITLE, SITE_DESCRIPTION, GITHUB, MASTODON, BLUESKY } from "@consts";
+import { SITE_TITLE, SITE_DESCRIPTION } from "@consts";
 ---
 
 <style scoped>
-  section {
-    margin-bottom: 1em;
-  }
-  div {
-    padding-top: 0.5em;
-  }
-  p {
-    text-align: justify;
-    text-wrap: balanced;
-  }
-  .column-item {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1em;
-    margin: 2em auto 0 auto;
-  }
-  .explore {
-    margin: -3em auto 4em auto;
-    padding: 0;
+  .intro {
+    margin-bottom: 2em;
   }
   .about {
     text-shadow: 2px 3px 2px var(--accent);
     font-size: 3.25em;
     font-weight: 800;
-    text-align: center;
     letter-spacing: -1px;
     word-spacing: -6px;
     line-height: 1;
@@ -43,14 +26,17 @@ import { SITE_TITLE, SITE_DESCRIPTION, GITHUB, MASTODON, BLUESKY } from "@consts
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-top: 0.5em;
   }
-  .name {
-    color: var(--primary);
-    font-weight: 900;
-    word-break: all;
+  .intro-text {
+    margin: 1em auto;
+    text-wrap: pretty;
   }
-  .exp {
-    margin-top: -2.25em;
+  .column-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1em;
+    margin: 2em auto 1em auto;
   }
   @media screen and (max-width: 992px) {
     .column-item {
@@ -62,25 +48,18 @@ import { SITE_TITLE, SITE_DESCRIPTION, GITHUB, MASTODON, BLUESKY } from "@consts
       font-size: 1.725em;
     }
   }
-  @media screen and (max-width: 667px) {
-    .exp {
-      margin-top: 0.5em;
-    }
-  }
 </style>
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-  <section>
-    <div>
-      <h1 class="about">
-        A blog about self-hosting, web development, Linux, and more.
-      </span>
-    </div>
-    <p>
-      Welcome! I'm Ariel, a hobbyist and tech enthusiast that writes about self-hosting and related topics on my <a href="/blog">blog</a>. If you're interested, you can see details on how I made this site <a href="/colophon">here</a>.
+  <section class="intro">
+    <p class="h-card">
+      <HCard visible />
     </p>
-    <p>
-      There's some other personal stuff around here, probably not as useful as the blog, but feel free to <a href="/explore">explore</a>. I also have a <a href="https://ariel.lol">microblog</a> for short-form non-tech posting.
+    <p class="intro-text">
+      If you're looking for the main attraction, that would be <a href="/blog/">the blog</a> where I write how-to guides. You can see recent and popular posts below. If you're interested, you can see details on how I made this site <a href="/colophon/">here</a>. There's some other personal stuff around here, probably not as useful as the blog, but feel free to <a href="/explore/">explore</a>.
+    </p>
+    <p class="intro-text">
+      I also have a <a href="https://ariel.lol" target="_blank" rel="noreferrer noopener">microblog</a> for short-form non-tech <span class="i">(shit-)</span>posting.
     </p>
     <SocialLinks />
     <div class="column-item">
@@ -96,10 +75,6 @@ import { SITE_TITLE, SITE_DESCRIPTION, GITHUB, MASTODON, BLUESKY } from "@consts
       <PostsColumns>
         <Categories />
       </PostsColumns>
-      <!-- <PostsColumns>
-        <Explore class="ul-index" />
-      </PostsColumns> -->
     </div>
-    <br>
   </section>
 </BaseLayout>
