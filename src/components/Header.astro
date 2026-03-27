@@ -108,13 +108,28 @@ import SearchOverlay from "./SearchOverlay.astro";
     align-items: center;
     gap: 0.5em;
   }
+  .nav-end svg {
+    width: 20px;
+    height: 20px;
+  }
   .desktop-links {
     display: flex;
     align-items: center;
-    gap: 0.5em;
+    gap: 0.75em;
+  }
+  .desktop-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
   }
   .search {
     fill: var(--tertiary);
+  }
+  .nav-icon {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    display: block;
   }
 
   /* Dropdown (desktop More menu) */
@@ -149,7 +164,7 @@ import SearchOverlay from "./SearchOverlay.astro";
     position: absolute;
     right: 0;
     background-color: var(--dropdown);
-    min-width: 148px;
+    min-width: 180px;
     z-index: 1000;
     border-radius: 0 0 0.5em 0.5em;
     padding: 0;
@@ -166,9 +181,10 @@ import SearchOverlay from "./SearchOverlay.astro";
     color: var(--primary);
     padding: 0.25em;
     text-decoration: none;
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
     border: none;
-    text-align: right;
   }
   .dropdown-content a:last-of-type {
     border-radius: 0 0 0.5em 0.5em;
@@ -249,6 +265,10 @@ import SearchOverlay from "./SearchOverlay.astro";
     overflow: hidden;
     overscroll-behavior: contain;
   }
+  .mobile-nav svg {
+    width: 20px;
+    height: 20px;
+  }
   .mobile-nav::-webkit-scrollbar {
     width: 4px;
   }
@@ -297,7 +317,7 @@ import SearchOverlay from "./SearchOverlay.astro";
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: var(--emphasis);
+    color: var(--primary);
     margin: 0 0 0.5em 0;
     padding-bottom: 0.3em;
     border-bottom: 1px solid var(--border);
@@ -308,7 +328,10 @@ import SearchOverlay from "./SearchOverlay.astro";
     gap: 0.1em;
   }
   .mobile-nav-col a {
-    color: var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+    color: var(--emphasis);
     text-decoration: none;
     font-weight: 500;
   }
@@ -329,7 +352,12 @@ import SearchOverlay from "./SearchOverlay.astro";
     }
   }
 
-  /* Responsive */
+  @media screen and (max-width: 1024px) {
+    .desktop-links {
+      gap: 0.5em;
+    }
+  }
+  
   @media screen and (max-width: 768px) {
     nav {
       display: grid;
@@ -384,8 +412,14 @@ import SearchOverlay from "./SearchOverlay.astro";
 
       <!-- Desktop links -->
       <div class="desktop-links">
-        <HeaderLink href="/blog/" rel="prefetch-intent archives" aria-label="Blog" class="nav-link blog-link" data-umami-event="nav-blog">Blog</HeaderLink>
-        <HeaderLink href="/categories/" rel="prefetch-intent" aria-label="Categories" class="nav-link" data-umami-event="nav-categories">Categories</HeaderLink>
+        <HeaderLink href="/blog/" rel="prefetch-intent archives" aria-label="Blog" class="nav-link blog-link" data-umami-event="nav-blog">
+          <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          Blog
+        </HeaderLink>
+        <HeaderLink href="/categories/" rel="prefetch-intent" aria-label="Categories" class="nav-link" data-umami-event="nav-categories">
+          <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+          Categories
+        </HeaderLink>
         <div class="dropdown">
           <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">
             More
@@ -394,21 +428,66 @@ import SearchOverlay from "./SearchOverlay.astro";
             </svg>
           </button>
           <div class="dropdown-content">
-            <HeaderLink href="/notes/" rel="prefetch-intent" data-umami-event="nav-notes">Notes</HeaderLink>
-            <HeaderLink href="/links/" rel="prefetch-intent" data-umami-event="nav-links">Links</HeaderLink>
-            <HeaderLink href="/now/" rel="prefetch-intent" data-umami-event="nav-now">Now</HeaderLink>
-            <HeaderLink href="/lifestream/" rel="prefetch-intent" data-umami-event="nav-lifestream">Lifestream</HeaderLink>
-            <HeaderLink href="/blogroll/" rel="prefetch-intent" data-umami-event="nav-blogroll">Blogroll</HeaderLink>
-            <HeaderLink href="/self-hosted/" rel="prefetch-intent" data-umami-event="nav-self-hosted">Self-hosted</HeaderLink>
-            <HeaderLink href="/uses/" rel="prefetch-intent" data-umami-event="nav-uses">Uses</HeaderLink>
-            <HeaderLink href="/wiki/" rel="prefetch-intent" data-umami-event="nav-wiki">Wiki</HeaderLink>
-            <HeaderLink href="/games/" rel="prefetch-intent" data-umami-event="nav-games">Games</HeaderLink>
-            <HeaderLink href="/changelog/" rel="prefetch-intent" data-umami-event="nav-changelog">Changelog</HeaderLink>
-            <HeaderLink href="/colophon/" rel="prefetch-intent" data-umami-event="nav-colophon">Colophon</HeaderLink>
-            <HeaderLink href="/style/" rel="prefetch-intent" data-umami-event="nav-style">Style</HeaderLink>
-            <HeaderLink href="/verify/" rel="prefetch-intent" data-umami-event="nav-verify">Verify</HeaderLink>
-            <HeaderLink href="/explore/" rel="prefetch-intent" data-umami-event="nav-explore">Explore</HeaderLink>
-            <HeaderLink href="/privacy/" rel="prefetch-intent" data-umami-event="nav-privacy">Privacy</HeaderLink>
+            <HeaderLink href="/notes/" rel="prefetch-intent" data-umami-event="nav-notes">
+              <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg>
+              Notes
+            </HeaderLink>
+            <HeaderLink href="/links/" rel="prefetch-intent" data-umami-event="nav-links">
+              <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+              Links
+            </HeaderLink>
+            <HeaderLink href="/now/" rel="prefetch-intent" data-umami-event="nav-now">
+              <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Now
+            </HeaderLink>
+            <HeaderLink href="/lifestream/" rel="prefetch-intent" data-umami-event="nav-lifestream">
+              <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              Lifestream
+            </HeaderLink>
+            <HeaderLink href="/blogroll/" rel="prefetch-intent" data-umami-event="nav-blogroll">
+              <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+              Blogroll
+            </HeaderLink>
+            <HeaderLink href="/self-hosted/" rel="prefetch-intent" data-umami-event="nav-self-hosted">
+              <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+              Self-hosted
+            </HeaderLink>
+            <HeaderLink href="/uses/" rel="prefetch-intent" data-umami-event="nav-uses">
+              <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+              Uses
+            </HeaderLink>
+            <HeaderLink href="/wiki/" rel="prefetch-intent" data-umami-event="nav-wiki">
+              <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+              Wiki
+            </HeaderLink>
+            <HeaderLink href="/games/" rel="prefetch-intent" data-umami-event="nav-games">
+              <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="2"/><line x1="6" y1="12" x2="10" y2="12"/><line x1="8" y1="10" x2="8" y2="14"/><line x1="15" y1="13" x2="15.01" y2="13"/><line x1="18" y1="11" x2="18.01" y2="11"/></svg>
+              Games
+            </HeaderLink>
+            <HeaderLink href="/changelog/" rel="prefetch-intent" data-umami-event="nav-changelog">
+              <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><line x1="1.05" y1="12" x2="7" y2="12"/><line x1="17.01" y1="12" x2="22.96" y2="12"/></svg>
+              Changelog
+            </HeaderLink>
+            <HeaderLink href="/colophon/" rel="prefetch-intent" data-umami-event="nav-colophon">
+              <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              Colophon
+            </HeaderLink>
+            <HeaderLink href="/style/" rel="prefetch-intent" data-umami-event="nav-style">
+              <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+              Style
+            </HeaderLink>
+            <HeaderLink href="/verify/" rel="prefetch-intent" data-umami-event="nav-verify">
+              <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+              Verify
+            </HeaderLink>
+            <HeaderLink href="/explore/" rel="prefetch-intent" data-umami-event="nav-explore">
+              <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+              Explore
+            </HeaderLink>
+            <HeaderLink href="/privacy/" rel="prefetch-intent" data-umami-event="nav-privacy">
+              <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              Privacy
+            </HeaderLink>
           </div>
         </div>
       </div>
@@ -423,29 +502,80 @@ import SearchOverlay from "./SearchOverlay.astro";
     <div class="mobile-nav-grid">
       <div class="mobile-nav-col">
         <h4>Content</h4>
-        <HeaderLink href="/blog/" rel="prefetch-intent" data-umami-event="mnav-blog">Blog</HeaderLink>
-        <HeaderLink href="/categories/" rel="prefetch-intent" data-umami-event="mnav-categories">Categories</HeaderLink>
-        <HeaderLink href="/notes/" rel="prefetch-intent" data-umami-event="mnav-notes">Notes</HeaderLink>
-        <HeaderLink href="/links/" rel="prefetch-intent" data-umami-event="mnav-links">Links</HeaderLink>
-        <HeaderLink href="/blogroll/" rel="prefetch-intent" data-umami-event="mnav-blogroll">Blogroll</HeaderLink>
-        <HeaderLink href="/wiki/" rel="prefetch-intent" data-umami-event="mnav-wiki">Wiki</HeaderLink>
+        <HeaderLink href="/blog/" rel="prefetch-intent" data-umami-event="mnav-blog">
+          <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          Blog
+        </HeaderLink>
+        <HeaderLink href="/categories/" rel="prefetch-intent" data-umami-event="mnav-categories">
+          <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+          Categories
+        </HeaderLink>
+        <HeaderLink href="/notes/" rel="prefetch-intent" data-umami-event="mnav-notes">
+          <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg>
+          Notes
+        </HeaderLink>
+        <HeaderLink href="/links/" rel="prefetch-intent" data-umami-event="mnav-links">
+          <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+          Links
+        </HeaderLink>
+        <HeaderLink href="/blogroll/" rel="prefetch-intent" data-umami-event="mnav-blogroll">
+          <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+          Blogroll
+        </HeaderLink>
+        <HeaderLink href="/wiki/" rel="prefetch-intent" data-umami-event="mnav-wiki">
+          <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          Wiki
+        </HeaderLink>
       </div>
       <div class="mobile-nav-col">
         <h4>Personal</h4>
-        <HeaderLink href="/self-hosted/" rel="prefetch-intent" data-umami-event="mnav-selfhosted">Self-hosted</HeaderLink>
-        <HeaderLink href="/lifestream/" rel="prefetch-intent" data-umami-event="mnav-lifestream">Lifestream</HeaderLink>
-        <HeaderLink href="/games/" rel="prefetch-intent" data-umami-event="mnav-games">Games</HeaderLink>
-        <HeaderLink href="/uses/" rel="prefetch-intent" data-umami-event="mnav-uses">Uses</HeaderLink>
-        <HeaderLink href="/now/" rel="prefetch-intent" data-umami-event="mnav-now">Now</HeaderLink>
-        <HeaderLink href="/verify/" rel="prefetch-intent" data-umami-event="mnav-verify">Verify</HeaderLink>
+        <HeaderLink href="/self-hosted/" rel="prefetch-intent" data-umami-event="mnav-selfhosted">
+          <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+          Self-hosted
+        </HeaderLink>
+        <HeaderLink href="/lifestream/" rel="prefetch-intent" data-umami-event="mnav-lifestream">
+          <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          Lifestream
+        </HeaderLink>
+        <HeaderLink href="/games/" rel="prefetch-intent" data-umami-event="mnav-games">
+          <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="2"/><line x1="6" y1="12" x2="10" y2="12"/><line x1="8" y1="10" x2="8" y2="14"/><line x1="15" y1="13" x2="15.01" y2="13"/><line x1="18" y1="11" x2="18.01" y2="11"/></svg>
+          Games
+        </HeaderLink>
+        <HeaderLink href="/uses/" rel="prefetch-intent" data-umami-event="mnav-uses">
+          <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          Uses
+        </HeaderLink>
+        <HeaderLink href="/now/" rel="prefetch-intent" data-umami-event="mnav-now">
+          <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Now
+        </HeaderLink>
+        <HeaderLink href="/verify/" rel="prefetch-intent" data-umami-event="mnav-verify">
+          <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+          Verify
+        </HeaderLink>
       </div>
       <div class="mobile-nav-col">
         <h4>Meta</h4>
-        <HeaderLink href="/changelog/" rel="prefetch-intent" data-umami-event="mnav-changelog">Changelog</HeaderLink>
-        <HeaderLink href="/colophon/" rel="prefetch-intent" data-umami-event="mnav-colophon">Colophon</HeaderLink>
-        <HeaderLink href="/style/" rel="prefetch-intent" data-umami-event="mnav-style">Style</HeaderLink>
-        <HeaderLink href="/privacy/" rel="prefetch-intent" data-umami-event="mnav-privacy">Privacy</HeaderLink>
-        <HeaderLink href="/explore/" rel="prefetch-intent" data-umami-event="mnav-explore">Explore</HeaderLink>
+        <HeaderLink href="/changelog/" rel="prefetch-intent" data-umami-event="mnav-changelog">
+          <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><line x1="1.05" y1="12" x2="7" y2="12"/><line x1="17.01" y1="12" x2="22.96" y2="12"/></svg>
+          Changelog
+        </HeaderLink>
+        <HeaderLink href="/colophon/" rel="prefetch-intent" data-umami-event="mnav-colophon">
+          <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          Colophon
+        </HeaderLink>
+        <HeaderLink href="/style/" rel="prefetch-intent" data-umami-event="mnav-style">
+          <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+          Style
+        </HeaderLink>
+        <HeaderLink href="/privacy/" rel="prefetch-intent" data-umami-event="mnav-privacy">
+          <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Privacy
+        </HeaderLink>
+        <HeaderLink href="/explore/" rel="prefetch-intent" data-umami-event="mnav-explore">
+          <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+          Explore
+        </HeaderLink>
       </div>
     </div>
   </div>
