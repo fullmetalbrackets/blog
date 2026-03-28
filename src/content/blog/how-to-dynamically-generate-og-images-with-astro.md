@@ -42,7 +42,7 @@ With the blog template it all comes wired up so that you can provide a "fallback
 
 Truth be told, this is not that important. Google does not use OpenGraph for their search in any way, so it does not affect SEO. However, if you share your posts on social media or want others to share it on your behalf, then it's a good idea to at least use a "static" opengraph image that can be shown with it.
 
-I do have a default/fallback OG image for my site, and I have since the beginning, you can see it's latest iteration in the [Style Guide](/style#Images), or just [click here](/preview.png). I created this image with [a shitty little app I made](https://github.com/fullmetalbrackets/html-to-og) that uses Puppeteer to take a 1200x630 sized screenshot of an HTML file in a headless browser. It's basic and dirty because I'm no good at the JavaScript, but I'm even worse at graphic design.
+I do have a default/fallback OG image for my site, and I have since the beginning, you can see it's latest iteration in the [Style Guide](/style#Images), or just [click here](/preview.png). I created this image with [a shitty little app I made](https://github.com/fullmetalbrackets/html-to-og) that uses Puppeteer to take a 1200x630 sized screenshot of an HTML file in a headless browser. It's basic and dirty because I'm no good at JavaScript, but I'm even worse at graphic design.
 
 A static image like that is fine, but I've been entertaining myself testing out and adding a bunch of bells and whistles to this site, so I figured why not do the dynamic OG image thing. Initially I used [satori](https://github.com/vercel/satori) which turns JSX into an SVG, then [resvg-js](https://github.com/thx/resvg-js) to turn that SVG into a PNG. OpenGraph protocol does not support SVGs, only JPEG and PNG. Some social media platforms also accept WebP, [per this blog post by Darek Kay](https://darekkay.com/blog/open-graph-image-formats/).
 
@@ -132,4 +132,4 @@ If you want to check your own site's opengraph metadata, you can use [Meta Tags 
 ## References
 - [OpenGraph](https://opengraph.xyz)
 - [Astro Docs - Routing](https://docs.astro.build/en/guides/routing/)
-- [Blog post by Darek Kay re: OpenGraph supported image formats](https://darekkay.com/blog/open-graph-image-formats/).
+- [Blog post by Darek Kay re: supported OG image formats](https://darekkay.com/blog/open-graph-image-formats/).
