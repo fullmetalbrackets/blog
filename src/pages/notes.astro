@@ -10,6 +10,11 @@ const desc = 'Syndicated feed from my microblog at ariel.lol';
 
 const result = await getLiveCollection('notes');
 const error = result.error;
+console.error('Live collection error:', error);
+if (error) {
+  console.error('Notes feed error:', JSON.stringify(error, null, 2));
+}
+
 const sorted = result.entries?.sort((a, b) =>
   new Date(b.data.published ?? 0).valueOf() -
   new Date(a.data.published ?? 0).valueOf()
