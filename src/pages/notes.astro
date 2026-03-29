@@ -1,26 +1,21 @@
 ---
-export const prerender = false;
-
+export const prerender = true;
+ 
 import BaseLayout from '@layouts/BaseLayout.astro';
-import { getLiveCollection } from 'astro:content';
+import { getCollection } from 'astro:content';
 import { YouTube } from 'astro-embed';
-
+ 
 const title = 'Notes';
-const desc = 'Syndicated feed from my microblog at ariel.lol';
-
-const result = await getLiveCollection('notes');
-const error = result.error;
-console.error('Live collection error:', error);
-if (error) {
-  console.error('Notes feed error:', JSON.stringify(error, null, 2));
-}
-
-const sorted = result.entries?.sort((a, b) =>
+const desc = 'Microblog-style short-form notes.';
+ 
+const entries = await getCollection('notes');
+ 
+const sorted = entries.sort((a, b) =>
   new Date(b.data.published ?? 0).valueOf() -
   new Date(a.data.published ?? 0).valueOf()
-) ?? [];
+);
 ---
-
+ 
 <BaseLayout title={title} description={desc}>
   <section class="h-feed">
     <h1 class="p-name">{title}</h1>
@@ -28,71 +23,71 @@ const sorted = result.entries?.sort((a, b) =>
     <p class="desc">
       Syndicated feed from my microblog at <a href="https://ariel.lol/">ariel.lol</a>
     </p>
-
-    {error && (
-      <p class="feed-error">Could not load notes right now. Try again later.</p>
-    )}
-
-    {!error && (
-      <ul class="notes-list">
-        {sorted.map(note => {
-          const date = note.data.published ? new Date(note.data.published) : null;
-
-          const ytMatch = note.data.content?.match(
-            /youtube\.com\/watch\?v=([a-zA-Z0-9_-]+)/
-          );
-          const ytId = ytMatch?.[1] ?? null;
-
-          // note.data.image is an object with a url property
-          const imageUrl = note.data.image?.url ?? null;
-          const altMatch = note.data.content?.match(/<img[^>]*alt="([^"]*)"[^>]*>/);
-          const imageAlt = altMatch?.[1] ?? '';
-
-          const cleanContent = note.data.content
-            ?.replace(/<a[^>]*youtube\.com\/watch[^>]*>.*?<\/a>/g, '')
-            ?.replace(/<img[^>]*>/g, '')
-            .trim();
-
-          return (
-            <li class="note-item h-entry">
-              <div class="note-wrap">
-                {ytId && <YouTube id={ytId} />}
-                {!ytId && imageUrl && (
-                  <img src={imageUrl} alt={imageAlt} class="note-image" />
-                )}
-                <div class="note-body e-content" set:html={cleanContent} />
-              </div>
-              {date && (
-                <div class="note-meta">
-                  <a
-                    class="u-url dt-published"
-                    href={note.data.url}
-                    target="_blank"
-                    rel="noopener noreferrer me"
-                  >
-                    <time datetime={date.toISOString()}>
-                      {date.toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric',
-                      })}
-                    </time>
-                  </a>
-                  <a
-                    class="note-share"
-                    href={`https://shareopenly.org/share/?url=${note.data.url}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    share
-                  </a>
-                </div>
+ 
+    <ul class="notes-list">
+      {sorted.map(note => {
+        const date = note.data.published ? new Date(note.data.published) : null;
+ 
+        const ytMatch = note.data.content?.match(
+          /youtube\.com\/watch\?v=([a-zA-Z0-9_-]+)/
+        );
+        const ytId = ytMatch?.[1] ?? null;
+ 
+        const imageUrl = note.data.image?.url ?? null;
+ 
+        const altMatch = note.data.content?.match(/<img[^>]*alt="([^"]*)"[^>]*>/);
+        const imageAlt = altMatch?.[1] ?? '';
+ 
+        const cleanContent = note.data.content
+          ?.replace(/<a[^>]*youtube\.com\/watch[^>]*>.*?<\/a>/g, '')
+          ?.replace(/<img[^>]*>/g, '')
+          .trim();
+ 
+        return (
+          <li class="note-item h-entry">
+            <div class="note-wrap">
+              {ytId && <YouTube id={ytId} />}
+              {!ytId && imageUrl && (
+                <img src={imageUrl} alt={imageAlt} class="note-image" />
               )}
-            </li>
-          );
-        })}
-      </ul>
-    )}
+              <div
+                class="note-body e-content"
+                set:html={cleanContent}
+              />
+            </div>
+            {date && (
+              <div class="note-meta">
+                <a
+                  class="u-url dt-published"
+                  href={note.data.url}
+                  target="_blank"
+                  rel="noopener noreferrer me"
+                  aria-label={`Permalink for note from ${date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}, opens in new tab`}
+                >
+                  <time datetime={date.toISOString()}>
+                    {date.toLocaleDateString('en-US', {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric',
+                    })}
+                  </time>
+                  ↗
+                </a>
+                <a
+                  class="note-share"
+                  href={`https://shareopenly.org/share/?url=${note.data.url}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Share this note, opens in new tab"
+                >
+                  share
+                </a>
+              </div>
+            )}
+          </li>
+        );
+      })}
+    </ul>
   </section>
 </BaseLayout>
 
