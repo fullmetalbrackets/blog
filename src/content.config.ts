@@ -1,5 +1,6 @@
 import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
+import { feedLoader } from '@ascorbic/feed-loader';
 import { z } from 'astro/zod';
 
 const blog = defineCollection({
@@ -85,6 +86,12 @@ const now = defineCollection({
 		}),
 });
 
+const notes = defineCollection({
+	loader: feedLoader({
+		url: 'https://ariel.lol/rss.xml',
+	}),
+});
+
 export const collections = {
 	blog,
 	links,
@@ -92,4 +99,5 @@ export const collections = {
 	lifestream,
 	games,
 	now,
+	notes,
 };
