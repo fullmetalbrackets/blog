@@ -55,10 +55,7 @@ const desc = "All the media I've played, read, and watched. And what I thought o
     <a class="u-url" href="/lifestream/" hidden>Permalink</a>
     <hr />
     <p class="desc">
-      {desc}
-    </p>
-    <p>
-      I also scraped a list of <a href="/lifestream/older/movies">movies</a> and <a href="/lifestream/older/tvshows">TV shows</a> watched on Plex prior to 2026.
+      {desc} I also separately scraped a list of <a href="/lifestream/older/movies">movies</a> and <a href="/lifestream/older/tvshows">TV shows</a> watched on Plex prior to 2026.
     </p>
 
     {types.map(t => (
@@ -165,9 +162,9 @@ const desc = "All the media I've played, read, and watched. And what I thought o
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1em;
+    gap: 2em;
     max-width: 75ch;
-    margin: 0 auto 2em auto;
+    margin: 1.75em auto 2em auto;
   }
 
   .filter-toggle {
@@ -223,7 +220,6 @@ const desc = "All the media I've played, read, and watched. And what I thought o
     opacity: 1;
   }
 
-  /* active button icon: black to match button text */
   #filter-game:checked   ~ .filters label[for="filter-game"]   .btn-icon :global(svg),
   #filter-book:checked   ~ .filters label[for="filter-book"]   .btn-icon :global(svg),
   #filter-movie:checked  ~ .filters label[for="filter-movie"]  .btn-icon :global(svg),
