@@ -1,59 +1,217 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
-import BackToTop from "@components/BackToTop.astro";
-import { getNotes } from '@utils/collections';
-import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
-import { SITE_URL, MASTODON } from "@consts";
-import { Picture } from 'astro:assets';
-import WIP from '@img/assets/under-construction.gif';
+export const prerender = false;
 
-const notes = await getNotes();
-const title = "Notes";
-const desc = "List of all short-form notes posted as part of my lifestream.";
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { getLiveCollection } from 'astro:content';
+import { YouTube } from 'astro-embed';
+
+const title = 'Notes';
+const desc = 'Syndicated feed from my microblog at ariel.lol';
+
+const result = await getLiveCollection('notes');
+const error = result.error;
+const sorted = result.entries?.sort((a, b) =>
+  new Date(b.data.published ?? 0).valueOf() -
+  new Date(a.data.published ?? 0).valueOf()
+) ?? [];
 ---
 
-<style scoped>
-  h1 {
-    font-family: var(--sub-font);
-    font-weight: 900;
-  }
-  ul {
-    list-style-type: none;
-    margin: 0 auto;
-    padding: 0;
-    font-size: 1em;
-  }
-  li {
-    margin: 2em auto;
-    padding: 0;
-    width: 100%;
-    max-width: 720px;
-  }
-  span, p {
-    margin: 0 auto;
-    padding: 0 auto;
-  }
-  img {
-    margin: 2em auto;
-  }
-</style>
-
 <BaseLayout title={title} description={desc}>
-  <BreadcrumbSchema slot="head" crumbs={[
-    { name: "Home", url: `${SITE_URL}/` },
-    { name: "Notes", url: `${SITE_URL}/notes/` }
-  ]} />
   <section class="h-feed">
     <h1 class="p-name">{title}</h1>
-    <a class="u-url" href={`${SITE_URL}/notes/`} hidden>Permalink</a>
     <hr />
-    <p>
-      Microblog-style short-form notes, sometimes cross-posted to <a href={MASTODON} target="_blank" rel="me noreferrer noopener">Mastodon</a> if I feel like it. <sup>(Under construction.)</sup>
+    <p class="desc">
+      Syndicated feed from my microblog at <a href="https://ariel.lol/">ariel.lol</a>
     </p>
-    <p>
-      <img src={WIP.src} width={WIP.width} height={WIP.height} alt="Under construction animated gif straight out of the 90's." />
-    </p>
-    <hr />
-    <BackToTop />
+
+    {error && (
+      <p class="feed-error">Could not load notes right now. Try again later.</p>
+    )}
+
+    {!error && (
+      <ul class="notes-list">
+        {sorted.map(note => {
+          const date = note.data.published ? new Date(note.data.published) : null;
+
+          const ytMatch = note.data.content?.match(
+            /youtube\.com\/watch\?v=([a-zA-Z0-9_-]+)/
+          );
+          const ytId = ytMatch?.[1] ?? null;
+
+          // note.data.image is an object with a url property
+          const imageUrl = note.data.image?.url ?? null;
+          const altMatch = note.data.content?.match(/<img[^>]*alt="([^"]*)"[^>]*>/);
+          const imageAlt = altMatch?.[1] ?? '';
+
+          const cleanContent = note.data.content
+            ?.replace(/<a[^>]*youtube\.com\/watch[^>]*>.*?<\/a>/g, '')
+            ?.replace(/<img[^>]*>/g, '')
+            .trim();
+
+          return (
+            <li class="note-item h-entry">
+              <div class="note-wrap">
+                {ytId && <YouTube id={ytId} />}
+                {!ytId && imageUrl && (
+                  <img src={imageUrl} alt={imageAlt} class="note-image" />
+                )}
+                <div class="note-body e-content" set:html={cleanContent} />
+              </div>
+              {date && (
+                <div class="note-meta">
+                  <a
+                    class="u-url dt-published"
+                    href={note.data.url}
+                    target="_blank"
+                    rel="noopener noreferrer me"
+                  >
+                    <time datetime={date.toISOString()}>
+                      {date.toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                      })}
+                    </time>
+                  </a>
+                  <a
+                    class="note-share"
+                    href={`https://shareopenly.org/share/?url=${note.data.url}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    share
+                  </a>
+                </div>
+              )}
+            </li>
+          );
+        })}
+      </ul>
+    )}
   </section>
 </BaseLayout>
+
+<style>
+  .feed-error {
+    color: var(--warning);
+    font-family: var(--sub-font);
+    font-size: 0.75em;
+  }
+
+  .notes-list {
+    list-style: none;
+    padding: 0;
+    margin: 0.5em auto 1em auto;
+    max-width: 720px;
+  }
+
+  .note-item {
+    padding: 1em 0;
+  }
+
+  .note-wrap {
+    border-radius: 0.5em;
+    overflow: hidden;
+  }
+
+  .note-meta a[target="_blank"]::after {
+    content: '';
+    display: inline-block;
+    width: 0.75em;
+    height: 0.75em;
+    margin-top: 0.1em;
+    margin-left: 0.1em;
+    background-color: currentColor;
+    mask-image: url('/assets/external.svg');
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+    vertical-align: middle;
+  }
+
+  .note-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0;
+  }
+
+  .note-body {
+    font-size: 0.875em;
+    line-height: 1.65;
+    color: var(--text);
+    padding: 1em 1.5em;
+    background: var(--blockquote);
+    border-radius: 0 0 0.5em 0.5em;
+  }
+
+  .note-wrap:not(:has(lite-youtube)):not(:has(.note-image)) .note-body {
+    border-radius: 0.5em;
+  }
+
+  .note-body :global(p) {
+    margin: 0 0 0.5em;
+  }
+
+  .note-body :global(p:last-child) {
+    margin-bottom: 0;
+  }
+
+  .note-body :global(img) {
+    margin: 0 auto 0.5em auto;
+    width: 100%;
+    height: auto;
+  }
+
+  .note-body > :has(.lyt-playbtn) {
+    border-radius: 0;
+  }
+
+  .note-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.25em 0.5em;
+  }
+
+  .note-meta a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25em;
+    font-family: var(--sub-font);
+    font-size: 0.75em;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .note-meta .u-url {
+    color: var(--primary);
+  }
+
+  .note-meta .note-share {
+    color: var(--link);
+  }
+
+  .note-meta a:hover {
+    color: var(--hover);
+  }
+
+  .note-meta time {
+    color: inherit;
+  }
+
+  .note-meta a[target="_blank"]::after {
+    content: '';
+    display: inline-block;
+    width: 0.75em;
+    height: 0.75em;
+    margin-top: 0.1em;
+    margin-left: 0.2em;
+    background-color: currentColor;
+    mask-image: url('/assets/external.svg');
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+    vertical-align: middle;
+  }
+</style>

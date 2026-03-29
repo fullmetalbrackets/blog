@@ -5,6 +5,27 @@ __metadata:
   version: 8
   cacheKey: 10c0
 
+"@ascorbic/feed-loader@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "@ascorbic/feed-loader@npm:2.0.1"
+  dependencies:
+    "@ascorbic/loader-utils": "npm:^1.0.2"
+    "@rowanmanning/feed-parser": "npm:^2.0.0"
+  peerDependencies:
+    astro: ^4.14.0 || ^5.0.0
+  checksum: 10c0/60dd398734dfa67e0a0a023dd11d639a8616569a814dee41285266d883aaf4f41779a4d3e13a69cb0bbd9ee3fb3279f56381f44e1cca8001cfb6a1611ed648ab
+  languageName: node
+  linkType: hard
+
+"@ascorbic/loader-utils@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "@ascorbic/loader-utils@npm:1.0.2"
+  peerDependencies:
+    astro: ^4.14.0 || ^5.0.0-beta.0
+  checksum: 10c0/75ec9bf16f23559b3b64747225b828d9d2003bbaefcec0af68fbd27410a3f9fb8b5f8f5121590c47fbf1b4d1db74fe0062315fca58ec7c0e4061596b1db7a858
+  languageName: node
+  linkType: hard
+
 "@astro-community/astro-embed-baseline-status@npm:^0.2.2":
   version: 0.2.2
   resolution: "@astro-community/astro-embed-baseline-status@npm:0.2.2"
@@ -1750,6 +1771,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@rowanmanning/feed-parser@npm:^2.0.0":
+  version: 2.1.3
+  resolution: "@rowanmanning/feed-parser@npm:2.1.3"
+  dependencies:
+    fast-xml-parser: "npm:^5.5.9"
+    html-entities: "npm:^2.3.3"
+  checksum: 10c0/9b8ffa8c89bacc2280c404004d66b15e02bd5866c4378cfa05035a7370d98a0ba8c56ed43d342cf7c7ab4e7b3809eb557be134dada9e6f7170ab2e0cd0716238
+  languageName: node
+  linkType: hard
+
 "@shikijs/core@npm:4.0.2":
   version: 4.0.2
   resolution: "@shikijs/core@npm:4.0.2"
@@ -3287,6 +3318,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fast-xml-builder@npm:^1.1.4":
+  version: 1.1.4
+  resolution: "fast-xml-builder@npm:1.1.4"
+  dependencies:
+    path-expression-matcher: "npm:^1.1.3"
+  checksum: 10c0/d5dfc0660f7f886b9f42747e6aa1d5e16c090c804b322652f65a5d7ffb93aa00153c3e1276cd053629f9f4c4f625131dc6886677394f7048e827e63b97b18927
+  languageName: node
+  linkType: hard
+
 "fast-xml-parser@npm:5.4.1":
   version: 5.4.1
   resolution: "fast-xml-parser@npm:5.4.1"
@@ -3296,6 +3336,19 @@ __metadata:
   bin:
     fxparser: src/cli/cli.js
   checksum: 10c0/8c696438a0c64135faf93ea6a93879208d649b7c9a3293d30d6eb750dc7f766fd083c0df5a82786b60809c3ead64fad155f28dbed25efea91017aaf9f64c91e5
+  languageName: node
+  linkType: hard
+
+"fast-xml-parser@npm:^5.5.9":
+  version: 5.5.9
+  resolution: "fast-xml-parser@npm:5.5.9"
+  dependencies:
+    fast-xml-builder: "npm:^1.1.4"
+    path-expression-matcher: "npm:^1.2.0"
+    strnum: "npm:^2.2.2"
+  bin:
+    fxparser: src/cli/cli.js
+  checksum: 10c0/b7f40f586c01a916a75be15b11ec0e83a38483885395bdeca51da8992a75e3d4d9b6c2690f362b975bfcb5118909ee4b0393e18ec9c9151345d5e13152370969
   languageName: node
   linkType: hard
 
@@ -3633,6 +3686,13 @@ __metadata:
     property-information: "npm:^7.0.0"
     space-separated-tokens: "npm:^2.0.0"
   checksum: 10c0/18dc8064e5c3a7a2ae862978e626b97a254e1c8a67ee9d0c9f06d373bba155ed805fc5b5ce21b990fb7bc174624889e5e1ce1cade264f1b1d58b48f994bc85ce
+  languageName: node
+  linkType: hard
+
+"html-entities@npm:^2.3.3":
+  version: 2.6.0
+  resolution: "html-entities@npm:2.6.0"
+  checksum: 10c0/7c8b15d9ea0cd00dc9279f61bab002ba6ca8a7a0f3c36ed2db3530a67a9621c017830d1d2c1c65beb9b8e3436ea663e9cf8b230472e0e413359399413b27c8b7
   languageName: node
   linkType: hard
 
@@ -5069,6 +5129,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"path-expression-matcher@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "path-expression-matcher@npm:1.2.0"
+  checksum: 10c0/86c661dfb265ed5dd1ddd9188f0dfbecf4ec4dc3ea6cabab081d3a2ba285054d9767a641a233bd6fd694fd89f7d0ef94913032feddf5365252700b02db4bf4e1
+  languageName: node
+  linkType: hard
+
 "path-scurry@npm:^2.0.2":
   version: 2.0.2
   resolution: "path-scurry@npm:2.0.2"
@@ -5643,6 +5710,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "root-workspace-0b6124@workspace:."
   dependencies:
+    "@ascorbic/feed-loader": "npm:^2.0.1"
     "@astrojs/check": "npm:^0.9.8"
     "@astrojs/cloudflare": "npm:^12.6.13"
     "@astrojs/markdown-remark": "npm:^7.0.1"
@@ -5935,6 +6003,13 @@ __metadata:
   version: 2.2.0
   resolution: "strnum@npm:2.2.0"
   checksum: 10c0/9a656f5048047abff8d10d0bb57761a01916e368a71e95d4f5a962b57f64b738e20672e68ba10b7de3dc78e861c77bc0566bdeed7017abdda1caf0303c929a3f
+  languageName: node
+  linkType: hard
+
+"strnum@npm:^2.2.2":
+  version: 2.2.2
+  resolution: "strnum@npm:2.2.2"
+  checksum: 10c0/89c456de32b9495ae34cd6e3b59cb9ef3406b66d1429bbc931afd70be87485dcd355200c42fd638a132adb3121762542346813098ab0c43e44aac303bf17965d
   languageName: node
   linkType: hard
 
