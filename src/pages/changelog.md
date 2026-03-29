@@ -6,7 +6,11 @@ description: A log of major changes made to fullmetalbrackets.com
 
 A log of major changes made to my site over the years. For more granular details, [see the GitHub repo](https://github.com/fullmetalbrackets/blog/commits/main/).
 
-<h2 class="flex">2026-03-22&nbsp;<span class="latest">latest</span></h2>
+<h2 class="flex">2026-03-29&nbsp;<span class="latest">latest</span></h2>
+
+- Add [notes](/notes/) page with syndicated feed from my [microblog](https://ariel.lol/)
+
+<h2 class="flex">2026-03-22</h2>
 
 - Redesign [lifestream](/lifestream/) page to be my media digest/catalogue/record thing
 - Remove `/digest` page (which was "under construction" this whole time anyway)
@@ -28,7 +32,6 @@ A log of major changes made to my site over the years. For more granular details
     - Categories
     - Wiki articles
     - Blogroll
-    - Notes
     - Links
 
 <h2 class="flex">2026-03-05</h2>
