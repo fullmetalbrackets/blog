@@ -2,18 +2,13 @@
 export const prerender = true;
  
 import BaseLayout from '@layouts/BaseLayout.astro';
-import { getCollection } from 'astro:content';
+import { getSortedNotes } from "@utils/collections";
 import { YouTube } from 'astro-embed';
  
 const title = 'Notes';
-const desc = 'Microblog-style short-form notes.';
+const desc = 'Syndicated feed from my microblog at ariel.lol';
  
-const entries = await getCollection('notes');
- 
-const sorted = entries.sort((a, b) =>
-  new Date(b.data.published ?? 0).valueOf() -
-  new Date(a.data.published ?? 0).valueOf()
-);
+const entries = await getSortedNotes();
 ---
  
 <BaseLayout title={title} description={desc}>
@@ -25,7 +20,7 @@ const sorted = entries.sort((a, b) =>
     </p>
  
     <ul class="notes-list">
-      {sorted.map(note => {
+      {entries.map(note => {
         const date = note.data.published ? new Date(note.data.published) : null;
  
         const ytMatch = note.data.content?.match(
@@ -71,7 +66,6 @@ const sorted = entries.sort((a, b) =>
                       day: 'numeric',
                     })}
                   </time>
-                  ↗
                 </a>
                 <a
                   class="note-share"
