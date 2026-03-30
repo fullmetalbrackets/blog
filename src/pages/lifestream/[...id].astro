@@ -166,11 +166,12 @@ const typeName: Record<string, string> = {
   .back svg {
     fill: var(--link);
     margin-right: 0.25em;
+    transition: transform 0.1s ease-in-out;
   }
 
   .back:hover svg {
     fill: var(--hover);
-    transition: all .1s ease-out;
+    transition: transform 0.1s ease-in-out;
     transform: translateX(-4px);
   }
 
@@ -233,33 +234,33 @@ const typeName: Record<string, string> = {
   }
 
   .entry-nav-link:hover .nav-title {
-    color: var(--hover);
+    color: var(--link);
   }
 
   .nav-label svg {
-    width: 14px;
-    height: 14px;
-    fill: currentColor;
-    flex-shrink: 0;
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+      flex-shrink: 0;
   }
 
   .prev .nav-label svg {
-    margin-right: 0.3em;
+      transition: transform 0.1s ease-in-out;
+      margin-right: 0.3em;
   }
 
   .next .nav-label svg {
-    margin-left: 0.3em;
-    transform: rotate(180deg);
+      transition: transform 0.1s ease-in-out;
+      margin-left: 0.3em;
+      transform: rotate(180deg);
   }
 
   .prev:hover .nav-label svg {
-    transition: all .1s ease-out;
-    transform: translateX(-4px);
+      transform: translateX(-4px);
   }
 
   .next:hover .nav-label svg {
-    transition: all .1s ease-out;
-    transform: rotate(180deg) translateX(-4px);
+      transform: rotate(180deg) translateX(-4px);
   }
 
   @media (max-width: 667px) {
