@@ -170,6 +170,8 @@ const typeName: Record<string, string> = {
 
   .back:hover svg {
     fill: var(--hover);
+    transition: all .1s ease-out;
+    transform: translateX(-4px);
   }
 
   /* two-col layout */
@@ -234,7 +236,6 @@ const typeName: Record<string, string> = {
     color: var(--hover);
   }
 
-  /* nav arrows only — scoped tightly so they don't affect back link or type-label */
   .nav-label svg {
     width: 14px;
     height: 14px;
@@ -249,6 +250,16 @@ const typeName: Record<string, string> = {
   .next .nav-label svg {
     margin-left: 0.3em;
     transform: rotate(180deg);
+  }
+
+  .prev:hover .nav-label svg {
+    transition: all .1s ease-out;
+    transform: translateX(-4px);
+  }
+
+  .next:hover .nav-label svg {
+    transition: all .1s ease-out;
+    transform: rotate(180deg) translateX(-4px);
   }
 
   @media (max-width: 667px) {
