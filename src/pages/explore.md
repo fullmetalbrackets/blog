@@ -88,11 +88,6 @@ Explore all of the [slashpages](https://slashpages.net/) on this site below.
             <p>Read the privacy policy for this website.
         </li>
         <li>
-            <a href="/search/" data-umami-event="explore-search">Search</a>
-            <hr>
-            <p>Search through all blog posts by keywords.
-        </li>
-        <li>
             <a href="/self-hosted/" data-umami-event="explore-selfhosted">Self-hosted</a>
             <hr>
             <p>Information about the apps and services that I self-host.
