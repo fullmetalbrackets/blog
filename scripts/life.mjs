@@ -10,10 +10,8 @@ const slugify = (str) =>
 		.replace(/[^\w-]/g, '');
 
 const now = new Date();
-const pubDate = now
-	.toISOString()
-	.replace('T', ' ')
-	.replace(/\.\d{3}Z$/, '');
+const datePart = now.toISOString().split('T')[0];
+const pubDate = `${datePart} 12:00:00`;
 
 const templates = {
 	game: (title) => `---
@@ -22,7 +20,7 @@ title:
 pubDate: ${pubDate}
 platform: 
 image: ./_images/${title}.
-rating: 
+rating: liked
 ---
 `,
 	movie: (title) => `---
@@ -30,7 +28,7 @@ type: movie
 title: 
 pubDate: ${pubDate}
 image: ./_images/${title}.
-rating: 
+rating: liked
 ---
 `,
 	tvshow: (title) => `---
@@ -39,7 +37,7 @@ title:
 pubDate: ${pubDate}
 image: ./_images/${title}.
 season: 
-rating: 
+rating: liked
 ---
 `,
 	book: (title) => `---
@@ -48,7 +46,7 @@ title:
 author: 
 pubDate: ${pubDate}
 image: ./_images/${title}.
-rating: 
+rating: liked
 ---
 `,
 };
