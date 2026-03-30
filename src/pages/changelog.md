@@ -9,6 +9,12 @@ A log of major changes made to my site over the years. For more granular details
 <h2 class="flex">2026-03-29&nbsp;<span class="latest">latest</span></h2>
 
 - Add [notes](/notes/) page with syndicated feed from my [microblog](https://ariel.lol/)
+- Add [postroll](/postroll/) page
+
+<h2 class="flex">2026-03-25</h2>
+
+- Redesign search to be encapsulated in the header
+- Remove dedicated `/search` page
 
 <h2 class="flex">2026-03-22</h2>
 
