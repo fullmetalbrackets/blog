@@ -18,7 +18,7 @@
 		"format": "prettier --write .",
 		"post": "node scripts/post.mjs",
 		"life": "node scripts/life.mjs",
-		"note": "node scripts/note.mjs",
+		"postroll": "node scripts/postroll.mjs",
 		"links": "node scripts/link.mjs",
 		"wiki": "node scripts/wiki.mjs",
 		"mogrify": "node scripts/mogrify.mjs"
