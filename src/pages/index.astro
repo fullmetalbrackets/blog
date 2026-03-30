@@ -1,13 +1,13 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 import SocialLinks from "@components/SocialLinks.astro";
+import HCard from "@components/H-Card.astro";
 import PostsColumns from "@components/PostsColumns.astro";
 import Popular from "@components/Popular.astro";
-import Categories from "@components/Categories.astro";
 import RecentPosts from "@components/RecentPosts.astro";
-import HCard from "@components/H-Card.astro";
-// import RecentNotes from "@components/RecentNotes.astro";
+import RecentNotes from "@components/RecentNotes.astro";
 import RecentLinks from "@components/RecentLinks.astro";
+import RecentLifestream from "@components/RecentLifestream.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "@consts";
 ---
 
@@ -73,8 +73,9 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "@consts";
         <RecentLinks />
       </PostsColumns>
       <PostsColumns>
-        <Categories />
+        <RecentNotes />
       </PostsColumns>
     </div>
+    <RecentLifestream />
   </section>
 </BaseLayout>
