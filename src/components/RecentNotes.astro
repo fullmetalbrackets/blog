@@ -1,15 +1,44 @@
 ---
 import FormattedDate from "./FormattedDate.astro";
 import More from '@icons/arrow-right.svg';
-import { getNotes } from '@utils/collections';
+import { getSortedNotes } from '@utils/collections';
 
 interface Props {
   limit?: number;
 }
 
-const { limit = 4 } = Astro.props;
-const recentNotes = (await getNotes()).slice(0, limit);
+const { limit = 3 } = Astro.props;
+const recentNotes = (await getSortedNotes()).slice(0, limit);
 ---
+
+<section class="h-feed">
+  <h2 class="p-name">Recent Notes</h2>
+  <ul class="container">
+    {recentNotes.map((note) => {
+      const cleanContent = note.data.content
+        ?.replace(/<a[^>]*youtube\.com\/watch[^>]*>.*?<\/a>/g, '')
+        ?.replace(/<img[^>]*>/g, '')
+        .trim();
+      return (
+        <li class="h-entry">
+          <a
+            class="u-uid u-url"
+            href={note.data.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-umami-event="recent-notes"
+          >
+            <p class="note-content e-content" set:html={cleanContent} />
+            <FormattedDate class="dt-published" date={new Date(note.data.published)} monthFormat="short" />
+          </a>
+        </li>
+      );
+    })}
+  </ul>
+  <span class="more">
+    <a href="/notes/" rel="prefetch-intent archives">All Notes <More height={24} width={24} /></a>
+  </span>
+</section>
 
 <style scoped>
   section {
@@ -21,57 +50,37 @@ const recentNotes = (await getNotes()).slice(0, limit);
     font-family: var(--sub-font);
     font-weight: 900;
   }
-  p {
-    margin: 0;
-  }
-  .info {
-    display: flex;
-    place-items: center;
-    margin: 0.2em 0 0 0;
-    padding: 0;
-    gap: 0.25em;
-  }
-  .info button {
-    margin: 0 0.5em 0 0;
-    background: var(--info);
-    cursor: pointer;
-    font-size: 0.75em;
-  }
-  .container {
+  ul {
     background-color: var(--blockquote);
     border-radius: 0.5em;
-    margin: 0.5em auto 0 auto;
-    padding: 1.5em 1.5em 0.5em 1.5em;
+    margin: 0 auto;
+    padding: 1.5em 1.5em 1.875em 1.5em;
   }
-  .list {
+  li {
     display: inline-flex;
     flex-direction: column;
-    margin: 0 auto 0.25em auto;
-    padding-bottom: 0.5em;
-    line-height: 1.3;
-  }
-  .list:hover {
-    padding-bottom: 0.5em;
-    transition: all .5s ease-out;
-  }
-  .list:hover .note-title {
-    color: var(--hover);    
-    transition: all .25s ease-out;
-  }
-  .note-title {
-    display: inline-flex;
-    flex-direction: row;
     margin: 0 auto;
+    padding: 0;
     font-weight: bold;
     line-height: 1.1;
+    padding-bottom: 1em;
+  }
+  li:last-of-type {
+    padding-bottom: 2.6em;
+  }
+  li a, li a:visited {
     color: var(--emphasis);
+  }
+  li a:hover {
+    color: var(--hover);
   }
   .more {
     display: flex;
     font-family: var(--sub-font);
     font-weight: 900;
     justify-content: end;
-    margin: -0.6em -1.25em -0.5em 0;
+    margin-top: -2em;
+    margin-right: 0.25em;
     padding: 0.25em;
   }
   .more svg {
@@ -94,48 +103,22 @@ const recentNotes = (await getNotes()).slice(0, limit);
     transform: translateX(4px);
   }
 
-  @media screen and (max-width: 1245px) {
-    .more {
-      margin: -0.25em -1.25em -0.5em 0;
-    }
-  }
-
   @media screen and (max-width: 667px) {
-    .info {
-      margin: 0.25em 0;
-    }
-    .info button {
-      margin: 0.1em 0.25em 0.1em 0;
-      font-size: 14px;
-    }
-    .container {
-      padding: 0.75em 1em;
-    }
-    .posts-title {
-      font-size: 0.875em;
+    ul {
+      padding: 0.75em 1em 0 1em;
     }
     .more {
-      margin: 0;
-      padding: 0;
+      margin-top: -2em;
     }
   }
 </style>
 
-<section class="h-feed">
-  <h2 class="p-name">Recent Notes</h2>
-  <div class="container">
-      {recentNotes.map((note) => (
-        <div class="h-entry list">
-          <a class="u-bookmark-of" href={note.data.url || '/notes/'} data-umami-event={`recent-notes-${note.data.title}`} target="_blank" rel="noopener noreferrer">
-            <span class="p-name note-title">{note.data.title}</span>
-            <p class="info">
-              <button>{note.data.tag}</button>
-              <FormattedDate class="dt-published" date={note.data.pubDate} monthFormat="short" />
-            </p>
-          </a>
-        </div>
-      ))}
-    <span class="more">
-      <a href="/notes/" rel="prefetch-intent archives">All Notes <More height={24} width={24} /></a>
-    </span>
-</section>
+<style is:global>
+  li p {
+    margin: 0;
+    border-bottom: 4px dotted transparent;
+  }
+  li time {
+    margin-bottom: 0.5em;
+  }
+</style>
