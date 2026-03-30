@@ -299,6 +299,8 @@
       requestAnimationFrame(function () { if (input) input.focus(); });
     }
 
+    window.openSearch = openSearch;
+
     function closeSearch() {
       var overlay = document.getElementById('search-overlay');
       var trigger = document.getElementById('search-trigger');
