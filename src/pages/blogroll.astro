@@ -73,7 +73,7 @@ const lastUpdated = new Date('2026-03-20T12:00');
               <span class="p-name name">{blog.name}</span>
             </a>
             <div class="right">
-              <span class="url"><a href={blog.url}>{blog.url.replace('https://', '').replace(/\/$/, '')}</a></span>
+              <span class="url"><a href={blog.url} target="_blank" rel="alternate noopener noreferrer">{blog.url.replace('https://', '').replace(/\/$/, '')}</a></span>
               {blog.feed === '#' ? (
                 <span class="rss no-feed" title="No RSS feed available" aria-label="No RSS feed">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
