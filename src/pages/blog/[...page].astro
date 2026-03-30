@@ -171,11 +171,6 @@ const desc = "Archive of blog posts.";
     grid-column: 3;
     justify-content: end;
   }
-  @keyframes wiggle {
-    0%, 100% { transform: rotate(0deg); }
-    25% { transform: rotate(-5deg); }
-    75% { transform: rotate(5deg); }
-  }
   .rss svg:hover {
     animation: wiggle 0.5s ease-in-out infinite;
   }
@@ -224,7 +219,7 @@ const desc = "Archive of blog posts.";
     <hr />
     <p class="blurb">
       <span>
-        List of all <span class="total">{page.total}</span> blog posts. Alternately, see posts <a href="/blog/updated/" rel="prefetch-intent" data-umami-event="blog-updated">by most recently updated</a>, <a href="/categories/" rel="prefetch-intent" data-umami-event="blog-category">by category</a> or <a href="/search/" rel="prefetch-intent" data-umami-event="blog-search">search the blog</a>.
+        List of all <span class="total">{page.total}</span> blog posts. Alternately, see posts <a href="/blog/updated/" rel="prefetch-intent" data-umami-event="blog-updated">by most recently updated</a> or <a href="/categories/" rel="prefetch-intent" data-umami-event="blog-category">by category</a>.
       </span>
       <p class="years">
         See posts by year:&nbsp;
@@ -261,14 +256,14 @@ const desc = "Archive of blog posts.";
     <nav class="pagination" aria-label="Blog pagination">
       <span class="prev">
         {page.url.prev ? (
-          <a href={page.url.prev} rel="prefetch-intent prev">↖ Newer</a>
+          <a href={page.url.prev} rel="prefetch-intent prev">↩ Newer</a>
         ) : (
           <span></span>
         )}
       </span>
       <span class="next">
         {page.url.next ? (
-          <a href={page.url.next} rel="prefetch-intent next">Older ↘</a>
+          <a href={page.url.next} rel="prefetch-intent next">Older ↪</a>
         ) : (
           <span></span>
         )}
