@@ -3,7 +3,7 @@ type: tvshow
 title: South Park
 pubDate: 2025-12-13 12:00:00
 image: ./_images/south-park-27-28.webp
-season: 28
+season: '28'
 rating: masterpiece
 ---
 

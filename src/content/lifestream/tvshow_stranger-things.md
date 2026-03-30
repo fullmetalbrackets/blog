@@ -3,7 +3,7 @@ type: tvshow
 title: Stranger Things
 pubDate: 2025-12-30 12:00:00
 image: ./_images/stranger-things.webp
-season: 5
+season: '5'
 rating: loved
 ---
 
