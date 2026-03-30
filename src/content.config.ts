@@ -92,6 +92,18 @@ const notes = defineCollection({
 	}),
 });
 
+const postroll = defineCollection({
+	loader: glob({ pattern: '**/[^_]*.yml', base: './src/content/postroll' }),
+	schema: ({ image }) =>
+		z.object({
+			title: z.string(),
+			pubDate: z.coerce.date(),
+			author: z.string(),
+			image: image(),
+			url: z.url(),
+		}),
+});
+
 export const collections = {
 	blog,
 	links,
@@ -100,4 +112,5 @@ export const collections = {
 	games,
 	now,
 	notes,
+	postroll,
 };

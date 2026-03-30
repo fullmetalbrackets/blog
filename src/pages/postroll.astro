@@ -1,0 +1,162 @@
+---
+import BackToTop from "@components/BackToTop.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import FormattedDate from "@components/FormattedDate.astro";
+import { getSortedPostroll } from "@utils/collections";
+import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
+import { SITE_URL } from "@consts";
+import { Image } from 'astro:assets';
+
+const posts = await getSortedPostroll();
+const title = "Postroll";
+const desc = "Articles, blog posts and other writings that I came across and thought worth sharing.";
+---
+
+<BaseLayout title={title} description={desc}>
+  <BreadcrumbSchema slot="head" crumbs={[
+    { name: "Home", url: `${SITE_URL}/` },
+    { name: "Postroll", url: `${SITE_URL}/postroll/` }
+  ]} />
+  <section class="h-feed" data-pagefind-body>
+    <h1 class="p-name">{title}</h1>
+    <a class="u-url" href={`${SITE_URL}/postroll/`} hidden>Permapost</a>
+    <hr />
+    <p>
+      {desc}
+    </p>
+    <ul>
+      {
+        posts.map((post) => (
+            <li class="h-entry postroll-card">
+            <a
+                href={post.data.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="u-bookmark-of card-link"
+                data-umami-event={`postroll-${post.data.title}`}
+            >
+                <div class="card-image">
+                <Image
+                    src={post.data.image}
+                    alt={post.data.title}
+                    width={600}
+                    height={315}
+                    loading="lazy"
+                    decoding="async"
+                />
+                </div>
+                <div class="card-body">
+                <span class="p-name title-post">{post.data.title}</span>
+                <span class="rel-author author">By <i>{post.data.author}</i></span>
+                <FormattedDate class="dt-published" date={post.data.pubDate} />
+                </div>
+            </a>
+            </li>
+        ))
+      }
+    </ul>
+    <hr/>
+    <BackToTop />
+  </section>
+</BaseLayout>
+
+<style>
+  h1 {
+    font-family: var(--sub-font);
+    font-weight: 900;
+  }
+
+  p {
+    margin-bottom: 2em;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 2em;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1em;
+  }
+
+  ul li {
+    margin: 0;
+  }
+
+  .card-link {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    border-radius: 0.5em;
+    overflow: hidden;
+    background: var(--blockquote);
+    height: 100%;
+  }
+
+  .card-image {
+    width: 100%;
+    overflow: hidden;
+    height: 300px;
+  }
+
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    /* object-fit: cover; */
+    display: block;
+    margin: 0;
+    max-width: 100%;
+    transition: transform 0.25s ease;
+  }
+
+  @media (hover: hover) {
+    .card-link {
+      transition: 0.2s ease, transform 0.2s ease;
+    }
+    .card-link:hover {
+      transform: scale(1.03);
+    }
+    .card-image img {
+      transform: scale(1.03);
+    }
+  }
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4em;
+    padding: 0.75em 1em 1em;
+    flex: 1;
+  }
+
+  .card-body :global(time) {
+    margin-top: auto;
+    padding-top: 0.5em;
+  }
+
+  .title-post {
+    color: var(--emphasis);
+    font-weight: bold;
+    line-height: 1.2;
+    font-size: 0.85em;
+  }
+
+  .card-link:hover .title-post {
+    color: var(--hover);
+  }
+
+  .author {
+    font-size: 0.875em;
+    color: var(--text);
+    line-height: 1.4;
+  }
+
+  @media screen and (max-width: 667px) {
+    section {
+      line-height: 1.2;
+    }
+    ul {
+      grid-template-columns: 1fr;
+    }    
+  }
+</style>

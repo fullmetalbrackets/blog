@@ -70,12 +70,17 @@ Explore all of the [slashpages](https://slashpages.net/) on this site below.
         <li>
             <a href="/notes/" data-umami-event="explore-notes">Notes</a>
             <hr>
-            <p>Short-form content like bookmarks, random thoughts or memes that I post as part of my Lifestream.</p>
+            <p>Syndicated feed of my microblog where I post short-form non-tech content.</p>
         </li>
         <li>
             <a href="/now/" data-umami-event="explore-now">Now</a>
             <hr>
             <p>What I've been up to lately and what's on my mind. Updated monthly-ish.</p>
+        </li>
+        <li>
+            <a href="/postroll/" data-umami-event="explore-postroll">Postroll</a>
+            <hr>
+            <p>Articles, blog posts and other writings that I came across and thought worth sharing.</p>
         </li>
         <li>
             <a href="/privacy/" data-umami-event="explore-privacy">Privacy</a>
@@ -127,10 +132,15 @@ Explore all of the [slashpages](https://slashpages.net/) on this site below.
     li {
         margin-top: 1em;
     }
-    li a {
+    li a, li a:visited {
         font-size: 1em;
         font-family: var(--sub-font);
         font-weight: 900;
+        color: var(--primary);
+    }
+    li a:hover, li a:focus, li a:active {
+        color: var(--hover);
+        transition: none;
     }
     li hr {
         margin: 0;
