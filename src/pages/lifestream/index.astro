@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
-import { getCollection } from 'astro:content';
+import { getLifestream } from "@utils/collections";
 import { Image } from 'astro:assets';
 import FormattedDate from '@components/FormattedDate.astro';
 import GameIcon from '@icons/game.svg';
@@ -11,13 +11,7 @@ import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
 import BackToTop from "@components/BackToTop.astro";
 import { SITE_URL } from "@consts";
 
-const entries = await getCollection('lifestream');
-
-const sorted = entries.sort((a, b) => {
-  const aDate = a.data.updatedDate ?? a.data.pubDate;
-  const bDate = b.data.updatedDate ?? b.data.pubDate;
-  return bDate.valueOf() - aDate.valueOf();
-});
+const entries = await getLifestream();
 
 const types = ['movie', 'tvshow', 'book', 'game'] as const;
 type MediaType = typeof types[number];
@@ -83,7 +77,7 @@ const desc = "All the media I've played, read, and watched. And what I thought o
     </div>
 
     <div class="ls-grid">
-      {sorted.map((entry, i) => (
+      {entries.map((entry, i) => (
         <a class="card h-entry" href={`/lifestream/${entry.id}`} data-type={entry.data.type}>
           <span class="p-name sr-only">{entry.data.title}</span>
           <Image

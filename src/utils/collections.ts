@@ -1,5 +1,4 @@
 import { getCollection, render } from 'astro:content';
-import type { CollectionEntry } from 'astro:content';
 
 // Get all blog posts sorted by date descending
 export async function getSortedPosts() {
@@ -69,19 +68,25 @@ export async function getSortedLinks() {
 
 // Get all lifestream entries sorted by date descending
 export async function getLifestream() {
-	return (await getCollection('lifestream')).sort(
-		(a, b) =>
-			new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
+	return (await getCollection('lifestream')).sort((a, b) => {
+		const aDate = a.data.updatedDate ?? a.data.pubDate;
+		const bDate = b.data.updatedDate ?? b.data.pubDate;
+		return bDate.valueOf() - aDate.valueOf();
+	});
+}
+
+// Get all entries in postroll by date descending
+export async function getSortedPostroll() {
+	return (await getCollection('postroll')).sort(
+		(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 	);
 }
 
-// Get all lifestream entries of type 'note'
-export async function getNotes() {
-	const lifestream = await getLifestream();
-	return lifestream.filter(
-		(
-			entry
-		): entry is CollectionEntry<'lifestream'> & { data: { type: 'note' } } =>
-			entry.data.type === 'note'
+// Get all notes by date descending
+export async function getSortedNotes() {
+	return (await getCollection('notes')).sort(
+		(a, b) =>
+			new Date(b.data.published ?? 0).valueOf() -
+			new Date(a.data.published ?? 0).valueOf()
 	);
 }
