@@ -55,7 +55,7 @@ const lifestream = defineCollection({
 			pubDate: z.coerce.date(),
 			updatedDate: z.coerce.date().optional(),
 			platform: z.string().optional(),
-			season: z.number().optional(),
+			season: z.string().optional(),
 		}),
 });
 
