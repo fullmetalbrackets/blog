@@ -49,18 +49,6 @@ Explore all of the [slashpages](https://slashpages.net/) on this site below.
             <a href="/lifestream/" data-umami-event="explore-lifestream">Lifestream</a>
             <hr>
             <p>All the media I've played, read, and watched. And what I thought of it.</p>
-            <ul>
-                <li>
-                    <a href="/lifestream/older/movies/" data-umami-event="explore-older-movies">Older Movies</a>
-                    <hr>
-                    <p>Movies I watched on Plex prior to 2026, scraped from Tautulli.</p>
-                </li>
-                <li>
-                    <a href="/lifestream/older/tvshows/" data-umami-event="explore-older-tvshows">Older TV Shows</a>
-                    <hr>
-                    <p>TV shows I watched on Plex prior to 2026, scraped from Tautulli.</p>
-                </li>
-            </ul>
         </li>
         <li>
             <a href="/links/" data-umami-event="explore-links">Links</a>
