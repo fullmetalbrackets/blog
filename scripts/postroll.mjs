@@ -9,13 +9,9 @@ const slugify = (str) =>
 		.replace(/\s+/g, '-')
 		.replace(/[^\w-]/g, '');
 
-const today = () => {
-	const now = new Date();
-	return now
-		.toISOString()
-		.replace('T', ' ')
-		.replace(/\.\d{3}Z$/, '');
-};
+const now = new Date();
+const datePart = now.toISOString().split('T')[0];
+const pubDate = `${datePart} 12:00:00`;
 
 const title = process.argv[2];
 
@@ -28,7 +24,7 @@ const slug = slugify(title);
 const file = path.join('src/content/postroll', `${slug}.yml`);
 
 const content = `title: ${title}
-pubDate: ${today()}
+pubDate: ${pubDate}
 description: 
 image: 
 url: 

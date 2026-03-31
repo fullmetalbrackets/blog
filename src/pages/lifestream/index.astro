@@ -35,6 +35,10 @@ const vibes = {
   masterpiece: { emoji: '🌟' },
 } as const;
 
+const years = [...new Set(
+  entries.map(e => (e.data.updatedDate ?? e.data.pubDate).getFullYear())
+)].sort((a, b) => b - a);
+
 const title = "Lifestream";
 const desc = "All the media I've played, read, and watched. And what I thought of it."
 ---
@@ -49,7 +53,7 @@ const desc = "All the media I've played, read, and watched. And what I thought o
     <a class="u-url" href="/lifestream/" hidden>Permalink</a>
     <hr />
     <p class="desc">
-      {desc} I also separately scraped a list of <a href="/lifestream/older/movies">movies</a> and <a href="/lifestream/older/tvshows">TV shows</a> watched on Plex prior to 2026.
+      {desc}
     </p>
 
     {types.map(t => (
@@ -57,6 +61,15 @@ const desc = "All the media I've played, read, and watched. And what I thought o
         type="checkbox"
         class="filter-toggle sr-only"
         id={`filter-${t}`}
+        checked
+      />
+    ))}
+
+    {years.map(y => (
+      <input
+        type="checkbox"
+        class="filter-toggle sr-only"
+        id={`filter-${y}`}
         checked
       />
     ))}
@@ -75,10 +88,21 @@ const desc = "All the media I've played, read, and watched. And what I thought o
         </label>
       ))}
     </div>
+    <div class="filters year-filters">
+      {years.map(y => (
+        <label for={`filter-${y}`} class="filter-btn year-btn">
+          {y}
+        </label>
+      ))}
+    </div>
 
     <div class="ls-grid">
       {entries.map((entry, i) => (
-        <a class="card h-entry" href={`/lifestream/${entry.id}`} data-type={entry.data.type}>
+        <a class="card h-entry"
+          href={`/lifestream/${entry.id}`}
+          data-type={entry.data.type}
+          data-year={(entry.data.updatedDate ?? entry.data.pubDate).getFullYear()}
+        >
           <span class="p-name sr-only">{entry.data.title}</span>
           <Image
             class="u-photo"
@@ -102,17 +126,17 @@ const desc = "All the media I've played, read, and watched. And what I thought o
         </a>
       ))}
     </div>
-    <p class="sources">
-      <span>
-        Movie and TV Show posters are sourced from <a href="https://www.themoviedb.org/">TMDB</a>
-      </span>
-      <span>
-        Game covers are sourced from <a href="https://www.igdb.com/">IGDB</a> and <a href="https://mobygames.com/">MobyGames</a>
-      </span>
-      <span>
-        Book covers are sourced from <a href="https://www.goodreads.com/">Goodreads</a>
-      </span>
-    </p>
+    <ul class="sources">
+      <li>
+        Movie and TV Show posters are sourced from <a href="https://plex.tv" target="_blank" rel="noopener noreferrer">Plex</a> and <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">TMDB</a>
+      </li>
+      <li>
+        Game covers are sourced from <a href="https://www.igdb.com/" target="_blank" rel="noopener noreferrer">IGDB</a> and <a href="https://mobygames.com/" target="_blank" rel="noopener noreferrer">MobyGames</a>
+      </li>
+      <li>
+        Book covers are sourced from <a href="https://www.goodreads.com/" target="_blank" rel="noopener noreferrer">Goodreads</a>
+      </li>
+    </ul>
   </section>
   <hr>
   <BackToTop />
@@ -340,6 +364,37 @@ const desc = "All the media I've played, read, and watched. And what I thought o
     background: rgba(0, 0, 0, 0.65);
     border-radius: 0.2em;
     padding: 0.05em 0.325em 0 0.325em;
+  }
+
+  /* active year button */
+  #filter-2026:checked ~ .filters label[for="filter-2026"],
+  #filter-2025:checked ~ .filters label[for="filter-2025"],
+  #filter-2024:checked ~ .filters label[for="filter-2024"],
+  #filter-2023:checked ~ .filters label[for="filter-2023"],
+  #filter-2022:checked ~ .filters label[for="filter-2022"],
+  #filter-2021:checked ~ .filters label[for="filter-2021"] {
+    background-color: var(--info);
+    color: #000;
+    opacity: 1;
+  }
+
+  .year-filters {
+    margin-top: -1em;
+    margin-bottom: 1.5em;
+  }
+
+  .year-btn {
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.05em;
+  }
+
+  #filter-2026:not(:checked) ~ .ls-grid .card[data-year="2026"],
+  #filter-2025:not(:checked) ~ .ls-grid .card[data-year="2025"],
+  #filter-2024:not(:checked) ~ .ls-grid .card[data-year="2024"],
+  #filter-2023:not(:checked) ~ .ls-grid .card[data-year="2023"],
+  #filter-2022:not(:checked) ~ .ls-grid .card[data-year="2022"],
+  #filter-2021:not(:checked) ~ .ls-grid .card[data-year="2021"] {
+    display: none;
   }
 
   @media (max-width: 667px) {

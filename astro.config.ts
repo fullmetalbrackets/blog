@@ -77,11 +77,11 @@ export default defineConfig({
 		},
 		'/shelf/movies': {
 			status: 301,
-			destination: '/lifestream/older/movies/',
+			destination: '/lifestream/',
 		},
 		'/shelf/tvshows/': {
 			status: 301,
-			destination: '/lifestream/older/tvshows/',
+			destination: '/lifestream/',
 		},
 		'/digest/': {
 			status: 301,
@@ -89,15 +89,27 @@ export default defineConfig({
 		},
 		'/digest/movies': {
 			status: 301,
-			destination: '/lifestream/older/movies/',
+			destination: '/lifestream/',
 		},
 		'/digest/tvshows/': {
 			status: 301,
-			destination: '/lifestream/older/tvshows/',
+			destination: '/lifestream/',
 		},
 		'/search': {
 			status: 301,
 			destination: '/',
+		},
+		'/lifestream/older/tvshows': {
+			status: 301,
+			destination: '/lifestream/',
+		},
+		'/lifestream/older/movies': {
+			status: 301,
+			destination: '/lifestream/',
+		},
+		'/lifestream/older': {
+			status: 301,
+			destination: '/lifestream/',
 		},
 	},
 	fonts: [
