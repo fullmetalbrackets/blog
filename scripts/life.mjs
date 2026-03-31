@@ -19,7 +19,7 @@ type: game
 title: 
 pubDate: ${pubDate}
 platform: 
-image: ./_images/${title}.
+image: ./_images/${title}.webp
 rating: liked
 ---
 `,
@@ -27,7 +27,7 @@ rating: liked
 type: movie
 title: 
 pubDate: ${pubDate}
-image: ./_images/${title}.
+image: ./_images/${title}.webp
 rating: liked
 ---
 `,
@@ -35,7 +35,7 @@ rating: liked
 type: tvshow
 title: 
 pubDate: ${pubDate}
-image: ./_images/${title}.
+image: ./_images/${title}.webp
 season: 
 rating: liked
 ---
@@ -43,9 +43,8 @@ rating: liked
 	book: (title) => `---
 type: book
 title: 
-author: 
 pubDate: ${pubDate}
-image: ./_images/${title}.
+image: ./_images/${title}.jpg
 rating: liked
 ---
 `,
