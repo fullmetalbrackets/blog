@@ -26,9 +26,10 @@ I use several packages to help with building the site and writing posts.
 
 - [astrojs/rss](https://docs.astro.build/en/recipes/rss/): Astro integration to add an RSS feed, in my case the feed is blog posts only.
 - [astrojs/sitemap](https://docs.astro.build/en/guides/integrations-guide/sitemap/): Astro integration that automatically generates a `sitemap.xml`.
-- [playform/compress](https://github.com/PlayForm/Compress): Astro integration that compresses and optimizes files (HTML, CSS, images, etc.) at build time.
-- [astro-social-share](https://github.com/silent1mezzo/astro-social-sharE): Used for the "share on social" buttons at
-  the bottom of blog posts.
+- [astro-gab-compress](https://github.com/jgabriel98/astro-compress): Used to compress, optimize and cache files (HTML, CSS, images, etc.) at build time.
+- [astro-social-share](https://github.com/silent1mezzo/astro-social-sharE): Used for the "share on social" buttons at the bottom of blog posts.
+- [astro-og-canvas](https://github.com/delucis/astro-og-canvas): Used to dynamically generate opengraph images for blog posts.
+- [glightbox](https://github.com/biati-digital/glightbox): Used for image lightboxes in blog posts.
 - [reading-time](https://github.com/ngryman/reading-time) + [mdast-util-to-string](https://github.com/syntax-tree/mdast-util-to-string): Used to calculate and display how many minutes it takes to read individual blog posts.
 - [remark-directive](https://github.com/remarkjs/remark-directive) + [remark-directive-sugar](https://github.com/lin-stephanie/remark-directive-sugar): Used to add new Markdown syntax for images, video embeds, etc.
 - [rehype-external-links](https://docs.astro.build/en/recipes/external-links/): Used to automatically add the little arrow next to external links throughout the site.
