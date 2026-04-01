@@ -759,6 +759,14 @@ blockquote[data-type='warning'] a:hover {
 	color: var(--primary);
 }
 
+.xxxl {
+	font-size: 2em;
+}
+
+.xxl {
+	font-size: 1.5em;
+}
+
 .xl {
 	font-size: 1.25em;
 }
