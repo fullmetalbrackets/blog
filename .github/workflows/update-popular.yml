@@ -3,7 +3,11 @@ name: Update Popular Posts
 on:
   schedule:
     - cron: '0 0 1 * *'
-  workflow_dispatch: 
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
 jobs:
   update-popular:
     runs-on: ubuntu-latest
@@ -29,8 +33,17 @@ jobs:
 
           echo $METRICS | jq '[
             .[] |
+            select(.x | type == "string") |
             select(.x | startswith("/blog/")) |
             select(.x | endswith("/")) |
             select(.x | split("/") | length == 4) |
             .x | split("/")[2]
           ] | .[0:5]' > src/data/popular.json
+
+      - name: Commit updated popular.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/data/popular.json
+          git diff --staged --quiet || git commit -m "Update popular posts"
+          git push
