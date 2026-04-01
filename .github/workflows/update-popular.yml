@@ -20,10 +20,21 @@ jobs:
           UMAMI_USERNAME: ${{ secrets.UMAMI_USERNAME }}
           UMAMI_PASSWORD: ${{ secrets.UMAMI_PASSWORD }}
         run: |
-          TOKEN=$(curl -s -X POST "https://u.adiaz.fyi/api/auth/login" \
+          LOGIN=$(curl -s -X POST "https://u.adiaz.fyi/api/auth/login" \
             -H "Content-Type: application/json" \
-            -d "{\"username\":\"$UMAMI_USERNAME\",\"password\":\"$UMAMI_PASSWORD\"}" \
-            | jq -r '.token')
+            -d "{\"username\":\"$UMAMI_USERNAME\",\"password\":\"$UMAMI_PASSWORD\"}")
+
+          echo "=== LOGIN RESPONSE ==="
+          echo $LOGIN
+
+          TOKEN=$(echo $LOGIN | jq -r '.token')
+
+          if [ -z "$TOKEN" ] || [ "$TOKEN" = "null" ]; then
+            echo "ERROR: Failed to get token. Login response above."
+            exit 1
+          fi
+
+          echo "=== TOKEN ACQUIRED ==="
 
           END=$(date +%s000)
           START=$(date -d '30 days ago' +%s000)
