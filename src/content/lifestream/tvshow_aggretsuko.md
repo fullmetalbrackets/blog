@@ -6,4 +6,4 @@ image: ./_images/aggretsuko.webp
 rating: loved
 ---
 
-**PROTEIN**
+<span class="xxxl em w9">PROTEIN</span>

@@ -8,5 +8,5 @@ rating: loved
 
 Don't care what anyone says, this movie is good.
 
-# Prior Viewings
+## Previously Watched
 - 03-08-2025

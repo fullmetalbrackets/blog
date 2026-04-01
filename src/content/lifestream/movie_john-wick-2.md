@@ -6,5 +6,5 @@ image: ./_images/john-wick-2.webp
 rating: loved
 ---
 
-## Previous Viewings
+## Previously Watched
 - 1/25/2024

@@ -6,5 +6,7 @@ image: ./_images/demolition-man.jpg
 rating: loved
 ---
 
-## Prior Viewings
+Taco Bell version is the only version.
+
+## Previously Watched
 - 10/5/2024

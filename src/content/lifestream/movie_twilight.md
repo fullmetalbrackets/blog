@@ -8,5 +8,5 @@ rating: liked
 
 My wife and I love this movie series as a "so bad it's good" kinda thing, we watch it at least once a year. Don't judge.
 
-## Previous Viewings
+## Previously Watched
 - 1/29/2025

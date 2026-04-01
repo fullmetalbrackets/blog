@@ -8,5 +8,5 @@ rating: loved
 
 Love this movie, I watch it at least once a year.
 
-## Previous Viewings
+## Previously Watched
 - 8/28/2024
