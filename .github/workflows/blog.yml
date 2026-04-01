@@ -6,9 +6,8 @@ on:
       - main
     paths:
       - src/content/blog/**
-# permissions:
-#   contents: read
-#   pull-requests: write
+permissions:
+  contents: write
 
 jobs:
   update-readme-with-blog:
