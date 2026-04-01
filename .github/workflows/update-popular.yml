@@ -31,14 +31,17 @@ jobs:
           METRICS=$(curl -s "https://u.adiaz.fyi/api/websites/d9921361-56b2-4c33-8377-4c73cb1add2d/metrics?type=url&startAt=$START&endAt=$END&limit=20" \
             -H "Authorization: Bearer $TOKEN")
 
-          echo $METRICS | jq '[
-            .[] |
-            select(.x | type == "string") |
-            select(.x | startswith("/blog/")) |
-            select(.x | endswith("/")) |
-            select(.x | split("/") | length == 4) |
-            .x | split("/")[2]
-          ] | .[0:5]' > src/data/popular.json
+          echo "=== RAW METRICS ==="
+          echo $METRICS | jq '.'
+
+          echo "=== BLOG URLS ONLY ==="
+          echo $METRICS | jq '[.[] | select(.x | type == "string") | select(.x | startswith("/blog/"))]'
+
+          echo "=== AFTER TRAILING SLASH FILTER ==="
+          echo $METRICS | jq '[.[] | select(.x | type == "string") | select(.x | startswith("/blog/")) | select(.x | endswith("/"))]'
+
+          echo "=== AFTER LENGTH FILTER ==="
+          echo $METRICS | jq '[.[] | select(.x | type == "string") | select(.x | startswith("/blog/")) | select(.x | endswith("/")) | select(.x | split("/") | length == 4)]'
 
       - name: Commit updated popular.json
         run: |
