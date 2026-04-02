@@ -5,7 +5,6 @@ import { remarkReadingTime } from './src/utils/remark-reading-time.ts';
 import rehypeExternalLinks from 'rehype-external-links';
 import remarkDirective from 'remark-directive';
 import remarkDirectiveSugar from 'remark-directive-sugar';
-import yeskunallumami from '@yeskunall/astro-umami';
 import rehypeCodeblockCopy from './src/utils/rehype-codeblock-copy.ts';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
@@ -19,15 +18,7 @@ export default defineConfig({
 		inlineStylesheets: 'always',
 	},
 
-	integrations: [
-		mdx(),
-		sitemap(),
-		astroCompress(),
-		yeskunallumami({
-			id: 'd9921361-56b2-4c33-8377-4c73cb1add2d',
-			hostUrl: 'https://u.adiaz.fyi',
-		}),
-	],
+	integrations: [mdx(), sitemap(), astroCompress()],
 
 	prefetch: true,
 
