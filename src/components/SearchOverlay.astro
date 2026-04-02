@@ -295,11 +295,10 @@
       if (!overlay || !trigger) return;
       overlay.removeAttribute('hidden');
       trigger.setAttribute('aria-expanded', 'true');
-      initPagefind();
-      requestAnimationFrame(function () { if (input) input.focus(); });
+      initPagefind().then(function () {
+        requestAnimationFrame(function () { if (input) input.focus(); });
+      });
     }
-
-    window.openSearch = openSearch;
 
     function closeSearch() {
       var overlay = document.getElementById('search-overlay');
@@ -390,6 +389,10 @@
 
       if (trigger.dataset.searchInit) return;
       trigger.dataset.searchInit = 'true';
+
+      trigger.addEventListener('mouseenter', function () {
+          initPagefind();
+        }, { once: true });
 
       trigger.addEventListener('click', function () {
         overlay.hasAttribute('hidden') ? openSearch() : closeSearch();
