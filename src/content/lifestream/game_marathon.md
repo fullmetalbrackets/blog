@@ -2,7 +2,7 @@
 type: game
 title: Marathon
 pubDate: 2026-02-27 12:00:00
-platform: PS5
+platform: PlayStation 5
 image: ./_images/marathon.jpg
 rating: hated
 ---
