@@ -9,8 +9,9 @@ import BackToTop from "@components/BackToTop.astro";
 import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
 import { SITE_TITLE, SITE_URL } from "@consts";
 import type { BlogPageProps } from '../../types';
+import type { PaginateFunction } from 'astro';
 
-export async function getStaticPaths({ paginate }) {
+export async function getStaticPaths({ paginate }: { paginate: PaginateFunction }) {
   const posts = await getPostsWithReadingTime();
   return paginate(posts, { pageSize: 5 });
 }
@@ -223,12 +224,12 @@ const desc = "Archive of blog posts.";
       </span>
       <p class="years">
         See posts by year:&nbsp;
-        <a href="years/2026/" data-umami-event="blog-2026">2026</a>&nbsp;
-        <a href="years/2025/" data-umami-event="blog-2025">2025</a>&nbsp;
-        <a href="years/2024/" data-umami-event="blog-2024">2024</a>&nbsp;
-        <a href="years/2023/" data-umami-event="blog-2023">2023</a>&nbsp;
-        <a href="years/2022/" data-umami-event="blog-2022">2022</a>&nbsp;
-        <a href="years/2021/" data-umami-event="blog-2021">2021</a>
+        <a href="/blog/years/2026/" data-umami-event="blog-2026">2026</a>&nbsp;
+        <a href="/blog/years/2025/" data-umami-event="blog-2025">2025</a>&nbsp;
+        <a href="/blog/years/2024/" data-umami-event="blog-2024">2024</a>&nbsp;
+        <a href="/blog/years/2023/" data-umami-event="blog-2023">2023</a>&nbsp;
+        <a href="/blog/years/2022/" data-umami-event="blog-2022">2022</a>&nbsp;
+        <a href="/blog/years/2021/" data-umami-event="blog-2021">2021</a>
       </p>
       <span class="rss">RSS Feed: 
         <a href="/rss.xml" rel="prefetch-intent">
