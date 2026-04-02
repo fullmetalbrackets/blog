@@ -22,7 +22,7 @@ const desc = "Articles, blog posts and other writings that I came across and tho
     <a class="u-url" href={`${SITE_URL}/postroll/`} hidden>Permapost</a>
     <hr />
     <p>
-      {desc}
+      {desc} <i>(All links are external and open in new tab.)</i>
     </p>
     <ul>
       {
@@ -41,7 +41,7 @@ const desc = "Articles, blog posts and other writings that I came across and tho
                     alt={post.data.title}
                     width={600}
                     height={315}
-                    loading="lazy"
+                    loading="eager"
                     decoding="async"
                 />
                 </div>

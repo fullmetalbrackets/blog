@@ -11,6 +11,7 @@ import xps8920 from '@img/wiki/xps8920.jpg';
 
 const title = "Uses";
 const desc = "The hardware, software, smart home things that I use.";
+const lastUpdated = new Date('2026-01-01T12:00');
 ---
 
 <BaseLayout title={title} description={desc}>
@@ -25,6 +26,9 @@ const desc = "The hardware, software, smart home things that I use.";
     <p>
       {desc} I'm constantly adding to this as I find new things I consider worth sharing!
     </p>
+    <span class="date">
+      Updated <FormattedDate date={lastUpdated} monthFormat="long" />
+    </span>
     <!-- Gaming PC -->
     <div class="device">
     <div class="device-header">
@@ -146,7 +150,32 @@ const desc = "The hardware, software, smart home things that I use.";
     font-weight: 900;
   }
   p {
-    margin-bottom: 2em;
+    margin-bottom: 1em;
+  }
+  a[target='_blank']::after {
+	content: '';
+	display: inline-block;
+	width: 0.65em;
+	height: 0.65em;
+	margin-left: 0.2em;
+	margin-bottom: 0;
+	background-color: currentColor;
+	mask-image: url('/assets/external.svg');
+	mask-repeat: no-repeat;
+	mask-position: center;
+	mask-size: contain;
+	vertical-align: middle;
+}
+  .date {
+    display: flex;
+    place-items: center;
+    gap: 0.5em;
+    margin: 0;
+    padding: 0;
+    font-size: 0.875em;
+    font-family: var(--sub-font);
+    font-weight: 700;
+    color: var(--emphasis);
   }
   .device {
     margin: 2em 0;
