@@ -102,6 +102,7 @@ const desc = "All the media I've played, read, and watched. And what I thought o
           href={`/lifestream/${entry.id}`}
           data-type={entry.data.type}
           data-year={(entry.data.updatedDate ?? entry.data.pubDate).getFullYear()}
+          rel="prefetch-intent"
         >
           <span class="p-name sr-only">{entry.data.title}</span>
           <Image

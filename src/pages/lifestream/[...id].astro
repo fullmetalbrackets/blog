@@ -55,9 +55,9 @@ const typeName: Record<string, string> = {
 <BaseLayout title={data.title} description={`${typeName[data.type]} — ${vibe.label}`} disableHeadingLinks={true}>
   <div class="entry-page">
 
-    <a href="#" onclick="!history.length?location.href='/lifestream/':history.back()" class="back"><LeftArrow height={24} width={24} class="ring-arrow" />Back to Lifestream</a>
+    <a href="#" onclick="!history.length?location.href='/lifestream/':history.back()" class="back" rel="prefetch-intent"><LeftArrow height={24} width={24} class="ring-arrow" />Back to Lifestream</a>
 
-    <div class="entry">
+    <div class="entry h-entry">
 
       <div class="cover-col">
         <div class="cover-wrap">
