@@ -24,7 +24,7 @@ const slug = slugify(title);
 const file = path.join('src/content/wiki', `${slug}.md`);
 
 const content = `---
-title: "${title}"
+title: ${title}
 pubDate: ${pubDate}
 description: 
 tag: 

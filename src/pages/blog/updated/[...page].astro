@@ -11,7 +11,7 @@ import type { Page } from "astro";
 import type { CollectionEntry } from "astro:content";
 import { SITE_URL } from "@consts";
 
-export async function getStaticPaths({ paginate }) {
+export async function getStaticPaths({ paginate }: { paginate: <T>(items: T[], options: { pageSize: number }) => Page<T>[] }) {
   const posts = (await getPostsWithReadingTime())
     .filter(post => post.data.updatedDate)
     .sort((a, b) => b.data.updatedDate!.valueOf() - a.data.updatedDate!.valueOf());
