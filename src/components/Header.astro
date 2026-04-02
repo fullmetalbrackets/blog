@@ -44,7 +44,7 @@ import SearchOverlay from "./SearchOverlay.astro";
     max-width: 77.1ch;
     margin: 0 auto;
     padding: 0;
-    font-weight: 500;
+    font-weight: 700;
     height: 1.75em;
   }
   nav a {
@@ -144,7 +144,7 @@ import SearchOverlay from "./SearchOverlay.astro";
     cursor: pointer;
     font-family: var(--sub-font);
     font-size: 1em;
-    font-weight: 500;
+    font-weight: 700;
     padding: 0;
   }
   .dropdown-toggle:active {
@@ -333,7 +333,7 @@ import SearchOverlay from "./SearchOverlay.astro";
     gap: 0.4em;
     color: var(--emphasis);
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 700;
   }
   .mobile-nav-col a:hover {
     color: var(--hover);
@@ -625,17 +625,30 @@ import SearchOverlay from "./SearchOverlay.astro";
   ];
 
   const BRACKETS: [[number,number],[number,number]][] = [
-    [[9,14],[15,14]],  // top of [
-    [[29,14],[35,14]], // top of ]
-    [[9,14],[9,30]],   // side of [
-    [[35,14],[35,30]], // side of ]
-    [[9,30],[15,30]],  // bottom of [
-    [[29,30],[35,30]], // bottom of ]
+    [[9,14],[15,14]],
+    [[29,14],[35,14]],
+    [[9,14],[9,30]],
+    [[35,14],[35,30]],
+    [[9,30],[15,30]],
+    [[29,30],[35,30]],
   ];
 
   const IDS = ['h1','h2','h3','h4','h5','h6'];
 
+  // Store the AbortController on window so it survives module scope across navigations
+  declare global {
+    interface Window { _headerAbort?: AbortController; }
+  }
+
   function initHeader() {
+    // Tear down all previous document-level listeners before re-attaching
+    if (window._headerAbort) {
+      window._headerAbort.abort();
+    }
+    const controller = new AbortController();
+    window._headerAbort = controller;
+    const { signal } = controller;
+
     const hamburger = document.getElementById('hamburger') as HTMLButtonElement | null;
     const mobileNav = document.getElementById('mobile-nav');
     const dropdown = document.querySelector('.dropdown');
@@ -643,6 +656,7 @@ import SearchOverlay from "./SearchOverlay.astro";
 
     let menuOpen = false;
 
+    // Global keyboard shortcuts
     document.addEventListener('keydown', (e) => {
       if (e.ctrlKey && e.key === 'b') {
         e.preventDefault();
@@ -652,8 +666,9 @@ import SearchOverlay from "./SearchOverlay.astro";
         e.preventDefault();
         window.location.href = '/';
       }
-    });
+    }, { signal });
 
+    // Hamburger / mobile nav
     if (hamburger && mobileNav) {
       hamburger.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -673,7 +688,7 @@ import SearchOverlay from "./SearchOverlay.astro";
           hamburger.setAttribute('aria-expanded', 'false');
           hamburger.setAttribute('aria-label', 'Open navigation menu');
         }
-      });
+      }, { signal });
 
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && menuOpen) {
@@ -684,24 +699,20 @@ import SearchOverlay from "./SearchOverlay.astro";
           hamburger.setAttribute('aria-label', 'Open navigation menu');
           hamburger.focus();
         }
-      });
+      }, { signal });
 
       function updateScrollHint() {
         const grid = mobileNav?.querySelector('.mobile-nav-grid') as HTMLElement | null;
         if (!grid) return;
-        if (grid.scrollHeight > grid.clientHeight) {
-          grid.classList.add('is-scrollable');
-        } else {
-          grid.classList.remove('is-scrollable');
-        }
+        grid.classList.toggle('is-scrollable', grid.scrollHeight > grid.clientHeight);
       }
     }
 
+    // Desktop dropdown
     if (dropdown && dropdownToggle) {
       dropdownToggle.addEventListener('click', (e) => {
         e.stopPropagation();
-        dropdown.classList.toggle('open');
-        const isOpen = dropdown.classList.contains('open');
+        const isOpen = dropdown.classList.toggle('open');
         dropdownToggle.setAttribute('aria-expanded', isOpen.toString());
       });
 
@@ -710,7 +721,7 @@ import SearchOverlay from "./SearchOverlay.astro";
           dropdown.classList.remove('open');
           dropdownToggle.setAttribute('aria-expanded', 'false');
         }
-      });
+      }, { signal });
 
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && dropdown.classList.contains('open')) {
@@ -718,17 +729,13 @@ import SearchOverlay from "./SearchOverlay.astro";
           dropdownToggle.setAttribute('aria-expanded', 'false');
           dropdownToggle.focus();
         }
-      });
-
-      document.addEventListener('keydown', (e) => {
         if (e.ctrlKey && e.key === 'm') {
           e.preventDefault();
-          dropdown.classList.toggle('open');
-          const isOpen = dropdown.classList.contains('open');
+          const isOpen = dropdown.classList.toggle('open');
           dropdownToggle.setAttribute('aria-expanded', isOpen.toString());
           if (isOpen) dropdownToggle.focus();
         }
-      });
+      }, { signal });
     }
   }
 

@@ -4,7 +4,7 @@ div.date {
 	margin: 0;
 	padding: 0;
 	font-family: var(--sub-font);
-	font-weight: 500;
+	font-weight: 700;
 }
 span.updated {
 	display: inherit;
