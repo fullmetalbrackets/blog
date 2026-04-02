@@ -16,114 +16,6 @@ const { limit = 4 } = Astro.props;
 const entries = (await getLifestream()).slice(0, limit);
 ---
 
-<!-- <style scoped>
-  section {
-    margin: 0 auto;
-    padding: 0;
-  }
-  h2 {
-    margin-bottom: 0.3em;
-    font-family: var(--sub-font);
-    font-weight: 900;
-  }
-  .container {
-    background-color: var(--blockquote);
-    border-radius: 0.5em;
-    margin: 0.5em auto 0 auto;
-    padding: 1.5em 1.5em 0.5em 1.5em;
-  }
-  .info {
-    display: flex;
-    place-items: center;
-    margin: 0.1em 0 0 0;
-    padding: 0;
-  }
-  .info button {
-    margin-right: 0.85em;
-    font-size: 0.75em;
-  }
-  .list {
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto 0.25em auto;
-    padding-bottom: 0.875em;
-  }
-  .link-url {
-    color: var(--emphasis);
-    font-weight: bold;
-    line-height: 1.2;
-  }
-  .link-url:hover {
-    color: var(--hover);
-  }
-  .link-tag {
-    font-family: var(--sub-font);
-    background-color: var(--info);
-    color: #000;
-    border: 0;
-    border-radius: 0.25em;
-    padding: 4px 8px;
-    font-weight: 700;
-    font-size: 0.625em;
-    display: inline-block;
-    transition: all 0.2s ease;
-  }
-  .more {
-    display: flex;
-    font-family: var(--sub-font);
-    font-weight: 900;
-    justify-content: end;
-    margin: 0.4em -1.25em -0.5em 0;
-    padding: 0.25em;
-  }
-  .more svg {
-    display: inline-flex;
-    place-content: center;
-    margin: 4px 0 -3px 0;
-    padding: 0;
-    filter: var(--svg2);
-  }
-  .more a {
-    color: var(--secondary);
-  }
-  .more a:hover {
-    color: var(--foot-link);
-    transform: 0.2;
-  }
-  .more a:hover svg {
-    filter: var(--foot-svg);
-    transition: all .1s ease-out;
-    transform: translateX(4px);
-  }
-  
-  @media (hover: hover) {
-    .list:has(.link-url:hover) .link-tag {
-      box-shadow: -4px -4px 0 #000;
-      transform: translate(4px, 4px);
-      outline-offset: 1px;
-    }
-  }
-  
-  @media screen and (max-width: 667px) {
-    a.active {
-      border-bottom: 1px dotted transparent;
-    }
-    .container {
-      padding: 0.75em 1em;
-    }
-    .link-url {
-      font-size: 0.875em;
-    }
-    .more {
-      margin: 0;
-      padding: 0;
-    }
-    .info button {
-      font-size: 14px;
-    }
-  }
-</style> -->
-
 <section class="h-feed">
   <h2 class="p-name">Recent Activity</h2>
     <div class="ls-grid">
@@ -136,8 +28,8 @@ const entries = (await getLifestream()).slice(0, limit);
             alt={entry.data.title}
             widths={[200, 400]}
             sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-            loading={i < 8 ? 'eager' : 'lazy'}
-            decoding={i < 8 ? 'sync' : 'async'}
+            loading="lazy"
+            decoding="async"
           />
           <span class="card-badge">
             {entry.data.type === 'game'   && <GameIcon   width={24} height={24} />}

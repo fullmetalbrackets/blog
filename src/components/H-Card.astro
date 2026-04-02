@@ -1,4 +1,7 @@
 ---
+import { Image } from 'astro:assets';
+import Avatar from '@assets/avatar.png';
+
 interface Props {
   visible?: boolean;
 }
@@ -6,7 +9,16 @@ const { visible = false } = Astro.props;
 ---
 
 <div class:list={['h-card', { 'h-card--visible': visible }]}>
-  <img class="u-photo" src="/avatar.png" alt="Ariel Diaz" />
+    <Image
+    src={Avatar}
+    alt="Ariel Diaz"
+    width={72}
+    height={72}
+    class="u-photo"
+    loading="eager"
+    decoding="async"
+    fetchpriority="high"
+  />
   <div class="h-card-body">
     <a class="p-name u-url u-uid">Ariel Diaz</a>
     <p class="p-note">
