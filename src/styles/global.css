@@ -275,7 +275,7 @@ article h3 {
 li::marker {
 	font-family: var(--sub-font);
 	font-size: 0.875em;
-	font-weight: 500;
+	font-weight: 700;
 	color: var(--primary);
 }
 
@@ -673,7 +673,7 @@ blockquote[data-type='warning'] a:hover {
 .important {
 	color: var(--primary);
 	font-family: var(--sub-font);
-	font-weight: 500;
+	font-weight: 700;
 }
 
 .img-left {
@@ -779,14 +779,8 @@ blockquote[data-type='warning'] a:hover {
 	font-size: 0.5em;
 }
 
-.w2 {
-	font-weight: 200;
-}
-.w3 {
-	font-weight: 300;
-}
 .w5 {
-	font-weight: 500;
+	font-weight: 700;
 }
 .w7 {
 	font-weight: 700;
