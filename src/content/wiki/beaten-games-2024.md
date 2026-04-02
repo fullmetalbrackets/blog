@@ -7,23 +7,19 @@ tag: information
 
 Total: <span class="sub-font b em">18</span>
 
-- Deus Ex: Human Revolution
-- Dishonored
+- Cyberpunk 2077
 - Doom Eternal + DLCs
 - Doom 64
 - Ducktales Remastered
 - Fallout 4 (base game only)
 - Final Fantasy VII Remake
-- Final Fantasy XVI
-- God of War
-- God of War: Ragnarok
 - Hollow Knight
 - Metroid Dread
 - Metroid Prime Remastered
 - Metroid: Samus Returns
+- Metroid: Zero Mission
+- Narita Boy
 - Prey (2017)
-- Resident Evil 2 (remake)
-- XCOM: Enemy Within
-- XCOM 2
+- Super Metroid
 
 Notes: _This is more than my average._

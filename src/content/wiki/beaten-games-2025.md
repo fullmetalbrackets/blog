@@ -7,11 +7,11 @@ tag: information
 
 Total: <span class="sub-font b em">8</span>
 
-- Donkey Kong Country Returns HD
 - Elden Ring *(and Shadow of the Erdtree... except the final boss who I gave up on)*
 - Final Fantasy Tactics: The Ivalice Chronicles
 - Final Fantasy XIV Online *(playing on and off since ~2019)*
-- Hollow Knight: Silksong *(only Act 2 ending)*
+- Hollow Knight (yet again!)
+- Metroid Dread (again)
 - Metroid Prime 4: Beyond - Nintendo Switch 2 Edition
 - The Legend of Zelda: Breath of the Wild - Nintendo Switch 2 Edition
 - The Legend of Zelda: Tears of the Kingdom - Nintendo Switch 2 Edition
