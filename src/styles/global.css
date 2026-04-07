@@ -978,6 +978,9 @@ article a[target='_blank'][href^='#']::after {
 }
 
 @media screen and (max-width: 667px) {
+	table {
+		font-size: 18px;
+	}
 	figcaption {
 		font-size: 0.75em;
 		max-width: 95%;
