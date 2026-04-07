@@ -8,7 +8,7 @@ howto: true
 
 This will be fairly terse as I'll just be detailing the steps I took to install Bazzite and troubleshoot any issues I encountered along the way. It's possible this will be updated over time as I run into and solve new problems while using Bazzite.
 
-## Flashing Bazzite ISO onto USB
+## Flashing Bazzite ISO onto USB drive
 
 First things first, [go to Bazzite's website to download the ISO](https://bazzite.gg/), making sure to choose the correct hardware and GPU of the machine you'll be installing Bazzite on.
 
@@ -16,7 +16,7 @@ After downloading the ISO, flash it onto a bootable USB drive with your software
 
 If using [Rufus](https://rufus.ie/) to create a bootable USB drive, choose **DD Mode** when prompted, otherwise the Bazzite ISO will not be appear as a boot option. Alternately use [Balena Etcher](https://etcher.balena.io/) and it will just work without having to specify anything, that's what I tend to do now when installing Linux on a new system. (Bazzite's recommended option is [Fedora MediaWriter](https://github.com/FedoraQt/MediaWriter), but I've never used it myself.)
 
-## Before Installing Bazzite on the PC
+## Configure BIOS before installing Bazzite
 
 You'll need to go into your computer's BIOS to make sure some things are properly confi. For most PCs this is done by rebooting and hitting the <kbd>F2</kbd> key (on an HP machine it may be <kbd>F10</kbd> instead) as soon as your manufacturer's logo appears. Mashing the requisite key non-stop from the moment you boot up until you get into the BIOS is also a time-honored tradition.
 
@@ -30,9 +30,11 @@ Navigate down to the _Secure Boot_ option and use <kbd>Enter</kbd> to switch it 
 
 When finished changing the settings, use the <kbd>ESC</kbd> key to save and exit the BIOS.
 
-When the PC is booting up again press the <kbd>F12</kbd> key to bring up the boot menu, and choose your USB drive from the list. (If you're not seeing it, you may have to re-create the bootable USB. Remember to use _DD mode_ in Rufus or use an alternative to do it.)
+## Install Bazzite
 
-You'll be brought to the Bazzite live desktop, click on the Install icon on the desktop. Choose the drive to install onto from the list.
+After exiting the BIOS and while the PC is booting up again, press the <kbd>F12</kbd> key to bring up the boot menu. Navigate to choose your USB drive on the list and hit <kbd>Enter</kbd>. (If you're not seeing it, you may have to re-create the bootable USB. Remember to use _DD mode_ in Rufus or try using an alternative.)
+
+You'll be brought to the Bazzite live desktop, click on the _Install_ icon on the desktop. Choose the drive to install onto from the list.
 
 > [warning] Important!
 >
