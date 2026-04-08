@@ -2,7 +2,7 @@
 title: 'Apollo'
 description: 'Details on Apollo, my Dell Optiplex 3050 Small-Form Factor PC.'
 pubDate: 2023-11-15
-updatedDate: 2025-02-23
+updatedDate: 2026-04-08
 tag: documentation
 related: ['upgrade-debian-12-bookworm-debian-13-trixie']
 ---
@@ -19,4 +19,4 @@ related: ['upgrade-debian-12-bookworm-debian-13-trixie']
 
 Bought on EBay for around $160. Added a cheap, low capacity NVMe SSD to use as a boot drive and replaced the CD drive with a caddy that holds a laptop hard drive. I originally used this as my home server, but switched over to using <a href="/wiki/korben/">my Dell Optiplex 3020 Micro</a> as the server, and currently <a href="/wiki/athena/">my old Dell PC</a> is my server.
 
-I currently use this machine as my daily driver since it has an HDMI port (the 3020 micro does not), running Debian 12 and XFCE desktop environment. It has much lower power consumption than my Windows PC, so I only use the Windows PC for gaming, and use this for everything else, including working on this site.
+This machine was my daily driver for over a year, running Debian 12 (later 13) and KDE Plasma desktop environment. It was mostly okay, but it did start chugging if I had too many Chrome tabs open, which I tend to do. I have recently upgraded to using [Bazzite on my wife's old Dell XPS 8920](/wiki/artemis/). (An upgrade from this.)
