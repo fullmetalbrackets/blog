@@ -86,10 +86,6 @@ export default defineConfig({
 			status: 301,
 			destination: '/lifestream/',
 		},
-		'/search': {
-			status: 301,
-			destination: '/',
-		},
 		'/lifestream/older/tvshows': {
 			status: 301,
 			destination: '/lifestream/',
