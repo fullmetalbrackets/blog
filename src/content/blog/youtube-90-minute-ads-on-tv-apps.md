@@ -51,6 +51,13 @@ The main way to install TizenTube Cobalt is to side-load it (download the APK an
 
 I plan to try out TizenTube Cobalt soon, so I may update this in the future with more details.
 
+## Playlet for Roku
+
+So here's a recent one I didn't know about until I was researching for this post, there's actually a custom privacy-friendly YouTube alternative for Roku as well! [Playlet](https://github.com/iBicha/playlet) has no ads or tracking, has built-in SponsorBlock and is even faster than the official Roku YouTube app.
+
+The UI is very similar to YouTube, although I did notice the "front" page only (if you sign in with your YouTube account) has your subscriptions, recommended, playlists and watch history. So there's a little less "discoverability" compared to other alternatives, but it's still a huge improvement over the vanilla YouTube experience on Roku.
+
+You should be able to just search for Playlet in the Roku channel store (at least I was on my Insignia Roku TV), but it can also [be side-loaded](https://github.com/iBicha/playlet/discussions/371). (Sidenote: I thought Roku was a closed ecosystem but now I find out you can side-load?! Gotta look into this more...)
 
 ## Yattee for iOS devices
 
