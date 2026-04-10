@@ -6,6 +6,7 @@ import WebsiteSchema from '@components/WebsiteSchema.astro';
 import { SITE_TITLE } from '@consts';
 
 const { title, description, ogType, ogImage, disableHeadingLinks } = Astro.props.frontmatter || Astro.props;
+const { noindex } = Astro.props;
 const pageTitle = title === SITE_TITLE ? SITE_TITLE : `${title} | ${SITE_TITLE}`;
 ---
 
@@ -354,7 +355,7 @@ const pageTitle = title === SITE_TITLE ? SITE_TITLE : `${title} | ${SITE_TITLE}`
 		<BaseHead title={pageTitle} description={description} ogType={ogType} ogImage={ogImage} />
 		<WebsiteSchema />
 		<slot name="head" />
-		
+		{noindex && <meta name="robots" content="noindex, nofollow" />}
 		<style>
 			main {
 				margin: 0 auto;
@@ -392,6 +393,17 @@ const pageTitle = title === SITE_TITLE ? SITE_TITLE : `${title} | ${SITE_TITLE}`
 				}
 				});
 			})();
+		</script>
+		<!-- Track color scheme preference -->
+		<script is:inline>
+		window.addEventListener('DOMContentLoaded', () => {
+			const saved = localStorage.getItem('theme');
+			const system = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+			const active = saved ?? system;
+			if (typeof umami !== 'undefined') {
+			umami.track('color-scheme', { preference: active });
+			}
+		});
 		</script>
 	</body>
 </html>
