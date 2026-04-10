@@ -55,13 +55,13 @@ I plan to try out TizenTube Cobalt soon, so I may update this in the future with
 
 So here's a recent one I didn't know about until I was researching for this post, there's actually a custom privacy-friendly YouTube alternative for Roku as well! [Playlet](https://github.com/iBicha/playlet) has no ads or tracking, has built-in SponsorBlock and is even faster than the official Roku YouTube app.
 
-The UI is very similar to YouTube, although I did notice the "front" page only (if you sign in with your YouTube account) has your subscriptions, recommended, playlists and watch history. So there's a little less "discoverability" compared to other alternatives, but it's still a huge improvement over the vanilla YouTube experience on Roku.
+The UI is very similar to YouTube, although I did notice the "front" page (if you sign in with your YouTube account) only has your subscriptions, recommended, playlists and watch history. So there's a little less "discoverability" compared to other alternatives (but really this means no algorithm pushing stuff on you, hardly a bad thing), and it's still a huge improvement over the vanilla YouTube experience on Roku.
 
 You should be able to just search for Playlet in the Roku channel store (at least I was on my Insignia Roku TV), but it can also [be side-loaded](https://github.com/iBicha/playlet/discussions/371). (Sidenote: I thought Roku was a closed ecosystem but now I find out you can side-load?! Gotta look into this more...)
 
 ## Yattee for iOS devices
 
-One of only two ad-free YouTube alternatives I found for the Apple ecosystem. (The other is below.) [Yattee](https://github.com/yattee/yattee) is a privacy-focused YouTube alternative front-end for all iOS platforms with a native UI built in Swift, with features including 4K video playback, custom controls and gestures, background play support, and of course built-in SponsorBlock.
+One of only two ad-free YouTube alternatives I found for the Apple ecosystem. (The other is below.) [Yattee](https://github.com/yattee/yattee) is a privacy-focused YouTube alternative front-end for all iOS platforms with a native UI built with Swift with features like 4K video playback, custom controls and gestures, background play support, and of course built-in SponsorBlock.
 
 I don't have any Apple devices, so I can't comment on the user experience. If you check this one out, feel free to [email me with your thoughts](mailto:blog@fullmetalbrackets.com?subject=My+thoughts+on+Yattee) and I will incorporate them into a future update.
 
@@ -73,13 +73,13 @@ Just like with Yattee, I cannot test out this app myself since I don't have an A
 
 ## ReVanced YouTube for Android
 
-[ReVanced](https://revanced.app/) is a "patching system" for Android apps. I'll be honest, I have tried ReVanced a couple of times over the years and I don't really get it. My understanding is that developers provide patches for official Android apps including YouTube (but others also), which you then download and apply through ReVanced. It seems that to outright replace official apps with patched one requires the device be rooted, but apparently there's a way to install and use the patched apps as separate packages on non-rooted devices. (Pretty sure this difference is what has tripped me up before.)
+[ReVanced](https://revanced.app/) is a "patching system" for Android apps. I'll be honest, I have tried ReVanced a couple of times over the years and I don't really get it. My understanding is that developers provide patches for official Android apps including YouTube (but others also), which you then download and apply through ReVanced. It seems that to outright replace official apps with patched one requires the device be rooted, but apparently there's a way to install and use the patched apps as separate packages on non-rooted devices. (Pretty sure this is what has tripped me up before.)
 
 I don't really watch YouTube on my phone or tablet so I've never bothered with an Android alternative, but ReVanced (and an older app it replaced called Vanced) have been *the* go-to ways to watch ad-free YouTube (via a patched app) on Android devices for years, so I had to include it.
 
 ## LibreTube for Android
 
-I only discovered this one while doing research for this post, since again, I don't really I've never needed a YouTube alternative on Android since I just watch on my TV, with Smarttube. [LibreTube](https://github.com/libre-tube/LibreTube) is a YouTube alternative client for Android that uses [Piped](https://github.com/TeamPiped/Piped) (a self-hosted alternate YouTube front-end) under the hood. It blocks ads and tracking, supports background play, has built-in SponsorBlock, and even lets you download videos.
+I only discovered this one while doing research for this post, since again, I've never really needed a YouTube alternative on Android since I mostly watch it on my TV. [LibreTube](https://github.com/libre-tube/LibreTube) is a YouTube alternative client for Android that uses [Piped](https://github.com/TeamPiped/Piped) (a self-hosted alternate YouTube front-end) under the hood. It blocks ads and tracking, supports background play, has built-in SponsorBlock, and even lets you download videos.
 
 This looks way less complicated than ReVanced (although ReVanced obviously has uses beyond just watching YouTube ad-free) so I'll be checking this one out soon and will update at a later date.
 
@@ -98,5 +98,13 @@ Invidious is unique to other alternatives in that it takes privacy extremely ser
 Invidious has to be self-hosted, but there's actually a [list of trustworthy (per the developers) public instances](https://docs.invidious.io/instances/) that anyone can use. Since anyone can self-host Invidious, technically anyone can run a public instance just by publically exposing it, but there's very specific rules to be considered trusted enough to appear on the "official" list. So don't use any public instance besides the ones on that list, if you want to be safe.
 
 I haven't looked much into Invidious, but it's very mature in development and many of the YouTube alternatives on the list actually include support for an Invidious backend, for a fully private experience on any device.
+
+## Piped, self-hosted alternative Youtube front-end
+
+[Piped](https://github.com/TeamPiped/Piped) is self-hosted and works similar to Invidious, with many of the same features, but I hadn't heard of it before researching for this post. It seems just as privacy-focused as Invidious, maybe more so since by default it will proxy videos so you don't connect to Google's servers and your IP is hidden. Of course, all ads and tracking are blocked as well.
+
+Unlike Invidious, which provides the code and documentation, but you have to self-host it yourself, Piped runs it's own official instance at [piped.video](https://piped.video/) and provides multiple mirrors, linked from the readme. Full disclosure, however, that when I was researching Piped for this post the main instance and all mirrors were broken, but safe to assume this is temporary and will be resolved. (Like I said before, YouTube is always working to break all these alternatives, and bugs can happen of course, so be prepared for them to randomly stop working until fixed.)
+
+Of course you can also self-host your own Piped instance (videos will still be proxied through Piped's servers so you are dependant on it being up and running) and there's also [a list of public instances](https://github.com/TeamPiped/documentation/blob/main/content/docs/public-instances/index.md). (Read their warning about how to use these public instances, though.)
 
 > That's all for now. I will continue updating this in the future as I find other YouTube alternatives. If you know of others you'd like to recommend to me, [please let me know](mailto:blog@fullmetalbrackets.com?subject=YouTube+alternative+app) and I will update this post.
