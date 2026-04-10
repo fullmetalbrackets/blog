@@ -960,8 +960,9 @@ button a:hover {
 	columns: 4;
 	column-gap: 1em;
 	margin-top: 0.5em;
-	max-height: none;
-	overflow-y: visible;
+	max-height: none !important;
+	overflow-y: visible !important;
+	scrollbar-width: unset;
 }
 .pagefind-ui__filter-value {
 	break-inside: avoid;
@@ -1025,16 +1026,6 @@ button a:hover {
 	color: #000;
 	border-radius: 2px;
 	padding: 0 2px;
-}
-@media screen and (max-width: 992px) {
-	.pagefind-ui__filter-group-values {
-		columns: 3;
-	}
-}
-@media screen and (max-width: 667px) {
-	.pagefind-ui__filter-group-values {
-		columns: 1;
-	}
 }
 
 /* external link indicator */
