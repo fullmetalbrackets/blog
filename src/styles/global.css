@@ -969,21 +969,30 @@ button a:hover {
 .pagefind-ui__filter-value {
 	display: flex;
 	align-items: center;
-	gap: 0.3em;
+	gap: 0.4em;
 	white-space: nowrap;
 	color: var(--text);
+	width: auto !important;
+}
+.pagefind-ui__filter-value label {
+	display: inline !important;
+	width: auto !important;
+	cursor: pointer;
 }
 .pagefind-ui__filter-checkbox {
-	appearance: none;
-	-webkit-appearance: none;
-	width: 14px;
-	height: 14px;
+	appearance: none !important;
+	-webkit-appearance: none !important;
+	width: 14px !important;
+	height: 14px !important;
+	min-width: 14px !important;
+	max-width: 14px !important;
 	flex-shrink: 0;
 	border: 1.5px solid var(--primary);
 	border-radius: 3px;
 	background: transparent;
 	cursor: pointer;
 	position: relative;
+	display: inline-block !important;
 }
 .pagefind-ui__filter-checkbox:checked {
 	background: var(--primary);
