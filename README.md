@@ -15,7 +15,7 @@ A blog about self-hosting, web development, Linux, and more.
 ## Latest blog posts
 
 <!-- BLOG-POST-LIST:START -->
-- [YouTube is shoving 90+ ads minute onto smart TVs, so here&#39;s a bunch of free open-source YouTube alternative apps to use instead](https://fullmetalbrackets.com/blog/youtube-90-minute-ads-on-tv-apps/)
+- [YouTube is shoving 90+ seconmd ads onto smart TVs, so here&#39;s a bunch of free open-source YouTube alternative apps to use instead](https://fullmetalbrackets.com/blog/youtube-90-second-ads-on-tv-apps/)
 - [How to migrate AdGuard Home from a GL.iNet Flint 2 router to a Libre Sweet Potato](https://fullmetalbrackets.com/blog/migrate-adguardhome-glinet-flint2-docker-container/)
 - [Installing and configuring Bazzite on a Dell XPS 8920](https://fullmetalbrackets.com/blog/installing-and-configuring-bazzite/)
 - [How I used Astro-OG-Canvas to dynamically generate opengraph images for blog posts on my Astro site](https://fullmetalbrackets.com/blog/how-to-dynamically-generate-og-images-with-astro/)
