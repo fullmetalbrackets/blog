@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
 
+Disallow: /search/
 Disallow: /404/
 Disallow: /feedback/
 Disallow: /thanks/
