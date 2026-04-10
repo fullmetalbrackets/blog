@@ -1,5 +1,5 @@
 ---
-title: YouTube is shoving 90+ seconmd ads onto smart TVs, so here's a bunch of free open-source YouTube alternative apps to use instead
+title: YouTube is shoving 90+ second ads onto smart TVs, so here's a bunch of free open-source YouTube alternative apps to use instead
 pubDate: 2026-04-09 20:40:00
 description: YouTube has been on a mission to force it's users to watch more frequent and longer ads, while also making the experience worse for users that try to use adblockers, to push them onto YouTube Premium. So how about we just say no and start using one of the many free, open-source and privacy-friendly alternatives instead.
 tags: ['smart tv', 'android', 'roku']
