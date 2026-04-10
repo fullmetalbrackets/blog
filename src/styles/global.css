@@ -957,14 +957,21 @@ button a:hover {
 	padding: 0.25em 0;
 }
 .pagefind-ui__filter-group-values {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 0.35em 0.75em;
+	columns: 4;
+	column-gap: 1em;
 	margin-top: 0.5em;
-	max-height: 160px;
-	overflow-y: auto;
-	scrollbar-width: thin;
-	scrollbar-color: var(--border2) transparent;
+	max-height: none;
+	overflow-y: visible;
+}
+.pagefind-ui__filter-value {
+	break-inside: avoid;
+	display: flex;
+	align-items: center;
+	gap: 0.4em;
+	white-space: nowrap;
+	color: var(--text);
+	width: auto !important;
+	margin-bottom: 0.2em;
 }
 .pagefind-ui__filter-value {
 	display: flex;
@@ -1018,6 +1025,16 @@ button a:hover {
 	color: #000;
 	border-radius: 2px;
 	padding: 0 2px;
+}
+@media screen and (max-width: 992px) {
+	.pagefind-ui__filter-group-values {
+		columns: 3;
+	}
+}
+@media screen and (max-width: 667px) {
+	.pagefind-ui__filter-group-values {
+		columns: 1;
+	}
 }
 
 /* external link indicator */
