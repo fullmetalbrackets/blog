@@ -7,7 +7,7 @@ related1:
 related2: 
 ---
 
-Enough is enough. If you use YouTube at all, even a little bit, you've no doubt been bombarded with multiple ads just while trying to watch one 10 minute video. Some ads are not even skippable, and can run for several minutes. It has gotten completely out of hand.
+Enough is enough. If you use YouTube at all, even a little bit, you've no doubt been bombarded with multiple ads just while trying to watch one 10 minute video. Some ads are not even skippable, and can run for several minutes. Now they're starting to inject 90+ second ads specifically into YouTube apps on smart TVs, where it's not as easy to block them.
 
 So I'm here to educate anyone that is over YouTube's unending ad diarrhea and has no desire to reward their terrible tactics with payment. Instead, I want to tell you about all the different ways you can watch YouTube videos on various smart TVs and set-top boxes with no ads, more private than actual YouTube, and in many cases even better performance.
 
