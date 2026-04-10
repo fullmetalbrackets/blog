@@ -91,4 +91,12 @@ Note that [because of changes to Manifest v3](https://github.com/uBlockOrigin/uB
 
 If you're still getting ads with uBlock Origin, check out [this GitHub Gist with custom filters](https://gist.github.com/leober-ramos33/5d41c69f6163c293a573ae4a3e109018) to add into uBlock Origin. (Note that it may or may not work, the comments are all over the place.) It's also possible that you'll get a warning from YouTube about using ad blockers with these filters in use. I don't use this personally.
 
-> That's all for now. I will probably update this in the future as I find other YouTube alternatives. If you know of others you'd like to recommend to me, [please let me know](mailto:blog@fullmetalbrackets.com?subject=YouTube+alternative+app) and I will update this post.
+## Invidious, self-hosted alternative YouTube front-end
+
+Invidious is unique to other alternatives in that it takes privacy extremely seriously, so instead ofusing YouTube's official API it scrapes the YouTube website for video data like views, likes and comments, then presents that in Invidious' browser-like front-end without actually sending YouTube any of your data. There's even an option to proxy videos which will hide your IP from Google. You can also create a local account in Invidious to subscribe to channels and create playlists, without a YouTube account. (And if you do have a YouTube account, you can import subscriptions and playlists, then use them locally without actually signing in to YouTube.)
+
+Invidious has to be self-hosted, but there's actually a [list of trustworthy (per the developers) public instances](https://docs.invidious.io/instances/) that anyone can use. Since anyone can self-host Invidious, technically anyone can run a public instance just by publically exposing it, but there's very specific rules to be considered trusted enough to appear on the "official" list. So don't use any public instance besides the ones on that list, if you want to be safe.
+
+I haven't looked much into Invidious, but it's very mature in development and many of the YouTube alternatives on the list actually include support for an Invidious backend, for a fully private experience on any device.
+
+> That's all for now. I will continue updating this in the future as I find other YouTube alternatives. If you know of others you'd like to recommend to me, [please let me know](mailto:blog@fullmetalbrackets.com?subject=YouTube+alternative+app) and I will update this post.
