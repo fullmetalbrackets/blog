@@ -102,6 +102,10 @@ export default defineConfig({
 			status: 301,
 			destination: '/lifestream/',
 		},
+		'/blog/youtube-90-minute-ads-on-tv-apps': {
+			status: 301,
+			destination: '/blog/youtube-90-second-ads-on-tv-apps',
+		},
 	},
 	fonts: [
 		{
