@@ -3,8 +3,7 @@ title: YouTube is shoving 90+ second ads onto smart TVs, so here's a bunch of fr
 pubDate: 2026-04-09 20:40:00
 description: YouTube has been on a mission to force it's users to watch more frequent and longer ads, while also making the experience worse for users that try to use adblockers, to push them onto YouTube Premium. So how about we just say no and start using one of the many free, open-source and privacy-friendly alternatives instead.
 tags: ['smart tv', 'android', 'roku']
-related1: 
-related2: 
+related: ['google-tv-tailscale-plex', 'xplore-android-smb-share']
 ---
 
 Enough is enough. If you use YouTube at all, even a little bit, you've no doubt been bombarded with multiple ads just while trying to watch one 10 minute video. Some ads are not even skippable, and can run for several minutes. Now they're starting to [inject unskippable 90+ second ads specifically into YouTube apps on smart TVs](https://9to5google.com/2026/04/08/youtube-starts-showing-90-second-unskippable-ads-to-tv-viewers/), where it's not as easy to block them.
