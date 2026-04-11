@@ -394,16 +394,5 @@ const pageTitle = title === SITE_TITLE ? SITE_TITLE : `${title} | ${SITE_TITLE}`
 				});
 			})();
 		</script>
-		<!-- Track color scheme preference -->
-		<script is:inline>
-		window.addEventListener('DOMContentLoaded', () => {
-			const saved = localStorage.getItem('theme');
-			const system = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-			const active = saved ?? system;
-			if (typeof umami !== 'undefined') {
-			umami.track('color-scheme', { preference: active });
-			}
-		});
-		</script>
 	</body>
 </html>
