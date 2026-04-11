@@ -28,8 +28,7 @@ title: "${title}"
 pubDate: ${pubDate}
 description: 
 tags: []
-related1: 
-related2: 
+related: []
 ---
 
 `;
