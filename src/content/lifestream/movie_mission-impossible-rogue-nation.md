@@ -7,3 +7,7 @@ rating: loved
 ---
 
 Possible the best Mission Impossible movie? It's between this and Fallout.
+
+## Previously Watched
+
+- 10/15/2023

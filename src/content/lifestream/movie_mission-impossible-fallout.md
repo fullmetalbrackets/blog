@@ -7,3 +7,7 @@ rating: loved
 ---
 
 Great movie, up there with Rogue Nation as the best of the series.
+
+## Previously Watched
+
+- 10/15/2023
