@@ -85,7 +85,11 @@ const typeName: Record<string, string> = {
         </p>
 
         <dl class="meta">
-          <dt>Posted</dt>
+          <dt>
+            {data.type === 'movie' || data.type === 'tvshow' ? 'Watched on' :
+             data.type === 'book' ? 'Read on' :
+             data.type === 'game' ? 'Played on' : 'Posted'}
+          </dt>
           <dd>
             <FormattedDate
               date={data.updatedDate ?? data.pubDate}
