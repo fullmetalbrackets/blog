@@ -118,16 +118,16 @@ const typeName: Record<string, string> = {
 
     </div>
     <nav class="entry-nav">
-      {prev ? (
-        <a href={`/lifestream/${prev.id}`} class="entry-nav-link prev">
-          <span class="nav-label"><svg class="c_c c_d c_e c_f c_cd" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M14 7.5H3.439l4.29-4.387-.714-.699L1.55 8l5.465 5.586.714-.7L3.44 8.5h10.56v-1z"></path></svg> Older</span>
-          <span class="nav-title">{prev.data.title}</span>
+      {next ? (
+        <a href={`/lifestream/${next.id}`} class="entry-nav-link next">
+          <span class="nav-label"><svg class="c_c c_d c_e c_f c_cd" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M14 7.5H3.439l4.29-4.387-.714-.699L1.55 8l5.465 5.586.714-.7L3.44 8.5h10.56v-1z"></path></svg> Newer</span>
+          <span class="nav-title">{next.data.title}</span>
         </a>
       ) : <span />}
-      {next && (
-        <a href={`/lifestream/${next.id}`} class="entry-nav-link next">
-          <span class="nav-label newer">Newer <svg class="c_c c_d c_e c_f c_cd" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M14 7.5H3.439l4.29-4.387-.714-.699L1.55 8l5.465 5.586.714-.7L3.44 8.5h10.56v-1z"></path></svg></span>
-          <span class="nav-title">{next.data.title}</span>
+      {prev && (
+        <a href={`/lifestream/${prev.id}`} class="entry-nav-link prev">
+          <span class="nav-label older">Older <svg class="c_c c_d c_e c_f c_cd" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M14 7.5H3.439l4.29-4.387-.714-.699L1.55 8l5.465 5.586.714-.7L3.44 8.5h10.56v-1z"></path></svg></span>
+          <span class="nav-title">{prev.data.title}</span>
         </a>
       )}
     </nav>
@@ -205,7 +205,7 @@ const typeName: Record<string, string> = {
     max-width: 45%;
   }
 
-  .entry-nav-link.next {
+  .entry-nav-link.prev {
     text-align: right;
     margin-left: auto;
   }
@@ -221,7 +221,7 @@ const typeName: Record<string, string> = {
     color: var(--emphasis);
   }
 
-  .newer {
+  .older {
     justify-content: end;
   }
 
@@ -248,23 +248,23 @@ const typeName: Record<string, string> = {
       flex-shrink: 0;
   }
 
-  .prev .nav-label svg {
-      transition: transform 0.1s ease-in-out;
-      margin-right: 0.3em;
-  }
-
   .next .nav-label svg {
-      transition: transform 0.1s ease-in-out;
-      margin-left: 0.3em;
-      transform: rotate(180deg);
+    transition: transform 0.1s ease-in-out;
+    margin-right: 0.3em;
   }
 
-  .prev:hover .nav-label svg {
-      transform: translateX(-4px);
+  .prev .nav-label svg {
+    transition: transform 0.1s ease-in-out;
+    margin-left: 0.3em;
+    transform: rotate(180deg);
   }
 
   .next:hover .nav-label svg {
-      transform: rotate(180deg) translateX(-4px);
+    transform: translateX(-4px);
+  }
+
+  .prev:hover .nav-label svg {
+    transform: rotate(180deg) translateX(-4px);
   }
 
   @media (max-width: 667px) {
