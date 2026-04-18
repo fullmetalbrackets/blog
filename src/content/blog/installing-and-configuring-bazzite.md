@@ -18,7 +18,7 @@ If using [Rufus](https://rufus.ie/) to create a bootable USB drive, choose **DD 
 
 ## Configure BIOS before installing Bazzite
 
-You'll need to go into your computer's BIOS to make sure some things are properly confi. For most PCs this is done by rebooting and hitting the <kbd>F2</kbd> key (on an HP machine it may be <kbd>F10</kbd> instead) as soon as your manufacturer's logo appears. Mashing the requisite key non-stop from the moment you boot up until you get into the BIOS is also a time-honored tradition.
+You'll need to go into your computer's BIOS to make sure some things are properly configured. For most PCs this is done by rebooting and hitting the <kbd>F2</kbd> key (on an HP machine it may be <kbd>F10</kbd> instead) as soon as your manufacturer's logo appears. Mashing the requisite key non-stop from the moment you boot up until you get into the BIOS is also a time-honored tradition.
 
 Once in the BIOS use your keyboard arrow keys to navigate to **ADVANCED** and press <kbd>Enter</kbd>, then navigate down to _SATA Operation_, press <kbd>Enter</kbd> and change `RAID` to `AHCI`, then press <kbd>Enter</kbd> again.
 
