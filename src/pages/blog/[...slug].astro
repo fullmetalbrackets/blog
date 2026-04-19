@@ -5,7 +5,6 @@ import { render } from "astro:content";
 import BlogPost from "@layouts/BlogPost.astro";
 import { getSortedPosts } from "@utils/collections";
 import type { BlogSlugProps } from '../../types';
-
 export async function getStaticPaths() {
   const posts = await getSortedPosts();
   return posts.map((post) => ({
@@ -17,6 +16,9 @@ export async function getStaticPaths() {
 type Props = BlogSlugProps;
 
 const { post } = Astro.props;
+
+Astro.response.headers.set('Link', `<https://fullmetalbrackets.com/api/posts/${post.id.replace(/\.mdx?$/, '')}>; rel="alternate"; type="application/json"`);
+
 const { Content, headings, remarkPluginFrontmatter } = await render(post);
 const { readingTime } = remarkPluginFrontmatter;
 ---

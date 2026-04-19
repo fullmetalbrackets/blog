@@ -37,6 +37,12 @@ const selectedPosts = await getRelatedPosts(related ?? []);
 
 <BaseLayout title={title} description={description} ogType="article" ogImage={`${SITE_URL}/og/${slug}.png`}>
   <link rel="stylesheet" href="/prism.css" slot="head" />
+  <link 
+    rel="alternate" 
+    type="application/json" 
+    href={`${SITE_URL}/api/posts/${Astro.params.slug}`} 
+    slot="head"
+  />
   <style scoped>
     h1 {
       margin-top: -0.1em;
