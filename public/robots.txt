@@ -13,4 +13,70 @@ Disallow: /github/
 Disallow: /donate/
 Disallow: /cdn-cgi/
 
+# AI crawlers: use JSON API at /api/posts/{slug}
+
+# OpenAI
+User-agent: GPTBot
+Disallow: /blog/
+
+User-agent: OAI-SearchBot
+Disallow: /blog/
+
+User-agent: ChatGPT-User
+Disallow: /blog/
+
+# Anthropic
+User-agent: ClaudeBot
+Disallow: /blog/
+
+User-agent: anthropic-ai
+Disallow: /blog/
+
+# Google
+User-agent: Google-Extended
+Disallow: /blog/
+
+# Perplexity
+User-agent: PerplexityBot
+Disallow: /blog/
+
+User-agent: Perplexity-User
+Disallow: /blog/
+
+# Meta
+User-agent: meta-externalagent
+Disallow: /blog/
+
+User-agent: FacebookBot
+Disallow: /blog/
+
+# Microsoft
+User-agent: bingbot
+Disallow: /blog/
+
+# Apple
+User-agent: Applebot
+Disallow: /blog/
+
+User-agent: Applebot-Extended
+Disallow: /blog/
+
+# xAI
+User-agent: Grok
+Disallow: /blog/
+
+# Amazon
+User-agent: Amazonbot
+Disallow: /blog/
+
+# Aggressive scrapers - block entirely
+User-agent: CCBot
+Disallow: /
+
+User-agent: ByteSpider
+Disallow: /
+
+User-agent: DataForSeoBot
+Disallow: /
+
 Sitemap: https://fullmetalbrackets.com/sitemap-index.xml
