@@ -83,7 +83,7 @@ function readingTimeToISO8601(readingTimeText?: string): string | undefined {
 
 const totalTime = config.totalTime || readingTimeToISO8601(readingTime);
 
-const baseUrl = Astro.site?.toString() || 'https://fullmetalbrackets.com';
+const baseUrl = (Astro.site?.toString() || 'https://fullmetalbrackets.com').replace(/\/$/, '');
 const postUrl = slug ? `${baseUrl}/blog/${slug}` : baseUrl;
 
 const skipHeadings = [
