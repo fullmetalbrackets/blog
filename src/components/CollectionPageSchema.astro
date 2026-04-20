@@ -1,0 +1,33 @@
+---
+import { SITE_URL } from "@consts";
+
+interface Props {
+  name: string;
+  description: string;
+  url: string;
+  about?: string;
+}
+
+const { name, description, url, about } = Astro.props;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": `${url}#collection`,
+  "name": name,
+  "description": description,
+  "url": url,
+  "inLanguage": "en-US",
+  "author": {
+    "@id": `${SITE_URL}/#person`
+  },
+  ...(about && {
+    "about": {
+      "@type": "Thing",
+      "name": about
+    }
+  })
+};
+---
+
+<Fragment set:html={`<script type="application/ld+json">${JSON.stringify(schema)}</script>`} />
