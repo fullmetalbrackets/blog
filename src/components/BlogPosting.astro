@@ -1,18 +1,30 @@
 ---
 import { SITE_URL } from '@consts';
 import type { BlogData } from '../types';
-type Props = BlogData;
+type Props = BlogData & { slug: string };
 
-const { title, description, pubDate, updatedDate, tags } = Astro.props;
+const { title, description, pubDate, updatedDate, tags, slug } = Astro.props;
 
 const schema = {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
+  "@id": `${SITE_URL}/blog/${slug}/`,
+  "url": `${SITE_URL}/blog/${slug}/`,
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": `${SITE_URL}/blog/${slug}/`
+  },
   "headline": title,
   "description": description,
   "keywords": tags,
+  "inLanguage": "en-US",
   "image": `${SITE_URL}/preview.png`,
   "author": {
+    "@type": "Person",
+    "name": "Ariel Diaz",
+    "url": SITE_URL
+  },
+  "publisher": {
     "@type": "Person",
     "name": "Ariel Diaz",
     "url": SITE_URL

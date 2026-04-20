@@ -4,25 +4,31 @@ import { SITE_URL } from "@consts";
 interface Props {
   title: string;
   description: string;
+  slug: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, slug } = Astro.props;
+
+const pageUrl = `${SITE_URL}/wiki/${slug}/`;
+
 const schema = {
   "@context": "https://schema.org",
   "@type": "Article",
+  "@id": `${pageUrl}#article`,
   "headline": title,
   "description": description,
+  "inLanguage": "en-US",
+  "url": pageUrl,
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": pageUrl
+  },
   "author": {
-    "@type": "Person",
-    "name": "Ariel Diaz",
-    "url": SITE_URL
+    "@id": `${SITE_URL}/#person`
   },
   "publisher": {
-    "@type": "Person",
-    "name": "Ariel Diaz",
-    "url": SITE_URL
-  },
-  "url": SITE_URL
+    "@id": `${SITE_URL}/#person`
+  }
 };
 ---
 

@@ -1,16 +1,27 @@
 ---
 import { SITE_URL, GITHUB, BLUESKY, MASTODON } from "@consts";
 
-
 const schema = {
   "@context": "https://schema.org",
   "@type": "ProfilePage",
+  "@id": `${SITE_URL}/#profilepage`,
   "name": "Ariel Diaz",
+  "description": "Personal website and tech blog by Ariel Diaz, covering self-hosting, Linux, networking, and home labs.",
   "url": SITE_URL,
+  "inLanguage": "en-US",
   "mainEntity": {
     "@type": "Person",
+    "@id": `${SITE_URL}/#person`,
     "name": "Ariel Diaz",
     "url": SITE_URL,
+    "knowsAbout": [
+      "Self-hosting",
+      "Linux",
+      "Networking",
+      "Home Labs",
+      "Docker",
+      "Tailscale"
+    ],
     "sameAs": [
       GITHUB,
       BLUESKY,

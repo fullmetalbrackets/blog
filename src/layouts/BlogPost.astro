@@ -481,7 +481,7 @@ const selectedPosts = await getRelatedPosts(related ?? []);
   </slot>
 
   <ScrollProgress />
-  <BlogPosting slot="head" {...Astro.props} />
+  <BlogPosting slot="head" {...Astro.props} slug={slug!} />
   <BreadcrumbSchema slot="head" crumbs={[
     { name: "Home", url: `${ SITE_URL }/` },
     { name: "Blog", url: `${ SITE_URL }/blog/` },

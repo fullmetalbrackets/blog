@@ -33,7 +33,6 @@ const {
   readingTime
 } = Astro.props;
 
-// Auto-detect if post should use schema via keywords in title
 const titleIndicators = [
   'how',
   'guide',
@@ -61,7 +60,6 @@ const titleIndicators = [
   'cheat'
 ];
 
-
 const hasHowToTitle = titleIndicators.some(indicator =>
   title.toLowerCase().startsWith(indicator)
 );
@@ -69,35 +67,25 @@ const hasHowToTitle = titleIndicators.some(indicator =>
 const isManuallyEnabled = howto === true || (typeof howto === 'object');
 const isHowTo = isManuallyEnabled || hasHowToTitle;
 
-// Skip if not a how-to or no headings
 if (!isHowTo || headings.length === 0) {
   return null;
 }
 
-// Get config if manually provided
 const config = typeof howto === 'object' ? howto : {};
 
-// Convert reading time to ISO 8601 duration format
-// "5 min read" -> "PT5M", "15 min read" -> "PT15M"
 function readingTimeToISO8601(readingTimeText?: string): string | undefined {
   if (!readingTimeText) return undefined;
-  
-  // Extract number from "X min read" format
   const match = readingTimeText.match(/(\d+)/);
   if (!match) return undefined;
-  
   const minutes = parseInt(match[1], 10);
   return `PT${minutes}M`;
 }
 
-// Use manual totalTime if provided, otherwise convert from readingTime
 const totalTime = config.totalTime || readingTimeToISO8601(readingTime);
 
 const baseUrl = Astro.site?.toString() || 'https://fullmetalbrackets.com';
 const postUrl = slug ? `${baseUrl}/blog/${slug}` : baseUrl;
 
-// Filter out h1 (title) and only get h2 headings as steps
-// Skip common non-step headings like "About", "Prerequisites", "References"
 const skipHeadings = [
   'about',
   'prerequisites',
@@ -119,13 +107,17 @@ const stepHeadings = headings.filter(h => {
   return isH2 && notSkipped;
 });
 
-// Build the schema
 const schema = {
   "@context": "https://schema.org",
   "@type": "HowTo",
+  "@id": `${postUrl}#howto`,
   "name": title,
   "description": description,
-  "url": postUrl,
+  "inLanguage": "en-US",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": postUrl
+  },
   "image": image ? `${baseUrl}${image}` : undefined,
   "totalTime": totalTime,
   "estimatedCost": {
@@ -141,16 +133,14 @@ const schema = {
     "@type": "HowToSupply",
     "name": supply
   })),
-  "step": stepHeadings.map((heading, index) => ({
+  "step": stepHeadings.map((heading) => ({
     "@type": "HowToStep",
-    "position": index + 1,
     "name": heading.text,
     "url": `${postUrl}#${heading.slug}`,
     "text": heading.text
   }))
 };
 
-// Remove undefined values for cleaner JSON
 const cleanSchema = JSON.parse(JSON.stringify(schema));
 ---
 
