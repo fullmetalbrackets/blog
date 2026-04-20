@@ -194,9 +194,9 @@ const desc = "Blog posts sorted by most recently updated.";
 
 <BaseLayout title={title} description={desc}>
   <BreadcrumbSchema slot="head" crumbs={[
-    { name: "Home", url: `${SITE_URL}/` },
-    { name: "Blog", url: `${SITE_URL}/blog/` },
-    { name: "Recently Updated", url: `${SITE_URL}/blog/updated/` }
+    { name: "Home", url: `${SITE_URL}` },
+    { name: "Blog", url: `${SITE_URL}/blog` },
+    { name: "Recently Updated", url: `${SITE_URL}/blog/updated` }
   ]} />
   <CollectionPageSchema
     slot="head"
@@ -206,7 +206,7 @@ const desc = "Blog posts sorted by most recently updated.";
   />
   <section class="h-feed">
     <h1 class="p-name">Recently Updated</h1>
-    <a class="u-url" href={`${SITE_URL}/blog/updated/`} hidden>Permalink</a>
+    <a class="u-url" href={`${SITE_URL}/blog/updated`} hidden>Permalink</a>
     <hr />
     <p>
       <span>

@@ -83,7 +83,7 @@ const desc = "Archive of wiki articles.";
 
 <BaseLayout title={title} description={desc}>
   <BreadcrumbSchema slot="head" crumbs={[
-    { name: "Home", url: `${SITE_URL}/` },
+    { name: "Home", url: `${SITE_URL}` },
     { name: "Wiki", url: `${SITE_URL}/wiki/` }
   ]} />
   <CollectionPageSchema
@@ -92,8 +92,9 @@ const desc = "Archive of wiki articles.";
     description={desc}
     url={`${SITE_URL}/wiki/`}
   />
-  <section>
+  <section class="h-feed">
     <h1>{title}</h1>
+    <a class="u-url" href={`https://fullmetalbrackets.com/wiki`} hidden>Permalink</a>
     <hr />
     <p>
       This is a place for things that don't make sense as a blog post. Technical notes, homelab documentation, etc.

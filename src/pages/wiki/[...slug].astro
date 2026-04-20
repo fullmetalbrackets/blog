@@ -21,9 +21,9 @@ const { Content } = await render(post);
 
 <Wiki {...post.data}>
   <BreadcrumbSchema slot="head" crumbs={[
-    { name: "Home", url: `${SITE_URL}/` },
-    { name: "Wiki", url: `${SITE_URL}/wiki/` },
-    { name: post.data.title, url: `${SITE_URL}/wiki/${post.id}/` }
+    { name: "Home", url: `${SITE_URL}` },
+    { name: "Wiki", url: `${SITE_URL}/wiki` },
+    { name: post.data.title, url: `${SITE_URL}/wiki/${post.id}` }
   ]} />
   <Content />
 </Wiki>

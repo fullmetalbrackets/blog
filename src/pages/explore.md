@@ -4,6 +4,8 @@ title: Explore
 description: Explore all of the slashpages on fullmetalbrackets.com
 ---
 
+<a class="u-url" href="https://fullmetalbrackets.com/explore" hidden>Permalink</a>
+
 Explore all of the [slashpages](https://slashpages.net/) on this site below.
 
 <nav>

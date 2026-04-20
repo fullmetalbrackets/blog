@@ -484,8 +484,8 @@ const selectedPosts = await getRelatedPosts(related ?? []);
   <BlogPosting slot="head" {...Astro.props} slug={slug!} />
   <BreadcrumbSchema slot="head" crumbs={[
     { name: "Home", url: `${ SITE_URL }/` },
-    { name: "Blog", url: `${ SITE_URL }/blog/` },
-    { name: title, url: `${ SITE_URL }/blog/${slug}/` }
+    { name: "Blog", url: `${ SITE_URL }/blog` },
+    { name: title, url: `${ SITE_URL }/blog/${slug}` }
   ]} />
   <HowToSchema 
     slot="head"
@@ -503,7 +503,7 @@ const selectedPosts = await getRelatedPosts(related ?? []);
   <article class="h-entry" data-pagefind-body data-pub-date={pubDate.toISOString()}
     data-updated-date={updatedDate ? updatedDate.toISOString() : ''}>
     <h1 class="p-name">{title}</h1>
-    <a class="u-url" href={`https://fullmetalbrackets.com/blog/${slug}/`} hidden>Permalink</a>
+    <a class="u-url" href={`https://fullmetalbrackets.com/blog/${slug}`} hidden>Permalink</a>
     <div class="blog-tags">
       <span class="tag" data-pagefind-ignore>
         {tags.map((tag) => (

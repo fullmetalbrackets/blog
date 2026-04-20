@@ -4,6 +4,8 @@ title: Style Guide
 description: Markdown style guide for fullmetalbrackets.com
 ---
 
+<a class="u-url" href="https://fullmetalbrackets.com/style" hidden>Permalink</a>
+
 Markdown style guide for this website.
 
 ## Fonts

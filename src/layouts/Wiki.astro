@@ -222,16 +222,17 @@ const selectedPosts = await getRelatedPosts(related ?? []);
   <link rel="stylesheet" href="/prism.css" slot="head" />
   <BreadcrumbSchema slot="head" crumbs={[
     { name: "Home", url: `${ SITE_URL }/` },
-    { name: "Wiki", url: `${ SITE_URL }/wiki/` },
-    { name: title, url: `${ SITE_URL }/wiki/${slug}/` }
+    { name: "Wiki", url: `${ SITE_URL }/wiki` },
+    { name: title, url: `${ SITE_URL }/wiki/${slug}` }
   ]} />
   <WikiArticle slot="head" title={title} description={description} slug={slug!} />
   <ScrollProgress />
   <CodeblockCopy />
   <HeadingCopy />
 
-  <article class="wiki-article" data-pagefind-body>
+  <article class="h-entry wiki-article" data-pagefind-body>
     <h1 class="wiki-title">{title}</h1>
+    <a class="u-url" href={`https://fullmetalbrackets.com/wiki/${slug}`} hidden>Permalink</a>
     <p class="tag" data-pagefind-ignore>
       <span data-pagefind-filter="tag">{tag}</span>
     </p>

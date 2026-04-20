@@ -3,11 +3,11 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import { getSortedTags } from '@utils/collections';
 import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
 import CollectionPageSchema from "@components/CollectionPageSchema.astro";
-import { SITE_URL } from "@consts";
+import { SITE_URL, SITE_TITLE } from "@consts";
 
 const tags = await getSortedTags();
 const title = "Categories";
-const desc = "Browse all post categories on ${SITE_TITLE}.";
+const desc = `Browse blog post categories on ${SITE_TITLE}.`;
 ---
 
 <style scoped>
@@ -69,22 +69,22 @@ const desc = "Browse all post categories on ${SITE_TITLE}.";
 
 <BaseLayout title={title} description={desc}>
   <BreadcrumbSchema slot="head" crumbs={[
-    { name: "Home", url: `${SITE_URL}/` },
-    { name: "Categories", url: `${SITE_URL}/categories/` }
+    { name: "Home", url: `${SITE_URL}` },
+    { name: "Categories", url: `${SITE_URL}/categories` }
   ]} />
   <CollectionPageSchema
     slot="head"
     name="Categories"
     description={desc}
-    url={`${SITE_URL}/categories/`}
+    url={`${SITE_URL}/categories`}
   />
   <section>
     <h1>{title}</h1>
-    <a class="u-url" href={`${SITE_URL}/categories/`} hidden>Permalink</a>
+    <a class="u-url" href={`${SITE_URL}/categories`} hidden>Permalink</a>
     <hr />
     <p class="back">
-      <a href="/blog/" rel="prefetch-intent">↩ All posts</a>
-      <a href="/blog/years/" rel="prefetch-intent" data-umami-event="blog-years">Posts by year ↪</a>
+      <a href="/blog" rel="prefetch-intent">↩ All posts</a>
+      <a href="/blog/years" rel="prefetch-intent" data-umami-event="blog-years">Posts by year ↪</a>
     </p>
     <p>
       Click on categories below to see blog posts about that subject.

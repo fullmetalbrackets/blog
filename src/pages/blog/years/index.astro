@@ -66,18 +66,19 @@ const years = Object.keys(postsByYear)
 
 <BaseLayout title={title} description={desc}>
   <BreadcrumbSchema slot="head" crumbs={[
-    { name: "Home", url: `${SITE_URL}/` },
-    { name: "Blog", url: `${SITE_URL}/blog/` },
-    { name: "Posts by Year", url: `${SITE_URL}/blog/years/` }
+    { name: "Home", url: `${SITE_URL}` },
+    { name: "Blog", url: `${SITE_URL}/blog` },
+    { name: "Posts by Year", url: `${SITE_URL}/blog/years` }
   ]} />
   <CollectionPageSchema
     slot="head"
     name={title}
     description={desc}
-    url={`${SITE_URL}/blog/years/`}
+    url={`${SITE_URL}/blog/years`}
   />
   <section>
     <h1>{title}</h1>
+    <a class="u-url" href={`${SITE_URL}/blog/years`} hidden>Permalink</a>
     <hr />
     <p class="back">
       <a href="/blog/" rel="prefetch-intent">↩ All posts</a>

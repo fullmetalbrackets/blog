@@ -16,8 +16,8 @@ const lastUpdated = new Date('2026-04-11T12:00');
 
 <BaseLayout title={title} description={desc}>
   <BreadcrumbSchema slot="head" crumbs={[
-    { name: "Home", url: `${SITE_URL}/` },
-    { name: "Uses", url: `${SITE_URL}/uses/` }
+    { name: "Home", url: `${SITE_URL}` },
+    { name: "Uses", url: `${SITE_URL}/uses` }
   ]} />
   <Fragment slot="head" set:html={`<script type="application/ld+json">${JSON.stringify({
     "@context": "https://schema.org",
@@ -25,7 +25,7 @@ const lastUpdated = new Date('2026-04-11T12:00');
     "@id": `${SITE_URL}/uses/#aboutpage`,
     "name": title,
     "description": desc,
-    "url": `${SITE_URL}/uses/`,
+    "url": `${SITE_URL}/uses`,
     "inLanguage": "en-US",
     "dateModified": lastUpdated.toISOString(),
     "author": {
@@ -34,7 +34,7 @@ const lastUpdated = new Date('2026-04-11T12:00');
   })}</script>`} />
   <section data-pagefind-body>
     <h1 class="p-name">Links</h1>
-    <a class="u-url" href={`${SITE_URL}/uses/`} hidden>Permalink</a>
+    <a class="u-url" href={`${SITE_URL}/uses`} hidden>Permalink</a>
     <hr />
     <p>
       {desc} I'm constantly adding to this as I find new things I consider worth sharing!

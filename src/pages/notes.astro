@@ -18,10 +18,11 @@ const entries = await getSortedNotes();
     slot="head"
     name={title}
     description={desc}
-    url={`${SITE_URL}/notes/`}
+    url={`${SITE_URL}/notes`}
   />
   <section class="h-feed">
     <h1 class="p-name">{title}</h1>
+    <a class="u-url" href={`https://fullmetalbrackets.com/notes`} hidden>Permalink</a>
     <hr />
     <p class="desc">
       Syndicated feed from my microblog at <a href="https://ariel.lol/">ariel.lol</a>

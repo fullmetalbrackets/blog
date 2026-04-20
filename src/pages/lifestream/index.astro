@@ -46,18 +46,18 @@ const desc = "All the media I've played, read, and watched. And what I thought o
 
 <BaseLayout title={title} description={desc}>
   <BreadcrumbSchema slot="head" crumbs={[
-    { name: "Home", url: `${SITE_URL}/` },
-    { name: "Lifestream", url: `${SITE_URL}/lifestream/` }
+    { name: "Home", url: `${SITE_URL}` },
+    { name: "Lifestream", url: `${SITE_URL}/lifestream` }
   ]} />
   <CollectionPageSchema
     slot="head"
     name={title}
     description={desc}
-    url={`${SITE_URL}/lifestream/`}
+    url={`${SITE_URL}/lifestream`}
   />
   <section class="h-feed">
     <h1 class="p-name">{title}</h1>
-    <a class="u-url" href="/lifestream/" hidden>Permalink</a>
+    <a class="u-url" href="/lifestream" hidden>Permalink</a>
     <hr />
     <p class="desc">
       {desc}

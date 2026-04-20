@@ -68,7 +68,7 @@ const ratingMap: Record<string, number> = {
   masterpiece: 5,
 };
 
-const entryUrl = `${SITE_URL}/lifestream/${entry.id}/`;
+const entryUrl = `${SITE_URL}/lifestream/${entry.id}`;
 
 const schema = {
   "@context": "https://schema.org",
@@ -97,8 +97,9 @@ const schema = {
 <BaseLayout title={data.title} description={`${typeName[data.type]} — ${vibe.label}`} disableHeadingLinks={true}>
   <Fragment slot="head" set:html={`<script type="application/ld+json">${JSON.stringify(schema)}</script>`} />
   <div class="entry-page">
+    <a class="u-url" href={`${SITE_URL}/lifestream/${entry.id}`} hidden>Permalink</a>
 
-    <a href="/lifestream/" class="back" rel="prefetch-intent">
+    <a href="/lifestream" class="back" rel="prefetch-intent">
       <LeftArrow height={24} width={24} class="ring-arrow" />
       Back to Lifestream
     </a>

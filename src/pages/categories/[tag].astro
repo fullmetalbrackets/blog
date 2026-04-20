@@ -154,15 +154,15 @@ const desc = `A collection of posts about ${tagTitle} on ${SITE_TITLE}.`
 
 <BaseLayout title={`Posts about ${tagTitle}`} description={desc}>
   <BreadcrumbSchema slot="head" crumbs={[
-    { name: "Home", url: `${SITE_URL}/` },
-    { name: "Categories", url: `${SITE_URL}/categories/` },
-    { name: tagTitle, url: `${SITE_URL}/categories/${tag}/` }
+    { name: "Home", url: `${SITE_URL}` },
+    { name: "Categories", url: `${SITE_URL}/categories` },
+    { name: tagTitle, url: `${SITE_URL}/categories/${tag}` }
   ]} />
   <CollectionPageSchema
     slot="head"
     name={`Posts about ${tagTitle}`}
     description={desc}
-    url={`${SITE_URL}/categories/${tag}/`}
+    url={`${SITE_URL}/categories/${tag}`}
     about={tag}
   />
   <section class="h-feed">
@@ -170,8 +170,8 @@ const desc = `A collection of posts about ${tagTitle} on ${SITE_TITLE}.`
     <a class="u-url" href={`${SITE_URL}/categories/${tagTitle}`} hidden>Permalink</a>
     <hr />
     <p class="back">
-      <a href="/categories/" rel="prefetch-intent">↩ Categories</a>
-      <a href="/blog/" rel="prefetch-intent">All posts ↪</a>
+      <a href="/categories" rel="prefetch-intent">↩ Categories</a>
+      <a href="/blog" rel="prefetch-intent">All posts ↪</a>
     </p>
     <p class="years">
       Alternately, see posts by year:&nbsp;

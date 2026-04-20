@@ -15,18 +15,18 @@ const desc = "Articles, blog posts and other writings that I came across and tho
 
 <BaseLayout title={title} description={desc}>
   <BreadcrumbSchema slot="head" crumbs={[
-    { name: "Home", url: `${SITE_URL}/` },
-    { name: "Postroll", url: `${SITE_URL}/postroll/` }
+    { name: "Home", url: `${SITE_URL}` },
+    { name: "Postroll", url: `${SITE_URL}/postroll` }
   ]} />
   <CollectionPageSchema
     slot="head"
     name={title}
     description={desc}
-    url={`${SITE_URL}/postroll/`}
+    url={`${SITE_URL}/postroll`}
   />
   <section class="h-feed" data-pagefind-body>
     <h1 class="p-name">{title}</h1>
-    <a class="u-url" href={`${SITE_URL}/postroll/`} hidden>Permapost</a>
+    <a class="u-url" href={`${SITE_URL}/postroll`} hidden>Permapost</a>
     <hr />
     <p>
       {desc} <i>(All links are external and open in new tab.)</i>

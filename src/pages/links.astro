@@ -120,17 +120,17 @@ const desc = "Links to websites, self-hosted apps and other cool online things t
 </style>
 <BaseLayout title={title} description={desc}>
   <BreadcrumbSchema slot="head" crumbs={[
-    { name: "Home", url: `${SITE_URL}/` },
-    { name: "Links", url: `${SITE_URL}/links/` }
+    { name: "Home", url: `${SITE_URL}` },
+    { name: "Links", url: `${SITE_URL}/links` }
   ]} />
   <CollectionPageSchema
     name={title}
     description={desc}
-    url={`${SITE_URL}/links/`}
+    url={`${SITE_URL}/links`}
   />
   <section class="h-feed" data-pagefind-body>
     <h1 class="p-name">Links</h1>
-    <a class="u-url" href={`${SITE_URL}/links/`} hidden>Permalink</a>
+    <a class="u-url" href={`${SITE_URL}/links`} hidden>Permalink</a>
     <hr />
     <p>
       {desc} I'm constantly adding to this as I find new things I consider worth sharing! <i>(All links are external and open in new tab.)</i>

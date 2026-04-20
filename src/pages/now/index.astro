@@ -23,8 +23,8 @@ const desc = "What I've been up to lately and what's on my mind. Updated monthly
 <BaseLayout title={title} description={desc} entry={latest}>
   <link slot="head" rel="canonical" href={new URL('/now', Astro.site).toString()} />
   <BreadcrumbSchema slot="head" crumbs={[
-    { name: "Home", url: `${SITE_URL}/` },
-    { name: "Now", url: `${SITE_URL}/now/` }
+    { name: "Home", url: `${SITE_URL}` },
+    { name: "Now", url: `${SITE_URL}/now` }
   ]} />
   <Fragment slot="head" set:html={`<script type="application/ld+json">${JSON.stringify({
     "@context": "https://schema.org",
@@ -32,7 +32,7 @@ const desc = "What I've been up to lately and what's on my mind. Updated monthly
     "@id": `${SITE_URL}/now/#aboutpage`,
     "name": title,
     "description": desc,
-    "url": `${SITE_URL}/now/`,
+    "url": `${SITE_URL}/now`,
     "inLanguage": "en-US",
     "dateModified": latest.data.pubDate.toISOString(),
     "author": {
@@ -41,6 +41,7 @@ const desc = "What I've been up to lately and what's on my mind. Updated monthly
   })}</script>`} />
   <section data-pagefind-ignore>
     <h1>{title}</h1>
+    <a class="u-url" href={`${SITE_URL}/now`} hidden>Permalink</a>
     <hr />
     <p class="desc">
       {desc}

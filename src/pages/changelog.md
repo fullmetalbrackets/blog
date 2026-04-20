@@ -4,6 +4,8 @@ title: Changelog
 description: A log of major changes made to fullmetalbrackets.com
 ---
 
+<a class="u-url" href="https://fullmetalbrackets.com/changelog" hidden>Permalink</a>
+
 A log of major changes made to my site over the years. For more granular details, [see the GitHub repo](https://github.com/fullmetalbrackets/blog/commits/main/).
 
 <h2 class="flex">2026-03-29&nbsp;<span class="latest">latest</span></h2>

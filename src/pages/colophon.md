@@ -4,6 +4,8 @@ title: Colophon
 description: How fullmetalbrackets.com is made, with what tools, supporting what technologies, etc.
 ---
 
+<a class="u-url" href="https://fullmetalbrackets.com/colophon" hidden>Permalink</a>
+
 How this site is made, with what tools, supporting what technologies, etc.
 
 ## Site and Webhost
