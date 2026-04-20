@@ -1,16 +1,16 @@
 User-agent: *
 Allow: /
 
-Disallow: /search/
-Disallow: /404/
-Disallow: /feedback/
-Disallow: /thanks/
-Disallow: /bsky/
-Disallow: /social/
-Disallow: /feed/
-Disallow: /umami/
-Disallow: /github/
-Disallow: /donate/
+Disallow: /search
+Disallow: /404
+Disallow: /feedback
+Disallow: /thanks
+Disallow: /bsky
+Disallow: /social
+Disallow: /feed
+Disallow: /umami
+Disallow: /github
+Disallow: /donate
 Disallow: /cdn-cgi/
 
 # AI crawlers: use JSON API at /api/posts/{slug}
@@ -27,6 +27,9 @@ Disallow: /blog/
 
 # Anthropic
 User-agent: ClaudeBot
+Disallow: /blog/
+
+‍User-agent: Claude-Web
 Disallow: /blog/
 
 User-agent: anthropic-ai
@@ -47,22 +50,28 @@ Disallow: /blog/
 User-agent: meta-externalagent
 Disallow: /blog/
 
-User-agent: FacebookBot
-Disallow: /blog/
-
-# Microsoft
-User-agent: bingbot
-Disallow: /blog/
-
 # Apple
-User-agent: Applebot
-Disallow: /blog/
-
 User-agent: Applebot-Extended
 Disallow: /blog/
 
 # xAI
 User-agent: Grok
+Disallow: /blog/
+
+# Others
+User-agent: Omgilibot
+Disallow: /blog/
+
+User-agent: Omgili
+Disallow: /blog/
+
+User-agent: YouBot
+Disallow: /blog/
+
+User-agent: Diffbot
+Disallow: /blog/
+
+User-agent: ImagesiftBot
 Disallow: /blog/
 
 # Amazon
