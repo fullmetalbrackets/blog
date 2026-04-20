@@ -7,6 +7,7 @@ import FormattedDate from "@components/FormattedDate.astro";
 import ReadingTime from "@components/ReadingTime.astro";
 import BackToTop from "@components/BackToTop.astro";
 import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
+import CollectionPageSchema from "@components/CollectionPageSchema.astro";
 import { SITE_TITLE, SITE_URL } from "@consts";
 import type { BlogPageProps } from '../../types';
 import type { PaginateFunction } from 'astro';
@@ -214,6 +215,12 @@ const desc = "Archive of blog posts.";
     { name: "Home", url: `${SITE_URL}/` },
     { name: "Blog", url: `${SITE_URL}/blog/` }
   ]} />
+  <CollectionPageSchema
+    slot="head"
+    name={title}
+    description={desc}
+    url={`${SITE_URL}/blog/`}
+  />
   <section class="h-feed">
     <h1 class="p-name">Blog</h1>
     <a class="u-url" href={`${SITE_URL}/blog/`} hidden>Permalink</a>

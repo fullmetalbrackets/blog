@@ -1,6 +1,8 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 import BackToTop from "@components/BackToTop.astro";
+import CollectionPageSchema from "@components/CollectionPageSchema.astro";
+import { SITE_URL } from "@consts";
 import { getEntry } from 'astro:content';
 import Switch2 from '@img/games/switch2.svg';
 import Switch from '@img/games/switch.svg';
@@ -45,9 +47,28 @@ const platformIcons: Record<string, { component: any; class?: string }> = {
 
 const title = "Games";
 const desc = "List of all video games I own by platform.";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": `${SITE_URL}/games/#collection`,
+  "name": "Games",
+  "description": desc,
+  "url": `${SITE_URL}/games/`,
+  "inLanguage": "en-US",
+  "author": {
+    "@id": `${SITE_URL}/#person`
+  }
+};
 ---
 <BaseLayout title={title} description={desc}>
-<section>
+  <CollectionPageSchema
+    slot="head"
+    name={title}
+    description={desc}
+    url={`${SITE_URL}/games/`}
+  />
+  <section>
   <h1>{title}</h1>
   <hr />
   <p>{desc}</p>

@@ -4,6 +4,7 @@ import { getCollection } from "astro:content";
 import FormattedDate from "@components/FormattedDate.astro";
 import BackToTop from "@components/BackToTop.astro";
 import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
+import CollectionPageSchema from "@components/CollectionPageSchema.astro";
 import { SITE_URL } from "@consts";
 
 const posts = (await getCollection("wiki")).sort((a, b) => {
@@ -85,6 +86,12 @@ const desc = "Archive of wiki articles.";
     { name: "Home", url: `${SITE_URL}/` },
     { name: "Wiki", url: `${SITE_URL}/wiki/` }
   ]} />
+  <CollectionPageSchema
+    slot="head"
+    name={title}
+    description={desc}
+    url={`${SITE_URL}/wiki/`}
+  />
   <section>
     <h1>{title}</h1>
     <hr />

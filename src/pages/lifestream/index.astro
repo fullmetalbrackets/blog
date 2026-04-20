@@ -8,6 +8,7 @@ import BookIcon from '@icons/book.svg';
 import MovieIcon from '@icons/movie.svg';
 import TVShowIcon from '@icons/tvshow.svg';
 import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
+import CollectionPageSchema from '@components/CollectionPageSchema.astro';
 import BackToTop from "@components/BackToTop.astro";
 import { SITE_URL } from "@consts";
 
@@ -48,6 +49,12 @@ const desc = "All the media I've played, read, and watched. And what I thought o
     { name: "Home", url: `${SITE_URL}/` },
     { name: "Lifestream", url: `${SITE_URL}/lifestream/` }
   ]} />
+  <CollectionPageSchema
+    slot="head"
+    name={title}
+    description={desc}
+    url={`${SITE_URL}/lifestream/`}
+  />
   <section class="h-feed">
     <h1 class="p-name">{title}</h1>
     <a class="u-url" href="/lifestream/" hidden>Permalink</a>
@@ -99,7 +106,7 @@ const desc = "All the media I've played, read, and watched. And what I thought o
     <div class="ls-grid">
       {entries.map((entry, i) => (
         <a class="card h-entry"
-          href={`/lifestream/${entry.id}`}
+          href={`/lifestream/${entry.id}?from=lifestream`}
           data-type={entry.data.type}
           data-year={(entry.data.updatedDate ?? entry.data.pubDate).getFullYear()}
           rel="prefetch-intent"

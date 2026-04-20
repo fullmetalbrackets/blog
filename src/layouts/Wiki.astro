@@ -225,7 +225,7 @@ const selectedPosts = await getRelatedPosts(related ?? []);
     { name: "Wiki", url: `${ SITE_URL }/wiki/` },
     { name: title, url: `${ SITE_URL }/wiki/${slug}/` }
   ]} />
-  <WikiArticle slot="head" title={title} description={description} />
+  <WikiArticle slot="head" title={title} description={description} slug={slug!} />
   <ScrollProgress />
   <CodeblockCopy />
   <HeadingCopy />

@@ -4,6 +4,7 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import FormattedDate from "@components/FormattedDate.astro";
 import { getSortedPostroll } from "@utils/collections";
 import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
+import CollectionPageSchema from "@components/CollectionPageSchema.astro";
 import { SITE_URL } from "@consts";
 import { Image } from 'astro:assets';
 
@@ -17,6 +18,12 @@ const desc = "Articles, blog posts and other writings that I came across and tho
     { name: "Home", url: `${SITE_URL}/` },
     { name: "Postroll", url: `${SITE_URL}/postroll/` }
   ]} />
+  <CollectionPageSchema
+    slot="head"
+    name={title}
+    description={desc}
+    url={`${SITE_URL}/postroll/`}
+  />
   <section class="h-feed" data-pagefind-body>
     <h1 class="p-name">{title}</h1>
     <a class="u-url" href={`${SITE_URL}/postroll/`} hidden>Permapost</a>

@@ -2,6 +2,8 @@
 export const prerender = true;
  
 import BaseLayout from '@layouts/BaseLayout.astro';
+import CollectionPageSchema from '@components/CollectionPageSchema.astro';
+import { SITE_URL } from '@consts';
 import { getSortedNotes } from "@utils/collections";
 import { YouTube } from 'astro-embed';
  
@@ -12,6 +14,12 @@ const entries = await getSortedNotes();
 ---
  
 <BaseLayout title={title} description={desc}>
+  <CollectionPageSchema
+    slot="head"
+    name={title}
+    description={desc}
+    url={`${SITE_URL}/notes/`}
+  />
   <section class="h-feed">
     <h1 class="p-name">{title}</h1>
     <hr />

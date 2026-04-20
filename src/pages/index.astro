@@ -8,6 +8,8 @@ import RecentPosts from "@components/RecentPosts.astro";
 import RecentNotes from "@components/RecentNotes.astro";
 import RecentLinks from "@components/RecentLinks.astro";
 import RecentLifestream from "@components/RecentLifestream.astro";
+import ProfilePageSchema from "@components/ProfilePageSchema.astro";
+import WebsiteSchema from "@components/WebsiteSchema.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "@consts";
 ---
 
@@ -51,6 +53,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "@consts";
 </style>
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <ProfilePageSchema slot="head" />
   <section class="intro">
     <p class="h-card">
       <HCard visible />

@@ -7,6 +7,7 @@ import ReadingTime from "@components/ReadingTime.astro";
 import Link from "@components/Link.astro";
 import BackToTop from "@components/BackToTop.astro";
 import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
+import CollectionPageSchema from "@components/CollectionPageSchema.astro";
 import { getPostsWithReadingTime } from "@utils/collections";
 import type { BlogYearProps } from '../../../types';
 import { SITE_URL } from "@consts";
@@ -41,6 +42,13 @@ const desc = `Blog posts written in ${year}.`;
     { name: "Blog", url: `${SITE_URL}/blog/` },
     { name: year, url: `${SITE_URL}/blog/years/${year}/` }
   ]} />
+  <CollectionPageSchema
+    slot="head"
+    name={title}
+    description={desc}
+    url={`${SITE_URL}/blog/years/${year}/`}
+    about={year.toString()}
+  />
   <section class="h-feed">
     <h1 class="p-name">{title}</h1>
     <hr />

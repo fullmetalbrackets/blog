@@ -4,6 +4,7 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import FormattedDate from "@components/FormattedDate.astro";
 import { getSortedLinks } from "@utils/collections";
 import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
+import CollectionPageSchema from "@components/CollectionPageSchema.astro";
 import { SITE_URL } from "@consts";
 
 const links = await getSortedLinks();
@@ -122,6 +123,11 @@ const desc = "Links to websites, self-hosted apps and other cool online things t
     { name: "Home", url: `${SITE_URL}/` },
     { name: "Links", url: `${SITE_URL}/links/` }
   ]} />
+  <CollectionPageSchema
+    name={title}
+    description={desc}
+    url={`${SITE_URL}/links/`}
+  />
   <section class="h-feed" data-pagefind-body>
     <h1 class="p-name">Links</h1>
     <a class="u-url" href={`${SITE_URL}/links/`} hidden>Permalink</a>

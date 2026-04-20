@@ -2,6 +2,7 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import { getSortedPosts } from "@utils/collections";
 import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
+import CollectionPageSchema from "@components/CollectionPageSchema.astro";
 import { SITE_URL } from "@consts";
 
 const title = "Blog posts by year";
@@ -69,6 +70,12 @@ const years = Object.keys(postsByYear)
     { name: "Blog", url: `${SITE_URL}/blog/` },
     { name: "Posts by Year", url: `${SITE_URL}/blog/years/` }
   ]} />
+  <CollectionPageSchema
+    slot="head"
+    name={title}
+    description={desc}
+    url={`${SITE_URL}/blog/years/`}
+  />
   <section>
     <h1>{title}</h1>
     <hr />

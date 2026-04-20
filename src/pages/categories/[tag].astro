@@ -7,7 +7,8 @@ import FormattedDate from "@components/FormattedDate.astro";
 import ReadingTime from "@components/ReadingTime.astro";
 import BackToTop from "@components/BackToTop.astro";
 import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
-import { SITE_URL } from "@consts";
+import CollectionPageSchema from "@components/CollectionPageSchema.astro";
+import { SITE_URL, SITE_TITLE } from "@consts";
 import type { BlogTagProps } from '../../types';
 
 export async function getStaticPaths() {
@@ -31,6 +32,7 @@ export async function getStaticPaths() {
 type Props = BlogTagProps;
 const { tag, posts } = Astro.props;
 const tagTitle = tag.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+const desc = `A collection of posts about ${tagTitle} on ${SITE_TITLE}.`
 ---
 
 
@@ -150,12 +152,19 @@ const tagTitle = tag.split(' ').map(word => word.charAt(0).toUpperCase() + word.
   }
 </style>
 
-<BaseLayout title={`Posts about ${tagTitle}`}>
+<BaseLayout title={`Posts about ${tagTitle}`} description={desc}>
   <BreadcrumbSchema slot="head" crumbs={[
     { name: "Home", url: `${SITE_URL}/` },
     { name: "Categories", url: `${SITE_URL}/categories/` },
     { name: tagTitle, url: `${SITE_URL}/categories/${tag}/` }
   ]} />
+  <CollectionPageSchema
+    slot="head"
+    name={`Posts about ${tagTitle}`}
+    description={desc}
+    url={`${SITE_URL}/categories/${tag}/`}
+    about={tag}
+  />
   <section class="h-feed">
     <h1 class="p-name">Posts about <span class="tag">{`${tagTitle}`}</span></h1>
     <a class="u-url" href={`${SITE_URL}/categories/${tagTitle}`} hidden>Permalink</a>

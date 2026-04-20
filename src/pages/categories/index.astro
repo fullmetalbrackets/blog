@@ -2,11 +2,12 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import { getSortedTags } from '@utils/collections';
 import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
+import CollectionPageSchema from "@components/CollectionPageSchema.astro";
 import { SITE_URL } from "@consts";
 
 const tags = await getSortedTags();
 const title = "Categories";
-const desc = "Blog posts by category.";
+const desc = "Browse all post categories on ${SITE_TITLE}.";
 ---
 
 <style scoped>
@@ -71,6 +72,12 @@ const desc = "Blog posts by category.";
     { name: "Home", url: `${SITE_URL}/` },
     { name: "Categories", url: `${SITE_URL}/categories/` }
   ]} />
+  <CollectionPageSchema
+    slot="head"
+    name="Categories"
+    description={desc}
+    url={`${SITE_URL}/categories/`}
+  />
   <section>
     <h1>{title}</h1>
     <a class="u-url" href={`${SITE_URL}/categories/`} hidden>Permalink</a>

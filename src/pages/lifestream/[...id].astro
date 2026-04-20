@@ -10,6 +10,7 @@ import BookIcon   from '@icons/book.svg';
 import MovieIcon  from '@icons/movie.svg';
 import TVShowIcon from '@icons/tvshow.svg';
 import LeftArrow from '@icons/arrow-left.svg';
+import { SITE_URL } from "@consts";
 
 export async function getStaticPaths() {
   const entries = await getCollection('lifestream');
@@ -33,6 +34,7 @@ export async function getStaticPaths() {
 const { entry, prev, next } = Astro.props;
 const { Content } = await render(entry);
 const { data } = entry;
+const from = undefined;
 
 const vibes = {
   hated:       { label: 'Hated',       emoji: '💩', color: '#e05252' },
@@ -50,12 +52,68 @@ const typeName: Record<string, string> = {
   movie:  'Movie',
   tvshow: 'TV Show',
 };
+
+const schemaTypeMap: Record<string, string> = {
+  game:   'VideoGame',
+  book:   'Book',
+  movie:  'Movie',
+  tvshow: 'TVSeries',
+};
+
+const ratingMap: Record<string, number> = {
+  hated:       1,
+  disliked:    2,
+  liked:       3,
+  loved:       4,
+  masterpiece: 5,
+};
+
+const entryUrl = `${SITE_URL}/lifestream/${entry.id}/`;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Review",
+  "@id": `${entryUrl}#review`,
+  "url": entryUrl,
+  "inLanguage": "en-US",
+  "datePublished": (data.updatedDate ?? data.pubDate).toISOString(),
+  "author": {
+    "@id": `${SITE_URL}/#person`
+  },
+  "reviewRating": {
+    "@type": "Rating",
+    "ratingValue": ratingMap[data.rating],
+    "bestRating": 5,
+    "worstRating": 1
+  },
+  "itemReviewed": {
+    "@type": schemaTypeMap[data.type],
+    "name": data.title,
+    ...(data.image && { "image": data.image.src })
+  }
+};
 ---
 
 <BaseLayout title={data.title} description={`${typeName[data.type]} — ${vibe.label}`} disableHeadingLinks={true}>
+  <Fragment slot="head" set:html={`<script type="application/ld+json">${JSON.stringify(schema)}</script>`} />
   <div class="entry-page">
 
-    <a href="#" onclick="!history.length?location.href='/lifestream/':history.back()" class="back" rel="prefetch-intent"><LeftArrow height={24} width={24} class="ring-arrow" />Back to Lifestream</a>
+    <a href="/lifestream/" class="back" rel="prefetch-intent">
+      <LeftArrow height={24} width={24} class="ring-arrow" />
+      Back to Lifestream
+    </a>
+
+    <script>
+      const searchParams = new URLSearchParams(window.location.search);
+      const from = searchParams.get('from');
+      
+      document.querySelector('.back')?.addEventListener('click', (e) => {
+        if (from === 'lifestream') {
+          e.preventDefault();
+          history.back();
+        }
+      });
+    </script>
 
     <div class="entry h-entry">
 

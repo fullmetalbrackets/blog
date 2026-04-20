@@ -14,6 +14,21 @@ const crumbs = [
   { name: "Home", url: `${SITE_URL}/` },
   { name: frontmatter.title, url: `${SITE_URL}${currentPath}` }
 ];
+
+const schemaType = frontmatter.schemaType ?? "WebPage";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": schemaType,
+  "@id": `${SITE_URL}${currentPath}#page`,
+  "name": frontmatter.title,
+  "description": frontmatter.description,
+  "url": `${SITE_URL}${currentPath}`,
+  "inLanguage": "en-US",
+  "author": {
+    "@id": `${SITE_URL}/#person`
+  }
+};
 ---
 
 <style scoped>
@@ -49,6 +64,7 @@ const crumbs = [
 
 <BaseLayout title={frontmatter.title} description={frontmatter.description}>
   <BreadcrumbSchema slot="head" crumbs={crumbs} />
+  <Fragment slot="head" set:html={`<script type="application/ld+json">${JSON.stringify(schema)}</script>`} />
   <link rel="stylesheet" href="/prism.css" slot="head" />
   <CodeblockCopy />
   <article data-pagefind-body>

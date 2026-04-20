@@ -20,14 +20,10 @@ const schema = {
   "inLanguage": "en-US",
   "image": `${SITE_URL}/og/${slug}.png`,
   "author": {
-    "@type": "Person",
-    "name": "Ariel Diaz",
-    "url": SITE_URL
+    "@id": `${SITE_URL}/#person`
   },
   "publisher": {
-    "@type": "Person",
-    "name": "Ariel Diaz",
-    "url": SITE_URL
+    "@id": `${SITE_URL}/#person`
   },
   "datePublished": pubDate.toISOString(),
   ...(updatedDate && { "dateModified": updatedDate.toISOString() }),

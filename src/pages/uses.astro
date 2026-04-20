@@ -19,6 +19,19 @@ const lastUpdated = new Date('2026-04-11T12:00');
     { name: "Home", url: `${SITE_URL}/` },
     { name: "Uses", url: `${SITE_URL}/uses/` }
   ]} />
+  <Fragment slot="head" set:html={`<script type="application/ld+json">${JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "@id": `${SITE_URL}/uses/#aboutpage`,
+    "name": title,
+    "description": desc,
+    "url": `${SITE_URL}/uses/`,
+    "inLanguage": "en-US",
+    "dateModified": lastUpdated.toISOString(),
+    "author": {
+      "@id": `${SITE_URL}/#person`
+    }
+  })}</script>`} />
   <section data-pagefind-body>
     <h1 class="p-name">Links</h1>
     <a class="u-url" href={`${SITE_URL}/uses/`} hidden>Permalink</a>

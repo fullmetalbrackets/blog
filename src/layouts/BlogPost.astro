@@ -488,6 +488,7 @@ const selectedPosts = await getRelatedPosts(related ?? []);
     { name: title, url: `${ SITE_URL }/blog/${slug}/` }
   ]} />
   <HowToSchema 
+    slot="head"
     title={title}
     description={description}
     slug={slug!}

@@ -26,6 +26,19 @@ const desc = "What I've been up to lately and what's on my mind. Updated monthly
     { name: "Home", url: `${SITE_URL}/` },
     { name: "Now", url: `${SITE_URL}/now/` }
   ]} />
+  <Fragment slot="head" set:html={`<script type="application/ld+json">${JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "@id": `${SITE_URL}/now/#aboutpage`,
+    "name": title,
+    "description": desc,
+    "url": `${SITE_URL}/now/`,
+    "inLanguage": "en-US",
+    "dateModified": latest.data.pubDate.toISOString(),
+    "author": {
+      "@id": `${SITE_URL}/#person`
+    }
+  })}</script>`} />
   <section data-pagefind-ignore>
     <h1>{title}</h1>
     <hr />
