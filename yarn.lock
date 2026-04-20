@@ -2236,16 +2236,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"astro-og-canvas@npm:^0.11.0":
-  version: 0.11.0
-  resolution: "astro-og-canvas@npm:0.11.0"
+"astro-og-canvas@npm:^0.11.1":
+  version: 0.11.1
+  resolution: "astro-og-canvas@npm:0.11.1"
   dependencies:
-    canvaskit-wasm: "npm:^0.41.0"
+    canvaskit-wasm: "npm:^0.41.1"
     deterministic-object-hash: "npm:^2.0.2"
     entities: "npm:^8.0.0"
   peerDependencies:
     astro: ^5.0.0 || ^6.0.0-alpha
-  checksum: 10c0/c5f759e411ef3d3cc85c15ba25a46647d92eb58e7e6fd58f206f20a49bfb9c4b1bb501ec7e11acf2bb695639ad1af41ca971203f2076e6cdb25f55bb1280d1c8
+  checksum: 10c0/27a5b5683f9f1a32d2acbcf309c98473f043cbc7a62b12d9ad26e4fa13f9e06fc59d817d28109e553509a66439c24e6b679640e142188dc32a7c0d57a561e26b
   languageName: node
   linkType: hard
 
@@ -2418,12 +2418,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"canvaskit-wasm@npm:^0.41.0":
-  version: 0.41.0
-  resolution: "canvaskit-wasm@npm:0.41.0"
+"canvaskit-wasm@npm:^0.41.1":
+  version: 0.41.1
+  resolution: "canvaskit-wasm@npm:0.41.1"
   dependencies:
     "@webgpu/types": "npm:0.1.21"
-  checksum: 10c0/a55eb2cb627f2cdf017e05dba794c35225725af13c223c573ffb04f9f783d16e6c80fa0eb21a712c7b0a56f29dc0a693aee1eee61fe75e2b74e821a10236d8ef
+  checksum: 10c0/222c5d79e47219ba63956b4e0bc359cb07cb89cecbe8ea2733ba229128dbffc94e980c0138de41bdaf374277e58cc97a2622ada29b83ab0fa5d38bc60b3c496c
   languageName: node
   linkType: hard
 
@@ -5706,7 +5706,7 @@ __metadata:
     "@astrojs/sitemap": "npm:^3.7.2"
     astro: "npm:^6.1.8"
     astro-embed: "npm:^0.12.0"
-    astro-og-canvas: "npm:^0.11.0"
+    astro-og-canvas: "npm:^0.11.1"
     astro-social-share: "npm:^2.2.0"
     gab-astro-compress: "npm:^0.1.2"
     glightbox: "npm:^3.3.1"
