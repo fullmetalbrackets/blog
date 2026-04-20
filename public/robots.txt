@@ -19,9 +19,6 @@ Disallow: /cdn-cgi/
 User-agent: GPTBot
 Disallow: /blog/
 
-User-agent: OAI-SearchBot
-Disallow: /blog/
-
 User-agent: ChatGPT-User
 Disallow: /blog/
 
