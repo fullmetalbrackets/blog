@@ -8,11 +8,11 @@ const { title, description, pubDate, updatedDate, tags, slug } = Astro.props;
 const schema = {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "@id": `${SITE_URL}/blog/${slug}/`,
-  "url": `${SITE_URL}/blog/${slug}/`,
+  "@id": `${SITE_URL}/blog/${slug}/#blogposting`,
+  "url": `${SITE_URL}/blog/${slug}`,
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": `${SITE_URL}/blog/${slug}/`
+    "@id": `${SITE_URL}/blog/${slug}`
   },
   "headline": title,
   "description": description,
