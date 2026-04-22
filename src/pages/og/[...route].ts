@@ -26,7 +26,7 @@ export const { getStaticPaths, GET } = await OGImageRoute({
 				families: ['AtkinsonHyperlegibleNext'],
 				weight: 'ExtraBold',
 				color: [255, 255, 255],
-				size: 52,
+				size: 48,
 				lineHeight: 1.1,
 			},
 			description: {
@@ -34,7 +34,7 @@ export const { getStaticPaths, GET } = await OGImageRoute({
 				weight: 'Normal',
 				color: [164, 174, 188],
 				size: 24,
-				lineHeight: 1.3,
+				lineHeight: 1.6,
 			},
 		},
 		bgGradient: [[32, 33, 36]],
