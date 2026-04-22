@@ -5,6 +5,7 @@ pubDate: 2025-05-21
 updatedDate: 2026-04-21 12:00:00
 tags: ['linux', 'debian', 'command line']
 related: ['remove-casaos-zimaboard-upgrade-debian-12', 'basic-linux-commands']
+howto: true
 ---
 
 ## About upgrading
@@ -66,8 +67,7 @@ sudo apt full-upgrade --autoremove -y
 Once the full upgrade is done, I suggest double-checking that any unused package dependencies are purged and then cleaning out the apt cache:
 
 ```bash
-sudo apt --purge autoremove -y
-sudo apt autoclean
+sudo apt --purge autoremove -y && sudo apt autoclean
 ```
 
 Finally, we need to reboot the machine to complete the upgrade. If using a desktop environment you may find that restarting through the GUI doesn't work, so just use a terminal command to reboot:
