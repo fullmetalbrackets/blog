@@ -3,6 +3,7 @@ type: movie
 pubDate: 2026-01-22
 title: 'South Park: Bigger, Longer & Uncut'
 image: ./_images/south-park-bigger-longer-uncut.webp
+rating: masterpiece
 ---
 
 I've seen this movie many times since I came out in the long, long ago of 1999. Had to do a rewatch after the latest seasons of South Park had so many callbacks to the movie.
