@@ -78,7 +78,10 @@ const schema = {
   "inLanguage": "en-US",
   "datePublished": (data.updatedDate ?? data.pubDate).toISOString(),
   "author": {
-    "@id": `${SITE_URL}/#person`
+    "@type": "Person",
+    "@id": `${SITE_URL}/#person`,
+    "name": "Ariel Diaz",
+    "url": SITE_URL
   },
   "reviewRating": {
     "@type": "Rating",
