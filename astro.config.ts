@@ -102,6 +102,10 @@ export default defineConfig({
 			status: 301,
 			destination: '/blog/youtube-90-second-ads-on-tv-apps',
 		},
+		'/blog/migrate-adguardhome-glinet-flint2-docker-container': {
+			status: 301,
+			destination: '/blog/migrate-adguardhome-glinet-flint2-libre-sweet-potato',
+		},
 	},
 	fonts: [
 		{
