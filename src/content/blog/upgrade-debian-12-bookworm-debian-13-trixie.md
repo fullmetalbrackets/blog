@@ -2,7 +2,7 @@
 title: 'How to upgrade from Debian 12 Bookworm to Debian 13 Trixie'
 description: "My old Dell Optiplex has been a great desktop PC for just minimal interneting and coding. I've been running Debian 12 Bookworm on it since it became available. Now that Debian 13 Trixie is available I upgraded to it, and it was a smooth and painless transition. Here's the process."
 pubDate: 2025-05-21
-updatedDate: 2025-11-06
+updatedDate: 2026-04-21 12:00:00
 tags: ['linux', 'debian', 'command line']
 related: ['remove-casaos-zimaboard-upgrade-debian-12', 'basic-linux-commands']
 ---
@@ -53,13 +53,15 @@ Next we'll fetch from the new repositories and do a _minimal_ upgrade using the 
 sudo apt update && sudo apt upgrade --without-new-pkgs
 ```
 
-This will take a while most likely, so be patient. When it's finally done, it's time to do a full upgrade from Debian 12 Bookworm to Debian 13 Trixie. This will take some time too, so just be aware as you'll want to babysit it to react to any prompts during the upgrade.
+This will take a while most likely, so be patient. During the upgrade you'll most likely get prompts to restart some services, use your arrow keys to select `<Yes>` and hit <kbd>Enter</kbd> to continue past this.
+
+You may also be prompted about configuration files, it's usually best to go with the default choice by hitting <kbd>Enter</kbd>, this will keep your existing configs rather than replacing them. On some systems you may get a message explaining some changes, you can usually exit out of these with <kbd>q</kbd>.
+
+When it's finally done, it's time to do a full upgrade from Debian 12 Bookworm to Debian 13 Trixie. This will take some time too and you'll want to babysit it to react to any prompts during the upgrade.
 
 ```bash
 sudo apt full-upgrade --autoremove -y
 ```
-
-During the upgrade you'll most likely get prompts to restart some services, use your arrow keys to select `<Yes>` and hit <kbd>Enter</kbd> to continue past this. You may also be prompted about configuration files, it's usually best to go with the default choice by hitting <kbd>Enter</kbd>, this will keep your existing configs rather than replacing them.
 
 Once the full upgrade is done, I suggest double-checking that any unused package dependencies are purged and then cleaning out the apt cache:
 
