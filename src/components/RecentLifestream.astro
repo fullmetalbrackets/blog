@@ -20,7 +20,7 @@ const entries = (await getLifestream()).slice(0, limit);
   <h2 class="p-name">Recent Activity</h2>
     <div class="ls-grid">
       {entries.map((entry, i) => (
-        <a class="card h-entry" href={`/lifestream/${entry.id}`} data-type={entry.data.type}>
+        <a class="card h-entry" href={`/lifestream/${entry.id}`} data-type={entry.data.type} data-umami-event={`recent-${entry.id}`}>
           <span class="p-name sr-only">{entry.data.title}</span>
           <Image
             class="u-photo"
