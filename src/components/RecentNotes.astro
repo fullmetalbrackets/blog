@@ -1,6 +1,7 @@
 ---
 import FormattedDate from "./FormattedDate.astro";
 import More from '@icons/arrow-right.svg';
+import { YouTube } from 'astro-embed';
 import { getSortedNotes } from '@utils/collections';
 
 interface Props {
@@ -15,20 +16,44 @@ const recentNotes = (await getSortedNotes()).slice(0, limit);
   <h2 class="p-name">Recent Notes</h2>
   <ul class="container">
     {recentNotes.map((note) => {
+      const ytMatch = note.data.content?.match(
+        /youtube\.com\/watch\?v=([a-zA-Z0-9_-]+)/
+      );
+      const ytId = ytMatch?.[1] ?? null;
+
+      const imageUrl = note.data.image?.url ?? null;
+      const altMatch = note.data.content?.match(/<img[^>]*alt="([^"]*)"[^>]*>/);
+      const imageAlt = altMatch?.[1] ?? '';
+
+      // Strip YouTube anchor links and standalone img tags —
+      // we render both manually below so they're properly sized
       const cleanContent = note.data.content
         ?.replace(/<a[^>]*youtube\.com\/watch[^>]*>.*?<\/a>/g, '')
         ?.replace(/<img[^>]*>/g, '')
         .trim();
+
+      const hasOnlyMedia = !cleanContent && (ytId || imageUrl);
+
       return (
         <li class="h-entry">
           <a
-            class="u-uid u-url"
+            class="u-uid u-url note-link"
             href={note.data.url}
             target="_blank"
             rel="noopener noreferrer"
             data-umami-event="recent-notes"
           >
-            <p class="note-content e-content" set:html={cleanContent} />
+            {ytId && (
+              <div class="note-embed">
+                <YouTube id={ytId} />
+              </div>
+            )}
+            {!ytId && imageUrl && (
+              <img src={imageUrl} alt={imageAlt} class="note-image" />
+            )}
+            {cleanContent && (
+              <p class="note-content e-content" set:html={cleanContent} />
+            )}
             <FormattedDate class="dt-published" date={new Date(note.data.published)} monthFormat="short" />
           </a>
         </li>
@@ -66,7 +91,7 @@ const recentNotes = (await getSortedNotes()).slice(0, limit);
     padding-bottom: 1em;
   }
   li:last-of-type {
-    padding-bottom: 2.6em;
+    padding-bottom: 0;
   }
   li a, li a:visited {
     color: var(--emphasis);
@@ -74,6 +99,29 @@ const recentNotes = (await getSortedNotes()).slice(0, limit);
   li a:hover {
     color: var(--hover);
   }
+
+  /* Images */
+  .note-image {
+    width: 77%;
+    height: auto;
+    display: block;
+    border-radius: 0.375em;
+    margin-bottom: 0.5em;
+  }
+
+  /* YouTube embed wrapper — constrains the lite-youtube web component */
+  .note-embed {
+    width: 100%;
+    border-radius: 0.375em;
+    overflow: hidden;
+    margin-bottom: 0.5em;
+  }
+  .note-embed :global(lite-youtube) {
+    width: 100% !important;
+    max-width: 100% !important;
+    border-radius: 0.375em;
+  }
+
   .more {
     display: flex;
     font-family: var(--sub-font);
