@@ -1,0 +1,115 @@
+---
+import FormattedDate from "@components/FormattedDate.astro";
+import lastPlayed from '@data/last-played.json';
+
+const { title, artist, album, year, albumArt, lastPlayed: playedAt } = lastPlayed;
+
+const playedDate = new Date(playedAt);
+---
+
+<style scoped>
+  section {
+    margin: 0 auto 1em auto;
+    padding: 0;
+  }
+  h2 {
+    margin-bottom: 0.3em;
+    font-family: var(--sub-font);
+    font-weight: 900;
+  }
+  .container {
+    background-color: var(--blockquote);
+    border-radius: 0.5em;
+    margin: 0.5em auto 0 auto;
+    padding: 1.5em;
+  }
+  .track {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1em;
+    padding-bottom: 0.5em;
+    border-bottom: 4px dotted transparent;
+    transition: border-bottom-color 0.25s ease-out;
+  }
+  .art {
+    flex-shrink: 0;
+    width: 100px;
+    height: 100px;
+    border-radius: 0.25em;
+    object-fit: cover;
+    display: block;
+  }
+  .art-placeholder {
+    flex-shrink: 0;
+    width: 100px;
+    height: 100px;
+    border-radius: 0.25em;
+    background: var(--hover);
+    opacity: 0.2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+  }
+  .info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2em;
+    min-width: 0;
+  }
+  .song-title {
+    font-weight: bold;
+    color: var(--emphasis);
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .artist {
+    font-family: var(--sub-font);
+    font-weight: 700;
+    font-size: 0.925em;
+    line-height: 1.2;
+  }
+  .album {
+    font-size: 0.85em;
+    opacity: 0.75;
+    line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  @media screen and (max-width: 667px) {
+    .container {
+      padding: 0.75em 1em;
+    }
+    .art {
+      width: 64px;
+      height: 64px;
+    }
+    .art-placeholder {
+      width: 64px;
+      height: 64px;
+    }
+  }
+</style>
+
+<section>
+  <div id="last-played" />
+  <h2>Last Played</h2>
+  <div class="container">
+    <div class="track">
+      {albumArt
+        ? <img class="art" src={albumArt} alt={`${album} cover`} width="72" height="72" loading="lazy" />
+        : <div class="art-placeholder" aria-hidden="true">♪</div>
+      }
+      <div class="info">
+        <span class="song-title">{title}</span>
+        <span class="artist">{artist}</span>
+        <span class="album">{album}{year ? ` (${year})` : ''}</span>
+        <FormattedDate date={playedDate} class="meta" />
+      </div>
+    </div>
+  </div>
+</section>

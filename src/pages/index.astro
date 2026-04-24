@@ -8,6 +8,7 @@ import RecentPosts from "@components/RecentPosts.astro";
 import RecentNotes from "@components/RecentNotes.astro";
 import RecentLinks from "@components/RecentLinks.astro";
 import RecentLifestream from "@components/RecentLifestream.astro";
+import LastPlayed from "@components/LastPlayed.astro";
 import ProfilePageSchema from "@components/ProfilePageSchema.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "@consts";
 ---
@@ -78,6 +79,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "@consts";
         <RecentNotes />
       </PostsColumns>
     </div>
+    <LastPlayed />
     <RecentLifestream />
   </section>
 </BaseLayout>

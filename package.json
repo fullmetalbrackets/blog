@@ -21,7 +21,8 @@
 		"postroll": "node scripts/postroll.mjs",
 		"links": "node scripts/link.mjs",
 		"wiki": "node scripts/wiki.mjs",
-		"mogrify": "node scripts/mogrify.mjs"
+		"mogrify": "node scripts/mogrify.mjs",
+		"music": "node --env-file=.env scripts/last-played.mjs"
 	},
 	"dependencies": {
 		"@ascorbic/feed-loader": "^2.0.1",
