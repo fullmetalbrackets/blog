@@ -7,7 +7,7 @@ image: ./_images/mission-impossible-fallout.jpg
 rating: loved
 ---
 
-Great movie, up there with Rogue Nation as the best of the series.
+Possibly the best Mission Impossible movie? It's between this and Rogue Nation, but that one doesn't have Henry Cavill's mustache so it loses a few points.
 
 ## Previously Watched
 

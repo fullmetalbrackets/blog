@@ -7,6 +7,8 @@ image: ./_images/mission-impossible-dead-reckoning.jpg
 rating: loved
 ---
 
+The AI big bad is ripped from the headlines, but it's still great.
+
 ## Previously Watched
 
 - 2/23/2025

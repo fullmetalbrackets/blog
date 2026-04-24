@@ -7,7 +7,7 @@ image: ./_images/mission-impossible-rogue-nation.jpg
 rating: loved
 ---
 
-Possible the best Mission Impossible movie? It's between this and Fallout.
+Great movie, up there with Fallout as the best of the series.
 
 ## Previously Watched
 
