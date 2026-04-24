@@ -9,7 +9,7 @@ const playedDate = new Date(playedAt);
 
 <style scoped>
   section {
-    margin: 1.25em auto 1em auto;
+    margin: 1.25em auto 0.25em auto;
     padding: 0;
   }
   h2 {
@@ -42,8 +42,8 @@ const playedDate = new Date(playedAt);
   }
   .art-placeholder {
     flex-shrink: 0;
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     border-radius: 0.25em;
     background: var(--border);
     opacity: 0.2;
@@ -83,16 +83,20 @@ const playedDate = new Date(playedAt);
     font-size: 0.85em;
   }
   @media screen and (max-width: 667px) {
+    section {
+      margin: 1em auto 0 auto;
+    }
     .container {
-      padding: 0.75em 1em;
+      padding: 1em 1em 0.25em 1em;
+      font-size: 0.75em;
     }
     .art {
-      width: 64px;
-      height: 64px;
+      width: 100px;
+      height: 100px;
     }
     .art-placeholder {
-      width: 64px;
-      height: 64px;
+      width: 100px;
+      height: 100px;
     }
   }
 </style>

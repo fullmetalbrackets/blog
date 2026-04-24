@@ -153,7 +153,10 @@ const recentNotes = (await getSortedNotes()).slice(0, limit);
 
   @media screen and (max-width: 667px) {
     ul {
-      padding: 0.75em 1em 0 1em;
+      padding: 0.75em 1em 2em 1em;
+    }
+    .note-image {
+      width: 50%;
     }
     .more {
       margin-top: -2em;
