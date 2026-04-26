@@ -18,16 +18,7 @@ export default defineConfig({
 		inlineStylesheets: 'always',
 	},
 
-	integrations: [
-		mdx(),
-		sitemap(),
-		astroCompress({
-			js: {
-				compress: true,
-				mangle: false,
-			},
-		}),
-	],
+	integrations: [mdx(), sitemap(), astroCompress()],
 
 	prefetch: true,
 
