@@ -116,8 +116,11 @@ const desc = "All the media I've played, read, and watched. And what I thought o
             class="u-photo"
             src={entry.data.image}
             alt={entry.data.title}
-            widths={[200, 400]}
-            sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+            widths={[200, 400, 800]}
+            sizes="(max-width: 400px) 100vw,
+                  (max-width: 640px) 50vw,
+                  (max-width: 1024px) 240px,
+                  180px"
             loading={i < 8 ? 'eager' : 'lazy'}
             decoding={i < 8 ? 'sync' : 'async'}
           />
