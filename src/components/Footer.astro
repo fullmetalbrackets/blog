@@ -35,15 +35,17 @@ import { GITHUB, MASTODON, BLUESKY, DONATE } from '@consts';
   }
   .icons a:hover {
     filter: var(--ext);
-    transition: none;
   }
   .icons svg {
     filter: var(--svg);
     border-radius: 0;
+    transition: 0.25s ease-in-out;
+  }
+  .icons a:hover svg {
+    animation: wiggle 0.25s ease-in-out;
   }
 
   /* webrings container */
-
   .webrings-container {
     display: flex;
     justify-content: space-evenly;
@@ -57,7 +59,7 @@ import { GITHUB, MASTODON, BLUESKY, DONATE } from '@consts';
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: var(--primary);
+    color: var(--foot-header);
     margin: 0 0 -1.25em 0;
     padding-bottom: 0.3em;
     border-bottom: 1px solid var(--border);
@@ -106,7 +108,7 @@ import { GITHUB, MASTODON, BLUESKY, DONATE } from '@consts';
   }
 
   svg.random:hover {
-    animation: wiggle 0.5s ease-in-out infinite;
+    animation: wiggle 0.25s ease-in-out;
   }
   
   svg.right:hover {
@@ -153,7 +155,7 @@ import { GITHUB, MASTODON, BLUESKY, DONATE } from '@consts';
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: var(--primary);
+    color: var(--foot-header);
     margin: 0 0 0.4em 0;
     padding-bottom: 0.3em;
     border-bottom: 1px solid var(--border);
@@ -177,18 +179,23 @@ import { GITHUB, MASTODON, BLUESKY, DONATE } from '@consts';
     gap: 1em;
     flex-wrap: wrap;
   }
-  .proof:hover {
-    animation: wiggle 0.5s ease-in-out infinite;
+  .badges img {
+    transition: 0.15s ease-in-out;
   }
-  .proof:not(:hover) {
-    animation: none;
+  .badges img:hover {
+    transform: scale(1.1);
+    transition: 0.15s ease-in-out;
   }
-  .proof svg {
+  .proof {
+    transition: 0.15s ease-in-out;
     filter: currentColor;
+  }
+  .proof:hover {
+    transform: scale(1.25);
+    transition: 0.15s ease-in-out;
   }
 
   /* legal */
-
   .bottom {
     display: flex;
     justify-content: center;

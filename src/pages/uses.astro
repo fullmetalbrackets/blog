@@ -1,4 +1,6 @@
 ---
+export const prerender = true
+
 import BackToTop from "@components/BackToTop.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import FormattedDate from "@components/FormattedDate.astro";
@@ -239,12 +241,22 @@ const lastUpdated = new Date('2026-04-11T12:00');
     padding-left: 1.25em;
   }
   @media screen and (max-width: 667px) {
+    .date {
+      font-size: 18px;
+    } 
     .device-body {
       grid-template-columns: 1fr;
+      font-size: 18px;      
     }
     .device-image {
       width: 100%;
       max-width: 100%;
+    }
+    h2 {
+      font-size: 1em;
+    }
+    h4 {
+      font-size: 18px;
     }
   }
 </style>

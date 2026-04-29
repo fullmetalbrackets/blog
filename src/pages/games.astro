@@ -1,4 +1,6 @@
 ---
+export const prerender = true
+
 import BaseLayout from "@layouts/BaseLayout.astro";
 import BackToTop from "@components/BackToTop.astro";
 import CollectionPageSchema from "@components/CollectionPageSchema.astro";
@@ -188,5 +190,11 @@ const schema = {
   .wii-icon {
     width: 36px;
     height: auto;
+  }
+
+  @media screen and (max-width: 667px) {
+    li span {
+      font-size: 18px;
+    }
   }
 </style>

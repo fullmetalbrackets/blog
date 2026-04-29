@@ -140,10 +140,19 @@ export default defineConfig({
 	output: 'server',
 	adapter: cloudflare({
 		imageService: 'compile',
+		prerenderEnvironment: 'node',
 	}),
 	vite: {
 		ssr: {
 			external: ['sharp'],
 		},
+	},
+	image: {
+		remotePatterns: [
+			{
+				protocol: 'https',
+				hostname: 'ariel.lol',
+			},
+		],
 	},
 });
