@@ -1,6 +1,7 @@
 ---
 import FormattedDate from "./FormattedDate.astro";
 import More from '@icons/arrow-right.svg';
+import { Image } from 'astro:assets';
 import { YouTube } from 'astro-embed';
 import { getSortedNotes } from '@utils/collections';
 
@@ -49,7 +50,7 @@ const recentNotes = (await getSortedNotes()).slice(0, limit);
               </div>
             )}
             {!ytId && imageUrl && (
-              <img src={imageUrl} alt={imageAlt} class="note-image" />
+              <Image src={imageUrl} alt={imageAlt} class="note-image" inferSize={true} />
             )}
             {cleanContent && (
               <p class="note-content e-content" set:html={cleanContent} />
@@ -102,11 +103,11 @@ const recentNotes = (await getSortedNotes()).slice(0, limit);
 
   /* Images */
   .note-image {
-    width: 77%;
+    width: 71%;
     height: auto;
     display: block;
     border-radius: 0.375em;
-    margin-bottom: 0.5em;
+    margin-bottom: 0.25em;
   }
 
   /* YouTube embed wrapper — constrains the lite-youtube web component */
@@ -137,6 +138,7 @@ const recentNotes = (await getSortedNotes()).slice(0, limit);
     margin: 4px 0 -3px 0;
     padding: 0;
     filter: var(--svg2);
+    transition: 0.15s ease-in-out;
   }
   .more a {
     color: var(--secondary);
@@ -156,7 +158,7 @@ const recentNotes = (await getSortedNotes()).slice(0, limit);
       padding: 0.75em 1em 2em 1em;
     }
     .note-image {
-      width: 50%;
+      width: 100%;
     }
     .more {
       margin-top: -2em;

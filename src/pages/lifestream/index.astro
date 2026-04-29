@@ -1,4 +1,6 @@
 ---
+export const prerender = true;
+
 import BaseLayout from '@layouts/BaseLayout.astro';
 import { getLifestream } from "@utils/collections";
 import { Image } from 'astro:assets';
@@ -116,11 +118,8 @@ const desc = "All the media I've played, read, and watched. And what I thought o
             class="u-photo"
             src={entry.data.image}
             alt={entry.data.title}
-            widths={[200, 400, 800]}
-            sizes="(max-width: 400px) 100vw,
-                  (max-width: 720px) 50vw,
-                  (max-width: 1024px) 33vw,
-                  220px"
+            widths={[200, 400]}
+            sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
             loading={i < 8 ? 'eager' : 'lazy'}
             decoding={i < 8 ? 'sync' : 'async'}
           />

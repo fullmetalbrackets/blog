@@ -62,12 +62,18 @@
     cursor: pointer;
     color: var(--primary);
     transition: color 0.15s ease;
+    transform: perspective(1px) translateZ(0);
   }
 
   .search-trigger:hover {
     color: var(--hover);
     transform: none;
     box-shadow: none;
+    transition: 0.15s ease-in-out;
+  }
+  .search-trigger:hover svg {
+    transform: scale(1.15);
+    transition: 0.15s ease-in-out;
   }
 
   .search-trigger[aria-expanded="true"] {

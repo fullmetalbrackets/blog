@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import FormattedDate from "@components/FormattedDate.astro";
 import lastPlayed from '@data/last-played.json';
 
@@ -11,6 +12,10 @@ const playedDate = new Date(playedAt);
   section {
     margin: 1.25em auto 0.25em auto;
     padding: 0;
+  }
+  section:hover .art {
+    transform: scale(1.1);
+    transition: 0.15s ease-in-out;
   }
   h2 {
     margin-bottom: 0.3em;
@@ -36,9 +41,9 @@ const playedDate = new Date(playedAt);
     flex-shrink: 0;
     width: 120px;
     height: 120px;
-    border-radius: 0.25em;
     object-fit: cover;
     display: block;
+    transition: 0.15s ease-in-out;
   }
   .art-placeholder {
     flex-shrink: 0;
@@ -107,7 +112,7 @@ const playedDate = new Date(playedAt);
   <div class="container">
     <div class="track">
       {albumArt
-        ? <img class="art" src={albumArt} alt={`${album} cover`} width="72" height="72" loading="lazy" />
+        ? <Image class="art" src={albumArt} alt={`${album} cover`} width={72} height={72} loading="lazy" decoding="async" />
         : <div class="art-placeholder" aria-hidden="true">♪</div>
       }
       <div class="info">

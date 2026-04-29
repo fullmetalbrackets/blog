@@ -1,0 +1,36 @@
+ul {
+	margin: 0 auto;
+	padding: 0 1em;
+}
+li,
+p {
+	margin: 0;
+	padding: 0;
+}
+li {
+	margin-top: 1em;
+}
+li a,
+li a:visited {
+	font-size: 1.142859em;
+	font-family: var(--sub-font);
+	font-weight: 900;
+	color: var(--primary);
+}
+li a:hover,
+li a:focus,
+li a:active {
+	color: var(--hover);
+	transition: none;
+}
+li hr {
+	margin: 0;
+	padding: 0;
+	border-top: transparent;
+	border-left: transparent;
+	border-right: transparent;
+	border-bottom: 0.2em dotted var(--border);
+}
+li p {
+	font-size: 0.875em;
+}

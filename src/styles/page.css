@@ -18,3 +18,8 @@ h2#updates + ul strong {
 	font-family: var(--sub-font);
 	color: var(--secondary);
 }
+@media screen and (max-width: 667px) {
+	span.updated {
+		font-size: 18px;
+	}
+}

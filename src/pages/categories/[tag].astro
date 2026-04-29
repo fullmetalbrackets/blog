@@ -55,6 +55,23 @@ const desc = `A collection of posts about ${tagTitle} on ${SITE_TITLE}.`
     font-size: 24px;
     color: var(--link);
   }
+  .back a svg {
+    display: inline-flex;
+    width: 0.75em;
+    height: 0.75em;
+    vertical-align: middle;
+    fill: currentColor;
+    transition: all .1s ease-in-out;
+    overflow: visible;
+  }
+  .categories:hover svg {
+    transition: all .1s ease-in-out;
+    transform: translateX(-4px);
+  }
+  .all:hover svg {
+    transition: all .1s ease-in-out;
+    transform: translateX(4px);
+  }
   .back a:hover {
     color: var(--hover);
     transition: all .25s ease-out;
@@ -170,8 +187,8 @@ const desc = `A collection of posts about ${tagTitle} on ${SITE_TITLE}.`
     <a class="u-url" href={`${SITE_URL}/categories/${tagTitle}`} hidden>Permalink</a>
     <hr />
     <p class="back">
-      <a href="/categories" rel="prefetch-intent">↩ Categories</a>
-      <a href="/blog" rel="prefetch-intent">All posts ↪</a>
+      <a href="/categories" rel="prefetch-intent" class="categories"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><title>arrow-left</title><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg> Categories</a>
+      <a href="/blog" rel="prefetch-intent" class="all">All posts <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><title>arrow-right</title><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg></a>
     </p>
     <p class="years">
       Alternately, see posts by year:&nbsp;

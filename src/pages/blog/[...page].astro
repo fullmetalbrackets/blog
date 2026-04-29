@@ -32,7 +32,7 @@ const desc = "Archive of blog posts.";
     font-family: var(--sub-font);
     font-weight: 900;
     font-size: 0.95em;
-    color: var(--emphasis)
+    color: var(--primary);
   }
   .rss {
     display: flex;
@@ -159,12 +159,6 @@ const desc = "Archive of blog posts.";
     font-weight: 700;
     margin: 0 0 1em 0;
   }
-  .pagination a {
-    border-bottom: 4px dotted transparent;
-  }
-  .pagination a:hover {
-    border-bottom: 4px dotted var(--hover);
-  }
   .prev {
     grid-column: 1;
     justify-content: start;
@@ -173,8 +167,25 @@ const desc = "Archive of blog posts.";
     grid-column: 3;
     justify-content: end;
   }
+  .prev a svg, .next a svg {
+    display: inline-flex;
+    width: 0.75em;
+    height: 0.75em;
+    vertical-align: middle;
+    fill: currentColor;
+    overflow: visible;
+    transition: all .1s ease-in-out;
+  }
+  .prev a:hover svg {
+    transition: all .1s ease-in-out;
+    transform: translateX(-4px);
+  }
+  .next a:hover svg {
+    transition: all .1s ease-in-out;
+    transform: translateX(4px);
+  }
   .rss svg:hover {
-    animation: wiggle 0.5s ease-in-out infinite;
+    animation: wiggle 0.25s ease-in-out;
   }
   .rss svg:not(:hover) {
     animation: none;
@@ -264,14 +275,14 @@ const desc = "Archive of blog posts.";
     <nav class="pagination" aria-label="Blog pagination">
       <span class="prev">
         {page.url.prev ? (
-          <a href={page.url.prev} rel="prefetch-intent prev">↩ Newer</a>
+          <a href={page.url.prev} rel="prefetch-intent prev"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><title>arrow-left</title><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg> Newer</a>
         ) : (
           <span></span>
         )}
       </span>
       <span class="next">
         {page.url.next ? (
-          <a href={page.url.next} rel="prefetch-intent next">Older ↪</a>
+          <a href={page.url.next} rel="prefetch-intent next">Older <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><title>arrow-right</title><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg></a>
         ) : (
           <span></span>
         )}
@@ -305,14 +316,14 @@ const desc = "Archive of blog posts.";
     <nav class="pagination" aria-label="Blog pagination">
       <span class="prev">
         {page.url.prev ? (
-          <a href={page.url.prev} rel="prefetch-intent prev">↖ Newer</a>
+          <a href={page.url.prev} rel="prefetch-intent prev"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><title>arrow-left</title><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg> Newer</a>
         ) : (
           <span></span>
         )}
       </span>
       <span class="next">
         {page.url.next ? (
-          <a href={page.url.next} rel="prefetch-next">Older ↘</a>
+          <a href={page.url.next} rel="prefetch-next">Older <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><title>arrow-right</title><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg></a>
         ) : (
           <span></span>
         )}

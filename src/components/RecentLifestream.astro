@@ -26,8 +26,8 @@ const entries = (await getLifestream()).slice(0, limit);
             class="u-photo"
             src={entry.data.image}
             alt={entry.data.title}
-            widths={[200, 400]}
-            sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+            widths={[200, 400, 600]}
+            sizes="(max-width: 400px) 100vw, (max-width: 1024px) 50vw, 25vw"
             loading="lazy"
             decoding="async"
           />
@@ -169,6 +169,7 @@ const entries = (await getLifestream()).slice(0, limit);
     margin: 4px 0 -3px 0;
     padding: 0;
     filter: var(--svg2);
+    transition: 0.15s ease-in-out;
   }
   .more a {
     color: var(--secondary);
@@ -183,10 +184,13 @@ const entries = (await getLifestream()).slice(0, limit);
     transform: translateX(4px);
   }
   
-  @media (max-width: 1024px) { .ls-grid { grid-template-columns: repeat(3, 1fr); } }
-  @media (max-width: 640px)  { .ls-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 400px)  { .ls-grid { grid-template-columns: 1fr; } }
-
+  @media (max-width: 1024px) { 
+    .ls-grid { 
+      grid-template-columns: repeat(2, 1fr);
+      padding: 1em 1em 2.2em 1em; 
+      gap: 1em;
+    }
+  }
   @media (max-width: 667px) {
     .desc, p {
       font-size: 18px;
@@ -194,6 +198,13 @@ const entries = (await getLifestream()).slice(0, limit);
     .filters {
       margin: 1em auto;
       gap: 0.5em;
+    }
+  }
+  @media (max-width: 640px) { 
+    .ls-grid { 
+      grid-template-columns: 1fr; 
+      padding: 1em 1em 2.2em 1em; 
+      gap: 1em;
     }
   }
 </style>

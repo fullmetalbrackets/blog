@@ -1,8 +1,20 @@
 {
-	"name": "fullmetalbrackets",
-	"compatibility_flags": [
-	    "nodejs_compat"
-	],
-	"compatibility_date": "2026-03-10",
-	"pages_build_output_dir": "./dist"
+    "name": "site",
+    "main": "@astrojs/cloudflare/entrypoints/server",
+    "compatibility_flags": [
+        "nodejs_compat"
+    ],
+    "compatibility_date": "2026-04-27",
+    "assets": {
+        "directory": "./dist"
+    },
+    "observability": {
+        "logs": {
+            "enabled": true,
+            "invocation_logs": true
+    },
+    "traces": {
+        "enabled": false
+    }
+  }
 }

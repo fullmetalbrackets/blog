@@ -11,7 +11,7 @@
 	"scripts": {
 		"dev": "astro dev",
 		"start": "astro dev",
-		"build": "astro build && npx -y pagefind --site dist",
+		"build": "astro build && npx -y pagefind --site dist/client",
 		"preview": "astro preview",
 		"astro": "astro",
 		"check": "astro check",
@@ -27,12 +27,12 @@
 	"dependencies": {
 		"@ascorbic/feed-loader": "^2.0.1",
 		"@astrojs/check": "^0.9.8",
-		"@astrojs/cloudflare": "^12.6.13",
-		"@astrojs/markdown-remark": "^7.1.0",
-		"@astrojs/mdx": "^5.0.3",
+		"@astrojs/cloudflare": "^13.2.1",
+		"@astrojs/markdown-remark": "^7.1.1",
+		"@astrojs/mdx": "^5.0.4",
 		"@astrojs/rss": "^4.0.18",
 		"@astrojs/sitemap": "^3.7.2",
-		"astro": "^6.1.8",
+		"astro": "^6.1.9",
 		"astro-embed": "^0.13.0",
 		"astro-og-canvas": "^0.11.1",
 		"astro-social-share": "^2.2.0",
@@ -49,9 +49,10 @@
 	},
 	"packageManager": "yarn@4.12.0",
 	"devDependencies": {
-		"prettier": "^3.8.3"
+		"prettier": "^3.8.3",
+		"wrangler": "^4.85.0"
 	},
 	"resolutions": {
-		"astro": "6.1.8"
+		"astro": "6.1.9"
 	}
 }

@@ -175,12 +175,13 @@ a:focus {
 	color: var(--link);
 	text-decoration: none;
 	-webkit-tap-highlight-color: transparent;
+	transition: all 0.15s ease-in-out;
 }
 
 a:hover {
 	color: var(--hover);
 	text-decoration: none;
-	transition: all 0.2s ease-out;
+	transition: all 0.15s ease-in-out;
 	-webkit-tap-highlight-color: transparent;
 }
 
@@ -221,7 +222,6 @@ sub {
 }
 
 article img {
-	max-width: 80%;
 	margin: 1.5em auto;
 }
 
@@ -676,6 +676,31 @@ blockquote[data-type='warning'] a:hover {
 	font-weight: 700;
 }
 
+.changelog * {
+	display: inline-flex;
+	margin: 0;
+}
+
+.changelog h2 {
+	display: flex;
+	margin-top: 0.75em;
+}
+
+.style * {
+	display: inline-flex;
+	place-items: center;
+	margin: 0;
+	padding: 0;
+}
+
+li.style {
+	margin-left: 1em;
+}
+
+li.style:first-of-type {
+	margin-top: 1em;
+}
+
 .img-left {
 	display: inline-block;
 	margin: 0;
@@ -811,6 +836,9 @@ blockquote[data-type='warning'] a:hover {
 .m0a {
 	margin: 0 auto;
 }
+.mb0 {
+	margin-bottom: 0;
+}
 .mb2 {
 	margin-bottom: 2em;
 }
@@ -832,14 +860,14 @@ blockquote[data-type='warning'] a:hover {
 	display: inline-flex;
 	justify-content: center;
 	place-items: center;
-	padding: 0 4px;
+	padding: 0 8px;
 	color: var(--main);
 	background: var(--foot-link);
 	font-family: var(--sub-font);
 	font-size: 0.35em;
 	font-weight: 900;
-	border-radius: 2em;
-	margin: 0.85em 0;
+	border-radius: 1em;
+	margin: 1em 0;
 }
 
 .sr-only {
@@ -1118,6 +1146,15 @@ article a[target='_blank'][href^='#']::after {
 	blockquote[data-type='quote'],
 	blockquote.blockquote-quote {
 		width: 94%;
+	}
+	.style * {
+		display: flex;
+		place-items: center;
+		margin: 0;
+		padding: 0;
+	}
+	.style span + span {
+		font-size: 18px;
 	}
 }
 
