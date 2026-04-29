@@ -25,3 +25,6 @@
 
 /pagefind/*
   Cache-Control: public, max-age=0, must-revalidate
+
+/giscus.css
+  Access-Control-Allow-Origin: *
