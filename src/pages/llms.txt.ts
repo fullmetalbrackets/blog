@@ -1,4 +1,3 @@
-// src/pages/llms.txt.ts
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 
@@ -19,10 +18,19 @@ export const GET: APIRoute = async () => {
 
 ## Content API
 
-Blog posts are available as structured JSON via a paid API.
-Requires x402 payment of $0.01 USDC on Base per request.
+Blog posts are available as structured JSON via a paid API using x402 payments (USDC on Base).
+
+### Endpoints
+
+GET https://fullmetalbrackets.com/api/posts
+Price: $0.05
+Returns: Full index of all posts with title, description, tags, pubDate, and URL for each post.
+Use this to discover available content before fetching individual posts.
 
 GET https://fullmetalbrackets.com/api/posts/{slug}
+Price: $0.01
+Returns: Full post content including title, description, tags, pubDate, and body (markdown).
+Use this to fetch a specific post by its slug.
 
 ## Available posts
 
