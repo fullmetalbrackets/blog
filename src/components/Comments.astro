@@ -15,9 +15,7 @@ import { SITE_URL } from "@consts"
 </style>
 
 <aside>
-    <script>
-import { SITE_URL } from "@consts";
-
+    <script define:vars={{ SITE_URL }}>
         const script = document.createElement('script');
         script.src = 'https://giscus.app/client.js';
         script.setAttribute('data-theme', `${SITE_URL}/giscus.css`);
