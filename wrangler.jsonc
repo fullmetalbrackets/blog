@@ -1,5 +1,5 @@
 {
-    "name": "site",
+    "name": "blog",
     "main": "@astrojs/cloudflare/entrypoints/server",
     "compatibility_flags": [
         "nodejs_compat"
