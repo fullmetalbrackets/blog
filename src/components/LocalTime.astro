@@ -1,5 +1,6 @@
 ---
 import DateIcon from "@icons/calendar.svg";
+import TimeIcon from "@icons/clock.svg";
 
 interface Props {
   date: Date;
@@ -9,9 +10,15 @@ const { date, class: className } = Astro.props;
 ---
 
 <local-time datetime={date?.toISOString()} class={className}>
-  <DateIcon width={24} height={24} />
-  <span>
-    {date?.toLocaleDateString("en-us", { year: "numeric", month: "long", day: "numeric" })}
+  <span class="date-line">
+    <DateIcon width={24} height={24} />
+    <span class="date-text">
+      {date?.toLocaleDateString("en-us", { year: "numeric", month: "numeric", day: "numeric" })}
+    </span>
+  </span>
+  <span class="time-line">
+    <TimeIcon width={24} height={24} />
+    <span class="time-text"></span>
   </span>
 </local-time>
 
@@ -21,17 +28,20 @@ const { date, class: className } = Astro.props;
       const iso = this.getAttribute("datetime");
       if (!iso) return;
 
-      const span = this.querySelector("span");
-      if (!span) return;
-
-      span.textContent = new Date(iso).toLocaleString(undefined, {
+      const formatted = new Date(iso).toLocaleString(undefined, {
         year: "numeric",
         month: "numeric",
         day: "numeric",
         hour: "numeric",
         minute: "2-digit",
         timeZoneName: "short",
-      }).replace(", ", " @ ");
+      });
+
+      const [date, time] = formatted.split(", ");
+      const dateLine = this.querySelector(".date-text");
+      const timeLine = this.querySelector(".time-text");
+      if (dateLine) dateLine.textContent = date;
+      if (timeLine) timeLine.textContent = time;
     }
   }
 
@@ -43,14 +53,19 @@ const { date, class: className } = Astro.props;
     color: var(--date);
     font-family: var(--sub-font);
     display: inline-flex;
+    flex-direction: column;
     font-size: 0.875em;
     font-weight: 700;
-    place-items: center;
     margin: 0;
     padding: 0;
   }
+  .date-line,
+  .time-line {
+    display: flex;
+    align-items: center;
+  }
   svg {
-    display: inline-flex;
+    flex-shrink: 0;
     margin-left: -0.1em;
     margin-right: 0.325em;
     filter: var(--time-svg);
@@ -59,10 +74,9 @@ const { date, class: className } = Astro.props;
     local-time {
       font-size: 16px;
     }
-  }
-  @media screen and (max-width: 442px) {
-    .meta svg {
-      margin-top: -1.3em;
+    svg {
+      width: 18px;
+      height: 18px;
     }
   }
 </style>
