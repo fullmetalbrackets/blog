@@ -1,0 +1,68 @@
+---
+import DateIcon from "@icons/calendar.svg";
+
+interface Props {
+  date: Date;
+  class?: string;
+}
+const { date, class: className } = Astro.props;
+---
+
+<local-time datetime={date?.toISOString()} class={className}>
+  <DateIcon width={24} height={24} />
+  <span>
+    {date?.toLocaleDateString("en-us", { year: "numeric", month: "long", day: "numeric" })}
+  </span>
+</local-time>
+
+<script>
+  class LocalTime extends HTMLElement {
+    connectedCallback() {
+      const iso = this.getAttribute("datetime");
+      if (!iso) return;
+
+      const span = this.querySelector("span");
+      if (!span) return;
+
+      span.textContent = new Date(iso).toLocaleString(undefined, {
+        year: "numeric",
+        month: "numeric",
+        day: "numeric",
+        hour: "numeric",
+        minute: "2-digit",
+        timeZoneName: "short",
+      }).replace(", ", " @ ");
+    }
+  }
+
+  customElements.define("local-time", LocalTime);
+</script>
+
+<style scoped>
+  local-time {
+    color: var(--date);
+    font-family: var(--sub-font);
+    display: inline-flex;
+    font-size: 0.875em;
+    font-weight: 700;
+    place-items: center;
+    margin: 0;
+    padding: 0;
+  }
+  svg {
+    display: inline-flex;
+    margin-left: -0.1em;
+    margin-right: 0.325em;
+    filter: var(--time-svg);
+  }
+  @media screen and (max-width: 667px) {
+    local-time {
+      font-size: 16px;
+    }
+  }
+  @media screen and (max-width: 442px) {
+    .meta svg {
+      margin-top: -1.3em;
+    }
+  }
+</style>
