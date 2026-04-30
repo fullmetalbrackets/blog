@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import FormattedDate from "@components/FormattedDate.astro";
+import LocalTime from "@components/LocalTime.astro";
 import lastPlayed from '@data/last-played.json';
 
 const { title, artist, album, year, albumArt, lastPlayed: playedAt } = lastPlayed;
@@ -115,7 +115,7 @@ const playedDate = new Date(playedAt);
         <span class="song-title">{title}</span>
         <span class="artist">{artist}</span>
         <span class="album">{album}{year ? ` (${year})` : ''}</span>
-        <span class="date"><FormattedDate date={playedDate} showTime class="meta" /></span>
+        <span class="date"><LocalTime date={playedDate} class="meta" /></span>
       </div>
     </div>
   </div>
