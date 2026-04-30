@@ -64,7 +64,7 @@ const playedDate = new Date(playedAt);
     min-width: 0;
   }
   .song-title {
-    font-weight: bold;
+    font-weight: 900;
     color: var(--emphasis);
     line-height: 1.2;
     white-space: nowrap;
@@ -72,7 +72,6 @@ const playedDate = new Date(playedAt);
     text-overflow: ellipsis;
   }
   .artist {
-    font-weight: 700;
     font-size: 0.925em;
     line-height: 1.2;
     color: var(--secondary);
@@ -83,9 +82,6 @@ const playedDate = new Date(playedAt);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-  }
-  .date {
-    font-size: 0.85em;
   }
   @media screen and (max-width: 667px) {
     section {
@@ -119,7 +115,7 @@ const playedDate = new Date(playedAt);
         <span class="song-title">{title}</span>
         <span class="artist">{artist}</span>
         <span class="album">{album}{year ? ` (${year})` : ''}</span>
-        <span class="date"><FormattedDate date={playedDate} class="meta" /></span>
+        <span class="date"><FormattedDate date={playedDate} showTime class="meta" /></span>
       </div>
     </div>
   </div>

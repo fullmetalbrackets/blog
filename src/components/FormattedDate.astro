@@ -5,25 +5,23 @@ interface Props {
   date: Date;
   monthFormat?: 'long' | 'short' | 'numeric' | '2-digit';
   noDay?: boolean;
+  showTime?: boolean;
   class?: string;
 }
 
-const { date, monthFormat = 'long', noDay = false, class: className } = Astro.props;
+const { date, monthFormat = 'long', noDay = false, showTime = false, class: className } = Astro.props;
+
+const dateOptions: Intl.DateTimeFormatOptions = {
+  year: "numeric",
+  month: monthFormat,
+  ...(noDay ? {} : { day: "numeric" }),
+  ...(showTime ? { hour: "numeric", minute: "2-digit" } : {}),
+};
 ---
 
 <time datetime={date?.toISOString()} class={className}>
   <Date width={24} height={24} />
-  <span>
-    {
-      noDay
-        ? date?.toLocaleDateString("en-us", { year: "numeric", month: monthFormat })
-        : date?.toLocaleDateString("en-us", {
-            year: "numeric",
-            month: monthFormat,
-            day: "numeric",
-          })
-    }
-  </span>
+  <span>{date?.toLocaleDateString("en-us", dateOptions)}</span>
 </time>
 
 <style scoped>
@@ -46,6 +44,11 @@ const { date, monthFormat = 'long', noDay = false, class: className } = Astro.pr
   @media screen and (max-width: 667px) {
     time {
       font-size: 16px;
+    }
+  }
+  @media screen and (max-width: 436px) {
+    .meta svg {
+      margin-top: -1.3em;
     }
   }
 </style>
