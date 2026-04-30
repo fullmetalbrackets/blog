@@ -38,6 +38,7 @@ export const { getStaticPaths, GET } = await OGImageRoute({
 			},
 		},
 		bgGradient: [[32, 33, 36]],
+		border: { color: [110, 198, 186], width: 4, side: 'inline-start' },
 		fonts: [
 			resolve(process.cwd(), 'public/fonts/AtkinsonHyperlegibleNext-Regular.ttf'),
 			resolve(
