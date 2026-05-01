@@ -16,16 +16,22 @@ How this site is made, with what tools, supporting what technologies, etc.
 
 The site is built with [Astro](https://astro.build) and deployed
 on [Cloudflare Workers](https://workers.cloudflare.com) from a [public
-GitHub repository](https://github.com/fullmetalbrackets/blog),
-totally free. Paying for my domain every year is literally the
-only cost I incur for this website; it was around $18/year through
-Namecheap, but transferring to Cloudflare dropped the cost to $10.46/year.
-
-And thanks to a few readers that [Bought Me A Coffee](https://buymeacoffee.com/arieldiaz) the bill for 2025 was covered, so thanks!
+GitHub repository](https://github.com/fullmetalbrackets/blog). The domain is through [Cloudflare](https://cloudflare.com/products/registrar/) and a cheap VPS from [Racknerd](https://racknerd.com) hosts my Umami instance.
 
 ## Astro, Integrations and Packages
 
-Blog posts and Wiki articles are all written in [Markdown](https://www.markdownguide.org/) with YAML frontmatter and managed via [Astro's Content Collections](https://docs.astro.build/en/guides/content-collections/). [Links](/links/) and [Lifestream](/lifestream/) are also done through Content Collection and exist as YAML files.
+The site uses [Astro's Content Collections](https://docs.astro.build/en/guides/content-collections/) for a lot of the content on this site:
+
+- [Blog](/blog) posts use Markdown or MDX files
+- [Wiki](/wiki) articles use Markdown files
+- [Lifestream](/lifestream) uses Markdown files
+- [Now](/now) page uses Markdown files
+- [Links](/links) use YAML files for data
+- [Postroll](/postroll) uses YAML files for data
+- [Blogroll](/blogroll) uses a JSON file for data
+- [Games](/games) list uses a JSON file for data
+
+Several other pages are also just MDX files including [Changelog](/changelog), [Explore](/explore), [Privacy](/privacy), [Verify](/verify) and this Colophon page you're reading right now.
 
 I use several packages to help with building the site and writing posts.
 
@@ -33,21 +39,20 @@ I use several packages to help with building the site and writing posts.
 - [astrojs/sitemap](https://docs.astro.build/en/guides/integrations-guide/sitemap/): Astro integration that automatically generates a `sitemap.xml`.
 - [astro-gab-compress](https://github.com/jgabriel98/astro-compress): Used to compress, optimize and cache files (HTML, CSS, images, etc.) at build time.
 - [astro-social-share](https://github.com/silent1mezzo/astro-social-sharE): Used for the "share on social" buttons at the bottom of blog posts.
-- [astro-og-canvas](https://github.com/delucis/astro-og-canvas): Used to dynamically generate opengraph images for blog posts.
+- [astro-og-canvas](https://github.com/delucis/astro-og-canvas): Used to dynamically generate [opengraph](https://ogp.me/) images for blog posts.
 - [glightbox](https://github.com/biati-digital/glightbox): Used for image lightboxes in blog posts.
 - [reading-time](https://github.com/ngryman/reading-time) + [mdast-util-to-string](https://github.com/syntax-tree/mdast-util-to-string): Used to calculate and display how many minutes it takes to read individual blog posts.
 - [remark-directive](https://github.com/remarkjs/remark-directive) + [remark-directive-sugar](https://github.com/lin-stephanie/remark-directive-sugar): Used to add new Markdown syntax for images, video embeds, etc.
 - [rehype-external-links](https://docs.astro.build/en/recipes/external-links/): Used to automatically add the little arrow next to external links throughout the site.
 - [rehype-slug](https://github.com/rehypejs/rehype-slug) + [rehype-autolinks-headings](https://github.com/rehypejs/rehype-autolink-headings): Used to add links to each blog post heading that copies to clipboard the URL to that section.
 - [satori](https://github.com/vercel/satori) + [resvg](https://github.com/linebender/resvg): Used to dynamically generate opengraph images for each blog post.
-- [astro-embed](https://astro-embed.netlify.app/) for embedding YouTube videos, Bluesky posts, etc.
-- [isotope.js](https://isotope.metafizzy.co/layout) for grid layout in [Lifestream](/lifestream/).
+- [astro-embed](https://astro-embed.netlify.app/) for embedding YouTube videos, Bluesky or Mastodon posts, GitHub Gists, etc.
 
 ## IndieWeb Things
 
 - [Webmention.io](https://webmention.io/) is free service for receiving Webmentions, a protocol used by IndieWeb sites to be notified when they link to each other.
 - [Webmention.app](https://webmention.app/) is a free service to automate outgoing webmentions with a simple API, and I use a scheduled GitHub Action to use it.
-- [Bridgy](https://brid.gy/) is a free service that connects IndieWeb sites to your Mastodon and Bluesky accounts for [backfeeds and POSSE](https://indieweb.org/backfeed), though I have not really set it up for that yet.
+- [Bridgy](https://brid.gy/) is a free service that connects IndieWeb sites to your Mastodon and Bluesky accounts for [backfeeds](https://indieweb.org/backfeed) and [POSSE](https://indieweb.org/POSSE).
 
 ## Third-Party Services
 
