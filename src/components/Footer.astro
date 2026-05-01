@@ -44,7 +44,11 @@ import { GITHUB, MASTODON, BLUESKY, DONATE } from '@consts';
   .icons a:hover svg {
     animation: wiggle 0.25s ease-in-out;
   }
-
+  @media (hover: none) {
+      .icons a:hover svg {
+          animation: none;
+      }
+  }
   /* webrings container */
   .webrings-container {
     display: flex;
@@ -86,7 +90,8 @@ import { GITHUB, MASTODON, BLUESKY, DONATE } from '@consts';
 
   .ring-buttons {
     display: flex;
-    gap: 1em;
+    gap: 0.5em;
+    margin-top: 0.5em;
     align-items: center;
     justify-content: center;
   }
@@ -103,7 +108,7 @@ import { GITHUB, MASTODON, BLUESKY, DONATE } from '@consts';
     filter: var(--foot-ext);
   }
 
-  svg.right, svg.left, svg.random {
+  svg.random {
     transition: all .1s ease-in-out;
   }
 
@@ -111,16 +116,20 @@ import { GITHUB, MASTODON, BLUESKY, DONATE } from '@consts';
     animation: wiggle 0.25s ease-in-out;
   }
   
+  svg.right, svg.left {
+    transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
   svg.right:hover {
     filter: var(--foot-ext);
-    transition: all .1s ease-in-out;
-    transform: translateX(3px);
+    transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transform: translateX(4px);
   }
 
   svg.left:hover {
     filter: var(--foot-ext);
-    transition: all .1s ease-in-out;
-    transform: translateX(-3px);
+    transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transform: translateX(-4px);
   }
 
   @media screen and (max-width: 667px) {

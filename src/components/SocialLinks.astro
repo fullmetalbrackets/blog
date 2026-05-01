@@ -40,8 +40,10 @@ import { SITE_URL, GITHUB, BLUESKY, MASTODON, DONATE } from '@consts';
     svg:hover {
         animation: wiggle 0.25s ease-in-out;
     }
-    svg:not(:hover) {
-        animation: none;
+    @media (hover: none) {
+        svg:hover {
+            animation: none;
+        }
     }
     @media screen and (min-width: 200px) and (max-width: 667px) {
         .personal-links {

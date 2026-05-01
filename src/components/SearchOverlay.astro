@@ -69,15 +69,15 @@
     color: var(--hover);
     transform: none;
     box-shadow: none;
-    transition: 0.15s ease-in-out;
+    transition: 0.25s ease-in;
   }
   .search-trigger:hover svg {
-    transform: scale(1.15);
-    transition: 0.15s ease-in-out;
+    animation: wiggle 0.25s ease-out;
   }
 
   .search-trigger[aria-expanded="true"] {
     color: var(--link);
+    transform: scale(1.1);
   }
 
   .search-trigger:focus-visible {

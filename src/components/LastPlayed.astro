@@ -35,7 +35,6 @@ const playedDate = new Date(playedAt);
     gap: 1em;
     padding-bottom: 0.5em;
     border-bottom: 4px dotted transparent;
-    transition: border-bottom-color 0.25s ease-out;
   }
   .art {
     flex-shrink: 0;
@@ -43,7 +42,7 @@ const playedDate = new Date(playedAt);
     height: 120px;
     object-fit: cover;
     display: block;
-    transition: 0.15s ease-in-out;
+    transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
   .art-placeholder {
     flex-shrink: 0;

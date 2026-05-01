@@ -85,11 +85,10 @@ import SearchOverlay from "./SearchOverlay.astro";
     padding: 0;
     border: 0;
     transform: 0;
-    transition: 0.15s ease-in-out;
+    transition: 0.25s ease-in;
   }
   .logo:hover img {
-    transform: scale(1.15);
-    transition: 0.15s ease-in-out;
+    animation: wiggle 0.25s ease-out;
   }
   .name {
     margin: 0;
@@ -236,10 +235,10 @@ import SearchOverlay from "./SearchOverlay.astro";
     stroke-dashoffset: 0;
   }
   .nav-link svg {
-    transition: 0.1s ease-in-out;
+    transition: 0.1s ease-in;
   }
   .nav-link:hover svg, .nav-link:focus svg, .nav-link:active svg, .dropdown-content a:hover svg {
-    animation: wiggle 0.25s ease-in-out;
+    animation: wiggle 0.25s ease-out;
   }
   /* Mobile hamburger button */
   .hamburger {
@@ -291,6 +290,9 @@ import SearchOverlay from "./SearchOverlay.astro";
   .mobile-nav svg {
     width: 20px;
     height: 20px;
+  }
+  .mobile-nav a:active svg {
+    transform: rotate(-25deg);
   }
   .mobile-nav::-webkit-scrollbar {
     width: 4px;
@@ -366,6 +368,9 @@ import SearchOverlay from "./SearchOverlay.astro";
     .logo {
       transition: none;
       transform: none;
+    }
+    .logo:hover img {
+      animation: none;
     }
     .nav-link a:hover,
     .nav-link a:active {

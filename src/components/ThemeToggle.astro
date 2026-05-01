@@ -10,7 +10,7 @@
     display: flex;
     align-items: center;
     color: var(--primary);
-    transition: color 0.15s ease-out;
+    transition: color 0.25s ease-in;
     margin-left: -0.325em;
   }
   
@@ -30,12 +30,11 @@
     fill: currentColor;
     margin: 0;
     padding: 0;
-    transition: 0.15s ease-in-out;
+    transition: 0.25s ease-in;
 
   }
   .theme-toggle:hover svg {
-    transform: scale(1.15);
-    transition: 0.15s ease-in-out;
+    animation: wiggle 0.25s ease-out;
   }
   
   .sr-only {

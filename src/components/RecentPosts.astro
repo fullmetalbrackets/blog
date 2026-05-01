@@ -100,7 +100,7 @@ const recentPosts = (await getPostsWithReadingTime()).slice(0, 5);
   }
   .more a:hover svg {
     filter: var(--foot-svg);
-    transition: all .1s ease-out;
+    transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
     transform: translateX(4px);
   }
 
