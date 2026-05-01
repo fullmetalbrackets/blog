@@ -1,7 +1,7 @@
 [
   "plex-remote-access-tailscale",
   "oci-free-tier-breakdown",
-  "upgrade-debian-12-bookworm-debian-13-trixie",
-  "solid-explorer-samba-share",
-  "expose-plex-tailscale-vps"
+  "reverse-proxy-using-nginx-adguardhome-cloudflare",
+  "how-i-setup-home-server",
+  "how-to-setup-the-search-function-in-qbittorrent-and-add-search-plugins"
 ]
