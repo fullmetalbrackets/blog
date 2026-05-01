@@ -13,9 +13,9 @@ My wife had to replace her Nintendo Switch OLED and the replacement happened to 
 
 [This reddit post from 2017, the same year that the original Nintendo Switch came out, showed the solution.](https://reddit.com/r/NintendoSwitch/comments/5ycksg/psa_if_your_switch_can_find_your_5ghz_wifi_ssid/) Turns out the Japanese models can only detect Wi-Fi channels under _149_, but my router had it set to _157_.
 
-On a browser navigate to your router's web UI, most likely at IP address `http://192.168.0.1` or `http://192.168.1.1`, and go to Wi-Fi settings. (Or possible wireless settings or internet settings.) Assuming your router has the option, you should find a _Wi-Fi channel_ or _wireless channel_ setting that you can change.
+On a browser navigate to your router's web UI, most likely at IP address `http://192.168.0.1` or `http://192.168.1.1`, and go to **Wi-Fi settings**. (Or possibly _wireless settings_, or _internet settings_. It varies by router.) Assuming your router has the option, you should find a **Wi-Fi channel** or **wireless channel** setting that you can change.
 
-Apparently any channel _less than 149_ will do, I changed mine to **channel 36** based on comments and the Nintendo Switch OLED immediately saw the 5 GHz Wi-Fi as an available network.
+Apparently **any channel under 149** will do, I changed mine to **channel 36** based on comments from the above-mentioned Reddit thread, and the Nintendo Switch OLED immediately saw the 5 GHz Wi-Fi as an available network.
 
 > If you have ISP-provided hardware that you can't really interact with or change the options, you should try calling your ISP and asking them what channel your Wi-Fi is currently set to use, and ask them to change it to _channel 36_ or another _channel below 149_.
 
