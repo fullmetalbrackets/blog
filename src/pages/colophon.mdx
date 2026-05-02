@@ -10,13 +10,41 @@ export const prerender = true;
 	Permalink
 </a>
 
-How this site is made, with what tools, supporting what technologies, etc.
+How this site is made, with what tools, supporting what technologies, etc. You may also be interested in seeing the [Style Guide](/style).
+
+## WTF is a Colophon?
+
+> [quote]
+>
+> <span class="i b u em">colophon</span> _noun_ (col·​o·​phon ˈkä-lə-fən -ˌfän)
+>
+> 1: an inscription at the end of a book or manuscript usually <span class="em">with facts about its production</span>.
+>
+> [Merriam-Webster Dictionary](https://www.merriam-webster.com/dictionary/colophon)
+
+Or in a modern context...
+
+> [quote]
+> A <span class="i b u em">colophon</span> is a page or section (typically in a footer) of a site that <span class="em">describes how the site is made, with what tools, supporting what technologies</span>, and often published on personal sites at a top level `/colophon` page.
+>
+> [IndieWeb.org](https://indieweb.org/colophon)
 
 ## Site and Webhost
 
 The site is built with [Astro](https://astro.build) and deployed
 on [Cloudflare Workers](https://workers.cloudflare.com) from a [public
 GitHub repository](https://github.com/fullmetalbrackets/blog). The domain is through [Cloudflare](https://cloudflare.com/products/registrar/) and a cheap VPS from [Racknerd](https://racknerd.com) hosts my Umami instance.
+
+## Fonts, Icons and Images
+
+- [Atkinson Hyperlegible](https://www.brailleinstitute.org/freefont/)
+- [Atkinson Hyperlegible Mono](https://github.com/googlefonts/atkinson-hyperlegible-next-mono)
+- [MPlus Rounded 1c](https://fonts.google.com/specimen/M+PLUS+Rounded+1c)
+- SVG icons are from [Material Design Icons](https://pictogrammers.com/library/mdi/)
+- SVG console logos used in [/games](/games) page are from [this GitHub repo](https://github.com/HVR88/Monochrome-Gaming-Logos)
+- Posters for movies and TV shows are from [TMDB](https://themoviedb.org/)
+- Book covers are from [Goodreads](https://goodreads.com/)
+- Most video game box art is from [IGDB](https://www.igdb.com/) or [MobyGames](https://mobygames.com/), though in sometimes I have to search on Google for good ones
 
 ## Astro, Integrations and Packages
 
@@ -48,17 +76,20 @@ I use several packages to help with building the site and writing posts.
 - [satori](https://github.com/vercel/satori) + [resvg](https://github.com/linebender/resvg): Used to dynamically generate opengraph images for each blog post.
 - [astro-embed](https://astro-embed.netlify.app/) for embedding YouTube videos, Bluesky or Mastodon posts, GitHub Gists, etc.
 
-## IndieWeb Things
+## IndieWeb
+
+This site makes extensive use of [microformats](https://microformats.org/) and is able to send/receive [Webmentions](https://indieweb.org/Webmention). Blog posts are
 
 - [Webmention.io](https://webmention.io/) is free service for receiving Webmentions, a protocol used by IndieWeb sites to be notified when they link to each other.
 - [Webmention.app](https://webmention.app/) is a free service to automate outgoing webmentions with a simple API, and I use a scheduled GitHub Action to use it.
 - [Bridgy](https://brid.gy/) is a free service that connects IndieWeb sites to your Mastodon and Bluesky accounts for [backfeeds](https://indieweb.org/backfeed) and [POSSE](https://indieweb.org/POSSE).
+- [EchoFeed](https://echofeed.app) is used to automatically cross-post blog posts to Mastodon. (I don't use Bluesky much, but I manually cross-post to that when I feel like it.)
 
 ## Third-Party Services
 
-- [Pagefind](https://pagefind.app/): Dead simple fully static search library for static websites, used here to search blog posts. Doesn't even require adding it to your dependencies.
-- [Giscus](https://giscus.app): Alternative to Discus for comments in blog posts using GitHub Discussions, rather than Issues, as the backend.
-- [Umami](http://umami.is): GDPR-compliant and privacy friendly Google Analytics alternative, self-hosted on a VPS. ([See website stats here.](https://u.adiaz.fyi/share/TtTytHU8rJy0oEzN))
+- [Pagefind](https://pagefind.app/): Dead simple fully static search library for static websites, used for the Search component in the header. Doesn't even require adding it to your dependencies, all the magic happens at build time.
+- [Giscus](https://giscus.app): Free commenting system that uses GitHub Discussions as the backend, used for comments in blog posts.
+- [Umami](http://umami.is): GDPR-compliant and privacy friendly Google Analytics alternative, self-hosted on a VPS. [Website stats are public and can be viewed here.](https://u.adiaz.fyi/share/TtTytHU8rJy0oEzN)
 
 ## Domains
 
@@ -70,21 +101,3 @@ This website lives at `fullmetalbrackets.com`, however I have other domains that
 - `selfhoster.org`
 - `ariel.wiki`
 - `adiaz.fyi`
-
-## WTF is a Colophon anyway?
-
-> [quote]
->
-> <span class="i b u em">colophon</span> _noun_ (col·​o·​phon ˈkä-lə-fən -ˌfän)
-> <br />
-> 1: an inscription at the end of a book or manuscript
-> <span class="em">usually with facts about its production</span>.
->
-> [Merriam-Webster Dictionary](https://www.merriam-webster.com/dictionary/colophon)
-
-Or in a modern context...
-
-> [quote]
-> A <span class="i b u em">colophon</span> is a page or section (typically in a footer) of a site that <span class="em">describes how the site is made, with what tools, supporting what technologies</span>, and often published on personal sites at a top level `/colophon` page.
->
-> [IndieWeb](https://indieweb.org/colophon)
