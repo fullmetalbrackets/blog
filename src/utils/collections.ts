@@ -27,10 +27,18 @@ export async function getPostsByTag(tag: string) {
 	return posts.filter((post) => post.data.tags.includes(tag));
 }
 
-// Get posts filtered by year
-export async function getPostsByYear(year: number) {
-	const posts = await getSortedPosts();
-	return posts.filter((post) => post.data.pubDate.getFullYear() === year);
+// Get all posts grouped by year
+export async function getPostsByYearMap() {
+	const posts = await getPostsWithReadingTime();
+	return posts.reduce(
+		(acc, post) => {
+			const year = post.data.pubDate.getFullYear().toString();
+			if (!acc[year]) acc[year] = [];
+			acc[year].push(post);
+			return acc;
+		},
+		{} as Record<string, Awaited<ReturnType<typeof getPostsWithReadingTime>>>
+	);
 }
 
 // Get all tags with post counts, sorted alphabetically

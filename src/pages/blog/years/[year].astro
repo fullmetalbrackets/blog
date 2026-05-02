@@ -8,20 +8,12 @@ import Link from "@components/Link.astro";
 import BackToTop from "@components/BackToTop.astro";
 import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
 import CollectionPageSchema from "@components/CollectionPageSchema.astro";
-import { getPostsWithReadingTime } from "@utils/collections";
+import { getPostsByYearMap } from '@utils/collections';
 import type { BlogYearProps } from '../../../types';
 import { SITE_URL } from "@consts";
 
 export async function getStaticPaths() {
-  const allPosts = await getPostsWithReadingTime();
-
-  const postsByYear = allPosts.reduce((acc, post) => {
-    const year = post.data.pubDate.getFullYear().toString();
-    if (!acc[year]) acc[year] = [];
-    acc[year].push(post);
-    return acc;
-  }, {} as Record<string, typeof allPosts>);
-
+  const postsByYear = await getPostsByYearMap();
   return Object.entries(postsByYear).map(([year, posts]) => ({
     params: { year },
     props: { posts, postsByYear }
