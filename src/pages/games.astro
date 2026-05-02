@@ -91,15 +91,17 @@ const schema = {
           )}
           <span class="count">{typedGames.length}</span>
         </summary>
-        {platform === 'Steam' && <p class="platform-note">This is only games <b>I've actually played</b> since I have many games on Steam I've never even installed...</p>}
-        {platform === 'Nintendo Switch 2' && <p class="platform-note">With the exception of <b>Mario Kart World</b>, these are all <em>Nintendo Switch 2 Edition</em> upgrades of Switch games I already owned.</p>}
-        <ul>
-          {typedGames.map(game => (
-            <li>
-              <span>{game.title}</span>
-            </li>
-          ))}
-        </ul>
+        <div class="details-content">
+          {platform === 'Steam' && <p class="platform-note">This is only games <b>I've actually played</b> since I have many games on Steam I've never even installed...</p>}
+          {platform === 'Nintendo Switch 2' && <p class="platform-note">With the exception of <b>Mario Kart World</b>, these are all <em>Nintendo Switch 2 Edition</em> upgrades of Switch games I already owned.</p>}
+          <ul>
+            {typedGames.map(game => (
+              <li>
+                <span>{game.title}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </details>
     );
   })}
@@ -118,15 +120,31 @@ const schema = {
   }
   
   summary {
+    display: inline-flex;
     cursor: pointer;
     font-weight: bold;
     padding: 0.25em;
-    display: flex;
     align-items: center;
     gap: 0.5em;
     color: var(--primary);
-    display: list-item;
-    list-style-position: inside;
+    list-style: none;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  summary::before {
+    content: '▶';
+    display: inline-block;
+    font-size: 0.75em;
+    line-height: 1;
+    transition: rotate 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    rotate: 0deg;
+  }
+
+  details[open] > summary::before {
+    rotate: 90deg;
   }
 
   summary > * {
@@ -192,9 +210,61 @@ const schema = {
     height: auto;
   }
 
+  @keyframes bounceOpen {
+    0%   { transform: scaleY(0); opacity: 0; }
+    60%  { transform: scaleY(1.06); opacity: 1; }
+    80%  { transform: scaleY(0.97); }
+    100% { transform: scaleY(1); }
+  }
+
+  @keyframes bounceClose {
+    0%   { transform: scaleY(1); opacity: 1; }
+    30%  { transform: scaleY(1.04); }
+    100% { transform: scaleY(0); opacity: 0; }
+  }
+
+  details .details-content {
+    transform-origin: top;
+    overflow: hidden;
+  }
+
+  details[open] .details-content {
+    animation: bounceOpen 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+
+  details .details-content.closing {
+    animation: bounceClose 0.25s ease-in forwards;
+  }
+
   @media screen and (max-width: 667px) {
+    summary {
+      display: flex;
+    }
     li span {
       font-size: 18px;
     }
   }
 </style>
+
+<script>
+  document.querySelectorAll('details').forEach(details => {
+    const summary = details.querySelector('summary');
+    const content = details.querySelector('.details-content') as HTMLElement;
+
+    summary?.addEventListener('click', e => {
+      e.preventDefault();
+
+      if (details.open) {
+        // Play close animation, then shut
+        content.classList.add('closing');
+        content.addEventListener('animationend', () => {
+          content.classList.remove('closing');
+          details.removeAttribute('open');
+        }, { once: true });
+      } else {
+        // Open first, then animate
+        details.setAttribute('open', '');
+      }
+    });
+  });
+</script>
