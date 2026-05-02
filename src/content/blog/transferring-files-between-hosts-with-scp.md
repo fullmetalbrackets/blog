@@ -7,7 +7,7 @@ tags: ['linux', 'command line']
 related: ['copy-ssh-keys-between-hosts']
 ---
 
-When using it, you will be prompted for the remote user's password, or you can use an <a href="/blog/generating-an-ssh-key-pair/" target="_blank" data-umami-event="transfer-scp-to-generating-ssh-key-pair">authorized SSH key</a> if you have previously authorized it.
+When using it, you will be prompted for the remote user's password, or you can use an <a href="/blog/generating-an-ssh-key-pair" target="_blank" data-umami-event="transfer-scp-to-generating-ssh-key-pair">authorized SSH key</a> if you have previously authorized it.
 
 ## SCP Command Syntax
 

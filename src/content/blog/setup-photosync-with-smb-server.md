@@ -11,7 +11,7 @@ related: ['setup-a-samba-share-on-linux-via-command-line','setting-up-plex-in-do
 
 ## Caveats and Pre-Requisites
 
-The method I describe below requires that your phone with the _PhotoSync_ app be _connected to the same Wi-Fi network as the server_ that you will be transferring your photos to, or have access to the server via Tailscale or other similar solution. Also, the server must already be configured with a Samba share. (<a href="/blog/setup-a-samba-share-on-linux-via-command-line/" target="_blank" data-umami-event="photosync-smb-to-setup-smb-linux">See here how to set up a Samba share on Linux.</a>)
+The method I describe below requires that your phone with the _PhotoSync_ app be _connected to the same Wi-Fi network as the server_ that you will be transferring your photos to, or have access to the server via Tailscale or other similar solution. Also, the server must already be configured with a Samba share. (<a href="/blog/setup-a-samba-share-on-linux-via-command-line" target="_blank" data-umami-event="photosync-smb-to-setup-smb-linux">See here how to set up a Samba share on Linux.</a>)
 
 Finally, using the **SMB** option to transfer photos _requires the NAS Add-On for PhotoSync_, which costs **$2.49** by itself. (You also have the option of spending a bit more on the _Bundle Add-On_, which comes with the _NAS Add-On_ as well as the _Auto-Transfer and Cloud Add-Ons_, but those are not necessary for what we'll be setting up.)
 

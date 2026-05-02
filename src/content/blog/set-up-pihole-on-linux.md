@@ -9,7 +9,7 @@ related: ['pihole-anywhere-tailscale', 'reverse-proxy-using-nginx-pihole-cloudfl
 
 ## Pre-Requisites and Caveats
 
-Before anything, make sure the machine you're installing Pi-Hole on has a _static IP_, otherwise if your machine's IP changes it will break DNS resolution for the network. You can <a href="/blog/set-static-ip-debian/" target="_blank" data-umami-event="setup-pihole-static-ip-post">set a static IP on the server itself</a> or else use IP Reservation on your router.
+Before anything, make sure the machine you're installing Pi-Hole on has a _static IP_, otherwise if your machine's IP changes it will break DNS resolution for the network. You can <a href="/blog/set-static-ip-debian" target="_blank" data-umami-event="setup-pihole-static-ip-post">set a static IP on the server itself</a> or else use IP Reservation on your router.
 
 In addition, Pi-Hole will run a web server -- as of Pi-Hole v6, the web server will default to port **80** if available, otherwise it will attempt to run the web server on port **8080**. As a result, make sure one of those ports are available for Pi-Hole's web UI.
 
@@ -349,7 +349,7 @@ If you want to find out your time zone in the tz database, <a href="https://en.w
 
 ## Accessing Pi-Hole web UI with HTTPS
 
-**Pi-Hole v6** supports accessing the web UI with HTTPS out-of-the-box. <a href="/blog/reverse-proxy-using-nginx-pihole-cloudflare/" data-umami-event="setup-pihole-related-reverse-proxy">I wrote a full blog post</a> about setting up a reverse proxy with Nginx Proxy Mananger and using Cloudflare for the DNS challenge to provision the TLS certificate. <a href="http://localhost:4321/blog/reverse-proxy-using-nginx-pihole-cloudflare/#install-and-congifure-nginx-proxy-manager" target="_blank" data-umami-event="setup-pihole-related-reverse-proxy">The pertinent section is here</a>, but assuming you already know how to work with Nginx Proxy Manager, here is a quick guide:
+**Pi-Hole v6** supports accessing the web UI with HTTPS out-of-the-box. <a href="/blog/reverse-proxy-using-nginx-pihole-cloudflare" data-umami-event="setup-pihole-related-reverse-proxy">I wrote a full blog post</a> about setting up a reverse proxy with Nginx Proxy Mananger and using Cloudflare for the DNS challenge to provision the TLS certificate. <a href="http://localhost:4321/blog/reverse-proxy-using-nginx-pihole-cloudflare/#install-and-congifure-nginx-proxy-manager" target="_blank" data-umami-event="setup-pihole-related-reverse-proxy">The pertinent section is here</a>, but assuming you already know how to work with Nginx Proxy Manager, here is a quick guide:
 
 1. Go to the Nginx Proxy Manager web UI and create a new proxy host.
 

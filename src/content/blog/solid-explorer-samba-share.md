@@ -19,7 +19,7 @@ This will assume that you already have a Linux server with SMB shares set up, I 
 
 ## Connect Solid Explorer to SMB share
 
-First, make sure you're on the same Wi-Fi network as the SMB share you want to access in Solid Explorer. (Setting this up to be available from outside the home network is possible, but beyond the scope of this article. But <a href="/blog/comprehensive-guide-tailscale-securely-access-home-network/" target="_blank" data-umami-event="solid-explorer-tailscale">this might interest you</a>.)
+First, make sure you're on the same Wi-Fi network as the SMB share you want to access in Solid Explorer. (Setting this up to be available from outside the home network is possible, but beyond the scope of this article. But <a href="/blog/comprehensive-guide-tailscale-securely-access-home-network" target="_blank" data-umami-event="solid-explorer-tailscale">this might interest you</a>.)
 
 Open the Solid Explorer app and tap the _hamburger menu_ at the top-left to bring up the menu, then tap the _3-dots_ and choose **Storage manager**.
 

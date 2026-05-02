@@ -9,7 +9,7 @@ related: ['setup-a-samba-share-on-linux-via-command-line', 'quick-guide-setting-
 
 ## SMB configuration file
 
-This is the current working Samba configuration file for <a href="/wiki/athena/" target="_blank" data-umami-event="wiki-smb-config-to-athena">this blog post</a> with shares for each hard drive, except the boot drive. The file is located at `/etc/samba/smb.conf`
+This is the current working Samba configuration file for <a href="/wiki/athena" target="_blank" data-umami-event="wiki-smb-config-to-athena">this blog post</a> with shares for each hard drive, except the boot drive. The file is located at `/etc/samba/smb.conf`
 
 ```bash
 [global]

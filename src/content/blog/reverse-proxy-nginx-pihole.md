@@ -15,7 +15,7 @@ related: ['reverse-proxy-using-nginx-pihole-cloudflare', 'openmediavault-quick-r
 
 ## Pre-Requisites and Caveats
 
-I will only be explaining how to install and configure _Nginx Proxy Manager_, as I have other blog posts about <a href="/blog/set-up-pihole-on-linux/" target="_blank">installing Pi-Hole</a> and <a href="/blog/setting-up-plex-in-docker/" target="_blank">installing Plex</a> that you can check out for that. OpenMediaVault is more involved since it's a whole operating system installed via an ISO, so I highly suggest you read the <a href="https://docs.openmediavault.org/en/latest/installation/index.html" target="_blank">official documentation</a> for instructions on that.
+I will only be explaining how to install and configure _Nginx Proxy Manager_, as I have other blog posts about <a href="/blog/set-up-pihole-on-linux" target="_blank">installing Pi-Hole</a> and <a href="/blog/setting-up-plex-in-docker" target="_blank">installing Plex</a> that you can check out for that. OpenMediaVault is more involved since it's a whole operating system installed via an ISO, so I highly suggest you read the <a href="https://docs.openmediavault.org/en/latest/installation/index.html" target="_blank">official documentation</a> for instructions on that.
 
 This guide will proceed with the assumption that _OpenMediaVault_, _Plex_ and _Navidrome_ are already setup, and you're now wanting to set up a reverse proxy to access them via URL rather than typing an IP address and port, since that was my scenario and I wanted to write it down for future reference.
 
@@ -140,8 +140,8 @@ To check the logs in Portainer:
 
 ## Reference
 
-- <a href="/blog/set-up-pihole-on-linux/" target="_blank">My blog post on how to install Pi-Hole</a>
-- <a href="/blog/setting-up-plex-in-docker/" target="_blank">My blog post on how to install Plex</a>
+- <a href="/blog/set-up-pihole-on-linux" target="_blank">My blog post on how to install Pi-Hole</a>
+- <a href="/blog/setting-up-plex-in-docker" target="_blank">My blog post on how to install Plex</a>
 - <a href="https://docs.openmediavault.org/en/latest" target="_blank">OpenMediaVault 6 documentation</a>
 - <a href="https://nginxproxymanager.com" target="_blank">Website of Nginx Proxy Manager</a>
 - <a href="https://github.com/NginxProxyManager/nginx-proxy-manager" target="_blank">GitHub of Nginx Proxy Manager</a>
