@@ -66,21 +66,22 @@ const playedDate = new Date(playedAt);
     font-weight: 900;
     color: var(--emphasis);
     line-height: 1.2;
-    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    overflow-wrap: break-word
   }
   .artist {
     font-size: 0.925em;
     line-height: 1.2;
     color: var(--secondary);
+    overflow-wrap: break-word
   }
   .album {
     font-size: 0.85em;
     line-height: 1.3;
-    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    overflow-wrap: break-word
   }
   @media screen and (max-width: 667px) {
     section {
