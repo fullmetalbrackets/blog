@@ -3,8 +3,8 @@ title: 'How to remove CasaOS from a ZimaBoard and upgrade to Debian 12 Bookworm'
 description: "ZimaBoard is an x86 single board server that comes running Debian 11 Bullseye and CasaOS. It's a cool little machine, but after a few months I realized I don't like CasaOS. Nothing against it, I'm just set in my way of doing things, and their GUI was limiting some of my options. In this post I'll explain how to remove CasaOS from the ZimaBoard and then upgrade it to Debian 12."
 pubDate: 2025-02-10
 updatedDate: 2025-11-06
-tags: ['zimaboard', 'debian', 'command line']
-related: ['factory-restore-zimaboard', 'upgrade-debian-12-bookworm-debian-13-trixie']
+tags: ['zimaboard', 'debian', 'sbc']
+related: ['migrate-adguardhome-glinet-flint2-libre-sweet-potato', 'factory-restore-zimaboard']
 ---
 
 ## About the ZimaBoard

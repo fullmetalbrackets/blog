@@ -18,6 +18,4 @@ related: ['installing-and-configuring-bazzite']
 - 1 x **500 GB Internal 2.5" HDD**
 - 1 x **1 Gbps Ethernet**
 
-## Information
-
 My wife's former daily driver PC running Windows 10 since 2015, the twin of what is now [my home server, Athena](/wiki/athena/). She upgraded to a new gaming laptop and this sat in a corner forgotten for a year before she let me take it over. It's running Bazzite.

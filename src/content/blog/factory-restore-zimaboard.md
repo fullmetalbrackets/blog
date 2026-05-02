@@ -4,7 +4,7 @@ description: "I've recently been playing around with ZimaBoard, a single board s
 pubDate: 2024-12-22
 updatedDate: 2025-02-10
 tags: ['zimaboard', 'debian']
-related: ['remove-casaos-zimaboard-upgrade-debian-12']
+related: ['migrate-adguardhome-glinet-flint2-libre-sweet-potato', 'remove-casaos-zimaboard-upgrade-debian-12']
 ---
 
 ## About the ZimaBoard

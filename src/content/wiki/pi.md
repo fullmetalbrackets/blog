@@ -18,6 +18,4 @@ related: ['set-up-pihole-on-linux', 'pihole-anywhere-tailscale']
 - 1 Gbps Ethernet
 - 4 GB RAM
 
-## Information
-
 Finally got one of these when it finally dropped to a reasonable price. It runs [Pi-Hole to serve as DNS for my Tailnet](/blog/pihole-anywhere-tailscale/), and also functions as a second backup server with an attached external HDD.
