@@ -86,13 +86,13 @@ const desc = "Archive of wiki articles.";
 <BaseLayout title={title} description={desc}>
   <BreadcrumbSchema slot="head" crumbs={[
     { name: "Home", url: `${SITE_URL}` },
-    { name: "Wiki", url: `${SITE_URL}/wiki/` }
+    { name: "Wiki", url: `${SITE_URL}/wiki` }
   ]} />
   <CollectionPageSchema
     slot="head"
     name={title}
     description={desc}
-    url={`${SITE_URL}/wiki/`}
+    url={`${SITE_URL}/wiki`}
   />
   <section class="h-feed">
     <h1>{title}</h1>
@@ -106,7 +106,7 @@ const desc = "Archive of wiki articles.";
         posts.map((post) => (
           <li>
             <div>
-              <a href={`/wiki/${post.id}/`} rel="prefetch-intent" data-umami-event={post.id}>
+              <a href={`/wiki/${post.id}`} rel="prefetch-intent" data-umami-event={post.id}>
                 <span class="title">{post.data.title}</span>
                 <p class="date">
                   <FormattedDate date={post.data.updatedDate || post.data.pubDate} />

@@ -26,7 +26,7 @@ const sorted = allEntries.sort((a, b) =>
 const latest = sorted[0];
 
 if (entry.id === latest.id) {
-  return Astro.redirect('/now/', 301);
+  return Astro.redirect('/now', 301);
 }
 
 const others = sorted.filter(e => e.id !== entry.id);
@@ -76,7 +76,7 @@ const desc = "What I've been up to lately and what's on my mind. Updated monthly
         <ul>
           {others.map(otherEntry => (
             <li>
-              <a href={`/now/${otherEntry.id}/`}>
+              <a href={`/now/${otherEntry.id}`}>
                 {otherEntry.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}
               </a>
             </li>

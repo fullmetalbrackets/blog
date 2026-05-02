@@ -61,7 +61,7 @@ const desc = "What I've been up to lately and what's on my mind. Updated monthly
         <ul>
           {previous.map(prevEntry => (
             <li>
-              <a href={`/now/${prevEntry.id}/`}>
+              <a href={`/now/${prevEntry.id}`}>
                 {prevEntry.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}
               </a>
             </li>

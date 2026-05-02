@@ -112,7 +112,7 @@ const desc = `Browse blog post categories on ${SITE_TITLE}.`;
       {tags.map(({ tag, count }) => (
         <li>
           <button>
-            <a href={`/categories/${tag}/`} rel="prefetch-intent tag" data-umami-event={`categories-${tag}`}>
+            <a href={`/categories/${tag}`} rel="prefetch-intent tag" data-umami-event={`categories-${tag}`}>
               <span class="label">
                 {tag}
               </span>

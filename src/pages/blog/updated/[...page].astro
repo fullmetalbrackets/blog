@@ -213,7 +213,7 @@ const desc = "Blog posts sorted by most recently updated.";
     slot="head"
     name={title}
     description={desc}
-    url={`${SITE_URL}/blog/updated/`}
+    url={`${SITE_URL}/blog/updated`}
   />
   <section class="h-feed">
     <h1 class="p-name">Recently Updated</h1>
@@ -221,7 +221,7 @@ const desc = "Blog posts sorted by most recently updated.";
     <hr />
     <p>
       <span>
-        <span class="total">{page.total}</span> posts sorted by most recently updated. Alternately, see posts <a href="/categories/" rel="prefetch-intent" data-umami-event="blog-category">by category</a>, <a href="./years/" rel="prefetch-intent">by year</a>, or <a href="/blog/" rel="prefetch-intent">all posts</a>.
+        <span class="total">{page.total}</span> posts sorted by most recently updated. Alternately, see posts <a href="/categories" rel="prefetch-intent" data-umami-event="blog-category">by category</a>, <a href="./years" rel="prefetch-intent">by year</a>, or <a href="/blog" rel="prefetch-intent">all posts</a>.
       </span>
     </p>
     <div class="page-info-top">Page {page.currentPage} of {page.lastPage}</div>
@@ -245,7 +245,7 @@ const desc = "Blog posts sorted by most recently updated.";
       {page.data.map((post) => (
         <li class="h-entry">
           <div>
-            <a class="u-url" href={`/blog/${post.id}/`} rel="prefetch-intent" data-umami-event={post.id}>
+            <a class="u-url" href={`/blog/${post.id}`} rel="prefetch-intent" data-umami-event={post.id}>
               <span class="p-name title">{post.data.title}</span>
               <p class="tag">
                 {post.data.tags.map((tag) => (

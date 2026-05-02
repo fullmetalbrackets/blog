@@ -46,20 +46,20 @@ const desc = `Blog posts written in ${year}.`;
     <a class="u-url" href={`${SITE_URL}/blog/years/${year}`} hidden>Permalink</a>
     <hr />
     <p class="back">
-      <a href="/blog/" rel="prefetch-intent" class="all"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><title>arrow-left</title><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg> All posts</a>
-      <a href="/categories/" rel="prefetch-intent" class="categories">Categories <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><title>arrow-right</title><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg></a>
+      <a href="/blog" rel="prefetch-intent" class="all"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><title>arrow-left</title><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg> All posts</a>
+      <a href="/categories" rel="prefetch-intent" class="categories">Categories <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><title>arrow-right</title><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg></a>
     </p>
     <p>
       Showing <span class="total">{postCount}&nbsp;{postCount === 1 ? 'post' : 'posts'}</span> from <span class="year">{year}</span>. 
     </p>
     <nav class="years">
       See more years:&nbsp;
-      <Link href="/blog/years/2026/" rel="prefetch-intent" aria-label="2026" data-umami-event="blog-2026"><button>2026 <span class="count">{postsByYear['2026']?.length || 0}</span></button></Link>
-      <Link href="/blog/years/2025/" rel="prefetch-intent" aria-label="2025" data-umami-event="blog-2025"><button>2025 <span class="count">{postsByYear['2025']?.length || 0}</span></button></Link>
-      <Link href="/blog/years/2024/" rel="prefetch-intent" aria-label="2024" data-umami-event="blog-2024"><button>2024 <span class="count">{postsByYear['2024']?.length || 0}</span></button></Link>
-      <Link href="/blog/years/2023/" rel="prefetch-intent" aria-label="2023" data-umami-event="blog-2023"><button>2023 <span class="count">{postsByYear['2023']?.length || 0}</span></button></Link>
-      <Link href="/blog/years/2022/" rel="prefetch-intent" aria-label="2022" data-umami-event="blog-2022"><button>2022 <span class="count">{postsByYear['2022']?.length || 0}</span></button></Link>
-      <Link href="/blog/years/2021/" rel="prefetch-intent" aria-label="2021" data-umami-event="blog-2021"><button>2021 <span class="count">{postsByYear['2021']?.length || 0}</span></button></Link>
+      <Link href="/blog/years/2026" rel="prefetch-intent" aria-label="2026" data-umami-event="blog-2026"><button>2026 <span class="count">{postsByYear['2026']?.length || 0}</span></button></Link>
+      <Link href="/blog/years/2025" rel="prefetch-intent" aria-label="2025" data-umami-event="blog-2025"><button>2025 <span class="count">{postsByYear['2025']?.length || 0}</span></button></Link>
+      <Link href="/blog/years/2024" rel="prefetch-intent" aria-label="2024" data-umami-event="blog-2024"><button>2024 <span class="count">{postsByYear['2024']?.length || 0}</span></button></Link>
+      <Link href="/blog/years/2023" rel="prefetch-intent" aria-label="2023" data-umami-event="blog-2023"><button>2023 <span class="count">{postsByYear['2023']?.length || 0}</span></button></Link>
+      <Link href="/blog/years/2022" rel="prefetch-intent" aria-label="2022" data-umami-event="blog-2022"><button>2022 <span class="count">{postsByYear['2022']?.length || 0}</span></button></Link>
+      <Link href="/blog/years/2021" rel="prefetch-intent" aria-label="2021" data-umami-event="blog-2021"><button>2021 <span class="count">{postsByYear['2021']?.length || 0}</span></button></Link>
     </nav>
     <ul>
       {
