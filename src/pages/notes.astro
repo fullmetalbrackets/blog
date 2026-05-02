@@ -3,6 +3,7 @@ export const prerender = true;
  
 import BaseLayout from '@layouts/BaseLayout.astro';
 import CollectionPageSchema from '@components/CollectionPageSchema.astro';
+import BackToTop from "@components/BackToTop.astro";
 import { SITE_URL } from '@consts';
 import { getSortedNotes } from "@utils/collections";
 import { YouTube } from 'astro-embed';
@@ -92,6 +93,8 @@ const entries = await getSortedNotes();
       })}
     </ul>
   </section>
+  <hr/>
+  <BackToTop />
 </BaseLayout>
 
 <style>
