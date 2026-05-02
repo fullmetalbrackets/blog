@@ -222,6 +222,9 @@ const desc = "Archive of blog posts.";
     .tag button {
       margin: 0 0.25em 0.25em 0;
     }
+    .posts-years {
+      font-size: 18px;
+    }
     .page-info-top {
       font-size: 0.85em;
       margin: 1.5em 0 -1.3em 0;
@@ -261,7 +264,7 @@ const desc = "Archive of blog posts.";
         List of all <span class="total">{page.total}</span> blog posts. Alternately, see posts <a href="/blog/updated" rel="prefetch-intent" data-umami-event="blog-updated">by most recently updated</a> or <a href="/categories" rel="prefetch-intent" data-umami-event="blog-category">by category</a>.
       </span>
       <nav class="years">
-        See posts by year:&nbsp;
+        <span class="posts-years">See posts by year:</span>
         <Link href="/blog/years/2026" rel="prefetch-intent" aria-label="2026" data-umami-event="blog-2026"><button>2026 <span class="count">{postsByYear['2026']?.length || 0}</span></button></Link>
         <Link href="/blog/years/2025" rel="prefetch-intent" aria-label="2025" data-umami-event="blog-2025"><button>2025 <span class="count">{postsByYear['2025']?.length || 0}</span></button></Link>
         <Link href="/blog/years/2024" rel="prefetch-intent" aria-label="2024" data-umami-event="blog-2024"><button>2024 <span class="count">{postsByYear['2024']?.length || 0}</span></button></Link>
