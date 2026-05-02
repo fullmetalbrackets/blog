@@ -2,23 +2,25 @@
 export const prerender = true;
 
 import BaseLayout from "@layouts/BaseLayout.astro";
-import { getPostsWithReadingTime } from '@utils/collections';
+import { getPostsWithReadingTime, getPostsByYearMap } from '@utils/collections';
 import FormattedDate from "@components/FormattedDate.astro";
 import ReadingTime from "@components/ReadingTime.astro";
+import Link from "@components/Link.astro";
 import BackToTop from "@components/BackToTop.astro";
 import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
 import CollectionPageSchema from "@components/CollectionPageSchema.astro";
 import { SITE_TITLE, SITE_URL } from "@consts";
-import type { BlogPageProps } from '../../types';
 import type { PaginateFunction } from 'astro';
 
 export async function getStaticPaths({ paginate }: { paginate: PaginateFunction }) {
-  const posts = await getPostsWithReadingTime();
-  return paginate(posts, { pageSize: 5 });
+  const [posts, postsByYear] = await Promise.all([
+    getPostsWithReadingTime(),
+    getPostsByYearMap()
+  ]);
+  return paginate(posts, { pageSize: 5, props: { postsByYear } });
 }
 
-type Props = BlogPageProps;
-const { page } = Astro.props;
+const { page, postsByYear } = Astro.props;
 const title = `Blog - Page ${page.currentPage} | ${SITE_TITLE}`;
 const desc = "Archive of blog posts.";
 ---
@@ -66,11 +68,29 @@ const desc = "Archive of blog posts.";
   }
   .years {
     margin: 1em auto;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5em;
   }
   .years a {
     font-family: var(--sub-font);
     font-weight: 700;
     font-size: 0.9em;
+  }
+  .count {
+    display: inline-flex;
+    place-items: center;
+    justify-content: center;
+    min-width: 1.25em;
+    padding: 0;
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 9999px;
+    font-family: var(--main-font);
+    font-size: 0.675em;
+    vertical-align: middle;
+    line-height: 1.6;
   }
   button {
     margin: 0 0.175em;
@@ -240,15 +260,15 @@ const desc = "Archive of blog posts.";
       <span>
         List of all <span class="total">{page.total}</span> blog posts. Alternately, see posts <a href="/blog/updated" rel="prefetch-intent" data-umami-event="blog-updated">by most recently updated</a> or <a href="/categories" rel="prefetch-intent" data-umami-event="blog-category">by category</a>.
       </span>
-      <p class="years">
+      <nav class="years">
         See posts by year:&nbsp;
-        <a href="/blog/years/2026" data-umami-event="blog-2026">2026</a>&nbsp;
-        <a href="/blog/years/2025" data-umami-event="blog-2025">2025</a>&nbsp;
-        <a href="/blog/years/2024" data-umami-event="blog-2024">2024</a>&nbsp;
-        <a href="/blog/years/2023" data-umami-event="blog-2023">2023</a>&nbsp;
-        <a href="/blog/years/2022" data-umami-event="blog-2022">2022</a>&nbsp;
-        <a href="/blog/years/2021" data-umami-event="blog-2021">2021</a>
-      </p>
+        <Link href="/blog/years/2026/" rel="prefetch-intent" aria-label="2026" data-umami-event="blog-2026"><button>2026 <span class="count">{postsByYear['2026']?.length || 0}</span></button></Link>
+        <Link href="/blog/years/2025/" rel="prefetch-intent" aria-label="2025" data-umami-event="blog-2025"><button>2025 <span class="count">{postsByYear['2025']?.length || 0}</span></button></Link>
+        <Link href="/blog/years/2024/" rel="prefetch-intent" aria-label="2024" data-umami-event="blog-2024"><button>2024 <span class="count">{postsByYear['2024']?.length || 0}</span></button></Link>
+        <Link href="/blog/years/2023/" rel="prefetch-intent" aria-label="2023" data-umami-event="blog-2023"><button>2023 <span class="count">{postsByYear['2023']?.length || 0}</span></button></Link>
+        <Link href="/blog/years/2022/" rel="prefetch-intent" aria-label="2022" data-umami-event="blog-2022"><button>2022 <span class="count">{postsByYear['2022']?.length || 0}</span></button></Link>
+        <Link href="/blog/years/2021/" rel="prefetch-intent" aria-label="2021" data-umami-event="blog-2021"><button>2021 <span class="count">{postsByYear['2021']?.length || 0}</span></button></Link>
+      </nav>
       <span class="rss">RSS Feed: 
         <a href="/rss.xml" rel="prefetch-intent">
           <svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="vertical-align: text-bottom; width: 1.325em; height: 1.325em;" class="pr-1" id="RSSicon" viewBox="0 0 256 256">
