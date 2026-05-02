@@ -20,6 +20,7 @@ import PS2 from '@img/games/ps2.svg';
 import PS1 from '@img/games/psx.svg';
 import XB from '@img/games/xbox.svg';
 import Steam from '@img/games/steam.svg';
+import Epic from '@img/games/epic.svg';
 
 const gamesEntry = await getEntry('games', 'games');
 const gamesByPlatform = gamesEntry?.data.games;
@@ -45,6 +46,7 @@ const platformIcons: Record<string, { component: any; class?: string }> = {
   'GameBoy Advance': { component: GBA },
   'XBox 360': { component: XB },
   'Steam': { component: Steam },
+  'Epic': { component: Epic, class: 'epic-icon' },
 };
 
 const title = "Games";
@@ -56,7 +58,7 @@ const schema = {
   "@id": `${SITE_URL}/games/#collection`,
   "name": "Games",
   "description": desc,
-  "url": `${SITE_URL}/games/`,
+  "url": `${SITE_URL}/games`,
   "inLanguage": "en-US",
   "author": {
     "@id": `${SITE_URL}/#person`
@@ -68,7 +70,7 @@ const schema = {
     slot="head"
     name={title}
     description={desc}
-    url={`${SITE_URL}/games/`}
+    url={`${SITE_URL}/games`}
   />
   <section>
   <h1>{title}</h1>
@@ -92,6 +94,7 @@ const schema = {
           <span class="count">{typedGames.length}</span>
         </summary>
         <div class="details-content">
+          {platform === 'Epic' && <p class="platform-note">Every game was claimed when it was free. Not a single penny spent, only a handful played...</p>}
           {platform === 'Steam' && <p class="platform-note">This is only games <b>I've actually played</b> since I have many games on Steam I've never even installed...</p>}
           {platform === 'Nintendo Switch 2' && <p class="platform-note">With the exception of <b>Mario Kart World</b>, these are all <em>Nintendo Switch 2 Edition</em> upgrades of Switch games I already owned.</p>}
           <ul>
@@ -153,7 +156,7 @@ const schema = {
   }
 
   summary svg {
-    filter: var(--game-platform);
+    fill: var(--emphasis);
   }
 
   .platform-icon {
@@ -193,11 +196,11 @@ const schema = {
   }
   
   li {
-    display: flex;
     align-items: center;
     gap: 0;
-    margin: 0;
-    padding: 0 0 0 0.25em;
+    margin: 0 0 0 0.75em;
+    padding: 0;
+    font-size: 0.875em;
   }
 
   .switch2-icon {
@@ -210,6 +213,11 @@ const schema = {
     height: auto;
   }
 
+  .epic-icon {
+    width: auto;
+    height: 32px;
+  }
+  
   @keyframes bounceOpen {
     0%   { transform: scaleY(0); opacity: 0; }
     60%  { transform: scaleY(1.06); opacity: 1; }
