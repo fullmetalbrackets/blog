@@ -18,8 +18,8 @@
 </script>
 
 <style is:global>
-  .glightbox:hover {
-    cursor: zoom-in;
+  .gslide-media img, .gslide-image img {
+    border-radius: 0.5em;
   }
   button.gclose.gbtn, button.gprev.gbtn, button.gnext.gbtn {
     background-color: var(--primary);
@@ -32,8 +32,13 @@
   button.gclose.gbtn svg g path, button.gprev.gbtn svg g path, button.gnext.gbtn svg g path {
     fill: #000;
   }
-  button.gclose.gbtn > svg, button.gprev.gbtn > svg, button.gnext.gbtn > svg {
-    stroke-width: 2;
+  body.glightbox-open {
+    overflow-y: scroll !important;
   }
-
+  body.gscrollbar-fixer {
+    margin-right: 0 !important;
+  }
+  html.glightbox-open {
+    overflow: unset !important;
+  }
 </style>
