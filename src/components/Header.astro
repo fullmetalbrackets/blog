@@ -292,7 +292,14 @@ import SearchOverlay from "./SearchOverlay.astro";
     height: 20px;
   }
   .mobile-nav a:active svg {
+    transition: 0.125s ease-out;
+    transform-origin: 50% 50%;
     transform: rotate(-25deg);
+    color: var(--hover);
+  }
+  .mobile-nav a:active {
+    transition: 0.125s ease-out;
+    color: var(--hover);
   }
   .mobile-nav::-webkit-scrollbar {
     width: 4px;
