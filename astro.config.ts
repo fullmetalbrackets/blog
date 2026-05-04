@@ -169,10 +169,6 @@ export default defineConfig({
 			display: 'optional',
 		},
 	],
-
-	experimental: {
-		svgo: true,
-	},
 	output: 'server',
 	adapter: cloudflare({
 		imageService: 'compile',
