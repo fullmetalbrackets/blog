@@ -97,9 +97,6 @@ import SearchOverlay from "./SearchOverlay.astro";
     color: var(--primary);
     border: 0;
   }
-  .name::before {
-    content: "Fullmetalbrackets";
-  }
   .logo:hover .name {
     color: var(--hover);
     border: 0;
@@ -441,7 +438,7 @@ import SearchOverlay from "./SearchOverlay.astro";
     <!-- Logo + name -->
     <a href="/" rel="home" class="logo" aria-label="Fullmetalbrackets home">
       <Image src={Logo} alt="Logo" width={30} height={29} loading="eager" decoding="async" fetchpriority="high" />
-      <span class="name" aria-hidden="true"></span>
+      <span class="name" aria-label="home">Fullmetalbrackets</span>
     </a>
 
     <!-- Right side -->
