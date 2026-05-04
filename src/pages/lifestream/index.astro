@@ -49,6 +49,7 @@ const desc = "All the media I've played, read, and watched. And what I thought o
 <BaseLayout title={title} description={desc}>
   <script is:inline slot="head">
     document.addEventListener('DOMContentLoaded', () => {
+      const details = document.querySelector('.filter-details');
       // Restore
       for (const id of Object.keys(sessionStorage)) {
         const el = document.getElementById(id);
@@ -56,7 +57,10 @@ const desc = "All the media I've played, read, and watched. And what I thought o
           el.checked = sessionStorage.getItem(id) === 'true';
         }
       }
-      // Save
+      if (details instanceof HTMLDetailsElement) {
+        details.open = sessionStorage.getItem('filter-details-open') === 'true';
+      }
+      // Save filters
       document.addEventListener('change', (e) => {
         const el = e.target;
         if (el instanceof HTMLInputElement && el.classList.contains('filter-toggle')) {
@@ -68,14 +72,17 @@ const desc = "All the media I've played, read, and watched. And what I thought o
           }
         }
       });
-      // Reset
+      // Save details open/closed
+      details?.addEventListener('toggle', () => {
+        sessionStorage.setItem('filter-details-open', details.open.toString());
+      });
+      // Reset filters
       document.getElementById('reset-filters')?.addEventListener('click', () => {
         const btn = document.getElementById('reset-filters');
         if (btn instanceof HTMLElement) {
           btn.classList.add('is-shaking');
           btn.addEventListener('animationend', () => btn.classList.remove('is-shaking'), { once: true });
         }
-
         document.querySelectorAll('.filter-toggle').forEach((el, i) => {
           if (el instanceof HTMLInputElement) {
             el.checked = true;
@@ -129,31 +136,34 @@ const desc = "All the media I've played, read, and watched. And what I thought o
         checked
       />
     ))}
-
-    <div class="filters">
-      {types.map(t => (
-        <label for={`filter-${t}`} class="filter-btn">
-          <span class="btn-icon">
-            {t === 'game'   && <GameIcon   width={20} height={20} />}
-            {t === 'book'   && <BookIcon   width={20} height={20} />}
-            {t === 'movie'  && <MovieIcon  width={20} height={20} />}
-            {t === 'tvshow' && <TVShowIcon width={20} height={20} />}
-          </span>
-          {typeName[t]}
-          <span class="filter-count">{counts[t]}</span>
-        </label>
-      ))}
-    </div>
-    <div class="filters year-filters">
-      {years.map(y => (
-        <label for={`filter-${y}`} class="filter-btn year-btn">
-          {y}
-        </label>
-      ))}
-    </div>
-
+  <details class="filter-details">
+    <summary class="filter-summary">Filters</summary>
+    <div class="details-content">
+      <div class="filters">
+        {types.map(t => (
+          <label for={`filter-${t}`} class="filter-btn">
+            <span class="btn-icon">
+              {t === 'game'   && <GameIcon   width={20} height={20} />}
+              {t === 'book'   && <BookIcon   width={20} height={20} />}
+              {t === 'movie'  && <MovieIcon  width={20} height={20} />}
+              {t === 'tvshow' && <TVShowIcon width={20} height={20} />}
+            </span>
+            {typeName[t]}
+            <span class="filter-count">{counts[t]}</span>
+          </label>
+        ))}
+      </div>
+      <div class="filters year-filters">
+        {years.map(y => (
+          <label for={`filter-${y}`} class="filter-btn year-btn">
+            {y}
+          </label>
+        ))}
+      </div>
     <button id="reset-filters" class="filter-btn reset-btn">Reset</button>
     <hr class="border">
+    </div>
+  </details>
     <div class="ls-grid">
       {entries.map((entry, i) => (
         <a class="card h-entry"
@@ -205,6 +215,7 @@ const desc = "All the media I've played, read, and watched. And what I thought o
   section {
     margin-bottom: 2.5em;
   }
+
   h1 {
     font-family: var(--sub-font);
     font-weight: 900;
@@ -215,11 +226,6 @@ const desc = "All the media I've played, read, and watched. And what I thought o
     margin-bottom: 1.25em;
   }
 
-  hr.divider {
-    color: var(--border);
-    margin: 1em auto;
-  }
-
   p {
     margin: 0 0 1em 0;
   }
@@ -227,6 +233,10 @@ const desc = "All the media I've played, read, and watched. And what I thought o
   .desc {
     font-size: 1em;
     margin-bottom: -0.5em;
+  }
+
+  details {
+    margin: 0.5em auto 0 auto;
   }
 
   .sources {
@@ -242,7 +252,7 @@ const desc = "All the media I've played, read, and watched. And what I thought o
     justify-content: center;
     gap: 1em;
     max-width: 75ch;
-    margin: 1.75em auto 2em auto;
+    margin: 0 auto 2em auto;
   }
 
   .filter-toggle {
@@ -281,20 +291,31 @@ const desc = "All the media I've played, read, and watched. And what I thought o
   }
 
   /* active (checked) state */
-  #filter-game:checked   ~ .filters label[for="filter-game"],
-  #filter-book:checked   ~ .filters label[for="filter-book"],
-  #filter-movie:checked  ~ .filters label[for="filter-movie"],
-  #filter-tvshow:checked ~ .filters label[for="filter-tvshow"] {
+  #filter-game:checked   ~ details .filters label[for="filter-game"],
+  #filter-book:checked   ~ details .filters label[for="filter-book"],
+  #filter-movie:checked  ~ details .filters label[for="filter-movie"],
+  #filter-tvshow:checked ~ details .filters label[for="filter-tvshow"] {
     background-color: var(--info);
     color: #000;
     opacity: 1;
   }
 
-  #filter-game:checked   ~ .filters label[for="filter-game"]   .btn-icon :global(svg),
-  #filter-book:checked   ~ .filters label[for="filter-book"]   .btn-icon :global(svg),
-  #filter-movie:checked  ~ .filters label[for="filter-movie"]  .btn-icon :global(svg),
-  #filter-tvshow:checked ~ .filters label[for="filter-tvshow"] .btn-icon :global(svg) {
+  #filter-game:checked   ~ details .filters label[for="filter-game"]   .btn-icon :global(svg),
+  #filter-book:checked   ~ details .filters label[for="filter-book"]   .btn-icon :global(svg),
+  #filter-movie:checked  ~ details .filters label[for="filter-movie"]  .btn-icon :global(svg),
+  #filter-tvshow:checked ~ details .filters label[for="filter-tvshow"] .btn-icon :global(svg) {
     filter: brightness(0);
+  }
+
+  #filter-2026:checked ~ details .filters label[for="filter-2026"],
+  #filter-2025:checked ~ details .filters label[for="filter-2025"],
+  #filter-2024:checked ~ details .filters label[for="filter-2024"],
+  #filter-2023:checked ~ details .filters label[for="filter-2023"],
+  #filter-2022:checked ~ details .filters label[for="filter-2022"],
+  #filter-2021:checked ~ details .filters label[for="filter-2021"] {
+    background-color: var(--info);
+    color: #000;
+    opacity: 1;
   }
 
   .filter-count {
@@ -441,7 +462,7 @@ const desc = "All the media I've played, read, and watched. And what I thought o
 
   .reset-btn {
     display: block;
-    margin: -0.75em auto 1.5em auto;
+    margin: -0.6em auto 0.5em auto;
     border: none;
     background-color: var(--primary);
     color: #000;
@@ -472,17 +493,80 @@ const desc = "All the media I've played, read, and watched. And what I thought o
     animation: filter-pop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
+  .filter-summary {
+    display: inline-flex;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: var(--sub-font);
+    padding: 0.25em;
+    align-items: center;
+    gap: 0.5em;
+    color: var(--primary);
+    list-style: none;
+  }
+
+  .filter-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .filter-summary::before {
+    content: '▶';
+    display: inline-block;
+    font-size: 0.75em;
+    line-height: 1;
+    transition: rotate 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    rotate: 0deg;
+  }
+
+  .filter-details {
+    margin-bottom: 1em;
+  }
+  
+  .filter-details[open] {
+    margin-bottom: 0;
+  }
+
+  .filter-details[open] > .filter-summary::before {
+    rotate: 90deg;
+  }
+
+  @keyframes bounceOpen {
+    0%   { transform: scaleY(0); opacity: 0; }
+    60%  { transform: scaleY(1.06); opacity: 1; }
+    80%  { transform: scaleY(0.97); }
+    100% { transform: scaleY(1); }
+  }
+
+  @keyframes bounceClose {
+    0%   { transform: scaleY(1); opacity: 1; }
+    30%  { transform: scaleY(1.04); }
+    100% { transform: scaleY(0); opacity: 0; }
+  }
+
+  .filter-details .details-content {
+    transform-origin: top;
+    overflow: hidden;
+  }
+
+  .filter-details[open] .details-content {
+    animation: bounceOpen 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+
+  .filter-details .details-content.closing {
+    animation: bounceClose 0.25s ease-in forwards;
+  }
+
   @media (hover: hover) {
-    #filter-game:checked   ~ .filters label[for="filter-game"]:hover,
-    #filter-book:checked   ~ .filters label[for="filter-book"]:hover,
-    #filter-movie:checked  ~ .filters label[for="filter-movie"]:hover,
-    #filter-tvshow:checked ~ .filters label[for="filter-tvshow"]:hover,
-    #filter-2026:checked   ~ .filters label[for="filter-2026"]:hover,
-    #filter-2025:checked   ~ .filters label[for="filter-2025"]:hover,
-    #filter-2024:checked   ~ .filters label[for="filter-2024"]:hover,
-    #filter-2023:checked   ~ .filters label[for="filter-2023"]:hover,
-    #filter-2022:checked   ~ .filters label[for="filter-2022"]:hover,
-    #filter-2021:checked   ~ .filters label[for="filter-2021"]:hover {
+    #filter-game:checked   ~ details .filters label[for="filter-game"]:hover,
+    #filter-book:checked   ~ details .filters label[for="filter-book"]:hover,
+    #filter-movie:checked  ~ details .filters label[for="filter-movie"]:hover,
+    #filter-tvshow:checked ~ details .filters label[for="filter-tvshow"]:hover,
+    #filter-2026:checked   ~ details .filters label[for="filter-2026"]:hover,
+    #filter-2025:checked   ~ details .filters label[for="filter-2025"]:hover,
+    #filter-2024:checked   ~ details .filters label[for="filter-2024"]:hover,
+    #filter-2023:checked   ~ details .filters label[for="filter-2023"]:hover,
+    #filter-2022:checked   ~ details .filters label[for="filter-2022"]:hover,
+    #filter-2021:checked   ~ details .filters label[for="filter-2021"]:hover {
       background: var(--hover);
     }
     .filter-btn:hover {
@@ -521,3 +605,23 @@ const desc = "All the media I've played, read, and watched. And what I thought o
     }
   }
 </style>
+
+<script>
+  const details = document.querySelector<HTMLDetailsElement>('.filter-details');
+  const summary = details?.querySelector('.filter-summary');
+  const content = details?.querySelector<HTMLElement>('.details-content');
+
+  summary?.addEventListener('click', e => {
+    e.preventDefault();
+
+    if (details?.open) {
+      content?.classList.add('closing');
+      content?.addEventListener('animationend', () => {
+        content.classList.remove('closing');
+        details.removeAttribute('open');
+      }, { once: true });
+    } else {
+      details?.setAttribute('open', '');
+    }
+  });
+</script>
