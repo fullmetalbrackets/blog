@@ -420,7 +420,7 @@ import SearchOverlay from "./SearchOverlay.astro";
 
 <a href="#main-content" class="skip-link">Skip to main content</a>
 
-<header transition:persist>
+<header>
   <nav aria-label="Main navigation">
 
     <!-- Mobile hamburger (left) -->
@@ -774,6 +774,5 @@ import SearchOverlay from "./SearchOverlay.astro";
     }
   }
 
-  document.addEventListener('DOMContentLoaded', initHeader);
   document.addEventListener('astro:page-load', initHeader);
 </script>
