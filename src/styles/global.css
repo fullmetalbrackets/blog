@@ -1166,13 +1166,34 @@ article a[target='_blank'][href^='#']::after {
 ::view-transition-old(root),
 ::view-transition-new(root) {
 	animation: none;
+	mix-blend-mode: normal;
 }
-
+::view-transition-old(main-content) {
+	animation: fade-out 0.15s ease-out forwards;
+}
+::view-transition-new(main-content) {
+	animation: fade-in 0.15s ease-in forwards;
+}
+@keyframes fade-out {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
 ::view-transition-old(root),
 ::view-transition-new(root) {
 	mix-blend-mode: normal;
 }
-
 ::view-transition-group(root) {
 	animation-duration: 0s;
 }
@@ -1185,6 +1206,11 @@ article a[target='_blank'][href^='#']::after {
 
 	::view-transition-old(root),
 	::view-transition-new(root) {
+		animation: none !important;
+	}
+
+	::view-transition-old(main-content),
+	::view-transition-new(main-content) {
 		animation: none !important;
 	}
 
