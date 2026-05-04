@@ -4,7 +4,6 @@ import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
 import WebsiteSchema from '@components/WebsiteSchema.astro';
 import { SITE_TITLE } from '@consts';
-import { ClientRouter } from 'astro:transitions';
 
 const { title, description, ogType, ogImage, disableHeadingLinks } = Astro.props.frontmatter || Astro.props;
 const { noindex } = Astro.props;
@@ -14,7 +13,6 @@ const pageTitle = title === SITE_TITLE ? SITE_TITLE : `${title} | ${SITE_TITLE}`
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<ClientRouter />
 		<style is:inline>
 			* {
 				box-sizing: border-box;
