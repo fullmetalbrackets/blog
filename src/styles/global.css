@@ -655,6 +655,9 @@ blockquote[data-type='warning'] a:hover {
 }
 
 /* utility classes */
+.border {
+	border-color: var(--border);
+}
 .inv {
 	font-style: italic;
 	font-weight: 100;
