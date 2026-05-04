@@ -849,6 +849,9 @@ li.style:first-of-type {
 .mb4 {
 	margin-bottom: 4em;
 }
+.mt0 {
+	margin-top: 0;
+}
 .mt1 {
 	margin-top: 1em;
 }
