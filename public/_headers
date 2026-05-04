@@ -1,4 +1,4 @@
-/_astro/fonts/*.woff2
+/_astro/fonts/*
   Cache-Control: public, max-age=31536000, immutable
 
 # Umami
