@@ -23,11 +23,11 @@ if (!title) {
 const slug = slugify(title);
 const file = path.join('src/content/postroll', `${slug}.yml`);
 
-const content = `title: ${title}
+const content = `title: ${slug}
 pubDate: ${pubDate}
-description: 
-image: 
+image: ./_images/${slug}.png
 url: 
+author: 
 `;
 
 fs.mkdirSync('src/content/postroll', { recursive: true });
