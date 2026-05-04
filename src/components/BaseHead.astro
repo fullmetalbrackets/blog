@@ -4,7 +4,6 @@ import FallbackImage from '../img/assets/preview.png'
 import { SITE_TITLE, GITHUB, MASTODON } from '../consts';
 import { Font } from 'astro:assets';
 import type { BaseHeadProps } from '../types';
-import { ClientRouter } from 'astro:transitions';
 
 type Props = BaseHeadProps;
 
@@ -57,8 +56,6 @@ const { title, description, image = FallbackImage, ogType = "website", ogImage }
 <Font cssVariable="--sub-font" preload />
 <Font cssVariable="--main-font" preload />
 <Font cssVariable="--code-font" />
-
-<ClientRouter/>
 
 <!-- Etc. -->
 <link rel="webmention" href={`https://webmention.io/fullmetalbrackets.com/webmention`} />
