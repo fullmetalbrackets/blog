@@ -166,7 +166,7 @@ export default defineConfig({
 				'Ubuntu',
 				'sans-serif',
 			],
-			display: 'optional',
+			display: 'fallback',
 		},
 	],
 	output: 'server',
