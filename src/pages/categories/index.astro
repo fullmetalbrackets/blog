@@ -113,7 +113,7 @@ const desc = `Browse blog post categories on ${SITE_TITLE}.`;
         <li>
           <button>
             <a href={`/categories/${tag}`} rel="prefetch-intent tag" data-umami-event={`categories-${tag}`}>
-              <span class="label">
+              <span class="label" transition:name={`tag-${tag}`}>
                 {tag}
               </span>
             <span class="count">

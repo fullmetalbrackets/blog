@@ -77,7 +77,7 @@ const desc = "All the media I've played, read, and watched. And what I thought o
         sessionStorage.setItem('filter-details-open', details.open.toString());
       });
       // Reset filters
-      document.getElementById('reset-filters')?.addEventListener('click', () => {
+      document.getElementById('reset-filters')?.addEventListener('mousedown', () => {
         const btn = document.getElementById('reset-filters');
         if (btn instanceof HTMLElement) {
           btn.classList.add('is-shaking');
@@ -170,6 +170,7 @@ const desc = "All the media I've played, read, and watched. And what I thought o
           href={`/lifestream/${entry.id}?from=lifestream`}
           data-type={entry.data.type}
           data-year={(entry.data.updatedDate ?? entry.data.pubDate).getFullYear()}
+          data-id={entry.id}
           rel="prefetch-intent"
         >
           <span class="p-name sr-only">{entry.data.title}</span>
@@ -181,6 +182,7 @@ const desc = "All the media I've played, read, and watched. And what I thought o
             sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
             loading={i < 8 ? 'eager' : 'lazy'}
             decoding={i < 8 ? 'sync' : 'async'}
+            transition:name={`poster-${entry.id}`}
           />
           <span class="card-badge">
             {entry.data.type === 'game'   && <GameIcon   width={24} height={24} />}
@@ -611,7 +613,7 @@ const desc = "All the media I've played, read, and watched. And what I thought o
   const summary = details?.querySelector('.filter-summary');
   const content = details?.querySelector<HTMLElement>('.details-content');
 
-  summary?.addEventListener('click', e => {
+  summary?.addEventListener('mousedown', e => {
     e.preventDefault();
 
     if (details?.open) {
@@ -623,5 +625,15 @@ const desc = "All the media I've played, read, and watched. And what I thought o
     } else {
       details?.setAttribute('open', '');
     }
+  });
+
+  document.querySelectorAll<HTMLElement>('.card').forEach(card => {
+    card.addEventListener('mousedown', () => {
+      const img = card.querySelector('img');
+      const id = card.dataset.id;
+      if (img && id) {
+        img.style.viewTransitionName = `poster-${id}`;
+      }
+    });
   });
 </script>

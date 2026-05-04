@@ -246,7 +246,7 @@ const desc = "Blog posts sorted by most recently updated.";
         <li class="h-entry">
           <div>
             <a class="u-url" href={`/blog/${post.id}`} rel="prefetch-intent" data-umami-event={post.id}>
-              <span class="p-name title">{post.data.title}</span>
+              <span class="p-name title" transition:name={`post-title-${post.id}`}>{post.data.title}</span>
               <p class="tag">
                 {post.data.tags.map((tag) => (
                   <button>{tag}</button>

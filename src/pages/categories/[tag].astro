@@ -184,7 +184,7 @@ const desc = `A collection of posts about ${tagTitle} on ${SITE_TITLE}.`
     about={tag}
   />
   <section class="h-feed">
-    <h1 class="p-name">Posts about <span class="tag">{`${tagTitle}`}</span></h1>
+    <h1 class="p-name">Posts about <span class="tag" transition:name={`tag-${tag}`}>{`${tagTitle}`}</span></h1>
     <a class="u-url" href={`${SITE_URL}/categories/${tagTitle}`} hidden>Permalink</a>
     <hr />
     <p class="back">
@@ -203,7 +203,7 @@ const desc = `A collection of posts about ${tagTitle} on ${SITE_TITLE}.`
       {
         posts.map((post) => (
           <li class="h-entry">
-            <a href={`/blog/${post.id}`} rel="prefetch-intent" data-umami-event={`${tag}-${post.id}`}>
+            <a href={`/blog/${post.id}`} rel="prefetch-intent" data-umami-event={`${tag}-${post.id}`} transition:name={`post-title-${post.id}`}>
               <div>
                 <span class="p-name title">{post.data.title}</span>
                 <p class="tag">

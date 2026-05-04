@@ -43,6 +43,7 @@ h1 {
 	margin: 0;
 	padding: 0;
 	text-wrap: balanced;
+	-webkit-text-fill-color: initial;
 }
 
 main h2,
@@ -1162,11 +1163,14 @@ article a[target='_blank'][href^='#']::after {
 	}
 }
 
-/* view transition api */
+/* view transitions */
 ::view-transition-old(root),
 ::view-transition-new(root) {
 	animation: none;
 	mix-blend-mode: normal;
+}
+::view-transition-group(root) {
+	animation-duration: 0s;
 }
 ::view-transition-old(main-content) {
 	animation: fade-out 0.15s ease-out forwards;
@@ -1190,12 +1194,14 @@ article a[target='_blank'][href^='#']::after {
 		opacity: 1;
 	}
 }
-::view-transition-old(root),
-::view-transition-new(root) {
-	mix-blend-mode: normal;
-}
-::view-transition-group(root) {
-	animation-duration: 0s;
+[style*='view-transition-name'] {
+	background: transparent;
+	border: none;
+	box-shadow: none;
+	text-shadow: none;
+	outline: none;
+	contain: layout;
+	overflow: visible;
 }
 
 @media (prefers-reduced-motion: reduce) {

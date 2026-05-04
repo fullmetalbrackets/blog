@@ -152,7 +152,7 @@ const selectedPosts = allPosts.filter(post => popularSlugs.includes(post.id));
     {selectedPosts.map(post => (
         <div class="h-entry list">
           <a class="u-url" href={`/blog/${post.id}/`} rel="prefetch-intent" data-umami-event={`popular-${post.id}`}>
-            <p class="p-name posts-title">{post.data.title}</p>
+            <p class="p-name posts-title" style={`view-transition-name: post-title-${post.id}`}>{post.data.title}</p>
             <span class="tag">
               {post.data.tags.map((tag) => (
                 <button>{tag}</button>

@@ -128,6 +128,7 @@ const schema = {
             alt={data.title}
             widths={[280, 560]}
             sizes="(max-width: 667px) 160px, 280px"
+            transition:name={`poster-${entry.id}`}
           />
         </div>
         <span class="type-label">
@@ -195,7 +196,6 @@ const schema = {
     </nav>
   </div>
 </BaseLayout>
-
 
 <style is:global slot="head">
   .heading-link { display: none; }
@@ -377,7 +377,6 @@ const schema = {
     border-radius: 0.25em;
     overflow: hidden;
     aspect-ratio: 2 / 3;
-    background: var(--accent);
   }
 
   .cover-wrap img {

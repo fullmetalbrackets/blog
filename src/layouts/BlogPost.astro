@@ -502,7 +502,7 @@ const selectedPosts = await getRelatedPosts(related ?? []);
 
   <article class="h-entry" data-pagefind-body data-pub-date={pubDate.toISOString()}
     data-updated-date={updatedDate ? updatedDate.toISOString() : ''}>
-    <h1 class="p-name">{title}</h1>
+    <h1 class="p-name" transition:name={`post-title-${slug}`}>{title}</h1>
     <a class="u-url" href={`https://fullmetalbrackets.com/blog/${slug}`} hidden>Permalink</a>
     <div class="blog-tags">
       <span class="tag" data-pagefind-ignore>
@@ -540,7 +540,7 @@ const selectedPosts = await getRelatedPosts(related ?? []);
           {selectedPosts.map(post => (
             <a href={`/blog/${post.id}/`} rel="prefetch-intent" data-umami-event={`related-${post.id}`}>
               <li>
-                <span>{post.data.title}</span>
+                <span transition:name={`post-title-${post.id}`}>{post.data.title}</span>
                 <div>
                   <span class="tag">
                     {post.data.tags.map((tag) => (
