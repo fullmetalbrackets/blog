@@ -1,24 +1,30 @@
 ---
 import { Image } from 'astro:assets';
 import Avatar from '@assets/avatar.png';
+import siteLogo from '@assets/logo.png';
 
 interface Props {
   visible?: boolean;
+  hideAvatar?: boolean;
+  hideLogo?: boolean;
+  hidden?: boolean;
 }
-const { visible = false } = Astro.props;
+const { visible = false, hideAvatar = false, hideLogo = false, hidden = false } = Astro.props;
 ---
 
 <div class:list={['h-card', { 'h-card--visible': visible }]}>
+  {!hideAvatar && !hidden && (
     <Image
-    src={Avatar}
-    alt="Ariel Diaz"
-    width={72}
-    height={72}
-    class="u-photo"
-    loading="eager"
-    decoding="async"
-    fetchpriority="high"
-  />
+      src={Avatar}
+      alt="Ariel Diaz"
+      width={72}
+      height={72}
+      class="u-photo"
+      loading="eager"
+      decoding="async"
+      fetchpriority="high"
+    />
+  )}
   <div class="h-card-body">
     <a class="p-name u-url u-uid">Ariel Diaz</a>
     <p class="p-note">
@@ -27,7 +33,18 @@ const { visible = false } = Astro.props;
     <a class="u-email">hello@fullmetalbrackets.com</a>
     <span class="p-country-name">United States of America</span>
   </div>
-  <img class="u-logo" src="/favicon.svg" alt="fullmetalbrackets.com logo" />
+  {!hideLogo && !hidden && (
+    <Image
+      src={siteLogo}
+      alt="Fullmetalbrackets.com"
+      width={72}
+      height={72}
+      class="u-logo"
+      loading="eager"
+      decoding="async"
+      fetchpriority="high"
+    />
+  )}
 </div>
 
 <style scoped>
@@ -44,7 +61,7 @@ const { visible = false } = Astro.props;
     margin: 1em 0 1.5em 0;
     font-family: var(--sub-font);
   }
-  .u-photo {
+  .u-photo, .u-logo {
     width: 72px;
     height: 72px;
     border-radius: 50%;
@@ -58,7 +75,6 @@ const { visible = false } = Astro.props;
     flex: 1;
     min-width: 0;
   }
-  .u-logo,
   .p-name,
   .u-email,
   .u-url,
