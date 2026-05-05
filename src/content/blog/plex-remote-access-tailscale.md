@@ -2,18 +2,18 @@
 title: 'How to bypass the Plex Pass and Remote Watch Pass requirements for Plex remote access by using Tailscale'
 description: 'Beginning April 29th, 2025 the pricing for Plex Pass increased at the same time that remote access got paywalled behind it. Plex no longer allows streaming your own content outside of your home network without paying for Plex Pass, or the new Remote Watch Pass. You can bypass these paywalls, at least for now, by using Tailscale.'
 pubDate: 2025-05-17
-updatedDate: 2026-04-29
+updatedDate: 2026-05-05
 tags: ['tailscale', 'plex']
 related: ['comprehensive-guide-tailscale-securely-access-home-network', 'expose-plex-tailscale-vps']
 ---
 
 > [warning] Important!
 >
-> I have received numerous reports in 2026 that this method no longer works for remote access without Plex Pass, which should not really come as a surprise. Plex wants your money.
+> I have received numerous reports in 2026 that **this method may no longer work for remote access without Plex Pass**, which should not really come as a surprise. Plex wants your money.
 >
 > Although the instructions below worked throughout most of 2025, it seems the free ride is over and Plex is enforcing the requirement to have Plex Pass to remotely access and stream your own content. (Not to mention sharing with other users.)
 >
-> If you decide to try the below method anyway, please [contact me](mailto:contact@fullmetalbrackets.com) or leave a comment below to let myself and others know whether or not it worked. I cannot confirm myself as I got a lifetime Plex Pass and stopping having to use Tailscale for remote access before the enforcement began.
+> If you decide to try the below method anyway, please _leave a comment_ or [contact me](mailto:contact@fullmetalbrackets.com) let me and others know whether or not it worked. I cannot confirm myself as, before the enforcement began, I got a static IP and lifetime Plex Pass meaning I no longer needed to use Tailscale for remote access. **I can't test it myself!**
 
 ## About Plex and the service changes
 
@@ -63,7 +63,7 @@ Once it's finished installing, use the command `sudo tailscale up` and go to the
 
 ## Configuring the Plex server as subnet router and exit node
 
-As explained at the top, it seems Plex remote access will not work without this. First, in order to use either subnet routing or exit node, you need to enable IP forwarding on the server. (This is straight from the <a href="https://tailscale.com/kb/1019/subnets" target="_blank" data-umami-event="tailscale-post-docs-subnet">Tailscale docs</a>.)
+As explained in the previously referenced Reddit post, it seems Plex remote access may not work without both subnet router and exit node enabled. First, in order to use either subnet routing or exit node, or both, you need to enable IP forwarding on the server. (This is straight from the <a href="https://tailscale.com/kb/1019/subnets" target="_blank" data-umami-event="tailscale-post-docs-subnet">Tailscale docs</a>.)
 
 If your machine has an `/etc/sysctl.d` directory (which most likely it does) then use these commands:
 
@@ -73,7 +73,7 @@ echo 'net.ipv6.conf.all.forwarding = 1' | sudo tee -a /etc/sysctl.d/99-tailscale
 sudo sysctl -p /etc/sysctl.d/99-tailscale.conf
 ```
 
-If your machine does NOT have the directory (`ls /etc/sysctl.d` returns `No such file or directory`) then instead use these commands:
+If your machine does _not_ have the directory (`ls /etc/sysctl.d` returns `No such file or directory`) then instead use these commands:
 
 ```sh
 echo 'net.ipv4.ip_forward = 1' | sudo tee -a /etc/sysctl.conf
