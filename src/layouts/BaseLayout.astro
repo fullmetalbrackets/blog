@@ -29,7 +29,7 @@ const pageTitle = title === SITE_TITLE ? SITE_TITLE : `${title} | ${SITE_TITLE}`
 				--text: rgb(164, 174, 188);
 				--primary: rgb(110, 198, 186);
 				--secondary: rgb(95, 193, 232);
-				--tertiary: rgb(12, 22, 32);
+				--tertiary: rgb(from var(--accent, var(--accent)) r g b / 0.5);
 				--dropdown: rgb(from var(--blockquote, var(--blockquote)) r g b / 0.75);
 				--other: rgb(255, 175, 225);
 				--other2: rgb(255, 255, 255);
@@ -111,12 +111,12 @@ const pageTitle = title === SITE_TITLE ? SITE_TITLE : `${title} | ${SITE_TITLE}`
 					--text: rgb(32, 33, 36);
 					--primary: rgb(0, 128, 128);
 					--secondary: rgb(50, 140, 180);
-					--tertiary: rgb(245, 250, 252);
+					--tertiary: rgb(from var(--accent, var(--accent)) r g b / 0.5);
 					--dropdown: rgb(from var(--blockquote, var(--blockquote)) r g b / 0.75);
 					--other: rgb(180, 40, 120);
 					--other2: rgb(0, 128, 128);
 					--accent: rgb(182, 193, 210);
-					--border: rgba(182, 193, 210, 0.25);
+					--border: rgba(182, 193, 210, 0.5);
 					--border2: rgba(0, 130, 145, 0.25);
 					--link: rgb(188, 122, 0);
 					--bq-link: rgb(255, 75, 0);
@@ -177,12 +177,12 @@ const pageTitle = title === SITE_TITLE ? SITE_TITLE : `${title} | ${SITE_TITLE}`
 				--text: rgb(32, 33, 36);
 				--primary: rgb(0, 128, 128);
 				--secondary: rgb(50, 140, 180);
-				--tertiary: rgb(245, 250, 252);
-				--dropdown: rgb(from var(--blockquote, var(--blockquote)) r g b / 0.75);
+				--tertiary: rgb(from var(--accent, var(--accent)) r g b / 0.5);
+				--dropdown: rgb(from var(--blockquote, var(--blockquote)) r g b / 0.01);
 				--other: rgb(180, 40, 120);
 				--other2: rgb(0, 128, 128);
 				--accent: rgb(182, 193, 210);
-				--border: rgba(182, 193, 210, 0.25);
+				--border: rgba(182, 193, 210, 0.5);
 				--border2: rgba(0, 130, 145, 0.25);
 				--link: rgb(188, 122, 0);
 				--bq-link: rgb(255, 75, 0);
@@ -243,7 +243,7 @@ const pageTitle = title === SITE_TITLE ? SITE_TITLE : `${title} | ${SITE_TITLE}`
 				--text: rgb(164, 174, 188);
 				--primary: rgb(110, 198, 186);
 				--secondary: rgb(95, 193, 232);
-				--tertiary: rgb(0, 8, 16);
+				--tertiary: rgb(from var(--accent, var(--accent)) r g b / 0.5);
 				--dropdown: rgb(from var(--blockquote, var(--blockquote)) r g b / 0.75);
 				--other: rgb(255, 175, 225);
 				--other2: rgb(255, 255, 255); 
