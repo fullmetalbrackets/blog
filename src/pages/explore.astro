@@ -1,0 +1,109 @@
+---
+export const prerender = true;
+
+import BaseLayout from "@layouts/BaseLayout.astro";
+import BackToTop from "@components/BackToTop.astro";
+import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
+import CollectionPageSchema from "@components/CollectionPageSchema.astro";
+import { SITE_URL } from "@consts";
+import { pages } from "@data/pages";
+
+const title = "Explore";
+const description = "Explore all of the pages on fullmetalbrackets.com";
+---
+
+<BaseLayout title={title} description={description}>
+  <BreadcrumbSchema
+    slot="head"
+    crumbs={[
+      { name: "Home", url: `${SITE_URL}` },
+      { name: "Explore", url: `${SITE_URL}/explore` },
+    ]}
+  />
+  <CollectionPageSchema
+    slot="head"
+    name={title}
+    description={description}
+    url={`${SITE_URL}/explore`}
+  />
+  <section class="h-feed" data-pagefind-body>
+    <h1 class="p-name">{title}</h1>
+    <a class="u-url" href={`${SITE_URL}/explore`} hidden>Permalink</a>
+    <hr />
+    <p>
+      Explore all of the pages</a> on this site below.
+    </p>
+    <nav>
+      <ul class="no-list">
+        {
+          pages.map((page) => (
+            <li>
+              <a href={page.href} data-umami-event={page.event}>
+                {page.title}
+              </a>
+              <hr />
+              <p class="desc">{page.description}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </section>
+  <hr />
+  <BackToTop />
+</BaseLayout>
+
+<style scoped>
+    h1 {
+        font-family: var(--sub-font);
+        font-weight: 900;
+    }
+    ul {
+        margin: 0 auto;
+        padding: 0 2em;
+    }
+    li,
+    p {
+        margin: 0;
+        padding: 0;
+    }
+    li {
+        margin-top: 1em;
+    }
+    li a,
+    li a:visited {
+        font-size: 1.142859em;
+        font-family: var(--sub-font);
+        font-weight: 900;
+        color: var(--primary);
+    }
+    li a:hover,
+    li a:focus,
+    li a:active {
+        color: var(--hover);
+        transition: none;
+    }
+    li hr {
+        margin: 0;
+        padding: 0;
+        border-top: transparent;
+        border-left: transparent;
+        border-right: transparent;
+        border-bottom: 0.2em dotted var(--border);
+    }
+    li p {
+        font-size: 0.875em;
+    }
+    .desc {
+        font-style: italic;
+        margin-top: 0.25em;
+    }
+    section ~ hr {
+      margin-top: 2em;
+    }
+    @media screen and (max-width: 667px) {
+      ul {
+        padding: 0 1em;
+      }
+    }
+</style>
