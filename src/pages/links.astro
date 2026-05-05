@@ -8,10 +8,10 @@ import { getSortedLinks } from "@utils/collections";
 import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
 import CollectionPageSchema from "@components/CollectionPageSchema.astro";
 import { SITE_URL } from "@consts";
+import { pages } from "@data/pages";
 
 const links = await getSortedLinks();
-const title = "Links";
-const desc = "Links to websites, self-hosted apps and other cool online things that I use.";
+const { title, description } = pages.find(p => p.href === "/links")!;
 ---
 
 <style>
@@ -89,14 +89,14 @@ const desc = "Links to websites, self-hosted apps and other cool online things t
     }
   }
 </style>
-<BaseLayout title={title} description={desc}>
+<BaseLayout title={title} description={description}>
   <BreadcrumbSchema slot="head" crumbs={[
     { name: "Home", url: `${SITE_URL}` },
     { name: "Links", url: `${SITE_URL}/links` }
   ]} />
   <CollectionPageSchema
     name={title}
-    description={desc}
+    description={description}
     url={`${SITE_URL}/links`}
   />
   <section class="h-feed" data-pagefind-body>
@@ -104,7 +104,7 @@ const desc = "Links to websites, self-hosted apps and other cool online things t
     <a class="u-url" href={`${SITE_URL}/links`} hidden>Permalink</a>
     <hr />
     <p>
-      {desc} I'm constantly adding to this as I find new things I consider worth sharing! <i>(All links are external and open in new tab.)</i>
+      {description} I'm constantly adding to this as I find new things I consider worth sharing. <i>(All links are external and open in new tab.)</i>
     </p>
     <ul>
       {

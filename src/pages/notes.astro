@@ -7,18 +7,18 @@ import BackToTop from "@components/BackToTop.astro";
 import { SITE_URL } from '@consts';
 import { getSortedNotes } from "@utils/collections";
 import { YouTube } from 'astro-embed';
- 
-const title = 'Notes';
-const desc = 'Syndicated feed from my microblog at ariel.lol';
+import { pages } from "@data/pages";
+
+const { title, description } = pages.find(p => p.href === "/notes")!;
  
 const entries = await getSortedNotes();
 ---
  
-<BaseLayout title={title} description={desc}>
+<BaseLayout title={title} description={description}>
   <CollectionPageSchema
     slot="head"
     name={title}
-    description={desc}
+    description={description}
     url={`${SITE_URL}/notes`}
   />
   <section class="h-feed">
@@ -26,7 +26,7 @@ const entries = await getSortedNotes();
     <a class="u-url" href={`https://fullmetalbrackets.com/notes`} hidden>Permalink</a>
     <hr />
     <p class="desc">
-      Syndicated feed from my microblog at <a href="https://ariel.lol/">ariel.lol</a>
+      Syndicated feed from my microblog at <a href="https://ariel.lol/" target="_blank" rel="noopener noreferrer">ariel.lol</a>
     </p>
  
     <ul class="notes-list">

@@ -9,13 +9,13 @@ import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
 import CollectionPageSchema from "@components/CollectionPageSchema.astro";
 import { SITE_URL } from "@consts";
 import { Image } from 'astro:assets';
+import { pages } from "@data/pages";
 
 const posts = await getSortedPostroll();
-const title = "Postroll";
-const desc = "Articles, blog posts and other writings that I came across and thought worth sharing.";
+const { title, description } = pages.find(p => p.href === "/postroll")!;
 ---
 
-<BaseLayout title={title} description={desc}>
+<BaseLayout title={title} description={description}>
   <BreadcrumbSchema slot="head" crumbs={[
     { name: "Home", url: `${SITE_URL}` },
     { name: "Postroll", url: `${SITE_URL}/postroll` }
@@ -23,7 +23,7 @@ const desc = "Articles, blog posts and other writings that I came across and tho
   <CollectionPageSchema
     slot="head"
     name={title}
-    description={desc}
+    description={description}
     url={`${SITE_URL}/postroll`}
   />
   <section class="h-feed" data-pagefind-body>
@@ -31,7 +31,7 @@ const desc = "Articles, blog posts and other writings that I came across and tho
     <a class="u-url" href={`${SITE_URL}/postroll`} hidden>Permapost</a>
     <hr />
     <p>
-      {desc} Dates reflect the original date that the linked post was published. <i>All links are external and open in new tab.</i>
+      {description} Dates reflect the original date that the linked post was published. <i>All links are external and open in new tab.</i>
     </p>
     <ul>
       {

@@ -21,6 +21,7 @@ import PS1 from '@img/games/psx.svg';
 import XB from '@img/games/xbox.svg';
 import Steam from '@img/games/steam.svg';
 import Epic from '@img/games/epic.svg';
+import { pages } from "@data/pages";
 
 const gamesEntry = await getEntry('games', 'games');
 const gamesByPlatform = gamesEntry?.data.games;
@@ -49,15 +50,14 @@ const platformIcons: Record<string, { component: any; class?: string }> = {
   'Epic': { component: Epic, class: 'epic-icon' },
 };
 
-const title = "Games";
-const desc = "List of all video games I own by platform.";
+const { title, description } = pages.find(p => p.href === "/games")!;
 
 const schema = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
   "@id": `${SITE_URL}/games/#collection`,
   "name": "Games",
-  "description": desc,
+  "description": description,
   "url": `${SITE_URL}/games`,
   "inLanguage": "en-US",
   "author": {
@@ -65,18 +65,18 @@ const schema = {
   }
 };
 ---
-<BaseLayout title={title} description={desc}>
+<BaseLayout title={title} description={description}>
   <CollectionPageSchema
     slot="head"
     name={title}
-    description={desc}
+    description={description}
     url={`${SITE_URL}/games`}
   />
   <section>
   <h1>{title}</h1>
   <a class="u-url" href={`https://fullmetalbrackets.com/games`} hidden>Permalink</a>
   <hr />
-  <p>{desc}</p>
+  <p>{description}</p>
   {gamesByPlatform && Object.entries(gamesByPlatform).map(([platform, games]) => {
     const typedGames = games as GameEntry[];
     const icon = platformIcons[platform];

@@ -11,6 +11,7 @@ import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
 import CollectionPageSchema from "@components/CollectionPageSchema.astro";
 import { SITE_TITLE, SITE_URL } from "@consts";
 import type { PaginateFunction } from 'astro';
+import { pages } from "@data/pages";
 
 export async function getStaticPaths({ paginate }: { paginate: PaginateFunction }) {
   const [posts, postsByYear] = await Promise.all([
@@ -22,7 +23,7 @@ export async function getStaticPaths({ paginate }: { paginate: PaginateFunction 
 
 const { page, postsByYear } = Astro.props;
 const title = `Blog - Page ${page.currentPage} | ${SITE_TITLE}`;
-const desc = "Archive of blog posts.";
+const { description } = pages.find(p => p.href === "/blog")!;
 ---
 
 <style scoped>
@@ -244,7 +245,7 @@ const desc = "Archive of blog posts.";
   }
 </style>
 
-<BaseLayout title={title} description={desc}>
+<BaseLayout title={title} description={description}>
   <BreadcrumbSchema slot="head" crumbs={[
     { name: "Home", url: `${SITE_URL}` },
     { name: "Blog", url: `${SITE_URL}/blog` }
@@ -252,7 +253,7 @@ const desc = "Archive of blog posts.";
   <CollectionPageSchema
     slot="head"
     name={title}
-    description={desc}
+    description={description}
     url={`${SITE_URL}/blog`}
   />
   <section class="h-feed">

@@ -5,11 +5,11 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import { getSortedTags } from '@utils/collections';
 import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
 import CollectionPageSchema from "@components/CollectionPageSchema.astro";
-import { SITE_URL, SITE_TITLE } from "@consts";
+import { SITE_URL } from "@consts";
+import { pages } from "@data/pages";
 
 const tags = await getSortedTags();
-const title = "Categories";
-const desc = `Browse blog post categories on ${SITE_TITLE}.`;
+const { title, description } = pages.find(p => p.href === "/categories")!;
 ---
 
 <style scoped>
@@ -86,7 +86,7 @@ const desc = `Browse blog post categories on ${SITE_TITLE}.`;
   }
 </style>
 
-<BaseLayout title={title} description={desc}>
+<BaseLayout title={title} description={description}>
   <BreadcrumbSchema slot="head" crumbs={[
     { name: "Home", url: `${SITE_URL}` },
     { name: "Categories", url: `${SITE_URL}/categories` }
@@ -94,7 +94,7 @@ const desc = `Browse blog post categories on ${SITE_TITLE}.`;
   <CollectionPageSchema
     slot="head"
     name="Categories"
-    description={desc}
+    description={description}
     url={`${SITE_URL}/categories`}
   />
   <section>

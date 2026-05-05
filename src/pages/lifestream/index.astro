@@ -13,6 +13,7 @@ import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
 import CollectionPageSchema from '@components/CollectionPageSchema.astro';
 import BackToTop from "@components/BackToTop.astro";
 import { SITE_URL } from "@consts";
+import { pages } from "@data/pages";
 
 const entries = await getLifestream();
 
@@ -42,11 +43,10 @@ const years = [...new Set(
   entries.map(e => (e.data.updatedDate ?? e.data.pubDate).getFullYear())
 )].sort((a, b) => b - a);
 
-const title = "Lifestream";
-const desc = "All the media I've played, read, and watched. And what I thought of it."
+const { title, description } = pages.find(p => p.href === "/lifestream")!;
 ---
 
-<BaseLayout title={title} description={desc}>
+<BaseLayout title={title} description={description}>
   <script is:inline slot="head">
     document.addEventListener('DOMContentLoaded', () => {
       const details = document.querySelector('.filter-details');
@@ -108,7 +108,7 @@ const desc = "All the media I've played, read, and watched. And what I thought o
   <CollectionPageSchema
     slot="head"
     name={title}
-    description={desc}
+    description={description}
     url={`${SITE_URL}/lifestream`}
   />
   <section class="h-feed">
@@ -116,7 +116,7 @@ const desc = "All the media I've played, read, and watched. And what I thought o
     <a class="u-url" href="/lifestream" hidden>Permalink</a>
     <hr />
     <p class="desc">
-      {desc}
+      {description}
     </p>
 
     {types.map(t => (

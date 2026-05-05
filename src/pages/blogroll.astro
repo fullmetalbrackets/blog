@@ -7,9 +7,9 @@ import BackToTop from "@components/BackToTop.astro";
 import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
 import CollectionPageSchema from "@components/CollectionPageSchema.astro";
 import { SITE_URL } from "@consts";
+import { pages } from "@data/pages";
 
-const title = "Blogroll";
-const desc = "A list of super cool blogs and personal sites that I follow and you should too.";
+const { title, description } = pages.find(p => p.href === "/blogroll")!;
 
 const getFavicon = (url: string) =>
   `https://www.google.com/s2/favicons?domain=${new URL(url).hostname}&sz=32`;
@@ -51,7 +51,7 @@ const blogs = [
 const lastUpdated = new Date('2026-05-04T12:00');
 ---
 
-<BaseLayout title={title} description={desc}>
+<BaseLayout title={title} description={description}>
   <BreadcrumbSchema slot="head" crumbs={[
     { name: "Home", url: `${SITE_URL}` },
     { name: "Blogroll", url: `${SITE_URL}/blogroll` }
@@ -59,14 +59,14 @@ const lastUpdated = new Date('2026-05-04T12:00');
   <CollectionPageSchema
     slot="head"
     name={title}
-    description={desc}
+    description={description}
     url={`${SITE_URL}/blogroll`}
   />
   <section class="h-feed" data-pagefind-body>
     <h1 class="p-name">{title}</h1>
     <a class="u-url" href={`${SITE_URL}/blogroll`} hidden>Permalink</a>
     <hr />
-    <p>A list of blogs that I follow and regularly read. All links are in alphabetical order and open in a new tab.</p>
+    <p>{description} <i>(All links open in new tabs.)</i></p>
     <p class="flex">
       <span class="updated">
         Last updated

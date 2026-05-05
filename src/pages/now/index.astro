@@ -8,6 +8,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 import BreadcrumbSchema from '@components/BreadcrumbSchema.astro';
 import FormattedDate from '@components/FormattedDate.astro';
 import BackToTop from '@components/BackToTop.astro';
+import { pages } from "@data/pages";
 
 const entries = await getCollection('now');
 const sorted = entries.sort((a, b) =>
@@ -16,11 +17,11 @@ const sorted = entries.sort((a, b) =>
 
 const [latest, ...previous] = sorted;
 const { Content } = await render(latest);
-const title = "Now";
-const desc = "What I've been up to lately and what's on my mind. Updated monthly-ish.";
+
+const { title, description } = pages.find(p => p.href === "/now")!;
 ---
 
-<BaseLayout title={title} description={desc} entry={latest}>
+<BaseLayout title={title} description={description} entry={latest}>
   <link slot="head" rel="canonical" href={new URL('/now', Astro.site).toString()} />
   <BreadcrumbSchema slot="head" crumbs={[
     { name: "Home", url: `${SITE_URL}` },
@@ -31,7 +32,7 @@ const desc = "What I've been up to lately and what's on my mind. Updated monthly
     "@type": "AboutPage",
     "@id": `${SITE_URL}/now/#aboutpage`,
     "name": title,
-    "description": desc,
+    "description": description,
     "url": `${SITE_URL}/now`,
     "inLanguage": "en-US",
     "dateModified": latest.data.pubDate.toISOString(),
@@ -44,7 +45,7 @@ const desc = "What I've been up to lately and what's on my mind. Updated monthly
     <a class="u-url" href={`${SITE_URL}/now`} hidden>Permalink</a>
     <hr />
     <p class="desc">
-      {desc}
+      {description}
     </p>
     <span class="date">
       <span class="updated">Updated</span> <FormattedDate date={latest.data.pubDate} noDay />

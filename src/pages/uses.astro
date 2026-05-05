@@ -10,13 +10,13 @@ import { Image } from 'astro:assets';
 import gamingpc from '@img/wiki/gamingpc.webp';
 import optiplex from '@img/wiki/optiplex3050sff.jpg';
 import xps8920 from '@img/wiki/xps8920.jpg';
+import { pages } from "@data/pages";
 
-const title = "Uses";
-const desc = "The hardware, software, smart home things that I use.";
+const { title, description } = pages.find(p => p.href === "/blogroll")!;
 const lastUpdated = new Date('2026-04-11T12:00');
 ---
 
-<BaseLayout title={title} description={desc}>
+<BaseLayout title={title} description={description}>
   <BreadcrumbSchema slot="head" crumbs={[
     { name: "Home", url: `${SITE_URL}` },
     { name: "Uses", url: `${SITE_URL}/uses` }
@@ -26,7 +26,7 @@ const lastUpdated = new Date('2026-04-11T12:00');
     "@type": "AboutPage",
     "@id": `${SITE_URL}/uses/#aboutpage`,
     "name": title,
-    "description": desc,
+    "description": description,
     "url": `${SITE_URL}/uses`,
     "inLanguage": "en-US",
     "dateModified": lastUpdated.toISOString(),
@@ -39,7 +39,7 @@ const lastUpdated = new Date('2026-04-11T12:00');
     <a class="u-url" href={`${SITE_URL}/uses`} hidden>Permalink</a>
     <hr />
     <p>
-      {desc} I'm constantly adding to this as I find new things I consider worth sharing!
+      {description} I'm constantly adding to this as I find new things I consider worth sharing!
     </p>
     <span class="date">
       Updated <FormattedDate date={lastUpdated} monthFormat="long" />
