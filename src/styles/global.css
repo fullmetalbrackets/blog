@@ -139,7 +139,7 @@ i {
 strong,
 b {
 	color: var(--emphasis);
-	font-weight: 700;
+	font-weight: 750;
 }
 
 kbd {
@@ -276,7 +276,7 @@ article h3 {
 li::marker {
 	font-family: var(--sub-font);
 	font-size: 0.875em;
-	font-weight: 700;
+	font-weight: 800;
 	color: var(--primary);
 }
 
@@ -309,7 +309,7 @@ aside > a:focus {
 span.prior {
 	font-size: 1.25em;
 	font-family: var(--sub-font);
-	font-weight: 700;
+	font-weight: 800;
 	color: var(--primary);
 	margin: 0 0 -2em 0;
 	padding: 0 0 -2em 0;
@@ -393,7 +393,7 @@ figure img {
 
 figcaption {
 	font-size: 0.833em;
-	font-weight: 100;
+	font-weight: 400;
 	font-style: italic;
 	line-height: 1;
 	margin: -1.5em 0 1.5em 0;
@@ -423,7 +423,7 @@ blockquote::before {
 blockquote p {
 	margin: -0.25em 0 0 0;
 	padding: 0 1.5em 1em 1.25em;
-	font-weight: 300;
+	font-weight: 400;
 }
 
 blockquote ol,
@@ -447,7 +447,7 @@ blockquote a:active,
 blockquote a:visited {
 	color: var(--bq-link);
 	text-decoration: none;
-	font-weight: 600;
+	font-weight: 400;
 }
 
 blockquote a:hover,
@@ -587,7 +587,7 @@ blockquote[data-type='warning'] p {
 blockquote[data-type='warning'] p:first-of-type {
 	color: inherit;
 	font-family: var(--sub-font);
-	font-weight: 800;
+	font-weight: 900;
 	font-size: 1.0785em;
 }
 
@@ -677,17 +677,7 @@ blockquote[data-type='warning'] a:hover {
 .important {
 	color: var(--primary);
 	font-family: var(--sub-font);
-	font-weight: 700;
-}
-
-.changelog * {
-	display: inline-flex;
-	margin: 0;
-}
-
-.changelog h2 {
-	display: flex;
-	margin-top: 0.75em;
+	font-weight: 800;
 }
 
 .style * {
@@ -808,11 +798,14 @@ li.style:first-of-type {
 	font-size: 0.5em;
 }
 
-.w5 {
-	font-weight: 700;
+.w4 {
+	font-weight: 400;
 }
 .w7 {
-	font-weight: 700;
+	font-weight: 750;
+}
+.w8 {
+	font-weight: 800;
 }
 .w9 {
 	font-weight: 900;
@@ -863,20 +856,6 @@ li.style:first-of-type {
 	list-style-type: none;
 }
 
-.latest {
-	display: inline-flex;
-	justify-content: center;
-	place-items: center;
-	padding: 0 8px;
-	color: var(--main);
-	background: var(--foot-link);
-	font-family: var(--sub-font);
-	font-size: 0.35em;
-	font-weight: 900;
-	border-radius: 1em;
-	margin: 1em 0;
-}
-
 .sr-only {
 	position: absolute;
 	width: 1px;
@@ -891,14 +870,16 @@ li.style:first-of-type {
 
 /* button effects */
 button {
+	display: inline-flex;
 	font-family: var(--sub-font);
 	background-color: var(--info);
 	color: #000;
 	border: 0;
 	border-radius: 0.25em;
 	padding: 4px 8px;
-	font-weight: 700;
+	font-weight: 800;
 	font-size: 0.75em;
+	place-items: center;
 }
 
 button a,
@@ -964,7 +945,7 @@ button a:hover {
 	border-radius: 0.25em;
 	padding: 5px 10px;
 	font-family: var(--sub-font);
-	font-weight: 700;
+	font-weight: 800;
 	font-size: 0.75em;
 	cursor: pointer;
 	white-space: nowrap;

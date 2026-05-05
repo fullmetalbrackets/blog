@@ -39,6 +39,11 @@ const selectedPosts = await getRelatedPosts(related ?? []);
     color: var(--emphasis);
     gap: 0.5em;
   }
+  .last-updated-on span {
+    font-size: 0.875em;
+    font-family: var(--sub-font);
+    font-weight: 700;
+  }
   .tag {
     margin: -0.2em auto 0.3em auto;
   }
@@ -49,7 +54,7 @@ const selectedPosts = await getRelatedPosts(related ?? []);
     border: 0;
     border-radius: 0.25em;
     padding: 4px 8px;
-    font-weight: 700;
+    font-weight: 800;
     font-size: 0.75em;
   }
   .bottom-line {
@@ -128,7 +133,8 @@ const selectedPosts = await getRelatedPosts(related ?? []);
     color: #000;
     border-radius: 0.375em;
     font-size: 0.5em;
-    font-weight: 700;
+    font-family: var(--sub-font);
+    font-weight: 800;
     padding: 0.4em 0.75em;
     text-decoration: none;
     cursor: pointer;

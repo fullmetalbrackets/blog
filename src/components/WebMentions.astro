@@ -47,8 +47,8 @@ const targetUrl = import.meta.env.DEV
     align-items: center;
     gap: 0.35em;
     font-family: var(--sub-font);
+    font-weight: 900;
     font-size: 0.8em;
-    font-weight: 700;
     letter-spacing: 0.04em;
     color: var(--emphasis);
     opacity: 0.85;
@@ -176,9 +176,7 @@ const targetUrl = import.meta.env.DEV
 
   .wm-form-label {
     display: block;
-    font-family: var(--sub-font);
     font-size: 0.75em;
-    /* font-weight: 700; */
     color: var(--emphasis);
     margin-bottom: 0.5em;
   }
@@ -190,8 +188,6 @@ const targetUrl = import.meta.env.DEV
 
   .wm-input {
     flex: 1;
-    font-family: var(--sub-font);
-    font-size: 0.85em;
     background: var(--accent);
     color: var(--form);
     border-radius: 0.25em;
@@ -208,16 +204,17 @@ const targetUrl = import.meta.env.DEV
 
   .wm-submit-btn {
     font-family: var(--sub-font);
-    font-size: 0.85em;
-    font-weight: 700;
+    font-weight: 900;
+    font-size: 0.8em;
     background: var(--info);
     color: #000;
     border: none;
     border-radius: 0.25em;
-    padding: 4px 12px;
+    padding: 4px 12px 3px 12px;
     cursor: pointer;
     white-space: nowrap;
     transition: background 0.15s ease;
+    place-items: center;
   }
 
   .wm-submit-btn:hover {

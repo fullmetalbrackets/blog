@@ -100,7 +100,7 @@ const selectedPosts = await getRelatedPosts(related ?? []);
       justify-content: space-around;
       color: var(--primary);
       font-family: var(--sub-font);
-      font-weight: 700;
+      font-weight: 800;
       margin: 0 auto 1.5em auto;
     }
     .edit-post span {
@@ -121,7 +121,7 @@ const selectedPosts = await getRelatedPosts(related ?? []);
       color: #000;
       border-radius: 0.25em;
       cursor: pointer;
-      font-weight: 700;
+      font-weight: 800;
       margin: 1em auto 0 auto;
       padding: 6px 10px;
       text-decoration: none;
@@ -149,7 +149,7 @@ const selectedPosts = await getRelatedPosts(related ?? []);
       flex-wrap: wrap;
       width: 100%;
       font-family: var(--sub-font);
-      font-weight: 700;
+      font-weight: 800;
       margin: 0 auto 1.5em auto;
     }
     .footer-grid > div {
@@ -199,7 +199,7 @@ const selectedPosts = await getRelatedPosts(related ?? []);
       color: #000;
       border-radius: 0.25em;
       cursor: pointer;
-      font-weight: 700;
+      font-weight: 800;
       padding: 4px 10px;
       text-decoration: none;
       font-family: var(--sub-font);
@@ -226,7 +226,7 @@ const selectedPosts = await getRelatedPosts(related ?? []);
     }
     .questions > span {
       font-family: var(--sub-font);
-      font-weight: 700;
+      font-weight: 800;
       color: var(--primary);
     }
     .email {
@@ -237,11 +237,11 @@ const selectedPosts = await getRelatedPosts(related ?? []);
       background-color: var(--info);
       border-radius: 0.25em;
       cursor: pointer;
-      font-weight: 700;
       text-decoration: none;
       font-family: var(--sub-font);
+      font-weight: 800;
       line-height: 1.5;
-      padding: 4px 10px 6px 10px;
+      padding: 4px 10px;
       color: #000;
     }
     .email:hover {
@@ -253,10 +253,12 @@ const selectedPosts = await getRelatedPosts(related ?? []);
     .email-icon {
       width: 25px;
       height: auto;
-      margin: 0.1em 0 0 0;
+      margin: 0;
+      padding: 0;
     }
     .topic {
       font-size: 0.875em;
+      padding-top: 3px;
     }
     .endline {
       margin-top: 0.5em;
@@ -283,7 +285,8 @@ const selectedPosts = await getRelatedPosts(related ?? []);
       color: #000;
       border-radius: 0.375em;
       font-size: 0.5em;
-      font-weight: 700;
+      font-family: var(--sub-font);
+      font-weight: 900;
       padding: 0.4em 0.75em;
       text-decoration: none;
       cursor: pointer;

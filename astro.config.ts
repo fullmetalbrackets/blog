@@ -151,10 +151,10 @@ export default defineConfig({
 			],
 		},
 		{
-			name: 'M PLUS Rounded 1c',
+			name: 'Nunito',
 			cssVariable: '--sub-font',
 			provider: fontProviders.fontsource(),
-			weights: [400, 700, 900],
+			weights: [700, 800, 900],
 			styles: ['normal'],
 			subsets: ['latin'],
 			fallbacks: [

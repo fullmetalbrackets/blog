@@ -52,10 +52,10 @@ const { date, class: className } = Astro.props;
   local-time {
     color: var(--date);
     font-family: var(--sub-font);
+    font-weight: 700;
     display: inline-flex;
     flex-direction: column;
     font-size: 0.875em;
-    font-weight: 700;
     margin: 0;
     padding: 0;
   }
@@ -63,6 +63,9 @@ const { date, class: className } = Astro.props;
   .time-line {
     display: flex;
     align-items: center;
+  }
+  .time-text {
+    margin-top: 1px;
   }
   svg {
     flex-shrink: 0;
