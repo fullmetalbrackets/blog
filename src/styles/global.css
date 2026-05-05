@@ -21,7 +21,6 @@
 main {
 	margin: 0 0.25em;
 	max-width: 75ch;
-	animation: 0.25s fade-in;
 }
 
 section {
