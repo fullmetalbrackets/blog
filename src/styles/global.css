@@ -586,7 +586,7 @@ blockquote[data-type='warning'] p {
 blockquote[data-type='warning'] p:first-of-type {
 	color: inherit;
 	font-family: var(--sub-font);
-	font-weight: 900;
+	font-weight: 700;
 	font-size: 1.0785em;
 }
 
