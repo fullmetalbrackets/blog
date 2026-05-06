@@ -141,6 +141,18 @@ import { GITHUB, MASTODON, BLUESKY, DONATE } from '@consts';
     }
   }
 
+  h3 {
+    font-family: var(--sub-font);
+    font-size: 0.56em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--foot-header);
+    margin: 0 auto -1.25em auto;
+    padding-bottom: 0.3em;
+    border-bottom: 1px solid var(--border);
+  }
+
   /* nav columns */
 
   .nav-grid {
@@ -266,9 +278,9 @@ import { GITHUB, MASTODON, BLUESKY, DONATE } from '@consts';
     </a>
   </div>
 
+  <h3>Site Navigation</h3>
   <nav class="nav-grid" aria-label="Site navigation">
     <div class="nav-col">
-      <h3>Content</h3>
       <a href="/blog" data-umami-event="footer-blog">Blog</a>
       <a href="/notes" data-umami-event="footer-notes">Notes</a>
       <a href="/wiki" data-umami-event="footer-wiki">Wiki</a>
@@ -277,7 +289,6 @@ import { GITHUB, MASTODON, BLUESKY, DONATE } from '@consts';
       <a href="/postroll" data-umami-event="footer-postroll">Postroll</a>
     </div>
     <div class="nav-col">
-      <h3>Personal</h3>
       <a href="/lifestream" data-umami-event="footer-lifestream">Lifestream</a>
       <a href="/self-hosted" data-umami-event="footer-selfhosted">Selfhosted</a>
       <a href="/now" data-umami-event="footer-now">Now</a>
@@ -286,7 +297,6 @@ import { GITHUB, MASTODON, BLUESKY, DONATE } from '@consts';
       <a href="/verify" data-umami-event="footer-verify">Verify</a>
     </div>
     <div class="nav-col">
-      <h3>Meta</h3>
       <a href="/changelog" data-umami-event="footer-changelog">Changelog</a>
       <a href="/colophon" data-umami-event="footer-colophon">Colophon</a>
       <a href="/style" data-umami-event="footer-style">Style</a>
