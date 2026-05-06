@@ -15,26 +15,27 @@ import '@styles/page.css';
 
 <div class="date">
 	<span class="updated">Last updated on</span>
-	<FormattedDate date={new Date('2026-03-17T12:00:00')} />
+	<FormattedDate date={new Date('2026-05-05T12:00:00')} />
 </div>
 
 This privacy policy will advise of what information, if any, is collected when you use this website and for what purpose. The policy may change in the future, at which time this page will be updated. Check back from time to time and note that date the Privacy Policy was last updated.
 
 ## Data collection
 
-This website only collects two pieces of data, and only under specific circumstances:
+**This website does not use cookies.** There is no account or newsletter to sign up for, no way for a user to submit information, nor for any user-submitted information to even be stored.
 
-1. When you use the theme toggle on the top-right to change between light/dark theme, a text string with the choice (`light` or `dark`) is saved in your browser's local storage. This allows the choice of theme to persist across browser sessions.
+> [warning]
+> Under certain circumstances, Cloudflare may issue a "challenge" to confirm that a visitor is not a bot or other malicious actor. If (and only if) a challenge is presented and passed, Cloudflare uses a `cf_clearance` cookie to preserve the challenge state across cross-site requests. For more information, see [this section of the Cloudflare documentation](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cloudflare-cookies/).
 
-2. At the bottom of all blog posts is a Giscus comment component. When you login to Github through this component to comment on a blog post, a session token is saved in your browser's local storage. This allows you to remain logged in across browser sessions.
+This website only collects three temporary pieces of data, and only under specific circumstances:
+
+1. When you use the **theme toggle** on the site header to change between light/dark theme, a text string with the choice (`light` or `dark`) is saved in your browser's [local storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage). This allows the choice of theme to persist across browser sessions.
+
+2. When you use any of the **filters** on the [Lifestream page](/lifestream), booleans representing their states are saved in your browser's [session storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage). This allows the active/inactive filters to persist across page navigations, but the stored data is cleared when the tab is closed.
+
+3. At the bottom of all blog posts is a Giscus comment component. When you login to Github through this component to comment on a blog post, a session token is saved in your browser's local storage. This allows you to remain logged in across browser sessions.
 
 **Besides what is noted above, no other data is collected by this website.**
-
-There are no tracking cookies, no newsletter to sign up for, no way for a user to submit information, or for any user-submitted information to even be stored, and no login except for GitHub. (And you are logging in to _GitHub_, not to this site.)
-
-Any external links to other websites, or embedded content like YouTube videos or SoundCloud music, are subject to the privacy policies of those external websites or services.
-
-yI will never sell, distribute or lease your personal information to anyone even if I were to collect any data via this website in the future.
 
 ## Analytics
 
@@ -65,13 +66,13 @@ The personal data being processed and published might include:
 
 ## Links to external websites
 
-This website maintains [a list of links to external websites ot applications](/links) which I consider useful or cool in some way, and blog posts will often contain external links to additional resources, official documentation, informative third-party sources, attributions, etc.
+This website maintains a [list of links to external websites, tools and applications](/links), a [blogroll of followed blogs and personal sites](/blogroll), and a [postroll of recommended posts or articles](/postroll). Blog posts or wiki articles on this site may also contain external links to additional resources, official documentation, informative third-party sources, attributions, etc.
 
 I always try to link to reputable sources, but it is up to you to review those websites' own privacy policies. I cannot accept any responsibility for your privacy once you have left this website.
 
 ## Contributing
 
-Every blog post has an _Edit this page on GitHub_ link at the bottom. If you notice an error or outdated information, or even a typo or other minor thing that's bugging you, feel free to click the link, fork the post, make your changes, and submit a pull request. A GitHub account is required.
+Every blog post has an _Edit this page on GitHub_ link at the bottom. If you notice an error or outdated information, or even a typo or other minor thing that's bugging you, feel free to click the link and fork the repo, make your changes, then submit a pull request. A GitHub account is required.
 
 Alternately you can simply send me an email with any corrections or fixes you'd like to suggest. (See below.)
 
