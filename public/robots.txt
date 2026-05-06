@@ -27,7 +27,7 @@ Disallow: /blog/
 User-agent: ClaudeBot
 Disallow: /blog/
 
-‍User-agent: Claude-Web
+User-agent: Claude-Web
 Disallow: /blog/
 
 User-agent: anthropic-ai
