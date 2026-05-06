@@ -729,7 +729,7 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
           const years = Math.floor(monthsDiff / 12);
           const months = monthsDiff % 12;
           const timeString = months > 0 ? `${years} years, ${months} months` : `${years} years`;
-          banner.innerHTML = `<p><strong>Heads up!</strong></p><p>This post hasn't been updated in <b>${timeString}</b> so please consider everything out of date!</p>`;
+          banner.innerHTML = `<p><strong>Heads up!</strong></p><p>This post hasn't been updated in <b>${timeString}</b> and the information below may be very out of date!</p>`;
         } else {
           banner.innerHTML = `<p><strong>Heads up!</strong></p><p>This post hasn't been updated in <b>over a year</b> and some information may be outdated. If something in this post does not work, feel free to <a href="mailto:outdated@fullmetalbrackets.com">contact me</a> and I'll try to help if I can!</p>`;
         }
