@@ -26,12 +26,11 @@ import { GITHUB, MASTODON, BLUESKY, DONATE } from '@consts';
   }
 
   /* social icons  */
-
   .icons {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 1em;
+    justify-content: space-between;
+    gap: 2em;
   }
   .icons a:hover {
     filter: var(--ext);
@@ -49,11 +48,12 @@ import { GITHUB, MASTODON, BLUESKY, DONATE } from '@consts';
           animation: none;
       }
   }
+
   /* webrings container */
   .webrings-container {
     display: flex;
     justify-content: space-evenly;
-    gap: 2em;
+    gap: 1em;
     align-items: flex-start;
     max-width: 480px;
     width: 100%;
@@ -78,17 +78,14 @@ import { GITHUB, MASTODON, BLUESKY, DONATE } from '@consts';
     font-weight: 800;
     font-size: 0.75em;
   }
-
   .ring-title {
     color: var(--other2);
     text-decoration: none;
   }
-
   .ring-title:hover {
     color: var(--hover);
     transition: none;
   }
-
   .ring-buttons {
     display: flex;
     gap: 0.5em;
@@ -96,7 +93,6 @@ import { GITHUB, MASTODON, BLUESKY, DONATE } from '@consts';
     align-items: center;
     justify-content: center;
   }
-
   .ring-arrow {
     display: flex;
     align-items: center;
@@ -104,43 +100,30 @@ import { GITHUB, MASTODON, BLUESKY, DONATE } from '@consts';
     filter: var(--foot-svg);
     transition: filter 0.2s ease;
   }
-
   .ring-arrow:hover {
     filter: var(--foot-ext);
   }
-
   svg.random {
     transition: all .1s ease-in-out;
   }
-
   svg.random:hover {
     animation: wiggle 0.25s ease-in-out;
   }
-  
   svg.right, svg.left {
     transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
-
   svg.right:hover {
     filter: var(--foot-ext);
     transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
     transform: translateX(5px);
   }
-
   svg.left:hover {
     filter: var(--foot-ext);
     transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
     transform: translateX(-5px);
   }
 
-  @media screen and (max-width: 667px) {
-    .webrings-container {
-      flex-direction: column;
-      gap: 1em;
-      align-items: center;
-    }
-  }
-
+  /* nav columns */
   h3 {
     font-family: var(--sub-font);
     font-size: 0.56em;
@@ -148,13 +131,10 @@ import { GITHUB, MASTODON, BLUESKY, DONATE } from '@consts';
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: var(--foot-header);
-    margin: 0 auto -1.25em auto;
+    margin: 0.2em auto -1.25em auto;
     padding-bottom: 0.3em;
     border-bottom: 1px solid var(--border);
   }
-
-  /* nav columns */
-
   .nav-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -193,7 +173,6 @@ import { GITHUB, MASTODON, BLUESKY, DONATE } from '@consts';
   }
 
   /* badges */
-
   .badges {
     display: flex;
     align-items: center;
@@ -224,15 +203,24 @@ import { GITHUB, MASTODON, BLUESKY, DONATE } from '@consts';
     align-items: center;
     gap: 0.75em;
     font-size: 0.65em;
-    padding: 0 0.5em;
     max-width: 720px;
+  }
+  p.privacy {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.65em;
+    margin: -1em auto 0 auto;
+    padding: 0;
   }
 
   /* mobile  */
-
   @media screen and (max-width: 667px) {
     .nav-grid {
-      gap: 0.5em 1.5em;
+      gap: 0.5em 1em;
+    }
+    .icons {
+      gap: 1em;
     }
     .bottom {
       flex-wrap: wrap;
@@ -249,6 +237,9 @@ import { GITHUB, MASTODON, BLUESKY, DONATE } from '@consts';
     .reserved {
       display: block;
       line-break: auto;
+    }
+    .webrings-container {
+      gap: 1em;
     }
   }
 </style>
@@ -282,27 +273,24 @@ import { GITHUB, MASTODON, BLUESKY, DONATE } from '@consts';
   <nav class="nav-grid" aria-label="Site navigation">
     <div class="nav-col">
       <a href="/blog" data-umami-event="footer-blog">Blog</a>
-      <a href="/notes" data-umami-event="footer-notes">Notes</a>
-      <a href="/wiki" data-umami-event="footer-wiki">Wiki</a>
       <a href="/links" data-umami-event="footer-links">Links</a>
+      <a href="/notes" data-umami-event="footer-notes">Notes</a>
       <a href="/blogroll" data-umami-event="footer-blogroll">Blogroll</a>
       <a href="/postroll" data-umami-event="footer-postroll">Postroll</a>
     </div>
     <div class="nav-col">
-      <a href="/lifestream" data-umami-event="footer-lifestream">Lifestream</a>
-      <a href="/self-hosted" data-umami-event="footer-selfhosted">Selfhosted</a>
       <a href="/now" data-umami-event="footer-now">Now</a>
       <a href="/uses" data-umami-event="footer-uses">Uses</a>
+      <a href="/wiki" data-umami-event="footer-wiki">Wiki</a>
       <a href="/games" data-umami-event="footer-games">Games</a>
-      <a href="/verify" data-umami-event="footer-verify">Verify</a>
+      <a href="/lifestream" data-umami-event="footer-lifestream">Lifestream</a>
     </div>
     <div class="nav-col">
-      <a href="/changelog" data-umami-event="footer-changelog">Changelog</a>
-      <a href="/colophon" data-umami-event="footer-colophon">Colophon</a>
-      <a href="/style" data-umami-event="footer-style">Style</a>
-      <a href="/privacy" data-umami-event="footer-privacy">Privacy</a>
       <a href="/explore" data-umami-event="footer-explore">Explore</a>
-      <a href="/blank" data-umami-event="footer-blank">Blank</a>
+      <a href="/verify" data-umami-event="footer-verify">Verify</a>
+      <a href="/colophon" data-umami-event="footer-colophon">Colophon</a>
+      <a href="/changelog" data-umami-event="footer-changelog">Changelog</a>
+      <a href="/self-hosted" data-umami-event="footer-selfhosted">Selfhosted</a>
     </div>
   </nav>
 
@@ -359,4 +347,7 @@ import { GITHUB, MASTODON, BLUESKY, DONATE } from '@consts';
     <span class="dot">·</span>
     <span class="copyright">&copy; 2021-{today.getFullYear()} Ariel Diaz. <span class="reserved">Some rights reserved.</span></span>
   </div>
+  <p class="privacy">
+    <a href="/privacy" data-umami-event="footer-privacy">Privacy Policy</a>
+  </p>
 </footer>
