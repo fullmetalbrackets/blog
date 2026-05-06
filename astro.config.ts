@@ -154,7 +154,7 @@ export default defineConfig({
 			name: 'Nunito',
 			cssVariable: '--sub-font',
 			provider: fontProviders.fontsource(),
-			weights: [700, 800, 900],
+			weights: [400, 700, 800, 900],
 			styles: ['normal'],
 			subsets: ['latin'],
 			fallbacks: [
