@@ -31,6 +31,9 @@ const { title, description } = pages.find(p => p.href === "/now")!;
     "@context": "https://schema.org",
     "@type": "AboutPage",
     "@id": `${SITE_URL}/now/#aboutpage`,
+    "isPartOf": {
+      "@id": `${SITE_URL}/#website`
+    },
     "name": title,
     "description": description,
     "url": `${SITE_URL}/now`,
