@@ -33,6 +33,7 @@ const BUTTONS = [BlueskyShareButton, ThreadsShareButton, TwitterShareButton, Red
 const { title, description, pubDate, updatedDate, tags, headings, related, readingTime } = Astro.props;
 const { slug } = Astro.params;
 const selectedPosts = await getRelatedPosts(related ?? []);
+const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
 ---
 
 <BaseLayout title={title} description={description} ogType="article" ogImage={`${SITE_URL}/og/${slug}.png`}>
@@ -100,7 +101,7 @@ const selectedPosts = await getRelatedPosts(related ?? []);
       justify-content: space-around;
       color: var(--primary);
       font-family: var(--sub-font);
-      font-weight: 800;
+      font-weight: 900;
       margin: 0 auto 1.5em auto;
     }
     .edit-post span {
@@ -121,7 +122,7 @@ const selectedPosts = await getRelatedPosts(related ?? []);
       color: #000;
       border-radius: 0.25em;
       cursor: pointer;
-      font-weight: 800;
+      font-weight: 900;
       margin: 1em auto 0 auto;
       padding: 6px 10px;
       text-decoration: none;
@@ -484,7 +485,7 @@ const selectedPosts = await getRelatedPosts(related ?? []);
   </slot>
 
   <ScrollProgress />
-  <BlogPosting slot="head" {...Astro.props} slug={slug!} />
+  <BlogPosting slot="head" {...Astro.props} slug={slug!} relatedLinks={relatedLinks} />
   <BreadcrumbSchema slot="head" crumbs={[
     { name: "Home", url: `${ SITE_URL }/` },
     { name: "Blog", url: `${ SITE_URL }/blog` },

@@ -9,6 +9,7 @@ import Link from "@components/Link.astro";
 import BackToTop from "@components/BackToTop.astro";
 import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
 import CollectionPageSchema from "@components/CollectionPageSchema.astro";
+import ItemListSchema from "@components/ItemListSchema.astro";
 import { SITE_TITLE, SITE_URL } from "@consts";
 import type { PaginateFunction } from 'astro';
 import { pages } from "@data/pages";
@@ -24,6 +25,18 @@ export async function getStaticPaths({ paginate }: { paginate: PaginateFunction 
 const { page, postsByYear } = Astro.props;
 const title = `Blog - Page ${page.currentPage} | ${SITE_TITLE}`;
 const { description } = pages.find(p => p.href === "/blog")!;
+
+const pageUrl = page.currentPage === 1
+  ? `${SITE_URL}/blog`
+  : `${SITE_URL}/blog/${page.currentPage}`;
+const sortedYears = Object.keys(postsByYear)
+  .map(Number)
+  .sort((a, b) => b - a);
+const blogItems = page.data.map(post => ({
+  name: post.data.title,
+  url: `${SITE_URL}/blog/${post.id}`,
+  type: "BlogPosting",
+}));
 ---
 
 <style scoped>
@@ -254,8 +267,9 @@ const { description } = pages.find(p => p.href === "/blog")!;
     slot="head"
     name={title}
     description={description}
-    url={`${SITE_URL}/blog`}
+    url={pageUrl}
   />
+  <ItemListSchema slot="head" id={`${pageUrl}/#list`} items={blogItems} />
   <section class="h-feed">
     <h1 class="p-name">Blog</h1>
     <a class="u-url" href={`${SITE_URL}/blog`} hidden>Permalink</a>
@@ -266,12 +280,11 @@ const { description } = pages.find(p => p.href === "/blog")!;
       </span>
       <nav class="years">
         <span class="posts-years">See posts by year:</span>
-        <Link href="/blog/years/2026" rel="prefetch-intent" aria-label="2026" data-umami-event="blog-2026"><button>2026 <span class="count">{postsByYear['2026']?.length || 0}</span></button></Link>
-        <Link href="/blog/years/2025" rel="prefetch-intent" aria-label="2025" data-umami-event="blog-2025"><button>2025 <span class="count">{postsByYear['2025']?.length || 0}</span></button></Link>
-        <Link href="/blog/years/2024" rel="prefetch-intent" aria-label="2024" data-umami-event="blog-2024"><button>2024 <span class="count">{postsByYear['2024']?.length || 0}</span></button></Link>
-        <Link href="/blog/years/2023" rel="prefetch-intent" aria-label="2023" data-umami-event="blog-2023"><button>2023 <span class="count">{postsByYear['2023']?.length || 0}</span></button></Link>
-        <Link href="/blog/years/2022" rel="prefetch-intent" aria-label="2022" data-umami-event="blog-2022"><button>2022 <span class="count">{postsByYear['2022']?.length || 0}</span></button></Link>
-        <Link href="/blog/years/2021" rel="prefetch-intent" aria-label="2021" data-umami-event="blog-2021"><button>2021 <span class="count">{postsByYear['2021']?.length || 0}</span></button></Link>
+        {sortedYears.map(y => (
+          <Link href={`/blog/years/${y}`} rel="prefetch-intent" aria-label={String(y)} data-umami-event={`blog-${y}`}>
+            <button>{y} <span class="count">{postsByYear[String(y)]?.length || 0}</span></button>
+          </Link>
+        ))}
       </nav>
       <span class="rss">RSS Feed: 
         <a href="/rss.xml" rel="prefetch-intent">

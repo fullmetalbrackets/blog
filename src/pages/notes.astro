@@ -3,6 +3,7 @@ export const prerender = true;
  
 import BaseLayout from '@layouts/BaseLayout.astro';
 import CollectionPageSchema from '@components/CollectionPageSchema.astro';
+import BreadcrumbSchema from '@components/BreadcrumbSchema.astro';
 import BackToTop from "@components/BackToTop.astro";
 import { SITE_URL } from '@consts';
 import { getSortedNotes } from "@utils/collections";
@@ -15,6 +16,10 @@ const entries = await getSortedNotes();
 ---
  
 <BaseLayout title={title} description={description}>
+  <BreadcrumbSchema slot="head" crumbs={[
+    { name: "Home", url: `${SITE_URL}` },
+    { name: "Notes", url: `${SITE_URL}/notes` }
+  ]} />
   <CollectionPageSchema
     slot="head"
     name={title}

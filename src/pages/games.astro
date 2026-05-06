@@ -4,6 +4,7 @@ export const prerender = true
 import BaseLayout from "@layouts/BaseLayout.astro";
 import BackToTop from "@components/BackToTop.astro";
 import CollectionPageSchema from "@components/CollectionPageSchema.astro";
+import ItemListSchema from "@components/ItemListSchema.astro";
 import { SITE_URL } from "@consts";
 import { getEntry } from 'astro:content';
 import Switch2 from '@img/games/switch2.svg';
@@ -50,20 +51,16 @@ const platformIcons: Record<string, { component: any; class?: string }> = {
   'Epic': { component: Epic, class: 'epic-icon' },
 };
 
-const { title, description } = pages.find(p => p.href === "/games")!;
+const allGames = gamesByPlatform
+  ? Object.entries(gamesByPlatform).flatMap(([platform, games]) =>
+      (games as GameEntry[]).map(game => ({
+        name: game.title,
+        type: "VideoGame",
+      }))
+    )
+  : [];
 
-const schema = {
-  "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  "@id": `${SITE_URL}/games/#collection`,
-  "name": "Games",
-  "description": description,
-  "url": `${SITE_URL}/games`,
-  "inLanguage": "en-US",
-  "author": {
-    "@id": `${SITE_URL}/#person`
-  }
-};
+const { title, description } = pages.find(p => p.href === "/games")!;
 ---
 <BaseLayout title={title} description={description}>
   <CollectionPageSchema
@@ -72,6 +69,7 @@ const schema = {
     description={description}
     url={`${SITE_URL}/games`}
   />
+  <ItemListSchema slot="head" id={`${SITE_URL}/games/#list`} items={allGames} />
   <section>
   <h1>{title}</h1>
   <a class="u-url" href={`https://fullmetalbrackets.com/games`} hidden>Permalink</a>

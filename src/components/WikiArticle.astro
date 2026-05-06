@@ -5,16 +5,23 @@ interface Props {
   title: string;
   description: string;
   slug: string;
+  pubDate: Date;
+  updatedDate?: Date;
+  relatedLinks?: string[];
 }
 
-const { title, description, slug } = Astro.props;
+const { title, description, slug, pubDate, updatedDate, relatedLinks } = Astro.props;
 
-const pageUrl = `${SITE_URL}/wiki/${slug}/`;
+const pageUrl = `${SITE_URL}/wiki/${slug}`;
 
 const schema = {
   "@context": "https://schema.org",
   "@type": "Article",
   "@id": `${pageUrl}#article`,
+  "isPartOf": {
+    "@type": "CollectionPage",
+    "@id": `${SITE_URL}/wiki/#collection`
+  },
   "headline": title,
   "description": description,
   "inLanguage": "en-US",
@@ -28,7 +35,10 @@ const schema = {
   },
   "publisher": {
     "@id": `${SITE_URL}/#person`
-  }
+  },
+  "datePublished": pubDate.toISOString(),
+  ...(updatedDate && { "dateModified": updatedDate.toISOString() }),
+  ...(relatedLinks && relatedLinks.length > 0 && { "relatedLink": relatedLinks }),
 };
 ---
 

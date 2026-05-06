@@ -7,6 +7,7 @@ import FormattedDate from "@components/FormattedDate.astro";
 import BackToTop from "@components/BackToTop.astro";
 import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
 import CollectionPageSchema from "@components/CollectionPageSchema.astro";
+import ItemListSchema from '@components/ItemListSchema.astro';
 import { SITE_URL } from "@consts";
 import { pages } from "@data/pages";
 
@@ -17,6 +18,12 @@ const posts = (await getCollection("wiki")).sort((a, b) => {
 });
 
 const { title, description } = pages.find(p => p.href === "/wiki")!;
+
+const wikiItems = posts.map(post => ({
+  name: post.data.title,
+  url: `${SITE_URL}/wiki/${post.id}`,
+  type: "Article",
+}));
 ---
 
 <style scoped>
@@ -97,6 +104,7 @@ const { title, description } = pages.find(p => p.href === "/wiki")!;
     description={description}
     url={`${SITE_URL}/wiki`}
   />
+  <ItemListSchema slot="head" id={`${SITE_URL}/wiki/#list`} items={wikiItems} />
   <section class="h-feed">
     <h1>{title}</h1>
     <a class="u-url" href={`https://fullmetalbrackets.com/wiki`} hidden>Permalink</a>

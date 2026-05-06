@@ -5,12 +5,14 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 import { getCollection, render } from 'astro:content';
 import { Image } from 'astro:assets';
 import FormattedDate from '@components/FormattedDate.astro';
+import BreadcrumbSchema from '@components/BreadcrumbSchema.astro';
 import GameIcon   from '@icons/game.svg';
 import BookIcon   from '@icons/book.svg';
 import MovieIcon  from '@icons/movie.svg';
 import TVShowIcon from '@icons/tvshow.svg';
 import LeftArrow from '@icons/arrow-left.svg';
 import { SITE_URL } from "@consts";
+import { schemaTypeMap } from '@utils/media';
 
 export async function getStaticPaths() {
   const entries = await getCollection('lifestream');
@@ -53,13 +55,6 @@ const typeName: Record<string, string> = {
   tvshow: 'TV Show',
 };
 
-const schemaTypeMap: Record<string, string> = {
-  game:   'VideoGame',
-  book:   'Book',
-  movie:  'Movie',
-  tvshow: 'TVSeries',
-};
-
 const ratingMap: Record<string, number> = {
   hated:       1,
   disliked:    2,
@@ -74,15 +69,14 @@ const schema = {
   "@context": "https://schema.org",
   "@type": "Review",
   "@id": `${entryUrl}#review`,
+  "name": `${data.title} — ${typeName[data.type]}`,
   "url": entryUrl,
   "inLanguage": "en-US",
   "datePublished": (data.updatedDate ?? data.pubDate).toISOString(),
   "author": {
-    "@type": "Person",
-    "@id": `${SITE_URL}/#person`,
-    "name": "Ariel Diaz",
-    "url": SITE_URL
+    "@id": `${SITE_URL}/#person`
   },
+  "reviewBody": entry.body?.trim() ?? undefined,
   "reviewRating": {
     "@type": "Rating",
     "ratingValue": ratingMap[data.rating],
@@ -98,6 +92,11 @@ const schema = {
 ---
 
 <BaseLayout title={data.title} description={`${typeName[data.type]} — ${vibe.label}`} disableHeadingLinks={true}>
+  <BreadcrumbSchema slot="head" crumbs={[
+    { name: "Home", url: `${SITE_URL}/` },
+    { name: "Lifestream", url: `${SITE_URL}/lifestream` },
+    { name: data.title, url: entryUrl }
+  ]} />
   <Fragment slot="head" set:html={`<script type="application/ld+json">${JSON.stringify(schema)}</script>`} />
   <div class="entry-page">
     <a class="u-url" href={`${SITE_URL}/lifestream/${entry.id}`} hidden>Permalink</a>

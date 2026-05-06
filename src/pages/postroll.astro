@@ -7,12 +7,19 @@ import FormattedDate from "@components/FormattedDate.astro";
 import { getSortedPostroll } from "@utils/collections";
 import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
 import CollectionPageSchema from "@components/CollectionPageSchema.astro";
+import ItemListSchema from "@components/ItemListSchema.astro";
 import { SITE_URL } from "@consts";
 import { Image } from 'astro:assets';
 import { pages } from "@data/pages";
 
 const posts = await getSortedPostroll();
 const { title, description } = pages.find(p => p.href === "/postroll")!;
+
+const postrollItems = posts.map(post => ({
+  name: post.data.title,
+  url: post.data.url,
+  type: "Article",
+}));
 ---
 
 <BaseLayout title={title} description={description}>
@@ -26,6 +33,7 @@ const { title, description } = pages.find(p => p.href === "/postroll")!;
     description={description}
     url={`${SITE_URL}/postroll`}
   />
+  <ItemListSchema slot="head" id={`${SITE_URL}/postroll/#list`} items={postrollItems} />
   <section class="h-feed" data-pagefind-body>
     <h1 class="p-name">{title}</h1>
     <a class="u-url" href={`${SITE_URL}/postroll`} hidden>Permapost</a>

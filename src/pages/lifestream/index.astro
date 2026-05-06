@@ -5,15 +5,17 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 import { getLifestream } from "@utils/collections";
 import { Image } from 'astro:assets';
 import FormattedDate from '@components/FormattedDate.astro';
+import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
+import CollectionPageSchema from '@components/CollectionPageSchema.astro';
+import ItemListSchema from '@components/ItemListSchema.astro';
 import GameIcon from '@icons/game.svg';
 import BookIcon from '@icons/book.svg';
 import MovieIcon from '@icons/movie.svg';
 import TVShowIcon from '@icons/tvshow.svg';
-import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
-import CollectionPageSchema from '@components/CollectionPageSchema.astro';
 import BackToTop from "@components/BackToTop.astro";
 import { SITE_URL } from "@consts";
 import { pages } from "@data/pages";
+import { schemaTypeMap } from '@utils/media';
 
 const entries = await getLifestream();
 
@@ -44,6 +46,11 @@ const years = [...new Set(
 )].sort((a, b) => b - a);
 
 const { title, description } = pages.find(p => p.href === "/lifestream")!;
+const lifestreamItems = entries.map(entry => ({
+  name: entry.data.title,
+  url: `${SITE_URL}/lifestream/${entry.id}`,
+  type: schemaTypeMap[entry.data.type],
+}));
 ---
 
 <BaseLayout title={title} description={description}>
@@ -111,6 +118,7 @@ const { title, description } = pages.find(p => p.href === "/lifestream")!;
     description={description}
     url={`${SITE_URL}/lifestream`}
   />
+  <ItemListSchema slot="head" id={`${SITE_URL}/lifestream/#list`} items={lifestreamItems} />
   <section class="h-feed">
     <h1 class="p-name">{title}</h1>
     <a class="u-url" href="/lifestream" hidden>Permalink</a>

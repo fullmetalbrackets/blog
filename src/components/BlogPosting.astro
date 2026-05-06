@@ -1,14 +1,18 @@
 ---
 import { SITE_URL } from '@consts';
 import type { BlogData } from '../types';
-type Props = BlogData & { slug: string };
+type Props = BlogData & { slug: string; relatedLinks?: string[] };
 
-const { title, description, pubDate, updatedDate, tags, slug } = Astro.props;
+const { title, description, pubDate, updatedDate, tags, slug, relatedLinks } = Astro.props;
 
 const schema = {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "@id": `${SITE_URL}/blog/${slug}/#blogposting`,
+  "isPartOf": {
+    "@type": "Blog",
+    "@id": `${SITE_URL}/blog/#collection`
+  },
   "url": `${SITE_URL}/blog/${slug}`,
   "mainEntityOfPage": {
     "@type": "WebPage",
@@ -27,6 +31,7 @@ const schema = {
   },
   "datePublished": pubDate.toISOString(),
   ...(updatedDate && { "dateModified": updatedDate.toISOString() }),
+  ...(relatedLinks && relatedLinks.length > 0 && { "relatedLink": relatedLinks }),
 };
 ---
 

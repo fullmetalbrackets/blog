@@ -13,6 +13,7 @@ import { SITE_URL } from "@consts";
 const { title, description, tag, pubDate, updatedDate, related } = Astro.props;
 const { slug } = Astro.params;
 const selectedPosts = await getRelatedPosts(related ?? []);
+const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
 ---
 
 <style>
@@ -65,7 +66,6 @@ const selectedPosts = await getRelatedPosts(related ?? []);
   }
 
   /* related posts  */
-
   .related {
     display: inline;
   }
@@ -234,7 +234,7 @@ const selectedPosts = await getRelatedPosts(related ?? []);
     { name: "Wiki", url: `${ SITE_URL }/wiki` },
     { name: title, url: `${ SITE_URL }/wiki/${slug}` }
   ]} />
-  <WikiArticle slot="head" title={title} description={description} slug={slug!} />
+  <WikiArticle slot="head" title={title} description={description} slug={slug!} pubDate={pubDate} updatedDate={updatedDate} relatedLinks={relatedLinks} />
   <ScrollProgress />
   <CodeblockCopy />
   <HeadingCopy />

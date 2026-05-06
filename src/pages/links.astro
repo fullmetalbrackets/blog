@@ -7,11 +7,17 @@ import FormattedDate from "@components/FormattedDate.astro";
 import { getSortedLinks } from "@utils/collections";
 import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
 import CollectionPageSchema from "@components/CollectionPageSchema.astro";
+import ItemListSchema from '@components/ItemListSchema.astro';
 import { SITE_URL } from "@consts";
 import { pages } from "@data/pages";
 
 const links = await getSortedLinks();
 const { title, description } = pages.find(p => p.href === "/links")!;
+
+const linkItems = links.map(link => ({
+  name: link.data.title,
+  url: link.data.url,
+}));
 ---
 
 <style>
@@ -95,10 +101,12 @@ const { title, description } = pages.find(p => p.href === "/links")!;
     { name: "Links", url: `${SITE_URL}/links` }
   ]} />
   <CollectionPageSchema
+    slot="head"
     name={title}
     description={description}
     url={`${SITE_URL}/links`}
   />
+  <ItemListSchema slot="head" id={`${SITE_URL}/links/#list`} items={linkItems} />
   <section class="h-feed" data-pagefind-body>
     <h1 class="p-name">Links</h1>
     <a class="u-url" href={`${SITE_URL}/links`} hidden>Permalink</a>

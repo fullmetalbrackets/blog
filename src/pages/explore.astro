@@ -5,11 +5,17 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import BackToTop from "@components/BackToTop.astro";
 import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
 import CollectionPageSchema from "@components/CollectionPageSchema.astro";
+import ItemListSchema from '@components/ItemListSchema.astro';
 import { SITE_URL } from "@consts";
 import { pages } from "@data/pages";
 
 const title = "Explore";
 const description = "Explore all of the pages on fullmetalbrackets.com";
+
+const exploreItems = pages.map(page => ({
+  name: page.title,
+  url: `${SITE_URL}${page.href}`,
+}));
 ---
 
 <BaseLayout title={title} description={description}>
@@ -26,6 +32,7 @@ const description = "Explore all of the pages on fullmetalbrackets.com";
     description={description}
     url={`${SITE_URL}/explore`}
   />
+  <ItemListSchema slot="head" id={`${SITE_URL}/explore/#list`} items={exploreItems} />
   <section class="h-feed" data-pagefind-body>
     <h1 class="p-name">{title}</h1>
     <a class="u-url" href={`${SITE_URL}/explore`} hidden>Permalink</a>

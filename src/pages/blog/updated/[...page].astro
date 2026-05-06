@@ -8,6 +8,7 @@ import ReadingTime from "@components/ReadingTime.astro";
 import BackToTop from "@components/BackToTop.astro";
 import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
 import CollectionPageSchema from "@components/CollectionPageSchema.astro";
+import ItemListSchema from "@components/ItemListSchema.astro";
 import type { Page } from "astro";
 import type { CollectionEntry } from "astro:content";
 import { SITE_URL } from "@consts";
@@ -27,6 +28,15 @@ type Props = {
 const { page } = Astro.props;
 const title = `Recently Updated - Page ${page.currentPage}`;
 const desc = "Blog posts sorted by most recently updated.";
+
+const pageUrl = page.currentPage === 1
+  ? `${SITE_URL}/blog/updated`
+  : `${SITE_URL}/blog/updated/${page.currentPage}`;
+const updatedItems = page.data.map(post => ({
+  name: post.data.title,
+  url: `${SITE_URL}/blog/${post.id}`,
+  type: "BlogPosting",
+}));
 ---
 
 <style scoped>
@@ -212,8 +222,9 @@ const desc = "Blog posts sorted by most recently updated.";
     slot="head"
     name={title}
     description={desc}
-    url={`${SITE_URL}/blog/updated`}
+    url={pageUrl}
   />
+  <ItemListSchema slot="head" id={`${pageUrl}/#list`} items={updatedItems} />
   <section class="h-feed">
     <h1 class="p-name">Recently Updated</h1>
     <a class="u-url" href={`${SITE_URL}/blog/updated`} hidden>Permalink</a>
