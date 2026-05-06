@@ -420,8 +420,10 @@ pre > code.diff-highlight .token.token.inserted:not(.prefix) *::selection {
 }
 
 @media screen and (max-width: 667px) {
+	blockquote code *,
+	blockquote pre *,
 	code[class*='language-'],
 	pre[class*='language-'] {
-		font-size: 18px;
+		font-size: 16px;
 	}
 }
