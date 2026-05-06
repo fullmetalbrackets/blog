@@ -401,7 +401,7 @@ figcaption {
 
 /* default info style */
 blockquote {
-	font-family: var(--main-font);
+	font-family: var(--sub-font);
 	font-size: 0.85em;
 	border: 2px solid transparent;
 	background-color: var(--info-bg);
@@ -417,6 +417,10 @@ blockquote::before {
 	margin: -0.75em 0 0 -0.75em;
 	padding: 0;
 	content: url('/assets/info.svg');
+}
+
+blockquote p:first-of-type:empty {
+	display: none;
 }
 
 blockquote p {
@@ -439,6 +443,10 @@ blockquote li {
 
 blockquote li::marker {
 	color: var(--emphasis);
+}
+
+blockquote a {
+	font-size: inherit;
 }
 
 blockquote a,
@@ -491,6 +499,10 @@ blockquote code {
 	background: var(--code-bg-bq);
 }
 
+blockquote .code-wrapper {
+	margin: 0.25em -0.15em 0 -0.15em;
+}
+
 /* Quote style */
 blockquote[data-type='quote'],
 blockquote.blockquote-quote {
@@ -509,7 +521,6 @@ blockquote[data-type='quote'] p,
 blockquote.blockquote-quote p {
 	display: block;
 	font-style: italic;
-	font-family: var(--sub-font);
 	color: var(--text);
 	line-height: 1.3;
 }
@@ -524,7 +535,6 @@ blockquote[data-type='quote'] p:first-of-type,
 blockquote.blockquote-quote p:first-of-type {
 	display: block;
 	font-style: italic;
-	font-family: var(--sub-font);
 	color: var(--text);
 	margin-top: -0.75em;
 }
@@ -567,7 +577,7 @@ blockquote[data-type='warning']::before {
 
 blockquote[data-type='warning'] {
 	border-color: var(--hover);
-	font-family: var(--info-text);
+	font-family: var(--sub-font);
 	font-size: 0.85em;
 	border: 2px solid transparent;
 	background-color: var(--warning-bg);
@@ -585,9 +595,9 @@ blockquote[data-type='warning'] p {
 
 blockquote[data-type='warning'] p:first-of-type {
 	color: inherit;
-	font-family: var(--sub-font);
-	font-weight: 700;
 	font-size: 1.0785em;
+	font-weight: 700;
+	padding-left: 0.85em;
 }
 
 blockquote[data-type='warning'] a {
@@ -1130,9 +1140,15 @@ article a[target='_blank'][href^='#']::after {
 		justify-content: space-between;
 		place-items: center;
 	}
+	blockquote * {
+		font-size: 18px;
+	}
 	blockquote[data-type='quote'],
 	blockquote.blockquote-quote {
 		width: 94%;
+	}
+	blockquote .code-wrapper {
+		margin: 0.25em -0.5em 0 -0.5em;
 	}
 	.style * {
 		display: flex;

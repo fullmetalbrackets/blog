@@ -14,8 +14,9 @@ span.updated {
 	margin: 0 0.5em 0 0;
 	padding: 0;
 }
-h2#updates + ul strong {
+h2#updates ~ ul li strong {
 	font-family: var(--sub-font);
+	font-weight: 700;
 	color: var(--secondary);
 }
 @media screen and (max-width: 667px) {
