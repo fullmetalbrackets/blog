@@ -14,6 +14,8 @@ import astroCompress from 'gab-astro-compress';
 export default defineConfig({
 	site: 'https://fullmetalbrackets.com',
 
+	trailingSlash: 'never',
+
 	build: {
 		inlineStylesheets: 'always',
 	},
