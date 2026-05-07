@@ -8,7 +8,7 @@ related: ['factory-restore-zimaboard', 'remove-casaos-zimaboard-upgrade-debian-1
 
 ![ZimaBoard](../../img/wiki/zimaboard.webp)
 
-# ZimaBoard 232
+## ZimaBoard 232
 
 - Intel Celeron N3350
 - 2 GB RAM

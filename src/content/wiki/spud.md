@@ -8,7 +8,7 @@ tag: documentation
 
 ![Libre Sweet Potato](../../img/blog/sweet-potato.jpg)
 
-# Libre Sweet Potato
+## Libre Sweet Potato
 
 - 1.4 GHz CPU
 - 2 GB RAM
