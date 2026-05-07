@@ -33,6 +33,7 @@ const years = Object.keys(postsByYear)
     justify-content: space-between;
     font-family: var(--sub-font);
     font-weight: 800;
+    margin-top: 1em;
   }
   .all svg, .categories svg {
     display: inline-flex;
@@ -80,6 +81,11 @@ const years = Object.keys(postsByYear)
     display: flex;
     place-items: center;
     gap: 0.25em;
+  }
+  @media screen and (max-width: 667px) {
+    .back {
+      margin-top: -0.2em;
+    }
   }
 </style>
 

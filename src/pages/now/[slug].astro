@@ -2,7 +2,6 @@
 export const prerender = true;
 
 import { getCollection, render } from 'astro:content';
-import { Image } from 'astro:assets';
 import { SITE_URL } from '@consts';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import BreadcrumbSchema from '@components/BreadcrumbSchema.astro';
@@ -67,13 +66,8 @@ const { title, description } = pages.find(p => p.href === "/now")!;
     <span class="date">
       <span class="posted">Posted</span> <FormattedDate date={entry.data.pubDate} noDay />
     </span>
-    <hr class="separator" />
-    <p>
-      {entry.data.image && (
-        <Image src={entry.data.image} alt="" />
-      )}
-    </p>
-    <Content />
+    <div class="content">
+      <Content />
       {others.length > 0 && (
         <h2>Other Entries</h2>
         <ul>
@@ -86,6 +80,7 @@ const { title, description } = pages.find(p => p.href === "/now")!;
           ))}
         </ul>
       )}
+    </div>
     <hr/>
     <BackToTop />
   </section>
@@ -111,13 +106,18 @@ const { title, description } = pages.find(p => p.href === "/now")!;
     margin-right: 0.5em;
   }
   .desc {
+    margin-top: 1em;
     margin-bottom: 2em;
-    line-height: 1.2;
+    font-size: 1em;
   }
   .separator {
     display: grid;
     border-width: 4px;
     border-color: var(--border);
+  }
+  .content {
+    margin: 0 auto;
+    max-width: 1000px;
   }
   h2 {
     margin-top: 1em;

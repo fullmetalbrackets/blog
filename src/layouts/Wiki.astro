@@ -22,7 +22,6 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
   }
   .wiki-title {
     margin: 1.15em 0 0.2em 0;
-    font-weight: 800;
   }
   .wiki-hr {
     margin-top: 1em;
@@ -60,6 +59,11 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
     padding: 4px 8px;
     font-weight: 800;
     font-size: 0.75em;
+  }
+  .slot-content {
+    margin: 0 auto;
+    padding: 0;
+    max-width: 1000px;
   }
   .bottom-line {
     margin: 2em auto 1.5em auto;
@@ -255,11 +259,13 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
     </div>
     <hr class="wiki-hr" />
     <p>{description}</p>
-    <slot>
-      <p>
-        If you're seeing this, something went wrong! Please try <em>reloading the page</em>.
-      </p>
-    </slot>
+    <div class="e-content slot-content">
+      <slot>
+        <p>
+          If you're seeing this, something went wrong! Please try <em>reloading the page</em>.
+        </p>
+      </slot>
+    </div>
     {selectedPosts.length > 0 && (
       <div class="related" data-pagefind-ignore>
         <h3><Related width={36} height={36} /> Related Blog Posts</h3>

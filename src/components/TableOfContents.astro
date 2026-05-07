@@ -12,6 +12,10 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
 ---
 
 <style>
+  .toc-container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
   .toc-heading {
     display: flex;
     place-items: center;
@@ -43,15 +47,16 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
   .toc-indicator {
     display: none;
   }
-  @media screen and (min-width: 2108px) {
+  @media screen and (min-width: 2060px) {
     .toc-indicator {
       display: block;
       position: absolute;
+      right: 2em;
       left: 0;
       background: var(--border2);
       border-left: 3px solid var(--primary);
       border-radius: 0.25em;
-      min-width: 100%;
+      max-width: 35%;
       transition: top 0.2s ease, height 0.2s ease, opacity 0.2s ease;
       opacity: 0;
       z-index: 0;
@@ -60,12 +65,18 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
       position: fixed;
       top: 2.75em;
       left: calc(50% + 88ch / 2 + 2em);
-      width: 20%;
-      max-width: 20%;
+      width: 56%;
+      max-width: 56%;
       font-size: 0.85em;
     }
     .toc-top-btn {
       position: sticky;
+    }
+    .toc-heading {
+      border-bottom: 4px dotted transparent;
+    }
+    .toc-list {
+      margin-top: 0.1em;
     }
   }
   @media screen and (max-width: 667px) {
@@ -81,8 +92,8 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
       <TOC width={36} height={36} />Table of Contents
     </a>
   </h2>
+  <div class="toc-indicator" id="toc-indicator" aria-hidden="true"></div>
   <ol class="toc-list" id="toc-list">
-    <div class="toc-indicator" id="toc-indicator" aria-hidden="true"></div>
     {filteredHeadings.map((heading) => (
       <li>
         <a href={`#${heading.slug}`} data-heading={heading.slug}>
@@ -95,48 +106,94 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
 
 <script>
   function initTOC() {
-    const links = document.querySelectorAll<HTMLAnchorElement>('#toc-list a[data-heading]');
+    const tocList = document.getElementById('toc-list');
     const indicator = document.getElementById('toc-indicator');
-    if (!links.length || !indicator) return;
+    if (!tocList || !indicator) return;
+
+    const links = Array.from(
+      tocList.querySelectorAll<HTMLAnchorElement>('a[data-heading]')
+    );
+    if (!links.length) return;
+
+    const headingEls = links
+      .map((link) => document.getElementById(link.dataset.heading!))
+      .filter((el): el is HTMLElement => el !== null);
+
+    // Absolute offsets, cached and refreshed on resize
+    let headingTops: number[] = [];
+
+    function cacheOffsets() {
+      const scrollY = window.scrollY;
+      headingTops = headingEls.map(
+        (el) => el.getBoundingClientRect().top + scrollY
+      );
+    }
 
     function moveIndicator(link: HTMLAnchorElement) {
       const li = link.parentElement!;
-      indicator!.style.top = `${li.offsetTop}px`;
+      indicator!.style.top = `${tocList!.offsetTop + li.offsetTop}px`;
       indicator!.style.height = `${li.offsetHeight}px`;
       indicator!.style.opacity = '1';
     }
 
-    const headingEls = Array.from(links).map(link =>
-      document.getElementById(link.dataset.heading!)
-    ).filter(Boolean) as HTMLElement[];
+    function hideIndicator() {
+      indicator!.style.opacity = '0';
+    }
 
-    const observer = new IntersectionObserver(
-  () => {
-    const scrollY = window.scrollY;
+    const THRESHOLD = 100; // px — how far past a heading before it becomes active
 
-    const active = headingEls.reduce<HTMLElement | null>((closest, el) => {
-      const top = el.getBoundingClientRect().top + scrollY;
-      if (top <= scrollY + 80) {
-        return !closest || top > (closest.getBoundingClientRect().top + scrollY)
-          ? el
-          : closest;
+    function updateActive() {
+      const scrollY = window.scrollY;
+      let activeIndex = -1;
+
+      for (let i = 0; i < headingTops.length; i++) {
+        if (headingTops[i] <= scrollY + THRESHOLD) {
+          activeIndex = i;
+        } else {
+          break;
+        }
       }
-      return closest;
-    }, null);
 
-    if (!active) return;
+      if (activeIndex === -1) {
+        // Above the first heading — nothing should be active
+        hideIndicator();
+        return;
+      }
 
-    const activeLink = document.querySelector<HTMLAnchorElement>(
-      `#toc-list a[data-heading="${active.id}"]`
-      );
-      if (activeLink) moveIndicator(activeLink);
-      },
-      { rootMargin: '-10% 0px -20% 0px', threshold: 0 }
-    );
+      moveIndicator(links[activeIndex]);
+    }
 
-    headingEls.forEach(el => observer.observe(el));
+    // Debounce resize so cacheOffsets isn't called 60×/sec during a resize drag
+    let resizeTimer: ReturnType<typeof setTimeout>;
+    function onResize() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        cacheOffsets();
+        updateActive();
+      }, 100);
+    }
+
+    cacheOffsets();
+    updateActive();
+
+    window.addEventListener('scroll', updateActive, { passive: true });
+    window.addEventListener('resize', onResize, { passive: true });
+
+    // Return a cleanup function so re-initialisation on astro:page-load doesn't stack up duplicate listeners
+    return () => {
+      window.removeEventListener('scroll', updateActive);
+      window.removeEventListener('resize', onResize);
+      clearTimeout(resizeTimer);
+    };
   }
 
-  document.addEventListener('DOMContentLoaded', initTOC);
-  document.addEventListener('astro:page-load', initTOC);
+  let cleanup: (() => void) | undefined;
+
+  function setup() {
+    cleanup?.();
+    cleanup = initTOC();
+  }
+
+  document.addEventListener('DOMContentLoaded', setup);
+  document.addEventListener('astro:page-load', setup);
 </script>

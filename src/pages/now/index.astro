@@ -53,25 +53,21 @@ const { title, description } = pages.find(p => p.href === "/now")!;
     <span class="date">
       <span class="updated">Updated</span> <FormattedDate date={latest.data.pubDate} noDay />
     </span>
-    <hr class="separator" />
-    <p>
-      {latest.data.image && (
-        <Image src={latest.data.image} alt="" />
-      )}
-    </p>
-    <Content />
-      {previous.length > 0 && (
-        <h2>Previous Entries</h2>
-        <ul>
-          {previous.map(prevEntry => (
-            <li>
-              <a href={`/now/${prevEntry.id}`}>
-                {prevEntry.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}
-              </a>
-            </li>
-          ))}
-        </ul>
-      )}
+    <div class="content">
+      <Content />
+        {previous.length > 0 && (
+          <h2>Previous Entries</h2>
+          <ul>
+            {previous.map(prevEntry => (
+              <li>
+                <a href={`/now/${prevEntry.id}`}>
+                  {prevEntry.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}
+                </a>
+              </li>
+            ))}
+          </ul>
+        )}
+    </div>
     <hr/>
     <BackToTop />
   </section>
@@ -97,7 +93,9 @@ const { title, description } = pages.find(p => p.href === "/now")!;
     margin-right: 0.5em;
   }
   .desc {
-    margin-bottom: 1em;
+    margin-top: 1em;
+    margin-bottom: 2em;
+    font-size: 1em;
   }
   .separator {
     display: grid;
@@ -107,6 +105,10 @@ const { title, description } = pages.find(p => p.href === "/now")!;
   }
   h2 {
     margin-top: 1em;
+  }
+  .content {
+    margin: 0 auto;
+    max-width: 1000px;
   }
   ul {
     margin: 0 auto 2em auto;

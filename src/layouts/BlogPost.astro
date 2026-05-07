@@ -49,7 +49,6 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
       margin-top: -0.1em;
       margin-bottom: 0.125em;
       line-height: 1.1;
-      font-weight: 800;
     }
     hr {
       margin-top: 1em;
@@ -88,8 +87,9 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
       margin-right: 0.25em;
     }
     .slot-content {
-      margin: 0;
+      margin: 0 auto;
       padding: 0;
+      max-width: 1000px;
     }
     .midline {
       margin-bottom: 1.5em;
@@ -374,7 +374,7 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
     }
 
     /* wide-screen sidebar */
-    @media screen and (min-width: 2108px) {
+    @media screen and (min-width: 2060px) {
       .blog-tags, .info, .updated {
         position: absolute;
         left: 2em;

@@ -3,6 +3,10 @@
 	margin: 0;
 }
 
+.changelog h2:first-of-type {
+	margin-top: 1em;
+}
+
 .changelog h2 {
 	display: flex;
 	margin-top: 0.75em;

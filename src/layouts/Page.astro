@@ -3,6 +3,7 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import BackToTop from "@components/BackToTop.astro";
 import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
 import CodeblockCopy from "@components/CodeblockCopy.astro";
+import HeadingCopy from "@components/HeadingCopy.astro";
 import { SITE_URL } from "@consts";
 
 const { frontmatter } = Astro.props;
@@ -38,15 +39,25 @@ const schema = {
   h1 {
     font-family: var(--sub-font);
     font-weight: 900;
-    margin: 1.175em 0 0 0;
+    margin: 1.175em auto 0 auto;
     line-height: 1.1;
+    max-width: 1200px;
   }
   hr {
     margin-top: 0.75em;
   }
+  .desc {
+    margin-top: -0.1em;
+    margin-bottom: 2em;
+    font-size: 1em;
+  }
   article {
-    margin-top: 2em;
+    margin: 2em 0.5em;
     min-height: 80dvh;
+  }
+  .content {
+    margin: 0 auto;
+    max-width: 1000px;
   }
   .bottom-line {
     margin: 2em auto 1.5em auto;
@@ -56,12 +67,16 @@ const schema = {
   }
   @media screen and (max-width: 667px) {
     article {
-      margin-top: 1em;
+      margin-top: 0.85em;
       margin-right: 0.5em;
       margin-left: 0.5em;
     }
     h1 {
-      margin: 0;
+      margin: 0.75em 0 -0.125em 0;
+    }
+    .desc {
+      margin-top: -0.05em;
+      font-size: 18px;
     }
   }
 </style>
@@ -71,16 +86,23 @@ const schema = {
   <Fragment slot="head" set:html={`<script type="application/ld+json">${JSON.stringify(schema)}</script>`} />
   <link rel="stylesheet" href="/prism.css" slot="head" />
   <CodeblockCopy />
+  <HeadingCopy />
+
   <article data-pagefind-body>
     <h1>{frontmatter.title}</h1>
     <hr />
-    <slot>
-      <p>
-        If you're seeing this, something went wrong! Please try <em
-          >reloading the page</em
-        >.
-      </p>
-    </slot>
+    <p class="desc">
+      {frontmatter.description}
+    </p>
+    <div class="content">
+      <slot>
+        <p>
+          If you're seeing this, something went wrong! Please try <em
+            >reloading the page</em
+          >.
+        </p>
+      </slot>
+    </div>
   </article>
     {showTop && 
       <hr class="bottom-line" />

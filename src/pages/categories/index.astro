@@ -49,8 +49,9 @@ const { title, description } = pages.find(p => p.href === "/categories")!;
     justify-content: center;
     flex-wrap: wrap;
     list-style-type: none;
-    margin: 0 0 2em 0;
+    margin: 0 auto 2em auto;
     padding: 0;
+    max-width: 1000px;
   }
   li {
     margin: 0.25em;
@@ -80,6 +81,12 @@ const { title, description } = pages.find(p => p.href === "/categories")!;
     section {
       line-height: 1.2;
     }
+    .back {
+      margin-top: -0.1em;
+    }
+    .desc {
+      font-size: 18px;
+    }
     ul {
       gap: 0.325em;
     }
@@ -105,7 +112,7 @@ const { title, description } = pages.find(p => p.href === "/categories")!;
       <a href="/blog" rel="prefetch-intent" class="all"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><title>arrow-left</title><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg> All posts</a>
       <a href="/blog/years" rel="prefetch-intent" class="categories">Posts by year <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><title>arrow-right</title><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg></a>
     </p>
-    <p>
+    <p class="desc">
       Click on categories below to see blog posts about that subject.
     </p>
     <ul>

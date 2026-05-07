@@ -74,7 +74,7 @@ const lastUpdated = new Date('2026-05-04T12:00');
     <h1 class="p-name">{title}</h1>
     <a class="u-url" href={`${SITE_URL}/blogroll`} hidden>Permalink</a>
     <hr />
-    <p>{description} <i>(All links open in new tabs.)</i></p>
+    <p class="desc">{description} <i>(All links open in new tabs.)</i></p>
     <p class="flex">
       <span class="updated">
         Last updated
@@ -156,7 +156,8 @@ const lastUpdated = new Date('2026-05-04T12:00');
   ul {
     list-style: none;
     padding: 0;
-    margin: 1.5em 1.5em 3em 1.5em;
+    margin: 1.5em auto 3em auto;
+    max-width: 1000px;
   }
   li {
     border-bottom: 2px dotted var(--border);
@@ -253,6 +254,10 @@ const lastUpdated = new Date('2026-05-04T12:00');
     animation: none;
   }
   @media screen and (max-width: 667px) {
+    .desc {
+      margin-top: -0.1em;
+      font-size: 18px;
+    }
     p.flex {
       font-size: 0.875em;
     }

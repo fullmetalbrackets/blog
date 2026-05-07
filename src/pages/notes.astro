@@ -103,6 +103,11 @@ const entries = await getSortedNotes();
 </BaseLayout>
 
 <style>
+  .desc {
+    margin-top: 1em;
+    margin-bottom: 2em;
+    font-size: 1em;
+  }
   .feed-error {
     color: var(--warning);
     font-family: var(--sub-font);
@@ -113,7 +118,7 @@ const entries = await getSortedNotes();
     list-style: none;
     padding: 0;
     margin: 0.5em auto 1em auto;
-    max-width: 720px;
+    max-width: 1000px;
   }
 
   .note-item {

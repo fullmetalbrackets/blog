@@ -38,144 +38,154 @@ const lastUpdated = new Date('2026-04-11T12:00');
     <h1 class="p-name">{title}</h1>
     <a class="u-url" href={`${SITE_URL}/uses`} hidden>Permalink</a>
     <hr />
-    <p>
+    <p class="description">
       {description} I'm constantly adding to this as I find new things I consider worth sharing!
     </p>
     <span class="date">
       Updated <FormattedDate date={lastUpdated} monthFormat="long" />
     </span>
-    <!-- Gaming PC -->
-    <div class="device">
-    <div class="device-header">
-        <h2><a href="https://www.newegg.com/abs-flux-aqua-gaming-desktop-geforce-rtx-4070-super-intel-core-i5-14400f-32gb-ddr5-1tb-pcie-ssd-fa14400f4070s/p/N82E16883360471?Item=N82E16883360471" target="_blank" rel="noopener noreferrer">ABD Flux Aqua Gaming PC</a></h2>
-        <h4 class="inv">Power hungry beast used exclusively for gaming</h4>
-    </div>
-    <div class="device-body">
-        <Image src={gamingpc} alt="Gaming computer with glass side showing internals, including RGB fans and RAM sticks" class="device-image" height={240} width={234} />
-        <ul class="device-specs">
-        <li><strong>Windows 11 Home</strong></li>
-        <li>Gigabyte B760M C Motherboard</li>
-        <li>Intel Core i5-14400F @ 2.50 GHz</li>
-        <li>Nvidia GeForce RTX 4070 SUPER</li>
-        <li>32 GB DDR5 RAM (2 x 16 GB, 2 free DIMM)</li>
-        <li>1 TB NVMe SSD</li>
-        <li>1 TB SATA SSD</li>
-        <li>1 TB SATA HDD</li>
-        <li>1 Gbps Ethernet</li>
-        </ul>
-    </div>
-    </div>
-    
-    <!-- Dell Optiplex -->
-    <div class="device">
-    <div class="device-header">
-        <h2>Dell Optiplex 3050 SFF</h2>
-        <h4 class="inv">Former home server now used as daily driver</h4>
-    </div>
-    <div class="device-body">
-        <Image src={optiplex} alt="Slim black tower Dell brand office PC" class="device-image" height={240} width={130} />
-        <ul class="device-specs">
-          <li><strong>Debian 13 Trixie w/ KDE Plasma</strong></li>
-          <li>Intel Core i5-6500 @ 3.60 GHz</li>
-          <li>16 GB DDR4 RAM (2 x 8GB)</li>
-          <li>256 GB NVMe SSD</li>
+    <div class="content">
+      <!-- Gaming PC -->
+      <div class="device">
+      <div class="device-header">
+          <h2><a href="https://www.newegg.com/abs-flux-aqua-gaming-desktop-geforce-rtx-4070-super-intel-core-i5-14400f-32gb-ddr5-1tb-pcie-ssd-fa14400f4070s/p/N82E16883360471?Item=N82E16883360471" target="_blank" rel="noopener noreferrer">ABD Flux Aqua Gaming PC</a></h2>
+          <h4 class="inv">Power hungry beast used exclusively for gaming</h4>
+      </div>
+      <div class="device-body">
+          <Image src={gamingpc} alt="Gaming computer with glass side showing internals, including RGB fans and RAM sticks" class="device-image" height={240} width={234} />
+          <ul class="device-specs">
+          <li><strong>Windows 11 Home</strong></li>
+          <li>Gigabyte B760M C Motherboard</li>
+          <li>Intel Core i5-14400F @ 2.50 GHz</li>
+          <li>Nvidia GeForce RTX 4070 SUPER</li>
+          <li>32 GB DDR5 RAM (2 x 16 GB, 2 free DIMM)</li>
+          <li>1 TB NVMe SSD</li>
+          <li>1 TB SATA SSD</li>
           <li>1 TB SATA HDD</li>
           <li>1 Gbps Ethernet</li>
+          </ul>
+      </div>
+      </div>
+      
+      <!-- Dell Optiplex -->
+      <div class="device">
+      <div class="device-header">
+          <h2>Dell Optiplex 3050 SFF</h2>
+          <h4 class="inv">Former home server now used as daily driver</h4>
+      </div>
+      <div class="device-body">
+          <Image src={optiplex} alt="Slim black tower Dell brand office PC" class="device-image" height={240} width={130} />
+          <ul class="device-specs">
+            <li><strong>Debian 13 Trixie w/ KDE Plasma</strong></li>
+            <li>Intel Core i5-6500 @ 3.60 GHz</li>
+            <li>16 GB DDR4 RAM (2 x 8GB)</li>
+            <li>256 GB NVMe SSD</li>
+            <li>1 TB SATA HDD</li>
+            <li>1 Gbps Ethernet</li>
+          </ul>
+      </div>
+      </div>
+
+      <!-- Artemis -->
+      <div class="device">
+      <div class="device-header">
+          <h2>Dell XPS 8920</h2>
+          <h4 class="inv">Wife's former PC turned Linux low-end gaming rig (in testing)</h4>
+      </div>
+      <div class="device-body">
+          <Image src={xps8920} alt="Black full tower Dell brand PC" class="device-image" height={240} width={151} />
+          <ul class="device-specs">
+            <li><strong>Bazzite</strong></li>
+            <li>Intel i7-7700K CPU @ 4.20 GHz</li>
+            <li>AMD Radeon RX 480 GPU</li>
+            <li>24 GB DDR4 RAM (4 x 6 GB)</li>
+            <li>250 GB NVMe SSD</li>
+            <li>1 x 1 TB HDD</li>
+            <li>1 x 500 GB HDD</li>
+            <li>1 Gbps Ethernet Port</li>
+          </ul>
+      </div>
+      </div>
+      
+      <!-- Athena -->
+      <div class="device">
+      <div class="device-header">
+          <h2>Dell XPS 8920</h2>
+          <h4 class="inv">My former PC turned home server</h4>
+      </div>
+      <div class="device-body">
+          <Image src={xps8920} alt="Black full tower Dell brand PC" class="device-image" height={240} width={151} />
+          <ul class="device-specs">
+            <li><strong>Debian 13 Trixie</strong></li>
+            <li>Intel i7-7700K CPU @ 4.20 GHz</li>
+            <li>24 GB DDR4 RAM (4 x 6 GB)</li>
+            <li>250 GB NVMe SSD</li>
+            <li>3 x 4 TB HDDs</li>
+            <li>4 x 2 TB HDDs</li>
+            <li>2 x 1 TB HDDs</li>
+            <li>3 x 1 Gbps Ethernet Ports (only one used though)</li>
+          </ul>
+      </div>
+      </div>
+
+      <!-- Software -->
+      <div class="device">
+        <h2>Software</h2>
+        <ul>
+        <li>On Linux, <a href="https://zsh.org/" target="_blank" rel="noopener noreferrer">Zsh</a> with <a href="https://ohmyz.sh/" target="_blank" rel="noopener noreferrer">Oh-My-Zsh</a></li>
+        <li>On Windows, <a href="https://github.com/microsoft/terminal" target="_blank" rel="noopener noreferrer">Terminal</a> with <a href="https://ohmyposh.dev/" target="_blank" rel="noopener noreferrer">Oh-My-Posh</a></li>
+        <li><a href="https://code.visualstudio.com/" target="_blank" rel="noopener noreferrer">Visual Studio Code</a></li>
+        <li><a href="https://obsidian.md/" target="_blank" rel="noopener noreferrer">Obsidian</a> for notes</li>
         </ul>
-    </div>
-    </div>
+      </div>
 
-    <!-- Artemis -->
-    <div class="device">
-    <div class="device-header">
-        <h2>Dell XPS 8920</h2>
-        <h4 class="inv">Wife's former PC turned Linux low-end gaming rig (in testing)</h4>
-    </div>
-    <div class="device-body">
-        <Image src={xps8920} alt="Black full tower Dell brand PC" class="device-image" height={240} width={151} />
-        <ul class="device-specs">
-          <li><strong>Bazzite</strong></li>
-          <li>Intel i7-7700K CPU @ 4.20 GHz</li>
-          <li>AMD Radeon RX 480 GPU</li>
-          <li>24 GB DDR4 RAM (4 x 6 GB)</li>
-          <li>250 GB NVMe SSD</li>
-          <li>1 x 1 TB HDD</li>
-          <li>1 x 500 GB HDD</li>
-          <li>1 Gbps Ethernet Port</li>
+      <!-- Network Gear -->
+      <div class="device">
+        <h2>Network Gear</h2>
+        <ul>
+        <li><a href="https://www.gl-inet.com/products/gl-mt6000/" target="_blank" rel="noopener noreferrer">GL.iNet Flint 2 Router</a></li>
+        <li><a href="https://www.tp-link.com/us/home-networking/wifi-router/archer-ax3000/" target="_blank" rel="noopener noreferrer">TP-Link Archer AX55/AX3000</a> (used as wired ethernet switch only)</li>
+        <li><a href="https://www.netgear.com/business/wired/switches/easy-smart/gs308e/" target="_blank" rel="noopener noreferrer">Netgear GS108E 8-port Managed Switch</a></li>
         </ul>
-    </div>
-    </div>
-    
-    <!-- Athena -->
-    <div class="device">
-    <div class="device-header">
-        <h2>Dell XPS 8920</h2>
-        <h4 class="inv">My former PC turned home server</h4>
-    </div>
-    <div class="device-body">
-        <Image src={xps8920} alt="Black full tower Dell brand PC" class="device-image" height={240} width={151} />
-        <ul class="device-specs">
-          <li><strong>Debian 13 Trixie</strong></li>
-          <li>Intel i7-7700K CPU @ 4.20 GHz</li>
-          <li>24 GB DDR4 RAM (4 x 6 GB)</li>
-          <li>250 GB NVMe SSD</li>
-          <li>3 x 4 TB HDDs</li>
-          <li>4 x 2 TB HDDs</li>
-          <li>2 x 1 TB HDDs</li>
-          <li>3 x 1 Gbps Ethernet Ports (only one used though)</li>
+      </div>
+
+      <!-- Smart Home -->
+      <div class="device">
+        <h2>Smart Home</h2>
+        <ul>
+        <li><a href="https://bondhome.io/product/bond-bridge" target="_blank" rel="noopener noreferrer">Bond Bridge</a></li>
+        <li><a href="https://sonoff.tech/en-us/products/sonoff-zigbee-3-0-usb-dongle-plus-zbdongle-p" target="_blank" rel="noopener noreferrer">SONOFF Zigbee 3.0 USB Dongle Plus</a></li>
+        <li><a href="https://us.shelly.com/products/shelly-plus-plug-us" target="_blank" rel="noopener noreferrer">Shelly Plus Plugs US</a></li>
+        <li><a href="http://www.gosund.net/#/detail?detId=7" target="_blank" rel="noopener noreferrer">Gosund WP3 Smart Plugs</a></li>
+        <li><a href="https://www.kasasmart.com/us/products/smart-plugs/kasa-smart-plug-slim-energy-monitoring-kp125m" target="_blank" rel="noopener noreferrer">Kasa KP125M Smart Plugs</a></li>
+        <li><a href="https://www.kasasmart.com/us/products/smart-switches/kasa-smart-wi-fi-light-switch-hs220-2" target="_blank" rel="noopener noreferrer">Kasa HS200-2 Smart Light Switches</a></li>
+        <li><a href="https://www.kasasmart.com/us/products/smart-lighting/kasa-smart-light-bulb-multicolor-kl135" target="_blank" rel="noopener noreferrer">Kasa KL135 Smart Light Bulbs</a></li>
+        <li><a href="https://www.gelighting.com/led-lights/bulbs/medium-base/ge-cync-smart-led-light-bulb-color-changing-matter-compatible" target="_blank" rel="noopener noreferrer">GE Cync A19 Smart Light Bulbs</a></li>
+        <li><a href="https://www.amazon.com/Google-Nest-Doorbell-Wired-2nd/dp/B0BBSLG6PC" target="_blank" rel="noopener noreferrer">Google Nest Wired Doorbell 2nd Gen</a></li>
+        <li><a href="https://www.amazon.com/Google-Nest-Learning-Thermostat-Programmable/dp/B0DZDB98JG" target="_blank" rel="noopener noreferrer">Google Nest Learning Thermostat 3rd Gen</a></li>
+        <li><a href="https://store.google.com/product/google_nest_mini" target="_blank" rel="noopener noreferrer">Google Nest Mini Speakers</a></li>
+        <li><a href="https://carrousa.com/products/espear-60-inch-5-blade-smart-ceiling-fan-with-led-light-kit-remote-white-white" target="_blank" rel="noopener noreferrer">Carro Espear 60" Smart Ceiling Fan</a></li>
+        <li><a href="https://www.homedepot.com/p/Home-Decorators-Collection-Triplex-60-in-LED-Brushed-Bronze-Ceiling-Fan-with-Light-YG749-BRB/307266742" target="_blank" rel="noopener noreferrer">Home Decorators Collection Triplex 60" Smart Ceiling Fan</a></li>
         </ul>
+      </div>
+
+      <!-- Video Game Consoles -->
+      <div class="device">
+        <h2>Video Game Consoles</h2>
+        <ul>
+        <li>Nintendo DS</li>
+        <li>Nintendo 3DS</li>
+        <li>Nintendo GameCube</li>
+        <li>Nintendo Switch</li>
+        <li>Nintendo Switch 2</li>
+        <li>Nintendo Wii</li>
+        <li>PlayStation 3</li>
+        <li>PlayStation 5</li>
+        <li>XBox 360</li>
+        </ul>
+      </div>
     </div>
-    </div>
-
-    <!-- Software -->
-    <h2>Software</h2>
-    <ul>
-    <li>On Linux, <a href="https://zsh.org/" target="_blank" rel="noopener noreferrer">Zsh</a> with <a href="https://ohmyz.sh/" target="_blank" rel="noopener noreferrer">Oh-My-Zsh</a></li>
-    <li>On Windows, <a href="https://github.com/microsoft/terminal" target="_blank" rel="noopener noreferrer">Terminal</a> with <a href="https://ohmyposh.dev/" target="_blank" rel="noopener noreferrer">Oh-My-Posh</a></li>
-    <li><a href="https://code.visualstudio.com/" target="_blank" rel="noopener noreferrer">Visual Studio Code</a></li>
-    <li><a href="https://obsidian.md/" target="_blank" rel="noopener noreferrer">Obsidian</a> for notes</li>
-    </ul>
-
-    <!-- Network Gear -->
-    <h2>Network Gear</h2>
-    <ul>
-    <li><a href="https://www.gl-inet.com/products/gl-mt6000/" target="_blank" rel="noopener noreferrer">GL.iNet Flint 2 Router</a></li>
-    <li><a href="https://www.tp-link.com/us/home-networking/wifi-router/archer-ax3000/" target="_blank" rel="noopener noreferrer">TP-Link Archer AX55/AX3000</a> (used as wired ethernet switch only)</li>
-    <li><a href="https://www.netgear.com/business/wired/switches/easy-smart/gs308e/" target="_blank" rel="noopener noreferrer">Netgear GS108E 8-port Managed Switch</a></li>
-    </ul>
-
-    <!-- Smart Home -->
-    <h2>Smart Home</h2>
-    <ul>
-    <li><a href="https://bondhome.io/product/bond-bridge" target="_blank" rel="noopener noreferrer">Bond Bridge</a></li>
-    <li><a href="https://sonoff.tech/en-us/products/sonoff-zigbee-3-0-usb-dongle-plus-zbdongle-p" target="_blank" rel="noopener noreferrer">SONOFF Zigbee 3.0 USB Dongle Plus</a></li>
-    <li><a href="https://us.shelly.com/products/shelly-plus-plug-us" target="_blank" rel="noopener noreferrer">Shelly Plus Plugs US</a></li>
-    <li><a href="http://www.gosund.net/#/detail?detId=7" target="_blank" rel="noopener noreferrer">Gosund WP3 Smart Plugs</a></li>
-    <li><a href="https://www.kasasmart.com/us/products/smart-plugs/kasa-smart-plug-slim-energy-monitoring-kp125m" target="_blank" rel="noopener noreferrer">Kasa KP125M Smart Plugs</a></li>
-    <li><a href="https://www.kasasmart.com/us/products/smart-switches/kasa-smart-wi-fi-light-switch-hs220-2" target="_blank" rel="noopener noreferrer">Kasa HS200-2 Smart Light Switches</a></li>
-    <li><a href="https://www.kasasmart.com/us/products/smart-lighting/kasa-smart-light-bulb-multicolor-kl135" target="_blank" rel="noopener noreferrer">Kasa KL135 Smart Light Bulbs</a></li>
-    <li><a href="https://www.gelighting.com/led-lights/bulbs/medium-base/ge-cync-smart-led-light-bulb-color-changing-matter-compatible" target="_blank" rel="noopener noreferrer">GE Cync A19 Smart Light Bulbs</a></li>
-    <li><a href="https://www.amazon.com/Google-Nest-Doorbell-Wired-2nd/dp/B0BBSLG6PC" target="_blank" rel="noopener noreferrer">Google Nest Wired Doorbell 2nd Gen</a></li>
-    <li><a href="https://www.amazon.com/Google-Nest-Learning-Thermostat-Programmable/dp/B0DZDB98JG" target="_blank" rel="noopener noreferrer">Google Nest Learning Thermostat 3rd Gen</a></li>
-    <li><a href="https://store.google.com/product/google_nest_mini" target="_blank" rel="noopener noreferrer">Google Nest Mini Speakers</a></li>
-    <li><a href="https://carrousa.com/products/espear-60-inch-5-blade-smart-ceiling-fan-with-led-light-kit-remote-white-white" target="_blank" rel="noopener noreferrer">Carro Espear 60" Smart Ceiling Fan</a></li>
-    <li><a href="https://www.homedepot.com/p/Home-Decorators-Collection-Triplex-60-in-LED-Brushed-Bronze-Ceiling-Fan-with-Light-YG749-BRB/307266742" target="_blank" rel="noopener noreferrer">Home Decorators Collection Triplex 60" Smart Ceiling Fan</a></li>
-    </ul>
-
-    <!-- Video Game Consoles -->
-    <h2>Video Game Consoles</h2>
-    <ul>
-    <li>Nintendo DS</li>
-    <li>Nintendo 3DS</li>
-    <li>Nintendo GameCube</li>
-    <li>Nintendo Switch</li>
-    <li>Nintendo Switch 2</li>
-    <li>Nintendo Wii</li>
-    <li>PlayStation 3</li>
-    <li>PlayStation 5</li>
-    <li>XBox 360</li>
-    </ul>
-    <hr/>
+    <hr class="bottom-line" />
     <BackToTop />
   </section>
 </BaseLayout>
@@ -187,6 +197,10 @@ const lastUpdated = new Date('2026-04-11T12:00');
   }
   p {
     margin-bottom: 1em;
+  }
+  .content {
+    margin: 0 auto;
+    max-width: 800px;
   }
   a[target='_blank']::after {
     content: '';
@@ -215,6 +229,9 @@ const lastUpdated = new Date('2026-04-11T12:00');
   }
   .device {
     margin: 2em 0;
+    padding: 1em 1.5em;
+    background: var(--blockquote);
+    border-radius: 0.5em;
   }
   .device-header {
     margin-bottom: 0.5em;
@@ -239,6 +256,9 @@ const lastUpdated = new Date('2026-04-11T12:00');
   .device-specs {
     margin: 0;
     padding-left: 1.25em;
+  }
+  .bottom-line {
+    margin-top: 2em;
   }
   @media screen and (max-width: 667px) {
     .date {

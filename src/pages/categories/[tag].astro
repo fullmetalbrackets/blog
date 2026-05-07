@@ -88,6 +88,7 @@ const categoryItems = posts.map(post => ({
     list-style-type: none;
     margin: 0 auto 2em auto;
     padding: 0;
+    max-width: 1000px;
   }
   li {
     display: inline-block;
@@ -168,8 +169,11 @@ const categoryItems = posts.map(post => ({
     }
   }
   @media screen and (max-width: 667px) {
+    .back {
+      margin-top: 1.25em;
+    }
     .back a {
-      font-size: 0.85em;
+      font-size: 18px;
     }
     .tag {
       margin-bottom: 0.25em;

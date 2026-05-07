@@ -140,6 +140,7 @@ const yearItems = posts.map(post => ({
     list-style-type: none;
     margin: 0 auto 2em auto;
     padding: 0;
+    max-width: 1000px;
   }
   li {
     display: inline-block;
@@ -285,6 +286,9 @@ const yearItems = posts.map(post => ({
   @media screen and (max-width: 667px) {
     section {
       line-height: 1.2;
+    }
+    .back {
+      margin-top: -0.1em;
     }
     .years {
       margin-bottom: 1em;
