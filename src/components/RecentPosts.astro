@@ -151,7 +151,7 @@ const recentPosts = (await getPostsWithReadingTime()).slice(0, 5);
     {
       recentPosts.map((post) => (
         <div class="h-entry list">
-          <a class="u-url" href={`/blog/${post.id}/`} rel="prefetch-intent" data-umami-event={`recent-post-${post.id}`}>
+          <a class="u-url" href={`/blog/${post.id}`} rel="prefetch-intent" data-umami-event={`recent-post-${post.id}`}>
             <p class="p-name posts-title">{post.data.title}</p>
             <span class="tag">
               {post.data.tags.map((tag) => (
