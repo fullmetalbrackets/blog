@@ -31,7 +31,7 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
     place-items: center;
     color: var(--primary);
   }
-  .toc-heading a:hover {
+  .toc-heading a:hover, .toc-list li a:hover {
     color: var(--secondary);
   }
   .toc-heading a:hover svg {
@@ -47,27 +47,45 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
   .toc-indicator {
     display: none;
   }
+  .toc-fade {
+    display: none;
+  }
   @media screen and (min-width: 2060px) {
+    .toc-container {
+      position: fixed;
+      top: 2.75em;
+      right: -36em;
+      width: 56%;
+      max-width: 56%;
+      font-size: 0.85em;
+    }
+    .toc-scroll {
+      position: relative;
+      max-height: calc(100vh - 8em);
+      overflow-y: auto;
+      scrollbar-width: none;
+    }
+    .toc-scroll:hover {
+      scrollbar-width: thin;
+      scrollbar-color: var(--border2) transparent;
+    }
+    .toc-scroll::-webkit-scrollbar {
+      width: 4px;
+    }
+    .toc-scroll:not(:hover)::-webkit-scrollbar {
+      display: none;
+    }
     .toc-indicator {
       display: block;
       position: absolute;
-      right: 2em;
       left: 0;
       background: var(--border2);
       border-left: 3px solid var(--primary);
       border-radius: 0.25em;
-      max-width: 35%;
-      transition: top 0.2s ease, height 0.2s ease, opacity 0.2s ease;
+      max-width: 40%;
+      transition: top 0.2s ease, height 0.2s ease, width 0.2s ease, opacity 0.2s ease;
       opacity: 0;
       z-index: 0;
-    }
-    .toc-container {
-      position: fixed;
-      top: 2.75em;
-      left: calc(50% + 88ch / 2 + 2em);
-      width: 56%;
-      max-width: 56%;
-      font-size: 0.85em;
     }
     .toc-top-btn {
       position: sticky;
@@ -77,6 +95,19 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
     }
     .toc-list {
       margin-top: 0.1em;
+    }
+    .toc-fade {
+      display: block;
+      position: sticky;
+      bottom: 0;
+      height: 3em;
+      margin-top: -3em;
+      background: linear-gradient(to bottom, transparent, var(--main));
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .toc-fade.hidden {
+      opacity: 0;
     }
   }
   @media screen and (max-width: 667px) {
@@ -92,23 +123,28 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
       <TOC width={36} height={36} />Table of Contents
     </a>
   </h2>
-  <div class="toc-indicator" id="toc-indicator" aria-hidden="true"></div>
-  <ol class="toc-list" id="toc-list">
-    {filteredHeadings.map((heading) => (
-      <li>
-        <a href={`#${heading.slug}`} data-heading={heading.slug}>
-          {heading.text}
-        </a>
-      </li>
-    ))}
-  </ol>
+  <div class="toc-scroll" id="toc-scroll">
+    <div class="toc-indicator" id="toc-indicator" aria-hidden="true"></div>
+    <ol class="toc-list" id="toc-list">
+      {filteredHeadings.map((heading) => (
+        <li>
+          <a href={`#${heading.slug}`} data-heading={heading.slug}>
+            {heading.text}
+          </a>
+        </li>
+      ))}
+    </ol>
+    <div class="toc-fade" id="toc-fade" aria-hidden="true"></div>
+  </div>
 </nav>
 
 <script>
   function initTOC() {
+    const tocScroll = document.getElementById('toc-scroll') as HTMLElement;
     const tocList = document.getElementById('toc-list');
     const indicator = document.getElementById('toc-indicator');
-    if (!tocList || !indicator) return;
+    const fade = document.getElementById('toc-fade');
+    if (!tocScroll || !tocList || !indicator) return;
 
     const links = Array.from(
       tocList.querySelectorAll<HTMLAnchorElement>('a[data-heading]')
@@ -119,7 +155,6 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
       .map((link) => document.getElementById(link.dataset.heading!))
       .filter((el): el is HTMLElement => el !== null);
 
-    // Absolute offsets, cached and refreshed on resize
     let headingTops: number[] = [];
 
     function cacheOffsets() {
@@ -129,18 +164,41 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
       );
     }
 
+    function updateFade() {
+      if (!fade) return;
+      const { scrollTop, scrollHeight, clientHeight } = tocScroll;
+      const isOverflowing = scrollHeight > clientHeight;
+      const atBottom = scrollTop + clientHeight >= scrollHeight - 4;
+      fade.classList.toggle('hidden', !isOverflowing || atBottom);
+    }
+
+    function scrollTocToLink(link: HTMLAnchorElement) {
+      const li = link.parentElement!;
+      const liTop = li.offsetTop;
+      const liBottom = liTop + li.offsetHeight;
+      const { scrollTop, clientHeight } = tocScroll;
+
+      if (liTop < scrollTop) {
+        tocScroll.scrollTo({ top: liTop, behavior: 'smooth' });
+      } else if (liBottom > scrollTop + clientHeight) {
+        tocScroll.scrollTo({ top: liBottom - clientHeight, behavior: 'smooth' });
+      }
+    }
+
     function moveIndicator(link: HTMLAnchorElement) {
       const li = link.parentElement!;
       indicator!.style.top = `${tocList!.offsetTop + li.offsetTop}px`;
       indicator!.style.height = `${li.offsetHeight}px`;
+      indicator!.style.width = `${link.offsetLeft + link.offsetWidth + 12}px`;
       indicator!.style.opacity = '1';
+      scrollTocToLink(link);
     }
 
     function hideIndicator() {
       indicator!.style.opacity = '0';
     }
 
-    const THRESHOLD = 100; // px — how far past a heading before it becomes active
+    const THRESHOLD = 100;
 
     function updateActive() {
       const scrollY = window.scrollY;
@@ -155,7 +213,6 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
       }
 
       if (activeIndex === -1) {
-        // Above the first heading — nothing should be active
         hideIndicator();
         return;
       }
@@ -163,26 +220,28 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
       moveIndicator(links[activeIndex]);
     }
 
-    // Debounce resize so cacheOffsets isn't called 60×/sec during a resize drag
     let resizeTimer: ReturnType<typeof setTimeout>;
     function onResize() {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(() => {
         cacheOffsets();
         updateActive();
+        updateFade();
       }, 100);
     }
 
     cacheOffsets();
     updateActive();
+    updateFade();
 
     window.addEventListener('scroll', updateActive, { passive: true });
     window.addEventListener('resize', onResize, { passive: true });
+    tocScroll.addEventListener('scroll', updateFade, { passive: true });
 
-    // Return a cleanup function so re-initialisation on astro:page-load doesn't stack up duplicate listeners
     return () => {
       window.removeEventListener('scroll', updateActive);
       window.removeEventListener('resize', onResize);
+      tocScroll.removeEventListener('scroll', updateFade);
       clearTimeout(resizeTimer);
     };
   }
