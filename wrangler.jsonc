@@ -6,7 +6,8 @@
     ],
     "compatibility_date": "2026-04-27",
     "assets": {
-        "directory": "./dist"
+        "directory": "./dist",
+        "html_handling": "drop-trailing-slash"
     },
     "observability": {
         "logs": {
