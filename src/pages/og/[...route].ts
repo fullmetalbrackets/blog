@@ -23,8 +23,8 @@ export const { getStaticPaths, GET } = await OGImageRoute({
 		},
 		font: {
 			title: {
-				families: ['AtkinsonHyperlegibleNext'],
-				weight: 'ExtraBold',
+				families: ['Nunito'],
+				weight: 'Black',
 				color: [255, 255, 255],
 				size: 48,
 				lineHeight: 1.1,
@@ -43,7 +43,7 @@ export const { getStaticPaths, GET } = await OGImageRoute({
 			resolve(process.cwd(), 'public/fonts/AtkinsonHyperlegibleNext-Regular.ttf'),
 			resolve(
 				process.cwd(),
-				'public/fonts/AtkinsonHyperlegibleNext-ExtraBold.ttf'
+				'public/fonts/Nunito-Black.ttf'
 			),
 		],
 	}),
