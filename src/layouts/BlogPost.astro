@@ -87,7 +87,7 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
       margin-right: 0.25em;
     }
     .slot-content {
-      margin: 0 auto;
+      margin: 0 auto 2.5em auto;
       padding: 0;
       max-width: 1000px;
     }
@@ -371,25 +371,6 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
     .related li:hover {
       color: var(--hover);
       border: 2px solid var(--emphasis);
-    }
-
-    /* wide-screen sidebar */
-    @media screen and (min-width: 2060px) {
-      .blog-tags, .info, .updated {
-        position: absolute;
-        left: 2em;
-        width: 35%;
-        max-width: 35%;
-      }
-      .blog-tags {
-        top: 4.55em;
-      }
-      .info {
-        top: 6em;
-      }
-      .updated {
-        top: 7.55em;
-      }
     }
 
     /* mobile */
