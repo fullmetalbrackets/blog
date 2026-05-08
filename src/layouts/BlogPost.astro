@@ -523,7 +523,7 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
         <h3><Related width={36} height={36}/> Related Posts</h3>
         <ul>
           {selectedPosts.map(post => (
-            <a href={`/blog/${post.id}/`} rel="prefetch-intent" data-umami-event={`related-${post.id}`}>
+            <a href={`/blog/${post.id}`} rel="prefetch-intent" data-umami-event={`related-${post.id}`}>
               <li>
                 <span>{post.data.title}</span>
                 <div>
@@ -622,7 +622,7 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
       <span>Have any questions?</span>
       <a
         class="email"
-        href={`mailto:contact@fullmetalbrackets.com?subject=RE: ${title}`}
+        href={`mailto:contact@fullmetalbrackets.com?subject=Regarding: ${title}`}
       >
         <img
           src="/assets/email.svg"
@@ -721,7 +721,7 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
   </script>
 
   <script is:inline>
-    if (window.matchMedia('(min-width: 2108px)').matches) {
+    if (window.matchMedia('(min-width: 2060px)').matches) {
       const toc = document.querySelector('.toc-container');
       const articleEl = document.querySelector('article');
 
