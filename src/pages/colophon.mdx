@@ -1,53 +1,66 @@
 ---
 layout: ../layouts/Page.astro
 title: Colophon
-description: How fullmetalbrackets.com is made, with what tools, supporting what technologies, etc.
+description:
+  How fullmetalbrackets.com is made, with what tools, supporting what
+  technologies, etc.
 schemaType: AboutPage
 ---
 
 export const prerender = true;
 
-<a class="u-url" href="https://fullmetalbrackets.com/colophon" hidden>
-	Permalink
+<a class='u-url' href='https://fullmetalbrackets.com/colophon' hidden>
+  Permalink
 </a>
 
 ## WTF is a Colophon?
 
 > [quote]
 >
-> <span class="i b u em">colophon</span> _noun_ (col·​o·​phon ˈkä-lə-fən -ˌfän)
+> <span class='i b u em'>colophon</span> _noun_ (col·​o·​phon ˈkä-lə-fən -ˌfän)
 >
-> 1: an inscription at the end of a book or manuscript usually <span class="em">with facts about its production</span>.
+> 1: an inscription at the end of a book or manuscript usually
+> <span class="em">with facts about its production</span>.
 >
 > [Merriam-Webster Dictionary](https://www.merriam-webster.com/dictionary/colophon)
 
 Or in a modern context...
 
-> [quote]
-> A <span class="i b u em">colophon</span> is a page or section (typically in a footer) of a site that <span class="em">describes how the site is made, with what tools, supporting what technologies</span>, and often published on personal sites at a top level `/colophon` page.
+> [quote] A <span class="i b u em">colophon</span> is a page or section
+> (typically in a footer) of a site that <span class="em">describes how the site
+> is made, with what tools, supporting what technologies</span>, and often
+> published on personal sites at a top level `/colophon` page.
 >
 > [IndieWeb.org](https://indieweb.org/colophon)
 
 ## Site and Webhost
 
-The site is built with [Astro](https://astro.build) and deployed
-on [Cloudflare Workers](https://workers.cloudflare.com) from a [public
-GitHub repository](https://github.com/fullmetalbrackets/blog). The domain is through [Cloudflare](https://cloudflare.com/products/registrar/) and a cheap VPS from [Racknerd](https://racknerd.com) hosts my Umami instance.
+The site is built with [Astro](https://astro.build) and deployed on
+[Cloudflare Workers](https://workers.cloudflare.com) from a
+[public GitHub repository](https://github.com/fullmetalbrackets/blog). The
+domain is through [Cloudflare](https://cloudflare.com/products/registrar/) and a
+cheap VPS from [Racknerd](https://racknerd.com) hosts my Umami instance.
 
 ## Fonts, Icons and Images
 
 - [Atkinson Hyperlegible](https://www.brailleinstitute.org/freefont/)
 - [Atkinson Hyperlegible Mono](https://github.com/googlefonts/atkinson-hyperlegible-next-mono)
 - [Nunito](https://fonts.google.com/specimen/Nunito)
-- SVG icons are from [Material Design Icons](https://pictogrammers.com/library/mdi/)
-- SVG console logos used in [/games](/games) page are from [this GitHub repo](https://github.com/HVR88/Monochrome-Gaming-Logos)
+- SVG icons are from
+  [Material Design Icons](https://pictogrammers.com/library/mdi/)
+- SVG console logos used in [/games](/games) page are from
+  [this GitHub repo](https://github.com/HVR88/Monochrome-Gaming-Logos)
 - Posters for movies and TV shows are from [TMDB](https://themoviedb.org/)
 - Book covers are from [Goodreads](https://goodreads.com/)
-- Most video game box art is from [IGDB](https://www.igdb.com/) or [MobyGames](https://mobygames.com/), though in sometimes I have to search on Google for good ones
+- Most video game box art is from [IGDB](https://www.igdb.com/) or
+  [MobyGames](https://mobygames.com/), though in sometimes I have to search on
+  Google for good ones
 
 ## Astro, Integrations and Packages
 
-The site uses [Astro's Content Collections](https://docs.astro.build/en/guides/content-collections/) for a lot of the content on this site:
+The site uses
+[Astro's Content Collections](https://docs.astro.build/en/guides/content-collections/)
+for a lot of the content on this site:
 
 - [Blog](/blog) posts use Markdown or MDX files
 - [Wiki](/wiki) articles use Markdown files
@@ -58,41 +71,79 @@ The site uses [Astro's Content Collections](https://docs.astro.build/en/guides/c
 - [Blogroll](/blogroll) uses a JSON file for data
 - [Games](/games) list uses a JSON file for data
 
-Several other pages are also just MDX files including [Changelog](/changelog), [Explore](/explore), [Privacy](/privacy), [Verify](/verify) and this Colophon page you're reading right now.
+Several other pages are also just MDX files including [Changelog](/changelog),
+[Explore](/explore), [Privacy](/privacy), [Verify](/verify) and this Colophon
+page you're reading right now.
 
 I use several packages to help with building the site and writing posts.
 
-- [astrojs/rss](https://docs.astro.build/en/recipes/rss/): Astro integration to add an RSS feed, in my case the feed is blog posts only.
-- [astrojs/sitemap](https://docs.astro.build/en/guides/integrations-guide/sitemap/): Astro integration that automatically generates a `sitemap.xml`.
-- [astro-gab-compress](https://github.com/jgabriel98/astro-compress): Used to compress, optimize and cache files (HTML, CSS, images, etc.) at build time.
-- [astro-social-share](https://github.com/silent1mezzo/astro-social-sharE): Used for the "share on social" buttons at the bottom of blog posts.
-- [astro-og-canvas](https://github.com/delucis/astro-og-canvas): Used to dynamically generate [opengraph](https://ogp.me/) images for blog posts.
-- [glightbox](https://github.com/biati-digital/glightbox): Used for image lightboxes in blog posts.
-- [reading-time](https://github.com/ngryman/reading-time) + [mdast-util-to-string](https://github.com/syntax-tree/mdast-util-to-string): Used to calculate and display how many minutes it takes to read individual blog posts.
-- [remark-directive](https://github.com/remarkjs/remark-directive) + [remark-directive-sugar](https://github.com/lin-stephanie/remark-directive-sugar): Used to add new Markdown syntax for images, video embeds, etc.
-- [rehype-external-links](https://docs.astro.build/en/recipes/external-links/): Used to automatically add the little arrow next to external links throughout the site.
-- [rehype-slug](https://github.com/rehypejs/rehype-slug) + [rehype-autolinks-headings](https://github.com/rehypejs/rehype-autolink-headings): Used to add links to each blog post heading that copies to clipboard the URL to that section.
-- [satori](https://github.com/vercel/satori) + [resvg](https://github.com/linebender/resvg): Used to dynamically generate opengraph images for each blog post.
-- [astro-embed](https://astro-embed.netlify.app/) for embedding YouTube videos, Bluesky or Mastodon posts, GitHub Gists, etc.
+- [astrojs/rss](https://docs.astro.build/en/recipes/rss/): Astro integration to
+  add an RSS feed, in my case the feed is blog posts only.
+- [astrojs/sitemap](https://docs.astro.build/en/guides/integrations-guide/sitemap/):
+  Astro integration that automatically generates a `sitemap.xml`.
+- [astro-gab-compress](https://github.com/jgabriel98/astro-compress): Used to
+  compress, optimize and cache files (HTML, CSS, images, etc.) at build time.
+- [astro-social-share](https://github.com/silent1mezzo/astro-social-sharE): Used
+  for the "share on social" buttons at the bottom of blog posts.
+- [astro-og-canvas](https://github.com/delucis/astro-og-canvas): Used to
+  dynamically generate [opengraph](https://ogp.me/) images for blog posts.
+- [glightbox](https://github.com/biati-digital/glightbox): Used for image
+  lightboxes in blog posts.
+- [reading-time](https://github.com/ngryman/reading-time) +
+  [mdast-util-to-string](https://github.com/syntax-tree/mdast-util-to-string):
+  Used to calculate and display how many minutes it takes to read individual
+  blog posts.
+- [remark-directive](https://github.com/remarkjs/remark-directive) +
+  [remark-directive-sugar](https://github.com/lin-stephanie/remark-directive-sugar):
+  Used to add new Markdown syntax for images, video embeds, etc.
+- [rehype-external-links](https://docs.astro.build/en/recipes/external-links/):
+  Used to automatically add the little arrow next to external links throughout
+  the site.
+- [rehype-slug](https://github.com/rehypejs/rehype-slug) +
+  [rehype-autolinks-headings](https://github.com/rehypejs/rehype-autolink-headings):
+  Used to add links to each blog post heading that copies to clipboard the URL
+  to that section.
+- [satori](https://github.com/vercel/satori) +
+  [resvg](https://github.com/linebender/resvg): Used to dynamically generate
+  opengraph images for each blog post.
+- [astro-embed](https://astro-embed.netlify.app/) for embedding YouTube videos,
+  Bluesky or Mastodon posts, GitHub Gists, etc.
 
 ## IndieWeb
 
-This site makes extensive use of [microformats](https://microformats.org/) and is able to send/receive [Webmentions](https://indieweb.org/Webmention). Blog posts are
+This site makes extensive use of [microformats](https://microformats.org/) and
+is able to send/receive [Webmentions](https://indieweb.org/Webmention). Blog
+posts are
 
-- [Webmention.io](https://webmention.io/) is free service for receiving Webmentions, a protocol used by IndieWeb sites to be notified when they link to each other.
-- [Webmention.app](https://webmention.app/) is a free service to automate outgoing webmentions with a simple API, and I use a scheduled GitHub Action to use it.
-- [Bridgy](https://brid.gy/) is a free service that connects IndieWeb sites to your Mastodon and Bluesky accounts for [backfeeds](https://indieweb.org/backfeed) and [POSSE](https://indieweb.org/POSSE).
-- [EchoFeed](https://echofeed.app) is used to automatically cross-post blog posts to Mastodon. (I don't use Bluesky much, but I manually cross-post to that when I feel like it.)
+- [Webmention.io](https://webmention.io/) is free service for receiving
+  Webmentions, a protocol used by IndieWeb sites to be notified when they link
+  to each other.
+- [Webmention.app](https://webmention.app/) is a free service to automate
+  outgoing webmentions with a simple API, and I use a scheduled GitHub Action to
+  use it.
+- [Bridgy](https://brid.gy/) is a free service that connects IndieWeb sites to
+  your Mastodon and Bluesky accounts for
+  [backfeeds](https://indieweb.org/backfeed) and
+  [POSSE](https://indieweb.org/POSSE).
+- [EchoFeed](https://echofeed.app) is used to automatically cross-post blog
+  posts to Mastodon. (I don't use Bluesky much, but I manually cross-post to
+  that when I feel like it.)
 
 ## Third-Party Services
 
-- [Pagefind](https://pagefind.app/): Dead simple fully static search library for static websites, used for the Search component in the header. Doesn't even require adding it to your dependencies, all the magic happens at build time.
-- [Giscus](https://giscus.app): Free commenting system that uses GitHub Discussions as the backend, used for comments in blog posts.
-- [Umami](http://umami.is): GDPR-compliant and privacy friendly Google Analytics alternative, self-hosted on a VPS. [Website stats are public and can be viewed here.](https://u.adiaz.fyi/share/TtTytHU8rJy0oEzN)
+- [Pagefind](https://pagefind.app/): Dead simple fully static search library for
+  static websites, used for the Search component in the header. Doesn't even
+  require adding it to your dependencies, all the magic happens at build time.
+- [Giscus](https://giscus.app): Free commenting system that uses GitHub
+  Discussions as the backend, used for comments in blog posts.
+- [Umami](http://umami.is): GDPR-compliant and privacy friendly Google Analytics
+  alternative, self-hosted on a VPS.
+  [Website stats are public and can be viewed here.](https://u.adiaz.fyi/share/TtTytHU8rJy0oEzN)
 
 ## Domains
 
-This website lives at `fullmetalbrackets.com`, however I have other domains that point here. If you're visiting any of the below, it's actually this site:
+This website lives at `fullmetalbrackets.com`, however I have other domains that
+point here. If you're visiting any of the below, it's actually this site:
 
 - `arieldiaz.codes`
 - `techservatory.com`
@@ -103,11 +154,19 @@ This website lives at `fullmetalbrackets.com`, however I have other domains that
 
 ## Old Site Design
 
-I've redesigned many times, even moved domain -- I used to maintain both `arieldiaz.codes` and `fullmetalbrackets.com` separately, each with their own designs, but with the same blog posts. [Eventually I just merged them](/blog/merging-sites-and-changing-hosts), making `fullmetalbrackets.com` my only site and having `arieldiaz.codes` redirect to it.
+I've redesigned many times, even moved domain -- I used to maintain both
+`arieldiaz.codes` and `fullmetalbrackets.com` separately, each with their own
+designs, but with the same blog posts.
+[Eventually I just merged them](/blog/merging-sites-and-changing-hosts), making
+`fullmetalbrackets.com` my only site and having `arieldiaz.codes` redirect to
+it.
 
-Below are some of the old designs I can still successfully build and take screenshots of, from most recent (prior to current design) to oldest. The current design is Version 3. <sup>I think?</sup>
+Below are some of the old designs I can still successfully build and take
+screenshots of, from most recent (prior to current design) to oldest. The
+current design is Version 3. <sup>I think?</sup>
 
-:::image-figure[Version 2 design of this website, fullmetalbrackets.com (after making it my main site)]
+:::image-figure[Version 2 design of this website, fullmetalbrackets.com (after
+making it my main site)]
 ![Version 2 design of this website, fullmetalbrackets.com](../img/other/fmb2.png)
 :::
 

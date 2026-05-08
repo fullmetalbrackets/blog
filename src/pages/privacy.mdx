@@ -7,55 +7,100 @@ schemaType: PrivacyPolicy
 
 export const prerender = true;
 
-<a class="u-url" href="https://fullmetalbrackets.com/privacy" hidden>
-	Permalink
+<a class='u-url' href='https://fullmetalbrackets.com/privacy' hidden>
+  Permalink
 </a>
 
 import FormattedDate from '@components/FormattedDate.astro';
 import '@styles/page.css';
 
-<div class="date">
-	<span class="updated">Last updated on</span>
-	<FormattedDate date={new Date('2026-05-05T12:00:00')} />
+<div class='date'>
+  <span class='updated'>Last updated on</span>
+  <FormattedDate date={new Date('2026-05-05T12:00:00')} />
 </div>
 
-This privacy policy will advise of what information, if any, is collected when you use this website and for what purpose. The policy may change in the future, at which time this page will be updated. Check back from time to time and note that date the Privacy Policy was last updated.
+This privacy policy will advise of what information, if any, is collected when
+you use this website and for what purpose. The policy may change in the future,
+at which time this page will be updated. Check back from time to time and note
+that date the Privacy Policy was last updated.
 
 ## Data collection
 
-**This website does not use cookies.** There is no account or newsletter to sign up for, no way for a user to submit information, nor for any user-submitted information to even be stored.
+**This website does not use cookies.** There is no account or newsletter to sign
+up for, no way for a user to submit information, nor for any user-submitted
+information to even be stored.
 
 > [warning]
 >
-> Under certain circumstances, Cloudflare may issue a "challenge" to confirm that a visitor is not a bot or other malicious actor. If (and only if) a challenge is presented and passed, Cloudflare uses a `cf_clearance` cookie to preserve the challenge state across cross-site requests. For more information, see [this section of the Cloudflare documentation](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cloudflare-cookies/).
+> Under certain circumstances, Cloudflare may issue a "challenge" to confirm
+> that a visitor is not a bot or other malicious actor. If (and only if) a
+> challenge is presented and passed, Cloudflare uses a `cf_clearance` cookie to
+> preserve the challenge state across cross-site requests. For more information,
+> see
+> [this section of the Cloudflare documentation](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cloudflare-cookies/).
 
-This website only collects three temporary pieces of data, and only under specific circumstances:
+This website only collects three temporary pieces of data, and only under
+specific circumstances:
 
-1. When you use the **theme toggle** on the site header to change between light/dark theme, a text string with the choice (`light` or `dark`) is saved in your browser's [local storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage). This allows the choice of theme to persist across browser sessions.
+1. When you use the **theme toggle** on the site header to change between
+   light/dark theme, a text string with the choice (`light` or `dark`) is saved
+   in your browser's
+   [local storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage).
+   This allows the choice of theme to persist across browser sessions.
 
-2. When you use any of the **filters** on the [Lifestream page](/lifestream), booleans representing their states are saved in your browser's [session storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage). This allows the active/inactive filters to persist across page navigations, but the stored data is cleared when the tab is closed.
+2. When you use any of the **filters** on the [Lifestream page](/lifestream),
+   booleans representing their states are saved in your browser's
+   [session storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage).
+   This allows the active/inactive filters to persist across page navigations,
+   but the stored data is cleared when the tab is closed.
 
-3. At the bottom of all blog posts is a Giscus comment component. When you login to Github through this component to comment on a blog post, a session token is saved in your browser's local storage. This allows you to remain logged in across browser sessions.
+3. At the bottom of all blog posts is a Giscus comment component. When you login
+   to Github through this component to comment on a blog post, a session token
+   is saved in your browser's local storage. This allows you to remain logged in
+   across browser sessions.
 
 **Besides what is noted above, no other data is collected by this website.**
 
 ## Analytics
 
-This website uses [Umami](https://umami.is), a Google Analytics alternative which is [GDPR-compliant](https://umami.is/blog/gdpr-compliant-website-analytics) and collects only anonymized traffic data. You can see the stats yourself [right here](https://u.adiaz.fyi/share/TtTytHU8rJy0oEzN). Data collected through Umami includes visitors referrers, country and region, and when certain internal and external links are clicked. This data is anonymized and cannot be used to identify you.
+This website uses [Umami](https://umami.is), a Google Analytics alternative
+which is
+[GDPR-compliant](https://umami.is/blog/gdpr-compliant-website-analytics) and
+collects only anonymized traffic data. You can see the stats yourself
+[right here](https://u.adiaz.fyi/share/TtTytHU8rJy0oEzN). Data collected through
+Umami includes visitors referrers, country and region, and when certain internal
+and external links are clicked. This data is anonymized and cannot be used to
+identify you.
 
-Additionally, because this website is hosted at Cloudflare Pages, by default Cloudflare's own Web Analytics tracks all HTTP requests, bandwidth usage and unique visitor metrics when visiting this website. Please see [Cloudflare Web Analytics](https://www.cloudflare.com/web-analytics/) for more information.
+Additionally, because this website is hosted at Cloudflare Pages, by default
+Cloudflare's own Web Analytics tracks all HTTP requests, bandwidth usage and
+unique visitor metrics when visiting this website. Please see
+[Cloudflare Web Analytics](https://www.cloudflare.com/web-analytics/) for more
+information.
 
 ## Comments
 
-For blog posts, [Giscus](https://github.com/laymonage/giscus) is used for commenting which [collects no data](https://github.com/laymonage/giscus/blob/main/PRIVACY-POLICY.md). Please be aware **a GitHub account is required to leave comments**, and by commenting you will actually be participating in [GitHub Discussions on this website's public GitHub repository](https://github.com/fullmetalbrackets/blog/discussions).
+For blog posts, [Giscus](https://github.com/laymonage/giscus) is used for
+commenting which
+[collects no data](https://github.com/laymonage/giscus/blob/main/PRIVACY-POLICY.md).
+Please be aware **a GitHub account is required to leave comments**, and by
+commenting you will actually be participating in
+[GitHub Discussions on this website's public GitHub repository](https://github.com/fullmetalbrackets/blog/discussions).
 
 ## Webmentions
 
 This website supports [Webmentions](https://webmention.io) for blog posts.
 
-By supporting Webmentions on your website, you explicitly signal your wish for linked websites to process and publish your public replies to their content. You can at any time request the removal of one or all Webmentions originating from your website.
+By supporting Webmentions on your website, you explicitly signal your wish for
+linked websites to process and publish your public replies to their content. You
+can at any time request the removal of one or all Webmentions originating from
+your website.
 
-An incoming Webmention request is by design a request for publishing a comment from elsewhere on the web; this is what the protocol was designed for and why it is active on your website. Commonly, received Webmentions are displayed as comments on a web page. This means that a copy of your content is displayed on the website you link to in your own post.
+An incoming Webmention request is by design a request for publishing a comment
+from elsewhere on the web; this is what the protocol was designed for and why it
+is active on your website. Commonly, received Webmentions are displayed as
+comments on a web page. This means that a copy of your content is displayed on
+the website you link to in your own post.
 
 The personal data being processed and published might include:
 
@@ -64,20 +109,36 @@ The personal data being processed and published might include:
 - The URL of your website
 - Personal information you include in your post
 
-**Legal Basis:** The publishing of incoming Webmentions is based on the legitimate interest to enable interaction with the readers of this website _(Art. 6(1) lit. f GDPR)_, following the design intention of the Webmention protocol.
+**Legal Basis:** The publishing of incoming Webmentions is based on the
+legitimate interest to enable interaction with the readers of this website
+_(Art. 6(1) lit. f GDPR)_, following the design intention of the Webmention
+protocol.
 
 ## Links to external websites
 
-This website maintains a [list of links to external websites, tools and applications](/links), a [blogroll of followed blogs and personal sites](/blogroll), and a [postroll of recommended posts or articles](/postroll). Blog posts or wiki articles on this site may also contain external links to additional resources, official documentation, informative third-party sources, attributions, etc.
+This website maintains a
+[list of links to external websites, tools and applications](/links), a
+[blogroll of followed blogs and personal sites](/blogroll), and a
+[postroll of recommended posts or articles](/postroll). Blog posts or wiki
+articles on this site may also contain external links to additional resources,
+official documentation, informative third-party sources, attributions, etc.
 
-I always try to link to reputable sources, but it is up to you to review those websites' own privacy policies. I cannot accept any responsibility for your privacy once you have left this website.
+I always try to link to reputable sources, but it is up to you to review those
+websites' own privacy policies. I cannot accept any responsibility for your
+privacy once you have left this website.
 
 ## Contributing
 
-Every blog post has an _Edit this page on GitHub_ link at the bottom. If you notice an error or outdated information, or even a typo or other minor thing that's bugging you, feel free to click the link and fork the repo, make your changes, then submit a pull request. A GitHub account is required.
+Every blog post has an _Edit this page on GitHub_ link at the bottom. If you
+notice an error or outdated information, or even a typo or other minor thing
+that's bugging you, feel free to click the link and fork the repo, make your
+changes, then submit a pull request. A GitHub account is required.
 
-Alternately you can simply send me an email with any corrections or fixes you'd like to suggest. (See below.)
+Alternately you can simply send me an email with any corrections or fixes you'd
+like to suggest. (See below.)
 
 ## Questions and concerns
 
-If you have any concerns about this privacy policy, or any questions about the website or for me specifically, feel free to [contact me via email](mailto:contact@fullmetalbrackets.com).
+If you have any concerns about this privacy policy, or any questions about the
+website or for me specifically, feel free to
+[contact me via email](mailto:contact@fullmetalbrackets.com).

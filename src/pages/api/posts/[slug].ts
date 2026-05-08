@@ -25,7 +25,8 @@ export const GET: APIRoute = async ({ params, request }) => {
   const url = new URL(request.url);
   const formatParam = url.searchParams.get('format');
   const acceptHeader = request.headers.get('Accept') ?? '';
-  const wantsMarkdown = formatParam === 'markdown' || acceptHeader.includes('text/markdown');
+  const wantsMarkdown =
+    formatParam === 'markdown' || acceptHeader.includes('text/markdown');
 
   if (wantsMarkdown) {
     const frontmatter = [
@@ -33,7 +34,9 @@ export const GET: APIRoute = async ({ params, request }) => {
       `title: "${post.data.title}"`,
       `description: "${post.data.description}"`,
       `pubDate: "${post.data.pubDate.toISOString()}"`,
-      post.data.updatedDate ? `updatedDate: "${post.data.updatedDate.toISOString()}"` : null,
+      post.data.updatedDate
+        ? `updatedDate: "${post.data.updatedDate.toISOString()}"`
+        : null,
       `tags: [${post.data.tags.map((t: string) => `"${t}"`).join(', ')}]`,
       `slug: "${post.id}"`,
       '---',

@@ -12,181 +12,181 @@ import cloudflare from '@astrojs/cloudflare';
 import astroCompress from 'gab-astro-compress';
 
 export default defineConfig({
-	site: 'https://fullmetalbrackets.com',
+  site: 'https://fullmetalbrackets.com',
 
-	trailingSlash: 'never',
+  trailingSlash: 'never',
 
-	build: {
-		inlineStylesheets: 'always',
-	},
+  build: {
+    inlineStylesheets: 'always',
+  },
 
-	integrations: [mdx(), sitemap(), astroCompress()],
+  integrations: [mdx(), sitemap(), astroCompress()],
 
-	prefetch: true,
+  prefetch: true,
 
-	markdown: {
-		rehypePlugins: [
-			rehypeSlug,
-			[
-				rehypeAutolinkHeadings,
-				{
-					behavior: 'prepend',
-					test: 'h2',
-					properties: {
-						class: 'h2 heading-link',
-						ariaLabel: 'Link to this section',
-					},
-					content: {
-						type: 'element',
-						tagName: 'span',
-						properties: { className: ['link-icon'] },
-					},
-				},
-			],
-			[
-				rehypeExternalLinks,
-				{
-					target: '_blank',
-					rel: ['noopener', 'noreferrer'],
-				},
-			],
-			rehypeCodeblockCopy,
-		],
-		syntaxHighlight: 'prism',
-		remarkPlugins: [remarkReadingTime, remarkDirective, remarkDirectiveSugar],
-	},
+  markdown: {
+    rehypePlugins: [
+      rehypeSlug,
+      [
+        rehypeAutolinkHeadings,
+        {
+          behavior: 'prepend',
+          test: 'h2',
+          properties: {
+            class: 'h2 heading-link',
+            ariaLabel: 'Link to this section',
+          },
+          content: {
+            type: 'element',
+            tagName: 'span',
+            properties: { className: ['link-icon'] },
+          },
+        },
+      ],
+      [
+        rehypeExternalLinks,
+        {
+          target: '_blank',
+          rel: ['noopener', 'noreferrer'],
+        },
+      ],
+      rehypeCodeblockCopy,
+    ],
+    syntaxHighlight: 'prism',
+    remarkPlugins: [remarkReadingTime, remarkDirective, remarkDirectiveSugar],
+  },
 
-	compressHTML: true,
+  compressHTML: true,
 
-	redirects: {
-		'/blog/tailscale/': {
-			status: 301,
-			destination:
-				'/blog/comprehensive-guide-tailscale-securely-access-home-network/',
-		},
-		'/shelf/': {
-			status: 301,
-			destination: '/lifestream/',
-		},
-		'/shelf/movies': {
-			status: 301,
-			destination: '/lifestream/',
-		},
-		'/shelf/tvshows/': {
-			status: 301,
-			destination: '/lifestream/',
-		},
-		'/digest/': {
-			status: 301,
-			destination: '/lifestream/',
-		},
-		'/digest/movies': {
-			status: 301,
-			destination: '/lifestream/',
-		},
-		'/digest/tvshows/': {
-			status: 301,
-			destination: '/lifestream/',
-		},
-		'/lifestream/older/tvshows': {
-			status: 301,
-			destination: '/lifestream/',
-		},
-		'/lifestream/older/movies': {
-			status: 301,
-			destination: '/lifestream/',
-		},
-		'/lifestream/older': {
-			status: 301,
-			destination: '/lifestream/',
-		},
-		'/blog/youtube-90-minute-ads-on-tv-apps': {
-			status: 301,
-			destination: '/blog/youtube-90-second-ads-on-tv-apps',
-		},
-		'/blog/migrate-adguardhome-glinet-flint2-docker-container': {
-			status: 301,
-			destination: '/blog/migrate-adguardhome-glinet-flint2-libre-sweet-potato',
-		},
-	},
-	fonts: [
-		{
-			name: 'Atkinson Hyperlegible Next',
-			cssVariable: '--main-font',
-			provider: fontProviders.fontsource(),
-			weights: [400, 700, 800],
-			styles: ['normal', 'italic'],
-			subsets: ['latin'],
-			fallbacks: [
-				'system-ui',
-				'-apple-system',
-				'BlinkMacSystemFont',
-				'Segoe UI',
-				'Roboto',
-				'Oxygen',
-				'Ubuntu',
-				'Cantarell',
-				'Open Sans',
-				'Helvetica Neue',
-				'sans-serif',
-			],
-		},
-		{
-			name: 'Atkinson Hyperlegible Mono',
-			cssVariable: '--code-font',
-			provider: fontProviders.fontsource(),
-			weights: [400],
-			styles: ['normal', 'italic'],
-			subsets: ['latin'],
-			fallbacks: [
-				'system-ui',
-				'-apple-system',
-				'BlinkMacSystemFont',
-				'Segoe UI',
-				'Roboto',
-				'Oxygen',
-				'Ubuntu',
-				'Cantarell',
-				'Open Sans',
-				'Helvetica Neue',
-				'sans-serif',
-			],
-		},
-		{
-			name: 'Nunito',
-			cssVariable: '--sub-font',
-			provider: fontProviders.fontsource(),
-			weights: [400, 700, 800, 900],
-			styles: ['normal'],
-			subsets: ['latin'],
-			fallbacks: [
-				'system-ui',
-				'-apple-system',
-				'BlinkMacSystemFont',
-				'Roboto',
-				'Oxygen',
-				'Ubuntu',
-				'sans-serif',
-			],
-			display: 'fallback',
-		},
-	],
-	output: 'server',
-	adapter: cloudflare({
-		imageService: 'compile',
-		prerenderEnvironment: 'node',
-	}),
-	vite: {
-		ssr: {
-			external: ['sharp'],
-		},
-	},
-	image: {
-		remotePatterns: [
-			{
-				protocol: 'https',
-				hostname: 'ariel.lol',
-			},
-		],
-	},
+  redirects: {
+    '/blog/tailscale/': {
+      status: 301,
+      destination:
+        '/blog/comprehensive-guide-tailscale-securely-access-home-network/',
+    },
+    '/shelf/': {
+      status: 301,
+      destination: '/lifestream/',
+    },
+    '/shelf/movies': {
+      status: 301,
+      destination: '/lifestream/',
+    },
+    '/shelf/tvshows/': {
+      status: 301,
+      destination: '/lifestream/',
+    },
+    '/digest/': {
+      status: 301,
+      destination: '/lifestream/',
+    },
+    '/digest/movies': {
+      status: 301,
+      destination: '/lifestream/',
+    },
+    '/digest/tvshows/': {
+      status: 301,
+      destination: '/lifestream/',
+    },
+    '/lifestream/older/tvshows': {
+      status: 301,
+      destination: '/lifestream/',
+    },
+    '/lifestream/older/movies': {
+      status: 301,
+      destination: '/lifestream/',
+    },
+    '/lifestream/older': {
+      status: 301,
+      destination: '/lifestream/',
+    },
+    '/blog/youtube-90-minute-ads-on-tv-apps': {
+      status: 301,
+      destination: '/blog/youtube-90-second-ads-on-tv-apps',
+    },
+    '/blog/migrate-adguardhome-glinet-flint2-docker-container': {
+      status: 301,
+      destination: '/blog/migrate-adguardhome-glinet-flint2-libre-sweet-potato',
+    },
+  },
+  fonts: [
+    {
+      name: 'Atkinson Hyperlegible Next',
+      cssVariable: '--main-font',
+      provider: fontProviders.fontsource(),
+      weights: [400, 700, 800],
+      styles: ['normal', 'italic'],
+      subsets: ['latin'],
+      fallbacks: [
+        'system-ui',
+        '-apple-system',
+        'BlinkMacSystemFont',
+        'Segoe UI',
+        'Roboto',
+        'Oxygen',
+        'Ubuntu',
+        'Cantarell',
+        'Open Sans',
+        'Helvetica Neue',
+        'sans-serif',
+      ],
+    },
+    {
+      name: 'Atkinson Hyperlegible Mono',
+      cssVariable: '--code-font',
+      provider: fontProviders.fontsource(),
+      weights: [400],
+      styles: ['normal', 'italic'],
+      subsets: ['latin'],
+      fallbacks: [
+        'system-ui',
+        '-apple-system',
+        'BlinkMacSystemFont',
+        'Segoe UI',
+        'Roboto',
+        'Oxygen',
+        'Ubuntu',
+        'Cantarell',
+        'Open Sans',
+        'Helvetica Neue',
+        'sans-serif',
+      ],
+    },
+    {
+      name: 'Nunito',
+      cssVariable: '--sub-font',
+      provider: fontProviders.fontsource(),
+      weights: [400, 700, 800, 900],
+      styles: ['normal'],
+      subsets: ['latin'],
+      fallbacks: [
+        'system-ui',
+        '-apple-system',
+        'BlinkMacSystemFont',
+        'Roboto',
+        'Oxygen',
+        'Ubuntu',
+        'sans-serif',
+      ],
+      display: 'fallback',
+    },
+  ],
+  output: 'server',
+  adapter: cloudflare({
+    imageService: 'compile',
+    prerenderEnvironment: 'node',
+  }),
+  vite: {
+    ssr: {
+      external: ['sharp'],
+    },
+  },
+  image: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'ariel.lol',
+      },
+    ],
+  },
 });

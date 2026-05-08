@@ -3,11 +3,11 @@ import path from 'path';
 import { execSync } from 'child_process';
 
 const slugify = (str) =>
-	str
-		.toLowerCase()
-		.trim()
-		.replace(/\s+/g, '-')
-		.replace(/[^\w-]/g, '');
+  str
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, '-')
+    .replace(/[^\w-]/g, '');
 
 const now = new Date();
 const datePart = now.toISOString().split('T')[0];
@@ -16,8 +16,8 @@ const pubDate = `${datePart} 12:00:00`;
 const title = process.argv[2];
 
 if (!title) {
-	console.error('Usage: yarn wiki "My Title"');
-	process.exit(1);
+  console.error('Usage: yarn wiki "My Title"');
+  process.exit(1);
 }
 
 const slug = slugify(title);
@@ -36,8 +36,8 @@ related:
 fs.mkdirSync('src/content/wiki', { recursive: true });
 
 if (fs.existsSync(file)) {
-	console.error(`❌ Already exists: ${file}`);
-	process.exit(1);
+  console.error(`❌ Already exists: ${file}`);
+  process.exit(1);
 }
 
 fs.writeFileSync(file, content);
