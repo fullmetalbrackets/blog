@@ -19,12 +19,16 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
   .toc-heading {
     display: flex;
     place-items: center;
+    vertical-align: middle;
     border-color: var(--border2);
   }
   .toc-heading svg {
     filter: var(--toc);
     margin-left: -0.1em;
     margin-right: 0.1em;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 4px;
   }
   .toc-heading a {
     display: flex;
@@ -58,6 +62,11 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
       width: 56%;
       max-width: 56%;
       font-size: 0.85em;
+    }
+    .toc-heading svg {
+      margin-bottom: 2px;
+      width: 36px;
+      height: 36px;
     }
     .toc-scroll {
       position: relative;
@@ -110,9 +119,28 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
       opacity: 0;
     }
   }
+  @media screen and (max-width: 2059px) {
+    .toc-heading a {
+      pointer-events: none;
+      display: flex;
+      place-items: center;
+      color: var(--primary);
+    }
+  }
+
   @media screen and (max-width: 667px) {
     .toc-list {
       font-size: 0.75em;
+    }
+    .toc-heading svg {
+      width: 32px;
+      height: 32px;
+    }
+    .toc-heading a {
+      pointer-events: none;
+      display: flex;
+      place-items: center;
+      color: var(--primary);
     }
   }
 </style>
