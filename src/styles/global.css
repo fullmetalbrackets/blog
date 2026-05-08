@@ -662,9 +662,18 @@ blockquote[data-type='warning'] a:hover {
 }
 
 /* utility classes */
+.primary {
+	color: var(--primary);
+}
+
+.secondary {
+	color: var(--secondary);
+}
+
 .border {
 	border-color: var(--border);
 }
+
 .inv {
 	font-style: italic;
 	font-weight: 100;
@@ -876,10 +885,9 @@ li.style:first-of-type {
 }
 
 /* button effects */
-button {
+button, .button {
 	display: inline-flex;
 	font-family: var(--sub-font);
-	background-color: var(--info);
 	color: #000;
 	border: 0;
 	border-radius: 0.25em;
@@ -889,12 +897,31 @@ button {
 	place-items: center;
 }
 
+button {
+	background-color: var(--info);
+}
+
+.button {
+	background-color: var(--primary);
+}
+
 button a,
 button a:active,
 button a:visited,
-button a:hover {
+button a:hover,
+a.button,
+a.button:active,
+a.button:visited {
 	color: #000;
 }
+
+a.button:hover {
+	color: #000;
+	background-color: var(--secondary);
+	box-shadow: -4px -4px 0 #000;
+	transform: translate(4px, 4px);
+	outline-offset: 1px;
+	}
 
 @media (hover: hover) {
 	a:hover button:not(.theme-toggle, .search-trigger) {
