@@ -15,11 +15,12 @@ import { GITHUB, BLUESKY, MASTODON, DONATE } from '@consts';
     .personal-links {
         display: flex;
         align-items: center;
-        justify-content: center;
-        gap: 5em;
+        justify-content: space-between;
+        gap: auto;
         margin: 1.5em auto -0.75em auto;
         padding: 0;
         height: 1vw;
+        max-width: 1000px;
     }
     .personal-links a {
         filter: var(--svg);
@@ -48,15 +49,6 @@ import { GITHUB, BLUESKY, MASTODON, DONATE } from '@consts';
     @media (hover: none) {
         svg:hover {
             animation: none;
-        }
-    }
-    @media screen and (min-width: 200px) and (max-width: 667px) {
-        .personal-links {
-            justify-content: center;
-            gap: 2em;
-        }
-        .personal-links a:last-of-type {
-            margin-right: 0;
         }
     }
 </style>
