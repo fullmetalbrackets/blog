@@ -1,0 +1,7 @@
+---
+import { getSortedPosts } from '@utils/collections';
+
+const posts = await getSortedPosts();
+const random = posts[Math.floor(Math.random() * posts.length)];
+return Astro.redirect(`/blog/${random.id}`);
+---

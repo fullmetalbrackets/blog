@@ -63,7 +63,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "@consts";
     </h1>
     <hr>
     <p class="intro-text">
-      I'm Ariel, a hobbyist and tech enthusiast that writes about self-hosting, web development, Linux, and related topics. If you're looking for the main attraction, that would be <a href="/blog" data-umami-event="intro-blog">the blog</a> where I write how-to guides. You can see recent and popular posts below, and I have an <a href="/rss.xml">RSS feed of blog posts</a>.
+      I'm Ariel, a hobbyist and tech enthusiast that writes about self-hosting, web development, Linux, and related topics. If you're looking for the main attraction, that would be <a href="/blog" data-umami-event="intro-blog">the blog</a> where I write how-to guides. You can see recent and popular posts below, or you can <a href="/blog/random">go to a random post</a>.
     </p>
     <p class="intro-text">
       If you're interested, you can <a href="/colophon" data-umami-event="intro-colophon">see details on how I made this site</a>. There's some other personal stuff around here, probably not useful like the blog, but <a href="/explore" data-umami-event="intro-explore">feel free to explore</a>. I also have a separate <a href="https://ariel.lol" target="_blank" rel="noreferrer noopener" data-umami-event="microblog">microblog</a> for random short-form non-tech <span class="i">(shit-)</span>posting once in a blue moon, which I <a href="/notes">syndicate here as notes</a>.
@@ -74,7 +74,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "@consts";
         <RecentPosts />
       </PostsColumns>
       <PostsColumns>
-        <Popular />
+        <Popular class="pop-index" />
       </PostsColumns>
       <PostsColumns>
         <RecentLinks />

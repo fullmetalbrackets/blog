@@ -283,7 +283,7 @@ const blogItems = page.data.map(post => ({
     <hr />
     <p class="blurb">
       <span>
-        List of all <span class="total">{page.total}</span> blog posts. Alternately, see posts <a href="/blog/updated" rel="prefetch-intent" data-umami-event="blog-updated">by most recently updated</a> or <a href="/categories" rel="prefetch-intent" data-umami-event="blog-category">by category</a>.
+        List of all <span class="total">{page.total}</span> blog posts. Alternately, see posts <a href="/blog/updated" rel="prefetch-intent" data-umami-event="blog-updated">by most recently updated</a>, <a href="/categories" rel="prefetch-intent" data-umami-event="blog-category">by category</a>, or <a href="/blog/random">go to a random post</a>.
       </span>
       <nav class="years">
         <span class="posts-years">See posts by year:</span>
@@ -319,14 +319,14 @@ const blogItems = page.data.map(post => ({
     <nav class="pagination" aria-label="Blog pagination">
       <span class="prev">
         {page.url.prev ? (
-          <a href={page.url.prev} rel="prefetch-intent prev"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><title>arrow-left</title><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg> Newer</a>
+          <a href={page.url.prev} rel="prefetch-intent prev"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><title>Newer</title><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg> Newer</a>
         ) : (
           <span></span>
         )}
       </span>
       <span class="next">
         {page.url.next ? (
-          <a href={page.url.next} rel="prefetch-intent next">Older <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><title>arrow-right</title><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg></a>
+          <a href={page.url.next} rel="prefetch-intent next">Older <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><title>Older</title><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg></a>
         ) : (
           <span></span>
         )}
@@ -360,14 +360,14 @@ const blogItems = page.data.map(post => ({
     <nav class="pagination" aria-label="Blog pagination">
       <span class="prev">
         {page.url.prev ? (
-          <a href={page.url.prev} rel="prefetch-intent prev"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><title>arrow-left</title><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg> Newer</a>
+          <a href={page.url.prev} rel="prefetch-intent prev"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><title>Newer</title><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg> Newer</a>
         ) : (
           <span></span>
         )}
       </span>
       <span class="next">
         {page.url.next ? (
-          <a href={page.url.next} rel="prefetch-next">Older <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><title>arrow-right</title><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg></a>
+          <a href={page.url.next} rel="prefetch-next">Older <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><title>Older</title><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg></a>
         ) : (
           <span></span>
         )}
