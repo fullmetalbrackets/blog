@@ -928,21 +928,21 @@ a.button:hover {
     outline-offset: 1px;
   }
   a.button:active,
-  a button:not(.theme-toggle, .search-trigger):active {
+  a button:not(.theme-toggle, .search-trigger, .random-btn):active {
     box-shadow: 4px 4px 0 #000;
     transform: translate(-4px, -4px);
   }
-  a:hover button:not(.theme-toggle, .search-trigger) {
+  a:hover button:not(.theme-toggle, .search-trigger, .random-btn) {
     box-shadow: -4px -4px 0 #000;
     transform: translate(4px, 4px);
     outline-offset: 1px;
   }
-  button:not(.theme-toggle, .search-trigger) {
+  button:not(.theme-toggle, .search-trigger, .random-btn) {
     text-overflow: ellipsis;
     transition: all 0.1s ease-out;
     cursor: pointer;
   }
-  button:not(.theme-toggle, .search-trigger):hover {
+  button:not(.theme-toggle, .search-trigger, .random-btn):hover {
     box-shadow: -4px -4px 0 #000;
     transform: translate(4px, 4px);
     cursor: pointer;
