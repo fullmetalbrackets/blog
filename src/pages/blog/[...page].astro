@@ -5,7 +5,6 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import { getPostsWithReadingTime, getPostsByYearMap } from '@utils/collections';
 import FormattedDate from "@components/FormattedDate.astro";
 import ReadingTime from "@components/ReadingTime.astro";
-import Link from "@components/Link.astro";
 import BackToTop from "@components/BackToTop.astro";
 import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
 import CollectionPageSchema from "@components/CollectionPageSchema.astro";
@@ -283,16 +282,8 @@ const blogItems = page.data.map(post => ({
     <hr />
     <p class="blurb">
       <span>
-        List of all <span class="total">{page.total}</span> blog posts. Alternately, see posts <a href="/blog/updated" rel="prefetch-intent" data-umami-event="blog-updated">by most recently updated</a>, <a href="/categories" rel="prefetch-intent" data-umami-event="blog-category">by category</a>, or <a href="/blog/random">go to a random post</a>.
+        See all <span class="total">{page.total}</span> blog posts. You can also see posts <a href="/blog/updated" rel="prefetch-intent" data-umami-event="blog-updated">by recently updated</a>, <a href="/categories" rel="prefetch-intent" data-umami-event="blog-category">by category</a>, <a href="/blog/years" rel="prefetch-intent" data-umami-event="blog-years">by year</a> or <a href="/blog/random">go to a random post</a>.
       </span>
-      <nav class="years">
-        <span class="posts-years">See posts by year:</span>
-        {sortedYears.map(y => (
-          <Link href={`/blog/years/${y}`} rel="prefetch-intent" aria-label={String(y)} data-umami-event={`blog-${y}`}>
-            <button>{y} <span class="count">{postsByYear[String(y)]?.length || 0}</span></button>
-          </Link>
-        ))}
-      </nav>
       <span class="rss">RSS Feed: 
         <a href="/rss.xml" rel="prefetch-intent">
           <svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="vertical-align: text-bottom; width: 1.325em; height: 1.325em;" class="pr-1" id="RSSicon" viewBox="0 0 256 256">
