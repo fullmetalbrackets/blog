@@ -3,6 +3,7 @@ import FormattedDate from "./FormattedDate.astro";
 import ReadingTime from "@components/ReadingTime.astro";
 import { getPostsWithReadingTime } from '@utils/collections';
 import popularSlugs from '@data/popular.json';
+const { class: className } = Astro.props;
 
 const allPosts = await getPostsWithReadingTime();
 const selectedPosts = allPosts.filter(post => popularSlugs.includes(post.id));
@@ -58,7 +59,9 @@ const selectedPosts = allPosts.filter(post => popularSlugs.includes(post.id));
     background-color: var(--blockquote);
     border-radius: 0.5em;
     margin: 0.5em auto 0 auto;
-    padding: 1.5em 1.5em 2.35em 1.5em;
+    padding-top: 1.5em;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
   }
   .list {
     display: inline-flex;
@@ -84,6 +87,12 @@ const selectedPosts = allPosts.filter(post => popularSlugs.includes(post.id));
     font-weight: bold;
     line-height: 1.2;
     color: var(--emphasis);
+  }
+  .pop-index {
+    padding-bottom: 2.35em;
+  }
+  .pop-404 {
+    padding-bottom: 0;
   }
   @media (hover: hover) {
     a:hover button {
@@ -148,7 +157,7 @@ const selectedPosts = allPosts.filter(post => popularSlugs.includes(post.id));
 <section class="h-feed">
 <div id="popular" />
   <h2 class="p-name">Popular Posts</h2>
-  <div class="container">
+  <div class={`container ${className ?? ''}`}>
     {selectedPosts.map(post => (
         <div class="h-entry list">
           <a class="u-url" href={`/blog/${post.id}`} rel="prefetch-intent" data-umami-event={`popular-${post.id}`}>
