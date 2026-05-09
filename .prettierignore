@@ -12,4 +12,5 @@ node_modules
 *.avif
 *.md
 *.yml
+*.mdx
 wrangler.jsonc
