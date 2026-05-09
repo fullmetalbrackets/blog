@@ -1,0 +1,182 @@
+---
+import { getPostsWithReadingTime } from '@utils/collections';
+import Random from '@icons/random.svg';
+
+const posts = await getPostsWithReadingTime();
+const initialIndex = Math.floor(Math.random() * posts.length);
+const post = posts[initialIndex];
+
+const postData = posts.map(p => ({
+  id: p.id,
+  title: p.data.title,
+  description: p.data.description,
+  tags: p.data.tags,
+}));
+---
+
+<style scoped>
+  .random {
+    display: inline;
+  }
+  .random h3 {
+    display: flex;
+    place-items: center;
+    font-size: 1.25em;
+    color: var(--primary);
+    margin: 1em 0 1em 0;
+    border-top: transparent;
+    border-left: transparent;
+    border-right: transparent;
+    border-bottom: thick dotted var(--border);
+  }
+  .random svg {
+    filter: var(--toc);
+    margin-left: -0.135em;
+    margin-right: 0.1em;
+  }
+  .random ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  .random li {
+    border: 2px solid transparent;
+    background-color: var(--blockquote);
+    color: var(--emphasis);
+    padding: 0.75em 1em 0.85em 1em;
+    margin: 1em;
+    border-radius: 0.25em;
+  }
+  .random li span {
+    font-size: 1em;
+    font-weight: 700;
+    margin-bottom: 0;
+    line-height: 1.2;
+  }
+  .random li p {
+    color: var(--text);
+    font-size: 0.875em;
+    margin-top: 0.25em;
+    margin-bottom: 0;
+    line-height: 1.2;
+  }
+  .random li button {
+    margin: 0 0.5em 0.25em 0;
+  }
+  .random li:hover {
+    color: var(--hover);
+    border: 2px solid var(--emphasis);
+  }
+  .random li .tag {
+    margin-right: 0.25em;
+  }
+  .post-container {
+    position: relative;
+  }
+  .random-btn {
+    position: absolute;
+    top: -1em;
+    right: 0;
+    z-index: 1;
+    display: inline-flex;
+    place-items: center;
+    gap: 0.25em;
+    background: var(--accent);
+    border: 1px solid transparent;
+    border-radius: 1em;
+    color: var(--emphasis);
+    font-family: var(--sub-font);
+    font-weight: 700;
+    font-size: 0.8em;
+    cursor: pointer;
+    padding: 0.35em 0.6em;
+  }
+  .random-btn svg {
+    filter: var(--svg3);
+  }
+  .random-btn.clicked,
+  .random-btn.clicked:hover {
+    color: var(--hover);
+    border: 1px solid var(--hover);
+  }
+  .random-btn.clicked svg {
+    filter: var(--svg-hover);
+    animation: spin 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  @media (hover: hover) {
+    .random-btn:hover {
+      border: 1px solid var(--emphasis);
+    }
+  }
+  @media (hover: none) {
+    .random-btn:hover {
+      border: 1px solid transparent;
+    }
+  }
+  @media screen and (max-width: 667px) {
+    .random li {
+      font-size: 1em;
+      line-height: 1.2;
+      padding: 1em 1em 0.85em 1em;
+      margin: 1em auto;
+    }
+    .random li p {
+      margin-top: 0;
+    }
+    .random li button {
+      margin: 0 0.25em 0.25em 0;
+    }
+  }
+</style>
+
+<div class="random" data-pagefind-ignore>
+  <h3><Random width={36} height={36} /> Random Post</h3>
+  <div class="post-container">
+    <ul>
+      <a id="random-link" href={`/blog/${post.id}`} rel="prefetch-intent" data-umami-event={`random-post-${post.id}`}>
+        <li>
+          <span id="random-title">{post.data.title}</span>
+          <div>
+            <span id="random-tags" class="tag">
+              {post.data.tags.map(tag => <button>{tag}</button>)}
+            </span>
+          </div>
+          <p id="random-desc">{post.data.description}</p>
+        </li>
+      </a>
+    </ul>
+    <button id="random-btn" class="random-btn" aria-label="Show another random post">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18px" height="18px"><title>reload</title><path d="M2 12C2 16.97 6.03 21 11 21C13.39 21 15.68 20.06 17.4 18.4L15.9 16.9C14.63 18.25 12.86 19 11 19C4.76 19 1.64 11.46 6.05 7.05C10.46 2.64 18 5.77 18 12H15L19 16H19.1L23 12H20C20 7.03 15.97 3 11 3C6.03 3 2 7.03 2 12Z" /></svg> Re-roll
+    </button>
+  </div>
+</div>
+
+<script define:vars={{ postData, initialIndex }}>
+  let currentIndex = initialIndex;
+  const btn = document.getElementById('random-btn');
+
+  btn.addEventListener('click', () => {
+    let newIndex;
+    do {
+      newIndex = Math.floor(Math.random() * postData.length);
+    } while (newIndex === currentIndex);
+    currentIndex = newIndex;
+
+    const post = postData[newIndex];
+    const link = document.getElementById('random-link');
+
+    link.href = `/blog/${post.id}`;
+    link.dataset.umamiEvent = `random-post-${post.id}`;
+    document.getElementById('random-title').textContent = post.title;
+    document.getElementById('random-desc').textContent = post.description;
+    document.getElementById('random-tags').innerHTML = post.tags
+      .map(tag => `<button>${tag}</button>`)
+      .join('');
+
+    btn.classList.add('clicked');
+    btn.addEventListener('animationend', () => btn.classList.remove('clicked'), { once: true });
+  });
+</script>

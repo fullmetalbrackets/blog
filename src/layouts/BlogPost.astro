@@ -12,6 +12,7 @@ import CodeblockCopy from "@components/CodeblockCopy.astro";
 import HeadingCopy from "@components/HeadingCopy.astro";
 import HCard from "@components/H-Card.astro";
 import Lightbox from "@components/Lightbox.astro";
+import Random from "@components/RandomPost.astro";
 import type { BlogPostProps } from '../types';
 import type { MarkdownHeading } from '@astrojs/markdown-remark';
 import {
@@ -101,7 +102,7 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
       justify-content: space-around;
       color: var(--primary);
       font-family: var(--sub-font);
-      font-weight: 900;
+      font-weight: 700;
       margin: 0 auto 1.5em auto;
     }
     .edit-post span {
@@ -122,7 +123,7 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
       color: #000;
       border-radius: 0.25em;
       cursor: pointer;
-      font-weight: 900;
+      font-weight: 700;
       margin: 1em auto 0 auto;
       padding: 6px 10px;
       text-decoration: none;
@@ -150,7 +151,7 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
       flex-wrap: wrap;
       width: 100%;
       font-family: var(--sub-font);
-      font-weight: 800;
+      font-weight: 700;
       margin: 0 auto 1.5em auto;
     }
     .footer-grid > div {
@@ -200,7 +201,7 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
       color: #000;
       border-radius: 0.25em;
       cursor: pointer;
-      font-weight: 800;
+      font-weight: 700;
       padding: 4px 10px;
       text-decoration: none;
       font-family: var(--sub-font);
@@ -227,7 +228,7 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
     }
     .questions > span {
       font-family: var(--sub-font);
-      font-weight: 800;
+      font-weight: 700;
       color: var(--primary);
     }
     .email {
@@ -240,7 +241,7 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
       cursor: pointer;
       text-decoration: none;
       font-family: var(--sub-font);
-      font-weight: 800;
+      font-weight: 700;
       line-height: 1.5;
       padding: 4px 10px;
       color: #000;
@@ -343,6 +344,7 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
     .related ul {
       list-style-type: none;
       padding: 0;
+      margin: 0 0 2.5em 0;
     }
     .related li {
       border: 2px solid transparent;
@@ -551,10 +553,10 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
         </ul>
       </div>
     )}
+    <Random />
   </article>
 
   <HCard hidden />
-  <hr class="midline" />
 
   <WebMentions />
 
