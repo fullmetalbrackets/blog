@@ -86,26 +86,26 @@ const blogItems = page.data.map(post => ({
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 0.5em;
+    gap: 0.25em;
   }
   .years a {
-    font-family: var(--sub-font);
-    font-weight: 800;
+    display: flex;
     font-size: 0.9em;
+    vertical-align: middle;
+    place-items: center;
   }
   .count {
-    display: inline-flex;
-    place-items: center;
+    display: flex;
+    align-items: center;
     justify-content: center;
     min-width: 1.25em;
-    padding: 0;
+    height: 1rem;
+    padding: 1px 0 0 0;
     margin: 0 auto;
     background: rgba(0, 0, 0, 0.15);
     border-radius: 9999px;
     font-family: var(--main-font);
     font-size: 0.675em;
-    vertical-align: middle;
-    line-height: 1.6;
   }
   button {
     margin: 0 0.175em;
@@ -235,7 +235,8 @@ const blogItems = page.data.map(post => ({
       margin-bottom: 0.5em;
     }
     .tag button {
-      margin: 0 0.25em 0.25em 0;
+      display: flex;
+      margin: 0 0.45em 0 0;
     }
     .posts-years {
       font-size: 18px;
