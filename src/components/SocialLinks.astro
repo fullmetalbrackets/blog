@@ -5,6 +5,7 @@ import Bluesky from '@icons/bsky.svg';
 import GitHub from '@icons/gh.svg';
 import BuyMeCoffee from '@icons/bmc.svg';
 import RSS from '@icons/rss.svg';
+import JSON from '@icons/jsonfeed.svg';
 import { GITHUB, BLUESKY, MASTODON, DONATE } from '@consts';
 ---
 
@@ -43,6 +44,10 @@ import { GITHUB, BLUESKY, MASTODON, DONATE } from '@consts';
         height: 28px;
         width: 28px;        
     }
+    svg.json {
+        height: 24px;
+        width: 24px;
+    }
     svg:hover {
         animation: wiggle 0.25s ease-in-out;
     }
@@ -71,5 +76,8 @@ import { GITHUB, BLUESKY, MASTODON, DONATE } from '@consts';
     </a>
     <a rel="alternate" href="/rss.xml" data-umami-event="front-page-rss">
         <RSS class="rss" />
+    </a>
+    <a rel="alternate" href="/feed.json" data-umami-event="front-page-json">
+        <JSON height={24} width={24} />
     </a>
 </div>
