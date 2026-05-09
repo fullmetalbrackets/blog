@@ -1,15 +1,59 @@
 ---
+import Webmention from '@icons/webmention.svg';
+
 const targetUrl = import.meta.env.DEV
   ? new URL(Astro.url.pathname, Astro.site).href
   : Astro.url.href;
 ---
 
 <section class="webmentions" aria-label="Webmentions">
-  <h3 class="wm-heading">Webmentions</h3>
+  <h3><Webmention width={36} height={36} />ebmentions</h3>
   <div id="webmentions-container" data-target-url={targetUrl}>
     <p class="wm-loading">Loading mentions…</p>
   </div>
 </section>
+
+<div class="wm-submit">
+  <form class="wm-form" id="wm-form">
+    <label for="wm-source" class="wm-form-label">If you write a <a href="https://indieweb.org/responses" target="_blank" rel="noopener noreferrer">response</a> to this post, submit your URL to let me know!</label>
+    <div class="wm-form-row">
+      <input
+        type="url"
+        id="wm-source"
+        name="source"
+        placeholder="https://your-site.com/your-post/"
+        required
+        class="wm-input"
+      />
+      <button type="submit" class="wm-submit-btn">Send</button>
+    </div>
+    <p class="wm-form-status" id="wm-status" aria-live="polite"></p>
+  </form>
+</div>
+
+<style>
+  h3 {
+    display: flex;
+    place-items: center;
+    vertical-align: middle;
+    font-size: 1.25em;
+    color: var(--primary);
+    margin: 0 0 1em 0;
+    padding: 0;
+    border-top: transparent;
+    border-left: transparent;
+    border-right: transparent;
+    border-bottom: thick dotted var(--border);
+  }
+  h3 svg {
+    display: flex;
+    place-items: center;
+    vertical-align: middle;
+    filter: var(--toc);
+    margin-bottom: 0.4em;
+    margin-right: -0.15em;
+  }
+</style>
 
 <style is:global>
   .webmentions {
@@ -168,10 +212,9 @@ const targetUrl = import.meta.env.DEV
 
   /* submission form  */
   .wm-submit {
-    margin: 1em 0.5em;
+    margin: 1em 0.5em 0 0.5em;
     padding-top: 1em;
     padding-bottom: 0.5em;
-    border-bottom: 4px dotted var(--border);
   }
 
   .wm-form-label {
@@ -204,7 +247,7 @@ const targetUrl = import.meta.env.DEV
 
   .wm-submit-btn {
     font-family: var(--sub-font);
-    font-weight: 900;
+    font-weight: 700;
     font-size: 0.8em;
     background: var(--info);
     color: #000;
@@ -228,25 +271,13 @@ const targetUrl = import.meta.env.DEV
     min-height: 1.2em;
     opacity: 0.75;
   }
-</style>
 
-<div class="wm-submit">
-  <form class="wm-form" id="wm-form">
-    <label for="wm-source" class="wm-form-label">If you write a <a href="https://indieweb.org/responses" target="_blank" rel="noopener noreferrer">response</a> to this post, submit your URL to let me know!</label>
-    <div class="wm-form-row">
-      <input
-        type="url"
-        id="wm-source"
-        name="source"
-        placeholder="https://your-site.com/your-post/"
-        required
-        class="wm-input"
-      />
-      <button type="submit" class="wm-submit-btn">Send</button>
-    </div>
-    <p class="wm-form-status" id="wm-status" aria-live="polite"></p>
-  </form>
-</div>
+  @media screen and (max-width: 667px) {
+    .webmentions {
+      margin-top: 2.5em;
+    }
+  }
+</style>
 
 <script>
   import { loadWebmentions } from '@utils/webmentions';

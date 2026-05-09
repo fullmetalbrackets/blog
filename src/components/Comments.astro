@@ -4,7 +4,6 @@ import { SITE_URL } from "@consts"
 
 <style scoped>
     aside {
-        min-height: 350px;
         background: var(--main);
         display: flex;
         place-items: center;
@@ -12,8 +11,20 @@ import { SITE_URL } from "@consts"
         margin: 0 auto 1em auto;
         padding: 0 auto;
     }
+    h3.heading {
+        display: flex;
+        place-items: center;
+        font-size: 1.25em;
+        color: var(--primary);
+        margin: 1em 0.5em;
+        border-top: transparent;
+        border-left: transparent;
+        border-right: transparent;
+        border-bottom: thick dotted var(--border);
+      }
 </style>
 
+<h3 class="heading">Comments</h3>
 <aside>
     <script define:vars={{ SITE_URL }}>
         const script = document.createElement('script');
