@@ -382,7 +382,7 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
         margin: 1em 0.5em;
       }
       .tag button {
-        margin: 0 0 0.25em 0;
+        margin: 0 0.45em 0 0;
         font-size: 14px;
       }
       .info {
@@ -491,7 +491,7 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
     <a class="u-url" href={`https://fullmetalbrackets.com/blog/${slug}`} hidden>Permalink</a>
     <div class="blog-tags">
       <span class="tag" data-pagefind-ignore>
-        {tags.map((tag) => (
+        {[...tags].sort((a, b) => a.localeCompare(b)).map((tag) => (
           <a href={`/categories/${tag}/`} rel="prefetch-intent tag" data-umami-event="category-from-article">
             <button data-pagefind-filter="tag">{tag}</button>
           </a>
