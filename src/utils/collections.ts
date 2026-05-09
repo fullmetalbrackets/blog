@@ -2,9 +2,15 @@ import { getCollection, render } from 'astro:content';
 
 // Get all blog posts sorted by date descending
 export async function getSortedPosts() {
-  return (await getCollection('blog')).sort(
-    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-  );
+  return (await getCollection('blog'))
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+    .map((post) => ({
+      ...post,
+      data: {
+        ...post.data,
+        tags: [...(post.data.tags ?? [])].sort((a, b) => a.localeCompare(b)),
+      },
+    }));
 }
 
 // Get all blog posts with reading time attached
