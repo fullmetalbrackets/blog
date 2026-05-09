@@ -2,8 +2,13 @@
 import { getPostsWithReadingTime } from '@utils/collections';
 import Random from '@icons/random.svg';
 
-const posts = await getPostsWithReadingTime();
+const EXCLUDE_TAGS = ['nuxt', 'netlify', 'markdown'];
+
+const posts = (await getPostsWithReadingTime())
+  .filter(p => !p.data.tags.some(tag => EXCLUDE_TAGS.includes(tag)));
+
 const initialIndex = Math.floor(Math.random() * posts.length);
+
 const post = posts[initialIndex];
 
 const postData = posts.map(p => ({
@@ -44,7 +49,7 @@ const postData = posts.map(p => ({
     color: var(--emphasis);
     padding: 0.75em 1em 0.85em 1em;
     margin: 1em;
-    border-radius: 0.25em;
+    border-radius: 0.5em;
   }
   .random li span {
     font-size: 1em;
@@ -95,11 +100,12 @@ const postData = posts.map(p => ({
   }
   .random-btn.clicked,
   .random-btn.clicked:hover {
-    color: var(--hover);
-    border: 1px solid var(--hover);
+    color: #000;
+    background-color: var(--reroll);
+    border: 1px solid var(--reroll);
   }
   .random-btn.clicked svg {
-    filter: var(--svg-hover);
+    filter: var(--reroll-svg);
     animation: spin 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
   @keyframes spin {
