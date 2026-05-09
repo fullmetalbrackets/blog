@@ -3,7 +3,7 @@ title: 'Setup a Cloudflare Tunnel to securely access self-hosted apps with a dom
 description: "Cloudflare Tunnels have been around for a few years and are well regarded alternatives for VPNs or port-forwarding on a router. They are often used to expose access to self-hosted apps from outside the local network with minimal config or hassle. Here's how it's done."
 pubDate: 2023-07-20
 updatedDate: 2025-02-03
-tags: ['self-hosting', 'cloudflare']
+tags: ['self-hosting', 'cloudflare', 'guide']
 related: ['self-host-website-cloudflare-tunnel', 'expose-plex-with-cloudflare']
 ---
 

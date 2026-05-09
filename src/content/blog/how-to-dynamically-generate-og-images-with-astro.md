@@ -2,7 +2,7 @@
 title: 'How I used Astro-OG-Canvas to dynamically generate opengraph images for blog posts on my Astro site'
 description: "After putting it off for a long time, I finally decided I should dynamically generate OG images for my blog posts, since I don't use typically use a hero image or cover photos. After looking at satori with resvg, I decided that the Astro-OG-Canvas project is a much nicer fit. Here's how I set it up."
 pubDate: 2026-03-20 12:00:00
-tags: ['astro', 'web development', 'meta']
+tags: ['astro', 'web development', 'meta', 'guide']
 howto: true
 ---
 

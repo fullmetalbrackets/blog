@@ -3,7 +3,7 @@ title: 'How to upgrade from Debian 12 Bookworm to Debian 13 Trixie'
 description: "My old Dell Optiplex has been a great desktop PC for just minimal interneting and coding. I've been running Debian 12 Bookworm on it since it became available. Now that Debian 13 Trixie is available I upgraded to it, and it was a smooth and painless transition. Here's the process."
 pubDate: 2025-05-21
 updatedDate: 2026-04-21 12:00:00
-tags: ['linux', 'debian', 'command line']
+tags: ['linux', 'debian', 'command line', 'guide']
 related: ['remove-casaos-zimaboard-upgrade-debian-12', 'basic-linux-commands']
 howto: true
 ---

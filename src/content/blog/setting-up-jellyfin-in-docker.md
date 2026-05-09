@@ -3,7 +3,7 @@ title: 'Setup self-hosted Jellyfin Media Server in Docker'
 description: "Plex is a popular media server for self-hosting, but it's not open source and recently locked the ability to remotely stream your own content behind a paywall, so one cannot be blamed for seeking an alternative to Plex. Jellyfin is a free and open source self-hosted media server that just might be what you're looking for."
 pubDate: 2022-10-18
 updatedDate: 2025-11-03
-tags: ['self-hosting', 'docker']
+tags: ['self-hosting', 'docker', 'guide']
 related: ['setting-up-plex-in-docker', 'how-to-run-filebrowser-in-docker']
 ---
 

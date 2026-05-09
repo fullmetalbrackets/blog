@@ -3,7 +3,7 @@ title: 'Set up PhotoSync app to backup photos from your phone to an SMB share on
 description: "Google Photos began limiting free storage back in 2021, limiting you to 15 GB of storage when uploading photos in their original size uncompressed. Rather than wait and see if I hit the cap, I decided to try replacing Google Photos with a self-hosted solution. Here's how I did it."
 pubDate: 2023-07-07
 updatedDate: 2025-02-03
-tags: ['self-hosting', 'android', 'smb']
+tags: ['self-hosting', 'android', 'smb', 'guide']
 related: ['setup-a-samba-share-on-linux-via-command-line','setting-up-plex-in-docker']
 ---
 

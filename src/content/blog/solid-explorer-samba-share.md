@@ -3,7 +3,7 @@ title: 'How to use Solid Explorer app to access SMB network shares from an Andro
 description: 'There are many File Managers/File Explorers on the Google Play Store, but I wanted to easily access the Samba share on my server while on my home network. Solid Explorer is the solution I went with and it works well, so here is a quick guide to setting it up.'
 pubDate: 2022-11-07
 updatedDate: 2026-02-27
-tags: ['android', 'smb']
+tags: ['android', 'smb', 'guide']
 related: ['xplore-android-smb-share', 'setup-a-samba-share-on-linux-via-command-line']
 ---
 

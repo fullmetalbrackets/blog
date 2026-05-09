@@ -3,7 +3,7 @@ title: 'How to generate an SSH key pair'
 description: "Secure Shell is a protocol for securely connecting from one computer to another. As a web developer, you will probably end up using SSH a lot, and even if you don't it's a handy skill to have. Here's a quick guide on how to generate SSH keys and copy them to other machines."
 pubDate: 2021-09-12
 updatedDate: 2022-09-23
-tags: ['ssh', 'command line']
+tags: ['ssh', 'command line', 'guide']
 related: ['copy-ssh-keys-between-hosts', 'setup-ssh-authentication-to-push-to-github']
 ---
 

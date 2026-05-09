@@ -2,7 +2,7 @@
 title: How to setup the Search function in qBittorrent and add Search Plugins
 pubDate: 2026-03-17 23:00:00
 description: I used qBittorrent for literally years before realizing that qBittorrent had a built-in way to search for torrents. If you're as lost as I was, here's how I set it up so I could search for torrents right inside the web UI.
-tags: ['qbittorrent', 'arr', 'self-hosting']
+tags: ['qbittorrent', 'arr', 'self-hosting', 'guide']
 # related1: 
 # related2: 
 ---

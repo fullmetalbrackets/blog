@@ -3,7 +3,7 @@ title: 'Setting up a Docker container stack with Docker Compose'
 description: "I've been running a bunch of services on my home server in docker containers for a few years now. It's quick and easy to set up once you get used to it. Here's a quick and dirty guide to installing Docker and Docker Compose, and getting several containers up and running."
 pubDate: 2022-09-29
 updatedDate: 2024-11-04
-tags: ['self-hosting', 'docker']
+tags: ['self-hosting', 'docker', 'guide']
 related: ['watchtower-notifications', 'setup-prometheus-cadvisor-grafana']
 ---
 

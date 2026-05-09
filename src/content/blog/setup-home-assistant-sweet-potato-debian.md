@@ -3,7 +3,7 @@ title: 'Set up Home Assistant Supervised on a Libre Computer Sweet Potato SBC'
 description: "Home Assistant is an open source home automation solution that gives you local control over your smart home. It can also be run on Libre Computer's boards, but I ran into some issues following the official instructions from Libre, so here's how I got it working."
 pubDate: 2024-03-03
 updatedDate: 2025-02-10
-tags: ['self-hosting', 'home assistant', 'sbc']
+tags: ['self-hosting', 'home assistant', 'sbc', 'guide']
 related: ['setting-up-sweet-potato-debian-pihole', 'self-host-website-cloudflare-tunnel']
 ---
 

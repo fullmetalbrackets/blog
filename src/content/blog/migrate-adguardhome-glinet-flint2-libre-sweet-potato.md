@@ -3,7 +3,7 @@ title: 'How to migrate AdGuard Home from a GL.iNet Flint 2 router to a Libre Swe
 description: 'I love the Flint 2 router from GL.iNet, but the built-in AdGuard Home cannot handle the amount of devices, blocklists and custom filter rules I need. It crashes when I try to search the query log or add new custom filters, so I decided to take my config and migrate it to a Sweet Potato, and those issues disappeared.'
 pubDate: 2026-04-09 12:00:00
 updatedDate: 2026-04-22 12:00:00
-tags: ['adguard', 'gl-inet', 'sbc']
+tags: ['adguard', 'gl-inet', 'sbc', 'guide']
 ---
 
 ## Sweet What?
