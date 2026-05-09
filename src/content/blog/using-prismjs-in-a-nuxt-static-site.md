@@ -3,7 +3,7 @@ title: Using Prism.js in a Nuxt static site
 description: I was having some issue getting this to work on a static (not SSR) site made with Nuxt, and although I read through a bunch of blog articles, most of them seemed to be missing some piece of information or other that made it not work for me. After mixing and matching some of the instructions, and combining the useful info with the official Nuxt documentation, I finally did all the necessary steps and got it to work. So here's a clear, succinct guide to using Prism.js in a Nuxt static site.
 pubDate: 2021-09-17
 updatedDate: 2022-10-17
-tags: ['web development']
+tags: ['web development', 'nuxt']
 related: ['setting-up-and-configuring-nuxt-sitemap-module-in-a-nuxt-content-blog']
 ---
 

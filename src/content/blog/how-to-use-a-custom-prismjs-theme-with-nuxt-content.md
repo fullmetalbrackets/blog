@@ -3,7 +3,7 @@ title: How to use a custom PrismJS theme with Nuxt/Content
 description: PrismJS is great for making code blocks look pretty, it comes with a set of several themes out of the box, and there's also many more additional themes available as a separate package on NPM and Yarn. But what if none of those matches the color scheme of your website? With Nuxt you can easily use a custom CSS file to make your code blocks perfectly match the overall look of your site or blog. Here's how.
 pubDate: 2021-10-18
 updatedDate: 2022-10-17
-tags: ['web development']
+tags: ['web development', 'nuxt']
 related: ['using-prismjs-in-a-nuxt-static-site']
 ---
 
