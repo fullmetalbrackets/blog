@@ -278,6 +278,11 @@ const yearItems = posts.map(post => ({
     button:focus-visible{
       outline-offset: 1px;
     }
+    .years a:active button, .years a:focus button {
+      box-shadow: none;
+      transform: translate(0px, 0px);
+      background-color: var(--hover);
+    }
   }
   @media (hover: hover) {	
     span.active a:hover button {

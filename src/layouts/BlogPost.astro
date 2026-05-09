@@ -442,6 +442,17 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
         transition: all 0.1s ease-out;
         cursor: pointer;
       }
+      .tag button:active, .tag button:focus {
+        box-shadow: none;
+        transform: translate(0px, 0px);
+        background-color: var(--hover);
+      }
+      .blog-nav a:active,
+      .blog-nav a:focus {
+        box-shadow: none;
+        transform: translate(0px, 0px);
+        background-color: var(--hover);
+      }
     }
   </style>
 
@@ -492,7 +503,7 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
     <div class="blog-tags">
       <span class="tag" data-pagefind-ignore>
         {[...tags].sort((a, b) => a.localeCompare(b)).map((tag) => (
-          <a href={`/categories/${tag}/`} rel="prefetch-intent tag" data-umami-event="category-from-article">
+          <a href={`/categories/${tag}`} rel="prefetch-intent tag" data-umami-event="category-from-article">
             <button data-pagefind-filter="tag">{tag}</button>
           </a>
         ))}
@@ -566,7 +577,7 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
             class="gh"
             loading="lazy"
             decoding="async"
-            alt=""
+            alt="GitHub"
             aria-hidden="true"
           />
           <span>Edit on GitHub</span>

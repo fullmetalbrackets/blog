@@ -82,6 +82,13 @@ const years = Object.keys(postsByYear)
     place-items: center;
     gap: 0.25em;
   }
+  @media (hover: hover) {
+    button:active, button:focus {
+      box-shadow: none;
+      transform: translate(0px, 0px);
+      background-color: var(--hover);
+    }
+  }
   @media screen and (max-width: 667px) {
     .back {
       margin-top: -0.2em;

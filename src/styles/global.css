@@ -912,19 +912,26 @@ button a:visited,
 button a:hover,
 a.button,
 a.button:active,
-a.button:visited {
+a.button:visited,
+a.button:hover {
   color: #000;
 }
 
 a.button:hover {
-  color: #000;
   background-color: var(--secondary);
-  box-shadow: -4px -4px 0 #000;
-  transform: translate(4px, 4px);
-  outline-offset: 1px;
 }
 
 @media (hover: hover) {
+  a.button:hover {
+    box-shadow: -4px -4px 0 #000;
+    transform: translate(4px, 4px);
+    outline-offset: 1px;
+  }
+  a.button:active,
+  a button:not(.theme-toggle, .search-trigger):active {
+    box-shadow: 4px 4px 0 #000;
+    transform: translate(-4px, -4px);
+  }
   a:hover button:not(.theme-toggle, .search-trigger) {
     box-shadow: -4px -4px 0 #000;
     transform: translate(4px, 4px);

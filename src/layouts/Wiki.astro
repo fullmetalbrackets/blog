@@ -228,6 +228,12 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
       transition: all 0.1s ease-out;
       cursor: pointer;
     }
+    .wiki-nav a:active,
+    .wiki-nav a:focus {
+      box-shadow: none;
+      transform: translate(0px, 0px);
+      background-color: var(--hover);
+    }
   }
 </style>
 
@@ -271,7 +277,7 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
         <h3><Related width={36} height={36} /> Related Blog Posts</h3>
         <ul>
           {selectedPosts.map(post => (
-            <a href={`/blog/${post.id}/`} rel="prefetch-intent" data-umami-event={`wiki-related-${post.id}`}>
+            <a href={`/blog/${post.id}`} rel="prefetch-intent" data-umami-event={`wiki-related-${post.id}`}>
               <li>
                 <span>{post.data.title}</span>
                 <p>{post.data.description}</p>

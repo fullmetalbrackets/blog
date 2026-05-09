@@ -65,6 +65,12 @@
         transition: all 0.1s ease-out;
         cursor: pointer;
       }
+      .page-nav a.nav-btn:active,
+      .page-nav a.nav-btn:focus {
+        box-shadow: none;
+        transform: translate(0px, 0px);
+        background-color: var(--hover);
+      }
     }
     @media screen and (max-width: 1190px) {
         .nav-btn {
@@ -72,23 +78,18 @@
         }
     }
 </style>
-<!-- 
-<aside>
-    <a href="/"><button><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>home</title><path d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z" /></svg> Home</button></a>
-    <a href="#top"><button class="back">Back to Top <svg class="c_c c_d c_e c_f c_cd" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M7.5 14V3.439l-4.387 4.29-.699-.714L8 1.55l5.586 5.465-.7.714L8.5 3.44V14h-1z"></path></svg></button></a>
-</aside> -->
 
-  <nav class="page-nav" aria-label="Page navigation">
-    <a href="/" rel="prefetch-intent" class="nav-btn home" aria-label="Go to Home">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z" />
-      </svg>
-      <span>Home</span>
-    </a>
-    <a href="#top" class="nav-btn top" aria-label="Back to top">
-      <span>Top</span>
-      <svg role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
-        <path d="M7.5 14V3.439l-4.387 4.29-.699-.714L8 1.55l5.586 5.465-.7.714L8.5 3.44V14h-1z" />
-      </svg>
-    </a>
-  </nav>
+<nav class="page-nav" aria-label="Page navigation">
+  <a href="/" rel="prefetch-intent" class="nav-btn home" aria-label="Go to Home">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z" />
+    </svg>
+    <span>Home</span>
+  </a>
+  <a href="#top" class="nav-btn top" aria-label="Back to top">
+    <span>Top</span>
+    <svg role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+      <path d="M7.5 14V3.439l-4.387 4.29-.699-.714L8 1.55l5.586 5.465-.7.714L8.5 3.44V14h-1z" />
+    </svg>
+  </a>
+</nav>

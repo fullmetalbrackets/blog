@@ -168,6 +168,11 @@ const blogItems = page.data.map(post => ({
     button:focus-visible{
       outline-offset: 1px;
     }
+    .years a:active button, .years a:focus button {
+      box-shadow: none;
+      transform: translate(0px, 0px);
+      background-color: var(--hover);
+    }
   }
   .page-info-top {
     display: flex;

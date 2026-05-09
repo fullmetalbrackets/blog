@@ -77,6 +77,11 @@ const { title, description } = pages.find(p => p.href === "/categories")!;
     place-items: center;
     gap: 0.25em;
   }
+  button:active, button:focus {
+      box-shadow: none;
+      transform: translate(0px, 0px);
+      background-color: var(--hover);
+    }
   @media screen and (max-width: 667px) {
     section {
       line-height: 1.2;
