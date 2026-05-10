@@ -71,6 +71,9 @@ const categoryItems = posts.map(post => ({
     transition: all .1s ease-in-out;
     overflow: visible;
   }
+  .showing {
+    margin: 0.5em auto 1em auto;
+  }
   .categories:hover svg {
     transition: all .1s ease-in-out;
     transform: translateX(-4px);
@@ -181,7 +184,7 @@ const categoryItems = posts.map(post => ({
   }
 </style>
 
-<BaseLayout title={`Posts about ${tagTitle}`} description={desc}>
+<BaseLayout title={`Posts tagged ${tagTitle}`} description={desc}>
   <BreadcrumbSchema slot="head" crumbs={[
     { name: "Home", url: `${SITE_URL}` },
     { name: "Categories", url: `${SITE_URL}/categories` },
@@ -189,19 +192,22 @@ const categoryItems = posts.map(post => ({
   ]} />
   <CollectionPageSchema
     slot="head"
-    name={`Posts about ${tagTitle}`}
+    name={`Posts tagged ${tagTitle}`}
     description={desc}
     url={`${SITE_URL}/categories/${tag}`}
     about={tag}
   />
   <ItemListSchema slot="head" id={`${SITE_URL}/categories/${tag}/#list`} items={categoryItems} />
   <section class="h-feed">
-    <h1 class="p-name">Posts about <span class="tag">{`${tagTitle}`}</span></h1>
+    <h1 class="p-name">Posts tagged <span class="tag">{`${tagTitle}`}</span></h1>
     <a class="u-url" href={`${SITE_URL}/categories/${tagTitle}`} hidden>Permalink</a>
     <hr />
     <p class="back">
       <a href="/categories" rel="prefetch-intent" class="categories"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><title>arrow-left</title><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg> Back to Categories</a>
       <a href="/blog" rel="prefetch-intent" class="all">All posts <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><title>arrow-right</title><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg></a>
+    </p>
+    <p class="showing">
+      Showing <span class="total">{posts.length}</span> posts tagged <span class="sub-font primary w9">{tagTitle}</span>
     </p>
     <ul>
       {

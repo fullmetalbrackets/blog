@@ -26,7 +26,7 @@ const linkItems = links.map(link => ({
     font-weight: 900;
   }
   p {
-    margin-bottom: 2em;
+    margin-bottom: 1em;
   }
   ul {
     list-style-type: none;
@@ -114,6 +114,9 @@ const linkItems = links.map(link => ({
     <hr />
     <p>
       {description} I'm constantly adding to this as I find new things I consider worth sharing. <i>(All links are external and open in new tab.)</i>
+    </p>
+    <p>
+      <span class="total">{links.length} links</span> and counting...
     </p>
     <ul>
       {

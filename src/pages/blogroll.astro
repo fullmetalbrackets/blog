@@ -77,7 +77,7 @@ const lastUpdated = new Date('2026-05-08T12:00');
     <h1 class="p-name">{title}</h1>
     <a class="u-url" href={`${SITE_URL}/blogroll`} hidden>Permalink</a>
     <hr />
-    <p class="desc">{description} <i>(All links open in new tabs.)</i></p>
+    <p class="desc">A list of <span class="total">{blogs.length}</span> super cool personal sites and blogs that I follow, and you should too. <i>(All links open in new tabs.)</i></p>
     <p class="flex">
       <span class="updated">
         Last updated
@@ -147,6 +147,9 @@ const lastUpdated = new Date('2026-05-08T12:00');
   h1 {
     font-family: var(--sub-font);
     font-weight: 900;
+  }
+  .desc {
+    font-size: 1em;
   }
   .updated {
     display: flex;

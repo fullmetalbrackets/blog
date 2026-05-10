@@ -54,6 +54,7 @@ const updatedItems = page.data.map(post => ({
     list-style-type: none;
     margin: 0 auto;
     padding: 0;
+    max-width: 1000px;
   }
   li {
     display: inline-block;
@@ -160,10 +161,12 @@ const updatedItems = page.data.map(post => ({
   .prev {
     grid-column: 1;
     justify-content: start;
+    margin-top: 1px;
   }
   .next {
     grid-column: 3;
     justify-content: end;
+    margin-top: 1px;
   }
   .prev a svg, .next a svg {
     display: inline-flex;
@@ -231,7 +234,7 @@ const updatedItems = page.data.map(post => ({
     <hr />
     <p>
       <span>
-        <span class="total">{page.total}</span> posts sorted by most recently updated. Alternately, see posts <a href="/categories" rel="prefetch-intent" data-umami-event="blog-category">by category</a>, <a href="/blog/years" rel="prefetch-intent">by year</a>, or <a href="/blog" rel="prefetch-intent">all posts</a>.
+        <span class="total">{page.total}</span> posts received updates. You can also see <a href="/blog" rel="prefetch-intent">all posts</a>, <a href="/categories" rel="prefetch-intent" data-umami-event="blog-category">by category</a>, <a href="/blog/years" rel="prefetch-intent">by year</a>, or <a href="/blog/random">a random post</a>.
       </span>
     </p>
     <div class="page-info-top">Page {page.currentPage} of {page.lastPage}</div>

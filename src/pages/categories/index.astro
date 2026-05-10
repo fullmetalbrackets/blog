@@ -9,6 +9,7 @@ import { SITE_URL } from "@consts";
 import { pages } from "@data/pages";
 
 const tags = await getSortedTags();
+const totalCategories = tags.length;
 const { title, description } = pages.find(p => p.href === "/categories")!;
 ---
 
@@ -18,7 +19,7 @@ const { title, description } = pages.find(p => p.href === "/categories")!;
     font-weight: 900;
   }
   p {
-    margin: 0 auto 1em auto;
+    margin: 0 auto 2em auto;
     padding: 0;
   }
   .back {
@@ -26,6 +27,7 @@ const { title, description } = pages.find(p => p.href === "/categories")!;
     justify-content: space-between;
     font-family: var(--sub-font);
     font-weight: 800;
+    margin-bottom: 1em;
   }
   .all svg, .categories svg {
     display: inline-flex;
@@ -43,6 +45,9 @@ const { title, description } = pages.find(p => p.href === "/categories")!;
   .categories:hover svg {
     transition: all .1s ease-in-out;
     transform: translateX(4px);
+  }
+  .desc {
+    font-size: 1em;
   }
   ul {
     display: flex;
@@ -118,7 +123,7 @@ const { title, description } = pages.find(p => p.href === "/categories")!;
       <a href="/blog/years" rel="prefetch-intent" class="categories">Posts by year <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><title>arrow-right</title><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg></a>
     </p>
     <p class="desc">
-      Click on categories below to see blog posts about that subject.
+      There are <span class="total">{totalCategories}</span> categories, click on them below to see blog posts about that subject.
     </p>
     <ul>
       {tags.map(({ tag, count }) => (

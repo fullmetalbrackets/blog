@@ -21,16 +21,13 @@ export async function getStaticPaths({ paginate }: { paginate: PaginateFunction 
   return paginate(posts, { pageSize: 5, props: { postsByYear } });
 }
 
-const { page, postsByYear } = Astro.props;
+const { page } = Astro.props;
 const title = `Blog - Page ${page.currentPage} | ${SITE_TITLE}`;
 const { description } = pages.find(p => p.href === "/blog")!;
 
 const pageUrl = page.currentPage === 1
   ? `${SITE_URL}/blog`
   : `${SITE_URL}/blog/${page.currentPage}`;
-const sortedYears = Object.keys(postsByYear)
-  .map(Number)
-  .sort((a, b) => b - a);
 const blogItems = page.data.map(post => ({
   name: post.data.title,
   url: `${SITE_URL}/blog/${post.id}`,
@@ -43,12 +40,6 @@ const blogItems = page.data.map(post => ({
     font-family: var(--sub-font);
     font-weight: 900;
   }
-  .total {
-    font-family: var(--sub-font);
-    font-weight: 900;
-    font-size: 0.95em;
-    color: var(--primary);
-  }
   .rss {
     display: flex;
     place-items: center;
@@ -60,7 +51,7 @@ const blogItems = page.data.map(post => ({
   }
   ul {
     list-style-type: none;
-    margin: 0 auto;
+    margin: 1em auto 0 auto;
     padding: 0;
     max-width: 1000px;
   }
@@ -215,15 +206,17 @@ const blogItems = page.data.map(post => ({
     justify-content: space-between;
     font-family: var(--sub-font);
     font-weight: 800;
-    margin: 0 0 1em 0;
+    margin-top: 1px;
   }
   .prev {
     grid-column: 1;
     justify-content: start;
+    margin-top: 0.1em;
   }
   .next {
     grid-column: 3;
     justify-content: end;
+    margin-top: 1px;
   }
   .prev a svg, .next a svg {
     display: inline-flex;

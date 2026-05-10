@@ -39,7 +39,7 @@ const postrollItems = posts.map(post => ({
     <a class="u-url" href={`${SITE_URL}/postroll`} hidden>Permapost</a>
     <hr />
     <p>
-      {description} Dates reflect the original date that the linked post was published. <i>All links are external and open in new tab.</i>
+      <span class="total">{posts.length}</span> articles, blog posts and other writings from across the web that I thought worth sharing. Dates reflect the original date that the linked post was published. <i>(All links are external and open in new tab.)</i>
     </p>
     <ul>
       {

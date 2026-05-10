@@ -7,8 +7,8 @@ import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
 import CollectionPageSchema from "@components/CollectionPageSchema.astro";
 import { SITE_URL } from "@consts";
 
-const title = "Blog posts by year";
-const desc = 'List blog posts by year.'
+const title = 'Blog posts by year';
+const desc = 'List of blog posts by year.'
 
 const allPosts = await getSortedPosts();
 
@@ -21,6 +21,8 @@ const postsByYear = allPosts.reduce((acc, post) => {
 const years = Object.keys(postsByYear)
   .map(Number)
   .sort((a, b) => b - a);
+
+const totalYears = years.length;
 ---
 
 <style>
@@ -117,7 +119,7 @@ const years = Object.keys(postsByYear)
       <a href="/categories" rel="prefetch-intent" class="categories">Categories <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><title>arrow-right</title><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg></a>
     </p>
     <p>
-        Pick a year below to see only blog posts written that year.
+        Bloggin' for <span class="total">{totalYears} years</span>. Pick one below to see only blog posts written that year.
     </p>
     <ul>
         {years.map((year) => (
