@@ -18,7 +18,7 @@ pre[class*='language-'] {
   -ms-hyphens: none;
   hyphens: none;
   letter-spacing: -0.5px;
-  /* scrollbar-color: var(--code-text) var(--code-bg); */
+  scrollbar-color: var(--border) var(--code-bg);
   scrollbar-width: thin;
 }
 
