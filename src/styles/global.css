@@ -662,6 +662,12 @@ blockquote[data-type='warning'] a:hover {
 }
 
 /* utility classes */
+.total {
+  font-family: var(--sub-font);
+  font-weight: 900;
+  color: var(--primary);
+}
+
 .primary {
   color: var(--primary);
 }
