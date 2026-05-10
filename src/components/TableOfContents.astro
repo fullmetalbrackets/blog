@@ -43,6 +43,9 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
   }
   .toc-list {
     position: relative;
+    margin-left: -0.25em;
+    max-width: 40%;
+    word-break: normal;
   }
   .toc-list li a {
     color: var(--emphasis);
@@ -58,10 +61,10 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
     .toc-container {
       position: fixed;
       top: 2.75em;
-      right: -36em;
+      right: -37.15em;
       width: 56%;
       max-width: 56%;
-      font-size: 0.85em;
+      font-size: 0.825em;
     }
     .toc-heading svg {
       margin-bottom: 2px;
@@ -87,7 +90,6 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
     .toc-indicator {
       display: block;
       position: absolute;
-      left: 0.25em;
       background: var(--border2);
       border-left: 2px solid var(--primary);
       border-radius: 0.25em;
