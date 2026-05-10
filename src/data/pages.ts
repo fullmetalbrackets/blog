@@ -92,6 +92,19 @@ export const pages: Page[] = [
     event: 'explore-privacy',
   },
   {
+    href: '/blog/random',
+    title: 'Random',
+    description: 'Go to this page to load a random blog post.',
+    event: 'explore-random',
+  },
+  {
+    href: '/search',
+    title: 'Search',
+    description:
+      "Search page, you probably won't see this, just use the search function in the header.",
+    event: 'explore-style',
+  },
+  {
     href: '/self-hosted',
     title: 'Self-hosted',
     description: 'Information about the apps and services that I self-host.',
@@ -118,10 +131,23 @@ export const pages: Page[] = [
     event: 'explore-wiki',
   },
   {
+    href: '/updated',
+    title: 'Updated',
+    description:
+      'Blog posts that have received updates, sorted by most recent.',
+    event: 'explore-updated',
+  },
+  {
     href: '/verify',
     title: 'Verify',
     description:
       'Verify my identity online across different services and social media.',
     event: 'explore-verify',
+  },
+  {
+    href: '/blog/years',
+    title: 'Years',
+    description: 'Blog posts sorted by year.',
+    event: 'explore-years',
   },
 ];
