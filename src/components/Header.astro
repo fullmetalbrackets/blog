@@ -187,6 +187,28 @@ import SearchOverlay from "./SearchOverlay.astro";
     border-right: 1px solid var(--tertiary);
     border-left: 1px solid var(--tertiary);
     border-bottom: 1px solid var(--tertiary);
+    max-height: calc(100vh - 4em);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0s 0.25s;
+  }
+  .dropdown-content::-webkit-scrollbar {
+    width: 4px;
+  }
+  .dropdown-content::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 2px;
+    transition: background 0.5s ease;
+  }
+  .dropdown-content::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .dropdown-content.scrollbar-visible {
+    scrollbar-color: var(--border2) transparent;
+  }
+  .dropdown-content.scrollbar-visible::-webkit-scrollbar-thumb {
+    background: var(--border2);
   }
   .dropdown-content a {
     color: var(--primary);
@@ -543,8 +565,12 @@ import SearchOverlay from "./SearchOverlay.astro";
               <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><title>Explore</title><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
               Explore
             </HeaderLink>
+            <HeaderLink href="/stats" rel="prefetch-intent" aria-label="Stats" data-umami-event="nav-stats">
+              <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><title>Stats</title><path d="M22,21H2V3H4V19H6V10H10V19H12V6H16V19H18V14H22V21Z" /></svg>
+              Stats
+            </HeaderLink>
             <HeaderLink href="/rss.xml" rel="prefetch-intent" aria-label="RSS Feed" data-umami-event="nav-rss">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><title>RSS Feed</title><path d="M5,3H19A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3M7.5,15A1.5,1.5 0 0,0 6,16.5A1.5,1.5 0 0,0 7.5,18A1.5,1.5 0 0,0 9,16.5A1.5,1.5 0 0,0 7.5,15M6,10V12A6,6 0 0,1 12,18H14A8,8 0 0,0 6,10M6,6V8A10,10 0 0,1 16,18H18A12,12 0 0,0 6,6Z" /></svg>
+              <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><title>RSS Feed</title><path d="M5,3H19A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3M7.5,15A1.5,1.5 0 0,0 6,16.5A1.5,1.5 0 0,0 7.5,18A1.5,1.5 0 0,0 9,16.5A1.5,1.5 0 0,0 7.5,15M6,10V12A6,6 0 0,1 12,18H14A8,8 0 0,0 6,10M6,6V8A10,10 0 0,1 16,18H18A12,12 0 0,0 6,6Z" /></svg>
               RSS Feed
             </HeaderLink>
           </div>
@@ -642,6 +668,10 @@ import SearchOverlay from "./SearchOverlay.astro";
         <HeaderLink href="/explore" rel="prefetch-intent" aria-label="Explore" data-umami-event="mnav-explore">
           <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><title>Explore</title><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
           Explore
+        </HeaderLink>
+        <HeaderLink href="/stats" rel="prefetch-intent" aria-label="Stats" data-umami-event="mnav-stats">
+          <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><title>Stats</title><path d="M22,21H2V3H4V19H6V10H10V19H12V6H16V19H18V14H22V21Z" /></svg>
+          Stats
         </HeaderLink>
       </div>
     </div>
@@ -773,6 +803,7 @@ import SearchOverlay from "./SearchOverlay.astro";
         e.stopPropagation();
         const isOpen = dropdown.classList.toggle('open');
         dropdownToggle.setAttribute('aria-expanded', isOpen.toString());
+        if (isOpen) showScrollbar();
       });
 
       document.addEventListener('click', (e) => {
@@ -795,6 +826,22 @@ import SearchOverlay from "./SearchOverlay.astro";
           if (isOpen) dropdownToggle.focus();
         }
       }, { signal });
+      
+      const dropdownContent = document.querySelector('.dropdown-content') as HTMLElement | null;
+      let scrollbarTimer: ReturnType<typeof setTimeout> | null = null;
+
+      function showScrollbar() {
+        if (!dropdownContent) return;
+        dropdownContent.classList.add('scrollbar-visible');
+        if (scrollbarTimer) clearTimeout(scrollbarTimer);
+        scrollbarTimer = setTimeout(() => {
+          dropdownContent.classList.remove('scrollbar-visible');
+        }, 1500);
+      }
+
+      if (dropdownContent) {
+        dropdownContent.addEventListener('scroll', showScrollbar, { signal });
+      }
     }
   }
 
