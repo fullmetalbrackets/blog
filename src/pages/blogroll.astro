@@ -7,11 +7,13 @@ import BackToTop from "@components/BackToTop.astro";
 import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
 import CollectionPageSchema from "@components/CollectionPageSchema.astro";
 import ItemListSchema from "@components/ItemListSchema.astro";
+import { getBlogroll } from '@utils/collections';
 import { SITE_URL } from "@consts";
-import { blogs } from "@data/blogroll";
 import { pages } from "@data/pages";
 
 const { title, description } = pages.find(p => p.href === "/blogroll")!;
+
+const blogs = await getBlogroll();
 
 const getFavicon = (url: string) =>
   `https://www.google.com/s2/favicons?domain=${new URL(url).hostname}&sz=32`;

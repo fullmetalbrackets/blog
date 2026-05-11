@@ -104,6 +104,16 @@ const postroll = defineCollection({
     }),
 });
 
+const blogroll = defineCollection({
+  loader: glob({ pattern: '**/[^_]*.yml', base: './src/content/blogroll' }),
+  schema: z.object({
+    name: z.string(),
+    url: z.url(),
+    feed: z.url().or(z.literal('#')),
+    pubDate: z.coerce.date(),
+  }),
+});
+
 export const collections = {
   blog,
   links,
@@ -113,4 +123,5 @@ export const collections = {
   now,
   notes,
   postroll,
+  blogroll,
 };

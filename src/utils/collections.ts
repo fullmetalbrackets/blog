@@ -96,6 +96,12 @@ export async function getSortedPostroll() {
   );
 }
 
+export async function getBlogroll() {
+  return (await getCollection('blogroll'))
+    .map((entry) => ({ id: entry.id, ...entry.data }))
+    .sort((a, b) => a.name.localeCompare(b.name));
+}
+
 // Get all notes by date descending
 export async function getSortedNotes() {
   return (await getCollection('notes')).sort(
