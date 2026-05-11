@@ -28,12 +28,12 @@
   "dependencies": {
     "@ascorbic/feed-loader": "^2.0.1",
     "@astrojs/check": "^0.9.9",
-    "@astrojs/cloudflare": "^13.3.1",
+    "@astrojs/cloudflare": "^13.5.0",
     "@astrojs/markdown-remark": "^7.1.1",
     "@astrojs/mdx": "^5.0.4",
     "@astrojs/rss": "^4.0.18",
     "@astrojs/sitemap": "^3.7.2",
-    "astro": "^6.2.2",
+    "astro": "^6.3.1",
     "astro-embed": "^0.13.0",
     "astro-og-canvas": "^0.11.1",
     "astro-social-share": "^2.2.0",
@@ -51,9 +51,9 @@
   "packageManager": "yarn@4.12.0",
   "devDependencies": {
     "prettier": "^3.8.3",
-    "wrangler": "^4.87.0"
+    "wrangler": "^4.90.0"
   },
   "resolutions": {
-    "astro": "6.2.2"
+    "astro": "6.3.1"
   }
 }
