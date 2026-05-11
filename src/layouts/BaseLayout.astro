@@ -420,5 +420,25 @@ const pageTitle = title === SITE_TITLE ? SITE_TITLE : `${title} | ${SITE_TITLE}`
 				});
 			})();
 		</script>
+		<script is:inline>
+			document.querySelectorAll('details').forEach(details => {
+				const summary = details.querySelector('summary');
+				const content = details.querySelector('.details-content');
+				if (!summary || !content) return;
+
+				summary.addEventListener('click', e => {
+					e.preventDefault();
+					if (details.open) {
+					content.classList.add('closing');
+					content.addEventListener('animationend', () => {
+						content.classList.remove('closing');
+						details.removeAttribute('open');
+					}, { once: true });
+					} else {
+					details.setAttribute('open', '');
+					}
+				});
+			});
+		</script>
 	</body>
 </html>
