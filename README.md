@@ -1,16 +1,14 @@
+# Fullmetalbrackets
+
 ![Website](https://img.shields.io/website?url=https%3A%2F%2Ffullmetalbrackets.com)
 ![Uptime Robot ratio (30 days)](https://img.shields.io/uptimerobot/ratio/m796373856-345a63b6f29520df1f2520b8)
 ![GitHub last commit](https://img.shields.io/github/last-commit/fullmetalbrackets/blog)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/fullmetalbrackets/blog)
 [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC_BY--NC--SA_4.0-blue.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
-# Fullmetalbrackets
-
 A blog about self-hosting, web development, Linux, and more.
 
 [Home](https://fullmetalbrackets.com/) · [Blog](https://fullmetalbrackets.com/blog/) · [Explore](https://fullmetalbrackets.com/explore/) · [Colophon](https://fullmetalbrackets.com/colophon/) · [Privacy](https://fullmetalbrackets.com/privacy/)
-
-<br>
 
 ## Latest blog posts
 
@@ -22,8 +20,6 @@ A blog about self-hosting, web development, Linux, and more.
 - [How I used Astro-OG-Canvas to dynamically generate opengraph images for blog posts on my Astro site](https://fullmetalbrackets.com/blog/how-to-dynamically-generate-og-images-with-astro/)
 <!-- BLOG-POST-LIST:END -->
 
-<br>
-
 ## Run locally
 
 ```sh
@@ -31,3 +27,11 @@ git clone https://github.com/fullmetalbrackets/blog.git
 cd blog
 yarn
 ```
+
+## Forkers beware
+
+You are welcome to fork my site, but I would recommend against actually using any of my code for your own project. I am not a professional web developer or designer, what little I know was self-taught for my own personal use and enjoyment, as a hobby. The code powering my site is amateurish at best, and I'm probably being too generous to myself with that description.
+
+After 4 years of additions, updates, tacking on new things and patching broken stuff, this site is a Frankenstein's monster held together with scotch tape and blind faith. It is not an exemplar of good coding practice and should not be used as a basis for _anything_ you build. There is enough unique stuff in here that extensive changes would probably be required to make it work anyway.
+
+If you insist on using my code for anything, please understand that the source code is MIT licensed to be available to view and copy, but I will provide no support whatsoever if you are building anything using the code in this repo. In fact, I would recommend **against** doing that at all.
