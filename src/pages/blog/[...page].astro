@@ -211,12 +211,12 @@ const blogItems = page.data.map(post => ({
   .prev {
     grid-column: 1;
     justify-content: start;
-    margin-top: 0.1em;
+    margin-top: -0.1em;
   }
   .next {
     grid-column: 3;
     justify-content: end;
-    margin-top: 1px;
+    margin-top: -0.1em;
   }
   .prev a svg, .next a svg {
     display: inline-flex;
@@ -240,6 +240,9 @@ const blogItems = page.data.map(post => ({
   }
   .rss svg:not(:hover) {
     animation: none;
+  }
+  .bottom-line {
+    margin-top: 2em;
   }
   @media screen and (max-width: 667px) {
     section {
@@ -356,7 +359,7 @@ const blogItems = page.data.map(post => ({
         )}
       </span>
     </nav>
-    <hr />
+    <hr class="bottom-line" />
     <BackToTop />
   </section>
 </BaseLayout>
