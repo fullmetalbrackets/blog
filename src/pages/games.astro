@@ -137,34 +137,6 @@ const { title, description } = pages.find(p => p.href === "/games")!;
     border-bottom: none;
   }
 
-  summary {
-    display: inline-flex;
-    cursor: pointer;
-    font-weight: bold;
-    padding: 0.25em;
-    align-items: center;
-    gap: 0.5em;
-    color: var(--primary);
-    list-style: none;
-  }
-
-  summary::-webkit-details-marker {
-    display: none;
-  }
-
-  summary::before {
-    content: '▶';
-    display: inline-block;
-    font-size: 0.75em;
-    line-height: 1;
-    transition: rotate 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    rotate: 0deg;
-  }
-
-  details[open] > summary::before {
-    rotate: 90deg;
-  }
-
   details {
     border-bottom: 1px dotted var(--border);
   }
@@ -240,19 +212,6 @@ const { title, description } = pages.find(p => p.href === "/games")!;
     width: auto;
     height: 32px;
   }
-  
-  @keyframes bounceOpen {
-    0%   { transform: scaleY(0); opacity: 0; }
-    60%  { transform: scaleY(1.06); opacity: 1; }
-    80%  { transform: scaleY(0.97); }
-    100% { transform: scaleY(1); }
-  }
-
-  @keyframes bounceClose {
-    0%   { transform: scaleY(1); opacity: 1; }
-    30%  { transform: scaleY(1.04); }
-    100% { transform: scaleY(0); opacity: 0; }
-  }
 
   details .details-content {
     transform-origin: top;
@@ -280,26 +239,3 @@ const { title, description } = pages.find(p => p.href === "/games")!;
     }
   }
 </style>
-
-<script>
-  document.querySelectorAll('details').forEach(details => {
-    const summary = details.querySelector('summary');
-    const content = details.querySelector('.details-content') as HTMLElement;
-
-    summary?.addEventListener('click', e => {
-      e.preventDefault();
-
-      if (details.open) {
-        // Play close animation, then shut
-        content.classList.add('closing');
-        content.addEventListener('animationend', () => {
-          content.classList.remove('closing');
-          details.removeAttribute('open');
-        }, { once: true });
-      } else {
-        // Open first, then animate
-        details.setAttribute('open', '');
-      }
-    });
-  });
-</script>

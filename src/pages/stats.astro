@@ -1,0 +1,1097 @@
+---
+export const prerender = true;
+
+import BaseLayout from "@layouts/BaseLayout.astro";
+import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
+import CollectionPageSchema from "@components/CollectionPageSchema.astro";
+import BackToTop from "@components/BackToTop.astro";
+import { SITE_URL } from "@consts";
+import {
+  getPostsWithReadingTime,
+  getSortedLinks,
+  getLifestream,
+  getSortedNotes,
+} from "@utils/collections";
+import { pages } from "@data/pages";
+
+const { title, description } = pages.find(p => p.href === "/stats")!;
+
+// Data
+const posts      = await getPostsWithReadingTime();
+const links      = await getSortedLinks();
+const lifestream = await getLifestream();
+const notes      = await getSortedNotes();
+
+// Helpers
+const today       = new Date();
+const MONTH_NAMES = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+const daysBetween = (a: Date, b: Date) =>
+  Math.floor(Math.abs(b.getTime() - a.getTime()) / 86_400_000);
+
+const parseMinutes = (rt: string = "") =>
+  parseInt(rt.match(/\d+/)?.[0] ?? "0", 10);
+
+const formatDuration = (mins: number) => {
+  const h = Math.floor(mins / 60);
+  const m = mins % 60;
+  return h > 0 ? `${h}h ${m}m` : `${m}m`;
+};
+
+const fmtDate = (d: Date) =>
+  d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+
+const fmtMonthKey = (key: string) => {
+  const [yr, mo] = key.split("-").map(Number);
+  return new Date(yr, mo - 1).toLocaleDateString("en-US", { month: "long", year: "numeric" });
+};
+
+// Blog
+const totalPosts       = posts.length;
+const totalReadingMins = posts.reduce((s, p) => s + parseMinutes(p.readingTime), 0);
+
+const sortedByRT   = [...posts].sort((a, b) => parseMinutes(b.readingTime) - parseMinutes(a.readingTime));
+const longestPost  = sortedByRT[0];
+const shortestPost = sortedByRT[sortedByRT.length - 1];
+
+const postsByYear = posts.reduce((acc, p) => {
+  const yr = p.data.pubDate.getFullYear();
+  acc[yr] = (acc[yr] ?? 0) + 1;
+  return acc;
+}, {} as Record<number, number>);
+
+const postsByMonth = posts.reduce((acc, p) => {
+  const key = `${p.data.pubDate.getFullYear()}-${String(p.data.pubDate.getMonth() + 1).padStart(2, "0")}`;
+  acc[key] = (acc[key] ?? 0) + 1;
+  return acc;
+}, {} as Record<string, number>);
+
+const blogYears      = Object.keys(postsByYear).map(Number).sort((a, b) => b - a);
+const maxPostsInYear = Math.max(...Object.values(postsByYear), 1);
+
+const [prolificYearKey, prolificYearCount]   = Object.entries(postsByYear).sort((a, b) => b[1] - a[1])[0] ?? ["—", 0];
+const [prolificMonthKey, prolificMonthCount] = Object.entries(postsByMonth).sort((a, b) => b[1] - a[1])[0] ?? ["—", 0];
+
+const postsByDateAsc = [...posts].sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf());
+const firstPost = postsByDateAsc[0];
+const lastPost  = posts[0];
+
+const daysSinceFirst = firstPost ? daysBetween(firstPost.data.pubDate, today) : 0;
+const daysSinceLast  = lastPost  ? daysBetween(lastPost.data.pubDate, today)  : 0;
+const avgPostsPerMonth = daysSinceFirst > 0
+  ? (totalPosts / (daysSinceFirst / 30.44)).toFixed(1) : "—";
+const avgPostsPerYear = daysSinceFirst > 0
+  ? (totalPosts / (daysSinceFirst / 365.25)).toFixed(1) : "—";
+
+let longestGapDays = 0;
+let lgStart: Date  = postsByDateAsc[0]?.data.pubDate ?? today;
+let lgEnd: Date    = postsByDateAsc[1]?.data.pubDate ?? today;
+for (let i = 1; i < postsByDateAsc.length; i++) {
+  const gap = daysBetween(postsByDateAsc[i - 1].data.pubDate, postsByDateAsc[i].data.pubDate);
+  if (gap > longestGapDays) {
+    longestGapDays = gap;
+    lgStart = postsByDateAsc[i - 1].data.pubDate;
+    lgEnd   = postsByDateAsc[i].data.pubDate;
+  }
+}
+
+const tagCounts: Record<string, number> = {};
+posts.forEach(p => p.data.tags?.forEach(t => { tagCounts[t] = (tagCounts[t] ?? 0) + 1; }));
+const totalUniqueTags = Object.keys(tagCounts).length;
+const topTags         = Object.entries(tagCounts).sort((a, b) => b[1] - a[1]).slice(0, 12);
+const maxTagCount     = topTags[0]?.[1] ?? 1;
+
+// Notes
+const totalNotes      = notes.length;
+const validNotes      = notes.filter(n => n.data.published && new Date(n.data.published).getFullYear() > 2000);
+const notesByDateAsc  = [...validNotes].sort(
+  (a, b) => new Date(a.data.published!).valueOf() - new Date(b.data.published!).valueOf()
+);
+const firstNote = notesByDateAsc[0]                             ?? null;
+const lastNote  = notesByDateAsc[notesByDateAsc.length - 1]    ?? null;
+
+// Links
+const totalLinks   = links.length;
+const linksByYear  = links.reduce((acc, l) => {
+  const yr = l.data.pubDate.getFullYear();
+  acc[yr] = (acc[yr] ?? 0) + 1;
+  return acc;
+}, {} as Record<number, number>);
+const linkYears       = Object.keys(linksByYear).map(Number).sort((a, b) => b - a);
+const maxLinksInYear  = Math.max(...Object.values(linksByYear), 1);
+const linksByDateAsc  = [...links].sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf());
+const firstLink       = linksByDateAsc[0] ?? null;
+const lastLink        = links[0]          ?? null;
+const linkSpanMonths  = firstLink ? daysBetween(firstLink.data.pubDate, today) / 30.44 : 1;
+const avgLinksPerMonth = linkSpanMonths > 0 ? (totalLinks / linkSpanMonths).toFixed(1) : "—";
+const daysSinceLastLink = lastLink ? daysBetween(lastLink.data.pubDate, today) : 0;
+
+// Lifestream
+const totalLifestream    = lifestream.length;
+const updatedCount       = lifestream.filter(e => e.data.updatedDate !== undefined).length;
+const updatedPct         = totalLifestream > 0 ? Math.round((updatedCount / totalLifestream) * 100) : 0;
+const lifestreamByYear   = lifestream.reduce((acc, e) => {
+  const date = e.data.updatedDate ?? e.data.pubDate;
+  const yr   = date.getFullYear();
+  acc[yr] = (acc[yr] ?? 0) + 1;
+  return acc;
+}, {} as Record<number, number>);
+const lifestreamYears       = Object.keys(lifestreamByYear).map(Number).sort((a, b) => b - a);
+const maxLifestreamInYear   = Math.max(...Object.values(lifestreamByYear), 1);
+
+// Lifestream — by type
+const MEDIA_TYPES = ['movie', 'tvshow', 'book', 'game'] as const;
+const typeLabels: Record<string, string> = {
+  movie: 'Movies', tvshow: 'TV Shows', book: 'Books', game: 'Games'
+};
+const byType = Object.fromEntries(
+  MEDIA_TYPES.map(t => [t, lifestream.filter(e => e.data.type === t).length])
+);
+const maxByType = Math.max(...Object.values(byType), 1);
+
+// Lifestream — by rating
+const RATINGS = ['masterpiece', 'loved', 'liked', 'disliked', 'hated'] as const;
+const ratingEmoji: Record<string, string> = {
+  hated: '💩', disliked: '😕', liked: '👍🏼', loved: '❤️', masterpiece: '🌟'
+};
+const byRating = Object.fromEntries(
+  RATINGS.map(r => [r, lifestream.filter(e => e.data.rating === r).length])
+);
+const maxByRating = Math.max(...Object.values(byRating), 1);
+const topRating = RATINGS.reduce((a, b) => byRating[a] >= byRating[b] ? a : b);
+
+// Lifestream — game platforms
+const gamePlatforms = lifestream
+  .filter(e => e.data.type === 'game' && e.data.platform)
+  .reduce((acc, e) => {
+    const p = e.data.platform!;
+    acc[p] = (acc[p] ?? 0) + 1;
+    return acc;
+  }, {} as Record<string, number>);
+const topPlatforms = Object.entries(gamePlatforms).sort((a, b) => b[1] - a[1]).slice(0, 8);
+const maxPlatformCount = topPlatforms[0]?.[1] ?? 1;
+
+// Lifestream — rating breakdown per media type
+const ratingByType = Object.fromEntries(
+  MEDIA_TYPES.map(t => [
+    t,
+    Object.fromEntries(
+      RATINGS.map(r => [r, lifestream.filter(e => e.data.type === t && e.data.rating === r).length])
+    )
+  ])
+);
+const maxRatingByType = Object.fromEntries(
+  MEDIA_TYPES.map(t => [t, Math.max(...RATINGS.map(r => ratingByType[t][r]), 1)])
+);
+
+// Lifestream — most logged year
+const lifestreamYearTotals = Object.entries(lifestreamByYear).sort((a, b) => b[1] - a[1]);
+const mostLoggedYear = lifestreamYearTotals[0];
+
+// Lifestream — by type per year
+const typeByYear: Record<number, Record<string, number>> = {};
+lifestream.forEach(e => {
+  const yr = (e.data.updatedDate ?? e.data.pubDate).getFullYear();
+  if (!typeByYear[yr]) typeByYear[yr] = {};
+  typeByYear[yr][e.data.type] = (typeByYear[yr][e.data.type] ?? 0) + 1;
+});
+
+// Lifestream — most recent entry + days since
+const mostRecentEntry = lifestream[0] ?? null;
+const daysSinceLastEntry = mostRecentEntry
+  ? daysBetween(mostRecentEntry.data.updatedDate ?? mostRecentEntry.data.pubDate, today)
+  : 0;
+const lastEntryDate = mostRecentEntry
+  ? (mostRecentEntry.data.updatedDate ?? mostRecentEntry.data.pubDate)
+  : null;
+
+// Lifestream — favorite rating per type
+const favoriteByType = Object.fromEntries(
+  MEDIA_TYPES.map(t => [
+    t,
+    RATINGS.reduce((a, b) => ratingByType[t][a] >= ratingByType[t][b] ? a : b)
+  ])
+);
+
+// Lifestream — colors per type for stacked bars
+const lifestreamTypeColors: Record<string, string> = {
+  movie:  "var(--primary)",
+  tvshow: "var(--secondary)",
+  book:   "var(--link)",
+  game:   "var(--hover)",
+};
+
+// Cross-collection
+const totalContent  = totalPosts + totalNotes + totalLinks + totalLifestream;
+
+const typeColors: Record<string, string> = {
+  blog:       "var(--primary)",
+  notes:      "var(--secondary)",
+  links:      "var(--info)",
+  lifestream: "var(--hover)",
+};
+
+const breakdown = [
+  { label: "Blog",       count: totalPosts,      key: "blog"       },
+  { label: "Notes",      count: totalNotes,       key: "notes"      },
+  { label: "Links",      count: totalLinks,       key: "links"      },
+  { label: "Lifestream", count: totalLifestream,  key: "lifestream" },
+].map(b => ({
+  ...b,
+  pct:   totalContent > 0 ? Math.round((b.count / totalContent) * 100) : 0,
+  color: typeColors[b.key],
+}));
+
+const allDated = [
+  ...posts.map(p       => ({ date: p.data.pubDate,                             type: "blog"       })),
+  ...validNotes.map(n  => ({ date: new Date(n.data.published!),                type: "notes"      })),
+  ...links.map(l       => ({ date: l.data.pubDate,                             type: "links"      })),
+  ...lifestream.map(e  => ({ date: e.data.updatedDate ?? e.data.pubDate,       type: "lifestream" })),
+].filter(d => d.date.getFullYear() > 2000);
+
+const combinedByMonth: Record<string, number> = {};
+allDated.forEach(({ date }) => {
+  const key = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}`;
+  combinedByMonth[key] = (combinedByMonth[key] ?? 0) + 1;
+});
+
+const [mostActiveKey, mostActiveCount] = Object.entries(combinedByMonth)
+  .sort((a, b) => b[1] - a[1])[0] ?? ["—", 0];
+
+const contentTypes = ["blog", "notes", "links", "lifestream"] as const;
+
+const unifiedByYear: Record<number, Record<string, number>> = {};
+allDated.forEach(({ date, type }) => {
+  const yr = date.getFullYear();
+  if (!unifiedByYear[yr]) unifiedByYear[yr] = {};
+  unifiedByYear[yr][type] = (unifiedByYear[yr][type] ?? 0) + 1;
+});
+const uYears          = Object.keys(unifiedByYear).map(Number).sort((a, b) => b - a);
+const maxUnifiedTotal = Math.max(
+  ...Object.values(unifiedByYear).map(yr => Object.values(yr).reduce((s, n) => s + n, 0)),
+  1
+);
+
+const allSorted = [...allDated].map(d => d.date).sort((a, b) => a.valueOf() - b.valueOf());
+let qGapDays = 0;
+let qStart: Date = allSorted[0] ?? today;
+let qEnd: Date   = allSorted[1] ?? today;
+for (let i = 1; i < allSorted.length; i++) {
+  const gap = daysBetween(allSorted[i - 1], allSorted[i]);
+  if (gap > qGapDays) { qGapDays = gap; qStart = allSorted[i - 1]; qEnd = allSorted[i]; }
+}
+
+// Heatmap
+const hmStartYear = allDated.length > 0 ? Math.min(...allDated.map(d => d.date.getFullYear())) : today.getFullYear();
+const hmEndYear   = today.getFullYear();
+const hmYears     = Array.from({ length: hmEndYear - hmStartYear + 1 }, (_, i) => hmStartYear + i);
+const maxHmCount  = Math.max(...Object.values(combinedByMonth), 1);
+const hmIntensity = (key: string) => {
+  const c = combinedByMonth[key] ?? 0;
+  if (c === 0) return 0;
+  const r = c / maxHmCount;
+  if (r < 0.25) return 1;
+  if (r < 0.5)  return 2;
+  if (r < 0.75) return 3;
+  return 4;
+};
+---
+
+<style scoped>
+  section {
+    margin-bottom: 2em;
+  }
+  h1 {
+    font-family: var(--sub-font);
+    font-weight: 900;
+  }
+  h2, h3 {
+    font-family: var(--sub-font);
+    font-weight: 900;
+  }
+  h2.section-head {
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+    margin: 2em 0 1em 0;
+    border-bottom: thick dotted var(--border);
+  }
+  h3 {
+    margin: 1.5em 0 0.4em;
+    font-size: 0.85em;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--emphasis);
+  }
+  .intro {
+    margin: 0 0 1.5em;
+    font-size: 0.95em;
+  }
+  .all-intro {
+    margin: -0.25em 0 0 0;
+  }
+  details {
+    margin: -1em 0 -2em 0;
+  }
+
+  /* stat grid */
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(138px, 1fr));
+    gap: 0.6em;
+    margin: 0.75em 0 1em;
+  }
+  .stat-card--wide {
+    grid-column: span 2;
+  }
+  .stat-card {
+    background: var(--blockquote);
+    border: 2px solid var(--border);
+    border-radius: 0.4em;
+    padding: 0.7em 0.9em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2em;
+  }
+  .stat-card--wide {
+    grid-column: span 2;
+  }
+  .stat-value {
+    font-family: var(--sub-font);
+    font-weight: 900;
+    font-size: 1.2em;
+    line-height: 1.1;
+    color: var(--secondary);
+    word-break: break-word;
+  }
+  .stat-label {
+    font-size: 0.7em;
+    color: var(--emphasis);
+    line-height: 1.3;
+  }
+  .stat-sub {
+    font-size: 0.75em;
+    font-weight: 400;
+    font-family: var(--main-font);
+    opacity: 0.75;
+  }
+
+  /* highlight cards */
+  .highlight-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6em;
+    margin: 0.75em 0 1.25em;
+  }
+  .highlight-card {
+    background: var(--blockquote);
+    border: 2px solid var(--border);
+    border-radius: 0.4em;
+    padding: 0.7em 0.9em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15em;
+    overflow: hidden;
+  }
+  .highlight-card a {
+    font-family: var(--main-font);
+  }
+  .hc-eyebrow {
+    font-size: 0.62em;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    font-family: var(--sub-font);
+    font-weight: 900;
+    opacity: 0.6;
+  }
+  .hc-title {
+    font-weight: 900;
+    font-size: 0.95em;
+    line-height: 1.2;
+    color: var(--emphasis);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+  }
+  a.hc-title:hover { color: var(--hover); }
+  .hc-value {
+    font-size: 0.78em;
+    font-family: var(--sub-font);
+    font-weight: 700;
+    color: var(--secondary);
+    margin-top: 0.1em;
+  }
+
+  /* gap note */
+  .gap-note {
+    font-size: 0.9em;
+    margin: 0 0 1.5em;
+  }
+  .gap-dates {
+    color: var(--secondary);
+    font-size: 0.88em;
+    opacity: 0.8;
+    display: block;
+    margin-top: 0.2em;
+  }
+
+  /* bar charts */
+  .bar-chart {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35em;
+    margin: 0.5em 0 1.5em;
+  }
+  .media-type,
+  .game-platforms {
+    margin: 0 0 0 0.25em;
+  }
+  .bar-row {
+    display: flex;
+    align-items: center;
+    gap: 0.6em;
+  }
+  .bar-label {
+    width: 3em;
+    font-family: var(--sub-font);
+    font-weight: 800;
+    font-size: 0.78em;
+    flex-shrink: 0;
+    text-align: right;
+  }
+  .bar-label a { color: var(--emphasis); }
+  .bar-label a:hover { color: var(--hover); }
+  .bar-track {
+    flex: 1;
+    height: 1.05em;
+    background: var(--blockquote);
+    border-radius: 3px;
+    overflow: hidden;
+    display: flex;
+  }
+  .bar-fill {
+    height: 100%;
+    background: var(--primary);
+    border-radius: 3px;
+    min-width: 2px;
+  }
+  .bar-seg {
+    height: 100%;
+    min-width: 2px;
+  }
+  .bar-count {
+    width: 2.2em;
+    color: var(--secondary);
+    font-family: var(--sub-font);
+    font-weight: 700;
+    font-size: 0.78em;
+    flex-shrink: 0;
+  }
+  .bar-chart--stacked .bar-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.15em;
+  }
+  .bar-chart--stacked .bar-label {
+    width: auto;
+    text-align: left;
+    white-space: nowrap;
+  }
+  .bar-chart--stacked .bar-inner {
+    display: flex;
+    align-items: center;
+    gap: 0.6em;
+  }
+
+  /* ratings by type */
+  .rating-by-type {
+    margin-bottom: 1em;
+  }
+  .rating-by-type .bar-chart {
+    margin: 0;
+  }
+  .type-label {
+    font-family: var(--sub-font);
+    font-weight: 800;
+    font-size: 0.78em;
+    margin: 0 0 0.3em;
+  }
+
+  /* ratings */
+  .ratings {
+    margin: 0 0 0 -1em;
+  }
+
+  /* tag cloud */
+  .tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4em;
+    list-style: none;
+    padding: 0;
+    margin: 0.5em 0 1.5em;
+    align-items: baseline;
+  }
+  .tag-cloud li a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25em;
+    background: var(--info);
+    border-radius: 0.3em;
+    padding: 0.15em 0.55em;
+    font-family: var(--sub-font);
+    font-weight: 800;
+    color: #000;
+    text-decoration: none;
+    line-height: 1.6;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .tag-cloud li a:hover {
+    background-color: var(--hover);
+  }
+  .tag-pill {
+    font-size: 0.63em;
+    background: rgba(0,0,0,0.12);
+    border-radius: 9999px;
+    padding: 0 5px;
+    font-weight: 400;
+    font-family: var(--main-font);
+  }
+
+  /* breakdown bar */
+  .breakdown-bar {
+    display: flex;
+    height: 2em;
+    border-radius: 0.35em;
+    overflow: hidden;
+    margin: 0.5em 0 0.5em;
+    border: 2px solid var(--border);
+  }
+  .bd-seg {
+    height: 100%;
+    min-width: 2px;
+    transition: opacity 0.15s;
+  }
+  .bd-seg:hover { opacity: 0.8; }
+  .bd-legend {
+    list-style: none;
+    padding: 0;
+    margin: 0.5em 0 1.5em;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4em 1em;
+    font-size: 0.8em;
+    font-family: var(--sub-font);
+    font-weight: 700;
+  }
+  .bd-legend li {
+    display: flex;
+    align-items: center;
+    gap: 0.35em;
+  }
+  .bd-swatch {
+    display: inline-block;
+    width: 0.7em;
+    height: 0.7em;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+  .bd-pct {
+    font-weight: 400;
+    font-family: var(--main-font);
+    opacity: 0.7;
+  }
+
+  /* heatmap */
+  .hm-sub {
+    font-size: 0.85em;
+    opacity: 0.75;
+    margin: 0 0 0.6em;
+  }
+  .heatmap-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin: 0 0 0.4em;
+    overflow-x: auto;
+  }
+  .hm-header,
+  .hm-row {
+    display: grid;
+    grid-template-columns: 2.5em repeat(12, 1fr);
+    gap: 3px;
+    align-items: center;
+    min-width: 460px;
+  }
+  .hm-yr-pad { /* year label spacer */ }
+  .hm-m-label {
+    font-size: 0.58em;
+    font-family: var(--sub-font);
+    font-weight: 700;
+    text-align: center;
+    opacity: 0.65;
+  }
+  .hm-yr-label {
+    font-size: 0.63em;
+    font-family: var(--sub-font);
+    font-weight: 800;
+    text-align: right;
+    padding-right: 0.4em;
+    opacity: 0.65;
+  }
+  .hm-cell {
+    aspect-ratio: 1;
+    border-radius: 0;
+  }
+  .heat-0 { background: var(--blockquote); border: 1px solid var(--border); }
+  .heat-1 { background: color-mix(in srgb, var(--primary) 22%, transparent); }
+  .heat-2 { background: color-mix(in srgb, var(--primary) 45%, transparent); }
+  .heat-3 { background: color-mix(in srgb, var(--primary) 70%, transparent); }
+  .heat-4 { background: var(--primary); }
+  .hm-future { background: transparent; border: 1px dashed var(--border); opacity: 0.25; }
+
+  .hm-legend {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.68em;
+    font-family: var(--sub-font);
+    font-weight: 700;
+    opacity: 0.7;
+    margin-bottom: 1.5em;
+  }
+  .hm-legend .hm-cell {
+    width: 0.85em;
+    height: 0.85em;
+    flex-shrink: 0;
+    aspect-ratio: unset;
+  }
+
+  @media screen and (max-width: 667px) {
+    h2.section-head { font-size: 1.2em; }
+    .stat-grid { grid-template-columns: repeat(2, 1fr); }
+    .highlight-pair { grid-template-columns: 1fr; }
+    .bar-label { width: 2.6em; }
+    .stat-card--wide { grid-column: span 2; }
+  }
+</style>
+
+<BaseLayout title={title} description={description}>
+  <BreadcrumbSchema slot="head" crumbs={[
+    { name: "Home", url: `${SITE_URL}` },
+    { name: "Stats", url: `${SITE_URL}/stats` },
+  ]} />
+  <CollectionPageSchema
+    slot="head"
+    name={title}
+    description={description}
+    url={`${SITE_URL}/stats`}
+  />
+
+  <section>
+    <h1>{title}</h1>
+    <a class="u-url" href={`${SITE_URL}/stats`} hidden>Permalink</a>
+    <hr class="topline" />
+    <p class="intro">{description}</p>
+
+    <details>
+      <summary>Table of Contents</summary>
+      <div class="details-content">
+        <ol class="toc">
+          <li><a href="#blog">Blog</a></li>
+          <li><a href="#notes">Notes</a></li>
+          <li><a href="#links">Links</a></li>
+          <li><a href="#lifestream">Lifestream</a></li>
+          <li><a href="#allthethings">All The Things</a></li>
+        </ol>
+      </div>
+    </details>
+
+    <!-- BLOG -->
+    <h2 id="blog" class="section-head">Blog</h2>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <span class="stat-value">{totalPosts}</span>
+        <span class="stat-label">Total posts</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value">{formatDuration(totalReadingMins)}</span>
+        <span class="stat-label">Total reading time</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value">{totalUniqueTags}</span>
+        <span class="stat-label">Unique tags</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value" data-date={lastPost?.data.pubDate.toISOString()}>{daysSinceLast}</span>
+        <span class="stat-label">Days since last post</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value" data-date={firstPost?.data.pubDate.toISOString()}>{daysSinceFirst}</span>
+        <span class="stat-label">Days since first post</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value">{avgPostsPerMonth}</span>
+        <span class="stat-label">Avg. posts / month</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value">{avgPostsPerYear}</span>
+        <span class="stat-label">Avg. posts / year</span>
+      </div>
+    </div>
+
+    <div class="highlight-pair">
+      <div class="highlight-card">
+        <span class="hc-eyebrow">Longest post</span>
+        <a href={`/blog/${longestPost?.id}`} class="hc-title">{longestPost?.data.title}</a>
+        <span class="hc-value">{longestPost?.readingTime}</span>
+      </div>
+      <div class="highlight-card">
+        <span class="hc-eyebrow">Shortest post</span>
+        <a href={`/blog/${shortestPost?.id}`} class="hc-title">{shortestPost?.data.title}</a>
+        <span class="hc-value">{shortestPost?.readingTime}</span>
+      </div>
+      <div class="highlight-card">
+        <span class="hc-eyebrow">Most prolific year</span>
+        <a href={`/blog/years/${prolificYearKey}`} class="hc-title">{prolificYearKey}</a>
+        <span class="hc-value">{prolificYearCount} posts</span>
+      </div>
+      <div class="highlight-card">
+        <span class="hc-eyebrow">Most prolific month</span>
+        <span class="hc-title">{fmtMonthKey(prolificMonthKey)}</span>
+        <span class="hc-value">{prolificMonthCount} posts</span>
+      </div>
+    </div>
+
+    <p class="gap-note">
+      Longest gap between posts: <strong>{longestGapDays} days</strong>
+      <span class="gap-dates">{fmtDate(lgStart)} → {fmtDate(lgEnd)}</span>
+    </p>
+
+    <h3>Posts by year</h3>
+    <div class="bar-chart" role="img" aria-label="Posts per year">
+      {blogYears.map(yr => (
+        <div class="bar-row">
+          <span class="bar-label"><a href={`/blog/years/${yr}`}>{yr}</a></span>
+          <div class="bar-track">
+            <div class="bar-fill" style={`width: ${Math.max((postsByYear[yr] / maxPostsInYear) * 100, 2)}%`}></div>
+          </div>
+          <span class="bar-count">{postsByYear[yr]}</span>
+        </div>
+      ))}
+    </div>
+
+    <h3>Top tags</h3>
+    <ul class="tag-cloud">
+      {topTags.map(([tag, count]) => (
+        <li>
+          <a href={`/categories/${tag}`} style={`font-size: ${0.8 + (count / maxTagCount) * 0.5}em`}>
+            {tag}<span class="tag-pill">{count}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- NOTES -->
+    <h2 id="notes" class="section-head">Notes</h2>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <span class="stat-value">{totalNotes}</span>
+        <span class="stat-label">Total notes</span>
+      </div>
+      {firstNote && (
+        <div class="stat-card">
+          <span class="stat-value">{fmtDate(new Date(firstNote.data.published!))}</span>
+          <span class="stat-label">First note</span>
+        </div>
+      )}
+      {lastNote && (
+        <div class="stat-card">
+          <span class="stat-value">{fmtDate(new Date(lastNote.data.published!))}</span>
+          <span class="stat-label">Most recent note</span>
+        </div>
+      )}
+    </div>
+
+    <!-- LINKS -->
+    <h2 id="links" class="section-head">Links</h2>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <span class="stat-value">{totalLinks}</span>
+        <span class="stat-label">Total links</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value">{avgLinksPerMonth}</span>
+        <span class="stat-label">Avg. links / month</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value" data-date={lastLink?.data.pubDate.toISOString()}>{daysSinceLastLink}</span>
+        <span class="stat-label">Days since last link</span>
+      </div>
+    </div>
+
+    <h3>Links by year</h3>
+    <div class="bar-chart" role="img" aria-label="Links per year">
+      {linkYears.map(yr => (
+        <div class="bar-row">
+          <span class="bar-label">{yr}</span>
+          <div class="bar-track">
+            <div class="bar-fill" style={`width: ${Math.max((linksByYear[yr] / maxLinksInYear) * 100, 2)}%`}></div>
+          </div>
+          <span class="bar-count">{linksByYear[yr]}</span>
+        </div>
+      ))}
+    </div>
+
+    <!-- LIFESTREAM -->
+    <h2 id="lifestream" class="section-head">Lifestream</h2>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <span class="stat-value">{totalLifestream}</span>
+        <span class="stat-label">Total media entries</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value" data-date={lastEntryDate?.toISOString()}>{daysSinceLastEntry}</span>
+        <span class="stat-label">Days since last entry</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value">{mostLoggedYear[0]}</span>
+        <span class="stat-label">Most logged year <span class="stat-sub">({mostLoggedYear[1]} entries)</span></span>
+      </div>
+      <div class="stat-card stat-card--wide">
+        <span class="stat-value">{ratingEmoji[topRating]}&nbsp;{topRating}</span>
+        <span class="stat-label">Most common rating <span class="stat-sub">({byRating[topRating]} entries · {Math.round((byRating[topRating] / totalLifestream) * 100)}%)</span></span>
+      </div>
+      <div class="stat-card stat-card--wide">
+        <span class="stat-value">{mostRecentEntry?.data.title}</span>
+        <span class="stat-label">Most recent entry</span>
+      </div>
+    </div>
+
+    <h3>Favorite rating by type</h3>
+    <div class="stat-grid">
+      {MEDIA_TYPES.map(t => (
+        <div class="stat-card">
+          <span class="stat-value">{ratingEmoji[favoriteByType[t]]}</span>
+          <span class="stat-label">{typeLabels[t]}</span>
+        </div>
+      ))}
+    </div>
+
+    <h3>By media type</h3>
+    <div class="media-type">
+      <div class="bar-chart bar-chart--stacked" role="img" aria-label="Lifestream entries by media type">
+        {MEDIA_TYPES.map(t => (
+          <div class="bar-row">
+            <span class="bar-label">{typeLabels[t]}</span>
+            <div class="bar-inner">
+              <div class="bar-track">
+                <div class="bar-fill" style={`width: ${Math.max((byType[t] / maxByType) * 100, 2)}%`}></div>
+              </div>
+              <span class="bar-count">{byType[t]}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    {topPlatforms.length > 0 && (
+      <>
+        <h3>By game platform</h3>
+        <div class="game-platforms">
+          <div class="bar-chart bar-chart--stacked" role="img" aria-label="Games by platform">
+            {topPlatforms.map(([platform, count]) => (
+              <div class="bar-row">
+                <span class="bar-label">{platform}</span>
+                <div class="bar-inner">
+                  <div class="bar-track">
+                    <div class="bar-fill" style={`width: ${Math.max((count / maxPlatformCount) * 100, 2)}%`}></div>
+                  </div>
+                  <span class="bar-count">{count}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </>
+    )}
+
+    <h3>By rating</h3>
+    <div class="ratings">
+      <div class="bar-chart" role="img" aria-label="Lifestream entries by rating">
+        {RATINGS.map(r => (
+          <div class="bar-row">
+            <span class="bar-label">{ratingEmoji[r]}</span>
+            <div class="bar-track">
+              <div class="bar-fill" style={`width: ${Math.max((byRating[r] / maxByRating) * 100, byRating[r] > 0 ? 2 : 0)}%`}></div>
+            </div>
+            <span class="bar-count">{byRating[r]}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <h3>Ratings by media type</h3>
+    {MEDIA_TYPES.map(t => (
+      <div class="rating-by-type">
+        <p class="type-label">{typeLabels[t]}</p>
+        <div class="bar-chart">
+          {RATINGS.map(r => ratingByType[t][r] > 0 ? (
+            <div class="bar-row ratings">
+              <span class="bar-label">{ratingEmoji[r]}</span>
+              <div class="bar-track">
+                <div class="bar-fill" style={`width: ${Math.max((ratingByType[t][r] / maxRatingByType[t]) * 100, 2)}%`}></div>
+              </div>
+              <span class="bar-count">{ratingByType[t][r]}</span>
+            </div>
+          ) : null)}
+        </div>
+      </div>
+    ))}
+
+    <h3>Media breakdown</h3>
+    <div class="breakdown-bar" role="img" aria-label="Media type breakdown">
+      {MEDIA_TYPES.filter(t => byType[t] > 0).map(t => (
+        <div
+          class="bd-seg"
+          style={`flex: ${byType[t]}; background: ${lifestreamTypeColors[t]};`}
+          title={`${typeLabels[t]}: ${byType[t]} (${Math.round((byType[t] / totalLifestream) * 100)}%)`}
+        ></div>
+      ))}
+    </div>
+    <ul class="bd-legend">
+      {MEDIA_TYPES.map(t => (
+        <li>
+          <span class="bd-swatch" style={`background: ${lifestreamTypeColors[t]};`}></span>
+          {typeLabels[t]}: {byType[t]} <span class="bd-pct">({totalLifestream > 0 ? Math.round((byType[t] / totalLifestream) * 100) : 0}%)</span>
+        </li>
+      ))}
+    </ul>
+
+    <h3>Media by year</h3>
+    <div class="bar-chart" role="img" aria-label="Lifestream entries per year by type">
+      {lifestreamYears.map(yr => {
+        const yd    = typeByYear[yr] ?? {};
+        const total = lifestreamByYear[yr];
+        return (
+          <div class="bar-row">
+            <span class="bar-label">{yr}</span>
+            <div class="bar-track">
+              {MEDIA_TYPES.map(t => yd[t] ? (
+                <div
+                  class="bar-seg"
+                  style={`width: ${(yd[t] / maxLifestreamInYear) * 100}%; background: ${lifestreamTypeColors[t]};`}
+                  title={`${typeLabels[t]}: ${yd[t]}`}
+                ></div>
+              ) : null)}
+            </div>
+            <span class="bar-count">{total}</span>
+          </div>
+        );
+      })}
+    </div>
+
+    <!-- ALL THE THINGS -->
+    <h2 id="allthethings" class="section-head">All The Things</h2>
+    <p class="intro all-intro"><span class="sub-font secondary w9">{totalContent}</span> total pieces of content across all collections.</p>
+
+    <h3>Content breakdown</h3>
+    <div class="breakdown-bar" role="img" aria-label="Content type breakdown">
+      {breakdown.filter(b => b.count > 0).map(b => (
+        <div
+          class="bd-seg"
+          style={`width: ${b.pct}%; background: ${b.color};`}
+          title={`${b.label}: ${b.count} (${b.pct}%)`}
+        ></div>
+      ))}
+    </div>
+    <ul class="bd-legend">
+      {breakdown.map(b => (
+        <li>
+          <span class="bd-swatch" style={`background: ${b.color};`}></span>
+          {b.label}: {b.count} <span class="bd-pct">({b.pct}%)</span>
+        </li>
+      ))}
+    </ul>
+
+    <p class="gap-note">
+      Most active month: <strong>{fmtMonthKey(mostActiveKey)}</strong> with {mostActiveCount} items.
+    </p>
+
+    <h3>Content by year</h3>
+    <div class="bar-chart" role="img" aria-label="All content by year, stacked by type">
+      {uYears.map(yr => {
+        const yd    = unifiedByYear[yr];
+        const total = Object.values(yd).reduce((s, n) => s + n, 0);
+        return (
+          <div class="bar-row">
+            <span class="bar-label">{yr}</span>
+            <div class="bar-track">
+              {contentTypes.map(type => yd[type] ? (
+                <div
+                  class="bar-seg"
+                  style={`width: ${(yd[type] / maxUnifiedTotal) * 100}%; background: ${typeColors[type]};`}
+                  title={`${type}: ${yd[type]}`}
+                ></div>
+              ) : null)}
+            </div>
+            <span class="bar-count">{total}</span>
+          </div>
+        );
+      })}
+    </div>
+
+    <h3>Activity heatmap</h3>
+    <p class="hm-sub">Combined publishing activity across all collections, by month.</p>
+    <div class="heatmap-wrap" role="img" aria-label="Monthly publishing activity heatmap">
+      <div class="hm-header">
+        <span class="hm-yr-pad"></span>
+        {MONTH_NAMES.map(m => <span class="hm-m-label">{m}</span>)}
+      </div>
+      {hmYears.map(yr => (
+        <div class="hm-row">
+          <span class="hm-yr-label">{yr}</span>
+          {Array.from({ length: 12 }, (_, i) => {
+            const mo  = i + 1;
+            const key = `${yr}-${String(mo).padStart(2, "0")}`;
+            const cnt = combinedByMonth[key] ?? 0;
+            const lvl = hmIntensity(key);
+            const isFuture = yr === today.getFullYear() && mo > today.getMonth() + 1;
+            return (
+              <div
+                class={`hm-cell ${isFuture ? "hm-future" : `heat-${lvl}`}`}
+                title={isFuture ? "" : `${MONTH_NAMES[i]} ${yr}: ${cnt} item${cnt !== 1 ? "s" : ""}`}
+              ></div>
+            );
+          })}
+        </div>
+      ))}
+    </div>
+    <div class="hm-legend">
+      <span>Less</span>
+      {[0,1,2,3,4].map(l => <div class={`hm-cell heat-${l}`}></div>)}
+      <span>More</span>
+    </div>
+
+    <p class="gap-note">
+      Quietest stretch: <strong>{qGapDays} days</strong> with no content published across any collection.
+      <span class="gap-dates">{fmtDate(qStart)} → {fmtDate(qEnd)}</span>
+    </p>
+
+  </section>
+  <hr />
+  <BackToTop />
+</BaseLayout>
+
+<script>
+  document.querySelectorAll('[data-date]').forEach(el => {
+    const date = new Date((el as HTMLElement).dataset.date!);
+    const days = Math.floor((Date.now() - date.getTime()) / 86_400_000);
+    el.textContent = days.toString();
+  });
+</script>

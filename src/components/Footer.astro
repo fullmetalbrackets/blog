@@ -19,7 +19,7 @@ import { GITHUB, MASTODON, BLUESKY, DONATE } from '@consts';
   footer {
     background: var(--blockquote);
     margin: 0 auto;
-    padding: 1.25em 1em 1em 1em;
+    padding: 1.25em auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -32,7 +32,7 @@ import { GITHUB, MASTODON, BLUESKY, DONATE } from '@consts';
     align-items: center;
     justify-content: space-between;
     gap: 1.5em;
-    margin: 0 auto;
+    margin: 1.25em auto 0 auto;
     padding: 0;
   }
   .icons a:hover {
@@ -144,11 +144,11 @@ import { GITHUB, MASTODON, BLUESKY, DONATE } from '@consts';
   .nav-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 0.5em 3em;
     font-family: var(--sub-font);
     font-weight: 900;
     font-size: 0.8em;
     width: 100%;
+    box-sizing: border-box;
     max-width: 480px;
   }
   .nav-col {
@@ -156,7 +156,7 @@ import { GITHUB, MASTODON, BLUESKY, DONATE } from '@consts';
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 0.4em;
+    gap: 0.25em;
   }
   .nav-col h3 {
     font-size: 0.7em;
@@ -222,12 +222,8 @@ import { GITHUB, MASTODON, BLUESKY, DONATE } from '@consts';
 
   /* mobile  */
   @media screen and (max-width: 667px) {
-    .nav-grid {
-      gap: 0.5em 1em;
-    }
     .icons {
       gap: 0.7em;
-      
       margin: 0 auto;
     }
     .bottom {
@@ -288,6 +284,7 @@ import { GITHUB, MASTODON, BLUESKY, DONATE } from '@consts';
       <a href="/notes" data-umami-event="footer-notes">Notes</a>
       <a href="/blogroll" data-umami-event="footer-blogroll">Blogroll</a>
       <a href="/postroll" data-umami-event="footer-postroll">Postroll</a>
+      <a href="/categories" data-umami-event="footer-categories">Categories</a>
     </div>
     <div class="nav-col">
       <a href="/now" data-umami-event="footer-now">Now</a>
@@ -295,13 +292,15 @@ import { GITHUB, MASTODON, BLUESKY, DONATE } from '@consts';
       <a href="/wiki" data-umami-event="footer-wiki">Wiki</a>
       <a href="/games" data-umami-event="footer-games">Games</a>
       <a href="/lifestream" data-umami-event="footer-lifestream">Lifestream</a>
+      <a href="/self-hosted" data-umami-event="footer-selfhosted">Selfhosted</a>
     </div>
     <div class="nav-col">
-      <a href="/explore" data-umami-event="footer-explore">Explore</a>
+      <a href="/stats" data-umami-event="footer-stats">Stats</a>
+      <a href="/style" data-umami-event="footer-style">Style</a>
       <a href="/verify" data-umami-event="footer-verify">Verify</a>
+      <a href="/explore" data-umami-event="footer-explore">Explore</a>
       <a href="/colophon" data-umami-event="footer-colophon">Colophon</a>
       <a href="/changelog" data-umami-event="footer-changelog">Changelog</a>
-      <a href="/self-hosted" data-umami-event="footer-selfhosted">Selfhosted</a>
     </div>
   </nav>
 

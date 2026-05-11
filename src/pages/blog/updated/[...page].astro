@@ -136,7 +136,7 @@ const updatedItems = page.data.map(post => ({
   .page-info-top {
     display: flex;
     font-weight: 900;
-    margin: 1em auto -1.75em auto;
+    margin: 1em auto -1.7em auto;
     justify-content: space-around;
     place-items: center;
     font-family: var(--sub-font);
@@ -161,12 +161,12 @@ const updatedItems = page.data.map(post => ({
   .prev {
     grid-column: 1;
     justify-content: start;
-    margin-top: 1px;
+    margin-top: -0.1em;
   }
   .next {
     grid-column: 3;
     justify-content: end;
-    margin-top: 1px;
+    margin-top: -0.1em;
   }
   .prev a svg, .next a svg {
     display: inline-flex;
@@ -184,6 +184,9 @@ const updatedItems = page.data.map(post => ({
   .next a:hover svg {
     transition: all .1s ease-in-out;
     transform: translateX(4px);
+  }
+  .bottom-line {
+    margin-top: 2em;
   }
   @media screen and (max-width: 667px) {
     section {
@@ -295,7 +298,7 @@ const updatedItems = page.data.map(post => ({
         )}
       </span>
     </nav>
-    <hr />
+    <hr class="bottom-line" />
     <BackToTop />
   </section>
 </BaseLayout>

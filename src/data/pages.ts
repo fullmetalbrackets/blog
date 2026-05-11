@@ -111,6 +111,12 @@ export const pages: Page[] = [
     event: 'explore-selfhosted',
   },
   {
+    href: '/stats',
+    title: 'Stats',
+    description: 'Statistics and data about this site and its content.',
+    event: 'explore-stats',
+  },
+  {
     href: '/style',
     title: 'Style',
     description: 'Markdown style guide for the website.',
@@ -131,23 +137,10 @@ export const pages: Page[] = [
     event: 'explore-wiki',
   },
   {
-    href: '/updated',
-    title: 'Updated',
-    description:
-      'Blog posts that have received updates, sorted by most recent.',
-    event: 'explore-updated',
-  },
-  {
     href: '/verify',
     title: 'Verify',
     description:
       'Verify my identity online across different services and social media.',
     event: 'explore-verify',
-  },
-  {
-    href: '/blog/years',
-    title: 'Years',
-    description: 'Blog posts sorted by year.',
-    event: 'explore-years',
   },
 ];
