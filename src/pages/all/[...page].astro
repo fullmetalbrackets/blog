@@ -40,7 +40,7 @@ const pageUrl = page.currentPage === 1
     <h1 class="p-name">{title}</h1>
     <a class="u-url" href={`${SITE_URL}/all`} hidden>Permalink</a>
     <hr />
-    <p class="desc">A firehose of all <span class="total">{page.total}</span> content entries across the site, sorted by most recent.</p>
+    <p class="desc">A firehose of all <span class="total">{page.total}</span> content entries across the site, regardless of type, sorted by most recent.</p>
     <div class="page-info-top">Page {page.currentPage} of {page.lastPage}</div>
     <nav class="pagination" aria-label="Firehose pagination">
       <span class="prev">
