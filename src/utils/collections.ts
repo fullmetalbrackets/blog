@@ -110,3 +110,121 @@ export async function getSortedNotes() {
       new Date(a.data.published ?? 0).valueOf()
   );
 }
+
+import type { ImageMetadata } from 'astro';
+
+export type FirehoseEntry = {
+  type:
+    | 'blog'
+    | 'link'
+    | 'wiki'
+    | 'lifestream'
+    | 'now'
+    | 'note'
+    | 'blogroll'
+    | 'postroll';
+  title: string;
+  date: Date;
+  slug?: string;
+  url?: string;
+  tags?: string[];
+  mediaType?: string;
+  image?: ImageMetadata | string;
+  imageAlt?: string;
+  content?: string;
+};
+
+export async function getFirehose(): Promise<FirehoseEntry[]> {
+  const [
+    posts,
+    links,
+    wikiEntries,
+    lifestreamEntries,
+    nowEntries,
+    notesEntries,
+    blogrollEntries,
+    postrollEntries,
+  ] = await Promise.all([
+    getCollection('blog'),
+    getCollection('links'),
+    getCollection('wiki'),
+    getCollection('lifestream'),
+    getCollection('now'),
+    getCollection('notes'),
+    getCollection('blogroll'),
+    getCollection('postroll'),
+  ]);
+
+  const entries: FirehoseEntry[] = [
+    ...posts.map((e) => ({
+      type: 'blog' as const,
+      title: e.data.title,
+      date: e.data.pubDate,
+      slug: `/blog/${e.id}`,
+      tags: e.data.tags,
+    })),
+    ...links.map((e) => ({
+      type: 'link' as const,
+      title: e.data.title,
+      date: e.data.pubDate,
+      url: e.data.url,
+      tags: [e.data.tag],
+    })),
+    ...wikiEntries.map((e) => ({
+      type: 'wiki' as const,
+      title: e.data.title,
+      date: e.data.pubDate,
+      slug: `/wiki/${e.id}`,
+      tags: [e.data.tag],
+    })),
+    ...lifestreamEntries.map((e) => ({
+      type: 'lifestream' as const,
+      title: e.data.title,
+      date: e.data.updatedDate ?? e.data.pubDate,
+      slug: `/lifestream/${e.id}`,
+      mediaType: e.data.type,
+      image: e.data.image,
+    })),
+    ...nowEntries.map((e) => ({
+      type: 'now' as const,
+      title: `Now — ${e.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}`,
+      date: e.data.pubDate,
+      slug: `/now/${e.id}`,
+    })),
+    ...notesEntries.map((e) => {
+      const content = e.data.content as string | undefined;
+      const imageUrl = (e.data.image as any)?.url as string | undefined;
+      const imageAlt =
+        content?.match(/<img[^>]*alt="([^"]*)"[^>]*>/)?.[1] ?? '';
+      const cleanContent = content
+        ?.replace(/<a[^>]*youtube\.com\/watch[^>]*>.*?<\/a>/g, '')
+        ?.replace(/<img[^>]*>/g, '')
+        .trim();
+      return {
+        type: 'note' as const,
+        title: '',
+        date: e.data.published
+          ? new Date(e.data.published as string)
+          : new Date(0),
+        url: e.data.url as string,
+        image: imageUrl,
+        imageAlt,
+        content: cleanContent,
+      };
+    }),
+    ...blogrollEntries.map((e) => ({
+      type: 'blogroll' as const,
+      title: e.data.name,
+      date: e.data.pubDate,
+      url: e.data.url,
+    })),
+    ...postrollEntries.map((e) => ({
+      type: 'postroll' as const,
+      title: e.data.title,
+      date: e.data.pubDate,
+      url: e.data.url,
+    })),
+  ];
+
+  return entries.sort((a, b) => b.date.valueOf() - a.date.valueOf());
+}

@@ -1,0 +1,370 @@
+---
+export const prerender = true;
+
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { getFirehose } from '@utils/collections';
+import FormattedDate from "@components/FormattedDate.astro";
+import BackToTop from "@components/BackToTop.astro";
+import CollectionPageSchema from '@components/CollectionPageSchema.astro';
+import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
+import { Image } from 'astro:assets';
+import { SITE_TITLE, SITE_URL } from "@consts";
+import type { PaginateFunction } from 'astro';
+import { pages } from "@data/pages";
+
+export async function getStaticPaths({ paginate }: { paginate: PaginateFunction }) {
+  const entries = await getFirehose();
+  return paginate(entries, { pageSize: 25 });
+}
+
+const { page } = Astro.props;
+const { title, description } = pages.find(p => p.href === "/all")!;
+const pageTitle = `${title} - Page ${page.currentPage} | ${SITE_TITLE}`;
+const pageUrl = page.currentPage === 1
+  ? `${SITE_URL}/all`
+  : `${SITE_URL}/all/${page.currentPage}`;
+---
+
+<BaseLayout title={pageTitle} description={description}>
+  <BreadcrumbSchema slot="head" crumbs={[
+    { name: "Home", url: `${SITE_URL}` },
+    { name: title, url: `${SITE_URL}/all` }
+  ]} />
+  <CollectionPageSchema
+    slot="head"
+    name={title}
+    description={description}
+    url={pageUrl}
+  />
+  <section class="h-feed">
+    <h1 class="p-name">{title}</h1>
+    <a class="u-url" href={`${SITE_URL}/all`} hidden>Permalink</a>
+    <hr />
+    <p class="desc">A firehose of all <span class="total">{page.total}</span> content entries across the site, regardless of type, sorted by most recent.</p>
+    <div class="page-info-top">Page {page.currentPage} of {page.lastPage}</div>
+    <nav class="pagination" aria-label="Firehose pagination">
+      <span class="prev">
+        {page.url.prev ? (
+          <a href={page.url.prev} rel="prefetch-intent prev">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><title>Newer</title><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg> Newer
+          </a>
+        ) : <span />}
+      </span>
+      <span class="next">
+        {page.url.next ? (
+          <a href={page.url.next} rel="prefetch-intent next">
+            Older <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><title>Older</title><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg>
+          </a>
+        ) : <span />}
+      </span>
+    </nav>
+    <ul>
+    {page.data.map(entry => {
+        const href = entry.slug ?? entry.url ?? '#';
+        const isExternal = !entry.slug;
+        return (
+        <span class="type-label">{entry.type}</span>
+        <li class="h-entry">
+            <a
+            class={`entry entry--${entry.type} u-url`}
+            href={href}
+            {...isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : { rel: 'prefetch-intent' }}
+            >
+
+            {entry.type === 'note' ? (
+                <>
+                <div class="note-wrap">
+                    {entry.image && (
+                    <img src={entry.image as string} alt={entry.imageAlt ?? ''} class="note-image" />
+                    )}
+                    <div class="note-body e-content" set:html={entry.content} />
+                </div>
+                <div class="meta dt-published">
+                    <FormattedDate date={entry.date} />
+                </div>
+                </>
+            ) : entry.type === 'lifestream' ? (
+                <div class="lifestream-entry">
+                {entry.image && (
+                    <Image
+                    src={entry.image as any}
+                    alt={entry.title}
+                    class="poster"
+                    width={48}
+                    height={72}
+                    />
+                )}
+                <div class="lifestream-info">
+                    <span class="p-name title">{entry.title}</span>
+                    <div class="meta">
+                      <span class="media-type">{entry.mediaType}</span>
+                      <FormattedDate class="dt-published" date={entry.date} monthFormat="short" />
+                    </div>
+                </div>
+                </div>
+            ) : (
+                <>
+                <span class="p-name title">{entry.title}</span>
+                {entry.tags && entry.tags.length > 0 && (
+                    <p class="tag">
+                    {entry.tags.map(tag => <span class="tag-pill button">{tag}</span>)}
+                    </p>
+                )}
+                <div class="meta">
+                    <FormattedDate class="dt-published" date={entry.date} />
+                </div>
+                </>
+            )}
+            </a>
+        </li>
+        );
+    })}
+    </ul>
+    <div class="page-info">Page {page.currentPage} of {page.lastPage}</div>
+    <nav class="pagination" aria-label="Firehose pagination">
+      <span class="prev">
+        {page.url.prev ? (
+          <a href={page.url.prev} rel="prefetch-intent prev">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><title>Newer</title><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg> Newer
+          </a>
+        ) : <span />}
+      </span>
+      <span class="next">
+        {page.url.next ? (
+          <a href={page.url.next} rel="prefetch-intent next">
+            Older <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><title>Older</title><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg>
+          </a>
+        ) : <span />}
+      </span>
+    </nav>
+    <hr class="bottom-line" />
+    <BackToTop />
+  </section>
+</BaseLayout>
+
+<style scoped>
+  h1 {
+    font-family: var(--sub-font);
+    font-weight: 900;
+  }
+  .desc {
+    font-size: 1em;
+    margin-bottom: 1em;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 1.5em auto 0 auto;
+    max-width: 1000px;
+  }
+  li {
+    display: inline-block;
+    width: 100%;
+    margin: 0 auto 2em auto;
+  }
+  li:last-of-type {
+    margin: 0 auto;
+  }
+  .entry {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    transition: 0.1s ease-in-out;
+    background: var(--blockquote);
+    border: 1px solid var(--blockquote);
+    padding: 1em;
+    border-radius: 0.5em;
+    padding: 0 1em 1em 1em;
+  }
+  li:hover .entry {
+    border: 1px solid var(--primary);
+    transition: all .25s ease-out;
+  }
+  @media (hover: hover) {
+    li:hover .button, li:hover .media-type {
+      box-shadow: -4px -4px 0 #000;
+      transform: translate(4px, 4px);
+      transition: 0.15s ease-in-out;
+      outline-offset: 1px;
+    }
+  }
+    @media (hover: none) {
+    li:hover .button, li:hover .media-type {
+      box-shadow: none;
+      transform: none;
+    }
+  }
+  .type-label {
+    display: inline-block;
+    font-family: var(--sub-font);
+    font-size: 0.675em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--secondary);
+    margin: 0 0 0 0.25em;
+  }
+  .title {
+    display: block;
+    font-weight: bold;
+    line-height: 1.2;
+    color: var(--emphasis);
+  }
+  .title:not(.lifestream-entry .title, .entry--link .title) {
+    margin-top: 0.85em;
+    margin-bottom: 0.25em;
+  }
+  .entry--link .title, .entry--blog .title, .entry--wiki .title {
+    margin-bottom: 0;
+  }
+  .entry--lifestream {
+    border-radius: 0 0.5em 0.5em 0;
+  }
+  li:hover .title {
+    color: var(--hover);
+    transition: all .25s ease-out;
+  }
+  .meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    font-size: 0.875em;
+    margin-top: 0.5em;
+  }
+  .media-type {
+    font-family: var(--sub-font);
+    font-size: 0.8575em;
+    font-weight: 800;
+    color: #000;
+    background: var(--link);
+    padding: 4px 6px;
+    border-radius: 0.25em;
+    transition: all 0.2s ease-in-out;
+  }
+  .tag {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25em;
+    margin: 0.25em 0 0 0;
+    padding: 0;
+  }
+  .tag-pill {
+    margin: 0;
+    background: var(--info);
+    transition: all 0.2s ease-in-out;
+  }
+  /* note styles */
+  .note-wrap {
+    border-radius: 0.5em;
+    overflow: hidden;
+    margin-top: 0.25em;
+  }
+  .note-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0.75em 0 0 0;
+  }
+  .note-body {
+    font-size: 0.875em;
+    line-height: 1.65;
+    color: var(--text);
+    margin-top: 0.35em;
+  }
+  .note-wrap:not(:has(.note-image)) .note-body {
+    border-radius: 0.5em;
+  }
+  .note-body :global(p) { margin: 0 0 0.5em; }
+  .note-body :global(p:last-child) { margin-bottom: 0; }
+  /* lifestream styles */
+  .lifestream-entry {
+    display: flex;
+    align-items: center;
+    gap: 0.75em;
+    text-decoration: none;
+    padding-top: 0.25em;
+    margin-bottom: -0.75em;
+  }
+  .poster {
+    height: 128px;
+    width: auto;
+    object-fit: cover;
+    flex-shrink: 0;
+    margin: -2em 0 -2em -0.95em;
+  }
+  .lifestream-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25em;
+    padding-bottom: 1em;
+  }
+  /* pagination */
+  .page-info-top {
+    display: flex;
+    font-weight: 900;
+    margin: 1.5em auto -1.35em auto;
+    justify-content: space-around;
+    place-items: center;
+    font-family: var(--sub-font);
+    color: var(--primary);
+  }
+  .page-info {
+    display: flex;
+    margin: 2em auto -1.3em auto;
+    justify-content: space-around;
+    place-items: center;
+    font-family: var(--sub-font);
+    font-weight: 800;
+    color: var(--primary);
+  }
+  .pagination {
+    display: grid;
+    justify-content: space-between;
+    font-family: var(--sub-font);
+    font-weight: 800;
+    margin-top: 1px;
+  }
+  .prev { grid-column: 1; justify-content: start; margin-top: -0.1em; }
+  .next { grid-column: 3; justify-content: end; margin-top: -0.1em; }
+  .prev a svg, .next a svg {
+    display: inline-flex;
+    width: 0.75em;
+    height: 0.75em;
+    vertical-align: middle;
+    fill: currentColor;
+    overflow: visible;
+    transition: all .1s ease-in-out;
+  }
+  .prev a:hover svg { transform: translateX(-4px); }
+  .next a:hover svg { transform: translateX(4px); }
+  .bottom-line { margin-top: 2em; }
+  @media screen and (max-width: 667px) {
+    .title {
+      font-size: 18px;
+    }
+    .desc { font-size: 0.75em; }
+    .page-info-top {
+      font-size: 0.85em;
+      margin: 1.5em 0 -1.3em 0;
+    }
+    .page-info {
+      font-size: 0.85em;
+      margin: 1.5em 0 -1.25em 0;
+    }
+    .pagination { font-size: 0.8em; }
+    .poster {
+      height: 120px;
+      width: auto;
+      object-fit: cover;
+      flex-shrink: 0;
+      margin: 0 0 0 -1em;
+    }
+    .title:not(.lifestream-entry .title) {
+      margin-top: 1.25em;
+      margin-bottom: 0.25em;
+    }
+    .tag-pill, .media-type  {
+      font-size: 13.5px;
+    }
+  }
+</style>
