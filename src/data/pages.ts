@@ -7,6 +7,13 @@ export interface Page {
 
 export const pages: Page[] = [
   {
+    href: '/all',
+    title: 'All',
+    description:
+      'A firehose of all regularly updated site content, regardless of type, sorted by most recent.',
+    event: 'explore-all',
+  },
+  {
     href: '/blog',
     title: 'Blog',
     description: 'Long-form posts like tutorials, how-to guides and more.',
