@@ -6,5 +6,6 @@ image: ./_images/eclipse.jpg
 rating: liked
 ---
 
-## Previous Viewings
+## Previously Watched
+
 - 2/2/2025

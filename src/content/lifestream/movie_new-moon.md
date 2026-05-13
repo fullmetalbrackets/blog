@@ -6,5 +6,6 @@ image: ./_images/new-moon.jpg
 rating: liked
 ---
 
-## Previous Viewings
+## Previously Watched
+
 - 1/31/2025
