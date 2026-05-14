@@ -7,8 +7,6 @@ related: ['sudo-without-password']
 howto: true
 ---
 
-> Reference: <a href="https://askubuntu.com/questions/62858/turn-off-monitor-using-command-line" target="_blank">Several answers to this post on AskUbuntu</a>
-
 ## Control display with VBETool
 
 _Source:_ https://askubuntu.com/a/62861
@@ -135,3 +133,7 @@ To disable it:
 ```bash
 sudo systemctl disable screen-off.service
 ```
+
+## References
+
+- [Several answers to this post on AskUbuntu.](https://askubuntu.com/questions/62858/turn-off-monitor-using-command-line)
