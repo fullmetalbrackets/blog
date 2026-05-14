@@ -7,7 +7,7 @@ tags: ['linux', 'command line', 'guide']
 related: ['basic-linux-commands', 'mounting-hard-drives-in-linux']
 ---
 
-# Rsync Basics
+## Rsync Basics
 
 Let's start with using `rsync` to copy a directory, and all it's contents, to another location.
 
@@ -64,9 +64,9 @@ Let's break it down:
 - `--progress` will display the progress of files as they are transferred, giving you even more information as Rsync runs.
 - `--max-size=100M` prevents files at or over the specified file size (in this case 100MB) from being transferred.
 
-This is just a small sample of the options available, but this set of options is a good base to start using Rsync. If copying important files, especially as backups, it's desirable to pass the flag `-a` for _archive mode_. According to the <a href="hhttps://download.samba.org/pub/rsync/rsync.1#opt--archive" target="_blank">Rsync man page</a>:
+This is just a small sample of the options available, but this set of options is a good base to start using Rsync. If copying important files, especially as backups, it's desirable to pass the flag `-a` for _archive mode_. According to the [Rsync man page](https://download.samba.org/pub/rsync/rsync.1#opt--archive):
 
-```
+```sh
 --archive, -a
 archive mode is -rlptgoD (no -A,-X,-U,-N,-H)
 ```
@@ -115,14 +115,14 @@ The Rsync stuff first. Besides using `--daemon` to run Rsync as a background pro
 
 Now for the Cron stuff, the `0 3 * * SAT` before rsync is a schedule expression. You schedule cron jobs by expressing the timing in five fields, from left to right they are: _minute_ (0 - 60), _hour_ (0 - 23), _day of the month_ (1 - 31), _month_ (1 - 12), and _day of the week_. In my example above, `0 3 * * SAT` means it will run _every Saturday at 3:00 AM_.
 
-If you think you'll have a hard time remembering the scheduling expressions, just know that I am right there with you, which is why I use a handy tool called <ato href="https://crontab.guru" target="_blank" rel="noopener noreferrer">Crontab Guru</ato schedule cron. To make Rsync a little less daunting to use, check out <a href="https://www.rsyncinator.app/web" target="_blank" rel="noopener noreferrer">Rsyncinator</a>, which has a slick GUI that lets you create your Rsync command with checkboxes and fields specifying what they do.
+If you think you'll have a hard time remembering the scheduling expressions, just know that I am right there with you, which is why I use a handy tool called [Crontab Guru](https://crontab.guru) to schedule cron. To make Rsync a little less daunting to use, check out [Rsyncinator](https://www.rsyncinator.app/web), which has a slick GUI that lets you create your Rsync command with checkboxes and fields specifying what they do.
 
-Finally, for a list of ALL the rsync options with short descriptions of what they do, check out the <a href="https://download.samba.org/pub/rsync/rsync.1" target="_blank">Rsync man page</a>, a truly exhaustive manual for understanding all the granular details of Rsync.
+Finally, for a list of ALL the rsync options with short descriptions of what they do, check out the [Rsync man page](https://download.samba.org/pub/rsync/rsync.1), a truly exhaustive manual for understanding all the granular details of Rsync.
 
 ## References
 
-- <a href="https://www.rsyncinator.app/web" target="_blank" rel="noopener noreferrer">Rsyncinator</a>
-- <a href="https://crontab.guru" target="_blank" rel="noopener noreferrer">Crontab Guru</a>
-- <a href="https://download.samba.org/pub/rsync/rsync.1" target="_blank">Rsync Man Page</a>
-- <a href="https://man7.org/linux/man-pages/man8/cron.8.html" target="_blank">Cron Man Page</a>
-- <a href="https://man7.org/linux/man-pages/man5/crontab.5.html" target="_blank">Crontab Man Page</a>
+- [Rsyncinator](https://www.rsyncinator.app/web)
+- [Crontab Guru](https://crontab.guru)
+- [Rsync man page](https://download.samba.org/pub/rsync/rsync.1)
+- [Cron Man Page](https://man7.org/linux/man-pages/man8/cron.8.html)
+- [Crontab Man Page](https://man7.org/linux/man-pages/man5/crontab.5.html)
