@@ -1,26 +1,44 @@
 ---
 ---
-<script is:inline>
-    function copyToClipboard(copyBtn, text) {
-        navigator.clipboard.writeText(text).then(() => {
-        copyBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<script>
+    function legacyCopy(text: string): boolean {
+        const textarea = document.createElement("textarea");
+        textarea.value = text;
+        textarea.setAttribute("readonly", "");
+        textarea.style.cssText = "position:fixed;top:-9999px;left:-9999px;opacity:0;pointer-events:none;";
+        document.body.appendChild(textarea);
+        textarea.focus();
+        textarea.setSelectionRange(0, text.length);
+        const ok = document.execCommand("copy");
+        document.body.removeChild(textarea);
+        return ok;
+    }
+
+    function showSuccess(copyBtn: HTMLElement): void {
+        const original = copyBtn.innerHTML;
+        copyBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="20 6 9 17 4 12"></polyline>
         </svg>`;
         copyBtn.style.backgroundColor = "var(--hover)";
         setTimeout(() => {
-            copyBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-            </svg>`;
+            copyBtn.innerHTML = original;
             copyBtn.style.backgroundColor = "var(--info)";
         }, 2000);
-        });
     }
+
     document.addEventListener("click", (e) => {
-        if (!e.target.closest(".copy-btn")) return;
-        const copyBtn = e.target.closest(".copy-btn");
+        if (!(e.target instanceof Element)) return;
+        const copyBtn = e.target.closest<HTMLElement>(".copy-btn");
+        if (!copyBtn) return;
         const wrapper = copyBtn.closest(".code-wrapper");
-        const code = wrapper.querySelector("pre code");
-        copyToClipboard(copyBtn, code.innerText);
+        const code = wrapper?.querySelector("pre code");
+        if (!code) return;
+        const text = (code as HTMLElement).innerText;
+
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(text).then(() => showSuccess(copyBtn));
+        } else {
+            if (legacyCopy(text)) showSuccess(copyBtn);
+        }
     });
 </script>
