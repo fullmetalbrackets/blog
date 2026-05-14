@@ -5,6 +5,7 @@ const BLOCKED_AUTHORS = new Set([
 
 interface Webmention {
   'wm-property': string;
+  name?: string;
   author?: {
     name?: string;
     photo?: string;
@@ -55,6 +56,15 @@ function avatarLink(m: Webmention, size: 'sm' | 'md' = 'sm'): string {
     </a>`;
 }
 
+function linkLabel(m: Webmention): string {
+  if (m.name?.trim()) return m.name.trim();
+  try {
+    return new URL(m.url ?? '').hostname.replace(/^www\./, '');
+  } catch {
+    return 'View mention ↗';
+  }
+}
+
 function buildFacepile(
   mentions: Webmention[],
   icon: string,
@@ -79,7 +89,7 @@ function buildFacepile(
 function buildReplies(mentions: Webmention[]): string {
   if (!mentions.length) return '';
   const count = mentions.length;
-  const noun = count === 1 ? 'reply' : 'replies';
+  const noun = count === 1 ? 'mention' : 'mentions';
 
   const items = mentions
     .map((m) => {
@@ -96,7 +106,8 @@ function buildReplies(mentions: Webmention[]): string {
             ${text ? `<p class="wm-reply-text">${text}</p>` : ''}
             <a href="${href}" class="wm-reply-meta"
                target="_blank" rel="noopener noreferrer">
-              ${date || 'view source'}
+              ${date ? `<span>${date}</span>` : ''}
+              <span class="wm-reply-source">${esc(linkLabel(m))} ↗</span>
             </a>
           </div>
         </div>`;
