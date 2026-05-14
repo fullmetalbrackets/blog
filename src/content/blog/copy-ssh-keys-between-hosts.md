@@ -3,7 +3,7 @@ title: 'How to copy SSH Keys between different hosts'
 description: 'How to copy SSH keys between Linux hosts and from Windows to Linux.'
 pubDate: 2021-09-07
 updatedDate: 2025-02-17
-tags: ['ssh', 'command line']
+tags: ['ssh', 'command line', 'code snippet']
 related: ['generating-an-ssh-key-pair', 'setup-ssh-authentication-to-push-to-github']
 howto: true
 ---
@@ -29,4 +29,4 @@ The above command will fail if the `.ssh` folder does not already exist on the L
 cat ~/.ssh/id_rsa.pub | ssh <user>@<hostname> 'umask 0077; mkdir -p .ssh; cat >> .ssh/authorized_keys && echo "Key copied"'
 ```
 
-Next: <a href="https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key" target="_blank" rel="noopener noreferrer">GitHub Docs instructions for adding a GPG keys.</a>
+Next, check [the GitHub Docs instructions for adding a GPG keys](https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key).

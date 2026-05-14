@@ -41,7 +41,7 @@ Restart your terminal or reload the profile with the command `. $PROFILE` for ch
 
 ## Changing the theme
 
-Once you have installed Oh-My-Posh, the <a href="https://github.com/JanDeDobbeleer/oh-my-posh/blob/main/themes/default.omp.json" target="_blank">default theme</a> will be used. Use the following command to list all the themes and get a preview of how they'll look in the terminal. (Give it a minute, there's a lot of them.)
+Once you have installed Oh-My-Posh, [the default theme](https://github.com/JanDeDobbeleer/oh-my-posh/blob/main/themes/default.omp.json) will be used. Use the following command to list all the themes and get a preview of how they'll look in the terminal. (Give it a minute, there's a lot of them.)
 
 ```shell
 Get-PoshThemes
@@ -63,7 +63,7 @@ Reload the terminal again with `. $PROFILE` for the change to take effect.
 
 ## Install a Nerd Font for themes that require it
 
-You may notice that some themes cause weird missing icons in your prompt. This is because many of them require <a href="https://nerdfonts.com" target="_blank">Nerd Fonts</a>. Oh-My-Posh has a built-in CLI and pick out and install a Nerd Font. Any of them will work, but the official recommended font to use is <a href="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/Meslo.zip" target="_blank">MesloLGM</a>.
+You may notice that some themes cause weird missing icons in your prompt. This is because many of them require [Nerd Fonts](https://nerdfonts.com). Oh-My-Posh has a built-in CLI and pick out and install a Nerd Font. Any of them will work, but the official recommended font to use is [MesloLGM](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/Meslo.zip).
 
 Use the following command and pick out a font of your choice:
 
