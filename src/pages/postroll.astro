@@ -8,6 +8,8 @@ import { getSortedPostroll } from "@utils/collections";
 import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
 import CollectionPageSchema from "@components/CollectionPageSchema.astro";
 import ItemListSchema from "@components/ItemListSchema.astro";
+import WebMentions from "@components/WebMentions.astro";
+import Comments from "@components/Comments.astro";
 import { SITE_URL } from "@consts";
 import { Image } from 'astro:assets';
 import { pages } from "@data/pages";
@@ -72,6 +74,8 @@ const postrollItems = posts.map(post => ({
         ))
       }
     </ul>
+    <WebMentions />
+    <Comments />
     <hr/>
     <BackToTop />
   </section>

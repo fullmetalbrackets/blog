@@ -7,6 +7,8 @@ import BackToTop from "@components/BackToTop.astro";
 import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
 import CollectionPageSchema from "@components/CollectionPageSchema.astro";
 import ItemListSchema from "@components/ItemListSchema.astro";
+import WebMentions from "@components/WebMentions.astro";
+import Comments from "@components/Comments.astro";
 import { getBlogroll } from '@utils/collections';
 import { SITE_URL } from "@consts";
 import { pages } from "@data/pages";
@@ -105,9 +107,11 @@ const lastUpdated = new Date('2026-05-08T12:00');
         </li>
       ))}
     </ul>
+    <WebMentions />
+    <Comments />
+    <hr/>
+    <BackToTop />
   </section>
-  <hr>
-  <BackToTop />
 </BaseLayout>
 
 <style scoped>

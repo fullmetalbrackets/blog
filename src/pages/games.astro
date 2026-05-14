@@ -5,6 +5,8 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import BackToTop from "@components/BackToTop.astro";
 import CollectionPageSchema from "@components/CollectionPageSchema.astro";
 import ItemListSchema from "@components/ItemListSchema.astro";
+import WebMentions from "@components/WebMentions.astro";
+import Comments from "@components/Comments.astro";
 import { SITE_URL } from "@consts";
 import { getEntry } from 'astro:content';
 import Switch2 from '@img/games/switch2.svg';
@@ -108,8 +110,11 @@ const { title, description } = pages.find(p => p.href === "/games")!;
       );
     })}
   </div>
+  <WebMentions />
+  <Comments />
+  <hr/>
+  <BackToTop />
 </section>
-<hr>
 <BackToTop />
 
 <style>

@@ -7,6 +7,8 @@ import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
 import CodeblockCopy from "@components/CodeblockCopy.astro";
 import HeadingCopy from "@components/HeadingCopy.astro";
 import Related from '@icons/related.svg';
+import WebMentions from "@components/WebMentions.astro";
+import Comments from "@components/Comments.astro";
 import { getRelatedPosts } from '@utils/collections';
 import { SITE_URL } from "@consts";
 
@@ -288,7 +290,9 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
       </div>
     )}
   </article>
-
+  <br>
+  <WebMentions />
+  <Comments />
   <hr class="bottom-line" />
 
   <nav class="wiki-nav" aria-label="Post navigation">

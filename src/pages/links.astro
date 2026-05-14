@@ -8,6 +8,8 @@ import { getSortedLinks } from "@utils/collections";
 import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
 import CollectionPageSchema from "@components/CollectionPageSchema.astro";
 import ItemListSchema from '@components/ItemListSchema.astro';
+import WebMentions from "@components/WebMentions.astro";
+import Comments from "@components/Comments.astro";
 import { SITE_URL } from "@consts";
 import { pages } from "@data/pages";
 
@@ -68,7 +70,9 @@ const linkItems = links.map(link => ({
   .title-link:hover {
     color: var(--hover);
   }
-  
+  .bottom-line {
+    margin: 1em auto;
+  }
   /* Hover effect: when title is hovered, animate the tag */
   @media (hover: hover) {
     li:has(.title-link:hover) .link-tag {
@@ -133,6 +137,8 @@ const linkItems = links.map(link => ({
         ))
       }
     </ul>
+    <WebMentions />
+    <Comments />
     <hr/>
     <BackToTop />
   </section>
