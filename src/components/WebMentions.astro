@@ -15,7 +15,7 @@ const targetUrl = import.meta.env.DEV
 
 <div class="wm-submit">
   <form class="wm-form" id="wm-form">
-    <label for="wm-source" class="wm-form-label">If you write a <a href="https://indieweb.org/responses" target="_blank" rel="noopener noreferrer">response</a> to this post, submit your URL to let me know!</label>
+    <label for="wm-source" class="wm-form-label">If you write a <a href="https://indieweb.org/responses" target="_blank" rel="noopener noreferrer">response</a> to this, submit your URL to let me know and have it appear here!</label>
     <div class="wm-form-row">
       <input
         type="url"
@@ -179,10 +179,8 @@ const targetUrl = import.meta.env.DEV
 
   .wm-reply-body {
     flex: 1;
-    background: color-mix(in srgb, var(--primary) 8%, transparent);
-    border: 1px solid color-mix(in srgb, var(--primary) 15%, transparent);
     border-radius: 0 0.5em 0.5em 0.5em;
-    padding: 0.5em 0.75em;
+    padding: 0 0.25em;
     min-width: 0;
   }
 
