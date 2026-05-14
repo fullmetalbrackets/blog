@@ -108,6 +108,10 @@ export default defineConfig({
       status: 301,
       destination: '/blog/migrate-adguardhome-glinet-flint2-libre-sweet-potato',
     },
+    '/wiki/wan-ip-detector-homeassistant': {
+      status: 301,
+      destination: '/blog/create-custom-home-assistant-entity-to-detect-changes-public-ip',
+    },
   },
   fonts: [
     {
