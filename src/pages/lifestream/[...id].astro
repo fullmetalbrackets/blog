@@ -11,6 +11,7 @@ import BookIcon   from '@icons/book.svg';
 import MovieIcon  from '@icons/movie.svg';
 import TVShowIcon from '@icons/tvshow.svg';
 import LeftArrow from '@icons/arrow-left.svg';
+import Comments from "@components/Comments.astro";
 import { SITE_URL } from "@consts";
 import { schemaTypeMap } from '@utils/media';
 
@@ -193,6 +194,9 @@ const schema = {
       )}
     </nav>
   </div>
+  <div class="comments">
+      <Comments />
+  </div>
 </BaseLayout>
 
 
@@ -326,6 +330,10 @@ const schema = {
 
   .prev:hover .nav-label svg {
     transform: rotate(180deg) translateX(-4px);
+  }
+
+  .comments {
+    margin: -1em auto 2em auto;
   }
 
   @media (max-width: 667px) {
