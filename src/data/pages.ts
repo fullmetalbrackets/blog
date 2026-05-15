@@ -68,7 +68,7 @@ export const pages: Page[] = [
     href: '/links',
     title: 'Links',
     description:
-      'Links to websites, self-hosted apps and other cool online things that I use.',
+      'Links to websites, apps, services and tools that I use and recommend.',
     event: 'explore-links',
   },
   {
@@ -89,7 +89,7 @@ export const pages: Page[] = [
     href: '/postroll',
     title: 'Postroll',
     description:
-      'Articles, blog posts and other writings that I came across and thought worth sharing.',
+      'Articles, blog posts and other writings from across the web that I liked and thought worth sharing.',
     event: 'explore-postroll',
   },
   {
