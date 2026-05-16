@@ -4,6 +4,7 @@ export const prerender = true;
 import BaseLayout from "@layouts/BaseLayout.astro";
 import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
 import CollectionPageSchema from "@components/CollectionPageSchema.astro";
+import Popular from "@components/Popular.astro";
 import BackToTop from "@components/BackToTop.astro";
 import { SITE_URL } from "@consts";
 import {
@@ -40,16 +41,27 @@ const formatDuration = (mins: number) => {
 
 const fmtDate = (d: Date) =>
   d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+const fmtDateLong = (d: Date) =>
+  d.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
 
 const fmtMonthKey = (key: string) => {
   const [yr, mo] = key.split("-").map(Number);
   return new Date(yr, mo - 1).toLocaleDateString("en-US", { month: "long", year: "numeric" });
 };
 
+const countWords = (body: string = "") =>
+  body
+    .replace(/```[\s\S]*?```/g, '')
+    .replace(/`[^`]+`/g, '')
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean).length;
+
 // Blog
 const totalPosts       = posts.length;
 const totalReadingMins = posts.reduce((s, p) => s + parseMinutes(p.readingTime), 0);
-
+const totalWords = posts.reduce((sum, p) => sum + countWords(p.body ?? ""), 0);
+const avgWords   = totalPosts > 0 ? Math.round(totalWords / totalPosts) : 0;
 const sortedByRT   = [...posts].sort((a, b) => parseMinutes(b.readingTime) - parseMinutes(a.readingTime));
 const longestPost  = sortedByRT[0];
 const shortestPost = sortedByRT[sortedByRT.length - 1];
@@ -100,6 +112,19 @@ posts.forEach(p => p.data.tags?.forEach(t => { tagCounts[t] = (tagCounts[t] ?? 0
 const totalUniqueTags = Object.keys(tagCounts).length;
 const topTags         = Object.entries(tagCounts).sort((a, b) => b[1] - a[1]).slice(0, 12);
 const maxTagCount     = topTags[0]?.[1] ?? 1;
+
+const postsWithCode = posts.filter(p => p.body?.includes('```')).length;
+
+const totalCodeWords = posts.reduce((sum, p) => {
+  const blocks = [...(p.body ?? "").matchAll(/```[\s\S]*?```/g)]
+    .map(m => m[0]
+      .replace(/```\w*\n?/, '')
+      .replace(/```$/, '')
+      .trim()
+      .split('\n').filter(l => l.trim().length > 0).length
+    );
+  return sum + blocks.reduce((s, n) => s + n, 0);
+}, 0);
 
 // Notes
 const totalNotes      = notes.length;
@@ -295,6 +320,16 @@ const hmIntensity = (key: string) => {
   if (r < 0.75) return 3;
   return 4;
 };
+
+// Lastest Build
+const buildTime = today.toLocaleDateString("en-US", {
+  month: "long",
+  day: "numeric", 
+  year: "numeric",
+  hour: "numeric",
+  minute: "2-digit",
+  timeZoneName: "short",
+});
 ---
 
 <style scoped>
@@ -329,6 +364,15 @@ const hmIntensity = (key: string) => {
   }
   .all-intro {
     margin: -0.25em 0 0 0;
+  }
+  .blog-intro {
+    margin-top: -0.5em;
+  }
+  .blog-intro strong {
+    color: var(--secondary);
+    font-weight: 400;
+    font-family: var(--sub-font);
+    font-size: 0.95em;
   }
   details {
     margin: -1em 0 -2em 0;
@@ -668,6 +712,12 @@ const hmIntensity = (key: string) => {
     aspect-ratio: unset;
   }
 
+  /* other */
+  .popular span {
+    margin: 0 auto;
+    font-size: 0.9em;
+  }
+
   @media screen and (max-width: 667px) {
     h2.section-head { font-size: 1.2em; }
     .stat-grid { grid-template-columns: repeat(2, 1fr); }
@@ -694,7 +744,6 @@ const hmIntensity = (key: string) => {
     <a class="u-url" href={`${SITE_URL}/stats`} hidden>Permalink</a>
     <hr class="topline" />
     <p class="intro">{description}</p>
-
     <details>
       <summary>Table of Contents</summary>
       <div class="details-content">
@@ -710,11 +759,15 @@ const hmIntensity = (key: string) => {
 
     <!-- BLOG -->
     <h2 id="blog" class="section-head">Blog</h2>
-
+    <p class="blog-intro">
+      My first blog post was on <strong>{fmtDateLong(firstPost.data.pubDate)}</strong> and my most recent was on <strong>{fmtDateLong(lastPost.data.pubDate)}</strong>.<br>
+      I've written <strong>{totalWords.toLocaleString()}</strong> words total across <strong>{totalPosts}</strong> blog posts, averaging <strong>{avgWords.toLocaleString()}</strong> words per post.<br>
+      <strong>{postsWithCode}</strong> posts contain code snippets, totaling <strong>{totalCodeWords.toLocaleString()}</strong> lines of code.
+    </p>
     <div class="stat-grid">
       <div class="stat-card">
         <span class="stat-value">{totalPosts}</span>
-        <span class="stat-label">Total posts</span>
+        <span class="stat-label">Blog posts</span>
       </div>
       <div class="stat-card">
         <span class="stat-value">{formatDuration(totalReadingMins)}</span>
@@ -793,6 +846,11 @@ const hmIntensity = (key: string) => {
         </li>
       ))}
     </ul>
+
+    <div class="popular">
+      <span>Most popular posts over the last 30 days:</span>
+      <Popular simple />
+    </div>
 
     <!-- NOTES -->
     <h2 id="notes" class="section-head">Notes</h2>
@@ -1083,6 +1141,9 @@ const hmIntensity = (key: string) => {
       <span class="gap-dates">{fmtDate(qStart)} → {fmtDate(qEnd)}</span>
     </p>
 
+    <!-- <p class="hm-sub">
+      Lastest site build was <strong>{buildTime}</strong>.
+    </p> -->
   </section>
   <hr />
   <BackToTop />
