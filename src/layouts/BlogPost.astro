@@ -15,14 +15,6 @@ import Lightbox from "@components/Lightbox.astro";
 import Random from "@components/RandomPost.astro";
 import type { BlogPostProps } from '../types';
 import type { MarkdownHeading } from '@astrojs/markdown-remark';
-import {
-  BlueskyShareButton,
-  ThreadsShareButton,
-  TwitterShareButton,
-  RedditShareButton,
-  HackerNewsShareButton,
-  SocialShare
-} from "astro-social-share";
 import Related from '@icons/related.svg';
 import Comments from "@components/Comments.astro";
 import { getRelatedPosts } from '@utils/collections';
@@ -30,7 +22,6 @@ import { GITHUB, DONATE, SITE_URL } from "@consts";
 
 type Props = BlogPostProps & { headings: MarkdownHeading[]; readingTime: string };
 
-const BUTTONS = [BlueskyShareButton, ThreadsShareButton, TwitterShareButton, RedditShareButton, HackerNewsShareButton];
 const { title, description, pubDate, updatedDate, tags, headings, related, readingTime } = Astro.props;
 const { slug } = Astro.params;
 const selectedPosts = await getRelatedPosts(related ?? []);
@@ -88,7 +79,7 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
       margin-right: 0.25em;
     }
     .slot-content {
-      margin: 0 auto 2.5em auto;
+      margin: 0 auto 1.5em auto;
       padding: 0;
       max-width: 1000px;
     }
@@ -97,17 +88,38 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
     }
 
     /* post footer */
-    .edit-post {
+    h3.thanks {
       display: flex;
       justify-content: space-around;
+      font-weight: 400;
+      font-size: 1em;
+      font-style: italic;
+      opacity: 0.9;
+    }
+    .footer-grid {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 1000px;
+      font-family: var(--sub-font);
+      font-weight: 700;
+      margin: 1em auto 0 auto;
+    }
+    .footer-grid > div {
+      flex: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      padding: 0;
+      margin-bottom: 1em;
+    }
+    .edit-post {
       color: var(--primary);
       font-family: var(--sub-font);
       font-weight: 700;
-      margin: 0 auto 1.5em auto;
     }
     .edit-post span {
-      display: flex;
-      margin: 0 auto;
+      margin: 0 auto 0.25em auto;
     }
     .gh {
       width: 24px;
@@ -116,20 +128,27 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
       padding: 0;
     }
     .edit {
-      display: inline-flex;
-      align-items: center;
+      display: flex;
+      place-items: center;
+      vertical-align: middle;
       gap: 0.375em;
       background-color: var(--info);
       color: #000;
       border-radius: 0.25em;
       cursor: pointer;
       font-weight: 700;
-      margin: 1em auto 0 auto;
-      padding: 6px 10px;
+      margin: 0 auto 0 auto;
+      padding: 0 8px;
       text-decoration: none;
       font-size: 0.85em;
       font-family: var(--sub-font);
       line-height: 1.5;
+    }
+    .edit span {
+      display: flex;
+      place-items: center;
+      vertical-align: middle;
+      padding-top: 6px;
     }
     .edit:hover {
       background: var(--hover);
@@ -146,22 +165,6 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
       margin: 0;
       border-radius: 0;
     }
-    .footer-grid {
-      display: flex;
-      flex-wrap: wrap;
-      width: 100%;
-      font-family: var(--sub-font);
-      font-weight: 700;
-      margin: 0 auto 1.5em auto;
-    }
-    .footer-grid > div {
-      flex: 0 0 50%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.75em;
-      padding: 0.75em 0;
-    }
     .coffee {
       color: var(--primary);
       cursor: default;
@@ -175,19 +178,12 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
       grid-template-columns: auto;
       grid-template-rows: auto auto;
       cursor: pointer;
-      margin-top: 0.25em;
       padding: 0;
+      margin: 0.25em auto 0 auto;
     }
     .coffee-btn:hover {
       background: var(--hover);
       transition: all .15s ease-out;
-    }
-    .share {
-      color: var(--primary);
-      cursor: default;
-    }
-    .share span {
-      margin-bottom: -0.25em;
     }
     .umami {
       color: var(--primary);
@@ -202,10 +198,11 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
       border-radius: 0.25em;
       cursor: pointer;
       font-weight: 700;
-      padding: 4px 10px;
+      padding: 4px 12px 4px 10px;
       text-decoration: none;
       font-family: var(--sub-font);
       line-height: 1.5;
+      margin: 0.25em auto 0 auto;
     }
     .stats:hover {
       background: var(--hover);
@@ -223,10 +220,10 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
       margin: 0;
       border-radius: 0;
     }
-    .questions {
+    .contact {
       color: var(--primary);
     }
-    .questions > span {
+    .contact > span {
       font-family: var(--sub-font);
       font-weight: 700;
       color: var(--primary);
@@ -243,8 +240,9 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
       font-family: var(--sub-font);
       font-weight: 700;
       line-height: 1.5;
-      padding: 4px 10px;
+      padding: 4px 12px 4px 10px;
       color: #000;
+      margin: 0.25em auto 0 auto;
     }
     .email:hover {
       background: var(--hover);
@@ -330,7 +328,7 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
       place-items: center;
       font-size: 1.25em;
       color: var(--primary);
-      margin: 1em 0 1em 0;
+      margin: 1em 0;
       border-top: transparent;
       border-left: transparent;
       border-right: transparent;
@@ -406,29 +404,10 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
       }
       .related li p {
         margin-top: 0;
+        font-size: 18px;
       }
       .related li button {
         margin: 0 0.25em 0.25em 0;
-      }
-      .edit-post {
-        justify-content: space-around;
-        align-content: center;
-      }
-      .edit-button::before {
-        content: "\a";
-        white-space: pre;
-      }
-      .edit {
-        margin-left: 1.25em;
-      }
-      .share {
-        margin-bottom: -1.25em;
-      }
-      .footer-grid {
-        margin-bottom: 0.5em;
-      }
-      .footer-grid > div {
-        flex: 0 0 100%;
       }
     }
 
@@ -457,26 +436,6 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
       }
     }
   </style>
-
-  <slot name="astro-social-share-css">
-    <style is:global>
-      .astro-social-share {
-        margin: 0 auto 2em auto;
-        height: 24px;
-        padding: 0.35em 0 0 0;
-      }
-      .astro-social-share svg {
-        filter: var(--share);
-        margin: 0 0.25em;
-        width: 32px;
-        height: 32px;
-      }
-      .astro-social-share svg:hover {
-        filter: var(--svg-hover);
-        transition: all .2s ease-out;
-      }
-    </style>
-  </slot>
 
   <ScrollProgress />
   <BlogPosting slot="head" {...Astro.props} slug={slug!} relatedLinks={relatedLinks} />
@@ -531,6 +490,83 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
         </p>
       </slot>
     </div>
+
+    <h3 class="thanks">Thank you for reading!</h3>
+    <nav class="footer-grid" aria-label="End of post.">
+      <div class="coffee">
+        <span>Support me</span>
+        <a href={DONATE} rel="noopener noreferrer">
+          <img
+            src="https://img.buymeacoffee.com/button-api/?slug=arieldiaz&font_family=Inter&coffee_colour=6F4E37"
+            class="coffee-btn"
+            alt="Buy Me A Coffee"
+            title="Buy Me A Coffee"
+            loading="lazy"
+            decoding="async"
+          />
+        </a>
+      </div>
+      <div class="contact">
+        <span>Contact me</span>
+        <a
+          class="email"
+          href={`mailto:contact@fullmetalbrackets.com?subject=Regarding: ${title}`}
+        >
+          <img
+            src="/assets/email.svg"
+            class="email-icon"
+            loading="lazy"
+            decoding="async"
+            alt=""
+            aria-hidden="true"
+          />
+          <span class="topic">Email</span>
+        </a>
+      </div>
+      <div class="umami">
+        <span>Post stats</span>
+        <a
+          class="stats"
+          href={`https://u.adiaz.fyi/share/TtTytHU8rJy0oEzN/?path=eq./blog/${slug}/`}
+          target="_blank"
+          rel="noopener noreferrer"
+          data-umami-event={`umami-stats-${slug}`}
+        >
+          <img
+            src="/assets/umami.svg"
+            class="stats-icon"
+            loading="lazy"
+            decoding="async"
+            alt=""
+            aria-hidden="true"
+          />
+          <span class="topic">Umami</span>
+        </a>
+      </div>
+      <div class="edit-post" aria-label="Edit post">
+        <span>Fix my errors</span>
+        <span class="edit-button">
+          <a
+            class="edit"
+            href={`${GITHUB}/blog/blob/main/src/content/blog/${slug}.md/`}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-umami-event={`edit-gh-${slug}`}
+          >
+            <img
+              src="/assets/gh.svg"
+              class="gh"
+              loading="lazy"
+              decoding="async"
+              alt="GitHub"
+              aria-hidden="true"
+            />
+            <span>Edit on GitHub</span>
+          </a>
+        </span>
+      </div>
+    </nav>
+
     {selectedPosts.length > 0 && (
       <div class="related" data-pagefind-ignore>
         <h3><Related width={36} height={36}/> Related Posts</h3>
@@ -561,94 +597,6 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
   <WebMentions />
 
   <Comments />
-
-  <!-- Error / edit link -->
-  <nav class="edit-post" aria-label="Edit post">
-    <div>
-      <span>Error in this article?</span>
-      <span class="edit-button">
-        <a
-          class="edit"
-          href={`${GITHUB}/blog/blob/main/src/content/blog/${slug}.md/`}
-          target="_blank"
-          rel="noopener noreferrer"
-          data-umami-event={`edit-gh-${slug}`}
-        >
-          <img
-            src="/assets/gh.svg"
-            class="gh"
-            loading="lazy"
-            decoding="async"
-            alt="GitHub"
-            aria-hidden="true"
-          />
-          <span>Edit on GitHub</span>
-        </a>
-      </span>
-    </div>
-  </nav>
-
-  <!-- Coffee / Share / Stats / Contact -->
-  <nav class="footer-grid" aria-label="Support, share, and contact">
-    <div class="coffee">
-      <span>Was this article helpful?</span>
-      <a href={DONATE} rel="noopener noreferrer">
-        <img
-          src="https://img.buymeacoffee.com/button-api/?slug=arieldiaz&font_family=Inter&coffee_colour=6F4E37"
-          class="coffee-btn"
-          alt="Buy Me A Coffee"
-          title="Buy Me A Coffee"
-          loading="lazy"
-          decoding="async"
-        />
-      </a>
-    </div>
-    <div class="share">
-      <span>Want to share this article?</span>
-      <SocialShare
-        buttons={BUTTONS}
-        description={description}
-        title={title}
-      />
-    </div>
-    <div class="umami">
-      <span>Want to see article stats?</span>
-      <a
-        class="stats"
-        href={`https://u.adiaz.fyi/share/TtTytHU8rJy0oEzN/?path=eq./blog/${slug}/`}
-        target="_blank"
-        rel="noopener noreferrer"
-        data-umami-event={`umami-stats-${slug}`}
-      >
-        <img
-          src="/assets/umami.svg"
-          class="stats-icon"
-          loading="lazy"
-          decoding="async"
-          alt=""
-          aria-hidden="true"
-        />
-        <span class="topic">Umami</span>
-      </a>
-    </div>
-    <div class="questions">
-      <span>Have any questions?</span>
-      <a
-        class="email"
-        href={`mailto:contact@fullmetalbrackets.com?subject=Regarding: ${title}`}
-      >
-        <img
-          src="/assets/email.svg"
-          class="email-icon"
-          loading="lazy"
-          decoding="async"
-          alt=""
-          aria-hidden="true"
-        />
-        <span class="topic">Email Me</span>
-      </a>
-    </div>
-  </nav>
 
   <hr class="endline" />
 
