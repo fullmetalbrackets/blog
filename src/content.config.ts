@@ -7,9 +7,9 @@ const blog = defineCollection({
   loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: './src/content/blog' }),
   schema: ({ image }) =>
     z.object({
-      title: z.string(),
-      description: z.string(),
-      tags: z.array(z.string()),
+      title: z.string().min(1),
+      description: z.string().min(1),
+      tags: z.array(z.string()).default([]),
       related: z.array(z.string()).optional(),
       pubDate: z.coerce.date(),
       updatedDate: z.coerce.date().optional(),
@@ -21,8 +21,8 @@ const blog = defineCollection({
 const links = defineCollection({
   loader: glob({ pattern: '**/[^_]*.yml', base: './src/content/links' }),
   schema: z.object({
-    title: z.string(),
-    description: z.string(),
+    title: z.string().min(1),
+    description: z.string().min(1),
     url: z.url(),
     tag: z.string(),
     pubDate: z.coerce.date(),
@@ -33,8 +33,8 @@ const wiki = defineCollection({
   loader: glob({ pattern: '**/[^_]*.md', base: './src/content/wiki' }),
   schema: ({ image }) =>
     z.object({
-      title: z.string(),
-      description: z.string(),
+      title: z.string().min(1),
+      description: z.string().min(1),
       pubDate: z.coerce.date(),
       updatedDate: z.coerce.date().optional(),
       tag: z.string(),
@@ -87,18 +87,16 @@ const now = defineCollection({
 });
 
 const notes = defineCollection({
-  loader: feedLoader({
-    url: 'https://ariel.lol/rss.xml',
-  }),
+  loader: feedLoader({ url: 'https://ariel.lol/rss.xml' }),
 });
 
 const postroll = defineCollection({
   loader: glob({ pattern: '**/[^_]*.yml', base: './src/content/postroll' }),
   schema: ({ image }) =>
     z.object({
-      title: z.string(),
+      title: z.string().min(1),
       pubDate: z.coerce.date(),
-      author: z.string(),
+      author: z.string().min(1),
       image: image(),
       url: z.url(),
     }),
@@ -107,9 +105,9 @@ const postroll = defineCollection({
 const blogroll = defineCollection({
   loader: glob({ pattern: '**/[^_]*.yml', base: './src/content/blogroll' }),
   schema: z.object({
-    name: z.string(),
+    name: z.string().min(1),
     url: z.url(),
-    feed: z.url().or(z.literal('#')),
+    feed: z.url().or(z.literal('#')).optional(),
     pubDate: z.coerce.date(),
   }),
 });
