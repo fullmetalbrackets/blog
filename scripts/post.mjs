@@ -13,18 +13,24 @@ const now = new Date();
 const datePart = now.toISOString().split('T')[0];
 const pubDate = `${datePart} 12:00:00`;
 
-const title = process.argv[2];
+const titlify = (str) =>
+  str
+    .replace(/^./, (c) => c.toUpperCase())
+    .replace(/\bi\b/g, 'I');
 
-if (!title) {
-  console.error('Usage: yarn post "My Post Title"');
+const raw = process.argv.slice(2).join(' ');
+
+if (!raw) {
+  console.error('Usage: node post.mjs some post title');
   process.exit(1);
 }
 
-const slug = slugify(title);
+const title = titlify(raw);
+const slug = slugify(raw);
 const file = path.join('src/content/blog', `${slug}.md`);
 
 const content = `---
-title: "${title}"
+title: ${title}
 pubDate: ${pubDate}
 description: 
 tags: []

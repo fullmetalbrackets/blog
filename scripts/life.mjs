@@ -9,56 +9,60 @@ const slugify = (str) =>
     .replace(/\s+/g, '-')
     .replace(/[^\w-]/g, '');
 
+const titlify = (str) =>
+  str
+    .replace(/^./, (c) => c.toUpperCase())
+    .replace(/\bi\b/g, 'I');
+
 const now = new Date();
 const datePart = now.toISOString().split('T')[0];
 const pubDate = `${datePart} 12:00:00`;
 
 const templates = {
-  game: (title) => `---
+  game: (slug) => `---
 type: game
-title: 
+title: ${title}
 pubDate: ${pubDate}
 platform: 
-image: ./_images/${title}.webp
+image: ./_images/${slug}.webp
 rating: liked
 ---
 `,
-  movie: (title) => `---
+  movie: (slug) => `---
 type: movie
-title: 
+title: ${title}
 pubDate: ${pubDate}
-image: ./_images/${title}.webp
+image: ./_images/${slug}.webp
 rating: liked
 ---
 `,
-  tvshow: (title) => `---
+  tvshow: (slug) => `---
 type: tvshow
-title: 
+title: ${title}
 pubDate: ${pubDate}
-image: ./_images/${title}.webp
+image: ./_images/${slug}.webp
 season: 
 rating: liked
 ---
 `,
-  book: (title) => `---
+  book: (slug) => `---
 type: book
-title: 
+title: ${title}
 pubDate: ${pubDate}
-image: ./_images/${title}.jpg
+image: ./_images/${slug}.jpg
 rating: liked
 ---
 `,
 };
 
 const args = process.argv.slice(2);
-const title = args.find((a) => !a.startsWith('--'));
+const raw = args.filter((a) => !a.startsWith('--')).join(' ');
 const typeFlag = args.find((a) => a.startsWith('--'));
 const type = typeFlag ? typeFlag.slice(2) : null;
 
-if (!title) {
+if (!raw) {
   console.error(
-    `Usage: yarn life title [${Object.keys(templates)
-      .filter((t) => t !== 'default')
+    `Usage: node life.mjs some title [${Object.keys(templates)
       .map((t) => `--${t}`)
       .join('|')}]`
   );
@@ -67,14 +71,13 @@ if (!title) {
 
 if (type && !templates[type]) {
   console.error(
-    `❌ Unknown type "${type}". Valid types: ${Object.keys(templates)
-      .filter((t) => t !== 'default')
-      .join(', ')}`
+    `❌ Unknown type "${type}". Valid types: ${Object.keys(templates).join(', ')}`
   );
   process.exit(1);
 }
 
-const slug = slugify(title);
+const title = titlify(raw);
+const slug = slugify(raw);
 const filename = type ? `${type}_${slug}.md` : `${slug}.md`;
 const dir = 'src/content/lifestream';
 const file = path.join(dir, filename);
@@ -87,6 +90,6 @@ if (fs.existsSync(file)) {
 const template = templates[type] ?? templates.default;
 
 fs.mkdirSync(dir, { recursive: true });
-fs.writeFileSync(file, template(title));
+fs.writeFileSync(file, template(slug));
 console.log(`✅ Created ${file}${type ? ` [${type}]` : ''}`);
 execSync(`code ${file}`);

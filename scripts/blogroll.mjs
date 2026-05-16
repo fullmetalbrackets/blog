@@ -9,18 +9,24 @@ const slugify = (str) =>
     .replace(/\s+/g, '-')
     .replace(/[^\w-]/g, '');
 
+const titlify = (str) =>
+  str
+    .replace(/^./, (c) => c.toUpperCase())
+    .replace(/\bi\b/g, 'I');
+
 const now = new Date();
 const datePart = now.toISOString().split('T')[0];
 const pubDate = `${datePart} 12:00:00`;
 
-const name = process.argv[2];
+const raw = process.argv.slice(2).join(' ');
 
-if (!name) {
-  console.error('Usage: yarn blogroll "My Post Title"');
+if (!raw) {
+  console.error('Usage: node blogroll.mjs some blog name');
   process.exit(1);
 }
 
-const slug = slugify(name);
+const name = titlify(raw);
+const slug = slugify(raw);
 const file = path.join('src/content/blogroll', `${slug}.yml`);
 
 const content = `name: ${name}

@@ -9,21 +9,27 @@ const slugify = (str) =>
     .replace(/\s+/g, '-')
     .replace(/[^\w-]/g, '');
 
+const titlify = (str) =>
+  str
+    .replace(/^./, (c) => c.toUpperCase())
+    .replace(/\bi\b/g, 'I');
+
 const now = new Date();
 const datePart = now.toISOString().split('T')[0];
 const pubDate = `${datePart} 12:00:00`;
 
-const title = process.argv[2];
+const raw = process.argv.slice(2).join(' ');
 
-if (!title) {
-  console.error('Usage: yarn postroll some-article-title');
+if (!raw) {
+  console.error('Usage: node postroll.mjs some article title');
   process.exit(1);
 }
 
-const slug = slugify(title);
+const title = titlify(raw);
+const slug = slugify(raw);
 const file = path.join('src/content/postroll', `${slug}.yml`);
 
-const content = `title: ${slug}
+const content = `title: ${title}
 pubDate: ${pubDate}
 image: ./_images/${slug}.png
 url: 
