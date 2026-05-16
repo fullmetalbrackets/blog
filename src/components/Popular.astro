@@ -3,7 +3,12 @@ import FormattedDate from "./FormattedDate.astro";
 import ReadingTime from "@components/ReadingTime.astro";
 import { getPostsWithReadingTime } from '@utils/collections';
 import popularSlugs from '@data/popular.json';
-const { class: className } = Astro.props;
+const { class: className, simple = false } = Astro.props;
+
+interface Props {
+  class?: string;
+  simple?: boolean;
+}
 
 const allPosts = await getPostsWithReadingTime();
 const selectedPosts = allPosts.filter(post => popularSlugs.includes(post.id));
@@ -94,6 +99,21 @@ const selectedPosts = allPosts.filter(post => popularSlugs.includes(post.id));
   .pop-404 {
     padding-bottom: 0;
   }
+  .list--simple {
+    margin: 0;
+    border-bottom: 0;
+  }
+  .list--simple:last-of-type {
+    margin-bottom: 1em;
+  }
+  .list--simple:hover {
+    border-bottom: 0;
+  }
+  .posts-title--simple {
+    font-size: 0.85em;
+    margin-bottom: 0;
+    font-weight: 400;
+  }
   @media (hover: hover) {
     a:hover button {
       box-shadow: -4px -4px 0 #000;
@@ -155,25 +175,30 @@ const selectedPosts = allPosts.filter(post => popularSlugs.includes(post.id));
 </style>
 
 <section class="h-feed">
-<div id="popular" />
-  <h2 class="p-name">Popular Posts</h2>
+  <div id="popular" />
+  {!simple && <h2 class="p-name">Popular Posts</h2>}
   <div class={`container ${className ?? ''}`}>
     {selectedPosts.map(post => (
-        <div class="h-entry list">
-          <a class="u-url" href={`/blog/${post.id}`} rel="prefetch-intent" data-umami-event={`popular-${post.id}`}>
-            <p class="p-name posts-title">{post.data.title}</p>
+      <div class:list={["h-entry list", { "list--simple": simple }]}>
+        <a class="u-url" href={`/blog/${post.id}`} rel="prefetch-intent" data-umami-event={`popular-${post.id}`}>
+          <p class:list={["p-name posts-title", { "posts-title--simple": simple }]}>
+            {post.data.title}
+          </p>
+          {!simple && (
             <span class="tag">
               {post.data.tags.map((tag) => (
                 <button>{tag}</button>
               ))}
             </span>
+          )}
             <p class="info">
               <FormattedDate class="dt-published" date={post.data.pubDate} monthFormat="short" />&nbsp;
+            {!simple && (
               <span class="reading"><ReadingTime time={post.readingTime} /></span>
-            </p>
-          </a>
-        </div>
-
+            )}
+          </p>
+        </a>
+      </div>
     ))}
   </div>
 </section>
