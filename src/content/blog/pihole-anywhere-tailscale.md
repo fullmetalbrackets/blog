@@ -2,10 +2,14 @@
 title: 'How to use Pi-hole from anywhere with Tailscale'
 description: "Tailscale is my new homelab toy. I've been using it to access my media on the go, to connect to a VPS for sharing my Plex library with family, and now for on-the-go adblocking on my phone, tablet and laptop -- here's how. "
 pubDate: 2024-09-25
-updatedDate: 2025-02-03
+updatedDate: 2026-05-15 12:00:00
 tags: ['tailscale', 'pi-hole', 'guide']
 related: ['set-up-pihole-on-linux', 'comprehensive-guide-tailscale-securely-access-home-network']
 ---
+
+> **Update in May 2026**
+> 
+> I'm still using this setup almost two years later, but switched to using _AdGuard Home_ instead of Pi-Hole as the DNS, and it works exactly the same. I have a [post about AdGuard Home](migrate-adguardhome-glinet-flint2-libre-sweet-potato) with instructions on how to install it, if you want to use it instead of Pi-Hole.
 
 ## About Tailscale
 
