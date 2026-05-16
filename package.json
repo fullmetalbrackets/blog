@@ -23,7 +23,9 @@
     "wiki": "node scripts/wiki.mjs",
     "mogrify": "node scripts/mogrify.mjs",
     "music": "node --env-file=.env scripts/last-played.mjs",
-    "blogroll": "node --env-file=.env scripts/blogroll.mjs"
+    "blogroll": "node scripts/blogroll.mjs",
+    "now": "node scripts/now.mjs",
+    "convert": "node scripts/convert.mjs"
   },
   "dependencies": {
     "@ascorbic/feed-loader": "^2.0.1",
