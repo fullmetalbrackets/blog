@@ -1194,7 +1194,7 @@ a.button:hover {
 }
 
 /* external link indicator */
-article a[target='_blank']::after {
+article a[target='_blank']:not(.stats, .edit)::after {
   content: '';
   display: inline-block;
   width: 0.65em;
