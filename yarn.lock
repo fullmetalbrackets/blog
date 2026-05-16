@@ -1930,13 +1930,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"astro-social-share@npm:^2.2.0":
-  version: 2.2.0
-  resolution: "astro-social-share@npm:2.2.0"
-  checksum: 10c0/a82a56deb830e6e1bed78a94939ea051db75b13890828e2c36e49573fc495cafda7a5de06ad4502beb7bd50467d0dd4a27da9803b671afa0d89019e3bf52c0cd
-  languageName: node
-  linkType: hard
-
 "astro@npm:6.3.1":
   version: 6.3.1
   resolution: "astro@npm:6.3.1"
@@ -5223,7 +5216,6 @@ __metadata:
     astro: "npm:^6.3.1"
     astro-embed: "npm:^0.13.0"
     astro-og-canvas: "npm:^0.11.1"
-    astro-social-share: "npm:^2.2.0"
     gab-astro-compress: "npm:^0.1.2"
     glightbox: "npm:^3.3.1"
     mdast-util-to-string: "npm:^4.0.0"
