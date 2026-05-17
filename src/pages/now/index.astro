@@ -2,7 +2,6 @@
 export const prerender = true;
 
 import { getCollection, render } from 'astro:content';
-import { Image } from 'astro:assets';
 import { SITE_URL } from '@consts';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import BreadcrumbSchema from '@components/BreadcrumbSchema.astro';
@@ -21,7 +20,7 @@ const { Content } = await render(latest);
 const { title, description } = pages.find(p => p.href === "/now")!;
 ---
 
-<BaseLayout title={title} description={description} entry={latest}>
+<BaseLayout title={title} description={description} entry={latest} disableHeadingLinks={true}>
   <link slot="head" rel="canonical" href={new URL('/now', Astro.site).toString()} />
   <BreadcrumbSchema slot="head" crumbs={[
     { name: "Home", url: `${SITE_URL}` },
@@ -73,6 +72,9 @@ const { title, description } = pages.find(p => p.href === "/now")!;
   </section>
 </BaseLayout>
 
+<style is:global slot="head">
+  .heading-link { display: none; }
+</style>
 <style scoped>
   section {
     min-height: calc(100vh - 300px);

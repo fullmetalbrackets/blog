@@ -33,7 +33,7 @@ const { Content } = await render(entry);
 const { title, description } = pages.find(p => p.href === "/now")!;
 ---
 
-<BaseLayout title={title} description={description} entry={entry}>
+<BaseLayout title={title} description={description} entry={entry} disableHeadingLinks={true}>
   <link slot="head" rel="canonical" href={new URL('/now', Astro.site).toString()} />
   <BreadcrumbSchema slot="head" crumbs={[
     { name: "Home", url: `${SITE_URL}` },
@@ -86,6 +86,9 @@ const { title, description } = pages.find(p => p.href === "/now")!;
   </section>
 </BaseLayout>
 
+<style is:global slot="head">
+  .heading-link { display: none; }
+</style>
 <style scoped>
   section {
     min-height: calc(100vh - 300px);
