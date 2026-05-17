@@ -1,0 +1,25 @@
+{
+  "name": "Fullmetalbrackets",
+  "short_name": "fullmetal",
+  "display": "minimal-ui",
+  "orientation": "any",
+  "start_url": "/",
+  "scope": "/",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/icon192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "theme_color": "#202124",
+  "background_color": "#202124"
+}
