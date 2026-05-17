@@ -181,9 +181,20 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
       padding: 0;
       margin: 0.25em auto 0 auto;
     }
+    .coffee a[target='_blank']::after {
+      content: none;
+    }
+    @keyframes shake {
+      0%   { transform: rotate(0deg); }
+      20%  { transform: rotate(-6deg); }
+      40%  { transform: rotate(6deg); }
+      60%  { transform: rotate(-4deg); }
+      80%  { transform: rotate(4deg); }
+      100% { transform: rotate(0deg); }
+    }
     .coffee-btn:hover {
       background: var(--hover);
-      transition: all .15s ease-out;
+      animation: shake 0.25s ease-in-out;
     }
     .umami {
       color: var(--primary);
@@ -415,7 +426,7 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
     @media (hover: hover) {
       .blog-nav a:hover {
         box-shadow: -4px -4px 0 #000;
-        transform: translate(4px, 4px);
+        transform:;
         outline-offset: 1px;
       }
       .blog-nav a {
@@ -495,7 +506,7 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
     <nav class="footer-grid" aria-label="End of post.">
       <div class="coffee">
         <span>Support me</span>
-        <a href={DONATE} rel="noopener noreferrer">
+        <a href={DONATE} rel="noopener noreferrer" target="_blank">
           <img
             src="https://img.buymeacoffee.com/button-api/?slug=arieldiaz&font_family=Inter&coffee_colour=6F4E37"
             class="coffee-btn"
