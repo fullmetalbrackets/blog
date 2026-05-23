@@ -14,6 +14,7 @@ import {
   getSortedNotes,
 } from "@utils/collections";
 import { pages } from "@data/pages";
+import TOC from '@icons/toc.svg';
 
 const { title, description } = pages.find(p => p.href === "/stats")!;
 
@@ -357,6 +358,10 @@ const buildTime = today.toLocaleDateString("en-US", {
     text-transform: uppercase;
     letter-spacing: 0.07em;
     color: var(--emphasis);
+  }
+  summary svg {
+    fill: var(--primary);
+    margin: -1px -8px 2px -4px;
   }
   .intro {
     margin: 0 0 1.5em;
@@ -745,7 +750,7 @@ const buildTime = today.toLocaleDateString("en-US", {
     <hr class="topline" />
     <p class="intro">{description}</p>
     <details>
-      <summary>Table of Contents</summary>
+      <summary><TOC width={28} height={28} />Table of Contents</summary>
       <div class="details-content">
         <ol class="toc">
           <li><a href="#blog">Blog</a></li>
