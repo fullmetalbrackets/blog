@@ -115,7 +115,7 @@ const pageUrl = page.currentPage === 1
                       <span class="p-name title">{entry.title}</span>
                       <div class="meta">
                         <span class="media-type">{entry.mediaType}</span>
-                        <FormattedDate class="dt-published" date={entry.date} monthFormat="short" />
+                        <FormattedDate class="dt-published" date={entry.updated ?? entry.date} monthFormat="short" />
                       </div>
                     </div>
                   </div>
@@ -128,7 +128,8 @@ const pageUrl = page.currentPage === 1
                       </p>
                     )}
                     <div class="meta">
-                      <FormattedDate class="dt-published" date={entry.date} />
+                      {entry.updated && <span class="updated-label">Updated</span>}
+                      <FormattedDate class="dt-published" date={entry.updated ?? entry.date} />
                     </div>
                   </>
                 )}
@@ -189,13 +190,13 @@ const pageUrl = page.currentPage === 1
     text-decoration: none;
     transition: 0.1s ease-in-out;
     background: var(--blockquote);
-    border: 1px solid var(--blockquote);
+    border: 2px solid var(--blockquote);
     padding: 1em;
     border-radius: 0.5em;
     padding: 0 1em 1em 1em;
   }
   li:hover .entry {
-    border: 1px solid var(--primary);
+    border: 2px solid var(--primary);
     transition: all .25s ease-out;
   }
   @media (hover: hover) {
@@ -211,6 +212,12 @@ const pageUrl = page.currentPage === 1
       box-shadow: none;
       transform: none;
     }
+  }
+  span.updated-label {
+    font-size: 0.875em;
+    font-family: var(--sub-font);
+    font-weight: 700;
+    color: var(--primary);
   }
   .type-label {
     display: inline-block;
