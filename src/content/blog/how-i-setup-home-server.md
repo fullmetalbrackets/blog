@@ -2,9 +2,10 @@
 title: 'How I set up a home server for self-hosting and as a NAS with secure remote access via Tailscale'
 description: 'I turned my old Dell PC into an all-in-one home server and network attached storage to self-host all my data, my photos, and my media library, running Home Assistant, Plex and other services, all securely accessible from outside my home with Tailscale.'
 pubDate: 2025-01-31
-updatedDate: 2025-11-30
+updatedDate: 2026-05-23 12:00:00
 tags: ['self-hosting', 'debian', 'tailscale']
 related: ['expose-plex-tailscale-vps', 'pihole-anywhere-tailscale']
+howto: true
 ---
 
 ## Server hardware and software
@@ -474,7 +475,11 @@ uptime-kuma:
 
 ### Watchtower
 
-<a href="https://containrrr.dev/watchtower" target="_blank" data-umami-event="home-server-watchtower">Watchtower</a> keeps track of new version of all your other container images, and (depending on your config) will automatically shut containers down, update the images, prune the old images, and then restart it. You can also schedule your updates for specific dates and times, mine only happen on weekdays at 3 AM. Finally, it can send notifications via many providers, but like with everything else I use Pushover to get notified on my phone when any containers have been updated.
+> The original Watchtower project was [not actively maintained past 2023](https://github.com/containrrr/watchtower/issues/2067), [broke with changes to the Docker API](https://github.com/containrrr/watchtower/issues/2122), and [finally got archived in December of 2025](https://github.com/containrrr/watchtower/discussions/2135).
+>
+> The fork I've switch to is [nickfedor/watchtower](https://hub.docker.com/r/nickfedor/watchtower), which has worked perfectly as a drop-in replacement and continues to be actively maintained. See the GitHub repo [here](https://github.com/nicholas-fedor/watchtower). The link below goes to this fork's website.
+
+[Watchtower](https://watchtower.nickfedor.com/) keeps track of new version of all your other container images, and (depending on your config) will automatically shut containers down, update the images, prune the old images, and then restart it. You can also schedule your updates for specific dates and times, mine only happen on weekdays at 3 AM. Finally, it can send notifications via many providers, but like with everything else I use Pushover to get notified on my phone when any containers have been updated.
 
 :::image-figure[Watchtower notification via Pushover]
 ![A screenshot of the Pushover mobile app](../../img/blog/watchtower-pushover.jpg)
@@ -483,7 +488,7 @@ uptime-kuma:
 ```yaml
 watchtower:
  container_name: watchtower
- image: containrrr/watchtower
+ image: nickfedor/watchtower
  restart: unless-stopped
  environment:
   - WATCHTOWER_NOTIFICATION_URL=pushover://:...@...
@@ -495,8 +500,6 @@ watchtower:
  volumes:
   - '/var/run/docker.sock:/var/run/docker.sock'
 ```
-
-> It's important to note that Watchtower has not been updated in over 2 years and is basically unmaintained at this point. There's some maintained alternatives, in some cases with even more features, but I personally I have really had a reason to migrate as of yet. If you're starting out new, I suggest instead checking out <a href="https://github.com/fmartinou/whats-up-docker" target="_blank" data-umami-event="home-server-whatsupdocker">What's Up Docker</a> or <a href="https://github.com/crazy-max/diun" target="_blank" data-umami-event="home-server-diun">Diun</a>
 
 ## Storage, SMB shares and MergerFS
 
