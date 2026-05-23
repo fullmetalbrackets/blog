@@ -4,10 +4,13 @@ import BackToTop from "@components/BackToTop.astro";
 import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
 import CodeblockCopy from "@components/CodeblockCopy.astro";
 import HeadingCopy from "@components/HeadingCopy.astro";
+import TOC from "@components/TableOfContents.astro";
+import type { MarkdownHeading } from '@astrojs/markdown-remark';
 import { SITE_URL } from "@consts";
 
-const { frontmatter } = Astro.props;
+const { frontmatter, headings = [] } = Astro.props;
 const showTop = frontmatter.showTop !== false;
+const showToc = frontmatter.toc === true; 
 
 const currentPath = Astro.url.pathname;
 
@@ -94,6 +97,7 @@ const schema = {
     <p class="desc">
       {frontmatter.description}
     </p>
+    {showToc && <TOC headings={headings} />}
     <div class="content">
       <slot>
         <p>
