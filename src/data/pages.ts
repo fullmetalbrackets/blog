@@ -23,14 +23,14 @@ export const pages: Page[] = [
   {
     href: '/blog/updated',
     title: 'Blog - Updated',
-    description: 'See blog posts with updates, sorted by most recently updated',
+    description: 'See blog posts with updates, sorted by most recently updated.',
     event: 'explore-updated',
     explore: false,
   },
   {
     href: '/blog/years',
     title: 'Blog - Years',
-    description: 'See blog posts by year published',
+    description: 'See blog posts by year published.',
     event: 'explore-years',
     explore: false,
   },
