@@ -140,15 +140,15 @@ const FONT_STYLES = {
     families: ['Nunito'],
     weight: 'Black' as const,
     color: [255, 255, 255] as [number, number, number],
-    size: 48,
+    size: 60,
     lineHeight: 1.1,
   },
   description: {
     families: ['AtkinsonHyperlegibleNext'],
     weight: 'Normal' as const,
     color: [164, 174, 188] as [number, number, number],
-    size: 24,
-    lineHeight: 1.6,
+    size: 32,
+    lineHeight: 1.3,
   },
 };
 
