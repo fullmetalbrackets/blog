@@ -7,18 +7,18 @@ import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
 import CollectionPageSchema from "@components/CollectionPageSchema.astro";
 import ItemListSchema from '@components/ItemListSchema.astro';
 import { SITE_URL } from "@consts";
-import { pages } from "@data/pages";
+import { pages as allPages } from "@data/pages";
 
 const title = "Explore";
 const description = "Explore all of the pages on fullmetalbrackets.com";
-
+const pages = allPages.filter(p => p.explore !== false);
 const exploreItems = pages.map(page => ({
   name: page.title,
   url: `${SITE_URL}${page.href}`,
 }));
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} ogImage={`${SITE_URL}/og/explore.png`}>
   <BreadcrumbSchema
     slot="head"
     crumbs={[

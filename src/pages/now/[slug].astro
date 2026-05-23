@@ -33,7 +33,7 @@ const { Content } = await render(entry);
 const { title, description } = pages.find(p => p.href === "/now")!;
 ---
 
-<BaseLayout title={title} description={description} entry={entry} disableHeadingLinks={true}>
+<BaseLayout title={title} description={description} ogImage={`${SITE_URL}/og/${entry.id}.png`} entry={entry} disableHeadingLinks={true}>
   <link slot="head" rel="canonical" href={new URL('/now', Astro.site).toString()} />
   <BreadcrumbSchema slot="head" crumbs={[
     { name: "Home", url: `${SITE_URL}` },

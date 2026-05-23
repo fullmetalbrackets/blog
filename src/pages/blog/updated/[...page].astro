@@ -9,21 +9,33 @@ import BackToTop from "@components/BackToTop.astro";
 import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
 import CollectionPageSchema from "@components/CollectionPageSchema.astro";
 import ItemListSchema from "@components/ItemListSchema.astro";
-import type { Page } from "astro";
-import type { CollectionEntry } from "astro:content";
+import type { Post } from '@utils/collections';
 import { SITE_URL } from "@consts";
 
-export async function getStaticPaths({ paginate }: { paginate: <T>(items: T[], options: { pageSize: number }) => Page<T>[] }) {
+type AstroPage<T> = {
+  data: T[];
+  currentPage: number;
+  lastPage: number;
+  total: number;
+  url: {
+    prev: string | undefined;
+    next: string | undefined;
+  };
+};
+
+type PaginateFunction = <T>(items: T[], options: { pageSize: number }) => AstroPage<T>[];
+
+type Props = {
+  page: AstroPage<Post>;
+};
+
+export async function getStaticPaths({ paginate }: { paginate: PaginateFunction }) {
   const posts = (await getPostsWithReadingTime())
-    .filter(post => post.data.updatedDate)
-    .sort((a, b) => b.data.updatedDate!.valueOf() - a.data.updatedDate!.valueOf());
+    .filter((post: Post) => post.data.updatedDate)
+    .sort((a: Post, b: Post) => b.data.updatedDate!.valueOf() - a.data.updatedDate!.valueOf());
 
   return paginate(posts, { pageSize: 5 });
 }
-
-type Props = {
-  page: Page<CollectionEntry<'blog'> & { readingTime: string }>;
-};
 
 const { page } = Astro.props;
 const title = `Recently Updated - Page ${page.currentPage}`;
@@ -32,7 +44,8 @@ const desc = "Blog posts sorted by most recently updated.";
 const pageUrl = page.currentPage === 1
   ? `${SITE_URL}/blog/updated`
   : `${SITE_URL}/blog/updated/${page.currentPage}`;
-const updatedItems = page.data.map(post => ({
+
+const updatedItems = page.data.map((post: Post) => ({
   name: post.data.title,
   url: `${SITE_URL}/blog/${post.id}`,
   type: "BlogPosting",
@@ -218,7 +231,7 @@ const updatedItems = page.data.map(post => ({
   }
 </style>
 
-<BaseLayout title={title} description={desc}>
+<BaseLayout title={title} description={desc} ogImage={`${SITE_URL}/og/blog/updated.png`}>
   <BreadcrumbSchema slot="head" crumbs={[
     { name: "Home", url: `${SITE_URL}` },
     { name: "Blog", url: `${SITE_URL}/blog` },
@@ -258,13 +271,13 @@ const updatedItems = page.data.map(post => ({
       </span>
     </nav>
     <ul>
-      {page.data.map((post) => (
+      {page.data.map((post: Post) => (
         <li class="h-entry">
           <div>
             <a class="u-url" href={`/blog/${post.id}`} rel="prefetch-intent" data-umami-event={post.id}>
               <span class="p-name title">{post.data.title}</span>
               <p class="tag">
-                {post.data.tags.map((tag) => (
+                {post.data.tags.map((tag: string) => (
                   <button>{tag}</button>
                 ))}
               </p>

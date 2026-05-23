@@ -10,47 +10,52 @@ import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
 import CollectionPageSchema from "@components/CollectionPageSchema.astro";
 import ItemListSchema from "@components/ItemListSchema.astro";
 import { getPostsByYearMap } from '@utils/collections';
-import type { BlogYearProps } from '../../../types';
+import type { Post, YearMap } from '@utils/collections';
 import { SITE_URL } from "@consts";
+
+type Props = {
+  posts: Post[];
+  postsByYear: YearMap;
+};
 
 export async function getStaticPaths() {
   const postsByYear = await getPostsByYearMap();
   return Object.entries(postsByYear).map(([year, posts]) => ({
     params: { year },
-    props: { posts, postsByYear }
+    props: { posts, postsByYear } satisfies Props,
   }));
 }
 
-type Props = BlogYearProps;
 const { posts, postsByYear } = Astro.props;
 const { year } = Astro.params;
-const postCount = posts.length
+const postCount = posts.length;
 const title = `Blog - ${year}`;
 const desc = `Blog posts written in ${year}.`;
 
 const otherYears = Object.keys(postsByYear)
   .map(Number)
-  .sort((a, b) => b - a)
-  .filter(y => y !== Number(year));
-const yearItems = posts.map(post => ({
+  .sort((a: number, b: number) => b - a)
+  .filter((y: number) => y !== Number(year));
+
+const yearItems = posts.map((post: Post) => ({
   name: post.data.title,
   url: `${SITE_URL}/blog/${post.id}`,
   type: "BlogPosting",
 }));
 ---
 
-<BaseLayout title={title} description={desc}>
+<BaseLayout title={title} description={desc} ogImage={`${SITE_URL}/og/blog/years/${year}.png`}>
   <BreadcrumbSchema slot="head" crumbs={[
     { name: "Home", url: `${SITE_URL}` },
     { name: "Blog", url: `${SITE_URL}/blog` },
-    { name: year, url: `${SITE_URL}/blog/years/${year}` }
+    { name: year!, url: `${SITE_URL}/blog/years/${year}` }
   ]} />
   <CollectionPageSchema
     slot="head"
     name={title}
     description={desc}
     url={`${SITE_URL}/blog/years/${year}`}
-    about={year.toString()}
+    about={year!.toString()}
   />
   <ItemListSchema slot="head" id={`${SITE_URL}/blog/years/${year}/#list`} items={yearItems} />
   <section class="h-feed">
@@ -62,40 +67,38 @@ const yearItems = posts.map(post => ({
       <a href="/categories" rel="prefetch-intent" class="categories">Categories <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><title>arrow-right</title><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg></a>
     </p>
     <p>
-      Showing all <span class="total">{postCount}&nbsp;{postCount === 1 ? 'post' : 'posts'}</span> from <span class="year">{year}</span>. 
+      Showing all <span class="total">{postCount}&nbsp;{postCount === 1 ? 'post' : 'posts'}</span> from <span class="year">{year}</span>.
     </p>
     <nav class="years">
       <span class="posts-years">See more years:</span>
-      {otherYears.map(y => (
+      {otherYears.map((y: number) => (
         <Link href={`/blog/years/${y}`} rel="prefetch-intent" aria-label={String(y)} data-umami-event={`blog-${y}`}>
           <button>{y} <span class="count">{postsByYear[String(y)]?.length || 0}</span></button>
         </Link>
       ))}
     </nav>
     <ul>
-      {
-        posts.map((post) => (
-          <li class="h-entry">
-            <div>
-              <a class="u-url" href={`/blog/${post.id}`} rel="prefetch-intent" data-umami-event={post.id}>
-                <span class="p-name title">{post.data.title}</span>
-                <p class="tag">
-                  {post.data.tags.map((tag) => (
-                    <button>{tag}</button>
-                  ))}
-                </p>
-                <p class="info">
-                  <FormattedDate class="dt-published" date={post.data.pubDate} />&nbsp;
-                  <span class="reading">
-                    <ReadingTime time={post.readingTime} />
-                  </span>
-                </p>
-                <p class="p-summary desc">{post.data.description}</p>
-              </a>
-            </div>
-          </li>
-        ))
-      }
+      {posts.map((post: Post) => (
+        <li class="h-entry">
+          <div>
+            <a class="u-url" href={`/blog/${post.id}`} rel="prefetch-intent" data-umami-event={post.id}>
+              <span class="p-name title">{post.data.title}</span>
+              <p class="tag">
+                {post.data.tags.map((tag: string) => (
+                  <button>{tag}</button>
+                ))}
+              </p>
+              <p class="info">
+                <FormattedDate class="dt-published" date={post.data.pubDate} />&nbsp;
+                <span class="reading">
+                  <ReadingTime time={post.readingTime} />
+                </span>
+              </p>
+              <p class="p-summary desc">{post.data.description}</p>
+            </a>
+          </div>
+        </li>
+      ))}
     </ul>
     <hr />
     <BackToTop />
@@ -198,7 +201,7 @@ const yearItems = posts.map(post => ({
     justify-content: space-between;
     font-family: var(--sub-font);
     font-weight: 800;
-    margin-bottom: 1em
+    margin-bottom: 1em;
   }
   .all svg, .categories svg {
     display: inline-flex;
@@ -230,7 +233,7 @@ const yearItems = posts.map(post => ({
     place-items: center;
     margin-top: 0.1em;
     display: inline-flex;
-    gap: 0.25em
+    gap: 0.25em;
   }
   .tag {
     margin: 0.125em 0 0 0;
@@ -272,10 +275,10 @@ const yearItems = posts.map(post => ({
     }
     button:hover {
       box-shadow: -4px -4px 0 #000;
-      transform: translate(4px,4px);
+      transform: translate(4px, 4px);
       cursor: pointer;
     }
-    button:focus-visible{
+    button:focus-visible {
       outline-offset: 1px;
     }
     .years a:active button, .years a:focus button {
@@ -284,7 +287,7 @@ const yearItems = posts.map(post => ({
       background-color: var(--hover);
     }
   }
-  @media (hover: hover) {	
+  @media (hover: hover) {
     span.active a:hover button {
       box-shadow: none;
       transform: none;

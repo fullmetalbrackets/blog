@@ -16,7 +16,7 @@ const { title, description } = pages.find(p => p.href === "/uses")!;
 const lastUpdated = new Date('2026-04-11T12:00');
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} ogImage={`${SITE_URL}/og/uses.png`}>
   <BreadcrumbSchema slot="head" crumbs={[
     { name: "Home", url: `${SITE_URL}` },
     { name: "Uses", url: `${SITE_URL}/uses` }

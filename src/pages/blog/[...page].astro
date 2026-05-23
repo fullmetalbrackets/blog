@@ -2,33 +2,47 @@
 export const prerender = true;
 
 import BaseLayout from "@layouts/BaseLayout.astro";
-import { getPostsWithReadingTime, getPostsByYearMap } from '@utils/collections';
+import { getPostsWithReadingTime } from "@utils/collections";
+import type { Post } from '@utils/collections';
 import FormattedDate from "@components/FormattedDate.astro";
 import ReadingTime from "@components/ReadingTime.astro";
 import BackToTop from "@components/BackToTop.astro";
 import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
 import CollectionPageSchema from "@components/CollectionPageSchema.astro";
 import ItemListSchema from "@components/ItemListSchema.astro";
-import { SITE_TITLE, SITE_URL } from "@consts";
-import type { PaginateFunction } from 'astro';
-import { pages } from "@data/pages";
+import { SITE_URL } from "@consts";
+import { pages as sitePages, type Page } from "@data/pages";
+
+type AstroPage<T> = {
+  data: T[];
+  currentPage: number;
+  lastPage: number;
+  total: number;
+  url: {
+    prev: string | undefined;
+    next: string | undefined;
+  };
+};
+
+type PaginateFunction = <T>(items: T[], options: { pageSize: number }) => AstroPage<T>[];
+
+type Props = {
+  page: AstroPage<Post>;
+};
 
 export async function getStaticPaths({ paginate }: { paginate: PaginateFunction }) {
-  const [posts, postsByYear] = await Promise.all([
-    getPostsWithReadingTime(),
-    getPostsByYearMap()
-  ]);
-  return paginate(posts, { pageSize: 5, props: { postsByYear } });
+  const posts = await getPostsWithReadingTime();
+  return paginate(posts, { pageSize: 10 });
 }
 
 const { page } = Astro.props;
-const title = `Blog - Page ${page.currentPage} | ${SITE_TITLE}`;
-const { description } = pages.find(p => p.href === "/blog")!;
+const { title, description } = sitePages.find((p: Page) => p.href === "/blog")!;
 
 const pageUrl = page.currentPage === 1
   ? `${SITE_URL}/blog`
   : `${SITE_URL}/blog/${page.currentPage}`;
-const blogItems = page.data.map(post => ({
+
+const blogItems = page.data.map((post: Post) => ({
   name: post.data.title,
   url: `${SITE_URL}/blog/${post.id}`,
   type: "BlogPosting",
@@ -40,18 +54,15 @@ const blogItems = page.data.map(post => ({
     font-family: var(--sub-font);
     font-weight: 900;
   }
-  .rss {
-    display: flex;
-    place-items: center;
-    margin-top: 1em;
-    gap: 0.25em;
+  .total {
     font-family: var(--sub-font);
-    color: var(--emphasis);
     font-weight: 900;
+    font-size: 0.95em;
+    color: var(--primary);
   }
   ul {
     list-style-type: none;
-    margin: 1em auto 0 auto;
+    margin: 0 auto;
     padding: 0;
     max-width: 1000px;
   }
@@ -67,59 +78,14 @@ const blogItems = page.data.map(post => ({
     padding-bottom: 0.25em;
     border-bottom: 4px dotted transparent;
   }
-  hr ~ p {
-    margin: 0 auto 1em auto;
-    padding: 0 auto;
-  }
-  hr ~ p a[target='_blank']::after {
-    content: '';
-    display: inline-block;
-    width: 0.6em;
-    height: 0.6em;
-    margin-left: 0.2em;
-    margin-bottom: 0.2em;
-    background-color: currentColor;
-    mask-image: url('/assets/new-tab.svg');
-    mask-repeat: no-repeat;
-    mask-position: center;
-    mask-size: contain;
-    vertical-align: middle;
-  }
   p {
     margin: 0 auto;
-    padding: 0;
-  }
-  .years {
-    margin: 1em auto;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 0.25em;
-  }
-  .years a {
-    display: flex;
-    font-size: 0.9em;
-    vertical-align: middle;
-    place-items: center;
-  }
-  .count {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 1.25em;
-    height: 1rem;
-    padding: 1px 0 0 0;
-    margin: 0 auto;
-    background: rgba(0, 0, 0, 0.15);
-    border-radius: 9999px;
-    font-family: var(--main-font);
-    font-size: 0.675em;
+    padding: 0 auto;
   }
   button {
     margin: 0 0.175em;
     background: var(--info);
     cursor: pointer;
-    gap: 0.5em;
   }
   button:first-of-type {
     margin-left: 0;
@@ -128,11 +94,10 @@ const blogItems = page.data.map(post => ({
     place-items: center;
     margin-top: 0.1em;
     display: inline-flex;
-    gap: 0.25em
+    gap: 0.25em;
   }
   .tag {
-    display: flex;
-    margin: 0.25em 0;
+    margin: 0.125em 0 0 0;
     padding: 0;
   }
   .title {
@@ -140,9 +105,6 @@ const blogItems = page.data.map(post => ({
     font-weight: bold;
     line-height: 1.2;
     color: var(--emphasis);
-  }
-  .title a:hover {
-    color: var(--hover);
   }
   .desc {
     margin-top: -0.25em;
@@ -161,9 +123,6 @@ const blogItems = page.data.map(post => ({
       box-shadow: -4px -4px 0 #000;
       transform: translate(4px, 4px);
     }
-    li:hover button {
-      outline-offset: 1px;
-    }
     button {
       text-overflow: ellipsis;
       transition: all .10s ease-out;
@@ -171,22 +130,17 @@ const blogItems = page.data.map(post => ({
     }
     button:hover {
       box-shadow: -4px -4px 0 #000;
-      transform: translate(4px,4px);
+      transform: translate(4px, 4px);
       cursor: pointer;
     }
-    button:focus-visible{
+    button:focus-visible {
       outline-offset: 1px;
-    }
-    .years a:active button, .years a:focus button {
-      box-shadow: none;
-      transform: translate(0px, 0px);
-      background-color: var(--hover);
     }
   }
   .page-info-top {
     display: flex;
     font-weight: 900;
-    margin: 1em auto -1.75em auto;
+    margin: 1em auto -1.7em auto;
     justify-content: space-around;
     place-items: center;
     font-family: var(--sub-font);
@@ -206,7 +160,7 @@ const blogItems = page.data.map(post => ({
     justify-content: space-between;
     font-family: var(--sub-font);
     font-weight: 800;
-    margin-top: 1px;
+    margin: 0 0 1em 0;
   }
   .prev {
     grid-column: 1;
@@ -224,8 +178,8 @@ const blogItems = page.data.map(post => ({
     height: 0.75em;
     vertical-align: middle;
     fill: currentColor;
-    overflow: visible;
     transition: all .1s ease-in-out;
+    overflow: visible;
   }
   .prev a:hover svg {
     transition: all .1s ease-in-out;
@@ -235,12 +189,6 @@ const blogItems = page.data.map(post => ({
     transition: all .1s ease-in-out;
     transform: translateX(4px);
   }
-  .rss svg:hover {
-    animation: wiggle 0.25s ease-in-out;
-  }
-  .rss svg:not(:hover) {
-    animation: none;
-  }
   .bottom-line {
     margin-top: 2em;
   }
@@ -249,16 +197,11 @@ const blogItems = page.data.map(post => ({
       line-height: 1.2;
     }
     .info {
-      display: block;
-      margin-top: 0.25em;
-      margin-bottom: 0.5em;
+      margin-top: 0.1em;
+      margin-bottom: 0.25em;
     }
     .tag button {
-      display: flex;
       margin: 0 0.45em 0 0;
-    }
-    .posts-years {
-      font-size: 18px;
     }
     .page-info-top {
       font-size: 0.85em;
@@ -271,18 +214,15 @@ const blogItems = page.data.map(post => ({
       padding: 0.1em 0 0 0;
     }
     .pagination {
-      font-size: 0.8em;
-    }
-    .desc, .rss {
-      font-size: 0.75em;
+      font-size: 0.85em;
     }
   }
 </style>
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} ogImage={`${SITE_URL}/og/blog.png`}>
   <BreadcrumbSchema slot="head" crumbs={[
     { name: "Home", url: `${SITE_URL}` },
-    { name: "Blog", url: `${SITE_URL}/blog` }
+    { name: "Blog", url: `${SITE_URL}/blog` },
   ]} />
   <CollectionPageSchema
     slot="head"
@@ -292,71 +232,58 @@ const blogItems = page.data.map(post => ({
   />
   <ItemListSchema slot="head" id={`${pageUrl}/#list`} items={blogItems} />
   <section class="h-feed">
-    <h1 class="p-name">Blog</h1>
+    <h1 class="p-name">{title}</h1>
     <a class="u-url" href={`${SITE_URL}/blog`} hidden>Permalink</a>
     <hr />
     <p>
-      The blog has <span class="total">{page.total}</span> posts. See posts <a href="/blog/updated" rel="prefetch-intent" data-umami-event="blog-updated">by recently updated</a>, <a href="/categories" rel="prefetch-intent" data-umami-event="blog-category">by category</a>, <a href="/blog/years" rel="prefetch-intent" data-umami-event="blog-years">by year</a> or <a href="/blog/random">go to a random post</a>.
-    </p>
-    <p>
-      <a href="/rss.xml" target="_blank">RSS</a> and <a href="/feed.json" target="_blank">JSON</a> feeds are available.
+      <span class="total">{page.total}</span> posts total. You can also browse <a href="/categories" rel="prefetch-intent" data-umami-event="blog-category">by category</a>, <a href="/blog/years" rel="prefetch-intent">by year</a>, <a href="/blog/updated" rel="prefetch-intent">recently updated</a>, or <a href="/blog/random">a random post</a>.
     </p>
     <div class="page-info-top">Page {page.currentPage} of {page.lastPage}</div>
     <nav class="pagination" aria-label="Blog pagination">
       <span class="prev">
         {page.url.prev ? (
-          <a href={page.url.prev} rel="prefetch-intent prev"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><title>Newer</title><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg> Newer</a>
-        ) : (
-          <span></span>
-        )}
+          <a href={page.url.prev} rel="prefetch-intent prev"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><title>arrow-left</title><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg> Newer</a>
+        ) : <span />}
       </span>
       <span class="next">
         {page.url.next ? (
-          <a href={page.url.next} rel="prefetch-intent next">Older <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><title>Older</title><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg></a>
-        ) : (
-          <span></span>
-        )}
+          <a href={page.url.next} rel="prefetch-intent next">Older <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><title>arrow-right</title><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg></a>
+        ) : <span />}
       </span>
     </nav>
     <ul>
-      {
-        page.data.map((post) => (
-          <li class="h-entry">
-            <div>
-              <a class="u-url" href={`/blog/${post.id}`} rel="prefetch-intent" data-umami-event={post.id}>
-                <span class="p-name title">{post.data.title}</span>
-                <p class="tag">
-                  {post.data.tags.map((tag) => (
-                    <button>{tag}</button>
-                  ))}
-                </p>
-                <p class="info">
-                  <FormattedDate class="dt-published" date={post.data.pubDate} />&nbsp;
-                  <span class="reading"><ReadingTime time={post.readingTime} /></span>
-                </p>
-                <p class="desc">{post.data.description}</p>
-              </a>
-            </div>
-          </li>
-        ))
-      }
+      {page.data.map((post: Post) => (
+        <li class="h-entry">
+          <div>
+            <a class="u-url" href={`/blog/${post.id}`} rel="prefetch-intent" data-umami-event={post.id}>
+              <span class="p-name title">{post.data.title}</span>
+              <p class="tag">
+                {post.data.tags.map((tag: string) => (
+                  <button>{tag}</button>
+                ))}
+              </p>
+              <p class="info">
+                <FormattedDate class="dt-published" date={post.data.pubDate} />
+                &nbsp;
+                <span class="reading"><ReadingTime time={post.readingTime} /></span>
+              </p>
+              <p class="p-summary desc">{post.data.description}</p>
+            </a>
+          </div>
+        </li>
+      ))}
     </ul>
-    
     <div class="page-info">Page {page.currentPage} of {page.lastPage}</div>
     <nav class="pagination" aria-label="Blog pagination">
       <span class="prev">
         {page.url.prev ? (
-          <a href={page.url.prev} rel="prefetch-intent prev"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><title>Newer</title><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg> Newer</a>
-        ) : (
-          <span></span>
-        )}
+          <a href={page.url.prev} rel="prefetch-intent prev"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><title>arrow-left</title><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg> Newer</a>
+        ) : <span />}
       </span>
       <span class="next">
         {page.url.next ? (
-          <a href={page.url.next} rel="prefetch-next">Older <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><title>Older</title><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg></a>
-        ) : (
-          <span></span>
-        )}
+          <a href={page.url.next} rel="prefetch-intent next">Older <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><title>arrow-right</title><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg></a>
+        ) : <span />}
       </span>
     </nav>
     <hr class="bottom-line" />
