@@ -119,7 +119,7 @@ const pages: Record<string, OGPageData> = {
         `categories/${tag}`,
         {
           title: `Posts tagged ${tagTitle}`,
-          description: `A collection of posts about ${tagTitle} on ${SITE_TITLE}.`,
+          description: `A collection of posts about ${tagTitle} on ${SITE_TITLE}`,
           _template: 'category' as const,
         },
       ];
