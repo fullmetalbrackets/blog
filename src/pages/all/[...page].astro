@@ -3,14 +3,31 @@ export const prerender = true;
 
 import BaseLayout from "@layouts/BaseLayout.astro";
 import { getFirehose } from '@utils/collections';
+import type { FirehoseEntry } from '@utils/collections';
 import FormattedDate from "@components/FormattedDate.astro";
 import BackToTop from "@components/BackToTop.astro";
 import CollectionPageSchema from '@components/CollectionPageSchema.astro';
 import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
 import { Image } from 'astro:assets';
-import { SITE_TITLE, SITE_URL } from "@consts";
-import type { PaginateFunction } from 'astro';
-import { pages } from "@data/pages";
+import { SITE_URL } from "@consts";
+import { pages as sitePages, type Page } from "@data/pages";
+
+type AstroPage<T> = {
+  data: T[];
+  currentPage: number;
+  lastPage: number;
+  total: number;
+  url: {
+    prev: string | undefined;
+    next: string | undefined;
+  };
+};
+
+type PaginateFunction = <T>(items: T[], options: { pageSize: number }) => AstroPage<T>[];
+
+type Props = {
+  page: AstroPage<FirehoseEntry>;
+};
 
 export async function getStaticPaths({ paginate }: { paginate: PaginateFunction }) {
   const entries = await getFirehose();
@@ -18,14 +35,14 @@ export async function getStaticPaths({ paginate }: { paginate: PaginateFunction 
 }
 
 const { page } = Astro.props;
-const { title, description } = pages.find(p => p.href === "/all")!;
-const pageTitle = `${title} - Page ${page.currentPage} | ${SITE_TITLE}`;
+const { title, description } = sitePages.find((p: Page) => p.href === "/all")!;
+
 const pageUrl = page.currentPage === 1
   ? `${SITE_URL}/all`
   : `${SITE_URL}/all/${page.currentPage}`;
 ---
 
-<BaseLayout title={pageTitle} description={description}>
+<BaseLayout title={title} description={description} ogImage={`${SITE_URL}/og/all.png`}>
   <BreadcrumbSchema slot="head" crumbs={[
     { name: "Home", url: `${SITE_URL}` },
     { name: title, url: `${SITE_URL}/all` }
@@ -59,66 +76,67 @@ const pageUrl = page.currentPage === 1
       </span>
     </nav>
     <ul>
-    {page.data.map(entry => {
+      {page.data.map((entry: FirehoseEntry) => {
         const href = entry.slug ?? entry.url ?? '#';
         const isExternal = !entry.slug;
         return (
-        <span class="type-label">{entry.type}</span>
-        <li class="h-entry">
-            <a
-            class={`entry entry--${entry.type} u-url`}
-            href={href}
-            {...isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : { rel: 'prefetch-intent' }}
-            >
-
-            {entry.type === 'note' ? (
-                <>
-                <div class="note-wrap">
-                    {entry.image && (
-                    <img src={entry.image as string} alt={entry.imageAlt ?? ''} class="note-image" />
-                    )}
-                    <div class="note-body e-content" set:html={entry.content} />
-                </div>
-                <div class="meta dt-published">
-                    <FormattedDate date={entry.date} />
-                </div>
-                </>
-            ) : entry.type === 'lifestream' ? (
-                <div class="lifestream-entry">
-                {entry.image && (
-                    <Image
-                    src={entry.image as any}
-                    alt={entry.title}
-                    class="poster"
-                    width={48}
-                    height={72}
-                    />
-                )}
-                <div class="lifestream-info">
-                    <span class="p-name title">{entry.title}</span>
-                    <div class="meta">
-                      <span class="media-type">{entry.mediaType}</span>
-                      <FormattedDate class="dt-published" date={entry.date} monthFormat="short" />
+          <>
+            <span class="type-label">{entry.type}</span>
+            <li class="h-entry">
+              <a
+                class={`entry entry--${entry.type} u-url`}
+                href={href}
+                {...isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : { rel: 'prefetch-intent' }}
+              >
+                {entry.type === 'note' ? (
+                  <>
+                    <div class="note-wrap">
+                      {entry.image && (
+                        <img src={entry.image as string} alt={entry.imageAlt ?? ''} class="note-image" />
+                      )}
+                      <div class="note-body e-content" set:html={entry.content} />
                     </div>
-                </div>
-                </div>
-            ) : (
-                <>
-                <span class="p-name title">{entry.title}</span>
-                {entry.tags && entry.tags.length > 0 && (
-                    <p class="tag">
-                    {entry.tags.map(tag => <span class="tag-pill button">{tag}</span>)}
-                    </p>
+                    <div class="meta dt-published">
+                      <FormattedDate date={entry.date} />
+                    </div>
+                  </>
+                ) : entry.type === 'lifestream' ? (
+                  <div class="lifestream-entry">
+                    {entry.image && (
+                      <Image
+                        src={entry.image as Parameters<typeof Image>[0]['src']}
+                        alt={entry.title}
+                        class="poster"
+                        width={48}
+                        height={72}
+                      />
+                    )}
+                    <div class="lifestream-info">
+                      <span class="p-name title">{entry.title}</span>
+                      <div class="meta">
+                        <span class="media-type">{entry.mediaType}</span>
+                        <FormattedDate class="dt-published" date={entry.date} monthFormat="short" />
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <>
+                    <span class="p-name title">{entry.title}</span>
+                    {entry.tags && entry.tags.length > 0 && (
+                      <p class="tag">
+                        {entry.tags.map((tag: string) => <span class="tag-pill button">{tag}</span>)}
+                      </p>
+                    )}
+                    <div class="meta">
+                      <FormattedDate class="dt-published" date={entry.date} />
+                    </div>
+                  </>
                 )}
-                <div class="meta">
-                    <FormattedDate class="dt-published" date={entry.date} />
-                </div>
-                </>
-            )}
-            </a>
-        </li>
+              </a>
+            </li>
+          </>
         );
-    })}
+      })}
     </ul>
     <div class="page-info">Page {page.currentPage} of {page.lastPage}</div>
     <nav class="pagination" aria-label="Firehose pagination">
@@ -188,7 +206,7 @@ const pageUrl = page.currentPage === 1
       outline-offset: 1px;
     }
   }
-    @media (hover: none) {
+  @media (hover: none) {
     li:hover .button, li:hover .media-type {
       box-shadow: none;
       transform: none;
@@ -253,7 +271,6 @@ const pageUrl = page.currentPage === 1
     background: var(--info);
     transition: all 0.2s ease-in-out;
   }
-  /* note styles */
   .note-wrap {
     border-radius: 0.5em;
     overflow: hidden;
@@ -276,7 +293,6 @@ const pageUrl = page.currentPage === 1
   }
   .note-body :global(p) { margin: 0 0 0.5em; }
   .note-body :global(p:last-child) { margin-bottom: 0; }
-  /* lifestream styles */
   .lifestream-entry {
     display: flex;
     align-items: center;
@@ -298,7 +314,6 @@ const pageUrl = page.currentPage === 1
     gap: 0.25em;
     padding-bottom: 1em;
   }
-  /* pagination */
   .page-info-top {
     display: flex;
     font-weight: 900;
@@ -363,7 +378,7 @@ const pageUrl = page.currentPage === 1
       margin-top: 1.25em;
       margin-bottom: 0.25em;
     }
-    .tag-pill, .media-type  {
+    .tag-pill, .media-type {
       font-size: 13.5px;
     }
   }

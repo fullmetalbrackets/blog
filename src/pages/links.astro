@@ -73,7 +73,6 @@ const linkItems = links.map(link => ({
   .bottom-line {
     margin: 1em auto;
   }
-  /* Hover effect: when title is hovered, animate the tag */
   @media (hover: hover) {
     li:has(.title-link:hover) .link-tag {
       box-shadow: -4px -4px 0 #000;
@@ -100,7 +99,7 @@ const linkItems = links.map(link => ({
     }
   }
 </style>
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} ogImage={`${SITE_URL}/og/links.png`}>
   <BreadcrumbSchema slot="head" crumbs={[
     { name: "Home", url: `${SITE_URL}` },
     { name: "Links", url: `${SITE_URL}/links` }

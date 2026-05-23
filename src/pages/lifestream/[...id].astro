@@ -47,7 +47,7 @@ const vibes = {
   masterpiece: { label: 'Masterpiece', emoji: '🌟', color: '#ffd700' },
 } as const;
 
-const vibe = vibes[data.rating];
+const vibe = vibes[data.rating as keyof typeof vibes];
 
 const typeName: Record<string, string> = {
   game:   'Game',
@@ -92,7 +92,7 @@ const schema = {
 };
 ---
 
-<BaseLayout title={data.title} description={`${typeName[data.type]} — ${vibe.label}`} disableHeadingLinks={true}>
+<BaseLayout title={data.title} description={`${typeName[data.type]} — ${vibe.label}`} ogImage={`${SITE_URL}/og/${entry.id}.png`} disableHeadingLinks={true}>
   <BreadcrumbSchema slot="head" crumbs={[
     { name: "Home", url: `${SITE_URL}/` },
     { name: "Lifestream", url: `${SITE_URL}/lifestream` },

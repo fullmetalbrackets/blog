@@ -29,7 +29,7 @@ const blogrollItems = blogs.map(blog => ({
 const lastUpdated = new Date('2026-05-08T12:00');
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} ogImage={`${SITE_URL}/og/blogroll.png`}>
   <BreadcrumbSchema slot="head" crumbs={[
     { name: "Home", url: `${SITE_URL}` },
     { name: "Blogroll", url: `${SITE_URL}/blogroll` }

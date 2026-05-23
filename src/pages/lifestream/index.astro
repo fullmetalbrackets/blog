@@ -53,7 +53,7 @@ const lifestreamItems = entries.map(entry => ({
 }));
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} ogImage={`${SITE_URL}/og/lifestream.png`}>
   <script is:inline slot="head">
     document.addEventListener('DOMContentLoaded', () => {
       const details = document.querySelector('.filter-details');
@@ -196,7 +196,7 @@ const lifestreamItems = entries.map(entry => ({
             {entry.data.type === 'movie'  && <MovieIcon  width={24} height={24} />}
             {entry.data.type === 'tvshow' && <TVShowIcon width={24} height={24} />}
           </span>
-          <span class="card-vibe">{vibes[entry.data.rating].emoji}</span>
+          <span class="card-vibe">{vibes[entry.data.rating as keyof typeof vibes].emoji}</span>
           <div class="card-overlay">
             <span class="date"><FormattedDate class="dt-published" date={entry.data.updatedDate ?? entry.data.pubDate} monthFormat="numeric" /></span>
           </div>

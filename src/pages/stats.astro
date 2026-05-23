@@ -108,7 +108,7 @@ for (let i = 1; i < postsByDateAsc.length; i++) {
 }
 
 const tagCounts: Record<string, number> = {};
-posts.forEach(p => p.data.tags?.forEach(t => { tagCounts[t] = (tagCounts[t] ?? 0) + 1; }));
+posts.forEach(p => p.data.tags?.forEach((t: string) => { tagCounts[t] = (tagCounts[t] ?? 0) + 1; }));
 const totalUniqueTags = Object.keys(tagCounts).length;
 const topTags         = Object.entries(tagCounts).sort((a, b) => b[1] - a[1]).slice(0, 12);
 const maxTagCount     = topTags[0]?.[1] ?? 1;
@@ -727,7 +727,7 @@ const buildTime = today.toLocaleDateString("en-US", {
   }
 </style>
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} ogImage={`${SITE_URL}/og/stats.png`}>
   <BreadcrumbSchema slot="head" crumbs={[
     { name: "Home", url: `${SITE_URL}` },
     { name: "Stats", url: `${SITE_URL}/stats` },

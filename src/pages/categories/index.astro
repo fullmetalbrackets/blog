@@ -103,7 +103,7 @@ const { title, description } = pages.find(p => p.href === "/categories")!;
   }
 </style>
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} ogImage={`${SITE_URL}/og/categories.png`}>
   <BreadcrumbSchema slot="head" crumbs={[
     { name: "Home", url: `${SITE_URL}` },
     { name: "Categories", url: `${SITE_URL}/categories` }

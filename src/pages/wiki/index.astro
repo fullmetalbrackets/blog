@@ -94,8 +94,7 @@ const wikiItems = posts.map(post => ({
   }
 </style>
 
-<BaseLayout title={title} description={description}>
-  <BreadcrumbSchema slot="head" crumbs={[
+<BaseLayout title={title} description={description} ogImage={`${SITE_URL}/og/wiki.png`}>  <BreadcrumbSchema slot="head" crumbs={[
     { name: "Home", url: `${SITE_URL}` },
     { name: "Wiki", url: `${SITE_URL}/wiki` }
   ]} />

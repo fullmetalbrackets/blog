@@ -3,6 +3,7 @@ export interface Page {
   title: string;
   description: string;
   event: string;
+  explore?: boolean;
 }
 
 export const pages: Page[] = [
@@ -18,6 +19,20 @@ export const pages: Page[] = [
     title: 'Blog',
     description: 'Long-form posts like tutorials, how-to guides and more.',
     event: 'explore-blog',
+  },
+  {
+    href: '/blog/updated',
+    title: 'Blog - Updated',
+    description: 'See blog posts with updates, sorted by most recently updated.',
+    event: 'explore-updated',
+    explore: false,
+  },
+  {
+    href: '/blog/years',
+    title: 'Blog - Years',
+    description: 'See blog posts by year published.',
+    event: 'explore-years',
+    explore: false,
   },
   {
     href: '/blank',
@@ -50,6 +65,13 @@ export const pages: Page[] = [
     description:
       'How this site is made, with what tools, supporting what technologies, etc.',
     event: 'explore-colophon',
+  },
+  {
+    href: '/explore',
+    title: 'Explore',
+    description: 'Explore all of the pages on fullmetalbrackets.com',
+    event: 'explore-explore',
+    explore: false,
   },
   {
     href: '/games',

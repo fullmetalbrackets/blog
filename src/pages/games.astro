@@ -64,7 +64,7 @@ const allGames = gamesByPlatform
 
 const { title, description } = pages.find(p => p.href === "/games")!;
 ---
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} ogImage={`${SITE_URL}/og/games.png`}>
   <CollectionPageSchema
     slot="head"
     name={title}

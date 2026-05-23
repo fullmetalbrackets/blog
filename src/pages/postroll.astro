@@ -24,7 +24,7 @@ const postrollItems = posts.map(post => ({
 }));
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} ogImage={`${SITE_URL}/og/postroll.png`}>
   <BreadcrumbSchema slot="head" crumbs={[
     { name: "Home", url: `${SITE_URL}` },
     { name: "Postroll", url: `${SITE_URL}/postroll` }

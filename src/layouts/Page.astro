@@ -81,7 +81,7 @@ const schema = {
   }
 </style>
 
-<BaseLayout title={frontmatter.title} description={frontmatter.description}>
+<BaseLayout title={frontmatter.title} description={frontmatter.description} ogImage={`${SITE_URL}/og${currentPath}.png`}>
   <BreadcrumbSchema slot="head" crumbs={crumbs} />
   <Fragment slot="head" set:html={`<script type="application/ld+json">${JSON.stringify(schema)}</script>`} />
   <link rel="stylesheet" href="/prism.css" slot="head" />

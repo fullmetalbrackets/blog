@@ -239,7 +239,7 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
   }
 </style>
 
-<BaseLayout title={title} description={description} ogType="article">
+<BaseLayout title={title} description={description} ogType="article" ogImage={`${SITE_URL}/og/${slug}.png`}>
   <link rel="stylesheet" href="/prism.css" slot="head" />
   <BreadcrumbSchema slot="head" crumbs={[
     { name: "Home", url: `${ SITE_URL }/` },
