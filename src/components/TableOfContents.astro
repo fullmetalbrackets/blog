@@ -3,10 +3,10 @@ import type { MarkdownHeading } from '@astrojs/markdown-remark';
 import TOC from '@icons/toc.svg';
 
 interface Props {
-  headings: MarkdownHeading[];
+  headings?: MarkdownHeading[];
 }
 
-const { headings } = Astro.props;
+const { headings = [] } = Astro.props;
 
 const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
 ---
