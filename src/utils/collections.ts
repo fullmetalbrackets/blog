@@ -132,6 +132,7 @@ export type FirehoseEntry = {
   image?: ImageMetadata | string;
   imageAlt?: string;
   content?: string;
+  updated?: Date;
 };
 
 export async function getFirehose(): Promise<FirehoseEntry[]> {
@@ -159,7 +160,8 @@ export async function getFirehose(): Promise<FirehoseEntry[]> {
     ...posts.map((e) => ({
       type: 'blog' as const,
       title: e.data.title,
-      date: e.data.pubDate,
+      date: e.data.updatedDate ?? e.data.pubDate,
+      updated: e.data.updatedDate,
       slug: `/blog/${e.id}`,
       tags: e.data.tags,
     })),
@@ -173,7 +175,8 @@ export async function getFirehose(): Promise<FirehoseEntry[]> {
     ...wikiEntries.map((e) => ({
       type: 'wiki' as const,
       title: e.data.title,
-      date: e.data.pubDate,
+      date: e.data.updatedDate ?? e.data.pubDate,
+      updated: e.data.updatedDate,
       slug: `/wiki/${e.id}`,
       tags: [e.data.tag],
     })),
@@ -181,6 +184,7 @@ export async function getFirehose(): Promise<FirehoseEntry[]> {
       type: 'lifestream' as const,
       title: e.data.title,
       date: e.data.updatedDate ?? e.data.pubDate,
+      updated: e.data.updatedDate,
       slug: `/lifestream/${e.id}`,
       mediaType: e.data.type,
       image: e.data.image,
