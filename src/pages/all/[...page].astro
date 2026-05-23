@@ -104,7 +104,7 @@ const pageUrl = page.currentPage === 1
                   <div class="lifestream-entry">
                     {entry.image && (
                       <Image
-                        src={entry.image as Parameters<typeof Image>[0]['src']}
+                        src={entry.image as string}
                         alt={entry.title}
                         class="poster"
                         width={48}
