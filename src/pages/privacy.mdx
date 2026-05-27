@@ -7,6 +7,11 @@ toc: true
 ---
 
 export const prerender = true;
+import { execSync } from 'node:child_process';
+
+export const lastUpdated = new Date(
+  execSync('git log -1 --format=%aI -- src/pages/privacy.mdx', { encoding: 'utf-8' }).trim()
+);
 
 <a class='u-url' href='https://fullmetalbrackets.com/privacy' hidden>
   Permalink
@@ -17,7 +22,7 @@ import '@styles/page.css';
 
 <div class='date'>
   <span class='updated'>Last updated on</span>
-  <FormattedDate date={new Date('2026-05-23T12:00:00')} />
+  <FormattedDate date={lastUpdated} />
 </div>
 
 This privacy policy will advise of what information, if any, is collected when

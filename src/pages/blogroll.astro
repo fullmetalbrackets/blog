@@ -12,6 +12,14 @@ import Comments from "@components/Comments.astro";
 import { getBlogroll } from '@utils/collections';
 import { SITE_URL } from "@consts";
 import { pages } from "@data/pages";
+import { execSync } from 'node:child_process';
+
+const lastUpdated = new Date(
+  execSync(
+    'git log -1 --format=%aI -- src/content/blogroll/',
+    { encoding: 'utf-8' }
+  ).trim()
+);
 
 const { title, description } = pages.find(p => p.href === "/blogroll")!;
 
@@ -25,8 +33,6 @@ const blogrollItems = blogs.map(blog => ({
   url: blog.url,
   type: "WebSite",
 }));
-
-const lastUpdated = new Date('2026-05-27T12:00');
 ---
 
 <BaseLayout title={title} description={description} ogImage={`${SITE_URL}/og/blogroll.png`}>
