@@ -4,11 +4,28 @@ import TOC from '@icons/toc.svg';
 
 interface Props {
   headings?: MarkdownHeading[];
+  depth?: number;
 }
 
-const { headings = [] } = Astro.props;
+const { headings = [], depth = 2 } = Astro.props;
 
-const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
+const filteredHeadings = headings.filter(h => h.depth >= 2 && h.depth <= depth);
+
+type Group = { heading: MarkdownHeading; children: MarkdownHeading[] };
+const grouped: Group[] = [];
+
+if (depth >= 3) {
+  let current: Group | null = null;
+  for (const h of filteredHeadings) {
+    if (h.depth === 2) {
+      current = { heading: h, children: [] };
+      grouped.push(current);
+    } else if (h.depth === 3) {
+      if (current) current.children.push(h);
+      else grouped.push({ heading: h, children: [] });
+    }
+  }
+}
 ---
 
 <style>
@@ -35,7 +52,8 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
     place-items: center;
     color: var(--primary);
   }
-  .toc-heading a:hover, .toc-list li a:hover {
+  .toc-heading a:hover,
+  .toc-list li a:hover {
     color: var(--secondary);
   }
   .toc-heading a:hover svg {
@@ -50,12 +68,18 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
     color: var(--emphasis);
     margin: 0;
   }
+  .toc-sub {
+    margin: 0.15em 0 0.1em 1em;
+    font-size: 0.95em;
+    opacity: 0.85;
+  }
   .toc-indicator {
     display: none;
   }
   .toc-fade {
     display: none;
   }
+
   @media screen and (min-width: 2060px) {
     .toc-container {
       position: fixed;
@@ -96,9 +120,7 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
       transition: top 0.2s ease, height 0.2s ease, width 0.2s ease, opacity 0.2s ease;
       opacity: 0;
       z-index: 0;
-    }
-    .toc-top-btn {
-      position: sticky;
+      pointer-events: none;
     }
     .toc-heading {
       border-bottom: 4px dotted transparent;
@@ -121,6 +143,7 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
       opacity: 0;
     }
   }
+
   @media screen and (max-width: 2059px) {
     .toc-heading a {
       pointer-events: none;
@@ -156,7 +179,24 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
   <div class="toc-scroll" id="toc-scroll">
     <div class="toc-indicator" id="toc-indicator" aria-hidden="true"></div>
     <ol class="toc-list" id="toc-list">
-      {filteredHeadings.map((heading) => (
+      {depth >= 3 ? grouped.map(({ heading, children }) => (
+        <li>
+          <a href={`#${heading.slug}`} data-heading={heading.slug}>
+            {heading.text}
+          </a>
+          {children.length > 0 && (
+            <ol class="toc-sub">
+              {children.map(child => (
+                <li>
+                  <a href={`#${child.slug}`} data-heading={child.slug}>
+                    {child.text}
+                  </a>
+                </li>
+              ))}
+            </ol>
+          )}
+        </li>
+      )) : filteredHeadings.map((heading) => (
         <li>
           <a href={`#${heading.slug}`} data-heading={heading.slug}>
             {heading.text}
@@ -171,9 +211,10 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
 <script>
   function initTOC() {
     const tocScroll = document.getElementById('toc-scroll') as HTMLElement;
-    const tocList = document.getElementById('toc-list');
-    const indicator = document.getElementById('toc-indicator');
-    const fade = document.getElementById('toc-fade');
+    const tocList   = document.getElementById('toc-list') as HTMLElement;
+    const indicator = document.getElementById('toc-indicator') as HTMLElement;
+    const fade      = document.getElementById('toc-fade') as HTMLElement;
+
     if (!tocScroll || !tocList || !indicator) return;
 
     const links = Array.from(
@@ -182,50 +223,48 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
     if (!links.length) return;
 
     const headingEls = links
-      .map((link) => document.getElementById(link.dataset.heading!))
+      .map(link => document.getElementById(link.dataset.heading!))
       .filter((el): el is HTMLElement => el !== null);
 
     let headingTops: number[] = [];
 
     function cacheOffsets() {
-      const scrollY = window.scrollY;
       headingTops = headingEls.map(
-        (el) => el.getBoundingClientRect().top + scrollY
+        el => el.getBoundingClientRect().top + window.scrollY
       );
     }
 
     function updateFade() {
       if (!fade) return;
       const { scrollTop, scrollHeight, clientHeight } = tocScroll;
-      const isOverflowing = scrollHeight > clientHeight;
       const atBottom = scrollTop + clientHeight >= scrollHeight - 4;
-      fade.classList.toggle('hidden', !isOverflowing || atBottom);
-    }
-
-    function scrollTocToLink(link: HTMLAnchorElement) {
-      const li = link.parentElement!;
-      const liTop = li.offsetTop;
-      const liBottom = liTop + li.offsetHeight;
-      const { scrollTop, clientHeight } = tocScroll;
-
-      if (liTop < scrollTop) {
-        tocScroll.scrollTo({ top: liTop, behavior: 'smooth' });
-      } else if (liBottom > scrollTop + clientHeight) {
-        tocScroll.scrollTo({ top: liBottom - clientHeight, behavior: 'smooth' });
-      }
+      fade.classList.toggle('hidden', scrollHeight <= clientHeight || atBottom);
     }
 
     function moveIndicator(link: HTMLAnchorElement) {
-      const li = link.parentElement!;
-      indicator!.style.top = `${tocList!.offsetTop + li.offsetTop}px`;
-      indicator!.style.height = `${li.offsetHeight}px`;
-      indicator!.style.width = `${link.offsetLeft + link.offsetWidth + 12}px`;
-      indicator!.style.opacity = '1';
-      scrollTocToLink(link);
+      const scrollRect = tocScroll.getBoundingClientRect();
+      const linkRect   = link.getBoundingClientRect();
+
+      // Position relative to toc-scroll container, accounting for its own scroll
+      const top   = linkRect.top - scrollRect.top + tocScroll.scrollTop;
+      const width = linkRect.left - scrollRect.left + linkRect.width + 12;
+
+      indicator.style.top     = `${top}px`;
+      indicator.style.height  = `${linkRect.height}px`;
+      indicator.style.width   = `${width}px`;
+      indicator.style.opacity = '1';
+
+      // Keep active link visible within the scrollable TOC
+      const bottom = top + linkRect.height;
+      if (top < tocScroll.scrollTop) {
+        tocScroll.scrollTo({ top, behavior: 'smooth' });
+      } else if (bottom > tocScroll.scrollTop + tocScroll.clientHeight) {
+        tocScroll.scrollTo({ top: bottom - tocScroll.clientHeight, behavior: 'smooth' });
+      }
     }
 
     function hideIndicator() {
-      indicator!.style.opacity = '0';
+      indicator.style.opacity = '0';
     }
 
     const THRESHOLD = 100;
@@ -265,7 +304,7 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
     updateFade();
 
     window.addEventListener('scroll', updateActive, { passive: true });
-    window.addEventListener('resize', onResize, { passive: true });
+    window.addEventListener('resize', onResize,    { passive: true });
     tocScroll.addEventListener('scroll', updateFade, { passive: true });
 
     return () => {
