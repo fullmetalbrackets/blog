@@ -2,6 +2,7 @@
 title: 'Zima'
 description: 'Details on my ZimaBoard 232.'
 pubDate: 2026-04-22
+updatedDate: 2026-05-27 12:00:00
 tag: documentation
 related: ['factory-restore-zimaboard', 'remove-casaos-zimaboard-upgrade-debian-12']
 ---
@@ -17,3 +18,5 @@ related: ['factory-restore-zimaboard', 'remove-casaos-zimaboard-upgrade-debian-1
 - 2x GbE Ports
 - 1x PCIe 2.0 x4 Slot
 - 1x Mini-DisplayPort 1.2
+
+Currently not in use.
