@@ -602,7 +602,7 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
         </ul>
       </div>
     )}
-    <Random />
+    <Random excludeIds={selectedPosts.map(p => p.id)} />
   </article>
 
   <WebMentions />

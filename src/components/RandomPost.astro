@@ -2,10 +2,16 @@
 import { getPostsWithReadingTime } from '@utils/collections';
 import Random from '@icons/random.svg';
 
+interface Props {
+  excludeIds?: string[];
+}
+const { excludeIds = [] } = Astro.props;
+
 const EXCLUDE_TAGS = ['nuxt', 'netlify', 'markdown'];
 
 const posts = (await getPostsWithReadingTime())
-  .filter(p => !p.data.tags.some(tag => EXCLUDE_TAGS.includes(tag)));
+  .filter(p => !p.data.tags.some(tag => EXCLUDE_TAGS.includes(tag)))
+  .filter(p => !excludeIds.includes(p.id));
 
 const initialIndex = Math.floor(Math.random() * posts.length);
 
