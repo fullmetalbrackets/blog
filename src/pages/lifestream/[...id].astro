@@ -92,7 +92,7 @@ const schema = {
 };
 ---
 
-<BaseLayout title={data.title} description={`${typeName[data.type]} — ${vibe.label}`} ogImage={`${SITE_URL}/og/${entry.id}.png`} disableHeadingLinks={true}>
+<BaseLayout title={`${data.title} | Lifestream`} description={`${typeName[data.type]} — ${vibe.label}`} ogImage={`${SITE_URL}/og/${entry.id}.png`} disableHeadingLinks={true}>
   <BreadcrumbSchema slot="head" crumbs={[
     { name: "Home", url: `${SITE_URL}/` },
     { name: "Lifestream", url: `${SITE_URL}/lifestream` },
@@ -103,7 +103,7 @@ const schema = {
     <a class="u-url" href={`${SITE_URL}/lifestream/${entry.id}`} hidden>Permalink</a>
 
     <a href="/lifestream" class="back" rel="prefetch-intent">
-      <LeftArrow height={24} width={24} class="ring-arrow" />
+      <LeftArrow height={24} width={24} />
       Back to Lifestream
     </a>
 

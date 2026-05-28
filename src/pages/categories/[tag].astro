@@ -193,7 +193,7 @@ const categoryItems = posts.map((post: Post) => ({
   }
 </style>
 
-<BaseLayout title={`Posts tagged ${tagTitle}`} description={desc} ogImage={`${SITE_URL}/og/categories/${tag}.png`}>
+<BaseLayout title={`Posts tagged ${tagTitle} | Blog`} description={desc} ogImage={`${SITE_URL}/og/categories/${tag}.png`}>
   <BreadcrumbSchema slot="head" crumbs={[
     { name: "Home", url: `${SITE_URL}` },
     { name: "Categories", url: `${SITE_URL}/categories` },
