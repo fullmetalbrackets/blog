@@ -7,132 +7,344 @@ import FormattedDate from "@components/FormattedDate.astro";
 import BackToTop from "@components/BackToTop.astro";
 import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
 import CollectionPageSchema from "@components/CollectionPageSchema.astro";
-import ItemListSchema from '@components/ItemListSchema.astro';
+import More from '@icons/arrow-right.svg';
 import { SITE_URL } from "@consts";
-import { pages } from "@data/pages";
 
-const posts = (await getCollection("wiki")).sort((a, b) => {
-  const dateA = a.data.updatedDate || a.data.pubDate;
-  const dateB = b.data.updatedDate || b.data.pubDate;
-  return dateB.valueOf() - dateA.valueOf();
-});
+const allPosts = await getCollection("wiki");
 
-const { title, description } = pages.find(p => p.href === "/wiki")!;
+const recentlyUpdated = [...allPosts]
+  .filter((post) => post.data.updatedDate)
+  .sort((a, b) => b.data.updatedDate!.valueOf() - a.data.updatedDate!.valueOf())
+  .slice(0, 5);
 
-const wikiItems = posts.map(post => ({
-  name: post.data.title,
-  url: `${SITE_URL}/wiki/${post.id}`,
-  type: "Article",
-}));
+const recentlyAdded = [...allPosts]
+  .filter((post) => !post.data.updatedDate)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 5);
+
+const tagCounts: Record<string, number> = {};
+for (const post of allPosts) {
+  const tag = post.data.tag;
+  tagCounts[tag] = (tagCounts[tag] ?? 0) + 1;
+}
+const tags = Object.entries(tagCounts).sort((a, b) => b[1] - a[1]);
+
+const title = "Wiki";
+const description = "This is a place for things that don't make sense as a blog post. Technical notes, homelab documentation, etc.";
 ---
 
-<style scoped>
+<style>
   h1 {
     font-family: var(--sub-font);
     font-weight: 900;
   }
-  ul {
-    list-style-type: none;
-    margin: 2em auto;
-    padding: 0;
-    font-size: 1em;
-    max-width: 1000px;
+
+  .wiki-layout {
+    display: grid;
+    grid-template-columns: 160px minmax(0, 1fr);
+    gap: 2rem;
+    align-items: start;
+    margin-top: 1.5rem;
+    margin-bottom: 2em;
   }
-  li {
-    margin: 0 auto 1em auto;
-    padding: 0;
+
+  /* Sidebar */
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    border-right: 4px dotted var(--border2);
+    padding-right: 1.25rem;
   }
-  button {
-    margin-bottom: 0.25em;
-  }
-  div {
-    padding-bottom: 0.25em;
-    border-bottom: 4px dotted transparent;
-  }
-  span, p {
-    margin: 0 auto;
-    padding: 0 auto;
-  }
-  .title {
-    font-weight: 700;
-    line-height: 1.2;
+
+  .sidebar-heading {
+    font-size: 0.6em;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
     color: var(--emphasis);
+    white-space: nowrap;
+    margin-bottom: 0.5rem;
   }
-  .tag {
-    margin-bottom: 0.1em;
+
+  .tag-nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
   }
-  li:hover div {
-    border-bottom: 4px dotted var(--hover);
-    cursor: pointer;
-    transition: all .25s ease-out;
+
+  .tag-nav li a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 5px 7px;
+    border-radius: 3px;
+    text-decoration: none;
+    font-size: 0.65em;
+    color: var(--text);
+    transition: color 0.15s, background 0.15s;
   }
-  li:hover .title {
+
+  .tag-nav li a:hover {
+    color: var(--primary);
+    background: rgba(var(--border2), 0.5);
+  }
+
+  .tag-name {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .tag-count {
+    flex-shrink: 0;
+    font-size: 0.85em;
+    color: var(--primary);
+    background: var(--border);
+    border-radius: 10px;
+    padding: 1px 7px;
+  }
+
+  .sidebar-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 1rem 0;
+  }
+
+  .sidebar-all-link {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.65em;
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--link);
+  }
+
+  .sidebar-all-link:hover {
     color: var(--hover);
-    transition: all .25s ease-out;
   }
-  @media (hover: hover) {
-    li:hover button {
-      box-shadow: -4px -4px 0 #000;
-      transform: translate(4px, 4px);
-    }
-    li:hover button {
-      outline-offset: 1px;
-    }
+
+  /* Main content */
+  .section-label {
+    font-size: 0.6em;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
   }
-  @media (hover: none) {
-    li:hover button {
-      background-color: var(--hover);
-    }
+
+  .section-label::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    border-top: 4px dotted var(--border);
   }
-  @media screen and (min-width: 200px) and (max-width: 667px) {
-    section {
-      line-height: 1.2;
+
+  .wiki-list {
+    list-style: none;
+    margin: 0 0 2rem 0;
+    padding: 0;
+  }
+
+  .wiki-item {
+    border-bottom: 4px dotted transparent;
+    transition: border-color 0.2s ease-out;
+    margin-top: 0.5em;
+  }
+
+  .wiki-item:hover {
+    border-bottom-color: var(--hover);
+    cursor: pointer;
+  }
+
+  .wiki-item a {
+    display: block;
+    padding: 0.6rem 0;
+    text-decoration: none;
+  }
+
+  .wi-title {
+    display: block;
+    font-weight: 700;
+    font-size: 0.875em;
+    color: var(--emphasis);
+    line-height: 1.3;
+    margin: 0;
+    transition: color 0.2s ease-out;
+  }
+
+  .wiki-item:hover .wi-title {
+    color: var(--hover);
+  }
+
+  .wi-date {
+    color: var(--date);
+    margin: 0;
+  }
+
+  .wi-tag {
+    font-size: 0.875em;
+    margin: 0 0 0.5em 0;
+  }
+
+  .view-all-link {
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+    gap: 6px;
+    color: var(--link);
+    font-size: 1em;
+    font-family: var(--sub-font);
+    text-decoration: none;
+    font-weight: 900;
+  }
+
+  .view-all-link:hover {
+    color: var(--hover);
+  }
+
+  .sidebar-all-link svg, .view-all-link svg {
+    fill: currentColor;
+    transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .sidebar-all-link:hover svg, .view-all-link:hover svg {
+    fill: currentColor;
+    transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transform: translateX(4px);
+  }
+
+
+  @media screen and (max-width: 720px) {
+    .wiki-layout {
+      grid-template-columns: 1fr;
     }
-    .desc {
-      font-size: 18px;
+
+    .sidebar {
+      border-right: none;
+      padding-right: 0;
+      padding-bottom: 0;
+      margin: -0.5em 0;
+    }
+
+    .sidebar-all-link {
+      margin-top: -1em;
+      font-size: 0.875em;
+    }
+
+    .tag-nav {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      gap: 4px;
+    }
+
+    .tag-nav li a {
+      padding: 3px 8px;
     }
   }
 </style>
 
-<BaseLayout title={title} description={description} ogImage={`${SITE_URL}/og/wiki.png`}>  <BreadcrumbSchema slot="head" crumbs={[
-    { name: "Home", url: `${SITE_URL}` },
-    { name: "Wiki", url: `${SITE_URL}/wiki` }
-  ]} />
+<BaseLayout title={title} description={description} ogImage={`${SITE_URL}/og/wiki.png`}>
+  <BreadcrumbSchema
+    slot="head"
+    crumbs={[
+      { name: "Home", url: `${SITE_URL}` },
+      { name: "Wiki", url: `${SITE_URL}/wiki` },
+    ]}
+  />
   <CollectionPageSchema
     slot="head"
     name={title}
     description={description}
     url={`${SITE_URL}/wiki`}
   />
-  <ItemListSchema slot="head" id={`${SITE_URL}/wiki/#list`} items={wikiItems} />
-  <section class="h-feed">
+
+  <section>
     <h1>{title}</h1>
-    <a class="u-url" href={`https://fullmetalbrackets.com/wiki`} hidden>Permalink</a>
     <hr />
     <p>
-      There are <span class="total">{posts.length}</span> wiki articles. This is my homelab documentation, personal technical notes, configuration examples and other stuff that doesn't make sense as a blog post.
+      There are <span style="color: var(--primary); font-weight: 700;">{allPosts.length}</span> wiki
+      articles. This is my homelab documentation, personal technical notes, configuration examples
+      and other stuff that doesn't make sense as a blog post.
     </p>
-    <ul>
-      {
-        posts.map((post) => (
+
+    <div class="wiki-layout">
+      <aside class="sidebar">
+        <p class="sidebar-heading">browse by tag</p>
+        <ul class="tag-nav">
           <li>
-            <div>
-              <a href={`/wiki/${post.id}`} rel="prefetch-intent" data-umami-event={post.id}>
-                <span class="title">{post.data.title}</span>
-                <p class="date">
-                  <FormattedDate date={post.data.updatedDate || post.data.pubDate} />
-                </p>
-                <p class="tag">
-                  <button>{post.data.tag}</button>
-                </p>
-                <p class="desc">{post.data.description}</p>
-              </a>
-            </div>
+            <a href="/wiki/articles">
+              <span class="tag-name">all</span>
+              <span class="tag-count">{allPosts.length}</span>
+            </a>
           </li>
-        ))
-      }
-    </ul>
-    <hr />
+          {
+            tags.map(([tag, count]) => (
+              <li>
+                <a href={`/wiki/articles?tag=${tag}`}>
+                  <span class="tag-name">{tag}</span>
+                  <span class="tag-count">{count}</span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+        <hr class="sidebar-divider" />
+        <a href="/wiki/articles" class="sidebar-all-link">All Articles <More height={16} width={16} /></a>
+      </aside>
+
+      <div>
+        <p class="section-label">recently updated</p>
+        <ul class="wiki-list">
+          {
+            recentlyUpdated.map((post) => (
+              <li class="wiki-item">
+                <a href={`/wiki/${post.id}`} rel="prefetch-intent" data-umami-event={post.id}>
+                  <span class="wi-title">{post.data.title}</span>
+                  <p class="wi-date">
+                    <FormattedDate date={post.data.updatedDate || post.data.pubDate} />
+                  </p>
+                  <p class="wi-tag">
+                    <button>{post.data.tag}</button>
+                  </p>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+
+        <p class="section-label">recently added</p>
+        <ul class="wiki-list">
+          {
+            recentlyAdded.map((post) => (
+              <li class="wiki-item">
+                <a href={`/wiki/${post.id}`} rel="prefetch-intent" data-umami-event={post.id}>
+                  <span class="wi-title">{post.data.title}</span>
+                  <p class="wi-date">
+                    <FormattedDate date={post.data.pubDate} />
+                  </p>
+                  <p class="wi-tag">
+                    <button>{post.data.tag}</button>
+                  </p>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+
+        <hr />
+        <a href="/wiki/articles" class="view-all-link">View all {allPosts.length} articles <More height={24} width={24} /></a>
+      </div>
+    </div>
+
     <BackToTop />
   </section>
 </BaseLayout>
