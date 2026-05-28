@@ -84,7 +84,7 @@ const { title, description } = pages.find(p => p.href === "/games")!;
       const IconComponent = icon?.component;
       return (
         <details>
-          <summary>
+          <summary class="games-list">
             {IconComponent ? (
               <IconComponent 
                 class={`platform-icon ${icon.class || ''}`}
