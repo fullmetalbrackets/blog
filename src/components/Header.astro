@@ -780,6 +780,7 @@ import SearchOverlay from "./SearchOverlay.astro";
         if (hideTimer) clearTimeout(hideTimer);
         hideTimer = setTimeout(() => {
           headerEl?.classList.add('header-hidden');
+          document.getElementById('scroll-progress')?.style.setProperty('top', '0');
         }, 2000); // 2 seconds after stopping scroll downward
       } else if (!scrollingDown) {
         // Scrolling up — cancel any pending hide and show immediately
@@ -788,6 +789,7 @@ import SearchOverlay from "./SearchOverlay.astro";
           hideTimer = null;
         }
         headerEl?.classList.remove('header-hidden');
+        document.getElementById('scroll-progress')?.style.setProperty('top', '1.75em');
       }
     }, { signal });
 
