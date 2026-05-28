@@ -14,6 +14,11 @@ import SearchOverlay from "./SearchOverlay.astro";
     background: var(--blockquote);
     margin: 0 auto;
     border-bottom: 1px solid var(--tertiary);
+    transition: transform 0.3s ease;
+    will-change: transform;
+  }
+  header.header-hidden {
+    transform: translateY(-100%);
   }
   .skip-link {
     position: absolute;
@@ -757,6 +762,32 @@ import SearchOverlay from "./SearchOverlay.astro";
       if (e.ctrlKey && e.key === 'h') {
         e.preventDefault();
         window.location.href = '/';
+      }
+    }, { signal });
+
+    // Auto-hide header on scroll
+    let lastScrollY = window.scrollY;
+    let hideTimer: ReturnType<typeof setTimeout> | null = null;
+    const headerEl = document.querySelector('header') as HTMLElement | null;
+
+    window.addEventListener('scroll', () => {
+      const currentScrollY = window.scrollY;
+      const scrollingDown = currentScrollY > lastScrollY;
+      lastScrollY = currentScrollY;
+
+      if (scrollingDown && currentScrollY > 80) {
+        // Scrolling down past top — start/reset the hide timer
+        if (hideTimer) clearTimeout(hideTimer);
+        hideTimer = setTimeout(() => {
+          headerEl?.classList.add('header-hidden');
+        }, 2000); // 2 seconds after stopping scroll downward
+      } else if (!scrollingDown) {
+        // Scrolling up — cancel any pending hide and show immediately
+        if (hideTimer) {
+          clearTimeout(hideTimer);
+          hideTimer = null;
+        }
+        headerEl?.classList.remove('header-hidden');
       }
     }, { signal });
 
