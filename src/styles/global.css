@@ -626,6 +626,7 @@ blockquote[data-type='warning'] a:hover {
   max-width: 100%;
 }
 
+/* animations */
 @keyframes slideInFromRight {
   from {
     opacity: 0;
@@ -665,6 +666,103 @@ blockquote[data-type='warning'] a:hover {
 }
 .wiggle:not(:hover) {
   animation: none;
+}
+
+/* tooltips */
+.has-tooltip {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.tooltip {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgb(from var(--blockquote, var(--blockquote)) r g b / 0.875);
+  border: 1px solid var(--primary);
+  border-radius: 2em;
+  padding: 1rem;
+  width: 300px;
+  max-width: 90vw;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s, visibility 0.2s;
+  pointer-events: none;
+  color: var(--text);
+  backdrop-filter: blur(0.25em);
+  -webkit-backdrop-filter: blur(0.25em);
+}
+.tooltip::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid var(--primary);
+}
+.tooltip::after {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid var(--blockquote);
+}
+.info-button {
+  position: relative;
+  background: var(--tooltip-btn);
+  border-radius: 100%;
+  padding: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+  margin-bottom: -0.5em;
+}
+.info-button:hover,
+.info-button:focus {
+  background: var(--info);
+}
+.info-button svg {
+  color: #000;
+}
+.info-button .tooltip {
+  display: none;
+}
+.info-button.active .tooltip {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+@media (max-width: 768px) {
+  .tooltip {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    width: calc(100vw - 5rem);
+    max-width: 320px;
+  }
+  .tooltip::before,
+  .tooltip::after {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+  }
 }
 
 /* summary & details */

@@ -137,6 +137,21 @@ const buildTime = today.toLocaleDateString("en-US", {
     transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
     transform: translateX(-5px);
   }
+  .tooltip a::after {
+    content: '';
+    display: inline-block;
+    width: 0.5em;
+    height: 0.5em;
+    margin-left: 0.2em;
+    margin-bottom: 0;
+    background-color: currentColor;
+    mask-image: url('/assets/external.svg');
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+    vertical-align: middle;
+  }
+
 
   /* nav columns */
   h3 {
@@ -318,7 +333,21 @@ const buildTime = today.toLocaleDateString("en-US", {
     </div>
   </nav>
 
-  <h3 class="webrings-heading">Webrings</h3>
+  <div class="has-tooltip">
+    <h3 class="webrings-heading">Webrings</h3>
+    <span 
+      class="info-button" 
+      aria-label="About webrings"
+    >
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+      <line x1="12" y1="17" x2="12.01" y2="17"></line>
+    </svg>
+    <span class="tooltip">
+      WTF is a webring? <a href="https://en.wikipedia.org/wiki/Webring" target="_blank noreferrer noopener">Read about it here.</a>
+    </span>
+  </div>
+  </span>
   <div class="webrings-container">
     <div class="webring">
       <a href="https://xn--sr8hvo.ws" target="_blank" rel="noopener noreferrer" class="ring-title">IndieWeb</a>
@@ -347,7 +376,6 @@ const buildTime = today.toLocaleDateString("en-US", {
       </div>
     </div>
   </div>
-
   <div class="badges">
     <a href="https://proven.lol/1a7300" target="_blank" rel="noopener noreferrer" data-umami-event="proof">
       <Proven height={32} width={32} class="proof" />
