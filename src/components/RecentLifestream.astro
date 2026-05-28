@@ -62,7 +62,6 @@ const entries = (await getLifestream()).slice(0, limit);
     display: grid;
     grid-template-columns: repeat(4, auto);
     gap: 0.6rem;
-    max-width: auto;
     margin: 0 auto;
     background-color: var(--blockquote);
     border-radius: 0.5em;
@@ -174,7 +173,6 @@ const entries = (await getLifestream()).slice(0, limit);
   }
   .more a:hover {
     color: var(--foot-link);
-    transform: 0.2;
   }
   .more a:hover svg {
     filter: var(--foot-svg);

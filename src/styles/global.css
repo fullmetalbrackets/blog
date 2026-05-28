@@ -37,7 +37,7 @@ h1 {
   color: var(--emphasis);
   margin: 0;
   padding: 0;
-  text-wrap: balanced;
+  text-wrap: balance;
 }
 
 main h2,
@@ -51,7 +51,7 @@ article h6 {
   color: var(--primary);
   margin: 0;
   padding: 0;
-  text-wrap: balanced;
+  text-wrap: balance;
 }
 main h3,
 main h5,
@@ -62,7 +62,7 @@ article h5 {
   color: var(--emphasis);
   margin: 0;
   padding: 0;
-  text-wrap: balanced;
+  text-wrap: balance;
 }
 
 p {
@@ -724,7 +724,7 @@ blockquote[data-type='warning'] a:hover {
   position: relative;
   background: var(--tooltip-btn);
   border-radius: 100%;
-  padding: auto;
+  padding: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1111,7 +1111,7 @@ li.style:first-of-type {
 
 /* button effects */
 button,
-.button {
+.button, .btn {
   display: inline-flex;
   font-family: var(--sub-font);
   color: #000;
@@ -1121,9 +1121,14 @@ button,
   font-weight: 800;
   font-size: 0.75em;
   place-items: center;
+  transition: all 0.1s ease-out;
 }
 
-button {
+.tag > .btn {
+  margin-right: 0.325em;
+}
+
+button, .btn {
   background-color: var(--info);
 }
 
@@ -1138,7 +1143,11 @@ button a:hover,
 a.button,
 a.button:active,
 a.button:visited,
-a.button:hover {
+a.button:hover,
+a.btn,
+a.btn:active,
+a.btn:visited,
+a.btn:hover {
   color: #000;
 }
 
@@ -1147,7 +1156,7 @@ a.button:hover {
 }
 
 @media (hover: hover) {
-  a.button:hover {
+  a.button:hover, a.btn:hover {
     box-shadow: -4px -4px 0 #000;
     transform: translate(4px, 4px);
     transition: all 0.1s ease-out;

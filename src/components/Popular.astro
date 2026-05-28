@@ -45,18 +45,6 @@ const selectedPosts = allPosts.filter(post => popularSlugs.includes(post.id));
     place-items: center;
     margin: 0.25em 0;
   }
-  .tag button {
-    background: var(--info);
-    cursor: pointer;
-  }
-  button {
-    background: var(--info);
-    margin-right: 0.325em;
-    cursor: pointer;
-  }
-  button:first-of-type {
-    margin-left: 0;
-  }
   .desc {
     line-height: 1.4;
   }
@@ -75,15 +63,6 @@ const selectedPosts = allPosts.filter(post => popularSlugs.includes(post.id));
     padding-bottom: 0.5em;
     line-height: 1.3;
     border-bottom: 4px dotted transparent;
-  }
-  .list:hover {
-    padding-bottom: 0.5em;
-    border-bottom: 4px dotted var(--hover);
-    transition: all .25s ease-out;
-  }
-  .list:hover .posts-title {
-    color: var(--hover);    
-    transition: all .25s ease-out;
   }
   .posts-title {
     display: inline-flex;
@@ -115,17 +94,20 @@ const selectedPosts = allPosts.filter(post => popularSlugs.includes(post.id));
     font-weight: 400;
   }
   @media (hover: hover) {
-    a:hover button {
+    .list:hover {
+      padding-bottom: 0.5em;
+      border-bottom: 4px dotted var(--hover);
+      transition: all .25s ease-out;
+    }
+    .list:hover .posts-title {
+      color: var(--hover);    
+      transition: all .25s ease-out;
+    }
+    .list:hover .btn {
       box-shadow: -4px -4px 0 #000;
       transform: translate(4px, 4px);
-    }
-    a:hover button {
+      transition: all 0.1s ease-out;
       outline-offset: 1px;
-    }
-  }
-  @media (hover: none) {
-    a:hover button {
-      background-color: var(--hover);
     }
   }
   @media screen and (max-width: 667px) {
@@ -143,11 +125,10 @@ const selectedPosts = allPosts.filter(post => popularSlugs.includes(post.id));
     }
     .tag {
       display: block;
-      margin: 0.1em 0 0 0;
+      margin: 0.1em 0 -0.2em 0;
     }
-    .tag button {
-      margin: 0 0.45em 0 0;
-      font-size: 14px;
+    .tag > .btn {
+      margin-bottom: 0.2em;
     }
     .list {
       transition: none;
@@ -185,11 +166,11 @@ const selectedPosts = allPosts.filter(post => popularSlugs.includes(post.id));
             {post.data.title}
           </p>
           {!simple && (
-            <span class="tag">
-              {post.data.tags.map((tag) => (
-                <button>{tag}</button>
-              ))}
-            </span>
+          <span class="tag">
+            {post.data.tags.map((tag) => (
+              <span class="btn">{tag}</span>
+            ))}
+          </span>
           )}
             <p class="info">
               <FormattedDate class="dt-published" date={post.data.pubDate} monthFormat="short" />&nbsp;

@@ -28,10 +28,6 @@ const links = await getSortedLinks();
     margin: 0.1em 0 0 0;
     padding: 0;
   }
-  .info button {
-    margin-right: 0.85em;
-    font-size: 0.75em;
-  }
   .list {
     display: flex;
     flex-direction: column;
@@ -53,10 +49,11 @@ const links = await getSortedLinks();
     color: #000;
     border: 0;
     border-radius: 0.25em;
-    padding: 4px 8px;
+    padding: 6px 8px 4px 8px;
     font-size: 0.625em;
     display: inline-block;
     transition: all 0.2s ease;
+    margin-right: 0.85em;
   }
   .more {
     display: flex;
@@ -79,7 +76,6 @@ const links = await getSortedLinks();
   }
   .more a:hover {
     color: var(--foot-link);
-    transform: 0.2;
   }
   .more a:hover svg {
     filter: var(--foot-svg);
@@ -109,9 +105,6 @@ const links = await getSortedLinks();
       margin: -0.25em 0 0 0;
       padding: 0;
     }
-    .info button {
-      font-size: 14px;
-    }
   }
 </style>
 
@@ -125,7 +118,7 @@ const links = await getSortedLinks();
           <span class="p-name">
             {link.data.title}
           </span>
-            <span class="info"><button>{link.data.tag}</button><FormattedDate class="dt-published" date={link.data.pubDate} />&nbsp;
+            <span class="info"><span class="link-tag">{link.data.tag}</span><FormattedDate class="dt-published" date={link.data.pubDate} />&nbsp;
           </span>
           </a>
         </div>

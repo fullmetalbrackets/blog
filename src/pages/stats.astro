@@ -322,7 +322,7 @@ const hmIntensity = (key: string) => {
   return 4;
 };
 
-// Lastest Build
+// Latest Build
 const buildTime = today.toLocaleDateString("en-US", {
   month: "long",
   day: "numeric", 
@@ -736,6 +736,18 @@ const buildTime = today.toLocaleDateString("en-US", {
     .bar-label { width: 2.6em; }
     .stat-card--wide { grid-column: span 2; }
   }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+  }
 </style>
 
 <BaseLayout title={title} description={description} ogImage={`${SITE_URL}/og/stats.png`}>
@@ -834,18 +846,19 @@ const buildTime = today.toLocaleDateString("en-US", {
       <span class="gap-dates">{fmtDate(lgStart)} → {fmtDate(lgEnd)}</span>
     </p>
 
-    <h3>Posts by year</h3>
-    <div class="bar-chart" role="img" aria-label="Posts per year">
-      {blogYears.map(yr => (
-        <div class="bar-row">
-          <span class="bar-label"><a href={`/blog/years/${yr}`}>{yr}</a></span>
-          <div class="bar-track">
-            <div class="bar-fill" style={`width: ${Math.max((postsByYear[yr] / maxPostsInYear) * 100, 2)}%`}></div>
-          </div>
-          <span class="bar-count">{postsByYear[yr]}</span>
+  <h3>Posts by year</h3>
+  <figure class="bar-chart" aria-label="Posts per year">
+    <figcaption class="sr-only">Posts per year</figcaption>
+    {blogYears.map(yr => (
+      <div class="bar-row">
+        <span class="bar-label"><a href={`/blog/years/${yr}`}>{yr}</a></span>
+        <div class="bar-track">
+          <div class="bar-fill" style={`width: ${Math.max((postsByYear[yr] / maxPostsInYear) * 100, 2)}%`}></div>
         </div>
-      ))}
-    </div>
+        <span class="bar-count">{postsByYear[yr]}</span>
+      </div>
+    ))}
+  </figure>
 
     <h3>Top tags</h3>
     <ul class="tag-cloud">
@@ -1153,7 +1166,7 @@ const buildTime = today.toLocaleDateString("en-US", {
     </p>
 
     <p class="hm-sub">
-      Lastest site build was <strong>{buildTime}</strong>.
+      Latest site build was <strong>{buildTime}</strong>.
     </p>
   </section>
   <hr />

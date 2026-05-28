@@ -413,7 +413,7 @@ const pageTitle = title === SITE_TITLE ? SITE_TITLE : `${title} | ${SITE_TITLE}`
 		<Footer />
 
 		<!-- Track outbound links w/ Umami -->
-		<script is:inline type="text/javascript">
+		<script is:inline>
 			(() => {
 				const name = 'outbound-link-click';
 				document.querySelectorAll('a').forEach(a => {
