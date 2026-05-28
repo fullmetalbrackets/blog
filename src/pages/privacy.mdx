@@ -10,7 +10,7 @@ export const prerender = true;
 import { execSync } from 'node:child_process';
 
 export const lastUpdated = new Date(
-  execSync('git log -1 --format=%aI -- src/pages/privacy.mdx', { encoding: 'utf-8' }).trim()
+  execSync('git log -1 --format=%aI -- src/pages/privacy.mdx', { encoding: 'utf-8' }).trim().slice(0, 10) + 'T12:00:00'
 );
 
 <a class='u-url' href='https://fullmetalbrackets.com/privacy' hidden>

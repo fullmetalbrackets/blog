@@ -14,12 +14,12 @@ import { SITE_URL } from "@consts";
 import { pages } from "@data/pages";
 import { execSync } from 'node:child_process';
 
-const lastUpdated = new Date(
-  execSync(
-    'git log -1 --format=%aI -- src/content/blogroll/',
-    { encoding: 'utf-8' }
-  ).trim()
-);
+const gitDate = execSync(
+  'git log -1 --format=%aI -- src/content/blogroll/',
+  { encoding: 'utf-8' }
+).trim();
+
+const lastUpdated = new Date(gitDate.slice(0, 10) + 'T12:00:00');
 
 const { title, description } = pages.find(p => p.href === "/blogroll")!;
 
