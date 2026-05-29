@@ -10,6 +10,8 @@ A blog about self-hosting, web development, Linux, and more.
 
 [Home](https://fullmetalbrackets.com/) · [Blog](https://fullmetalbrackets.com/blog/) · [Explore](https://fullmetalbrackets.com/explore/) · [Colophon](https://fullmetalbrackets.com/colophon/) · [Privacy](https://fullmetalbrackets.com/privacy/)
 
+<a href="https://www.buymeacoffee.com/arieldiaz" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-yellow.png" alt="Buy Me A Coffee" height="41" width="174"></a>
+
 ## Latest blog posts
 
 <!-- BLOG-POST-LIST:START -->
