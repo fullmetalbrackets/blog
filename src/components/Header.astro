@@ -781,6 +781,9 @@ import SearchOverlay from "./SearchOverlay.astro";
         hideTimer = setTimeout(() => {
           headerEl?.classList.add('header-hidden');
           document.getElementById('scroll-progress')?.style.setProperty('top', '0');
+          if (window.innerWidth <= 768) {
+            document.getElementById('scroll-progress')?.style.setProperty('height', '4px');
+          };
         }, 2000); // 2 seconds after stopping scroll downward
       } else if (!scrollingDown) {
         // Scrolling up — cancel any pending hide and show immediately
@@ -790,6 +793,9 @@ import SearchOverlay from "./SearchOverlay.astro";
         }
         headerEl?.classList.remove('header-hidden');
         document.getElementById('scroll-progress')?.style.setProperty('top', '1.75em');
+        if (window.innerWidth <= 768) {
+          document.getElementById('scroll-progress')?.style.setProperty('height', '2px');
+        }
       }
     }, { signal });
 

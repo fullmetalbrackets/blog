@@ -9,7 +9,13 @@
     z-index: 55;
     height: 0.1em;
     background-color: var(--primary);
-    transition: top 0.3s ease;
+    transition: top 0.3s ease, height 0.3s ease;
+  }
+
+  @media screen and (max-width: 768px) {
+    .scroll {
+      height: 2px;
+    }
   }
 </style>
 
