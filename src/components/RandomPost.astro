@@ -63,6 +63,9 @@ const postData = posts.map(p => ({
     margin-bottom: 0;
     line-height: 1.2;
   }
+  .random li .btn {
+    font-size: 0.75em;
+  }
   .random li p {
     color: var(--text);
     font-size: 0.875em;
@@ -70,7 +73,7 @@ const postData = posts.map(p => ({
     margin-bottom: 0;
     line-height: 1.2;
   }
-  .random li :global(button) {
+  .random li :global(.btn) {
     margin: 0 0.5em 0.25em 0;
   }
   .random li:hover {
@@ -122,10 +125,25 @@ const postData = posts.map(p => ({
     .random-btn:hover {
       border: 1px solid var(--emphasis);
     }
+    .random li:hover .tag .btn {
+      box-shadow: -4px -4px 0 #000;
+      transform: translate(4px, 4px);
+      transition: all 0.1s ease-out;
+      outline-offset: 1px;
+    }
   }
   @media (hover: none) {
     .random-btn:hover {
       border: 1px solid transparent;
+    }
+    .btn:active {
+      background: var(--hover);
+    }
+    .related li a:active span.random-title {
+      color: var(--hover);
+    }
+    .related li:has(a:active) {
+      border: 2px solid var(--emphasis);
     }
   }
   @media screen and (max-width: 667px) {
@@ -138,7 +156,7 @@ const postData = posts.map(p => ({
     .random li p {
       margin-top: 0;
     }
-    .random li :global(button) {
+    .random li :global(.btn) {
       margin: 0 0.25em 0.25em 0;
     }
   }
@@ -153,7 +171,7 @@ const postData = posts.map(p => ({
           <span id="random-title">{post.data.title}</span>
           <div>
             <span id="random-tags" class="tag">
-              {post.data.tags.map(tag => <button>{tag}</button>)}
+              {post.data.tags.map(tag => <span class="btn">{tag}</span>)}
             </span>
           </div>
           <p id="random-desc">{post.data.description}</p>
@@ -185,7 +203,7 @@ const postData = posts.map(p => ({
     document.getElementById('random-title').textContent = post.title;
     document.getElementById('random-desc').textContent = post.description;
     document.getElementById('random-tags').innerHTML = post.tags
-      .map(tag => `<button>${tag}</button>`)
+      .map(tag => `<span class="btn">${tag}</span>`)
       .join('');
 
     btn.classList.add('clicked');

@@ -692,7 +692,7 @@ blockquote[data-type='warning'] a:hover {
   visibility: hidden;
   transition: opacity 0.2s, visibility 0.2s;
   pointer-events: none;
-  color: var(--text);
+  color: var(--emphasis);
   backdrop-filter: blur(0.25em);
   -webkit-backdrop-filter: blur(0.25em);
 }
@@ -720,7 +720,7 @@ blockquote[data-type='warning'] a:hover {
   border-right: 6px solid transparent;
   border-bottom: 6px solid var(--blockquote);
 }
-.info-button {
+button.info-button {
   position: relative;
   background: var(--tooltip-btn);
   border-radius: 100%;
@@ -1179,7 +1179,7 @@ a.button:hover {
     transition: all 0.1s ease-out;
     cursor: pointer;
   }
-  button:not(.theme-toggle, .search-trigger, .random-btn):hover {
+  button:not(.theme-toggle, .search-trigger, .random-btn, .info-button):hover {
     box-shadow: -4px -4px 0 #000;
     transform: translate(4px, 4px);
     transition: all 0.1s ease-out;

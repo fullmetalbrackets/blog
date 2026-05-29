@@ -58,25 +58,25 @@ import { GITHUB, BLUESKY, MASTODON, DONATE } from '@consts';
 </style>
 
 <div class="personal-links">
-    <a class="u-email" href="mailto:contact@fullmetalbrackets.com" target="_blank" data-umami-event="front-page-mail">
-        <Email />
+    <a class="u-email" href="mailto:contact@fullmetalbrackets.com" aria-label="Send email" data-umami-event="front-page-mail">
+        <Email aria-hidden="true" />
     </a>
-    <a rel="me" href={MASTODON} target="_blank" data-umami-event="front-page-social">
-        <Mastodon />
+    <a rel="me" href={MASTODON} target="_blank" aria-label="Mastodon profile" data-umami-event="front-page-social">
+        <Mastodon aria-hidden="true" />
     </a>
-    <a rel="me atproto" href={BLUESKY} target="_blank" data-umami-event="front-page-bsky">
-        <Bluesky />
+    <a rel="me atproto" href={BLUESKY} target="_blank" aria-label="Bluesky profile" data-umami-event="front-page-bsky">
+        <Bluesky aria-hidden="true" />
     </a>
-    <a rel="me" href={GITHUB} target="_blank" data-umami-event="front-page-github">
-        <GitHub />
+    <a rel="me" href={GITHUB} target="_blank" aria-label="GitHub profile" data-umami-event="front-page-github">
+        <GitHub aria-hidden="true" />
     </a>
-    <a rel="me" href={DONATE} target="_blank" data-umami-event="front-page-coffee">
-        <BuyMeCoffee />
+    <a rel="me" href={DONATE} target="_blank" aria-label="Buy me a coffee" data-umami-event="front-page-coffee">
+        <BuyMeCoffee aria-hidden="true" />
     </a>
-    <a rel="alternate" href="/rss.xml" data-umami-event="front-page-rss">
-        <RSS class="rss" />
+    <a rel="alternate" href="/rss.xml" aria-label="RSS feed" data-umami-event="front-page-rss">
+        <RSS class="rss" aria-hidden="true" />
     </a>
-    <a rel="alternate" href="/feed.json" data-umami-event="front-page-json">
-        <JSON height={24} width={24} />
+    <a rel="alternate" href="/feed.json" aria-label="JSON feed" data-umami-event="front-page-json">
+        <JSON height={24} width={24} aria-hidden="true" />
     </a>
 </div>

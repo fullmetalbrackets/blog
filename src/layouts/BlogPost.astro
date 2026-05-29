@@ -372,6 +372,9 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
       margin-bottom: 0;
       line-height: 1.2;
     }
+    .related li a span.related-title {
+      color: var(--emphasis);
+    }
     .related li p {
       color: var(--text);
       font-size: 0.875em;
@@ -379,12 +382,9 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
       margin-bottom: 0;
       line-height: 1.2;
     }
-    .related li button {
+    .related li .btn {
       margin: 0 0.5em 0.25em 0;
-    }
-    .related li:hover {
-      color: var(--hover);
-      border: 2px solid var(--emphasis);
+      font-size: 0.75em;
     }
 
     /* mobile */
@@ -395,9 +395,8 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
       article {
         margin: 1em 0.5em;
       }
-      .tag button {
-        margin: 0 0.45em 0 0;
-        font-size: 14px;
+      .tag .btn {
+        font-size: 0.75em;
       }
       .info {
         justify-content: space-between;
@@ -420,7 +419,7 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
         margin-top: 0;
         font-size: 18px;
       }
-      .related li button {
+      .related li .btn {
         margin: 0 0.25em 0.25em 0;
       }
     }
@@ -429,7 +428,6 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
     @media (hover: hover) {
       .blog-nav a:hover {
         box-shadow: -4px -4px 0 #000;
-        transform:;
         outline-offset: 1px;
       }
       .blog-nav a {
@@ -437,7 +435,7 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
         transition: all 0.1s ease-out;
         cursor: pointer;
       }
-      .tag button:active, .tag button:focus {
+      .tag .btn:active, .tag .btn:focus {
         box-shadow: none;
         transform: translate(0px, 0px);
         background-color: var(--hover);
@@ -447,6 +445,27 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
         box-shadow: none;
         transform: translate(0px, 0px);
         background-color: var(--hover);
+      }
+      .related li:hover {
+        color: var(--hover);
+        border: 2px solid var(--emphasis);
+      }
+      .related li:hover .tag .btn, .blog-tags .btn:hover {
+        box-shadow: -4px -4px 0 #000;
+        transform: translate(4px, 4px);
+        transition: all 0.1s ease-out;
+        outline-offset: 1px;
+      }
+    }
+    @media (hover: none) {
+      .btn:active {
+        background: var(--hover);
+      }
+      .related li a:active span.related-title {
+        color: var(--hover);
+      }
+      .related li:has(a:active) {
+        border: 2px solid var(--emphasis);
       }
     }
   </style>
@@ -479,7 +498,7 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
       <span class="tag" data-pagefind-ignore>
         {[...tags].sort((a, b) => a.localeCompare(b)).map((tag) => (
           <a href={`/categories/${tag}`} rel="prefetch-intent tag" data-umami-event="category-from-article">
-            <button data-pagefind-filter="tag">{tag}</button>
+            <span class="btn" data-pagefind-filter="tag">{tag}</span>
           </a>
         ))}
       </span>
@@ -507,7 +526,7 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
 
     <h3 class="thanks">Written by a human, thanks for reading!</h3>
     <HCard />
-    <nav class="footer-grid" aria-label="End of post.">
+    <div class="footer-grid" aria-label="End of post.">
       <div class="coffee">
         <span>Support me</span>
         <a href={DONATE} rel="noopener noreferrer" target="_blank">
@@ -573,33 +592,33 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
               class="gh"
               loading="lazy"
               decoding="async"
-              alt="GitHub"
+              alt=""
               aria-hidden="true"
             />
             <span>Edit on GitHub</span>
           </a>
         </span>
       </div>
-    </nav>
+    </div>
 
     {selectedPosts.length > 0 && (
       <div class="related" data-pagefind-ignore>
-        <h3><Related width={36} height={36}/> Related Posts</h3>
+        <h3><Related width={36} height={36} aria-hidden="true"/> Related Posts</h3>
         <ul>
           {selectedPosts.map(post => (
-            <a href={`/blog/${post.id}`} rel="prefetch-intent" data-umami-event={`related-${post.id}`}>
-              <li>
-                <span>{post.data.title}</span>
+            <li>
+              <a href={`/blog/${post.id}`} rel="prefetch-intent" data-umami-event={`related-${post.id}`}>
+                <span class="related-title">{post.data.title}</span>
                 <div>
                   <span class="tag">
                     {post.data.tags.map((tag) => (
-                      <button>{tag}</button>
+                      <span class="btn">{tag}</span>
                     ))}
                   </span>
                 </div>
                 <p>{post.data.description}</p>
-              </li>
-            </a>
+              </a>
+            </li>
           ))}
         </ul>
       </div>
