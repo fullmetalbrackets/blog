@@ -108,6 +108,12 @@ I use several packages to help with building the site and writing posts.
 - [astro-embed](https://astro-embed.netlify.app/) for embedding YouTube videos,
   Bluesky or Mastodon posts, GitHub Gists, etc.
 
+## Workflow
+
+I don't use a Content Management System (CMS) for anything and just interact with the raw Markdown, MDX and YAML files when creating posts, links and other content. I have a group of [custom scripts](https://github.com/fullmetalbrackets/blog/tree/main/scripts) that I use when I want to create new content, for example when I writing a new [Blog](/blog) post I'll use `yarn post This is the title to some blog post` and that will create the markdown file, slugify the title to use the filename `this-is-the-title-to-some-blog-post.md`, and pre-populate the frontmatter with the current date and empty fields to fill in later.
+
+The same happens with other types of content including [Wiki](/wiki) articles, [Now](/now) entries, additions to [Blogroll](/blogroll) and [Postroll](/postroll), and my media activity log [Lifestream](/lifestream) -- this one uses flags for different media types, for example `yarn lifestream Some Movie Name --movie` for a new movie entry or `yarn lifestream Game Name --game` for a new game entry. In the case of editting any pre-existing like Blog posts or Lifestream entries, I just edit the raw Markdown or YAML files, adding or changing the `updatedDate` field manually as needed.
+
 ## IndieWeb
 
 This site makes extensive use of [microformats](https://microformats.org/) and
