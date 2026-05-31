@@ -449,26 +449,66 @@ const pageTitle = title === SITE_TITLE ? SITE_TITLE : `${title} | ${SITE_TITLE}`
 
 		<!-- tooltips -->
 		<script>
-			const infoButton = document.querySelector('.info-button');
-			
-			if (infoButton) {
-				infoButton.addEventListener('click', (e) => {
-				e.stopPropagation();
-				infoButton.classList.toggle('active');
-				});
+		const infoButtons = document.querySelectorAll<HTMLElement>('.info-button');
 
-				document.addEventListener('click', (e) => {
-				if (!infoButton.contains(e.target as Node)) {
-					infoButton.classList.remove('active');
-				}
-				});
+		function positionTooltip(button: HTMLElement, tooltip: HTMLElement) {
+			const btnRect = button.getBoundingClientRect();
+			const padding = 8;
 
-				document.addEventListener('keydown', (e) => {
-				if (e.key === 'Escape') {
-					infoButton.classList.remove('active');
+			const tooltipWidth = tooltip.offsetWidth;
+			let left = btnRect.left + btnRect.width / 2 - tooltipWidth / 2;
+			const top = btnRect.bottom + 10;
+
+			left = Math.max(padding, Math.min(left, window.innerWidth - tooltipWidth - padding));
+
+			tooltip.style.left = `${left}px`;
+			tooltip.style.top = `${top}px`;
+
+			const arrowLeft = btnRect.left + btnRect.width / 2 - left;
+			tooltip.style.setProperty('--arrow-left', `${arrowLeft}px`);
+		}
+
+		infoButtons.forEach((infoButton) => {
+			infoButton.addEventListener('click', (e) => {
+			e.stopPropagation();
+
+			infoButtons.forEach((btn) => {
+				if (btn !== infoButton) btn.classList.remove('active');
+			});
+
+			infoButton.classList.toggle('active');
+
+			if (infoButton.classList.contains('active')) {
+				const tooltip = infoButton.querySelector<HTMLElement>('.tooltip');
+				if (tooltip) {
+				requestAnimationFrame(() => positionTooltip(infoButton, tooltip));
 				}
-				});
 			}
+			});
+		});
+
+		document.addEventListener('click', () => {
+			infoButtons.forEach((btn) => btn.classList.remove('active'));
+		});
+
+		document.addEventListener('keydown', (e) => {
+			if (e.key === 'Escape') {
+			infoButtons.forEach((btn) => btn.classList.remove('active'));
+			}
+		});
+
+		window.addEventListener('resize', () => {
+			infoButtons.forEach((btn) => {
+			if (btn.classList.contains('active')) {
+				const tooltip = btn.querySelector<HTMLElement>('.tooltip');
+				if (tooltip) positionTooltip(btn, tooltip);
+			}
+			});
+		});
+
+		window.addEventListener('scroll', () => {
+			infoButtons.forEach((btn) => btn.classList.remove('active'));
+		}, { passive: true });
 		</script>
 
 		<!-- pwa -->
