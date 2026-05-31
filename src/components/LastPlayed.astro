@@ -83,6 +83,10 @@ const playedDate = new Date(playedAt);
     text-overflow: ellipsis;
     overflow-wrap: break-word
   }
+  .has-tooltip {
+    justify-content: end;
+    margin: -0.55em -1em 0 0;
+  }
   @media screen and (max-width: 667px) {
     section {
       margin: 1em auto 0 auto;
@@ -98,6 +102,11 @@ const playedDate = new Date(playedAt);
     .art-placeholder {
       width: 100px;
       height: 100px;
+    }
+    .has-tooltip {
+      justify-content: end;
+      margin: -0.5em -0.5em 0 0;
+      padding-bottom: 0.5em;
     }
   }
 </style>
@@ -117,6 +126,17 @@ const playedDate = new Date(playedAt);
         <span class="album">{album}{year ? ` (${year})` : ''}</span>
         <span class="date"><LocalTime date={playedDate} class="meta" /></span>
       </div>
+    </div>
+    <div class="has-tooltip">
+      <button class="info-button" aria-label="Information">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+          <line x1="12" y1="17" x2="12.01" y2="17"></line>
+        </svg>
+        <span class="tooltip">
+          The last song I played on <a href="https://www.plex.tv/plexamp/" target="_blank" rel="noopener noreferrer">Plexamp</a> scraped from my <a href="https://tautulli.com/" target="_blank" rel="noopener noreferrer">Tautulli</a> instance on each website update.
+        </span>
+      </button>
     </div>
   </div>
 </section>
