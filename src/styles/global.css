@@ -687,11 +687,25 @@ button.info-button {
   transition: all 0.2s;
   flex-shrink: 0;
   margin-bottom: -0.5em;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.info-button:hover,
-.info-button:focus {
+@media (hover: hover) {
+  .info-button:hover {
+    background: var(--info);
+  }
+}
+
+.info-button:focus-visible {
   background: var(--info);
+}
+
+.info-button.active {
+  background: var(--info);
+}
+
+.info-button:not(.active):not(:hover):not(:focus):not(:focus-visible) {
+  background: var(--tooltip-btn);
 }
 
 .info-button svg {
