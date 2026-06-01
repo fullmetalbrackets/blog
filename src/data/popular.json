@@ -1,7 +1,82 @@
 [
-  "plex-remote-access-tailscale",
-  "oci-free-tier-breakdown",
-  "how-i-setup-home-server",
-  "reverse-proxy-using-nginx-adguardhome-cloudflare",
-  "how-to-setup-the-search-function-in-qbittorrent-and-add-search-plugins"
+  {
+    "slug": "plex-remote-access-tailscale",
+    "visits": 1164
+  },
+  {
+    "slug": "oci-free-tier-breakdown",
+    "visits": 569
+  },
+  {
+    "slug": "how-i-setup-home-server",
+    "visits": 562
+  },
+  {
+    "slug": "reverse-proxy-using-nginx-adguardhome-cloudflare",
+    "visits": 495
+  },
+  {
+    "slug": "how-to-setup-the-search-function-in-qbittorrent-and-add-search-plugins",
+    "visits": 443
+  },
+  {
+    "slug": "upgrade-debian-12-bookworm-debian-13-trixie",
+    "visits": 421
+  },
+  {
+    "slug": "comprehensive-guide-tailscale-securely-access-home-network",
+    "visits": 341
+  },
+  {
+    "slug": "youtube-90-second-ads-on-tv-apps",
+    "visits": 328
+  },
+  {
+    "slug": "google-tv-tailscale-plex",
+    "visits": 298
+  },
+  {
+    "slug": "reverse-proxy-using-nginx-pihole-cloudflare",
+    "visits": 279
+  },
+  {
+    "slug": "solid-explorer-samba-share",
+    "visits": 272
+  },
+  {
+    "slug": "plex-remote-access-tailscale",
+    "visits": 238
+  },
+  {
+    "slug": "pihole-anywhere-tailscale",
+    "visits": 199
+  },
+  {
+    "slug": "self-host-website-cloudflare-tunnel",
+    "visits": 197
+  },
+  {
+    "slug": "expose-plex-tailscale-vps",
+    "visits": 167
+  },
+  {
+    "slug": "xplore-android-smb-share",
+    "visits": 160
+  },
+  {
+    "slug": "two-drives-mergerfs",
+    "visits": 151
+  },
+  {
+    "slug": "turn-off-display-linux-terminal",
+    "visits": 122
+  },
+  {
+    "slug": "reverse-proxy-using-nginx-adguardhome-cloudflare",
+    "visits": 103
+  },
+  {
+    "slug": "reverse-proxy-nginx-pihole",
+    "visits": 94
+  }
 ]
