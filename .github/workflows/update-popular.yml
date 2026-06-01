@@ -43,7 +43,7 @@ jobs:
             select(.x | startswith("/blog/")) |
             select((.x | rtrimstr("/") | split("/") | length) == 3) |
             {slug: (.x | rtrimstr("/") | split("/")[2]), visits: .y}
-          ] | .[0:20]' > src/data/popular.json
+          ] | unique_by(.slug) | .[0:20]' > src/data/popular.json
 
       - name: Commit updated popular.json
         run: |
