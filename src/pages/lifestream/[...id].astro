@@ -12,7 +12,7 @@ import MovieIcon  from '@icons/movie.svg';
 import TVShowIcon from '@icons/tvshow.svg';
 import LeftArrow from '@icons/arrow-left.svg';
 import Comments from "@components/Comments.astro";
-import { SITE_URL } from "@consts";
+import { SITE_URL, AUTHOR } from "@consts";
 import { schemaTypeMap } from '@utils/media';
 
 export async function getStaticPaths() {
@@ -75,7 +75,9 @@ const schema = {
   "inLanguage": "en-US",
   "datePublished": (data.updatedDate ?? data.pubDate).toISOString(),
   "author": {
-    "@id": `${SITE_URL}/#person`
+    "@type": "Person",
+    "@id": `${SITE_URL}/#person`,
+    "name": AUTHOR
   },
   "reviewBody": entry.body?.trim() ?? undefined,
   "reviewRating": {
