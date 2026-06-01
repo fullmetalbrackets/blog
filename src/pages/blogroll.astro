@@ -12,14 +12,15 @@ import Comments from "@components/Comments.astro";
 import { getBlogroll } from '@utils/collections';
 import { SITE_URL } from "@consts";
 import { pages } from "@data/pages";
-import { execSync } from 'node:child_process';
+// import { execSync } from 'node:child_process';
 
-const gitDate = execSync(
-  'git log -1 --format=%aI -- src/content/blogroll/',
-  { encoding: 'utf-8' }
-).trim();
+// const gitDate = execSync(
+//   'git log -1 --format=%aI -- src/content/blogroll/',
+//   { encoding: 'utf-8' }
+// ).trim();
 
-const lastUpdated = new Date(gitDate.slice(0, 10) + 'T12:00:00');
+// const lastUpdated = new Date(gitDate.slice(0, 10) + 'T12:00:00');
+const lastUpdated = new Date('2026-05-27T12:00');
 
 const { title, description } = pages.find(p => p.href === "/blogroll")!;
 
