@@ -73,7 +73,7 @@ const selectedPosts = allPosts.filter(post => popularSlugs.includes(post.id));
     color: var(--emphasis);
   }
   .pop-index {
-    padding-bottom: 1.15em;
+    padding-bottom: 0.75em;
   }
   .pop-404 {
     padding-bottom: 0;
@@ -92,6 +92,10 @@ const selectedPosts = allPosts.filter(post => popularSlugs.includes(post.id));
     font-size: 0.85em;
     margin-bottom: 0;
     font-weight: 400;
+  }
+  .has-tooltip {
+    justify-content: end;
+    margin: 1em -1.1em 0 0;
   }
   @media (hover: hover) {
     .list:hover {
@@ -113,11 +117,6 @@ const selectedPosts = allPosts.filter(post => popularSlugs.includes(post.id));
   @media screen and (max-width: 667px) {
     main {
       margin: 0 10px;
-    }
-    ul {
-      padding: 1em 0.75em 0.5em 0.75em;
-      width: 100%;
-      margin: 0;
     }
     .info {
       display: block;
@@ -148,9 +147,10 @@ const selectedPosts = allPosts.filter(post => popularSlugs.includes(post.id));
     .posts-title {
       font-size: 0.875em;
     }
-    .more {
-      margin: 0;
-      padding: 0;
+    .has-tooltip {
+      justify-content: end;
+      margin: -1em -0.5em 0 0;
+      padding: 0 0 0.75em 0;
     }
   }
 </style>
@@ -181,5 +181,16 @@ const selectedPosts = allPosts.filter(post => popularSlugs.includes(post.id));
         </a>
       </div>
     ))}
+    <div class="has-tooltip">
+      <button class="info-button" aria-label="Information">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+          <line x1="12" y1="17" x2="12.01" y2="17"></line>
+        </svg>
+        <span class="tooltip">
+          Top 5 most visited posts over the last 30 days, updated every Monday.
+        </span>
+      </button>
+    </div>
   </div>
 </section>
