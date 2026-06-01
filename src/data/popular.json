@@ -1,7 +1,4 @@
 [
   "plex-remote-access-tailscale",
-  "reverse-proxy-using-nginx-adguardhome-cloudflare",
-  "oci-free-tier-breakdown",
-  "comprehensive-guide-tailscale-securely-access-home-network",
-  "google-tv-tailscale-plex"
+  "reverse-proxy-using-nginx-adguardhome-cloudflare"
 ]
