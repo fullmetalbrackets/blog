@@ -8,3 +8,4 @@ export const MASTODON = 'https://social.lol/@adiaz';
 export const DONATE = 'https://buymeacoffee.com/arieldiaz';
 export const REDDIT = 'https://www.reddit.com/user/FullmetalBrackets';
 export const THREADS = 'https://www.threads.com/@fullmetal.brackets';
+export const AUTHOR = 'Ariel Diaz'
