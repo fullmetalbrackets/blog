@@ -1,5 +1,5 @@
 ---
-import { SITE_URL } from '@consts';
+import { SITE_URL, AUTHOR } from '@consts';
 import type { BlogData } from '../types';
 type Props = BlogData & { slug: string; relatedLinks?: string[] };
 
@@ -24,10 +24,14 @@ const schema = {
   "inLanguage": "en-US",
   "image": `${SITE_URL}/og/${slug}.png`,
   "author": {
-    "@id": `${SITE_URL}/#person`
+    "@type": "Person",
+    "@id": `${SITE_URL}/#person`,
+    "name": AUTHOR
   },
   "publisher": {
-    "@id": `${SITE_URL}/#person`
+    "@type": "Person",
+    "@id": `${SITE_URL}/#person`,
+    "name": AUTHOR
   },
   "datePublished": pubDate.toISOString(),
   ...(updatedDate && { "dateModified": updatedDate.toISOString() }),
