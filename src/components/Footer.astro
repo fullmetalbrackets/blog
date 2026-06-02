@@ -1,5 +1,6 @@
 ---
 const today = new Date();
+import BuildTime from './BuildTime.astro';
 import Umami from '@icons/umami.svg';
 import RSS from '@icons/rss.svg';
 import JSON from '@icons/jsonfeed.svg';
@@ -14,14 +15,7 @@ import RightArrow from '@icons/arrow-right.svg';
 import Proven from '@icons/proven.svg';
 import { GITHUB, MASTODON, BLUESKY, DONATE } from '@consts';
 
-const buildTime = today.toLocaleDateString("en-US", {
-  month: "numeric",
-  day: "numeric", 
-  year: "numeric",
-  hour: "numeric",
-  minute: "2-digit",
-  timeZoneName: "short",
-});
+const buildTime = new Date().toISOString();
 ---
 
 <style>
@@ -384,6 +378,6 @@ const buildTime = today.toLocaleDateString("en-US", {
     <a href="/privacy" data-umami-event="footer-privacy">Privacy Policy</a>
   </p>
   <p class="build">
-    Latest site build: <span>{buildTime}</span>
+    Last site build on <BuildTime />
   </p>
 </footer>

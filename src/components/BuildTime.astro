@@ -1,0 +1,18 @@
+---
+const buildTime = new Date().toISOString();
+---
+
+<span class="build-time"></span>
+
+<script define:vars={{ buildTime }}>
+    document.querySelectorAll(".build-time").forEach(el => {
+        el.textContent = new Date(buildTime).toLocaleDateString("en-US", {
+            month: "numeric",
+            day: "numeric",
+            year: "numeric",
+            hour: "numeric",
+            minute: "2-digit",
+            timeZoneName: "short",
+        });
+    });
+</script>

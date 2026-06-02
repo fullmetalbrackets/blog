@@ -4,6 +4,7 @@ export const prerender = true;
 import BaseLayout from "@layouts/BaseLayout.astro";
 import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
 import CollectionPageSchema from "@components/CollectionPageSchema.astro";
+import BuildTime from "@components/BuildTime.astro";
 import Popular from "@components/Popular.astro";
 import BackToTop from "@components/BackToTop.astro";
 import { SITE_URL } from "@consts";
@@ -321,16 +322,6 @@ const hmIntensity = (key: string) => {
   if (r < 0.75) return 3;
   return 4;
 };
-
-// Latest Build
-const buildTime = today.toLocaleDateString("en-US", {
-  month: "long",
-  day: "numeric", 
-  year: "numeric",
-  hour: "numeric",
-  minute: "2-digit",
-  timeZoneName: "short",
-});
 ---
 
 <style scoped>
@@ -724,10 +715,16 @@ const buildTime = today.toLocaleDateString("en-US", {
   }
 
   /* other */
-  .popular span {
+  .popular-desc {
     margin: 0 auto;
     font-size: 0.9em;
   }
+  .more-popular {
+    margin-top: 0.25em;
+    font-family: var(--sub-font);
+    font-weight: 900;
+  }
+
 
   @media screen and (max-width: 667px) {
     h2.section-head { font-size: 1.2em; }
@@ -872,8 +869,11 @@ const buildTime = today.toLocaleDateString("en-US", {
     </ul>
 
     <div class="popular">
-      <span>Most popular posts over the last 30 days:</span>
+      <p class="popular-desc">Most popular posts over the last 30 days:</p>
       <Popular simple />
+      <p class="more-popular">
+        <a href="/blog/popular">See more popular posts</a>
+      </p>
     </div>
 
     <!-- NOTES -->
@@ -1166,7 +1166,7 @@ const buildTime = today.toLocaleDateString("en-US", {
     </p>
 
     <p class="hm-sub">
-      Latest site build was <strong>{buildTime}</strong>.
+      Last site build on <b class="sub-font w9"><BuildTime /></b>
     </p>
   </section>
   <hr />
