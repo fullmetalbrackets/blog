@@ -54,16 +54,16 @@ specific circumstances:
    [local storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage).
    This allows the choice of theme to persist across browser sessions.
 
-2. When you use any of the **filters** on the [Lifestream page](/lifestream),
+2. When you use any of the **filters** on the [Lifestream page](/lifestream) and [Wiki articles](/wiki/articles),
    booleans representing their states are saved in your browser's
    [session storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage).
    This allows the active/inactive filters to persist across page navigations,
-   but the stored data is cleared when the tab is closed.
+   but *the stored data is cleared when the tab is closed*.
 
-3. At the bottom of all blog posts is a Giscus comment component. When you login
-   to Github through this component to comment on a blog post, a session token
+3. At the bottom of all blog posts is a [Giscus](https://giscus.app/) comment component. When you login
+   to [Github](https://github.com/) through this component to comment on a blog post, a session token
    is saved in your browser's local storage. This allows you to remain logged in
-   across browser sessions.
+   across browser sessions. ([More details about Giscus comments below.](#comments))
 
 **Besides what is noted above, no other data is collected by this website.**
 
