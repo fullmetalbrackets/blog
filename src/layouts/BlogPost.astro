@@ -28,7 +28,7 @@ const selectedPosts = await getRelatedPosts(related ?? []);
 const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
 ---
 
-<BaseLayout title={`${title} | Blog`} description={description} ogType="article" ogImage={`${SITE_URL}/og/${slug}.png`}>
+<BaseLayout title={`${title}`} description={description} ogType="article" ogImage={`${SITE_URL}/og/${slug}.png`}>
   <link rel="stylesheet" href="/prism.css" slot="head" />
   <link 
     rel="alternate" 
