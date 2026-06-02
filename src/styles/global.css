@@ -692,7 +692,7 @@ button.info-button {
 
 @media (hover: hover) {
   .info-button:hover {
-    background: var(--info);
+    animation: wiggle 0.25s ease-in-out;
   }
 }
 
