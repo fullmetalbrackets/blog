@@ -236,7 +236,7 @@ const blogItems = page.data.map((post: Post) => ({
     <a class="u-url" href={`${SITE_URL}/blog`} hidden>Permalink</a>
     <hr />
     <p>
-      <span class="total">{page.total}</span> posts total. You can also browse <a href="/categories" rel="prefetch-intent" data-umami-event="blog-category">by category</a>, <a href="/blog/years" rel="prefetch-intent">by year</a>, <a href="/blog/updated" rel="prefetch-intent">recently updated</a>, or <a href="/blog/random">a random post</a>.
+      <span class="total">{page.total}</span> posts total. See also <a href="/categories" rel="prefetch-intent" data-umami-event="blog-category">by category</a>, <a href="/blog/years" rel="prefetch-intent">by year</a>, <a href="/blog/updated" rel="prefetch-intent">recently updated</a>, <a href="/blog/popular">popular posts</a> or <a href="/blog/random">a random post</a>.
     </p>
     <div class="page-info-top">Page {page.currentPage} of {page.lastPage}</div>
     <nav class="pagination" aria-label="Blog pagination">
