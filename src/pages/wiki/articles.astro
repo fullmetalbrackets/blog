@@ -9,25 +9,18 @@ import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
 import LeftArrow from '@icons/arrow-left.svg';
 import { SITE_URL } from "@consts";
 
-const allPosts = await getCollection("wiki");
+const allPosts = (await getCollection("wiki")).sort((a, b) => {
+  const dateA = a.data.updatedDate || a.data.pubDate;
+  const dateB = b.data.updatedDate || b.data.pubDate;
+  return dateB.valueOf() - dateA.valueOf();
+});
 
-// Build tag list for filter buttons
 const tagCounts: Record<string, number> = {};
 for (const post of allPosts) {
   const tag = post.data.tag;
   tagCounts[tag] = (tagCounts[tag] ?? 0) + 1;
 }
 const tags = Object.keys(tagCounts).sort();
-
-// Serialize posts to JSON for client-side filtering
-const postsData = allPosts.map((post) => ({
-  id: post.id,
-  title: post.data.title,
-  tag: post.data.tag,
-  pubDate: post.data.pubDate.toISOString(),
-  updatedDate: post.data.updatedDate?.toISOString() ?? null,
-  url: `/wiki/${post.id}`,
-}));
 
 const title = "All Wiki Articles";
 const description = "All wiki articles, searchable and filterable by tag.";
@@ -265,22 +258,38 @@ const description = "All wiki articles, searchable and filterable by tag.";
   const emptyMsg = document.getElementById("empty-msg") as HTMLParagraphElement;
   const searchInput = document.getElementById("wiki-search") as HTMLInputElement;
 
-  let sortBy = "date";
-  let tagBy = "all";
-  let query = "";
+  const SESSION_KEY = "wiki-filters";
 
-  // Pick up ?tag= from URL on load
-  const params = new URLSearchParams(window.location.search);
-  const urlTag = params.get("tag");
+  // Read saved state, falling back to defaults
+  const saved = JSON.parse(sessionStorage.getItem(SESSION_KEY) ?? "{}");
+
+  let sortBy: string = saved.sortBy ?? "date";
+  let tagBy: string = saved.tagBy ?? "all";
+  let query: string = saved.query ?? "";
+
+  function saveState() {
+    sessionStorage.setItem(SESSION_KEY, JSON.stringify({ sortBy, tagBy, query }));
+  }
+
+  // Apply saved state to UI on load
+  function restoreUI() {
+    // Sort buttons
+    document.querySelectorAll<HTMLButtonElement>("[data-sort]").forEach((b) => {
+      b.classList.toggle("on", b.dataset.sort === sortBy);
+    });
+    // Tag buttons
+    document.querySelectorAll<HTMLButtonElement>(".fbtn[data-tag]").forEach((b) => {
+      b.classList.toggle("on", b.dataset.tag === tagBy);
+    });
+    // Search input
+    searchInput.value = query;
+  }
+
+  // ?tag= in URL overrides saved state
+  const urlTag = new URLSearchParams(window.location.search).get("tag");
   if (urlTag) {
     tagBy = urlTag;
-    const btn = document.querySelector<HTMLButtonElement>(`[data-tag="${urlTag}"]`);
-    if (btn) {
-      document.querySelectorAll<HTMLButtonElement>("[data-tag]").forEach((b) =>
-        b.classList.remove("on")
-      );
-      btn.classList.add("on");
-    }
+    saveState();
   }
 
   function getItems() {
@@ -305,50 +314,41 @@ const description = "All wiki articles, searchable and filterable by tag.";
       );
     }
 
-    // Re-append in sorted order; hidden items go to end
     const hidden = items.filter((el) => !visible.includes(el));
-    visible.forEach((el) => {
-      el.style.display = "";
-      list.appendChild(el);
-    });
-    hidden.forEach((el) => {
-      el.style.display = "none";
-      list.appendChild(el);
-    });
+    visible.forEach((el) => { el.style.display = ""; list.appendChild(el); });
+    hidden.forEach((el) => { el.style.display = "none"; list.appendChild(el); });
 
     emptyMsg.style.display = visible.length === 0 ? "" : "none";
   }
 
-  // Sort buttons
   document.querySelectorAll<HTMLButtonElement>("[data-sort]").forEach((btn) => {
     btn.addEventListener("click", () => {
       sortBy = btn.dataset.sort ?? "date";
-      document
-        .querySelectorAll<HTMLButtonElement>("[data-sort]")
+      document.querySelectorAll<HTMLButtonElement>("[data-sort]")
         .forEach((b) => b.classList.remove("on"));
       btn.classList.add("on");
+      saveState();
       render();
     });
   });
 
-  // Tag buttons
-  document.querySelectorAll<HTMLButtonElement>("[data-tag]").forEach((btn) => {
+  document.querySelectorAll<HTMLButtonElement>(".fbtn[data-tag]").forEach((btn) => {
     btn.addEventListener("click", () => {
       tagBy = btn.dataset.tag ?? "all";
-      document
-        .querySelectorAll<HTMLButtonElement>("[data-tag]")
+      document.querySelectorAll<HTMLButtonElement>(".fbtn[data-tag]")
         .forEach((b) => b.classList.remove("on"));
       btn.classList.add("on");
+      saveState();
       render();
     });
   });
 
-  // Search
   searchInput.addEventListener("input", (e) => {
     query = (e.target as HTMLInputElement).value.toLowerCase();
+    saveState();
     render();
   });
 
-  // Initial render to apply any ?tag= from URL
+  restoreUI();
   render();
 </script>
