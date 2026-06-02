@@ -151,6 +151,20 @@ const selectedPosts = popularSlugs
       transition: all 0.1s ease-out;
       outline-offset: 1px;
     }
+    .list:hover {
+      padding-bottom: 0.5em;
+      border-bottom: 4px dotted var(--hover);
+      transition: all .25s ease-out;
+    }
+    .list--simple {
+      margin-bottom: 0.5em;
+      padding-bottom: 0;
+      border-bottom: 0;      
+    }
+    .list--simple:hover {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
   }
   @media screen and (max-width: 667px) {
     main {
@@ -184,6 +198,9 @@ const selectedPosts = popularSlugs
     }
     .posts-title {
       font-size: 0.875em;
+    }
+    .footer {
+      margin: 0;
     }
     .has-tooltip {
       margin: 0 0 0 -0.5em;
@@ -221,7 +238,7 @@ const selectedPosts = popularSlugs
         </a>
       </div>
     ))}
-    <div class="footer">
+    {!simple && ( <div class="footer">
       <div class="has-tooltip">
         <button class="info-button" aria-label="Information">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -236,6 +253,6 @@ const selectedPosts = popularSlugs
       <span class="more">
         <a href="/blog/popular" rel="prefetch-intent archives" data-umami-event="home-popular">More Popular Posts <More height={24} width={24} /></a>
       </span>
-    </div>
+    </div> )}
   </div>
 </section>
