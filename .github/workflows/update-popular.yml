@@ -34,17 +34,18 @@ jobs:
           END=$(($(date +%s) * 1000))
           START=$(($(date -d '30 days ago' +%s) * 1000))
 
-          METRICS=$(curl -s "https://u.adiaz.fyi/api/websites/d9921361-56b2-4c33-8377-4c73cb1add2d/metrics?type=path&startAt=$START&endAt=$END&limit=20" \
+          METRICS=$(curl -s "https://u.adiaz.fyi/api/websites/d9921361-56b2-4c33-8377-4c73cb1add2d/metrics?type=path&startAt=$START&endAt=$END&limit=100" \
             -H "Authorization: Bearer $TOKEN")
 
           echo $METRICS | jq '[
             .[] |
             select(.x | type == "string") |
             select(.x | startswith("/blog/")) |
-            (.x | rtrimstr("/")) |
-            select(split("/") | length == 3) |
-            split("/")[2]
-          ] | .[0:5]' > src/data/popular.json
+            select(.x | contains("#") | not) |
+            select((.x | rtrimstr("/") | split("/") | length) == 3) |
+            {slug: (.x | rtrimstr("/") | split("/")[2]), visits: .y} |
+            select(.slug | test("^[0-9]+$") | not)
+          ] | group_by(.slug) | map(max_by(.visits)) | sort_by(-.visits) | map(.slug) | .[0:20]' > src/data/popular.json
 
       - name: Commit updated popular.json
         run: |
