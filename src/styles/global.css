@@ -661,6 +661,26 @@ blockquote[data-type='warning'] a:hover {
     transform: rotate(25deg) scale(1.15);
   }
 }
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.25);
+    background-color: var(--other);
+  }
+  50% {
+    transform: scale(1.5);
+    background-color: var(--other);
+  }
+  75% {
+    transform: scale(1.25);
+    background-color: var(--other);
+  }
+}
+
 .wiggle:hover {
   animation: wiggle 0.5s ease-in-out;
 }
@@ -691,8 +711,8 @@ button.info-button {
 }
 
 @media (hover: hover) {
-  .info-button:hover {
-    animation: wiggle 0.25s ease-in-out;
+  .info-button:not(.active):hover {
+    animation: pulse 0.25s ease-in-out;
   }
 }
 
@@ -704,8 +724,13 @@ button.info-button {
   background: var(--info);
 }
 
-.info-button:not(.active):not(:hover):not(:focus):not(:focus-visible) {
-  background: var(--tooltip-btn);
+.info-button {
+  background: var(--tooltip-btn); /* base state already set above, this is redundant but explicit */
+}
+
+.info-button.active,
+.info-button:focus-visible {
+  background: var(--info);
 }
 
 .info-button svg {
@@ -714,7 +739,7 @@ button.info-button {
 
 .tooltip {
   position: fixed;
-  background-color: rgb(from var(--blockquote, var(--blockquote)) r g b / 0.875);
+  background-color: rgb(from var(--accent, var(--accent)) r g b / 0.5);
   border: 1px solid var(--primary);
   border-radius: 2em;
   padding: 1rem;
