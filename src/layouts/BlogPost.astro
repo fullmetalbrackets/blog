@@ -705,7 +705,7 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
           const timeString = months > 0 ? `${years} years, ${months} months` : `${years} years`;
           banner.innerHTML = `<p><strong>Heads up!</strong></p><p>This post hasn't been updated in <b>${timeString}</b> and the information below may be very out of date!</p>`;
         } else {
-          banner.innerHTML = `<p><strong>Heads up!</strong></p><p>This post hasn't been updated in <b>over a year</b> and some information may be outdated. If something in this post does not work, feel free to <a href="mailto:outdated@fullmetalbrackets.com">contact me</a> and I'll try to help if I can!</p>`;
+          banner.innerHTML = `<p><strong>Heads up!</strong></p><p>This post hasn't been updated in <b>over a year</b> and some information may be outdated. If something in this post does not work, feel free to <a href="mailto:outdated@fullmetalbrackets.com">contact me</a> or <a href="#comments">comment below</a> and I'll try to help if I can!</p>`;
         }
 
         articleEl.querySelector('hr')?.insertAdjacentElement('afterend', banner);
