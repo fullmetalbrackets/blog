@@ -176,16 +176,21 @@ const FONT_STYLES = {
     families: ['Nunito'],
     weight: 'Black' as const,
     color: [255, 255, 255] as [number, number, number],
-    size: 60,
-    lineHeight: 1.1,
+    size: 52,
+    lineHeight: 1.05,
   },
   description: {
     families: ['AtkinsonHyperlegibleNext'],
     weight: 'Normal' as const,
     color: [164, 174, 188] as [number, number, number],
-    size: 32,
-    lineHeight: 1.3,
+    size: 24,
+    lineHeight: 1.2,
   },
+};
+
+const FONT_STYLES_PAGE = {
+  title:       { ...FONT_STYLES.title,       size: 68 },
+  description: { ...FONT_STYLES.description, size: 32 },
 };
 
 const DEFAULT_STYLE: TemplateConfig = {
@@ -210,7 +215,7 @@ export const { getStaticPaths, GET } = await OGImageRoute({
     title: page.title,
     description: page.description,
     logo: LOGO,
-    font: FONT_STYLES,
+    font: page._template === 'blog' ? FONT_STYLES : FONT_STYLES_PAGE,
     fonts: FONTS,
     ...templates[page._template],
   }),
