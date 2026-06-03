@@ -33,7 +33,7 @@ You'll get a menu pop-up, choose `3   Configure workbench` and hit <kbd>Enter</k
 
 I use _Pi-Hole_ as a network-wide DNS resolver, and you can add DNS records to point a domain at an IP address through their web UI. It's very simple.
 
-> I will be using <code>\*.home.arpa</code> (per the <a href="https://www.rfc-editor.org/rfc/rfc8375.html" target="_target">RFC recommendation</a> for home networks) and not worrying about HTTPS at this time. See <a href="/blog/reverse-proxy-using-nginx-pihole-cloudflare/">this blog post about setup Nginx Proxy Manager for HTTPS with a custom domain</a>.
+> I will be using <code>\*.home.arpa</code> (per the <a href="https://www.rfc-editor.org/rfc/rfc8375.html" target="_target">RFC recommendation</a> for home networks) and not worrying about HTTPS at this time. [See this blog post about setup Nginx Proxy Manager for HTTPS with a custom domain.](/blog/reverse-proxy-using-nginx-pihole-cloudflare)
 
 1. Click on **Local DNS** on the sidebar, then click on **DNS Records**.
 2. On the **Domain:** form, type in the full subdomain and domain you want to use, e.g. `plex.home.arpa`.

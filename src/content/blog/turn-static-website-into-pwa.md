@@ -166,5 +166,5 @@ If not, you can figure out why with the Chrome Developer Tools. Open the develop
 ## References
 
 - <a href="https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps" target="_blank">MDN Web Docs on Progressive Web Apps</a>
-- <a href="https://www.freecodecamp.org/news/build-a-pwa-from-scratch-with-html-css-and-javascript/" target="_blank">FreeCodeCamp article that helped me understand PWAs</a>
-- <a href="https://www.simicart.com/manifest-generator.html/" target="_blank">My preferred tool for generating PWA manifest & icons</a>
+- <a href="https://www.freecodecamp.org/news/build-a-pwa-from-scratch-with-html-css-and-javascript" target="_blank">FreeCodeCamp article that helped me understand PWAs</a>
+- <a href="https://www.simicart.com/manifest-generator.html" target="_blank">My preferred tool for generating PWA manifest & icons</a>
