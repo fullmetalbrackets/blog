@@ -175,7 +175,7 @@ const lifestreamItems = entries.map(entry => ({
     <div class="ls-grid">
       {entries.map((entry, i) => (
         <a class="card h-entry"
-          href={`/lifestream/${entry.id}?from=lifestream`}
+          href={`/lifestream/${entry.id}`}
           data-type={entry.data.type}
           data-year={(entry.data.updatedDate ?? entry.data.pubDate).getFullYear()}
           rel="prefetch-intent"

@@ -44,7 +44,7 @@ const { title, description, image = FallbackImage, ogType = "website", ogImage }
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content={ogType} />
-<meta property="og:url" content={Astro.url} />
+<meta property="og:url" content={canonicalURL} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={ogImage ?? new URL(image.src, Astro.url)} />
@@ -53,7 +53,7 @@ const { title, description, image = FallbackImage, ogType = "website", ogImage }
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={Astro.url} />
+<meta property="twitter:url" content={canonicalURL} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={ogImage ?? new URL(image.src, Astro.url)} />
