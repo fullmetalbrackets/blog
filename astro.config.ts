@@ -110,7 +110,8 @@ export default defineConfig({
     },
     '/wiki/wan-ip-detector-homeassistant': {
       status: 301,
-      destination: '/blog/create-custom-home-assistant-entity-to-detect-changes-public-ip',
+      destination:
+        '/blog/create-custom-home-assistant-entity-to-detect-changes-public-ip',
     },
   },
   fonts: [
