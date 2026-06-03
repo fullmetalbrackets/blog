@@ -20,7 +20,9 @@ export default defineConfig({
     inlineStylesheets: 'always',
   },
 
-  integrations: [mdx(), sitemap(), astroCompress()],
+  integrations: [mdx(), sitemap(), astroCompress({
+    html: false,
+  })],
 
   prefetch: true,
 
