@@ -1,4 +1,5 @@
 ---
+
 ---
 
 <style scoped>
@@ -9,7 +10,9 @@
     z-index: 55;
     height: 0.1em;
     background-color: var(--primary);
-    transition: top 0.3s ease, height 0.3s ease;
+    transition:
+      top 0.3s ease,
+      height 0.3s ease;
   }
 
   @media screen and (max-width: 768px) {
@@ -19,16 +22,15 @@
   }
 </style>
 
-<div id="scroll-progress" class="scroll">
-</div>
+<div id="scroll-progress" class="scroll"></div>
 
 <script is:inline type="module">
-    window.addEventListener("scroll", function () {
-      const scrollableHeight =
-        document.documentElement.scrollHeight - window.innerHeight;
-      const scrolled = window.scrollY;
-      const progressBar = document.getElementById("scroll-progress");
-      const progress = (scrolled / scrollableHeight) * 100;
-      progressBar.style.width = progress + "%";
-    });
+  window.addEventListener('scroll', function () {
+    const scrollableHeight =
+      document.documentElement.scrollHeight - window.innerHeight;
+    const scrolled = window.scrollY;
+    const progressBar = document.getElementById('scroll-progress');
+    const progress = (scrolled / scrollableHeight) * 100;
+    progressBar.style.width = progress + '%';
+  });
 </script>

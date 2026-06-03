@@ -1,39 +1,57 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
-import FormattedDate from "@components/FormattedDate.astro";
+import BaseLayout from '@layouts/BaseLayout.astro';
+import FormattedDate from '@components/FormattedDate.astro';
 import TableOfContents from '@components/TableOfContents.astro';
-import BlogPosting from "@components/BlogPosting.astro";
-import ScrollProgress from "@components/ScrollProgress.astro";
-import ReadingTime from "@components/ReadingTime.astro";
-import WebMentions from "@components/WebMentions.astro";
-import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
-import HowToSchema from "@components/HowToSchema.astro";
-import CodeblockCopy from "@components/CodeblockCopy.astro";
-import HeadingCopy from "@components/HeadingCopy.astro";
-import HCard from "@components/H-Card.astro";
-import Lightbox from "@components/Lightbox.astro";
-import Random from "@components/RandomPost.astro";
+import BlogPosting from '@components/BlogPosting.astro';
+import ScrollProgress from '@components/ScrollProgress.astro';
+import ReadingTime from '@components/ReadingTime.astro';
+import WebMentions from '@components/WebMentions.astro';
+import BreadcrumbSchema from '@components/BreadcrumbSchema.astro';
+import HowToSchema from '@components/HowToSchema.astro';
+import CodeblockCopy from '@components/CodeblockCopy.astro';
+import HeadingCopy from '@components/HeadingCopy.astro';
+import HCard from '@components/H-Card.astro';
+import Lightbox from '@components/Lightbox.astro';
+import Random from '@components/RandomPost.astro';
 import type { BlogPostProps } from '../types';
 import type { MarkdownHeading } from '@astrojs/markdown-remark';
 import Related from '@icons/related.svg';
-import Comments from "@components/Comments.astro";
+import Comments from '@components/Comments.astro';
 import { getRelatedPosts } from '@utils/collections';
-import { GITHUB, DONATE, SITE_URL } from "@consts";
+import { GITHUB, DONATE, SITE_URL } from '@consts';
 
-type Props = BlogPostProps & { headings: MarkdownHeading[]; readingTime: string };
+type Props = BlogPostProps & {
+  headings: MarkdownHeading[];
+  readingTime: string;
+};
 
-const { title, description, pubDate, updatedDate, tags, headings, related, readingTime, tocDepth } = Astro.props;
+const {
+  title,
+  description,
+  pubDate,
+  updatedDate,
+  tags,
+  headings,
+  related,
+  readingTime,
+  tocDepth,
+} = Astro.props;
 const { slug } = Astro.params;
 const selectedPosts = await getRelatedPosts(related ?? []);
-const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
+const relatedLinks = selectedPosts.map((p) => `${SITE_URL}/blog/${p.id}`);
 ---
 
-<BaseLayout title={`${title}`} description={description} ogType="article" ogImage={`${SITE_URL}/og/${slug}.png`}>
+<BaseLayout
+  title={`${title}`}
+  description={description}
+  ogType="article"
+  ogImage={`${SITE_URL}/og/${slug}.png`}
+>
   <link rel="stylesheet" href="/prism.css" slot="head" />
-  <link 
-    rel="alternate" 
-    type="application/json" 
-    href={`${SITE_URL}/api/posts/${Astro.params.slug}`} 
+  <link
+    rel="alternate"
+    type="application/json"
+    href={`${SITE_URL}/api/posts/${Astro.params.slug}`}
     slot="head"
   />
   <style scoped>
@@ -95,7 +113,18 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
       font-weight: 300;
       font-size: 1em;
       font-style: italic;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      font-family:
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        'Segoe UI',
+        Roboto,
+        Oxygen,
+        Ubuntu,
+        Cantarell,
+        'Open Sans',
+        'Helvetica Neue',
+        sans-serif;
       opacity: 0.9;
       text-wrap: pretty;
     }
@@ -156,7 +185,7 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
     .edit:hover {
       background: var(--hover);
       color: #000;
-      transition: all .15s ease-out;
+      transition: all 0.15s ease-out;
       transform: none;
       box-shadow: none;
     }
@@ -188,12 +217,24 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
       content: none;
     }
     @keyframes shake {
-      0%   { transform: rotate(0deg); }
-      20%  { transform: rotate(-6deg); }
-      40%  { transform: rotate(6deg); }
-      60%  { transform: rotate(-4deg); }
-      80%  { transform: rotate(4deg); }
-      100% { transform: rotate(0deg); }
+      0% {
+        transform: rotate(0deg);
+      }
+      20% {
+        transform: rotate(-6deg);
+      }
+      40% {
+        transform: rotate(6deg);
+      }
+      60% {
+        transform: rotate(-4deg);
+      }
+      80% {
+        transform: rotate(4deg);
+      }
+      100% {
+        transform: rotate(0deg);
+      }
     }
     .coffee-btn:hover {
       background: var(--hover);
@@ -221,7 +262,7 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
     .stats:hover {
       background: var(--hover);
       color: #000;
-      transition: all .15s ease-out;
+      transition: all 0.15s ease-out;
       transform: none;
       box-shadow: none;
     }
@@ -260,7 +301,7 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
     }
     .email:hover {
       background: var(--hover);
-      transition: all .15s ease-out;
+      transition: all 0.15s ease-out;
       transform: none;
       box-shadow: none;
     }
@@ -304,7 +345,7 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
       padding: 0.4em 0.75em;
       text-decoration: none;
       cursor: pointer;
-      transition: background-color .15s ease-out;
+      transition: background-color 0.15s ease-out;
     }
     .nav-btn:hover {
       background-color: var(--secondary);
@@ -435,7 +476,8 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
         transition: all 0.1s ease-out;
         cursor: pointer;
       }
-      .tag .btn:active, .tag .btn:focus {
+      .tag .btn:active,
+      .tag .btn:focus {
         box-shadow: none;
         transform: translate(0px, 0px);
         background-color: var(--hover);
@@ -450,7 +492,8 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
         color: var(--hover);
         border: 2px solid var(--emphasis);
       }
-      .related li:hover .tag .btn, .blog-tags .btn:hover {
+      .related li:hover .tag .btn,
+      .blog-tags .btn:hover {
         box-shadow: -4px -4px 0 #000;
         transform: translate(4px, 4px);
         transition: all 0.1s ease-out;
@@ -471,13 +514,21 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
   </style>
 
   <ScrollProgress />
-  <BlogPosting slot="head" {...Astro.props} slug={slug!} relatedLinks={relatedLinks} />
-  <BreadcrumbSchema slot="head" crumbs={[
-    { name: "Home", url: `${ SITE_URL }/` },
-    { name: "Blog", url: `${ SITE_URL }/blog` },
-    { name: title, url: `${ SITE_URL }/blog/${slug}` }
-  ]} />
-  <HowToSchema 
+  <BlogPosting
+    slot="head"
+    {...Astro.props}
+    slug={slug!}
+    relatedLinks={relatedLinks}
+  />
+  <BreadcrumbSchema
+    slot="head"
+    crumbs={[
+      { name: 'Home', url: `${SITE_URL}/` },
+      { name: 'Blog', url: `${SITE_URL}/blog` },
+      { name: title, url: `${SITE_URL}/blog/${slug}` },
+    ]}
+  />
+  <HowToSchema
     slot="head"
     title={title}
     description={description}
@@ -490,28 +541,50 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
   <CodeblockCopy />
   <HeadingCopy />
 
-  <article class="h-entry" data-pagefind-body data-pub-date={pubDate.toISOString()}
-    data-updated-date={updatedDate ? updatedDate.toISOString() : ''}>
+  <article
+    class="h-entry"
+    data-pagefind-body
+    data-pub-date={pubDate.toISOString()}
+    data-updated-date={updatedDate ? updatedDate.toISOString() : ''}
+  >
     <h1 class="p-name">{title}</h1>
-    <a class="u-url" href={`https://fullmetalbrackets.com/blog/${slug}`} hidden>Permalink</a>
+    <a class="u-url" href={`https://fullmetalbrackets.com/blog/${slug}`} hidden
+      >Permalink</a
+    >
     <div class="blog-tags">
       <span class="tag" data-pagefind-ignore>
-        {[...tags].sort((a, b) => a.localeCompare(b)).map((tag) => (
-          <a href={`/categories/${tag}`} rel="prefetch-intent tag" data-umami-event="category-from-article">
-            <span class="btn" data-pagefind-filter="tag">{tag}</span>
-          </a>
-        ))}
+        {
+          [...tags]
+            .sort((a, b) => a.localeCompare(b))
+            .map((tag) => (
+              <a
+                href={`/categories/${tag}`}
+                rel="prefetch-intent tag"
+                data-umami-event="category-from-article"
+              >
+                <span class="btn" data-pagefind-filter="tag">
+                  {tag}
+                </span>
+              </a>
+            ))
+        }
       </span>
     </div>
     <div class="info">
       <span><FormattedDate class="dt-published" date={pubDate} /></span>
-      <span class="readingtime"><ReadingTime time={readingTime} data-pagefind-ignore /></span>
+      <span class="readingtime"
+        ><ReadingTime time={readingTime} data-pagefind-ignore /></span
+      >
     </div>
     <p class="updated">
-      {updatedDate && (
-        <span class="last-updated-on">Updated&nbsp;</span>
-        <FormattedDate class="dt-updated" date={updatedDate} />
-      )}
+      {
+        updatedDate && (
+          <>
+            <span class="last-updated-on">Updated&nbsp;</span>
+            <FormattedDate class="dt-updated" date={updatedDate} />
+          </>
+        )
+      }
     </p>
     <hr />
     <p class="p-summary description">{description}</p>
@@ -519,7 +592,9 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
     <div class="e-content slot-content">
       <slot>
         <p>
-          If you're seeing this, something went wrong! Please try <em>reloading the page</em>.
+          If you're seeing this, something went wrong! Please try <em
+            >reloading the page</em
+          >.
         </p>
       </slot>
     </div>
@@ -601,29 +676,37 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
       </div>
     </div>
 
-    {selectedPosts.length > 0 && (
-      <div class="related" data-pagefind-ignore>
-        <h3><Related width={36} height={36} aria-hidden="true"/> Related Posts</h3>
-        <ul>
-          {selectedPosts.map(post => (
-            <li>
-              <a href={`/blog/${post.id}`} rel="prefetch-intent" data-umami-event={`related-${post.id}`}>
-                <span class="related-title">{post.data.title}</span>
-                <div>
-                  <span class="tag">
-                    {post.data.tags.map((tag) => (
-                      <span class="btn">{tag}</span>
-                    ))}
-                  </span>
-                </div>
-                <p>{post.data.description}</p>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-    )}
-    <Random excludeIds={selectedPosts.map(p => p.id)} />
+    {
+      selectedPosts.length > 0 && (
+        <div class="related" data-pagefind-ignore>
+          <h3>
+            <Related width={36} height={36} aria-hidden="true" /> Related Posts
+          </h3>
+          <ul>
+            {selectedPosts.map((post) => (
+              <li>
+                <a
+                  href={`/blog/${post.id}`}
+                  rel="prefetch-intent"
+                  data-umami-event={`related-${post.id}`}
+                >
+                  <span class="related-title">{post.data.title}</span>
+                  <div>
+                    <span class="tag">
+                      {post.data.tags.map((tag) => (
+                        <span class="btn">{tag}</span>
+                      ))}
+                    </span>
+                  </div>
+                  <p>{post.data.description}</p>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )
+    }
+    <Random excludeIds={selectedPosts.map((p) => p.id)} />
   </article>
 
   <WebMentions />
@@ -633,22 +716,52 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
   <hr class="endline" />
 
   <nav class="blog-nav" aria-label="Post navigation">
-    <a href="/blog" rel="prefetch-intent" class="nav-btn back" aria-label="Back to Blog">
-      <svg role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
-        <path d="M14 7.5H3.439l4.29-4.387-.714-.699L1.55 8l5.465 5.586.714-.7L3.44 8.5h10.56v-1z" />
+    <a
+      href="/blog"
+      rel="prefetch-intent"
+      class="nav-btn back"
+      aria-label="Back to Blog"
+    >
+      <svg
+        role="presentation"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 16 16"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path
+          d="M14 7.5H3.439l4.29-4.387-.714-.699L1.55 8l5.465 5.586.714-.7L3.44 8.5h10.56v-1z"
+        ></path>
       </svg>
       <span>Blog</span>
     </a>
-    <a href="/" rel="prefetch-intent" class="nav-btn home" aria-label="Go to Home">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z" />
+    <a
+      href="/"
+      rel="prefetch-intent"
+      class="nav-btn home"
+      aria-label="Go to Home"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z"></path>
       </svg>
       <span>Home</span>
     </a>
     <a href="#top" class="nav-btn go-top" aria-label="Back to top">
       <span>Top</span>
-      <svg role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
-        <path d="M7.5 14V3.439l-4.387 4.29-.699-.714L8 1.55l5.586 5.465-.7.714L8.5 3.44V14h-1z" />
+      <svg
+        role="presentation"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 16 16"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path
+          d="M7.5 14V3.439l-4.387 4.29-.699-.714L8 1.55l5.586 5.465-.7.714L8.5 3.44V14h-1z"
+        ></path>
       </svg>
     </a>
   </nav>
@@ -666,7 +779,10 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
 
       const textNode = firstPara.firstChild;
       if (textNode?.nodeType === Node.TEXT_NODE && textNode.textContent) {
-        textNode.textContent = textNode.textContent.replace(/^\[(\w+)\]\s*/, '');
+        textNode.textContent = textNode.textContent.replace(
+          /^\[(\w+)\]\s*/,
+          ''
+        );
       }
     });
 
@@ -677,8 +793,11 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
       const tocElement = description?.nextElementSibling;
       const firstContentElement = tocElement?.nextElementSibling;
 
-      if (hr && firstContentElement?.tagName === 'BLOCKQUOTE' &&
-          firstContentElement.getAttribute('data-type') === 'warning') {
+      if (
+        hr &&
+        firstContentElement?.tagName === 'BLOCKQUOTE' &&
+        firstContentElement.getAttribute('data-type') === 'warning'
+      ) {
         hr.parentNode.insertBefore(firstContentElement, hr.nextSibling);
       }
     }
@@ -689,7 +808,9 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
     if (articleEl) {
       const pubDate = articleEl.dataset.pubDate;
       const updatedDate = articleEl.dataset.updatedDate;
-      const relevantDate = updatedDate ? new Date(updatedDate) : new Date(pubDate);
+      const relevantDate = updatedDate
+        ? new Date(updatedDate)
+        : new Date(pubDate);
       const now = new Date();
       const monthsDiff =
         (now.getFullYear() - relevantDate.getFullYear()) * 12 +
@@ -702,13 +823,16 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
         if (monthsDiff >= 18) {
           const years = Math.floor(monthsDiff / 12);
           const months = monthsDiff % 12;
-          const timeString = months > 0 ? `${years} years, ${months} months` : `${years} years`;
+          const timeString =
+            months > 0 ? `${years} years, ${months} months` : `${years} years`;
           banner.innerHTML = `<p><strong>Heads up!</strong></p><p>This post hasn't been updated in <b>${timeString}</b> and the information below may be very out of date!</p>`;
         } else {
           banner.innerHTML = `<p><strong>Heads up!</strong></p><p>This post hasn't been updated in <b>over a year</b> and some information may be outdated. If something in this post does not work, feel free to <a href="mailto:outdated@fullmetalbrackets.com">contact me</a> or <a href="#comments">comment below</a> and I'll try to help if I can!</p>`;
         }
 
-        articleEl.querySelector('hr')?.insertAdjacentElement('afterend', banner);
+        articleEl
+          .querySelector('hr')
+          ?.insertAdjacentElement('afterend', banner);
       }
     }
   </script>
@@ -724,7 +848,8 @@ const relatedLinks = selectedPosts.map(p => `${SITE_URL}/blog/${p.id}`);
 
         if (lastHeading) {
           const observer = new IntersectionObserver(([entry]) => {
-            const isVisible = entry.isIntersecting || entry.boundingClientRect.top > 0;
+            const isVisible =
+              entry.isIntersecting || entry.boundingClientRect.top > 0;
             toc.style.opacity = isVisible ? '1' : '0';
             toc.style.pointerEvents = isVisible ? 'auto' : 'none';
             toc.style.transition = 'opacity 0.3s ease';

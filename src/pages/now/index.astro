@@ -7,41 +7,57 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 import BreadcrumbSchema from '@components/BreadcrumbSchema.astro';
 import FormattedDate from '@components/FormattedDate.astro';
 import BackToTop from '@components/BackToTop.astro';
-import { pages } from "@data/pages";
+import { pages } from '@data/pages';
 
 const entries = await getCollection('now');
-const sorted = entries.sort((a, b) =>
-  b.data.pubDate.getTime() - a.data.pubDate.getTime()
+const sorted = entries.sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
 );
 
 const [latest, ...previous] = sorted;
 const { Content } = await render(latest);
 
-const { title, description } = pages.find(p => p.href === "/now")!;
+const { title, description } = pages.find((p) => p.href === '/now')!;
 ---
 
-<BaseLayout title={title} description={description} ogImage={`${SITE_URL}/og/now.png`} entry={latest} disableHeadingLinks={true}>
-  <link slot="head" rel="canonical" href={new URL('/now', Astro.site).toString()} />
-  <BreadcrumbSchema slot="head" crumbs={[
-    { name: "Home", url: `${SITE_URL}` },
-    { name: "Now", url: `${SITE_URL}/now` }
-  ]} />
-  <Fragment slot="head" set:html={`<script type="application/ld+json">${JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "AboutPage",
-    "@id": `${SITE_URL}/now/#aboutpage`,
-    "isPartOf": {
-      "@id": `${SITE_URL}/#website`
-    },
-    "name": title,
-    "description": description,
-    "url": `${SITE_URL}/now`,
-    "inLanguage": "en-US",
-    "dateModified": latest.data.pubDate.toISOString(),
-    "author": {
-      "@id": `${SITE_URL}/#person`
-    }
-  })}</script>`} />
+<BaseLayout
+  title={title}
+  description={description}
+  ogImage={`${SITE_URL}/og/now.png`}
+  entry={latest}
+  disableHeadingLinks={true}
+>
+  <link
+    slot="head"
+    rel="canonical"
+    href={new URL('/now', Astro.site).toString()}
+  />
+  <BreadcrumbSchema
+    slot="head"
+    crumbs={[
+      { name: 'Home', url: `${SITE_URL}` },
+      { name: 'Now', url: `${SITE_URL}/now` },
+    ]}
+  />
+  <Fragment
+    slot="head"
+    set:html={`<script type="application/ld+json">${JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'AboutPage',
+      '@id': `${SITE_URL}/now/#aboutpage`,
+      isPartOf: {
+        '@id': `${SITE_URL}/#website`,
+      },
+      name: title,
+      description: description,
+      url: `${SITE_URL}/now`,
+      inLanguage: 'en-US',
+      dateModified: latest.data.pubDate.toISOString(),
+      author: {
+        '@id': `${SITE_URL}/#person`,
+      },
+    })}</script>`}
+  />
   <section data-pagefind-ignore>
     <h1>{title}</h1>
     <a class="u-url" href={`${SITE_URL}/now`} hidden>Permalink</a>
@@ -50,30 +66,40 @@ const { title, description } = pages.find(p => p.href === "/now")!;
       {description}
     </p>
     <span class="date">
-      <span class="updated">Updated</span> <FormattedDate date={latest.data.pubDate} noDay />
+      <span class="updated">Updated</span>
+      <FormattedDate date={latest.data.pubDate} noDay />
     </span>
     <div class="content">
       <Content />
-        {previous.length > 0 && (
-          <h2>Previous Entries</h2>
-          <ul>
-            {previous.map(prevEntry => (
-              <li>
-                <a href={`/now/${prevEntry.id}`}>
-                  {prevEntry.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}
-                </a>
-              </li>
-            ))}
-          </ul>
-        )}
+      {
+        previous.length > 0 && (
+          <>
+            <h2>Previous Entries</h2>
+            <ul>
+              {previous.map((prevEntry) => (
+                <li>
+                  <a href={`/now/${prevEntry.id}`}>
+                    {prevEntry.data.pubDate.toLocaleDateString('en-US', {
+                      year: 'numeric',
+                      month: 'long',
+                    })}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </>
+        )
+      }
     </div>
-    <hr/>
+    <hr />
     <BackToTop />
   </section>
 </BaseLayout>
 
 <style is:global slot="head">
-  .heading-link { display: none; }
+  .heading-link {
+    display: none;
+  }
 </style>
 <style scoped>
   section {

@@ -1,29 +1,33 @@
 ---
 export const prerender = true;
 
-import BaseLayout from "@layouts/BaseLayout.astro";
-import BackToTop from "@components/BackToTop.astro";
-import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
-import CollectionPageSchema from "@components/CollectionPageSchema.astro";
+import BaseLayout from '@layouts/BaseLayout.astro';
+import BackToTop from '@components/BackToTop.astro';
+import BreadcrumbSchema from '@components/BreadcrumbSchema.astro';
+import CollectionPageSchema from '@components/CollectionPageSchema.astro';
 import ItemListSchema from '@components/ItemListSchema.astro';
-import { SITE_URL } from "@consts";
-import { pages as allPages } from "@data/pages";
+import { SITE_URL } from '@consts';
+import { pages as allPages } from '@data/pages';
 
-const title = "Explore";
-const description = "Explore all of the pages on fullmetalbrackets.com";
-const pages = allPages.filter(p => p.explore !== false);
-const exploreItems = pages.map(page => ({
+const title = 'Explore';
+const description = 'Explore all of the pages on fullmetalbrackets.com';
+const pages = allPages.filter((p) => p.explore !== false);
+const exploreItems = pages.map((page) => ({
   name: page.title,
   url: `${SITE_URL}${page.href}`,
 }));
 ---
 
-<BaseLayout title={title} description={description} ogImage={`${SITE_URL}/og/explore.png`}>
+<BaseLayout
+  title={title}
+  description={description}
+  ogImage={`${SITE_URL}/og/explore.png`}
+>
   <BreadcrumbSchema
     slot="head"
     crumbs={[
-      { name: "Home", url: `${SITE_URL}` },
-      { name: "Explore", url: `${SITE_URL}/explore` },
+      { name: 'Home', url: `${SITE_URL}` },
+      { name: 'Explore', url: `${SITE_URL}/explore` },
     ]}
   />
   <CollectionPageSchema
@@ -32,7 +36,11 @@ const exploreItems = pages.map(page => ({
     description={description}
     url={`${SITE_URL}/explore`}
   />
-  <ItemListSchema slot="head" id={`${SITE_URL}/explore/#list`} items={exploreItems} />
+  <ItemListSchema
+    slot="head"
+    id={`${SITE_URL}/explore/#list`}
+    items={exploreItems}
+  />
   <section class="h-feed" data-pagefind-body>
     <h1 class="p-name">{title}</h1>
     <a class="u-url" href={`${SITE_URL}/explore`} hidden>Permalink</a>
@@ -61,57 +69,57 @@ const exploreItems = pages.map(page => ({
 </BaseLayout>
 
 <style scoped>
-    h1 {
-        font-family: var(--sub-font);
-        font-weight: 900;
-    }
+  h1 {
+    font-family: var(--sub-font);
+    font-weight: 900;
+  }
+  ul {
+    margin: 2em auto 0 auto;
+    padding: 0;
+    max-width: 1000px;
+  }
+  li,
+  p {
+    margin: 0;
+    padding: 0;
+  }
+  li {
+    margin-top: 1em;
+  }
+  li a,
+  li a:visited {
+    font-size: 1.142859em;
+    font-family: var(--sub-font);
+    font-weight: 900;
+    color: var(--primary);
+  }
+  li a:hover,
+  li a:focus,
+  li a:active {
+    color: var(--hover);
+    transition: none;
+  }
+  li hr {
+    margin: 0;
+    padding: 0;
+    border-top: transparent;
+    border-left: transparent;
+    border-right: transparent;
+    border-bottom: 0.2em dotted var(--border);
+  }
+  li p {
+    font-size: 0.875em;
+  }
+  .desc {
+    font-style: italic;
+    margin-top: 0.25em;
+  }
+  section ~ hr {
+    margin-top: 2em;
+  }
+  @media screen and (max-width: 667px) {
     ul {
-        margin: 2em auto 0 auto;
-        padding: 0;
-        max-width: 1000px;
+      padding: 0 1em;
     }
-    li,
-    p {
-        margin: 0;
-        padding: 0;
-    }
-    li {
-        margin-top: 1em;
-    }
-    li a,
-    li a:visited {
-        font-size: 1.142859em;
-        font-family: var(--sub-font);
-        font-weight: 900;
-        color: var(--primary);
-    }
-    li a:hover,
-    li a:focus,
-    li a:active {
-        color: var(--hover);
-        transition: none;
-    }
-    li hr {
-        margin: 0;
-        padding: 0;
-        border-top: transparent;
-        border-left: transparent;
-        border-right: transparent;
-        border-bottom: 0.2em dotted var(--border);
-    }
-    li p {
-        font-size: 0.875em;
-    }
-    .desc {
-        font-style: italic;
-        margin-top: 0.25em;
-    }
-    section ~ hr {
-      margin-top: 2em;
-    }
-    @media screen and (max-width: 667px) {
-      ul {
-        padding: 0 1em;
-      }
-    }
+  }
 </style>

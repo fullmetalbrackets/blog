@@ -10,73 +10,113 @@ import { GITHUB, BLUESKY, MASTODON, DONATE } from '@consts';
 ---
 
 <style scoped>
-    .u-photo, .u-logo {
-        display: none;
-    }
-    .personal-links {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin: 1.5em auto -0.75em auto;
-        padding: 0;
-        height: 1vw;
-        max-width: 1000px;
-    }
-    .personal-links a {
-        filter: var(--svg);
-        width: auto;
-        height: auto;
-        margin: 0;
-        padding: 0;
-    }
-    .personal-links a:hover {
-        filter: var(--ext);
-    }
-    svg {
-        height: 32px;
-        width: 32px;
-        margin: 0;
-        padding: 0;
-        border: 0;
-    }
-    svg.rss {
-        height: 28px;
-        width: 28px;        
-    }
-    svg.json {
-        height: 24px;
-        width: 24px;
-    }
+  .u-photo,
+  .u-logo {
+    display: none;
+  }
+  .personal-links {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1.5em auto -0.75em auto;
+    padding: 0;
+    height: 1vw;
+    max-width: 1000px;
+  }
+  .personal-links a {
+    filter: var(--svg);
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding: 0;
+  }
+  .personal-links a:hover {
+    filter: var(--ext);
+  }
+  svg {
+    height: 32px;
+    width: 32px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+  svg.rss {
+    height: 28px;
+    width: 28px;
+  }
+  svg.json {
+    height: 24px;
+    width: 24px;
+  }
+  svg:hover {
+    animation: wiggle 0.25s ease-in-out;
+  }
+  @media (hover: none) {
     svg:hover {
-        animation: wiggle 0.25s ease-in-out;
+      animation: none;
     }
-    @media (hover: none) {
-        svg:hover {
-            animation: none;
-        }
-    }
+  }
 </style>
 
 <div class="personal-links">
-    <a class="u-email" href="mailto:contact@fullmetalbrackets.com" aria-label="Send email" data-umami-event="front-page-mail">
-        <Email aria-hidden="true" />
-    </a>
-    <a rel="me" href={MASTODON} target="_blank" aria-label="Mastodon profile" data-umami-event="front-page-social">
-        <Mastodon aria-hidden="true" />
-    </a>
-    <a rel="me atproto" href={BLUESKY} target="_blank" aria-label="Bluesky profile" data-umami-event="front-page-bsky">
-        <Bluesky aria-hidden="true" />
-    </a>
-    <a rel="me" href={GITHUB} target="_blank" aria-label="GitHub profile" data-umami-event="front-page-github">
-        <GitHub aria-hidden="true" />
-    </a>
-    <a rel="me" href={DONATE} target="_blank" aria-label="Buy me a coffee" data-umami-event="front-page-coffee">
-        <BuyMeCoffee aria-hidden="true" />
-    </a>
-    <a rel="alternate" href="/rss.xml" aria-label="RSS feed" data-umami-event="front-page-rss">
-        <RSS class="rss" aria-hidden="true" />
-    </a>
-    <a rel="alternate" href="/feed.json" aria-label="JSON feed" data-umami-event="front-page-json">
-        <JSON height={24} width={24} aria-hidden="true" />
-    </a>
+  <a
+    class="u-email"
+    href="mailto:contact@fullmetalbrackets.com"
+    aria-label="Send email"
+    data-umami-event="front-page-mail"
+  >
+    <Email aria-hidden="true" />
+  </a>
+  <a
+    rel="me"
+    href={MASTODON}
+    target="_blank"
+    aria-label="Mastodon profile"
+    data-umami-event="front-page-social"
+  >
+    <Mastodon aria-hidden="true" />
+  </a>
+  <a
+    rel="me atproto"
+    href={BLUESKY}
+    target="_blank"
+    aria-label="Bluesky profile"
+    data-umami-event="front-page-bsky"
+  >
+    <Bluesky aria-hidden="true" />
+  </a>
+  <a
+    rel="me"
+    href={GITHUB}
+    target="_blank"
+    aria-label="GitHub profile"
+    data-umami-event="front-page-github"
+  >
+    <GitHub aria-hidden="true" />
+  </a>
+  <a
+    rel="me"
+    href={DONATE}
+    target="_blank"
+    aria-label="Buy me a coffee"
+    data-umami-event="front-page-coffee"
+  >
+    <BuyMeCoffee aria-hidden="true" />
+  </a>
+  <a
+    rel="alternate"
+    href="/rss.xml"
+    aria-label="RSS feed"
+    data-umami-event="front-page-rss"
+  >
+    <RSS class="rss" aria-hidden="true" />
+  </a>
+  <a
+    rel="alternate"
+    href="/feed.json"
+    aria-label="JSON feed"
+    data-umami-event="front-page-json"
+  >
+    <JSON height={24} width={24} aria-hidden="true" />
+  </a>
 </div>

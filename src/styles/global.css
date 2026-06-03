@@ -725,7 +725,9 @@ button.info-button {
 }
 
 .info-button {
-  background: var(--tooltip-btn); /* base state already set above, this is redundant but explicit */
+  background: var(
+    --tooltip-btn
+  ); /* base state already set above, this is redundant but explicit */
 }
 
 .info-button.active,
@@ -750,7 +752,9 @@ button.info-button {
   z-index: 1000;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.2s, visibility 0.2s;
+  transition:
+    opacity 0.2s,
+    visibility 0.2s;
   pointer-events: none;
   color: var(--emphasis);
   backdrop-filter: blur(0.25em);
@@ -1163,7 +1167,8 @@ li.style:first-of-type {
 
 /* button effects */
 button,
-.button, .btn {
+.button,
+.btn {
   display: inline-flex;
   font-family: var(--sub-font);
   color: #000;
@@ -1180,7 +1185,8 @@ button,
   margin-right: 0.325em;
 }
 
-button, .btn {
+button,
+.btn {
   background-color: var(--info);
 }
 
@@ -1208,7 +1214,8 @@ a.button:hover {
 }
 
 @media (hover: hover) {
-  a.button:hover, a.btn:hover {
+  a.button:hover,
+  a.btn:hover {
     box-shadow: -4px -4px 0 #000;
     transform: translate(4px, 4px);
     transition: all 0.1s ease-out;

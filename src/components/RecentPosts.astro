@@ -1,6 +1,6 @@
 ---
-import FormattedDate from "./FormattedDate.astro";
-import ReadingTime from "./ReadingTime.astro";
+import FormattedDate from './FormattedDate.astro';
+import ReadingTime from './ReadingTime.astro';
 import { getPostsWithReadingTime } from '@utils/collections';
 import More from '@icons/arrow-right.svg';
 
@@ -92,11 +92,11 @@ const recentPosts = (await getPostsWithReadingTime()).slice(0, 5);
     .list:hover {
       padding-bottom: 0.5em;
       border-bottom: 4px dotted var(--hover);
-      transition: all .25s ease-out;
+      transition: all 0.25s ease-out;
     }
     .list:hover .posts-title {
-      color: var(--hover);    
-      transition: all .25s ease-out;
+      color: var(--hover);
+      transition: all 0.25s ease-out;
     }
     .list:hover .btn {
       box-shadow: -4px -4px 0 #000;
@@ -139,7 +139,8 @@ const recentPosts = (await getPostsWithReadingTime()).slice(0, 5);
       border-bottom: 0;
       margin: 0 0 0.5em 0;
     }
-    .list:hover, .list:hover .posts-title {
+    .list:hover,
+    .list:hover .posts-title {
       transition: none;
       border-bottom: 0;
     }
@@ -152,7 +153,12 @@ const recentPosts = (await getPostsWithReadingTime()).slice(0, 5);
     {
       recentPosts.map((post) => (
         <div class="h-entry list">
-          <a class="u-url" href={`/blog/${post.id}`} rel="prefetch-intent" data-umami-event={`recent-post-${post.id}`}>
+          <a
+            class="u-url"
+            href={`/blog/${post.id}`}
+            rel="prefetch-intent"
+            data-umami-event={`recent-post-${post.id}`}
+          >
             <p class="p-name posts-title">{post.data.title}</p>
             <span class="tag">
               {post.data.tags.map((tag) => (
@@ -160,15 +166,24 @@ const recentPosts = (await getPostsWithReadingTime()).slice(0, 5);
               ))}
             </span>
             <p class="info">
-              <FormattedDate class="dt-published" date={post.data.pubDate} monthFormat="short" />&nbsp;
-              <span class="reading"><ReadingTime time={post.readingTime} /></span>
+              <FormattedDate
+                class="dt-published"
+                date={post.data.pubDate}
+                monthFormat="short"
+              />
+              &nbsp;
+              <span class="reading">
+                <ReadingTime time={post.readingTime} />
+              </span>
             </p>
           </a>
         </div>
       ))
     }
     <span class="more">
-      <a href="/blog" rel="prefetch-intent archives">All Posts <More height={24} width={24} /></a>
+      <a href="/blog" rel="prefetch-intent archives"
+        >All Posts <More height={24} width={24} /></a
+      >
     </span>
   </div>
 </section>

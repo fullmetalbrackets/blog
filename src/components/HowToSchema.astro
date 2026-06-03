@@ -22,15 +22,15 @@ interface Props {
   readingTime?: string;
 }
 
-const { 
+const {
   title,
-  description, 
+  description,
   slug,
   image,
   tags = [],
   howto,
   headings = [],
-  readingTime
+  readingTime,
 } = Astro.props;
 
 const titleIndicators = [
@@ -57,14 +57,14 @@ const titleIndicators = [
   'breakdown',
   'turn',
   'turning',
-  'cheat'
+  'cheat',
 ];
 
-const hasHowToTitle = titleIndicators.some(indicator =>
+const hasHowToTitle = titleIndicators.some((indicator) =>
   title.toLowerCase().startsWith(indicator)
 );
 
-const isManuallyEnabled = howto === true || (typeof howto === 'object');
+const isManuallyEnabled = howto === true || typeof howto === 'object';
 const isHowTo = isManuallyEnabled || hasHowToTitle;
 
 if (!isHowTo || headings.length === 0) {
@@ -83,62 +83,64 @@ function readingTimeToISO8601(readingTimeText?: string): string | undefined {
 
 const totalTime = config.totalTime || readingTimeToISO8601(readingTime);
 
-const baseUrl = (Astro.site?.toString() || 'https://fullmetalbrackets.com').replace(/\/$/, '');
+const baseUrl = (
+  Astro.site?.toString() || 'https://fullmetalbrackets.com'
+).replace(/\/$/, '');
 const postUrl = slug ? `${baseUrl}/blog/${slug}` : baseUrl;
 
 const skipHeadings = [
   'about',
   'prerequisites',
-  'pre-requisites', 
+  'pre-requisites',
   'references',
   'conclusion',
   'summary',
   'introduction',
   'overview',
   'background',
-  'workaround'
+  'workaround',
 ];
 
-const stepHeadings = headings.filter(h => {
+const stepHeadings = headings.filter((h) => {
   const isH2 = h.depth === 2;
-  const notSkipped = !skipHeadings.some(skip => 
+  const notSkipped = !skipHeadings.some((skip) =>
     h.text.toLowerCase().includes(skip)
   );
   return isH2 && notSkipped;
 });
 
 const schema = {
-  "@context": "https://schema.org",
-  "@type": "HowTo",
-  "@id": `${postUrl}#howto`,
-  "name": title,
-  "description": description,
-  "inLanguage": "en-US",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": postUrl
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  '@id': `${postUrl}#howto`,
+  name: title,
+  description: description,
+  inLanguage: 'en-US',
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': postUrl,
   },
-  "image": image ? `${baseUrl}${image}` : undefined,
-  "totalTime": totalTime,
-  "estimatedCost": {
-    "@type": "MonetaryAmount",
-    "currency": "USD",
-    "value": "0"
+  image: image ? `${baseUrl}${image}` : undefined,
+  totalTime: totalTime,
+  estimatedCost: {
+    '@type': 'MonetaryAmount',
+    currency: 'USD',
+    value: '0',
   },
-  "tool": config.tools?.map(tool => ({
-    "@type": "HowToTool",
-    "name": tool
+  tool: config.tools?.map((tool) => ({
+    '@type': 'HowToTool',
+    name: tool,
   })),
-  "supply": config.supplies?.map(supply => ({
-    "@type": "HowToSupply",
-    "name": supply
+  supply: config.supplies?.map((supply) => ({
+    '@type': 'HowToSupply',
+    name: supply,
   })),
-  "step": stepHeadings.map((heading) => ({
-    "@type": "HowToStep",
-    "name": heading.text,
-    "url": `${postUrl}#${heading.slug}`,
-    "text": heading.text
-  }))
+  step: stepHeadings.map((heading) => ({
+    '@type': 'HowToStep',
+    name: heading.text,
+    url: `${postUrl}#${heading.slug}`,
+    text: heading.text,
+  })),
 };
 
 const cleanSchema = JSON.parse(JSON.stringify(schema));

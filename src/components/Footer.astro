@@ -53,9 +53,9 @@ const buildTime = new Date().toISOString();
     margin-bottom: 4px;
   }
   @media (hover: none) {
-      .icons a:hover svg {
-          animation: none;
-      }
+    .icons a:hover svg {
+      animation: none;
+    }
   }
 
   /* webrings container */
@@ -69,7 +69,7 @@ const buildTime = new Date().toISOString();
   }
   h3.webrings-heading {
     font-size: 0.56em;
-    font-family: var(--sub-font);    
+    font-family: var(--sub-font);
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -113,12 +113,13 @@ const buildTime = new Date().toISOString();
     filter: var(--foot-ext);
   }
   svg.random {
-    transition: all .1s ease-in-out;
+    transition: all 0.1s ease-in-out;
   }
   svg.random:hover {
     animation: wiggle 0.25s ease-in-out;
   }
-  svg.right, svg.left {
+  svg.right,
+  svg.left {
     transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
   svg.right:hover {
@@ -257,28 +258,69 @@ const buildTime = new Date().toISOString();
 
 <footer>
   <div class="icons">
-    <a href="https://u.adiaz.fyi/share/TtTytHU8rJy0oEzN" target="_blank" rel="noopener noreferrer" aria-label="Umami analytics" data-umami-event="footer-umami">
+    <a
+      href="https://u.adiaz.fyi/share/TtTytHU8rJy0oEzN"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Umami analytics"
+      data-umami-event="footer-umami"
+    >
       <Umami height={24} width={24} aria-hidden="true" />
     </a>
-    <a href="/rss.xml" target="_blank" rel="noopener noreferrer" aria-label="RSS feed" data-umami-event="footer-rss">
+    <a
+      href="/rss.xml"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="RSS feed"
+      data-umami-event="footer-rss"
+    >
       <RSS height={20} width={20} aria-hidden="true" />
     </a>
-    <a href="/feed.json" target="_blank" rel="noopener noreferrer" aria-label="JSON feed" data-umami-event="footer-json">
+    <a
+      href="/feed.json"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="JSON feed"
+      data-umami-event="footer-json"
+    >
       <JSON height={24} width={24} class="json" aria-hidden="true" />
     </a>
-    <a href="mailto:contact@fullmetalbrackets.com" data-umami-event="footer-mail">
+    <a
+      href="mailto:contact@fullmetalbrackets.com"
+      data-umami-event="footer-mail"
+    >
       <Email height={28} width={28} aria-hidden="true" />
     </a>
-    <a href={MASTODON} rel="me noopener noreferrer" target="_blank" data-umami-event="footer-social">
+    <a
+      href={MASTODON}
+      rel="me noopener noreferrer"
+      target="_blank"
+      data-umami-event="footer-social"
+    >
       <Mastodon height={25} width={25} aria-hidden="true" />
     </a>
-    <a href={BLUESKY} rel="me atproto noopener noreferrer" target="_blank" data-umami-event="footer-bsky">
+    <a
+      href={BLUESKY}
+      rel="me atproto noopener noreferrer"
+      target="_blank"
+      data-umami-event="footer-bsky"
+    >
       <Bluesky height={25} width={25} aria-hidden="true" />
     </a>
-    <a href={GITHUB} rel="me noopener noreferrer" target="_blank" data-umami-event="footer-github">
+    <a
+      href={GITHUB}
+      rel="me noopener noreferrer"
+      target="_blank"
+      data-umami-event="footer-github"
+    >
       <GitHub height={25} width={25} aria-hidden="true" />
     </a>
-    <a href={DONATE} rel="noopener noreferrer" target="_blank" data-umami-event="footer-coffee">
+    <a
+      href={DONATE}
+      rel="noopener noreferrer"
+      target="_blank"
+      data-umami-event="footer-coffee"
+    >
       <BuyMeCoffee height={25} width={25} aria-hidden="true" />
     </a>
   </div>
@@ -297,7 +339,8 @@ const buildTime = new Date().toISOString();
       <a href="/now" data-umami-event="footer-now">Now</a>
       <a href="/wiki" data-umami-event="footer-wiki">Wiki</a>
       <a href="/lifestream" data-umami-event="footer-lifestream">Lifestream</a>
-      <a href="/self-hosted" data-umami-event="footer-selfhosted">Self-hosted</a>
+      <a href="/self-hosted" data-umami-event="footer-selfhosted">Self-hosted</a
+      >
       <a href="/games" data-umami-event="footer-games">Games</a>
       <a href="/uses" data-umami-event="footer-uses">Uses</a>
     </div>
@@ -314,65 +357,230 @@ const buildTime = new Date().toISOString();
   <div class="has-tooltip">
     <h3 class="webrings-heading">Webrings</h3>
     <button class="info-button" aria-label="About webrings">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
         <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
         <line x1="12" y1="17" x2="12.01" y2="17"></line>
       </svg>
       <span class="tooltip">
-        WTF is a webring? <a href="https://en.wikipedia.org/wiki/Webring" target="_blank" rel="noreferrer noopener">Read about it here.</a>
+        WTF is a webring? <a
+          href="https://en.wikipedia.org/wiki/Webring"
+          target="_blank"
+          rel="noreferrer noopener">Read about it here.</a
+        >
       </span>
     </button>
   </div>
   <div class="webrings-container">
     <div class="webring">
-      <a href="https://xn--sr8hvo.ws" target="_blank" rel="noopener noreferrer" class="ring-title">IndieWeb</a>
+      <a
+        href="https://xn--sr8hvo.ws"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="ring-title">IndieWeb</a
+      >
       <div class="ring-buttons">
-        <a href="https://xn--sr8hvo.ws/previous" rel="previous" aria-label="Previous site"><LeftArrow height={24} width={24} class="ring-arrow left" aria-hidden="true" /></a>
-        <a href="https://xn--sr8hvo.ws/random" aria-label="Random site"><Random height={24} width={24} class="ring-arrow random" aria-hidden="true" /></a>
-        <a href="https://xn--sr8hvo.ws/next" rel="next" aria-label="Next site"><RightArrow height={24} width={24} class="ring-arrow right" aria-hidden="true" /></a>
+        <a
+          href="https://xn--sr8hvo.ws/previous"
+          rel="previous"
+          aria-label="Previous site"
+          ><LeftArrow
+            height={24}
+            width={24}
+            class="ring-arrow left"
+            aria-hidden="true"
+          /></a
+        >
+        <a href="https://xn--sr8hvo.ws/random" aria-label="Random site"
+          ><Random
+            height={24}
+            width={24}
+            class="ring-arrow random"
+            aria-hidden="true"
+          /></a
+        >
+        <a href="https://xn--sr8hvo.ws/next" rel="next" aria-label="Next site"
+          ><RightArrow
+            height={24}
+            width={24}
+            class="ring-arrow right"
+            aria-hidden="true"
+          /></a
+        >
       </div>
     </div>
 
     <div class="webring">
-      <a href="https://fediring.net" target="_blank" rel="noopener noreferrer" class="ring-title">Fediring</a>
+      <a
+        href="https://fediring.net"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="ring-title">Fediring</a
+      >
       <div class="ring-buttons">
-        <a href="https://fediring.net/previous?host=fullmetalbrackets.com" rel="previous" aria-label="Previous site"><LeftArrow height={24} width={24} class="ring-arrow left" aria-hidden="true" /></a>
-        <a href="https://fediring.net/random?host=fullmetalbrackets.com" aria-label="Random site"><Random height={24} width={24} class="ring-arrow random" aria-hidden="true" /></a>
-        <a href="https://fediring.net/next?host=fullmetalbrackets.com" rel="next" aria-label="Next site"><RightArrow height={24} width={24} class="ring-arrow right" aria-hidden="true" /></a>
+        <a
+          href="https://fediring.net/previous?host=fullmetalbrackets.com"
+          rel="previous"
+          aria-label="Previous site"
+          ><LeftArrow
+            height={24}
+            width={24}
+            class="ring-arrow left"
+            aria-hidden="true"
+          /></a
+        >
+        <a
+          href="https://fediring.net/random?host=fullmetalbrackets.com"
+          aria-label="Random site"
+          ><Random
+            height={24}
+            width={24}
+            class="ring-arrow random"
+            aria-hidden="true"
+          /></a
+        >
+        <a
+          href="https://fediring.net/next?host=fullmetalbrackets.com"
+          rel="next"
+          aria-label="Next site"
+          ><RightArrow
+            height={24}
+            width={24}
+            class="ring-arrow right"
+            aria-hidden="true"
+          /></a
+        >
       </div>
     </div>
 
     <div class="webring">
-      <a href="https://webri.ng/webring/cssjoy/" target="_blank" rel="noopener noreferrer" class="ring-title">CSS Joy</a>
+      <a
+        href="https://webri.ng/webring/cssjoy/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="ring-title">CSS Joy</a
+      >
       <div class="ring-buttons">
-        <a href="https://webri.ng/webring/cssjoy/previous?via=https://fullmetalbrackets.com" rel="previous" aria-label="Previous site"><LeftArrow height={24} width={24} class="ring-arrow left" aria-hidden="true" /></a>
-        <a href="https://webri.ng/webring/cssjoy/random?via=https://fullmetalbrackets.com" aria-label="Random site"><Random height={24} width={24} class="ring-arrow random" aria-hidden="true" /></a>
-        <a href="https://webri.ng/webring/cssjoy/next?via=https://fullmetalbrackets.com" rel="next" aria-label="Next site"><RightArrow height={24} width={24} class="ring-arrow right" aria-hidden="true" /></a>
+        <a
+          href="https://webri.ng/webring/cssjoy/previous?via=https://fullmetalbrackets.com"
+          rel="previous"
+          aria-label="Previous site"
+          ><LeftArrow
+            height={24}
+            width={24}
+            class="ring-arrow left"
+            aria-hidden="true"
+          /></a
+        >
+        <a
+          href="https://webri.ng/webring/cssjoy/random?via=https://fullmetalbrackets.com"
+          aria-label="Random site"
+          ><Random
+            height={24}
+            width={24}
+            class="ring-arrow random"
+            aria-hidden="true"
+          /></a
+        >
+        <a
+          href="https://webri.ng/webring/cssjoy/next?via=https://fullmetalbrackets.com"
+          rel="next"
+          aria-label="Next site"
+          ><RightArrow
+            height={24}
+            width={24}
+            class="ring-arrow right"
+            aria-hidden="true"
+          /></a
+        >
       </div>
     </div>
   </div>
   <div class="badges">
-    <a href="https://proven.lol/1a7300" target="_blank" rel="noopener noreferrer" aria-label="Proven.lol verification" data-umami-event="proof">
+    <a
+      href="https://proven.lol/1a7300"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Proven.lol verification"
+      data-umami-event="proof"
+    >
       <Proven height={32} width={32} class="proof" />
     </a>
-    <a href="https://notbyai.fyi/" target="_blank" rel="noopener noreferrer" data-umami-event="notbyai">
+    <a
+      href="https://notbyai.fyi/"
+      target="_blank"
+      rel="noopener noreferrer"
+      data-umami-event="notbyai"
+    >
       <picture>
-        <source srcset="/assets/Written-By-a-Human-Not-By-AI-Badge-white.png" media="(prefers-color-scheme: light)">
-        <source srcset="/assets/Written-By-a-Human-Not-By-AI-Badge-black.png" media="(prefers-color-scheme: dark)">
-        <img src="/assets/Written-By-a-Human-Not-By-AI-Badge-white.png" alt="Written by a human, not AI" width="131" height="82" loading="lazy" decoding="async">
+        <source
+          srcset="/assets/Written-By-a-Human-Not-By-AI-Badge-white.png"
+          media="(prefers-color-scheme: light)"
+        />
+        <source
+          srcset="/assets/Written-By-a-Human-Not-By-AI-Badge-black.png"
+          media="(prefers-color-scheme: dark)"
+        />
+        <img
+          src="/assets/Written-By-a-Human-Not-By-AI-Badge-white.png"
+          alt="Written by a human, not AI"
+          width="131"
+          height="82"
+          loading="lazy"
+          decoding="async"
+        />
       </picture>
     </a>
-    <a href="https://astro.build/" target="_blank" rel="noopener noreferrer" data-umami-event="astro">
-      <img src="/assets/built-with-astro.svg" alt="Built with Astro" width="192" height="32" loading="lazy" decoding="async">
+    <a
+      href="https://astro.build/"
+      target="_blank"
+      rel="noopener noreferrer"
+      data-umami-event="astro"
+    >
+      <img
+        src="/assets/built-with-astro.svg"
+        alt="Built with Astro"
+        width="192"
+        height="32"
+        loading="lazy"
+        decoding="async"
+      />
     </a>
   </div>
 
   <div class="bottom">
-    <span>Content: <a rel="license noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" data-umami-event="footer-cc-by-nc-sa-4.0">CC BY-NC-SA 4.0</a></span>
+    <span
+      >Content: <a
+        rel="license noopener noreferrer"
+        href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+        target="_blank"
+        data-umami-event="footer-cc-by-nc-sa-4.0">CC BY-NC-SA 4.0</a
+      ></span
+    >
     <span>·</span>
-    <span>Code: <a href="https://mit-license.org" target="_blank" rel="noopener noreferrer" data-umami-event="footer-mit-license">MIT</a></span>
+    <span
+      >Code: <a
+        href="https://mit-license.org"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-umami-event="footer-mit-license">MIT</a
+      ></span
+    >
     <span class="dot">·</span>
-    <span class="copyright">&copy; 2021-{today.getFullYear()} Ariel Diaz. <span class="reserved">Some rights reserved.</span></span>
+    <span class="copyright"
+      >&copy; 2021-{today.getFullYear()} Ariel Diaz. <span class="reserved"
+        >Some rights reserved.</span
+      ></span
+    >
   </div>
   <p class="privacy">
     <a href="/privacy" data-umami-event="footer-privacy">Privacy Policy</a>

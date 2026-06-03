@@ -1,5 +1,5 @@
 ---
-import Clock from "@icons/clock.svg";
+import Clock from '@icons/clock.svg';
 
 type Props = {
   time: string;
@@ -7,41 +7,52 @@ type Props = {
 
 const { time } = Astro.props;
 ---
+
 <style scoped>
+  .readtime {
+    display: flex;
+    justify-content: start;
+    place-items: center;
+    font-family: var(--sub-font);
+    font-weight: 700;
+    font-size: 0.875em;
+    color: var(--secondary);
+    margin: 0;
+    padding: 0;
+  }
+  .minutes {
+    display: inherit;
+    justify-content: flex-start;
+    place-items: center;
+  }
+  svg {
+    filter: var(--clock-svg);
+    margin-left: 0.5em;
+    margin-right: 0.325em;
+  }
+  a,
+  a:active,
+  a:visited,
+  a:hover,
+  a:focus {
+    color: var(--text);
+  }
+  @media screen and (max-width: 667px) {
     .readtime {
-        display: flex;
-        justify-content: start;
-        place-items: center;
-        font-family: var(--sub-font);
-        font-weight: 700;
-        font-size: 0.875em;
-        color: var(--secondary);
-        margin: 0;
-        padding: 0;
-    }
-    .minutes {
-        display: inherit;
-        justify-content: flex-start;
-        place-items: center;
+      font-size: 16px;
     }
     svg {
-        filter: var(--clock-svg);
-        margin-left: 0.5em;
-        margin-right: 0.325em;
+      margin-left: -0.1em;
     }
-    a, a:active, a:visited, a:hover, a:focus {
-        color: var(--text);
-    }
-      @media screen and (max-width: 667px) {
-        .readtime {
-            font-size: 16px;
-        }
-        svg {
-            margin-left: -0.1em;
-        }
-    }
+  }
 </style>
 
 <span class="readtime">
-    {time && <span class="minutes"><Clock width={24} height={24} /> {time}</span>}
+  {
+    time && (
+      <span class="minutes">
+        <Clock width={24} height={24} /> {time}
+      </span>
+    )
+  }
 </span>

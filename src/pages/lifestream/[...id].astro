@@ -6,13 +6,13 @@ import { getCollection, render } from 'astro:content';
 import { Image } from 'astro:assets';
 import FormattedDate from '@components/FormattedDate.astro';
 import BreadcrumbSchema from '@components/BreadcrumbSchema.astro';
-import GameIcon   from '@icons/game.svg';
-import BookIcon   from '@icons/book.svg';
-import MovieIcon  from '@icons/movie.svg';
+import GameIcon from '@icons/game.svg';
+import BookIcon from '@icons/book.svg';
+import MovieIcon from '@icons/movie.svg';
 import TVShowIcon from '@icons/tvshow.svg';
 import LeftArrow from '@icons/arrow-left.svg';
-import Comments from "@components/Comments.astro";
-import { SITE_URL, AUTHOR } from "@consts";
+import Comments from '@components/Comments.astro';
+import { SITE_URL, AUTHOR } from '@consts';
 import { schemaTypeMap } from '@utils/media';
 
 export async function getStaticPaths() {
@@ -28,8 +28,8 @@ export async function getStaticPaths() {
     params: { id: entry.id },
     props: {
       entry,
-      prev: sorted[i + 1] ?? null,  // older
-      next: sorted[i - 1] ?? null,  // newer
+      prev: sorted[i + 1] ?? null, // older
+      next: sorted[i - 1] ?? null, // newer
     },
   }));
 }
@@ -39,86 +39,101 @@ const { Content } = await render(entry);
 const { data } = entry;
 
 const vibes = {
-  hated:       { label: 'Hated',       emoji: '💩', color: '#e05252' },
-  disliked:    { label: 'Disliked',    emoji: '😕', color: '#e09552' },
-  liked:       { label: 'Liked',       emoji: '👍🏼', color: '#8fb8e0' },
-  loved:       { label: 'Loved',       emoji: '❤️', color: '#7ecb85' },
+  hated: { label: 'Hated', emoji: '💩', color: '#e05252' },
+  disliked: { label: 'Disliked', emoji: '😕', color: '#e09552' },
+  liked: { label: 'Liked', emoji: '👍🏼', color: '#8fb8e0' },
+  loved: { label: 'Loved', emoji: '❤️', color: '#7ecb85' },
   masterpiece: { label: 'Masterpiece', emoji: '🌟', color: '#ffd700' },
 } as const;
 
 const vibe = vibes[data.rating as keyof typeof vibes];
 
 const typeName: Record<string, string> = {
-  game:   'Game',
-  book:   'Book',
-  movie:  'Movie',
+  game: 'Game',
+  book: 'Book',
+  movie: 'Movie',
   tvshow: 'TV Show',
 };
 
 const ratingMap: Record<string, number> = {
-  hated:       1,
-  disliked:    2,
-  liked:       3,
-  loved:       4,
+  hated: 1,
+  disliked: 2,
+  liked: 3,
+  loved: 4,
   masterpiece: 5,
 };
 
 const entryUrl = `${SITE_URL}/lifestream/${entry.id}`;
 
 const schema = {
-  "@context": "https://schema.org",
-  "@type": "Review",
-  "@id": `${entryUrl}#review`,
-  "name": `${data.title} — ${typeName[data.type]}`,
-  "url": entryUrl,
-  "inLanguage": "en-US",
-  "datePublished": (data.updatedDate ?? data.pubDate).toISOString(),
-  "author": {
-    "@type": "Person",
-    "@id": `${SITE_URL}/#person`,
-    "name": AUTHOR
+  '@context': 'https://schema.org',
+  '@type': 'Review',
+  '@id': `${entryUrl}#review`,
+  name: `${data.title} — ${typeName[data.type]}`,
+  url: entryUrl,
+  inLanguage: 'en-US',
+  datePublished: (data.updatedDate ?? data.pubDate).toISOString(),
+  author: {
+    '@type': 'Person',
+    '@id': `${SITE_URL}/#person`,
+    name: AUTHOR,
   },
-  "reviewBody": entry.body?.trim() ?? undefined,
-  "reviewRating": {
-    "@type": "Rating",
-    "ratingValue": ratingMap[data.rating],
-    "bestRating": 5,
-    "worstRating": 1
+  reviewBody: entry.body?.trim() ?? undefined,
+  reviewRating: {
+    '@type': 'Rating',
+    ratingValue: ratingMap[data.rating],
+    bestRating: 5,
+    worstRating: 1,
   },
-  "itemReviewed": {
-    "@type": schemaTypeMap[data.type],
-    "name": data.title,
-    ...(data.image && { "image": data.image.src })
-  }
+  itemReviewed: {
+    '@type': schemaTypeMap[data.type],
+    name: data.title,
+    ...(data.image && { image: data.image.src }),
+  },
 };
 ---
 
-<BaseLayout title={`${data.title} | Lifestream`} description={`${typeName[data.type]} — ${vibe.label}`} ogImage={`${SITE_URL}/og/${entry.id}.png`} disableHeadingLinks={true}>
-  <BreadcrumbSchema slot="head" crumbs={[
-    { name: "Home", url: `${SITE_URL}/` },
-    { name: "Lifestream", url: `${SITE_URL}/lifestream` },
-    { name: data.title, url: entryUrl }
-  ]} />
-  <Fragment slot="head" set:html={`<script type="application/ld+json">${JSON.stringify(schema)}</script>`} />
+<BaseLayout
+  title={`${data.title} | Lifestream`}
+  description={`${typeName[data.type]} — ${vibe.label}`}
+  ogImage={`${SITE_URL}/og/${entry.id}.png`}
+  disableHeadingLinks={true}
+>
+  <BreadcrumbSchema
+    slot="head"
+    crumbs={[
+      { name: 'Home', url: `${SITE_URL}/` },
+      { name: 'Lifestream', url: `${SITE_URL}/lifestream` },
+      { name: data.title, url: entryUrl },
+    ]}
+  />
+  <Fragment
+    slot="head"
+    set:html={`<script type="application/ld+json">${JSON.stringify(schema)}</script>`}
+  />
   <div class="entry-page">
-    <a class="u-url" href={`${SITE_URL}/lifestream/${entry.id}`} hidden>Permalink</a>
+    <a class="u-url" href={`${SITE_URL}/lifestream/${entry.id}`} hidden
+      >Permalink</a
+    >
 
     <a href="/lifestream" class="back" rel="prefetch-intent">
       <LeftArrow height={24} width={24} />
       Back to Lifestream
     </a>
 
-<script>
-  document.querySelector('.back')?.addEventListener('click', (e) => {
-    if (document.referrer && new URL(document.referrer).pathname === '/lifestream') {
-      e.preventDefault();
-      history.back();
-    }
-  });
-</script>
+    <script>
+      document.querySelector('.back')?.addEventListener('click', (e) => {
+        if (
+          document.referrer &&
+          new URL(document.referrer).pathname === '/lifestream'
+        ) {
+          e.preventDefault();
+          history.back();
+        }
+      });
+    </script>
 
     <div class="entry h-entry">
-
       <div class="cover-col">
         <div class="cover-wrap">
           <Image
@@ -129,9 +144,9 @@ const schema = {
           />
         </div>
         <span class="type-label">
-          {data.type === 'game'   && <GameIcon   width={24} height={24} />}
-          {data.type === 'book'   && <BookIcon   width={24} height={24} />}
-          {data.type === 'movie'  && <MovieIcon  width={24} height={24} />}
+          {data.type === 'game' && <GameIcon width={24} height={24} />}
+          {data.type === 'book' && <BookIcon width={24} height={24} />}
+          {data.type === 'movie' && <MovieIcon width={24} height={24} />}
           {data.type === 'tvshow' && <TVShowIcon width={24} height={24} />}
           {typeName[data.type]}
         </span>
@@ -141,14 +156,21 @@ const schema = {
         <h1>{data.title}</h1>
 
         <p class="vibe" style={`color: ${vibe.color}`}>
-          {vibe.emoji} {vibe.label}
+          {vibe.emoji}
+          {vibe.label}
         </p>
 
         <dl class="meta">
           <dt>
-            {data.type === 'movie' || data.type === 'tvshow' ? 'Watched on' :
-             data.type === 'book' ? 'Read on' :
-             data.type === 'game' ? 'Played on' : 'Posted'}
+            {
+              data.type === 'movie' || data.type === 'tvshow'
+                ? 'Watched on'
+                : data.type === 'book'
+                  ? 'Read on'
+                  : data.type === 'game'
+                    ? 'Played on'
+                    : 'Posted'
+            }
           </dt>
           <dd>
             <FormattedDate
@@ -156,18 +178,22 @@ const schema = {
               monthFormat="numeric"
             />
           </dd>
-          {data.platform && (
-            <>
-              <dt>Platform</dt>
-              <dd>{data.platform}</dd>
-            </>
-          )}
-          {data.season && (
-            <>
-              <dt>Season</dt>
-              <dd>{data.season}</dd>
-            </>
-          )}
+          {
+            data.platform && (
+              <>
+                <dt>Platform</dt>
+                <dd>{data.platform}</dd>
+              </>
+            )
+          }
+          {
+            data.season && (
+              <>
+                <dt>Season</dt>
+                <dd>{data.season}</dd>
+              </>
+            )
+          }
         </dl>
 
         {/* markdown body — personal note */}
@@ -175,31 +201,61 @@ const schema = {
           <Content />
         </div>
       </div>
-
     </div>
     <nav class="entry-nav">
-      {next ? (
-        <a href={`/lifestream/${next.id}`} class="entry-nav-link next">
-          <span class="nav-label"><svg class="c_c c_d c_e c_f c_cd" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M14 7.5H3.439l4.29-4.387-.714-.699L1.55 8l5.465 5.586.714-.7L3.44 8.5h10.56v-1z"></path></svg> Newer</span>
-          <span class="nav-title">{next.data.title}</span>
-        </a>
-      ) : <span />}
-      {prev && (
-        <a href={`/lifestream/${prev.id}`} class="entry-nav-link prev">
-          <span class="nav-label older">Older <svg class="c_c c_d c_e c_f c_cd" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M14 7.5H3.439l4.29-4.387-.714-.699L1.55 8l5.465 5.586.714-.7L3.44 8.5h10.56v-1z"></path></svg></span>
-          <span class="nav-title">{prev.data.title}</span>
-        </a>
-      )}
+      {
+        next ? (
+          <a href={`/lifestream/${next.id}`} class="entry-nav-link next">
+            <span class="nav-label">
+              <svg
+                class="c_c c_d c_e c_f c_cd"
+                role="presentation"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 16 16"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M14 7.5H3.439l4.29-4.387-.714-.699L1.55 8l5.465 5.586.714-.7L3.44 8.5h10.56v-1z" />
+              </svg>{' '}
+              Newer
+            </span>
+            <span class="nav-title">{next.data.title}</span>
+          </a>
+        ) : (
+          <span />
+        )
+      }
+      {
+        prev && (
+          <a href={`/lifestream/${prev.id}`} class="entry-nav-link prev">
+            <span class="nav-label older">
+              Older{' '}
+              <svg
+                class="c_c c_d c_e c_f c_cd"
+                role="presentation"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 16 16"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M14 7.5H3.439l4.29-4.387-.714-.699L1.55 8l5.465 5.586.714-.7L3.44 8.5h10.56v-1z" />
+              </svg>
+            </span>
+            <span class="nav-title">{prev.data.title}</span>
+          </a>
+        )
+      }
     </nav>
   </div>
   <div class="comments">
-      <Comments />
+    <Comments />
   </div>
 </BaseLayout>
 
-
 <style is:global slot="head">
-  .heading-link { display: none; }
+  .heading-link {
+    display: none;
+  }
   .note ul {
     font-size: 0.75em;
     font-family: var(--sub-font);
@@ -305,10 +361,10 @@ const schema = {
   }
 
   .nav-label svg {
-      width: 14px;
-      height: 14px;
-      fill: currentColor;
-      flex-shrink: 0;
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+    flex-shrink: 0;
   }
 
   .next .nav-label svg {
@@ -338,7 +394,7 @@ const schema = {
     .entry-page {
       padding-top: 0.3rem;
       margin-right: 0.5em;
-      margin-left: 0.5em;      
+      margin-left: 0.5em;
     }
 
     .entry {

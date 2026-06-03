@@ -23,7 +23,8 @@ export const pages: Page[] = [
   {
     href: '/blog/updated',
     title: 'Blog - Updated',
-    description: 'See blog posts with updates, sorted by most recently updated.',
+    description:
+      'See blog posts with updates, sorted by most recently updated.',
     event: 'explore-updated',
     explore: false,
   },

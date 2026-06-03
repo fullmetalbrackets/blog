@@ -1,4 +1,5 @@
 ---
+
 ---
 
 <script>
@@ -6,30 +7,39 @@
   import 'glightbox/dist/css/glightbox.min.css';
 
   // Wrap each markdown image in a glightbox anchor
-  document.querySelectorAll<HTMLImageElement>('.e-content img').forEach((img) => {
-    const a = document.createElement('a');
-    a.href = img.src;
-    a.classList.add('glightbox');
-    img.parentNode!.insertBefore(a, img);
-    a.appendChild(img);
-  });
+  document
+    .querySelectorAll<HTMLImageElement>('.e-content img')
+    .forEach((img) => {
+      const a = document.createElement('a');
+      a.href = img.src;
+      a.classList.add('glightbox');
+      img.parentNode!.insertBefore(a, img);
+      a.appendChild(img);
+    });
 
   GLightbox({ selector: '.glightbox' });
 </script>
 
 <style is:global>
-  .gslide-media img, .gslide-image img {
+  .gslide-media img,
+  .gslide-image img {
     border-radius: 0.5em;
   }
-  button.gclose.gbtn, button.gprev.gbtn, button.gnext.gbtn {
+  button.gclose.gbtn,
+  button.gprev.gbtn,
+  button.gnext.gbtn {
     background-color: var(--primary);
   }
-  button.gclose.gbtn:hover, button.gprev.gbtn:hover, button.gnext.gbtn:hover {
+  button.gclose.gbtn:hover,
+  button.gprev.gbtn:hover,
+  button.gnext.gbtn:hover {
     background-color: var(--offwhite);
     transform: none;
     box-shadow: none;
   }
-  button.gclose.gbtn svg g path, button.gprev.gbtn svg g path, button.gnext.gbtn svg g path {
+  button.gclose.gbtn svg g path,
+  button.gprev.gbtn svg g path,
+  button.gnext.gbtn svg g path {
     fill: #000;
   }
   body.glightbox-open {

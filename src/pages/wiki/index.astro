@@ -1,16 +1,16 @@
 ---
-export const prerender = true
+export const prerender = true;
 
-import BaseLayout from "@layouts/BaseLayout.astro";
-import { getCollection } from "astro:content";
-import FormattedDate from "@components/FormattedDate.astro";
-import BackToTop from "@components/BackToTop.astro";
-import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
-import CollectionPageSchema from "@components/CollectionPageSchema.astro";
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import FormattedDate from '@components/FormattedDate.astro';
+import BackToTop from '@components/BackToTop.astro';
+import BreadcrumbSchema from '@components/BreadcrumbSchema.astro';
+import CollectionPageSchema from '@components/CollectionPageSchema.astro';
 import More from '@icons/arrow-right.svg';
-import { SITE_URL } from "@consts";
+import { SITE_URL } from '@consts';
 
-const allPosts = await getCollection("wiki");
+const allPosts = await getCollection('wiki');
 
 const recentlyUpdated = [...allPosts]
   .filter((post) => post.data.updatedDate)
@@ -29,8 +29,9 @@ for (const post of allPosts) {
 }
 const tags = Object.entries(tagCounts).sort((a, b) => b[1] - a[1]);
 
-const title = "Wiki";
-const description = "This is a place for things that don't make sense as a blog post. Technical notes, homelab documentation, etc.";
+const title = 'Wiki';
+const description =
+  "This is a place for things that don't make sense as a blog post. Technical notes, homelab documentation, etc.";
 ---
 
 <style>
@@ -84,7 +85,9 @@ const description = "This is a place for things that don't make sense as a blog 
     text-decoration: none;
     font-size: 0.65em;
     color: var(--text);
-    transition: color 0.15s, background 0.15s;
+    transition:
+      color 0.15s,
+      background 0.15s;
   }
 
   .tag-nav li a:hover {
@@ -141,7 +144,7 @@ const description = "This is a place for things that don't make sense as a blog 
   }
 
   .section-label::after {
-    content: "";
+    content: '';
     flex: 1;
     height: 1px;
     border-top: 4px dotted var(--border);
@@ -210,17 +213,18 @@ const description = "This is a place for things that don't make sense as a blog 
     color: var(--hover);
   }
 
-  .sidebar-all-link svg, .view-all-link svg {
+  .sidebar-all-link svg,
+  .view-all-link svg {
     fill: currentColor;
     transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
-  .sidebar-all-link:hover svg, .view-all-link:hover svg {
+  .sidebar-all-link:hover svg,
+  .view-all-link:hover svg {
     fill: currentColor;
     transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
     transform: translateX(4px);
   }
-
 
   @media screen and (max-width: 720px) {
     .wiki-layout {
@@ -252,12 +256,16 @@ const description = "This is a place for things that don't make sense as a blog 
   }
 </style>
 
-<BaseLayout title={title} description={description} ogImage={`${SITE_URL}/og/wiki.png`}>
+<BaseLayout
+  title={title}
+  description={description}
+  ogImage={`${SITE_URL}/og/wiki.png`}
+>
   <BreadcrumbSchema
     slot="head"
     crumbs={[
-      { name: "Home", url: `${SITE_URL}` },
-      { name: "Wiki", url: `${SITE_URL}/wiki` },
+      { name: 'Home', url: `${SITE_URL}` },
+      { name: 'Wiki', url: `${SITE_URL}/wiki` },
     ]}
   />
   <CollectionPageSchema
@@ -271,9 +279,10 @@ const description = "This is a place for things that don't make sense as a blog 
     <h1>{title}</h1>
     <hr />
     <p>
-      There are <span style="color: var(--primary); font-weight: 700;">{allPosts.length}</span> wiki
-      articles. This is my homelab documentation, personal technical notes, configuration examples
-      and other stuff that doesn't make sense as a blog post.
+      There are <span style="color: var(--primary); font-weight: 700;"
+        >{allPosts.length}</span
+      > wiki articles. This is my homelab documentation, personal technical notes,
+      configuration examples and other stuff that doesn't make sense as a blog post.
     </p>
 
     <div class="wiki-layout">
@@ -298,7 +307,9 @@ const description = "This is a place for things that don't make sense as a blog 
           }
         </ul>
         <hr class="sidebar-divider" />
-        <a href="/wiki/articles" class="sidebar-all-link">All Articles <More height={16} width={16} /></a>
+        <a href="/wiki/articles" class="sidebar-all-link"
+          >All Articles <More height={16} width={16} /></a
+        >
       </aside>
 
       <div>
@@ -307,10 +318,16 @@ const description = "This is a place for things that don't make sense as a blog 
           {
             recentlyUpdated.map((post) => (
               <li class="wiki-item">
-                <a href={`/wiki/${post.id}`} rel="prefetch-intent" data-umami-event={post.id}>
+                <a
+                  href={`/wiki/${post.id}`}
+                  rel="prefetch-intent"
+                  data-umami-event={post.id}
+                >
                   <span class="wi-title">{post.data.title}</span>
                   <p class="wi-date">
-                    <FormattedDate date={post.data.updatedDate || post.data.pubDate} />
+                    <FormattedDate
+                      date={post.data.updatedDate || post.data.pubDate}
+                    />
                   </p>
                   <p class="wi-tag">
                     <button>{post.data.tag}</button>
@@ -326,7 +343,11 @@ const description = "This is a place for things that don't make sense as a blog 
           {
             recentlyAdded.map((post) => (
               <li class="wiki-item">
-                <a href={`/wiki/${post.id}`} rel="prefetch-intent" data-umami-event={post.id}>
+                <a
+                  href={`/wiki/${post.id}`}
+                  rel="prefetch-intent"
+                  data-umami-event={post.id}
+                >
                   <span class="wi-title">{post.data.title}</span>
                   <p class="wi-date">
                     <FormattedDate date={post.data.pubDate} />
@@ -341,7 +362,12 @@ const description = "This is a place for things that don't make sense as a blog 
         </ul>
 
         <hr />
-        <a href="/wiki/articles" class="view-all-link">View all {allPosts.length} articles <More height={24} width={24} /></a>
+        <a href="/wiki/articles" class="view-all-link"
+          >View all {allPosts.length} articles <More
+            height={24}
+            width={24}
+          /></a
+        >
       </div>
     </div>
 

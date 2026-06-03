@@ -1,4 +1,5 @@
 ---
+
 ---
 
 <button
@@ -9,9 +10,20 @@
   aria-controls="search-overlay"
   data-umami-event="search-open"
 >
-  <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-    <circle cx="11" cy="11" r="8"/>
-    <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="26"
+    height="26"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true"
+  >
+    <circle cx="11" cy="11" r="8"></circle>
+    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
   </svg>
   <span class="sr-only">Search</span>
 </button>
@@ -25,8 +37,24 @@
 >
   <div class="search-inner">
     <div class="search-input-row">
-      <svg class="search-icon-sm" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      <svg
+        class="search-icon-sm"
+        xmlns="http://www.w3.org/2000/svg"
+        width="15"
+        height="15"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <circle cx="11" cy="11" r="8"></circle><line
+          x1="21"
+          y1="21"
+          x2="16.65"
+          y2="16.65"></line>
       </svg>
       <input
         id="search-input"
@@ -47,7 +75,8 @@
       class="search-results"
       role="listbox"
       aria-label="Search results"
-    ></ul>
+    >
+    </ul>
   </div>
 </div>
 
@@ -75,7 +104,7 @@
     animation: wiggle 0.25s ease-out;
   }
 
-  .search-trigger[aria-expanded="true"] {
+  .search-trigger[aria-expanded='true'] {
     color: var(--link);
     transform: scale(1.1);
   }
@@ -204,7 +233,7 @@
   .search-results::-webkit-scrollbar-track {
     background: transparent;
   }
-  
+
   .search-results:empty {
     display: none;
   }
@@ -293,7 +322,10 @@
           return pagefind.init();
         })
         .catch(function (e) {
-          console.warn('[search] Pagefind not available — run a build first.', e);
+          console.warn(
+            '[search] Pagefind not available — run a build first.',
+            e
+          );
         });
     }
 
@@ -305,7 +337,9 @@
       overlay.removeAttribute('hidden');
       trigger.setAttribute('aria-expanded', 'true');
       initPagefind().then(function () {
-        requestAnimationFrame(function () { if (input) input.focus(); });
+        requestAnimationFrame(function () {
+          if (input) input.focus();
+        });
       });
     }
 
@@ -333,27 +367,42 @@
         if (count) count.textContent = '';
         return;
       }
-      if (count) count.textContent = items.length + ' result' + (items.length !== 1 ? 's' : '');
-      
-      list.innerHTML = items.map(function (item, i) {
-        var title = (item.meta && item.meta.title) ? item.meta.title : 'Untitled';
-        var url = item.url || '#';
-        var tags = (item.filters && item.filters.tag) ? item.filters.tag : [];
+      if (count)
+        count.textContent =
+          items.length + ' result' + (items.length !== 1 ? 's' : '');
 
-        var tagHtml = tags.length
-          ? '<div class="search-result-tags">' +
-            tags.map(function (t) {
-              return '<span class="search-result-tag">' + t + '</span>';
-            }).join('') +
-            '</div>'
-          : '';
+      list.innerHTML = items
+        .map(function (item, i) {
+          var title =
+            item.meta && item.meta.title ? item.meta.title : 'Untitled';
+          var url = item.url || '#';
+          var tags = item.filters && item.filters.tag ? item.filters.tag : [];
 
-        return '<li class="search-result-item" role="option" id="sr-' + i + '">' +
-          '<a href="' + url + '" class="search-result-link" tabindex="-1">' +
-          '<span class="search-result-title">' + title + '</span>' +
-          tagHtml +
-          '</a></li>';
-      }).join('');
+          var tagHtml = tags.length
+            ? '<div class="search-result-tags">' +
+              tags
+                .map(function (t) {
+                  return '<span class="search-result-tag">' + t + '</span>';
+                })
+                .join('') +
+              '</div>'
+            : '';
+
+          return (
+            '<li class="search-result-item" role="option" id="sr-' +
+            i +
+            '">' +
+            '<a href="' +
+            url +
+            '" class="search-result-link" tabindex="-1">' +
+            '<span class="search-result-title">' +
+            title +
+            '</span>' +
+            tagHtml +
+            '</a></li>'
+          );
+        })
+        .join('');
     }
 
     function doSearch(query) {
@@ -365,12 +414,19 @@
         if (count) count.textContent = '';
         return;
       }
-      pagefind.search(query).then(function (search) {
-        var top = search.results.slice(0, 8);
-        return Promise.all(top.map(function (r) { return r.data(); }));
-      }).then(function (data) {
-        renderResults(data);
-      });
+      pagefind
+        .search(query)
+        .then(function (search) {
+          var top = search.results.slice(0, 8);
+          return Promise.all(
+            top.map(function (r) {
+              return r.data();
+            })
+          );
+        })
+        .then(function (data) {
+          renderResults(data);
+        });
     }
 
     function focusResult(direction) {
@@ -382,11 +438,17 @@
       var active = document.activeElement;
       var idx = links.indexOf(active);
       if (direction === 'down') {
-        if (idx === -1 || idx === links.length - 1) { if (links[0]) links[0].focus(); }
-        else { if (links[idx + 1]) links[idx + 1].focus(); }
+        if (idx === -1 || idx === links.length - 1) {
+          if (links[0]) links[0].focus();
+        } else {
+          if (links[idx + 1]) links[idx + 1].focus();
+        }
       } else {
-        if (idx <= 0) { if (input) input.focus(); }
-        else { if (links[idx - 1]) links[idx - 1].focus(); }
+        if (idx <= 0) {
+          if (input) input.focus();
+        } else {
+          if (links[idx - 1]) links[idx - 1].focus();
+        }
       }
     }
 
@@ -399,9 +461,13 @@
       if (trigger.dataset.searchInit) return;
       trigger.dataset.searchInit = 'true';
 
-      trigger.addEventListener('mouseenter', function () {
+      trigger.addEventListener(
+        'mouseenter',
+        function () {
           initPagefind();
-        }, { once: true });
+        },
+        { once: true }
+      );
 
       trigger.addEventListener('click', function () {
         overlay.hasAttribute('hidden') ? openSearch() : closeSearch();
@@ -413,7 +479,9 @@
         if (list && input.value.trim()) {
           list.innerHTML = '<li class="search-status">Searching...</li>';
         }
-        debounceTimer = setTimeout(function () { doSearch(input.value); }, 220);
+        debounceTimer = setTimeout(function () {
+          doSearch(input.value);
+        }, 220);
       });
 
       document.addEventListener('keydown', function (e) {
@@ -433,8 +501,14 @@
           return;
         }
 
-        if (e.key === 'ArrowDown') { e.preventDefault(); focusResult('down'); }
-        if (e.key === 'ArrowUp')   { e.preventDefault(); focusResult('up');   }
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          focusResult('down');
+        }
+        if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          focusResult('up');
+        }
       });
 
       document.addEventListener('click', function (e) {

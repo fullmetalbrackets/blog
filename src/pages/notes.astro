@@ -1,25 +1,32 @@
 ---
 export const prerender = true;
- 
+
 import BaseLayout from '@layouts/BaseLayout.astro';
 import CollectionPageSchema from '@components/CollectionPageSchema.astro';
 import BreadcrumbSchema from '@components/BreadcrumbSchema.astro';
-import BackToTop from "@components/BackToTop.astro";
+import BackToTop from '@components/BackToTop.astro';
 import { SITE_URL } from '@consts';
-import { getSortedNotes } from "@utils/collections";
+import { getSortedNotes } from '@utils/collections';
 import { YouTube } from 'astro-embed';
-import { pages } from "@data/pages";
+import { pages } from '@data/pages';
 
-const { title, description } = pages.find(p => p.href === "/notes")!;
- 
+const { title, description } = pages.find((p) => p.href === '/notes')!;
+
 const entries = await getSortedNotes();
 ---
- 
-<BaseLayout title={title} description={description} ogImage={`${SITE_URL}/og/notes.png`}>
-  <BreadcrumbSchema slot="head" crumbs={[
-    { name: "Home", url: `${SITE_URL}` },
-    { name: "Notes", url: `${SITE_URL}/notes` }
-  ]} />
+
+<BaseLayout
+  title={title}
+  description={description}
+  ogImage={`${SITE_URL}/og/notes.png`}
+>
+  <BreadcrumbSchema
+    slot="head"
+    crumbs={[
+      { name: 'Home', url: `${SITE_URL}` },
+      { name: 'Notes', url: `${SITE_URL}/notes` },
+    ]}
+  />
   <CollectionPageSchema
     slot="head"
     name={title}
@@ -28,77 +35,86 @@ const entries = await getSortedNotes();
   />
   <section class="h-feed">
     <h1 class="p-name">{title}</h1>
-    <a class="u-url" href={`https://fullmetalbrackets.com/notes`} hidden>Permalink</a>
+    <a class="u-url" href={`https://fullmetalbrackets.com/notes`} hidden
+      >Permalink</a
+    >
     <hr />
     <p class="desc">
-      Syndicated feed from my microblog at <a href="https://ariel.lol/" target="_blank" rel="noopener noreferrer">ariel.lol</a>, showing <span class="total">{entries.length}</span> posts.
+      Syndicated feed from my microblog at <a
+        href="https://ariel.lol/"
+        target="_blank"
+        rel="noopener noreferrer">ariel.lol</a
+      >, showing <span class="total">{entries.length}</span> posts.
     </p>
- 
+
     <ul class="notes-list">
-      {entries.map(note => {
-        const date = note.data.published ? new Date(note.data.published) : null;
- 
-        const ytMatch = note.data.content?.match(
-          /youtube\.com\/watch\?v=([a-zA-Z0-9_-]+)/
-        );
-        const ytId = ytMatch?.[1] ?? null;
- 
-        const imageUrl = note.data.image?.url ?? null;
- 
-        const altMatch = note.data.content?.match(/<img[^>]*alt="([^"]*)"[^>]*>/);
-        const imageAlt = altMatch?.[1] ?? '';
- 
-        const cleanContent = note.data.content
-          ?.replace(/<a[^>]*youtube\.com\/watch[^>]*>.*?<\/a>/g, '')
-          ?.replace(/<img[^>]*>/g, '')
-          .trim();
- 
-        return (
-          <li class="note-item h-entry">
-            <div class="note-wrap">
-              {ytId && <YouTube id={ytId} />}
-              {!ytId && imageUrl && (
-                <img src={imageUrl} alt={imageAlt} class="note-image" />
-              )}
-              <div
-                class="note-body e-content"
-                set:html={cleanContent}
-              />
-            </div>
-            {date && (
-              <div class="note-meta">
-                <a
-                  class="u-url dt-published"
-                  href={note.data.url}
-                  target="_blank"
-                  rel="noopener noreferrer me"
-                  aria-label={`Permalink for note from ${date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}, opens in new tab`}
-                >
-                  <time datetime={date.toISOString()}>
-                    {date.toLocaleDateString('en-US', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric',
-                    })}
-                  </time>
-                </a>
-                <a
-                  class="note-share"
-                  href={`https://shareopenly.org/share/?url=${note.data.url}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Share this note, opens in new tab"
-                >
-                  share
-                </a>
+      {
+        entries.map((note) => {
+          const date = note.data.published
+            ? new Date(note.data.published)
+            : null;
+
+          const ytMatch = note.data.content?.match(
+            /youtube\.com\/watch\?v=([a-zA-Z0-9_-]+)/
+          );
+          const ytId = ytMatch?.[1] ?? null;
+
+          const imageUrl = note.data.image?.url ?? null;
+
+          const altMatch = note.data.content?.match(
+            /<img[^>]*alt="([^"]*)"[^>]*>/
+          );
+          const imageAlt = altMatch?.[1] ?? '';
+
+          const cleanContent = note.data.content
+            ?.replace(/<a[^>]*youtube\.com\/watch[^>]*>.*?<\/a>/g, '')
+            ?.replace(/<img[^>]*>/g, '')
+            .trim();
+
+          return (
+            <li class="note-item h-entry">
+              <div class="note-wrap">
+                {ytId && <YouTube id={ytId} />}
+                {!ytId && imageUrl && (
+                  <img src={imageUrl} alt={imageAlt} class="note-image" />
+                )}
+                <div class="note-body e-content" set:html={cleanContent} />
               </div>
-            )}
-          </li>
-        );
-      })}
+              {date && (
+                <div class="note-meta">
+                  <a
+                    class="u-url dt-published"
+                    href={note.data.url}
+                    target="_blank"
+                    rel="noopener noreferrer me"
+                    aria-label={`Permalink for note from ${date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}, opens in new tab`}
+                  >
+                    <time datetime={date.toISOString()}>
+                      {date.toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                      })}
+                    </time>
+                  </a>
+                  <a
+                    class="note-share"
+                    href={`https://shareopenly.org/share/?url=${note.data.url}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Share this note, opens in new tab"
+                  >
+                    share
+                  </a>
+                </div>
+              )}
+            </li>
+          );
+        })
+      }
     </ul>
   </section>
-  <hr/>
+  <hr />
   <BackToTop />
 </BaseLayout>
 
@@ -130,7 +146,7 @@ const entries = await getSortedNotes();
     overflow: hidden;
   }
 
-  .note-meta a[target="_blank"]::after {
+  .note-meta a[target='_blank']::after {
     content: '';
     display: inline-block;
     width: 0.75em;
@@ -216,7 +232,7 @@ const entries = await getSortedNotes();
     color: inherit;
   }
 
-  .note-meta a[target="_blank"]::after {
+  .note-meta a[target='_blank']::after {
     content: '';
     display: inline-block;
     width: 0.75em;
@@ -232,8 +248,12 @@ const entries = await getSortedNotes();
   }
 
   @keyframes spin {
-    from { transform: rotate(0deg); }
-    to   { transform: rotate(360deg); }
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
   }
 
   .note-meta a:hover::after {

@@ -1,15 +1,15 @@
 ---
-export const prerender = true
+export const prerender = true;
 
-import BaseLayout from "@layouts/BaseLayout.astro";
-import { getCollection } from "astro:content";
-import FormattedDate from "@components/FormattedDate.astro";
-import BackToTop from "@components/BackToTop.astro";
-import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import FormattedDate from '@components/FormattedDate.astro';
+import BackToTop from '@components/BackToTop.astro';
+import BreadcrumbSchema from '@components/BreadcrumbSchema.astro';
 import LeftArrow from '@icons/arrow-left.svg';
-import { SITE_URL } from "@consts";
+import { SITE_URL } from '@consts';
 
-const allPosts = (await getCollection("wiki")).sort((a, b) => {
+const allPosts = (await getCollection('wiki')).sort((a, b) => {
   const dateA = a.data.updatedDate || a.data.pubDate;
   const dateB = b.data.updatedDate || b.data.pubDate;
   return dateB.valueOf() - dateA.valueOf();
@@ -22,8 +22,8 @@ for (const post of allPosts) {
 }
 const tags = Object.keys(tagCounts).sort();
 
-const title = "All Wiki Articles";
-const description = "All wiki articles, searchable and filterable by tag.";
+const title = 'All Wiki Articles';
+const description = 'All wiki articles, searchable and filterable by tag.';
 ---
 
 <style>
@@ -167,23 +167,23 @@ const description = "All wiki articles, searchable and filterable by tag.";
 
   @media screen and (max-width: 667px) {
     .all-item {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 0.25rem 0.75rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.25rem 0.75rem;
     }
 
     .all-item a {
-        width: 100%;
+      width: 100%;
     }
 
     .search-input {
-        width: 100%;
-        margin-left: 0;
+      width: 100%;
+      margin-left: 0;
     }
 
     .filter-bar {
-        gap: 0.35rem;
+      gap: 0.35rem;
     }
   }
 </style>
@@ -192,14 +192,16 @@ const description = "All wiki articles, searchable and filterable by tag.";
   <BreadcrumbSchema
     slot="head"
     crumbs={[
-      { name: "Home", url: `${SITE_URL}` },
-      { name: "Wiki", url: `${SITE_URL}/wiki` },
-      { name: "All Articles", url: `${SITE_URL}/wiki/articles` },
+      { name: 'Home', url: `${SITE_URL}` },
+      { name: 'Wiki', url: `${SITE_URL}/wiki` },
+      { name: 'All Articles', url: `${SITE_URL}/wiki/articles` },
     ]}
   />
 
   <section>
-    <a href="/wiki" class="back-link"><LeftArrow height={24} width={24} /> Back to Wiki</a>
+    <a href="/wiki" class="back-link"
+      ><LeftArrow height={24} width={24} /> Back to Wiki</a
+    >
     <h1>All Wiki Articles</h1>
     <hr />
 
@@ -210,15 +212,19 @@ const description = "All wiki articles, searchable and filterable by tag.";
 
       <span class="filter-label">tag</span>
       <button class="fbtn on" data-tag="all" id="t-all">all</button>
-      {tags.map((tag) => (
-        <button class="fbtn" data-tag={tag} id={`t-${tag}`}>{tag}</button>
-      ))}
+      {
+        tags.map((tag) => (
+          <button class="fbtn" data-tag={tag} id={`t-${tag}`}>
+            {tag}
+          </button>
+        ))
+      }
 
       <input
         class="search-input"
         type="search"
         id="wiki-search"
-        placeholder="filter articles&#8230;"
+        placeholder="filter articles…"
         autocomplete="off"
       />
     </div>
@@ -230,23 +236,34 @@ const description = "All wiki articles, searchable and filterable by tag.";
             class="all-item"
             data-tag={post.data.tag}
             data-title={post.data.title.toLowerCase()}
-            data-date={(post.data.updatedDate || post.data.pubDate).toISOString()}
+            data-date={(
+              post.data.updatedDate || post.data.pubDate
+            ).toISOString()}
             data-pubdate={post.data.pubDate.toISOString()}
           >
-            <a href={`/wiki/${post.id}`} rel="prefetch-intent" data-umami-event={post.id}>
+            <a
+              href={`/wiki/${post.id}`}
+              rel="prefetch-intent"
+              data-umami-event={post.id}
+            >
               {post.data.title}
             </a>
             <span class="all-tag">
               <button>{post.data.tag}</button>
             </span>
             <span class="all-date">
-              <FormattedDate date={post.data.updatedDate || post.data.pubDate} monthFormat="numeric" />
+              <FormattedDate
+                date={post.data.updatedDate || post.data.pubDate}
+                monthFormat="numeric"
+              />
             </span>
           </li>
         ))
       }
     </ul>
-    <p class="empty-msg" id="empty-msg" style="display:none">No articles match.</p>
+    <p class="empty-msg" id="empty-msg" style="display:none">
+      No articles match.
+    </p>
 
     <hr />
     <BackToTop />
@@ -254,96 +271,113 @@ const description = "All wiki articles, searchable and filterable by tag.";
 </BaseLayout>
 
 <script>
-  const list = document.getElementById("all-list") as HTMLUListElement;
-  const emptyMsg = document.getElementById("empty-msg") as HTMLParagraphElement;
-  const searchInput = document.getElementById("wiki-search") as HTMLInputElement;
+  const list = document.getElementById('all-list') as HTMLUListElement;
+  const emptyMsg = document.getElementById('empty-msg') as HTMLParagraphElement;
+  const searchInput = document.getElementById(
+    'wiki-search'
+  ) as HTMLInputElement;
 
-  const SESSION_KEY = "wiki-filters";
+  const SESSION_KEY = 'wiki-filters';
 
   // Read saved state, falling back to defaults
-  const saved = JSON.parse(sessionStorage.getItem(SESSION_KEY) ?? "{}");
+  const saved = JSON.parse(sessionStorage.getItem(SESSION_KEY) ?? '{}');
 
-  let sortBy: string = saved.sortBy ?? "date";
-  let tagBy: string = saved.tagBy ?? "all";
-  let query: string = saved.query ?? "";
+  let sortBy: string = saved.sortBy ?? 'date';
+  let tagBy: string = saved.tagBy ?? 'all';
+  let query: string = saved.query ?? '';
 
   function saveState() {
-    sessionStorage.setItem(SESSION_KEY, JSON.stringify({ sortBy, tagBy, query }));
+    sessionStorage.setItem(
+      SESSION_KEY,
+      JSON.stringify({ sortBy, tagBy, query })
+    );
   }
 
   // Apply saved state to UI on load
   function restoreUI() {
     // Sort buttons
-    document.querySelectorAll<HTMLButtonElement>("[data-sort]").forEach((b) => {
-      b.classList.toggle("on", b.dataset.sort === sortBy);
+    document.querySelectorAll<HTMLButtonElement>('[data-sort]').forEach((b) => {
+      b.classList.toggle('on', b.dataset.sort === sortBy);
     });
     // Tag buttons
-    document.querySelectorAll<HTMLButtonElement>(".fbtn[data-tag]").forEach((b) => {
-      b.classList.toggle("on", b.dataset.tag === tagBy);
-    });
+    document
+      .querySelectorAll<HTMLButtonElement>('.fbtn[data-tag]')
+      .forEach((b) => {
+        b.classList.toggle('on', b.dataset.tag === tagBy);
+      });
     // Search input
     searchInput.value = query;
   }
 
   // ?tag= in URL overrides saved state
-  const urlTag = new URLSearchParams(window.location.search).get("tag");
+  const urlTag = new URLSearchParams(window.location.search).get('tag');
   if (urlTag) {
     tagBy = urlTag;
     saveState();
   }
 
   function getItems() {
-    return Array.from(list.querySelectorAll<HTMLLIElement>(".all-item"));
+    return Array.from(list.querySelectorAll<HTMLLIElement>('.all-item'));
   }
 
   function render() {
     const items = getItems();
     let visible = items.filter((el) => {
-      if (tagBy !== "all" && el.dataset.tag !== tagBy) return false;
+      if (tagBy !== 'all' && el.dataset.tag !== tagBy) return false;
       if (query && !el.dataset.title?.includes(query)) return false;
       return true;
     });
 
-    if (sortBy === "date") {
+    if (sortBy === 'date') {
       visible.sort((a, b) =>
-        (b.dataset.date ?? "").localeCompare(a.dataset.date ?? "")
+        (b.dataset.date ?? '').localeCompare(a.dataset.date ?? '')
       );
     } else {
       visible.sort((a, b) =>
-        (a.dataset.title ?? "").localeCompare(b.dataset.title ?? "")
+        (a.dataset.title ?? '').localeCompare(b.dataset.title ?? '')
       );
     }
 
     const hidden = items.filter((el) => !visible.includes(el));
-    visible.forEach((el) => { el.style.display = ""; list.appendChild(el); });
-    hidden.forEach((el) => { el.style.display = "none"; list.appendChild(el); });
+    visible.forEach((el) => {
+      el.style.display = '';
+      list.appendChild(el);
+    });
+    hidden.forEach((el) => {
+      el.style.display = 'none';
+      list.appendChild(el);
+    });
 
-    emptyMsg.style.display = visible.length === 0 ? "" : "none";
+    emptyMsg.style.display = visible.length === 0 ? '' : 'none';
   }
 
-  document.querySelectorAll<HTMLButtonElement>("[data-sort]").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      sortBy = btn.dataset.sort ?? "date";
-      document.querySelectorAll<HTMLButtonElement>("[data-sort]")
-        .forEach((b) => b.classList.remove("on"));
-      btn.classList.add("on");
+  document.querySelectorAll<HTMLButtonElement>('[data-sort]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      sortBy = btn.dataset.sort ?? 'date';
+      document
+        .querySelectorAll<HTMLButtonElement>('[data-sort]')
+        .forEach((b) => b.classList.remove('on'));
+      btn.classList.add('on');
       saveState();
       render();
     });
   });
 
-  document.querySelectorAll<HTMLButtonElement>(".fbtn[data-tag]").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      tagBy = btn.dataset.tag ?? "all";
-      document.querySelectorAll<HTMLButtonElement>(".fbtn[data-tag]")
-        .forEach((b) => b.classList.remove("on"));
-      btn.classList.add("on");
-      saveState();
-      render();
+  document
+    .querySelectorAll<HTMLButtonElement>('.fbtn[data-tag]')
+    .forEach((btn) => {
+      btn.addEventListener('click', () => {
+        tagBy = btn.dataset.tag ?? 'all';
+        document
+          .querySelectorAll<HTMLButtonElement>('.fbtn[data-tag]')
+          .forEach((b) => b.classList.remove('on'));
+        btn.classList.add('on');
+        saveState();
+        render();
+      });
     });
-  });
 
-  searchInput.addEventListener("input", (e) => {
+  searchInput.addEventListener('input', (e) => {
     query = (e.target as HTMLInputElement).value.toLowerCase();
     saveState();
     render();

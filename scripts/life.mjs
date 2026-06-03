@@ -10,9 +10,7 @@ const slugify = (str) =>
     .replace(/[^\w-]/g, '');
 
 const titlify = (str) =>
-  str
-    .replace(/^./, (c) => c.toUpperCase())
-    .replace(/\bi\b/g, 'I');
+  str.replace(/^./, (c) => c.toUpperCase()).replace(/\bi\b/g, 'I');
 
 const now = new Date();
 const datePart = now.toISOString().split('T')[0];

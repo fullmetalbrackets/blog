@@ -9,42 +9,52 @@ interface Props {
   hideLogo?: boolean;
   hidden?: boolean;
 }
-const { visible = false, hideAvatar = false, hideLogo = false, hidden = false } = Astro.props;
+const {
+  visible = false,
+  hideAvatar = false,
+  hideLogo = false,
+  hidden = false,
+} = Astro.props;
 ---
 
 <div class:list={['h-card', { 'h-card--visible': visible }]}>
-  {!hideAvatar && !hidden && (
-    <Image
-      src={Avatar}
-      alt="Ariel Diaz"
-      width={72}
-      height={72}
-      class="u-photo"
-      loading="eager"
-      decoding="async"
-      fetchpriority="high"
-    />
-  )}
+  {
+    !hideAvatar && !hidden && (
+      <Image
+        src={Avatar}
+        alt="Ariel Diaz"
+        width={72}
+        height={72}
+        class="u-photo"
+        loading="eager"
+        decoding="async"
+        fetchpriority="high"
+      />
+    )
+  }
   <div class="h-card-body">
     <a class="p-name u-url u-uid">Ariel Diaz</a>
     <p class="p-note">
-      Greetings, program! I'm Ariel, a hobbyist and tech enthusiast that writes about self-hosting, web development, Linux, and related topics.
+      Greetings, program! I'm Ariel, a hobbyist and tech enthusiast that writes
+      about self-hosting, web development, Linux, and related topics.
     </p>
     <a class="u-email">hello@fullmetalbrackets.com</a>
     <span class="p-country-name">United States of America</span>
   </div>
-  {!hideLogo && !hidden && (
-    <Image
-      src={siteLogo}
-      alt="Fullmetalbrackets.com"
-      width={72}
-      height={72}
-      class="u-logo"
-      loading="eager"
-      decoding="async"
-      fetchpriority="high"
-    />
-  )}
+  {
+    !hideLogo && !hidden && (
+      <Image
+        src={siteLogo}
+        alt="Fullmetalbrackets.com"
+        width={72}
+        height={72}
+        class="u-logo"
+        loading="eager"
+        decoding="async"
+        fetchpriority="high"
+      />
+    )
+  }
 </div>
 
 <style scoped>
@@ -61,7 +71,8 @@ const { visible = false, hideAvatar = false, hideLogo = false, hidden = false } 
     margin: 1em 0 1.5em 0;
     font-family: var(--sub-font);
   }
-  .u-photo, .u-logo {
+  .u-photo,
+  .u-logo {
     width: 72px;
     height: 72px;
     border-radius: 50%;
@@ -97,8 +108,8 @@ const { visible = false, hideAvatar = false, hideLogo = false, hidden = false } 
       grid-template-columns: 48px 1fr;
       grid-template-rows: auto auto;
       grid-template-areas:
-        "avatar body"
-        "logo   body";
+        'avatar body'
+        'logo   body';
       gap: 0.5em 0.75em;
       padding: 0.875em 1em;
     }

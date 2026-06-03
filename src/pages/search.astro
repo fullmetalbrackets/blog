@@ -1,10 +1,10 @@
 ---
-export const prerender = true
+export const prerender = true;
 
-import BaseLayout from "@layouts/BaseLayout.astro";
-import { SITE_URL } from "@consts";
-const title = "Search";
-const desc = "Search blog and wiki."
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { SITE_URL } from '@consts';
+const title = 'Search';
+const desc = 'Search blog and wiki.';
 ---
 
 <style scoped>
@@ -44,25 +44,26 @@ const desc = "Search blog and wiki."
     <a class="u-url" href={`${SITE_URL}/search`} hidden>Permalink</a>
     <hr />
     <p class="desc">{desc}</p>
-    <script is:inline src="/pagefind/pagefind-ui.js" crossorigin="anonymous"></script>
+    <script is:inline src="/pagefind/pagefind-ui.js" crossorigin="anonymous"
+    ></script>
     <div id="search"></div>
     <script is:inline crossorigin="anonymous">
       window.addEventListener('DOMContentLoaded', () => {
         const search_ui = new PagefindUI({
-          element: "#search",
+          element: '#search',
           pageSize: 10,
           showImages: false,
           showSubResults: false,
           autofocus: true,
           translations: {
-            placeholder: "Type your search…",
-            search_label: "Search the site",
-            zero_results: "No result found for \"[SEARCH_TERM]\".",
-            many_results: "[COUNT] results found for \"[SEARCH_TERM]\":",
-            one_result: "[COUNT] result found for \"[SEARCH_TERM]\":",
+            placeholder: 'Type your search…',
+            search_label: 'Search the site',
+            zero_results: 'No result found for "[SEARCH_TERM]".',
+            many_results: '[COUNT] results found for "[SEARCH_TERM]":',
+            one_result: '[COUNT] result found for "[SEARCH_TERM]":',
           },
           processTerm: function (term) {
-            history.replaceState({}, "", `?q=${encodeURIComponent(term)}`);
+            history.replaceState({}, '', `?q=${encodeURIComponent(term)}`);
             return term;
           },
         });

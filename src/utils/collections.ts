@@ -196,21 +196,24 @@ export async function getFirehose(): Promise<FirehoseEntry[]> {
       slug: `/now/${e.id}`,
     })),
     ...notesEntries.map((e) => {
-      const content  = e.data.content as string | undefined;
+      const content = e.data.content as string | undefined;
       const imageUrl = (e.data.image as any)?.url as string | undefined;
-      const imageAlt = content?.match(/<img[^>]*alt="([^"]*)"[^>]*>/)?.[1] ?? '';
+      const imageAlt =
+        content?.match(/<img[^>]*alt="([^"]*)"[^>]*>/)?.[1] ?? '';
       const cleanContent = content
         ?.replace(/<a[^>]*youtube\.com\/watch[^>]*>.*?<\/a>/g, '')
         ?.replace(/<img[^>]*>/g, '')
         .trim();
       return {
-        type:     'note' as const,
-        title:    '',
-        date:     e.data.published ? new Date(e.data.published as string) : new Date(0),
-        url:      e.data.url as string,
-        image:    imageUrl,
+        type: 'note' as const,
+        title: '',
+        date: e.data.published
+          ? new Date(e.data.published as string)
+          : new Date(0),
+        url: e.data.url as string,
+        image: imageUrl,
         imageAlt,
-        content:  cleanContent,
+        content: cleanContent,
       };
     }),
     ...blogrollEntries.map((e) => ({
@@ -230,8 +233,8 @@ export async function getFirehose(): Promise<FirehoseEntry[]> {
   return entries.sort((a, b) => b.date.valueOf() - a.date.valueOf());
 }
 
-export type Post          = Awaited<ReturnType<typeof getPostsWithReadingTime>>[number];
-export type SortedPost    = Awaited<ReturnType<typeof getSortedPosts>>[number];
-export type Tag           = { tag: string; count: number };
-export type Blogroll      = Awaited<ReturnType<typeof getBlogroll>>[number];
-export type YearMap       = Awaited<ReturnType<typeof getPostsByYearMap>>;
+export type Post = Awaited<ReturnType<typeof getPostsWithReadingTime>>[number];
+export type SortedPost = Awaited<ReturnType<typeof getSortedPosts>>[number];
+export type Tag = { tag: string; count: number };
+export type Blogroll = Awaited<ReturnType<typeof getBlogroll>>[number];
+export type YearMap = Awaited<ReturnType<typeof getPostsByYearMap>>;

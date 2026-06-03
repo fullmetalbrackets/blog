@@ -1,5 +1,5 @@
 ---
-import FormattedDate from "./FormattedDate.astro";
+import FormattedDate from './FormattedDate.astro';
 import More from '@icons/arrow-right.svg';
 import { Image } from 'astro:assets';
 import { YouTube } from 'astro-embed';
@@ -16,53 +16,70 @@ const recentNotes = (await getSortedNotes()).slice(0, limit);
 <section class="h-feed">
   <h2 class="p-name">Recent Notes</h2>
   <ul class="container">
-    {recentNotes.map((note) => {
-      const ytMatch = note.data.content?.match(
-        /youtube\.com\/watch\?v=([a-zA-Z0-9_-]+)/
-      );
-      const ytId = ytMatch?.[1] ?? null;
+    {
+      recentNotes.map((note) => {
+        const ytMatch = note.data.content?.match(
+          /youtube\.com\/watch\?v=([a-zA-Z0-9_-]+)/
+        );
+        const ytId = ytMatch?.[1] ?? null;
 
-      const imageUrl = note.data.image?.url ?? null;
-      const altMatch = note.data.content?.match(/<img[^>]*alt="([^"]*)"[^>]*>/);
-      const imageAlt = altMatch?.[1] ?? '';
+        const imageUrl = note.data.image?.url ?? null;
+        const altMatch = note.data.content?.match(
+          /<img[^>]*alt="([^"]*)"[^>]*>/
+        );
+        const imageAlt = altMatch?.[1] ?? '';
 
-      // Strip YouTube anchor links and standalone img tags —
-      // we render both manually below so they're properly sized
-      const cleanContent = note.data.content
-        ?.replace(/<a[^>]*youtube\.com\/watch[^>]*>.*?<\/a>/g, '')
-        ?.replace(/<img[^>]*>/g, '')
-        .trim();
+        // Strip YouTube anchor links and standalone img tags —
+        // we render both manually below so they're properly sized
+        const cleanContent = note.data.content
+          ?.replace(/<a[^>]*youtube\.com\/watch[^>]*>.*?<\/a>/g, '')
+          ?.replace(/<img[^>]*>/g, '')
+          .trim();
 
-      const hasOnlyMedia = !cleanContent && (ytId || imageUrl);
+        const hasOnlyMedia = !cleanContent && (ytId || imageUrl);
 
-      return (
-        <li class="h-entry">
-          <a
-            class="u-uid u-url note-link"
-            href={note.data.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            data-umami-event="recent-notes"
-          >
-            {ytId && (
-              <div class="note-embed">
-                <YouTube id={ytId} />
-              </div>
-            )}
-            {!ytId && imageUrl && (
-              <Image src={imageUrl} alt={imageAlt} class="note-image" inferSize={true} />
-            )}
-            {cleanContent && (
-              <p class="note-content e-content" set:html={cleanContent} />
-            )}
-            <FormattedDate class="dt-published" date={new Date(note.data.published)} monthFormat="short" />
-          </a>
-        </li>
-      );
-    })}
+        return (
+          <li class="h-entry">
+            <a
+              class="u-uid u-url note-link"
+              href={note.data.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-umami-event="recent-notes"
+            >
+              {ytId && (
+                <div class="note-embed">
+                  <YouTube id={ytId} />
+                </div>
+              )}
+              {!ytId && imageUrl && (
+                <Image
+                  src={imageUrl}
+                  alt={imageAlt}
+                  class="note-image"
+                  inferSize={true}
+                />
+              )}
+              {cleanContent && (
+                <p class="note-content e-content" set:html={cleanContent} />
+              )}
+              <FormattedDate
+                class="dt-published"
+                date={new Date(note.data.published)}
+                monthFormat="short"
+              />
+            </a>
+          </li>
+        );
+      })
+    }
   </ul>
   <span class="more">
-    <a href="/notes" rel="prefetch-intent archives" data-umami-event="home-notes">All Notes <More height={24} width={24} /></a>
+    <a
+      href="/notes"
+      rel="prefetch-intent archives"
+      data-umami-event="home-notes">All Notes <More height={24} width={24} /></a
+    >
   </span>
 </section>
 
@@ -94,7 +111,8 @@ const recentNotes = (await getSortedNotes()).slice(0, limit);
   li:last-of-type {
     padding-bottom: 0;
   }
-  li a, li a:visited {
+  li a,
+  li a:visited {
     color: var(--emphasis);
   }
   li a:hover {

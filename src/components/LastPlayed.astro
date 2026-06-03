@@ -1,9 +1,16 @@
 ---
 import { Image } from 'astro:assets';
-import LocalTime from "@components/LocalTime.astro";
+import LocalTime from '@components/LocalTime.astro';
 import lastPlayed from '@data/last-played.json';
 
-const { title, artist, album, year, albumArt, lastPlayed: playedAt } = lastPlayed;
+const {
+  title,
+  artist,
+  album,
+  year,
+  albumArt,
+  lastPlayed: playedAt,
+} = lastPlayed;
 
 const playedDate = new Date(playedAt);
 ---
@@ -68,20 +75,20 @@ const playedDate = new Date(playedAt);
     line-height: 1.2;
     overflow: hidden;
     text-overflow: ellipsis;
-    overflow-wrap: break-word
+    overflow-wrap: break-word;
   }
   .artist {
     font-size: 0.925em;
     line-height: 1.2;
     color: var(--secondary);
-    overflow-wrap: break-word
+    overflow-wrap: break-word;
   }
   .album {
     font-size: 0.85em;
     line-height: 1.3;
     overflow: hidden;
     text-overflow: ellipsis;
-    overflow-wrap: break-word
+    overflow-wrap: break-word;
   }
   .has-tooltip {
     justify-content: end;
@@ -112,13 +119,26 @@ const playedDate = new Date(playedAt);
 </style>
 
 <section>
-  <div id="last-played" />
+  <div id="last-played"></div>
   <h2>Last Played</h2>
   <div class="container">
     <div class="track">
-      {albumArt
-        ? <Image class="art" src={albumArt} alt={`${album} cover`} width={72} height={72} loading="lazy" decoding="async" />
-        : <div class="art-placeholder" aria-hidden="true">♪</div>
+      {
+        albumArt ? (
+          <Image
+            class="art"
+            src={albumArt}
+            alt={`${album} cover`}
+            width={72}
+            height={72}
+            loading="lazy"
+            decoding="async"
+          />
+        ) : (
+          <div class="art-placeholder" aria-hidden="true">
+            ♪
+          </div>
+        )
       }
       <div class="info">
         <span class="song-title">{title}</span>
@@ -129,12 +149,30 @@ const playedDate = new Date(playedAt);
     </div>
     <div class="has-tooltip">
       <button class="info-button" aria-label="Information">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
           <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
           <line x1="12" y1="17" x2="12.01" y2="17"></line>
         </svg>
         <span class="tooltip">
-          The last song I played on <a href="https://www.plex.tv/plexamp/" target="_blank" rel="noopener noreferrer">Plexamp</a> scraped from my <a href="https://tautulli.com/" target="_blank" rel="noopener noreferrer">Tautulli</a> instance on each website update.
+          The last song I played on <a
+            href="https://www.plex.tv/plexamp/"
+            target="_blank"
+            rel="noopener noreferrer">Plexamp</a
+          > scraped from my <a
+            href="https://tautulli.com/"
+            target="_blank"
+            rel="noopener noreferrer">Tautulli</a
+          > instance on each website update.
         </span>
       </button>
     </div>

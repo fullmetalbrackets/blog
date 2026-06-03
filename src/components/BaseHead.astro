@@ -1,6 +1,6 @@
 ---
-import "@styles/global.css";
-import FallbackImage from '../img/assets/preview.png'
+import '@styles/global.css';
+import FallbackImage from '../img/assets/preview.png';
 import { SITE_TITLE, GITHUB, MASTODON } from '../consts';
 import { Font } from 'astro:assets';
 import type { BaseHeadProps } from '../types';
@@ -9,26 +9,32 @@ type Props = BaseHeadProps;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = FallbackImage, ogType = "website", ogImage } = Astro.props;
+const {
+  title,
+  description,
+  image = FallbackImage,
+  ogType = 'website',
+  ogImage,
+} = Astro.props;
 ---
 
 <!-- Global Metadata -->
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="application-name" content="fullmetal">
-<meta name="apple-mobile-web-app-title" content="fullmetal">
-<meta name="msapplication-starturl" content="/">
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="application-name" content="fullmetal" />
+<meta name="apple-mobile-web-app-title" content="fullmetal" />
+<meta name="msapplication-starturl" content="/" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="icon" href="/favicon.ico" sizes="any" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-<link rel="manifest" href="/site.manifest">
+<link rel="manifest" href="/site.manifest" />
 <link rel="sitemap" href="/sitemap-index.xml" />
 <link
-	rel="alternate"
-	type="application/rss+xml"
-	title={SITE_TITLE}
-	href={new URL('rss.xml', Astro.site)}
+  rel="alternate"
+  type="application/rss+xml"
+  title={SITE_TITLE}
+  href={new URL('rss.xml', Astro.site)}
 />
 <meta name="apple-mobile-web-app-title" content="Fullmetal" />
 <meta name="generator" content={Astro.generator} />
@@ -56,7 +62,10 @@ const { title, description, image = FallbackImage, ogType = "website", ogImage }
 <meta property="twitter:url" content={canonicalURL} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={ogImage ?? new URL(image.src, Astro.url)} />
+<meta
+  property="twitter:image"
+  content={ogImage ?? new URL(image.src, Astro.url)}
+/>
 
 <!-- Fonts -->
 <Font cssVariable="--sub-font" preload />
@@ -64,17 +73,27 @@ const { title, description, image = FallbackImage, ogType = "website", ogImage }
 <Font cssVariable="--code-font" />
 
 <!-- Etc. -->
-<link rel="webmention" href={`https://webmention.io/fullmetalbrackets.com/webmention`} />
-<link rel="pingback" href={`https://webmention.io/fullmetalbrackets.com/xmlrpc`} />
-<link rel="me" href={ GITHUB } />
-<link rel="me" href={ MASTODON } />
-<meta name="fediverse:creator" content="@adiaz@social.lol">
-<link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="Search fullmetalbrackets.com" />
+<link
+  rel="webmention"
+  href={`https://webmention.io/fullmetalbrackets.com/webmention`}
+/>
+<link
+  rel="pingback"
+  href={`https://webmention.io/fullmetalbrackets.com/xmlrpc`}
+/>
+<link rel="me" href={GITHUB} />
+<link rel="me" href={MASTODON} />
+<meta name="fediverse:creator" content="@adiaz@social.lol" />
+<link
+  rel="search"
+  type="application/opensearchdescription+xml"
+  href="/opensearch.xml"
+  title="Search fullmetalbrackets.com"
+/>
 
 <script
   is:inline
   async
   defer
   src="https://u.adiaz.fyi/script.js"
-  data-website-id="d9921361-56b2-4c33-8377-4c73cb1add2d"
-></script>
+  data-website-id="d9921361-56b2-4c33-8377-4c73cb1add2d"></script>

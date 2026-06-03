@@ -1,16 +1,16 @@
 ---
 export const prerender = true;
 
-import BaseLayout from "@layouts/BaseLayout.astro";
-import { getPostsWithReadingTime } from "@utils/collections";
-import FormattedDate from "@components/FormattedDate.astro";
-import ReadingTime from "@components/ReadingTime.astro";
-import BackToTop from "@components/BackToTop.astro";
-import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
-import CollectionPageSchema from "@components/CollectionPageSchema.astro";
-import ItemListSchema from "@components/ItemListSchema.astro";
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { getPostsWithReadingTime } from '@utils/collections';
+import FormattedDate from '@components/FormattedDate.astro';
+import ReadingTime from '@components/ReadingTime.astro';
+import BackToTop from '@components/BackToTop.astro';
+import BreadcrumbSchema from '@components/BreadcrumbSchema.astro';
+import CollectionPageSchema from '@components/CollectionPageSchema.astro';
+import ItemListSchema from '@components/ItemListSchema.astro';
 import type { Post } from '@utils/collections';
-import { SITE_URL } from "@consts";
+import { SITE_URL } from '@consts';
 
 type AstroPage<T> = {
   data: T[];
@@ -23,32 +23,43 @@ type AstroPage<T> = {
   };
 };
 
-type PaginateFunction = <T>(items: T[], options: { pageSize: number }) => AstroPage<T>[];
+type PaginateFunction = <T>(
+  items: T[],
+  options: { pageSize: number }
+) => AstroPage<T>[];
 
 type Props = {
   page: AstroPage<Post>;
 };
 
-export async function getStaticPaths({ paginate }: { paginate: PaginateFunction }) {
+export async function getStaticPaths({
+  paginate,
+}: {
+  paginate: PaginateFunction;
+}) {
   const posts = (await getPostsWithReadingTime())
     .filter((post: Post) => post.data.updatedDate)
-    .sort((a: Post, b: Post) => b.data.updatedDate!.valueOf() - a.data.updatedDate!.valueOf());
+    .sort(
+      (a: Post, b: Post) =>
+        b.data.updatedDate!.valueOf() - a.data.updatedDate!.valueOf()
+    );
 
   return paginate(posts, { pageSize: 5 });
 }
 
 const { page } = Astro.props;
 const title = `Recently Updated - Page ${page.currentPage}`;
-const desc = "Blog posts sorted by most recently updated.";
+const desc = 'Blog posts sorted by most recently updated.';
 
-const pageUrl = page.currentPage === 1
-  ? `${SITE_URL}/blog/updated`
-  : `${SITE_URL}/blog/updated/${page.currentPage}`;
+const pageUrl =
+  page.currentPage === 1
+    ? `${SITE_URL}/blog/updated`
+    : `${SITE_URL}/blog/updated/${page.currentPage}`;
 
 const updatedItems = page.data.map((post: Post) => ({
   name: post.data.title,
   url: `${SITE_URL}/blog/${post.id}`,
-  type: "BlogPosting",
+  type: 'BlogPosting',
 }));
 ---
 
@@ -120,11 +131,11 @@ const updatedItems = page.data.map((post: Post) => ({
   li:hover div {
     border-bottom: 4px dotted var(--hover);
     cursor: pointer;
-    transition: all .25s ease-out;
+    transition: all 0.25s ease-out;
   }
   li:hover .title {
     color: var(--hover);
-    transition: all .25s ease-out;
+    transition: all 0.25s ease-out;
   }
   @media (hover: hover) {
     li:hover button {
@@ -133,7 +144,7 @@ const updatedItems = page.data.map((post: Post) => ({
     }
     button {
       text-overflow: ellipsis;
-      transition: all .10s ease-out;
+      transition: all 0.1s ease-out;
       cursor: pointer;
     }
     button:hover {
@@ -180,21 +191,22 @@ const updatedItems = page.data.map((post: Post) => ({
     justify-content: end;
     margin-top: -0.1em;
   }
-  .prev a svg, .next a svg {
+  .prev a svg,
+  .next a svg {
     display: inline-flex;
     width: 0.75em;
     height: 0.75em;
     vertical-align: middle;
     fill: currentColor;
-    transition: all .1s ease-in-out;
+    transition: all 0.1s ease-in-out;
     overflow: visible;
   }
   .prev a:hover svg {
-    transition: all .1s ease-in-out;
+    transition: all 0.1s ease-in-out;
     transform: translateX(-4px);
   }
   .next a:hover svg {
-    transition: all .1s ease-in-out;
+    transition: all 0.1s ease-in-out;
     transform: translateX(4px);
   }
   .bottom-line {
@@ -230,12 +242,19 @@ const updatedItems = page.data.map((post: Post) => ({
   }
 </style>
 
-<BaseLayout title={title} description={desc} ogImage={`${SITE_URL}/og/blog/updated.png`}>
-  <BreadcrumbSchema slot="head" crumbs={[
-    { name: "Home", url: `${SITE_URL}` },
-    { name: "Blog", url: `${SITE_URL}/blog` },
-    { name: "Recently Updated", url: `${SITE_URL}/blog/updated` }
-  ]} />
+<BaseLayout
+  title={title}
+  description={desc}
+  ogImage={`${SITE_URL}/og/blog/updated.png`}
+>
+  <BreadcrumbSchema
+    slot="head"
+    crumbs={[
+      { name: 'Home', url: `${SITE_URL}` },
+      { name: 'Blog', url: `${SITE_URL}/blog` },
+      { name: 'Recently Updated', url: `${SITE_URL}/blog/updated` },
+    ]}
+  />
   <CollectionPageSchema
     slot="head"
     name={title}
@@ -249,65 +268,151 @@ const updatedItems = page.data.map((post: Post) => ({
     <hr />
     <p>
       <span>
-        <span class="total">{page.total}</span> posts received updates. See also <a href="/blog" rel="prefetch-intent">all posts</a>, <a href="/categories" rel="prefetch-intent" data-umami-event="blog-category">by category</a>, <a href="/blog/years" rel="prefetch-intent">by year</a>, <a href="/blog/popular">popular posts</a> or <a href="/blog/random">a random post</a>.
+        <span class="total">{page.total}</span> posts received updates. See also <a
+          href="/blog"
+          rel="prefetch-intent">all posts</a
+        >, <a
+          href="/categories"
+          rel="prefetch-intent"
+          data-umami-event="blog-category">by category</a
+        >, <a href="/blog/years" rel="prefetch-intent">by year</a>, <a
+          href="/blog/popular">popular posts</a
+        > or <a href="/blog/random">a random post</a>.
       </span>
     </p>
     <div class="page-info-top">Page {page.currentPage} of {page.lastPage}</div>
     <nav class="pagination" aria-label="Updated posts pagination">
       <span class="prev">
-        {page.url.prev ? (
-          <a href={page.url.prev} rel="prefetch-intent prev"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><title>arrow-left</title><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg> Newer</a>
-        ) : (
-          <span></span>
-        )}
+        {
+          page.url.prev ? (
+            <a href={page.url.prev} rel="prefetch-intent prev">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="1"
+              >
+                <>
+                  <title>arrow-left</title>
+                  <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" />
+                </>
+              </svg>{' '}
+              Newer
+            </a>
+          ) : (
+            <span />
+          )
+        }
       </span>
       <span class="next">
-        {page.url.next ? (
-          <a href={page.url.next} rel="prefetch-intent next">Older <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><title>arrow-right</title><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg></a>
-        ) : (
-          <span></span>
-        )}
+        {
+          page.url.next ? (
+            <a href={page.url.next} rel="prefetch-intent next">
+              Older{' '}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="1"
+              >
+                <>
+                  <title>arrow-right</title>
+                  <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" />
+                </>
+              </svg>
+            </a>
+          ) : (
+            <span />
+          )
+        }
       </span>
     </nav>
     <ul>
-      {page.data.map((post: Post) => (
-        <li class="h-entry">
-          <div>
-            <a class="u-url" href={`/blog/${post.id}`} rel="prefetch-intent" data-umami-event={post.id}>
-              <span class="p-name title">{post.data.title}</span>
-              <p class="tag">
-                {post.data.tags.map((tag: string) => (
-                  <button>{tag}</button>
-                ))}
-              </p>
-              <p class="info">
-                <span hidden><FormattedDate class="dt-published" date={post.data.pubDate} /></span>
-                <span class="updated-on">Updated&nbsp;</span>
-                <FormattedDate class="dt-updated" date={post.data.updatedDate!} />
-                &nbsp;
-                <span class="reading"><ReadingTime time={post.readingTime} /></span>
-              </p>
-              <p class="p-summary desc">{post.data.description}</p>
-            </a>
-          </div>
-        </li>
-      ))}
+      {
+        page.data.map((post: Post) => (
+          <li class="h-entry">
+            <div>
+              <a
+                class="u-url"
+                href={`/blog/${post.id}`}
+                rel="prefetch-intent"
+                data-umami-event={post.id}
+              >
+                <span class="p-name title">{post.data.title}</span>
+                <p class="tag">
+                  {post.data.tags.map((tag: string) => (
+                    <button>{tag}</button>
+                  ))}
+                </p>
+                <p class="info">
+                  <span hidden>
+                    <FormattedDate
+                      class="dt-published"
+                      date={post.data.pubDate}
+                    />
+                  </span>
+                  <span class="updated-on">Updated&nbsp;</span>
+                  <FormattedDate
+                    class="dt-updated"
+                    date={post.data.updatedDate!}
+                  />
+                  &nbsp;
+                  <span class="reading">
+                    <ReadingTime time={post.readingTime} />
+                  </span>
+                </p>
+                <p class="p-summary desc">{post.data.description}</p>
+              </a>
+            </div>
+          </li>
+        ))
+      }
     </ul>
     <div class="page-info">Page {page.currentPage} of {page.lastPage}</div>
     <nav class="pagination" aria-label="Updated posts pagination">
       <span class="prev">
-        {page.url.prev ? (
-          <a href={page.url.prev} rel="prefetch-intent prev"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><title>arrow-left</title><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg> Newer</a>
-        ) : (
-          <span></span>
-        )}
+        {
+          page.url.prev ? (
+            <a href={page.url.prev} rel="prefetch-intent prev">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="1"
+              >
+                <>
+                  <title>arrow-left</title>
+                  <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" />
+                </>
+              </svg>{' '}
+              Newer
+            </a>
+          ) : (
+            <span />
+          )
+        }
       </span>
       <span class="next">
-        {page.url.next ? (
-          <a href={page.url.next} rel="prefetch-intent next">Older <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><title>arrow-right</title><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg></a>
-        ) : (
-          <span></span>
-        )}
+        {
+          page.url.next ? (
+            <a href={page.url.next} rel="prefetch-intent next">
+              Older{' '}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="1"
+              >
+                <>
+                  <title>arrow-right</title>
+                  <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" />
+                </>
+              </svg>
+            </a>
+          ) : (
+            <span />
+          )
+        }
       </span>
     </nav>
     <hr class="bottom-line" />

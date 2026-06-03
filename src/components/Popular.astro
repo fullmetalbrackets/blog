@@ -1,7 +1,7 @@
 ---
-import FormattedDate from "./FormattedDate.astro";
+import FormattedDate from './FormattedDate.astro';
 import More from '@icons/arrow-right.svg';
-import ReadingTime from "@components/ReadingTime.astro";
+import ReadingTime from '@components/ReadingTime.astro';
 import { getPostsWithReadingTime } from '@utils/collections';
 import popularSlugs from '@data/popular.json';
 const { class: className, simple = false } = Astro.props;
@@ -14,7 +14,7 @@ interface Props {
 const allPosts = await getPostsWithReadingTime();
 const selectedPosts = popularSlugs
   .slice(0, 5)
-  .map(slug => allPosts.find(post => post.id === slug))
+  .map((slug) => allPosts.find((post) => post.id === slug))
   .filter((post): post is NonNullable<typeof post> => post !== undefined);
 ---
 
@@ -139,11 +139,11 @@ const selectedPosts = popularSlugs
     .list:hover {
       padding-bottom: 0.5em;
       border-bottom: 4px dotted var(--hover);
-      transition: all .25s ease-out;
+      transition: all 0.25s ease-out;
     }
     .list:hover .posts-title {
-      color: var(--hover);    
-      transition: all .25s ease-out;
+      color: var(--hover);
+      transition: all 0.25s ease-out;
     }
     .list:hover .btn {
       box-shadow: -4px -4px 0 #000;
@@ -154,12 +154,12 @@ const selectedPosts = popularSlugs
     .list:hover {
       padding-bottom: 0.5em;
       border-bottom: 4px dotted var(--hover);
-      transition: all .25s ease-out;
+      transition: all 0.25s ease-out;
     }
     .list--simple {
       margin-bottom: 0.5em;
       padding-bottom: 0;
-      border-bottom: 0;      
+      border-bottom: 0;
     }
     .list--simple:hover {
       padding-bottom: 0;
@@ -189,7 +189,8 @@ const selectedPosts = popularSlugs
     .list:last-of-type {
       margin: 0.25em;
     }
-    .list:hover, .list:hover .posts-title {
+    .list:hover,
+    .list:hover .posts-title {
       transition: none;
       border-bottom: 0;
     }
@@ -213,46 +214,85 @@ const selectedPosts = popularSlugs
 </style>
 
 <section class="h-feed">
-  <div id="popular" />
+  <div id="popular"></div>
   {!simple && <h2 class="p-name">Popular Posts</h2>}
   <div class={`container ${className ?? ''}`}>
-    {selectedPosts.map(post => (
-      <div class:list={["h-entry list", { "list--simple": simple }]}>
-        <a class="u-url" href={`/blog/${post.id}`} rel="prefetch-intent" data-umami-event={`popular-${post.id}`}>
-          <p class:list={["p-name posts-title", { "posts-title--simple": simple }]}>
-            {post.data.title}
-          </p>
-          {!simple && (
-          <span class="tag">
-            {post.data.tags.map((tag) => (
-              <span class="btn">{tag}</span>
-            ))}
-          </span>
-          )}
-            <p class="info">
-              <FormattedDate class="dt-published" date={post.data.pubDate} monthFormat="short" />&nbsp;
+    {
+      selectedPosts.map((post) => (
+        <div class:list={['h-entry list', { 'list--simple': simple }]}>
+          <a
+            class="u-url"
+            href={`/blog/${post.id}`}
+            rel="prefetch-intent"
+            data-umami-event={`popular-${post.id}`}
+          >
+            <p
+              class:list={[
+                'p-name posts-title',
+                { 'posts-title--simple': simple },
+              ]}
+            >
+              {post.data.title}
+            </p>
             {!simple && (
-              <span class="reading"><ReadingTime time={post.readingTime} /></span>
+              <span class="tag">
+                {post.data.tags.map((tag) => (
+                  <span class="btn">{tag}</span>
+                ))}
+              </span>
             )}
-          </p>
-        </a>
-      </div>
-    ))}
-    {!simple && ( <div class="footer">
-      <div class="has-tooltip">
-        <button class="info-button" aria-label="Information">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
-            <line x1="12" y1="17" x2="12.01" y2="17"></line>
-          </svg>
-          <span class="tooltip">
-            The most-read posts over the last 30 days, updated every Monday.
+            <p class="info">
+              <FormattedDate
+                class="dt-published"
+                date={post.data.pubDate}
+                monthFormat="short"
+              />
+              &nbsp;
+              {!simple && (
+                <span class="reading">
+                  <ReadingTime time={post.readingTime} />
+                </span>
+              )}
+            </p>
+          </a>
+        </div>
+      ))
+    }
+    {
+      !simple && (
+        <div class="footer">
+          <div class="has-tooltip">
+            <button class="info-button" aria-label="Information">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                <line x1="12" y1="17" x2="12.01" y2="17" />
+              </svg>
+              <span class="tooltip">
+                The most-read posts over the last 30 days, updated every Monday.
+              </span>
+            </button>
+          </div>
+          <span class="more">
+            <a
+              href="/blog/popular"
+              rel="prefetch-intent archives"
+              data-umami-event="home-popular"
+            >
+              More Popular Posts <More height={24} width={24} />
+            </a>
           </span>
-        </button>
-      </div>
-      <span class="more">
-        <a href="/blog/popular" rel="prefetch-intent archives" data-umami-event="home-popular">More Popular Posts <More height={24} width={24} /></a>
-      </span>
-    </div> )}
+        </div>
+      )
+    }
   </div>
 </section>

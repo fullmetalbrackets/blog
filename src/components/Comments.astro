@@ -1,63 +1,64 @@
 ---
 import CommentIcon from '@icons/comments.svg';
-import { SITE_URL } from "@consts"
+import { SITE_URL } from '@consts';
 ---
 
 <style scoped>
-    aside {
-        background: var(--main);
-        display: flex;
-        place-items: center;
-        justify-content: space-around;
-        margin: 0 auto 1em auto;
-        padding: 0;
-        max-width: 1165px;
-    }
-    h3.heading {
-        display: flex;
-        place-items: center;
-        vertical-align: middle;
-        font-size: 1.25em;
-        color: var(--primary);
-        margin: 0.5em 0.5em 1em 0.5em;
-        border-top: transparent;
-        border-left: transparent;
-        border-right: transparent;
-        border-bottom: thick dotted var(--border);
-    }
-    h3 svg {
-        display: flex;
-        place-items: center;
-        vertical-align: middle;
-        filter: var(--toc);
-        margin-right: 0.25em;
-    }
+  aside {
+    background: var(--main);
+    display: flex;
+    place-items: center;
+    justify-content: space-around;
+    margin: 0 auto 1em auto;
+    padding: 0;
+    max-width: 1165px;
+  }
+  h3.heading {
+    display: flex;
+    place-items: center;
+    vertical-align: middle;
+    font-size: 1.25em;
+    color: var(--primary);
+    margin: 0.5em 0.5em 1em 0.5em;
+    border-top: transparent;
+    border-left: transparent;
+    border-right: transparent;
+    border-bottom: thick dotted var(--border);
+  }
+  h3 svg {
+    display: flex;
+    place-items: center;
+    vertical-align: middle;
+    filter: var(--toc);
+    margin-right: 0.25em;
+  }
 </style>
 
-<h3 class="heading" id="comments"><CommentIcon width={28} height={28} />Comments</h3>
+<h3 class="heading" id="comments">
+  <CommentIcon width={28} height={28} />Comments
+</h3>
 <aside>
-    <script define:vars={{ SITE_URL }}>
-        const script = document.createElement('script');
-        script.src = 'https://giscus.app/client.js';
-        script.setAttribute('data-theme', `${SITE_URL}/giscus.css`);
-        script.setAttribute('data-repo', 'fullmetalbrackets/blog');
-        script.setAttribute('data-repo-id', 'R_kgDOIBwrhQ');
-        script.setAttribute('data-category', 'Comments');
-        script.setAttribute('data-category-id', 'DIC_kwDOIBwrhc4CzE-1');
-        script.setAttribute('data-mapping', 'title');
-        script.setAttribute('data-strict', '1');
-        script.setAttribute('data-reactions-enabled', '1');
-        script.setAttribute('data-emit-metadata', '1');
-        script.setAttribute('data-input-position', 'top');
-        script.setAttribute('data-lang', 'en');
-        script.setAttribute('data-loading', 'lazy');
-        script.crossOrigin = 'anonymous';
-        script.async = true;
-      
-        const container = document.querySelector('aside');
-            if (container) {
-                container.appendChild(script);
-            }
-    </script>
-</aside>
+  <script define:vars={{ SITE_URL }}>
+    const script = document.createElement('script');
+    script.src = 'https://giscus.app/client.js';
+    script.setAttribute('data-theme', `${SITE_URL}/giscus.css`);
+    script.setAttribute('data-repo', 'fullmetalbrackets/blog');
+    script.setAttribute('data-repo-id', 'R_kgDOIBwrhQ');
+    script.setAttribute('data-category', 'Comments');
+    script.setAttribute('data-category-id', 'DIC_kwDOIBwrhc4CzE-1');
+    script.setAttribute('data-mapping', 'title');
+    script.setAttribute('data-strict', '1');
+    script.setAttribute('data-reactions-enabled', '1');
+    script.setAttribute('data-emit-metadata', '1');
+    script.setAttribute('data-input-position', 'top');
+    script.setAttribute('data-lang', 'en');
+    script.setAttribute('data-loading', 'lazy');
+    script.crossOrigin = 'anonymous';
+    script.async = true;
 
+    const container = document.querySelector('aside');
+    if (container) {
+      container.appendChild(script);
+    }
+  </script>
+</aside>

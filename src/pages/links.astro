@@ -1,22 +1,22 @@
 ---
-export const prerender = true
+export const prerender = true;
 
-import BackToTop from "@components/BackToTop.astro";
-import BaseLayout from "@layouts/BaseLayout.astro";
-import FormattedDate from "@components/FormattedDate.astro";
-import { getSortedLinks } from "@utils/collections";
-import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
-import CollectionPageSchema from "@components/CollectionPageSchema.astro";
+import BackToTop from '@components/BackToTop.astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import FormattedDate from '@components/FormattedDate.astro';
+import { getSortedLinks } from '@utils/collections';
+import BreadcrumbSchema from '@components/BreadcrumbSchema.astro';
+import CollectionPageSchema from '@components/CollectionPageSchema.astro';
 import ItemListSchema from '@components/ItemListSchema.astro';
-import WebMentions from "@components/WebMentions.astro";
-import Comments from "@components/Comments.astro";
-import { SITE_URL } from "@consts";
-import { pages } from "@data/pages";
+import WebMentions from '@components/WebMentions.astro';
+import Comments from '@components/Comments.astro';
+import { SITE_URL } from '@consts';
+import { pages } from '@data/pages';
 
 const links = await getSortedLinks();
-const { title, description } = pages.find(p => p.href === "/links")!;
+const { title, description } = pages.find((p) => p.href === '/links')!;
 
-const linkItems = links.map(link => ({
+const linkItems = links.map((link) => ({
   name: link.data.title,
   url: link.data.url,
 }));
@@ -80,7 +80,7 @@ const linkItems = links.map(link => ({
       outline-offset: 1px;
     }
   }
-  
+
   @media screen and (max-width: 667px) {
     section {
       line-height: 1.2;
@@ -99,24 +99,36 @@ const linkItems = links.map(link => ({
     }
   }
 </style>
-<BaseLayout title={title} description={description} ogImage={`${SITE_URL}/og/links.png`}>
-  <BreadcrumbSchema slot="head" crumbs={[
-    { name: "Home", url: `${SITE_URL}` },
-    { name: "Links", url: `${SITE_URL}/links` }
-  ]} />
+<BaseLayout
+  title={title}
+  description={description}
+  ogImage={`${SITE_URL}/og/links.png`}
+>
+  <BreadcrumbSchema
+    slot="head"
+    crumbs={[
+      { name: 'Home', url: `${SITE_URL}` },
+      { name: 'Links', url: `${SITE_URL}/links` },
+    ]}
+  />
   <CollectionPageSchema
     slot="head"
     name={title}
     description={description}
     url={`${SITE_URL}/links`}
   />
-  <ItemListSchema slot="head" id={`${SITE_URL}/links/#list`} items={linkItems} />
+  <ItemListSchema
+    slot="head"
+    id={`${SITE_URL}/links/#list`}
+    items={linkItems}
+  />
   <section class="h-feed" data-pagefind-body>
     <h1 class="p-name">Links</h1>
     <a class="u-url" href={`${SITE_URL}/links`} hidden>Permalink</a>
     <hr />
     <p>
-      {description} I'm constantly adding to this as I find new things I consider worth sharing. <i>(All links are external and open in new tab.)</i>
+      {description} I'm constantly adding to this as I find new things I consider
+      worth sharing. <i>(All links are external and open in new tab.)</i>
     </p>
     <p>
       <span class="total">{links.length} links</span> and counting...
@@ -126,11 +138,21 @@ const linkItems = links.map(link => ({
         links.map((link) => (
           <li class="h-entry">
             <span>
-              <a href={link.data.url} target="_blank" class="u-bookmark-of title-link" data-umami-event={`links-${link.data.title}`}>
+              <a
+                href={link.data.url}
+                target="_blank"
+                class="u-bookmark-of title-link"
+                data-umami-event={`links-${link.data.title}`}
+              >
                 <span class="p-name">{link.data.title}</span>
               </a>
             </span>
-            <span class="info"><span class="link-tag">{link.data.tag}</span><FormattedDate class="dt-published" date={link.data.pubDate} /></span>
+            <span class="info">
+              <>
+                <span class="link-tag">{link.data.tag}</span>
+                <FormattedDate class="dt-published" date={link.data.pubDate} />
+              </>
+            </span>
             <span class="p-summary desc">{link.data.description}</span>
           </li>
         ))
@@ -138,7 +160,7 @@ const linkItems = links.map(link => ({
     </ul>
     <WebMentions />
     <Comments />
-    <hr/>
+    <hr />
     <BackToTop />
   </section>
 </BaseLayout>

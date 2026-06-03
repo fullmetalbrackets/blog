@@ -5,7 +5,14 @@ import { getCollection } from 'astro:content';
 import { OGImageRoute } from 'astro-og-canvas';
 import { pages as sitePages, type Page } from '@data/pages';
 
-type Template = 'blog' | 'wiki' | 'site' | 'now' | 'lifestream' | 'links' | 'category';
+type Template =
+  | 'blog'
+  | 'wiki'
+  | 'site'
+  | 'now'
+  | 'lifestream'
+  | 'links'
+  | 'category';
 
 type OGPageData = {
   title: string;
@@ -14,7 +21,9 @@ type OGPageData = {
 };
 
 type TemplateConfig = {
-  bgGradient: [[number, number, number]] | [[number, number, number], [number, number, number]];
+  bgGradient:
+    | [[number, number, number]]
+    | [[number, number, number], [number, number, number]];
   border: {
     color: [number, number, number];
     width: number;
@@ -22,32 +31,43 @@ type TemplateConfig = {
   };
 };
 
-const [blogEntries, wikiEntries, nowEntries, lifestreamEntries, linksEntries] = await Promise.all([
-  getCollection('blog'),
-  getCollection('wiki'),
-  getCollection('now'),
-  getCollection('lifestream'),
-  getCollection('links'),
-]);
+const [blogEntries, wikiEntries, nowEntries, lifestreamEntries, linksEntries] =
+  await Promise.all([
+    getCollection('blog'),
+    getCollection('wiki'),
+    getCollection('now'),
+    getCollection('lifestream'),
+    getCollection('links'),
+  ]);
 
-const nowDescription = sitePages.find((p: Page) => p.href === '/now')?.description ?? '';
+const nowDescription =
+  sitePages.find((p: Page) => p.href === '/now')?.description ?? '';
 
-const typeLabels: Record<typeof lifestreamEntries[number]['data']['type'], string> = {
-  movie:  'Movie',
+const typeLabels: Record<
+  (typeof lifestreamEntries)[number]['data']['type'],
+  string
+> = {
+  movie: 'Movie',
   tvshow: 'TV Show',
-  book:   'Book',
-  game:   'Game',
+  book: 'Book',
+  game: 'Game',
 };
 
 const SITE_TITLE = 'fullmetalbrackets.com';
 
-const tags = [...new Set(blogEntries.flatMap((post) =>
-  post.data.tags.map((tag) => tag.toLowerCase())
-))];
+const tags = [
+  ...new Set(
+    blogEntries.flatMap((post) =>
+      post.data.tags.map((tag) => tag.toLowerCase())
+    )
+  ),
+];
 
-const years = [...new Set(blogEntries.map((post) =>
-  post.data.pubDate.getFullYear().toString()
-))];
+const years = [
+  ...new Set(
+    blogEntries.map((post) => post.data.pubDate.getFullYear().toString())
+  ),
+];
 
 const EXCLUDE = new Set(['blog/random', 'blank', 'search']);
 
@@ -56,7 +76,11 @@ const staticPages: Record<string, OGPageData> = Object.fromEntries(
     .filter((p: Page) => !EXCLUDE.has(p.href.replace(/^\//, '')))
     .map((p: Page) => [
       p.href.replace(/^\//, ''),
-      { title: p.title, description: p.description, _template: 'site' as const },
+      {
+        title: p.title,
+        description: p.description,
+        _template: 'site' as const,
+      },
     ])
 );
 
@@ -64,7 +88,11 @@ const pages: Record<string, OGPageData> = {
   ...Object.fromEntries(
     blogEntries.map(({ id, data }) => [
       id,
-      { title: data.title, description: data.description, _template: 'blog' as const },
+      {
+        title: data.title,
+        description: data.description,
+        _template: 'blog' as const,
+      },
     ])
   ),
   ...Object.fromEntries(
@@ -80,7 +108,11 @@ const pages: Record<string, OGPageData> = {
   ...Object.fromEntries(
     wikiEntries.map(({ id, data }) => [
       id,
-      { title: data.title, description: data.description, _template: 'wiki' as const },
+      {
+        title: data.title,
+        description: data.description,
+        _template: 'wiki' as const,
+      },
     ])
   ),
   ...Object.fromEntries(
@@ -106,7 +138,11 @@ const pages: Record<string, OGPageData> = {
   ...Object.fromEntries(
     linksEntries.map(({ id, data }) => [
       id,
-      { title: data.title, description: data.title, _template: 'links' as const },
+      {
+        title: data.title,
+        description: data.title,
+        _template: 'links' as const,
+      },
     ])
   ),
   ...Object.fromEntries(
@@ -158,13 +194,13 @@ const DEFAULT_STYLE: TemplateConfig = {
 };
 
 const templates: Record<Template, TemplateConfig> = {
-  blog:       DEFAULT_STYLE,
-  wiki:       DEFAULT_STYLE,
-  now:        DEFAULT_STYLE,
+  blog: DEFAULT_STYLE,
+  wiki: DEFAULT_STYLE,
+  now: DEFAULT_STYLE,
   lifestream: DEFAULT_STYLE,
-  links:      DEFAULT_STYLE,
-  site:       DEFAULT_STYLE,
-  category:   DEFAULT_STYLE,
+  links: DEFAULT_STYLE,
+  site: DEFAULT_STYLE,
+  category: DEFAULT_STYLE,
 };
 
 export const { getStaticPaths, GET } = await OGImageRoute({

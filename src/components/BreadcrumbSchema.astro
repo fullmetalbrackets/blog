@@ -11,18 +11,20 @@ interface Props {
 const { crumbs } = Astro.props;
 
 const schema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "@id": `${crumbs[crumbs.length - 1].url}#breadcrumb`,
-  "itemListElement": crumbs.map((crumb, index) => ({
-    "@type": "ListItem",
-    "position": index + 1,
-    "item": {
-      "@id": crumb.url,
-      "name": crumb.name
-    }
-  }))
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  '@id': `${crumbs[crumbs.length - 1].url}#breadcrumb`,
+  itemListElement: crumbs.map((crumb, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    item: {
+      '@id': crumb.url,
+      name: crumb.name,
+    },
+  })),
 };
 ---
 
-<Fragment set:html={`<script type="application/ld+json">${JSON.stringify(schema)}</script>`} />
+<Fragment
+  set:html={`<script type="application/ld+json">${JSON.stringify(schema)}</script>`}
+/>

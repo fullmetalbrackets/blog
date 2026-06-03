@@ -1,5 +1,5 @@
 ---
-import { SITE_URL, AUTHOR } from "@consts";
+import { SITE_URL, AUTHOR } from '@consts';
 
 interface Props {
   name: string;
@@ -11,28 +11,30 @@ interface Props {
 const { name, description, url, about } = Astro.props;
 
 const schema = {
-  "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  "@id": `${url}#collection`,
-  "name": name,
-  "description": description,
-  "url": url,
-  "inLanguage": "en-US",
-  "isPartOf": {
-    "@id": `${SITE_URL}/#website`
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  '@id': `${url}#collection`,
+  name: name,
+  description: description,
+  url: url,
+  inLanguage: 'en-US',
+  isPartOf: {
+    '@id': `${SITE_URL}/#website`,
   },
-  "author": {
-    "@type": "Person",
-    "@id": `${SITE_URL}/#person`,
-    "name": AUTHOR
+  author: {
+    '@type': 'Person',
+    '@id': `${SITE_URL}/#person`,
+    name: AUTHOR,
   },
   ...(about && {
-    "about": {
-      "@type": "Thing",
-      "name": about
-    }
-  })
+    about: {
+      '@type': 'Thing',
+      name: about,
+    },
+  }),
 };
 ---
 
-<Fragment set:html={`<script type="application/ld+json">${JSON.stringify(schema)}</script>`} />
+<Fragment
+  set:html={`<script type="application/ld+json">${JSON.stringify(schema)}</script>`}
+/>

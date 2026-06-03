@@ -1,5 +1,5 @@
 ---
-import { SITE_URL } from "@consts";
+import { SITE_URL } from '@consts';
 
 interface ListItem {
   name: string;
@@ -15,20 +15,22 @@ interface Props {
 const { id, items } = Astro.props;
 
 const schema = {
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  "@id": id,
-  "numberOfItems": items.length,
-  "itemListElement": items.map((item, index) => ({
-    "@type": "ListItem",
-    "position": index + 1,
-    "item": {
-      "@type": item.type ?? "Thing",
-      "name": item.name,
-      ...(item.url && { "url": item.url }),
-    }
-  }))
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  '@id': id,
+  numberOfItems: items.length,
+  itemListElement: items.map((item, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    item: {
+      '@type': item.type ?? 'Thing',
+      name: item.name,
+      ...(item.url && { url: item.url }),
+    },
+  })),
 };
 ---
 
-<Fragment set:html={`<script type="application/ld+json">${JSON.stringify(schema)}</script>`} />
+<Fragment
+  set:html={`<script type="application/ld+json">${JSON.stringify(schema)}</script>`}
+/>

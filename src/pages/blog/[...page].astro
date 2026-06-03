@@ -1,17 +1,17 @@
 ---
 export const prerender = true;
 
-import BaseLayout from "@layouts/BaseLayout.astro";
-import { getPostsWithReadingTime } from "@utils/collections";
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { getPostsWithReadingTime } from '@utils/collections';
 import type { Post } from '@utils/collections';
-import FormattedDate from "@components/FormattedDate.astro";
-import ReadingTime from "@components/ReadingTime.astro";
-import BackToTop from "@components/BackToTop.astro";
-import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
-import CollectionPageSchema from "@components/CollectionPageSchema.astro";
-import ItemListSchema from "@components/ItemListSchema.astro";
-import { SITE_URL } from "@consts";
-import { pages as sitePages, type Page } from "@data/pages";
+import FormattedDate from '@components/FormattedDate.astro';
+import ReadingTime from '@components/ReadingTime.astro';
+import BackToTop from '@components/BackToTop.astro';
+import BreadcrumbSchema from '@components/BreadcrumbSchema.astro';
+import CollectionPageSchema from '@components/CollectionPageSchema.astro';
+import ItemListSchema from '@components/ItemListSchema.astro';
+import { SITE_URL } from '@consts';
+import { pages as sitePages, type Page } from '@data/pages';
 
 type AstroPage<T> = {
   data: T[];
@@ -24,28 +24,36 @@ type AstroPage<T> = {
   };
 };
 
-type PaginateFunction = <T>(items: T[], options: { pageSize: number }) => AstroPage<T>[];
+type PaginateFunction = <T>(
+  items: T[],
+  options: { pageSize: number }
+) => AstroPage<T>[];
 
 type Props = {
   page: AstroPage<Post>;
 };
 
-export async function getStaticPaths({ paginate }: { paginate: PaginateFunction }) {
+export async function getStaticPaths({
+  paginate,
+}: {
+  paginate: PaginateFunction;
+}) {
   const posts = await getPostsWithReadingTime();
   return paginate(posts, { pageSize: 10 });
 }
 
 const { page } = Astro.props;
-const { title, description } = sitePages.find((p: Page) => p.href === "/blog")!;
+const { title, description } = sitePages.find((p: Page) => p.href === '/blog')!;
 
-const pageUrl = page.currentPage === 1
-  ? `${SITE_URL}/blog`
-  : `${SITE_URL}/blog/${page.currentPage}`;
+const pageUrl =
+  page.currentPage === 1
+    ? `${SITE_URL}/blog`
+    : `${SITE_URL}/blog/${page.currentPage}`;
 
 const blogItems = page.data.map((post: Post) => ({
   name: post.data.title,
   url: `${SITE_URL}/blog/${post.id}`,
-  type: "BlogPosting",
+  type: 'BlogPosting',
 }));
 ---
 
@@ -112,11 +120,11 @@ const blogItems = page.data.map((post: Post) => ({
   li:hover div {
     border-bottom: 4px dotted var(--hover);
     cursor: pointer;
-    transition: all .25s ease-out;
+    transition: all 0.25s ease-out;
   }
   li:hover .title {
     color: var(--hover);
-    transition: all .25s ease-out;
+    transition: all 0.25s ease-out;
   }
   @media (hover: hover) {
     li:hover button {
@@ -125,7 +133,7 @@ const blogItems = page.data.map((post: Post) => ({
     }
     button {
       text-overflow: ellipsis;
-      transition: all .10s ease-out;
+      transition: all 0.1s ease-out;
       cursor: pointer;
     }
     button:hover {
@@ -172,21 +180,22 @@ const blogItems = page.data.map((post: Post) => ({
     justify-content: end;
     margin-top: -0.1em;
   }
-  .prev a svg, .next a svg {
+  .prev a svg,
+  .next a svg {
     display: inline-flex;
     width: 0.75em;
     height: 0.75em;
     vertical-align: middle;
     fill: currentColor;
-    transition: all .1s ease-in-out;
+    transition: all 0.1s ease-in-out;
     overflow: visible;
   }
   .prev a:hover svg {
-    transition: all .1s ease-in-out;
+    transition: all 0.1s ease-in-out;
     transform: translateX(-4px);
   }
   .next a:hover svg {
-    transition: all .1s ease-in-out;
+    transition: all 0.1s ease-in-out;
     transform: translateX(4px);
   }
   .bottom-line {
@@ -219,11 +228,18 @@ const blogItems = page.data.map((post: Post) => ({
   }
 </style>
 
-<BaseLayout title={title} description={description} ogImage={`${SITE_URL}/og/blog.png`}>
-  <BreadcrumbSchema slot="head" crumbs={[
-    { name: "Home", url: `${SITE_URL}` },
-    { name: "Blog", url: `${SITE_URL}/blog` },
-  ]} />
+<BaseLayout
+  title={title}
+  description={description}
+  ogImage={`${SITE_URL}/og/blog.png`}
+>
+  <BreadcrumbSchema
+    slot="head"
+    crumbs={[
+      { name: 'Home', url: `${SITE_URL}` },
+      { name: 'Blog', url: `${SITE_URL}/blog` },
+    ]}
+  />
   <CollectionPageSchema
     slot="head"
     name={title}
@@ -236,54 +252,143 @@ const blogItems = page.data.map((post: Post) => ({
     <a class="u-url" href={`${SITE_URL}/blog`} hidden>Permalink</a>
     <hr />
     <p>
-      <span class="total">{page.total}</span> posts total. See also <a href="/categories" rel="prefetch-intent" data-umami-event="blog-category">by category</a>, <a href="/blog/years" rel="prefetch-intent">by year</a>, <a href="/blog/updated" rel="prefetch-intent">recently updated</a>, <a href="/blog/popular">popular posts</a> or <a href="/blog/random">a random post</a>.
+      <span class="total">{page.total}</span> posts total. See also <a
+        href="/categories"
+        rel="prefetch-intent"
+        data-umami-event="blog-category">by category</a
+      >, <a href="/blog/years" rel="prefetch-intent">by year</a>, <a
+        href="/blog/updated"
+        rel="prefetch-intent">recently updated</a
+      >, <a href="/blog/popular">popular posts</a> or <a href="/blog/random"
+        >a random post</a
+      >.
     </p>
     <div class="page-info-top">Page {page.currentPage} of {page.lastPage}</div>
     <nav class="pagination" aria-label="Blog pagination">
       <span class="prev">
-        {page.url.prev ? (
-          <a href={page.url.prev} rel="prefetch-intent prev"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><title>arrow-left</title><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg> Newer</a>
-        ) : <span />}
+        {
+          page.url.prev ? (
+            <a href={page.url.prev} rel="prefetch-intent prev">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="1"
+              >
+                <>
+                  <title>arrow-left</title>
+                  <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" />
+                </>
+              </svg>{' '}
+              Newer
+            </a>
+          ) : (
+            <span />
+          )
+        }
       </span>
       <span class="next">
-        {page.url.next ? (
-          <a href={page.url.next} rel="prefetch-intent next">Older <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><title>arrow-right</title><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg></a>
-        ) : <span />}
+        {
+          page.url.next ? (
+            <a href={page.url.next} rel="prefetch-intent next">
+              Older{' '}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="1"
+              >
+                <>
+                  <title>arrow-right</title>
+                  <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" />
+                </>
+              </svg>
+            </a>
+          ) : (
+            <span />
+          )
+        }
       </span>
     </nav>
     <ul>
-      {page.data.map((post: Post) => (
-        <li class="h-entry">
-          <div>
-            <a class="u-url" href={`/blog/${post.id}`} rel="prefetch-intent" data-umami-event={post.id}>
-              <span class="p-name title">{post.data.title}</span>
-              <p class="tag">
-                {post.data.tags.map((tag: string) => (
-                  <button>{tag}</button>
-                ))}
-              </p>
-              <p class="info">
-                <FormattedDate class="dt-published" date={post.data.pubDate} />
-                &nbsp;
-                <span class="reading"><ReadingTime time={post.readingTime} /></span>
-              </p>
-              <p class="p-summary desc">{post.data.description}</p>
-            </a>
-          </div>
-        </li>
-      ))}
+      {
+        page.data.map((post: Post) => (
+          <li class="h-entry">
+            <div>
+              <a
+                class="u-url"
+                href={`/blog/${post.id}`}
+                rel="prefetch-intent"
+                data-umami-event={post.id}
+              >
+                <span class="p-name title">{post.data.title}</span>
+                <p class="tag">
+                  {post.data.tags.map((tag: string) => (
+                    <button>{tag}</button>
+                  ))}
+                </p>
+                <p class="info">
+                  <FormattedDate
+                    class="dt-published"
+                    date={post.data.pubDate}
+                  />
+                  &nbsp;
+                  <span class="reading">
+                    <ReadingTime time={post.readingTime} />
+                  </span>
+                </p>
+                <p class="p-summary desc">{post.data.description}</p>
+              </a>
+            </div>
+          </li>
+        ))
+      }
     </ul>
     <div class="page-info">Page {page.currentPage} of {page.lastPage}</div>
     <nav class="pagination" aria-label="Blog pagination">
       <span class="prev">
-        {page.url.prev ? (
-          <a href={page.url.prev} rel="prefetch-intent prev"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><title>arrow-left</title><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg> Newer</a>
-        ) : <span />}
+        {
+          page.url.prev ? (
+            <a href={page.url.prev} rel="prefetch-intent prev">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="1"
+              >
+                <>
+                  <title>arrow-left</title>
+                  <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" />
+                </>
+              </svg>{' '}
+              Newer
+            </a>
+          ) : (
+            <span />
+          )
+        }
       </span>
       <span class="next">
-        {page.url.next ? (
-          <a href={page.url.next} rel="prefetch-intent next">Older <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><title>arrow-right</title><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg></a>
-        ) : <span />}
+        {
+          page.url.next ? (
+            <a href={page.url.next} rel="prefetch-intent next">
+              Older{' '}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="1"
+              >
+                <>
+                  <title>arrow-right</title>
+                  <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" />
+                </>
+              </svg>
+            </a>
+          ) : (
+            <span />
+          )
+        }
       </span>
     </nav>
     <hr class="bottom-line" />

@@ -2,58 +2,64 @@
 export const prerender = true;
 
 import BaseLayout from '@layouts/BaseLayout.astro';
-import { getLifestream } from "@utils/collections";
+import { getLifestream } from '@utils/collections';
 import { Image } from 'astro:assets';
 import FormattedDate from '@components/FormattedDate.astro';
-import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
+import BreadcrumbSchema from '@components/BreadcrumbSchema.astro';
 import CollectionPageSchema from '@components/CollectionPageSchema.astro';
 import ItemListSchema from '@components/ItemListSchema.astro';
 import GameIcon from '@icons/game.svg';
 import BookIcon from '@icons/book.svg';
 import MovieIcon from '@icons/movie.svg';
 import TVShowIcon from '@icons/tvshow.svg';
-import BackToTop from "@components/BackToTop.astro";
-import { SITE_URL } from "@consts";
-import { pages } from "@data/pages";
+import BackToTop from '@components/BackToTop.astro';
+import { SITE_URL } from '@consts';
+import { pages } from '@data/pages';
 import { schemaTypeMap } from '@utils/media';
 
 const entries = await getLifestream();
 
 const types = ['movie', 'tvshow', 'book', 'game'] as const;
-type MediaType = typeof types[number];
+type MediaType = (typeof types)[number];
 
 const counts = Object.fromEntries(
-  types.map(t => [t, entries.filter(e => e.data.type === t).length])
+  types.map((t) => [t, entries.filter((e) => e.data.type === t).length])
 );
 
 const typeName: Record<MediaType, string> = {
-  game:   'Games',
-  book:   'Books',
-  movie:  'Movies',
+  game: 'Games',
+  book: 'Books',
+  movie: 'Movies',
   tvshow: 'TV Shows',
 };
 
 const vibes = {
-  hated:       { emoji: '💩' },
-  disliked:    { emoji: '😕' },
-  liked:       { emoji: '👍🏼' },
-  loved:       { emoji: '❤️' },
+  hated: { emoji: '💩' },
+  disliked: { emoji: '😕' },
+  liked: { emoji: '👍🏼' },
+  loved: { emoji: '❤️' },
   masterpiece: { emoji: '🌟' },
 } as const;
 
-const years = [...new Set(
-  entries.map(e => (e.data.updatedDate ?? e.data.pubDate).getFullYear())
-)].sort((a, b) => b - a);
+const years = [
+  ...new Set(
+    entries.map((e) => (e.data.updatedDate ?? e.data.pubDate).getFullYear())
+  ),
+].sort((a, b) => b - a);
 
-const { title, description } = pages.find(p => p.href === "/lifestream")!;
-const lifestreamItems = entries.map(entry => ({
+const { title, description } = pages.find((p) => p.href === '/lifestream')!;
+const lifestreamItems = entries.map((entry) => ({
   name: entry.data.title,
   url: `${SITE_URL}/lifestream/${entry.id}`,
   type: schemaTypeMap[entry.data.type],
 }));
 ---
 
-<BaseLayout title={title} description={description} ogImage={`${SITE_URL}/og/lifestream.png`}>
+<BaseLayout
+  title={title}
+  description={description}
+  ogImage={`${SITE_URL}/og/lifestream.png`}
+>
   <script is:inline slot="head">
     document.addEventListener('DOMContentLoaded', () => {
       const details = document.querySelector('.filter-details');
@@ -70,12 +76,19 @@ const lifestreamItems = entries.map(entry => ({
       // Save filters
       document.addEventListener('change', (e) => {
         const el = e.target;
-        if (el instanceof HTMLInputElement && el.classList.contains('filter-toggle')) {
+        if (
+          el instanceof HTMLInputElement &&
+          el.classList.contains('filter-toggle')
+        ) {
           sessionStorage.setItem(el.id, el.checked.toString());
           if (el.checked) {
             const label = document.querySelector(`label[for="${el.id}"]`);
             label?.classList.add('is-popping');
-            label?.addEventListener('animationend', () => label.classList.remove('is-popping'), { once: true });
+            label?.addEventListener(
+              'animationend',
+              () => label.classList.remove('is-popping'),
+              { once: true }
+            );
           }
         }
       });
@@ -84,41 +97,58 @@ const lifestreamItems = entries.map(entry => ({
         sessionStorage.setItem('filter-details-open', details.open.toString());
       });
       // Reset filters
-      document.getElementById('reset-filters')?.addEventListener('click', () => {
-        const btn = document.getElementById('reset-filters');
-        if (btn instanceof HTMLElement) {
-          btn.classList.add('is-shaking');
-          btn.addEventListener('animationend', () => btn.classList.remove('is-shaking'), { once: true });
-        }
-        document.querySelectorAll('.filter-toggle').forEach((el, i) => {
-          if (el instanceof HTMLInputElement) {
-            el.checked = true;
-            sessionStorage.setItem(el.id, 'true');
-            const label = document.querySelector(`label[for="${el.id}"]`);
-            if (label instanceof HTMLElement) {
-              label.style.animationDelay = `${i * 30}ms`;
-              label.classList.add('is-popping');
-              label.addEventListener('animationend', () => {
-                label.classList.remove('is-popping');
-                label.style.animationDelay = '';
-              }, { once: true });
-            }
+      document
+        .getElementById('reset-filters')
+        ?.addEventListener('click', () => {
+          const btn = document.getElementById('reset-filters');
+          if (btn instanceof HTMLElement) {
+            btn.classList.add('is-shaking');
+            btn.addEventListener(
+              'animationend',
+              () => btn.classList.remove('is-shaking'),
+              { once: true }
+            );
           }
+          document.querySelectorAll('.filter-toggle').forEach((el, i) => {
+            if (el instanceof HTMLInputElement) {
+              el.checked = true;
+              sessionStorage.setItem(el.id, 'true');
+              const label = document.querySelector(`label[for="${el.id}"]`);
+              if (label instanceof HTMLElement) {
+                label.style.animationDelay = `${i * 30}ms`;
+                label.classList.add('is-popping');
+                label.addEventListener(
+                  'animationend',
+                  () => {
+                    label.classList.remove('is-popping');
+                    label.style.animationDelay = '';
+                  },
+                  { once: true }
+                );
+              }
+            }
+          });
         });
-      });
     });
   </script>
-  <BreadcrumbSchema slot="head" crumbs={[
-    { name: "Home", url: `${SITE_URL}` },
-    { name: "Lifestream", url: `${SITE_URL}/lifestream` }
-  ]} />
+  <BreadcrumbSchema
+    slot="head"
+    crumbs={[
+      { name: 'Home', url: `${SITE_URL}` },
+      { name: 'Lifestream', url: `${SITE_URL}/lifestream` },
+    ]}
+  />
   <CollectionPageSchema
     slot="head"
     name={title}
     description={description}
     url={`${SITE_URL}/lifestream`}
   />
-  <ItemListSchema slot="head" id={`${SITE_URL}/lifestream/#list`} items={lifestreamItems} />
+  <ItemListSchema
+    slot="head"
+    id={`${SITE_URL}/lifestream/#list`}
+    items={lifestreamItems}
+  />
   <section class="h-feed">
     <h1 class="p-name">{title}</h1>
     <a class="u-url" href="/lifestream" hidden>Permalink</a>
@@ -127,95 +157,144 @@ const lifestreamItems = entries.map(entry => ({
       {description}
     </p>
 
-    {types.map(t => (
-      <input
-        type="checkbox"
-        class="filter-toggle sr-only"
-        id={`filter-${t}`}
-        checked
-      />
-    ))}
+    {
+      types.map((t) => (
+        <input
+          type="checkbox"
+          class="filter-toggle sr-only"
+          id={`filter-${t}`}
+          checked
+        />
+      ))
+    }
 
-    {years.map(y => (
-      <input
-        type="checkbox"
-        class="filter-toggle sr-only"
-        id={`filter-${y}`}
-        checked
-      />
-    ))}
-  <details>
-    <summary>Filters</summary>
-    <div class="details-content">
-      <div class="filters">
-        {types.map(t => (
-          <label for={`filter-${t}`} class="filter-btn">
-            <span class="btn-icon">
-              {t === 'game'   && <GameIcon   width={20} height={20} />}
-              {t === 'book'   && <BookIcon   width={20} height={20} />}
-              {t === 'movie'  && <MovieIcon  width={20} height={20} />}
-              {t === 'tvshow' && <TVShowIcon width={20} height={20} />}
-            </span>
-            {typeName[t]}
-            <span class="filter-count">{counts[t]}</span>
-          </label>
-        ))}
+    {
+      years.map((y) => (
+        <input
+          type="checkbox"
+          class="filter-toggle sr-only"
+          id={`filter-${y}`}
+          checked
+        />
+      ))
+    }
+    <details>
+      <summary>Filters</summary>
+      <div class="details-content">
+        <div class="filters">
+          {
+            types.map((t) => (
+              <label for={`filter-${t}`} class="filter-btn">
+                <span class="btn-icon">
+                  {t === 'game' && <GameIcon width={20} height={20} />}
+                  {t === 'book' && <BookIcon width={20} height={20} />}
+                  {t === 'movie' && <MovieIcon width={20} height={20} />}
+                  {t === 'tvshow' && <TVShowIcon width={20} height={20} />}
+                </span>
+                {typeName[t]}
+                <span class="filter-count">{counts[t]}</span>
+              </label>
+            ))
+          }
+        </div>
+        <div class="filters year-filters">
+          {
+            years.map((y) => (
+              <label for={`filter-${y}`} class="filter-btn year-btn">
+                {y}
+              </label>
+            ))
+          }
+        </div>
+        <button id="reset-filters" class="filter-btn reset-btn">Reset</button>
+        <hr class="border" />
       </div>
-      <div class="filters year-filters">
-        {years.map(y => (
-          <label for={`filter-${y}`} class="filter-btn year-btn">
-            {y}
-          </label>
-        ))}
-      </div>
-    <button id="reset-filters" class="filter-btn reset-btn">Reset</button>
-    <hr class="border">
-    </div>
-  </details>
+    </details>
     <div class="ls-grid">
-      {entries.map((entry, i) => (
-        <a class="card h-entry"
-          href={`/lifestream/${entry.id}`}
-          data-type={entry.data.type}
-          data-year={(entry.data.updatedDate ?? entry.data.pubDate).getFullYear()}
-          rel="prefetch-intent"
-        >
-          <span class="p-name sr-only">{entry.data.title}</span>
-          <Image
-            class="u-photo"
-            src={entry.data.image}
-            alt={entry.data.title}
-            widths={[200, 400]}
-            sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-            loading={i < 8 ? 'eager' : 'lazy'}
-            decoding={i < 8 ? 'sync' : 'async'}
-          />
-          <span class="card-badge">
-            {entry.data.type === 'game'   && <GameIcon   width={24} height={24} />}
-            {entry.data.type === 'book'   && <BookIcon   width={24} height={24} />}
-            {entry.data.type === 'movie'  && <MovieIcon  width={24} height={24} />}
-            {entry.data.type === 'tvshow' && <TVShowIcon width={24} height={24} />}
-          </span>
-          <span class="card-vibe">{vibes[entry.data.rating as keyof typeof vibes].emoji}</span>
-          <div class="card-overlay">
-            <span class="date"><FormattedDate class="dt-published" date={entry.data.updatedDate ?? entry.data.pubDate} monthFormat="numeric" /></span>
-          </div>
-        </a>
-      ))}
+      {
+        entries.map((entry, i) => (
+          <a
+            class="card h-entry"
+            href={`/lifestream/${entry.id}`}
+            data-type={entry.data.type}
+            data-year={(
+              entry.data.updatedDate ?? entry.data.pubDate
+            ).getFullYear()}
+            rel="prefetch-intent"
+          >
+            <span class="p-name sr-only">{entry.data.title}</span>
+            <Image
+              class="u-photo"
+              src={entry.data.image}
+              alt={entry.data.title}
+              widths={[200, 400]}
+              sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+              loading={i < 8 ? 'eager' : 'lazy'}
+              decoding={i < 8 ? 'sync' : 'async'}
+            />
+            <span class="card-badge">
+              {entry.data.type === 'game' && (
+                <GameIcon width={24} height={24} />
+              )}
+              {entry.data.type === 'book' && (
+                <BookIcon width={24} height={24} />
+              )}
+              {entry.data.type === 'movie' && (
+                <MovieIcon width={24} height={24} />
+              )}
+              {entry.data.type === 'tvshow' && (
+                <TVShowIcon width={24} height={24} />
+              )}
+            </span>
+            <span class="card-vibe">
+              {vibes[entry.data.rating as keyof typeof vibes].emoji}
+            </span>
+            <div class="card-overlay">
+              <span class="date">
+                <FormattedDate
+                  class="dt-published"
+                  date={entry.data.updatedDate ?? entry.data.pubDate}
+                  monthFormat="numeric"
+                />
+              </span>
+            </div>
+          </a>
+        ))
+      }
     </div>
     <ul class="sources">
       <li>
-        Movie and TV Show posters are sourced from <a href="https://plex.tv" target="_blank" rel="noopener noreferrer">Plex</a> and <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">TMDB</a>
+        Movie and TV Show posters are sourced from <a
+          href="https://plex.tv"
+          target="_blank"
+          rel="noopener noreferrer">Plex</a
+        > and <a
+          href="https://www.themoviedb.org/"
+          target="_blank"
+          rel="noopener noreferrer">TMDB</a
+        >
       </li>
       <li>
-        Game covers are sourced from <a href="https://www.igdb.com/" target="_blank" rel="noopener noreferrer">IGDB</a>, <a href="https://mobygames.com/" target="_blank" rel="noopener noreferrer">MobyGames</a> and random Google finds.
+        Game covers are sourced from <a
+          href="https://www.igdb.com/"
+          target="_blank"
+          rel="noopener noreferrer">IGDB</a
+        >, <a
+          href="https://mobygames.com/"
+          target="_blank"
+          rel="noopener noreferrer">MobyGames</a
+        > and random Google finds.
       </li>
       <li>
-        Book covers are sourced from <a href="https://www.goodreads.com/" target="_blank" rel="noopener noreferrer">Goodreads</a>
+        Book covers are sourced from <a
+          href="https://www.goodreads.com/"
+          target="_blank"
+          rel="noopener noreferrer">Goodreads</a
+        >
       </li>
     </ul>
   </section>
-  <hr>
+  <hr />
   <BackToTop />
 </BaseLayout>
 
@@ -300,28 +379,48 @@ const lifestreamItems = entries.map(entry => ({
   }
 
   /* active (checked) state */
-  #filter-game:checked   ~ details .filters label[for="filter-game"],
-  #filter-book:checked   ~ details .filters label[for="filter-book"],
-  #filter-movie:checked  ~ details .filters label[for="filter-movie"],
-  #filter-tvshow:checked ~ details .filters label[for="filter-tvshow"] {
+  #filter-game:checked ~ details .filters label[for='filter-game'],
+  #filter-book:checked ~ details .filters label[for='filter-book'],
+  #filter-movie:checked ~ details .filters label[for='filter-movie'],
+  #filter-tvshow:checked ~ details .filters label[for='filter-tvshow'] {
     background-color: var(--info);
     color: #000;
     opacity: 1;
   }
 
-  #filter-game:checked   ~ details .filters label[for="filter-game"]   .btn-icon :global(svg),
-  #filter-book:checked   ~ details .filters label[for="filter-book"]   .btn-icon :global(svg),
-  #filter-movie:checked  ~ details .filters label[for="filter-movie"]  .btn-icon :global(svg),
-  #filter-tvshow:checked ~ details .filters label[for="filter-tvshow"] .btn-icon :global(svg) {
+  #filter-game:checked
+    ~ details
+    .filters
+    label[for='filter-game']
+    .btn-icon
+    :global(svg),
+  #filter-book:checked
+    ~ details
+    .filters
+    label[for='filter-book']
+    .btn-icon
+    :global(svg),
+  #filter-movie:checked
+    ~ details
+    .filters
+    label[for='filter-movie']
+    .btn-icon
+    :global(svg),
+  #filter-tvshow:checked
+    ~ details
+    .filters
+    label[for='filter-tvshow']
+    .btn-icon
+    :global(svg) {
     filter: brightness(0);
   }
 
-  #filter-2026:checked ~ details .filters label[for="filter-2026"],
-  #filter-2025:checked ~ details .filters label[for="filter-2025"],
-  #filter-2024:checked ~ details .filters label[for="filter-2024"],
-  #filter-2023:checked ~ details .filters label[for="filter-2023"],
-  #filter-2022:checked ~ details .filters label[for="filter-2022"],
-  #filter-2021:checked ~ details .filters label[for="filter-2021"] {
+  #filter-2026:checked ~ details .filters label[for='filter-2026'],
+  #filter-2025:checked ~ details .filters label[for='filter-2025'],
+  #filter-2024:checked ~ details .filters label[for='filter-2024'],
+  #filter-2023:checked ~ details .filters label[for='filter-2023'],
+  #filter-2022:checked ~ details .filters label[for='filter-2022'],
+  #filter-2021:checked ~ details .filters label[for='filter-2021'] {
     background-color: var(--info);
     color: #000;
     opacity: 1;
@@ -350,16 +449,30 @@ const lifestreamItems = entries.map(entry => ({
     margin: 0 auto;
   }
 
-  @media (max-width: 1024px) { .ls-grid { grid-template-columns: repeat(3, 1fr); } }
-  @media (max-width: 640px)  { .ls-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 400px)  { .ls-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 1024px) {
+    .ls-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  @media (max-width: 640px) {
+    .ls-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 400px) {
+    .ls-grid {
+      grid-template-columns: 1fr;
+    }
+  }
 
-  .card { display: none; }
+  .card {
+    display: none;
+  }
 
-  #filter-game:checked   ~ .ls-grid .card[data-type="game"],
-  #filter-book:checked   ~ .ls-grid .card[data-type="book"],
-  #filter-movie:checked  ~ .ls-grid .card[data-type="movie"],
-  #filter-tvshow:checked ~ .ls-grid .card[data-type="tvshow"] {
+  #filter-game:checked ~ .ls-grid .card[data-type='game'],
+  #filter-book:checked ~ .ls-grid .card[data-type='book'],
+  #filter-movie:checked ~ .ls-grid .card[data-type='movie'],
+  #filter-tvshow:checked ~ .ls-grid .card[data-type='tvshow'] {
     display: block;
   }
 
@@ -376,7 +489,9 @@ const lifestreamItems = entries.map(entry => ({
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.25s ease-in-out, opacity 0.25s ease-in-out;
+    transition:
+      transform 0.25s ease-in-out,
+      opacity 0.25s ease-in-out;
     margin: 0;
     max-width: 100%;
   }
@@ -439,12 +554,12 @@ const lifestreamItems = entries.map(entry => ({
   }
 
   /* active year button */
-  #filter-2026:checked ~ .filters label[for="filter-2026"],
-  #filter-2025:checked ~ .filters label[for="filter-2025"],
-  #filter-2024:checked ~ .filters label[for="filter-2024"],
-  #filter-2023:checked ~ .filters label[for="filter-2023"],
-  #filter-2022:checked ~ .filters label[for="filter-2022"],
-  #filter-2021:checked ~ .filters label[for="filter-2021"] {
+  #filter-2026:checked ~ .filters label[for='filter-2026'],
+  #filter-2025:checked ~ .filters label[for='filter-2025'],
+  #filter-2024:checked ~ .filters label[for='filter-2024'],
+  #filter-2023:checked ~ .filters label[for='filter-2023'],
+  #filter-2022:checked ~ .filters label[for='filter-2022'],
+  #filter-2021:checked ~ .filters label[for='filter-2021'] {
     background-color: var(--info);
     color: #000;
     opacity: 1;
@@ -460,12 +575,12 @@ const lifestreamItems = entries.map(entry => ({
     letter-spacing: 0.05em;
   }
 
-  #filter-2026:not(:checked) ~ .ls-grid .card[data-year="2026"],
-  #filter-2025:not(:checked) ~ .ls-grid .card[data-year="2025"],
-  #filter-2024:not(:checked) ~ .ls-grid .card[data-year="2024"],
-  #filter-2023:not(:checked) ~ .ls-grid .card[data-year="2023"],
-  #filter-2022:not(:checked) ~ .ls-grid .card[data-year="2022"],
-  #filter-2021:not(:checked) ~ .ls-grid .card[data-year="2021"] {
+  #filter-2026:not(:checked) ~ .ls-grid .card[data-year='2026'],
+  #filter-2025:not(:checked) ~ .ls-grid .card[data-year='2025'],
+  #filter-2024:not(:checked) ~ .ls-grid .card[data-year='2024'],
+  #filter-2023:not(:checked) ~ .ls-grid .card[data-year='2023'],
+  #filter-2022:not(:checked) ~ .ls-grid .card[data-year='2022'],
+  #filter-2021:not(:checked) ~ .ls-grid .card[data-year='2021'] {
     display: none;
   }
 
@@ -479,12 +594,24 @@ const lifestreamItems = entries.map(entry => ({
   }
 
   @keyframes reset-shake {
-    0%   { transform: translate(4px, 4px) rotate(0deg); }
-    20%  { transform: translate(4px, 4px) rotate(-6deg); }
-    40%  { transform: translate(4px, 4px) rotate(6deg); }
-    60%  { transform: translate(4px, 4px) rotate(-4deg); }
-    80%  { transform: translate(4px, 4px) rotate(4deg); }
-    100% { transform: translate(4px, 4px) rotate(0deg); }
+    0% {
+      transform: translate(4px, 4px) rotate(0deg);
+    }
+    20% {
+      transform: translate(4px, 4px) rotate(-6deg);
+    }
+    40% {
+      transform: translate(4px, 4px) rotate(6deg);
+    }
+    60% {
+      transform: translate(4px, 4px) rotate(-4deg);
+    }
+    80% {
+      transform: translate(4px, 4px) rotate(4deg);
+    }
+    100% {
+      transform: translate(4px, 4px) rotate(0deg);
+    }
   }
 
   .reset-btn.is-shaking {
@@ -492,10 +619,18 @@ const lifestreamItems = entries.map(entry => ({
   }
 
   @keyframes filter-pop {
-    0%   { transform: scale(1); }
-    25%  { transform: scale(1.125); }
-    75%  { transform: scale(0.95); }
-    100% { transform: scale(1); }
+    0% {
+      transform: scale(1);
+    }
+    25% {
+      transform: scale(1.125);
+    }
+    75% {
+      transform: scale(0.95);
+    }
+    100% {
+      transform: scale(1);
+    }
   }
 
   .filter-btn.is-popping {
@@ -503,16 +638,16 @@ const lifestreamItems = entries.map(entry => ({
   }
 
   @media (hover: hover) {
-    #filter-game:checked   ~ details .filters label[for="filter-game"]:hover,
-    #filter-book:checked   ~ details .filters label[for="filter-book"]:hover,
-    #filter-movie:checked  ~ details .filters label[for="filter-movie"]:hover,
-    #filter-tvshow:checked ~ details .filters label[for="filter-tvshow"]:hover,
-    #filter-2026:checked   ~ details .filters label[for="filter-2026"]:hover,
-    #filter-2025:checked   ~ details .filters label[for="filter-2025"]:hover,
-    #filter-2024:checked   ~ details .filters label[for="filter-2024"]:hover,
-    #filter-2023:checked   ~ details .filters label[for="filter-2023"]:hover,
-    #filter-2022:checked   ~ details .filters label[for="filter-2022"]:hover,
-    #filter-2021:checked   ~ details .filters label[for="filter-2021"]:hover {
+    #filter-game:checked ~ details .filters label[for='filter-game']:hover,
+    #filter-book:checked ~ details .filters label[for='filter-book']:hover,
+    #filter-movie:checked ~ details .filters label[for='filter-movie']:hover,
+    #filter-tvshow:checked ~ details .filters label[for='filter-tvshow']:hover,
+    #filter-2026:checked ~ details .filters label[for='filter-2026']:hover,
+    #filter-2025:checked ~ details .filters label[for='filter-2025']:hover,
+    #filter-2024:checked ~ details .filters label[for='filter-2024']:hover,
+    #filter-2023:checked ~ details .filters label[for='filter-2023']:hover,
+    #filter-2022:checked ~ details .filters label[for='filter-2022']:hover,
+    #filter-2021:checked ~ details .filters label[for='filter-2021']:hover {
       background: var(--hover);
     }
     .filter-btn:hover {
@@ -537,7 +672,8 @@ const lifestreamItems = entries.map(entry => ({
   }
 
   @media (max-width: 667px) {
-    .desc, p {
+    .desc,
+    p {
       font-size: 18px;
     }
     .desc {
@@ -550,11 +686,19 @@ const lifestreamItems = entries.map(entry => ({
     .year-filters {
       margin-top: -0.5em;
     }
-      @keyframes filter-pop {
-      0%   { transform: scale(1); }
-      25%  { transform: scale(1.05); }
-      75%  { transform: scale(0.9); }
-      100% { transform: scale(1); }
+    @keyframes filter-pop {
+      0% {
+        transform: scale(1);
+      }
+      25% {
+        transform: scale(1.05);
+      }
+      75% {
+        transform: scale(0.9);
+      }
+      100% {
+        transform: scale(1);
+      }
     }
   }
 </style>

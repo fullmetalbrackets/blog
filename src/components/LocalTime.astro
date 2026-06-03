@@ -1,6 +1,6 @@
 ---
-import DateIcon from "@icons/calendar.svg";
-import TimeIcon from "@icons/clock.svg";
+import DateIcon from '@icons/calendar.svg';
+import TimeIcon from '@icons/clock.svg';
 
 interface Props {
   date: Date;
@@ -13,7 +13,13 @@ const { date, class: className } = Astro.props;
   <span class="date-line">
     <DateIcon width={24} height={24} />
     <span class="date-text">
-      {date?.toLocaleDateString("en-us", { year: "numeric", month: "numeric", day: "numeric" })}
+      {
+        date?.toLocaleDateString('en-us', {
+          year: 'numeric',
+          month: 'numeric',
+          day: 'numeric',
+        })
+      }
     </span>
   </span>
   <span class="time-line">
@@ -25,27 +31,27 @@ const { date, class: className } = Astro.props;
 <script>
   class LocalTime extends HTMLElement {
     connectedCallback() {
-      const iso = this.getAttribute("datetime");
+      const iso = this.getAttribute('datetime');
       if (!iso) return;
 
       const formatted = new Date(iso).toLocaleString(undefined, {
-        year: "numeric",
-        month: "numeric",
-        day: "numeric",
-        hour: "numeric",
-        minute: "2-digit",
-        timeZoneName: "short",
+        year: 'numeric',
+        month: 'numeric',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: '2-digit',
+        timeZoneName: 'short',
       });
 
-      const [date, time] = formatted.split(", ");
-      const dateLine = this.querySelector(".date-text");
-      const timeLine = this.querySelector(".time-text");
+      const [date, time] = formatted.split(', ');
+      const dateLine = this.querySelector('.date-text');
+      const timeLine = this.querySelector('.time-text');
       if (dateLine) dateLine.textContent = date;
       if (timeLine) timeLine.textContent = time;
     }
   }
 
-  customElements.define("local-time", LocalTime);
+  customElements.define('local-time', LocalTime);
 </script>
 
 <style scoped>

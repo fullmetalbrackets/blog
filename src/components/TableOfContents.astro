@@ -9,7 +9,9 @@ interface Props {
 
 const { headings = [], depth = 2 } = Astro.props;
 
-const filteredHeadings = headings.filter(h => h.depth >= 2 && h.depth <= depth);
+const filteredHeadings = headings.filter(
+  (h) => h.depth >= 2 && h.depth <= depth
+);
 
 type Group = { heading: MarkdownHeading; children: MarkdownHeading[] };
 const grouped: Group[] = [];
@@ -117,7 +119,11 @@ if (depth >= 3) {
       border-left: 2px solid var(--primary);
       border-radius: 0.25em;
       max-width: 40%;
-      transition: top 0.2s ease, height 0.2s ease, width 0.2s ease, opacity 0.2s ease;
+      transition:
+        top 0.2s ease,
+        height 0.2s ease,
+        width 0.2s ease,
+        opacity 0.2s ease;
       opacity: 0;
       z-index: 0;
       pointer-events: none;
@@ -179,30 +185,34 @@ if (depth >= 3) {
   <div class="toc-scroll" id="toc-scroll">
     <div class="toc-indicator" id="toc-indicator" aria-hidden="true"></div>
     <ol class="toc-list" id="toc-list">
-      {depth >= 3 ? grouped.map(({ heading, children }) => (
-        <li>
-          <a href={`#${heading.slug}`} data-heading={heading.slug}>
-            {heading.text}
-          </a>
-          {children.length > 0 && (
-            <ol class="toc-sub">
-              {children.map(child => (
-                <li>
-                  <a href={`#${child.slug}`} data-heading={child.slug}>
-                    {child.text}
-                  </a>
-                </li>
-              ))}
-            </ol>
-          )}
-        </li>
-      )) : filteredHeadings.map((heading) => (
-        <li>
-          <a href={`#${heading.slug}`} data-heading={heading.slug}>
-            {heading.text}
-          </a>
-        </li>
-      ))}
+      {
+        depth >= 3
+          ? grouped.map(({ heading, children }) => (
+              <li>
+                <a href={`#${heading.slug}`} data-heading={heading.slug}>
+                  {heading.text}
+                </a>
+                {children.length > 0 && (
+                  <ol class="toc-sub">
+                    {children.map((child) => (
+                      <li>
+                        <a href={`#${child.slug}`} data-heading={child.slug}>
+                          {child.text}
+                        </a>
+                      </li>
+                    ))}
+                  </ol>
+                )}
+              </li>
+            ))
+          : filteredHeadings.map((heading) => (
+              <li>
+                <a href={`#${heading.slug}`} data-heading={heading.slug}>
+                  {heading.text}
+                </a>
+              </li>
+            ))
+      }
     </ol>
     <div class="toc-fade" id="toc-fade" aria-hidden="true"></div>
   </div>
@@ -211,9 +221,9 @@ if (depth >= 3) {
 <script>
   function initTOC() {
     const tocScroll = document.getElementById('toc-scroll') as HTMLElement;
-    const tocList   = document.getElementById('toc-list') as HTMLElement;
+    const tocList = document.getElementById('toc-list') as HTMLElement;
     const indicator = document.getElementById('toc-indicator') as HTMLElement;
-    const fade      = document.getElementById('toc-fade') as HTMLElement;
+    const fade = document.getElementById('toc-fade') as HTMLElement;
 
     if (!tocScroll || !tocList || !indicator) return;
 
@@ -223,14 +233,14 @@ if (depth >= 3) {
     if (!links.length) return;
 
     const headingEls = links
-      .map(link => document.getElementById(link.dataset.heading!))
+      .map((link) => document.getElementById(link.dataset.heading!))
       .filter((el): el is HTMLElement => el !== null);
 
     let headingTops: number[] = [];
 
     function cacheOffsets() {
       headingTops = headingEls.map(
-        el => el.getBoundingClientRect().top + window.scrollY
+        (el) => el.getBoundingClientRect().top + window.scrollY
       );
     }
 
@@ -243,15 +253,15 @@ if (depth >= 3) {
 
     function moveIndicator(link: HTMLAnchorElement) {
       const scrollRect = tocScroll.getBoundingClientRect();
-      const linkRect   = link.getBoundingClientRect();
+      const linkRect = link.getBoundingClientRect();
 
       // Position relative to toc-scroll container, accounting for its own scroll
-      const top   = linkRect.top - scrollRect.top + tocScroll.scrollTop;
+      const top = linkRect.top - scrollRect.top + tocScroll.scrollTop;
       const width = linkRect.left - scrollRect.left + linkRect.width + 12;
 
-      indicator.style.top     = `${top}px`;
-      indicator.style.height  = `${linkRect.height}px`;
-      indicator.style.width   = `${width}px`;
+      indicator.style.top = `${top}px`;
+      indicator.style.height = `${linkRect.height}px`;
+      indicator.style.width = `${width}px`;
       indicator.style.opacity = '1';
 
       // Keep active link visible within the scrollable TOC
@@ -259,7 +269,10 @@ if (depth >= 3) {
       if (top < tocScroll.scrollTop) {
         tocScroll.scrollTo({ top, behavior: 'smooth' });
       } else if (bottom > tocScroll.scrollTop + tocScroll.clientHeight) {
-        tocScroll.scrollTo({ top: bottom - tocScroll.clientHeight, behavior: 'smooth' });
+        tocScroll.scrollTo({
+          top: bottom - tocScroll.clientHeight,
+          behavior: 'smooth',
+        });
       }
     }
 
@@ -304,7 +317,7 @@ if (depth >= 3) {
     updateFade();
 
     window.addEventListener('scroll', updateActive, { passive: true });
-    window.addEventListener('resize', onResize,    { passive: true });
+    window.addEventListener('resize', onResize, { passive: true });
     tocScroll.addEventListener('scroll', updateFade, { passive: true });
 
     return () => {

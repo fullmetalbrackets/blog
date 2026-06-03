@@ -1,6 +1,6 @@
 ---
-import { getSortedLinks } from "@utils/collections";
-import FormattedDate from "@components/FormattedDate.astro";
+import { getSortedLinks } from '@utils/collections';
+import FormattedDate from '@components/FormattedDate.astro';
 import More from '@icons/arrow-right.svg';
 
 const links = await getSortedLinks();
@@ -82,7 +82,7 @@ const links = await getSortedLinks();
     transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
     transform: translateX(4px);
   }
-  
+
   @media (hover: hover) {
     .list:has(.link-url:hover) .link-tag {
       box-shadow: -4px -4px 0 #000;
@@ -90,7 +90,7 @@ const links = await getSortedLinks();
       outline-offset: 1px;
     }
   }
-  
+
   @media screen and (max-width: 667px) {
     a.active {
       border-bottom: 1px dotted transparent;
@@ -114,18 +114,31 @@ const links = await getSortedLinks();
     {
       links.slice(0, 5).map((link) => (
         <div class="h-entry list">
-          <a href={link.data.url} target="_blank" class="u-bookmark-of link-url" data-umami-event={`recent-link-${link.data.title}`}>
-          <span class="p-name">
-            {link.data.title}
-          </span>
-            <span class="info"><span class="link-tag">{link.data.tag}</span><FormattedDate class="dt-published" date={link.data.pubDate} />&nbsp;
-          </span>
+          <a
+            href={link.data.url}
+            target="_blank"
+            class="u-bookmark-of link-url"
+            data-umami-event={`recent-link-${link.data.title}`}
+          >
+            <span class="p-name">{link.data.title}</span>
+            <span class="info">
+              <>
+                <span class="link-tag">{link.data.tag}</span>
+                <FormattedDate class="dt-published" date={link.data.pubDate} />
+              </>
+              &nbsp;
+            </span>
           </a>
         </div>
       ))
     }
     <span class="more">
-      <a href="/links" rel="prefetch-intent archives" data-umami-event="home-links">All Links <More height={24} width={24} /></a>
+      <a
+        href="/links"
+        rel="prefetch-intent archives"
+        data-umami-event="home-links"
+        >All Links <More height={24} width={24} /></a
+      >
     </span>
   </div>
 </section>

@@ -1,13 +1,13 @@
 ---
-export const prerender = true
+export const prerender = true;
 
-import BaseLayout from "@layouts/BaseLayout.astro";
-import BackToTop from "@components/BackToTop.astro";
-import CollectionPageSchema from "@components/CollectionPageSchema.astro";
-import ItemListSchema from "@components/ItemListSchema.astro";
-import WebMentions from "@components/WebMentions.astro";
-import Comments from "@components/Comments.astro";
-import { SITE_URL } from "@consts";
+import BaseLayout from '@layouts/BaseLayout.astro';
+import BackToTop from '@components/BackToTop.astro';
+import CollectionPageSchema from '@components/CollectionPageSchema.astro';
+import ItemListSchema from '@components/ItemListSchema.astro';
+import WebMentions from '@components/WebMentions.astro';
+import Comments from '@components/Comments.astro';
+import { SITE_URL } from '@consts';
 import { getEntry } from 'astro:content';
 import Switch2 from '@img/games/switch2.svg';
 import Switch from '@img/games/switch.svg';
@@ -24,7 +24,7 @@ import PS1 from '@img/games/psx.svg';
 import XB from '@img/games/xbox.svg';
 import Steam from '@img/games/steam.svg';
 import Epic from '@img/games/epic.svg';
-import { pages } from "@data/pages";
+import { pages } from '@data/pages';
 
 const gamesEntry = await getEntry('games', 'games');
 const gamesByPlatform = gamesEntry?.data.games;
@@ -40,31 +40,36 @@ const platformIcons: Record<string, { component: any; class?: string }> = {
   'PlayStation 4': { component: PS4 },
   'PlayStation 3': { component: PS3 },
   'PlayStation 2': { component: PS2 },
-  'PlayStation': { component: PS1 },
+  PlayStation: { component: PS1 },
   'Nintendo Switch 2': { component: Switch2, class: 'switch2-icon' },
   'Nintendo Switch': { component: Switch },
-  'Wii': { component: Wii, class: 'wii-icon' },
-  'GameCube': { component: GC },
+  Wii: { component: Wii, class: 'wii-icon' },
+  GameCube: { component: GC },
   'Nintendo 3DS': { component: N3DS },
   'Nintendo DS': { component: DS },
   'GameBoy Advance': { component: GBA },
   'XBox 360': { component: XB },
-  'Steam': { component: Steam },
-  'Epic': { component: Epic, class: 'epic-icon' },
+  Steam: { component: Steam },
+  Epic: { component: Epic, class: 'epic-icon' },
 };
 
 const allGames = gamesByPlatform
   ? Object.entries(gamesByPlatform).flatMap(([platform, games]) =>
-      (games as GameEntry[]).map(game => ({
+      (games as GameEntry[]).map((game) => ({
         name: game.title,
-        type: "VideoGame",
+        type: 'VideoGame',
       }))
     )
   : [];
 
-const { title, description } = pages.find(p => p.href === "/games")!;
+const { title, description } = pages.find((p) => p.href === '/games')!;
 ---
-<BaseLayout title={title} description={description} ogImage={`${SITE_URL}/og/games.png`}>
+
+<BaseLayout
+  title={title}
+  description={description}
+  ogImage={`${SITE_URL}/og/games.png`}
+>
   <CollectionPageSchema
     slot="head"
     name={title}
@@ -73,173 +78,195 @@ const { title, description } = pages.find(p => p.href === "/games")!;
   />
   <ItemListSchema slot="head" id={`${SITE_URL}/games/#list`} items={allGames} />
   <section>
-  <h1>{title}</h1>
-  <a class="u-url" href={`https://fullmetalbrackets.com/games`} hidden>Permalink</a>
-  <hr />
-  <p class="desc">{description}</p>
-  <div class="content">
-    {gamesByPlatform && Object.entries(gamesByPlatform).map(([platform, games]) => {
-      const typedGames = games as GameEntry[];
-      const icon = platformIcons[platform];
-      const IconComponent = icon?.component;
-      return (
-        <details>
-          <summary class="games-list">
-            {IconComponent ? (
-              <IconComponent 
-                class={`platform-icon ${icon.class || ''}`}
-              />
-            ) : (
-              <span>{platform}</span>
-            )}
-            <span class="count">{typedGames.length}</span>
-          </summary>
-          <div class="details-content">
-            {platform === 'Epic' && <p class="platform-note">Every game was claimed when it was free. Not a single penny spent, only a handful played...</p>}
-            {platform === 'Steam' && <p class="platform-note">This is only games <b>I've actually played</b> since I have many games on Steam I've never even installed...</p>}
-            {platform === 'Nintendo Switch 2' && <p class="platform-note">With the exception of <b>Mario Kart World</b>, these are all <em>Nintendo Switch 2 Edition</em> upgrades of Switch games I already owned.</p>}
-            <ul>
-              {typedGames.map(game => (
-                <li>
-                  <span>{game.title}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </details>
-      );
-    })}
-  </div>
-  <WebMentions />
-  <Comments />
-  <hr/>
+    <h1>{title}</h1>
+    <a class="u-url" href={`https://fullmetalbrackets.com/games`} hidden
+      >Permalink</a
+    >
+    <hr />
+    <p class="desc">{description}</p>
+    <div class="content">
+      {
+        gamesByPlatform &&
+          Object.entries(gamesByPlatform).map(([platform, games]) => {
+            const typedGames = games as GameEntry[];
+            const icon = platformIcons[platform];
+            const IconComponent = icon?.component;
+            return (
+              <details>
+                <summary class="games-list">
+                  {IconComponent ? (
+                    <IconComponent
+                      class={`platform-icon ${icon.class || ''}`}
+                    />
+                  ) : (
+                    <span>{platform}</span>
+                  )}
+                  <span class="count">{typedGames.length}</span>
+                </summary>
+                <div class="details-content">
+                  {platform === 'Epic' && (
+                    <p class="platform-note">
+                      Every game was claimed when it was free. Not a single
+                      penny spent, only a handful played...
+                    </p>
+                  )}
+                  {platform === 'Steam' && (
+                    <p class="platform-note">
+                      This is only games <b>I've actually played</b> since I
+                      have many games on Steam I've never even installed...
+                    </p>
+                  )}
+                  {platform === 'Nintendo Switch 2' && (
+                    <p class="platform-note">
+                      With the exception of <b>Mario Kart World</b>, these are
+                      all <em>Nintendo Switch 2 Edition</em> upgrades of Switch
+                      games I already owned.
+                    </p>
+                  )}
+                  <ul>
+                    {typedGames.map((game) => (
+                      <li>
+                        <span>{game.title}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </details>
+            );
+          })
+      }
+    </div>
+    <WebMentions />
+    <Comments />
+    <hr />
+    <BackToTop />
+  </section>
   <BackToTop />
-</section>
-<BackToTop />
 
-<style>
-  section {
-    margin-bottom: 2em;
-  }
+  <style>
+    section {
+      margin-bottom: 2em;
+    }
 
-  .desc {
-    margin: 1em auto 1.5em auto;
-    font-size: 1em;
-  }
-
-  .content {
-    margin: 0 auto 2em auto;
-    max-width: 1000px;
-  }
-
-  details {
-    margin-bottom: 0.5em;
-    padding: 0;
-  }
-  
-  details[open] {
-    border-bottom: none;
-  }
-
-  details {
-    border-bottom: 1px dotted var(--border);
-  }
-
-  summary > * {
-    display: inline-flex;
-    vertical-align: middle;
-  }
-
-  summary svg {
-    fill: var(--emphasis);
-  }
-
-  .platform-icon {
-    width: 100px;
-    height: auto;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .count {
-    display: inline-flex;
-    justify-content: center;
-    place-items: center;
-    min-width: 22px;
-    height: 22px;
-    padding: 0 1px 0 0;
-    margin-left: 0.25em;
-    background: var(--border);
-    border-radius: 9999px;
-    font-family: var(--sub-font);
-    font-size: 0.5em;
-  }
-  
-  .platform-note {
-    padding: 4px 8px;
-    background-color: var(--dropdown);
-    border-left: 1px solid var(--primary);
-    margin: 0.5em 0 0.5em 0.85em;
-    font-family: var(--sub-font);
-    font-style: italic;
-    font-size: 0.75em;
-  }
-  
-  ul {
-    padding: 0 0 0 1em;
-    margin: 0 0 1em 0;
-  }
-  
-  li {
-    align-items: center;
-    gap: 0;
-    margin: 0 0 0 0.75em;
-    padding: 0;
-    font-size: 0.875em;
-  }
-
-  li:last-of-type {
-    margin-bottom: -1em;
-  }
-
-  .switch2-icon {
-    width: 36px;
-    height: auto;
-  }
-
-  .wii-icon {
-    width: 36px;
-    height: auto;
-  }
-
-  .epic-icon {
-    width: auto;
-    height: 32px;
-  }
-
-  details .details-content {
-    transform-origin: top;
-    overflow: hidden;
-  }
-
-  details[open] .details-content {
-    animation: bounceOpen 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-    border-bottom: 1px dotted var(--border);
-  }
-
-  details .details-content.closing {
-    animation: bounceClose 0.25s ease-in forwards;
-  }
-
-  @media screen and (max-width: 667px) {
     .desc {
-      font-size: 18px;
+      margin: 1em auto 1.5em auto;
+      font-size: 1em;
     }
-    summary {
-      display: flex;
+
+    .content {
+      margin: 0 auto 2em auto;
+      max-width: 1000px;
     }
-    li span {
-      font-size: 18px;
+
+    details {
+      margin-bottom: 0.5em;
+      padding: 0;
     }
-  }
-</style>
+
+    details[open] {
+      border-bottom: none;
+    }
+
+    details {
+      border-bottom: 1px dotted var(--border);
+    }
+
+    summary > * {
+      display: inline-flex;
+      vertical-align: middle;
+    }
+
+    summary svg {
+      fill: var(--emphasis);
+    }
+
+    .platform-icon {
+      width: 100px;
+      height: auto;
+      margin: 0;
+      padding: 0;
+    }
+
+    .count {
+      display: inline-flex;
+      justify-content: center;
+      place-items: center;
+      min-width: 22px;
+      height: 22px;
+      padding: 0 1px 0 0;
+      margin-left: 0.25em;
+      background: var(--border);
+      border-radius: 9999px;
+      font-family: var(--sub-font);
+      font-size: 0.5em;
+    }
+
+    .platform-note {
+      padding: 4px 8px;
+      background-color: var(--dropdown);
+      border-left: 1px solid var(--primary);
+      margin: 0.5em 0 0.5em 0.85em;
+      font-family: var(--sub-font);
+      font-style: italic;
+      font-size: 0.75em;
+    }
+
+    ul {
+      padding: 0 0 0 1em;
+      margin: 0 0 1em 0;
+    }
+
+    li {
+      align-items: center;
+      gap: 0;
+      margin: 0 0 0 0.75em;
+      padding: 0;
+      font-size: 0.875em;
+    }
+
+    li:last-of-type {
+      margin-bottom: -1em;
+    }
+
+    .switch2-icon {
+      width: 36px;
+      height: auto;
+    }
+
+    .wii-icon {
+      width: 36px;
+      height: auto;
+    }
+
+    .epic-icon {
+      width: auto;
+      height: 32px;
+    }
+
+    details .details-content {
+      transform-origin: top;
+      overflow: hidden;
+    }
+
+    details[open] .details-content {
+      animation: bounceOpen 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      border-bottom: 1px dotted var(--border);
+    }
+
+    details .details-content.closing {
+      animation: bounceClose 0.25s ease-in forwards;
+    }
+
+    @media screen and (max-width: 667px) {
+      .desc {
+        font-size: 18px;
+      }
+      summary {
+        display: flex;
+      }
+      li span {
+        font-size: 18px;
+      }
+    }
+  </style></BaseLayout
+>

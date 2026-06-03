@@ -1,82 +1,98 @@
 ---
 export const prerender = true;
 
-import BackToTop from "@components/BackToTop.astro";
-import BaseLayout from "@layouts/BaseLayout.astro";
-import FormattedDate from "@components/FormattedDate.astro";
-import { getSortedPostroll } from "@utils/collections";
-import BreadcrumbSchema from "@components/BreadcrumbSchema.astro";
-import CollectionPageSchema from "@components/CollectionPageSchema.astro";
-import ItemListSchema from "@components/ItemListSchema.astro";
-import WebMentions from "@components/WebMentions.astro";
-import Comments from "@components/Comments.astro";
-import { SITE_URL } from "@consts";
+import BackToTop from '@components/BackToTop.astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import FormattedDate from '@components/FormattedDate.astro';
+import { getSortedPostroll } from '@utils/collections';
+import BreadcrumbSchema from '@components/BreadcrumbSchema.astro';
+import CollectionPageSchema from '@components/CollectionPageSchema.astro';
+import ItemListSchema from '@components/ItemListSchema.astro';
+import WebMentions from '@components/WebMentions.astro';
+import Comments from '@components/Comments.astro';
+import { SITE_URL } from '@consts';
 import { Image } from 'astro:assets';
-import { pages } from "@data/pages";
+import { pages } from '@data/pages';
 
 const posts = await getSortedPostroll();
-const { title, description } = pages.find(p => p.href === "/postroll")!;
+const { title, description } = pages.find((p) => p.href === '/postroll')!;
 
-const postrollItems = posts.map(post => ({
+const postrollItems = posts.map((post) => ({
   name: post.data.title,
   url: post.data.url,
-  type: "Article",
+  type: 'Article',
 }));
 ---
 
-<BaseLayout title={title} description={description} ogImage={`${SITE_URL}/og/postroll.png`}>
-  <BreadcrumbSchema slot="head" crumbs={[
-    { name: "Home", url: `${SITE_URL}` },
-    { name: "Postroll", url: `${SITE_URL}/postroll` }
-  ]} />
+<BaseLayout
+  title={title}
+  description={description}
+  ogImage={`${SITE_URL}/og/postroll.png`}
+>
+  <BreadcrumbSchema
+    slot="head"
+    crumbs={[
+      { name: 'Home', url: `${SITE_URL}` },
+      { name: 'Postroll', url: `${SITE_URL}/postroll` },
+    ]}
+  />
   <CollectionPageSchema
     slot="head"
     name={title}
     description={description}
     url={`${SITE_URL}/postroll`}
   />
-  <ItemListSchema slot="head" id={`${SITE_URL}/postroll/#list`} items={postrollItems} />
+  <ItemListSchema
+    slot="head"
+    id={`${SITE_URL}/postroll/#list`}
+    items={postrollItems}
+  />
   <section class="h-feed" data-pagefind-body>
     <h1 class="p-name">{title}</h1>
     <a class="u-url" href={`${SITE_URL}/postroll`} hidden>Permapost</a>
     <hr />
     <p>
-      <span class="total">{posts.length}</span> articles, blog posts and other writings from across the web that I thought worth sharing. <i>(All links are external and open in new tab.)</i>
+      <span class="total">{posts.length}</span> articles, blog posts and other writings
+      from across the web that I thought worth sharing. <i
+        >(All links are external and open in new tab.)</i
+      >
     </p>
     <ul>
       {
         posts.map((post) => (
-            <li class="h-entry postroll-card">
+          <li class="h-entry postroll-card">
             <a
-                href={post.data.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="u-bookmark-of card-link"
-                data-umami-event={`postroll-${post.data.title}`}
+              href={post.data.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="u-bookmark-of card-link"
+              data-umami-event={`postroll-${post.data.title}`}
             >
-                <div class="card-image">
+              <div class="card-image">
                 <Image
-                    src={post.data.image}
-                    alt={post.data.title}
-                    width={600}
-                    height={315}
-                    loading="eager"
-                    decoding="async"
+                  src={post.data.image}
+                  alt={post.data.title}
+                  width={600}
+                  height={315}
+                  loading="eager"
+                  decoding="async"
                 />
-                </div>
-                <div class="card-body">
+              </div>
+              <div class="card-body">
                 <span class="p-name title-post">{post.data.title}</span>
-                <span class="rel-author author">By <i>{post.data.author}</i></span>
+                <span class="rel-author author">
+                  By <i>{post.data.author}</i>
+                </span>
                 <FormattedDate class="dt-published" date={post.data.pubDate} />
-                </div>
+              </div>
             </a>
-            </li>
+          </li>
         ))
       }
     </ul>
     <WebMentions />
     <Comments />
-    <hr/>
+    <hr />
     <BackToTop />
   </section>
 </BaseLayout>
@@ -133,7 +149,9 @@ const postrollItems = posts.map(post => ({
 
   @media (hover: hover) {
     .card-link {
-      transition: 0.2s ease, transform 0.2s ease;
+      transition:
+        0.2s ease,
+        transform 0.2s ease;
     }
     .card-link:hover {
       transform: scale(1.03);
@@ -182,6 +200,6 @@ const postrollItems = posts.map(post => ({
     }
     ul {
       grid-template-columns: 1fr;
-    }    
+    }
   }
 </style>

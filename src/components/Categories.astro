@@ -27,7 +27,7 @@ const tags = await getSortedTags();
     margin: 0.25em;
   }
   .label a {
-    color: #000
+    color: #000;
   }
   .count {
     display: inline-flex;
@@ -59,20 +59,22 @@ const tags = await getSortedTags();
 
 <section>
   <h2>Categories</h2>
-    <ul>
-      {tags.map(({ tag, count }) => (
+  <ul>
+    {
+      tags.map(({ tag, count }) => (
         <li>
           <button>
-            <a href={`/categories/${tag}/`} rel="prefetch-intent tag" data-umami-event={`categories-${tag}`}>
-              <span class="label">
-                {tag}
-              </span>
-              <span class="count">
-                {count}
-              </span>
+            <a
+              href={`/categories/${tag}/`}
+              rel="prefetch-intent tag"
+              data-umami-event={`categories-${tag}`}
+            >
+              <span class="label">{tag}</span>
+              <span class="count">{count}</span>
             </a>
           </button>
         </li>
-      ))}
-    </ul>
+      ))
+    }
+  </ul>
 </section>

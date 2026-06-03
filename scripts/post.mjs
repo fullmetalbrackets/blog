@@ -14,9 +14,7 @@ const datePart = now.toISOString().split('T')[0];
 const pubDate = `${datePart} 12:00:00`;
 
 const titlify = (str) =>
-  str
-    .replace(/^./, (c) => c.toUpperCase())
-    .replace(/\bi\b/g, 'I');
+  str.replace(/^./, (c) => c.toUpperCase()).replace(/\bi\b/g, 'I');
 
 const raw = process.argv.slice(2).join(' ');
 

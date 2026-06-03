@@ -1,5 +1,5 @@
 ---
-import Date from "@icons/calendar.svg";
+import Date from '@icons/calendar.svg';
 
 interface Props {
   date: Date;
@@ -9,19 +9,25 @@ interface Props {
   class?: string;
 }
 
-const { date, monthFormat = 'long', noDay = false, showTime = false, class: className } = Astro.props;
+const {
+  date,
+  monthFormat = 'long',
+  noDay = false,
+  showTime = false,
+  class: className,
+} = Astro.props;
 
 const dateOptions: Intl.DateTimeFormatOptions = {
-  year: "numeric",
+  year: 'numeric',
   month: monthFormat,
-  ...(noDay ? {} : { day: "numeric" }),
-  ...(showTime ? { hour: "numeric", minute: "2-digit" } : {}),
+  ...(noDay ? {} : { day: 'numeric' }),
+  ...(showTime ? { hour: 'numeric', minute: '2-digit' } : {}),
 };
 ---
 
 <time datetime={date?.toISOString()} class={className}>
   <Date width={24} height={24} />
-  <span>{date?.toLocaleDateString("en-us", dateOptions)}</span>
+  <span>{date?.toLocaleDateString('en-us', dateOptions)}</span>
 </time>
 
 <style scoped>
