@@ -1,6 +1,7 @@
 import { defineConfig, fontProviders } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
+import { unified } from '@astrojs/markdown-remark';
 import { remarkReadingTime } from './src/utils/remark-reading-time.ts';
 import rehypeExternalLinks from 'rehype-external-links';
 import remarkDirective from 'remark-directive';
@@ -27,35 +28,39 @@ export default defineConfig({
   prefetch: true,
 
   markdown: {
-    rehypePlugins: [
-      rehypeSlug,
-      [
-        rehypeAutolinkHeadings,
-        {
-          behavior: 'prepend',
-          test: 'h2',
-          properties: {
-            class: 'h2 heading-link',
-            ariaLabel: 'Link to this section',
-          },
-          content: {
-            type: 'element',
-            tagName: 'span',
-            properties: { className: ['link-icon'] },
-          },
-        },
-      ],
-      [
-        rehypeExternalLinks,
-        {
-          target: '_blank',
-          rel: ['noopener', 'noreferrer'],
-        },
-      ],
-      rehypeCodeblockCopy,
-    ],
     syntaxHighlight: 'prism',
-    remarkPlugins: [remarkReadingTime, remarkDirective, remarkDirectiveSugar],
+    processor: unified(
+      {
+        rehypePlugins: [
+          rehypeSlug,
+          [
+            rehypeAutolinkHeadings,
+            {
+              behavior: 'prepend',
+              test: 'h2',
+              properties: {
+                class: 'h2 heading-link',
+                ariaLabel: 'Link to this section',
+              },
+              content: {
+                type: 'element',
+                tagName: 'span',
+                properties: { className: ['link-icon'] },
+              },
+            },
+          ],
+          [
+            rehypeExternalLinks,
+            {
+              target: '_blank',
+              rel: ['noopener', 'noreferrer'],
+            },
+          ],
+          rehypeCodeblockCopy,
+        ],
+        remarkPlugins: [remarkReadingTime, remarkDirective, remarkDirectiveSugar],
+      },
+    )
   },
 
   compressHTML: true,
