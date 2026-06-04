@@ -2,7 +2,6 @@
     "name": "blog",
     "main": "@astrojs/cloudflare/entrypoints/server",
     "send_metrics": false,
-    "wrangler_log": "debug",
     "compatibility_flags": [
         "nodejs_compat"
     ],
