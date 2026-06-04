@@ -1,6 +1,7 @@
 {
     "name": "blog",
     "main": "@astrojs/cloudflare/entrypoints/server",
+    "send_metrics": false,
     "compatibility_flags": [
         "nodejs_compat"
     ],
