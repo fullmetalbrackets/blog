@@ -3072,9 +3072,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gab-astro-compress@github:fullmetalbrackets/astro-compress":
+"gab-astro-compress@npm:^0.1.2":
   version: 0.1.2
-  resolution: "gab-astro-compress@https://github.com/fullmetalbrackets/astro-compress.git#commit=c148e2a2f8ead37845249cc7668782048c5a459c"
+  resolution: "gab-astro-compress@npm:0.1.2"
   dependencies:
     chalk: "npm:^5.6.2"
     csso: "npm:^5.0.5"
@@ -3082,7 +3082,7 @@ __metadata:
     sharp: "npm:^0.34.5"
     svgo: "npm:^3.3.2"
     terser: "npm:^5.37.0"
-  checksum: 10c0/dfd5163daaae1cef977ee7ee0044a45e427f5f7257dd9534a41515ed5d0fc6c84f27e51a3ef8b558487988acacc3c71fc647e8fbc10d52fe50a6ba6ba1b7f7f6
+  checksum: 10c0/310718e4a1e5e8dad21fc877dd9def5e024c2f378e15b87f0814c7987ea0a61646541f408faef1d172bcc05eae4ecb076cd244342d13f85d99990ec9d94b0365
   languageName: node
   linkType: hard
 
@@ -5216,7 +5216,7 @@ __metadata:
     astro: "npm:^6.4.3"
     astro-embed: "npm:^0.13.0"
     astro-og-canvas: "npm:^0.11.1"
-    gab-astro-compress: "github:fullmetalbrackets/astro-compress"
+    gab-astro-compress: "npm:^0.1.2"
     glightbox: "npm:^3.3.1"
     mdast-util-to-string: "npm:^4.0.0"
     prettier: "npm:^3.8.3"
