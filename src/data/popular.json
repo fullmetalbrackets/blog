@@ -1,7 +1,7 @@
 [
   "plex-remote-access-tailscale",
-  "oci-free-tier-breakdown",
   "how-i-setup-home-server",
+  "oci-free-tier-breakdown",
   "reverse-proxy-using-nginx-adguardhome-cloudflare",
   "how-to-setup-the-search-function-in-qbittorrent-and-add-search-plugins",
   "upgrade-debian-12-bookworm-debian-13-trixie",
@@ -12,11 +12,11 @@
   "solid-explorer-samba-share",
   "pihole-anywhere-tailscale",
   "self-host-website-cloudflare-tunnel",
-  "expose-plex-tailscale-vps",
   "xplore-android-smb-share",
+  "expose-plex-tailscale-vps",
   "two-drives-mergerfs",
   "turn-off-display-linux-terminal",
   "reverse-proxy-nginx-pihole",
   "expose-plex-with-cloudflare",
-  "watchtower-notifications"
+  "setting-up-jellyfin-in-docker"
 ]
