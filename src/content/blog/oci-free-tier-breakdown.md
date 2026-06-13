@@ -2,9 +2,16 @@
 title: Breaking down the free tier of Oracle Cloud Infrastructure
 description: Oracle Cloud Infrastructure, or OCI for short, has a very generous free tier, but I see a lot of people on the oraclecloud and selfhosted subreddits being confused about exactly what's included, so here is a straightforward breakdown of every service and allotment in the free tier.
 pubDate: 2026-01-06
+updatedDate: 2026-06-13 12:00:00
 tags: ['oracle cloud', 'self-hosting']
 related: ['expose-plex-tailscale-vps']
 ---
+
+> [warning] Important!
+>
+> Beginning on **June 15, 2026** the free-tier Ampere A1 limits will be reduced to **2 OPCUs and 12 GB memory** total, across all A1 instances, down from 4 OCPUs and 24 GB memory. [The OCI documentation shows the new limits](https://docs.oracle.com/en-us/iaas/Content/FreeTier/freetier_topic-Always_Free_Resources.htm).
+>
+> Please read the linked documentation and see the [Arm Compute Instances section below](#arm-compute-instance) for more details.
 
 ## Free what now?
 
@@ -28,26 +35,36 @@ Essentially, the E2 Micro instances are _burstable virtual machines_, meaning th
 
 ## Arm Compute Instance
 
-_Arm-based Ampere A1 cores and 24 GB of memory usable as 1 VM or up to 4 VMs_
-_Always Free: 3000 OCPU hours and 18,000 GB hours per month_
+> [warning] Important!
+>
+> As explained at the top, **beginning June 15, 2026 the free-tier Ampere A1 limits will be reduced to 2 OPCUs and 12 GB memory**. As of June 13 when I am updating this post, not everything on Oracle/OCI has been updated to reflect these new limits, however. [The documentation shows the new limits](https://docs.oracle.com/en-us/iaas/Content/FreeTier/freetier_topic-Always_Free_Resources.htm) (scroll down to "Available Shapes"), however neither [the marketing site](https://www.oracle.com/cloud/free/) nor the OCI dashboard reflect this yet.
+>
+> [Per a redditor who took the time to chat with Oracle Support about this](https://www.reddit.com/r/oraclecloud/comments/1u4lzkk/new_free_tier_limits_confirmed_by_oracle_support/), **free-tier instances** over the new 2 OPCU and 12 GB memory limits will be shutdown and **Pay As You Go users over the new limits will be charged beginning June 15.**
+>
+> This means free-tier users will have to **downgrade** their Ampere A1 instance(s) to this new lower limit in order to get them working again, while **PAYG users will not have their instances auto-shutdown, and will simply be billed for going over.** An Ampere A1 instance on PAYG using 4 OCPUs and 24 GB memory will cost approximately $27/month after this date, if used for an entire calendar month.
+> 
+> I will post a downgrade guide soon when I get a chance to do it myself, or you can just check out [Oracle's official guide on changing shapes](https://docs.oracle.com/en-us/iaas/Content/Compute/Tasks/resizinginstances.htm).
 
-This is the thing that gets everyone interested in OCI's free tier -- the `VM.Ampere.A1.Flex`, a VM with multiple cores and a good amount of memory, plus additional bandwidth to boot. Oracle's description is pretty clear -- up to 4 OCPUs and 24 GB memory, either all in one instance or spread out across up to four instances. (It's flexible.) But what about the hours thing?
+_Arm-based Ampere A1 cores and 12 GB of memory usable as 1 VM or up to 4 VMs_
+_Always Free: 1,500 OCPU hours and 9,000 GB hours per month_
 
-What it means is that Ampere VMs have a limit of 3,000 hours of compute time and 18,000 GB-hours of memory usage _per month across all Ampere VMs_. These limits are made specifically so that it's impossible to go over them _unless you use more than 4 OCPUs/24 GB memory_. Let's check the math.
+This is the thing that gets everyone interested in OCI's free tier -- the `VM.Ampere.A1.Flex`, a VM with multiple cores and a good amount of memory, plus additional bandwidth to boot. Oracle's description is pretty clear -- up to **2 OCPUs** and **12 GB memory**, either all in one instance or spread out across up to four instances. (It's flexible.) But what about the hours thing?
+
+What it means is that Ampere VMs have a limit of 1,500 hours of compute time and 9,000 GB-hours of memory usage _per month across all Ampere VMs_. These limits are made specifically so that it's impossible to go over them _unless you use more than 2 OCPUs/12 GB memory_. Free-tier users will be unable to create instances above these limits, while Pay As You Go users will be billed for that additional usage. Let's check the math.
 
 ```
-4 OCPUs * 24 hrs * 31 days = 2976 hours of compute per month
+2 OCPUs * 24 hrs * 31 days = 1488 hours of compute per month
 
-744 hrs per month * 24 GB memory = 17,856 GB-hours of memory usage per month
+744 hrs per month * 12 GB memory = 8928 GB-hours of memory usage per month
 ```
 
-So in a set up where you have one Ampere instance with the maximum resource of 4 OCPUs and 24 GB memory, or where you're sharing those resources between two or four instances, you remain within the free tier limits.
+So in a set up where you have one Ampere instance with the maximum resource of 2 OCPUs and 12 GB memory, or where you're sharing those resources between multiple instances, you remain within the free tier limits. This applies to Pay As You Go users as well, stay within the free-tier limits and you will not be billed.
 
 > It's important to note that in most regions, attempting to provision an Ampere A1 instance is nearly impossible and almost always results in **out of capacity errors**. (Unless you're trying in a region that actually has capacity, or you're just very lucky.)
 >
-> The most surefire way of being able to provision Ampere VMs is to _switch to a Pay As You Go account_ with OCI. You'll need to provide a valid credit card, and there will be a temporary $100 charge to verify it is valid, but then the charge goes away.
+> The most surefire way of being able to provision Ampere VMs is to _switch to a Pay As You Go account_ with OCI. You'll need to provide a valid credit card, and there will be a _temporary $100 charge_ to verify it is valid, but then the charge goes away.
 >
-> Switching to PAYG does not negate the always free resources, but the guardrails will be removed and you'll be billed if you use anything that is NOT part of the always free tier, so you will have to be extra careful.
+> Switching to PAYG does not negate the always free resources, you can still use free-tier resources but the guardrails will be removed and you'll be billed if you use anything that is NOT part of the always free tier, so you will have to be extra careful.
 
 ## APEX
 
