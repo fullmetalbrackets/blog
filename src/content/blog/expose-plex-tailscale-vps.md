@@ -2,17 +2,20 @@
 title: 'How to expose Plex to share your library with others from behind CGNAT using Tailscale and a free Oracle Cloud instance'
 description: 'I wrote before about sharing my Plex library via Cloudflare Tunnel, but that is technically against their TOS and liable to get your account in trouble. So I switched to using a free-tier Oracle VM, securely connecting it to my home network via Tailscale, and exposing Plex via reverse proxy on the VM. It works like a charm!'
 pubDate: 2024-09-03
-updatedDate: 2025-08-15
+updatedDate: 2026-06-13 12:00:00
 tags: ['plex', 'tailscale', 'oracle cloud', 'guide']
-related: ['comprehensive-guide-tailscale-securely-access-home-network', 'expose-plex-with-cloudflare']
+related: ['comprehensive-guide-tailscale-securely-access-home-network', 'expose-plex-with-cloudflare', 'how-to-change-shape-of-an-existing-oracle-cloud-infrastructure-vm-instance']
 ---
 
-> [warning] Important
+> [warning] Important information about Plex Pass
 >
 > Effective April 29, 2025 an active Plex Pass subscription is required to remotely access Plex -- the below still works as is to get through CGNAT with **Plex Pass**, however if you are trying to share your library **without** Plex Pass (or without the user you're sharing with have a Remote Watch Pass) then additional configuration is required.
 >
-> I have added a section at the end to setup the Plex server as a
-> subnet router and exit node, which seems to be a workaround to get this to work. Please <a href="mailto:contact@fullmetalbrackets.com">let me know</a> if this no longer works, since I cannot test it myself as a lifetime Plex Pass owner!
+> I have added a section at the end to setup the Plex server as a subnet router and exit node, which seems to be a workaround to get this to work. Please <a href="mailto:contact@fullmetalbrackets.com">let me know</a> if this no longer works, since I cannot test it myself as a lifetime Plex Pass owner!
+
+> [warning] Important information about Oracle Cloud Infrastructure free tier
+>
+> Effective June 16, 2026 the OCI free tier limits for **Arm-based Ampere A1 instances** have been lowered to a **maximum of 2 OCPUs and 12 GB of memory**, down from a former limit of 4 OCPUs and 24 GB of memory that was in place for many years. [See this post for more details.](/blog/how-to-change-shape-of-an-existing-oracle-cloud-infrastructure-vm-instance)
 
 ## What and Why
 
@@ -42,9 +45,9 @@ Finally, you'll need a Plex server already set up. (And I'll assume it's running
 
 We'll be using a free-tier VM from Oracle Cloud Infrastructure (OCI) -- specifically, an E2 Micro instance which runs on a single-core AMD OCPU, has 1 GB of memory and a 0.48 Gbps connection, more than enough for streaming even 4K content through Plex. You can run _TWO_ of these VMs **totally free**.
 
-> In addition to two _AMD E2 Micro_ instances, the OCI free tier includes one _Ampere A1 Flex_ instance with up to 4 Arm OCPUs, up to 24 GB of memory, and a connection of 1 Gbps per OCPU.
+> In addition to two _AMD E2 Micro_ instances, the OCI free tier includes one _Ampere A1 Flex_ instance with up to 2 Arm OCPUs, up to 12 GB of memory, and a connection of 1 Gbps per OCPU.
 >
-> These are the **total limits across all Ampere instances**, you can instead split these resources -- for example two instances with 2 OCPUs and 12 GB of memory, or 4 OCPUs with 6 GB of memory each, etc.
+> These are the **total limits across all Ampere instances**, you can instead split these resources -- for example two instances with 1 OCPU and 6 GB of memory, or one instance with the max 2 OCPUs with 12 GB of memory each.
 
 > [warning] Important
 >

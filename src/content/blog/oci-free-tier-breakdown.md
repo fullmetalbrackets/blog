@@ -4,7 +4,7 @@ description: Oracle Cloud Infrastructure, or OCI for short, has a very generous 
 pubDate: 2026-01-06
 updatedDate: 2026-06-13 12:00:00
 tags: ['oracle cloud', 'self-hosting']
-related: ['expose-plex-tailscale-vps']
+related: ['how-to-change-shape-of-an-existing-oracle-cloud-infrastructure-vm-instance', 'expose-plex-tailscale-vps']
 ---
 
 > [warning] Important!
@@ -43,7 +43,7 @@ Essentially, the E2 Micro instances are _burstable virtual machines_, meaning th
 >
 > This means free-tier users will have to **downgrade** their Ampere A1 instance(s) to this new lower limit in order to get them working again, while **PAYG users will not have their instances auto-shutdown, and will simply be billed for going over.** An Ampere A1 instance on PAYG using 4 OCPUs and 24 GB memory will cost approximately $27/month after this date, if used for an entire calendar month.
 > 
-> I will post a downgrade guide soon when I get a chance to do it myself, or you can just check out [Oracle's official guide on changing shapes](https://docs.oracle.com/en-us/iaas/Content/Compute/Tasks/resizinginstances.htm).
+> Changing an instance shape is quick and easy, [I wrote a quick guide here](/blog/how-to-change-shape-of-an-existing-oracle-cloud-infrastructure-vm-instance) or you can just check out [Oracle's official guide on changing shapes](https://docs.oracle.com/en-us/iaas/Content/Compute/Tasks/resizinginstances.htm).
 
 _Arm-based Ampere A1 cores and 12 GB of memory usable as 1 VM or up to 4 VMs_
 _Always Free: 1,500 OCPU hours and 9,000 GB hours per month_
