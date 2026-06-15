@@ -6,4 +6,4 @@ image: ./_images/the-running-man.webp
 rating: loved
 ---
 
-Ok, this was awesome. Way better the original, and way different. (But apparently this is accurate to the book? Gonna have to read it...)
+Ok, this was awesome. Way better than the original, and way different. (But apparently this is accurate to the book? Gonna have to read it...)
