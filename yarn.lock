@@ -147,9 +147,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@astrojs/cloudflare@npm:^13.5.4":
-  version: 13.6.1
-  resolution: "@astrojs/cloudflare@npm:13.6.1"
+"@astrojs/cloudflare@npm:^13.7.0":
+  version: 13.7.0
+  resolution: "@astrojs/cloudflare@npm:13.7.0"
   dependencies:
     "@astrojs/internal-helpers": "npm:0.10.0"
     "@astrojs/underscore-redirects": "npm:1.0.3"
@@ -160,7 +160,7 @@ __metadata:
   peerDependencies:
     astro: ^6.3.0
     wrangler: ^4.83.0
-  checksum: 10c0/df0e2c97b549bc1337a1c15a066998edc7653344cb2e41c4fd74976d9ee5b50ff9448a657c9e0398dcbf8eb138e3e76a279050b6aa17abdad763ff70ffea1bad
+  checksum: 10c0/3ae4292b26ad8a1eb916714fb013de0d98718fa2d9365def15e3621e7999a70a29d51007b33f541e2b4a631c996621ae2bb3ffe8f16d51b94130b4cceb2f3beb
   languageName: node
   linkType: hard
 
@@ -255,9 +255,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@astrojs/mdx@npm:^6.0.1":
-  version: 6.0.2
-  resolution: "@astrojs/mdx@npm:6.0.2"
+"@astrojs/mdx@npm:^6.0.3":
+  version: 6.0.3
+  resolution: "@astrojs/mdx@npm:6.0.3"
   dependencies:
     "@astrojs/internal-helpers": "npm:0.10.0"
     "@astrojs/markdown-remark": "npm:7.2.0"
@@ -274,12 +274,12 @@ __metadata:
     unist-util-visit: "npm:^5.1.0"
     vfile: "npm:^6.0.3"
   peerDependencies:
-    "@astrojs/markdown-satteri": 0.2.2
+    "@astrojs/markdown-satteri": 0.3.0
     astro: ^6.4.0
   peerDependenciesMeta:
     "@astrojs/markdown-satteri":
       optional: true
-  checksum: 10c0/bdd852b39dc0f6ea86542935a32c9e061db1968bb8ca8cd85753e425166ad39b2939903be3c9d015816d1d5ffb168a5b11288a072ffdb79e40e1272bc303f005
+  checksum: 10c0/465a22ed07325e7dc84e926ec24d0f1f5b9b2770342e6cb1746ccf752f1bcdcd46e8beb4ecbee6f298a4bbe535ace02fdbd0ae29c1c81aa1e5201e252be9917f
   languageName: node
   linkType: hard
 
@@ -2053,9 +2053,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"astro@npm:6.4.3":
-  version: 6.4.3
-  resolution: "astro@npm:6.4.3"
+"astro@npm:6.4.7":
+  version: 6.4.7
+  resolution: "astro@npm:6.4.7"
   dependencies:
     "@astrojs/compiler": "npm:^4.0.0"
     "@astrojs/internal-helpers": "npm:0.10.0"
@@ -2118,7 +2118,7 @@ __metadata:
       optional: true
   bin:
     astro: ./bin/astro.mjs
-  checksum: 10c0/8d6bcd28f7e06bc30d9dc6ce9b71dd737c07eb270475376a047699c315bf5382fb0b82741c6765573895f421b7b3e06e01f9b45e6e24717b164e9dcb11b8d28c
+  checksum: 10c0/92b44a1a93c68a0be3d6fae198593382b577c4e402e2a3a6af87a26759142cc95a0890e8cfb0b7c5091d33184361fd2ca086b2877fb68d24851233de21468f16
   languageName: node
   linkType: hard
 
@@ -5208,12 +5208,12 @@ __metadata:
   dependencies:
     "@ascorbic/feed-loader": "npm:^2.0.1"
     "@astrojs/check": "npm:^0.9.9"
-    "@astrojs/cloudflare": "npm:^13.5.4"
+    "@astrojs/cloudflare": "npm:^13.7.0"
     "@astrojs/markdown-remark": "npm:^7.1.2"
-    "@astrojs/mdx": "npm:^6.0.1"
+    "@astrojs/mdx": "npm:^6.0.3"
     "@astrojs/rss": "npm:^4.0.18"
     "@astrojs/sitemap": "npm:^3.7.2"
-    astro: "npm:^6.4.3"
+    astro: "npm:^6.4.7"
     astro-embed: "npm:^0.13.0"
     astro-og-canvas: "npm:^0.11.1"
     gab-astro-compress: "npm:^0.1.2"
