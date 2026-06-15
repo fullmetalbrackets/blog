@@ -2,6 +2,7 @@
 title: Create a custom entity in Home Assistant to detect your public IP address and any changes to it
 description: "When having a dynamic IP address that can change without you noticing, it can be handy to have a sensor you can add to your Home Assistant that shows the current IP and can be automated to send you notifications when it changes."
 pubDate: 2026-05-13 12:00:00
+updatedDate: 2026-06-15 12:00:00
 tags: ['home assistant', 'code snippet']
 related: ['setup-home-assistant-sweet-potato-debian', 'comprehensive-guide-tailscale-securely-access-home-network']
 ---
@@ -35,7 +36,7 @@ I like to set up a little badge on my main dashboard that shows the current IP a
 
 If you have the Home Assistant companion app running on your phone or tablet, you can create automations that send notifications to that device, no need for an external push notification service. You just need to be connected to your Home Assistant instance via the companion app, either by being on the same wireless network, or via Home Assistant Cloud or a VPN for remote connections. (I use [Tailscale](https://tailscale.com/) for this.)
 
-Using the new WAN Adress sensor we created, we can set up an automation that sends a notification to the companion app when the WAN IP Address changes.
+Using the new WAN Adress sensor we created, we can set up an automation that sends a notification to the companion app when the WAN IP Address changes. We'll also make a "persistent notification" that shows up within Home Assistant itself, but this is optional.
 
 In the Home Assistant web UI, go to _Settings_ -> _Automations & Scenes_, then click on the button **+ Create automation**. Choose **Create new automation** from the choices that pop-up, then on _New automation_ page click on the **3 vertical dots** on the top-right and choose _Edit in YAML_.
 
@@ -56,10 +57,12 @@ triggers:
     - unavailable
 conditions: []
 actions:
+ # send notification to companion app
  - action: notify.mobile_app_my_phone # use your actual device name
    metadata: {}
    data:
     message: Public IP has changed to {{ states('sensor.wan_address') }}
+ # notification within Home Assistant (optional)
  - action: notify.persistent_notification
    metadata: {}
    data:
