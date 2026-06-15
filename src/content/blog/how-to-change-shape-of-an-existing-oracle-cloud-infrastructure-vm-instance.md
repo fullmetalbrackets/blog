@@ -2,7 +2,7 @@
 title: How to change shape of an existing Oracle Cloud Infrastructure VM instance
 pubDate: 2026-06-13 12:00:00
 description: As of June 15, 2026 the OCI always-free tier will halve the limits of Arm-based Ampere A1 instances down to 2 OCPUs and 12 GB memorys. Free tier users will have their instances shutdown until they edit the shapes to the new limits, while Pay As You Go users will be billed for using resources above these new limits! Editting the shape down (or up, if you're a paid user) is very easy, here's a quick guide on how to do it.
-tags: ['oracle cloud', 'self-hosting']
+tags: ['oracle cloud', 'self-hosting', 'guide']
 related: ['oci-free-tier-breakdown', 'expose-plex-tailscale-vps']
 ---
 
