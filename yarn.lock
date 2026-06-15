@@ -3844,7 +3844,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mdast-util-to-hast@npm:^13.0.0, mdast-util-to-hast@npm:^13.2.0":
+"mdast-util-to-hast@npm:^13.0.0, mdast-util-to-hast@npm:^13.2.1":
   version: 13.2.1
   resolution: "mdast-util-to-hast@npm:13.2.1"
   dependencies:
@@ -4983,19 +4983,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"remark-directive-sugar@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "remark-directive-sugar@npm:2.0.0"
+"remark-directive-sugar@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "remark-directive-sugar@npm:2.0.1"
   dependencies:
     "@types/hast": "npm:^3.0.4"
     "@types/mdast": "npm:^4.0.4"
     hastscript: "npm:^9.0.1"
     mdast-util-directive: "npm:^3.1.0"
-    mdast-util-to-hast: "npm:^13.2.0"
-    unist-util-visit: "npm:^5.0.0"
+    mdast-util-to-hast: "npm:^13.2.1"
+    unist-util-visit: "npm:^5.1.0"
   peerDependencies:
     remark-directive: ^4.0.0
-  checksum: 10c0/168269b7fdaf9285e891da9d6e77f8eea665d6c28bb164eb923b1ba8ea7e25117e3a32e2eb781511f102d37e3763b093626c0b89ceb04f80e17e7ce53cb98a65
+  checksum: 10c0/aa65867dea970d7f029dd8b839b3e151c725c45bd4d0036565429bb32880a21b592e62d846f58232c748c5eea3bc10f8a34c6adc858ce4352f5306125fdb9e93
   languageName: node
   linkType: hard
 
@@ -5277,7 +5277,7 @@ __metadata:
     rehype-external-links: "npm:^3.0.0"
     rehype-slug: "npm:^6.0.0"
     remark-directive: "npm:^4.0.0"
-    remark-directive-sugar: "npm:^2.0.0"
+    remark-directive-sugar: "npm:^2.0.1"
     typescript: "npm:^6.0.3"
     wrangler: "npm:^4.100.0"
   languageName: unknown
