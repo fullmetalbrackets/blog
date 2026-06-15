@@ -6,4 +6,4 @@ image: ./_images/mistborn.jpg
 rating: masterpiece
 ---
 
-It's been years since I read this, and I only read it the one time and didn't read the sequels. now that they are being made into a movie at Apple TV I read Mistborn again and will finally read the other two soon. 
+It's been years since I read this, and I only read it the one time and didn't read the sequels. Now that they are being made into a movie at Apple TV, I read Mistborn again and will finally read the other two soon.
