@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
 import FormattedDate from '@components/FormattedDate.astro';
+import ViewCount from '@components/ViewCount.astro';
 import TableOfContents from '@components/TableOfContents.astro';
 import BlogPosting from '@components/BlogPosting.astro';
 import ScrollProgress from '@components/ScrollProgress.astro';
@@ -590,6 +591,7 @@ const relatedLinks = selectedPosts.map((p) => `${SITE_URL}/blog/${p.id}`);
         )
       }
     </p>
+    <ViewCount slug={slug!} />
     <hr />
     <p class="p-summary description">{description}</p>
     <TableOfContents headings={headings} depth={tocDepth} />
@@ -640,7 +642,7 @@ const relatedLinks = selectedPosts.map((p) => `${SITE_URL}/blog/${p.id}`);
         <span>See stats</span>
         <a
           class="stats"
-          href={`https://u.adiaz.fyi/share/TtTytHU8rJy0oEzN/?path=eq./blog/${slug}/`}
+          href={`https://u.adiaz.fyi/share/TtTytHU8rJy0oEzN/?path=eq./blog/${slug}`}
           target="_blank"
           rel="noopener noreferrer"
           data-umami-event={`umami-stats-${slug}`}

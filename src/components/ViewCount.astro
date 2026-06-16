@@ -1,0 +1,66 @@
+---
+interface Props {
+  slug: string;
+  class?: string;
+}
+const { slug, class: className } = Astro.props;
+---
+
+<style scoped>
+    svg {
+        fill: var(--secondary);
+        width: 24px;
+        height: 24px;
+    }
+    span {
+        font-family: var(--sub-font);
+        font-weight: 700;
+        font-size: 0.9355em;
+        color: var(--secondary);
+    }
+    .view-counts-container * {
+        display: inline-flex;
+        gap: 0.25em;
+        place-items: center;
+    }
+    a:hover span, a:focus span {
+        color: var(--hover);
+    }
+    @media screen and (max-width: 667px) {
+        span {
+            font-size: 16px;
+        }
+    }
+</style>
+
+<span class="view-counts-container">
+    <a
+        href={`https://u.adiaz.fyi/share/TtTytHU8rJy0oEzN/?path=eq./blog/${slug}/`}
+        target="_blank"
+        rel="noopener noreferrer"
+        data-umami-event={`umami-stats-${slug}`}
+    >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Views</title><path d="M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M12,4.5C17,4.5 21.27,7.61 23,12C21.27,16.39 17,19.5 12,19.5C7,19.5 2.73,16.39 1,12C2.73,7.61 7,4.5 12,4.5M3.18,12C4.83,15.36 8.24,17.5 12,17.5C15.76,17.5 19.17,15.36 20.82,12C19.17,8.64 15.76,6.5 12,6.5C8.24,6.5 4.83,8.64 3.18,12Z" /></svg> <abbr title="See post stats on Umami"><span data-view-slug={slug} class={className}>loading</span> <span>views</span></abbr>
+    </a>
+</span>
+
+<script>
+  function initViewCounts() {
+    document.querySelectorAll<HTMLElement>("[data-view-slug]").forEach(async (el) => {
+      const slug = el.dataset.viewSlug;
+      if (!slug || el.dataset.loaded) return;
+      el.dataset.loaded = "true"; // prevent double-fetch if both triggers fire
+      try {
+        const res = await fetch(`/api/views/${encodeURIComponent(slug)}`);
+        if (!res.ok) return;
+        const { views } = (await res.json()) as { views: number };
+        if (typeof views === "number") {
+          el.textContent = views.toLocaleString();
+        }
+      } catch {}
+    });
+  }
+
+  initViewCounts(); // run immediately on script load
+  document.addEventListener("astro:page-load", initViewCounts); // re-run on View Transitions nav
+</script>
