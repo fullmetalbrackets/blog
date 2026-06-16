@@ -3,6 +3,7 @@
   "include": [".astro/types.d.ts", "**/*"],
   "exclude": ["dist"],
   "compilerOptions": {
+    "types": ["@cloudflare/workers-types"],
     "strictNullChecks": true,
     "allowJs": true,
     "baseUrl": ".",
