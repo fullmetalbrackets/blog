@@ -49,18 +49,25 @@ const { slug, class: className } = Astro.props;
     document.querySelectorAll<HTMLElement>("[data-view-slug]").forEach(async (el) => {
       const slug = el.dataset.viewSlug;
       if (!slug || el.dataset.loaded) return;
-      el.dataset.loaded = "true"; // prevent double-fetch if both triggers fire
+      el.dataset.loaded = "true";
       try {
         const res = await fetch(`/api/views/${encodeURIComponent(slug)}`);
-        if (!res.ok) return;
+        if (!res.ok) {
+          el.textContent = "—";
+          return;
+        }
         const { views } = (await res.json()) as { views: number };
         if (typeof views === "number") {
           el.textContent = views.toLocaleString();
+        } else {
+          el.textContent = "—";
         }
-      } catch {}
+      } catch {
+        el.textContent = "—";
+      }
     });
   }
 
-  initViewCounts(); // run immediately on script load
-  document.addEventListener("astro:page-load", initViewCounts); // re-run on View Transitions nav
+  initViewCounts();
+  document.addEventListener("astro:page-load", initViewCounts);
 </script>
