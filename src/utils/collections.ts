@@ -96,6 +96,7 @@ export async function getSortedPostroll() {
   );
 }
 
+// Get all entries in blogroll by date descending
 export async function getBlogroll() {
   return (await getCollection('blogroll'))
     .map((entry) => ({ id: entry.id, ...entry.data }))
@@ -109,6 +110,15 @@ export async function getSortedNotes() {
       new Date(b.data.published ?? 0).valueOf() -
       new Date(a.data.published ?? 0).valueOf()
   );
+}
+
+// Get sanitized notes
+export function cleanNoteContent(content: string | undefined): string {
+  return content
+    ?.replace(/<a[^>]*youtube\.com\/watch[^>]*>.*?<\/a>/g, '')
+    ?.replace(/<img[^>]*>/g, '')
+    ?.replace(/<a[^>]*>(.*?)<\/a>/g, '$1')
+    .trim() ?? '';
 }
 
 import type { ImageMetadata } from 'astro';
@@ -200,10 +210,7 @@ export async function getFirehose(): Promise<FirehoseEntry[]> {
       const imageUrl = (e.data.image as any)?.url as string | undefined;
       const imageAlt =
         content?.match(/<img[^>]*alt="([^"]*)"[^>]*>/)?.[1] ?? '';
-      const cleanContent = content
-        ?.replace(/<a[^>]*youtube\.com\/watch[^>]*>.*?<\/a>/g, '')
-        ?.replace(/<img[^>]*>/g, '')
-        .trim();
+      const cleanContent = cleanNoteContent(content);
       return {
         type: 'note' as const,
         title: '',
