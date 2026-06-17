@@ -3,7 +3,7 @@ import FormattedDate from './FormattedDate.astro';
 import More from '@icons/arrow-right.svg';
 import { Image } from 'astro:assets';
 import { YouTube } from 'astro-embed';
-import { getSortedNotes } from '@utils/collections';
+import { getSortedNotes, cleanNoteContent } from '@utils/collections';
 
 interface Props {
   limit?: number;
@@ -29,12 +29,7 @@ const recentNotes = (await getSortedNotes()).slice(0, limit);
         );
         const imageAlt = altMatch?.[1] ?? '';
 
-        // Strip YouTube anchor links and standalone img tags —
-        // we render both manually below so they're properly sized
-        const cleanContent = note.data.content
-          ?.replace(/<a[^>]*youtube\.com\/watch[^>]*>.*?<\/a>/g, '')
-          ?.replace(/<img[^>]*>/g, '')
-          .trim();
+        const cleanContent = cleanNoteContent(note.data.content);
 
         const hasOnlyMedia = !cleanContent && (ytId || imageUrl);
 
