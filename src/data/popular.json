@@ -18,5 +18,5 @@
   "turn-off-display-linux-terminal",
   "reverse-proxy-nginx-pihole",
   "watchtower-notifications",
-  "setting-up-jellyfin-in-docker"
+  "expose-plex-with-cloudflare"
 ]
