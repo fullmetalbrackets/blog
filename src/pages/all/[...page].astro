@@ -155,7 +155,8 @@ const pageUrl =
                         />
                       </div>
                       <div class="meta dt-published">
-                        <FormattedDate date={entry.date} />
+                        <FormattedDate monthFormat='numeric' date={entry.date} />
+                        <span class="note-hint">microblog post</span>
                       </div>
                     </>
                   ) : entry.type === 'lifestream' ? (
@@ -176,7 +177,7 @@ const pageUrl =
                           <FormattedDate
                             class="dt-published"
                             date={entry.updated ?? entry.date}
-                            monthFormat="short"
+                            monthFormat="numeric"
                           />
                         </div>
                       </div>
@@ -197,6 +198,7 @@ const pageUrl =
                         )}
                         <FormattedDate
                           class="dt-published"
+                          monthFormat='numeric'
                           date={entry.updated ?? entry.date}
                         />
                       </div>
@@ -346,10 +348,44 @@ const pageUrl =
   .entry--wiki .title {
     margin-bottom: 0;
   }
+  .entry--note .meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  .note-hint {
+    font-size: 0.75em;
+    font-family: var(--sub-font);
+    color: var(--secondary);
+    font-style: italic;
+  }
+  a.note-hint {
+    visibility: hidden;
+  }
+  .note-hint::after {
+    content: '';
+    display: inline-block;
+    width: 0.65em;
+    height: 0.65em;
+    margin-left: 0.2em;
+    margin-bottom: 0;
+    background-color: currentColor;
+    mask-image: url('/assets/external.svg');
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+    vertical-align: middle;
+  }
   .entry--lifestream {
     border-radius: 0 0.5em 0.5em 0;
   }
   li:hover .title {
+    color: var(--hover);
+    transition: all 0.25s ease-out;
+  }
+  li:hover .entry--note .note-hint {
+    visibility: visible;
     color: var(--hover);
     transition: all 0.25s ease-out;
   }
