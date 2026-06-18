@@ -9,7 +9,7 @@ related: ['how-to-change-shape-of-an-existing-oracle-cloud-infrastructure-vm-ins
 
 > [warning] Important!
 >
-> Beginning on **June 15, 2026** the free-tier Ampere A1 limits will be reduced to **2 OPCUs and 12 GB memory** total, across all A1 instances, down from 4 OCPUs and 24 GB memory. [The OCI documentation shows the new limits](https://docs.oracle.com/en-us/iaas/Content/FreeTier/freetier_topic-Always_Free_Resources.htm).
+> Beginning on or about **June 15, 2026** the free-tier Ampere A1 limits will be reduced to **2 OPCUs and 12 GB memory** total, across all A1 instances, down from 4 OCPUs and 24 GB memory. [The OCI documentation](https://docs.oracle.com/en-us/iaas/Content/FreeTier/freetier_topic-Always_Free_Resources.htm) and [free-tier marketing site](https://www.oracle.com/cloud/free/) both show the new limits.
 >
 > Please read the linked documentation and see the [Arm Compute Instances section below](#arm-compute-instance) for more details.
 
@@ -37,18 +37,18 @@ Essentially, the E2 Micro instances are _burstable virtual machines_, meaning th
 
 > [warning] Important!
 >
-> As explained at the top, **beginning June 15, 2026 the free-tier Ampere A1 limits will be reduced to 2 OPCUs and 12 GB memory**. As of June 13 when I am updating this post, not everything on Oracle/OCI has been updated to reflect these new limits, however. [The documentation shows the new limits](https://docs.oracle.com/en-us/iaas/Content/FreeTier/freetier_topic-Always_Free_Resources.htm) (scroll down to "Available Shapes"), however neither [the marketing site](https://www.oracle.com/cloud/free/) nor the OCI dashboard reflect this yet.
+> As explained at the top, **beginning June 15, 2026 the free-tier Ampere A1 limits will be reduced to 2 OPCUs and 12 GB memory**. As of the latest June 18 update this post, [the documentation](https://docs.oracle.com/en-us/iaas/Content/FreeTier/freetier_topic-Always_Free_Resources.htm) shows the new limits (scroll down to "Available Shapes"), as does [the marketing site](https://www.oracle.com/cloud/free/), but it the OCI dashboard does not advise about the new limits when creating or editting an Arm-based instance.
 >
-> [Per a redditor who took the time to chat with Oracle Support about this](https://www.reddit.com/r/oraclecloud/comments/1u4lzkk/new_free_tier_limits_confirmed_by_oracle_support/), **free-tier instances** over the new 2 OPCU and 12 GB memory limits will be shutdown and **Pay As You Go users over the new limits will be charged beginning June 15.**
+> [Per a redditor who took the time to chat with Oracle Support about this](https://www.reddit.com/r/oraclecloud/comments/1u4lzkk/new_free_tier_limits_confirmed_by_oracle_support/), **free-tier instances** over the new 2 OPCU and 12 GB memory limits will be shutdown and **Pay As You Go users over the new limits will be billed.** There is no confirmation from Oracle, so if you're on PAYG keep an eye on your 
 >
 > This means free-tier users will have to **downgrade** their Ampere A1 instance(s) to this new lower limit in order to get them working again, while **PAYG users will not have their instances auto-shutdown, and will simply be billed for going over.** An Ampere A1 instance on PAYG using 4 OCPUs and 24 GB memory will cost approximately $27/month after this date, if used for an entire calendar month.
 > 
 > Changing an instance shape is quick and easy, [I wrote a quick guide here](/blog/how-to-change-shape-of-an-existing-oracle-cloud-infrastructure-vm-instance) or you can just check out [Oracle's official guide on changing shapes](https://docs.oracle.com/en-us/iaas/Content/Compute/Tasks/resizinginstances.htm).
 
-_Arm-based Ampere A1 cores and 12 GB of memory usable as 1 VM or up to 4 VMs_
+_Arm-based Ampere A1 cores and 12 GB of memory usable as 1 VM or 2 VMs_
 _Always Free: 1,500 OCPU hours and 9,000 GB hours per month_
 
-This is the thing that gets everyone interested in OCI's free tier -- the `VM.Ampere.A1.Flex`, a VM with multiple cores and a good amount of memory, plus additional bandwidth to boot. Oracle's description is pretty clear -- up to **2 OCPUs** and **12 GB memory**, either all in one instance or spread out across up to four instances. (It's flexible.) But what about the hours thing?
+This is the thing that gets everyone interested in OCI's free tier -- the `VM.Ampere.A1.Flex`, a VM with multiple cores and a good amount of memory, plus additional bandwidth to boot. Oracle's description is pretty clear -- up to **2 OCPUs** and **12 GB memory**, either all in one instance or split between two instances. But what about the hours thing?
 
 What it means is that Ampere VMs have a limit of 1,500 hours of compute time and 9,000 GB-hours of memory usage _per month across all Ampere VMs_. These limits are made specifically so that it's impossible to go over them _unless you use more than 2 OCPUs/12 GB memory_. Free-tier users will be unable to create instances above these limits, while Pay As You Go users will be billed for that additional usage. Let's check the math.
 
