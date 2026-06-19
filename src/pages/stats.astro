@@ -13,6 +13,8 @@ import {
   getSortedLinks,
   getLifestream,
   getSortedNotes,
+  getSortedPostroll,
+  getBlogroll,
 } from '@utils/collections';
 import { pages } from '@data/pages';
 import TOC from '@icons/toc.svg';
@@ -24,6 +26,8 @@ const posts = await getPostsWithReadingTime();
 const links = await getSortedLinks();
 const lifestream = await getLifestream();
 const notes = await getSortedNotes();
+const postroll = await getSortedPostroll();
+const blogroll = await getBlogroll();
 
 // Helpers
 const today = new Date();
@@ -362,13 +366,17 @@ const lifestreamTypeColors: Record<string, string> = {
 };
 
 // Cross-collection
-const totalContent = totalPosts + totalNotes + totalLinks + totalLifestream;
+const totalPostroll = postroll.length;
+const totalBlogroll = blogroll.length;
+const totalContent = totalPosts + totalNotes + totalLinks + totalLifestream + totalPostroll + totalBlogroll;
 
 const typeColors: Record<string, string> = {
   blog: 'var(--primary)',
   notes: 'var(--secondary)',
-  links: 'var(--info)',
+  links: 'var(--link)',
   lifestream: 'var(--hover)',
+  postroll: 'var(--other)',
+  blogroll: 'var(--warning)',
 };
 
 const breakdown = [
@@ -376,6 +384,8 @@ const breakdown = [
   { label: 'Notes', count: totalNotes, key: 'notes' },
   { label: 'Links', count: totalLinks, key: 'links' },
   { label: 'Lifestream', count: totalLifestream, key: 'lifestream' },
+  { label: 'Postroll', count: totalPostroll, key: 'postroll' },
+  { label: 'Blogroll', count: totalBlogroll, key: 'blogroll' },
 ].map((b) => ({
   ...b,
   pct: totalContent > 0 ? Math.round((b.count / totalContent) * 100) : 0,
@@ -384,15 +394,11 @@ const breakdown = [
 
 const allDated = [
   ...posts.map((p) => ({ date: p.data.pubDate, type: 'blog' })),
-  ...validNotes.map((n) => ({
-    date: new Date(n.data.published!),
-    type: 'notes',
-  })),
+  ...validNotes.map((n) => ({ date: new Date(n.data.published!), type: 'notes' })),
   ...links.map((l) => ({ date: l.data.pubDate, type: 'links' })),
-  ...lifestream.map((e) => ({
-    date: e.data.updatedDate ?? e.data.pubDate,
-    type: 'lifestream',
-  })),
+  ...lifestream.map((e) => ({ date: e.data.updatedDate ?? e.data.pubDate, type: 'lifestream' })),
+  ...postroll.map((p) => ({ date: p.data.pubDate, type: 'postroll' })),
+  ...blogroll.map((b) => ({ date: b.pubDate, type: 'blogroll' })),
 ].filter((d) => d.date.getFullYear() > 2000);
 
 const combinedByMonth: Record<string, number> = {};
@@ -405,7 +411,7 @@ const [mostActiveKey, mostActiveCount] = Object.entries(combinedByMonth).sort(
   (a, b) => b[1] - a[1]
 )[0] ?? ['—', 0];
 
-const contentTypes = ['blog', 'notes', 'links', 'lifestream'] as const;
+const contentTypes = ['blog', 'notes', 'links', 'lifestream', 'postroll', 'blogroll'] as const;
 
 const unifiedByYear: Record<number, Record<string, number>> = {};
 allDated.forEach(({ date, type }) => {
@@ -437,6 +443,12 @@ for (let i = 1; i < allSorted.length; i++) {
     qEnd = allSorted[i];
   }
 }
+
+// Slashpage count
+const totalSlashpages = pages.filter((p) => {
+  const parts = p.href.replace(/^\//, '').split('/');
+  return parts.length === 1;
+}).length;
 
 // Heatmap
 const hmStartYear =
@@ -509,7 +521,6 @@ const hmIntensity = (key: string) => {
   }
   .blog-intro strong {
     color: var(--secondary);
-    font-weight: 400;
     font-family: var(--sub-font);
     font-size: 0.95em;
   }
@@ -657,7 +668,7 @@ const hmIntensity = (key: string) => {
     background: var(--blockquote);
     border-radius: 3px;
     overflow: hidden;
-    display: flex;
+    display: block;
   }
   .bar-fill {
     height: 100%;
@@ -888,6 +899,9 @@ const hmIntensity = (key: string) => {
     font-family: var(--sub-font);
     font-weight: 900;
   }
+  .info-button {
+    margin: 0;
+  }
 
   @media screen and (max-width: 667px) {
     h2.section-head {
@@ -1046,25 +1060,24 @@ const hmIntensity = (key: string) => {
     </p>
 
     <h3>Posts by year</h3>
-    <figure class="bar-chart" aria-label="Posts per year">
-      <figcaption class="sr-only">Posts per year</figcaption>
-      {
-        blogYears.map((yr) => (
-          <div class="bar-row">
+    <div class="bar-chart" role="img" aria-label="Posts per year">
+      <span class="sr-only">Posts per year</span>
+      {blogYears.map((yr) => (
+        <div class="bar-row">
             <span class="bar-label">
               <a href={`/blog/years/${yr}`}>{yr}</a>
             </span>
             <div class="bar-track">
               <div
                 class="bar-fill"
-                style={`width: ${Math.max((postsByYear[yr] / maxPostsInYear) * 100, 2)}%`}
+                style={`width: ${(postsByYear[yr] / maxPostsInYear) * 100}%`}
               />
             </div>
             <span class="bar-count">{postsByYear[yr]}</span>
           </div>
         ))
       }
-    </figure>
+    </div>
 
     <h3>Top tags</h3>
     <ul class="tag-cloud">
@@ -1383,12 +1396,37 @@ const hmIntensity = (key: string) => {
 
     <!-- ALL THE THINGS -->
     <h2 id="allthethings" class="section-head">All The Things</h2>
-    <p class="intro all-intro">
-      <span class="sub-font secondary w9">{totalContent}</span> total pieces of content
-      across all collections.
-    </p>
+      <p class="has-tooltip">
+        <span class="sub-font secondary w9">{totalSlashpages}</span> pages and slash pages across the site.
+        <button class="info-button" aria-label="About webrings">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+          </svg>
+          <span class="tooltip">
+            Slash pages are common pages within websites with a standard, root-level slug and are distinguishing characteristics of the IndieWeb. <a
+              href="https://indieweb.org/page"
+              target="_blank"
+              rel="noreferrer noopener">Read more about it here</a
+            >
+          </span>
+        </button>
+      </p>
+      <p>
+        <span class="sub-font secondary w9">{totalContent}</span> entries across <span class="sub-font secondary w9">6</span> content collections.
+      </p> 
 
-    <h3>Content breakdown</h3>
+    <h3>Content collection breakdown</h3>
     <div class="breakdown-bar" role="img" aria-label="Content type breakdown">
       {
         breakdown
