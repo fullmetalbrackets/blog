@@ -7,3 +7,7 @@ rating: liked
 ---
 
 It's good, but I want a real adaptation, not something with the name slapped on and only like three things from the book.
+
+## Previously Watched
+
+- 2/14/2022
