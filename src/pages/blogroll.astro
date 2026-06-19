@@ -20,7 +20,7 @@ import { pages } from '@data/pages';
 // ).trim();
 
 // const lastUpdated = new Date(gitDate.slice(0, 10) + 'T12:00:00');
-const lastUpdated = new Date('2026-05-27T12:00');
+const lastUpdated = new Date('2026-06-18T12:00');
 
 const { title, description } = pages.find((p) => p.href === '/blogroll')!;
 
@@ -65,13 +65,10 @@ const blogrollItems = blogs.map((blog) => ({
     <hr />
     <p class="desc">
       A list of <span class="total">{blogs.length}</span> super cool personal sites
-      and blogs that I follow, and you should too. <i
-        >(All links open in new tabs.)</i
-      >
+      and blogs that I follow, and you should too.
     </p>
     <p>
-      If you'd like to add <b>all</b> of these blogs to your RSS reader, download
-      and import this <a href="/blogroll.opml" download>OPML file</a>.
+      All links open in new tabs. Click on an RSS button to copy the URL of a site's RSS feed to clipboard. If you'd like to add <b>all</b> of these blogs to your RSS reader, download and import this <a href="/blogroll.opml" download>OPML file</a>.
     </p>
     <p class="flex">
       <span class="updated"> Last updated </span>
@@ -158,13 +155,12 @@ const blogrollItems = blogs.map((blog) => ({
                     <span class="tooltip">No feed &#9785;</span>
                   </span>
                 ) : (
-                  <a
-                    href={blog.feed}
-                    target="_blank"
-                    rel="alternate noopener noreferrer"
-                    class="rss"
-                    aria-label={`${blog.name} RSS feed`}
+                  <button
+                    class="rss rss-copy"
+                    aria-label={`Copy ${blog.name} RSS feed URL`}
+                    data-feed={blog.feed}
                     data-umami-event={`blogroll-rss-${blog.id}`}
+                    title=""
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -205,7 +201,8 @@ const blogrollItems = blogs.map((blog) => ({
                         fill="#FFF"
                       />
                     </svg>
-                  </a>
+                    <span class="tooltip">Copy feed URL</span>
+                  </button>
                 )}
               </div>
             </div>
@@ -219,6 +216,80 @@ const blogrollItems = blogs.map((blog) => ({
     <BackToTop />
   </section>
 </BaseLayout>
+
+<script>
+  function legacyCopy(text: string): boolean {
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    textarea.setAttribute('readonly', '');
+    textarea.style.cssText =
+      'position:fixed;top:-9999px;left:-9999px;opacity:0;pointer-events:none;';
+    document.body.appendChild(textarea);
+    textarea.focus();
+    textarea.setSelectionRange(0, text.length);
+    const ok = document.execCommand('copy');
+    document.body.removeChild(textarea);
+    return ok;
+  }
+
+  const CHECK_SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="32" height="32">
+    <rect width="256" height="256" rx="55" ry="55" fill="#2a7a4b"/>
+    <rect width="246" height="246" rx="50" ry="50" x="5" y="5" fill="#3a9e5f"/>
+    <rect width="236" height="236" rx="47" ry="47" x="10" y="10" fill="#2d8a52"/>
+    <polyline points="60,128 104,172 196,84" fill="none" stroke="#fff" stroke-width="22"
+      stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>`;
+
+  function showRssCopied(btn: HTMLElement): void {
+    const originalHTML = btn.innerHTML;
+    btn.innerHTML = CHECK_SVG;
+
+    const tooltip = document.createElement('span');
+    tooltip.textContent = 'Copied RSS feed URL';
+    tooltip.style.cssText = `
+      position: absolute;
+      bottom: calc(100% + 6px);
+      right: 0;
+      background: var(--blockquote);
+      border: 1px solid var(--border);
+      border-radius: 0.5em;
+      padding: 0.25em 0.625em;
+      font-size: 0.75em;
+      font-family: var(--sub-font);
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.15s ease;
+      color: var(--emphasis);
+    `;
+    btn.appendChild(tooltip);
+
+    // force reflow before fading in
+    tooltip.getBoundingClientRect();
+    tooltip.style.opacity = '1';
+
+    setTimeout(() => {
+      btn.innerHTML = originalHTML;
+    }, 2000);
+  }
+
+  if (!(window as any).__blogrollCopyBound) {
+    (window as any).__blogrollCopyBound = true;
+    document.addEventListener('click', (e) => {
+      if (!(e.target instanceof Element)) return;
+      const btn = e.target.closest<HTMLElement>('button.rss-copy');
+      if (!btn) return;
+      const feed = btn.dataset.feed;
+      if (!feed) return;
+
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(feed).then(() => showRssCopied(btn));
+      } else {
+        if (legacyCopy(feed)) showRssCopied(btn);
+      }
+    });
+  }
+</script>
 
 <style scoped>
   svg {
@@ -317,30 +388,42 @@ const blogrollItems = blogs.map((blog) => ({
     display: flex;
     align-items: center;
   }
-  .no-feed .tooltip {
-    position: absolute;
-    right: 0;
-    bottom: calc(100% + 6px);
-    background: var(--blockquote);
-    border: 1px solid var(--border);
-    border-radius: 0.5em;
-    padding: 0.25em 0.625em;
-    font-size: 0.75em;
-    font-family: var(--sub-font);
-    white-space: nowrap;
-    opacity: 0;
-    visibility: hidden;
-    transition:
-      opacity 0.2s,
-      visibility 0.2s;
-    pointer-events: none;
-  }
-  .no-feed:hover .tooltip {
-    opacity: 1;
-    visibility: visible;
+  @media (hover: hover) {
+    .no-feed .tooltip {
+      position: absolute;
+      left: -1.5em;
+      top: 2em;
+      background: var(--blockquote);
+      border: 1px solid var(--border);
+      border-radius: 0.5em;
+      padding: 0.25em 0.625em;
+      font-size: 0.75em;
+      font-family: var(--sub-font);
+      white-space: nowrap;
+      opacity: 0;
+      visibility: hidden;
+      transition:
+        opacity 0.2s,
+        visibility 0.2s;
+      pointer-events: none;
+      width: auto;
+    }
+    .no-feed:hover .tooltip {
+      opacity: 1;
+      visibility: visible;
+    }
   }
   .no-feed svg:hover {
     animation: none;
+  }
+  button.rss-copy {
+    position: relative;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
   }
   @media screen and (max-width: 667px) {
     .desc {
