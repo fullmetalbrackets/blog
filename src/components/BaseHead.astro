@@ -72,7 +72,7 @@ const {
 <Font cssVariable="--main-font" preload />
 <Font cssVariable="--code-font" />
 
-<!-- Etc. -->
+<!-- Webmentions & Fediverse -->
 <link
   rel="webmention"
   href={`https://webmention.io/fullmetalbrackets.com/webmention`}
@@ -84,16 +84,22 @@ const {
 <link rel="me" href={GITHUB} />
 <link rel="me" href={MASTODON} />
 <meta name="fediverse:creator" content="@adiaz@social.lol" />
+
+<!-- Umami -->
+{!import.meta.env.DEV && (
+  <script
+    is:inline
+    async
+    defer
+    src="https://u.adiaz.fyi/script.js"
+    data-website-id="d9921361-56b2-4c33-8377-4c73cb1add2d"
+  ></script>
+)}
+
+<!-- Etc. -->
 <link
   rel="search"
   type="application/opensearchdescription+xml"
   href="/opensearch.xml"
   title="Search fullmetalbrackets.com"
 />
-
-<script
-  is:inline
-  async
-  defer
-  src="https://u.adiaz.fyi/script.js"
-  data-website-id="d9921361-56b2-4c33-8377-4c73cb1add2d"></script>
