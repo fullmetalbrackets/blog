@@ -18,69 +18,76 @@ Disallow: /cdn-cgi/
 
 # OpenAI
 User-agent: GPTBot
-Disallow: /blog/
+Disallow: /
 
 User-agent: ChatGPT-User
-Disallow: /blog/
+Disallow: /
 
 # Anthropic
 User-agent: ClaudeBot
-Disallow: /blog/
+Disallow: /
 
 User-agent: Claude-Web
-Disallow: /blog/
+Disallow: /
 
 User-agent: anthropic-ai
-Disallow: /blog/
+Disallow: /
 
 # Google
 User-agent: Google-Extended
-Disallow: /blog/
+Disallow: /
 
 # Perplexity
 User-agent: PerplexityBot
-Disallow: /blog/
+Disallow: /
 
 User-agent: Perplexity-User
-Disallow: /blog/
+Disallow: /
 
-# Meta
+# Meta/Facebook
 User-agent: meta-externalagent
-Disallow: /blog/
+Disallow: /
+
+User-agent: FacebookBot
+Disallow: /
 
 # Apple
 User-agent: Applebot-Extended
-Disallow: /blog/
+Disallow: /
 
 # xAI
 User-agent: Grok
-Disallow: /blog/
+Disallow: /
 
 # Others
 User-agent: Omgilibot
-Disallow: /blog/
+Disallow: /
 
 User-agent: Omgili
-Disallow: /blog/
+Disallow: /
 
 User-agent: YouBot
-Disallow: /blog/
+Disallow: /
 
 User-agent: Diffbot
-Disallow: /blog/
+Disallow: /
 
 User-agent: ImagesiftBot
-Disallow: /blog/
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
 
 # Amazon
 User-agent: Amazonbot
-Disallow: /blog/
+Disallow: /
 
 # Aggressive scrapers - block entirely
 User-agent: CCBot
 Disallow: /
 
-User-agent: ByteSpider
+User-agent: Bytespider
 Disallow: /
 
 User-agent: DataForSeoBot
