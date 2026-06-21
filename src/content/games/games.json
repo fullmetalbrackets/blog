@@ -18,11 +18,19 @@
         "title": "Mario Kart World"
       },
       {
-        "moby": 42320,
+        "moby": 245261,
+        "title": "Metroid Prime 4: Beyond"
+      },
+      {
+        "moby": 261399,
+        "title": "Mina the Hollower"
+      },
+      {
+        "moby": 84595,
         "title": "The Legend of Zelda: Breath of the Wild"
       },
       {
-        "moby": 42320,
+        "moby": 203119,
         "title": "The Legend of Zelda: Tears of the Kingdom"
       }
     ],
@@ -57,6 +65,10 @@
       },
       {
         "moby": 0,
+        "title": "Deltarune Chapter 1 & 2 "
+      },
+      {
+        "moby": 0,
         "title": "Disgaea 5 Complete"
       },
       {
@@ -66,6 +78,14 @@
       {
         "moby": 0,
         "title": "Final Fantasy VI"
+      },
+      {
+        "moby": 0,
+        "title": "Fire Emblem: Three Houses"
+      },
+      {
+        "moby": 0,
+        "title": "Fire Emblem Warrior"
       },
       {
         "moby": 0,
@@ -128,8 +148,12 @@
         "title": "Super Mario Odyssey"
       },
       {
-        "moby": 0,
-        "title": "Super Mario Wonder"
+        "moby": 212038,
+        "title": "Super Mario RPG"
+      },
+      {
+        "moby": 210462,
+        "title": "Super Mario Bros. Wonder"
       },
       {
         "moby": 0,

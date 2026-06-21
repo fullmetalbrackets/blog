@@ -1,7 +1,7 @@
 ---
 type: game
 title: Resident Evil 2
-pubDate: 2023-10-27 12:00:00
+pubDate: 2023-12-27 12:00:00
 platform: PC
 image: ./_images/resident-evil-2.jpg
 rating: loved
