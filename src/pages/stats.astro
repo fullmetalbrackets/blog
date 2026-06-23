@@ -384,8 +384,8 @@ const breakdown = [
   { label: 'Notes', count: totalNotes, key: 'notes' },
   { label: 'Links', count: totalLinks, key: 'links' },
   { label: 'Lifestream', count: totalLifestream, key: 'lifestream' },
-  { label: 'Postroll', count: totalPostroll, key: 'postroll' },
   { label: 'Blogroll', count: totalBlogroll, key: 'blogroll' },
+  { label: 'Postroll', count: totalPostroll, key: 'postroll' },
 ].map((b) => ({
   ...b,
   pct: totalContent > 0 ? Math.round((b.count / totalContent) * 100) : 0,
@@ -668,7 +668,7 @@ const hmIntensity = (key: string) => {
     background: var(--blockquote);
     border-radius: 3px;
     overflow: hidden;
-    display: block;
+    display: flex;
   }
   .bar-fill {
     height: 100%;
@@ -1471,15 +1471,17 @@ const hmIntensity = (key: string) => {
             <div class="bar-row">
               <span class="bar-label">{yr}</span>
               <div class="bar-track">
-                {contentTypes.map((type) =>
-                  yd[type] ? (
-                    <div
-                      class="bar-seg"
-                      style={`width: ${(yd[type] / maxUnifiedTotal) * 100}%; background: ${typeColors[type]};`}
-                      title={`${type}: ${yd[type]}`}
-                    />
-                  ) : null
-                )}
+                <div style={`display: flex; width: ${(total / maxUnifiedTotal) * 100}%; height: 100%;`}>
+                  {contentTypes.map((type) =>
+                    yd[type] ? (
+                      <div
+                        class="bar-seg"
+                        style={`flex: ${yd[type]}; background: ${typeColors[type]};`}
+                        title={`${type}: ${yd[type]}`}
+                      />
+                    ) : null
+                  )}
+                </div>
               </div>
               <span class="bar-count">{total}</span>
             </div>
