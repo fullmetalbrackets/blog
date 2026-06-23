@@ -154,7 +154,7 @@ const lifestreamItems = entries.map((entry) => ({
     <a class="u-url" href="/lifestream" hidden>Permalink</a>
     <hr />
     <p class="desc">
-      {description}
+      {description} <span class="total">{entries.length}</span> entries.
     </p>
 
     {
@@ -321,6 +321,13 @@ const lifestreamItems = entries.map((entry) => ({
     font-size: 1em;
     margin-top: -0.25em;
     margin-bottom: 0;
+  }
+
+  .total {
+    font-family: var(--sub-font);
+    font-weight: 900;
+    font-size: 0.95em;
+    color: var(--primary);
   }
 
   details {
