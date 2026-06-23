@@ -210,6 +210,9 @@ export default defineConfig({
     ssr: {
       external: ['sharp'],
     },
+    build: {
+      cssMinify: 'esbuild',
+    }
   },
   image: {
     remotePatterns: [
