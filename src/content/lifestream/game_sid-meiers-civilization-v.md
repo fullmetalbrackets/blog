@@ -10,6 +10,7 @@ rating: masterpiece
 After finishing this latest campaign (I beat the game as Hiawatha this time) I checked on Steam and I have 1,589 hours played in this since buying the original in 2012. *My most played game ever.* I've bought every expansion since then and still play it every year or so.
 
 ## Previously Played
+
 - 8/15/2024
 - 4/28/2023
 - 5/13/2021
