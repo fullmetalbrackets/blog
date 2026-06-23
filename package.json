@@ -30,12 +30,12 @@
   "dependencies": {
     "@ascorbic/feed-loader": "^2.0.1",
     "@astrojs/check": "^0.9.9",
-    "@astrojs/cloudflare": "^13.7.0",
-    "@astrojs/markdown-remark": "^7.1.2",
-    "@astrojs/mdx": "^6.0.3",
+    "@astrojs/cloudflare": "^14.0.0",
+    "@astrojs/markdown-remark": "7.2.0",
+    "@astrojs/mdx": "7.0.0",
     "@astrojs/rss": "^4.0.18",
-    "@astrojs/sitemap": "^3.7.2",
-    "astro": "^6.4.7",
+    "@astrojs/sitemap": "3.7.3",
+    "astro": "^7.0.0",
     "astro-embed": "^0.13.0",
     "astro-og-canvas": "^0.11.1",
     "gab-astro-compress": "^0.1.2",
@@ -54,8 +54,5 @@
     "prettier": "^3.8.4",
     "prettier-plugin-astro": "^0.14.1",
     "wrangler": "^4.103.0"
-  },
-  "resolutions": {
-    "astro": "6.4.7"
   }
 }
