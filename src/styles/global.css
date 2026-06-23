@@ -41,11 +41,7 @@ h1 {
 }
 
 main h2,
-main h4,
-main h6,
-article h2,
-article h4,
-article h6 {
+article h2 {
   font-family: var(--sub-font);
   font-weight: 900;
   color: var(--primary);
@@ -59,10 +55,20 @@ article h3,
 article h5 {
   font-family: var(--sub-font);
   font-weight: 900;
-  color: var(--emphasis);
+  color: var(--secondary);
   margin: 0;
   padding: 0;
   text-wrap: balance;
+}
+
+article h4,
+article h6 {
+  font-family: var(--sub-font);
+  font-weight: 900;
+  color: var(--emphasis);
+  margin: 0;
+  padding: 0;
+  text-wrap: balance;  
 }
 
 p {
