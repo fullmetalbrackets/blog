@@ -2,16 +2,16 @@
 title: Breaking down the free tier of Oracle Cloud Infrastructure
 description: Oracle Cloud Infrastructure, or OCI for short, has a very generous free tier, but I see a lot of people on the oraclecloud and selfhosted subreddits being confused about exactly what's included, so here is a straightforward breakdown of every service and allotment in the free tier.
 pubDate: 2026-01-06
-updatedDate: 2026-06-18 12:00:00
+updatedDate: 2026-06-22 12:00:00
 tags: ['oracle cloud', 'self-hosting']
 related: ['how-to-change-shape-of-an-existing-oracle-cloud-infrastructure-vm-instance', 'expose-plex-tailscale-vps']
 ---
 
 > [warning] Important!
 >
-> Beginning on or about **June 15, 2026** the free-tier Ampere A1 limits will be reduced to **2 OPCUs and 12 GB memory** total, across all A1 instances, down from 4 OCPUs and 24 GB memory. [The OCI documentation](https://docs.oracle.com/en-us/iaas/Content/FreeTier/freetier_topic-Always_Free_Resources.htm) and [free-tier marketing site](https://www.oracle.com/cloud/free/) both show the new limits.
+> Beginning in **June 2026** the free-tier Ampere A1 limits will be reduced to **2 OPCUs and 12 GB memory** total, across all A1 instances, down from 4 OCPUs and 24 GB memory. [The OCI documentation](https://docs.oracle.com/en-us/iaas/Content/FreeTier/freetier_topic-Always_Free_Resources.htm) and [free-tier marketing site](https://www.oracle.com/cloud/free/) both show the new limits.
 >
-> Please read the linked documentation and see the [Arm Compute Instances section below](#arm-compute-instance) for more details.
+> As of June 22, 2026 **it seems this only applies to free tier users** and **Pay As You Go users may still be able to use 4 OCPUs and 24 GB memory for free**. See the [Arm Compute Instances section below](#arm-compute-instance) for more details and links to sources for this information.
 
 ## Free what now?
 
@@ -37,13 +37,9 @@ Essentially, the E2 Micro instances are _burstable virtual machines_, meaning th
 
 > [warning] Important!
 >
-> As explained at the top, **beginning June 15, 2026 the free-tier Ampere A1 limits will be reduced to 2 OPCUs and 12 GB memory**. As of the latest June 18 update to this post, [the documentation](https://docs.oracle.com/en-us/iaas/Content/FreeTier/freetier_topic-Always_Free_Resources.htm) shows the new limits (scroll down to "Available Shapes"), as does [the marketing site](https://www.oracle.com/cloud/free/), but the OCI dashboard does not show the new service limits at 2 OCPUs/12 GB memory.
+> [Per a redditor who took the time to chat with Oracle Support about this](https://www.reddit.com/r/oraclecloud/comments/1u4lzkk/new_free_tier_limits_confirmed_by_oracle_support/), **free-tier instances** over the new 2 OPCU and 12 GB memory limits will be shutdown. **Free-tier users may have to downgrade their Ampere A1 instance(s) to this new lower limit in order to get them working again.** (I wrote a post about [how to the shape of an existing OCI instance](/blog/how-to-change-shape-of-an-existing-oracle-cloud-infrastructure-vm-instance) if you need a little guidance on how to downgrade your OCPUs and memory.)
 >
-> [Per a redditor who took the time to chat with Oracle Support about this](https://www.reddit.com/r/oraclecloud/comments/1u4lzkk/new_free_tier_limits_confirmed_by_oracle_support/), **free-tier instances** over the new 2 OPCU and 12 GB memory limits will be shutdown and **Pay As You Go users over the new limits will be billed.**
->
-> This means free-tier users will have to **downgrade** their Ampere A1 instance(s) to this new lower limit in order to get them working again, while **PAYG users will not have their instances auto-shutdown, and will simply be billed for going over.** An Ampere A1 instance on PAYG using 4 OCPUs and 24 GB memory will cost approximately $27/month after this date, if used for an entire calendar month.
->
-> There is no confirmation from Oracle about this change in Ampere A1 limits, so if you're on PAYG either downgrade your instance to 2 OCPUs and 12 GB Memory ([I wrote a quick guide here](/blog/how-to-change-shape-of-an-existing-oracle-cloud-infrastructure-vm-instance)), or at least keep an eye on your [Cost Analysis](https://cloud.oracle.com/account-management/cost-analysis). Maybe [create a budget](https://cloud.oracle.com/usage/budgets) of $1 to be alerted if you will be billed, just in case.
+> **As of June 22, 2026** several human support agents (rather than the customer support chatbot) have told users via email that **the new limits only affect free tier users**. See reddit posts about it [here](https://www.reddit.com/r/oraclecloud/comments/1ubongp/oracle_sr_reply_payg_users_are_not_impacted_by/) and [here](https://www.reddit.com/r/oraclecloud/comments/1ubk2qy/new_always_free_tier_limits_21june2026_update/) for more details. **It would seem that Pay As You Go users may still have access to 4 OCPUs and 24 GB of memory for free**.
 
 _Arm-based Ampere A1 cores and 12 GB of memory usable as 1 VM or 2 VMs_
 _Always Free: 1,500 OCPU hours and 9,000 GB hours per month_
