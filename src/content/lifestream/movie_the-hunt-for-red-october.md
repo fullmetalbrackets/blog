@@ -6,4 +6,4 @@ image: ./_images/the-hunt-for-red-october.jpg
 rating: loved
 ---
 
-Things in there do not react well to bulletshhh.
+Most things in here don't react too well to bulletshhh.

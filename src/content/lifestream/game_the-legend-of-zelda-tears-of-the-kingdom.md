@@ -8,3 +8,7 @@ rating: masterpiece
 ---
 
 300 hours across two playthroughs. This game is amazing, but maybe just a *little* too huge.
+
+## Previously Played
+
+- 2023 (Nintendo Switch)

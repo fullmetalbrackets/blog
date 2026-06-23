@@ -6,4 +6,4 @@ image: ./_images/ms-marvel.webp
 rating: liked
 ---
 
-They said MUTANT.
+They said MUTANT. They did the X-Men song thing. OMG.

@@ -6,4 +6,4 @@ image: ./_images/the-matrix-resurrections.webp
 rating: disliked
 ---
 
-I love the Matrix, even the second and third movies, and the Animatrix... but this is just bad. Why does this movie exist?
+I love the Matrix, I even like the second and third movies, and the Animatrix... but this is just bad. Why does this movie exist?
