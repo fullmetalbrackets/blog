@@ -6,4 +6,4 @@ image: ./_images/disclosure-day.webp
 rating: liked
 ---
 
-This is definitely feels like a Steven Spielberg movie.
+This definitely feels like a Steven Spielberg movie.
