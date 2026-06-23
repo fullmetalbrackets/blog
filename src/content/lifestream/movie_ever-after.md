@@ -6,6 +6,6 @@ image: ./_images/ever-after.webp
 rating: loved
 ---
 
-This is one of my wife's favorite movies, but I had never seen it. She was shocked I had never watched it and insisted we do so immediately. 
+This is one of my wife's favorite movies, but I had never seen it. She was shocked I had never watched it and insisted we do so immediately.
 
 I'm glad she did, it's a great movie!
