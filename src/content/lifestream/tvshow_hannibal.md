@@ -7,3 +7,8 @@ rating: loved
 ---
 
 The first two seasons of this show are a fucking masterpiece. The third one jumped the shark and ended with a cliffhanger that will never be resolved. Mads Mikkelson is incredible throughout, though.
+
+## Previously Watched
+
+- 10/23/2017
+- 3/12/2015

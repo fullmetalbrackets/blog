@@ -7,3 +7,8 @@ rating: liked
 ---
 
 What a fucking mess. Leia using Force powers was awesome, but the *way* she did it was, um... something. Old jaded Luke is great, though.
+
+## Previously Watched
+
+- 12/21/2019
+- 12/9/2017

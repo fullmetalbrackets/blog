@@ -7,3 +7,8 @@ rating: masterpiece
 ---
 
 I wish this would get a third season...
+
+## Previously Watched
+
+- 6/19/2019
+- 12/28/2016

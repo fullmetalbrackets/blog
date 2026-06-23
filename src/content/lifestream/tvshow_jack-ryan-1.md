@@ -6,3 +6,7 @@ image: ./_images/jack-ryan.webp
 season: '1'
 rating: loved
 ---
+
+## Previously Watched
+
+- 10/2/2019

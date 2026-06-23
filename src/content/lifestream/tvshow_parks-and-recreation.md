@@ -7,3 +7,7 @@ rating: masterpiece
 ---
 
 This started as a spin-off of The Office and thankfully found its own way in season 2, becoming even an even better show.
+
+## Previously Watched
+
+- 1/24/2020

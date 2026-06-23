@@ -7,3 +7,7 @@ rating: masterpiece
 ---
 
 Possibly one of the best animated movies ever made?!
+
+## Previously Watched
+
+- 9/8/2019

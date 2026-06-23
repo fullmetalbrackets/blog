@@ -7,3 +7,8 @@ rating: masterpiece
 ---
 
 Wife and I binge the whole thing every year or so. Won't be stopping anytime soon either.
+
+## Previously Watched
+
+- 11/20/2019
+- 4/7/2018

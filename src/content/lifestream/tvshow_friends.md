@@ -7,3 +7,7 @@ rating: loved
 ---
 
 Wife and I have been watching this again for the past month. 19082486th rewatch almost done.
+
+## Previously Watched
+
+- 1/30/2018

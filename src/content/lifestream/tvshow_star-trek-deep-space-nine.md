@@ -7,3 +7,8 @@ rating: masterpiece
 ---
 
 I love most of Star Trek, but this is my favorite Star Trek anything of all time. I still watch all episodes from beginning to end (or at least from around season 4 through the last, where the show is at its best) every year or two.
+
+## Previously Watched
+
+- 4/14/2021
+- 11/15/2015

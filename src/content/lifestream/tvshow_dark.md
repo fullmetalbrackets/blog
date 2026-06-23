@@ -7,3 +7,8 @@ rating: masterpiece
 ---
 
 Binged all three seasons. This show is incredible.
+
+## Previously Watched
+
+- 7/6/2020
+- 7/25/2018

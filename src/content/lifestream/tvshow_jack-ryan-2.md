@@ -8,3 +8,7 @@ rating: liked
 ---
 
 Eh, not as good as the first season, but it's not terrible.
+
+## Previously Watched
+
+- 4/22/2020

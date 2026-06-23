@@ -7,3 +7,7 @@ rating: masterpiece
 ---
 
 This might be the best Bond movie, maybe only second to Casino Royale.
+
+## Previously Watched
+
+- 11/20/2022

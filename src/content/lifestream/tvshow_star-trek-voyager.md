@@ -6,3 +6,7 @@ image: ./_images/star-trek-voyager.webp
 rating: loved
 ---
 
+## Previously Watched
+
+- 5/12/2021
+- 9/19/2015
