@@ -118,6 +118,26 @@ export default defineConfig({
       destination:
         '/blog/create-custom-home-assistant-entity-to-detect-changes-public-ip',
     },
+    '/blog/oracle-cloud-free-tier': {
+      status: 301,
+      destination: '/blog/oci-free-tier-breakdown',
+    },
+    '/blog/breaking-down-the-free-tier-of-oracle-cloud-infrastructure': {
+      status: 301,
+      destination: '/blog/oci-free-tier-breakdown',
+    },
+    '/blog/oracle-free-tier-2026': {
+      status: 301,
+      destination: '/blog/oci-free-tier-breakdown',
+    },
+    '/oracle-cloud-free-tier-breakdown': {
+      status: 301,
+      destination: '/blog/oci-free-tier-breakdown',
+    },
+    '/oracle-cloud-free-tier': {
+      status: 301,
+      destination: '/blog/oci-free-tier-breakdown',
+    },
   },
   fonts: [
     {
