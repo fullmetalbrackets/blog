@@ -5,18 +5,18 @@
   "reverse-proxy-using-nginx-adguardhome-cloudflare",
   "how-to-setup-the-search-function-in-qbittorrent-and-add-search-plugins",
   "comprehensive-guide-tailscale-securely-access-home-network",
-  "upgrade-debian-12-bookworm-debian-13-trixie",
   "google-tv-tailscale-plex",
+  "upgrade-debian-12-bookworm-debian-13-trixie",
   "youtube-90-second-ads-on-tv-apps",
   "solid-explorer-samba-share",
   "reverse-proxy-using-nginx-pihole-cloudflare",
   "pihole-anywhere-tailscale",
   "self-host-website-cloudflare-tunnel",
-  "expose-plex-tailscale-vps",
   "xplore-android-smb-share",
+  "expose-plex-tailscale-vps",
   "two-drives-mergerfs",
   "turn-off-display-linux-terminal",
+  "how-to-change-shape-of-an-existing-oracle-cloud-infrastructure-vm-instance",
   "reverse-proxy-nginx-pihole",
-  "watchtower-notifications",
-  "expose-plex-with-cloudflare"
+  "keeping-a-linux-laptop-on-with-the-lid-closed"
 ]
