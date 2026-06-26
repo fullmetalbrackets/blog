@@ -1,7 +1,7 @@
 ---
 type: tvshow
 title: The Walking Dead
-pubDate: 2025-09-26 12:00:00
+pubDate: 2025-09-07 12:00:00
 image: ./_images/the-walking-dead.jpg
 season: '11'
 rating: liked

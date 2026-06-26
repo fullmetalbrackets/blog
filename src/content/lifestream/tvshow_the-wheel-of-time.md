@@ -9,5 +9,4 @@ rating: loved
 
 ## Previously Watched
 
-- 12/2/2023
 - 12/15/2021
