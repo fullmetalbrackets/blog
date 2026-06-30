@@ -147,20 +147,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@astrojs/cloudflare@npm:^14.0.0":
-  version: 14.0.0
-  resolution: "@astrojs/cloudflare@npm:14.0.0"
+"@astrojs/cloudflare@npm:^14.0.1":
+  version: 14.0.1
+  resolution: "@astrojs/cloudflare@npm:14.0.1"
   dependencies:
     "@astrojs/internal-helpers": "npm:0.10.0"
     "@astrojs/underscore-redirects": "npm:1.0.3"
     "@cloudflare/vite-plugin": "npm:^1.39.0"
     piccolore: "npm:^0.1.3"
-    tinyglobby: "npm:^0.2.15"
     vite: "npm:^8.0.13"
   peerDependencies:
     astro: ^7.0.0-alpha.2
     wrangler: ^4.83.0
-  checksum: 10c0/f0b25bf6448dee3c5433e8e61f7f72cc1d016ff09ccb9ecca9975ba69df84109812f54e4cfe665db04361634a0f602fdb2ceeb1409035cee7bcf36af03548c99
+  checksum: 10c0/9d0940425c0f58fd7540236b66708d2f3ca4a851c0182d649232da34a49deaf86fc0b983741308b9fc0babcc0c3bd67e47ad5302f7705258933eb727772b4935
   languageName: node
   linkType: hard
 
@@ -358,15 +357,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@astrojs/markdown-satteri@npm:0.3.1":
-  version: 0.3.1
-  resolution: "@astrojs/markdown-satteri@npm:0.3.1"
+"@astrojs/markdown-satteri@npm:0.3.2":
+  version: 0.3.2
+  resolution: "@astrojs/markdown-satteri@npm:0.3.2"
   dependencies:
     "@astrojs/internal-helpers": "npm:0.10.0"
     "@astrojs/prism": "npm:4.0.2"
     github-slugger: "npm:^2.0.0"
     satteri: "npm:^0.9.1"
-  checksum: 10c0/1ca83aba58a88ad4c2b5d8d30c81f7a488a887b8d791fb307b7d0a9cbca483fdfe35f2b33ca79f508ab1c4ff3d367006c549ff3c6f4ae34fe76772bf306a08d4
+  checksum: 10c0/e4a5c447033fc7fb31fca908476576431db0bd475280007f042cdfd24f48e2752461d689cbbe49850f00192d507e04066e5e853d897728e1933a5164b49d1660
   languageName: node
   linkType: hard
 
@@ -2152,14 +2151,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"am-i-vibing@npm:^0.3.0":
-  version: 0.3.0
-  resolution: "am-i-vibing@npm:0.3.0"
+"am-i-vibing@npm:^0.4.0":
+  version: 0.4.0
+  resolution: "am-i-vibing@npm:0.4.0"
   dependencies:
     process-ancestry: "npm:^0.1.0"
   bin:
     am-i-vibing: dist/cli.mjs
-  checksum: 10c0/50e7385f7e11ebfdfdfaaa2060ab4b75dd9446c5a555c4909a5187a582feb691eee3185b97beb1e4ddf65027ae941df2b368e61a207b31a86ac37182975c4077
+  checksum: 10c0/af511ee621c78957e7e9e86b15498d64b9d73c54689e571a03531fe123002d3a5f7bd2d7fadda9cc07511c8f7cfdcc888d897bebeb12d2bc8b725161e64fd3f5
   languageName: node
   linkType: hard
 
@@ -2269,19 +2268,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"astro@npm:^7.0.0":
-  version: 7.0.0
-  resolution: "astro@npm:7.0.0"
+"astro@npm:^7.0.3":
+  version: 7.0.3
+  resolution: "astro@npm:7.0.3"
   dependencies:
     "@astrojs/compiler-rs": "npm:^0.2.2"
     "@astrojs/internal-helpers": "npm:0.10.0"
-    "@astrojs/markdown-satteri": "npm:0.3.1"
+    "@astrojs/markdown-satteri": "npm:0.3.2"
     "@astrojs/telemetry": "npm:3.3.2"
     "@capsizecss/unpack": "npm:^4.0.0"
     "@clack/prompts": "npm:^1.1.0"
     "@oslojs/encoding": "npm:^1.1.0"
     "@rollup/pluginutils": "npm:^5.3.0"
-    am-i-vibing: "npm:^0.3.0"
+    am-i-vibing: "npm:^0.4.0"
     aria-query: "npm:^5.3.2"
     axobject-query: "npm:^4.1.0"
     ci-info: "npm:^4.4.0"
@@ -2340,7 +2339,7 @@ __metadata:
       optional: true
   bin:
     astro: ./bin/astro.mjs
-  checksum: 10c0/61eec0c0fdfc19a1edeb75554bb870d7da16eb4dd1764f2ca5a92a82e8c3377ce40611fd52be47e05431bc08557763f8f2597b283ff1a64b962eefee9708c5d7
+  checksum: 10c0/86e095058e28b639c3cdb8591e5372ca7c321e7672ba8f59fbe100b20db448af11fe454e72cd58f15974874b0446e796dfcf6d616e0d072a1ee276f7c689de0d
   languageName: node
   linkType: hard
 
@@ -5550,12 +5549,12 @@ __metadata:
   dependencies:
     "@ascorbic/feed-loader": "npm:^2.0.1"
     "@astrojs/check": "npm:^0.9.9"
-    "@astrojs/cloudflare": "npm:^14.0.0"
+    "@astrojs/cloudflare": "npm:^14.0.1"
     "@astrojs/markdown-remark": "npm:7.2.0"
     "@astrojs/mdx": "npm:7.0.0"
     "@astrojs/rss": "npm:^4.0.18"
     "@astrojs/sitemap": "npm:3.7.3"
-    astro: "npm:^7.0.0"
+    astro: "npm:^7.0.3"
     astro-embed: "npm:^0.13.0"
     astro-og-canvas: "npm:^0.11.1"
     gab-astro-compress: "npm:^0.1.2"
