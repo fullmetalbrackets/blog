@@ -2255,16 +2255,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"astro-og-canvas@npm:^0.11.1":
-  version: 0.11.1
-  resolution: "astro-og-canvas@npm:0.11.1"
+"astro-og-canvas@npm:^0.12.0":
+  version: 0.12.0
+  resolution: "astro-og-canvas@npm:0.12.0"
   dependencies:
     canvaskit-wasm: "npm:^0.41.1"
     deterministic-object-hash: "npm:^2.0.2"
     entities: "npm:^8.0.0"
   peerDependencies:
-    astro: ^5.0.0 || ^6.0.0-alpha
-  checksum: 10c0/27a5b5683f9f1a32d2acbcf309c98473f043cbc7a62b12d9ad26e4fa13f9e06fc59d817d28109e553509a66439c24e6b679640e142188dc32a7c0d57a561e26b
+    astro: ^5.0.0 || ^6.0.0 || ^7.0.0
+  checksum: 10c0/90d2e3de0c3e083c5a405d458e9887352a0f751625d660086e83d4b183a9a3e793b966afde8465b7e227002fd3c7b2f394ce01da181eb0ed412fa724f5459405
   languageName: node
   linkType: hard
 
@@ -5556,7 +5556,7 @@ __metadata:
     "@astrojs/sitemap": "npm:3.7.3"
     astro: "npm:^7.0.3"
     astro-embed: "npm:^0.13.0"
-    astro-og-canvas: "npm:^0.11.1"
+    astro-og-canvas: "npm:^0.12.0"
     gab-astro-compress: "npm:^0.1.2"
     glightbox: "npm:^3.3.1"
     mdast-util-to-string: "npm:^4.0.0"
