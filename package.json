@@ -36,7 +36,7 @@
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "3.7.3",
     "astro": "^7.0.6",
-    "astro-embed": "^0.13.0",
+    "astro-embed": "^0.13.1",
     "astro-og-canvas": "^0.13.0",
     "gab-astro-compress": "^0.1.2",
     "glightbox": "^3.3.1",
