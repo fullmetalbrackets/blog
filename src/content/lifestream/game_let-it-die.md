@@ -7,4 +7,4 @@ image: ./_images/let-it-die.jpeg
 rating: disliked
 ---
 
-Extremely weird and kind of shallow Rogue-like with some vaguely Souls-like combat. It entertained be for a while before I got bored with the repetitiveness and never looked at it again.
+Extremely weird and kind of shallow Rogue-like with some vaguely Souls-like combat. It entertained me for a while before I got bored with the repetitiveness, and I've never even thought about playing the game again.
