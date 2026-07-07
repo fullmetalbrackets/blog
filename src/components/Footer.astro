@@ -251,7 +251,12 @@ const buildTime = new Date().toISOString();
       line-break: auto;
     }
     .webrings-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
       gap: 1em;
+      align-items: center;
+      max-width: 240px;
+      width: 100%;
     }
   }
 </style>
@@ -493,6 +498,49 @@ const buildTime = new Date().toISOString();
         >
         <a
           href="https://webri.ng/webring/cssjoy/next?via=https://fullmetalbrackets.com"
+          rel="next"
+          aria-label="Next site"
+          ><RightArrow
+            height={24}
+            width={24}
+            class="ring-arrow right"
+            aria-hidden="true"
+          /></a
+        >
+      </div>
+    </div>
+
+        <div class="webring">
+      <a
+        href="https://geekring.net"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="ring-title">Geekring</a
+      >
+      <div class="ring-buttons">
+        <a
+          href="https://geekring.net/site/604/previous"
+          rel="previous"
+          aria-label="Previous site"
+          ><LeftArrow
+            height={24}
+            width={24}
+            class="ring-arrow left"
+            aria-hidden="true"
+          /></a
+        >
+        <a
+          href="https://geekring.net/site/604/random"
+          aria-label="Random site"
+          ><Random
+            height={24}
+            width={24}
+            class="ring-arrow random"
+            aria-hidden="true"
+          /></a
+        >
+        <a
+          href="https://geekring.net/site/604/next"
           rel="next"
           aria-label="Next site"
           ><RightArrow
