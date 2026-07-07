@@ -35,16 +35,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@astro-community/astro-embed-bluesky@npm:^0.2.0":
-  version: 0.2.1
-  resolution: "@astro-community/astro-embed-bluesky@npm:0.2.1"
+"@astro-community/astro-embed-bluesky@npm:^0.2.1":
+  version: 0.2.2
+  resolution: "@astro-community/astro-embed-bluesky@npm:0.2.2"
   dependencies:
-    "@atcute/atproto": "npm:^3.1.11"
-    "@atcute/bluesky": "npm:^3.3.3"
+    "@atcute/atproto": "npm:^4.0.2"
+    "@atcute/bluesky": "npm:^4.0.11"
     "@atcute/bluesky-richtext-segmenter": "npm:^3.0.0"
-    "@atcute/client": "npm:^4.2.1"
-    "@atcute/lexicons": "npm:^1.3.0"
-  checksum: 10c0/b187eb70c315d8f071a261a830fa2477e5591b8224f602603cc62b15e7a59eb3f0aa3cd6679ea7d606cea5cf7f7a2b0449009124959e6f68a1d4ff5317315ed5
+    "@atcute/client": "npm:^5.1.0"
+    "@atcute/lexicons": "npm:^2.0.1"
+  checksum: 10c0/a038909b5de0043bc0810873a260e27069b38eb84c62dca68cd32aaa570852ebffa60094f7badef10b1a68a1e13cd6481c69cd24b8577098e776f88f5376844c
   languageName: node
   linkType: hard
 
@@ -57,11 +57,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@astro-community/astro-embed-integration@npm:^0.12.0":
-  version: 0.12.0
-  resolution: "@astro-community/astro-embed-integration@npm:0.12.0"
+"@astro-community/astro-embed-integration@npm:^0.12.1":
+  version: 0.12.1
+  resolution: "@astro-community/astro-embed-integration@npm:0.12.1"
   dependencies:
-    "@astro-community/astro-embed-bluesky": "npm:^0.2.0"
+    "@astro-community/astro-embed-bluesky": "npm:^0.2.1"
     "@astro-community/astro-embed-gist": "npm:^0.1.0"
     "@astro-community/astro-embed-link-preview": "npm:^0.3.1"
     "@astro-community/astro-embed-mastodon": "npm:^0.1.1"
@@ -72,8 +72,8 @@ __metadata:
     astro-auto-import: "npm:^0.5.1"
     unist-util-select: "npm:^5.1.0"
   peerDependencies:
-    astro: ^5.0.0 || ^6.0.0-alpha
-  checksum: 10c0/48b4694d70e6deb69dc75c06207836183a3552d476d66a0f46d4e17d33eaafe43aca711a6121ee1ab3c2eb7f75c6d8e44e37a4817c5cf627b6d2a3779f4facd2
+    astro: ^5.0.0 || ^6.0.0-alpha || ^7.0.0
+  checksum: 10c0/be986e2e2d901e16d63bdd0adef000db8a96168c5469777df238bacd2d7be957dcdffa5cf81ef3e938c412be4b64f77a2cedf1380ec6feb9b9b8e2f38c7262cd
   languageName: node
   linkType: hard
 
@@ -457,14 +457,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@atcute/atproto@npm:^3.1.11, @atcute/atproto@npm:^3.1.12":
-  version: 3.1.12
-  resolution: "@atcute/atproto@npm:3.1.12"
+"@atcute/atproto@npm:^4.0.2, @atcute/atproto@npm:^4.0.3":
+  version: 4.0.3
+  resolution: "@atcute/atproto@npm:4.0.3"
   dependencies:
-    "@atcute/lexicons": "npm:^1.3.1"
+    "@atcute/lexicons": "npm:^2.0.2"
   peerDependencies:
-    "@atcute/lexicons": ^1.0.0
-  checksum: 10c0/33319efb0af2577ffd84a3df7e8d9d2be1ca15012140d632298ae512041c4b0ee899b4167e2de3271504d572abb3b6465e7982b12bf37b5fd08c5cb7a0fccf21
+    "@atcute/lexicons": ^2.0.0
+  checksum: 10c0/8fa4a1c4bbe4b437f98e76ef298cad8b1ce97202a3ee91fc8305fc127d83ded63c337e8bd221a1cafe973bf144d5b39fb3bce61132d31b3a8ed35e54bdadb369
   languageName: node
   linkType: hard
 
@@ -475,67 +475,67 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@atcute/bluesky@npm:^3.3.3":
-  version: 3.3.5
-  resolution: "@atcute/bluesky@npm:3.3.5"
+"@atcute/bluesky@npm:^4.0.11":
+  version: 4.0.13
+  resolution: "@atcute/bluesky@npm:4.0.13"
   dependencies:
-    "@atcute/atproto": "npm:^3.1.12"
-    "@atcute/lexicons": "npm:^1.3.1"
+    "@atcute/atproto": "npm:^4.0.3"
+    "@atcute/lexicons": "npm:^2.0.2"
   peerDependencies:
-    "@atcute/lexicons": ^1.0.0
-  checksum: 10c0/f6a7360e504f974d05c388dc2d73976383dd1d5516ea07241ff2147a7df479db9326b80c0de1056e0d78a9da4d5fb4131680f439435d5cba6dab484ce171d662
+    "@atcute/lexicons": ^2.0.0
+  checksum: 10c0/dcf1f76151dfab5b64f31af5b39f70b5b2f904b916fdc3461b9740ac9933e622ff02840eb65f4c458a834b32344eeafe905a41db0d3b7dc9dc5999456e3a62a5
   languageName: node
   linkType: hard
 
-"@atcute/client@npm:^4.2.1":
-  version: 4.2.2
-  resolution: "@atcute/client@npm:4.2.2"
+"@atcute/client@npm:^5.1.0":
+  version: 5.1.1
+  resolution: "@atcute/client@npm:5.1.1"
   dependencies:
-    "@atcute/identity": "npm:^1.1.5"
-    "@atcute/lexicons": "npm:^1.3.1"
+    "@atcute/identity": "npm:^2.0.1"
+    "@atcute/lexicons": "npm:^2.0.2"
   peerDependencies:
-    "@atcute/lexicons": ^1.0.0
-  checksum: 10c0/91a8af98f90e7fb02f3f570ab22815867efe493ea4166ea6be7897ea7d32e0d23617f92de2ea09c2a1e5a7f879c4b259517f0cb5337fba85b4361630ad606579
+    "@atcute/lexicons": ^2.0.0
+  checksum: 10c0/12aaec9bf00c877352f9e771a8c4cd7576b683daacaa08d70c3ea613b3b9ab5e1f1511b30bf78360902e282dae8feb57c47975fc79beacb2f6dc89fbbb8bee4c
   languageName: node
   linkType: hard
 
-"@atcute/identity@npm:^1.1.5":
-  version: 1.1.5
-  resolution: "@atcute/identity@npm:1.1.5"
+"@atcute/identity@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "@atcute/identity@npm:2.0.1"
   dependencies:
-    "@atcute/lexicons": "npm:^1.3.1"
-    "@badrap/valita": "npm:^0.4.6"
+    "@atcute/lexicons": "npm:^2.0.2"
+    valibot: "npm:^1.4.1"
   peerDependencies:
-    "@atcute/lexicons": ^1.0.0
-  checksum: 10c0/00bedfcef3e423a461e83196393dd69ceeb59d275e22db09ecd3bcdee2852b14f27846d0e9ce453b3f1fa7c982909959b1722cd7a352dfa9e393c578d78eba91
+    "@atcute/lexicons": ^2.0.0
+  checksum: 10c0/3a0b55e62a1e8cd71e1d2cf7c9b2e8b0bce8425bb72cc9899c81f2cc4e89c5db589da18cc85e579ccb13b816c6d3498eabd02d82a016584a037b5ed97ed5cdcd
   languageName: node
   linkType: hard
 
-"@atcute/lexicons@npm:^1.3.0, @atcute/lexicons@npm:^1.3.1":
-  version: 1.3.1
-  resolution: "@atcute/lexicons@npm:1.3.1"
+"@atcute/lexicons@npm:^2.0.1, @atcute/lexicons@npm:^2.0.2":
+  version: 2.0.2
+  resolution: "@atcute/lexicons@npm:2.0.2"
   dependencies:
-    "@atcute/uint8array": "npm:^1.1.1"
-    "@atcute/util-text": "npm:^1.3.1"
+    "@atcute/uint8array": "npm:^1.1.3"
+    "@atcute/util-text": "npm:^1.3.3"
     "@standard-schema/spec": "npm:^1.1.0"
     esm-env: "npm:^1.2.2"
-  checksum: 10c0/a7deb078c2277358935929116e9bd0a632ee1804b01165256bee8bd2e76b0c4aeb296dcba30aaeba4250bb1e3d0d3bfafc5ff55ac20f2d7acfe41fa633e9b989
+  checksum: 10c0/61c94907d4d442adcb7cad050d8a09ea3415a22d6f7702f80be9e881edc1f2f5f6e98f18694b2cb2a28c20f5bf1f382ae398a23658c497341d78b041cb503882
   languageName: node
   linkType: hard
 
-"@atcute/uint8array@npm:^1.1.1":
-  version: 1.1.2
-  resolution: "@atcute/uint8array@npm:1.1.2"
-  checksum: 10c0/82a31a111905a993cca9fb05ede7028b54745ba0b3d042fddf5b81da2202e656c8dcc7a276c9dae596ea0f8dd43cc6988bde66b7521c3439f4eb1b420738b7c9
+"@atcute/uint8array@npm:^1.1.3":
+  version: 1.1.3
+  resolution: "@atcute/uint8array@npm:1.1.3"
+  checksum: 10c0/5e541204b09c9030dda02b64f0cc8ceb677bde165358d6ff63d02d858c6528efd6b2663aede5df9f240de3754846dc974183298740b01bf5388a95be4eb11337
   languageName: node
   linkType: hard
 
-"@atcute/util-text@npm:^1.3.1":
-  version: 1.3.1
-  resolution: "@atcute/util-text@npm:1.3.1"
+"@atcute/util-text@npm:^1.3.3":
+  version: 1.3.3
+  resolution: "@atcute/util-text@npm:1.3.3"
   dependencies:
     unicode-segmenter: "npm:^0.14.5"
-  checksum: 10c0/7fbdf7ee328a5ed02281b97f76c5e0169c353d67ce83d00f295399ec6adcb7f7704f86d4ef6a303e332a951e951128958c1bffb4cec089a0f1dfb14ce24ee2fb
+  checksum: 10c0/82a955b66b8d2bd24d9decdd41873656f7e6e70074344d579bfc69261d88b74d13e5be7740bc8e9c9abcee76c0d36d520df7ff6df333d79bf6f2d485cb8f86b2
   languageName: node
   linkType: hard
 
@@ -571,13 +571,6 @@ __metadata:
     "@babel/helper-string-parser": "npm:^7.29.7"
     "@babel/helper-validator-identifier": "npm:^7.29.7"
   checksum: 10c0/b6623994c69717fa27294f5fa46d59140338e2d86c6c1c13085c84ef7d53086ee357fbf4fe9abe3dd3da75734dc77c4c0df2f90fb29e667558bb3b3fb705e88f
-  languageName: node
-  linkType: hard
-
-"@badrap/valita@npm:^0.4.6":
-  version: 0.4.6
-  resolution: "@badrap/valita@npm:0.4.6"
-  checksum: 10c0/650ba7dc456d1a2b0bb141f34a33292a64fb074d6607b400a5764e8ac4530fea51cd74577a6e4765cdd5c6dd9941ce98906c528e09ce6db83aa2ad53c4e63c72
   languageName: node
   linkType: hard
 
@@ -696,9 +689,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cloudflare/workerd-darwin-64@npm:1.20260625.1":
-  version: 1.20260625.1
-  resolution: "@cloudflare/workerd-darwin-64@npm:1.20260625.1"
+"@cloudflare/workerd-darwin-64@npm:1.20260701.1":
+  version: 1.20260701.1
+  resolution: "@cloudflare/workerd-darwin-64@npm:1.20260701.1"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
@@ -710,9 +703,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cloudflare/workerd-darwin-arm64@npm:1.20260625.1":
-  version: 1.20260625.1
-  resolution: "@cloudflare/workerd-darwin-arm64@npm:1.20260625.1"
+"@cloudflare/workerd-darwin-arm64@npm:1.20260701.1":
+  version: 1.20260701.1
+  resolution: "@cloudflare/workerd-darwin-arm64@npm:1.20260701.1"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
@@ -724,9 +717,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cloudflare/workerd-linux-64@npm:1.20260625.1":
-  version: 1.20260625.1
-  resolution: "@cloudflare/workerd-linux-64@npm:1.20260625.1"
+"@cloudflare/workerd-linux-64@npm:1.20260701.1":
+  version: 1.20260701.1
+  resolution: "@cloudflare/workerd-linux-64@npm:1.20260701.1"
   conditions: os=linux & cpu=x64
   languageName: node
   linkType: hard
@@ -738,9 +731,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cloudflare/workerd-linux-arm64@npm:1.20260625.1":
-  version: 1.20260625.1
-  resolution: "@cloudflare/workerd-linux-arm64@npm:1.20260625.1"
+"@cloudflare/workerd-linux-arm64@npm:1.20260701.1":
+  version: 1.20260701.1
+  resolution: "@cloudflare/workerd-linux-arm64@npm:1.20260701.1"
   conditions: os=linux & cpu=arm64
   languageName: node
   linkType: hard
@@ -752,9 +745,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cloudflare/workerd-windows-64@npm:1.20260625.1":
-  version: 1.20260625.1
-  resolution: "@cloudflare/workerd-windows-64@npm:1.20260625.1"
+"@cloudflare/workerd-windows-64@npm:1.20260701.1":
+  version: 1.20260701.1
+  resolution: "@cloudflare/workerd-windows-64@npm:1.20260701.1"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
@@ -2504,35 +2497,35 @@ __metadata:
   languageName: node
   linkType: hard
 
-"astro-embed@npm:^0.13.0":
-  version: 0.13.0
-  resolution: "astro-embed@npm:0.13.0"
+"astro-embed@npm:^0.13.1":
+  version: 0.13.1
+  resolution: "astro-embed@npm:0.13.1"
   dependencies:
     "@astro-community/astro-embed-baseline-status": "npm:^0.2.2"
-    "@astro-community/astro-embed-bluesky": "npm:^0.2.0"
+    "@astro-community/astro-embed-bluesky": "npm:^0.2.1"
     "@astro-community/astro-embed-gist": "npm:^0.1.0"
-    "@astro-community/astro-embed-integration": "npm:^0.12.0"
+    "@astro-community/astro-embed-integration": "npm:^0.12.1"
     "@astro-community/astro-embed-link-preview": "npm:^0.3.1"
     "@astro-community/astro-embed-mastodon": "npm:^0.1.1"
     "@astro-community/astro-embed-twitter": "npm:^0.5.11"
     "@astro-community/astro-embed-vimeo": "npm:^0.3.12"
     "@astro-community/astro-embed-youtube": "npm:^0.5.10"
   peerDependencies:
-    astro: ^5.0.0 || ^6.0.0-alpha
-  checksum: 10c0/4a425788e4d601641cea87b8bbc935c1fe2e07c9e37c57b79703aec12a850087dcdadbffca297fbd2b0c5b866b67b21b1b90369c7171c63c4e9505c5c44b8e22
+    astro: ^5.0.0 || ^6.0.0-alpha || ^7.0.0
+  checksum: 10c0/c3ec2080dcc0411634d5c7c96d5f35a8bfd2ffb7413c171a0a97c703cdab9e63784dde42344e1c4b73ee039f6c678e0cef5c39bc16b18792c40a735fabe9e1e5
   languageName: node
   linkType: hard
 
-"astro-og-canvas@npm:^0.12.0":
-  version: 0.12.0
-  resolution: "astro-og-canvas@npm:0.12.0"
+"astro-og-canvas@npm:^0.13.0":
+  version: 0.13.0
+  resolution: "astro-og-canvas@npm:0.13.0"
   dependencies:
     canvaskit-wasm: "npm:^0.41.1"
     deterministic-object-hash: "npm:^2.0.2"
     entities: "npm:^8.0.0"
   peerDependencies:
     astro: ^5.0.0 || ^6.0.0 || ^7.0.0
-  checksum: 10c0/90d2e3de0c3e083c5a405d458e9887352a0f751625d660086e83d4b183a9a3e793b966afde8465b7e227002fd3c7b2f394ce01da181eb0ed412fa724f5459405
+  checksum: 10c0/48e9f1d1f83aaee3b2641ddadd0fc6a4ce7e8b8f911e0a335d5bdad27d44e537d6ba45125cbb3f977109b640ec807ba29a341a58783ee089642c2d475d4cf40d
   languageName: node
   linkType: hard
 
@@ -4947,19 +4940,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"miniflare@npm:4.20260625.0":
-  version: 4.20260625.0
-  resolution: "miniflare@npm:4.20260625.0"
+"miniflare@npm:4.20260701.0":
+  version: 4.20260701.0
+  resolution: "miniflare@npm:4.20260701.0"
   dependencies:
     "@cspotcode/source-map-support": "npm:0.8.1"
     sharp: "npm:0.34.5"
     undici: "npm:7.28.0"
-    workerd: "npm:1.20260625.1"
+    workerd: "npm:1.20260701.1"
     ws: "npm:8.21.0"
     youch: "npm:4.1.0-beta.10"
   bin:
     miniflare: bootstrap.js
-  checksum: 10c0/c3606fc4a440c3a5556f169fc20da71fc4eba9d05fa12fc270ca974a51c7f4983539a08119a59472770697684c627dd7a84c63930b8c1e7f3b12bc05af6f6eb4
+  checksum: 10c0/38953457f69baf630ada79ab1d5f8e306a45a209198e0929fde4aa46b1446ca1459fa634d19a67fc9392bac92c11ffcabd1cecb4c26d01dc6848d97f698992db
   languageName: node
   linkType: hard
 
@@ -5326,12 +5319,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:^3.9.2":
-  version: 3.9.2
-  resolution: "prettier@npm:3.9.2"
+"prettier@npm:^3.9.4":
+  version: 3.9.4
+  resolution: "prettier@npm:3.9.4"
   bin:
     prettier: bin/prettier.cjs
-  checksum: 10c0/e6ab0a5a9b7217c75262aefe190de29e05ddbe0b79f3b7c310d840999d25a50754503ec20e26b44d7b4705d5497376a8e9445f7bf1864e4e47be12dab3db735d
+  checksum: 10c0/dc6ec13d692745c6b7e7bf39beda9eb1b3b76c619118319bce393928c392264b1273337c75f80499695e165affefc7b3a9d2ebb18983af0a8f4dfbb2f45f6ff3
   languageName: node
   linkType: hard
 
@@ -5797,12 +5790,12 @@ __metadata:
     "@astrojs/rss": "npm:^4.0.19"
     "@astrojs/sitemap": "npm:3.7.3"
     astro: "npm:^7.0.6"
-    astro-embed: "npm:^0.13.0"
-    astro-og-canvas: "npm:^0.12.0"
+    astro-embed: "npm:^0.13.1"
+    astro-og-canvas: "npm:^0.13.0"
     gab-astro-compress: "npm:^0.1.2"
     glightbox: "npm:^3.3.1"
     mdast-util-to-string: "npm:^4.0.0"
-    prettier: "npm:^3.9.2"
+    prettier: "npm:^3.9.4"
     prettier-plugin-astro: "npm:^0.14.1"
     reading-time: "npm:^1.5.0"
     rehype-autolink-headings: "npm:^7.1.0"
@@ -5811,7 +5804,7 @@ __metadata:
     remark-directive: "npm:^4.0.0"
     remark-directive-sugar: "npm:^2.0.1"
     typescript: "npm:^6.0.3"
-    wrangler: "npm:^4.105.0"
+    wrangler: "npm:^4.107.0"
   languageName: unknown
   linkType: soft
 
@@ -6649,6 +6642,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"valibot@npm:^1.4.1":
+  version: 1.4.2
+  resolution: "valibot@npm:1.4.2"
+  peerDependencies:
+    typescript: ">=5"
+  peerDependenciesMeta:
+    typescript:
+      optional: true
+  checksum: 10c0/71b861de928fd5533b03fc4d84c619c07602f176d2bc6b12c5c80b2a6e889574c4126c843dd0771ce450bbb29566ca6df13d5b538ce5e4c39c2fccfb7623cf4e
+  languageName: node
+  linkType: hard
+
 "vfile-location@npm:^5.0.0":
   version: 5.0.3
   resolution: "vfile-location@npm:5.0.3"
@@ -7030,15 +7035,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"workerd@npm:1.20260625.1":
-  version: 1.20260625.1
-  resolution: "workerd@npm:1.20260625.1"
+"workerd@npm:1.20260701.1":
+  version: 1.20260701.1
+  resolution: "workerd@npm:1.20260701.1"
   dependencies:
-    "@cloudflare/workerd-darwin-64": "npm:1.20260625.1"
-    "@cloudflare/workerd-darwin-arm64": "npm:1.20260625.1"
-    "@cloudflare/workerd-linux-64": "npm:1.20260625.1"
-    "@cloudflare/workerd-linux-arm64": "npm:1.20260625.1"
-    "@cloudflare/workerd-windows-64": "npm:1.20260625.1"
+    "@cloudflare/workerd-darwin-64": "npm:1.20260701.1"
+    "@cloudflare/workerd-darwin-arm64": "npm:1.20260701.1"
+    "@cloudflare/workerd-linux-64": "npm:1.20260701.1"
+    "@cloudflare/workerd-linux-arm64": "npm:1.20260701.1"
+    "@cloudflare/workerd-windows-64": "npm:1.20260701.1"
   dependenciesMeta:
     "@cloudflare/workerd-darwin-64":
       optional: true
@@ -7052,7 +7057,7 @@ __metadata:
       optional: true
   bin:
     workerd: bin/workerd
-  checksum: 10c0/7ea9e3f4d07772ca3e77d7af7a9f28c93b6815559c297a7a8a9161f26a43c60a71b32608fc999aa02b6bfba4f8ac67dad3f3d29b625808bfcaa7547fd7ed4406
+  checksum: 10c0/8c9334a4ef0d520862adc32d67e9d9620f2c6c90509adcda059a5da077633dd3417cfa21e86831337a60c21a73abef2b28246cddbc50e303ac0ee8e121051cca
   languageName: node
   linkType: hard
 
@@ -7084,21 +7089,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"wrangler@npm:^4.105.0":
-  version: 4.105.0
-  resolution: "wrangler@npm:4.105.0"
+"wrangler@npm:^4.107.0":
+  version: 4.107.0
+  resolution: "wrangler@npm:4.107.0"
   dependencies:
     "@cloudflare/kv-asset-handler": "npm:0.5.0"
     "@cloudflare/unenv-preset": "npm:2.16.1"
     blake3-wasm: "npm:2.1.5"
     esbuild: "npm:0.28.1"
     fsevents: "npm:2.3.3"
-    miniflare: "npm:4.20260625.0"
+    miniflare: "npm:4.20260701.0"
     path-to-regexp: "npm:6.3.0"
     unenv: "npm:2.0.0-rc.24"
-    workerd: "npm:1.20260625.1"
+    workerd: "npm:1.20260701.1"
   peerDependencies:
-    "@cloudflare/workers-types": ^4.20260625.1
+    "@cloudflare/workers-types": ^4.20260701.1
   dependenciesMeta:
     fsevents:
       optional: true
@@ -7109,7 +7114,7 @@ __metadata:
     cf-wrangler: bin/cf-wrangler.js
     wrangler: bin/wrangler.js
     wrangler2: bin/wrangler.js
-  checksum: 10c0/df534d4daa67ce9a20ed944633a620e2b424fe97866167bb2aebd4b438b95812b9aac9659b41996cf5c4bde864307186ca5d52238a5f8f1d60458c44dec67966
+  checksum: 10c0/299e135eaf50c861479467526306da97ba9d592af9d679868b7553d34402f6b13819eb107252d4daf0272cb5975dbc380a1c242da76b23504c6b02d9f9da10aa
   languageName: node
   linkType: hard
 
