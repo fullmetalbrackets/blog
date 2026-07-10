@@ -212,6 +212,7 @@ export default defineConfig({
     },
     build: {
       cssMinify: 'esbuild',
+      minify: false,
     }
   },
   image: {
