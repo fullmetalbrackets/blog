@@ -51,8 +51,8 @@
   },
   "packageManager": "yarn@4.12.0",
   "devDependencies": {
-    "prettier": "^3.9.4",
+    "prettier": "^3.9.5",
     "prettier-plugin-astro": "^0.14.1",
-    "wrangler": "^4.107.1"
+    "wrangler": "^4.110.0"
   }
 }
