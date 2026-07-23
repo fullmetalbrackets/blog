@@ -2529,9 +2529,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"astro@npm:^7.1.1":
-  version: 7.1.1
-  resolution: "astro@npm:7.1.1"
+"astro@npm:^7.1.3":
+  version: 7.1.3
+  resolution: "astro@npm:7.1.3"
   dependencies:
     "@astrojs/compiler-rs": "npm:^0.3.1"
     "@astrojs/internal-helpers": "npm:0.10.1"
@@ -2547,7 +2547,7 @@ __metadata:
     ci-info: "npm:^4.4.0"
     clsx: "npm:^2.1.1"
     common-ancestor-path: "npm:^2.0.0"
-    cookie: "npm:^1.1.1"
+    cookie: "npm:^2.0.1"
     devalue: "npm:^5.8.1"
     diff: "npm:^8.0.3"
     dset: "npm:^3.1.4"
@@ -2564,7 +2564,7 @@ __metadata:
     magic-string: "npm:^0.30.21"
     magicast: "npm:^0.5.2"
     mrmime: "npm:^2.0.1"
-    neotraverse: "npm:^0.6.18"
+    neotraverse: "npm:^1.0.1"
     obug: "npm:^2.1.1"
     p-limit: "npm:^7.3.0"
     p-queue: "npm:^9.1.0"
@@ -2597,7 +2597,7 @@ __metadata:
       optional: true
   bin:
     astro: ./bin/astro.mjs
-  checksum: 10c0/fcebeeeaea6ab9d8e75237451965b6d2c4684c52706eb3aeb4327df60e842d2cfa59bb0c404798cd1e578f1d1f28516763f3f706a373a051751b970a6775e306
+  checksum: 10c0/eaea721096cf46dd43da08cca374aa681b9922a1079f798c6322bcb9cc77e73591724576c8d5a4a9c6eaa6472197bb57dd56a1b45fcfef47b5b49194541a8ef8
   languageName: node
   linkType: hard
 
@@ -2835,10 +2835,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cookie@npm:^1.0.2, cookie@npm:^1.1.1":
+"cookie@npm:^1.0.2":
   version: 1.1.1
   resolution: "cookie@npm:1.1.1"
   checksum: 10c0/79c4ddc0fcad9c4f045f826f42edf54bcc921a29586a4558b0898277fa89fb47be95bc384c2253f493af7b29500c830da28341274527328f18eba9f58afa112c
+  languageName: node
+  linkType: hard
+
+"cookie@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "cookie@npm:2.0.1"
+  checksum: 10c0/dcf3bd6ec9d0f4f32be7575e23242866cb53be55fc3d4cf36215638596661cec1327a3b4ca286ba15eba8f2abd443e422b8c5f708af4ea9f75b4d3dedc67ee4c
   languageName: node
   linkType: hard
 
@@ -4973,10 +4980,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"neotraverse@npm:^0.6.18":
-  version: 0.6.18
-  resolution: "neotraverse@npm:0.6.18"
-  checksum: 10c0/46f4c53cbbdc53671150916b544a9f46e27781f8003985237507542190173bec131168d89b846535f9c34c0a2a7debb1ab3a4f7a93d08218e2c194a363708ffa
+"neotraverse@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "neotraverse@npm:1.0.1"
+  checksum: 10c0/98e5d2d1974f91d527851a9dcfceb62701a1d31970b324b9f35fbdd244d173edc7a379ea1773f64771a9dc282486e3d3b693b24e14b1e969291612b2ff6b5054
   languageName: node
   linkType: hard
 
@@ -5760,7 +5767,7 @@ __metadata:
     "@astrojs/mdx": "npm:7.0.3"
     "@astrojs/rss": "npm:^4.0.19"
     "@astrojs/sitemap": "npm:3.7.3"
-    astro: "npm:^7.1.1"
+    astro: "npm:^7.1.3"
     astro-embed: "npm:^0.13.1"
     astro-og-canvas: "npm:^0.13.0"
     gab-astro-compress: "npm:^0.1.2"
