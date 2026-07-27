@@ -2,8 +2,8 @@
   "oci-free-tier-breakdown",
   "plex-remote-access-tailscale",
   "youtube-90-second-ads-on-tv-apps",
-  "how-i-setup-home-server",
   "how-to-setup-the-search-function-in-qbittorrent-and-add-search-plugins",
+  "how-i-setup-home-server",
   "reverse-proxy-using-nginx-adguardhome-cloudflare",
   "google-tv-tailscale-plex",
   "comprehensive-guide-tailscale-securely-access-home-network",
@@ -12,11 +12,11 @@
   "setting-up-plex-in-docker",
   "self-host-website-cloudflare-tunnel",
   "installing-and-configuring-bazzite",
-  "pihole-anywhere-tailscale",
   "reverse-proxy-using-nginx-pihole-cloudflare",
+  "pihole-anywhere-tailscale",
   "how-to-change-shape-of-an-existing-oracle-cloud-infrastructure-vm-instance",
-  "expose-plex-tailscale-vps",
   "xplore-android-smb-share",
+  "expose-plex-tailscale-vps",
   "migrate-adguardhome-glinet-flint2-libre-sweet-potato",
   "turn-off-display-linux-terminal"
 ]
