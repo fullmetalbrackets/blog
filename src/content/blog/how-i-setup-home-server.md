@@ -2,9 +2,9 @@
 title: 'How I set up a home server for self-hosting and as a NAS with secure remote access via Tailscale'
 description: 'I turned my old Dell PC into an all-in-one home server and network attached storage to self-host all my data, my photos, and my media library, running Home Assistant, Plex and other services, all securely accessible from outside my home with Tailscale.'
 pubDate: 2025-01-31
-updatedDate: 2026-05-27 12:00:00
+updatedDate: 2026-07-28 12:00:00
 tags: ['self-hosting', 'debian', 'tailscale']
-related: ['expose-plex-tailscale-vps', 'pihole-anywhere-tailscale', 'oci-free-tier-breakdown', 'comprehensive-guide-tailscale-securely-access-home-network']
+related: ['expose-plex-tailscale-vps', 'pihole-anywhere-tailscale', 'oci-free-tier-breakdown', 'comprehensive-guide-tailscale-securely-access-home-network', 'setup-prometheus-cadvisor-grafana']
 howto: true
 tocDepth: 3
 ---
@@ -154,7 +154,7 @@ SMB shares are available on the network for my wife and I to access from any PC 
 To manage the server with a nice GUI, I use [Cockpit](https://cockpit-project.org). You can add "applications" for visualizing performance metrics, managing storage, and configuring virtual machines. (Which I rarely use.) I also use the Cockpit add-ons _File Sharing_ to manage my SMB shares and _Navigator_ for a graphical file manager.
 
 :::image-figure[Overview in Cockpit]
-![A screenshot of the Cockpit web-based user interfacet](../../img/blog/cockpit1.png)
+![A screenshot of the Cockpit web-based user interface](../../img/blog/cockpit1.png)
 :::
 :::image-figure[Storage in Cockpit]
 ![A screenshot of the Cockpit web-based user interface](../../img/blog/cockpit2.png)
@@ -187,6 +187,28 @@ bentopdf:
    restart: unless-stopped
    ports:
       - 20880:8080
+```
+
+### Cadvisor
+
+[Cadvisor] uses a daemon to monitor resource usage of Docker (or Podman) containers, and display the information in a very simple and kinda ugly dashboard. [Can be paired with Grafana for prettier dashboards if you prefer.](/blog/setup-prometheus-cadvisor-grafana) (Note that I haven't used the "stack" from the linked blog post in years, because I didn't end up needing it very often, so I have no idea if it still works.)
+
+```yaml
+cadvisor:
+   image: gcr.io/cadvisor/cadvisor:latest
+   container_name: cadvisor
+   privileged: true
+   devices:
+      - /dev/kmsg:/dev/kmsg
+   volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker:/var/lib/docker:ro
+      - /cgroup:/cgroup:ro
+   restart: unless-stopped
+   ports:
+      - 18008:8080
 ```
 
 ### Deunhealth
@@ -228,6 +250,8 @@ dozzle:
 
 [FileBrowser Quantum](https://github.com/gtsteffaniak/filebrowser) is a slick web-based graphical file explorer accessed via browser. I rarely use it, but I have it setup to serve my `/home` directory in case I ever need to access it from another device.
 
+> This is a fork of the original FileBrowser with continuing development and addition of new features, since [the original](https://github.com/filebrowser/filebrowser) has been in maintenance mode for a while and [will be archived on September 1, 2026](https://github.com/filebrowser/filebrowser).
+
 ```yaml
 filebrowser:
    image: gtstef/filebrowser
@@ -242,6 +266,30 @@ filebrowser:
    ports:
       - 18888:80
    restart: unless-stopped
+```
+
+### Glances
+
+[Glances](https://github.com/nicolargo/glances) is a tool that monitors in real-time resource usage (CPU, memory, etc.) and other things like running processes, logged in users, temperatures and voltages, and more. This data is presented in an htop-like dashboard and can also be queried by other clients like web-based dashboards. I run this on all the machines in my homelab and use Home Assistant to display the information in a dedicated dashboard, and to trigger automations under certain circumstances.
+
+:::image-figure[Glances dashboard in Home Assistant]
+![A screenshot of a custom dashboard in Home Assistant](../../img/blog/glances-ha-dashboard.png)
+:::
+
+```yaml
+glances:
+   container_name: glances
+   image: nicolargo/glances:latest-full
+   restart: always
+   pid: host
+   network_mode: host
+   environment:
+      - TZ=America/New_York
+      - GLANCES_OPT=-w
+   volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /srv/data:/data:ro
+      - /srv/media:/media:ro
 ```
 
 ### Gluetun
@@ -323,6 +371,22 @@ kavita:
       - /opt/docker/kavita:/kavita/config
    environment:
       - TZ=America/New_York
+```
+
+### MKVToolnix
+
+[MKVToolnix](https://github.com/jlesage/docker-mkvtoolnix) is a set of tools to create, alter and inspect Matroska files. I sometimes use it to edit MKV files and slim them down by removing unnecessary language tracks and subtitles, saving a few GB here and there. (Note: The linked GitHub is not the creator of the MKVToolnix, they simply containerized it and maintain the container image.)
+
+```yaml
+mkvtoolnix:
+   image: jlesage/mkvtoolnix
+   container_name: mkvtoolnix
+   restart: unless-stopped
+   ports:
+      - 5800:5800
+   volumes:
+      - /home/ad/docker/mkvtoolnix:/config:rw
+      - /srv/media:/storage:rw
 ```
 
 ### Nginx Proxy Manager
@@ -412,6 +476,7 @@ services:
          PAPERLESS_REDIS: redis://broker:6379
          PAPERLESS_DBHOST: db
          PAPERLESS_TIME_ZONE: America/New_York
+         PAPERLESS_SECRET_KEY: supersecretkey123
 ```
 
 ### Plex
