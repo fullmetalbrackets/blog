@@ -2,7 +2,7 @@
 title: 'How to migrate AdGuard Home from a GL.iNet Flint 2 router to a Libre Sweet Potato'
 description: 'I love the Flint 2 router from GL.iNet, but the built-in AdGuard Home cannot handle the amount of devices, blocklists and custom filter rules I need. It crashes when I try to search the query log or add new custom filters, so I decided to take my config and migrate it to a Sweet Potato, and those issues disappeared.'
 pubDate: 2026-04-09 12:00:00
-updatedDate: 2026-04-22 12:00:00
+updatedDate: 2026-07-29 12:00:00
 tags: ['adguard', 'gl-inet', 'sbc', 'guide']
 ---
 
@@ -104,6 +104,10 @@ Normally if you were migrating AdGuardHome from a Linux server or a Docker conta
 
 ## Updating the configuration on Sweet Potato
 
+> This step is only required specifically when migrating from running AdGuard Home on a GL.iNet Flint 2 router to an ARM-based single board computer like Libre Sweet Potato or Raspberry Pi.
+>
+> If you are migrating between SBCs or Intel-based system, this is not required, as just copying the `AdGuardHome.yaml` file between machines will bring over your configuration without having to edit anything. In this case, just [skip to the next section](#disable-adguard-home-on-the-flint-2-and-configure-new-dns).
+
 Back on the Sweet Potato terminal, first shutdown AdGuard Home and make a backup of the configuration created with the setup wizard, just in case you need to fallback to it later.
 
 ```bash
@@ -170,7 +174,9 @@ On the AdGuard Home dashboard, go to **Filters -> DNS blocklists** on the top na
 
 Now that your new instance of AdGuard Home is ready and waiting, it's time to turn off the running one on the Flint 2 router. Login to the router web UI, then go to **Applications** -> **AdGuard Home** on the sidebar. Here, toggle **OFF** the button that says *Enable AdGuard Home*, then click **Apply**.
 
-Next, go to **Network** -> **DNS** on the sidebar. First, make sure all the switches are toggled **OFF**. Then, under **DNS Server Settings** do the following:
+Next, go to **Network** -> **LAN** on the sidebar. Scroll down to the *DHCP* section and under *DNS Server 1* add the IP address of your new AdGuard Home device, and click the **Apply** button.
+
+Finally, go to **Network** -> **DNS** on the sidebar. First, make sure all the switches are toggled **OFF**. Then, under **DNS Server Settings** do the following:
 
 1. For *Mode* choose **DNS Proxy** from the dropdown menu.
 2. For *Proxy Server Address* type in your new AdGuard Home instance's IP address with the DNS network port appended as shown in the example, like `192.168.0.200#53`.
