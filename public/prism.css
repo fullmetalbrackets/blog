@@ -34,7 +34,7 @@ pre[class*='language-'] *::-moz-selection {
 code[class*='language-']::selection,
 code[class*='language-'] *::selection,
 pre[class*='language-'] *::selection {
-  background: var(--code-bg);
+  background: var(--primary);
   color: inherit;
   text-shadow: none;
 }
