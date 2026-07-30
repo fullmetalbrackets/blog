@@ -519,6 +519,10 @@ blockquote pre[class*='language-'] {
   width: auto;
 }
 
+blockquote > .code-wrapper > .copy-btn {
+  margin: auto 3em 1.5em 1.5em;
+}
+
 blockquote code {
   font-size: 1em;
   background: var(--code-bg-bq);
