@@ -1,0 +1,7 @@
+---
+type: movie
+title: 'Spider-Man: Far From Home'
+pubDate: 2026-08-03 20:00:00
+image: ./_images/spiderman-far-from-home.webp
+rating: loved
+---
