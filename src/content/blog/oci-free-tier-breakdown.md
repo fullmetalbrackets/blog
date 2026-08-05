@@ -2,16 +2,16 @@
 title: Breaking down the free tier of Oracle Cloud Infrastructure
 description: Oracle Cloud Infrastructure, or OCI for short, has a very generous free tier, but I see a lot of people on the oraclecloud and selfhosted subreddits being confused about exactly what's included, so here is a straightforward breakdown of every service and allotment in the free tier.
 pubDate: 2026-01-06
-updatedDate: 2026-06-22 12:00:00
+updatedDate: 2026-08-05 12:00:00
 tags: ['oracle cloud', 'self-hosting']
 related: ['how-to-change-shape-of-an-existing-oracle-cloud-infrastructure-vm-instance', 'expose-plex-tailscale-vps']
 ---
 
 > [warning] Important!
 >
-> Beginning in **June 2026** the free-tier Ampere A1 limits will be reduced to **2 OPCUs and 12 GB memory** total, across all A1 instances, down from 4 OCPUs and 24 GB memory. [The OCI documentation](https://docs.oracle.com/en-us/iaas/Content/FreeTier/freetier_topic-Always_Free_Resources.htm) and [free-tier marketing site](https://www.oracle.com/cloud/free/) both show the new limits.
+> Oracle has emailed users of the _**Always-Free Tier**_ (not Pay As You Go) advising that compute limits have been updated and Always-Free resource usage must be reduced to the new limits by **August 18, 2026**, after which they will be terminated if above the new limits.
 >
-> As of June 22, 2026 **it seems this only applies to free tier users** and **Pay As You Go users may still be able to use 4 OCPUs and 24 GB memory for free**. See the [Arm Compute Instances section below](#arm-compute-instance) for more details and links to sources for this information.
+> See the [Arm Compute Instances section below](#arm-compute-instance) for more details.
 
 ## Free what now?
 
@@ -37,9 +37,15 @@ Essentially, the E2 Micro instances are _burstable virtual machines_, meaning th
 
 > [warning] Important!
 >
-> [Per a redditor who took the time to chat with Oracle Support about this](https://www.reddit.com/r/oraclecloud/comments/1u4lzkk/new_free_tier_limits_confirmed_by_oracle_support/), **free-tier instances** over the new 2 OPCU and 12 GB memory limits will be shutdown. **Free-tier users may have to downgrade their Ampere A1 instance(s) to this new lower limit in order to get them working again.** (I wrote a post about [how to the shape of an existing OCI instance](/blog/how-to-change-shape-of-an-existing-oracle-cloud-infrastructure-vm-instance) if you need a little guidance on how to downgrade your OCPUs and memory.)
+> Oracle Cloud's _Always-Free_ compute limits have been reduced to the following:
+> - **Up to 2 Ampere A1 OPCUs**
+> - **Up to 12 GB of memory**
+> 
+> This down from 4 OCPUs and 24 GB of memory that was allowed with the Always-Free tier. [The OCI documentation](https://docs.oracle.com/en-us/iaas/Content/FreeTier/freetier_topic-Always_Free_Resources.htm) and [free-tier marketing site](https://www.oracle.com/cloud/free/) have both been updated with the new limits.
 >
-> **As of June 22, 2026** several human support agents (rather than the customer support chatbot) have told users via email that **the new limits only affect free tier users**. See reddit posts about it [here](https://www.reddit.com/r/oraclecloud/comments/1ubongp/oracle_sr_reply_payg_users_are_not_impacted_by/) and [here](https://www.reddit.com/r/oraclecloud/comments/1ubk2qy/new_always_free_tier_limits_21june2026_update/) for more details. **It would seem that Pay As You Go users may still have access to 4 OCPUs and 24 GB of memory for free**.
+> <a href="/oci-always-free-update-email.webp" target="_blank" data-umami-event="oci-always-free-update-email">Oracle has sent out emails to Always-Free tier users</a> advising that Always-Free compute instances that are above the new limits on or after after **August 18, 2026** will be terminated. Rather than allowing your Ampere A1 instance(s) to be terminated, you should edit their shapes to reduce usage, [which I have detailed how to do in this blog post](/blog/how-to-change-shape-of-an-existing-oracle-cloud-infrastructure-vm-instance).
+>
+> Please note the new limits only apply to users of the OCI Always-Free tier, and those with a Pay As You Go account are _apparently_ still able to maintain 4 OCPUs and 24 GB of memory for free. (I would be shocked if PAYG does not get the same limits sooner or later.) I am a PAYG user myself, so I will be keeping an eye on this and report back after August 18.
 
 _Arm-based Ampere A1 cores and 12 GB of memory usable as 1 VM or 2 VMs_
 _Always Free: 1,500 OCPU hours and 9,000 GB hours per month_
