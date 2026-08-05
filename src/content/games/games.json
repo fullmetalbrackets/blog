@@ -85,7 +85,7 @@
       },
       {
         "moby": 0,
-        "title": "Fire Emblem Warrior"
+        "title": "Fire Emblem Warriors"
       },
       {
         "moby": 0,
@@ -532,6 +532,10 @@
     "Steam": [
       {
         "steamdb": 0,
+        "title": "Ace Combat 7: Skies Unknown"
+      },
+      {
+        "steamdb": 0,
         "title": "Axiom Verge"
       },
       {
@@ -541,6 +545,22 @@
       {
         "steamdb": 0,
         "title": "Bastion"
+      },
+      {
+        "steamdb": 0,
+        "title": "Batman: Arkham Asylum"
+      },
+      {
+        "steamdb": 0,
+        "title": "Batman: Arkham City"
+      },
+      {
+        "steamdb": 0,
+        "title": "Batman: Arkham Knights"
+      },
+      {
+        "steamdb": 0,
+        "title": "Batman: Arkham Origins"
       },
       {
         "steamdb": 0,
@@ -557,6 +577,10 @@
       {
         "steamdb": 0,
         "title": "Blasphemous"
+      },
+      {
+        "steamdb": 0,
+        "title": "Broforce"
       },
       {
         "steamdb": 0,
@@ -764,6 +788,14 @@
       },
       {
         "steamdb": 0,
+        "title": "Resident Evil 0 HD Remaster"
+      },
+      {
+        "steamdb": 0,
+        "title": "Resident Evil HD Remaster"
+      },
+      {
+        "steamdb": 0,
         "title": "Resident Evil 2 (remake)"
       },
       {
@@ -773,6 +805,10 @@
       {
         "steamdb": 0,
         "title": "Rogue Legacy"
+      },
+      {
+        "steamdb": 0,
+        "title": "Shantae: Half-Genie Hero"
       },
       {
         "steamdb": 0,
@@ -873,6 +909,14 @@
       {
         "steamdb": 0,
         "title": "Transistor"
+      },
+      {
+        "steamdb": 0,
+        "title": "Vampire Survivors"
+      },
+      {
+        "steamdb": 0,
+        "title": "Vampire Crawlers"
       },
       {
         "steamdb": 0,
