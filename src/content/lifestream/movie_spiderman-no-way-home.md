@@ -7,7 +7,7 @@ image: ./_images/spiderman-no-way-home.webp
 rating: loved
 ---
 
-Loved seeing the multiple Spider-Men meme made into a movie. This made me want to rewatch the Tobey movies soon. I should probably also force myself to watch the Amazing Spider-Man movies one of these days...
+Loved seeing the multiple Spider-Men meme made into a movie. Rewatching this made me want to also go back to rewatch the Tobey movies soon. I should probably also force myself to watch the Amazing Spider-Man movies one of these days...
 
 ## Previously Watched
 

@@ -6,6 +6,8 @@ image: ./_images/spiderman-far-from-home.webp
 rating: loved
 ---
 
+Fun movie and interesting take on Mysterio.
+
 ## Previously Watched
 
 - 11/19/2023

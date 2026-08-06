@@ -6,4 +6,4 @@ image: ./_images/the-hero-of-ages.avif
 rating: loved
 ---
 
-Such a great trilogy! I'll be checking out Stormlight Archive at some points... the Cosmere has me now.
+Such a great trilogy! I'll be checking out Stormlight Archive at some point... the Cosmere has me now.
