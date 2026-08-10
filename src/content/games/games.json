@@ -26,6 +26,10 @@
         "title": "Mina the Hollower"
       },
       {
+        "moby": 263341,
+        "title": "Star Fox"
+      },
+      {
         "moby": 84595,
         "title": "The Legend of Zelda: Breath of the Wild"
       },
@@ -104,7 +108,7 @@
         "title": "Mario + Rabbids Kingdom Battle"
       },
       {
-        "moby": 102091,
+        "moby": 0,
         "title": "Mario + Rabbids Sparks of Hope"
       },
       {
@@ -136,7 +140,7 @@
         "title": "Scott Pilgrim vs. The World: The Game"
       },
       {
-        "moby": 76855,
+        "moby": 0,
         "title": "Super Mario 3D All-Stars"
       },
       {
@@ -144,15 +148,15 @@
         "title": "Super Mario 3D World + Bowser's Fury"
       },
       {
-        "moby": 42320,
+        "moby": 0,
         "title": "Super Mario Odyssey"
       },
       {
-        "moby": 212038,
+        "moby": 0,
         "title": "Super Mario RPG"
       },
       {
-        "moby": 210462,
+        "moby": 0,
         "title": "Super Mario Bros. Wonder"
       },
       {
@@ -182,35 +186,35 @@
     ],
     "Wii": [
       {
-        "moby": 169,
+        "moby": 0,
         "title": "Mario Kart Wii"
       },
       {
-        "moby": 7659,
+        "moby": 0,
         "title": "Mario Strikers Charged"
       },
       {
-        "moby": 44577,
+        "moby": 0,
         "title": "My Fitness Coach: Get In Shape"
       },
       {
-        "moby": 170,
+        "moby": 0,
         "title": "New Super Mario Bros. Wii"
       },
       {
-        "moby": 3257,
+        "moby": 0,
         "title": "Wii Fit"
       },
       {
-        "moby": 3495,
+        "moby": 0,
         "title": "Wii Play"
       },
       {
-        "moby": 3194,
+        "moby": 0,
         "title": "Wii Sports Resort"
       },
       {
-        "moby": 76992,
+        "moby": 0,
         "title": "Wii Sports [Pack In]"
       }
     ],
@@ -282,7 +286,7 @@
     ],
     "Nintendo 3DS": [
       {
-        "moby": 12733,
+        "moby": 0,
         "title": "Mario Kart 7"
       },
       {
@@ -312,7 +316,7 @@
         "title": "Final Fantasy Tactics Advance 2"
       },
       {
-        "moby": 12733,
+        "moby": 0,
         "title": "Mario Kart DS"
       },
       {
@@ -342,7 +346,7 @@
         "title": "Final Fantasy Tactics Advance"
       },
       {
-        "moby": 12733,
+        "moby": 0,
         "title": "Mario Kart Advance"
       },
       {
@@ -361,15 +365,15 @@
 
     "PlayStation 5": [
       {
-        "moby": 73744,
+        "moby": 0,
         "title": "Final Fantasy VII Remake Intergrade"
       },
       {
-        "moby": 73744,
+        "moby": 0,
         "title": "Final Fantasy XVI"
       },
       {
-        "moby": 73744,
+        "moby": 0,
         "title": "God of War: Ragnarok"
       },
       {
@@ -377,123 +381,135 @@
         "title": "Hogwarts Legacy"
       },
       {
-        "moby": 73917,
+        "moby": 0,
         "title": "Marvel's Spider-Man: Miles Morales"
       },
       {
-        "moby": 73744,
+        "moby": 0,
         "title": "Ratchet & Clank: Rift Apart"
       },
       {
-        "moby": 73744,
+        "moby": 0,
+        "title": "Resident Evil 4 (Remake)"
+      },
+      {
+        "moby": 0,
         "title": "The Elder Scrolls IV: Oblivion Remastered"
       }
     ],
     "PlayStation 4": [
       {
-        "moby": 73917,
+        "moby": 0,
+        "title": "Bloodborne"
+      },
+      {
+        "moby": 0,
         "title": "God of War"
       },
       {
-        "moby": 73744,
+        "moby": 146988,
+        "title": "Ghost of Tsushima"
+      },
+      {
+        "moby": 0,
         "title": "Red Dead Redemption 2"
       }
     ],
     "PlayStation 3": [
       {
-        "moby": 2780,
+        "moby": 0,
         "title": "Kingdom Hearts HD 2.5 ReMIX"
       },
       {
-        "moby": 2780,
+        "moby": 0,
         "title": "Metal Gear Solid 4: Guns of the Patriots"
       },
       {
-        "moby": 2780,
+        "moby": 0,
         "title": "Ratchet & Clank Collection"
       },
       {
-        "moby": 2780,
+        "moby": 0,
         "title": "The Last Of Us"
       },
       {
-        "moby": 2780,
-        "title": "Uncharted"
+        "moby": 0,
+        "title": "Uncharted: Drake's Fortune"
       },
       {
-        "moby": 2780,
-        "title": "Uncharted 2"
+        "moby": 0,
+        "title": "Uncharted 2: Among Thieves"
       }
     ],
     "PlayStation 2": [
       {
-        "moby": 4165,
+        "moby": 0,
         "title": "Final Fantasy X"
       },
       {
-        "moby": 4165,
+        "moby": 0,
         "title": "Final Fantasy XII"
       },
       {
-        "moby": 4165,
+        "moby": 0,
         "title": "Grand Theft Auto III"
       },
       {
-        "moby": 4166,
+        "moby": 0,
         "title": "Grand Theft Auto: Vice City"
       },
       {
-        "moby": 4867,
+        "moby": 0,
         "title": "Jak II"
       },
       {
-        "moby": 2780,
+        "moby": 0,
         "title": "Metal Gear Solid 2: Sons of Liberty"
       },
       {
-        "moby": 2780,
+        "moby": 0,
         "title": "Metal Gear Solid 3: Substance"
       },
       {
-        "moby": 7797,
+        "moby": 0,
         "title": "Ratchet & Clank"
       }
     ],
     "PlayStation": [
       {
-        "moby": 2780,
+        "moby": 0,
         "title": "Chrono Cross"
       },
       {
-        "moby": 2780,
+        "moby": 0,
         "title": "Colony Wars"
       },
       {
-        "moby": 2780,
+        "moby": 0,
         "title": "Colony Wars: Vengence"
       },
       {
-        "moby": 2780,
+        "moby": 0,
         "title": "Final Fantasy Tactics"
       },
       {
-        "moby": 2780,
+        "moby": 0,
         "title": "Final Fantasy VII"
       },
       {
-        "moby": 2780,
+        "moby": 0,
         "title": "Final Fantasy VIII"
       },
       {
-        "moby": 2780,
+        "moby": 0,
         "title": "Final Fantasy IX"
       },
       {
-        "moby": 2780,
+        "moby": 0,
         "title": "Resident Evil 2"
       },
       {
-        "moby": 2780,
+        "moby": 0,
         "title": "Tenchu 2: Birth of the Stealth Assassins"
       }
     ],
@@ -501,15 +517,31 @@
     "XBox 360": [
       {
         "moby": 0,
-        "title": "Call of Duty: Modern Warfare"
+        "title": "Ace Combat 6: Fires of Liberation"
       },
       {
         "moby": 0,
-        "title": "Call of Duty: Modern Warfare 2"
+        "title": "Assassin's Creed II"
       },
       {
         "moby": 0,
-        "title": "Call of Duty: Modern Warfare 3"
+        "title": "Beyond Good & Evil HD"
+      },
+      {
+        "moby": 0,
+        "title": "Bioshock Infinite"
+      },
+      {
+        "moby": 0,
+        "title": "Borderlands"
+      },
+      {
+        "moby": 0,
+        "title": "Bully Scholarship Edition"
+      },
+      {
+        "moby": 0,
+        "title": "Burnout Paradise"
       },
       {
         "moby": 0,
@@ -517,7 +549,151 @@
       },
       {
         "moby": 0,
-        "title": "Minecraft: XBox Edition"
+        "title": "Call of Duty: Modern Warfare"
+      },
+      {
+        "moby": 0,
+        "title": "Call of Duty: Modern Warfare 3"
+      },
+      {
+        "moby": 0,
+        "title": "Castle Crashers"
+      },
+      {
+        "moby": 0,
+        "title": "Castlevania: Symphony of the Night"
+      },
+      {
+        "moby": 0,
+        "title": "Civlization Revolution"
+      },
+      {
+        "moby": 0,
+        "title": "Crackdown"
+      },
+      {
+        "moby": 0,
+        "title": "Crimson Alliance"
+      },
+      {
+        "moby": 0,
+        "title": "Deadlight"
+      },
+      {
+        "moby": 0,
+        "title": "Dead Space"
+      },
+      {
+        "moby": 0,
+        "title": "Dungeon Siege III"
+      },
+      {
+        "moby": 0,
+        "title": "Dust: An Elysian Tail"
+      },
+      {
+        "moby": 0,
+        "title": "Fallout 3"
+      },
+      {
+        "moby": 0,
+        "title": "Fallout: New Vegas"
+      },
+      {
+        "moby": 0,
+        "title": "Fez"
+      },
+      {
+        "moby": 0,
+        "title": "Forza Horizon"
+      },
+      {
+        "moby": 0,
+        "title": "Gears of War"
+      },
+      {
+        "moby": 0,
+        "title": "Gears of War 2"
+      },
+      {
+        "moby": 0,
+        "title": "Gears of War 3"
+      },
+      {
+        "moby": 0,
+        "title": "Grand Theft Auto IV"
+      },
+      {
+        "moby": 0,
+        "title": "Grand Theft Auto V"
+      },
+      {
+        "moby": 0,
+        "title": "GRID 2"
+      },
+      {
+        "moby": 0,
+        "title": "Halo 3"
+      },
+      {
+        "moby": 0,
+        "title": "Halo Reach"
+      },
+      {
+        "moby": 0,
+        "title": "Jet Set Radio"
+      },
+      {
+        "moby": 0,
+        "title": "Mass Effect 3"
+      },
+      {
+        "moby": 0,
+        "title": "Metal Gear Solid HD: 2 & 3"
+      },
+      {
+        "moby": 0,
+        "title": "Minecraft: XBox 360 Edition"
+      },
+      {
+        "moby": 0,
+        "title": "Monkey Island 2: Special Edition"
+      },
+      {
+        "moby": 0,
+        "title": "MX vs ATV Reflex"
+      },
+      {
+        "moby": 0,
+        "title": "Outland"
+      },
+      {
+        "moby": 0,
+        "title": "Perfect Dark"
+      },
+      {
+        "moby": 0,
+        "title": "Red Dead Redemption"
+      },
+      {
+        "moby": 0,
+        "title": "Sacred Citadel"
+      },
+      {
+        "moby": 0,
+        "title": "Saints Row IV"
+      },
+      {
+        "moby": 0,
+        "title": "Star Wars: The Force Unleashed"
+      },
+      {
+        "moby": 0,
+        "title": "The Chronicles of Riddick"
+      },
+      {
+        "moby": 0,
+        "title": "The Dishwasher: Undead Samurai"
       },
       {
         "moby": 0,
@@ -526,6 +702,18 @@
       {
         "moby": 0,
         "title": "The Elder Scrolls V: Skyrim"
+      },
+      {
+        "moby": 0,
+        "title": "The Witcher 2: Assassin of Kings"
+      },
+      {
+        "moby": 0,
+        "title": "Tomb Raider"
+      },
+      {
+        "moby": 0,
+        "title": "Tron Evolution"
       }
     ],
 
@@ -600,7 +788,15 @@
       },
       {
         "steamdb": 0,
+        "title": "Dark Souls: Remastered"
+      },
+      {
+        "steamdb": 0,
         "title": "Dark Souls 2: Scholar of the First Sin"
+      },
+      {
+        "steamdb": 0,
+        "title": "Dark Souls 3"
       },
       {
         "steamdb": 0,
@@ -768,6 +964,14 @@
       },
       {
         "steamdb": 0,
+        "title": "Need for Speed: Most Wanted"
+      },
+      {
+        "steamdb": 0,
+        "title": "Need for Speed: Rivals"
+      },
+      {
+        "steamdb": 0,
         "title": "Palia"
       },
       {
@@ -785,6 +989,10 @@
       {
         "steamdb": 0,
         "title": "Prey"
+      },
+      {
+        "steamdb": 0,
+        "title": "Quake (Enhanced)"
       },
       {
         "steamdb": 0,
