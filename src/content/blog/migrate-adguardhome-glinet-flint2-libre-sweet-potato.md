@@ -104,9 +104,9 @@ Normally if you were migrating AdGuardHome from a Linux server or a Docker conta
 
 ## Updating the configuration on Sweet Potato
 
-> This step is only required specifically when migrating from running AdGuard Home on a GL.iNet Flint 2 router to an ARM-based single board computer like Libre Sweet Potato or Raspberry Pi.
+> This step is only required specifically when migrating from running AdGuard Home on a GL.iNet Flint 2 router to an ARM-based single board computer like Libre Sweet Potato or Raspberry Pi, as the version of  AdGuard Home for GL.iNet routers uses a unique configuration with different filename and fields.
 >
-> If you are migrating between SBCs or Intel-based system, this is not required, as just copying the `AdGuardHome.yaml` file between machines will bring over your configuration without having to edit anything. In this case, just [skip to the next section](#disable-adguard-home-on-the-flint-2-and-configure-new-dns).
+> If you are migrating between Arm-based (Libre Potato, Raspberry Pi, etc.) or Intel-based systems, this step is not required, as just copying the `AdGuardHome.yaml` file between machines will bring over your configuration without having to edit anything. In this case, just [skip to the next section](#disable-adguard-home-on-the-flint-2-and-configure-new-dns).
 
 Back on the Sweet Potato terminal, first shutdown AdGuard Home and make a backup of the configuration created with the setup wizard, just in case you need to fallback to it later.
 
