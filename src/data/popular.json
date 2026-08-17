@@ -5,18 +5,18 @@
   "youtube-90-second-ads-on-tv-apps",
   "how-i-setup-home-server",
   "reverse-proxy-using-nginx-adguardhome-cloudflare",
-  "solid-explorer-samba-share",
   "google-tv-tailscale-plex",
-  "upgrade-debian-12-bookworm-debian-13-trixie",
+  "solid-explorer-samba-share",
   "comprehensive-guide-tailscale-securely-access-home-network",
+  "upgrade-debian-12-bookworm-debian-13-trixie",
   "pihole-anywhere-tailscale",
   "reverse-proxy-using-nginx-pihole-cloudflare",
   "xplore-android-smb-share",
-  "self-host-website-cloudflare-tunnel",
-  "installing-and-configuring-bazzite",
   "expose-plex-tailscale-vps",
+  "self-host-website-cloudflare-tunnel",
   "how-to-change-shape-of-an-existing-oracle-cloud-infrastructure-vm-instance",
   "turn-off-display-linux-terminal",
   "two-drives-mergerfs",
-  "migrate-adguardhome-glinet-flint2-libre-sweet-potato"
+  "fix-for-nintendo-switch-oled-not-finding-5ghz-wifi-networks",
+  "reverse-proxy-nginx-pihole"
 ]
