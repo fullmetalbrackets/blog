@@ -2,7 +2,7 @@
 type: game
 title: 'Castlevania: Symphony of the Night'
 pubDate: 2026-08-14 18:00:00
-platform: PSX
+platform: PlayStation
 image: ./_images/castlevania-symphony-of-the-night.webp
 rating: masterpiece
 ---
