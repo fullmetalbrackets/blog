@@ -297,8 +297,7 @@ const gamePlatforms = lifestream
     {} as Record<string, number>
   );
 const topPlatforms = Object.entries(gamePlatforms)
-  .sort((a, b) => b[1] - a[1])
-  .slice(0, 8);
+  .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
 const maxPlatformCount = topPlatforms[0]?.[1] ?? 1;
 
 // Lifestream — rating breakdown per media type
