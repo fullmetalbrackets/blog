@@ -12,11 +12,11 @@
   "pihole-anywhere-tailscale",
   "reverse-proxy-using-nginx-pihole-cloudflare",
   "xplore-android-smb-share",
-  "expose-plex-tailscale-vps",
-  "self-host-website-cloudflare-tunnel",
   "how-to-change-shape-of-an-existing-oracle-cloud-infrastructure-vm-instance",
-  "turn-off-display-linux-terminal",
+  "expose-plex-tailscale-vps",
   "two-drives-mergerfs",
+  "self-host-website-cloudflare-tunnel",
+  "turn-off-display-linux-terminal",
   "fix-for-nintendo-switch-oled-not-finding-5ghz-wifi-networks",
   "reverse-proxy-nginx-pihole"
 ]
