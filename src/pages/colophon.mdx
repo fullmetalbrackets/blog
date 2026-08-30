@@ -2,17 +2,19 @@
 layout: ../layouts/Page.astro
 title: Colophon
 description:
-  How fullmetalbrackets.com is made, with what tools, supporting what
-  technologies, etc.
+  How fullmetalbrackets.com is made, with what tools, supporting what technologies, etc.
 schemaType: AboutPage
 toc: true
 ---
 
 export const prerender = true;
+import FormattedDate from '@components/FormattedDate.astro';
+import '@styles/page.css';
 
 <a class='u-url' href='https://fullmetalbrackets.com/colophon' hidden>
   Permalink
 </a>
+
 
 ## WTF is a Colophon?
 
@@ -34,13 +36,18 @@ Or in a modern context...
 >
 > [IndieWeb.org](https://indieweb.org/colophon)
 
+<div class='date'>
+  <span class='updated'>Last updated on</span>
+  <FormattedDate date={new Date('2026-08-30T12:00:00')}  />
+</div>
+
 ## Site and Webhost
 
 The site is built with [Astro](https://astro.build) and deployed on
 [Cloudflare Workers](https://workers.cloudflare.com) from a
 [public GitHub repository](https://github.com/fullmetalbrackets/blog). The
 domain is through [Cloudflare](https://cloudflare.com/products/registrar/) and a
-cheap VPS from [Racknerd](https://racknerd.com) hosts my Umami instance.
+cheap VPS from [Racknerd](https://racknerd.com) hosts my [Umami](http://umami.is) instance.
 
 ## Fonts, Icons and Images
 
@@ -53,9 +60,7 @@ cheap VPS from [Racknerd](https://racknerd.com) hosts my Umami instance.
   [this GitHub repo](https://github.com/HVR88/Monochrome-Gaming-Logos)
 - Posters for movies and TV shows are from [TMDB](https://themoviedb.org/)
 - Book covers are from [Goodreads](https://goodreads.com/)
-- Most video game box art is from [IGDB](https://www.igdb.com/) or
-  [MobyGames](https://mobygames.com/), though in sometimes I have to search on
-  Google for good ones
+- Most video game box art is from [IGDB](https://www.igdb.com/), [MobyGames](https://mobygames.com/) or [IMDB](https://imdb.com/), though sometimes I have to search on Google to find good quality cover art.
 
 ## Astro, Integrations and Packages
 
