@@ -413,9 +413,21 @@
       {
         "moby": 0,
         "title": "Red Dead Redemption 2"
+      },
+            {
+        "moby": 0,
+        "title": "The Last Guardian"
       }
     ],
     "PlayStation 3": [
+      {
+        "moby": 0,
+        "title": "InFamous"
+      },
+      {
+        "moby": 0,
+        "title": "InFamous 2"
+      },
       {
         "moby": 0,
         "title": "Kingdom Hearts HD 2.5 ReMIX"
@@ -964,11 +976,15 @@
       },
       {
         "steamdb": 0,
-        "title": "Need for Speed: Most Wanted"
+        "title": "Need for Speed Heat"
       },
       {
         "steamdb": 0,
-        "title": "Need for Speed: Rivals"
+        "title": "Need for Speed Most Wanted"
+      },
+      {
+        "steamdb": 0,
+        "title": "Need for Speed Rivals"
       },
       {
         "steamdb": 0,
