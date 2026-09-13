@@ -1,7 +1,7 @@
 ---
 type: game
 title: 'Grand Theft Auto III: The Definitive Edition'
-pubDate: 2026-09-04 12:00:00
+pubDate: 2026-09-03 12:00:00
 platform: PC
 image: ./_images/grand-theft-auto-iii-the-definitive-edition.jpeg
 rating: disliked
