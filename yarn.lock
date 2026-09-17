@@ -35,16 +35,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@astro-community/astro-embed-bluesky@npm:^0.2.1":
-  version: 0.2.2
-  resolution: "@astro-community/astro-embed-bluesky@npm:0.2.2"
+"@astro-community/astro-embed-bluesky@npm:^0.2.3":
+  version: 0.2.3
+  resolution: "@astro-community/astro-embed-bluesky@npm:0.2.3"
   dependencies:
-    "@atcute/atproto": "npm:^4.0.2"
-    "@atcute/bluesky": "npm:^4.0.11"
-    "@atcute/bluesky-richtext-segmenter": "npm:^3.0.0"
-    "@atcute/client": "npm:^5.1.0"
-    "@atcute/lexicons": "npm:^2.0.1"
-  checksum: 10c0/a038909b5de0043bc0810873a260e27069b38eb84c62dca68cd32aaa570852ebffa60094f7badef10b1a68a1e13cd6481c69cd24b8577098e776f88f5376844c
+    "@atcute/atproto": "npm:^4.0.3"
+    "@atcute/bluesky": "npm:^4.0.14"
+    "@atcute/bluesky-richtext-segmenter": "npm:^3.0.1"
+    "@atcute/client": "npm:^5.1.1"
+    "@atcute/lexicons": "npm:^2.0.2"
+  checksum: 10c0/338a272ecc467eb0265817f3cdead0ea32a32fb99bcc6f244d62a6db086be70b4f021e8f0f944d9e9ae67e4126aaefae40ed26cce3803b11cbae32f7bab2d149
   languageName: node
   linkType: hard
 
@@ -57,11 +57,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@astro-community/astro-embed-integration@npm:^0.12.1":
-  version: 0.12.1
-  resolution: "@astro-community/astro-embed-integration@npm:0.12.1"
+"@astro-community/astro-embed-integration@npm:^0.13.0":
+  version: 0.13.0
+  resolution: "@astro-community/astro-embed-integration@npm:0.13.0"
   dependencies:
-    "@astro-community/astro-embed-bluesky": "npm:^0.2.1"
+    "@astro-community/astro-embed-bluesky": "npm:^0.2.3"
     "@astro-community/astro-embed-gist": "npm:^0.1.0"
     "@astro-community/astro-embed-link-preview": "npm:^0.3.1"
     "@astro-community/astro-embed-mastodon": "npm:^0.1.1"
@@ -69,11 +69,11 @@ __metadata:
     "@astro-community/astro-embed-vimeo": "npm:^0.3.12"
     "@astro-community/astro-embed-youtube": "npm:^0.5.10"
     "@types/unist": "npm:^3.0.3"
-    astro-auto-import: "npm:^0.5.1"
+    astro-auto-import: "npm:^0.6.0"
     unist-util-select: "npm:^5.1.0"
   peerDependencies:
-    astro: ^5.0.0 || ^6.0.0-alpha || ^7.0.0
-  checksum: 10c0/be986e2e2d901e16d63bdd0adef000db8a96168c5469777df238bacd2d7be957dcdffa5cf81ef3e938c412be4b64f77a2cedf1380ec6feb9b9b8e2f38c7262cd
+    astro: ^7.2.4
+  checksum: 10c0/787871076e1af558b3aaa77328572bdb9c89848df3c0763569a3e5f414a7b6a87407e94f9ed55d96f3b11c8953e54da12166f37a01708c1f3a02baa8b75550e3
   languageName: node
   linkType: hard
 
@@ -456,7 +456,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@atcute/atproto@npm:^4.0.2, @atcute/atproto@npm:^4.0.3":
+"@atcute/atproto@npm:^4.0.3":
   version: 4.0.3
   resolution: "@atcute/atproto@npm:4.0.3"
   dependencies:
@@ -467,26 +467,37 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@atcute/bluesky-richtext-segmenter@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "@atcute/bluesky-richtext-segmenter@npm:3.0.0"
-  checksum: 10c0/47162219c7371a767635d49a8870c72459d35bdc06e2e01a6620ced8057dc6b7833cc2e2d418cc3c13a9d569fd2bb80947cde8f51107a5c3b809ad6aab74e657
-  languageName: node
-  linkType: hard
-
-"@atcute/bluesky@npm:^4.0.11":
-  version: 4.0.13
-  resolution: "@atcute/bluesky@npm:4.0.13"
+"@atcute/atproto@npm:^4.0.4":
+  version: 4.0.4
+  resolution: "@atcute/atproto@npm:4.0.4"
   dependencies:
-    "@atcute/atproto": "npm:^4.0.3"
-    "@atcute/lexicons": "npm:^2.0.2"
+    "@atcute/lexicons": "npm:^2.0.3"
   peerDependencies:
     "@atcute/lexicons": ^2.0.0
-  checksum: 10c0/dcf1f76151dfab5b64f31af5b39f70b5b2f904b916fdc3461b9740ac9933e622ff02840eb65f4c458a834b32344eeafe905a41db0d3b7dc9dc5999456e3a62a5
+  checksum: 10c0/321cb2a27f01ffd9a434dec140ac667574d884a17d5f0c0223543b93f08cc609331b6970747541da69a88b478f302343c57dd079bdf360df14068f13c6a94524
   languageName: node
   linkType: hard
 
-"@atcute/client@npm:^5.1.0":
+"@atcute/bluesky-richtext-segmenter@npm:^3.0.1":
+  version: 3.0.2
+  resolution: "@atcute/bluesky-richtext-segmenter@npm:3.0.2"
+  checksum: 10c0/223a9660e1e5da4c72c9396f75b7b8f1e3ced3d676698d04f5e6ad636eb4a610f08aa933a6227609c6657594b0591c153e124e1e057c3ad87e238d806591d431
+  languageName: node
+  linkType: hard
+
+"@atcute/bluesky@npm:^4.0.14":
+  version: 4.0.20
+  resolution: "@atcute/bluesky@npm:4.0.20"
+  dependencies:
+    "@atcute/atproto": "npm:^4.0.4"
+    "@atcute/lexicons": "npm:^2.1.0"
+  peerDependencies:
+    "@atcute/lexicons": ^2.0.0
+  checksum: 10c0/54afc3301ed0b1c3ee3a168db666cb65c4e5610e139c943dad39884f710a7ad6894b684459aa98769baf425092484c454a0d8f174defed75554f86def1d65502
+  languageName: node
+  linkType: hard
+
+"@atcute/client@npm:^5.1.1":
   version: 5.1.1
   resolution: "@atcute/client@npm:5.1.1"
   dependencies:
@@ -510,7 +521,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@atcute/lexicons@npm:^2.0.1, @atcute/lexicons@npm:^2.0.2":
+"@atcute/lexicons@npm:^2.0.2":
   version: 2.0.2
   resolution: "@atcute/lexicons@npm:2.0.2"
   dependencies:
@@ -522,10 +533,29 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@atcute/lexicons@npm:^2.0.3, @atcute/lexicons@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "@atcute/lexicons@npm:2.1.0"
+  dependencies:
+    "@atcute/uint8array": "npm:^1.1.5"
+    "@atcute/util-text": "npm:^1.3.4"
+    "@standard-schema/spec": "npm:^1.1.0"
+    esm-env: "npm:^1.2.2"
+  checksum: 10c0/741b0916e06a909c84b877a6009b49b9fe25102effbbce99c9bba9546de82c0b95af3eca1dc44f30d7aa58a8367053b5c600574123001e2e66c6e818bb4066ca
+  languageName: node
+  linkType: hard
+
 "@atcute/uint8array@npm:^1.1.3":
   version: 1.1.3
   resolution: "@atcute/uint8array@npm:1.1.3"
   checksum: 10c0/5e541204b09c9030dda02b64f0cc8ceb677bde165358d6ff63d02d858c6528efd6b2663aede5df9f240de3754846dc974183298740b01bf5388a95be4eb11337
+  languageName: node
+  linkType: hard
+
+"@atcute/uint8array@npm:^1.1.5":
+  version: 1.1.5
+  resolution: "@atcute/uint8array@npm:1.1.5"
+  checksum: 10c0/d3aee0d2f374bcb5a2e9ecaf8d02064a20aab16d5ba7b7a7fba18a56bdf81542e8a5a606d86bfca1bf08aa4624d18800a8e6efd843615cf0f5096a8b220f0e77
   languageName: node
   linkType: hard
 
@@ -535,6 +565,15 @@ __metadata:
   dependencies:
     unicode-segmenter: "npm:^0.14.5"
   checksum: 10c0/82a955b66b8d2bd24d9decdd41873656f7e6e70074344d579bfc69261d88b74d13e5be7740bc8e9c9abcee76c0d36d520df7ff6df333d79bf6f2d485cb8f86b2
+  languageName: node
+  linkType: hard
+
+"@atcute/util-text@npm:^1.3.4":
+  version: 1.3.4
+  resolution: "@atcute/util-text@npm:1.3.4"
+  dependencies:
+    unicode-segmenter: "npm:^0.17.0"
+  checksum: 10c0/e8199370301a6be8c6a7b5c348acd93d80e3149322ad7b95bc74086d71b49221b0d02de9d532a6782f03b755500eaa4b6e484255a9f6113a1da7e81f8e357555
   languageName: node
   linkType: hard
 
@@ -2658,6 +2697,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"acorn@npm:^8.18.0":
+  version: 8.18.0
+  resolution: "acorn@npm:8.18.0"
+  bin:
+    acorn: bin/acorn
+  checksum: 10c0/be771be2135cc07910cf76f444ad514d7dcfd6d4a8026e597e93155275abc8ef61eee12211d52146e9d962874269b634f397464942087be013c89d0c54c5f8e5
+  languageName: node
+  linkType: hard
+
 "ajv-draft-04@npm:^1.0.0":
   version: 1.0.0
   resolution: "ajv-draft-04@npm:1.0.0"
@@ -2763,25 +2811,25 @@ __metadata:
   languageName: node
   linkType: hard
 
-"astro-auto-import@npm:^0.5.1":
-  version: 0.5.1
-  resolution: "astro-auto-import@npm:0.5.1"
+"astro-auto-import@npm:^0.6.0":
+  version: 0.6.0
+  resolution: "astro-auto-import@npm:0.6.0"
   dependencies:
-    acorn: "npm:^8.15.0"
+    acorn: "npm:^8.18.0"
   peerDependencies:
-    astro: ^5.0.0-beta || ^6.0.0-alpha
-  checksum: 10c0/bbf0358005d534bcd5a2e9d13ec336f2179f10561e4428198e2a64da37180ec018544ce4a9ac8d84ac9a8f04b3ff6453591ab639a9cb56f70e9a419522e0700f
+    astro: ^7.2.4
+  checksum: 10c0/5c5d7e6daf28c54e11e2c868658244bddf66f3c98bd8aad910117b51e039216194285fbdad03b420a7797c367d564b4f74d5d424746ba115bd0ee2a87075ddcc
   languageName: node
   linkType: hard
 
-"astro-embed@npm:^0.13.1":
-  version: 0.13.1
-  resolution: "astro-embed@npm:0.13.1"
+"astro-embed@npm:^0.14.0":
+  version: 0.14.0
+  resolution: "astro-embed@npm:0.14.0"
   dependencies:
     "@astro-community/astro-embed-baseline-status": "npm:^0.2.2"
-    "@astro-community/astro-embed-bluesky": "npm:^0.2.1"
+    "@astro-community/astro-embed-bluesky": "npm:^0.2.3"
     "@astro-community/astro-embed-gist": "npm:^0.1.0"
-    "@astro-community/astro-embed-integration": "npm:^0.12.1"
+    "@astro-community/astro-embed-integration": "npm:^0.13.0"
     "@astro-community/astro-embed-link-preview": "npm:^0.3.1"
     "@astro-community/astro-embed-mastodon": "npm:^0.1.1"
     "@astro-community/astro-embed-twitter": "npm:^0.5.11"
@@ -2789,7 +2837,7 @@ __metadata:
     "@astro-community/astro-embed-youtube": "npm:^0.5.10"
   peerDependencies:
     astro: ^5.0.0 || ^6.0.0-alpha || ^7.0.0
-  checksum: 10c0/c3ec2080dcc0411634d5c7c96d5f35a8bfd2ffb7413c171a0a97c703cdab9e63784dde42344e1c4b73ee039f6c678e0cef5c39bc16b18792c40a735fabe9e1e5
+  checksum: 10c0/8d4248c8419d6e8aa782d63081776c3185b2d06ce598ba9d79ea4528cf571ebee663e3274351f742255182ab151ab729f768fecf21e97c88ab3e863e3b791c0b
   languageName: node
   linkType: hard
 
@@ -6073,7 +6121,7 @@ __metadata:
     "@astrojs/rss": "npm:^4.0.19"
     "@astrojs/sitemap": "npm:3.7.3"
     astro: "npm:^7.2.4"
-    astro-embed: "npm:^0.13.1"
+    astro-embed: "npm:^0.14.0"
     astro-og-canvas: "npm:^0.13.0"
     gab-astro-compress: "npm:^0.1.2"
     glightbox: "npm:^3.3.1"
@@ -6837,6 +6885,13 @@ __metadata:
   version: 0.14.5
   resolution: "unicode-segmenter@npm:0.14.5"
   checksum: 10c0/a6bbae348378752cb5b6664a47918c9fd3900f1cc2a0fcf6f50a2e31f189a3f4dd80b48ea129d74d1979d8d8d446b592848900ef2d34578654bba543c185303a
+  languageName: node
+  linkType: hard
+
+"unicode-segmenter@npm:^0.17.0":
+  version: 0.17.3
+  resolution: "unicode-segmenter@npm:0.17.3"
+  checksum: 10c0/4f960da725c953f706d17b556397d9c8226abf6590425fa43aed5ecfab64d795db87fb0cb086d73dbd80149e3cf33df439a9640fe88e6bac56261a8c938f832f
   languageName: node
   linkType: hard
 
