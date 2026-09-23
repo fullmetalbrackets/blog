@@ -2389,16 +2389,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"astro-og-canvas@npm:^0.13.0":
-  version: 0.13.0
-  resolution: "astro-og-canvas@npm:0.13.0"
+"astro-og-canvas@npm:^0.13.2":
+  version: 0.13.2
+  resolution: "astro-og-canvas@npm:0.13.2"
   dependencies:
-    canvaskit-wasm: "npm:^0.41.1"
+    canvaskit-wasm: "npm:^0.42.0"
     deterministic-object-hash: "npm:^2.0.2"
-    entities: "npm:^8.0.0"
+    entities: "npm:^8.1.0"
   peerDependencies:
     astro: ^5.0.0 || ^6.0.0 || ^7.0.0
-  checksum: 10c0/48e9f1d1f83aaee3b2641ddadd0fc6a4ce7e8b8f911e0a335d5bdad27d44e537d6ba45125cbb3f977109b640ec807ba29a341a58783ee089642c2d475d4cf40d
+  checksum: 10c0/960d3d73f11047885b67bdafd23cf5a8063e08565eebd2abfc58fcc068ac06631fc089f39166f804d35fae5c58376d65744ac7ad198cc7c107ca3cc94af70713
   languageName: node
   linkType: hard
 
@@ -2526,12 +2526,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"canvaskit-wasm@npm:^0.41.1":
-  version: 0.41.1
-  resolution: "canvaskit-wasm@npm:0.41.1"
+"canvaskit-wasm@npm:^0.42.0":
+  version: 0.42.0
+  resolution: "canvaskit-wasm@npm:0.42.0"
   dependencies:
     "@webgpu/types": "npm:0.1.21"
-  checksum: 10c0/222c5d79e47219ba63956b4e0bc359cb07cb89cecbe8ea2733ba229128dbffc94e980c0138de41bdaf374277e58cc97a2622ada29b83ab0fa5d38bc60b3c496c
+  checksum: 10c0/625a5dca597cbad0f19c16a9f3a1dfdf2e65a96906858b181e1577f97fd72470ac5b2f1fa6af19b5d8df6908bf3229aebed293d9cea7d70d9e1187d8cc970467
   languageName: node
   linkType: hard
 
@@ -2972,6 +2972,13 @@ __metadata:
   version: 8.0.0
   resolution: "entities@npm:8.0.0"
   checksum: 10c0/938e631664c19451823344a351aeeafd74fae2d5fa51e4d5b6ff635afaefd4bacf0f609989888c04c42733f46ffdac15211608267ebb02488005891a4793e94d
+  languageName: node
+  linkType: hard
+
+"entities@npm:^8.1.0":
+  version: 8.1.0
+  resolution: "entities@npm:8.1.0"
+  checksum: 10c0/da0bf22912c19d2a4707783e1b905d3f6a977e93e0655a8d2c526455eb3996f668f9f2e4c2a07af8d6927d232c41b6e929a7044df0236c7bf6e9c38e070e3719
   languageName: node
   linkType: hard
 
@@ -5534,7 +5541,7 @@ __metadata:
     "@astrojs/sitemap": "npm:3.7.4"
     astro: "npm:7.3.3"
     astro-embed: "npm:^0.14.0"
-    astro-og-canvas: "npm:^0.13.0"
+    astro-og-canvas: "npm:^0.13.2"
     gab-astro-compress: "npm:^0.1.2"
     glightbox: "npm:^3.3.1"
     mdast-util-to-string: "npm:^4.0.0"
