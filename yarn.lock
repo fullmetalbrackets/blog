@@ -283,7 +283,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@astrojs/compiler@npm:^2.13.1, @astrojs/compiler@npm:^2.9.1":
+"@astrojs/compiler@npm:^2.13.1":
   version: 2.13.1
   resolution: "@astrojs/compiler@npm:2.13.1"
   checksum: 10c0/83d85c30c8b1bd6d2382f1bc3d99126732838dc747e3a9defa55f726ccc2276c710e6af81bfb68d8fb17fde452c69cf0187cb1d2f8eb022764f1ccc4cf3a3db1
@@ -1756,6 +1756,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@prettier/parse-srcset@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "@prettier/parse-srcset@npm:3.1.0"
+  checksum: 10c0/8dfa3c13bbad6029724280fc0d13370028887fe2397e708d3be4f3889bb1833349bac564ac3016e37ebc0dfb83141022dd94946bde3f0d862b901c2fe23df533
+  languageName: node
+  linkType: hard
+
 "@rolldown/binding-android-arm64@npm:1.0.3":
   version: 1.0.3
   resolution: "@rolldown/binding-android-arm64@npm:1.0.3"
@@ -2382,16 +2389,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"astro-og-canvas@npm:^0.13.0":
-  version: 0.13.0
-  resolution: "astro-og-canvas@npm:0.13.0"
+"astro-og-canvas@npm:^0.13.2":
+  version: 0.13.2
+  resolution: "astro-og-canvas@npm:0.13.2"
   dependencies:
-    canvaskit-wasm: "npm:^0.41.1"
+    canvaskit-wasm: "npm:^0.42.0"
     deterministic-object-hash: "npm:^2.0.2"
-    entities: "npm:^8.0.0"
+    entities: "npm:^8.1.0"
   peerDependencies:
     astro: ^5.0.0 || ^6.0.0 || ^7.0.0
-  checksum: 10c0/48e9f1d1f83aaee3b2641ddadd0fc6a4ce7e8b8f911e0a335d5bdad27d44e537d6ba45125cbb3f977109b640ec807ba29a341a58783ee089642c2d475d4cf40d
+  checksum: 10c0/960d3d73f11047885b67bdafd23cf5a8063e08565eebd2abfc58fcc068ac06631fc089f39166f804d35fae5c58376d65744ac7ad198cc7c107ca3cc94af70713
   languageName: node
   linkType: hard
 
@@ -2519,12 +2526,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"canvaskit-wasm@npm:^0.41.1":
-  version: 0.41.1
-  resolution: "canvaskit-wasm@npm:0.41.1"
+"canvaskit-wasm@npm:^0.42.0":
+  version: 0.42.0
+  resolution: "canvaskit-wasm@npm:0.42.0"
   dependencies:
     "@webgpu/types": "npm:0.1.21"
-  checksum: 10c0/222c5d79e47219ba63956b4e0bc359cb07cb89cecbe8ea2733ba229128dbffc94e980c0138de41bdaf374277e58cc97a2622ada29b83ab0fa5d38bc60b3c496c
+  checksum: 10c0/625a5dca597cbad0f19c16a9f3a1dfdf2e65a96906858b181e1577f97fd72470ac5b2f1fa6af19b5d8df6908bf3229aebed293d9cea7d70d9e1187d8cc970467
   languageName: node
   linkType: hard
 
@@ -2965,6 +2972,13 @@ __metadata:
   version: 8.0.0
   resolution: "entities@npm:8.0.0"
   checksum: 10c0/938e631664c19451823344a351aeeafd74fae2d5fa51e4d5b6ff635afaefd4bacf0f609989888c04c42733f46ffdac15211608267ebb02488005891a4793e94d
+  languageName: node
+  linkType: hard
+
+"entities@npm:^8.1.0":
+  version: 8.1.0
+  resolution: "entities@npm:8.1.0"
+  checksum: 10c0/da0bf22912c19d2a4707783e1b905d3f6a977e93e0655a8d2c526455eb3996f668f9f2e4c2a07af8d6927d232c41b6e929a7044df0236c7bf6e9c38e070e3719
   languageName: node
   linkType: hard
 
@@ -5040,18 +5054,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier-plugin-astro@npm:^0.14.1":
-  version: 0.14.1
-  resolution: "prettier-plugin-astro@npm:0.14.1"
+"prettier-plugin-astro@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "prettier-plugin-astro@npm:1.0.1"
   dependencies:
-    "@astrojs/compiler": "npm:^2.9.1"
-    prettier: "npm:^3.0.0"
-    sass-formatter: "npm:^0.7.6"
-  checksum: 10c0/f812607d422ff36df1bf58534a96590a861dedf41e70f8f36fa9546b91def65b17f4507e1c9212dab56cbbae2f4ab5ff6e7e31370b9198261360c6444daa297c
+    "@astrojs/compiler-rs": "npm:^0.4.0"
+    "@prettier/parse-srcset": "npm:^3.1.0"
+    sass-formatter: "npm:^0.8.0"
+  peerDependencies:
+    prettier: ^3.5.3
+  checksum: 10c0/962a37fcf258ec63c96081ac93a92fca89196fd76856c43e4cf3dc9899a4042da719dea2295de8a51b974563aec94131d2354f5ab299313f37af6db5a03dfa11
   languageName: node
   linkType: hard
 
-"prettier@npm:^3.0.0, prettier@npm:^3.5.0":
+"prettier@npm:^3.5.0":
   version: 3.8.3
   resolution: "prettier@npm:3.8.3"
   bin:
@@ -5060,12 +5076,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:^3.9.6":
-  version: 3.9.6
-  resolution: "prettier@npm:3.9.6"
+"prettier@npm:^3.9.8":
+  version: 3.9.8
+  resolution: "prettier@npm:3.9.8"
   bin:
     prettier: bin/prettier.cjs
-  checksum: 10c0/9f7ddae234035868f3daab3dc34e6de7e54622185afb017378029f0c09a9c023248ccf6f34def0b17a0538e18c47aa1b3188bab72965d1bf735919baa0747e99
+  checksum: 10c0/257e5ef11ba5006d0b0712271705701c065c8003e07763f996ce185d39633902f3fe1f814839eed76f75c97b6d5376d6157bd9f44db18cacb1dbdcb263cc66ae
   languageName: node
   linkType: hard
 
@@ -5525,12 +5541,12 @@ __metadata:
     "@astrojs/sitemap": "npm:3.7.4"
     astro: "npm:7.3.3"
     astro-embed: "npm:^0.14.0"
-    astro-og-canvas: "npm:^0.13.0"
+    astro-og-canvas: "npm:^0.13.2"
     gab-astro-compress: "npm:^0.1.2"
     glightbox: "npm:^3.3.1"
     mdast-util-to-string: "npm:^4.0.0"
-    prettier: "npm:^3.9.6"
-    prettier-plugin-astro: "npm:^0.14.1"
+    prettier: "npm:^3.9.8"
+    prettier-plugin-astro: "npm:^1.0.1"
     reading-time: "npm:^1.5.0"
     rehype-autolink-headings: "npm:^7.1.0"
     rehype-external-links: "npm:^3.0.0"
@@ -5549,12 +5565,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass-formatter@npm:^0.7.6":
-  version: 0.7.9
-  resolution: "sass-formatter@npm:0.7.9"
+"sass-formatter@npm:^0.8.0":
+  version: 0.8.0
+  resolution: "sass-formatter@npm:0.8.0"
   dependencies:
     suf-log: "npm:^2.5.3"
-  checksum: 10c0/172eb326121ace1a48e689a1419efab2d780623631d106ac306ac2a055e96813bda36044f20bc4cc28d761427efc136a08d07153d1b8a8ccf0a032dca5fdce3c
+  bin:
+    sass-formatter: dist/cli.js
+  checksum: 10c0/b7b49e46b6d91e07003d3326c0717651609bf7978222f6af347c152c2ddb2fba97b548d73fa84536ad03891d73578ffe4e809aee36f713af592585117d0518ed
   languageName: node
   linkType: hard
 
