@@ -5195,16 +5195,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier-plugin-astro@npm:^1.0.1":
-  version: 1.0.1
-  resolution: "prettier-plugin-astro@npm:1.0.1"
+"prettier-plugin-astro@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "prettier-plugin-astro@npm:1.1.0"
   dependencies:
     "@astrojs/compiler-rs": "npm:^0.4.0"
     "@prettier/parse-srcset": "npm:^3.1.0"
     sass-formatter: "npm:^0.8.0"
   peerDependencies:
     prettier: ^3.5.3
-  checksum: 10c0/962a37fcf258ec63c96081ac93a92fca89196fd76856c43e4cf3dc9899a4042da719dea2295de8a51b974563aec94131d2354f5ab299313f37af6db5a03dfa11
+  checksum: 10c0/092f90684be190372e59ad901cdd69c1c60a931d9ff168907c53b0975a286575b879decbce5bcb68c5b01a7e56f3fe12c5c46c19dcb7127c9950420c205be5b6
   languageName: node
   linkType: hard
 
@@ -5687,7 +5687,7 @@ __metadata:
     glightbox: "npm:^3.3.1"
     mdast-util-to-string: "npm:^4.0.0"
     prettier: "npm:^3.9.9"
-    prettier-plugin-astro: "npm:^1.0.1"
+    prettier-plugin-astro: "npm:^1.1.0"
     reading-time: "npm:^1.5.0"
     rehype-autolink-headings: "npm:^7.1.0"
     rehype-external-links: "npm:^3.0.0"
