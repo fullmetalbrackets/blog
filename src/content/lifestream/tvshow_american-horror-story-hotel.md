@@ -10,5 +10,4 @@ rating: loved
 
 ## Previously Watched
 
-- 11/24/2018
 - 10/17/2016
