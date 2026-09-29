@@ -8,3 +8,7 @@ rating: loved
 ---
 
 The first season is still the best.
+
+## Previously Watched
+
+- 12/5/2012
