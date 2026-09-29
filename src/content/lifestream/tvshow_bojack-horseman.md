@@ -3,6 +3,7 @@ type: tvshow
 title: BoJack Horseman
 pubDate: 2018-09-30 12:00:00
 image: ./_images/bojack-horseman.webp
+season: 1 - 5
 rating: liked
 ---
 
