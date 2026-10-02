@@ -390,35 +390,6 @@ const schema = {
     margin: -1em auto 2em auto;
   }
 
-  @media (max-width: 667px) {
-    .entry-page {
-      padding-top: 0.3rem;
-      margin-right: 0.5em;
-      margin-left: 0.5em;
-    }
-
-    .entry {
-      grid-template-columns: 1fr;
-    }
-
-    .cover-wrap {
-      width: 100%;
-    }
-
-    .cover-col {
-      flex-direction: column;
-      margin-bottom: -0.5em;
-    }
-
-    .note {
-      font-size: 18px;
-    }
-
-    dt {
-      margin-right: 0;
-    }
-  }
-
   /* cover */
   .cover-col {
     display: flex;
@@ -546,5 +517,39 @@ const schema = {
 
   .note :global(h2 ~ ul li) {
     font-weight: 700;
+  }
+
+
+  @media (max-width: 667px) {
+    .entry-page {
+      padding-top: 0.3rem;
+      margin-right: 0.5em;
+      margin-left: 0.5em;
+    }
+
+    .entry {
+      grid-template-columns: 1fr;
+    }
+
+    .info-col {
+      grid-row: 1;
+    }
+
+    .cover-col {
+      grid-row: 2;
+      margin-bottom: -0.5em;
+    }
+
+    .cover-wrap {
+      width: 100%;
+    }
+
+    .note {
+      font-size: 18px;
+    }
+
+    dt {
+      margin-right: 0;
+    }
   }
 </style>
