@@ -10,13 +10,13 @@
   "pihole-anywhere-tailscale",
   "comprehensive-guide-tailscale-securely-access-home-network",
   "upgrade-debian-12-bookworm-debian-13-trixie",
-  "xplore-android-smb-share",
   "expose-plex-tailscale-vps",
   "self-host-website-cloudflare-tunnel",
+  "xplore-android-smb-share",
+  "keeping-a-linux-laptop-on-with-the-lid-closed",
   "reverse-proxy-using-nginx-pihole-cloudflare",
   "turn-off-display-linux-terminal",
-  "two-drives-mergerfs",
-  "keeping-a-linux-laptop-on-with-the-lid-closed",
+  "setup-photosync-with-smb-server",
   "fix-for-nintendo-switch-oled-not-finding-5ghz-wifi-networks",
-  "setup-photosync-with-smb-server"
+  "two-drives-mergerfs"
 ]
