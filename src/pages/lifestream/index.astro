@@ -510,7 +510,7 @@ const lifestreamItems = entries.map((entry) => ({
     position: absolute;
     top: 0.3rem;
     left: 0.3rem;
-    background: rgba(0, 0, 0, 0.65);
+    background: rgba(0,0,0,0.75);
     border-radius: 0.2em;
     padding: 0.2em 0.25em;
     backdrop-filter: blur(4px);
@@ -528,7 +528,7 @@ const lifestreamItems = entries.map((entry) => ({
   .card-vibe {
     position: absolute;
     bottom: 0.3rem;
-    right: 0.3rem;
+    left: 0.3rem;
     font-size: 0.55em;
     border-radius: 0.2em;
     padding: 0.15em 0.35em;
@@ -541,6 +541,7 @@ const lifestreamItems = entries.map((entry) => ({
     inset: 0;
     display: flex;
     align-items: flex-end;
+    justify-content: flex-end;
     padding: 0.5rem 0.4rem;
     opacity: 0;
     transition: opacity all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -558,7 +559,7 @@ const lifestreamItems = entries.map((entry) => ({
   }
 
   .date {
-    background: rgba(0, 0, 0, 0.65);
+    background: rgba(0,0,0,0.75);
     border-radius: 0.2em;
     padding: 0.05em 0.325em 0 0.325em;
   }
@@ -687,6 +688,12 @@ const lifestreamItems = entries.map((entry) => ({
     .reset-btn:active {
       box-shadow: none;
       transform: translate(0px, 0px);
+    }
+  }
+
+  @media (hover: none) {
+    .card-overlay {
+      opacity: 1;
     }
   }
 
