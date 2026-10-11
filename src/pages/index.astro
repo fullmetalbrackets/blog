@@ -44,8 +44,18 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '@consts';
   }
   @media screen and (max-width: 992px) {
     .column-item {
-      grid-template-columns: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1em; /* match whatever spacing PostsColumns normally gives between items */
     }
+    .column-item > :global(*) {
+      display: contents;
+    }
+    .col-popular { order: 1; }
+    .col-posts   { order: 2; }
+    .col-notes   { order: 3; }
+    .col-links   { order: 4; }
+    .col-played  { order: 5; }
   }
   @media screen and (max-width: 720px) {
     .about {
@@ -88,17 +98,13 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '@consts';
     <SocialLinks />
     <div class="column-item">
       <PostsColumns>
-        <RecentPosts />
+        <div class="col-popular"><Popular class="pop-index" /></div>
+        <div class="col-notes"><RecentNotes /></div>
       </PostsColumns>
       <PostsColumns>
-        <Popular class="pop-index" />
-      </PostsColumns>
-      <PostsColumns>
-        <RecentLinks />
-        <LastPlayed />
-      </PostsColumns>
-      <PostsColumns>
-        <RecentNotes />
+        <div class="col-posts"><RecentPosts /></div>
+        <div class="col-links"><RecentLinks /></div>
+        <div class="col-played"><LastPlayed /></div>
       </PostsColumns>
     </div>
     <RecentLifestream />
