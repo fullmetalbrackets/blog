@@ -12,6 +12,7 @@ const links = await getSortedLinks();
     padding: 0;
   }
   h2 {
+    margin-top: 1em;
     margin-bottom: 0.3em;
     font-family: var(--sub-font);
     font-weight: 900;
@@ -27,6 +28,11 @@ const links = await getSortedLinks();
     place-items: center;
     margin: 0.1em 0 0 0;
     padding: 0;
+  }
+  .desc {
+    font-weight: 300;
+    font-size: 0.85em;
+    margin-top: 0.25em;
   }
   .list {
     display: flex;
@@ -91,6 +97,11 @@ const links = await getSortedLinks();
     }
   }
 
+  @media screen and (max-width: 992px) {
+    h2 {
+      margin-top: 0;
+    }
+  }
   @media screen and (max-width: 667px) {
     a.active {
       border-bottom: 1px dotted transparent;
@@ -109,10 +120,10 @@ const links = await getSortedLinks();
 </style>
 
 <section class="h-feed">
-  <h2 class="p-name">Recent Links</h2>
+  <h2 class="p-name">Latest Links</h2>
   <div class="container">
     {
-      links.slice(0, 5).map((link) => (
+      links.slice(0, 3).map((link) => (
         <div class="h-entry list">
           <a
             href={link.data.url}
@@ -128,6 +139,7 @@ const links = await getSortedLinks();
               </>
               &nbsp;
             </span>
+            <p class="desc">{link.data.description}</p>
           </a>
         </div>
       ))

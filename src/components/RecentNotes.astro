@@ -9,12 +9,12 @@ interface Props {
   limit?: number;
 }
 
-const { limit = 3 } = Astro.props;
+const { limit = 1 } = Astro.props;
 const recentNotes = (await getSortedNotes()).slice(0, limit);
 ---
 
 <section class="h-feed">
-  <h2 class="p-name">Recent Notes</h2>
+  <h2 class="p-name">Latest Note</h2>
   <ul class="container">
     {
       recentNotes.map((note) => {
@@ -84,6 +84,7 @@ const recentNotes = (await getSortedNotes()).slice(0, limit);
     padding: 0;
   }
   h2 {
+    margin-top: 1em;
     margin-bottom: 0.3em;
     font-family: var(--sub-font);
     font-weight: 900;
@@ -164,7 +165,11 @@ const recentNotes = (await getSortedNotes()).slice(0, limit);
     transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
     transform: translateX(4px);
   }
-
+  @media screen and (max-width: 992px) {
+    h2 {
+      margin-top: 0;
+    }
+  }
   @media screen and (max-width: 667px) {
     ul {
       padding: 1em 1em 2em 1em;

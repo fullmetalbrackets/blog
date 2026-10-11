@@ -13,7 +13,7 @@ interface Props {
 
 const allPosts = await getPostsWithReadingTime();
 const selectedPosts = popularSlugs
-  .slice(0, 5)
+  .slice(0, 3)
   .map((slug) => allPosts.find((post) => post.id === slug))
   .filter((post): post is NonNullable<typeof post> => post !== undefined);
 ---
@@ -280,7 +280,7 @@ const selectedPosts = popularSlugs
                 <line x1="12" y1="17" x2="12.01" y2="17" />
               </svg>
               <span class="tooltip">
-                The most-read posts over the last 30 days, updated every Monday.
+                The highest traffic blog posts over the past 30 days, updated every Monday.
               </span>
             </button>
           </div>

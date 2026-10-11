@@ -4,7 +4,7 @@ import ReadingTime from './ReadingTime.astro';
 import { getPostsWithReadingTime } from '@utils/collections';
 import More from '@icons/arrow-right.svg';
 
-const recentPosts = (await getPostsWithReadingTime()).slice(0, 5);
+const recentPosts = (await getPostsWithReadingTime()).slice(0, 3);
 ---
 
 <style scoped>
@@ -47,7 +47,7 @@ const recentPosts = (await getPostsWithReadingTime()).slice(0, 5);
   .list {
     display: inline-flex;
     flex-direction: column;
-    margin: 0 auto 1em auto;
+    margin: 0 auto ;
     padding-bottom: 0.5em;
     line-height: 1.3;
     border-bottom: 4px dotted transparent;
@@ -148,7 +148,7 @@ const recentPosts = (await getPostsWithReadingTime()).slice(0, 5);
 </style>
 
 <section class="h-feed">
-  <h2 class="p-name">Recent Posts</h2>
+  <h2 class="p-name">Latest Posts</h2>
   <div class="container">
     {
       recentPosts.map((post) => (

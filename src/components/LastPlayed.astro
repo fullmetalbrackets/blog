@@ -94,6 +94,11 @@ const playedDate = new Date(playedAt);
     justify-content: end;
     margin: -0.55em -1em 0 0;
   }
+  @media screen and (max-width: 992px) {
+    h2 {
+      margin-top: -0.75em;
+    }
+  }
   @media screen and (max-width: 667px) {
     section {
       margin: 1em auto 0 auto;
@@ -120,7 +125,7 @@ const playedDate = new Date(playedAt);
 
 <section>
   <div id="last-played"></div>
-  <h2>Last Played</h2>
+  <h2>Latest Music</h2>
   <div class="container">
     <div class="track">
       {
