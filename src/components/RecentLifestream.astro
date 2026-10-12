@@ -73,6 +73,7 @@ const entries = (await getLifestream()).slice(0, limit);
     padding: 0 0 1em 0;
   }
   h2 {
+    margin-top: -0.65em;
     margin-bottom: 0.3em;
     font-family: var(--sub-font);
     font-weight: 900;
@@ -213,6 +214,11 @@ const entries = (await getLifestream()).slice(0, limit);
       grid-template-columns: repeat(2, 1fr);
       padding: 1em 1em 2.2em 1em;
       gap: 1em;
+    }
+  }
+  @media screen and (max-width: 992px) {
+    h2 {
+      margin-top: 0;
     }
   }
   @media (max-width: 667px) {
