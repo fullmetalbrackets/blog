@@ -11,6 +11,7 @@ import RecentNotes from '@components/RecentNotes.astro';
 import RecentLinks from '@components/RecentLinks.astro';
 import RecentLifestream from '@components/RecentLifestream.astro';
 import LastPlayed from '@components/LastPlayed.astro';
+import Buttons from '@components/88x31.astro';
 import ProfilePageSchema from '@components/ProfilePageSchema.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '@consts';
 ---
@@ -108,5 +109,6 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '@consts';
       </PostsColumns>
     </div>
     <RecentLifestream />
+    <Buttons />
   </section>
 </BaseLayout>
