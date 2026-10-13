@@ -17,6 +17,7 @@ tag: information
 - Ace Combat 7: Skies Unknown
 - Castlevania: Aria of Sorrow
 - Castlevania: Symphony of the Night
+- Control
 - Elden Ring (and Shadow of the Erdtree DLC)
 - Final Fantasy Tactics Advance
 - Grand Theft Auto: Vice City
@@ -32,15 +33,13 @@ tag: information
 
 ## Started, but not finished
 
-<em>Total:</em> <span class="sub-font w9 secondary">7</span>
+<em>Total:</em> <span class="sub-font w9 secondary">5</span>
 
 - Ace Combat Zero: The Belkan War
 - Castlevania: Dawn of Sorrow
-- Control
 - InFamous 2
 - Marvel's Spider-Man 2
 - Grand Theft Auto: San Andreas
-- The Adventure's of Elliot: The Millenium Tales
 
 ## Plan to play
 
@@ -50,3 +49,10 @@ tag: information
 - Control Resonant
 - Grand Theft Auto VI
 - The Legend of Zelda: Ocarina of Time (remake)
+
+## Abandoned
+
+<em>Total:</em> <span class="sub-font w9 secondary">2</span>
+
+- Adventure of Elliot: The Millenium Tales - *Fun, but got repetitive... I'll come back to it*
+- Grand Theft Auto III: The Definitive Edition - *Feels old, or I'm too old to find it fun anymore*
