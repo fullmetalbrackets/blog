@@ -492,6 +492,8 @@ const lifestreamItems = entries.map((entry) => ({
     overflow: hidden;
     aspect-ratio: 2 / 3;
     background: var(--accent);
+    will-change: transform;
+    transition: transform 0.15s ease-in-out;
   }
 
   .card img {
@@ -499,9 +501,6 @@ const lifestreamItems = entries.map((entry) => ({
     height: 100%;
     object-fit: cover;
     display: block;
-    transition:
-      transform 0.25s ease-in-out,
-      opacity 0.25s ease-in-out;
     margin: 0;
     max-width: 100%;
   }
@@ -510,16 +509,14 @@ const lifestreamItems = entries.map((entry) => ({
     position: absolute;
     top: 0.3rem;
     left: 0.3rem;
-    background: rgba(0,0,0,0.75);
+    background: rgba(0, 0, 0, 0.75);
     border-radius: 0.2em;
-    padding: 0.2em 0.25em;
-    backdrop-filter: blur(4px);
+    padding: 0.25em;
     line-height: 1;
     display: flex;
     align-items: center;
   }
 
-  /* badge icon: always white since it's over the image */
   .card-badge :global(svg) {
     filter: brightness(0) invert(1);
     display: block;
@@ -544,7 +541,7 @@ const lifestreamItems = entries.map((entry) => ({
     justify-content: flex-end;
     padding: 0.5rem 0.4rem;
     opacity: 0;
-    transition: opacity all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition: opacity 0.25s ease-in-out;
   }
 
   .card-overlay :global(time) {
@@ -559,24 +556,9 @@ const lifestreamItems = entries.map((entry) => ({
   }
 
   .date {
-    background: rgba(0,0,0,0.75);
+    background: rgba(0, 0, 0, 0.75);
     border-radius: 0.2em;
     padding: 0.05em 0.325em 0 0.325em;
-  }
-
-  /* active year button */
-  #filter-2026:checked ~ .filters label[for='filter-2026'],
-  #filter-2025:checked ~ .filters label[for='filter-2025'],
-  #filter-2024:checked ~ .filters label[for='filter-2024'],
-  #filter-2023:checked ~ .filters label[for='filter-2023'],
-  #filter-2022:checked ~ .filters label[for='filter-2022'],
-  #filter-2021:checked ~ .filters label[for='filter-2021'],
-  #filter-2020:checked ~ .filters label[for='filter-2020'],
-  #filter-2019:checked ~ .filters label[for='filter-2019'],
-  #filter-2018:checked ~ .filters label[for='filter-2018'] {
-    background-color: var(--info);
-    color: #000;
-    opacity: 1;
   }
 
   .year-filters {
