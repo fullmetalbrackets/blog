@@ -10,21 +10,22 @@ tag: information
 
 ## Completed games
 
-<em>Total so far:</em> <span class="sub-font w9 secondary">17</span>
+<em>Total so far:</em> <span class="sub-font w9 secondary">18</span>
 
 - 007: First Light
 - Ace Combat 04: Shattered Skies
 - Ace Combat 7: Skies Unknown
 - Castlevania: Aria of Sorrow
+- Castlevania: Dawn of Sorrow
 - Castlevania: Symphony of the Night
-- Control
-- Elden Ring (and Shadow of the Erdtree DLC)
+- Control *(and both DLCs)*
+- Elden Ring *(and Shadow of the Erdtree DLC)*
 - Final Fantasy Tactics Advance
 - Grand Theft Auto: Vice City
-- Hollow Knight: Silksong
+- Hollow Knight: Silksong *(Act I and II only)*
 - InFamous
-- Marvel's Spider-Man Remastered
-- Marve's Spider-Man Miles Morales
+- Marvel's Spider-Man Remastered *(and DLCs)*
+- Marvel's Spider-Man Miles Morales
 - Resident Evil Requiem
 - Star Fox
 - Star Fox 2
@@ -33,20 +34,20 @@ tag: information
 
 ## Started, but not finished
 
-<em>Total:</em> <span class="sub-font w9 secondary">5</span>
+<em>Total:</em> <span class="sub-font w9 secondary">6</span>
 
 - Ace Combat Zero: The Belkan War
-- Castlevania: Dawn of Sorrow
+- Castlevania: Belmont's Curse
+- Control Resonant
 - InFamous 2
 - Marvel's Spider-Man 2
 - Grand Theft Auto: San Andreas
 
 ## Plan to play
 
-<em>Total:</em> <span class="sub-font w9 secondary">4</span>
+<em>Total:</em> <span class="sub-font w9 secondary">3</span>
 
 - Ace Combat 5: Unsung War
-- Control Resonant
 - Grand Theft Auto VI
 - The Legend of Zelda: Ocarina of Time (remake)
 
