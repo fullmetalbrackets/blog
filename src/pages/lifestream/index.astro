@@ -674,6 +674,13 @@ const lifestreamItems = entries.map((entry) => ({
   }
 
   @media (hover: none) {
+    .card {
+      border: 0.1em solid var(--blockquote);
+    }
+    .card:active {
+      border: 0.1em solid var(--primary);
+      border-radius: 0.25em;
+    }
     .card-overlay {
       opacity: 1;
     }
