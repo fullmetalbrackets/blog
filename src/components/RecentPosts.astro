@@ -47,7 +47,7 @@ const recentPosts = (await getPostsWithReadingTime()).slice(0, 3);
   .list {
     display: inline-flex;
     flex-direction: column;
-    margin: 0 auto ;
+    margin: 0 auto 1em auto;
     padding-bottom: 0.5em;
     line-height: 1.3;
     border-bottom: 4px dotted transparent;
@@ -65,7 +65,7 @@ const recentPosts = (await getPostsWithReadingTime()).slice(0, 3);
     font-family: var(--sub-font);
     font-weight: 800;
     justify-content: end;
-    margin: 0.475em -1em -1.5em 0;
+    margin: 0 -1em -1.5em 0;
     padding: 0 0 0.25em 0;
   }
   .more svg {
