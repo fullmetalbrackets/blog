@@ -142,6 +142,7 @@ const entries = await getSortedNotes();
   }
 
   .note-wrap {
+    background: var(--blockquote);
     border-radius: 0.5em;
     overflow: hidden;
   }
@@ -162,10 +163,10 @@ const entries = await getSortedNotes();
   }
 
   .note-image {
-    width: 100%;
+    width: auto;
     height: auto;
     display: block;
-    margin: 0;
+    margin: 0 auto;
   }
 
   .note-body {
@@ -245,6 +246,10 @@ const entries = await getSortedNotes();
     mask-position: center;
     mask-size: contain;
     vertical-align: middle;
+  }
+
+  lite-youtube {
+    max-width: 100%;
   }
 
   @keyframes spin {
