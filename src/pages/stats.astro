@@ -1351,11 +1351,7 @@ const hmIntensity = (key: string) => {
             />
             {typeLabels[t]}: {byType[t]}{' '}
             <span class="bd-pct">
-              (
-              {totalLifestream > 0
-                ? Math.round((byType[t] / totalLifestream) * 100)
-                : 0}
-              %)
+              ({totalLifestream > 0 ? Math.round((byType[t] / totalLifestream) * 100) : 0}%)
             </span>
           </li>
         ))
