@@ -689,6 +689,19 @@ blockquote[data-type='warning'] a:hover {
   }
 }
 
+@keyframes wiggle-intro {
+  0%,
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+  25% {
+    transform: rotate(-25deg) scale(1.15);
+  }
+  75% {
+    transform: rotate(25deg) scale(1.15);
+  }
+}
+
 @keyframes pulse {
   0%,
   100% {
@@ -886,10 +899,16 @@ summary::before {
   line-height: 1;
   transition: rotate 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   rotate: 0deg;
+  animation: 0.2s wiggle-intro ease-in-out 0.2s 1;
 }
 
 summary:hover:not(.games-list) {
   border-bottom: 4px dotted var(--border2);
+  transition: 0.25s fade;
+}
+
+details[open] > summary:hover:not(.games-list) {
+  border-bottom: 4px dotted rgb(from var(--border) r g b / 0.1);
   transition: 0.25s fade;
 }
 
