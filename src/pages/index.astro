@@ -41,7 +41,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '@consts';
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1em;
-    margin: 2em auto 1em auto;
+    margin: 2em auto 0 auto;
   }
   @media screen and (max-width: 992px) {
     .column-item {
@@ -76,7 +76,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '@consts';
       web development, Linux, and related topics. If you're looking for the main
       attraction, that would be <a href="/blog" data-umami-event="intro-blog"
         >the blog</a
-      > where I write how-to guides. You can see recent and popular posts below, or
+      > where I write how-to guides. You can see <a href="#latest">latest</a> and <a href="#popular">popular</a> posts below, or
       you can <a href="/blog/random">go to a random post</a>.
     </p>
     <p class="intro-text">
@@ -85,30 +85,27 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '@consts';
         data-umami-event="intro-colophon">read about how I make this site</a
       > or <a href="/stats" data-umami-event="intro-stats"
         >see statistics about the content</a
-      >. There's some other personal stuff around here, probably not useful like
-      the blog, but <a href="/explore" data-umami-event="intro-explore"
-        >feel free to explore</a
-      >. I also have a separate <a
+      >. There's some other personal stuff around here, like my <a href="#lifestream">lifestream</a> (that's what I call my media log) and <a href="/self-hosted">self-hosted setup</a>, feel free to <a href="/explore">explore</a> the site. I also have a separate <a
         href="https://ariel.lol"
         target="_blank"
         rel="noreferrer noopener"
         data-umami-event="microblog">microblog</a
       > for random short-form non-tech <span class="i">(shit-)</span>posting
-      once in a blue moon, which I <a href="/notes">syndicate here as notes</a>.
+      once in a blue moon, which I <a href="#notes">syndicate here as notes</a>.
     </p>
     <SocialLinks />
     <div class="column-item">
       <PostsColumns>
-        <div class="col-popular"><Popular class="pop-index" /></div>
-        <div class="col-notes"><RecentNotes /></div>
+        <div class="col-popular" id="popular"><Popular class="pop-index" /></div>
+        <div class="col-notes" id="notes"><RecentNotes /></div>
       </PostsColumns>
       <PostsColumns>
-        <div class="col-posts"><RecentPosts /></div>
+        <div class="col-posts" id="latest"><RecentPosts /></div>
         <div class="col-links"><RecentLinks /></div>
         <div class="col-played"><LastPlayed /></div>
       </PostsColumns>
     </div>
-    <RecentLifestream />
+    <div id="lifestream"><RecentLifestream/></div>
     <Buttons />
   </section>
 </BaseLayout>
