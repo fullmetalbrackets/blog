@@ -6,3 +6,7 @@ platform: PC
 image: ./_images/deus-ex-human-revolution.webp
 rating: loved
 ---
+
+## Previously Played
+
+- 11/26/2012
