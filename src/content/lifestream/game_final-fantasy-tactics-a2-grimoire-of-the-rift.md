@@ -3,7 +3,7 @@ type: game
 title: 'Final Fantasy Tactics A2: Grimoire of the Rift'
 pubDate: 2018-12-21 12:00:00
 platform: Nintendo DS
-image: ./_images/final-fantasy-tactics-a2-grimoire-of-the-rift.webp
+image: ./_images/final-fantasy-tactics-a2-grimoire-of-the-rift.jpg
 rating: loved
 ---
 
