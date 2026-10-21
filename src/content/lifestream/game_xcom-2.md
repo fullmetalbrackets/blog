@@ -7,4 +7,4 @@ image: ./_images/xcom-2.png
 rating: masterpiece
 ---
 
-I have 200+ hours on this, and another 200+ on the first game. I've beaten both campaigns multiple time and still come back to both every few years. (Never played the real originals from the 90's, though.)
+Just like the original, I have 200+ hours in this. Just like the first game, I've replayed the campaign multiple times and still replay it every few years.
