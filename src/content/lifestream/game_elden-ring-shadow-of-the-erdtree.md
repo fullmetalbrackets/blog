@@ -1,6 +1,6 @@
 ---
 type: game
-title: Elden Ring Shadow of the Erdtree
+title: 'Elden Ring: Shadow of the Erdtree'
 pubDate: 2026-04-23 12:00:00
 platform: PC
 image: ./_images/elden-ring-shadow-of-the-erdtree.jpg

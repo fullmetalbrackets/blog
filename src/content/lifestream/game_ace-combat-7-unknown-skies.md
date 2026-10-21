@@ -1,6 +1,6 @@
 ---
 type: game
-title: 'Ace Combat 7: Unknown Skies'
+title: 'Ace Combat 7: Skies Unknown'
 pubDate: 2026-08-11 12:00:00
 platform: PC
 image: ./_images/ace-combat-7.jpg
