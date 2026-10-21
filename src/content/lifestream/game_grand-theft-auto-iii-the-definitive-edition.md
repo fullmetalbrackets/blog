@@ -11,4 +11,4 @@ I played this game all the way through back in the day, like 20 years ago, on bo
 
 ## Previously Played
 
-- 9/17/2023 (original version)
+- 1/17/2018 ([original version](/lifestream/game_grand-theft-auto-iii))

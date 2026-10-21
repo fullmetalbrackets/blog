@@ -32,16 +32,28 @@ tag: information
 - Star Fox 64
 - Terminator 2D: No Fate
 
-## Started, but not finished
+## In progress
 
-<em>Total:</em> <span class="sub-font w9 secondary">6</span>
+<em>Total:</em> <span class="sub-font w9 secondary">2</span>
 
-- Ace Combat Zero: The Belkan War
 - Castlevania: Belmont's Curse
 - Control Resonant
+
+## Started, temporarily on pause
+
+<em>Total:</em> <span class="sub-font w9 secondary">4</span>
+
+- Ace Combat Zero: The Belkan War
 - InFamous 2
 - Marvel's Spider-Man 2
 - Grand Theft Auto: San Andreas
+
+## Started, but abandoned
+
+<em>Total:</em> <span class="sub-font w9 secondary">2</span>
+
+- [Adventure of Elliot: The Millenium Tales](/lifestream/game_the-adventures-of-elliot-the-millennium-tales) - *Fun, but got repetitive... I'll come back to it*
+- [Grand Theft Auto III: The Definitive Edition](/lifestream/game_grand-theft-auto-iii-the-definitive-edition) - *Feels old, or I'm too old to find it fun anymore*
 
 ## Plan to play
 
@@ -50,10 +62,3 @@ tag: information
 - Ace Combat 5: Unsung War
 - Grand Theft Auto VI
 - The Legend of Zelda: Ocarina of Time (remake)
-
-## Abandoned
-
-<em>Total:</em> <span class="sub-font w9 secondary">2</span>
-
-- Adventure of Elliot: The Millenium Tales - *Fun, but got repetitive... I'll come back to it*
-- Grand Theft Auto III: The Definitive Edition - *Feels old, or I'm too old to find it fun anymore*
