@@ -1,7 +1,7 @@
 ---
 type: game
 title: Wolfenstein Enemy Territory
-pubDate: 2021-09-12 12:00:00
+pubDate: 2021-09-07 12:00:00
 platform: PC
 image: ./_images/wolfenstein-enemy-territory.jpg
 rating: loved
