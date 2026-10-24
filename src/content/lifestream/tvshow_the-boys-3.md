@@ -6,3 +6,7 @@ image: ./_images/the-boys-3.jpg
 season: '3'
 rating: loved
 ---
+
+## Related
+
+- [Seasons 1 & 2](tvshow_the-boys)

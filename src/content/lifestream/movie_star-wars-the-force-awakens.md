@@ -7,3 +7,12 @@ rating: loved
 ---
 
 The first movie was the high point of the first trilogy. Or maybe I had memberberries like everyone else.
+
+## Previously Watched
+
+- 12/15/2015
+
+## Related
+
+- [Star Wars: The Last Jedi](movie_star-wars-the-last-jedi)
+- [Star Wars: The Rise of Skywalker](movie_star-wars-rise-of-skywalker)

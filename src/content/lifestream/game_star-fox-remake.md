@@ -8,3 +8,9 @@ rating: loved
 ---
 
 $50 is kind of steep for Star Fox 64 with a fresh coat of paint, but I went ahead and got it anyway. Literally plays the same as the original, just with crazy good graphics. Still a great game. Maybe we will get a brand new Star Fox game eventually and I will feel better about spending these $50 then.
+
+## Related
+
+- [Star Fox 2](game_star-fox-2)
+- [Star Fox 64](game_star-fox-64)
+- [Star Fox](game_star-fox)

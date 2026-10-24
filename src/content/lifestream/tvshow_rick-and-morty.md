@@ -8,3 +8,7 @@ rating: loved
 ---
 
 They still got it.
+
+## Related
+
+- [Season 9](tvshow_rick-and-morty-9)

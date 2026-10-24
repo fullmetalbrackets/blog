@@ -7,3 +7,7 @@ rating: disliked
 ---
 
 It's ok, I guess, but doesn't hold a candle to the original. It shouldn't even be called Total Recall.
+
+## Related
+
+- [Total Recall](movie_total-recall)

@@ -10,3 +10,8 @@ rating: masterpiece
 I'm a huge fan of the original FFT, I would go back to play it on a PSX emulator once every few years, and even bought it for Android. (Oddly the version with the best performance.)
 
 This remaster with QOL improvements, all new features and gameplay segments, full voice acting for all characters,  and an easier difficulty to re-learn the game make this the true definitive edition.
+
+## Related
+
+- [Final Fantasy Tactics Advance](game_final-fantasy-tactics-advance)
+- [Final Fantasy Tactics A2: Grimoire of the Rift](game_final-fantasy-tactics-a2-grimoire-of-the-rift)

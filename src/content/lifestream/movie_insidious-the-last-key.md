@@ -5,3 +5,7 @@ pubDate: 2024-11-25 12:00:00
 image: ./_images/insidious-the-last-key.jpg
 rating: liked
 ---
+
+## Related
+
+- [Insidious: The Red Door](movie_insidious-the-red-door)

@@ -7,3 +7,7 @@ rating: loved
 ---
 
 Binged the show over a few weeks and loved it.
+
+## Related
+
+- [Star Wars: Ahsoka](tvshow_star-wars-ahsoka)

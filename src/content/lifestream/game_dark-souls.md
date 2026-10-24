@@ -12,3 +12,7 @@ I see the brilliance of this game, but I just suck at it.
 ## Previously Played
 
 - 5/20/2017
+
+## Related
+
+- [Dark Souls II](game_dark-souls-ii)

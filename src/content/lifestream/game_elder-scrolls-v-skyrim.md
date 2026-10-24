@@ -8,3 +8,8 @@ rating: loved
 ---
 
 This has to be my fifth playthrough where I do some of the guild questlines and learn a few shouts before burning out and not playing for a few years. Till next time, Skyrim.
+
+## Related
+
+- [The Elder Scrolls IV: Oblivion](game_elder-scrolls-iv-oblivion)
+- [The Elder Scrolls IV: Oblivion Remastered](game_elder-scrolls-iv-oblivion-remastered)

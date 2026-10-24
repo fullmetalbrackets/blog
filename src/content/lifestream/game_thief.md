@@ -10,3 +10,9 @@ rating: hated
 I love the original Thief: The Dark Project, and Thief II: The Metal Age is one of my favorite games of all time... So of course these fuckers have to ruin it. WTF is this shit?
 
 ![Look how they massacred my boy...](./_images/massacre.webp)
+
+## Related
+
+- [Thief Gold](game_thief-gold)
+- [Thief II: The Metal Age](game_thief-ii-the-metal-age)
+- [Thief: Deadly Shadows](game_thief-deadly-shadows)

@@ -8,3 +8,7 @@ rating: loved
 ---
 
 Great sort of mini-MGS game all self-contained in this one location. Short, but great!
+
+## Related
+
+- [Metal Gear Solid V: The Phantom Pain](game_metal-gear-solid-v-the-phantom-pain)

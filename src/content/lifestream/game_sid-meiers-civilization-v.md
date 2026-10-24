@@ -26,3 +26,10 @@ After finishing this latest campaign (I beat the game as Hiawatha this time) I c
 - 7/13/2013
 - 12/25/2012
 - 7/1/2012
+
+## Related
+
+- [Sid Meier's Alpha Centauri](game_sid-meiers-alpha-centauri)
+- [Sid Meier's Civilization IV](game_sid-meiers-civilization-iv)
+- [Sid Meier's Civilization VI](game_sid-meiers-civilization-vi)
+- [Sid Meier's Civilization: Beyond Earth](game_sid-meiers-civilization-beyond-earth)

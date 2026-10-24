@@ -8,3 +8,7 @@ rating: loved
 ---
 
 So damn good.
+
+## Related
+
+- [Season 2](tvshow_loki-2)

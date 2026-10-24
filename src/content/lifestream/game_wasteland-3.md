@@ -6,3 +6,7 @@ platform: PC
 image: ./_images/wasteland-3.jpg
 rating: liked
 ---
+
+## Related
+
+- [Wasteland 2: Director's Cut](game_wasteland-2)

@@ -12,3 +12,7 @@ The first souls-like I stuck with and actually beat. I followed the advice of ev
 ## Previously Played
 
 - 1/28/2025
+
+## Related
+
+- [Elden Ring](game_elden-ring)

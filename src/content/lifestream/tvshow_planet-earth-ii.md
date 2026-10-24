@@ -5,3 +5,7 @@ pubDate: 2018-10-08 12:00:00
 image: ./_images/planet-earth-ii.webp
 rating: loved
 ---
+
+## Related
+
+- [Planet Earth](tvshow_planet-earth)

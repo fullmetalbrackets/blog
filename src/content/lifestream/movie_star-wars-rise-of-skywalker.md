@@ -7,3 +7,12 @@ rating: liked
 ---
 
 This trilogy went down in quality with each movie and they feel like they're barely connected to each other by the end, but I liked seeing Emperor Palpatine somehow return. I'm a sucker that way.
+
+## Previously Watched
+
+- 12/21/2019
+
+## Related
+
+- [Star Wars: The Force Awakens](movie_star-wars-the-force-awakens)
+- [Star Wars: The Last Jedi](movie_star-wars-the-last-jedi)

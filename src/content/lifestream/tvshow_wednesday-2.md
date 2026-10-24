@@ -6,3 +6,7 @@ image: ./_images/wednesday.webp
 season: '2'
 rating: liked
 ---
+
+## Related
+
+- [Season 1](tvshow_wednesday)

@@ -8,3 +8,9 @@ rating: liked
 ---
 
 It's fun, better than Discovery, I'm onboard.
+
+## Related
+
+- [Season 2](tvshow_star-trek-strange-new-worlds-2)
+- [Season 3](tvshow_star-trek-strange-new-worlds-3)
+- [Season 4](tvshow_star-trek-strange-new-worlds-4)

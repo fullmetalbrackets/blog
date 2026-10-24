@@ -8,3 +8,9 @@ rating: loved
 ---
 
 Too many side-quests, but otherwise amazing game.
+
+## Related
+
+- [Final Fantasy IX](game_final-fantasy-ix)
+- [Final Fantasy XIV](game_final-fantasy-xiv)
+- [Final Fantasy XIV](game_final-fantasy-xvi)

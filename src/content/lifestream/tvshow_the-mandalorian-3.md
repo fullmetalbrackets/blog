@@ -8,3 +8,9 @@ rating: liked
 ---
 
 Not as good as the first two seasons, some of these episodes are straight up bad.
+
+## Related
+
+- [Season 1](tvshow_the-mandalorian)
+- [Season 2](tvshow_the-mandalorian-2)
+- [The Book of Boba Fett](tvshow_the-book-of-boba-fett)

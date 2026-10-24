@@ -12,3 +12,9 @@ So cool we can play this on the Nintendo Switch 2 Online SNES virtual console th
 ## Previously Played
 
 - 12/7/2019
+
+## Related
+
+- [Star Fox 64](game_star-fox-64)
+- [Star Fox](game_star-fox)
+- [Star Fox (Remake)](game_star-fox-remake)

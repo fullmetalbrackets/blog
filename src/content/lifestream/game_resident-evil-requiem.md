@@ -8,3 +8,8 @@ rating: loved
 ---
 
 Great game! All the references to older games were great, especially the RE2 Remake which was the last Resident Evil game I played all the way through. This gave me the itch to go back to and finish RE4 Remake, so maybe that one is next...
+
+## Related
+
+- [Resident Evil 2](game_resident-evil-2)
+- [Resident Evil 4](game_resident-evil-4)

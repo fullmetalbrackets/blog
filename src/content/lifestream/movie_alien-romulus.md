@@ -7,3 +7,8 @@ rating: masterpiece
 ---
 
 Amazing movie. Please keep Ridley Scott away from this series and let Fede Alvarez take over. Thanks.
+
+## Related
+
+- [Alien](movie_alien)
+- [Aliens](movie_aliens)

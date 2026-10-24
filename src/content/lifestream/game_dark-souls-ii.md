@@ -8,3 +8,7 @@ rating: disliked
 ---
 
 Pain...
+
+## Related
+
+- [Dark Souls](game_dark-souls)

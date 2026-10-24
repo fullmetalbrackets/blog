@@ -13,3 +13,10 @@ My wife and I love this movie series as a "so bad it's good" kinda thing, we wat
 - 12/29/2025
 - 1/29/2025
 - 10/3/2023
+
+## Related
+
+- [The Twilight Saga: New Moon](movie_new-moon)
+- [The Twilight Saga: Eclipse](movie_eclipse)
+- [The Twilight Saga: Breaking Dawn Part 1](movie_breaking-dawn-part-1)
+- [The Twilight Saga: Breaking Dawn Part 2](movie_breaking-dawn-part-2)

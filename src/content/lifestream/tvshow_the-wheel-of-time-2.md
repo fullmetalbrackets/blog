@@ -6,3 +6,9 @@ image: ./_images/the-wheel-of-time-2.jpg
 season: '2'
 rating: loved
 ---
+
+Better and more eventful than the first season!
+
+## Related
+
+- [Season 1](tvshow_the-wheel-of-time)

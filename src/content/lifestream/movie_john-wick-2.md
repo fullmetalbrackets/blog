@@ -9,3 +9,8 @@ rating: loved
 ## Previously Watched
 
 - 1/25/2024
+
+## Related
+
+- [John Wick](movie_john-wick)
+- [John Wick: Chapter 3 - Parabellum](movie_john-wick-3)

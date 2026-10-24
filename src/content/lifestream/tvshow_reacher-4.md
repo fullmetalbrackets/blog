@@ -8,3 +8,9 @@ rating: loved
 ---
 
 I think I want Alan Ritchson to be DC's new Bruce Wayne/Batman, except that might eat into his Reacher schedule, which I cannot abide.
+
+## Related
+
+- [Season 1](tvshow_reacher-1)
+- [Season 2](tvshow_reacher-2)
+- [Season 3](tvshow_reacher-3)

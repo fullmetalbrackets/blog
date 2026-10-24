@@ -8,3 +8,7 @@ rating: loved
 ---
 
 I've been playing this on and off for years since release, such a great strategy game.
+
+## Related
+
+- [Stellaris](game_stellaris)

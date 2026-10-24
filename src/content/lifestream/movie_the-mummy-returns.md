@@ -7,3 +7,7 @@ rating: loved
 ---
 
 March 27, 2026 was the *25th anniversary* of this gem.
+
+## Related
+
+- [The Mummy](movie_the-mummy)

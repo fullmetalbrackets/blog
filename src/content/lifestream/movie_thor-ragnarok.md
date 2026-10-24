@@ -10,3 +10,7 @@ rating: loved
 
 - 7/8/2018
 - 11/5/2017
+
+## Related
+
+- [Thor: Love and Thunder](movie_thor-love-and-thunder)

@@ -14,3 +14,7 @@ Mandatory Volleyball Scene.
 - 2/26/2025
 - 11/30/2022
 - 6/4/2022
+
+## Related
+
+- [Top Gun](movie_top-gun)

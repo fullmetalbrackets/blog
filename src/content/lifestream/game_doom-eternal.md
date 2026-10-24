@@ -8,3 +8,8 @@ rating: masterpiece
 ---
 
 I don't love it *quite* as much as the first one, but it's still amazing.
+
+## Related
+
+- [Doom 64](game_doom-64)
+- [Doom](game_doom-2016)

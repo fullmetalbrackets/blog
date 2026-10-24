@@ -6,3 +6,7 @@ platform: PlayStation 2
 image: ./_images/ace-combat-04.jpg
 rating: loved
 ---
+
+## Related
+
+- [Ace Combat 7: Skies Unknown](game_ace-combat-7-unknown-skies)

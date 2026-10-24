@@ -7,3 +7,7 @@ rating: loved
 ---
 
 It's kind of weird how many movies with Jon Bernthal I have seen for the first time in 2026...
+
+## Related
+
+- [The Accountant](movie_the-accountant)

@@ -10,3 +10,8 @@ rating: loved
 ## Previously Watched
 
 - 3/6/2018
+
+## Related
+
+- [Season 1, 2 & 3](tvshow_black-mirror)
+- [Season 5](tvshow_black-mirror-5)

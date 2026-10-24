@@ -7,3 +7,8 @@ rating: loved
 ---
 
 Most things in here don't react too well to bulletshhh.
+
+## Related
+
+- [Clear and Present Danger](movie_clear-and-present-danger)
+- [Patriot Games](movie_patriot-games)

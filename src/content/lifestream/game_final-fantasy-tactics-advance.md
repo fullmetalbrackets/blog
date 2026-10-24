@@ -8,3 +8,8 @@ rating: masterpiece
 ---
 
 Been playing this one again on and off since finishing Ivalice Chronicles last year, it gave me the tactics itch. I love FFTA and its sequel, which I haven't played in years and will probably replay again soon.
+
+## Related
+
+- [Final Fantasy Tactics A2: Grimoire of the Rift](game_final-fantasy-tactics-a2-grimoire-of-the-rift)
+- [Final Fantasy Tactics: The Ivalice Chronicles](game_fft-the-ivalice-chronicles)

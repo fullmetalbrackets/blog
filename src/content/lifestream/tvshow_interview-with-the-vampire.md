@@ -11,3 +11,8 @@ rating: loved
 ## Previously Watched
 
 - 3/31/2025
+
+## Related
+
+- [Season 2](tvshow_interview-with-the-vampire-2)
+- [Season 3](tvshow_the-vampire-lestat)

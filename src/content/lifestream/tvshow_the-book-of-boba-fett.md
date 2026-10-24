@@ -7,3 +7,9 @@ rating: liked
 ---
 
 Not great, it was fine.
+
+## Related
+
+- [Season 1](tvshow_the-mandalorian)
+- [Season 2](tvshow_the-mandalorian-2)
+- [Season 3](tvshow_the-mandalorian-3)

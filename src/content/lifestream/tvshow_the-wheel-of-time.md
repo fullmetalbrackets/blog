@@ -7,6 +7,12 @@ season: '1'
 rating: loved
 ---
 
+Great show! It has potential.
+
 ## Previously Watched
 
 - 12/15/2021
+
+## Related
+
+- [Season 2](tvshow_the-wheel-of-time-2)

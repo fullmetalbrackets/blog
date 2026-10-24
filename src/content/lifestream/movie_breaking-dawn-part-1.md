@@ -11,3 +11,11 @@ rating: liked
 - 12/31/2025
 - 2/4/2025
 - 10/4/2023
+
+## Related
+
+
+- [Twilight](movie_twilight)
+- [The Twilight Saga: New Moon](movie_new-moon)
+- [The Twilight Saga: Eclipse](movie_eclipse)
+- [The Twilight Saga: Breaking Dawn Part 2](movie_breaking-dawn-part-2)

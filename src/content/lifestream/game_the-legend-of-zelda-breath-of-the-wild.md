@@ -12,3 +12,10 @@ I put over 100 hours into the original on Nintendo Switch, and more than doubled
 ## Previously Played
 
 - 2017 (Nintendo Switch)
+
+## Related
+
+- [The Legend of Zelda: A Link to the Past](game_the-legend-of-zelda-a-link-to-the-past)
+- [The Legend of Zelda: A Link Between Worlds](game_the-legend-of-zelda-a-link-between-worlds)
+- [The Legend of Zelda: Link's Awakening](game_the-legend-of-zelda-links-awakening)
+- [The Legend of Zelda: Tears of the Kingdom](game_the-legend-of-zelda-tears-of-the-kingdom)

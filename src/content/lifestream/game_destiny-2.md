@@ -8,3 +8,7 @@ rating: liked
 ---
 
 I liked the game at launch and really got into it during Forsaken, but I lost interest after that. It was fun for a while, but this game is not worth my continued time.
+
+## Related
+
+- [Marathon](game_marathon)

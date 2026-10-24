@@ -12,3 +12,10 @@ This is one of my favorite shows ever.
 
 - 6/2/2023
 - 4/4/2021
+
+## Related
+
+- [Stargate: Atlantis](tvshow_stargate-atlantis)
+- [Stargate: Ark of Truth](movie_stargate-ark-of-truth)
+- [Stargate: Continuum](movie_stargate-continuum)
+- [Stargate: Universe](tvshow_stargate-universe)

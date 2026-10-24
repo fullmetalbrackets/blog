@@ -12,3 +12,9 @@ Loved seeing the multiple Spider-Men meme made into a movie. Rewatching this mad
 ## Previously Watched
 
 - 4/15/2022
+
+## Related
+
+- [Spider-Man: Homecoming](movie_spiderman-homecoming)
+- [Spider-Man: Far From Home](movie_spiderman-far-from-home)
+- [Spider-Man: Brand New Day](movie_spiderman-brand-new-day)

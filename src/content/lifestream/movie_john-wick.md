@@ -11,3 +11,8 @@ Be seeing you, Mr. Wick.
 ## Previously Watched
 
 - 1/24/2024
+
+## Related
+
+- [John Wick: Chapter 2](movie_john-wick-2)
+- [John Wick: Chapter 3 - Parabellum](movie_john-wick-3)

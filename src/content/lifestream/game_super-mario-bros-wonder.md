@@ -8,3 +8,7 @@ rating: masterpiece
 ---
 
 A 2D Mario game in the 2020's and it's actually super fun? Inject it directly into my veins, please and thank you.
+
+## Related
+
+- [Super Mario World](game_super-mario-world)

@@ -12,3 +12,10 @@ The end of an era. It's chaotic and full of unnecessary flashbacks to tie all th
 ## Previously Watched
 
 - 5/22/2025
+
+## Related
+
+- [Mission Impossible: Dead Reckoning](movie_mission-impossible-dead-reckoning)
+- [Mission Impossible: Fallout](movie_mission-impossible-fallout)
+- [Mission Impossible: Ghost Protocol](movie_mission-impossible-ghost-protocol)
+- [Mission Impossible: Rogue Nation](movie_mission-impossible-rogue-nation)

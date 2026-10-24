@@ -8,3 +8,7 @@ rating: loved
 ---
 
 Rewatching the first season in anticipation of the second. Love this show!
+
+## Related
+
+- [Season 2](tvshow_fallout-2)

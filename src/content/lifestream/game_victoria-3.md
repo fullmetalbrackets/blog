@@ -6,3 +6,7 @@ platform: PC
 image: ./_images/victoria-3.jpeg
 rating: loved
 ---
+
+## Related
+
+- [Victoria II](game_victoria-2)

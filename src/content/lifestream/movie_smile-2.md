@@ -7,3 +7,7 @@ rating: loved
 ---
 
 Even better than the original? In this economy?
+
+## Related
+
+- [Smile](movie_smile)

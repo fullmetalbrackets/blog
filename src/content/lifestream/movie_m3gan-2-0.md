@@ -10,3 +10,7 @@ rating: liked
 ## Previously Watched
 
 - 10/18/2025
+
+## Related
+
+- [M3GAN](movie_m3gan)

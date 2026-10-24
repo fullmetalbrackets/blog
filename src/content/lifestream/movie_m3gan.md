@@ -11,3 +11,7 @@ rating: liked
 
 - 10/17/2025
 - 8/15/2023
+
+## Related
+
+- [M3GAN 2.0](movie_m3gan-2-0)

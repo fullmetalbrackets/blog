@@ -8,3 +8,7 @@ rating: loved
 ---
 
 Still the best SimCity game, somehow...
+
+## Related
+
+- [Sim City 4](game_sim-city-4)

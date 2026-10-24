@@ -12,3 +12,10 @@ rating: masterpiece
 ## Previously Played
 
 - 2023 (Nintendo Switch)
+
+## Related
+
+- [The Legend of Zelda: A Link to the Past](game_the-legend-of-zelda-a-link-to-the-past)
+- [The Legend of Zelda: A Link Between Worlds](game_the-legend-of-zelda-a-link-between-worlds)
+- [The Legend of Zelda: Link's Awakening](game_the-legend-of-zelda-links-awakening)
+- [The Legend of Zelda: Breath of the Wild](game_the-legend-of-zelda-breath-of-the-wild)

@@ -12,3 +12,8 @@ What a fucking mess. Leia using Force powers was awesome, but the *way* she did 
 
 - 12/21/2019
 - 12/9/2017
+
+## Related
+
+- [Star Wars: The Force Awakens](movie_star-wars-the-force-awakens)
+- [Star Wars: The Rise of Skywalker](movie_star-wars-rise-of-skywalker)

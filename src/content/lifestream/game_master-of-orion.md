@@ -8,3 +8,7 @@ rating: liked
 ---
 
 This remake is a little shallow, at least compared to the old Master of Orion 2 (I never played the original), but it's still really good. The presentation and polish especially is on point.
+
+## Related
+
+- [Master of Orion II: Battle at Antares](game_master-of-orion-ii-battle-at-antares)

@@ -20,3 +20,10 @@ Civ V is still my all-time favorite, but this is great and just as addictive.
 - 4/9/2017
 - 11/27/2016
 - 11/19/2016
+
+## Related
+
+- [Sid Meier's Alpha Centauri](game_sid-meiers-alpha-centauri)
+- [Sid Meier's Civilization IV](game_sid-meiers-civilization-iv)
+- [Sid Meier's Civilization V](game_sid-meiers-civilization-v)
+- [Sid Meier's Civilization: Beyond Earth](game_sid-meiers-civilization-beyond-earth)

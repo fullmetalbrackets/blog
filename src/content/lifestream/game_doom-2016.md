@@ -8,3 +8,8 @@ rating: masterpiece
 ---
 
 Rip and tear. Until it is done.
+
+## Related
+
+- [Doom 64](game_doom-64)
+- [Doom Eternal](game_doom-eternal)

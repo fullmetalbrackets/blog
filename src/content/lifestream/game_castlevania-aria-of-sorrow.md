@@ -13,3 +13,8 @@ This game and Dawn of Sorrow are still the only Castlevania games that are even 
 ## Previously Played
 
 - 1/7/2018
+
+## Related
+
+- [Castlevania: Dawn of Sorrow](game_castlevania-dawn-of-sorrow)
+- [Castlevania: Symphony of the Night](game_castlevania-symphony-of-the-night)

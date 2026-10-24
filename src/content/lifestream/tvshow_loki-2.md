@@ -8,3 +8,7 @@ rating: loved
 ---
 
 Perfect ending?
+
+## Related
+
+- [Season 1](tvshow_loki)

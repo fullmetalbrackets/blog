@@ -7,3 +7,7 @@ rating: masterpiece
 ---
 
 Best Marvel show so far!
+
+## Related
+
+- [Agatha All Along](tvshow_agatha-all-along)

@@ -12,3 +12,10 @@ I love most of Star Trek, but this is my favorite Star Trek anything of all time
 
 - 4/14/2021
 - 11/15/2015
+
+## Related
+
+- [Star Trek: The Next Generation](tvshow_star-trek-the-next-generation)
+- [Star Trek: Voyager](tvshow_star-trek-voyager)
+- [Star Trek: Enterprise](tvshow_star-trek-enterprise)
+- [Star Trek: Picard](tvshow_star-trek-picard)

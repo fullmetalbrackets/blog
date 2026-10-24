@@ -7,3 +7,9 @@ rating: liked
 ---
 
 Not as good as the others, but it's still RoboCop.
+
+## Related
+
+- [RoboCop](movie_robocop)
+- [RoboCop 2](movie_robocop2)
+- [RoboCop (Remake)](movie_robocop-remake)

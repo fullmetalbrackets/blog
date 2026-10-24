@@ -13,3 +13,8 @@ Somehow even better than the original?! (Except for the character art... Yuck.)
 ## Previously Watched
 
 - 5/2/2020
+
+## Related
+
+- [Castlevania: Aria of Sorrow](game_castlevania-aria-of-sorrow)
+- [Castlevania: Symphony of the Night](game_castlevania-symphony-of-the-night)

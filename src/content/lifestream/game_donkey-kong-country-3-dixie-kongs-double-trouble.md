@@ -8,3 +8,8 @@ rating: loved
 ---
 
 I didn't stick with this one and finish it, I'll come back to it eventually. Just like in the before-fore times on the actual Super NES, this one just never grabbed me the same way as DKC 1 and 2.
+
+## Related
+
+- [Donkey Kong Country](game_donkey-kong-country)
+- [Donkey Kong Country](game_donkey-kong-country-2-diddys-kong-quest)

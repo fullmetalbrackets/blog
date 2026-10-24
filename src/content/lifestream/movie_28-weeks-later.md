@@ -5,3 +5,7 @@ pubDate: 2026-02-28 12:00:00
 image: ./_images/28-weeks-later.webp
 rating: loved
 ---
+
+## Related
+
+- [28 Days Later](movie_28-days-later)

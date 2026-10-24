@@ -9,3 +9,8 @@ rating: loved
 ## Previously Watched
 
 - 1/26/2024
+
+## Related
+
+- [John Wick](movie_john-wick)
+- [John Wick: Chapter 2](movie_john-wick-2)

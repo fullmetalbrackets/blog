@@ -11,3 +11,8 @@ One of my favorite movies of all time. Who knows what number of rewatch this is 
 ## Previously Watched
 
 - 10/8/2024
+
+## Related
+
+- [Alien](movie_alien)
+- [Alien: Romulus](movie_alien-romulus)

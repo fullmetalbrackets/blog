@@ -8,3 +8,7 @@ rating: liked
 ---
 
 This old classic is still one of the best 4X games of all time.
+
+## Related
+
+- [Master of Orion](game_master-of-orion)

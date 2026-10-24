@@ -12,3 +12,9 @@ I played this game so much back in the day, over and over and over. Still a grea
 ## Previously Played
 
 - 10/30/2021
+
+## Related
+
+- [Star Fox 2](game_star-fox-2)
+- [Star Fox](game_star-fox)
+- [Star Fox (Remake)](game_star-fox-remake)

@@ -8,3 +8,7 @@ rating: masterpiece
 ---
 
 Forever a masterpiece.
+
+## Related
+
+- [Super Mario Bros. Wonder](game_super-mario-bros-wonder)

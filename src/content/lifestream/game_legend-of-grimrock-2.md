@@ -6,3 +6,7 @@ platform: PC
 image: ./_images/legend-of-grimrock-2.jpeg
 rating: liked
 ---
+
+## Related
+
+- [Legend of Grimrock](game_legend-of-grimrock)

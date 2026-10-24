@@ -6,3 +6,8 @@ image: ./_images/black-mirror.webp
 season: 1 - 3
 rating: loved
 ---
+
+## Related
+
+- [Season 4](tvshow_black-mirror-4)
+- [Season 5](tvshow_black-mirror-5)

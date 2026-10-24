@@ -7,3 +7,7 @@ rating: loved
 ---
 
 If it ain't broke, don't fix it.
+
+## Related
+
+- [Extraction 2](movie_extraction-2)

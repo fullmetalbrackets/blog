@@ -6,3 +6,9 @@ platform: PC
 image: ./_images/thief-gold.jpg
 rating: loved
 ---
+
+## Related
+
+- [Thief II: The Metal Age](game_thief-ii-the-metal-age)
+- [Thief: Deadly Shadows](game_thief-deadly-shadows)
+- [Thief](game_thief)

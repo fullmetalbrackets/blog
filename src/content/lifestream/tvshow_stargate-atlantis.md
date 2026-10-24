@@ -12,3 +12,10 @@ Not as good as Stargate SG-1, but it gets better every season.
 
 - 5/24/2021
 - 9/13/2015
+
+## Related
+
+- [Stargate: SG-1](tvshow_stargate-sg1)
+- [Stargate: Ark of Truth](movie_stargate-ark-of-truth)
+- [Stargate: Continuum](movie_stargate-continuum)
+- [Stargate: Universe](tvshow_stargate-universe)

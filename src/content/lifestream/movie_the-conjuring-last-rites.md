@@ -7,3 +7,7 @@ rating: liked
 ---
 
 My wife is a huge fan of these movies and made me watch it with her. It's fine. They're all fine.
+
+## Related
+
+- [The Conjuring: The Devil Made Me Do It](movie_the-conjuring-the-devil-made-me-do-it)

@@ -13,3 +13,7 @@ What can be said about this besides that it's probably the best superhero/comicb
 - 12/26/2025
 - 5/28/2019
 - 4/27/2018
+
+## Related
+
+- [Avengers: Infinity War](movie_avengers-infinity-war)

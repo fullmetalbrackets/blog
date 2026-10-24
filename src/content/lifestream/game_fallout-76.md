@@ -8,3 +8,10 @@ rating: disliked
 ---
 
 Tried it out for around 12 hours during the free trial period, it's ok and I had fun, but it's just not the type of game for me.
+
+## Related
+
+- [Fallout](game_fallout)
+- [Fallout 2](game_fallout-2)
+- [Fallout 4](game_fallout-4)
+- [Fallout: New Vegas](game_fallout-new-vegas)

@@ -9,3 +9,7 @@ rating: loved
 ## Previously Watched
 
 - 5/8/2016
+
+## Related
+
+- [Captain America: Brave New World](movie_captain-america-brave-new-world)

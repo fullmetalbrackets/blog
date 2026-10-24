@@ -7,3 +7,8 @@ rating: loved
 ---
 
 It's been years since I read this, and I only read it the one time and didn't read the sequels. Now that they are being made into a movie at Apple TV, I read Mistborn again and will finally read the other two soon.
+
+## Related
+
+- [Mistborn: The Well of Ascension](book_the-well-of-ascension)
+- [Mistborn: The Hero of Ages](book_the-hero-of-ages)

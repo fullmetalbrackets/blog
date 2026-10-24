@@ -7,3 +7,7 @@ rating: disliked
 ---
 
 Objectively, this movie is a turd. But it's Arnie and it's the 80's, so I don't hate this.
+
+## Related
+
+- [The Running Man](movie_the-running-man)

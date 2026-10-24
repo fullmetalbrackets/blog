@@ -8,3 +8,7 @@ rating: loved
 ---
 
 I played this way back in the day and loved it, it's still a great game. Really annoying that this is stuck on PS3, though...
+
+## Related
+
+- [InFamous: Second Son](game_infamous-second-son)

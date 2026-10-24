@@ -13,3 +13,10 @@ Great movie, up there with Fallout as the best of the series.
 
 - 2/23/2025
 - 10/15/2023
+
+## Related
+
+- [Mission Impossible: Dead Reckoning](movie_mission-impossible-dead-reckoning)
+- [Mission Impossible: Fallout](movie_mission-impossible-fallout)
+- [Mission Impossible: The Final Reckoning](movie_mission-impossible-final-reckoning)
+- [Mission Impossible: Ghost Protocol](movie_mission-impossible-ghost-protocol)

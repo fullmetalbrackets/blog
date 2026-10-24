@@ -8,3 +8,7 @@ rating: loved
 ---
 
 Why did I wait so long to play an Ace Combat game?? It's so fun that I downloaded the PS2 ROMs for Ace Combat 4 and 5, and bought a used copy of Ace Combat 6 for Xbox 360, so that I can play them soon.
+
+## Related
+
+- [Ace Combat 04: Shattered Skies](game_ace-combat-04-shattered-skies)

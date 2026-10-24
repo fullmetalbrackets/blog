@@ -8,3 +8,7 @@ rating: hated
 ---
 
 Yeah, no... this is not for me. I don't think extraction shooters are my thing.
+
+## Related
+
+- [Destiny 2](game_destiny-2)

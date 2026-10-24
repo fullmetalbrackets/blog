@@ -6,3 +6,7 @@ platform: PC
 image: ./_images/rogue-legacy.jpeg
 rating: loved
 ---
+
+## Related
+
+- [Rogue Legacy 2](game_rogue-legacy-2)

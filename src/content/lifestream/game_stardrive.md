@@ -8,3 +8,7 @@ rating: liked
 ---
 
 Cool little 4X, it's kind of half-baked, but fun. There seems to be only one win condition, which is to drive every other race to extinction via nuclear sterilization of every planet in the galaxy that is not yours. That's pretty metal.
+
+## Related
+
+- [StarDrive 2](game_stardrive-2)

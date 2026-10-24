@@ -8,3 +8,8 @@ rating: masterpiece
 ---
 
 Still the best game in the series.
+
+## Related
+
+- [Resident Evil 2](game_resident-evil-2)
+- [Resident Evil Requiem](game_resident-evil-requiem)

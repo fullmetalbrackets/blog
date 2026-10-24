@@ -6,3 +6,9 @@ platform: PlayStation 4
 image: ./_images/god-of-war.jpg
 rating: masterpiece
 ---
+
+Amazing game!
+
+## Related
+
+- [God of War: Ragnarok](game_god-of-war-ragnarok)

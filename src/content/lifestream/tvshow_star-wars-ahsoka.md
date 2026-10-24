@@ -8,3 +8,7 @@ rating: loved
 ---
 
 Rosario Dawson is great as Ahsoka and I loved that this was sort of a Rebels sequel. Looking forward to season 2.
+
+## Related
+
+- [Star Wars Rebels](tvshow_star-wars-rebels)

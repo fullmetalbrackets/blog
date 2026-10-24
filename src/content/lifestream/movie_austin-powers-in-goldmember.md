@@ -7,3 +7,8 @@ rating: loved
 ---
 
 I haven't seen this in over a decade, I remember thinking it was not as good as the first two, but wife and I were cracking up with this one the whole time.
+
+## Related
+
+- [Austin Powers: International Man of Mystery](movie_austin-powers-international-man-of-mystery)
+- [Austin Powers: The Spy Who Shagged Me](movie_austin-powers-the-spy-who-shagged-me)

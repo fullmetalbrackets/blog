@@ -5,3 +5,7 @@ pubDate: 2022-06-03 12:00:00
 image: ./_images/topgun.webp
 rating: loved
 ---
+
+## Related
+
+- [Top Gun: Maverick](movie_top-gun-maverick)

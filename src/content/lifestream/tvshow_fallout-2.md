@@ -12,3 +12,7 @@ Season 2 was not as good as the first. It was too chaotic and feels like a lot s
 I still enjoyed it, it did answer some questions (while posing more), and they're clearly setting up some big things for the future. Also makes me wonder how these things will affect the storyline of the Fallout 5 game when it eventually gets made.
 
 Need more Dogmeat next season, though, he was just a prop in this one!
+
+## Related
+
+- [Season 1](tvshow_fallout)

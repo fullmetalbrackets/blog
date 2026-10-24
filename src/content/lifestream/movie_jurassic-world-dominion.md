@@ -7,3 +7,7 @@ rating: loved
 ---
 
 This movie is a mess, but I still loved seeing all the oldies with the newbies.
+
+## Related
+
+- [Jurassic World: Rebirth](movie_jurassic-world-rebirth)

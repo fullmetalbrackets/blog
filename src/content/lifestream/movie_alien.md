@@ -7,3 +7,8 @@ rating: masterpiece
 ---
 
 Aliens will always be my favorite of the series, but this is a sci-fi horror classic.
+
+## Related
+
+- [Aliens](movie_aliens)
+- [Alien: Romulus](movie_alien-romulus)

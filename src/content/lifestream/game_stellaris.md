@@ -6,3 +6,7 @@ platform: PC
 image: ./_images/stellaris.jpg
 rating: loved
 ---
+
+## Related
+
+- [Europa Universalis IV](game_europa-universalis-iv)

@@ -12,3 +12,10 @@ This is the only season of Picard worth watching, and somehow it's also the best
 ## Previously Watched
 
 - 4/20/2023
+
+## Related
+
+- [Star Trek: The Next Generation](tvshow_star-trek-the-next-generation)
+- [Star Trek: Deep Space Nine](tvshow_star-trek-deep-space-nine)
+- [Star Trek: Voyager](tvshow_star-trek-voyager)
+- [Star Trek: Enterprise](tvshow_star-trek-enterprise)

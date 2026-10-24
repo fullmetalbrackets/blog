@@ -11,3 +11,7 @@ Don't care what anyone says, this movie is good.
 ## Previously Watched
 
 - 03/08/2025
+
+## Related
+
+- [Captain America: Civil War](movie_captain-america-civil-war)

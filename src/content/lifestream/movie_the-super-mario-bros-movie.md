@@ -7,3 +7,7 @@ rating: loved
 ---
 
 It's a Super Mario Bros. game in movie form. And that's all it needed to be.
+
+## Related
+
+- [The Super Mario Galaxy Movie](movie_the-super-mario-galaxy-movie)

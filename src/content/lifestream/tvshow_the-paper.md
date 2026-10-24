@@ -13,3 +13,7 @@ This was better than I thought it would be! Vibes of both The Office and Parks a
 ## Previously Watched
 
 - 4/15/2026
+
+## Related
+
+- [Season 2](tvshow_the-paper-2)

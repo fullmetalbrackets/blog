@@ -7,3 +7,7 @@ rating: loved
 ---
 
 It's more blatant Nintendo nostalgia, so I totally ate it up. I am the target audience.
+
+## Related
+
+- [The Super Mario Bros. Movie](movie_the-super-mario-bros-movie)

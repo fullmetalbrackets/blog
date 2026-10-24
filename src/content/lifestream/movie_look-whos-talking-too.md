@@ -5,3 +5,7 @@ pubDate: 2025-09-03 12:00:00
 image: ./_images/look-whos-talking-too.jpg
 rating: liked
 ---
+
+## Related
+
+- [Look Who's Talking](movie_looks-whos-talking)

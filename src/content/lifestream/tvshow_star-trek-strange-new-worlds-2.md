@@ -8,3 +8,9 @@ rating: liked
 ---
 
 Ooh, a TNG-style cliffhanger season finale. Digging it.
+
+## Related
+
+- [Season 1](tvshow_star-trek-strange-new-worlds)
+- [Season 3](tvshow_star-trek-strange-new-worlds-3)
+- [Season 4](tvshow_star-trek-strange-new-worlds-4)

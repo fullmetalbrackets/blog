@@ -7,3 +7,7 @@ rating: loved
 ---
 
 I thought action movies like this stopped being made in the 90's. I'm here for it.
+
+## Related
+
+- [Extraction 2](movie_extraction-2)

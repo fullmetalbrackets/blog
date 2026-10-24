@@ -8,3 +8,9 @@ rating: disliked
 ---
 
 Bleh, this show is just a mess now and this storyline sucks. I had to force myself to finish it.
+
+## Related
+
+- [Season 1](tvshow_jack-ryan-1)
+- [Season 2](tvshow_jack-ryan-2)
+- [Season 3](tvshow_jack-ryan-3)

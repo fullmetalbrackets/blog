@@ -8,3 +8,7 @@ rating: liked
 ---
 
 The last great game in this series, though I still prefer SimCity 3000.
+
+## Related
+
+- [Sim City 3000 Unlimited](game_sim-city-3000-unlimited)

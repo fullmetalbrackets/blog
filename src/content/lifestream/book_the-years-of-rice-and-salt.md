@@ -9,3 +9,8 @@ rating: masterpiece
 I've always been a sucker for alternate history and this particular book is both thought-provoking and very fun to read. The author uses Buddhism and spirituality in an interesting way to connect disparate characters and historcal events over hundreds of years.
 
 This is now my third time reading through it, and I know there will be many more.
+
+## Related
+
+- [2312](book_2312)
+- [New York 2140](book_new-york-2140)

@@ -12,3 +12,7 @@ Well, I can't beat the final boss of the DLC, but I've done everything else. Twi
 ## Previously Played
 
 - 3/16/2025
+
+## Related
+
+- [Elden Ring](game_elden-ring)

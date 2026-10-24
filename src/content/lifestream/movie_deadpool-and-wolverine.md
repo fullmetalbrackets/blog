@@ -13,3 +13,8 @@ I love it, but bringing Wesley Snipes back as Blade pushed this into being a mas
 
 - 10/12/2024
 - 7/27/2024
+
+## Related
+
+- [Deadpool](movie_deadpool)
+- [Deadpool 2](movie_deadpool-2)

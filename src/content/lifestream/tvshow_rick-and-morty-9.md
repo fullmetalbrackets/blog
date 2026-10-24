@@ -6,3 +6,7 @@ image: ./_images/rick-and-morty-9.webp
 season: '9'
 rating: loved
 ---
+
+## Related
+
+- [Season 8](tvshow_rick-and-morty)

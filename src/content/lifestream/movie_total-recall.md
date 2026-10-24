@@ -7,3 +7,7 @@ rating: loved
 ---
 
 Get your ass to Mars.
+
+## Related
+
+- [Total Recall (2012)](movie_total-recall-2012)

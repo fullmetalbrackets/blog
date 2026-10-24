@@ -7,3 +7,7 @@ rating: loved
 ---
 
 Finally got around to watching this and it's good!
+
+## Related
+
+- [The Accountant 2](movie_the-accountant-2)

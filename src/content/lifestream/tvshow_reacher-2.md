@@ -6,3 +6,9 @@ image: ./_images/reacher.webp
 season: '2'
 rating: loved
 ---
+
+## Related
+
+- [Season 1](tvshow_reacher-1)
+- [Season 3](tvshow_reacher-3)
+- [Season 4](tvshow_reacher-4)

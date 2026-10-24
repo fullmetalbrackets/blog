@@ -6,3 +6,8 @@ image: ./_images/for-all-mankind-4.webp
 season: '4'
 rating: loved
 ---
+
+## Related
+
+- [Season 1 & 2](tvshow_for-all-mankind)
+- [Season 3](tvshow_for-all-mankind-3)

@@ -6,3 +6,8 @@ image: ./_images/love-death-and-robots.webp
 season: '3'
 rating: liked
 ---
+
+## Related
+
+- [Season 1 & 2](tvshow_love-death-and-robots)
+- [Season 4](tvshow_love-death-and-robots-4)

@@ -7,3 +7,7 @@ rating: loved
 ---
 
 Of course the sequel to the best Marvel show ever will be the second-best Marvel show ever.
+
+## Related
+
+- [WandaVision](tvshow_wandavision)

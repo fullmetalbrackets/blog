@@ -6,3 +6,7 @@ image: ./_images/house-of-the-dragon1.webp
 season: '1'
 rating: liked
 ---
+
+## Related
+
+- [Season 2](tvshow_house-of-the-dragon-2)

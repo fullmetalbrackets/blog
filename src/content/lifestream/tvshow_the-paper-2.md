@@ -6,3 +6,7 @@ image: ./_images/the-paper-2.webp
 season: '2'
 rating: loved
 ---
+
+## Related
+
+- [Season 1](tvshow_the-paper)

@@ -12,3 +12,9 @@ This is one of my favorite games of all time. I've played and beaten it many tim
 ## Previously Played
 
 - 4/16/2020
+
+## Related
+
+- [Thief Gold](game_thief-gold)
+- [Thief: Deadly Shadows](game_thief-deadly-shadows)
+- [Thief](game_thief)

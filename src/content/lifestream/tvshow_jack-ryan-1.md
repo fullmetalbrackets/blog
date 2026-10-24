@@ -10,3 +10,9 @@ rating: loved
 ## Previously Watched
 
 - 10/2/2019
+
+## Related
+
+- [Season 2](tvshow_jack-ryan-2)
+- [Season 3](tvshow_jack-ryan-3)
+- [Season 4](tvshow_jack-ryan-4)

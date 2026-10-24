@@ -8,3 +8,8 @@ rating: loved
 ---
 
 As many times before on the original, I burnt out doing every side-quest in sight and only got a little far in the storyline before quitting for now. (I actually got Martin to Cloud Ruler Temple this time!) I did finish both the Thieves Guild and Dark Brotherhood questlines, though, and they're the highlights anyway if I remember correctly.
+
+## Related
+
+- [The Elder Scrolls IV: Oblivion](game_elder-scrolls-iv-oblivion)
+- [The Elder Scrolls V: Skyrim](game_elder-scrolls-v-skyrim)

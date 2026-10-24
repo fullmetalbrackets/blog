@@ -6,3 +6,8 @@ image: ./_images/interview-with-the-vampire-2.jpg
 season: '2'
 rating: loved
 ---
+
+## Related
+
+- [Season 1](tvshow_interview-with-the-vampire)
+- [Season 3](tvshow_the-vampire-lestat)

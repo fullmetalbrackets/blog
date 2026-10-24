@@ -8,3 +8,8 @@ rating: masterpiece
 ---
 
 Haven't played this in years, it still holds up. Why do I have to either break out an old console or use an emulator to play one of the greatest games ever made? Re-release it on modern consoles already!
+
+## Related
+
+- [Castlevania: Aria of Sorrow](game_castlevania-aria-of-sorrow)
+- [Castlevania: Dawn of Sorrow](game_castlevania-dawn-of-sorrow)

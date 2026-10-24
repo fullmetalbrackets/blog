@@ -8,3 +8,7 @@ rating: liked
 ---
 
 It's pretty, but it didn't really grab me like the first two games. Characters and story are kind of meh.
+
+## Related
+
+- [InFamous](game_infamous)

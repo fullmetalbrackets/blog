@@ -6,3 +6,7 @@ platform: PC
 image: ./_images/endless-space-2.jpg
 rating: loved
 ---
+
+## Related
+
+- [Endless Space](game_endless-space)

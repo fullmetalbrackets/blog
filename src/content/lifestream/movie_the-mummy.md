@@ -7,3 +7,7 @@ rating: loved
 ---
 
 At the risk of sounding like an old fart, they don't make movies like this anymore.
+
+## Related
+
+- [The Mummy Returns](movie_the-mummy-returns)

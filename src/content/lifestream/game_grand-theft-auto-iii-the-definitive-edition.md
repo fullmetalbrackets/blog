@@ -1,6 +1,6 @@
 ---
 type: game
-title: 'Grand Theft Auto III: The Definitive Edition'
+title: 'Grand Theft Auto III - The Definitive Edition'
 pubDate: 2026-09-03 12:00:00
 platform: PC
 image: ./_images/grand-theft-auto-iii-the-definitive-edition.jpeg
@@ -12,3 +12,11 @@ I played this game all the way through back in the day, like 20 years ago, on bo
 ## Previously Played
 
 - 1/17/2018 ([original version](/lifestream/game_grand-theft-auto-iii))
+
+## Related
+
+- [Grand Theft Auto III](game_grand-theft-auto-iii)
+- [Grand Theft Auto IV](game_grand-theft-auto-iv)
+- [Grand Theft Auto San Andreas](game_grand-theft-auto-san-andreas)
+- [Grand Theft Auto V](game_grand-theft-auto-v)
+- [Grand Theft Auto Vice City: The Definitive Edition](game_grand-theft-auto-vice-city-the-definitive-edition)

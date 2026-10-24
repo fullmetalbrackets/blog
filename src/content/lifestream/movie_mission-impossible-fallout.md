@@ -13,3 +13,10 @@ Possibly the best Mission Impossible movie? It's between this and Rogue Nation, 
 
 - 2/23/2025
 - 10/15/2023
+
+## Related
+
+- [Mission Impossible: Dead Reckoning](movie_mission-impossible-dead-reckoning)
+- [Mission Impossible: The Final Reckoning](movie_mission-impossible-final-reckoning)
+- [Mission Impossible: Ghost Protocol](movie_mission-impossible-ghost-protocol)
+- [Mission Impossible: Rogue Nation](movie_mission-impossible-rogue-nation)

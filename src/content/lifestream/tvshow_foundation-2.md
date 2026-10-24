@@ -8,3 +8,7 @@ rating: loved
 ---
 
 This show just keeps getting better.
+
+## Related
+
+- [Season 1](tvshow_foundation-1)
