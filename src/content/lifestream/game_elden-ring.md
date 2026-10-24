@@ -15,4 +15,4 @@ The first souls-like I stuck with and actually beat. I followed the advice of ev
 
 ## Related
 
-- [Elden Ring](game_elden-ring)
+- [Shadow of the Erdtree DLC](game_elden-ring-shadow-of-the-erdtree)
