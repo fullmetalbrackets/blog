@@ -2,7 +2,7 @@
 title: 'Video games I finished in 2026'
 description: 'A list of videogames I played from start to finish in 2026.'
 pubDate: 2026-06-23 12:00:00
-updatedDate: 2026-10-23 12:00:00
+updatedDate: 2026-10-24 12:00:00
 tag: information
 ---
 
@@ -10,7 +10,7 @@ tag: information
 
 ## Completed games
 
-<em>Total so far:</em> <span class="sub-font w9 secondary">18</span>
+<em>Total so far:</em> <span class="sub-font w9 secondary">19</span>
 
 - [007: First Light](/lifestream/game_007-first-light)
 - [Ace Combat 04: Shattered Skies](/lifestream/game_ace-combat-04-shattered-skies)
@@ -34,11 +34,13 @@ tag: information
 
 ## In progress
 
-<em>Total:</em> <span class="sub-font w9 secondary">3</span>
+<em>Total:</em> <span class="sub-font w9 secondary">5</span>
 
 - Ace Combat Zero: The Belkan War
 - Castlevania: Belmont's Curse
+- Colony Wars (PSX)
 - Control Resonant
+- Parasite Eve (PSX)
 
 ## Started, temporarily on pause
 
