@@ -7,6 +7,11 @@ image: ./_images/endless-space-2.jpg
 rating: loved
 ---
 
+## Previously Played
+
+- 4/5/2021
+- 12/29/2017
+
 ## Related
 
 - [Endless Space](game_endless-space)

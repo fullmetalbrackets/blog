@@ -6,3 +6,8 @@ platform: PC
 image: ./_images/endless-legend.jpg
 rating: liked
 ---
+
+## Previously Played
+
+- 1/24/2016
+- 10/7/2014

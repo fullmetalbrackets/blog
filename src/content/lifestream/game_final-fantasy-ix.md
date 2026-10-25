@@ -9,6 +9,10 @@ rating: masterpiece
 
 Still my favorite Final Fantasy game (not counting FFXIV maybe?) and it looks amazing with the [Moguri Mod](https://sites.google.com/view/moguri-mod)! I only got to around the beginning of what was Disc 1 back in the day, the gameplay still shows its age even if the mod spruces up the graphics. I will come back to it and do a full replay with the mod someday. (Unless the rumored remake comes out, then I will buy it day one.)
 
+## Previously Played
+
+- 7/9/2016
+
 ## Related
 
 - [Final Fantasy VII](game_final-fantasy-vii-remake)

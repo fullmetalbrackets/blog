@@ -8,3 +8,9 @@ rating: loved
 ---
 
 Great turn-based space 4X. Need more of these!
+
+## Previously Played
+
+- 4/5/2021
+- 7/25/2019
+- 9/22/2015

@@ -9,6 +9,10 @@ rating: masterpiece
 
 Still the best game in the series.
 
+## Previously Played
+
+- 2/25/2020
+
 ## Related
 
 - [Resident Evil 2](game_resident-evil-2)

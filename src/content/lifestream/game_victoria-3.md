@@ -7,6 +7,10 @@ image: ./_images/victoria-3.jpeg
 rating: loved
 ---
 
+## Previously Played
+
+- 11/27/2023
+
 ## Related
 
 - [Victoria II](game_victoria-2)

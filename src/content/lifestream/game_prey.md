@@ -8,3 +8,8 @@ rating: masterpiece
 ---
 
 Amazing and underrated.
+
+## Previously Played
+
+- 3/19/2020
+- 2/7/2018

@@ -8,3 +8,7 @@ rating: loved
 ---
 
 This one is a diamond in the rough. It's fun, but shallow... until you add the Colonial Charter mod or, even better, the Mega Mod. Weird that the developer put out this great and promptly forgot it existed, though.
+
+## Previously Played
+
+- 7/5/2014

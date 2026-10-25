@@ -9,6 +9,12 @@ rating: masterpiece
 
 Rip and tear. Until it is done.
 
+## Previously Played
+
+- 11/21/2021
+- 2/18/2020
+- 7/24/2019
+
 ## Related
 
 - [Doom 64](game_doom-64)

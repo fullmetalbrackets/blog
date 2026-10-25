@@ -9,6 +9,13 @@ rating: masterpiece
 
 One of the best turn-based tactics games of all time. I have 200+ hours in this, I've replayed the campaign multiple times and I still replay it every few years. (Never played the real originals from the 90's, though.)
 
+## Previously Watched
+
+- 1/17/2016
+- 11/29/2014
+- 6/22/2014
+- 1/14/2013
+
 ## Related
 
 - [Xcom 2](game_xcom-2)

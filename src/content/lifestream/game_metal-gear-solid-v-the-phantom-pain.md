@@ -7,7 +7,11 @@ image: ./_images/metal-gear-solid-v-the-phantom-pain.png
 rating: liked
 ---
 
-I wanted to love this, and I recognize it's really well built, but I absolutely **hate** the disconnected episodic missions. Maybe I'll try again someday, but right now I just couldn't get past it after around the time I recruited Quiet.
+I wanted to love this, I've tried a few times. I recognize it's really well built, but I absolutely **hate** the episodic missions. I lose interest after doing a few and then go months without coming back to do another. It makes the whole story feel disconnected. I'm sure I'll try a few missions again someday, but right now I just couldn't get past it after around the time I recruited Quiet.
+
+## Previously Played
+
+- 8/19/2020
 
 ## Related
 

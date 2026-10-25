@@ -7,6 +7,11 @@ image: ./_images/grand-theft-auto-v.jpg
 rating: masterpiece
 ---
 
+## Previously Played
+
+- 1/4/2020
+- 8/28/2018
+
 ## Related
 
 - [Grand Theft Auto III](game_grand-theft-auto-iii)

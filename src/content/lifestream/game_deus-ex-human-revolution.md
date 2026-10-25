@@ -9,4 +9,6 @@ rating: loved
 
 ## Previously Played
 
+- 4/16/2020
+- 6/15/2014
 - 11/26/2012

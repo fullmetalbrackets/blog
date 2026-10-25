@@ -8,3 +8,7 @@ rating: loved
 ---
 
 This game is still great, but I never did play the sequel. One of these days...
+
+## Previously Played
+
+- 4/17/2019

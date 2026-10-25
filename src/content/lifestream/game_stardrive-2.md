@@ -11,6 +11,11 @@ Rather than keep the unique real-time gameplay of the original and build on it, 
 
 It still feels half-baked and unpolished like the original, and exterminating everyone else still seems to be the only way to win, but at least this time the enemy A.I. is not totally brain dead.
 
+## Previously Played
+
+- 4/19/2016
+- 4/10/2015
+
 ## Related
 
 - [StarDrive](game_stardrive)
