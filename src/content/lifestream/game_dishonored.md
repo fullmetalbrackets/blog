@@ -8,3 +8,8 @@ rating: masterpiece
 ---
 
 This feels like the real spiritual successor to the old Thief games.
+
+## Previously Played
+
+- 11/22/2021
+- 8/14/2015
