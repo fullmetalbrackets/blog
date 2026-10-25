@@ -42,10 +42,9 @@ tag: information
 
 ## In progress
 
-<em>Total:</em> <span class="sub-font w9 secondary">6</span>
+<em>Total:</em> <span class="sub-font w9 secondary">5</span>
 
 - Ace Combat Zero: The Belkan War
-- Batman: Arkham City
 - Castlevania: Belmont's Curse
 - Colony Wars (PSX)
 - Control Resonant
@@ -53,11 +52,12 @@ tag: information
 
 ## Started, temporarily on pause
 
-<em>Total:</em> <span class="sub-font w9 secondary">10</span>
+<em>Total:</em> <span class="sub-font w9 secondary">11</span>
 
+- Batman: Arkham City
 - Dark Souls Remastered
-- Dark Souls III
-- Final Fantasy XIV *(I paused the subscription for the first time in years)*
+- Dark Souls III *(mostly done, just need to finish Ringed City)*
+- Final Fantasy XIV *(paused subscription, will be back for Evercold)*
 - InFamous 2
 - Need for Speed Heat
 - Need for Speed Most Wanted
@@ -78,12 +78,13 @@ tag: information
 
 ## Plan to play
 
-<em>Total:</em> <span class="sub-font w9 secondary">6</span>
+<em>Total:</em> <span class="sub-font w9 secondary">7</span>
 
 - Ace Combat 5: Unsung War
 - Ace Combat 6: Fires of Liberation
 - Bloodborne
 - Grand Theft Auto VI
+- The Last Guardian
 - Resident Evil Zero HD Remaster
 - The Legend of Zelda: Ocarina of Time (remake)
 
