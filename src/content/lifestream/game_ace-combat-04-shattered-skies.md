@@ -10,3 +10,4 @@ rating: loved
 ## Related
 
 - [Ace Combat 7: Skies Unknown](game_ace-combat-7-unknown-skies)
+- [Ace Combat Zero: The Belkan War](/lifestream/game_ace-combat-zero-the-belkan-war)

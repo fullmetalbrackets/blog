@@ -2,7 +2,7 @@
 title: 'Video games I finished in 2026'
 description: 'A list of videogames I played from start to finish in 2026.'
 pubDate: 2026-06-23 12:00:00
-updatedDate: 2026-10-24 22:00:00
+updatedDate: 2026-10-25 18:00:00
 tag: information
 ---
 
@@ -15,6 +15,7 @@ tag: information
 - [007: First Light](/lifestream/game_007-first-light)
 - [Ace Combat 04: Shattered Skies](/lifestream/game_ace-combat-04-shattered-skies)
 - [Ace Combat 7: Skies Unknown](/lifestream/game_ace-combat-7-unknown-skies)
+- [Ace Combat Zero: The Belkan War](/lifestream/game_ace-combat-zero-the-belkan-war)
 - [Balatro](/lifestream/game_balatro) *(I still play this randomly when I'm bored)*
 - [Batman: Arkham Asylum](/lifestream/game_batman-arkham-asylum)
 - [Castlevania: Aria of Sorrow](/lifestream/game_castlevania-aria-of-sorrow)
@@ -42,9 +43,8 @@ tag: information
 
 ## In progress
 
-<em>Total:</em> <span class="sub-font w9 secondary">5</span>
+<em>Total:</em> <span class="sub-font w9 secondary">4</span>
 
-- Ace Combat Zero: The Belkan War
 - Castlevania: Belmont's Curse
 - Colony Wars (PSX)
 - Control Resonant

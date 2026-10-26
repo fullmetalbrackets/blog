@@ -12,3 +12,4 @@ Why did I wait so long to play an Ace Combat game?? It's so fun that I downloade
 ## Related
 
 - [Ace Combat 04: Shattered Skies](game_ace-combat-04-shattered-skies)
+- [Ace Combat Zero: The Belkan War](/lifestream/game_ace-combat-zero-the-belkan-war)
