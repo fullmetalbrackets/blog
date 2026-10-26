@@ -9,14 +9,14 @@
   "solid-explorer-samba-share",
   "pihole-anywhere-tailscale",
   "comprehensive-guide-tailscale-securely-access-home-network",
+  "xplore-android-smb-share",
   "upgrade-debian-12-bookworm-debian-13-trixie",
   "expose-plex-tailscale-vps",
-  "xplore-android-smb-share",
   "self-host-website-cloudflare-tunnel",
-  "turn-off-display-linux-terminal",
   "keeping-a-linux-laptop-on-with-the-lid-closed",
+  "turn-off-display-linux-terminal",
   "reverse-proxy-using-nginx-pihole-cloudflare",
   "fix-for-nintendo-switch-oled-not-finding-5ghz-wifi-networks",
   "two-drives-mergerfs",
-  "setup-photosync-with-smb-server"
+  "migrate-adguardhome-glinet-flint2-libre-sweet-potato"
 ]
