@@ -7,7 +7,7 @@ image: ./_images/aggretsuko.webp
 rating: loved
 ---
 
-<span class="xxxl em w9">PROTEIN</span>
+<span class="xxxl em w9">*PROTEIN*</span>
 
 ## Previously Watched
 

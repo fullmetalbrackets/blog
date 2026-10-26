@@ -7,4 +7,4 @@ image: ./_images/metal-gear-solid-2-sons-of-liberty.jpg
 rating: masterpiece
 ---
 
-<span class="xxxl em w9">The "La-li-lu-le-lo"!</span>
+<span class="xxl em w9">*The "La-li-lu-le-lo"!*</span>

@@ -6,7 +6,7 @@ image: ./_images/judge-dredd.jpg
 rating: loved
 ---
 
-<span class="xxxl em w9">I AM THE LAW</span>
+<span class="xxxl em w9">*I AM THE LAW*</span>
 
 ## Previously Watched
 

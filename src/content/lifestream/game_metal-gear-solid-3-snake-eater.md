@@ -7,4 +7,4 @@ image: ./_images/metal-gear-solid-3-snake-eater.jpg
 rating: masterpiece
 ---
 
-What a thrill! (to replay this for the 50th time)
+*What a thrill!* (to replay this for the 50th time)
