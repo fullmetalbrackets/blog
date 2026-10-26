@@ -1123,6 +1123,14 @@ li.style:first-of-type {
   color: var(--primary);
 }
 
+.secondary {
+  color: var(--secondary);
+}
+
+.other {
+  color: var(--other);
+}
+
 .xxxl {
   font-size: 2em;
 }
