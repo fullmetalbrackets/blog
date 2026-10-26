@@ -11,7 +11,7 @@ So cool we can play this on the Nintendo Switch 2 Online SNES virtual console th
 
 ## Previously Played
 
-- 12/7/2019
+- 12/12/2019
 
 ## Related
 
