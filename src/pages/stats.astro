@@ -625,8 +625,8 @@ const hmIntensity = (key: string) => {
   }
   .gap-dates {
     color: var(--secondary);
+    font-family: var(--sub-font);
     font-size: 0.88em;
-    opacity: 0.8;
     display: block;
     margin-top: 0.2em;
   }
@@ -1429,7 +1429,7 @@ const hmIntensity = (key: string) => {
           .map((b) => (
             <div
               class="bd-seg"
-              style={`width: ${b.pct}%; background: ${b.color};`}
+              style={`flex: ${b.count}; background: ${b.color};`}
               title={`${b.label}: ${b.count} (${b.pct}%)`}
             />
           ))
@@ -1537,7 +1537,7 @@ const hmIntensity = (key: string) => {
     </p>
 
     <p class="hm-sub">
-      Last site build on <b class="sub-font w9"><BuildTime /></b>
+      Last site build on <b class="sub-font w9 other"><BuildTime /></b>
     </p>
   </section>
   <hr />
