@@ -24,10 +24,10 @@ First, the torrenting sites (a.k.a. trackers) that I use. There are many tracker
 
 > [warning] Important!
 >
-> **I strongly suggest you use a browser-based adblocker like UBlock Origin to peruse these public torrent websites safely and with minimal annoyance.**
-> 
-> Due to being free resources, these websites ALL have ads, and both *1337x* and *Ext* in particular have pop-up ads and those annoying kinds that appear over everything so that when you go to something you are taken to some external website instead.
-> 
+> **I strongly suggest you use a browser-based adblocker like [uBlock Origin](https://github.com/gorhill/ublock) (and maybe even a [shortlink bypass script](https://codeberg.org/gongchandang49/bypass-all-shortlinks-debloated)) to peruse these public torrent websites safely and with minimal annoyance.**
+>
+> Due to being totally free, these websites are ALL ad-supported, and both *1337x* and *Ext* in particular have pop-up ads and those annoying kinds that appear over everything so that when you go to something you are taken to some external website instead.
+>
 > Some of the ads are even, shall we say, very not safe for work. It's not great, but even free things have some cost. *(Among the perks of membership in private trackers is not having to deal with ads.)*
 
 - [1337x](https://1337x.to)
@@ -184,8 +184,14 @@ I've barely scratched the surface and written only about my own limited setup an
 - [Servarr Wiki](https://wiki.servarr.com/en/radarr)
 - [r/Piracy subreddit](https://www.reddit.com/r/Piracy/) (especially their [Wiki](https://www.reddit.com/r/Piracy/wiki/index/) and [Guides](https://www.reddit.com/r/Piracy/wiki/guides/?screen_view_count=1))
 - [r/Torrents subreddit](https://www.reddit.com/r/torrents/)
-- [The Megathread](https://rentry.org/megathread)
+- [Piracy Megathread](https://rentry.org/megathread)
 - [Torrenting + VPN Guide](https://rentry.org/torrentvpn)
 - [c/Piracy on the Fediverse](https://lemmy.dbzer0.com/c/piracy)
+- [Awesome Piracy](https://shakil-shahadat.github.io/awesome-piracy/)
+- [Champagne Wiki](https://champagne.pages.dev/gaming/game-acquisition)
+- [Pirated Games Megathread](https://rentry.org/pgames)
+- [MediaSavvy](https://mediasavvy.pages.dev/)
+- [freemediaheckyeah](https://fmhy.net)
+- [Ripped Guide](https://ripped.guide/)
 - [r/VPN subreddit](https://www.reddit.com/r/VPN/) (and their [FAQ](https://www.reddit.com/r/VPN/wiki/faq/))
 - [VPN Comparison Table](https://docs.google.com/spreadsheets/d/1ijfqfLrJWLUVBfJZ_YalVpstWsjw-JGzkvMd6u2jqEk/edit?gid=231869418#gid=231869418)
