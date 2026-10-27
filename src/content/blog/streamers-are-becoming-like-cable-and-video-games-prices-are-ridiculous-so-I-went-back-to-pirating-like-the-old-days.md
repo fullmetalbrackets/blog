@@ -172,9 +172,20 @@ Examples of video game scene groups you might see (movies/TV have their own grou
 
 Others take the content made by the scene groups and do work of letting the rest of us actually download, install and play the things in the form of "repacks." Repacks are the term for highly-compressed (and often pre-cracked) game files packaged with a custom installer, so that the downloads are of a smaller size and running the installer uncompresses the game files into their true larger size, making the game playable.
 
-The most trusted repackers whose torrents you can (in my experience and opinion) safely download from are **Fitgirl** and **DODI**. These two make and distribute repacks of most big game releases, as they become available from scene groups, and they can be found on most trackers. Another, lesser known repacking group is [KaOSKrew](https://kaoskrew.org/), who make their repacks available via direct downloads from their forums.
+The most trusted repackers whose torrents you can (in my experience and opinion) safely download from are:
 
-Finally, when a game can't be found from any of these repackers (they tend to ignore many smaller indie releases) I've found **IGGGAMESCOM** to have a repack for pretty much every PC game ever released and pirated. However, a word of warning that *apparently* they mistakenly uploaded malware in some release years ago, so their reputation is not what it once was. (The pirating scene has a long memory and does not forgive.) Personally, I haven't had any issues with any of their stuff since I started downloading some of their games this year. You can and should take your own precautions, like scanning any IGGGAMESCOM game you download for malware, or simply not downloading their torrents.
+- [Fitgirl](https://fitgirl-repacks.site) ([1337x](https://1337x.to/user/Fitgirl/)/[Ext](https://ext.to/browse/?user_nick=Fitgirl))
+- [DODI](https://dodi-repacks.site/) ([1337x](https://1337x.to/user/DODI/)/[Ext](https://ext.to/browse/?user_nick=DODI))
+- [KaOSKrew](https://kaoskrew.org/) ([1337x](https://1337x.to/user/KaOSKrew/)/[Ext](https://ext.to/browse/?user_nick=KaOSKrew))
+- johncena141 ([1337x](https://1337x.to/user/johncena141/)/[Ext](https://ext.to/browse/?user_nick=johncena141)) -- *Linux game repacks only!*
+- tinyrepacks ([1337x](https://1337x.to/user/tinyrepacks/)/[Ext](https://ext.to/browse/?user_nick=tinyrepacks))
+- IGGGAMESCOM ([1337x](https://1337x.to/user/IGGGAMESCOM/)/[Ext](https://ext.to/browse/?user_nick=KaOSKrew))
+
+> [warning] Warning!
+>
+> With regards to **IGGGAMESCOM**, apparently they mistakenly uploaded malware in some release years ago, so their reputation is not what it once was. (The pirating scene has a long memory and does not forgive.) Personally, I haven't had any issues with any of their stuff since I started downloading some of their games this year.
+> 
+> Still, you should only download IGGGAMESCOM repacks if you cannot find the game you want from others, and for extra precaution you may want to to scan any IGGGAMESCOM game you download for malware before installing.
 
 ## Further reading
 
