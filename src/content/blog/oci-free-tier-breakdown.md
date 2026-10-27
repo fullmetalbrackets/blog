@@ -2,7 +2,7 @@
 title: Breaking down the free tier of Oracle Cloud Infrastructure
 description: Oracle Cloud Infrastructure, or OCI for short, has a very generous free tier, but I see a lot of people on the oraclecloud and selfhosted subreddits being confused about exactly what's included, so here is a straightforward breakdown of every service and allotment in the free tier.
 pubDate: 2026-01-06
-updatedDate: 2026-08-05 12:00:00
+updatedDate: 2026-10-26 12:00:00
 tags: ['oracle cloud', 'self-hosting']
 related: ['how-to-change-shape-of-an-existing-oracle-cloud-infrastructure-vm-instance', 'expose-plex-tailscale-vps']
 ---
@@ -45,7 +45,12 @@ Essentially, the E2 Micro instances are _burstable virtual machines_, meaning th
 >
 > <a href="/oci-always-free-update-email.webp" target="_blank" data-umami-event="oci-always-free-update-email">Oracle has sent out emails to Always-Free tier users</a> advising that Always-Free compute instances that are above the new limits on or after after **August 18, 2026** will be terminated. Rather than allowing your Ampere A1 instance(s) to be terminated, you should edit their shapes to reduce usage, [which I have detailed how to do in this blog post](/blog/how-to-change-shape-of-an-existing-oracle-cloud-infrastructure-vm-instance).
 >
-> Please note the new limits only apply to users of the OCI Always-Free tier, and those with a Pay As You Go account are _apparently_ still able to maintain 4 OCPUs and 24 GB of memory for free. (I would be shocked if PAYG does not get the same limits sooner or later.) I am a PAYG user myself, so I will be keeping an eye on this and report back after August 18.
+> Please note the new limits only apply to users of the OCI Always-Free tier, and those with a Pay As You Go account are _apparently_ still able to maintain 4 OCPUs and 24 GB of memory for free. (I would be shocked if PAYG does not get the same limits sooner or later.)
+
+> **Update** *-- October 26, 2026*
+> 
+> As of today, my Pay As You Go account has not been charged for maintaining an Ampere A1 instance with 4 OCPU and 24 GB Memory.
+> ![Screenshot of my Ampere A1 instance with 4 OCPU and 24 GB memory still up and running, taken October 26, 2026.](../../img/blog/oci-payg-instances.png 'Screenshot of my Ampere A1 instance with 4 OCPU and 24 GB memory still up and running, taken October 26, 2026')
 
 _Arm-based Ampere A1 cores and 12 GB of memory usable as 1 VM or 2 VMs_
 _Always Free: 1,500 OCPU hours and 9,000 GB hours per month_
