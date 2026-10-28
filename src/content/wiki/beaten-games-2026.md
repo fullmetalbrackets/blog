@@ -52,17 +52,19 @@ tag: information
 
 ## Started, temporarily on pause
 
-<em>Total:</em> <span class="sub-font w9 secondary">11</span>
+<em>Total:</em> <span class="sub-font w9 secondary">13</span>
 
 - Batman: Arkham City
 - Dark Souls Remastered
 - Dark Souls III *(mostly done, just need to finish Ringed City)*
 - Final Fantasy XIV *(paused subscription, will be back for Evercold)*
+- Grand Theft Auto: San Andreas
 - InFamous 2
 - Need for Speed Heat
 - Need for Speed Most Wanted
 - Marvel's Spider-Man 2
-- Grand Theft Auto: San Andreas
+- Mina the Hollower *(surprisingly difficult...)*
+- Metal Gear Solid Delta: Snake Eater
 - Resident Evil 4 Remake
 - Resident Evil HD Remaster
 
