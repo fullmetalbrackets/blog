@@ -913,7 +913,7 @@ details[open] > summary:hover:not(.games-list) {
 }
 
 summary:hover::before {
-  animation: 0.2s wiggle ease-in-out;
+  animation: 0.2s wiggle-intro ease-in-out 0.2s 1, 0.2s wiggle ease-in-out;
 }
 
 details[open] > summary:not(.games-list) {
