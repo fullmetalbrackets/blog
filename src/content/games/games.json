@@ -792,10 +792,6 @@
       },
       {
         "steamdb": 0,
-        "title": "Bioshock 2 Remastered"
-      },
-      {
-        "steamdb": 0,
         "title": "Bioshock Infinite"
       },
       {
@@ -804,15 +800,19 @@
       },
       {
         "steamdb": 0,
+        "title": "Bioshock 2 Remastered"
+      },
+      {
+        "steamdb": 0,
         "title": "Blasphemous"
       },
       {
         "steamdb": 0,
-        "title": "Borderlands 2"
+        "title": "Borderlands GOTY Enhanced"
       },
       {
         "steamdb": 0,
-        "title": "Borderlands GOTY Enhanced"
+        "title": "Borderlands 2"
       },
       {
         "steamdb": 0,
@@ -856,11 +856,11 @@
       },
       {
         "steamdb": 0,
-        "title": "Command & Conquer 4: Tiberian Dawn"
+        "title": "Command & Conquer Remastered Collection"
       },
       {
         "steamdb": 0,
-        "title": "Command & Conquer Remastered Collection"
+        "title": "Command & Conquer 4: Tiberian Dawn"
       },
       {
         "steamdb": 0,
@@ -885,10 +885,6 @@
       {
         "steamdb": 0,
         "title": "Dark Souls: Prepare to Die Edition"
-      },
-      {
-        "steamdb": 0,
-        "title": "Dark Souls: Remastered"
       },
       {
         "steamdb": 0,
@@ -1048,7 +1044,7 @@
       },
       {
         "steamdb": 0,
-        "title": "Europa Universalis V"
+        "title": "Europa Universalis IV"
       },
       {
         "steamdb": 0,
@@ -1096,6 +1092,14 @@
       },
       {
         "steamdb": 0,
+        "title": "Final Fantasy VII"
+      },
+      {
+        "steamdb": 0,
+        "title": "Final Fantasy IX"
+      },
+      {
+        "steamdb": 0,
         "title": "Final Fantasy X/X-2 HD Remaster"
       },
       {
@@ -1116,15 +1120,23 @@
       },
       {
         "steamdb": 0,
+        "title": "Grand Theft Auto III"
+      },
+      {
+        "steamdb": 0,
+        "title": "Grand Theft Auto: Vice City"
+      },
+      {
+        "steamdb": 0,
+        "title": "Grand Theft Auto: San Andreas"
+      },
+      {
+        "steamdb": 0,
         "title": "Grand Theft Auto IV"
       },
       {
         "steamdb": 0,
         "title": "Grand Theft Auto V"
-      },
-      {
-        "steamdb": 0,
-        "title": "Grand Theft Auto: San Andreas"
       },
       {
         "steamdb": 0,
@@ -1164,6 +1176,10 @@
       },
       {
         "steamdb": 0,
+        "title": "Hitman: Codename 47"
+      },
+      {
+        "steamdb": 0,
         "title": "Hitman 2: Silent Assassin"
       },
       {
@@ -1173,10 +1189,6 @@
       {
         "steamdb": 0,
         "title": "Hitman: Blood Money"
-      },
-      {
-        "steamdb": 0,
-        "title": "Hitman: Codename 47"
       },
       {
         "steamdb": 0,
@@ -1524,6 +1536,10 @@
       },
       {
         "steamdb": 0,
+        "title": "Sid Meier's Civilization III"
+      },
+      {
+        "steamdb": 0,
         "title": "Sid Meier's Civilization IV"
       },
       {
@@ -1553,6 +1569,10 @@
       {
         "steamdb": 0,
         "title": "SimCity 4 Deluxe"
+      },
+      {
+        "steamdb": 0,
+        "title": "Sins of a Solar Empire: Rebellion"
       },
       {
         "steamdb": 0,
