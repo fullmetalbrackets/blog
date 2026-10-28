@@ -480,7 +480,7 @@
       },
       {
         "moby": 0,
-        "title": "Metal Gear Solid 3: Substance"
+        "title": "Metal Gear Solid 3: Snake Eater"
       },
       {
         "moby": 0,
@@ -523,6 +523,10 @@
       {
         "moby": 0,
         "title": "Tenchu 2: Birth of the Stealth Assassins"
+      },
+      {
+        "moby": 0,
+        "title": "Vagrant Story"
       }
     ],
 
@@ -732,7 +736,15 @@
     "Steam": [
       {
         "steamdb": 0,
+        "title": "Ascendant"
+      },
+      {
+        "steamdb": 0,
         "title": "Ace Combat 7: Skies Unknown"
+      },
+      {
+        "steamdb": 0,
+        "title": "Anno 2070"
       },
       {
         "steamdb": 0,
@@ -741,6 +753,10 @@
       {
         "steamdb": 0,
         "title": "Banished"
+      },
+      {
+        "steamdb": 0,
+        "title": "Barony"
       },
       {
         "steamdb": 0,
@@ -764,6 +780,18 @@
       },
       {
         "steamdb": 0,
+        "title": "Batman: The Telltale Series"
+      },
+      {
+        "steamdb": 0,
+        "title": "Battle Worlds: Kronos"
+      },
+      {
+        "steamdb": 0,
+        "title": "Beyond Divinity"
+      },
+      {
+        "steamdb": 0,
         "title": "Bioshock 2 Remastered"
       },
       {
@@ -780,11 +808,59 @@
       },
       {
         "steamdb": 0,
+        "title": "Borderlands 2"
+      },
+      {
+        "steamdb": 0,
+        "title": "Borderlands GOTY Enhanced"
+      },
+      {
+        "steamdb": 0,
+        "title": "Borderlands: The Pre-Sequel"
+      },
+      {
+        "steamdb": 0,
+        "title": "Bright Memory: Infinite"
+      },
+      {
+        "steamdb": 0,
         "title": "Broforce"
       },
       {
         "steamdb": 0,
         "title": "Castle Crashers"
+      },
+      {
+        "steamdb": 0,
+        "title": "Castle of Illusion"
+      },
+      {
+        "steamdb": 0,
+        "title": "Castlevania: Lords of Shadow"
+      },
+      {
+        "steamdb": 0,
+        "title": "Castlevania: Lords of Shadow 2"
+      },
+      {
+        "steamdb": 0,
+        "title": "Chrono Trigger"
+      },
+      {
+        "steamdb": 0,
+        "title": "Cities in Motion 2"
+      },
+      {
+        "steamdb": 0,
+        "title": "Cities: Skylines"
+      },
+      {
+        "steamdb": 0,
+        "title": "Command & Conquer 4: Tiberian Dawn"
+      },
+      {
+        "steamdb": 0,
+        "title": "Command & Conquer Remastered Collection"
       },
       {
         "steamdb": 0,
@@ -797,6 +873,14 @@
       {
         "steamdb": 0,
         "title": "Cyberpunk 2077"
+      },
+      {
+        "steamdb": 0,
+        "title": "Darksiders"
+      },
+      {
+        "steamdb": 0,
+        "title": "Darksiders II"
       },
       {
         "steamdb": 0,
@@ -820,7 +904,39 @@
       },
       {
         "steamdb": 0,
+        "title": "Dead Space (2008)"
+      },
+      {
+        "steamdb": 0,
+        "title": "Dead Space 2"
+      },
+      {
+        "steamdb": 0,
+        "title": "Deus Ex"
+      },
+      {
+        "steamdb": 0,
+        "title": "Deus Ex: Invisible War"
+      },
+      {
+        "steamdb": 0,
         "title": "Deus Ex: Human Revolution"
+      },
+      {
+        "steamdb": 0,
+        "title": "Deus Ex: Mankind Divided"
+      },
+      {
+        "steamdb": 0,
+        "title": "Devil May Cry 4 Special Edition"
+      },
+      {
+        "steamdb": 0,
+        "title": "Devil May Cry 5"
+      },
+      {
+        "steamdb": 0,
+        "title": "Disgaea PC"
       },
       {
         "steamdb": 0,
@@ -832,7 +948,23 @@
       },
       {
         "steamdb": 0,
+        "title": "Dishonored: Death of the Outsider"
+      },
+      {
+        "steamdb": 0,
         "title": "Distant Worlds: Universe"
+      },
+      {
+        "steamdb": 0,
+        "title": "Divine Divinity"
+      },
+      {
+        "steamdb": 0,
+        "title": "Divinity II"
+      },
+      {
+        "steamdb": 0,
+        "title": "Divinity: Dragon Commander"
       },
       {
         "steamdb": 0,
@@ -840,7 +972,15 @@
       },
       {
         "steamdb": 0,
-        "title": "Doom"
+        "title": "Divinity: Original Sin II"
+      },
+      {
+        "steamdb": 0,
+        "title": "Doom (2016)"
+      },
+      {
+        "steamdb": 0,
+        "title": "Doom 3"
       },
       {
         "steamdb": 0,
@@ -849,6 +989,38 @@
       {
         "steamdb": 0,
         "title": "Doom Eternal"
+      },
+      {
+        "steamdb": 0,
+        "title": "Dragon Age: Origins"
+      },
+      {
+        "steamdb": 0,
+        "title": "Dragon Age II"
+      },
+      {
+        "steamdb": 0,
+        "title": "Dragon Age: Inquisition"
+      },
+      {
+        "steamdb": 0,
+        "title": "Dragon's Dogma: Dark Arisen"
+      },
+      {
+        "steamdb": 0,
+        "title": "Dungeon Siege III"
+      },
+      {
+        "steamdb": 0,
+        "title": "DuckTales Remastered"
+      },
+      {
+        "steamdb": 0,
+        "title": "Dungeon Siege"
+      },
+      {
+        "steamdb": 0,
+        "title": "Dungeon Siege 2"
       },
       {
         "steamdb": 0,
@@ -872,7 +1044,15 @@
       },
       {
         "steamdb": 0,
+        "title": "Endzone - A World Apart"
+      },
+      {
+        "steamdb": 0,
         "title": "Europa Universalis V"
+      },
+      {
+        "steamdb": 0,
+        "title": "Fez"
       },
       {
         "steamdb": 0,
@@ -900,11 +1080,23 @@
       },
       {
         "steamdb": 0,
+        "title": "Fallout Tactics"
+      },
+      {
+        "steamdb": 0,
+        "title": "Far Cry 3: Blood Dragon"
+      },
+      {
+        "steamdb": 0,
         "title": "Fell Seal: Arbiter's Mark"
       },
       {
         "steamdb": 0,
         "title": "Final Fantasy Tactics: The Ivalice Chronicles"
+      },
+      {
+        "steamdb": 0,
+        "title": "Final Fantasy X/X-2 HD Remaster"
       },
       {
         "steamdb": 0,
@@ -936,6 +1128,10 @@
       },
       {
         "steamdb": 0,
+        "title": "Grim Fandango Remastered"
+      },
+      {
+        "steamdb": 0,
         "title": "Hades"
       },
       {
@@ -956,7 +1152,59 @@
       },
       {
         "steamdb": 0,
+        "title": "Halo: The Master Chief Collection"
+      },
+      {
+        "steamdb": 0,
+        "title": "Hammerwatch"
+      },
+      {
+        "steamdb": 0,
+        "title": "Hellblade: Senua's Sacrifice"
+      },
+      {
+        "steamdb": 0,
+        "title": "Hitman 2: Silent Assassin"
+      },
+      {
+        "steamdb": 0,
+        "title": "Hitman: Absolution"
+      },
+      {
+        "steamdb": 0,
+        "title": "Hitman: Blood Money"
+      },
+      {
+        "steamdb": 0,
+        "title": "Hitman: Codename 47"
+      },
+      {
+        "steamdb": 0,
+        "title": "Hitman: Contracts"
+      },
+      {
+        "steamdb": 0,
+        "title": "Homeworld Remastered Collection"
+      },
+      {
+        "steamdb": 0,
+        "title": "Horizon Zero Dawn Remastered"
+      },
+      {
+        "steamdb": 0,
         "title": "Hyper Light Drifter"
+      },
+      {
+        "steamdb": 0,
+        "title": "Injustice: Gods Among Us - Ultimate Edition"
+      },
+      {
+        "steamdb": 0,
+        "title": "It Takes Two"
+      },
+      {
+        "steamdb": 0,
+        "title": "INSOMNIA: The Ark"
       },
       {
         "steamdb": 0,
@@ -964,7 +1212,83 @@
       },
       {
         "steamdb": 0,
+        "title": "Just Cause"
+      },
+      {
+        "steamdb": 0,
+        "title": "Just Cause 2"
+      },
+      {
+        "steamdb": 0,
+        "title": "Just Cause 3"
+      },
+      {
+        "steamdb": 0,
+        "title": "Kingdoms: Classic"
+      },
+      {
+        "steamdb": 0,
+        "title": "Kingdoms: New Lands"
+      },
+      {
+        "steamdb": 0,
+        "title": "Kingdoms of Amalur: Reckoning"
+      },
+      {
+        "steamdb": 0,
+        "title": "L.A. Noire"
+      },
+      {
+        "steamdb": 0,
+        "title": "Legacy of Kain: Defiance"
+      },
+      {
+        "steamdb": 0,
+        "title": "Legacy of Kain: Soul Reaver"
+      },
+      {
+        "steamdb": 0,
+        "title": "Legacy of Kain: Soul Reaver 2"
+      },
+      {
+        "steamdb": 0,
+        "title": "Left 4 Dead 2"
+      },
+      {
+        "steamdb": 0,
+        "title": "Life is Strange"
+      },
+      {
+        "steamdb": 0,
+        "title": "Mad Max"
+      },
+      {
+        "steamdb": 0,
+        "title": "Marvel's Avengers - The Definitive Edition"
+      },
+      {
+        "steamdb": 0,
+        "title": "Massive Chalice"
+      },
+      {
+        "steamdb": 0,
         "title": "Master of Orion"
+      },
+      {
+        "steamdb": 0,
+        "title": "Master of Orion 2"
+      },
+      {
+        "steamdb": 0,
+        "title": "Master of Orion 3"
+      },
+      {
+        "steamdb": 0,
+        "title": "Max Payne 3"
+      },
+      {
+        "steamdb": 0,
+        "title": "Metal Gear Rising: Revengeance"
       },
       {
         "steamdb": 0,
@@ -976,7 +1300,47 @@
       },
       {
         "steamdb": 0,
+        "title": "Metal Slug 3"
+      },
+      {
+        "steamdb": 0,
+        "title": "Metro 2033 Redux"
+      },
+      {
+        "steamdb": 0,
+        "title": "Middle-Earth: Shadow of Morder"
+      },
+      {
+        "steamdb": 0,
+        "title": "Middle-Earth: Shadow of War"
+      },
+      {
+        "steamdb": 0,
+        "title": "Mirror's Edge"
+      },
+      {
+        "steamdb": 0,
+        "title": "Mirror's Edge Catalyst"
+      },
+      {
+        "steamdb": 0,
+        "title": "Momodora: Reverie Under the Moonlight"
+      },
+      {
+        "steamdb": 0,
+        "title": "Moonlighter"
+      },
+      {
+        "steamdb": 0,
+        "title": "Moonring"
+      },
+      {
+        "steamdb": 0,
         "title": "Narita Boy"
+      },
+      {
+        "steamdb": 0,
+        "title": "Natural Selection 2"
       },
       {
         "steamdb": 0,
@@ -992,6 +1356,10 @@
       },
       {
         "steamdb": 0,
+        "title": "Nexus: The Jupiter Incident"
+      },
+      {
+        "steamdb": 0,
         "title": "Ori and the Blind Forest"
       },
       {
@@ -1000,11 +1368,31 @@
       },
       {
         "steamdb": 0,
+        "title": "Odallus: The Dark Call"
+      },
+      {
+        "steamdb": 0,
+        "title": "Outlast"
+      },
+      {
+        "steamdb": 0,
         "title": "Palia"
       },
       {
         "steamdb": 0,
+        "title": "Panzer Dragoon: Remake"
+      },
+      {
+        "steamdb": 0,
+        "title": "Papo & Yo"
+      },
+      {
+        "steamdb": 0,
         "title": "Path of Exile"
+      },
+      {
+        "steamdb": 0,
+        "title": "Phantom Brave PC"
       },
       {
         "steamdb": 0,
@@ -1020,7 +1408,27 @@
       },
       {
         "steamdb": 0,
+        "title": "Prototype"
+      },
+      {
+        "steamdb": 0,
+        "title": "Psychonauts"
+      },
+      {
+        "steamdb": 0,
         "title": "Quake (Enhanced)"
+      },
+      {
+        "steamdb": 0,
+        "title": "Rain World"
+      },
+      {
+        "steamdb": 0,
+        "title": "Red Faction: Armageddon"
+      },
+      {
+        "steamdb": 0,
+        "title": "Red Faction Guerilla Re-Mars-tered"
       },
       {
         "steamdb": 0,
@@ -1035,8 +1443,24 @@
         "title": "Resident Evil 2 (remake)"
       },
       {
+        "moby": 0,
+        "title": "Resident Evil 4 (original)"
+      },
+      {
+        "steamdb": 0,
+        "title": "Ridge Racer Unbounded"
+      },
+      {
         "steamdb": 0,
         "title": "Risk of Rain (original)"
+      },
+      {
+        "steamdb": 0,
+        "title": "RoboCop: Rogue City"
+      },
+      {
+        "steamdb": 0,
+        "title": "Rocket League"
       },
       {
         "steamdb": 0,
@@ -1044,11 +1468,59 @@
       },
       {
         "steamdb": 0,
+        "title": "Rogue Trooper"
+      },
+      {
+        "steamdb": 0,
+        "title": "Saints Row: The Third"
+      },
+      {
+        "steamdb": 0,
+        "title": "Saints Row IV"
+      },
+      {
+        "steamdb": 0,
+        "title": "Salt and Sanctuary"
+      },
+      {
+        "steamdb": 0,
+        "title": "SEGA Mega Drive & Genesis Classics"
+      },
+      {
+        "steamdb": 0,
+        "title": "Shank"
+      },
+      {
+        "steamdb": 0,
+        "title": "Shank 2"
+      },
+      {
+        "steamdb": 0,
         "title": "Shantae: Half-Genie Hero"
       },
       {
         "steamdb": 0,
+        "title": "Shardbound"
+      },
+      {
+        "steamdb": 0,
         "title": "Shadow Complex Remastered"
+      },
+      {
+        "steamdb": 0,
+        "title": "Shadowrun Returns"
+      },
+      {
+        "steamdb": 0,
+        "title": "Shadowrun: Dragonfall"
+      },
+      {
+        "steamdb": 0,
+        "title": "Shadowrun: Hong Kong"
+      },
+      {
+        "steamdb": 0,
+        "title": "Sid Meier's Alpha Centauri"
       },
       {
         "steamdb": 0,
@@ -1064,6 +1536,14 @@
       },
       {
         "steamdb": 0,
+        "title": "Sid Meier's Pirates!"
+      },
+      {
+        "steamdb": 0,
+        "title": "Sid Meier's Railroads!"
+      },
+      {
+        "steamdb": 0,
         "title": "Sid Meier's Starships"
       },
       {
@@ -1076,6 +1556,26 @@
       },
       {
         "steamdb": 0,
+        "title": "Sins of a Solar Empire: Trinity"
+      },
+      {
+        "steamdb": 0,
+        "title": "Sleeping Dogs"
+      },
+      {
+        "steamdb": 0,
+        "title": "Sonic Adventure DX"
+      },
+      {
+        "steamdb": 0,
+        "title": "Sonic Adventure 2"
+      },
+      {
+        "steamdb": 0,
+        "title": "Sonic CD"
+      },
+      {
+        "steamdb": 0,
         "title": "South Park: The Fractured But Whole"
       },
       {
@@ -1084,7 +1584,27 @@
       },
       {
         "steamdb": 0,
+        "title": "Space Empires IV Deluxe"
+      },
+      {
+        "steamdb": 0,
+        "title": "Space Empires V"
+      },
+      {
+        "steamdb": 0,
+        "title": "Spec Ops: The Line"
+      },
+      {
+        "steamdb": 0,
         "title": "Spore"
+      },
+      {
+        "steamdb": 0,
+        "title": "S.T.A.L.K.E.R.: Shadow of Chornobyl - Enhanced Edition"
+      },
+      {
+        "steamdb": 0,
+        "title": "Starbound"
       },
       {
         "steamdb": 0,
@@ -1096,7 +1616,75 @@
       },
       {
         "steamdb": 0,
+        "title": "Star Wars: Battlefront 2 (classic)"
+      },
+      {
+        "steamdb": 0,
+        "title": "Star Wars Jedi Knight: Dark Forces II"
+      },
+      {
+        "steamdb": 0,
+        "title": "Star Wars Jedi Knight: Jedi Academy"
+      },
+      {
+        "steamdb": 0,
+        "title": "Star Wars Jedi Knight: Jedi Outcast"
+      },
+      {
+        "steamdb": 0,
+        "title": "Star Wars Jedi Knight: Mysteries of the Sith"
+      },
+      {
+        "steamdb": 0,
+        "title": "Star Wars Knights of the Old Republic"
+      },
+      {
+        "steamdb": 0,
+        "title": "Star Wars Knights of the Old Republic II: The Sith Lords"
+      },
+      {
+        "steamdb": 0,
+        "title": "Star Wars: Republic Commando"
+      },
+      {
+        "steamdb": 0,
+        "title": "Star Wars: Rogue Squadron 3D"
+      },
+      {
+        "steamdb": 0,
+        "title": "Star Wars: Shadows of the Empire"
+      },
+      {
+        "steamdb": 0,
+        "title": "Star Wars Starfighter"
+      },
+      {
+        "steamdb": 0,
+        "title": "Star Wars: The Force Unleashed"
+      },
+      {
+        "steamdb": 0,
+        "title": "Star Wars: The Force Unleashed II"
+      },
+      {
+        "steamdb": 0,
+        "title": "State of Decay"
+      },
+      {
+        "steamdb": 0,
         "title": "Stellaris"
+      },
+      {
+        "steamdb": 0,
+        "title": "Sunset Overdrive"
+      },
+      {
+        "steamdb": 0,
+        "title": "Superbrothers: Sword & Sorcery EP"
+      },
+      {
+        "steamdb": 0,
+        "title": "Super Dungeon Boy"
       },
       {
         "steamdb": 0,
@@ -1104,7 +1692,39 @@
       },
       {
         "steamdb": 0,
+        "title": "Super Meat Boy"
+      },
+      {
+        "steamdb": 0,
         "title": "Surviving Mars"
+      },
+      {
+        "steamdb": 0,
+        "title": "Sword of the Stars Complete Collection"
+      },
+      {
+        "steamdb": 0,
+        "title": "Syberia"
+      },
+      {
+        "steamdb": 0,
+        "title": "Syberia 2"
+      },
+      {
+        "moby": 0,
+        "title": "Tales of Symphonia"
+      },
+      {
+        "steamdb": 0,
+        "title": "Terraria"
+      },
+      {
+        "steamdb": 0,
+        "title": "Teslagrad"
+      },
+      {
+        "steamdb": 0,
+        "title": "Tharsis"
       },
       {
         "steamdb": 0,
@@ -1117,6 +1737,18 @@
       {
         "steamdb": 0,
         "title": "The Sims 3 Deluxe"
+      },
+      {
+        "steamdb": 0,
+        "title": "The Witcher: Enhanced Edition"
+      },
+      {
+        "steamdb": 0,
+        "title": "The Witcher 2: Assassin of Kings"
+      },
+      {
+        "steamdb": 0,
+        "title": "The Witcher 3: Wild Hunt - Remastered"
       },
       {
         "steamdb": 0,
@@ -1136,6 +1768,10 @@
       },
       {
         "steamdb": 0,
+        "title": "Tomb Raider: GOTY Edition"
+      },
+      {
+        "steamdb": 0,
         "title": "Tom Clancy's The Division"
       },
       {
@@ -1148,7 +1784,71 @@
       },
       {
         "steamdb": 0,
+        "title": "Total War: NAPOLEON"
+      },
+      {
+        "steamdb": 0,
+        "title": "Total War: SHOGUN 2"
+      },
+      {
+        "steamdb": 0,
         "title": "Transistor"
+      },
+      {
+        "steamdb": 0,
+        "title": "Trine"
+      },
+      {
+        "steamdb": 0,
+        "title": "Trine 2"
+      },
+      {
+        "steamdb": 0,
+        "title": "Trine 3: The Artifacts of Power"
+      },
+      {
+        "steamdb": 0,
+        "title": "Tropico 4"
+      },
+      {
+        "steamdb": 0,
+        "title": "Tropico 5"
+      },
+      {
+        "steamdb": 0,
+        "title": "Tyranny"
+      },
+      {
+        "steamdb": 0,
+        "title": "Underrail"
+      },
+      {
+        "steamdb": 0,
+        "title": "Undertail"
+      },
+      {
+        "steamdb": 0,
+        "title": "Unreal Gold"
+      },
+      {
+        "steamdb": 0,
+        "title": "Unreal II: The Awakening"
+      },
+      {
+        "steamdb": 0,
+        "title": "Unreal Tournament 2004"
+      },
+      {
+        "steamdb": 0,
+        "title": "Unreal Tournament"
+      },
+      {
+        "steamdb": 0,
+        "title": "Unreal Tournament III"
+      },
+      {
+        "steamdb": 0,
+        "title": "Valkyria Chronicles"
       },
       {
         "steamdb": 0,
@@ -1160,11 +1860,23 @@
       },
       {
         "steamdb": 0,
+        "title": "Vaporum"
+      },
+      {
+        "steamdb": 0,
         "title": "Victoria 2"
       },
       {
         "steamdb": 0,
         "title": "Victoria 3"
+      },
+      {
+        "steamdb": 0,
+        "title": "Volgarr the Viking"
+      },
+      {
+        "steamdb": 0,
+        "title": "Vomitoreum"
       },
       {
         "steamdb": 0,
@@ -1176,11 +1888,51 @@
       },
       {
         "steamdb": 0,
-        "title": "XCom 2"
+        "title": "Warhammer: Vermintide 2"
       },
       {
         "steamdb": 0,
-        "title": "XCom: Enemy Unknown"
+        "title": "Wolfenstein 3D"
+      },
+      {
+        "steamdb": 0,
+        "title": "Wolfenstein 3D: Spear of Destiny"
+      },
+      {
+        "steamdb": 0,
+        "title": "Wolfenstein: The New Order"
+      },
+      {
+        "steamdb": 0,
+        "title": "Wolfenstein: The Old Blood"
+      },
+      {
+        "steamdb": 0,
+        "title": "X-COM: UFO Defense"
+      },
+      {
+        "steamdb": 0,
+        "title": "XCOM 2"
+      },
+      {
+        "steamdb": 0,
+        "title": "XCOM: Chimera Squad"
+      },
+      {
+        "steamdb": 0,
+        "title": "XCOM: Enemy Unknown"
+      },
+      {
+        "steamdb": 0,
+        "title": "Xenonauts"
+      },
+      {
+        "steamdb": 0,
+        "title": "Xeodrifter"
+      },
+      {
+        "steamdb": 0,
+        "title": "Zone of Enders The 2nd Runner: M∀RS"
       }
     ],
     "Epic": [

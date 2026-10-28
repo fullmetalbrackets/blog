@@ -1,6 +1,6 @@
 ---
 type: game
-title: Xcom 2
+title: XCOM 2
 pubDate: 2022-06-19 12:00:00
 platform: PC
 image: ./_images/xcom-2.png

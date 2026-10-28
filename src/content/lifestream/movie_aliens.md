@@ -10,6 +10,7 @@ One of my favorite movies of all time. Who knows what number of rewatch this is 
 
 ## Previously Watched
 
+- 8/17/2025
 - 10/8/2024
 
 ## Related

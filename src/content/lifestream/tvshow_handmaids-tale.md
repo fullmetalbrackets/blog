@@ -3,7 +3,7 @@ type: tvshow
 title: The Handmaid's Tale
 pubDate: 2025-07-02 12:00:00
 image: ./_images/handmaids-tale.jpg
-season: '6'
+season: 5 & 6
 rating: liked
 ---
 
