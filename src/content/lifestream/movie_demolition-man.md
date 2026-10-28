@@ -1,7 +1,7 @@
 ---
 type: movie
 title: Demolition Man
-pubDate: 2025-03-14 12:00:00
+pubDate: 2025-03-13 12:00:00
 image: ./_images/demolition-man.jpg
 rating: loved
 ---

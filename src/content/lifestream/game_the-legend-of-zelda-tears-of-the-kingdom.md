@@ -11,7 +11,7 @@ rating: masterpiece
 
 ## Previously Played
 
-- 2023 (Nintendo Switch)
+- 11/29/2023 (Nintendo Switch)
 
 ## Related
 

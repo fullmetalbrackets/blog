@@ -11,7 +11,6 @@ Just like the original, I have 200+ hours in this. Just like the first game, I'v
 
 ## Previously Watched
 
-- 8/20/2016
 - 9/6/2017
 - 8/20/2016
 

@@ -11,7 +11,7 @@ I put over 100 hours into the original on Nintendo Switch, and more than doubled
 
 ## Previously Played
 
-- 2017 (Nintendo Switch)
+- 8/12/2017 (Nintendo Switch)
 
 ## Related
 
