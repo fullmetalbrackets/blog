@@ -1,6 +1,6 @@
 ---
 type: tvshow
-title: American Horror Story Coven
+title: 'American Horror Story: Coven'
 pubDate: 2026-10-04 12:00:00
 image: ./_images/american-horror-story-coven.webp
 season: '3'
@@ -13,7 +13,9 @@ This season is fun.
 
 - [American Horror Story: Murder House](tvshow_american-horror-story-murder-house)
 - [American Horror Story: Asylum](tvshow_american-horror-story-asylum)
+- [American Horror Story: Freak Show](tvshow_american-horror-story-freak-show)
 - [American Horror Story: Hotel](tvshow_american-horror-story-hotel)
+- [American Horror Story: Roanoke](tvshow_american-horror-story-roanoke)
 - [American Horror Story: Apocalypse](tvshow_american-horror-story-apocalypse)
 - [American Horror Story: Double Feature](tvshow_american-horror-story-double-feature)
 - [American Horror Story: 1984](tvshow_american-horror-story-1984)
