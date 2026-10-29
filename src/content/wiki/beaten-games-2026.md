@@ -57,8 +57,8 @@ tag: information
 - Batman: Arkham City
 - Dark Souls Remastered
 - Dark Souls III *(mostly done, just need to finish Ringed City)*
-- Final Fantasy XIV *(paused subscription, will be back for Evercold)*
-- Grand Theft Auto: San Andreas
+- Final Fantasy XIV *(paused subscription, will be back for Evercold expansion)*
+- Grand Theft Auto: San Andreas - The Definitive Edition
 - InFamous 2
 - Need for Speed Heat
 - Need for Speed Most Wanted
