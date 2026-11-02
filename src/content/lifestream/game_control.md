@@ -8,3 +8,7 @@ rating: loved
 ---
 
 Beautifully weird and fun to play.
+
+## Related
+
+- [Control Resonant](game_control-resonant)

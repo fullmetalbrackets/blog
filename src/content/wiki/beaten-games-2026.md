@@ -2,7 +2,7 @@
 title: 'Video games I finished in 2026'
 description: 'A list of videogames I played from start to finish in 2026.'
 pubDate: 2026-06-23 12:00:00
-updatedDate: 2026-10-25 18:00:00
+updatedDate: 2026-11-02 18:00:00
 tag: information
 ---
 
@@ -22,6 +22,7 @@ tag: information
 - [Castlevania: Dawn of Sorrow](/lifestream/game_castlevania-dawn-of-sorrow)
 - [Castlevania: Symphony of the Night](/lifestream/game_castlevania-symphony-of-the-night)
 - [Control](/lifestream/game_control) *(and both DLCs)*
+- [Control Resonant](/lifestream/game_control-resonant)
 - [Chrono Trigger](/lifestream/game_chrono-trigger)
 - [Elden Ring](/lifestream/game_elden-ring) *(and [Shadow of the Erdtree](/lifestream/game_elden-ring-shadow-of-the-erdtree) DLC)*
 - [Final Fantasy Tactics Advance](/lifestream/game_final-fantasy-tactics-advance)
@@ -47,7 +48,6 @@ tag: information
 
 - Castlevania: Belmont's Curse
 - Colony Wars (PSX)
-- Control Resonant
 - Parasite Eve (PSX)
 
 ## Started, temporarily on pause
