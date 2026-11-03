@@ -228,6 +228,7 @@ const lifestreamItems = entries.map((entry) => ({
               src={entry.data.image}
               alt={entry.data.title}
               widths={[200, 400]}
+              quality={90}
               sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
               loading={i < 8 ? 'eager' : 'lazy'}
               decoding={i < 8 ? 'sync' : 'async'}
