@@ -1,6 +1,6 @@
 ---
 type: tvshow
-title: 'Love is Blind: UK'
+title: 'Love Is Blind: UK'
 pubDate: 2024-08-29 12:00:00
 image: ./_images/love-is-blind-uk.webp
 season: '1'
