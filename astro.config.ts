@@ -10,7 +10,6 @@ import rehypeCodeblockCopy from './src/utils/rehype-codeblock-copy.ts';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import cloudflare from '@astrojs/cloudflare';
-// import astroCompress from 'gab-astro-compress';
 
 export default defineConfig({
   site: 'https://fullmetalbrackets.com',
