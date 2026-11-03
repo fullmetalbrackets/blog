@@ -10,7 +10,7 @@ import rehypeCodeblockCopy from './src/utils/rehype-codeblock-copy.ts';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import cloudflare from '@astrojs/cloudflare';
-import astroCompress from 'gab-astro-compress';
+// import astroCompress from 'gab-astro-compress';
 
 export default defineConfig({
   site: 'https://fullmetalbrackets.com',
@@ -21,7 +21,7 @@ export default defineConfig({
     inlineStylesheets: 'always',
   },
 
-  integrations: [mdx(), sitemap(), astroCompress()],
+  integrations: [mdx(), sitemap()],
 
   prefetch: true,
 
