@@ -22,6 +22,6 @@ if (w <= 400 && h <= 600) {
 }
 
 execSync(
-  `convert "${fullPath}" -resize 400x600^ -gravity center -extent 400x600 "${fullPath}"`
+  `convert "${fullPath}" -resize 400x600^ -gravity center -extent 400x600 -define webp:lossless=true "${fullPath}"`
 );
 console.log(`✅ Converted ${fullPath} (was ${w}x${h}, now 400x600)`);
