@@ -33,6 +33,7 @@ const entries = (await getLifestream()).slice(0, limit);
             src={entry.data.image}
             alt={entry.data.title}
             widths={[200, 400, 600]}
+            quality={90}
             sizes="(max-width: 400px) 100vw, (max-width: 1024px) 50vw, 25vw"
             loading="lazy"
             decoding="async"
