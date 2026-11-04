@@ -24,6 +24,7 @@ const entries = (await getLifestream()).slice(0, limit);
         <a
           class="card h-entry"
           href={`/lifestream/${entry.id}`}
+          title={entry.data.title}
           data-type={entry.data.type}
           data-umami-event={`recent-${entry.id}`}
         >
