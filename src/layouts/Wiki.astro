@@ -57,23 +57,27 @@ const relatedLinks = selectedPosts.map((p) => `${SITE_URL}/blog/${p.id}`);
   .wiki-article {
     margin-top: 2em;
   }
-  .date {
-    margin-top: 0.5em;
+  .info {
     display: flex;
-    flex-wrap: wrap;
+    margin: 0.5em 0 -0.25em 0;
+    padding: 0;
+    place-items: center;
     gap: 0.5em;
-    align-items: center;
+    justify-content: left;
+  }
+  .updated {
+    display: flex;
+    place-items: center;
+    margin: 0;
+    padding: 0;
   }
   .last-updated-on {
     display: inline-flex;
-    place-items: center;
     color: var(--emphasis);
-    gap: 0.5em;
-  }
-  .last-updated-on span {
-    font-size: 0.875em;
     font-family: var(--sub-font);
+    font-size: 0.875em;
     font-weight: 700;
+    margin-right: 0.25em;
   }
   .tag {
     margin: -0.2em auto 0.3em auto;
@@ -227,6 +231,14 @@ const relatedLinks = selectedPosts.map((p) => `${SITE_URL}/blog/${p.id}`);
     .wiki-article {
       margin: 1em 0.5em;
     }
+    .date {
+      gap: 0;
+    }
+    .last-updated-on {
+      font-size: 16px;
+      place-items: center;
+      margin: 0;
+    }
     .tag {
       margin: 0.5em auto;
     }
@@ -312,19 +324,19 @@ const relatedLinks = selectedPosts.map((p) => `${SITE_URL}/blog/${p.id}`);
     <p class="tag" data-pagefind-ignore>
       <span data-pagefind-filter="tag">{tag}</span>
     </p>
-    <div class="date">
-      <FormattedDate date={pubDate} />
+    <div class="info">
+      <span><FormattedDate class="dt-published" date={pubDate} /></span>
+    </div>
+    <p class="updated">
       {
         updatedDate && (
-          <div class="last-updated-on">
-            <>
-              <span>Updated</span>
-              <FormattedDate date={updatedDate} />
-            </>
-          </div>
+          <>
+            <span class="last-updated-on">Updated&nbsp;</span>
+            <FormattedDate class="dt-updated" date={updatedDate} />
+          </>
         )
       }
-    </div>
+    </p>
     <hr class="wiki-hr" />
     <p>{description}</p>
     <div class="e-content slot-content">
