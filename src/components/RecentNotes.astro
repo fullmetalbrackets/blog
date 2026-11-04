@@ -96,7 +96,7 @@ const recentNotes = (await getSortedNotes()).slice(0, limit);
     padding: 1.25em 1.5em 2.5em 1.5em;
   }
   li {
-    display: inline-flex;
+    display: flex;
     flex-direction: column;
     margin: 0 auto;
     padding: 0;
@@ -122,6 +122,8 @@ const recentNotes = (await getSortedNotes()).slice(0, limit);
     display: block;
     border-radius: 0.375em;
     margin-bottom: 0.25em;
+    margin-inline: auto;
+    align-self: center;
   }
 
   /* YouTube embed wrapper — constrains the lite-youtube web component */
