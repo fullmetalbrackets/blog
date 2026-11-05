@@ -322,7 +322,7 @@ const relatedLinks = selectedPosts.map((p) => `${SITE_URL}/blog/${p.id}`);
       padding-top: 3px;
     }
     .endline {
-      margin-top: 0.5em;
+      margin-top: 2em;
       margin-bottom: 1.5em;
     }
 
@@ -402,7 +402,7 @@ const relatedLinks = selectedPosts.map((p) => `${SITE_URL}/blog/${p.id}`);
     .related ul {
       list-style-type: none;
       padding: 0;
-      margin: 0 0 2.5em 0;
+      margin: 0;
     }
     .related li {
       border: 2px solid transparent;
@@ -681,43 +681,43 @@ const relatedLinks = selectedPosts.map((p) => `${SITE_URL}/blog/${p.id}`);
         </span>
       </div>
     </div>
-
-    {
-      selectedPosts.length > 0 && (
-        <div class="related" data-pagefind-ignore>
-          <h3>
-            <Related width={36} height={36} aria-hidden="true" /> Related Posts
-          </h3>
-          <ul>
-            {selectedPosts.map((post) => (
-              <li>
-                <a
-                  href={`/blog/${post.id}`}
-                  rel="prefetch-intent"
-                  data-umami-event={`related-${post.id}`}
-                >
-                  <span class="related-title">{post.data.title}</span>
-                  <div>
-                    <span class="tag">
-                      {post.data.tags.map((tag) => (
-                        <span class="btn">{tag}</span>
-                      ))}
-                    </span>
-                  </div>
-                  <p>{post.data.description}</p>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )
-    }
-    <Random excludeIds={selectedPosts.map((p) => p.id)} />
   </article>
 
   <WebMentions />
 
   <Comments />
+
+  {
+    selectedPosts.length > 0 && (
+      <div class="related" data-pagefind-ignore>
+        <h3>
+          <Related width={36} height={36} aria-hidden="true" /> Related Posts
+        </h3>
+        <ul>
+          {selectedPosts.map((post) => (
+            <li>
+              <a
+                href={`/blog/${post.id}`}
+                rel="prefetch-intent"
+                data-umami-event={`related-${post.id}`}
+              >
+                <span class="related-title">{post.data.title}</span>
+                <div>
+                  <span class="tag">
+                    {post.data.tags.map((tag) => (
+                      <span class="btn">{tag}</span>
+                    ))}
+                  </span>
+                </div>
+                <p>{post.data.description}</p>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
+  <Random excludeIds={selectedPosts.map((p) => p.id)} />
 
   <hr class="endline" />
 
