@@ -216,17 +216,39 @@ const buildTime = new Date().toISOString();
     max-width: 720px;
     margin: 0 auto;
   }
-  p.privacy {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 0.65em;
-    margin: -0.5em auto 0 auto;
-    padding: 0;
-  }
   .build {
     font-size: 0.65em;
     margin: -0.5em auto 1em auto;
+  }
+
+  /* no AI button */
+  .notbyai img {
+    margin-bottom: -0.25em;
+  }
+  .notbyai-dark {
+    display: none;
+  }
+  @media (prefers-color-scheme: dark) {
+    :global(html:not(.light):not(.dark)) .notbyai-light {
+      display: none;
+    }
+    :global(html:not(.light):not(.dark)) .notbyai-dark {
+      display: inline;
+    }
+  }
+
+  /* Manual overrides from the toggle */
+  :global(html.dark) .notbyai-light {
+    display: none;
+  }
+  :global(html.dark) .notbyai-dark {
+    display: inline;
+  }
+  :global(html.light) .notbyai-light {
+    display: inline;
+  }
+  :global(html.light) .notbyai-dark {
+    display: none;
   }
 
   /* mobile  */
@@ -568,37 +590,24 @@ const buildTime = new Date().toISOString();
       target="_blank"
       rel="noopener noreferrer"
       data-umami-event="notbyai"
-    >
-      <picture>
-        <source
-          srcset="/assets/Written-By-a-Human-Not-By-AI-Badge-white.png"
-          media="(prefers-color-scheme: light)"
-        />
-        <source
-          srcset="/assets/Written-By-a-Human-Not-By-AI-Badge-black.png"
-          media="(prefers-color-scheme: dark)"
-        />
-        <img
-          src="/assets/Written-By-a-Human-Not-By-AI-Badge-white.png"
-          alt="Written by a human, not AI"
-          width="131"
-          height="82"
-          loading="lazy"
-          decoding="async"
-        />
-      </picture>
-    </a>
-    <a
-      href="https://astro.build/"
-      target="_blank"
-      rel="noopener noreferrer"
-      data-umami-event="astro"
+      class="notbyai"
     >
       <img
-        src="/assets/built-with-astro.svg"
-        alt="Built with Astro"
-        width="192"
-        height="32"
+        class="notbyai-light"
+        src="/assets/Written-By-a-Human-Not-By-AI-Badge-white.png"
+        alt="Written by a human, not AI"
+        width="131"
+        height="82"
+        loading="lazy"
+        decoding="async"
+      />
+      <img
+        class="notbyai-dark"
+        src="/assets/Written-By-a-Human-Not-By-AI-Badge-black.png"
+        alt=""
+        aria-hidden="true"
+        width="131"
+        height="82"
         loading="lazy"
         decoding="async"
       />
@@ -607,7 +616,7 @@ const buildTime = new Date().toISOString();
 
   <div class="bottom">
     <span
-      >Content: <a
+      ><a
         rel="license noopener noreferrer"
         href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
         target="_blank"
@@ -616,7 +625,7 @@ const buildTime = new Date().toISOString();
     >
     <span>·</span>
     <span
-      >Code: <a
+      ><a
         href="https://mit-license.org"
         target="_blank"
         rel="noopener noreferrer"
@@ -624,15 +633,14 @@ const buildTime = new Date().toISOString();
       ></span
     >
     <span class="dot">·</span>
-    <span class="copyright"
-      >&copy; 2021-{today.getFullYear()} Ariel Diaz. <span class="reserved"
-        >Some rights reserved.</span
-      ></span
-    >
-  </div>
-  <p class="privacy">
+    <span class="copyright">
+      &copy; 2021-{today.getFullYear()} Ariel Diaz. <span class="reserved">Some rights reserved.</span>
+    </span>
+    <span class="dot">·</span>
+    <span class="privacy">
     <a href="/privacy" data-umami-event="footer-privacy">Privacy Policy</a>
-  </p>
+    </span>
+  </div>
   <p class="build">
     Last site build on <BuildTime />
   </p>
