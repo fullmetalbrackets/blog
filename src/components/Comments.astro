@@ -38,9 +38,18 @@ import { SITE_URL } from '@consts';
 </h3>
 <aside>
   <script define:vars={{ SITE_URL }}>
+    const getTheme = () => {
+      const html = document.documentElement;
+      const isDark =
+        html.classList.contains('dark') ||
+        (!html.classList.contains('light') &&
+          window.matchMedia('(prefers-color-scheme: dark)').matches);
+      return `${SITE_URL}/giscus-${isDark ? 'dark' : 'light'}.css`;
+    };
+
     const script = document.createElement('script');
     script.src = 'https://giscus.app/client.js';
-    script.setAttribute('data-theme', `${SITE_URL}/giscus.css`);
+    script.setAttribute('data-theme', getTheme());
     script.setAttribute('data-repo', 'fullmetalbrackets/blog');
     script.setAttribute('data-repo-id', 'R_kgDOIBwrhQ');
     script.setAttribute('data-category', 'Comments');
@@ -59,5 +68,24 @@ import { SITE_URL } from '@consts';
     if (container) {
       container.appendChild(script);
     }
+
+    // Keep giscus in sync with the toggle and the system theme
+    const sendTheme = () => {
+      const iframe = document.querySelector('iframe.giscus-frame');
+      if (!iframe || !iframe.contentWindow) return;
+      iframe.contentWindow.postMessage(
+        { giscus: { setConfig: { theme: getTheme() } } },
+        'https://giscus.app'
+      );
+    };
+
+    new MutationObserver(sendTheme).observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class'],
+    });
+
+    window
+      .matchMedia('(prefers-color-scheme: dark)')
+      .addEventListener('change', sendTheme);
   </script>
 </aside>
