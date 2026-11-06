@@ -10,6 +10,7 @@ import RecentPosts from '@components/RecentPosts.astro';
 import RecentNotes from '@components/RecentNotes.astro';
 import RecentLinks from '@components/RecentLinks.astro';
 import RecentLifestream from '@components/RecentLifestream.astro';
+import RandomBlog from '@components/RandomBlog.astro';
 import LastPlayed from '@components/LastPlayed.astro';
 import Buttons from '@components/88x31.astro';
 import ProfilePageSchema from '@components/ProfilePageSchema.astro';
@@ -106,6 +107,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '@consts';
       </PostsColumns>
     </div>
     <div id="lifestream"><RecentLifestream/></div>
+    <div class="blogroll"><RandomBlog/></div>
     <div id="buttons"><Buttons /></div>
   </section>
 </BaseLayout>

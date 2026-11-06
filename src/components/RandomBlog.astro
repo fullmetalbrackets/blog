@@ -1,0 +1,280 @@
+---
+import { getBlogroll } from '@utils/collections';
+import More from '@icons/arrow-right.svg';
+
+const getFavicon = (url: string) =>
+  `https://www.google.com/s2/favicons?domain=${new URL(url).hostname}&sz=32`;
+
+const blogs = await getBlogroll();
+
+const initialIndex = Math.floor(Math.random() * blogs.length);
+
+const blogData = blogs.map((b) => ({
+  id: b.id,
+  name: b.name,
+  url: b.url,
+  host: new URL(b.url).hostname.replace(/^www\./, ''),
+  favicon: getFavicon(b.url),
+}));
+
+const blog = blogData[initialIndex];
+---
+
+<section class="random" data-pagefind-ignore>
+  <h2>Random Blog</h2>
+  <ul class="container">
+    <li>
+      <a
+        id="random-blog-link"
+        href={blog.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        data-umami-event={`random-blog-${blog.id}`}
+      >
+        <img
+          id="random-blog-favicon"
+          class="favicon"
+          alt=""
+          width="32"
+          height="32"
+          decoding="async"
+        />
+        <div class="blog-text">
+          <span id="random-blog-name">{blog.name}</span>
+          <p id="random-blog-host">{blog.host}</p>
+        </div>
+      </a>
+      {
+        blogs.length > 1 && (
+          <button
+            id="random-blog-btn"
+            class="random-btn"
+            aria-label="Show another random blog"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="18px"
+              height="18px"
+            >
+              <title>reload</title>
+              <path d="M2 12C2 16.97 6.03 21 11 21C13.39 21 15.68 20.06 17.4 18.4L15.9 16.9C14.63 18.25 12.86 19 11 19C4.76 19 1.64 11.46 6.05 7.05C10.46 2.64 18 5.77 18 12H15L19 16H19.1L23 12H20C20 7.03 15.97 3 11 3C6.03 3 2 7.03 2 12Z" />
+            </svg>{' '}
+            Re-roll
+          </button>
+        )
+      }
+    </li>
+  </ul>
+  <span class="more">
+    <a
+      href="/blogroll"
+      rel="prefetch-intent"
+      data-umami-event="random-blog-more"
+      >Blogroll <More height={24} width={24} /></a
+    >
+  </span>
+</section>
+
+<style scoped>
+  section {
+    margin: 0 auto 1em auto;
+    padding: 0;
+  }
+  h2 {
+    margin-top: 0.25em;
+    margin-bottom: 0.3em;
+    font-family: var(--sub-font);
+    font-weight: 900;
+  }
+  ul {
+    background-color: var(--blockquote);
+    border-radius: 0.5em;
+    margin: 0 auto;
+    padding: 1.5em 1.5em 2.5em 1.5em;
+    list-style-type: none;
+  }
+  li {
+    background-color: var(--code-bg);
+    position: relative;
+    margin: 0 auto 1em auto;
+    padding: 0.75em 1em 0.85em 1em;
+    border: 2px solid var(--accent);
+    border-radius: 0.5em;
+    line-height: 1.1;
+  }
+  li:hover {
+    border-color: var(--emphasis);
+  }
+  li a,
+  li a:visited {
+    display: flex;
+    align-items: center;
+    gap: 0.625em;
+    color: var(--emphasis);
+  }
+  .favicon {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    display: block;
+    font-size: 0;
+  }
+  li a:hover {
+    color: var(--hover);
+  }
+  li span {
+    font-size: 1em;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  li p {
+    color: var(--text);
+    font-size: 0.875em;
+    font-weight: normal;
+    margin: 0.25em 0 0 0;
+    line-height: 1.2;
+  }
+  .random-btn {
+    position: absolute;
+    top: -1em;
+    right: 0;
+    z-index: 1;
+    display: inline-flex;
+    place-items: center;
+    gap: 0.25em;
+    background: var(--accent);
+    border: 1px solid transparent;
+    border-radius: 1em;
+    color: var(--emphasis);
+    font-family: var(--sub-font);
+    font-weight: 700;
+    font-size: 0.8em;
+    cursor: pointer;
+    padding: 0.35em 0.6em;
+  }
+  .random-btn svg {
+    filter: var(--svg3);
+  }
+  .random-btn.clicked,
+  .random-btn.clicked:hover {
+    color: #000;
+    background-color: var(--reroll);
+    border: 1px solid var(--reroll);
+  }
+  .random-btn.clicked svg {
+    filter: var(--reroll-svg);
+    animation: spin 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  .more {
+    display: flex;
+    font-family: var(--sub-font);
+    font-weight: 800;
+    justify-content: end;
+    margin-top: -2.25em;
+    margin-right: 0.25em;
+    padding: 0.25em;
+  }
+  .more svg {
+    display: inline-flex;
+    place-content: center;
+    margin: 4px 0 -3px 0;
+    padding: 0;
+    filter: var(--svg2);
+    transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .more a {
+    color: var(--secondary);
+  }
+  .more a:hover {
+    color: var(--foot-link);
+  }
+  .more a:hover svg {
+    filter: var(--foot-svg);
+    transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transform: translateX(4px);
+  }
+
+  @media (hover: hover) {
+    .random-btn:hover {
+      border: 1px solid var(--emphasis);
+    }
+  }
+  @media (hover: none) {
+    .random-btn:hover {
+      border: 1px solid transparent;
+    }
+    li:has(a:active) {
+      border-color: var(--emphasis);
+    }
+  }
+  @media screen and (max-width: 992px) {
+    h2 {
+      margin-top: 0;
+    }
+  }
+  @media screen and (max-width: 667px) {
+    ul {
+      padding: 1em 1em 2em 1em;
+    }
+    li {
+      padding: 1em 1em 0.85em 1em;
+    }
+    li p {
+      margin-top: 0;
+    }
+    .more {
+      margin-top: -2em;
+    }
+  }
+</style>
+
+<script define:vars={{ blogData, initialIndex }}>
+  let currentIndex = initialIndex;
+
+  const link = document.getElementById('random-blog-link');
+  const nameEl = document.getElementById('random-blog-name');
+  const hostEl = document.getElementById('random-blog-host');
+  const faviconEl = document.getElementById('random-blog-favicon');
+  const btn = document.getElementById('random-blog-btn');
+
+  function pickNew() {
+    if (blogData.length < 2) return currentIndex;
+    let i;
+    do {
+      i = Math.floor(Math.random() * blogData.length);
+    } while (i === currentIndex);
+    return i;
+  }
+
+  function show(i) {
+    const b = blogData[i];
+    currentIndex = i;
+    link.href = b.url;
+    link.dataset.umamiEvent = `random-blog-${b.id}`;
+    nameEl.textContent = b.name;
+    hostEl.textContent = b.host;
+    faviconEl.src = b.favicon;
+  }
+
+  show(pickNew());
+
+  btn?.addEventListener('click', () => {
+    show(pickNew());
+
+    btn.classList.add('clicked');
+    btn.addEventListener(
+      'animationend',
+      () => btn.classList.remove('clicked'),
+      { once: true }
+    );
+  });
+</script>
