@@ -2,7 +2,7 @@
 title: 'Video games I finished in 2026'
 description: 'A list of videogames I played from start to finish in 2026.'
 pubDate: 2026-06-23 12:00:00
-updatedDate: 2026-11-05 18:00:00
+updatedDate: 2026-11-07 18:00:00
 tag: information
 ---
 
@@ -21,6 +21,7 @@ tag: information
 - [Castlevania: Aria of Sorrow](/lifestream/game_castlevania-aria-of-sorrow)
 - [Castlevania: Dawn of Sorrow](/lifestream/game_castlevania-dawn-of-sorrow)
 - [Castlevania: Symphony of the Night](/lifestream/game_castlevania-symphony-of-the-night)
+- [Colony Wars](/lifestream/game_colony-wars)
 - [Control](/lifestream/game_control) *(and both DLCs)*
 - [Control Resonant](/lifestream/game_control-resonant)
 - [Chrono Trigger](/lifestream/game_chrono-trigger)
@@ -44,10 +45,9 @@ tag: information
 
 ## In progress
 
-<em>Total:</em> <span class="sub-font w9 secondary">4</span>
+<em>Total:</em> <span class="sub-font w9 secondary">3</span>
 
 - Castlevania: Belmont's Curse
-- Colony Wars (PSX)
 - Parasite Eve (PSX)
 - The Legend of Zelda: Ocarina of Time (remake)
 
@@ -82,10 +82,11 @@ tag: information
 
 ## Plan to play
 
-<em>Total:</em> <span class="sub-font w9 secondary">5</span>
+<em>Total:</em> <span class="sub-font w9 secondary">6</span>
 
 - Ace Combat 6: Fires of Liberation
 - Bloodborne
+- Colony Wars: Vengeance
 - Grand Theft Auto VI
 - Resident Evil Zero HD Remaster
 - The Last Guardian
