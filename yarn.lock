@@ -2916,16 +2916,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"astro-og-canvas@npm:^0.13.2":
-  version: 0.13.2
-  resolution: "astro-og-canvas@npm:0.13.2"
+"astro-og-canvas@npm:^0.13.3":
+  version: 0.13.3
+  resolution: "astro-og-canvas@npm:0.13.3"
   dependencies:
     canvaskit-wasm: "npm:^0.42.0"
     deterministic-object-hash: "npm:^2.0.2"
-    entities: "npm:^8.1.0"
+    entities: "npm:^9.0.0"
   peerDependencies:
     astro: ^5.0.0 || ^6.0.0 || ^7.0.0
-  checksum: 10c0/960d3d73f11047885b67bdafd23cf5a8063e08565eebd2abfc58fcc068ac06631fc089f39166f804d35fae5c58376d65744ac7ad198cc7c107ca3cc94af70713
+  checksum: 10c0/0bba181dfc37b155baee74385a1562f2ef73039224fff8201e5c554df00a745be11da71317da79829633c8bb9374155a51dc6103310aa9a007cd0456070cfc37
   languageName: node
   linkType: hard
 
@@ -3492,10 +3492,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"entities@npm:^8.1.0":
-  version: 8.1.0
-  resolution: "entities@npm:8.1.0"
-  checksum: 10c0/da0bf22912c19d2a4707783e1b905d3f6a977e93e0655a8d2c526455eb3996f668f9f2e4c2a07af8d6927d232c41b6e929a7044df0236c7bf6e9c38e070e3719
+"entities@npm:^9.0.0":
+  version: 9.0.0
+  resolution: "entities@npm:9.0.0"
+  checksum: 10c0/ef713ce6256d2d878390376f0c42e6ccfeee9032c57c48bd224b9a48f8eb44d4403ad4321d1aeebe973fb08eac8ab324abeebc04a92748c0bac9261968e6d395
   languageName: node
   linkType: hard
 
@@ -6114,7 +6114,7 @@ __metadata:
     "@astrojs/sitemap": "npm:3.7.4"
     astro: "npm:7.4.4"
     astro-embed: "npm:^0.14.0"
-    astro-og-canvas: "npm:^0.13.2"
+    astro-og-canvas: "npm:^0.13.3"
     gab-astro-compress: "npm:^0.1.2"
     glightbox: "npm:^3.3.1"
     mdast-util-to-string: "npm:^4.0.0"
