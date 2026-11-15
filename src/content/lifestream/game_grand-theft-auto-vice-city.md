@@ -1,0 +1,18 @@
+---
+type: game
+title: 'Grand Theft Auto: Vice City'
+pubDate: 2019-12-07 12:00:00
+platform: PC
+image: ./_images/grand-theft-auto-vice-city.jpg
+rating: masterpiece
+---
+
+## Related
+
+- [Grand Theft Auto III](game_grand-theft-auto-iii)
+- [Grand Theft Auto III - The Definitive Edition](game_grand-theft-auto-iii-the-definitive-edition)
+- [Grand Theft Auto: Vice City - The Definitive Edition](game_grand-theft-auto-vice-city-the-definitive-edition)
+- [Grand Theft Auto: San Andreas](game_grand-theft-auto-san-andreas)
+- [Grand Theft Auto: San Andreas - The Definitive Edition](game_grand-theft-auto-san-andreas-the-definitive-edition)
+- [Grand Theft Auto IV](game_grand-theft-auto-iv)
+- [Grand Theft Auto V](game_grand-theft-auto-v)
