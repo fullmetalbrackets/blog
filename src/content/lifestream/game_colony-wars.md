@@ -1,7 +1,7 @@
 ---
 type: game
 title: Colony Wars
-pubDate: 2026-11-07 12:00:00
+pubDate: 2026-11-06 12:00:00
 platform: PlayStation
 image: ./_images/colony-wars.jpg
 rating: masterpiece
