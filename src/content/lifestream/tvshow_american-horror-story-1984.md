@@ -2,10 +2,17 @@
 type: tvshow
 title: 'American Horror Story: 1984'
 pubDate: 2019-11-29 12:00:00
+updatedDate: 2026-11-15 12:00:00
 image: ./_images/american-horror-story-1984.webp
 season: '9'
-rating: liked
+rating: loved
 ---
+
+Probably my favorite season after Murder House.
+
+## Previously Watched
+
+- 11/29/2019
 
 ## Related
 
