@@ -8,7 +8,7 @@ season: '9'
 rating: loved
 ---
 
-Probably my favorite season after Murder House.
+Probably my favorite season, but I'm a sucker for the 80's and this season has every 80's reference, trope and parody known to man.
 
 ## Previously Watched
 

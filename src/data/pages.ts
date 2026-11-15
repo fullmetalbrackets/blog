@@ -105,7 +105,7 @@ export const pages: Page[] = [
     href: '/now',
     title: 'Now',
     description:
-      "What I've been up to lately and what's on my mind. Updated monthly-ish.",
+      "What I've been up to lately and what's on my mind. Updated every few months or so.",
     event: 'explore-now',
   },
   {
