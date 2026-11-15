@@ -1,8 +1,8 @@
 ---
 title: 'Video games I finished in 2026'
-description: 'A list of videogames I played from start to finish in 2026.'
+description: 'A list of videogames I played and finished in 2026.'
 pubDate: 2026-06-23 12:00:00
-updatedDate: 2026-11-07 18:00:00
+updatedDate: 2026-11-15 18:00:00
 tag: information
 ---
 
@@ -10,7 +10,7 @@ tag: information
 
 ## Completed games
 
-<em>Total so far:</em> <span class="sub-font w9 secondary">27</span>
+<em>Total so far:</em> <span class="sub-font w9 secondary">31</span>
 
 - [007: First Light](/lifestream/game_007-first-light)
 - [Ace Combat 04: Shattered Skies](/lifestream/game_ace-combat-04-shattered-skies)
@@ -27,7 +27,8 @@ tag: information
 - [Chrono Trigger](/lifestream/game_chrono-trigger)
 - [Elden Ring](/lifestream/game_elden-ring) *(and [Shadow of the Erdtree](/lifestream/game_elden-ring-shadow-of-the-erdtree) DLC)*
 - [Final Fantasy Tactics Advance](/lifestream/game_final-fantasy-tactics-advance)
-- [Grand Theft Auto: Vice City](/lifestream/game_grand-theft-auto-vice-city)
+- [Grand Theft Auto: San Andreas - The Definitive Edition](/lifestream/game_grand-theft-auto-san-andreas-the-definitive-edition)
+- [Grand Theft Auto: Vice City - The Definitive Edition](/lifestream/game_grand-theft-auto-vice-city-the-definitive-edition)
 - [Hollow Knight: Silksong](/lifestream/game_hollow-knight-silksong) *(Act I and II only)*
 - [InFamous](/lifestream/game_infamous)
 - [Ikaruga](/lifestream/game_ikaruga) *(not actually beaten, I just play a few levels every now and then)*
@@ -45,28 +46,27 @@ tag: information
 
 ## In progress
 
-<em>Total:</em> <span class="sub-font w9 secondary">3</span>
+<em>Total:</em> <span class="sub-font w9 secondary">1</span>
 
-- Castlevania: Belmont's Curse
-- Parasite Eve (PSX)
 - The Legend of Zelda: Ocarina of Time (remake)
 
 ## Started, temporarily on pause
 
-<em>Total:</em> <span class="sub-font w9 secondary">14</span>
+<em>Total:</em> <span class="sub-font w9 secondary">15</span>
 
 - Ace Combat 5: Unsung War
 - Batman: Arkham City
+- Castlevania: Belmont's Curse *(not grabbing me like Igavanias...)*
 - Dark Souls Remastered
-- Dark Souls III *(mostly done, just need to finish Ringed City)*
+- Dark Souls III *(mostly done, just need to finish Ringed City, but it's really hard)*
 - Final Fantasy XIV *(paused subscription, will be back for Evercold expansion)*
-- Grand Theft Auto: San Andreas - The Definitive Edition
 - InFamous 2
 - Need for Speed Heat
 - Need for Speed Most Wanted
 - Marvel's Spider-Man 2
 - Mina the Hollower *(surprisingly difficult...)*
 - Metal Gear Solid Delta: Snake Eater
+- Parasite Eve
 - Resident Evil 4 Remake
 - Resident Evil HD Remaster
 

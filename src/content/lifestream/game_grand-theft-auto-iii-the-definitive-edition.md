@@ -16,7 +16,9 @@ I played this game all the way through back in the day, like 20 years ago, on bo
 ## Related
 
 - [Grand Theft Auto III](game_grand-theft-auto-iii)
+- [Grand Theft Auto: Vice City](game_grand-theft-auto-vice-city)
+- [Grand Theft Auto: Vice City - The Definitive Edition](game_grand-theft-auto-vice-city-the-definitive-edition)
+- [Grand Theft Auto: San Andreas](game_grand-theft-auto-san-andreas)
+- [Grand Theft Auto: San Andreas - The Definitive Edition](game_grand-theft-auto-san-andreas-the-definitive-edition)
 - [Grand Theft Auto IV](game_grand-theft-auto-iv)
-- [Grand Theft Auto San Andreas](game_grand-theft-auto-san-andreas)
 - [Grand Theft Auto V](game_grand-theft-auto-v)
-- [Grand Theft Auto Vice City: The Definitive Edition](game_grand-theft-auto-vice-city-the-definitive-edition)
