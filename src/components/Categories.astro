@@ -1,12 +1,21 @@
 ---
 import { getSortedTags } from '@utils/collections';
 
-const tags = await getSortedTags();
+const TOP_TAG_LIMIT = 10;
+
+const isLimited = Number.isFinite(TOP_TAG_LIMIT);
+
+const tags = (await getSortedTags())
+  .sort((a, b) => b.count - a.count || a.tag.localeCompare(b.tag))
+  .slice(0, TOP_TAG_LIMIT)
+  .sort((a, b) =>
+    isLimited ? b.count - a.count || a.tag.localeCompare(b.tag) : a.tag.localeCompare(b.tag)
+  );
 ---
 
 <style scoped>
   section {
-    margin: 0 auto;
+    margin: 0 auto 0.5em auto;
     padding: 0;
   }
   h2 {
@@ -58,7 +67,7 @@ const tags = await getSortedTags();
 </style>
 
 <section>
-  <h2>Categories</h2>
+  <h2>Top Categories</h2>
   <ul>
     {
       tags.map(({ tag, count }) => (
