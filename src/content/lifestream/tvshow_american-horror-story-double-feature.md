@@ -2,10 +2,17 @@
 type: tvshow
 title: 'American Horror Story: Double Feature'
 pubDate: 2021-11-21 12:00:00
-image: ./_images/american-horror-story-double-feature.webp
+updatedDate: 2026-11-16 12:00:00
+image: ./_images/american-horror-story-double-feature.jpeg
 season: '10'
-rating: liked
+rating: loved
 ---
+
+Both halves of this season are good, but I like the one about aliens a little more than the one about vampires.
+
+## Previously Watched
+
+- 11/21/2021
 
 ## Related
 
