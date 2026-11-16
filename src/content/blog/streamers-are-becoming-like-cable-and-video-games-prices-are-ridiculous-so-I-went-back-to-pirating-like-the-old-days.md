@@ -1,7 +1,8 @@
 ---
 title: 'Streamers are becoming like cable and video games prices are ridiculous, so I went back to pirating like the old days'
-description: "It's easier and safer than ever to sail the sevens seas for ill-gotten content of all kinds, as long as you know what you're doing. It's not always clear what's safe or reliable, so here's my tried and true years-long self-hosted setup for downloading and consuming multimedia, and where to get the loot."
+description: "It's easier and safer than ever to sail the sevens seas for ill-gotten content of all kinds, as long as you know what you're doing. It's not always clear what's safe or reliable, so here's my tried and true years-long self-hosted setup for how to pirate media like it's 1999."
 pubDate: 2026-10-27 12:00:00
+updatedDate: 2026-11-16 12:00:00
 tags: ['self-hosting', 'piracy', 'qbittorrent', 'plex', 'guide']
 related: ['setting-up-plex-in-docker', 'plex-remote-access-tailscale', 'expose-plex-tailscale-vps', 'comprehensive-guide-tailscale-securely-access-home-network', 'how-to-setup-the-search-function-in-qbittorrent-and-add-search-plugins']
 howto: true
@@ -34,7 +35,7 @@ First, the torrenting sites (a.k.a. trackers) that I use. There are many tracker
 - [Ext](https://ext.to)
 - [UIndex](https://uindex.org) (their ads are not as egregious)
 
-## VPNs
+## Why using a VPN is essential
 
 Whether you're using a torrent client on your PC, or self-hosting a torrent client on a server, you absolutely should use a VPN through which to download anything. In both cases, downloading torrents through a VPN connection will anonymize you so that your actual IP address is not visible to any peers. That will avoid the random letters from your ISP about your IP being used to download copyrighted content.
 
@@ -43,6 +44,73 @@ The VPN provider you use is your choice, but it's important for you to understan
 As for my suggested VPN providers, I have personally used [AirVPN](https://airvpn.org/) for several years without a single issue. [ProtonVPN](https://protonvpn.com) is well-liked the by pirating/torrenting community as well. Both allow [port forwarding](https://protonvpn.com/support/port-forwarding) which ensures you can both download torrents and seed them for others without issue.
 
 > For much more detailed information, see this [Torrenting + VPN Guide](https://rentry.org/torrentvpn).
+
+## Movies and TV shows
+
+There's many uploaders of quality movies and TV shows, from 720p (or lower if it's an older source) up to 4K, and even high-bitrate remuxes. (I don't bother with those, I stick with Blu-Ray UHD quality for the most part.) The below uploaders can be found on all the torrent sites I linked above, I will include alternate names that they use on the various sites. Also note, some do both movies and TV shows, and others do only one kind of upload, so that's why there will be duplicates below.
+
+> [warning] Important!
+>
+> Trustworthy uploaders tend to have some title, badge or other thing noting them as such (at least on the sites I linked) so make note of that when you are choosing an uploader's torrent.
+
+### Movie uploaders
+
+- Wrath (my favorite for 4K UHD Dolby Vision and 7.1 surround sound movies)
+- QxR (4K with all extras and languages included)
+- YTS
+- RARBG
+- TGx/TGxGoodies
+- NeoNoir (my go to for 1080p content)
+- bone111/b0ne/BONE (another good one for 1080p)
+- CptCrunchzz (exclusively does remuxes)
+
+### TV show uploaders
+
+- QxR
+- YTS
+- EZTV
+- bone111/b0ne/BONE
+
+## Music uploaders
+
+I'll be honest, when it comes to music, I don't really pirate much of it nor do I pay attention to uploaders when I do. I just look for lossless FLAC files at 44.1 KHz (FLAC is the type of file container, 44.1 KHz is the industry-standard frequency for high-quality audio), which generally means looking for torrents with `[FLAC 16-44]` or `[FLAC 24-48]` (or a combination) in the titles.
+
+Some uploaders I tend to download music from are:
+
+- ourmark
+- vtwin88cube
+- eichbaum
+- Lulloz
+- Rider88
+
+## Video games
+
+The video game pirating scene has never been more active. Various scene groups work at cracking games the moment they come out, and any game without Denuvo or other copy protection is available for free pretty much from release day. Even games with Denuvo DRM are having their protection bypassed or straight up cracked, so that even many major AAA titles can be pirated sooner or later.
+
+A common misconception is that downloading and installing cracked video games is just begging to get your PC infected by viruses, ransomware or some other scary thing that will be bad for your precious machine. This is a mindset trapped a decade or more in the past, and is certainly not the case in 2026. The fact is video game pirating is easier and safer than ever, as long as you recognize the groups and uploaders that are reliable and trustworthy.
+
+> It's important to understand that I will be exclusively talking about **video games available for PC**. If you're looking for video games for specific *consoles*, that's emulation and out of the scope of this post. I will be making a separate post about video game emulation in the near future.
+
+First, let's talk about scene groups and "scene releases." Scene group is a somewhat antiquated term derived from the early era of "[warez](https://en.wikipedia.org/wiki/Warez)" (pirated software), but today you can basically think of them as the individuals or teams that make video games available (often cracking them or otherwise bypassing their protection) for others to upload as torrents.
+
+Examples of video game scene groups you might see (movies/TV have their own groups which I didn't even get into) are *RUNE*, *TENOKE*, *voices38*, *DenuvOwO* (since disbanded, but their releases are still out there) and *C-S*. Generally speaking, these groups just do the work of making the games playable on PC (or Linux, or Mac) without regard for user friendly things like installers or even instructions. Think of it this way: they make the sauce, but don't distribute it.
+
+Others take the content made by the scene groups and do work of letting the rest of us actually download, install and play the things in the form of "repacks." Repacks are the term for highly-compressed (and often pre-cracked) game files packaged with a custom installer, so that the downloads are of a smaller size and running the installer uncompresses the game files into their true larger size, making the game playable.
+
+The most trusted repackers whose torrents you can (in my experience and opinion) safely download from are:
+
+- [Fitgirl](https://fitgirl-repacks.site) ([1337x](https://1337x.to/user/Fitgirl/)/[Ext](https://ext.to/browse/?user_nick=Fitgirl))
+- [DODI](https://dodi-repacks.site/) ([1337x](https://1337x.to/user/DODI/)/[Ext](https://ext.to/browse/?user_nick=DODI))
+- [KaOSKrew](https://kaoskrew.org/) ([1337x](https://1337x.to/user/KaOSKrew/)/[Ext](https://ext.to/browse/?user_nick=KaOSKrew))
+- johncena141 ([1337x](https://1337x.to/user/johncena141/)/[Ext](https://ext.to/browse/?user_nick=johncena141)) -- *Linux game repacks only!*
+- tinyrepacks ([1337x](https://1337x.to/user/tinyrepacks/)/[Ext](https://ext.to/browse/?user_nick=tinyrepacks))
+- IGGGAMESCOM ([1337x](https://1337x.to/user/IGGGAMESCOM/)/[Ext](https://ext.to/browse/?user_nick=KaOSKrew))
+
+> [warning] Warning!
+>
+> With regards to **IGGGAMESCOM**, apparently they mistakenly uploaded malware in some release years ago, so their reputation is not what it once was. (The pirating scene has a long memory and does not forgive.) Personally, I haven't had any issues with any of their stuff since I started downloading some of their games this year.
+> 
+> Still, you should only download IGGGAMESCOM repacks if you cannot find the game you want from others, and for extra precaution you may want to to scan any IGGGAMESCOM game you download for malware before installing.
 
 ## My self-hosted piracy setup
 
@@ -119,73 +187,6 @@ I have multiple hard drives pooled together using [MergerFS](https://trapexit.gi
 > For information on setting up your own media server, see [this blog post about setting up Plex](/blog/setting-up-plex-in-docker) (it may be a bit outdated by now) or [this blog post detailing my home server](/blog/how-i-setup-home-server).
 >
 > I also strongly suggest the detailed guides at [Perfect Media Server](https://perfectmediaserver.com/) (I referenced this a lot when setting mine up) and [DIYMediaServer](https://diymediaserver.com/).
-
-## Movies and TV shows
-
-There's many uploaders of quality movies and TV shows, from 720p (or lower if it's an older source) up to 4K, and even high-bitrate remuxes. (I don't bother with those, I stick with Blu-Ray UHD quality for the most part.) The below uploaders can be found on all the torrent sites I linked above, I will include alternate names that they use on the various sites. Also note, some do both movies and TV shows, and others do only one kind of upload, so that's why there will be duplicates below.
-
-> [warning] Important!
->
-> Trustworthy uploaders tend to have some title, badge or other thing noting them as such (at least on the sites I linked) so make note of that when you are choosing an uploader's torrent.
-
-### Movie uploaders
-
-- Wrath (my favorite for 4K UHD Dolby Vision and 7.1 surround sound movies)
-- QxR (4K with all extras and languages included)
-- YTS
-- RARBG
-- TGx/TGxGoodies
-- NeoNoir (my go to for 1080p content)
-- bone111/b0ne/BONE (another good one for 1080p)
-- CptCrunchzz (exclusively does remuxes)
-
-### TV show uploaders
-
-- QxR
-- YTS
-- EZTV
-- bone111/b0ne/BONE
-
-## Music uploaders
-
-I'll be honest, when it comes to music, I don't really pirate much of it nor do I pay attention to uploaders when I do. I just look for lossless FLAC files at 44.1 KHz (FLAC is the type of file container, 44.1 KHz is the industry-standard frequency for high-quality audio), which generally means looking for torrents with `[FLAC 16-44]` or `[FLAC 24-48]` (or a combination) in the titles.
-
-Some uploaders I tend to download music from are:
-
-- ourmark
-- vtwin88cube
-- eichbaum
-- Lulloz
-- Rider88
-
-## Video games
-
-The video game pirating scene has never been more active. Various scene groups work at cracking games the moment they come out, and any game without Denuvo or other copy protection is available for free pretty much from release day. Even games with Denuvo DRM are having their protection bypassed or straight up cracked, so that even many major AAA titles can be pirated sooner or later.
-
-A common misconception is that downloading and installing cracked video games is just begging to get your PC infected by viruses, ransomware or some other scary thing that will be bad for your precious machine. This is a mindset trapped a decade or more in the past, and is certainly not the case in 2026. The fact is video game pirating is easier and safer than ever, as long as you recognize the groups and uploaders that are reliable and trustworthy.
-
-> It's important to understand that I will be exclusively talking about **video games available for PC**. If you're looking for video games for specific *consoles*, that's emulation and out of the scope of this post. I will be making a separate post about video game emulation in the near future.
-
-First, let's talk about scene groups and "scene releases." Scene group is a somewhat antiquated term derived from the early era of "[warez](https://en.wikipedia.org/wiki/Warez)" (pirated software), but today you can basically think of them as the individuals or teams that make video games available (often cracking them or otherwise bypassing their protection) for others to upload as torrents.
-
-Examples of video game scene groups you might see (movies/TV have their own groups which I didn't even get into) are *RUNE*, *TENOKE*, *voices38*, *DenuvOwO* (since disbanded, but their releases are still out there) and *C-S*. Generally speaking, these groups just do the work of making the games playable on PC (or Linux, or Mac) without regard for user friendly things like installers or even instructions. Think of it this way: they make the sauce, but don't distribute it.
-
-Others take the content made by the scene groups and do work of letting the rest of us actually download, install and play the things in the form of "repacks." Repacks are the term for highly-compressed (and often pre-cracked) game files packaged with a custom installer, so that the downloads are of a smaller size and running the installer uncompresses the game files into their true larger size, making the game playable.
-
-The most trusted repackers whose torrents you can (in my experience and opinion) safely download from are:
-
-- [Fitgirl](https://fitgirl-repacks.site) ([1337x](https://1337x.to/user/Fitgirl/)/[Ext](https://ext.to/browse/?user_nick=Fitgirl))
-- [DODI](https://dodi-repacks.site/) ([1337x](https://1337x.to/user/DODI/)/[Ext](https://ext.to/browse/?user_nick=DODI))
-- [KaOSKrew](https://kaoskrew.org/) ([1337x](https://1337x.to/user/KaOSKrew/)/[Ext](https://ext.to/browse/?user_nick=KaOSKrew))
-- johncena141 ([1337x](https://1337x.to/user/johncena141/)/[Ext](https://ext.to/browse/?user_nick=johncena141)) -- *Linux game repacks only!*
-- tinyrepacks ([1337x](https://1337x.to/user/tinyrepacks/)/[Ext](https://ext.to/browse/?user_nick=tinyrepacks))
-- IGGGAMESCOM ([1337x](https://1337x.to/user/IGGGAMESCOM/)/[Ext](https://ext.to/browse/?user_nick=KaOSKrew))
-
-> [warning] Warning!
->
-> With regards to **IGGGAMESCOM**, apparently they mistakenly uploaded malware in some release years ago, so their reputation is not what it once was. (The pirating scene has a long memory and does not forgive.) Personally, I haven't had any issues with any of their stuff since I started downloading some of their games this year.
-> 
-> Still, you should only download IGGGAMESCOM repacks if you cannot find the game you want from others, and for extra precaution you may want to to scan any IGGGAMESCOM game you download for malware before installing.
 
 ## Further reading
 
