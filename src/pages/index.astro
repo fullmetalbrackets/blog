@@ -10,7 +10,9 @@ import RecentPosts from '@components/RecentPosts.astro';
 import RecentNotes from '@components/RecentNotes.astro';
 import RecentLinks from '@components/RecentLinks.astro';
 import RecentLifestream from '@components/RecentLifestream.astro';
+import RecentUpdates from '@components/RecentUpdates.astro';
 import RandomBlog from '@components/RandomBlog.astro';
+import Categories from '@components/Categories.astro';
 import LastPlayed from '@components/LastPlayed.astro';
 import Buttons from '@components/88x31.astro';
 import ProfilePageSchema from '@components/ProfilePageSchema.astro';
@@ -44,8 +46,14 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '@consts';
     gap: 1em;
     margin: 2em auto 0 auto;
   }
+  .column-item2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1em;
+    margin: 0 auto;
+  }
   @media screen and (max-width: 992px) {
-    .column-item {
+    .column-item, .column-item2 {
       display: flex;
       flex-direction: column;
       gap: 1em; /* match whatever spacing PostsColumns normally gives between items */
@@ -107,7 +115,11 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '@consts';
       </PostsColumns>
     </div>
     <div id="lifestream"><RecentLifestream/></div>
-    <div class="blogroll"><RandomBlog/></div>
+    <div class="column-item2">
+        <div class="categories"><Categories/></div>
+        <div class="updates"><RecentUpdates limit={3} /></div>
+        <div class="blogroll"><RandomBlog/></div>
+    </div>
     <div id="buttons"><Buttons /></div>
   </section>
 </BaseLayout>
