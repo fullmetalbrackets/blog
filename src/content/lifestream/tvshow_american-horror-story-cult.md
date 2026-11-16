@@ -7,7 +7,7 @@ season: '7'
 rating: liked
 ---
 
-This brought back some bad memories from Election Night 2016, though it's kind of ironic we just finished it up right after the midterms, considering the results. Other than that it's a pretty fun season.
+This brought back some bad memories from Election Night 2016, but other than that it's a pretty fun season. Kind of ironic we just finished this rewatch right after the midterm elections, considering the results.
 
 ## Previously Watched
 
