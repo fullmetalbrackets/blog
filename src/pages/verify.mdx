@@ -7,12 +7,19 @@ toc: true
 ---
 
 export const prerender = true;
+import FormattedDate from '@components/FormattedDate.astro';
+import '@styles/page.css';
 
 <a class='u-url' href='https://fullmetalbrackets.com/verify' hidden>
   Permalink
 </a>
 
 import { GITHUB, BLUESKY, DONATE, SITE_URL } from '@consts';
+
+<div class='date'>
+  <span class='updated'>Last updated on</span>
+  <FormattedDate date={new Date('2026-11-17T12:00:00')}  />
+</div>
 
 ## WTF is a Verify slash page?
 
@@ -35,6 +42,17 @@ that verifies your identity across the internet. Or for a concise summary:
 Below is a list of my verified identities across the internet. **If it's not
 listed here, it's not me.**
 
+## Domains
+
+This website lives at `fullmetalbrackets.com`, however I have other domains that
+point here. If you're visiting any of the below, it's actually this site:
+
+- `arieldiaz.codes`
+- `techservatory.com`
+- `selfhosters.org`
+- `selfhoster.org`
+- `adiaz.fyi`
+
 ## Social Media
 
 - Reddit: [FullmetalBrackets](https://www.reddit.com/user/FullmetalBrackets/)
@@ -42,6 +60,7 @@ listed here, it's not me.**
   <a href={BLUESKY} target="_blank" rel="me noopener noreferrer">fullmetalbrackets</a>
 - Mastodon: [@adiaz@social.lol](https://social.lol/@adiaz)
 - Threads: [fullmetal.brackets](https://www.threads.com/@fullmetal.brackets)
+- Microblog: [ariel.lol](https://ariel.lol)
 
 ## Other
 
@@ -105,6 +124,6 @@ IpntfVPhoOqJLX/GmndzKq0IMmGPbIHVn1shX7RlLgBU2+lo7EC+ngmfpnU2
 -----END PGP PUBLIC KEY BLOCK-----
 ```
 
-<span class='center xl secondary sub-font w9'>
+<span class='center xl other sub-font w9'>
   Any sites, services or apps not listed here, I am not active in.
 </span>
