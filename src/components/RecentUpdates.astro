@@ -153,7 +153,7 @@ const recentUpdates = (await getFirehose())
       padding: 0;
     }
     .info {
-      display: block;
+      display: inline-flex;
       margin: 0.5em 0 0.25em 0;
     }
     .tag {
@@ -177,7 +177,7 @@ const recentUpdates = (await getFirehose())
 </style>
 
 <section class="h-feed">
-  <h2 class="p-name">Recently Updated</h2>
+  <h2 class="p-name">Latest Updates</h2>
   <div class="container">
     {
       recentUpdates.map((entry: FirehoseEntry) => {
@@ -186,6 +186,7 @@ const recentUpdates = (await getFirehose())
         return (
           <div class="h-entry list">
             <a
+              data-umami-event={`latest-updates-${href}`}
               class="u-url"
               href={href}
               {...(isExternal
@@ -216,7 +217,7 @@ const recentUpdates = (await getFirehose())
     }
     <span class="more">
       <a href="/all" rel="prefetch-intent archives"
-        >Everything <More height={24} width={24} /></a
+        >All Recent Updates <More height={24} width={24} /></a
       >
     </span>
   </div>
