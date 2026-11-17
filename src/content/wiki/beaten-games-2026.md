@@ -57,11 +57,11 @@ tag: information
 - Ace Combat 5: Unsung War
 - Batman: Arkham City
 - Castlevania: Belmont's Curse *(not grabbing me like Igavanias...)*
-- Dark Souls Remastered
-- Dark Souls III *(mostly done, just need to finish Ringed City, but it's really hard)*
+- Dark Souls Remastered *(been playing on and off since 2025 and it'll stretch into 2027)*
+- Dark Souls III *(mostly done, kinda stuck in Ringed City DLC for now, it's hard)*
 - Final Fantasy XIV *(paused subscription, will be back for Evercold expansion)*
 - InFamous 2
-- Need for Speed Heat
+- Need for Speed Heat *(not sure when I'll continue, it's kind of too easy and boring)*
 - Need for Speed Most Wanted
 - Marvel's Spider-Man 2
 - Mina the Hollower *(surprisingly difficult...)*
