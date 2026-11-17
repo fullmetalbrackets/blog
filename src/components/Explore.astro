@@ -71,6 +71,9 @@ const { class: className } = Astro.props;
   <nav>
     <ul class={className}>
       <li>
+        <a href="/all" data-umami-event="explore-all">All</a>
+      </li>
+      <li>
         <a href="/blog" data-umami-event="explore-blog">Blog</a>
       </li>
       <li>
@@ -129,6 +132,9 @@ const { class: className } = Astro.props;
       </li>
       <li>
         <a href="/colophon" data-umami-event="explore-colophon">Colophon</a>
+      </li>
+      <li>
+        <a href="/search" data-umami-event="explore-search">Search</a>
       </li>
     </ul>
   </nav>
