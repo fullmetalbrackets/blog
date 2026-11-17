@@ -71,7 +71,7 @@ const blog = blogData[initialIndex];
       href="/blogroll"
       rel="prefetch-intent"
       data-umami-event="random-blog-more"
-      >Blogroll <More height={24} width={24} /></a
+      >Full Blogroll <More height={24} width={24} /></a
     >
   </span>
 </section>
@@ -82,7 +82,7 @@ const blog = blogData[initialIndex];
     padding: 0;
   }
   h2 {
-    margin-top: -7.25em;
+    margin-top: -8.62em;
     margin-bottom: 0.3em;
     font-family: var(--sub-font);
     font-weight: 900;
@@ -216,9 +216,19 @@ const blog = blogData[initialIndex];
       border-color: var(--emphasis);
     }
   }
-  @media screen and (max-width: 1092px) {
+  @media screen and (max-width: 1292px) {
     h2 {
-      margin-top: -5.25em;
+      margin-top: -7.25em;
+    }
+  }
+  @media screen and (max-width: 1244px) {
+    h2 {
+      margin-top: -7.75em;
+    }
+  }
+  @media screen and (max-width: 1044px) {
+    h2 {
+      margin-top: -6.5em;
     }
   }
   @media screen and (max-width: 992px) {
