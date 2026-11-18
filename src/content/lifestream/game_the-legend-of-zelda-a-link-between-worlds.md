@@ -15,3 +15,4 @@ I'm not a fan of the item rental thing, it's just gimmicky and weird. The game i
 - [The Legend of Zelda: Link's Awakening](game_the-legend-of-zelda-links-awakening)
 - [The Legend of Zelda: Breath of the Wild](game_the-legend-of-zelda-breath-of-the-wild)
 - [The Legend of Zelda: Tears of the Kingdom](game_the-legend-of-zelda-tears-of-the-kingdom)
+- [The Legend of Zelda: Ocarina of Time (remake)](game_the-legend-of-zelda-ocarina-of-time-remake)

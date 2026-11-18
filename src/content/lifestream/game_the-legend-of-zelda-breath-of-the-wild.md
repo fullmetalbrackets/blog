@@ -19,3 +19,4 @@ I put over 100 hours into the original on Nintendo Switch, and more than doubled
 - [The Legend of Zelda: A Link Between Worlds](game_the-legend-of-zelda-a-link-between-worlds)
 - [The Legend of Zelda: Link's Awakening](game_the-legend-of-zelda-links-awakening)
 - [The Legend of Zelda: Tears of the Kingdom](game_the-legend-of-zelda-tears-of-the-kingdom)
+- [The Legend of Zelda: Ocarina of Time (remake)](game_the-legend-of-zelda-ocarina-of-time-remake)

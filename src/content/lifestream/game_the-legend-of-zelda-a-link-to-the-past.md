@@ -15,3 +15,5 @@ This classic is as fun today as it was when I first played it on Christmas Day 1
 - [The Legend of Zelda: Link's Awakening](game_the-legend-of-zelda-links-awakening)
 - [The Legend of Zelda: Breath of the Wild](game_the-legend-of-zelda-breath-of-the-wild)
 - [The Legend of Zelda: Tears of the Kingdom](game_the-legend-of-zelda-tears-of-the-kingdom)
+- [The Legend of Zelda: Ocarina of Time (remake)](game_the-legend-of-zelda-ocarina-of-time-remake)
+- [The Legend of Zelda: Ocarina of Time (remake)](game_the-legend-of-zelda-ocarina-of-time-remake)

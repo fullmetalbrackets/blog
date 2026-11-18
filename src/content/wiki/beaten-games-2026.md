@@ -2,7 +2,7 @@
 title: 'Video games I finished in 2026'
 description: 'A list of videogames I played and finished in 2026.'
 pubDate: 2026-06-23 12:00:00
-updatedDate: 2026-11-15 18:00:00
+updatedDate: 2026-11-18 18:00:00
 tag: information
 ---
 
@@ -10,7 +10,7 @@ tag: information
 
 ## Completed games
 
-<em>Total so far:</em> <span class="sub-font w9 secondary">31</span>
+<em>Total so far:</em> <span class="sub-font w9 secondary">32</span>
 
 - [007: First Light](/lifestream/game_007-first-light)
 - [Ace Combat 04: Shattered Skies](/lifestream/game_ace-combat-04-shattered-skies)
@@ -42,13 +42,14 @@ tag: information
 - [Star Fox 64](/lifestream/game_star-fox-64)
 - [Star Fox (remake)](/lifestream/game_star-fox-remake)
 - [Terminator 2D: No Fate](/lifestream/game_terminator-2d-no-fate)
+- [The Legend of Zelda: Ocarina of Time (remake)](/lifestream/the-legend-of-zelda-ocarina-of-time-remake)
 - [The Mummy Demastered](/lifestream/game_the-mummy-demastered)
 
 ## In progress
 
 <em>Total:</em> <span class="sub-font w9 secondary">1</span>
 
-- The Legend of Zelda: Ocarina of Time (remake)
+- Grand Theft Auto VI
 
 ## Started, temporarily on pause
 
@@ -87,7 +88,6 @@ tag: information
 - Ace Combat 6: Fires of Liberation
 - Bloodborne
 - Colony Wars: Vengeance
-- Grand Theft Auto VI
 - Resident Evil Zero HD Remaster
 - The Last Guardian
 
