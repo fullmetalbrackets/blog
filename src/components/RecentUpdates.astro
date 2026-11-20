@@ -148,6 +148,10 @@ const recentUpdates = (await getFirehose())
     .updates-title {
       font-size: 0.875em;
     }
+    .list:not(.entry--wiki) .updates-title {
+      display: flex;
+      margin: 0.15em auto -0.25em auto;
+    }
     .more {
       margin: -0.25em 0 0 0;
       padding: 0;
@@ -184,7 +188,7 @@ const recentUpdates = (await getFirehose())
         const href = entry.slug ?? entry.url ?? '#';
         const isExternal = !entry.slug;
         return (
-          <div class="h-entry list">
+          <div class={`h-entry list entry--${entry.type}`}>
             <a
               data-umami-event={`latest-updates-${href}`}
               class="u-url"
