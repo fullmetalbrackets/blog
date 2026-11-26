@@ -7,7 +7,7 @@ season: '29'
 rating: loved
 ---
 
-Back to storylines ripped straight from the latest news cycle, I approve.
+Back to storylines ripped straight from the latest news cycle, as is tradition.
 
 ## Related
 
