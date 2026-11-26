@@ -4,13 +4,13 @@
   "how-to-setup-the-search-function-in-qbittorrent-and-add-search-plugins",
   "plex-remote-access-tailscale",
   "how-i-setup-home-server",
-  "reverse-proxy-using-nginx-adguardhome-cloudflare",
   "comprehensive-guide-tailscale-securely-access-home-network",
-  "solid-explorer-samba-share",
+  "reverse-proxy-using-nginx-adguardhome-cloudflare",
   "google-tv-tailscale-plex",
+  "solid-explorer-samba-share",
+  "streamers-are-becoming-like-cable-and-video-games-prices-are-ridiculous-so-i-went-back-to-pirating-like-the-old-days",
   "upgrade-debian-12-bookworm-debian-13-trixie",
   "pihole-anywhere-tailscale",
-  "streamers-are-becoming-like-cable-and-video-games-prices-are-ridiculous-so-i-went-back-to-pirating-like-the-old-days",
   "xplore-android-smb-share",
   "expose-plex-tailscale-vps",
   "self-host-website-cloudflare-tunnel",
@@ -18,5 +18,5 @@
   "turn-off-display-linux-terminal",
   "reverse-proxy-using-nginx-pihole-cloudflare",
   "fix-for-nintendo-switch-oled-not-finding-5ghz-wifi-networks",
-  "keeping-a-linux-laptop-on-with-the-lid-closed"
+  "migrate-adguardhome-glinet-flint2-libre-sweet-potato"
 ]
