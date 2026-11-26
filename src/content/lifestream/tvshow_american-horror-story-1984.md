@@ -27,3 +27,4 @@ Probably my favorite season, but I'm a sucker for the 80's and this season has e
 - [American Horror Story: Double Feature](tvshow_american-horror-story-double-feature)
 - [American Horror Story: NYC](tvshow_american-horror-story)
 - [American Horror Story: Delicate](tvshow_american-horror-story-delicate)
+- [American Horror Story: 13](tvshow_american-horror-story-13)

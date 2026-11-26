@@ -27,3 +27,4 @@ Both halves of this season are good, but I like the one about aliens a little mo
 - [American Horror Story: 1984](tvshow_american-horror-story-1984)
 - [American Horror Story: NYC](tvshow_american-horror-story)
 - [American Horror Story: Delicate](tvshow_american-horror-story-delicate)
+- [American Horror Story: 13](tvshow_american-horror-story-13)

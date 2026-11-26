@@ -26,3 +26,4 @@ This brought back some bad memories from Election Night 2016, but other than tha
 - [American Horror Story: 1984](tvshow_american-horror-story-1984)
 - [American Horror Story: NYC](tvshow_american-horror-story)
 - [American Horror Story: Delicate](tvshow_american-horror-story-delicate)
+- [American Horror Story: 13](tvshow_american-horror-story-13)
